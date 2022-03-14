@@ -1,0 +1,523 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/event/chuseok.css"/>
+	<script type="text/javascript" src="http://m.enuri.com/mobilenew/js/lib/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript">
+		//탭
+		function clickEvent(nIdx){
+			if ( nIdx == 1){
+				$(".v01 a").attr("class", "on"); $(".v02 a").attr("class", ""); $(".v03 a").attr("class", ""); }
+			if ( nIdx == 2){
+				$(".v02 a").attr("class", "on"); $(".v01 a").attr("class", ""); $(".v03 a").attr("class", ""); }
+			if ( nIdx == 3){
+				$(".v03 a").attr("class", "on"); $(".v01 a").attr("class", ""); $(".v02 a").attr("class", ""); }
+			}
+					
+			//레이어
+			function onoff(id) {
+				var mid=document.getElementById(id);
+				if(mid.style.display=='') {
+				mid.style.display='none';
+			}else{
+				mid.style.display='';
+				}
+			}
+			
+			//스크롤
+			jQuery(document).ready(function($) { 
+				$(".scroll").click(function(event){             
+				event.preventDefault(); 
+				$('html,body').animate({scrollTop:$(this.hash).offset().top}, 300); 
+				}); 
+			}); 
+	</script>
+	
+</head>
+
+<body>
+
+<!-- 150910 응모완료 -->
+<div class="layer_back_n" id="finish" style="display:none;">
+	<div class="finish_layer">
+		<a href="#" class="win_close" onclick="onoff('finish')">창닫기</a>
+		<h2 class="blind">응모가 완료되었습니다.</h2>
+		<p class="blind">지금 앱 설치하면 인기라면 100% 당첨</p>
+		<a href="#" target="_new" class="go">라면 받으러 가기</a>
+		<a href="#" class="congrats_ok" onclick="onoff('finish')">닫기</a>
+	</div>
+</div>
+<!--// 150910 응모완료-->
+
+<!-- 주문정보입력 -->
+<div class="layer_back" id="order" style="display:none;">
+	<div class="orderArea">
+		<a href="#" class="win_close" onclick="onoff('order')" >창닫기</a>
+		<h2 class="blind">Mr.오버마도 몰랐던 에누리 나비효과</h2>
+		<p class="blind">경품 추첨을 위해 정확한 정보를 입력해주세요</p>
+		<a href="#" class="orderbtn" onclick="onoff('order_info')" >주문내역 확인 방법</a>
+
+		<dl>
+			<dt>이름(실명)</dt>
+			<dd><input type="text" placeholder="예금주 실명으로 입력하세요" /></dd>
+			<dt>휴대폰</dt>
+			<dd><input type="text" /></dd>
+			<dt>쇼핑몰</dt>
+			<dd>
+				<select class="shoplist">
+					<option>선택</option>
+					<option>지마켓</option>
+					<option>옥션</option>
+					<option>인터파크</option>
+					<option>11번가</option>
+					<option>GS SHOP</option>
+					<option>CJmall</option>
+					<option>Hmall</option>
+					<option>롯데i몰</option>
+					<option>롯데닷컴</option>
+					<option>nsmall</option>
+					<option>Akmall</option>
+					<option>디앤샵</option>
+					<option>신세계몰</option>
+					<option>이마트</option>
+					<option>하이마트</option>
+					<option>Yes24</option>
+					<option>알라딘</option>
+					<option>도서 11번가</option>
+					<option>인터파크도서</option>
+					<option>반디앤루니스</option>
+					<option>홈플러스</option>
+					<option>교보문고</option>
+					<option>영풍문고</option>
+					<option>엘롯데</option>
+					<option>홈앤쇼핑</option>
+					<option>갤러리아몰</option>
+					<option>위메프</option>
+					<option>티몬</option>
+				</select>
+			</dd>
+			<dt>구매일자</dt>
+			<dd><input type="text" value="9" class="month" /> 월 <select style="margin-left:6px;"><option>선택</option></select> 일</dd>
+			<dt>주문번호</dt>
+			<dd><input type="text" /></dd>
+		</dl>
+
+		<label><input class="chkbox" type="checkbox">위 개인정보 활용에 동의합니다.<a href="#" class="go_detail" onclick="onoff('privacy')" >자세히보기</a></label>
+		<a href="#" class="btn_ok" onclick="onoff('order')" >확인</a>
+	</div>
+</div>
+<!--// 주문정보입력 -->
+
+<!-- 주문내역 확인방법 -->
+<div class="shop_info" id="order_info" style="display:none;">
+		<a href="#" class="win_close" onclick="onoff('order_info')" >창닫기</a>
+		<h2 class="blind">쇼핑몰별 주문정보 확인</h2>
+		<ul class="blind">
+			<li>주문번호가 아닌 장바구니 번호, 결제번호 등은 인정되지 않습니다. 입력 전 확인 부탁드립니다.</li>
+			<li>주문정보는 PC에서도 확인할 수 있습니다.</li>
+		</ul>
+		<a href="#" class="btn_ok" onclick="onoff('order_info')">이벤트로 돌아가기</a>
+</div>
+<!--// 주문내역 확인방법 -->
+
+<!-- 개인정보활용 전문  -->
+<div class="privacyArea" id="privacy" style="display:none;">
+		<a href="#" class="win_close" onclick="onoff('privacy')" >창닫기</a>
+		
+		<h2>개인정보 수집ㆍ이용안내</h2>
+		<p>에누리 가격비교는 이벤트 참여확인 및 경품 발송을 위하여 아래와 같이 개인 정보를 수집하고 있습니다. </p>
+		<dl>
+			<dt>1. 개인정보 수집 항목</dt>
+			<dd>휴대폰 번호, 이름, 참여 일시</dd>
+			<dt>2. 개인정보 수집 및 이용 목적</dt>
+			<dd>이벤트를 위해 수집된 개인정보는 이벤트 참여확인 및 경품 발송을 위한 본인확인 이외의 목적으로 활용되지 않습니다.</dd>
+			<dt>3. 개인정보 보유 및 이용 기간</dt>
+			<dd>개인 정보 수집자(에누리 가격비교)는 개인 정보의 수집 및 이용 목적이 달성되면 개인 정보를 즉시 파기합니다.</dd>
+		</dl>
+		<h2>개인정보 제3자 제공</h2>
+		<p>회사는 이벤트 경품 배송을 위해서 아래와 같이 개인정보를 제3자와 제휴하고 있으며, 관계 법령에 따라 개인 정보의 제 3자 제공 시 개인 정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다. 회사의 개인정보 제3자 제공 내용은 아래와 같습니다.</p>
+		<ul>
+			<li>제공 받는 자</li>
+			<li>개인정보 이용 목적 : 이벤트 경품 발송</li>
+			<li>제공하는 개인정보 항목 : 아이디, 휴대폰 번호, 참여 일시</li>
+			<li>보유 기간 : 이벤트 경품 발송 후, 즉시 파기됨</li>
+		</ul>
+
+		<a href="#" class="btn_ok" onclick="onoff('privacy')">확인</a>
+</div>
+<!--// 개인정보활용 전문  -->
+
+<!-- 당첨자발표 -->
+<div class="layer_back" id="money" style="display:none;">
+	<div class="winArea02">
+		<a href="#" class="win_close" onclick="onoff('money')">창닫기</a>
+		<h2>당첨을 축하합니다.</h2>
+		<a href="#" class="back" onclick="onoff('money')">이벤트로 돌아가기</a>
+	</div>
+</div>
+<!--// 당첨자발표 -->
+
+<!-- 당첨자확인 -->
+<div class="layer_back" id="win" style="display:none;">
+	<div class="winArea">
+		<a href="#" class="win_close" onclick="onoff('win')">창닫기</a>
+		<h2>당첨을 축하합니다.</h2>
+		
+		<div class="win_list">
+			<span>
+				<select title="날짜별 당첨자 선택">
+				<option>2015-4-16</option>
+				<option>2015-4-17</option>
+				<option>2015-4-18</option>
+				</select>
+			</span>
+			<div class="win_list_scroll">
+			<dl>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+				<dt>최민경</dt>
+				<dd>010****2020</dd>
+			</dl>
+			</div>
+		</div>
+
+		<a href="#" class="back" onclick="onoff('win')">이벤트로 돌아가기</a>
+	</div>
+</div>
+<!--// 당첨자확인 -->
+
+
+
+
+<div class="wrap">
+	<a href="#" class="win_close">창닫기</a>
+	
+	<!-- mainvisual -->
+	<div class="mainvisual">
+		<span class="bg_left"></span>
+		<div class="content">
+			<h1 class="blind">에누리 모바일 전용 추석맞이 구매 EVENT</h1>
+			<h2 class="blind">누워서 떡값받기</h2>
+			<p class="blind">2015.09.07 ~ 09.30</p>
+		</div>
+	</div>
+	<!--// mainvisual -->
+
+	<!-- 응모하기 -->
+	<div class="info_area">
+		<div class="content">
+			<h3 class="blind">모바일로 구매하고 주문번호 입력하면 에누리가 떡값 드려요~</h3>
+			<ul>
+				<li><a href="#" onclick="onoff('money')">쇼핑지원금 3만원 총50명 당첨자발표 10월 16일</a></li>
+				<li><a href="#" onclick="onoff('win')">스타벅스 쿠폰 매일 5명 오늘의 당첨자</a></li>
+			</ul>
+			<a href="#" class="number"  onclick="onoff('order')">주문번호입력</a>
+		</div>
+	</div>
+	<!--// 응모하기 -->
+	
+	<!-- 선물추천 -->
+	<div class="gift_area">
+		<h3 class="blind">3만원 떡값은 기본! 핫딜보다 싼 추석선물 추천!</h3>
+		<ul class="event_tab">
+			<li class="v01"><a href="#evt_tab01" class="on scroll" href="javascript:void(0);" onclick="javascript:clickEvent('1');">싸다 싸다! 저렴이 선물세트</a></li>
+			<li class="v02"><a href="#evt_tab02" class="scroll" href="javascript:void(0);" onclick="javascript:clickEvent('2');">실속 있다! 가격대비 알찬 구성</a></li>
+			<li class="v03"><a href="#evt_tab03" class="scroll" href="javascript:void(0);" onclick="javascript:clickEvent('3');">고급지다! 어이쿠 이런걸 다~</a></li>
+		</ul>
+		
+		<!-- 1 -->
+		<div id="evt_tab01">
+			<h4>싸다 싸다! 저렴이 선물세트</h4>
+			<ul>
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<!-- 2 -->
+		<div id="evt_tab02">
+			<h4>실속 있다! 가격대비 알찬 구성</h4>
+			<ul>
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>횡성한우 모듬구이세트 4호</strong>
+				등심+특수부위+안심
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>횡성한우 모듬구이세트 4호</strong>
+				등심+특수부위+안심
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<!-- 3 -->
+		<div id="evt_tab03">
+			<h4>고급지다! 어이쿠 이런걸 다~</h4>
+			<ul>
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>횡성한우 모듬구이세트 4호</strong>
+				등심+특수부위+안심
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>횡성한우 모듬구이세트 4호</strong>
+				등심+특수부위+안심
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+			</ul>
+		</div>
+
+	</div>
+	<!--// 선물추천 -->
+	
+	<!-- 유의사항 -->
+	<div class="notice">
+			<dl>
+				<dt>이벤트 유의사항</dt>
+				<dd>주문번호 1개당, 1회 응모 가능합니다.</dd>
+				<dd>쇼핑지원금과 스타벅스 쿠폰은 각각 교차 당첨 가능합니다. (단, 경품 1종에 대한 중복 당첨은 불가합니다.)</dd>
+				<dd> 휴대폰번호 1개당, 1종 경품 내 1개의 경품 당첨 가능하며, 다른 종류의 경품일 경우 중복 당첨 가능합니다. (스타벅스 당첨자가 쇼핑지원금 당첨 가능)</dd>
+				<dd>잘못된 정보 입력으로 인한 경품 수령의 불이익은 책임지지 않습니다.</dd>
+				<dd>본인의 연락처가 아니거나 환불 등 부정적인 방법으로 참여 시 사전 통보 없이 참여내역에서 삭제될 수 있습니다.</dd>
+				<dd>이벤트 응모는 기간 내 구매한 내역만 인정됩니다.</dd>
+				<dd>응모 페이지 리스트에 있는 쇼핑몰에서 구매한 경우만 인정됩니다.</dd>
+				<dd>주문번호가 아닌 장바구니번호, 결제번호, 상품번호 등은 인정되지 않습니다.</dd>
+				<dd>에누리 모바일(웹, 앱 관계없음)을 통해 쇼핑몰 모바일 웹(앱 불가)에서 구매한 경우만 인정됩니다.</dd>
+				<dt>당첨자 발표</dt>
+				<dd>쇼핑지원금 : 10월 12일, PC 고객센터 게시판</dd>
+				<dd>스타벅스 쿠폰 : 익일 오후 5시 (주말 제외), 모바일 이벤트 페이지</dd>
+			</dl>
+	</div>
+	<!--// 유의사항 -->
+
+
+
+
+	<!-- 선물추천 추석이후 -->
+	<div class="gift_area after">
+		<h3 class="blind">3만원 떡값은 기본! 핫딜보다 싼 추석선물 추천!</h3>
+
+		<ul class="event_tab">
+			<li class="v01"><a href="#evt_tab04" class="on scroll" href="javascript:void(0);" onclick="javascript:clickEvent('1');">엄마 안마! 안마기,족욕기</a></li>
+			<li class="v02"><a href="#evt_tab05" class="scroll" href="javascript:void(0);" onclick="javascript:clickEvent('2');">나가 먹자! 외식, 영화상품권</a></li>
+			<li class="v03"><a href="#evt_tab06" class="scroll" href="javascript:void(0);" onclick="javascript:clickEvent('3');">되돌려놔! 헬스, 다이어트</a></li>
+		</ul>
+		
+		<!-- 1 -->
+		<div id="evt_tab04">
+			<h4>엄마 안마! 안마기,족욕기</h4>
+			<ul>
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<!-- 2 -->
+		<div id="evt_tab05">
+			<h4>나가 먹자! 외식, 영화상품권</h4>
+			<ul>
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>횡성한우 모듬구이세트 4호</strong>
+				등심+특수부위+안심
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+			</ul>
+		</div>
+
+		<!-- 3 -->
+		<div id="evt_tab06">
+			<h4>되돌려놔! 헬스, 다이어트</h4>
+			<ul>
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>횡성한우 모듬구이세트 4호</strong>
+				등심+특수부위+안심
+				<span><em class="min">최저가</em>5,290원<em class="max">~8,570원</em></span>
+				</a></li>
+
+				<li><a href="#">
+				<img src="http://image.wemakeprice.com/dealimg/201508/625149/b40cf803324a6b53ca5f48fbca7e695f835eb451.jpg" alt="" />
+				<strong>[행복 1호]</strong>
+				샴푸+린스+비누+치약
+				<span><em class="min">최저가</em>205,290원<em class="max">~208,570원</em></span>
+				</a></li>
+			</ul>
+		</div>
+		
+	</div>
+	<!--// 선물추천 추석이후 -->
+	
+
+	<!-- 유의사항 -->
+	<div class="notice notice_after"><!-- 선물추천 추석이후 notice_after 붙었어요 -->
+			<dl>
+				<dt>이벤트 유의사항</dt>
+				<dd>주문번호 1개당, 1회 응모 가능합니다.</dd>
+				<dd>쇼핑지원금과 스타벅스 쿠폰은 각각 교차 당첨 가능합니다. (단, 경품 1종에 대한 중복 당첨은 불가합니다.)</dd>
+				<dd> 휴대폰번호 1개당, 1종 경품 내 1개의 경품 당첨 가능하며, 다른 종류의 경품일 경우 중복 당첨 가능합니다. (스타벅스 당첨자가 쇼핑지원금 당첨 가능)</dd>
+				<dd>잘못된 정보 입력으로 인한 경품 수령의 불이익은 책임지지 않습니다.</dd>
+				<dd>본인의 연락처가 아니거나 환불 등 부정적인 방법으로 참여 시 사전 통보 없이 참여내역에서 삭제될 수 있습니다.</dd>
+				<dd>이벤트 응모는 기간 내 구매한 내역만 인정됩니다.</dd>
+				<dd>응모 페이지 리스트에 있는 쇼핑몰에서 구매한 경우만 인정됩니다.</dd>
+				<dd>주문번호가 아닌 장바구니번호, 결제번호, 상품번호 등은 인정되지 않습니다.</dd>
+				<dd>에누리 모바일(웹, 앱 관계없음)을 통해 쇼핑몰 모바일 웹(앱 불가)에서 구매한 경우만 인정됩니다.</dd>
+				<dt>당첨자 발표</dt>
+				<dd>쇼핑지원금 : 10월 12일, PC 고객센터 게시판</dd>
+				<dd>스타벅스 쿠폰 : 익일 오후 5시 (주말 제외), 모바일 이벤트 페이지</dd>
+			</dl>
+	</div>
+	<!--// 유의사항 -->
+	<span class="go_top"><a href="#">TOP</a></span>
+
+</div>
+
+
+<!-- 푸터 -->
+<footer>
+	<div class="footer">
+		<p class="alert">에누리닷컴<span style="font-size:8px">(주)</span>는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</p>
+		<p class="cop">에누리닷컴<span style="font-size:8px">(주)</span></p>
+		<p class="info">대표이사 : 최문석<em>|</em>사업자등록번호 : 206-81-18164<br>통신판매신고 : 종로통신 제 4406호<br />
+		서울특별시 중구 퇴계로 18 대우재단빌딩 9층<br />
+		문의 : 02-6354-3601<em>|</em>master@enuri.com
+		</p>
+	</div>
+</footer>
+<!--// 푸터 -->
+
+</body>
+</html>

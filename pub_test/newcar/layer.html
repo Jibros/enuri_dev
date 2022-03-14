@@ -1,0 +1,820 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>에누리 신차견적</title>
+    <link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/newcar/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/newcar/template.css"/>
+	<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <!-- 완료후제거 -->
+    <link rel="stylesheet" href="/css/default.css?v=1" type="text/css">
+</head>
+<body>
+
+    <div id="wrap">
+
+        <!-- 레이어 : 리스 렌트 조건변경 -->
+        <div class="lay_box lay_rentcondi">
+            <div class="lay_inner">
+                <div class="lay_head">리스 렌트 조건변경</div>
+                <div class="lay_body">
+                    <!-- 이용기간 -->
+                    <div class="select_period">
+                        <p class="tx_tit">이용기간</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyPeriodRadio01" name="tyPeriodRadio" checked=""><label for="tyPeriodRadio01">36개월</label></li>
+                            <li><input type="radio" id="tyPeriodRadio02" name="tyPeriodRadio"><label for="tyPeriodRadio02">48개월</label></li>
+                            <li><input type="radio" id="tyPeriodRadio03" name="tyPeriodRadio"><label for="tyPeriodRadio03">60개월</label></li>
+                        </ul>
+                    </div>
+                    <!-- 보증/선납 -->
+                    <div class="select_deposit">
+                        <p class="tx_tit">보증/선납</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyDepositRadio01" name="tyDepositRadio" checked=""><label for="tyDepositRadio01">보증금 30%</label></li>
+                            <li><input type="radio" id="tyDepositRadio02" name="tyDepositRadio"><label for="tyDepositRadio02">선납금 30%</label></li>
+                            <li><input type="radio" id="tyDepositRadio03" name="tyDepositRadio"><label for="tyDepositRadio03">없음 0%</label></li>
+                        </ul>
+                    </div>
+                    <span class="tx_lay_box">
+                        <dl>
+                            <dt>보증금 : </dt>
+                            <dd>이용기간 계약 만료시 환급받을 수 있는 금액입니다.</dd>
+                        </dl>
+                        <dl>
+                            <dt>선납금 : </dt>
+                            <dd>계약 금액을 일정 부분 미리 납부하여 계약 만료시 소진되는 금액입니다.</dd>
+                        </dl>
+                        <dl>
+                            <dt>없음 : </dt>
+                            <dd>보증 또는 선납이 없는 형태로 초기 비용이 낮아지지만 월 이용 금액이 상승됩니다.</dd>
+                        </dl>
+                    </span>
+                    <!-- 버튼 : 조건적용 -->
+                    <button class="btn__lay_search">조건 적용</button>
+                    <!-- // -->
+                </div>
+                <!-- 버튼 : 레이어 닫기 -->
+                <button class="btn__layin_close comm_sprite" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+                <!-- // -->
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // 레이어 : 리스 렌트 조건변경 -->
+
+        <!-- 레이어 : 맞춤 추천 선택 -->
+        <div class="lay_box lay_selcondi">
+            <div class="lay_inner">
+                <div class="lay_head">맞춤 추천 선택</div>
+                <div class="lay_body">
+                    <!-- 지역선택 -->
+                    <div class="select_region">
+                        <div class="select_city">
+                            <p class="tx_tit">시/도선택</p>
+                            <div class="select_basic">
+                                <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                    <span class="tx_select">지역 전체</span>
+                                    <i class="comm_sprite ico_size_arr"></i>
+                                </a>
+                                <ul class="select_list">
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">서울</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">부산</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">인천</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">대구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">대전</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">울산</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- <div class="select_dist">
+                            <p class="tx_tit">시/군/구 선택</p>
+                            <div class="select_basic">
+                                <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                    <span class="tx_select">지역 전체</span>
+                                    <i class="comm_sprite ico_size_arr"></i>
+                                </a>
+                                <ul class="select_list">
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강남구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강동구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강북구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강서구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">광진구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">구로구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">금천구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">노원구</span></a></li>
+                                </ul>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- 성별선택 -->
+                    <div class="select_gender">
+                        <p class="tx_tit">성별 선택</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyGenderRadio01" name="tyGenderRadio" checked=""><label for="tyGenderRadio01">성별 무관</label></li>
+                            <li><input type="radio" id="tyGenderRadio02" name="tyGenderRadio"><label for="tyGenderRadio02">남성</label></li>
+                            <li><input type="radio" id="tyGenderRadio03" name="tyGenderRadio"><label for="tyGenderRadio03">여성</label></li>
+                        </ul>
+                    </div>
+                    <!-- 나이선택 -->
+                    <div class="select_age">
+                        <p class="tx_tit">연령 선택</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyAgeRadio01" name="tyAgeRadio" checked=""><label for="tyAgeRadio01">연령 무관</label></li>
+                            <li><input type="radio" id="tyAgeRadio02" name="tyAgeRadio"><label for="tyAgeRadio02">10대</label></li>
+                            <li><input type="radio" id="tyAgeRadio03" name="tyAgeRadio"><label for="tyAgeRadio03">20대</label></li>
+                            <li><input type="radio" id="tyAgeRadio04" name="tyAgeRadio"><label for="tyAgeRadio04">30대</label></li>
+                            <li><input type="radio" id="tyAgeRadio05" name="tyAgeRadio"><label for="tyAgeRadio05">40대</label></li>
+                            <li><input type="radio" id="tyAgeRadio06" name="tyAgeRadio"><label for="tyAgeRadio06">50대</label></li>
+                            <li><input type="radio" id="tyAgeRadio07" name="tyAgeRadio"><label for="tyAgeRadio07">60대</label></li>
+                            <li><input type="radio" id="tyAgeRadio08" name="tyAgeRadio"><label for="tyAgeRadio08">70대</label></li>
+                            <li><input type="radio" id="tyAgeRadio09" name="tyAgeRadio"><label for="tyAgeRadio09">80대</label></li>
+                            <li><input type="radio" id="tyAgeRadio10" name="tyAgeRadio"><label for="tyAgeRadio10">90대</label></li>
+                        </ul>
+                    </div>
+                    <span class="tx_lay_box">판매량 부족 등 통계 데이터 확인이 불가한 경우에는 추천 정보가 없을 수도 있습니다.</span>
+                    <!-- 버튼 : 조건검색 -->
+                    <button class="btn__lay_search">조건 검색</button>
+                    <!-- // -->
+                </div>
+                <!-- 버튼 : 레이어 닫기 -->
+                <button class="btn__layin_close comm_sprite" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+                <!-- // -->
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // 레이어 : 맞춤 추천 선택 -->
+
+        <!-- 레이어 : 견적 추천 검색 -->
+        <div class="lay_box lay_recomm_sr">
+            <div class="lay_inner">
+                <div class="lay_head">견적 추천 검색</div>
+                <div class="lay_body">
+                    <!-- 지역선택 -->
+                    <div class="select_region">
+                        <div class="select_city">
+                            <p class="tx_tit">시/도선택</p>
+                            <div class="select_basic">
+                                <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                    <span class="tx_select">지역 전체</span>
+                                    <i class="comm_sprite ico_size_arr"></i>
+                                </a>
+                                <ul class="select_list">
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">서울</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">부산</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">인천</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">대구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">대전</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">울산</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="select_dist">
+                            <p class="tx_tit">시/군/구 선택</p>
+                            <div class="select_basic">
+                                <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                    <span class="tx_select">지역 전체</span>
+                                    <i class="comm_sprite ico_size_arr"></i>
+                                </a>
+                                <ul class="select_list">
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강남구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강동구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강북구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">강서구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">광진구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">구로구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">금천구</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">노원구</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 성별선택 -->
+                    <div class="select_gender">
+                        <p class="tx_tit">성별 선택</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyGenderRadio01a" name="tyGenderRadio-a" checked=""><label for="tyGenderRadio01a">성별 무관</label></li>
+                            <li><input type="radio" id="tyGenderRadio02a" name="tyGenderRadio-a"><label for="tyGenderRadio02a">남성</label></li>
+                            <li><input type="radio" id="tyGenderRadio03a" name="tyGenderRadio-a"><label for="tyGenderRadio03a">여성</label></li>
+                        </ul>
+                    </div>
+                    <!-- 나이선택 -->
+                    <div class="select_age">
+                        <p class="tx_tit">연령 선택</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyAgeRadio01a" name="tyAgeRadio-a" checked=""><label for="tyAgeRadio01a">연령 무관</label></li>
+                            <li><input type="radio" id="tyAgeRadio02a" name="tyAgeRadio-a"><label for="tyAgeRadio02a">10대</label></li>
+                            <li><input type="radio" id="tyAgeRadio03a" name="tyAgeRadio-a"><label for="tyAgeRadio03a">20대</label></li>
+                            <li><input type="radio" id="tyAgeRadio04a" name="tyAgeRadio-a"><label for="tyAgeRadio04a">30대</label></li>
+                            <li><input type="radio" id="tyAgeRadio05a" name="tyAgeRadio-a"><label for="tyAgeRadio05a">40대</label></li>
+                            <li><input type="radio" id="tyAgeRadio06a" name="tyAgeRadio-a"><label for="tyAgeRadio06a">50대</label></li>
+                            <li><input type="radio" id="tyAgeRadio07a" name="tyAgeRadio-a"><label for="tyAgeRadio07a">60대</label></li>
+                            <li><input type="radio" id="tyAgeRadio08a" name="tyAgeRadio-a"><label for="tyAgeRadio08a">70대</label></li>
+                            <li><input type="radio" id="tyAgeRadio09a" name="tyAgeRadio-a"><label for="tyAgeRadio09a">80대</label></li>
+                            <li><input type="radio" id="tyAgeRadio10a" name="tyAgeRadio-a"><label for="tyAgeRadio10a">90대</label></li>
+                        </ul>
+                    </div>
+                    <span class="tx_lay_box">판매량 부족 등 통계 데이터 확인이 불가한 경우에는 추천 정보가 없을 수도 있습니다.</span>
+                    <!-- 버튼 : 조건 견적 추천 검 -->
+                    <button class="btn__lay_search">조건 견적 추천 검색</button>
+                    <!-- // -->
+                </div>
+                <!-- 버튼 : 레이어 닫기 -->
+                <button class="btn__lay_close comm_sprite" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+                <!-- // -->
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // 레이어 : 맞춤 추천 선택 -->
+
+        <!-- 레이어 : 견적 추가 정보 확인 -->
+        <div class="lay_box lay_add_info">
+            <div class="lay_inner">
+                <div class="lay_head">견적 추가 정보 확인</div>
+                <div class="lay_body">
+                    <!-- 색상 선택 -->
+                    <div class="sel_color">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="tx_tit">
+                                        외장컬러 선택 <span class="tx_sub">(옵션)</span>
+                                        <!-- 버튼 : 초기화 -->
+                                        <button class="btn__opt_refresh" style="display:none"><i class="comm_sprite ico_refresh_lg_m">새로고침</i></button>
+                                        <!-- // -->
+                                    </div>
+                                    <div class="list_color list_color_opt">
+                                        <ul>
+                                            <!-- 반복 : 컬러 옵션  -->
+                                            <li class="item_opt">
+                                                <!-- 색상값은 style에 넣어주세요 -->
+                                                <div class="bx_color" style="background-color:#FCFCFC">
+                                                    <!-- 색상이 2가지 일때는 아래 .bx_color_2nd 스타일에 넣어주세요 -->
+                                                    <div class="bx_color_2nd" style="background-color:#FCFCFC"></div>
+                                                </div>
+                                                <div class="bx_color_nm">
+                                                    <span class="tx_color_nm">우유니 화이트<Br/>(UYH)</span>
+                                                </div>
+                                            </li>
+                                            <!-- // -->
+                                            <li class="item_opt">
+                                                <div class="bx_color" style="background-color:#AFADAE">
+                                                    <div class="bx_color_2nd"></div>
+                                                </div>
+                                                <div class="bx_color_nm">
+                                                    <span class="tx_color_nm">세실 실버<br/>(SSS)</span>
+                                                </div>
+                                            </li>
+                                            <li class="item_opt">
+                                                <div class="bx_color" style="background-color:#575A60">
+                                                    <div class="bx_color_2nd"></div>
+                                                </div>
+                                                <div class="bx_color_nm">
+                                                    <span class="tx_color_nm">카본 메탈<br/>(N5M)</span>
+                                                </div>
+                                            </li>
+                                            <!-- 선택되었을때 색상 / 금액 표기영역 -->
+                                            <li class="item_opt_info" style="display:none">
+                                                <div class="bx_color_nm">
+                                                    카본 메탈<br/>
+                                                    (N5M)
+                                                    <span class="tx_color_sub">무광</span>
+                                                </div>
+                                                <div class="tx_price">
+                                                    <em>1,000,000</em>원
+                                                </div>
+                                            </li>
+                                            <!-- // -->
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="tx_tit">
+                                        내장컬러 선택 <span class="tx_sub">(옵션)</span>
+                                        <!-- 버튼 : 초기화 -->
+                                        <button class="btn__opt_refresh" style="display:none"><i class="comm_sprite ico_refresh_lg_m">새로고침</i></button>
+                                        <!-- // -->
+                                    </div>
+                                    <div class="list_color list_color_opt">
+                                        <ul>
+                                            <!-- 반복 : 컬러 옵션  -->
+                                            <li class="item_opt">
+                                                <!-- 색상값은 style에 넣어주세요 -->
+                                                <div class="bx_color" style="background-color:#696A69">
+                                                    <!-- 색상이 2가지 일때는 아래 .bx_color_2nd 스타일에 넣어주세요 -->
+                                                    <div class="bx_color_2nd" style="background-color:#F8F6ED"></div>
+                                                </div>
+                                                <div class="bx_color_nm">
+                                                    <span class="tx_color_nm">안트라사이트 그레이 /둔 베이지 투톤</span>
+                                                </div>
+                                            </li>
+                                            <!-- // -->
+                                            <li class="item_opt">
+                                                <div class="bx_color" style="background-color:#AFADAE">
+                                                    <div class="bx_color_2nd"></div>
+                                                </div>
+                                                <div class="bx_color_nm">
+                                                    <span class="tx_color_nm">세실 실버<br/>(SSS)</span>
+                                                    
+                                                </div>
+                                            </li>
+                                            <li class="item_opt">
+                                                <div class="bx_color" style="background-color:#575A60">
+                                                    <div class="bx_color_2nd"></div>
+                                                </div>
+                                                <div class="bx_color_nm">
+                                                    <span class="tx_color_nm">카본 메탈<br/>(N5M)</span>
+                                                </div>
+                                            </li>
+                                            <!-- 선택되었을때 색상 / 금액 표기영역 -->
+                                            <li class="item_opt_info"  style="display:none">
+                                                <div class="bx_color_nm">
+                                                    카본 메탈<br/>
+                                                    (N5M)
+                                                    <span class="tx_color_sub">무광</span>
+                                                </div>
+                                                <div class="tx_price">
+                                                    <em>1,000,000</em>원
+                                                </div>
+                                            </li>
+                                            <!-- // -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+                        <script>
+                            var addSelSwiper;
+                            $(function(){
+                                var container = '.sel_color .swiper-container';
+                                var settings = {
+                                    scrollbar: '.sel_color .swiper-container .swiper-scrollbar',
+                                    scrollbarHide: false,
+                                    slidesPerView: 'auto',
+                                    freeMode : true, // 201125 추가
+                                    centeredSlides: false,
+                                    spaceBetween: 36,
+                                    grabCursor: true                                    
+                                }
+                                addSelSwiper = new Swiper(container,settings); // 스와이퍼 생성
+                                var swiperReset = function(){ // 스와이퍼 초기화
+                                    addSelSwiper.destroy();
+                                    $(container).find(".swiper-wrapper").attr('style','');
+                                    addSelSwiper = new Swiper(container, settings); // 201125 수정
+                                    addSelSwiper.onResize(); // 201125 추가
+                                }
+
+                                var $item = $(".item_opt"); // 퍼블 테스트 : 색상아이템 선택
+                                $item.click(function(){
+                                    if ( $(this).hasClass("selected") ){
+                                        // $(this).removeClass("selected").siblings().removeClass("is-hide selected");
+                                    }else{
+                                        $(this).addClass("selected").siblings().addClass("is-hide").removeClass("selected");
+                                        $(this).parent().find(".item_opt_info").show();
+                                        $(this).closest('.swiper-slide').find(".btn__opt_refresh").show();
+                                    }
+                                    swiperReset();
+                                })
+
+                                var $btnRefresh = $(".btn__opt_refresh"); // 퍼블테스트 초기화 버튼
+                                $btnRefresh.on('click',function(){
+                                    $(this).hide();
+                                    $(this).closest('.swiper-slide').find(".item_opt").removeClass("selected is-hide");
+                                    $(this).closest('.swiper-slide').find(".item_opt_info").hide();
+                                    swiperReset();
+                                })
+                                
+                            })
+                        </script>
+                    </div>
+                    <!-- 정보입력/동의 -->
+                    <div class="sel_info">
+                        <div class="bx_info">
+                            <!-- 지역정보 확인 -->
+                            <div class="sel_loc">
+                                <span class="tx_tit">지역정보 확인</span>
+                                <div class="sel_group">
+                                    <!-- 시도선택 -->
+                                    <div class="select_basic sel_city">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">시/도 선택</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">서울</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">부산</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">인천</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">대구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">대전</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">울산</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- 시군구선택 -->
+                                    <div class="select_basic sel_dist">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">시군구 선택</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강남구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강동구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강북구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강서구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">광진구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">구로구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">금천구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">노원구</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 신청자 정보 -->
+                            <div class="sel_user">
+                                <span class="tx_tit">신청자 정보</span>
+                                <div class="inp_basic">
+                                    <input type="text" placeholder="이름을 입력해 주세요">
+                                </div>
+                                <div class="inp_group">
+                                    <div class="select_basic">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">010</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">010</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">011</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">016</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">017</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">018</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">019</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inp_basic">
+                                        <input type="text" placeholder="연락처를 입력해 주세요">
+                                    </div>
+                                </div>
+                                <span class="tx_noti">
+                                    신청자가 견적 상담 결과에 의사를 표현하기 전까지 어떠한 경우에도 먼저 연락처가 오픈되지 않으므로 연락을 드릴 수 없습니다. 의사 표현은 [내 견적 관리]에서 하실 수 있습니다.
+                                </span>
+                            </div>
+                            <!-- 추가 상담 코멘트 -->
+                            <div class="sel_comt">
+                                <span class="tx_tit">추가 상담 코멘트 <span class="tx_sub">(옵션)</span></span>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="원하시는 내용을 상세히 적어주시면 더 정확한 상담을 받으실 수 있습니다."></textarea>
+                            </div>
+                        </div>
+                        <div class="bx_agree">
+                            <dl>
+                                <!-- 개인정보 수집이용동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree01"><label for="chkAgree01">개인정보 수집 이용 동의</label>
+                                </dt>
+                                <dd>
+                                    <div class="bx_terms">
+                                        약관내용 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라블라블라 블라블라 블라블라 블라블라 블라라
+                                    </div>
+                                </dd>
+                                <!-- 개인정보 제 3자 제공 동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree02"><label for="chkAgree02">개인정보 제3자 제공 동의</label>
+                                </dt>
+                                <dd>
+                                    <div class="bx_terms">
+                                        약관내용 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라블라블라 블라블라 블라블라 블라블라 블라라
+                                    </div>
+                                </dd>
+                                <!-- 개인정보 수집 및 제 3자 제공 모두 동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree03"><label for="chkAgree03">개인정보 수집 및 제3자 제공 모두 동의</label>
+                                </dt>
+                                <dd>&nbsp;</dd>
+                            </dl>
+                            <!-- 버튼 : 견적 신청 접수하기 -->
+                            <button class="btn__apply">견적 신청 접수 하기 <i class="comm_sprite ico_rarr_bold_w"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 버튼 : 레이어 닫기 -->
+                <button class="btn__layin_close comm_sprite" onclick="$(this).closest('.lay_box').fadeOut(100);">닫기</button>
+                <!-- // -->
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 201030 신규 추가 -->
+        <!-- 레이어 : 상담 추가 정보 확인(즉시출고) -->
+        <div class="lay_box lay_add_info info_immediate">
+            <div class="lay_inner">
+                <div class="lay_head">상담 추가 정보 확인</div>
+                <div class="lay_body">
+                    <!-- 정보입력/동의 -->
+                    <div class="sel_info">
+                        <div class="bx_info">
+                            <!-- 지역정보 확인 -->
+                            <div class="sel_loc">
+                                <span class="tx_tit">지역정보 확인</span>
+                                <div class="sel_group">
+                                    <!-- 시도선택 -->
+                                    <div class="select_basic sel_city">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">시/도 선택</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">서울</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">부산</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">인천</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">대구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">대전</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">울산</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- 시군구선택 -->
+                                    <div class="select_basic sel_dist">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">시군구 선택</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강남구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강동구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강북구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">강서구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">광진구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">구로구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">금천구</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">노원구</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 신청자 정보 -->
+                            <div class="sel_user">
+                                <span class="tx_tit">신청자 정보</span>
+                                <div class="inp_basic">
+                                    <input type="text" placeholder="이름을 입력해 주세요">
+                                </div>
+                                <div class="inp_group">
+                                    <div class="select_basic">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">010</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">010</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">011</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">016</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">017</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">018</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">019</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inp_basic">
+                                        <input type="text" placeholder="연락처를 입력해 주세요">
+                                    </div>
+                                </div>
+                                <span class="tx_noti">
+                                    즉시출고 상담신청은 자동차 판매 제휴점에 즉시 신청자 정보가 전송됩니다.
+                                </span>
+                            </div>
+                            <!-- 추가 상담 코멘트 -->
+                            <div class="sel_comt">
+                                <span class="tx_tit">추가 상담 코멘트 <span class="tx_sub">(옵션)</span></span>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="원하시는 내용을 상세히 적어주시면 더 정확한 상담을 받으실 수 있습니다."></textarea>
+                            </div>
+                        </div>
+                        <div class="bx_agree">
+                            <dl>
+                                <!-- 개인정보 수집이용동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree011"><label for="chkAgree011">개인정보 수집 이용 동의</label>
+                                </dt>
+                                <dd>
+                                    <div class="bx_terms">
+                                        약관내용 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라블라블라 블라블라 블라블라 블라블라 블라라
+                                    </div>
+                                </dd>
+                                <!-- 개인정보 제 3자 제공 동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree021"><label for="chkAgree021">개인정보 제3자 제공 동의</label>
+                                </dt>
+                                <dd>
+                                    <div class="bx_terms">
+                                        약관내용 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라블라블라 블라블라 블라블라 블라블라 블라라
+                                    </div>
+                                </dd>
+                                <!-- 개인정보 수집 및 제 3자 제공 모두 동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree031"><label for="chkAgree031">개인정보 수집 및 제3자 제공 모두 동의</label>
+                                </dt>
+                                <dd>&nbsp;</dd>
+                            </dl>
+                            <!-- 버튼 : 상담 신청 접수하기 -->
+                            <button class="btn__apply">상담 신청 접수 하기 <i class="comm_sprite ico_rarr_bold_w"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 버튼 : 레이어 닫기 -->
+                <button class="btn__layin_close comm_sprite" onclick="$(this).closest('.lay_box').fadeOut(100);">닫기</button>
+                <!-- // -->
+            </div>
+            <div class="dimmed"></div>            
+        </div>
+        <!-- // -->
+
+        <!-- 레이어 : 상담 추가 정보 확인(금융비교) -->
+        <div class="lay_box lay_add_info info_finance">
+            <div class="lay_inner">
+                <div class="lay_head">상담 추가 정보 확인</div>
+                <div class="lay_body">
+                    <!-- 정보입력/동의 -->
+                    <div class="sel_info">
+                        <div class="bx_info">
+                            <!-- 신청자 정보 -->
+                            <div class="sel_user">
+                                <span class="tx_tit">신청자 정보</span>
+                                <div class="inp_basic">
+                                    <input type="text" placeholder="이름을 입력해 주세요">
+                                </div>
+                                <div class="inp_group">
+                                    <div class="select_basic">
+                                        <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                            <span class="tx_select">010</span>
+                                            <i class="comm_sprite ico_size_arr"></i>
+                                        </a>
+                                        <ul class="select_list">
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">010</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">011</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">016</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">017</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">018</span></a></li>
+                                            <li><a href="#" onclick="return false;"><span class="tx_select">019</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="inp_basic">
+                                        <input type="text" placeholder="연락처를 입력해 주세요">
+                                    </div>
+                                </div>
+                                <span class="tx_noti">
+                                    금융비교 상담신청은 금융상품 상담 대행사에 즉시 신청자 정보가 전송됩니다.
+                                </span>
+                            </div>
+                            <!-- 추가 상담 코멘트 -->
+                            <div class="sel_comt">
+                                <span class="tx_tit">추가 상담 코멘트 <span class="tx_sub">(옵션)</span></span>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="원하시는 내용을 상세히 적어주시면 더 정확한 상담을 받으실 수 있습니다."></textarea>
+                            </div>
+                        </div>
+                        <div class="bx_agree">
+                            <dl>
+                                <!-- 개인정보 수집이용동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree012"><label for="chkAgree012">개인정보 수집 이용 동의</label>
+                                </dt>
+                                <dd>
+                                    <div class="bx_terms">
+                                        약관내용 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라블라블라 블라블라 블라블라 블라블라 블라라
+                                    </div>
+                                </dd>
+                                <!-- 개인정보 제 3자 제공 동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree022"><label for="chkAgree022">개인정보 제3자 제공 동의</label>
+                                </dt>
+                                <dd>
+                                    <div class="bx_terms">
+                                        약관내용 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라 블라블라 블라블라 블라블라 블라블라 블라라블라블라 블라블라 블라블라 블라블라 블라라
+                                    </div>
+                                </dd>
+                                <!-- 개인정보 수집 및 제 3자 제공 모두 동의 -->
+                                <dt>
+                                    <input type="checkbox" id="chkAgree032"><label for="chkAgree032">개인정보 수집 및 제3자 제공 모두 동의</label>
+                                </dt>
+                                <dd>&nbsp;</dd>
+                            </dl>
+                            <!-- 버튼 : 상담 신청 접수하기 -->
+                            <button class="btn__apply">상담 신청 접수 하기 <i class="comm_sprite ico_rarr_bold_w"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 버튼 : 레이어 닫기 -->
+                <button class="btn__layin_close comm_sprite" onclick="$(this).closest('.lay_box').fadeOut(100);">닫기</button>
+                <!-- // -->
+            </div>
+            <div class="dimmed"></div>            
+        </div>
+        <!-- // -->
+
+        <!-- 레이어 : 얼럿 레이어 -->
+        <!-- 케이스 - 1 -->
+        <div class="lay_box lay_alert">
+            <div class="lay_inner">
+                <div class="tx_comm">
+                    <div class="tx_comm--tit"><em>'옵션명A'</em> 옵션은 <em>'옵션명B'</em> 옵션과<br>함께 적용됩니다.</div>
+                    <em>'옵션명B'</em> 옵션을 먼저 선택해 주세요.
+                </div>
+                <!-- 버튼 : 확인 -->
+                <button class="btn__layin_confirm" onclick="$(this).closest('.lay_box').fadeOut(100);">확인</button>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 케이스 - 2 -->
+        <div class="lay_box lay_alert">
+            <div class="lay_inner">
+                <div class="tx_comm">
+                    <div class="tx_comm--tit"><em>'옵션명A'</em> 옵션은 <em>'옵션명B'</em> 옵션과<br>동시 선택이 불가합니다.</div>
+                    둘 중 하나의 옵션만을 선택해 주세요.
+                </div>
+                <!-- 버튼 : 확인 -->
+                <button class="btn__layin_confirm" onclick="$(this).closest('.lay_box').fadeOut(100);">확인</button>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 케이스 - 3 -->
+        <div class="lay_box lay_alert">
+            <div class="lay_inner">
+                <div class="tx_comm">
+                    <div class="tx_comm--tit">설정조건에 맞는 데이터가 없습니다.</div>
+                    조건을 변경하여 다시 검색해 주세요.
+                </div>
+                <!-- 버튼 : 확인 -->
+                <button class="btn__layin_confirm" onclick="$(this).closest('.lay_box').fadeOut(100);">확인</button>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 케이스 - 4 -->
+        <div class="lay_box lay_alert">
+            <div class="lay_inner">
+                <div class="tx_comm">
+                    <div class="tx_comm--tit">상담신청이 접수되었습니다.</div>
+                    최대한 빠른 시간 내에 전문 상담사를 통해 연락 드리겠습니다.
+                </div>
+                <!-- 버튼 : 확인 -->
+                <div class="group__layin_btn height_auto">
+                    <button class="btn__layin_confirm" onclick="$(this).closest('.lay_box').fadeOut(100);">확인</button>
+                    <button class="btn__layin_sell" onclick="$(this).closest('.lay_box').fadeOut(100);">타던 차 팔기</button>
+                </div>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 케이스 - 5 -->
+        <div class="lay_box lay_alert">
+            <div class="lay_inner">
+                <div class="tx_comm">
+                    <div class="tx_comm--tit">견적신청이 완료되었습니다.</div>
+                    <span class="tx_sub">(접수된 견적은 MY에누리 &gt; 자동차견적관리에서 조회 가능합니다)</span>
+                </div>
+                <!-- 버튼 : 확인 -->
+                <div class="group__layin_btn height_auto">
+                    <button class="btn__layin_list width312 mb12" onclick="$(this).closest('.lay_box').fadeOut(100);">다른차 보러가기</button>
+                    <button class="btn__layin_esti width312 mb12" onclick="$(this).closest('.lay_box').fadeOut(100);">신청한 견적보기</button>
+                    <button class="btn__layin_sell width312" onclick="$(this).closest('.lay_box').fadeOut(100);">타던 차 팔기</button>
+                </div>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 201217 : SR#44117 : 견적접수 시 빠른 상담 요청 케이스 추가 -->
+        <div class="lay_box lay_alert">
+            <div class="lay_inner">
+                <div class="tx_comm">
+                    <div class="tx_comm--tit">좀 더 빠른 상담을 원하시나요?</div>
+                    <em class="tx--blue">"빠른 상담을 원해요"</em>를 선택해 주시면<br/>최적의 조건의 상담사가 하루 내에 연락을 드립니다.
+                </div>
+                <!-- 버튼 : 확인 -->
+                <div class="group__layin_btn">
+                    <button class="btn__layin_quick" onclick="$(this).closest('.lay_box').fadeOut(100);">최적조건 빠른 상담을 원해요</button>
+                    <button class="btn__layin_normal" onclick="$(this).closest('.lay_box').fadeOut(100);">비교 견적 받을래요</button>
+                </div>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+    </div>
+</body>
+</html>

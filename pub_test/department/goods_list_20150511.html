@@ -1,0 +1,1702 @@
+
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다.">
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<title>에누리 백화점 가격비교</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<!--<script type="text/javascript" src="/include/main/main2013/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/department/js/lib/jquery.storageapi.min.js"></script>
+<script type="text/javascript" src="/department/js/lib/mustache.js"></script>
+<script type="text/javascript" src="/department/js/base.js"></script>
+<script type="text/javascript" src="/department/js/common.js"></script>
+<script type="text/javascript" src="/department/js/header.js"></script>-->
+<link rel="stylesheet" type="text/css" href="css/default.css">
+<link rel="stylesheet" type="text/css" href="css/layout_20150511.css"> <!-- 20150511 css 수정 -->
+<link rel="stylesheet" type="text/css" href="css/content.css"> 
+<!--
+<link rel="stylesheet" type="text/css" href="/department/css/default.css">
+<link rel="stylesheet" type="text/css" href="/department/css/layout.css">
+<link rel="stylesheet" type="text/css" href="/department/css/content.css">
+-->
+<script type="text/javascript">
+var _cate = "860101";
+var _page = 1;
+var _brand = "";
+var _luxury = "N";
+var _key= "popular DESC";
+var _searchkind = "";
+$(document).ready(function () {
+	$.fn.extend({
+		layerBox:function(){
+			var _this = $(this);
+			var item = _this.find('> a');
+			item.click(function(e){
+				e.preventDefault();
+				if (!$(this).parent().hasClass('selected')){
+					$(this).parent().addClass('selected')
+				}else{
+					$(this).parent().removeClass('selected')
+				}
+			});
+			_this.click(function(e){
+				e.stopPropagation();
+			})
+			$(window).click(function(){
+				item.parent().removeClass('selected');
+			});
+			_this.each(function(){
+				$(this).children().eq(1).find('a').click(function(e){
+					if ($(this).children().eq(0).is('span')){
+						$(this).parents('.layer-box').find('> a').text($(this).children().eq(0).text())
+					}else{
+						$(this).parents('.layer-box').find('> a').text($(this).text())
+					}
+					item.parent().removeClass('selected');
+					e.preventDefault();
+				})
+			});
+		}
+	})
+	$('.layer-box').layerBox();
+	//setSearchGoodsList(_cate, _page, _key, _brand);
+	if(_cate.length<7){
+		setBestBrand(_cate);
+	}
+	//setBrandList(_cate,_brand);
+	
+	$(".best-list li").click(function() { 		//브랜드명 클릭 
+			//$("#cate").val("86");
+			//console.log("this.id>"+this.id);
+			$("#brand").val(this.id);
+			$("#page").val(1); 
+			ipage = 1;
+			getResult();
+		}); 
+	
+});
+
+function init(){
+	var varStrCa_code = '860101';
+	var varCurrentCate = '8601';
+	if(varStrCa_code.length<7){
+		if(varStrCa_code == 860605 || varStrCa_code == 860608 || varStrCa_code == 860505 || varStrCa_code == 860701 || varStrCa_code == 860702 || varStrCa_code == 860703){
+			if($('.best-list').css("display") == ""){
+				$('.best-list').hide();
+			}
+			$('.common-search .blist').hide();
+		}else{
+			if($('.best-list').css("display") == "none"){
+				$('.best-list').show();
+			}
+			$('.common-search .blist').show();
+			//setMcate(varStrCa_code);
+		}
+		if(varStrCa_code == 860505 || varStrCa_code == 860605 || varStrCa_code == 860608 || varStrCa_code == 860701 || varStrCa_code == 860702 || varStrCa_code == 860703 ||
+		   varStrCa_code == 860906 || varStrCa_code == 860907 || varStrCa_code == 861001 || varStrCa_code == 861003 || varStrCa_code == 861004 || varStrCa_code == 861006 ||
+		   varStrCa_code == 861007 || varStrCa_code == 861209){
+			$('.cate_check-list').hide();
+		}
+	}else{
+		$('.best-list').hide();
+		$('.common-search .blist').hide();
+	}
+	setCurrentcate(varCurrentCate);
+	insertLog(11380);
+}
+
+//숫자 타입에서 쓸 수 있도록 format() 함수 추가
+Number.prototype.format = function(){
+	if(this==0) return 0;
+
+	var reg = /(^[+-]?\d+)(\d{3})/;
+	var n = (this + '');
+
+	while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+	return n;
+};
+
+//문자열 타입에서 쓸 수 있도록 format() 함수 추가
+String.prototype.format = function(){
+	var num = parseFloat(this);
+	if( isNaN(num) ) return "0";
+
+	return num.format();
+};
+
+function setMcate(lcate){
+	if(lcate !=""){
+		$.ajax({
+			type:"POST",
+			url:"/department/ajax/getSubCategory.jsp",
+			data:"cate="+lcate,
+			success:function(result){
+				var cate = result.split("|");
+				var varhtml = "";
+				for (i=0;i<cate.length;i=i+3){
+					if(cate[i].length>6){
+						varhtml = varhtml + "<li><label for=\"pick01\"><a id=\"cate_"+cate[i]+"\" href='javascript:setSearchGoodsList("+cate[i]+","+_page+", \""+_key+"\", \""+_brand+"\");'>"+cate[i+1]+"<em>("+cate[i+2]+")</em></a></label></li>";
+					}else{
+						varhtml = varhtml + "<li><label for=\"pick01\"><a id=\"cate_"+cate[i]+"\" href='javascript:goCate("+cate[i]+",\"\",1,\"\",\"\");'>"+cate[i+1]+"<em>("+cate[i+2]+")</em></a></label></li>";
+					}
+				}
+				$('.check-list').html(varhtml);
+	      	},
+			error: function(result) {
+	      	}
+		});
+	}
+}
+
+function setCurrentcate(lcate){
+	if(lcate !=""){
+		$.ajax({
+			type:"POST",
+			url:"/department/ajax/getCategory_ajax.jsp",
+			data:"cate="+lcate+"&orderby=ORDER BY C_SEQNO",
+			success:function(result){
+				var cate = result.split(",");
+				var varhtml = "";
+				for (i=0;i<cate.length;i=i+2){
+					var catenm = cate[i+1].split("_").join(",");
+					varhtml = varhtml + "<a href=\"/department/goods_list.jsp?ca_code="+cate[i]+"\">"+catenm+"</a>";
+				}
+				$('div.location > strong > span').html(varhtml);
+	      	},
+			error: function(result) {
+	      	}
+		});
+	}
+}
+var preitem = "";
+function setGoodsList(cate, page, order, brand){
+	$.ajax({
+		type:"POST",
+		url:"/department/include/Inc_Goods_List.jsp",
+		data: "ca_code="+cate+"&page="+page+"&key="+_key+"&brand="+brand,
+		success:function(result){
+			$("#goodsList").empty();
+			$('#goodsList').html(result);
+			var wrap = $('.common-search')
+			wrap.find('.check-list').find('a').click(function(e){
+				var item = $(this).attr("id");
+				$('#'+preitem).removeAttr('style');
+				$('#'+item).css("font-weight", "bold").css("color", "#575759");
+				preitem = item;
+		    })
+		    wrap.find('.best-list').find('a').click(function(e){
+				var item = $(this).attr("id");
+				$('#'+preitem).removeAttr('style');
+				$('#'+item).css("text-decoration", "underline");
+				preitem = item;
+		    })
+		    wrap.find('.search-results').find('a').click(function(e){
+				var item = $(this).attr("id");
+				$('#'+preitem).removeAttr('style');
+				$('#'+item).css("text-decoration", "underline");
+				preitem = item;
+		    })
+      	},
+		error: function(result) {
+      	}
+	});
+	
+}
+function setSearchGoodsList(cate, page, order, brand){
+	$.ajax({
+		type:"POST",
+		url:"/department/include/Inc_Search_Goods_List.jsp",
+		data: "cate="+cate+"&page="+page+"&key="+encodeURIComponent(order)+"&brand="+encodeURIComponent(brand),
+		success:function(result){
+			$("#goodsList").empty();
+			$('#goodsList').html(result);
+			var wrap = $('.common-search')
+			wrap.find('.check-list').find('a').click(function(e){
+				var item = $(this).attr("id");
+				$('#'+preitem).removeAttr('style');
+				$('#'+item).css("font-weight", "bold").css("color", "#575759");
+				preitem = item;
+		    })
+		    wrap.find('.best-list').find('a').click(function(e){
+				var item = $(this).attr("id");
+				$('#'+preitem).removeAttr('style');
+				$('#'+item).css("text-decoration", "underline");
+				preitem = item;
+		    })
+		    wrap.find('.search-results').find('a').click(function(e){
+				var item = $(this).attr("id");
+				$('#'+preitem).removeAttr('style');
+				$('#'+item).css("text-decoration", "underline");
+				preitem = item;
+		    })
+      	},
+		error: function(result) {
+      	}
+	});
+}
+
+function setBestBrand(cate){
+	if(cate.length>7){
+		cate = cate.substring(0,6);
+	}
+	$.getJSON( "/department/ajax/bestBrand/getBestBrandTop10_ajax.jsp?cate="+cate, function(json) {
+		//json = { "totalCnt":"9", "brandList": [ { "brand_no":"218", "brand_nm":"MAC", "goods_cnt":"14" }, { "brand_no":"300", "brand_nm":"RMK", "goods_cnt":"3" }, { "brand_no":"320", "brand_nm":"SK-II", "goods_cnt":"76" }, { "brand_no":"377", "brand_nm":"VDL", "goods_cnt":"47" }, { "brand_no":"725", "brand_nm":"디에이지", "goods_cnt":"5" }, { "brand_no":"846", "brand_nm":"로얄네이쳐", "goods_cnt":"3" }, { "brand_no":"1149", "brand_nm":"바이오퍼포먼스", "goods_cnt":"2" }, { "brand_no":"1469", "brand_nm":"셀렉스씨", "goods_cnt":"4" }, { "brand_no":"1605", "brand_nm":"시세이도", "goods_cnt":"29" } ] };
+		$.each(json.brandList, function(i, v){   
+			if(_brand==v.brand_nm_org){
+		 		$('.best-list').append("<li><img src='http://imgenuri.enuri.gscdn.com/images/department/view/icon_best.gif' alt='Best' /><a id="+v.brand_nm_org+" href='#' style='text-decoration:underline'>"+v.brand_nm+"<em id=\"best_"+v.brand_no+"\"></em></a></li>");
+		 	}else{
+		 		$('.best-list').append("<li><img src='http://imgenuri.enuri.gscdn.com/images/department/view/icon_best.gif' alt='Best' /><a id="+v.brand_nm_org+" href='#'>"+v.brand_nm+"<em id=\"best_"+v.brand_no+"\"></em></a></li>");
+		 	}                    
+		}); 
+		if(json.brandList == ""){
+			$('.best-list').hide();
+			$('.section3').css("border-top","0px"); 
+		}
+		$(".best-list li a").click(function() { 		//브랜드명 클릭 
+			//$("#cate").val("86");
+			$("#brand").val(this.id);
+			$("#page").val(1); 
+			$('#'+preitem).removeAttr('style');
+			$('#'+this.id).css("text-decoration", "underline");
+			preitem = this.id;
+			ipage = 1;
+			//getResult();
+			goCate(cate, this.id,1,_key,'');
+			insertLog(11385);
+		}); 
+		
+		if(noAry) {
+			for(var i=0; i<noAry.length; i++) {
+				if($("#best_"+noAry[i]) && $("#best_"+noAry[i]).length < 1) {
+					//$("#best_"+noAry[i]).html(" ("+cntAry[i]+")");
+				}
+			}
+		}
+		
+	});
+}
+var notBrandList = "";
+var prehtml = "";
+function setBrandList(cate, brand_nm_1st){
+	var _brand_nm_1st = brand_nm_1st;
+	$.ajax({
+		url : "/department/ajax/bestBrand/getBestBrand_ajax.jsp", 
+		data : "cate="+cate+"&brand_nm_1st="+encodeURIComponent(brand_nm_1st), 
+		dataType : "json", 
+		type : "post",
+		success : function(result) {
+			$(".search-results").css("height","120px");
+			$("#brandSearchList").css("height","120px");		
+			var brandList = result["brandList"];
+			var brandSearchListObj = $("#brandSearchList");
+			
+			brandSearchListObj.html("");
+
+			var htmlText = "";
+			 
+			htmlText = "";
+			var tmpBrand_nm_1st = "";
+			var brand_nm_1stStrs = ",";
+			var itemMinCnt = 0;
+			
+			$.each(brandList, function(indexI, listObj) {
+				var brand_no = listObj["brand_no"];
+				var brand_nm = listObj["brand_nm"];
+				var goods_cnt = listObj["goods_cnt"];
+				var brand_nm_1st = listObj["brand_nm_1st"];
+				var best_brand_yn = listObj["best_brand_yn"];
+				var brand_nm_org = listObj["brand_nm_org"];
+
+				if(tmpBrand_nm_1st!=brand_nm_1st) {
+
+					if(htmlText.length>0) {
+						htmlText += "		</ul>";
+
+						brandSearchListObj.append(htmlText);
+						htmlText = "";
+					}
+					tmpBrand_nm_1st = brand_nm_1st;
+
+					htmlText += "	<strong>"+tmpBrand_nm_1st+"</strong>";
+					htmlText += "		<ul>";
+
+					brand_nm_1stStrs += tmpBrand_nm_1st + ",";
+				}
+
+				htmlText += "		<li>";
+				if(_brand==brand_nm_org){
+					htmlText += "		<a id="+brand_nm_org+" href='#' style='text-decoration:underline'>"+brand_nm+" <em id=\"barnd_"+brand_no+"\"></em></a></li>";
+				}else{
+					htmlText += "		<a id="+brand_nm_org+" href='#'>"+brand_nm+" <em id=\"barnd_"+brand_no+"\"></em></a></li>";
+				}
+
+				itemMinCnt++;
+				
+			});
+			
+			
+			//console.log("brandcnt>>"+brandcnt);
+
+			if(htmlText.length>0) {
+				htmlText += "		</ul>";
+
+				brandSearchListObj.append(htmlText);
+				
+				$(".search-results > div > ul > li a").click(function() { 		//브랜드명 클릭 
+					//$("#cate").val("86");
+					$("#brand").val(this.id);
+					$("#page").val(1); 
+					$('#'+preitem).removeAttr('style');
+					$('#'+this.id).css("text-decoration", "underline");
+					preitem = this.id;
+					ipage = 1;
+					//getResult();
+					goCate(cate, this.id,1,_key,'');
+					insertLog(11387);
+					//fn_setPaging();
+				}); 
+			}
+
+
+			if(document.getElementById("brandSearchList").clientHeight >= document.getElementById("brandSearchList").scrollHeight) {
+				$("#moreBrandImg").css("display", "none");
+			} else {
+				$("#moreBrandImg").css("display", "block");
+			}
+			
+			$.each(brandList, function(indexI, listObj) {
+				var brand_nm_org = listObj["brand_nm_org"];
+				var varheight = 0;
+				if(_brand!=""){
+					var varReplacebrand = _brand.replace("[","\\[").replace("]","\\]").replace(":","\\:").replace("(","\\(").replace(")","\\)");
+						varReplacebrand = varReplacebrand.split(".").join("\\.");
+					if(brand_nm_org==_brand){
+						  varheight = $('.search-results').find('#'+varReplacebrand).offset().top;
+					}
+				}
+				if(varheight>0){
+					$('#brandSearchList').animate({scrollTop:varheight-$('#brandSearchList').offset().top}, 500);
+				}
+			});
+			//console.log(">>"+brandSearchListObj.height());
+			//console.log("??"+$(".search-results > div > ul").height());
+			//console.log(document.getElementById("brandSearchList").scrollHeight)
+			if(document.getElementById("brandSearchList").scrollHeight<=120){
+				$("#moreBrandImg").hide();
+			}
+
+			if(brand_nm_1st=="0-9") {
+				var varUl = $(".search-results > div > ul");
+				var varBSHeight = 0;
+				
+				$('.search-results > div').find('ul').each(function(){
+					varBSHeight +=($(this).height()+40);
+				});
+								
+				$(".search-results").css("height",varBSHeight+"px");
+				$("#brandSearchList").css("height",varBSHeight+"px");				
+			}else{
+				var varBSHeight = 0;
+				//console.log("aaaaaaaaa="+document.getElementById("brandSearchList").scrollHeight);
+				if (document.getElementById("brandSearchList").scrollHeight > 120){
+					varBSHeight = 120;
+				}else{
+					varBSHeight = $(".search-results > div > ul").height()+36;
+				}				
+				$(".search-results").css("height",varBSHeight+"px");
+				$("#brandSearchList").css("height",varBSHeight+"px");
+			}
+			
+			if(brand_nm_1st=="") {
+				var brandSearchListObj = $("#container .search-language a");
+
+				notBrandList = ",";
+				for(var i=0; i<brandSearchListObj.length; i++) {
+					var tmpBrand_nm_1st = $(brandSearchListObj[i]).html();
+
+					if(tmpBrand_nm_1st!="ALL" && brand_nm_1stStrs.indexOf(","+tmpBrand_nm_1st+",")<0) {
+						if(tmpBrand_nm_1st=="0-9") {
+							if(brand_nm_1stStrs.indexOf(",0,")<0 && 
+								brand_nm_1stStrs.indexOf(",1,")<0 &&
+								brand_nm_1stStrs.indexOf(",2,")<0 &&
+								brand_nm_1stStrs.indexOf(",3,")<0 &&
+								brand_nm_1stStrs.indexOf(",4,")<0 &&
+								brand_nm_1stStrs.indexOf(",5,")<0 &&
+								brand_nm_1stStrs.indexOf(",6,")<0 &&
+								brand_nm_1stStrs.indexOf(",7,")<0 &&
+								brand_nm_1stStrs.indexOf(",8,")<0 &&
+								brand_nm_1stStrs.indexOf(",9,")<0) {
+
+								// 없는 초성 disable
+								$(brandSearchListObj[i]).css("background-color", "#ffffff").css("color", "#e3e3e3") ;
+								$(brandSearchListObj[i]).css("cursor", "default");
+
+								notBrandList += "0-9,";
+							}
+
+						} else {
+							// 없는 초성 disable
+							$(brandSearchListObj[i]).css("background-color", "#ffffff").css("color", "#e3e3e3") ;
+							$(brandSearchListObj[i]).css("cursor", "default");
+
+							notBrandList += tmpBrand_nm_1st + ",";
+						}
+					}
+				}
+
+			}
+		}
+	});
+
+}
+
+function goCate(varcate, varbrand, page, key, searchkind){
+	location.href="/department/goods_list.jsp?ca_code="+varcate+"&brand="+varbrand+"&page="+page+"&key="+key+"&searchkind="+searchkind;
+}
+
+function goBrand(varcate, varbrand){
+	location.href="/department/brand_list.jsp?brand_no="+varbrand+"&cate="+varcate;
+}
+
+</script>
+</head>
+<body onLoad="init()">
+
+<div id="wrap">
+	<!------------------------- header start  ----------------------------->
+	
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53076228-1', 'auto');
+
+// 구글 페이지 로그
+function setGPageLog(title, url) {
+	ga('send', 'pageview', {
+		'page': url,
+		'title': title
+	});
+}
+
+// 구글 이벤트 로그
+function setGEventLog(cateName, subCateName, name) {
+	try {
+		ga('send', 'event', cateName, subCateName, name);
+	} catch(e) {}
+}
+
+function setGPageLogExec() {
+	var nowUrl = document.location.href;
+	var domainStr = "enuri.com";
+
+	if(nowUrl.indexOf(domainStr+"/department/index.jsp")>-1 || (nowUrl.indexOf(domainStr+"/department/")>-1 && nowUrl.length<30)) {
+		setGPageLog("백화점_홈", "/department/index.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/goods_list.jsp")>-1) {
+		setGPageLog("백화점_카테고리", "/department/goods_list.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/brand_main.jsp")>-1) {
+		setGPageLog("백화점_브랜드메인", "/department/brand_main.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/brand_list.jsp")>-1) {
+		setGPageLog("백화점_브랜드목록", "/department/brand_list.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/luxury.jsp")>-1) {
+		setGPageLog("백화점_해외명품", "/department/luxury.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/best.jsp")>-1) {
+		setGPageLog("백화점_Best", "/department/best.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/detail.jsp")>-1) {
+		setGPageLog("백화점_상품상세", "/department/detail.jsp");
+	}
+
+	if(nowUrl.indexOf(domainStr+"/department/search.jsp")>-1) {
+		setGPageLog("백화점_검색목록", "/department/search.jsp");
+	}
+}
+
+setGPageLogExec();
+	
+/*레이어 열고닫고*/
+function onoff(id) {
+ 	var mid=document.getElementById(id);
+	if(mid.style.display=='') {
+		mid.style.display='none';
+	}else{
+ 		mid.style.display='';
+	}
+}
+
+/*tab*/
+function clickEvent(nIdx){ 
+	if ( nIdx == 1 ){
+		$(".sp_enuri").show(); $(".sp_car").hide(); $(".sp_hotdeal").hide(); }
+	if ( nIdx == 2 ){
+		$(".sp_car").show(); $(".sp_enuri").hide(); $(".sp_hotdeal").hide(); }
+	if ( nIdx == 3 ){
+		$(".sp_hotdeal").show(); $(".sp_enuri").hide(); $(".sp_car").hide(); }
+}
+</script>
+<style>
+#header .r_menu {float:right;margin-top:2px;margin-right:4px;height:22px;}
+#header .r_menu .l_menu{float:left;height:22px;line-height:23px}
+#header .r_menu .divider{float:left;margin-top:6px;height:10px;width:22px;background:url(http://imgenuri.enuri.gscdn.com/images/department/common/bull_hd_blink.gif) center center no-repeat;}
+#header #ly_more {width:302px;height:125px;position:absolute;z-index:9999;}
+#header #ly_more ul {margin:0 auto;}
+#header #ly_more ul li { float:right;margin-right:0}
+#header #ly_more_back {position:absolute ;top:30px;z-index:9999;width:302px;height:111px;margin-left:-20px }
+</style>
+<link rel="stylesheet" href="/common/css/simple_header.css" type="text/css">
+<meta name="format-detection" content="telephone=no">
+<div id="header">
+	<div class="skipMenu">
+		<a href="#">상단 메뉴 바로가기</a>
+		<a href="#">본문 바로가기</a>
+	</div>
+	<!-- top 유틸 영역 -->
+	<div class="utilMenu">
+		<h1><a href="/" onclick="insertLog(11329);" title="에누리 홈으로 바로이동"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/logo_enuri_s.gif" alt="eNuri 세상의 모든 최저가 에누리 가격비교" /></a></h1>
+		<div class="search">
+			<form name="fmMainSearch" method="post" onSubmit="javascript:  return false;">
+				<input name="keyword" id="keyword" type="text" value="" class="txt"/>
+			</form>
+			<a href="javascript:return false;" id="keywordBtn"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/btn_search_s.gif" alt="검색" /></a>
+		</div>
+        <div class="r_menu">
+       		<!-- <a href="#n" class="l_menu enuriApp" onclick="onoff('simpleHeader')">에누리앱 설치</a> 
+       		<span class="divider"></span> -->
+       		<!-- 150224 enuriApp 추가 -->
+       		<!-- 150224 심플헤더 -->
+       		<div class="headerArea_s depart">
+				<div class="simple_h">
+							<div class="spbox" id="simpleHeader" style="display:none">
+								<a href="#n" class="ly_close" onclick="onoff('simpleHeader')">close</a>
+								<ul class="sp_tab">
+									<li><a href="javascript:void(0);" onclick="javascript:clickEvent('1');">에누리 가격비교</a></li>
+									<li><a href="javascript:void(0);" onclick="javascript:clickEvent('2');">신차비교</a></li>
+									<li><a href="javascript:void(0);" onclick="javascript:clickEvent('3');">스마트 핫딜</a></li>
+								</ul>
+								
+								<!-- 에누리 -->
+								<div class="sp_enuri">
+									<h2>에누리 가격비교 </h2>
+									<p>모바일로 더욱 특별해진 가격비교!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+									</dl>
+								</div>
+								
+								<!-- 신차비교 -->
+								<div class="sp_car" style="display:none">
+									<h2>신차비교</h2>
+									<p>신차정보부터 견적까지 모두 모바일로 즐기세!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri_car.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/enuli-sinchabigyo/id623149329?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+									</dl>
+								</div>
+								
+								<!-- 스마트 핫딜 -->
+								<div class="sp_hotdeal" style="display:none">
+									<h2>스마트 핫딜</h2>
+									<p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+									</dl>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+			<!--// 150224 심플헤더 끝. -->
+            <a href="http://www.enuri.com/knowbox/List.jsp" class="l_menu">지식통</a><span class="divider"></span>
+            <a href="http://www.enuri.com/knowbox/List.jsp?kbcate=kbALL&kbcode=kc9" class="l_menu">쇼핑Q&A</a><span class="divider"></span>
+            <a href="http://www.enuri.com/tour2012/Tour_Index.jsp" class="l_menu">여행</a><span class="divider"></span>
+            <a href="http://www.enuri.com/car/Index.jsp?stp=4" target="_blank" class="l_menu">신차비교</a><span class="divider"></span>
+            <a href="JavaScript:;" onClick="ly_moreShow(this);" class="l_menu">더보기</a>
+        </div>
+	</div>
+    <div id="ly_more" style="display:none">
+        <ul>
+            <li>
+                <img src="http://imgenuri.enuri.gscdn.com/images/main/layer_more_S_2015.png" usemap="#more">
+                <map name="more" id="more">
+                    <area shape="rect" coords="14,45,63,60" href="http://www.enuri.com/event/EventReviewAll.jsp?status=" />
+                    <area shape="rect" coords="122,44,167,59" href="http://www.enuri.com/view/Insurance_Insvalley.jsp?rtnurl=http://insvalley.enuri.com/join_site/layout/compare/compare_main.jsp?h_targetPage=/goods/gallerylist.jsp||market_cd=D04||market_point_cd=PLA_20100825004&ac=SNU_B_2010082500003" />
+                    <area shape="rect" coords="119,62,168,79" href="http://www.enuri.com/view/move_mall.jsp" />
+                    <area shape="rect" coords="14,63,49,76" href="http://www.enuri.com/view/Flower365.jsp" />
+                    <area shape="rect" coords="204,45,289,60" href="http://www.enuri.com/view/Insurance_Insvalley.jsp" />
+                    <area shape="rect" coords="203,62,289,76" href="http://www.enuri.com/view/Listbrand.jsp?cate=2112" />
+                    <area shape="rect" coords="275,12,291,26" href="javascript:;" onClick="ly_moreHidden();" />
+                </map>
+            </li>
+        </ul>
+    </div>
+   	<!-- 20150306 백화점 책임배송 관련 팝업 -->
+	
+<!-- 20150306 백화점 책임배송 관련 팝업 -->
+<div class="main_pop" style="display:none">
+		
+			<div class="pop_con"  style="background:url(http://imgenuri.enuri.gscdn.com/images/department/layout/pop_delivery.jpg)" style="width:747px;height:406px;">
+		
+		<p><strong>백화점 책임배송 안내</strong>에누리 백화점관 상품은 각 백화점 매장에서 직접 배송합니다.</p>
+		<ul>
+			<li>에누리 백화점 가격비교</li>
+			<li>에누리를 통한 추가할인</li>
+			<li>백화점 매장에서 책임배송</li>
+		</ul>
+		<dl>
+			<dt>백화점 가격비교 상품안내</dt>
+			<dd>에누리 백화점 가격비교는 백화점과 온라인 판매를 제휴한 쇼핑몰의 백화점 상품을 대상으로 가격비교를 제공합니다.</dd>
+			<dd>쇼핑몰에서 구매한 상품은 백화점 각 매장에서 출고되며, 일부 상품은 브랜드 본사에서 출고 될 수 있습니다.</dd>
+		</dl>
+	</div>
+	<a class="btn_close" href="JavaScript:" onclick="cmd_close()">닫기</a>
+</div>
+<!-- //20150306 백화점 책임배송 관련 팝업 -->
+
+<script type="text/javascript">
+	function wing_click(){
+		if($('.main_pop').css("display") != "block"){
+			cmd_click();
+		}
+ 	} 
+	
+	function cmd_click(){
+		insertLog(11961);
+		var popright = $("#gnb .menu").offset().left + 3;
+		jQuery( ".main_pop" ).toggle(
+			function() {
+				$(".main_pop").animate({right: popright+'px', top:_quickTop},
+						1000,function() {
+						$(".main_pop").css({'top':_quickTop});
+				});
+			}
+		);
+	}
+	
+	function cmd_close(){
+		if($('.main_pop').css("display") == "block"){
+			cmd_click();
+			
+			cookiedata = document.cookie;    
+			if ( cookiedata.indexOf("maindiv=done") < 0 ){      
+				setCookie( "maindiv", "done" , 1 ); 
+			}
+		}
+	}
+	
+	function setCookie( name, value, expiredays ) { 
+    	var todayDate = new Date(); 
+        todayDate.setDate( todayDate.getDate() + expiredays ); 
+        document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";" 
+    } 
+
+</script>
+	<!-- //20150306 백화점 책임배송 관련 팝업 -->
+	<script language="javascript">
+	
+	//책임배송레이어 온세일동안 세로사이즈 조정
+	var onsale = false;
+	if(onsale){
+		$(".main_pop").css("height", "550");
+	}else{
+		$(".main_pop").css("height", "406");
+	}
+	
+	function ly_moreShow(thisObj) {
+		var selMenu = $(thisObj);
+		var ly_moreObj = $("#ly_more");
+		if(ly_moreObj.css("display")=="none") {
+			var topPos =  selMenu.offset().top + selMenu.height(); 
+			var leftPos =  selMenu.offset().left - ly_moreObj.width() + selMenu.width() + 5;
+			ly_moreObj.css("display", "");
+			ly_moreObj.css("top", topPos+"px");
+			ly_moreObj.css("left", leftPos+"px");
+		} else {
+			ly_moreHidden();
+		}
+	}
+
+	function ly_moreHidden() {
+		var ly_moreObj = $("#ly_more");
+
+		ly_moreObj.css("display", "none");
+
+		app_dn_layerClose();
+		app_dn_layer_carClose();
+	}
+
+	function app_dn_layerShow(param) {
+    	if (typeof(param)=="undefined") param=2;
+
+		if (document.getElementById("app_dn_layer").style.display == "" || document.getElementById("app_dn_layer_car").style.display=="") {
+			document.getElementById("app_dn_layer").style.display = "none";
+			app_dn_layer_carClose();
+		} else {
+			if (document.getElementById("app_dn_layer").style.display=="none") {
+				document.getElementById("app_dn_layer").style.display = "";
+			}
+		}
+	}
+
+	function app_dn_layerShow1205() {
+		if(document.getElementById("app_dn_layer_car").style.display=="") {
+			app_dn_layer_carClose();
+		}
+
+		if(document.getElementById("app_dn_layer").style.display=="none") {
+			document.getElementById("app_dn_layer").style.display = "";
+		}
+	}
+
+	function app_dn_layer_carShow(param) {
+		if(typeof(param)=="undefined") param = "";
+
+		if(document.getElementById("app_dn_layer").style.display=="") {
+			app_dn_layerClose();
+		}
+
+		if(document.getElementById("app_dn_layer_car").style.display=="none") {
+			document.getElementById("app_dn_layer_car").style.display = "";
+		}
+	}
+
+	function app_dn_layerClose() {
+		document.getElementById("app_dn_layer").style.display = "none";
+	}
+
+	function app_dn_layer_carClose() {
+		document.getElementById("app_dn_layer_car").style.display = "none";
+	}
+
+	function fnSearchEnuri() {
+		var sKeyword = $("#enuriKeyword").val();
+		if (!sKeyword) {
+			alert("검색어를 입력해주세요.");
+			$("#enuriKeyword").focus();
+			return false;
+		} else {
+			$("input[name='keyword']").val(sKeyword);
+			return true;
+		}
+	}
+	</script>
+	<!-- 백화점관 검색 영역 -->
+	<div class="dep-search">
+		<div class="in-cont">
+			<h2><span onclick="goMain();insertLog(11331);setGEventLog('depart_home', 'top', 'top_백화점로고');" style="cursor:pointer;"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/logo_department.png" alt="프리미엄 백화점 최저가 비교 Department Store"/></span></h2>
+			<div id="searchWrap">
+				<span class="searchForm">
+					<form name="fmMainSearch2" method="get" onSubmit="javascript:  return false;">
+						<input name="departmentKeyword" id="departmentKeyword" type="text" value="" class="txt"/>
+					</form>
+					<a href="javascript:" id="departmentKeywordBtn"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/btn_price_compare.gif" alt="검색" /></a>
+				</span>
+				<ul class="keyword-list">
+				
+					<li><a onclick="goTopSearch('오휘');insertLog(11333);" style="cursor:pointer;">오휘</a></li>
+				
+					<li><a onclick="goTopSearch('지오다노');insertLog(11333);" style="cursor:pointer;">지오다노</a></li>
+				
+					<li><a onclick="goTopSearch('밀레');insertLog(11333);" style="cursor:pointer;">밀레</a></li>
+				
+					<li><a onclick="goTopSearch('루이까또즈');insertLog(11333);" style="cursor:pointer;">루이까또즈</a></li>
+				
+					<li><a onclick="goTopSearch('커피잔세트');insertLog(11333);" style="cursor:pointer;">커피잔세트</a></li>
+				
+				</ul>
+			</div>
+			<ul class="store-banner">
+				<li><a target="_blank" href="http://www.lotte.com/coop/affilGate.lotte?chl_no=156324&chl_dtl_no=2949657&returnUrl=/main/viewMain.lotte?dpml_no=2" onclick="insertLog(11338);setGEventLog('depart_home', 'top', 'top_롯데백화점');"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/banner_lotte.gif" alt="롯데백화점"></a></li>
+				<li><a target="_blank" href="http://department.ssg.com/main.ssg?ckwhere=s_enuri" onclick="insertLog(11339);setGEventLog('depart_home', 'top', 'top_신세계백화점');"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/banner_ssg.gif" alt="신세계백화점"></a></li>
+				<li><a target="_blank" href="http://www.hyundaihmall.com/front/shNetworkShop.do?NetworkShop=Html&ReferCode=022&Url=http://www.hmall.com/front/dsMainR.do" onclick="insertLog(11340);setGEventLog('depart_home', 'top', 'top_현대백화점');"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/banner_hyundai.gif" alt="현대백화점"></a></li>
+				<li><a target="_blank" href="http://www.galleria.co.kr/mallmain/initMallMain.do?method=join&channel_id=2763&link_id=0001#none" onclick="insertLog(11341);setGEventLog('depart_home', 'top', 'top_갤러리아백화점');"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/banner_galleria.gif" alt="갤러리아백화점"></a></li>
+				<li><a target="_blank" href="http://www.akmall.com/assc/assc_conv.jsp?assc_comp_id=12189&url=http://www.akmall.com/akplaza/AKPlazaMain.do?urlpath=A_03_02@1" onclick="insertLog(11342);setGEventLog('depart_home', 'top', 'top_AK플라자');"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/banner_ak.gif" alt="AK플라자"></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- GNB -->
+	<div id="gnb">
+		<div class="menu">
+			<!-- 대메뉴 top-wrap -->
+			<ul class="depth-top">
+				<li class="category ">
+					<a href="#" onclick="insertLog(11343);setGEventLog('depart_home', 'tab', 'top_카테고리');" class="quick-link on"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/gnb_top01.gif" alt="카테고리"></a>
+					<ul class="mid-list">
+						<li class="first"><em class="mid-tit"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid01.gif" alt="화장품/잡화"></em>
+							<ul class="depth-mid">
+								<li id="8601"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0101.gif" alt="명품화장품"></a></li>
+								<!-- <li><a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0102.gif" alt="국내화장품"></a></li>-->
+								<li id="8602"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0103.gif" alt="패션잡화"></a></li>
+								<li id="8603"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0104.gif" alt="패션슈즈"></a></li>
+								<li id="8614"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid_acc.gif" alt="시계/주얼리/ACC"></a></li>
+							</ul>
+						</li>
+						<li><em class="mid-tit"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid02.gif" alt="여성패션"></em>
+							<ul class="depth-mid">
+								<li id="8604"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0201.gif" alt="영캐주얼"></a></li>
+								<li id="8605"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0202.gif" alt="여성캐릭터/커리어"></a></li>
+							</ul>
+						</li>
+						<li><em class="mid-tit"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid03.gif" alt="남성패션"></em>
+							<ul class="depth-mid">
+								<li id="8609"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0301.gif" alt="남성정장/셔츠"></a></li>
+								<li id="8610"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0302.gif" alt="남성캐주얼"></a></li>
+							</ul>
+						</li>
+						<li><em class="mid-tit"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid04.gif" alt="유니섹스/스포츠"></em>
+							<ul class="depth-mid">
+								<li id="8606"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0401.gif" alt="진/유니섹스"></a></li>
+								<li id="8607"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0402.gif" alt="언더웨어"></a></li>
+								<li id="8608"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0403.gif" alt="스포츠/레저"></a></li>
+							</ul>
+						</li>
+						<li class="end"><em class="mid-tit"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid05.gif" alt="유아동/생활"></em>
+							<ul class="depth-mid">
+								<li id="8611"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0501.gif" alt="유아동/용품"></a></li>
+								<li id="8612"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0502.gif" alt="생활/가구"></a></li>
+								<li id="8613"><a href="#n" onclick="insertLog(11343);categoryMigGLog(this);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/menu_mid0503.gif" alt="식품"></a></li>
+							</ul>
+						</li>
+					</ul>
+					<div id="subMenu"><!-- 메뉴에 마우스 올릴시 json 로드 후 출력--></div>
+				</li>
+				<li class="top-item">
+					<a href="brand_main.jsp" onclick="insertLog(11357);setGEventLog('depart_home', 'tab', 'top_브랜드');" class="quick-link "><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/gnb_top02.gif" alt="브랜드"></a>
+				</li>
+				<li class="top-item">
+					<a href="luxury.jsp" onclick="insertLog(11358);setGEventLog('depart_home', 'tab', 'top_해외명품');" class="quick-link "><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/gnb_top03.gif" alt="해외명품"></a>
+				</li>
+				<li class="top-item">
+					<a href="best.jsp" onclick="insertLog(11359);setGEventLog('depart_home', 'tab', 'top_백화점Best');" class="quick-link "><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/gnb_top04.gif" alt="백화점"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<script language=javascript src="http://imgenuri.enuri.gscdn.com/common/js/Log_Header.js"></script>
+<script id="subMenuTemplate" type="x-tmpl-mustache">
+	<li><a href='/department/goods_list.jsp?ca_code={{code}}' onclick='insertLog(11343);categorySigGLog(this);'>{{title}}</a></li>
+</script>
+<script language="JavaScript"> 
+<!-- 
+function categorySigGLog(thisObj) {
+	var scateName = $(thisObj).text();
+
+	// 구글 분석기 로그
+	try {
+		setGEventLog("depart_Category", "소", "cate_"+scateName);
+	} catch(e) {}
+}
+
+function categoryMigGLog(thisObj) {
+	var parentObj = $(thisObj).parent();
+	var mcateName = parentObj.find("img").attr("alt");
+
+	// 구글 분석기 로그
+	try {
+		setGEventLog("depart_Category", "중", "cate_"+mcateName);
+	} catch(e) {}
+}
+
+function goTopSearch(keyword){
+	location.href="/department/search.jsp?keyword="+escape(keyword);
+
+	// 구글 분석기 로그
+	try {
+		setGEventLog("depart_Keyword", "Keyword", "Keyword_"+$("#keyword2").val());
+	} catch(e) {}
+}
+function bluring(){ 
+ if(event.srcElement.tagName=="A"||event.srcElement.tagName=="IMG") document.body.focus(); 
+ } 
+ document.onfocusin=bluring; 
+ // --> 
+</script>
+	<!------------------------- header end  ----------------------------->
+	<div id="container">
+		<div class="location">
+			<a href="/department/index.jsp" onclick="insertLog(11381);"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/icon_logo.gif" alt="enuri" /> 메인</a> 
+			 &gt; 
+			<a href="javascript:goCate(8601,'',1,'','');insertLog(11382);">명품화장품</a> 
+			
+			&gt;
+			<strong class="layer-box">
+				<a href="#">스킨케어</a>
+				<span style="overflow-x: hidden;overflow-y: auto;max-height: 246px;">
+					<a href="javascript:goCate(8601,'',1,'','')">전체보기</a>
+				</span>
+			</strong>
+			
+		</div>
+		<h3 class="ctit2">스킨케어<em></em> <span>에 대한 검색결과 <span id="totalcnt"><strong></strong></span> 건 <!-- <span onclick="goCate(860101)" class="allview" >전체보기</span> --></span></h3>
+		<div class="cate_check-list">
+			<ul id="check-list"></ul>
+		</div>
+		<div class="common-search cate_type2">
+			<!-- h4 class="clist">카테고리</h4>
+			<ul class="check-list" id="check-list" style="display:"></ul> -->
+			<strong class="search-tit">브랜드<em><span id="brandcnt" style="color:#8c8c8c"></span></em></strong>
+			<!-- <h4 class="blist"><span id="brandcnt" style="color:#8c8c8c"></span></h4> -->
+			<ul class="best-list" style="display:"></ul>
+			<div class="search-language section3">
+				<ul>
+					<li class="selected"><a href="#">ALL</a></li>
+					<li><a href="#">ㄱ</a></li>
+					<li><a href="#">ㄴ</a></li>
+					<li><a href="#">ㄷ</a></li>
+					<li><a href="#">ㄹ</a></li>
+					<li><a href="#">ㅁ</a></li>
+					<li><a href="#">ㅂ</a></li>
+					<li><a href="#">ㅅ</a></li>
+					<li><a href="#">ㅇ</a></li>
+					<li><a href="#">ㅈ</a></li>
+					<li><a href="#">ㅊ</a></li>
+					<li><a href="#">ㅋ</a></li>
+					<li><a href="#">ㅌ</a></li>
+					<li><a href="#">ㅍ</a></li>
+					<li><a href="#">ㅎ</a></li>
+				</ul>
+				<ul>
+					<li><a href="#">A</a></li>
+					<li><a href="#">B</a></li>
+					<li><a href="#">C</a></li>
+					<li><a href="#">D</a></li>
+					<li><a href="#">E</a></li>
+					<li><a href="#">F</a></li>
+					<li><a href="#">G</a></li>
+					<li><a href="#">H</a></li>
+					<li><a href="#">I</a></li>
+					<li><a href="#">J</a></li>
+					<li><a href="#">K</a></li>
+					<li><a href="#">L</a></li>
+					<li><a href="#">M</a></li>
+					<li><a href="#">N</a></li>
+					<li><a href="#">O</a></li>
+					<li><a href="#">P</a></li>
+					<li><a href="#">Q</a></li>
+					<li><a href="#">R</a></li>
+					<li><a href="#">S</a></li>
+					<li><a href="#">T</a></li>
+					<li><a href="#">U</a></li>
+					<li><a href="#">V</a></li>
+					<li><a href="#">W</a></li>
+					<li><a href="#">X</a></li>
+					<li><a href="#">Y</a></li>
+					<li><a href="#">Z</a></li>
+					<li class="num"><a href="#">0-9</a></li>
+				</ul>
+			</div>
+			<div class="search-results">
+				<div id="brandSearchList"></div>
+			</div>
+			<a href="#" class="open-close"><img src="http://imgenuri.enuri.gscdn.com/images/department/view/btn_open_close.gif" alt="" /></a>
+		</div>
+		<!-- 목록 시작-->
+		<div class="best-seller-wrap wrap-type">
+			<div class="box-tab tabbg">
+				
+				<ul class="left_tab">	
+					<li id="allli" class="on"><a href="javascript:goCate(860101,'', 1,'popular DESC','');insertLog(11390);">전체 상품<span id="allcnt"> (개)</span></a></li>
+					<li id="enli" ><a href="javascript:goCate(860101,'', 1,'popular DESC',1);insertLog(11391);">가격비교상품<span id="encnt"> (개)</span></a></li>
+					<li id="weli" ><a href="javascript:goCate(860101,'', 1,'popular DESC',2);insertLog(11392);">일반상품<span id="webcnt"> (개)</span></a></li>
+				</ul>
+				<ul class="tabs">
+						<li id="popular DESC" class="on"><a href="#" onclick="insertLog(11393);"><span>인기순</span></a></li>
+						<li id="minprice" ><a href="#" onclick="insertLog(11394);"><span>낮은가격순</span></a></li>
+						<li id="minprice DESC" ><a href="#" onclick="insertLog(11395);"><span>높은가격순</span></a></li>
+				</ul>
+			</div>
+			<!--<div class="box-line">
+				<ul id="goodsList" class="product-list"></ul>
+			</div>-->
+			<div class="box-line">
+				<ul class="product-list" id="goodsList">
+				<li>
+					<a href="JavaScript:goDetail(11556002,86010107);insertLog(11396);">
+						<span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11500000/11550000/11556002.jpg" id="11556002"></span><em class="subject">[헤라 <span class="fif">아모레</span>] 선 메이트 데일리</em>
+						<!--<div class="Tier">	<span class="p">가격비교 (9)</span></div>-->
+						<!-- 20150511 LP 내 상품평,평점 정보 노출 -->
+						<p class="comment_marks">
+							<span class="star_comm">
+								<span class="tit">상품평</span><em class="num_rate">748</em><span class="screen_out">건</span>
+								<span class="bar">
+									<span class="img_star star_rate"><span class="img_star inner_star" style="width:52%;">별점</span></span>
+								</span>
+							</span>
+						</p>
+						<!-- //20150511 LP 내 상품평,평점 정보 노출 -->
+						<span class="pr-info">	
+							<span class="brand"><em class="mallname">G마켓</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	
+							<span class="price-wrap ">		<span>29,800</span>원<br>		<span class="min"><em class="num">28,705,660</em>원</span>	</span>
+							<!-- 가격비교 수정 -->
+							<span class="price_compare"><strong>가격비교</strong><em>(10,245)</em></span>
+							<!-- //가격비교 수정 -->
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="JavaScript:goDetail(12007411,86010107);insertLog(11396);">
+						<span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/12000000/12000000/12007411.jpg" id="12007411"></span><em class="subject">[오휘 <span class="fif">LG생활건강</span>] 퍼펙트 선 블랙[기획세트, 50ml]</em>
+						<!--<div class="Tier">	<span class="p">가격비교 (14)</span></div>-->
+						<!-- 20150511 LP 내 상품평,평점 정보 노출 -->
+						<p class="comment_marks">
+							<span class="star_comm">
+								<span class="tit">상품평</span><em class="num_rate">748</em><span class="screen_out">건</span>
+								<span class="bar" style="display:none;">
+									<span class="img_star star_rate"><span class="img_star inner_star" style="width:50%;">별점</span></span>
+								</span>
+							</span>
+						</p>
+						<!-- //20150511 LP 내 상품평,평점 정보 노출 -->
+						<span class="pr-info">	
+							<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>37,350</span>원<br>		<span class="min">최저가 <em class="num">33,450</em>원</span>	</span>
+							<!-- 가격비교 수정 -->
+							<span class="price_compare"><strong>가격비교</strong><em>(245)</em></span>
+							<!-- //가격비교 수정 -->
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="JavaScript:goDetail(8129692,86010104);insertLog(11396);">
+						<span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/8100000/8120000/8129692.jpg" id="8129692"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 더 트루 크림 모이스처라이징 밤</em>
+						<!--<div class="Tier">	<span class="p">가격비교 (18)</span></div>-->
+						<!-- 20150511 LP 내 상품평,평점 정보 노출 -->
+						<p class="comment_marks" style="display:none;">
+							<span class="star_comm">
+								<span class="tit">상품평</span><em class="num_rate">748</em><span class="screen_out">건</span>
+								<span class="bar">
+									<span class="img_star star_rate"><span class="img_star inner_star" style="width:50%;">별점</span></span>
+								</span>
+							</span>
+						</p>
+						<!-- //20150511 LP 내 상품평,평점 정보 노출 -->
+						<span class="pr-info">
+							<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>39,000</span>원<br>		<span class="min">최저가 <em class="num">33,100</em>원</span>	</span>
+							<!-- 가격비교 수정 -->
+							<span class="price_compare"><strong>가격비교</strong><em>(5)</em></span>
+							<!-- //가격비교 수정 -->
+						</span>
+					</a>
+				</li>
+				<li>
+						<a href="JavaScript:goDetail(72089,86010103);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/0/70000/72089.jpg" id="72089"></span><em class="subject">[SK-II] 페이셜 트리트먼트 에센스</em>
+					<div class="Tier">	<span class="p">가격비교 (12)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>184,840</span> 원<br>		<span class="min">최저가 <em class="num">83,000</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(1760360,86010103);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/1700000/1760000/1760360.jpg" id="1760360"></span><em class="subject">[설화수 <span class="fif">아모레</span>] 윤조 에센스</em><div class="Tier">	<span class="p">가격비교 (9)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>85,500</span> 원<br>		<span class="min">최저가 <em class="num">73,490</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(1299332,86010104);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/1200000/1290000/1299332.jpg" id="1299332"></span><em class="subject">[키엘] 울트라 페이셜 크림</em><div class="Tier">	<span class="p">가격비교 (7)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>37,050</span> 원<br>		<span class="min">최저가 <em class="num">33,720</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(10890930,86010104);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/10800000/10890000/10890930.jpg" id="10890930"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 더 트루 크림 아쿠아 밤</em><div class="Tier">	<span class="p">가격비교 (21)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>37,050</span> 원<br>		<span class="min">최저가 <em class="num">33,100</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11657106,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11600000/11650000/11657106.jpg" id="11657106"></span><em class="subject">[랑콤] UV 엑스퍼트 GN 쉴드 SPF50</em><div class="Tier">	<span class="p">가격비교 (1)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">AKmall</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap none">		<span></span><br>		<span class="min">최저가 <em class="num">51,300</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11562965,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11500000/11560000/11562965.jpg" id="11562965"></span><em class="subject">[시세이도] 마일드 페이스 선 스크린</em><div class="Tier">	<span class="p">가격비교 (33)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">G마켓</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>50,000</span> 원<br>		<span class="min">최저가 <em class="num">41,490</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11556144,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11500000/11550000/11556144.jpg" id="11556144"></span><em class="subject">[헤라 <span class="fif">아모레</span>] 선 메이트 레포츠</em><div class="Tier">	<span class="p">가격비교 (7)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">옥션</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>27,670</span> 원<br>		<span class="min">최저가 <em class="num">27,660</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(7675351,86010103);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/7600000/7670000/7675351.jpg" id="7675351"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 클래식 에센스 인크리멘트</em><div class="Tier">	<span class="p">가격비교 (10)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">AKmall</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>39,900</span> 원<br>		<span class="min">최저가 <em class="num">35,700</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11601536,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11600000/11600000/11601536.jpg" id="11601536"></span><em class="subject">[시세이도] 퍼펙트 UV 선 스크린</em><div class="Tier">	<span class="p">가격비교 (26)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">CJmall</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>48,000</span> 원<br>		<span class="min">최저가 <em class="num">38,560</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(8206512,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/8200000/8200000/8206512.jpg" id="8206512"></span><em class="subject">[헤라 <span class="fif">아모레</span>] UV 미스트 쿠션 15g</em><div class="Tier">	<span class="p">가격비교 (14)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>19,000</span> 원<br>		<span class="min">최저가 <em class="num">17,290</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(12058999,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/12000000/12050000/12058999.jpg" id="12058999"></span><em class="subject">[키엘] 울트라 라이트 데일리 UV 디펜스 선스크린</em><div class="Tier">	<span class="p">가격비교 (1)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap none">		<span></span><br>		<span class="min">최저가 <em class="num">25,080</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2405367,86010105);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2400000/2400000/2405367.jpg" id="2405367"></span><em class="subject">[에스티로더] 어드밴스드 나이트 리페어 아이 싱크로나이즈드 콤플렉스[15ml]</em><div class="Tier">	<span class="p">가격비교 (2)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">현대Hmall</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>90,250</span> 원<br>		<span class="min">최저가 <em class="num">80,570</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2517940,86010106);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2500000/2510000/2517940.jpg" id="2517940"></span><em class="subject">[바닐라코 <span class="fif">에프앤코</span>] 클린 잇 제로</em><div class="Tier">	<span class="p">가격비교 (36)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">옥션</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>18,000</span> 원<br>		<span class="min">최저가 <em class="num">14,710</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(8098228,86010104);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/8000000/8090000/8098228.jpg" id="8098228"></span><em class="subject">[설화수 <span class="fif">아모레</span>] 탄력 크림</em><div class="Tier">	<span class="p">가격비교 (18)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>90,250</span> 원<br>		<span class="min">최저가 <em class="num">82,050</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(12014195,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/12000000/12010000/12014195.jpg" id="12014195"></span><em class="subject">[랑콤] UV 엑스퍼트 XL 쉴드 SPF50</em><div class="Tier">	<span class="p">가격비교 (27)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">CJmall</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>73,150</span> 원<br>		<span class="min">최저가 <em class="num">65,290</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11996257,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11900000/11990000/11996257.jpg" id="11996257"></span><em class="subject">[오휘 <span class="fif">LG생활건강</span>] 퍼펙트 선 레드[기획세트, 50ml]</em><div class="Tier">	<span class="p">가격비교 (15)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>36,100</span> 원<br>		<span class="min">최저가 <em class="num">32,440</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2464919,86010109);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2400000/2460000/2464919.jpg" id="2464919"></span><em class="subject">[프리메라 <span class="fif">아모레</span>] 페이셜 마일드 필링</em><div class="Tier">	<span class="p">가격비교 (16)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">G마켓</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>28,500</span> 원<br>		<span class="min">최저가 <em class="num">25,160</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2464887,86010106);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2400000/2460000/2464887.jpg" id="2464887"></span><em class="subject">[프리메라 <span class="fif">아모레</span>] 리치 포밍 클렌저</em><div class="Tier">	<span class="p">가격비교 (9)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">G마켓</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>17,100</span> 원<br>		<span class="min">최저가 <em class="num">14,980</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(8377866,86010104);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/8300000/8370000/8377866.jpg" id="8377866"></span><em class="subject">[프리메라 <span class="fif">아모레</span>] 알파인 베리 워터리 크림</em><div class="Tier">	<span class="p">가격비교 (12)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">G마켓</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>33,250</span> 원<br>		<span class="min">최저가 <em class="num">29,800</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11789206,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11700000/11780000/11789206.jpg" id="11789206"></span><em class="subject">[리리코스 <span class="fif">아모레</span>] 마린 UV 워터쿠션 15g</em><div class="Tier">	<span class="p">가격비교 (5)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>19,200</span> 원<br>		<span class="min">최저가 <em class="num">18,200</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(12033496,86010103);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/12000000/12030000/12033496.jpg" id="12033496"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 헝가리언 워터 에센스 모이스춰 바인더</em><div class="Tier">	<span class="p">가격비교 (16)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>39,900</span> 원<br>		<span class="min">최저가 <em class="num">35,650</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(10156229,86010107);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/10100000/10150000/10156229.jpg" id="10156229"></span><em class="subject">[헤라 <span class="fif">아모레</span>] UV 미스트 쿠션 롱 스테이 15g</em><div class="Tier">	<span class="p">가격비교 (7)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>19,000</span> 원<br>		<span class="min">최저가 <em class="num">17,290</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2436254,86010101);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2400000/2430000/2436254.jpg" id="2436254"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 유칼립투스 허벌 익스트랙트 토너[200ml]</em><div class="Tier">	<span class="p">가격비교 (10)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>26,600</span> 원<br>		<span class="min">최저가 <em class="num">23,750</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(1593007,86010101);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/1500000/1590000/1593007.jpg" id="1593007"></span><em class="subject">[키엘] 울트라 페이셜 토너[250ml]</em><div class="Tier">	<span class="p">가격비교 (7)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">엘롯데</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_2.gif"></span>	<span class="price-wrap ">		<span>24,700</span> 원<br>		<span class="min">최저가 <em class="num">22,480</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(11087980,86010103);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/11000000/11080000/11087980.jpg" id="11087980"></span><em class="subject">[SK-II] 화이트닝 파워 스팟 스페셜리스트</em><div class="Tier">	<span class="p">가격비교 (8)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">옥션</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>157,000</span> 원<br>		<span class="min">최저가 <em class="num">135,720</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2693673,86010103);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2600000/2690000/2693673.jpg" id="2693673"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 더 트루 화이트닝 에센스[50ml]</em><div class="Tier">	<span class="p">가격비교 (5)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">AKmall</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_3.gif"></span>	<span class="price-wrap ">		<span>49,400</span> 원<br>		<span class="min">최저가 <em class="num">44,200</em>원</span>	</span></span></a></li><li><a href="JavaScript:goDetail(2442479,86010102);insertLog(11396);"><span class="thumb"><img alt="" style="width:328px;height:328px;" src="http://photo3.enuri.com/data/images/service/d_middle/2400000/2440000/2442479.jpg" id="2442479"></span><em class="subject">[빌리프 <span class="fif">LG생활건강</span>] 밀키 모이스처라이저 하이드라 밸런싱[125ml]</em><div class="Tier">	<span class="p">가격비교 (11)</span></div><span class="pr-info">	<span class="brand"><em class="mallname">11번가</em><img alt="" src="http://imgenuri.enuri.gscdn.com/images/department/common/dept_5.gif"></span>	<span class="price-wrap ">		<span>37,050</span> 원<br>		<span class="min">최저가 <em class="num">32,850</em>원</span>	</span></span></a></li></ul>
+			</div>
+
+		</div>
+		
+		<!-- 목록 끝-->
+		<input type="hidden" id="cate" name="cate" value="860101">
+		<input type="hidden" id="brand" name="brand" value="">
+		<input type="hidden" id="page" name="page" value="1">
+		<input type="hidden" id="key" name="key" value="popular DESC">
+		<input type="hidden" id="searchkind" name="searchkind" value="">
+		<div id="search_paging" class="paging"></div>
+			
+<div id="quickMenu">
+	<!-- 20150306 백화점 책임배송 배너 -->
+    <div class="wingban">
+    	
+		<a href="JavaScript:" onclick="wing_click();"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/wingbn_delivery.jpg" alt="각 백화점 매장에서 직접배송합니다."></a>
+		
+	</div>
+    <!-- //20150306 백화점 책임배송 배너 -->
+	<div class="wrap">
+		<h4><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/stit_shop_history.gif" alt="최근본상품"/></h4>
+		<div class="viewport">
+			<ul>
+			</ul>
+		</div>
+		<div class="paging">
+			<a href="#" onclick="insertLog(11364);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/btn_history_down.gif" alt="다음"/></a><a href="#" onclick="insertLog(11364);"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/btn_history_up.gif" alt="이전"/></a>
+		</div>			
+	</div>
+	
+	<a href="#" onclick="insertLog(11365);" class="btn-top"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/btn_top.gif" alt="TOP"/></a>
+</div>
+
+<script>
+var _quickTop = "";
+(function(){
+	quick();
+	function getCookie(c_name) {
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for(i=0;i<ARRcookies.length;i++) {
+			x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+			y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+			x = x.replace(/^\s+|\s+$/g,"");
+			if(x==c_name) {
+				return unescape(y);
+			}
+		}
+	}
+	
+	function quick(){
+		var url = "./ajax/quick_ajax.jsp?departmentResentList=" + getCookie("departmentResentList");
+
+		// 메인페이지와 다른 목록의 최근본 상품의 절대 위치가 미묘하게 틀림
+		try {
+			var nowScrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+			var continerTop = $("#container").offset().top;
+			var menuTop = $("#gnb .menu").offset().top;
+			var minusTop = menuTop - continerTop;
+			var varwingtop = $('#quickMenu').offset().top;
+			var popright = $("#gnb .menu").offset().left + 3;
+			var menutop = $("#gnb .menu").offset().top;
+			if(nowScrollTop<varwingtop) {
+				$("#quickMenu").css("top", minusTop+"px");
+				$(".main_pop").css("top", menutop+"px");
+				$(".main_pop").css("right", popright+"px");
+				_quickTop = menutop;
+			}else{
+				_quickTop = nowScrollTop;
+				$(".main_pop").css("top", _quickTop+"px");
+			}
+		} catch(e) {}
+
+		$.get(url, function(html){
+			$("#quickMenu ul").empty().append($.trim(html));
+			var vartop = $('#header').height() -($('#container').offset().top +$('.menu').height());
+			$('#quickMenu').quickMenu({
+				ajaxLoad: false,
+				viewMenu : 5,
+				start : vartop,
+				min : $('#container').offset().top,
+				max : $('#footer').offset().top,
+				selectors: {
+					items : '.viewport li',
+					prevBtn : '.paging a:eq(1)',
+					nextBtn : '.paging a:eq(0)'
+				}
+			});	
+			
+			$('.viewport').find('.thumb img').each(function(){
+			  $(this).error(function(){
+			    $(this).unbind('error');
+			    $(this).attr("src", "http://imgenuri.enuri.gscdn.com/images/department/common/goods_default_100.gif");
+			    //alert("no image");
+			  });
+			});	
+		}); 
+		
+	}
+	
+	/*function quickset(){
+		$('#quickMenu').quickMenu({
+				ajaxLoad: false,
+				viewMenu : 5,
+				min : $('#container').offset().top,
+				max : $('#footer').offset().top,
+				selectors: {
+					items : '.viewport li',
+					prevBtn : '.paging a:eq(1)',
+					nextBtn : '.paging a:eq(0)'
+				}
+		});
+	}
+	
+	setInterval(quickset,1000);*/
+	
+
+})();
+</script>
+	</div>
+	<!-- 파워링크 -->
+
+	<div id="sponsor_link"></div>
+	<script language="javaScript">
+function go_advert(url){
+    var newWin = window.open('/view/Redirect_Ad.jsp?cate=00000&url='+escape(url));
+}
+</script>
+<script language="javaScript">  
+    var url_i = "/view/GetGoogleAd_2010.jsp";
+    var param_i = "ad_command=스킨케어&ad_command2=&data_cnt=6&client_id=enuri-dir&ConnectIp=211.104.53.125&cPage=1&ca_code=860101&url=http%3A%2F%2Fwww.enuri.com%2Fdepartment%2Fgoods_list.jsp&referer=";
+
+    commonAjaxRequest(url_i,param_i,showGoogleAd);
+    
+    function showGoogleAd(originalRequest){
+        if (libType() == "PR"){
+            var tempResponse = originalRequest.responseText;
+        }else{
+            var tempResponse = originalRequest;
+        }   
+        /*
+        if (originalRequest.responseText.trim().length == 0 ){
+            if (document.getElementById("search_sponsor_link")){
+                document.getElementById("search_sponsor_link").style.display = "none";
+            }
+        }
+        */
+        try{
+            if(document.getElementById("sponsor_link")){
+                document.getElementById("sponsor_link").innerHTML = tempResponse;
+            }
+        }catch(e){
+            if(document.getElementById("sponsor_link")){
+                var varSponsorDiv = document.createElement("DIV");
+                varSponsorDiv.innerHTML = tempResponse;
+                document.getElementById("sponsor_link").insertBefore(varSponsorDiv,null);
+            }               
+        }
+        if(parent.syncHeightListFrame){
+            setTimeout("parent.syncHeightListFrame();", 500);
+        }
+    }
+</script>
+	<!-- 파워링크 -->
+	<!-- 에누리 Footer -->
+	
+<!-- 에누리 Footer -->
+<div id="section9">
+	<div class="linkItem"><span onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</span></div>
+	<div class="linkItem"><span onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</span></div>
+	<div class="linkItem"><span onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</span></div>
+	<div class="linkItem"><span onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보취급방침</b></span></div>
+	<div class="linkItem"><span onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</span></div>
+	<div class="linkItem"><span onclick="JavaScript:CmdLink('/view/mallsearch/Listmall.jsp');insertLog(1065);">쇼핑몰검색</span></div>
+	<div class="linkItem"><span><a href="/faq/Faq_List.jsp">고객센터</a></span></div>
+</div>
+<div id="footer">
+	<div class="footInner">
+		<p class="footLogo"><a href="/"><img src="http://imgenuri.enuri.gscdn.com/images/department/layout/bg_foot_logo.png" alt="에누리 가격비교" /></a></p>
+		<p class="enuriDec">에누리닷컴(주)는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</p>
+		<address>서울시 종로구 청계천로 85 (관철동) 29층, 에누리닷컴(주)</address><p class="enuriInfo"><span>대표이사 : 최문석</span> <span>사업자등록번호 : 206-81-18164</span> <span>통신판매신고 : 종로통신 제4406호</span><br />
+		Tel : 02-6354-3601 <span>Fax : 02-6354-3600</span> <span>문의 : master@enuri.com</span> <a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick=window.open('http://www.enuri.com/faq/Faq_List.jsp');></a> <a href="JavaScript:;" onClick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a></p>
+		<p class="copyright">Copyright ⓒ eNuri.com Co., Ltd All rights reserved. 법적고지</p>
+	</div>
+</div>
+<!-- //footer -->
+<script language=javascript src="http://imgenuri.enuri.gscdn.com/common/js/Log_Tail.js"></script>
+<script language="JavaScript"> _TRK_CC=56 </script>
+<script>
+function CmdLink(url){
+    location.href = url;
+}
+</script>
+	<!-- //footer -->
+</div>
+<script type="text/javascript">
+//초성검색 부분
+function brandSearch(){
+	var wrap = $('.common-search')
+	//word 이벤트
+	var _brand_nm_1st = "";
+	wrap.find('.search-language').find('a').click(function(e){
+		insertLog(11386);
+		var item = $(this);
+	
+		var brandSearchListObj = $("#brandSearchList");
+		var brand_nm_1st = item.html();
+		_brand_nm_1st = brand_nm_1st;
+		if(brand_nm_1st=="ALL") brand_nm_1st = "";
+	
+		// 브랜드가 없는 초성
+		/*if(notBrandList.indexOf(","+brand_nm_1st+",")>-1) {
+			alert("'"+brand_nm_1st + "' 로 시작하는 브랜드가 없습니다.");
+			return;
+		}*/
+		e.preventDefault();
+		var item = $(this);
+		//클릭된 word 활성화
+		if(notBrandList.indexOf(","+brand_nm_1st+",")>-1) {
+			//$('.common-search .search-language').find('li').removeClass('selected');
+		}else{
+			brandSearchListObj.html("");
+			$('.common-search .search-language').find('li').removeClass('selected');
+			item.parent().addClass('selected');
+			setBrandList(_cate, brand_nm_1st);
+		}
+
+		wrap.addClass('open');
+	})
+	//opend-close btn
+	wrap.find('.open-close').click(function(e){
+		e.preventDefault();
+		var varOpen = false;
+		if (wrap.attr("class") == "common-search"){
+			varOpen = true;
+		}
+		//console.log(wrap.attr("class"));
+		wrap.toggleClass('open');
+		if (varOpen){
+			var varBSHeight = 0;
+			if (document.getElementById("brandSearchList").scrollHeight > 280){
+				varBSHeight = 280;
+			}else{
+				if ($(".search-language ul li.num.selected a").html() == "0-9"){
+					$('.search-results > div').find('ul').each(function(){
+						varBSHeight +=($(this).height()+40);
+						//console.log("varBSHeight="+varBSHeight);
+					});								
+				}else{
+					varBSHeight = $(".search-results > div > ul").height()+40;
+				}
+			}
+			$(".search-results").css("height",(varBSHeight-20)+"px");
+			$("#brandSearchList").css("height",varBSHeight+"px");
+			insertLog(11388);
+		}else{
+			$("#brandSearchList").css("height","103px");
+			$(".search-results").css("height","103px");
+			insertLog(11389);
+		}
+		
+	})
+
+	setBrandList(_cate, '');
+	if(_brand!=""){
+		wrap.addClass('open');
+	}
+}
+brandSearch();
+
+//가격순 정렬 탭
+$('.box-tab').tabs({
+	ajaxLoad: false,
+	selectors: {
+		tabAnk : '.tabs a'
+	}
+})
+
+
+var ipage = '1';		//현재 페이지
+var pagesize = 30;	//한페이지 갯수
+var pagecount = 0;	//총 페이지 갯수
+var tcnt = 0;		//총갯수
+var listsize = 10; 	//페이징 단위
+var page_i = 0;
+var page_k = 0;
+var now_first = 0;
+var pre_first = 1;
+var noAry = new Array();
+var cntAry = new Array();
+
+getResult('f');  
+
+
+function getResult(param){ 
+	//console.log("cate>>>>>>>"+$("#cate").val());
+	var vParam = "cate="+$("#cate").val()+"&brand="+encodeURIComponent($("#brand").val())+"&page="+$("#page").val()+"&key="+$("#key").val()+"&pagesize="+pagesize+"&searchkind="+$("#searchkind").val();
+	//console.log("vParam>>>"+vParam);
+	$.ajax({ 
+		type: "GET",
+		url: "/department/ajax/getSearchList_ajax.jsp",
+		async: false,
+		data: vParam,
+		dataType:"JSON",
+		success: function(result){
+			var goodsList = result["goodsList"];
+			var totalCnt = 0;
+			var enuriCnt = result.EnuriCnt;	
+			var webCnt = result.WebCnt;	
+			var allCnt = result.AllCnt;	
+			var vACnt = result.goodsAllCnt;	
+			try {
+				totalCnt = parseInt(result["goodsAllCnt"]);
+			} catch(e) {}
+			if(vACnt != ""){
+				//if(_brand.length<=0){
+					$("#totalcnt").html(null);
+					$("#totalcnt").append("<strong>"+vACnt+"</strong>");
+				//}
+			}
+			if(allCnt.replace(",","") > 0){
+				$("#allcnt").html(null);
+				$("#allcnt").append("("+allCnt+"개)");
+			}
+			if(enuriCnt.replace(",","") > 0){
+				$("#encnt").html(null);
+				$("#encnt").append("("+enuriCnt+"개)");
+			}else{
+				$("#enli").hide();
+			}
+			if(webCnt.replace(",","") > 0){
+				$("#webcnt").html(null);
+				$("#webcnt").append("("+webCnt+"개)");
+			}else{
+				$("#weli").hide();
+			}
+			
+			var productListUlObj = $("#goodsList");
+
+			productListUlObj.html("");
+			
+			var htmlText = "";
+			
+			if(goodsList != ""){
+				$.each(goodsList, function(indexI, listObj) {
+					htmlText = "";
+					
+					var cnum= listObj["cnum"]; 
+					var ca_code = listObj["ca_code"]; 
+					var modelno = listObj["modelno"]; 
+					var modelnm = listObj["modelnm"]; 
+					var factory = listObj["factory"]; 
+					var minprice4 = listObj["minprice4"]; 
+					var maxprice = listObj["maxprice"]; 
+					var brand = listObj["brand"]; 
+					var departLogo = listObj["departlogo"]; 
+					var departShopName = listObj["strShopnm"]; 
+					var smallImageUrl = listObj["model_img"];
+					var shopcnt = listObj["shopcnt"];
+					var pricecheck = false;
+					if(maxprice==""){
+						pricecheck = true;
+					}else{
+						pricecheck = false;
+					}
+	
+					htmlText += "<li><a href=\"JavaScript:goDetail("+modelno+","+ca_code+");insertLog(11396);\">";
+					htmlText += "<span class=\"thumb\"><img id=\""+modelno+"\" src=\""+smallImageUrl+"\" style='width:328px;height:328px;' alt=\"\"/></span>";
+					htmlText += "<em class=\"subject\">"+modelnm+"</em>";
+					htmlText += "<div class=\"Tier\">";
+					htmlText += "	<span class=\"p\">가격비교 ("+shopcnt+")</span>";
+					/*if(cnum>1){
+						htmlText += "	<span class=\"a\">다른옵션 <em>("+cnum+")</em></span>";
+					}*/
+					htmlText += "</div>";
+					htmlText += "<span class=\"pr-info\">";
+					htmlText += "	<span class=\"brand\"><em class=\"mallname\">"+departShopName+"</em><img src=\""+departLogo+"\" alt=\"\"/></span>";
+					if(pricecheck){
+						htmlText += "	<span class=\"price-wrap none\">";
+						htmlText += "		<span></span><br/>";
+					}else{
+						htmlText += "	<span class=\"price-wrap \">";
+						htmlText += "		<span>"+maxprice+"</span> 원<br/>";
+					}
+					
+					htmlText += "		<span class=\"min\">최저가 <em class=\"num\">"+minprice4+"</em>원</span>";
+					htmlText += "	</span>";
+					htmlText += "</span>";
+					htmlText += "</a></li>";
+					productListUlObj.append(htmlText);
+				});
+			}
+			
+			var plnoList = result["plnoList"];
+			if(plnoList != ""){
+				$.each(plnoList, function(indexI, listObj) {
+					htmlText = "";
+					
+					var ca_code = listObj["ca_code"]; 
+					var modelno = listObj["pl_no"]; 
+					var modelnm = listObj["goodsnm"]; 
+					var factory = listObj["factory"]; 
+					var minprice4 = listObj["minprice"]; 
+					var departLogo = listObj["departlogo"]; 
+					var dept_code = listObj["dept_code"]; 
+					var departShopName = listObj["strShopnm"]; 
+					var smallImageUrl = listObj["P_imgurl"];
+					var shop_code = listObj["shop_code"];
+	
+					htmlText += "<li><a href=\"JavaScript:goMall("+shop_code+","+dept_code+","+modelno+");insertLog(11397);\">";
+					htmlText += "<span class=\"thumb\"><img id=\""+modelno+"\" src=\""+smallImageUrl+"\" style='width:328px;height:328px;' alt=\"\"/></span>";
+					//htmlText += "<div class=\"Tier\"><span class=\"n\">일반상품</span></div>";
+					htmlText += "<em class=\"pl_subject\">"+modelnm+"</em>";
+					htmlText += "<span class=\"pr-info\">";
+					htmlText += "	<span class=\"brand\"><em class=\"mallname\">"+departShopName+"</em><img src=\""+departLogo+"\" alt=\"\"/></span>";
+					htmlText += "	<span class=\"price-wrap none\">";
+					htmlText += "		<span></span><br/>";
+					htmlText += "		<span class=\"min\">최저가 <em class=\"num\">"+minprice4+"</em>원</span>";
+					htmlText += "	</span>";
+					htmlText += "</span>";
+					htmlText += "</a></li>";
+					productListUlObj.append(htmlText);
+				});
+			}
+			if(param == 'f'){
+				var optionObj2 = $("#check-list");
+				optionObj2.html(null);	
+				var cateList = result["goodsCate"];
+				var htmlText2 = "";
+				if (typeof(cateList) != "undefined"){
+					$.each(cateList, function(indexI, listObj) {
+						htmlText2 = "";
+						var nm= listObj["nm"]; 
+						var cate = listObj["cate"]; 
+						var cnt = listObj["cnt"]; 
+		
+						/*if(cate.length>6){
+							htmlText2 = htmlText2 + "<li><label for=\"pick01\"><a id="+cate+" href='#'>"+nm+"<em>("+cnt+")</em></a></label></li>";
+						}else{*/
+						if(cate.substring(0,4)==_cate.substring(0,4)){
+							if(_cate == cate){
+								htmlText2 = htmlText2 + "<li><label for=\"pick01\"><a id="+cate+" href='javascript:goCate("+cate+",\"\",1,\""+_key+"\",\"\");' onClick='categoryEigGLog(this);' style='text-decoration:underline'>"+nm+"</a></label></li>";
+							}else{
+								//htmlText2 = htmlText2 + "<li><label for=\"pick01\"><a id="+cate+" href='javascript:goCate("+cate+",\"\",1,\""+_key+"\",\"\");categoryEigGLog(this);'>"+nm+" <em>("+cnt+")</em></a> </label></li>";
+								htmlText2 = htmlText2 + "<li><label for=\"pick01\"><a id="+cate+" href='javascript:goCate("+cate+",\"\",1,\""+_key+"\",\"\");' onClick='categoryEigGLog(this);'>"+nm+"</a> </label></li>";
+							}
+						}
+						//}
+						//$("#"+cate).css("font-weight", "bold").css("color", "#575759");
+						optionObj2.append(htmlText2);
+					});
+				}
+				
+				var brandsearchList = result["goodsBrand"];
+				$.each(brandsearchList, function(indexI, listObj) {
+					var no= listObj["no"]; 
+					var cnt = listObj["cnt"];
+
+					noAry[indexI] = no;
+					cntAry[indexI] = cnt;
+					if($("#best_"+no)){ //&& $("#best_"+no).length < 1) {
+						//$("#best_"+no).html(" ("+cnt+")");
+					}
+				});
+			}
+				
+			 
+			if(htmlText.length > 1){
+				var vAllCnt = result.goodsAllCnt;	
+				tcnt = vAllCnt.replace(",","");
+				
+				if((tcnt % pagesize)!=0){
+				 	pagecount = (tcnt/pagesize) +1;
+			    }else{
+			    	pagecount = tcnt/pagesize;
+			    } 
+			    
+				fn_setPaging(); 
+			}
+			if(param == 'f'){
+				$(".check-list li label a").click(function() { 			//카테고리명 클릭
+					var cate = this.id;
+					//console.log("cate>>>"+cate);
+					$("#cate").val(cate);
+					$("#brand").val("");
+					$("#page").val(1);
+					//$("#key").val("popular DESC");
+					$('#'+preitem).removeAttr('style');
+					$('#'+cate).css("font-weight", "bold").css("color", "#575759");
+					preitem = cate;
+					ipage = 1;
+					//getResult();
+					goCate(cate,'',1,_key,'');
+					insertLog(11384);
+				}); 
+				$(".tabs li").click(function() { 					//정렬 클릭
+					$("#key").val(this.id);
+					$("#page").val(1);
+					ipage = 1;
+					goCate(_cate,_brand,1,this.id,'');
+					//getResult()
+					//this.id.addClass("on");
+				});
+			}
+		}
+	});	
+}
+
+// 미분류 구글분석기 로그 넣기
+function categoryEigGLog(thisObj) {
+	var ecateName = $(thisObj).text();
+
+	// 구글 분석기 로그
+	try {
+		setGEventLog("depart_Category", "미", "cate_"+ecateName);
+	} catch(e) {}
+}
+
+function fn_setPaging(){
+	if(tcnt>pagesize){
+		page_i = 0;
+		page_k = 0;
+		now_first = 1 + (parseInt((ipage - 1) / listsize) * listsize);
+		pre_first = 1;
+		page_k = listsize + (parseInt((ipage - 1) / listsize) * listsize);
+		
+	    if(pagecount < page_k) page_k = pagecount;
+	     
+	    var vHtml = "";
+	
+		if(ipage > listsize){
+	    	pre_first = now_first - listsize;
+
+			vHtml = "<a href=\"#\" onclick=\"javascript:fn_setpage("+ pre_first +");insertLog(11398);return false;\" class=\"prev\"><img src=\"http://imgenuri.enuri.gscdn.com/images/department/view/btn_paging_prev.gif\" alt=\"이전\" /></a>";
+		}
+
+		for(page_i = 1 + (parseInt((ipage - 1) / listsize) * listsize); page_i <= page_k; page_i++){
+			if (page_i==ipage){
+				vHtml += "<strong>"+ page_i +"</strong>";
+			}else{
+				vHtml += "<a href=\"#\" onclick=\"javascript:fn_setpage("+ page_i +");insertLog(11398);return false;\">"+ page_i +"</a>";
+			}
+		}
+		if(now_first+listsize < pagecount){
+			vHtml += "<a href=\"#\" onclick=\"javascript:fn_setpage("+ (now_first+listsize) +");insertLog(11398);\" class=\"next\"><img src=\"http://imgenuri.enuri.gscdn.com/images/department/view/btn_paging_next.gif\" alt=\"다음\" /></a>";
+		}
+		$("#search_paging").html(vHtml);
+	}else{ 
+		$("#search_paging").html("");
+	}
+} 
+function fn_setpage(page){
+	ipage = page;
+	$("#page").val(page);
+	fn_setPaging();
+	//getResult();
+	goCate(_cate, _brand, page,_key,_searchkind);
+}
+
+// 숫자 타입에서 쓸 수 있도록 format() 함수 추가
+Number.prototype.format = function(){
+	if(this==0) return 0;
+
+	var reg = /(^[+-]?\d+)(\d{3})/;
+	var n = (this + '');
+
+	while (reg.test(n)) n = n.replace(reg, '$1' + ',' + '$2');
+
+	return n;
+};
+
+// 문자열 타입에서 쓸 수 있도록 format() 함수 추가
+String.prototype.format = function(){
+	var num = parseFloat(this);
+	if( isNaN(num) ) return "0";
+
+	return num.format();
+};
+
+$('.product-list').find('.thumb img').each(function(){
+  $(this).error(function(){
+    $(this).unbind('error');
+    $(this).attr("src", "http://imgenuri.enuri.gscdn.com/images/department/common/goods_default.gif");
+    //alert("no image");
+  });
+});
+</script>
+</body>
+</html>

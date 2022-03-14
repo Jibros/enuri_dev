@@ -1,0 +1,212 @@
+<!-- PAGE WRAPPER -->
+<article id="pageWrap">
+	<!-- Heading-->
+	<div class="docs-heading">
+		<h2>마크업 가이드</h2>
+	</div>
+	<!-- Heading-->
+
+	<!-- Sector -->
+	<div class="docs-sector" id="ui-guideHtml">
+		<!-- Heading h1 ~ h4 -->
+		<h3 class="page-header">HTML 가이드</h3>
+
+		<!-- DOCTYPE 정의 -->
+		<div class="ds-section">
+			<!-- Caption -->
+			<h4>DOCTYPE 정의</h4>
+			<p>HTML 문법은 해당 DTD의 명세에 기반하되, 확장성 및 호환성을 고려하여 XHTML1.0 Transitional 모드를 권장하여 작성한다.<br /><span class="small">(가급적 Strict 모드의 문법을 사용하는 것을 권장함)</span></p>
+				
+			<blockquote>
+				<p class="small">웹일 경우 <strong>XHTML1.0(Transitional)</strong> 적용</p>
+				<code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;</code>
+				<br />
+				<br />
+				<p class="small">모바일 웹일 경우 <strong>HTML5</strong> 적용</p>
+				<code>&lt;!DOCTYPE html&gt;</code>
+			</blockquote>		
+			<p class="small">예외 : 과거 작성된 XHTML4.1 은 이후 교체 예정</p>
+
+			<small class="text-danger">※ DOCTYPE 은 문서의 최상단에 위치하며, 그 위에 어떠한 코드와 공백을 허용하지 않는다.</small>
+		</div>
+		<!-- //DOCTYPE 정의 -->
+
+		<!-- HEAD 선언부 -->
+		<div class="ds-section">
+			<h4>HEAD 선언부</h4>
+			
+			<p><strong>TITLE 명시</strong></p>
+			<p class="small"><strong>XHTML1.0(Transitional)</strong></p>
+
+
+			<dl>
+				<dt><p><strong>언어 코드 : ko</strong></p></dt>
+				<dd>
+					<blockquote>
+						<p class="small"><strong>XHTML1.0(Transitional)</strong></p>
+						<code>&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko"&gt;</code>
+						<br /><br />
+						<p class="small"><strong>HTML5</strong></p>
+						<code>&lt;html lang="ko"&gt;</code>
+					</blockquote>	
+				</dd>
+			</dl>
+
+			<dl>
+				<dt>
+					<p><strong>인코딩 : utf-8</strong></p>
+					<p></p>
+				</dt>
+				<dd>
+					<blockquote>
+						<p class="small"><strong>XHTML1.0(Transitional)</strong></p>
+						<code>&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;</code>
+						<br /><br />
+						<p class="small"><strong>HTML5</strong></p>
+						<code>&lt;meta charset="utf-8" /&gt;</code>
+					</blockquote>	
+				</dd>
+			</dl>
+		</div>
+
+		<!-- 주석 작성 규칙 -->
+		<div class="ds-section">
+			<h4>주석 작성 규칙</h4>
+
+			주석은 장황하지 않게, 명료하고 정확한 명사형으로 표기한다.<br />
+			<code>&lt;!-- LP 상품 목록 --&gt;</code><br /><br />
+
+			주석 앞 뒤 코드 사이 공백을 넣어 표기한다. 예) &lt;!--(공백)주석내용(공백)--&gt;<br />
+			<code>&lt;!-- LP 상품 목록 --&gt;</code><br /><br />
+
+			주석의 시작과 끝에 동일한 문구로 기입하며, 닫는 주석은 달리 표시한다.<br />
+			시작 <code>&lt;!-- LP 상품 목록 --&gt;</code><br />
+			끝 <code>&lt;!-- // LP 상품 목록 --&gt;</code><br /><br />
+
+			<!--업데이트 주석<br />
+			<code>&lt;!-- 2017-02-27 : JSH --&gt;</code><br />
+			<code>&lt;!--// 2017-02-27 : JSH 추가--&gt;</code>-->
+		</div>
+
+		<!-- 들여쓰기 규칙 -->
+		<div class="ds-section">
+			<h4>들여쓰기</h4>
+			<p>코드의 가독성을 높이기 위하여 들여쓰기를 사용하며, Tab 1개의 크기는 <strong>공백 4칸</strong>으로 설정한다.<br />
+				마크업의 깊이에 따라 들여쓰지만 다음의 경우 들여쓰지 않는다.<br /><br />
+				- html, body 등 기본 태그와 body 태그 직속인 자식 태그<br />
+				<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html </span><span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>Page Title<span class="nt">&lt;title&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;script</span> <span class="na">src=</span><span class="s">"/js/script.js"</span><span class="nt">&gt;</span><span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"/css/style.css"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></figure>
+
+				- thead, tbody, tfoot 의 자식 엘리먼트 tr<br />
+				<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>THEAD<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>THEAD<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>TBODY<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>TBODY<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;tfoot&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;</span>TFOOT<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>TFOOT<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tfoot&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+			</p>		
+
+
+			
+		</div>
+
+		<!-- Attribute 우선순위 -->
+		<div class="ds-section">
+			<h4>Attribute 작성</h4>
+			<p>태그의 속성(Attribute)은 항상 큰 따옴표(“”)로 감쌉니다. <br />
+				<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div </span><span class="na">class=</span><span class="s">"class_name"</span><span class="nt">&gt;</span><span class="nt">&lt;/div&gt;</span> <span class="">(O)</span>
+<span class="nt">&lt;div </span><span class="na">class=</span><span class="s">'class_name'</span><span class="nt">&gt;</span><span class="nt">&lt;/div&gt;</span> <span class="">(X)</span>
+<span class="nt">&lt;div </span><span class="na">class=</span><span class="s">class_name</span><span class="nt">&gt;</span><span class="nt">&lt;/div&gt;</span> <span class="">(X)</span>
+</code></pre></figure>
+			</p>
+			
+			<div class="table-responsive">
+				<table class="table table-bordered table-striped">
+					<colgroup>
+						<col width="80" />
+						<col width="*" />
+						<col width="100" />
+					<colgroup>
+					<thead>
+					<tr>
+						<th>순서</th>
+						<th>속성</th>
+						<th>비고</th>
+					</thead>
+					<tbody>
+					<tr>
+						<td>1</td>
+						<td>id</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>class</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>name</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>data-*</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>src, for, type, href, value</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>title, alt</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>aria-*, role</td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="ds-section">
+			<h4>마크업 작성 유의사항</h4>
+
+			<ul>
+				<li>종료 태그 표기</li>
+				<li>요소와 속성은 소문자로 표기</li>
+				<li>속성값은 따옴표로 감싸서 표기</li>
+				<li>특수문자는 Entity 코드로 변환</li>
+				<li>모든 이미지와 이미지 맵에는 alt, title 속성을 부여해 주어 해당 이미지와 컨텐츠의 의미를 반영</li>
+				<li>0을 제외한 모든 값들은 단위를 표기</li>
+			</ul>
+		</div>
+
+	</div>
+	<!-- //Sector -->
+</article>
+<!-- //PAGE WRAPPER -->

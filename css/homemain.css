@@ -1,0 +1,1407 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : homemain.css
+ * 설명 : 에누리 가격비교 > 메인 > 스타일개편 CSS
+ * 작성자  :신왕섭
+ * 작성일 :2020.04.23
+************************************************************************/
+
+/* 메인 컨텐츠 BODY */
+.mainbody {position: relative;top: -13px;width: 100%;font-family: Roboto, 'Noto Sans KR', "맑은 고딕", Malgun Gothic, Dotum, "돋움", verdana, sans-serif;font-weight: 400;}
+/* 컨테이너 */
+.mcontainer {position: relative;width: 970px;margin: 0 auto;}
+/* 공통 섹션 */
+.msection {position: relative;width: 100%;margin-bottom:5px}
+.msection__inner {position: relative;width: 100%;height: 100%;}
+/* absposition 위치 변경이 필요한 영역 */
+.absposition {clear: both;}
+/* COMMON CSS */
+.is-shown {display: block;}
+.is-hidden {display: none;}
+.is-mask {background: url(http://img.enuri.info/images/homemain/bg_mask_piece.png) repeat;}
+.mstripe {display: block;font-size: 0;text-indent: -9999px;background: url(http://img.enuri.info/images/homemain/main_stripe.png) no-repeat;}
+.mstripe__title {display: block;font-size: 0;text-indent: -9999px;background: url(http://img.enuri.info/images/homemain/main_stripe_title.png) no-repeat;}
+.mstripe__subtitle {display: block;font-size: 0;text-indent: -9999px;background: url(http://img.enuri.info/images/homemain/main_stripe_subtitle.png) no-repeat;}
+/* 말줄임 */
+.cutWord {display: block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/* 문장 말줄임 */
+.cutPara {
+    /* 문단 말줄임 line-height, height, -webkit-line-clamp 속성은 해당 css 라인에서 기재 */
+    /*display:-ms-flexbox; */display: block;display: -webkit-box;overflow: hidden;text-overflow: ellipsis;white-space: normal;word-wrap: break-word;-webkit-box-orient: vertical;
+}
+/* 영역 좌/우 버튼 */
+.slide__btn {display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.slide__btn--prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.slide__btn--next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+/* SLICK 슬라이드 버튼 */
+.slick-arrow {display: none;position: absolute;z-index: 99;width: 30px;height: 44px;font-size: 0;text-indent: -9999px;background: url(http://img.enuri.info/images/homemain/main_stripe.png) no-repeat;outline:none}
+.slick-arrow.slick-prev {background-position: -330px -300px;}
+.slick-arrow.slick-next {background-position: -370px -300px;}
+.slick-arrow.slick-prev:hover {background-position: -410px -300px;}
+.slick-arrow.slick-next:hover {background-position: -450px -300px;}
+/* 해당 영역 hover 시, 좌/우 버튼 노출 */
+.conta1__swiper:hover .slide__btn,
+.conta2:hover .slide__btn,
+.conta2__list:hover .slick-arrow,
+.contb2__slide:hover .slide__btn,
+.contb2__list:hover .slick-arrow,
+.contb3__slide:hover .slide__btn,
+.contb3__list:hover .slick-arrow,
+.contc1__slide:hover .slide__btn,
+.contc1__list:hover .slick-arrow,
+.contd1_swiper:hover .slide__btn,
+.mcommnitybest:hover .slide__btn,
+.mexperience:hover .slide__btn,
+.mreviewbox:hover .slide__btn,
+.menuritvbox:hover .slide__btn,
+.mexhibition__cont:hover .slide__btn,
+.msocialbox:hover .slide__btn,
+.menuripcevt:hover .slide__btn,
+.columnbox__cont:hover .slide__btn,
+.mglobal__bnrlist .slide__btn,
+.mglobal__goods .slide__btn,
+.mglobal__brandlist .slide__btn {display: block;}
+
+/* 해당 영역 항상 좌/우 버튼 노출 (20180517 정의) */
+.conta1__swiper .slide__btn,
+.conta2 .slide__btn,
+.conta2__list .slick-arrow,
+.contb2__slide .slide__btn,
+.contb2__list .slick-arrow,
+.contb3__slide .slide__btn,
+.contb3__list .slick-arrow,
+.contd1__swiper .slide__btn,
+.todaynews__cont .slide__btn,
+.usereview .slide__btn,
+.mexperience .slide__btn,
+.crazydeal__cont .slide__btn,
+.mevent__cont .slide__btn,
+.menuripcbox .slide__btn,
+.columnbox--2 .menuritvreview__btn.slide__btn,
+.mexhibition__cont .slide__btn,
+.msocialbox .slide__btn,
+.mglobal__cont .slide__btn {display: block !important;}
+/* 해당 영역 hover 시, 좌/우 버튼 숨김 (20181002 정의) */
+
+/* 콘텐츠 공통 클래스 */
+.common__blocklnk {display: block;position: relative;}
+.common__blocklnk:hover,
+.common__blocklnk:focus,
+.common__blocklnk:active,
+.slick-slide a:hover,
+.slick-slide a:focus,
+.slick-slide a:active,
+.slick-slide:hover,
+.slick-slide:focus,
+.slick-slide:active {outline: 0;}
+
+.shopcont__tit,
+.shopcont__sub{font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;display: inline-block;line-height: 1;letter-spacing: -1px;vertical-align: top;}
+.shopcont__tit {margin: 14px 0 10px;font-weight:bold;font-size: 15px;color: #222;}
+.shopcont__sub {margin-top: 16px;font-size: 12px;color: #666;}
+.common__thumb {display: block;overflow: hidden;position: relative;text-align: center;}
+.common__thumb.common__thumb--rounded {/*border-radius:100%;*/}
+.common__thumb img {position: absolute;top: 0;bottom: 0;left: 0;right: 0;width: auto;height: auto;max-width: 100%;max-height: 100%;margin: auto;vertical-align: middle;}
+.common__mainbadge {font-family: 'dotum','돋움','gulim','굴림',sans-serif;position: absolute;z-index: 15;height: 12px;letter-spacing:-.5px;padding: 5px 8px 4px;font-size: 12px;color: #fff;line-height: 1;vertical-align: top;}
+
+.columnbox {float: left;width: 314px;margin-right: 14px;}
+.columnbox.columnbox--3 {margin-right: 0;}
+.columnbox__head {position: relative;margin-bottom: 8px;border-bottom: 1px solid #ededed;}
+.columnbox__tit {display: inline-block;vertical-align: top;padding: 16px 0 8px;background: none;font-size: 16px;letter-spacing: -1px;text-indent: 0}
+.columnbox__head .msection__more {width: 16px;height: 16px;background-size: 300px;background-position: -40px 0;/* margin-top:17px; */}
+.columnbox .msection__pager {display: inline;float: right;margin-top: 22px;}
+.columnbox__cont {position: relative;}
+
+/* 상단 영역 (광고배너 & 로그인 & 스타일샵) */
+.mainbody__head {padding: 20px 0 30px;}
+
+/* AD&개인화 영역 */
+.msection__my {overflow: hidden;margin: 0 0 20px;}
+
+/* AD */
+.area__adbanner {background-color:#fafafa;float: left;width: 642px;height: 100px;}
+.area__adbanner img {vertical-align: top;}
+
+/* 개인화 */
+.area__profile {overflow: hidden;float: right;position: relative;width: 312px;height: 98px;border: 1px solid #ddd;background-color: #fcfcfc;}
+
+/* 로그인 전 - */
+.profile__login {display: block;position: relative;overflow: hidden;height: 46px;padding: 8px 13px 7px 14px;background: url(http://img.enuri.info/images/homemain/bg_login_bottom.gif) center bottom no-repeat #fff;}
+.login__info {font-family:'dotum','돋움','gulim','굴림',sans-serif;margin-top: 6px;padding-right: 150px;font-size: 12px;color: #0060AF;line-height: 16px;}
+.login__info strong {display: block;font-weight: bold;}
+.login--btn {font-family: Roboto, 'Noto Sans KR', "맑은 고딕", Malgun Gothic, Dotum, "돋움", verdana, sans-serif;display: block;position: absolute;top: 8px;right: 13px;width: 145px;height: 44px;border-radius: 7px;border: 1px solid #e6e6e6;background-color: #fff;box-shadow: 0 2px #f7f7f7;-webkit-box-shadow: 0 2px #f7f7f7;}
+.login--btn span {font-weight: 500;font-size: 20px;color: #0060AF;line-height: 41px;letter-spacing: -1px;vertical-align: middle;}
+.login--btn .icon__logon {display: inline-block;width: 21px;height: 22px;margin: 11px 7px 0 0;vertical-align: top;background-position: -124px -100px;}
+
+.profile__extab {clear: both;width: 100%;}
+
+.extab__list {font-family:'dotum','돋움','gulim','굴림',sans-serif;float: left;width: 100%;background-color: #fafafa;}
+.extab__list>li {float: left;position: relative;width: 70px;height: 37px;border-right: 1px solid #e6e6e6;}
+.extab__list>li:first-child {width: 89px;}
+.extab__list>li:last-child {width: 80px;border-right: 0;}
+.extab__list>li>a {display: block;width: 100%;height: 100%;font-size: 12px;color: #666;line-height: 38px;text-align: center;vertical-align: middle;}
+.extab__list>li>a .icon__ex {display: inline-block;width: 20px;height: 21px;margin-top: 9px;vertical-align: top;}
+.extab__list>li>a .icon__ex.icon__ex--umbrella {background-position: -150px -100px;}
+.extab__list>li>a .icon__ex.icon__ex--travel {background-position: -180px -100px;}
+.extab__list>li>a .icon__ex.icon__ex--social {background-position: -210px -100px;}
+.extab__list>li>a .icon__ex.icon__ex--department {background-position: -240px -100px;}
+/* 2019.03.22 조립PC아이콘 추가 */
+.extab__list>li>a .icon__ex.icon__ex--enuripc {background: url(http://img.enuri.info/images/homemain/ico_enuri_pc_logout.png) no-repeat 0 0;}
+/* 2019.09.30 해외직구 아이콘 추가 */
+.extab__list>li>a .icon__ex.icon__ex--global {background-position: -270px -100px;}
+
+/* 로그인 후 - 등급 */
+.profile__grade {float: left;width: 50px;height: 50px;margin:10px 9px;border-radius:50%;background-color:#fff;border:1px solid #efefef;box-shadow:2px 2px 0 rgba(0,0,0,0.015)}
+
+/* 쇼핑지식 - 기존 등급 체계 (~2020.2) */
+/* .grade__icon--diamond {background: url(http://img.enuri.info/images/knowcom/ico_grade_diamond.png) center no-repeat;}
+.grade__icon--platinum {background: url(http://img.enuri.info/images/knowcom/ico_grade_platinum.png) center no-repeat;}
+.grade__icon--gold {background: url(http://img.enuri.info/images/knowcom/ico_grade_gold.png) center no-repeat;}
+.grade__icon--silver {background: url(http://img.enuri.info/images/knowcom/ico_grade_silver.png) center no-repeat;}
+.grade__icon--bronze {background: url(http://img.enuri.info/images/knowcom/ico_grade_bronze.png) center no-repeat;} */
+
+/* 쇼핑지식 - 신규 등급 체계 (2020.3 ~) */
+.grade__icon--vip {background: url(http://img.enuri.info/images/knowcom/ico_grade_vip.png) center no-repeat;}
+.grade__icon--family {background: url(http://img.enuri.info/images/knowcom/ico_grade_family.png) center no-repeat;}
+.grade__icon--green {background: url(http://img.enuri.info/images/knowcom/ico_grade_green.png) center no-repeat;}
+.grade__icon {display: block;overflow: hidden;width: 100%;height: 100%;font-size: 0;text-indent: -9999px;background-size: contain;}
+
+/* 로그인 후 - 개인정보 */
+.profile__myinfo {float: left;width: 241px;}
+.myinfo__private {padding: 11px 0 2px 0;}
+.profile__myinfo .private__out{right:10px}
+.profile__myinfo.verify__myinfo .private__out{right:120px}
+.profile__myinfo.verify__myinfo .private__uname>a strong{max-width:110px}
+
+.private__uname {display: inline-block;font-size: 14px;color: #333;vertical-align: top;}
+.private__uname>a {height: 27px;display: inline-block;color:#222}
+.private__uname>a strong {display: inline-block;font-weight:500;line-height:24px;padding-top:3px;padding-right:3px;font-size:16px;letter-spacing: -1px;vertical-align: bottom;overflow: hidden;max-width:160px;text-overflow: ellipsis;white-space: nowrap;}
+.private__uname>a:hover strong {text-decoration: underline;}
+/* .private__out {font-size: 12px;color: #555;vertical-align: -7px;text-decoration: underline !important;} */
+.private__out {font-size: 11px;top: 16px;position: absolute;line-height: 14px;font-family: 'dotum','돋움','gulim','굴림',sans-serif;letter-spacing: -1px;background: #cfcfcf;border-radius: 10px;color: #fff;padding: 4px 5px 2px 4px;}
+.private__set {display: block;position: absolute;top: 13px;right: 13px;width: 26px;height: 26px;border: 1px solid #e5e5e5;box-shadow: 1px 2px #fafafa;-webkit-box-shadow: 1px 2px #fafafa;}
+.private__set .icon__set {width: 18px;height: 18px;margin: 4px;background-position: -100px -100px;}
+.myinfo__numlist {}
+.myinfo__numlist li {position:relative;font-family:'dotum','돋움','gulim','굴림',sans-serif;display: inline;padding-left:16px;float: left;font-size: 12px;color: #666;vertical-align: top;}
+.myinfo__numlist li:before{content:"";position: absolute;top:5px;left:8px;height:8px;border-left:1px solid #ccc;}
+.myinfo__numlist li:first-child{padding-left:0}
+.myinfo__numlist li:first-child:before{display:none}
+.myinfo__numlist li>a {font-weight: bold;color: #0060AF;}
+
+/* 로그인 후 - 서비스탭 */
+.profile__myservice {clear: both;width: 100%;border-top: 1px solid #e6e6e6;background-color: #fcfcfc;}
+.myservice__list {font-family:'dotum','돋움','gulim','굴림',sans-serif;float: left;width: 100%;letter-spacing: -.5px;}
+.myservice__list>li {float: left;position: relative;width: 77px;height: 26px;border-right: 1px solid #eee;}
+.myservice__list>li:last-child {width: 78px;border-right: 0;}
+.myservice__list>li>a {display: block;width: 100%;height: 100%;font-size: 12px;color: #666;line-height: 26px;text-align: center;vertical-align: middle;background-color:#fcfcfc}
+.myservice__list>li>a .icon__new {position: absolute;top: -6px;right: 1px;width: 14px;height: 15px;background-position: -70px -100px;}
+.myservice__list>li:hover a{color:#333}
+
+/* 	본인인증 전*/
+.verify__myinfo {width: 305px;padding-left: 9px;}
+.verify__myinfo .myinfo__private {display: inline;float: left;width: 194px;margin-bottom: 9px;}
+.verify_txt {font-family: 'dotum','돋움','gulim','굴림',sans-serif;margin: 2px 0;font-size: 12px;color: #0071bc;letter-spacing: -1px;}
+.verify_txt strong {font-weight: bold;}
+.verify__myinfo .btn_verify {position: absolute;top: 15px;right: 9px;display: inline-block;width: 98px;height: 42px;padding: 0;border-radius:7px;border: 1px solid #e6e6e6;text-align: center;background-color:#fff;box-shadow: 0 2px rgba(0,0,0,.03);-webkit-box-shadow: 0 2px rgba(0,0,0,.03);}
+.verify__myinfo .btn_verify span {display: block;padding-top:12px;font-weight: 500;font-size:18px;color: #0060AF;letter-spacing: -1px;line-height: 1;vertical-align: top;}
+
+/* 트랜드픽업 영역 */
+.msection__shop {border-top:1px solid #323335;width: 100%;height: 400px;background-color: #fff;}
+
+/* 좌측 메뉴 */
+.shopmenu {float: left;position: relative;z-index: 1010;width: 231px;height: 398px;border: 1px solid #323335;border-left-color: #d9d9d9;border-right: 0;background-color: #fff;}
+.shopmenu__head {position: relative;height: 55px;background-color: #1d4e86;margin: 0 -1px}
+.shopmenu__tit {display: inline-block;margin: 17px 0 0 16px;font-size: 18px;color: #fff;line-height: 1;letter-spacing: -1px;vertical-align: top;}
+.shopmenu__sub {display:none;/* display: inline-block; */margin-top: 21px;font-size: 12px;color: rgba(255, 255, 255, .6);line-height: 1;letter-spacing: -1px;vertical-align: top;}
+.shopmenu__cont {position: relative;height: 343px;margin: 0 -1px}
+.shopmenu__btn {position: absolute;top: -42px;width: 26px;height: 26px;background: transparent;outline: 0;opacity: .5}
+.shopmenu__btn:hover {opacity: 1}
+.shopmenu__btn--prev {right: 41px;}
+.shopmenu__btn--next {right: 10px;}
+.shopmenu__btn>span {display: block;background-image: url(http://img.enuri.info/images/homemain/home_rev_sprite.png);background-repeat: no-repeat;width: 26px;height: 26px;}
+.shopmenu__btn>span.icon__prev {background-position: 0 0;}
+.shopmenu__btn>span.icon__next {background-position: -40px 0;}
+.shopmenu__over {overflow: hidden;width: 233px;height: 343px;}
+.shopmenu__list {position: relative;border-top: 1px solid #e6e6e6;}
+.shopmenu__list>li {position: relative;height: 48px;border-bottom: 1px solid #e7e8ea;}
+.shopmenu__list>li:hover{background-color:rgba(0,0,0,.03)}
+.shopmenu__item {display: block;position: relative;padding: 14px 16px;}
+.shopmenu__item span {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;display: block;overflow: hidden;position: relative;z-index: 20;font-size: 13px;color: #333;line-height: 20px;text-overflow: ellipsis;white-space: nowrap;letter-spacing: -1px}
+.shopmenu__list>li.is-on .shopmenu__item span {color: #0060AF;font-weight: bold;font-size:14px}
+.shopmenu__list>li.is-on:hover{background:#fff}
+.shopmenu__list>li.is-on .shopmenu__item:before {content: "";display: block;position: absolute;top: -1px;left: 0;bottom: 0;right: 0;z-index: 0;border: 1px solid #0060AF;background-color:rgba(0,96,175,0.04)}
+
+/* 우측 컨테이너 */
+.shopcontainer {float: left;position: relative;width: 738px;height: 400px;background-color: #fff;}
+
+/* 콘텐츠 테두리 */
+.outline {display: block;position: absolute;z-index: 101;background-color: #274877;}
+.outline--top {top: 0;left: 0;width: 100%;height: 1px;}
+.outline--bottom {bottom: 0;left: 0;width: 100%;height: 1px;}
+.outline--left {top: 1px;left: 0;bottom: 1px;width: 1px;background-color: #ced3d6}
+.outline--right {top: 1px;bottom: 1px;right: 0;width: 1px;background-color: #ced3d6}
+.ad__mark {display: block;position: absolute;bottom: 0;right: 0;z-index: 100;width: 24px;height: 15px;background-position: -300px -100px;}
+.shopcontent {overflow: hidden;position: absolute;top: 0;left: 0;background-color: #fff;}
+
+/* 콘텐츠 상단 */
+.shopcontent__top {overflow: hidden;position: relative;z-index: 0;width: 100%;height: 200px;}
+.shoptype--b .shopcontent__top {border-bottom: 1px solid #e6e6e6;}
+.shoptype--c .shopcontent__top {border-bottom: 1px solid #e6e6e6;}
+.shoptype--d .shopcontent__top {border-bottom: 1px solid #e6e6e6;}
+.shoptype--g .shopcontent__top {border-bottom: 1px solid #e6e6e6;}
+
+/* 콘텐츠 하단 */
+.shopcontent__bottom {width: 100%;height: 199px;}
+
+/* 콘텐츠 좌측 (c타입 적용) */
+.shopcontent__left {float: left;position: relative;width: 476px;height: 400px;}
+.shopcontent__left:after {content: "";display: block;position: absolute;top: 0;right: 0;width: 1px;height: 100%;background-color: #eee;box-sizing: border-box;-webkit-box-sizing: border-box;}
+
+/* 콘텐츠 좌측 (c타입 적용) */
+.shopcontent__right {float: left;width: 262px;height: 400px;}
+
+/* 콘텐츠 전체 (e타입 적용) */
+.shopcontent__all {display: inline;float: left;width: 738px;height: 400px;margin: 0;}
+
+/* A Type 콘텐츠 1 - 배너 영역 */
+.conta1 {width: 100%;height: 200px;}
+.conta1__thumb {z-index: 0;width: 738px;height: 200px;}
+.conta1__thumb img {width: 738px;height: 200px;}
+.conta1__btn {top: 76px;cursor: pointer;}
+.slide__btn--prev.conta1__btn {left: 1px;}
+.slide__btn--next.conta1__btn {right: 1px;}
+
+/* A Type 콘텐츠 2 - 상품 영역 */
+.conta2 {float: left;overflow:hidden;height:199px;width: 500px;z-index: 10;position:relative;background-color:#fff;padding: 0 3px;}
+.conta2 .shopcont__tit {margin: 12px 0 10px;padding: 0 6px 0 11px;}
+.conta2 .shopcont__sub {margin-top: 15px;}
+.conta2__slide {display: inline;float: left;position: relative;width: 100%;}
+.conta2__list .slick-arrow {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.conta2__list .slick-arrow.slick-prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.conta2__list .slick-arrow.slick-next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.conta2__list .slick-arrow {top:40px;z-index: 100;cursor: pointer;}
+.conta2__list .slick-arrow:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.conta2__list .slick-arrow.slick-prev {left:-4px}
+.conta2__list .slick-arrow.slick-next {right:-4px}
+.conta2__list .slick-arrow.slick-prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.conta2__list .slick-arrow.slick-next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.conta2:hover .conta2__list .slick-arrow.slick-prev{transform:translateX(-30px);}
+.conta2:hover .conta2__list .slick-arrow.slick-next{transform:translateX(30px);}
+
+.conta2__list {padding: 0 6px;}
+.conta2__item {display: inline;float: left;width: 110px;margin: 0 6px;}
+.conta2__thumb {width: 110px;height: 110px;margin-bottom: 4px;overflow:hidden;position: relative;}
+.conta2__thumb:after {content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, .02);}
+.conta2__thumb img {width: 110px;height: 110px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.conta2__item:hover .conta2__thumb img,
+.contd2__item:hover .conta2__thumb img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+
+.conta2__txt {font-family: 'dotum', '돋움', 'gulim', '굴림', sans-serif;margin-bottom: 2px;font-size: 12px;line-height: 16px;color: #666;}
+.conta2__price {font-size: 14px;line-height: 16px;color: #0060AF;letter-spacing: -1px;}
+.conta2__price em {font-weight: 500;font-size: 18px;vertical-align: -1px;}
+.conta2__price.soldout em {font-weight:normal;font-size: 16px;}
+
+/* A Type 콘텐츠 3 - 이벤트 영역 */
+.conta3 {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;position: absolute;right:0;width: 232px;height: 100%;padding: 0;}
+.conta3__inner {padding: 25px 10px;text-align: center;}
+.conta3__inner .bar {display: block;width: 15px;height: 1px;margin: 0 auto 8px;background-color: #0060AF;}
+.conta3__tit {position: relative;margin-bottom: 10px;padding: 4px 0 5px;font-size: 14px;font-weight:bold;line-height: 1;color: #0060AF;}
+.conta3__detail {height: 60px;margin-bottom: 18px;font-size: 13px;color: #222;line-height: 20px;letter-spacing: -1px;-webkit-line-clamp: 3;}
+.conta3__detail:hover {text-decoration: underline;}
+.conta3__btn {font-family:'dotum','돋움','gulim','굴림',sans-serif;display: inline-block;margin: 0 auto;padding: 6px 16px;border: 1px solid #919799;font-size: 12px;color: #666;line-height: 1;vertical-align: top;text-align: center;}
+
+/* B Type 콘텐츠 1 - 왼쪽상단 상품 영역 */
+.contb1 {float: left;width: 202px;height: 200px;padding: 0 15px;border-right: 1px solid #e6e6e6;}
+.contb1__thumb {width: 200px;height: 113px;margin-bottom: 4px;border: 1px solid #e6e6e6;}
+.contb1__thumb img {width: 200px;height: 113px;}
+.contb1__thumb .mask {display: none;position: absolute;top: 0;bottom: 0;left: 0;right: 0;z-index: 10;width: 100%;height: 100%;}
+.contb1__thumb .play {position: absolute;bottom: 6px;right: 6px;z-index: 20;width: 30px;height: 30px;background-position: -250px -150px;}
+.contb1__txt {font-family: 'dotum','돋움','gulim','굴림',sans-serif;height: 32px;font-size: 12px;line-height: 16px;-webkit-line-clamp: 2;color: #666;}
+.contb1 .common__blocklnk:hover .contb1__txt {text-decoration: underline;}
+
+/* B Type 콘텐츠 2 - 구매 전 체크 게시판 영역 */
+.contb2 {float: left;width: 476px;height: 200px;padding: 0 14px;border-right: 1px solid #e6e6e6;overflow:hidden;}
+.contb2__slide {display: inline;float: left;position: relative;width: 100%;}
+.contb2__list .slick-arrow {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.contb2__list .slick-arrow.slick-prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.contb2__list .slick-arrow.slick-next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.contb2__list .slick-arrow {top:41px;z-index: 100;cursor: pointer;}
+.contb2__list .slick-arrow:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contb2__list .slick-arrow.slick-prev {left:-15px}
+.contb2__list .slick-arrow.slick-next {right:-15px}
+.contb2__list .slick-arrow.slick-prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contb2__list .slick-arrow.slick-next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contb2:hover .contb2__list .slick-arrow.slick-prev{transform:translateX(-30px);}
+.contb2:hover .contb2__list .slick-arrow.slick-next{transform:translateX(30px);}
+.contb2__item {display: inline;float: left;width: 230px;margin-right: 16px;}
+.contb2__item:nth-child(even) {margin-right: 0;}
+.contb2__thumb {width: 228px;height: 130px;margin-bottom: 4px;border: 1px solid #e6e6e6;}
+.contb2__thumb img {width: 228px;height: 130px;}
+.common__mainbadge--contb2 {top: -1px;left: -1px;}
+.contb2__txt {font-family: 'dotum','돋움','gulim','굴림',sans-serif;font-size: 12px;line-height: 16px;color: #666;}
+.contb2__item .common__blocklnk:hover .contb2__txt {text-decoration: underline;}
+
+/* B Type 콘텐츠 3 - 상품 영역 */
+.contb3 {float: left;width: 729px;height: 198px;padding: 0 4px;border-right: 1px solid #e6e6e6;}
+.contb3 .shopcont__tit {margin: 12px 0 9px;padding: 0 11px;}
+.contb3 .shopcont__sub {margin-top: 14px;}
+.contb3__slide {display: inline;float: left;position: relative;width: 100%;}
+.contb3__list .slick-arrow {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.contb3__list .slick-arrow.slick-prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.contb3__list .slick-arrow.slick-next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.contb3__list .slick-arrow {top:40px;z-index: 100;cursor: pointer;}
+.contb3__list .slick-arrow:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contb3__list .slick-arrow.slick-prev {left:-4px}
+.contb3__list .slick-arrow.slick-next {right:-4px}
+.contb3__list .slick-arrow.slick-prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contb3__list .slick-arrow.slick-next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contb3:hover .contb3__list .slick-arrow.slick-prev{transform:translateX(-30px);}
+.contb3:hover .contb3__list .slick-arrow.slick-next{transform:translateX(30px);}
+
+.contb3__list {padding: 0 15px;}
+.contb3__item {display: inline;float: left;width: 110px;margin: 0 15px;}
+.contb3__thumb {width: 110px;height: 110px;margin-bottom: 4px;overflow:hidden;position: relative;}
+.contb3__thumb:after {content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, .02);}
+.contb3__thumb img {width: 110px;height: 110px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.contb3__item:hover .contb3__thumb img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.contb3__txt {font-family: 'dotum','돋움','gulim','굴림',sans-serif;margin-bottom: 2px;font-size: 12px;line-height: 16px;color: #666;}
+.contb3__price {font-size: 12px;line-height: 16px;color: #0060AF;letter-spacing: -1px;}
+.contb3__price em {font-weight:500;font-size: 18px;vertical-align: -1px;}
+.contb3__price.soldout em {font-size: 16px;font-weight:normal}
+
+/* C Type 콘텐츠 1 - 상품 영역 */
+.contc1 {position:relative;float: left;width: 100%;overflow:hidden}
+.contc1 .shopcont__tit {margin: 13px 0 18px;padding: 0 11px 0 19px;color: #000;}
+.contc1 .shopcont__sub {margin-top: 15px;}
+.contc1__slide {display: inline;float: left;width: 100%;}
+.contc1__btn {top:176px;z-index: 100;cursor: pointer;display:block}
+.contc1__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contc1__btn.slide__btn--prev {left:0}
+.contc1__btn.slide__btn--next {right:0}
+.contc1__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contc1__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contc1:hover .contc1__btn.slide__btn--prev{transform:translateX(-30px);}
+.contc1:hover .contc1__btn.slide__btn--next{transform:translateX(30px);}
+
+.contb2__list .slick-arrow {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.contb2__list .slick-arrow.slick-prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.contb2__list .slick-arrow.slick-next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.contb2__list .slick-arrow {top:41px;z-index: 100;cursor: pointer;}
+.contb2__list .slick-arrow:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contb2__list .slick-arrow.slick-prev {left:-15px}
+.contb2__list .slick-arrow.slick-next {right:-15px}
+.contb2__list .slick-arrow.slick-prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contb2__list .slick-arrow.slick-next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contb2:hover .contb2__list .slick-arrow.slick-prev{transform:translateX(-30px);}
+.contb2:hover .contb2__list .slick-arrow.slick-next{transform:translateX(30px);}
+
+.contc1__list {overflow: hidden;padding: 0 40px;}
+.contc1__list li {overflow: hidden;}
+.contc1__item {display: inline;float: left;width: 110px;height: 175px;margin-right: 33px;}
+
+.contc1__item:first-child+div+div {margin-right: 0;}
+.contc1__item:first-child+div+div+div+div+div {margin-right: 0;}
+
+.contc1__thumb {width: 110px;height: 110px;margin-bottom: 4px;overflow:hidden;position: relative;}
+.contc1__thumb:after {content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, .02);}
+.contc1__thumb img {width: 110px;height: 110px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.contc1__item:hover .contc1__thumb img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+
+.contc1__txt {font-family: 'dotum','돋움','gulim','굴림',sans-serif;margin-bottom: 2px;font-size: 12px;line-height: 16px;color: #666;}
+.contc1__price {font-size: 12px;line-height: 16px;color: #0060AF;letter-spacing: -1px;}
+.contc1__price em {font-weight: 500;font-size: 18px;vertical-align: -1px;}
+.contc1__price.soldout em {font-weight:normal;font-size: 16px;}
+
+/* C Type 콘텐츠 2 - 왼쪽하단 상품 영역 */
+.contc2 {float: left;width: 230px;height: 200px;padding: 0 16px;}
+.contc2 .shopcont__tit {margin: 13px 6px 9px 0;}
+.contc2 .shopcont__sub {margin-top: 15px;color: #000;letter-spacing:-2px}
+.contc2__thumb {overflow: visible;width: 228px;height: 130px;margin-bottom: 4px;border: 1px solid #e6e6e6;}
+.contc2__thumb img {width: 228px;height: 130px;}
+.common__mainbadge--contc2 {top: -1px;left: -1px;height: 14px;padding: 3px 9px 5px;}
+.contc2__txt {font-family: 'dotum','돋움','gulim','굴림',sans-serif;font-size: 12px;line-height: 16px;color: #222;}
+.contc2 .common__blocklnk:hover .contc2__txt {text-decoration: underline;}
+
+/* C Type 콘텐츠 3 - 하단 관련태그 영역 */
+.contc3 {float: left;width: 100%;height: 100%;}
+.contc3__inner {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;overflow: hidden;padding: 25px 10px 25px 11px;text-align: center;}
+.contc3__tagwrap {float: left;width: 241px;}
+.contc3__tit {position: relative;margin-bottom: 10px;padding: 3px 0 5px;font-weight: bold;font-size: 14px;line-height: 1;color: #0060AF;}
+.contc3__inner .bar {display: block;width: 15px;height: 1px;margin: 0 auto 8px;background-color: #0060AF;}
+.contc3__detail {height: 40px;margin-bottom: 9px;font-size: 13px;color: #222;line-height: 20px;letter-spacing: -1px;-webkit-line-clamp: 2;}
+.contc3__taglist {overflow: hidden;height: 60px;text-align: center;}
+.contc3__taglist>li {display: inline-block;margin: 0 3px 5px;}
+.contc3__tagitem {display: inline-block;height: 12px;padding: 4px 10px 7px;border-radius: 13px;border: 1px solid #3a7bd5;font-weight: bold;font-size: 12px;color: #3a7bd5;letter-spacing: -1px;line-height: 1;vertical-align: top;}
+.contc3__prod {display: inline;float: left;width: 140px;height: 140px;margin: 5px 0 5px 35px;}
+.contc3__thumb {width: 140px;height: 140px;border-radius: 100%;}
+
+/* D Type 콘텐츠 1 - 배너 영역 */
+.contd1 {width: 100%;height: 200px;}
+.contd1__thumb {z-index: 0;width: 738px;height: 200px;}
+.contd1__thumb img {width: 738px;height: 200px;}
+.contd1__btn {top: 76px;cursor: pointer;}
+.slide__btn--prev.contd1__btn {left: 1px;}
+.slide__btn--next.contd1__btn {right: 1px;}
+
+.contd1 .slide__btn {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.contd1 .slide__btn.slide__btn--prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.contd1 .slide__btn.slide__btn--next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.contd1 .slide__btn {z-index: 100;cursor: pointer;}
+.contd1 .slide__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contd1 .slide__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contd1 .slide__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contd1:hover .slide__btn.slide__btn--prev{transform:translateX(-30px);}
+.contd1:hover .slide__btn.slide__btn--next{transform:translateX(30px);}
+
+/* D Type 콘텐츠 2 - 상품 영역 */
+.contd2 {float: left;width: 730px;height: 198px;padding: 0 4px;}
+.contd2 .shopcont__tit {margin: 12px 0 9px;padding: 0 11px;}
+.contd2 .shopcont__sub {margin-top: 14px;}
+.contd2__slide {display: inline;float: left;position: relative;width: 100%;}
+.contd2__list .slick-arrow {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.contd2__list .slick-arrow.slick-prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.contd2__list .slick-arrow.slick-next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.contd2__list .slick-arrow {top:40px;z-index: 100;cursor: pointer;}
+.contd2__list .slick-arrow:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contd2__list .slick-arrow.slick-prev {left:-4px}
+.contd2__list .slick-arrow.slick-next {right:-4px}
+.contd2__list .slick-arrow.slick-prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contd2__list .slick-arrow.slick-next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contd2:hover .contd2__list .slick-arrow.slick-prev{transform:translateX(-30px);}
+.contd2:hover .contd2__list .slick-arrow.slick-next{transform:translateX(30px);}
+
+.contd2__list {padding: 0 15px;}
+.contd2__item {display: inline;float: left;width: 110px;margin: 0 15px;}
+.contd2__thumb {width: 110px;height: 110px;margin-bottom: 4px;overflow:hidden;position: relative;}
+.contd2__thumb:after {content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, .02);}
+.contd2__thumb img {width: 110px;height: 110px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.contd2__item:hover .contd2__thumb img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+
+.contd2__txt {font-family:'dotum','돋움','gulim','굴림',sans-serif;margin-bottom: 2px;font-size: 12px;line-height: 16px;color: #666;}
+.contd2__price {font-size: 14px;line-height: 16px;color: #0060AF;letter-spacing: -1px;}
+.contd2__price em {font-weight: 500;font-size: 18px;vertical-align: -1px;}
+.contd2__price.soldout em {font-weight:normal;font-size: 16px;}
+
+/* F Type 콘텐츠 */
+.shoptype--f .ad_video{position:absolute;top:63px;left:25px;width:489px;height:275px;background:#000}
+.shoptype--f .ad_video iframe{width:100%;height:100%}
+
+/* G Type 콘텐츠 */
+.shoptype--g .ad_video{position:absolute;top:19px;right:26px;width:286px;height:162px;background:#000}
+.shoptype--g .ad_video iframe{width:100%;height:100%}
+
+/* G Type 콘텐츠 2 - 상품 영역 */
+.contg2 {float: left;width: 730px;height: 198px;padding: 0 4px;}
+.contg2 .shopcont__tit {margin: 12px 0 9px;padding: 0 11px;}
+.contg2 .shopcont__sub {margin-top: 14px;}
+.contg2__slide {display: inline;float: left;position: relative;width: 100%;}
+.contg2__list .slick-arrow {text-indent:-9999em;display: none;/* default 비노출 */position: absolute;z-index:99;width:60px;height:60px;background: url(http://img.enuri.info/images/homemain/home_rev_arrow.png) no-repeat;transition: all .3s ease;}
+.contg2__list .slick-arrow.slick-prev {transform:translateX(-60px);background-position: 100% 0px;background-color:rgba(0,1,1,.3);border-radius:0 30px 30px 0}
+.contg2__list .slick-arrow.slick-next {transform:translateX(60px);background-position: 0 -60px;background-color:rgba(0,1,1,.3);border-radius:30px 0 0 30px}
+.contg2__list .slick-arrow {top:40px;z-index: 100;cursor: pointer;}
+.contg2__list .slick-arrow:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.contg2__list .slick-arrow.slick-prev {left:-4px}
+.contg2__list .slick-arrow.slick-next {right:-4px}
+.contg2__list .slick-arrow.slick-prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.contg2__list .slick-arrow.slick-next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.contg2:hover .contg2__list .slick-arrow.slick-prev{transform:translateX(-30px);}
+.contg2:hover .contg2__list .slick-arrow.slick-next{transform:translateX(30px);}
+
+.contg2__list {padding: 0 15px;}
+.contg2__item {display: inline;float: left;width: 110px;margin: 0 15px;}
+.contg2__thumb {width: 110px;height: 110px;margin-bottom: 4px;overflow:hidden;position: relative;}
+.contg2__thumb:after {content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0, 0, 0, .02);}
+.contg2__thumb img {width: 110px;height: 110px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.contg2__item:hover .contg2__thumb img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+
+.contg2__txt {font-family:'dotum','돋움','gulim','굴림',sans-serif;margin-bottom: 2px;font-size: 12px;line-height: 16px;color: #666;}
+.contg2__price {font-size: 14px;line-height: 16px;color: #0060AF;letter-spacing: -1px;}
+.contg2__price em {font-weight: 500;font-size: 18px;vertical-align: -1px;}
+.contg2__price.soldout em {font-weight:normal;font-size: 16px;}
+
+/* 중단 컨테이너 공통 CSS */
+.msection__head {overflow: hidden;position: relative;padding: 32px 0 12px;border-bottom: 2px solid #222;}
+.msection__tit {display: inline;line-height: 32px;letter-spacing: -2px;font-size: 24px;float: left;vertical-align: top;}
+.msection__more {display: inline-block;float: left;position: relative;width: 32px;height: 32px;font-size: 0;letter-spacing: -1px;line-height: 1;vertical-align: top;color: #999;background: url(http://img.enuri.info/images/homemain/home_rev_sprite.png) -80px 0 no-repeat;}
+.msection__ultabs {overflow: hidden;position: absolute;top: 32px;right: 0;}
+.msection__ultabs>li {float: left;text-align: center;}
+.ultabs__item {display: block;position: relative;height: 30px;margin-left: 4px;font-size: 14px;line-height: 30px;border: 1px solid #ccc;border-radius: 16px;padding: 0 12px;letter-spacing: -.5px}
+.ultabs__item:hover {border-color: #888}
+.ultabs__item.is-on {border-color: #0060af;color: #0060af;}
+.msection__pager {font-size: 12px;color: #666;line-height: 1;vertical-align: top}
+.msection__pager .curr {font-weight: bold;color: #222;}
+
+/* 중단 와이드 AD 배너 영역 */
+.msection__midbanner {clear: both;}
+.msection__midbanner img {vertical-align: top;}
+
+/* 오늘의 뉴스 & 우측AD배너 영역 */
+.msection__todaynews {overflow: hidden;width: 100%;}
+
+/* 오늘의 뉴스 */
+.todaynews {overflow: hidden;float: left;width: 724px;height: 520px;}
+
+/* 오늘의 뉴스 상단 */
+.todaynews__head {}
+.todaynews__head .msection__tit {background: none;text-indent: 0;}
+.todaynews__head .msection__ultabs li {height: 32px;}
+
+/* 오늘의 뉴스 하단 */
+.todaynews__cont {overflow: hidden;clear: both;position: relative;padding-top:20px;}
+.todaynews__btn {top:243px;}
+.todaynews__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.todaynews__btn.slide__btn--prev {left:0}
+.todaynews__btn.slide__btn--next {right:0}
+.todaynews__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.todaynews__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.todaynews__cont:hover .todaynews__btn.slide__btn--prev{transform:translateX(-30px);}
+.todaynews__cont:hover .todaynews__btn.slide__btn--next{transform:translateX(30px);}
+
+/* 썸네일 기사 */
+.todaythumb {float: left;width: 100%;}
+
+.todaythumb__list {overflow: hidden;width: 100%;padding-bottom:12px;border-bottom: 1px solid #ddd;}
+.todaythumb__list>li {display: inline;float: left;width: 232px;margin-right: 14px;}
+.todaythumb__list>li:first-child+li+li {margin-right: 0;}
+.todaythumb__list>li:hover {text-decoration: underline;}
+.todaythumb__list>li .todaythumb__img img{transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.todaythumb__list>li:hover .todaythumb__img img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.todaythumb__img {position: relative;width: 232px;height: 190px;/* border:1px solid #e6e6e6; */margin-bottom: 10px;}
+.todaythumb__img:after {content: "";position: absolute;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.02);    }
+.todaythumb__img img {width: 100%;height: 100%;}
+.todaythumb__txt {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;height:40px;font-size: 13px;line-height: 20px;letter-spacing: -1px;font-weight:bold;color: #222;-webkit-line-clamp: 2;}
+
+/* 20190617 오늘의 뉴스 - 누리머니 아이콘 추가 */
+.nurimoney__ico {position: relative;display: inline-block;background-image: url(http://img.enuri.info/images/knowcom/ico_nuri_money.png);background-repeat: no-repeat;text-indent: -9999em}
+.nurimoney__ico--sm {width: 50px;height: 17px;background-position: 0 -90px;margin-right: 4px;vertical-align: middle;top: -1px}
+.nurimoney__ico--nm {width: 52px;height: 20px;background-position: 0 -60px;margin-right: 4px;vertical-align: 2px;top: 2px;margin-top: -2px;}
+
+/* 텍스트 기사 */
+.todaytext {overflow: hidden;clear: both;width: 100%;padding-top: 16px;}
+.todaytext__list {font-family: 'dotum', '돋움', 'gulim', '굴림', sans-serif;}
+.todaytext__list>li {float: left;position: relative;width: 338px;margin-right: 20px;padding-left: 12px;}
+.todaytext__list>li:nth-child(even) {margin-right: 0;}
+.todaytext__list>li:before {content: "";display: block;position: absolute;top: 10px;left: 0;width: 4px;height: 4px;background-color: #b7b7b7;border-radius: 2px}
+.todaytext__item {display: block;margin-bottom: 1px;padding: 0;font-size: 12px;color: #666;line-height: 24px;}
+.todaytext__item:hover {text-decoration: underline;}
+.todaytext__item.is-randombold {color: #222;font-weight: bold}
+
+/* 오늘의 뉴스 우측 영역 */
+.todayright {display: inline;float:right;width:232px;margin-top:33px;}
+
+/* 우측AD배너 */
+.rightadbanner {margin-bottom:12px;margin-top:2px;height:295px;background:#fafafa}
+.rightadbanner_lnk {display: block;border: 1px solid #d9d9d9;}
+.rightadbanner_lnk img {width: 230px;height: 293px;vertical-align: top;}
+
+/* 사용기 */
+.usereview {overflow: hidden;position: relative;width: 232px;height: 170px;}
+.usereview__btn {top:50%;margin-top:-30px;background-color:rgba(255,255,255,.7)}
+.usereview__btn:hover{transition-duration:.1s;background-color:rgba(255,255,255,.9)}
+.usereview__btn.slide__btn--prev {left:0;background-position:100% -120px}
+.usereview__btn.slide__btn--next {right:0;background-position:0 -180px}
+.usereview__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.usereview__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.usereview:hover .usereview__btn.slide__btn--prev{transform:translateX(-30px)}
+.usereview:hover .usereview__btn.slide__btn--next{transform:translateX(30px)}
+.usereview__cont {position: relative;width: 100%;height: 100%;}
+.usereview__cont:after {content: "";display: block;position: absolute;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;border: 1px solid #000;opacity: 0.05;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.usereview__cont>a {display: block;width: 100%;height: 100%;}
+.usereview__cont>a img {bottom: auto;z-index: 1;width: 100%;height: 100%;}
+.usereview__cont .usereview__badge {font-family: 'dotum', '돋움', 'gulim', '굴림', sans-serif;top: 0;left: 0;height: 12px;padding: 5px 12px;border: 0;background-color: #f44;}
+.usereview__cont .tit {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;display: block;overflow: hidden;position: absolute;left: 0;bottom: 0;z-index: 100;width: 232px;height: 34px;padding: 10px;font-size: 13px;color: #fff;line-height: 1;letter-spacing: -.5px;text-overflow: ellipsis;white-space: nowrap;background-color: rgba(0, 0, 0, 0.7);box-sizing: border-box;-webkit-box-sizing: border-box;}
+
+/* 쇼핑지식 - 3컬럼 레이아웃 */
+.mknowhow {overflow: hidden;}
+.mknowhow__head {}
+.mknowhow__head .msection__tit {background: none;text-indent: 0;}
+
+/* 커뮤니티 인기글 상단 */
+.mknowhow__cont {overflow: hidden;}
+.mknowhow__cont .msection__more {position: absolute;top: 0;right: 0;top: 22px}
+.mknowhow__cont .knowhowbox--1 {width: 355px;overflow: hidden}
+.mknowhow__cont .knowhowbox--1 .columnbox__head {margin: 0;border: 0;}
+.mknowhow__cont .knowhowbox--1 .columnbox__tit {}
+
+/* 에누리TV 상단  */
+.mknowhow__cont .knowhowbox--2 {width: 355px;overflow: hidden}
+.mknowhow__cont .knowhowbox--2 .columnbox__head {margin: 0;border: 0;}
+.mknowhow__cont .knowhowbox--2 .columnbox__tit {}
+
+/* 체험단 상단  */
+.mknowhow__cont .knowhowbox--3 {width: 232px;margin-right: 0;}
+.mknowhow__cont .knowhowbox--3 .columnbox__head {margin: 0;border: 0;}
+.mknowhow__cont .knowhowbox--3 .columnbox__tit {}
+
+/* 쇼핑지식 FUN파크 상단  */
+.mknowhow__cont .knowhowbox--4 {width: 232px;margin-right: 0;}
+.mknowhow__cont .knowhowbox--4 .columnbox__head {margin: 0;border: 0;}
+.mknowhow__cont .knowhowbox--4 .columnbox__tit {}
+
+/* 커뮤니티인기글 */
+.mcommnitybest {overflow: hidden;height: 320px;}
+
+/* 쇼핑지식 > 커뮤니티인기글 좌/우 버튼 */
+.mcommnitybest__btn {top:50%;margin-top:-30px;cursor: pointer;z-index: 100;display: block}
+.mcommnitybest__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mcommnitybest__btn.slide__btn--prev {left:0}
+.mcommnitybest__btn.slide__btn--next {right:0}
+.mcommnitybest__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mcommnitybest__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mcommnitybest:hover .mcommnitybest__btn.slide__btn--prev{transform:translateX(-30px);}
+.mcommnitybest:hover .mcommnitybest__btn.slide__btn--next{transform:translateX(30px);}
+
+.commnitybestbox {position: relative;}
+.commnitybest__list {padding-top: 11px;border-top: 1px solid #ededed;}
+.commnitybest__list>li {clear: both;position: relative;padding: 0 10px 3px 12px;}
+.commnitybest__list>li:before {content: "";display: block;position: absolute;top: 10px;left: 0;width: 4px;height: 4px;background-color: #b7b7b7;border-radius: 2px}
+.commnitybest__item {font-family: 'dotum', '돋움', 'gulim', '굴림', sans-serif;display: block;font-size: 12px;color: #666;line-height: 24px;vertical-align: middle;}
+.commnitybest__item:hover {text-decoration: underline;}
+.commnitybest__item .reply {display: inline-block;font-size: 11px;margin-left: 3px;color: #0060AF;}
+
+/* 1판, 썸네일 2개 + 텍스트링크 6개 */
+.commnitybest__list.has-thumb {padding-top: 0;border-top: 0;}
+.commnitybest__list.has-thumb>li {padding-bottom: 0;}
+.commnitybest__list.has-thumb>li.top {display: inline;float: left;clear: none;width: 172px;margin-bottom:11px;padding: 0;border-bottom: 1px solid #ddd;}
+.commnitybest__list.has-thumb>li.top:before {display: none;}
+.commnitybest__list.has-thumb>li.top--lt {padding-right: 11px;}
+.commnitybest__list.has-thumb>li.top--rt {}
+.commnitybest__list.has-thumb>li .commnitybest__item {width: 100%;margin-bottom: 3px;line-height: 24px;}
+.commnitybest__list.has-thumb>li .commnitybest__item .thumb {display: block;overflow: hidden;position: relative;width: 172px;height: 100px;margin-bottom:10px;text-align: center;}
+.commnitybest__list.has-thumb>li .commnitybest__item .thumb:after {content: "";position: absolute;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.02);}
+.commnitybest__list.has-thumb>li .commnitybest__item .thumb img {position: absolute;top: 0;left: 0;right: 0;width: 100%;height: auto;max-width: 100%;margin: auto;vertical-align: top;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.commnitybest__list.has-thumb>li:hover .commnitybest__item .thumb img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.commnitybest__list.has-thumb>li .commnitybest__item .txt {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;height: 19px;margin-bottom: 11px;font-size: 13px;line-height: 18px;letter-spacing: -1px;color: #222}
+
+/* 쇼핑지식 > 에누리TV */
+.menuritvbox {overflow: hidden;position: relative;height: 320px;}
+
+/* 쇼핑지식 > 에누리TV 좌/우 버튼 */
+.menuritvreview__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display: block;}
+.menuritvreview__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.menuritvreview__btn.slide__btn--prev {left:0}
+.menuritvreview__btn.slide__btn--next {right:0}
+.menuritvreview__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.menuritvreview__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.knowhowbox--2:hover .menuritvreview__btn.slide__btn--prev{transform:translateX(-30px);}
+.knowhowbox--2:hover .menuritvreview__btn.slide__btn--next{transform:translateX(30px);}
+
+.menuritv__list {}
+.menuritv__list>li {overflow: hidden;position: relative;margin-bottom: 10px;}
+.menuritv__list>li:first-child {background-color: #f9f9f9;}
+.menuritv__list>li:first-child+li+li {margin-bottom: 0;background-color: #f9f9f9;}
+.menuritv__list>li .thumb {display: inline;overflow: hidden;float: left;position: relative;width: 172px;height: 100px;margin-right: 10px;text-align: center;}
+.menuritv__list>li .thumb:after {content: "";display: block;position: absolute;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;border: 1px solid #000;opacity: 0.05;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.menuritv__list>li .thumb img {position: absolute;top: 0;bottom: 0;left: 0;right: 0;width: 100%;height: 100%;max-width: 100%;max-height: 100%;margin: auto;vertical-align: middle;}
+.menuritv__list>li .thumb .mask {display: none;position: absolute;top: 0;bottom: 0;left: 0;right: 0;z-index: 10;width: 100%;height: 100%;}
+.menuritv__list>li .thumb .play {display: none;position: absolute;top: 50%;left: 50%;z-index: 20;width: 48px;height: 35px;margin-top: -17px;margin-left: -24px;background-position: -200px -150px;}
+.menuritv__list>li .thumb:hover .mask,
+.menuritv__list>li .thumb:hover .play {display: block;}
+.menuritv__list>li .detail {font-family: 'dotum', '돋움', 'gulim', '굴림', sans-serif;float: left;width: 165px;}
+.menuritv__list>li .detail .channel {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;margin: 14px 0 10px 1px;font-size: 13px;letter-spacing:-1px;font-weight: bold;color: #1d4e86;line-height: 14px;}
+.menuritv__list>li .detail .channel>a {color: #3a7bd5;}
+.menuritv__list>li .detail .channel .icon__play {display: inline-block;width: 16px;height: 13px;margin-right: 3px;vertical-align: top;background-position: -70px -124px;}
+.menuritv__list>li .detail .pname {height: 48px;font-size: 12px;line-height: 16px;color: #666;-webkit-line-clamp: 3;}
+.menuritv__list>li .detail .pname:hover {text-decoration: underline;}
+
+/* 쇼핑지식 > Fun파크 */
+.mfunpark {overflow: hidden;position: relative;width: 100%;height: 320px;}
+
+/* 쇼핑지식 > 체험단 좌/우 버튼 */
+.mfunpark__btn {top:50%;margin-top:-30px;z-index: 10;cursor: pointer;display: block}
+.mfunpark__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mfunpark__btn.slide__btn--prev {left:0}
+.mfunpark__btn.slide__btn--next {right:0}
+.mfunpark__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mfunpark__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mfunpark:hover .mfunpark__btn.slide__btn--prev{transform:translateX(-30px);}
+.mfunpark:hover .mfunpark__btn.slide__btn--next{transform:translateX(30px);}
+.mfunpark__img {width: 232px;height: 320px;}
+.mfunpark__img:after {content: "";display: block;position: absolute;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;border: 1px solid #000;opacity: 0.05;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.mfunpark__img img {width: 100%;height: 100%;}
+
+/* 에누리 인기상품 */
+.mgoods {overflow: hidden;}
+.mgoods__cnt{position: relative;}
+.mgoods__cnt .tx_mgoods_page{position: absolute;right:0;top:-40px;font-size:14px;}
+.mgoods__list{overflow:hidden;margin:0 0 0 -17px;width:987px}
+.mgoods__list > li{float:left;padding:20px 0 20px 17px;position: relative;border-top:1px solid #dddddd}
+.mgoods__list li > a{display:block;position:relative;height:290px;width:312px;}
+.mgoods__list li .msg{position:absolute;top:107px;right:8px;line-height:13px;height:36px;}
+.mgoods__list li .msg .tx_msg{display:block;position:relative;padding:4px 0 0 20px;width:70px;height:30px;background-color:#fff;color:#40a7e9;font-size:11px;z-index: 2;text-align:center;border:1px solid #40a7e9;border-radius:18px;letter-spacing:-1px;box-shadow:1px 1px 0px rgba(0,0,0,.15)}
+.mgoods__list li .msg .tx_msg em{-webkit-animation:blinkingText 1.2s infinite;animation:blinkingText 1.2s infinite;}
+@-webkit-keyframes blinkingText{
+    0%,59%,100%{color:#0073be}
+    60%,99%{color:transparent}    
+}
+@keyframes blinkingText{
+    0%,59%,100%{color:#0073be}
+    60%,99%{color:transparent}    
+}
+.mgoods__list li .msg .tx_msg:before{content:"";position: absolute;top:-1px;left:-12px;width:36px;height:36px;background:url(http://img.enuri.info/images/home/ico_arr_down.png) no-repeat 50% 50% #40a7e9;border-radius:50% 0 0 50%;overflow:hidden}
+.mgoods__list li .tag{position: absolute;width:48px;z-index:1}
+.mgoods__list li .tag .tx_tag{display:block;width:48px;height:20px;line-height:20px;font-size:12px;text-align:center;color:#fff;background-color:#0073be}
+.mgoods__list li .img_goods{width:312px;height:156px;position: relative;display:block;text-align:center;overflow:hidden}
+.mgoods__list li .img_goods:after{content:"";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,.03);z-index: 1;}
+.mgoods__list li .img_goods .img_goods_box{display:block;width:314px;height:158px;margin:-1px 0 0 -1px;transition:.2s transform cubic-bezier(.165,.84,.44,1);background-repeat:no-repeat;background-size:auto 100%;background-position:50% 50%;border:0;outline:none}
+.mgoods__list li:hover .img_goods .img_goods_box{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.mgoods__list li .group_info{display:block;padding-top:8px;line-height:20px;font-size:14px;color:#222;letter-spacing:-.5px}
+.mgoods__list li .group_info > span{display:block}
+.mgoods__list li .group_info .info_head{font-size:13px;color:#888}
+.mgoods__list li .group_info .info_goods_tit{font-family: 'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;letter-spacing:-1px;margin-top:4px;height:40px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-wrap:break-word;overflow:hidden;}
+.mgoods__list li > a:hover .group_info .info_goods_tit{text-decoration:underline;}
+.mgoods__list li .group_info .info_price{margin-top:4px;padding:7px 110px 7px 0;position: relative;}
+.mgoods__list li .group_info .info_price strong{font-size:18px}
+.mgoods__list li .group_info .info_foot{margin-top:8px}
+.mgoods__list li .group_info .info_foot .info_tag{height:14px;overflow:hidden;font-size:13px;line-height:14px}
+.mgoods__list li .group_info .info_foot .info_tag li{float:left;margin-left:12px;padding-left:8px;position: relative;color:#555}
+.mgoods__list li .group_info .info_foot .info_tag li:first-child{margin-left:0;}
+.mgoods__list li .group_info .info_foot .info_tag li:before{content:"";position:absolute;width: 2px;height: 2px;border-radius: 2px 2px;background-color: #aaa;left: 0;top: 6px;}
+.mgoods__list li .group_info .info_foot .info_tag li.tag_emoney{color:#0073be;padding-left:16px;}
+.mgoods__list li .group_info .info_foot .info_tag li.tag_emoney:before{width:14px;height:14px;border-radius:none;top:0;background: url(http://img.enuri.info/images/home/ico_stick_v2.png) 0 -40px no-repeat;}
+.mgoods__list li .btn__compare{position:absolute;right:0;top:252px;line-height:34px;height:36px;width:110px;font-size:13px;border:1px solid #dddddd;border-radius:17px;text-align:center;color:#555;background:#fff;outline:none;font-family: Roboto, 'Noto Sans KR', "맑은 고딕", Malgun Gothic, Dotum, "돋움", verdana, sans-serif;font-weight: 400;letter-spacing:-.5px}
+.mgoods__list li .btn__compare em{color:#0073be;font-size:12px;letter-spacing:0}
+.mgoods__list li .btn__compare:after{content:"";display:inline-block;width:16px;height:16px;background: url(http://img.enuri.info/images/homemain/home_rev_sprite.png) -40px 0 no-repeat;background-size:300px;vertical-align:-3px;opacity:.5;margin-right:-5px}
+
+.mgoods__btn {top:50%;margin-top:-30px;cursor: pointer;z-index: 100;display: block}
+.mgoods__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mgoods__btn.slide__btn--prev {left:0}
+.mgoods__btn.slide__btn--next {right:0}
+.mgoods__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mgoods__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mgoods__cnt:hover .mgoods__btn.slide__btn--prev{transform:translateX(-30px);}
+.mgoods__cnt:hover .mgoods__btn.slide__btn--next{transform:translateX(30px);}
+
+/* pick &크레이지딜 & 이벤트 */
+.msection__crazy__event {overflow: hidden;margin-bottom:20px}
+
+/* (삭제) 200701 서비스 종료뒤 삭제 */
+    /* 크레이지딜 */
+    .crazydeal {overflow: hidden;float: left;width: 478px;}
+    /* 크레이지딜 상단 */
+    .crazydeal__head {margin-bottom: 20px}
+    .crazydeal__head .msection__tit {width: 155px;height: 32px;background: url(http://img.enuri.info/images/homemain/home_rev_sprite.png) no-repeat 0 -40px;}
+    .crazydeal__head .msection__more {}
+    /* 크레이지딜 하단 */
+    .crazydeal__cont {position: relative;}
+    /* 크레이지딜 좌/우 버튼 */
+    .crazydeal__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display: block;}
+    .crazydeal__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+    .crazydeal__btn.slide__btn--prev {left:0}
+    .crazydeal__btn.slide__btn--next {right:0}
+    .crazydeal__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+    .crazydeal__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+    .crazydeal__cont:hover .crazydeal__btn.slide__btn--prev{transform:translateX(-30px);}
+    .crazydeal__cont:hover .crazydeal__btn.slide__btn--next{transform:translateX(30px);}
+    .crazydeal__list {overflow: hidden;position: relative;width: 476px;height: 238px;border: 1px solid #e1edff;background-color: #f2f9ff;box-sizing: content-box;-webkit-box-sizing: content-box;}
+    .crazydeal__item {display: block;overflow: hidden;position: relative;width: 100%;height: 100%;}
+    .crazydeal__thumb {display: inline;position: relative;float: right;margin: 20px 20px 20px 0;width: 205px;height: 205px;}
+    /* 품절 */
+    .crazydeal__thumb .soldout {position: absolute;top: 50%;left: 50%;width: 106px;height: 106px;z-index: 110;margin: -53px 0 0 -53px;background-position: -460px -100px;}
+    .crazydeal__thumb .thumb {display: block;vertical-align: top;}
+    .crazydeal__thumb .thumb img {width: 100%;height: 100%;}
+    /* 퍼센트 영역 */
+    .salepercent {overflow: hidden;position: absolute;top: 0;right: -2px;z-index: 100;width: 78px;height: 68px;text-align: center;background-position: -200px 0;}
+    .salepercent__point {display: block;margin: 8px auto 0;font-size: 14px;color: #fff;letter-spacing: -1px;text-indent: 0;line-height: 1;}
+    .salepercent__point strong {display: inline-block;margin-right: 1px;font-weight: bold;font-size: 28px;color: #fff;line-height: 1;}
+    .salepercent__numb {display: block;margin-top: -1px;font-size: 12px;line-height: 1.5;color: #ff0;text-indent: 0;text-align: center;vertical-align: top;}
+    .salepercent__numb strong {font-weight: bold;font-size: 14px;}
+
+    .crazydeal__detail {display: inline;float: left;position: relative;width: 210px;margin: 30px 0 0 30px;}
+    .crazydeal__detail .tagarea {width: 156px;height: 33px;margin-bottom: 2px;text-align: center;background-position: -380px 0;}
+    .crazydeal__detail .tagarea .date {font-weight: bold;font-size: 14px;color: #fff;line-height: 25px;text-indent: 0;letter-spacing: -.5px;}
+    .crazydeal__detail .tagarea .time {overflow: hidden;text-indent: 0;text-align: left;}
+    .crazydeal__detail .tagarea .time span {display: inline;float: left;line-height: 26px;letter-spacing: -.25px;text-indent: 0;}
+    .crazydeal__detail .tagarea .time .txt {margin: 0 9px 0 13px;font-size: 13px;color: #fff;}
+    .crazydeal__detail .tagarea .time .numb {position: relative;font-weight: bold;font-size: 14px;color: #fff600;}
+    .crazydeal__detail .tagarea .time .numb:before {content: "";display: inline;float: left;width: 15px;height: 15px;margin: 6px 4px 0 0;background: url(http://img.enuri.info/images/homemain/main_stripe.png) -540px 0 no-repeat;}
+    .crazydeal__detail .pname {height: 61px;margin: 10px 0 14px;font-size: 26px;line-height: 30px;vertical-align: top;color: #222;letter-spacing: -2px;-webkit-line-clamp: 2;word-break: keep-all;}
+    /* 판매가 */
+    .prodlist__price {width: 100%;}
+    .prodlist__price>li {display: inline;clear: both;float: left;width: 100%;margin-top: 6px;}
+    .prodlist__price--tit {display: inline;float: left;font-size: 14px;color: #999;line-height: 20px;}
+    .prodlist__price--price {float: right;padding: 0 1px;font-size: 14px;color: #999;line-height: 20px;}
+    .prodlist__price--price strong {font-size: 16px}
+    .prodlist__price--price span {font-size: 14px;vertical-align: -1px;}
+    /* 특가 */
+    .prodlist__price--tit.special {margin-top: 1px;margin-right: 12px;padding: 0;font-size: 18px;color: #f75258;letter-spacing: -1px;}
+    .prodlist__price--price.special {margin-top: -3px;font-size: 18px;color: #f75258;letter-spacing: -1px;}
+    .prodlist__price--price.special strong {font-weight: 500;font-size: 30px;color: #f75258;vertical-align: -3px;}
+    /* 가격 6자리 이상 */
+    .prodlist__price--price.special.is-sixnum {margin-top: 0;font-size: 15px;}
+    .prodlist__price--price.special.is-sixnum strong {font-size: 26px;}
+    /* 일반이벤트일 때 */
+    .crazydeal__item.is-evt {}
+    .crazydeal__item.is-evt .pname {margin-bottom: 3px;}
+    /* EVENT 뱃지 */
+    .salepercent__event {overflow: hidden;position: absolute;top: 0;right: 0;z-index: 100;width: 60px;height: 67px;text-align: center;background-position: -300px 0;}
+    .crazydeal__item.is-evt .evt__sub {min-height: 21px;margin-bottom: 17px;font-size: 14px;color: #666;}
+    .crazydeal__item.is-evt .evt__btn {display: block;width: 110px;height: 34px;background-position: -380px -50px;}
+
+/* 여기까지 */
+
+/* PICK */
+.mpick{overflow:hidden;float:left;width: 478px;}
+.mpick__head {margin-bottom: 20px}
+.mpick__head .msection__tit {height:32px;letter-spacing:0}
+.mpick__cont {position: relative;border:1px solid #e1edff;overflow:hidden}
+.mpick__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display: block;}
+.mpick__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mpick__btn.slide__btn--prev {left:0}
+.mpick__btn.slide__btn--next {right:0}
+.mpick__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mpick__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mpick__cont:hover .mpick__btn.slide__btn--prev{transform:translateX(-30px);}
+.mpick__cont:hover .mpick__btn.slide__btn--next{transform:translateX(30px);}
+.mpick__list {overflow:hidden;position:relative;width:476px;height:238px;background-color:#f2f9ff;box-sizing: content-box;-webkit-box-sizing: content-box;}
+.mpick__item {display: block;overflow: hidden;position: relative;width: 100%;height: 100%;}
+.mpick__item > a{display:block;}
+.mpick__item > a > img{width:476px;height:238px;}
+.mpick__thumb {display: inline;position:relative;float:right;margin: 16px 20px;width: 208px;height: 208px;border-radius:50%;overflow:hidden}
+.mpick__thumb img{width:100%;height:100%}
+.mpick__detail{position: absolute;top:25px;left:40px;width:194px;}
+.mpick__detail .tx_mpick_tag{display:inline-block;height:26px;line-height:26px;padding:0 16px;border-radius:14px;background-color:#273c5b;color:#fff;font-size:14px}
+.mpick__detail .tx_mpick_tit,
+.mpick__detail .tx_mpick_sub{display:block;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-wrap:break-word;overflow:hidden;}
+.mpick__detail .tx_mpick_tit{margin-top:22px;height:72px;line-height:36px;font-size:28px;color:#333;letter-spacing:-2px;}
+.mpick__detail .tx_mpick_sub{margin-top:16px;height:40px;line-height:20px;font-size:16px;color:#666;letter-spacing:-1px;}
+
+/* 이벤트 영역 */
+.mevent {overflow: hidden;float: right;width: 478px;}
+.mevent__head {margin-bottom: 20px}
+.mevent__head .msection__tit {background: none;text-indent: 0;}
+.mevent__head .msection__more {}
+.mevent__cont {overflow: hidden;position: relative;width: 476px;height: 238px;border: 1px solid #eee;}
+
+/* 이벤트 배너 */
+.meventslide {overflow: hidden;float: left;width: 396px;position: relative;}
+/* 이벤트 좌/우 버튼 */
+.mevent__btn {top:50%;margin-top:-31px;background-color:rgba(255,255,255,.7);z-index: 100;cursor: pointer;display: block;border:1px solid rgba(0,0,0,.1)}
+.mevent__btn:hover{transition-duration:.1s;background-color:rgba(255,255,255,.9)}
+.mevent__btn.slide__btn--prev {left:0;background-position:100% -120px}
+.mevent__btn.slide__btn--next {right:0;background-position:0 -180px}
+.mevent__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mevent__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.meventslide:hover .mevent__btn.slide__btn--prev{transform:translateX(-30px)}
+.meventslide:hover .mevent__btn.slide__btn--next{transform:translateX(30px)}
+.meventslide__item {width: 100%;height: 100%;}
+
+/* 이벤트 아이콘 */
+.meventicons {float: left;width: 80px;padding: 0;}
+.meventicons__list {overflow: hidden;}
+.meventicons__list>li {position: relative;width: 100%;}
+.meventicons__list>li .icon__event {display: block;width: 100%;}
+.meventicons__list>li>a {display: block;}
+.meventicons__list>li .icon__event--1 {width: 100%;height: 79px;border-bottom: 1px solid #eee;background: url(http://img.enuri.info/images/homemain/meventicon_attend.jpg) center no-repeat;}
+.meventicons__list>li .icon__event--2 {width: 100%;height: 78px;border-bottom: 1px solid #eee;background: url(http://img.enuri.info/images/homemain/meventicon_buy.jpg) center no-repeat;}
+.meventicons__list>li .icon__event--3 {width: 100%;height: 79px;background: url(http://img.enuri.info/images/homemain/meventicon_evt.jpg) center no-repeat;}
+
+/* 해외쇼핑*/
+.msection__global {overflow: hidden;position: relative;}
+.mglobal__head {margin-bottom: 20px;}
+.mglobal__head .msection__tit {background: none;text-indent: 0;}
+
+.mglobal__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;}
+.mglobal__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mglobal__btn.slide__btn--prev {left:0}
+.mglobal__btn.slide__btn--next {right:0}
+.mglobal__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mglobal__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mglobal__bnrlist:hover .mglobal__btn.slide__btn--prev,
+.mglobal__goods:hover .mglobal__btn.slide__btn--prev,
+.mglobal__brandlist:hover .mglobal__btn.slide__btn--prev{transform:translateX(-30px)}
+.mglobal__bnrlist:hover .mglobal__btn.slide__btn--next,
+.mglobal__goods:hover .mglobal__btn.slide__btn--next,
+.mglobal__brandlist:hover .mglobal__btn.slide__btn--next{transform:translateX(30px)}
+
+.mglobal__inner {position: relative;overflow: hidden;height: 401px}
+.mglobal__bnrlist {overflow: hidden;position: relative;width: 380px;height: 288px;border: 1px solid #e6e6e6;float: left}
+.mglobal__goods {overflow: hidden;position: relative;width: 573px;height: 288px;border: 1px solid #e6e6e6;float: right}
+.mglobal__goods .msection__pager {position: absolute;font-size: 12px;line-height: 2;top: 10px;right: 16px;text-align: right;color: #aaa;}
+.mglobal__brandlist {overflow: hidden;position: relative;width: 968px;border: 1px solid #e6e6e6;float: left;margin-top: 14px;height: 91px}
+.mglobal__cont {overflow: hidden;position: relative;width: 968px;border: 1px solid #e6e6e6;}
+.mglobalbox {overflow: hidden;position: relative;width: 380px;}
+.mglobalBrdbox {overflow: hidden;position: relative;width: 968px}
+.mglobal__bnr,
+.mglobal__bnr img {border: 0;width: 380px;height: 288px;}
+.mglobal__item {float: left;width: 193px;height: 75px;padding: 8px 0;border-right: 1px solid #e6e6e6;}
+.mglobal__brandlist .mglobalBrdbox .mglobal__item:nth-child(5n+5) {border-right: 0;width: 192px}
+
+.mglobal__item>a {display: block;}
+.mglobal__item_thumb {display: block;margin: 0 auto;width: 101px;height: 52px}
+.mglobal__item_thumb img {width: 101px;height: 52px}
+.mglobal__item_txt {display: block;line-height: 13px;height: 14px;font-size: 14px;color: #0073be;text-align: center;letter-spacing: -.5px;}
+.mglobal__ico_emoney {background-image: url(http://img.enuri.info/images/global/common_sprite.png);display: inline-block;height: 14px;width: 14px;background-position: -120px -20px;text-indent: -9999em;margin-right: 2px;}
+
+.mglobalgoods>li {width: 600px;height: 289px}
+.mglobalgoods li .list_inner {padding: 29px 29px 28px 29px;position: relative;}
+.mglobalgoods li .thumb {position: relative;float: left;display: block;width: 230px;height: 230px;background-image: url(http://img.enuri.info/images/global/global_noimg.gif);background-repeat: no-repeat;background-size: 60% 60%;background-position: 50% 50%;overflow: hidden;}
+.mglobalgoods li .thumb:after {content: "";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, .02);z-index: 2;}
+.mglobalgoods li .thumb .thumb_img {position: absolute;top: 12px;left: 12px;right: 12px;bottom: 12px;background-repeat: no-repeat;background-size: contain;background-position: 50% 50%;z-index: 1;}
+
+.mglobalgoods li .info {float: left;position: relative;margin-top: 4px;margin-left: 20px;width: 250px;letter-spacing: -1px}
+.mglobalgoods li .info .txt_prd_nm {display: block;line-height: 24px;height: 48px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap: break-word;font-size: 20px;color: #222;margin-bottom: 5px}
+.mglobalgoods li .info .compare_price {margin-bottom: 10px;min-height: 110px}
+.mglobalgoods li .info .compare_price li {line-height: 32px;height: 32px;border-bottom: 1px solid #eeeeee;padding: 2px 0;overflow: hidden}
+.mglobalgoods li .info .compare_price li:last-child {border-bottom: 0}
+.mglobalgoods li .info .ico_brand {height: 16px;float: left;width: 94px;padding-top: 9px;line-height: 16px;font-size: 13px}
+.mglobalgoods li.type_single .info .ico_brand {margin-top: 5px;padding-top: 6px}
+.mglobalgoods li .info .ico_brand img {height: 16px;display: block}
+.mglobalgoods li .info .txt_price {float: right;width: 150px;text-align: right;font-size: 13px;color: #444}
+.mglobalgoods li .info .txt_lowest {color: #0060af}
+.mglobalgoods li .info .txt_price strong {font-size: 20px;font-weight: normal;display: inline-block;margin-left: 4px;vertical-align: -2px;margin-right: 1px;letter-spacing: -.5px}
+.mglobalgoods li .info .txt_price .txt_lowest strong {font-weight: 500}
+.mglobalgoods li.type_single .info .txt_price strong {font-size: 24px;}
+.mglobalgoods li .info .txt_price .txt_earn {display: block;font-weight: bold;font-size: 12px;margin-top: 2px;height: 14px;line-height: 13px;position: relative;color: #0073be;}
+.mglobalgoods li .info .txt_price .txt_earn em {font-size: 14px}
+.mglobalgoods li .info .txt_price .txt_earn .txt_sub {color: #666666;}
+.mglobalgoods li .info .txt_price .txt_earn .mglobal__ico_emoney {text-indent: 9999em}
+.mglobalgoods li .info .prd_price {display: block;height: 116px;position: relative;margin-bottom: 2px;padding-top: 2px}
+.mglobalgoods li .info .prd_price .txt_notice {position: absolute;bottom: 0;left: 0;width: 100%;height: 46px;border-top: 1px solid #eeeeee;line-height: 44px;font-size: 11px;color: #999999}
+.mglobalgoods li .info .btn_purchases {display: block;width: 250px;height: 44px;color: #fff;background-color: #274776;font-size:18px;text-align: center;font-weight:300;line-height: 44px;}
+.mglobalgoods li .info .btn_purchases:hover {background-color: #19345a}
+
+/* 여행 & 꽃배달 & 이사 */
+.msection__vertical_02{overflow:hidden;margin-bottom:20px}
+.mtour{width:478px;overflow:hidden;float:left}
+.mtour__head {margin-bottom: 20px;}
+.mtourbox {position: relative;}
+.mtourbox__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display:block}
+.mtourbox__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mtourbox__btn.slide__btn--prev {left:0}
+.mtourbox__btn.slide__btn--next {right:0}
+.mtourbox__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mtourbox__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mtour__cont:hover .mtourbox__btn.slide__btn--prev{transform:translateX(-30px);}
+.mtour__cont:hover .mtourbox__btn.slide__btn--next{transform:translateX(30px);}
+
+.mtour__list {overflow: hidden;width:499px;margin-left: -14px;}
+.mtour__list>li {float: left;position:relative;width:230px;height:298px;margin-left:14px;border:1px solid #ddd}
+.mtour__list>li>a {display:block;}
+.mtour__list>li .thumb {display:block;}
+.mtour__img {overflow: hidden;width:200px;height:160px;margin:15px;overflow:hidden;position: relative;}
+.mtour__img:after{content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,0.02);}
+.mtour__img img {width: 100%;height: 100%;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.mtour__list>li>a:hover .mtour__img img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.mtour__list>li .startday {position: absolute;top:19px;left:19px;width: 60px;height: 47px;margin-right: 9px;padding-top: 13px;border-radius: 50%;font-size: 14px;color: #fff;text-align: center;line-height: 17px;background-color: #FF0302;z-index:1}
+.mtour__list>li .startday .day {display: block;}
+.mtour__list>li .detail {display: block;margin:0 15px 0;height:100px;}
+.mtour__list>li .detail .tx_prd_nm {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;height:44px;margin: 0 0 14px 0;font-size: 14px;line-height: 22px;letter-spacing: -1.5px;vertical-align: top;color: #222;-webkit-line-clamp: 2;}
+.mtour__list>li:hover .detail .tx_prd_nm{text-decoration:underline}
+.mtour__list>li .detail .pricebox {position: relative;display:block;height:30px}
+.mtour__list>li .detail .pricebox .mall{position: absolute;bottom:0;left:0;font-size:14px;}
+.mtour__list>li .detail .pricebox .price {display: block;position: absolute;top: 1px;right: 0;height: 30px;text-align: right;letter-spacing: -1px;line-height: 30px;}
+.mtour__list>li .detail .pricebox .price .store {margin-right: 3px;font-size: 14px;}
+.mtour__list>li .detail .pricebox .price .num {font-size: 14px;color: #333;}
+.mtour__list>li .detail .pricebox .price .num strong {font-weight:500;font-size: 24px;color: #333;vertical-align: -2px;}
+
+/* 꽃배달 */
+.mflower365{width:232px;overflow:hidden;float:left;margin-left:14px}
+.mflower365__head {margin-bottom: 20px;}
+.mflower365box {position: relative;}
+.mflower365__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display:block}
+.mflower365__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mflower365__btn.slide__btn--prev {left:0}
+.mflower365__btn.slide__btn--next {right:0}
+.mflower365__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mflower365__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mflower365__cont:hover .mflower365__btn.slide__btn--prev{transform:translateX(-30px);}
+.mflower365__cont:hover .mflower365__btn.slide__btn--next{transform:translateX(30px);}
+
+.mflower365__list {overflow: hidden;width:232px;height:300px}
+.mflower365__list>li {float: left;position:relative;width:230px;height:298px;border:1px solid #e6ddde;background-color:#ffebee}
+.mflower365__list>li.mflower365_p1{background-image:url(http://img.enuri.info/images/home/flower365_bnr.png);background-repeat:no-repeat;background-position:29px 104px}
+.mflower365__inner{padding:23px 16px;position: relative;height:250px;text-align:center;color:#333}
+.mflower365__inner .tx_sub{display:block;line-height:20px;font-size:13px;}
+.mflower365__inner .tx_main{display:block;line-height:24px;font-size:20px;letter-spacing:-1px;margin-top:4px;font-weight:500}
+.mflower365__inner .tx_main em{color:#f66a8f}
+.mflower365__inner .btn__go_move{position: absolute;bottom:23px;left:25px;right:25px;border-radius:16px;height:32px;line-height:32px;color:#fff;background-color:#333;font-size:14px;text-align:center;opacity:.9}
+
+/* 이사 */
+.mhousemove{width:232px;overflow:hidden;float:right;}
+.mhousemove__head {margin-bottom: 20px;}
+.mhousemovebox {position: relative;}
+.mhousemove__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display:block}
+.mhousemove__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mhousemove__btn.slide__btn--prev {left:0}
+.mhousemove__btn.slide__btn--next {right:0}
+.mhousemove__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mhousemove__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mhousemove__cont:hover .mhousemove__btn.slide__btn--prev{transform:translateX(-30px);}
+.mhousemove__cont:hover .mhousemove__btn.slide__btn--next{transform:translateX(30px);}
+
+.mhousemove__list {overflow: hidden;width:232px;height:300px}
+.mhousemove__list>li {float: left;position:relative;width:230px;height:298px;border:1px solid #e5ddce;background-color:#fff6e5}
+.mhousemove__list>li.mhousemove_p1{background-image:url(http://img.enuri.info/images/home/home_move_bnr.png);background-repeat:no-repeat;background-position:50% 109px}
+.mhousemove__inner{padding:23px 16px;position: relative;height:250px;text-align:center;color:#333}
+.mhousemove__inner .tx_sub{display:block;line-height:20px;font-size:13px;}
+.mhousemove__inner .tx_main{display:block;line-height:24px;font-size:20px;letter-spacing:-1px;margin-top:4px;font-weight:500}
+.mhousemove__inner .tx_main em{color:#ea5334}
+.mhousemove__inner .btn__go_move{position: absolute;bottom:23px;left:25px;right:25px;border-radius:16px;height:32px;line-height:32px;color:#fff;background-color:#333;font-size:14px;text-align:center;opacity:.9}
+.mhousemove__inner .tb_real_move{margin-top:12px;padding:6px 0;border-top:1px solid #ddd;border-bottom:1px solid #ddd}
+.mhousemove__inner .tb_real_move td{height:26px;vertical-align:middle;color:#333;font-size:13px;letter-spacing:-.5px;text-align:center}
+.mhousemove__inner .tb_real_move td .arr{color:#ea5334;font-size:10px;vertical-align: 1px;}
+
+/* (삭제) 200701 해외쇼핑*/
+.msection__global {overflow: hidden;position: relative;}
+.mglobal__head {margin-bottom: 20px;}
+.mglobal__head .msection__tit {background: none;text-indent: 0;}
+
+/* .mglobal__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;}
+.mglobal__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mglobal__btn.slide__btn--prev {left:0}
+.mglobal__btn.slide__btn--next {right:0}
+.mglobal__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mglobal__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mglobal__bnrlist:hover .mglobal__btn.slide__btn--prev,
+.mglobal__goods:hover .mglobal__btn.slide__btn--prev,
+.mglobal__brandlist:hover .mglobal__btn.slide__btn--prev{transform:translateX(-30px)}
+.mglobal__bnrlist:hover .mglobal__btn.slide__btn--next,
+.mglobal__goods:hover .mglobal__btn.slide__btn--next,
+.mglobal__brandlist:hover .mglobal__btn.slide__btn--next{transform:translateX(30px)} */
+
+.mglobal__inner {position: relative;overflow: hidden;height: 401px}
+.mglobal__bnrlist {overflow: hidden;position: relative;width: 380px;height: 288px;border: 1px solid #e6e6e6;float: left}
+.mglobal__goods {overflow: hidden;position: relative;width: 573px;height: 288px;border: 1px solid #e6e6e6;float: right}
+.mglobal__goods .msection__pager {position: absolute;font-size: 12px;line-height: 2;top: 10px;right: 16px;text-align: right;color: #aaa;}
+.mglobal__brandlist {overflow: hidden;position: relative;width: 968px;border: 1px solid #e6e6e6;float: left;margin-top: 14px;height: 91px}
+.mglobal__cont {overflow: hidden;position: relative;width: 968px;border: 1px solid #e6e6e6;}
+.mglobalbox {overflow: hidden;position: relative;width: 380px;}
+.mglobalBrdbox {overflow: hidden;position: relative;width: 968px}
+.mglobal__bnr,
+.mglobal__bnr img {border: 0;width: 380px;height: 288px;}
+.mglobal__item {float: left;width: 193px;height: 75px;padding: 8px 0;border-right: 1px solid #e6e6e6;}
+.mglobal__brandlist .mglobalBrdbox .mglobal__item:nth-child(5n+5) {border-right: 0;width: 192px}
+
+.mglobal__item>a {display: block;}
+.mglobal__item_thumb {display: block;margin: 0 auto;width: 101px;height: 52px}
+.mglobal__item_thumb img {width: 101px;height: 52px}
+.mglobal__item_txt {display: block;line-height: 13px;height: 14px;font-size: 14px;color: #0073be;text-align: center;letter-spacing: -.5px;}
+.mglobal__ico_emoney {background-image: url(http://img.enuri.info/images/global/common_sprite.png);display: inline-block;height: 14px;width: 14px;background-position: -120px -20px;text-indent: -9999em;margin-right: 2px;}
+
+.mglobalgoods>li {width: 600px;height: 289px}
+.mglobalgoods li .list_inner {padding: 29px 29px 28px 29px;position: relative;}
+.mglobalgoods li .thumb {position: relative;float: left;display: block;width: 230px;height: 230px;background-image: url(http://img.enuri.info/images/global/global_noimg.gif);background-repeat: no-repeat;background-size: 60% 60%;background-position: 50% 50%;overflow: hidden;}
+.mglobalgoods li .thumb:after {content: "";position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0, 0, 0, .02);z-index: 2;}
+.mglobalgoods li .thumb .thumb_img {position: absolute;top: 12px;left: 12px;right: 12px;bottom: 12px;background-repeat: no-repeat;background-size: contain;background-position: 50% 50%;z-index: 1;}
+
+.mglobalgoods li .info {float: left;position: relative;margin-top: 4px;margin-left: 20px;width: 250px;letter-spacing: -1px}
+.mglobalgoods li .info .txt_prd_nm {display: block;line-height: 24px;height: 48px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap: break-word;font-size: 20px;color: #222;margin-bottom: 5px}
+.mglobalgoods li .info .compare_price {margin-bottom: 10px;min-height: 110px}
+.mglobalgoods li .info .compare_price li {line-height: 32px;height: 32px;border-bottom: 1px solid #eeeeee;padding: 2px 0;overflow: hidden}
+.mglobalgoods li .info .compare_price li:last-child {border-bottom: 0}
+.mglobalgoods li .info .ico_brand {height: 16px;float: left;width: 94px;padding-top: 9px;line-height: 16px;font-size: 13px}
+.mglobalgoods li.type_single .info .ico_brand {margin-top: 5px;padding-top: 6px}
+.mglobalgoods li .info .ico_brand img {height: 16px;display: block}
+.mglobalgoods li .info .txt_price {float: right;width: 150px;text-align: right;font-size: 13px;color: #444}
+.mglobalgoods li .info .txt_lowest {color: #0060af}
+.mglobalgoods li .info .txt_price strong {font-size: 20px;font-weight: normal;display: inline-block;margin-left: 4px;vertical-align: -2px;margin-right: 1px;letter-spacing: -.5px}
+.mglobalgoods li .info .txt_price .txt_lowest strong {font-weight: 500}
+.mglobalgoods li.type_single .info .txt_price strong {font-size: 24px;}
+.mglobalgoods li .info .txt_price .txt_earn {display: block;font-weight: bold;font-size: 12px;margin-top: 2px;height: 14px;line-height: 13px;position: relative;color: #0073be;}
+.mglobalgoods li .info .txt_price .txt_earn em {font-size: 14px}
+.mglobalgoods li .info .txt_price .txt_earn .txt_sub {color: #666666;}
+.mglobalgoods li .info .txt_price .txt_earn .mglobal__ico_emoney {text-indent: 9999em}
+.mglobalgoods li .info .prd_price {display: block;height: 116px;position: relative;margin-bottom: 2px;padding-top: 2px}
+.mglobalgoods li .info .prd_price .txt_notice {position: absolute;bottom: 0;left: 0;width: 100%;height: 46px;border-top: 1px solid #eeeeee;line-height: 44px;font-size: 11px;color: #999999}
+.mglobalgoods li .info .btn_purchases {display: block;width: 250px;height: 44px;color: #fff;background-color: #274776;font-size:18px;text-align: center;font-weight:300;line-height: 44px;}
+.mglobalgoods li .info .btn_purchases:hover {background-color: #19345a}
+/* // 여기까지 */
+
+/* (삭제) 200701 중고차 */
+.msection__reborn {overflow: hidden;position: relative;}
+.mreborn__head {margin-bottom: 20px;}
+.mreborn__head .msection__tit {background: none;text-indent: 0;}
+.mreborn__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;;display: block}
+.mreborn__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mreborn__btn.slide__btn--prev {left:0}
+.mreborn__btn.slide__btn--next {right:0}
+.mreborn__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mreborn__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mreborn__inner:hover .mreborn__btn.slide__btn--prev{transform:translateX(-30px);}
+.mreborn__inner:hover .mreborn__btn.slide__btn--next{transform:translateX(30px);}
+.mreborn__inner {position: relative;overflow: hidden;height: 240px}
+.mreborn__goods {position: relative;}
+.mreborn__inner ul {overflow: hidden;margin-left: -14px;width: 984px}
+.mreborn__inner li {float: left;height: 240px;margin-left: 14px}
+.mreborn__inner li.type_bnr a {display: block;width: 476px;height: 238px;border: 1px solid #e6e6e6;overflow: hidden}
+.mreborn__inner li.type_bnr a img {width: 476px;}
+.mreborn__inner li.type_goods {width: 232px}
+.mreborn__inner li.type_goods a {display: block;width: 232px;height: 238px}
+.mreborn__inner li.type_goods .thumb {display: block;border: 1px solid #e6e6e6;width: 230px;height: 128px;overflow:hidden}
+.mreborn__inner li.type_goods .thumb img {width: 230px;height: 128px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.mreborn__inner li.type_goods:hover .thumb img {transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.mreborn__inner li.type_goods .info {position:relative;display: block;padding: 8px 10px 0 0;line-height: 18px;letter-spacing: -.5px}
+.mreborn__inner li.type_goods .info>span {display: block;}
+.mreborn__inner li.type_goods .info .txt_mall{font-size:14px;color:#333;position:absolute;bottom:0;left:0}
+.mreborn__inner li.type_goods .info .txt_name {font-size:16px;font-weight:500;color: #222;height: 36px;overflow: hidden;}
+.mreborn__inner li.type_goods .info .txt_name span {display: block;width: 100%}
+.mreborn__inner li.type_goods .info .txt_name .model {margin-top:2px;font-family:'dotum','돋움','gulim','굴림',sans-serif;font-size: 12px;color: #666;letter-spacing:0}
+.mreborn__inner li.type_goods .info .txt_spec {font-family:'dotum','돋움','gulim','굴림',sans-serif;height: 18px;margin: 6px 0 4px;overflow: hidden;letter-spacing:0}
+.mreborn__inner li.type_goods .info .txt_spec .item {display: inline-block;padding: 0 5px 0 6px;position: relative;font-size: 13px;color: #999}
+.mreborn__inner li.type_goods .info .txt_spec .item:before {content: "";position: absolute;top: 2px;left: 0;border: .5px solid #dddddd;height: 12px}
+.mreborn__inner li.type_goods .info .txt_spec .item:first-of-type {margin-left: -6px}
+.mreborn__inner li.type_goods .info .txt_price {text-align: right}
+.mreborn__inner li.type_goods .info .txt_price .org_price {color: #aaaaaa;font-size: 14px;display: block}
+.mreborn__inner li.type_goods .info .txt_price .org_price em {text-decoration: line-through;}
+.mreborn__inner li.type_goods .info .txt_price .sell_price {color: #222;height: 22px;font-size: 12px;display: block}
+.mreborn__inner li.type_goods .info .txt_price .sell_price em {font-weight: 500;font-size: 24px;margin-left: 4px}
+/* // 여기까지 */
+
+/* (삭제) 200701 기획전 */
+.msection__exhibitionmsection__exhibition {overflow: hidden;position: relative;}
+.mexhibition {}
+.mexhibition__head {margin-bottom: 20px;}
+.mexhibition__head .msection__tit {background: none;text-indent: 0;}
+.mexhibition__head .msection__more {}
+.mexhibition__cont {overflow: hidden;position: relative;}
+.mexhibitionbox {overflow: hidden;position: relative;width: 100%;}
+
+.mexhibition__btn {top:50%;margin-top:-31px;background-color:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.1);z-index: 100;cursor: pointer;}
+.mexhibition__btn:hover{transition-duration:.1s;background-color:rgba(255,255,255,.95)}
+.mexhibition__btn.slide__btn--prev {left:0;background-position:100% -120px}
+.mexhibition__btn.slide__btn--next {right:0;background-position:0 -180px}
+.mexhibition__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mexhibition__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mexhibition__cont:hover .mexhibition__btn.slide__btn--prev{transform:translateX(-30px)}
+.mexhibition__cont:hover .mexhibition__btn.slide__btn--next{transform:translateX(30px)}
+
+.mexhibition__item {float: left;width: 314px;height: 150px;margin-right: 14px;}
+.mexhibition__item:first-child+li+li {margin-right: 0;}
+.mexhibition__item img {width: 314px;height: 150px;vertical-align: top;}
+/* // 여기까지 */
+
+/* 소셜가격비교 */
+.msection__social {overflow: hidden;margin-bottom: 5px}
+.msocial__head {margin-bottom: 20px;}
+.msocial__head .msection__tit {background: none;text-indent: 0;}
+.msocial__head .msection__more {}
+.msocial__head .msection__ultabs {}
+.msocial__cont {}
+
+/* 소셜 컨텐츠 */
+.msocialbox {position: relative;}
+.msocialbox__btn {top:50%;margin-top:-36px;z-index: 100;cursor: pointer;}
+.msocialbox__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.msocialbox__btn.slide__btn--prev {left:0}
+.msocialbox__btn.slide__btn--next {right:0}
+.msocialbox__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.msocialbox__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.msocial__cont:hover .msocialbox__btn.slide__btn--prev{transform:translateX(-30px);}
+.msocial__cont:hover .msocialbox__btn.slide__btn--next{transform:translateX(30px);}
+
+.msocial__list {overflow: hidden;width: 984px;margin-left: -14px;}
+.msocial__list>li {float: left;width:230px;margin-bottom:14px;margin-left:14px;border:1px solid #ddd}
+.msocial__list>li>a {display:block;}
+.msocial__list>li .thumb {display:block;}
+.msocial__img {overflow: hidden;width:200px;height:200px;margin:15px;overflow:hidden;position: relative;}
+.msocial__img:after{content: "";position: absolute;top: 0;left: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,0.02);}
+.msocial__img img {width: 100%;height: 100%;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.msocial__list>li>a:hover .msocial__img img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+
+.common__mainbadge--msocial {display: block;top: -1px;left: -1px;width: 43px;height: 29px;padding: 14px 0 0 0;border: 1px solid #919191;font-size: 16px;background-color: #999;}
+.common__mainbadge--msocial.best {height: 36px;padding-top: 7px;border: 1px solid #e72e2e;background-color: #f44;}
+.common__mainbadge--msocial.best:after {content: "BEST";display: block;position: absolute;top: 24px;left: 0;width: 100%;font-weight: bold;font-size: 11px;color: #ffdbdb;text-align: center;}
+
+.msocial__list>li .detail {display: block;margin:-4px 15px 0;height: 90px;}
+.msocial__list>li .detail .pname {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;height:40px;margin: 0 0 6px 0;font-size: 14px;line-height: 20px;letter-spacing: -1.5px;vertical-align: top;color: #222;-webkit-line-clamp: 2;}
+.msocial__list>li:hover .detail .pname{text-decoration:underline}
+.msocial__list>li .detail .pricebox {position: relative;}
+.msocial__list>li .detail .pricebox .percent{display:none}
+/* .msocial__list>li .detail .pricebox .percent {display: block;font-size: 16px;color: #EC1A1A;line-height: 30px;}
+.msocial__list>li .detail .pricebox .percent strong {display: inline-block;margin-right: 4px;font-size: 20px;color: #EC1A1A;vertical-align: 0;}
+.msocial__list>li .detail .pricebox .percent.special strong {font-weight: normal;margin-top: 2px;font-size: 20px;} */
+.msocial__list>li .detail .pricebox .price {display: block;height: 30px;text-align: right;letter-spacing: -1px;line-height: 30px;}
+.msocial__list>li .detail .pricebox .price .store {margin-top: 11px;font-size: 14px;line-height: 1;float: left;}
+.msocial__list>li .detail .pricebox .price .num {font-size: 14px;color: #333;}
+.msocial__list>li .detail .pricebox .price .num strong {font-weight:500;font-size: 24px;color: #333;vertical-align: -2px;}
+
+/* 조립PC 추천상품 */
+.msection__enuripc{margin-bottom:20px;overflow:hidden}
+.menuripc__head {margin-bottom: 20px;}
+.menuripc__head .msection__tit {background: none;text-indent: 0;}
+.menuripcbox {position: relative;float: left;position: relative;width: 642px;margin: 0;overflow:hidden}
+.menuripcbox__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;}
+.menuripcbox__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.menuripcbox__btn.slide__btn--prev {left:0}
+.menuripcbox__btn.slide__btn--next {right:0}
+.menuripcbox__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.menuripcbox__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.menuripc__cont:hover .menuripcbox__btn.slide__btn--prev{transform:translateX(-30px);}
+.menuripc__cont:hover .menuripcbox__btn.slide__btn--next{transform:translateX(30px);}
+
+/* 에누리PC */
+.menuripc__list {overflow: hidden;}
+.menuripc__item {position: relative;float: left;width: 314px;height: 280px;margin: 0;background: #fff;cursor: pointer;}
+.menuripc__item:first-child {margin-right: 14px;}
+.menuripc__thumb {position: relative;width: 314px;height: 200px;}
+.menuripc__thumb:after {content: "";display: block;position: absolute;top: 0;right: 0;left: 0;bottom: 0;width: 100%;height: 100%;border: 1px solid #000;opacity: 0.05;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.menuripc__thumb img {}
+.menuripc__info {position: relative;padding: 6px 9px;border: 1px solid #eee;border-top: 0;}
+.menuripc__info .pname {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;height: 37px;font-size: 14px;color: #222;letter-spacing: -1px;line-height: 18px;-webkit-line-clamp: 2;}
+.menuripc__info .price {display: block;height: 30px;text-align: right;letter-spacing: -1px;line-height: 30px;}
+.menuripc__info .store {margin-right: 5px;font-size: 12px;color: #2da4a8;}
+.menuripc__info .num {font-size: 12px;color: #333;}
+.menuripc__info .num strong {font-weight: 500;font-size: 24px;color: #333;vertical-align: -2px;}
+.menuripc__info .price {font-size: 12px;color: #222222;line-height: 1;letter-spacing: -0.5px;}
+.menuripc__info .price b {font-size: 24px;line-height: 1;vertical-align: -2px;}
+.menuripc__item .thumb {position: absolute;right: 15px;bottom: 10px;max-width: 120px;height: auto;}
+.menuripc__item .thumb img {max-width: 100%;height: auto;}
+
+/* 상세 내역 마우스 오버시, 노출 */
+.menuripc__item .overarea {display: none;}
+.menuripc__item:hover .overarea {display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;z-index: 50;padding: 0;background: url(http://img.enuri.info/images/homemain/bg_mask_piece.png) repeat\9;background-color: rgba(0, 0, 0, 0.8);}
+.overarea__pname {display: block;overflow: hidden;height: 20px;margin: 28px 34px 14px;font-size: 20px;color: #fff;line-height: 1;text-overflow: ellipsis;white-space: nowrap;}
+.overarea__detail {font-family:'dotum','돋움','gulim','굴림',sans-serif;padding: 0 34px 21px;}
+.overarea__detail li {display: block;overflow: hidden;position: relative;padding-left: 9px;color: #ccc;text-overflow: ellipsis;white-space: nowrap;}
+.overarea__detail li:before {content: "";display: block;position: absolute;top: 9px;left: 0;width: 3px;height: 3px;background-color: #ccc;}
+.overarea__detail li span {font-size: 12px;line-height: 19px;vertical-align: middle;}
+.overarea__detail li span.th {color: #fff;}
+.overarea__detail li span.td {color: #ccc;}
+.overarea__btn {overflow: hidden;clear: both;position: absolute;bottom: 14px;left: 14px;}
+.overarea__btn a {display: inline;float: left;width: 138px;height: 40px;padding: 10px 0 10px;margin: 0;font-size: 16px;line-height: 20px;letter-spacing: -.25px;text-align: center;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.overarea__btn a.overarea__btn--1 {margin-right: 10px;color: #333;background-color: #fff;}
+.overarea__btn a.overarea__btn--2 {color: #fff;background-color: #2da4a8;}
+
+/* 에누리PC 이벤트 */
+.menuripcevtbox {position: relative;float: right;position: relative;width: 314px;overflow:hidden}
+.menuripcevt {overflow: hidden;margin-bottom: 10px;}
+.menuripcevt__btn {top:50%;margin-top:-31px;background-color:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.1);z-index: 100;cursor: pointer;}
+.menuripcevt__btn:hover{transition-duration:.1s;background-color:rgba(255,255,255,.9)}
+.menuripcevt__btn.slide__btn--prev {left:0;background-position:100% -120px}
+.menuripcevt__btn.slide__btn--next {right:0;background-position:0 -180px}
+.menuripcevt__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.menuripcevt__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.menuripcevtbox:hover .menuripcevt__btn.slide__btn--prev{transform:translateX(-30px)}
+.menuripcevtbox:hover .menuripcevt__btn.slide__btn--next{transform:translateX(30px)}
+
+.menuripcevt__item {display: block;position: relative;width: 314px;height: 200px;}
+.menuripcevt__item img {width: 100%;height: 100%;vertical-align: top;}
+.menuripcevt__item:after {content: "";display: block;position: absolute;top: 0;right: 0;left: 0;bottom: 0;z-index: 10;width: 100%;height: 100%;border: 1px solid #000;opacity: 0.05;box-sizing: border-box;-webkit-box-sizing: border-box;}
+.menuripcevt__link {overflow: hidden;clear: both;}
+.menuripcevt__link a {display: inline;float: left;width: 152px;height: 70px;}
+.link__btn--1 {margin-right: 10px;background-position: 0 -330px;}
+.link__btn--2 {background-position: -152px -330px;}
+
+/* 쇼핑 Zone */
+.msection__shopping {overflow: hidden;}
+.mshopping__head {}
+.mshopping__head .msection__tit {letter-spacing:-1px;background: none;text-indent: 0;}
+.mshopping__cont .columnbox__head {margin: 0;border: 0;}
+.mshopping__cont .columnbox--1 .columnbox__tit {}
+.mshopping__cont .columnbox--2 .columnbox__tit {width: 61px;height: 14px;margin-top: 13px;background-position: -150px -80px;}
+.mshopping__cont .columnbox--3 .columnbox__tit {}
+.mshopping__cont .columnbox__head .msection__more {float:none;margin-top:20px;margin-left:4px}
+.mshopping__cont {}
+
+/* 여행비교 */
+.mtravelbox {overflow: hidden;position: relative;width: 100%;}
+.mtravel__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display:block}
+.mtravel__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mtravel__btn.slide__btn--prev {left:12px}
+.mtravel__btn.slide__btn--next {right:0}
+.mtravel__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mtravel__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mtravelbox:hover .mtravel__btn.slide__btn--prev{transform:translateX(-30px);}
+.mtravelbox:hover .mtravel__btn.slide__btn--next{transform:translateX(30px);}
+.mtravel__item {border: 1px solid #ddd;}
+.mtravel__item > a{padding:21px}
+/* 긴급모객 */
+.mtravel__fast {display:none;position: absolute;top: 0;left: 0;z-index: 100;}
+.mtravel__img {width: 270px;height: 270px;}
+.mtravel__img img {width: 270px;height: 270px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.mtravel__item .info {height:65px;padding: 0  21px 21px;}
+.mtravel__item .info .startday {position: absolute;top:30px;left:30px;width: 60px;height: 47px;margin-right: 9px;padding-top: 13px;border-radius: 50%;font-size: 14px;color: #fff;text-align: center;line-height: 17px;background-color: #FF0302;}
+.mtravel__item .info .startday .day {display: block;}
+.mtravel__item .info .pname {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;position: relative;top: -10px;height:40px;font-size:14px;letter-spacing:-1px;line-height: 20px;vertical-align: top;color: #222;-webkit-line-clamp: 2;}
+.mtravel__item .info .price {position: relative;top: 4px;font-size: 14px;color: #333;text-align: right;line-height: 1;vertical-align: top;}
+.mtravel__item .info .price strong {font-weight:500;font-size: 24px;line-height: 1;vertical-align: -2px;letter-spacing:-.5px;}
+/* 2019.03.22 여행비교 2단으로 수정 위해 추가*/
+.mshopping__cont .columnbox--1.columnbox-rows2 {width: 640px;}
+.columnbox-rows2 .mtravelbox {width: 652px;margin-left: -12px}
+.columnbox-rows2 .mtravel__list {overflow: hidden;}
+.columnbox-rows2 .mtravel__list li {position: relative;float: left;margin-left: 12px;}
+.columnbox-rows2 .mtravel__list li:hover .mtravel__img img{transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.columnbox-rows2 .mtravel__item {width: 312px}
+
+/* 쇼핑베스트 */
+.mshopbestbox__ultabs {top:11px;}
+.mshopbestbox__ultabs .ultabs__item {margin-left: 4px;}
+.mshopbestbox {overflow: hidden;position: relative;width: 100%;}
+.mshopbest__btn {top:50%;margin-top:-30px;z-index: 100;cursor: pointer;display:block}
+.mshopbest__btn:hover{transition-duration:.1s;background-color:rgba(0,1,1,.5);}
+.mshopbest__btn.slide__btn--prev {left:0}
+.mshopbest__btn.slide__btn--next {right:0}
+.mshopbest__btn.slide__btn--prev:hover{transform:translateX(-15px)!important;background-position-x:70%}
+.mshopbest__btn.slide__btn--next:hover{transform:translateX(15px)!important;background-position-x:30%}
+.mshopbestbox:hover .mshopbest__btn.slide__btn--prev{transform:translateX(-30px);}
+.mshopbestbox:hover .mshopbest__btn.slide__btn--next{transform:translateX(30px);}
+
+.mshopbest__item {border: 1px solid #d9d9d9;}
+.mshopbest__item > a{padding:21px}
+.mshopbest__img {width: 270px;height: 270px;position: relative;}
+.mshopbest__img img {width: 270px;height: 270px;transition:.2s transform cubic-bezier(.165,.84,.44,1)}
+.mshopbest__img:after{content:"";position: absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.015);}
+.mshopbest__item:hover .mshopbest__img img {transform:scale(1.05) perspective(500px) rotate(.001deg);transform-origin:center center}
+.mshopbest__item .info {height: 65px;padding: 0 21px 21px}
+.mshopbest__item .info .store__logo {display: block;position: absolute;bottom: 15px;left: 21px;font-size: 14px;color: #3a7bd5;line-height: 30px;vertical-align: middle;}
+.mshopbest__item .info .pname {font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;position: relative;top: -10px;height: 40px;font-size: 14px;letter-spacing:-1px;line-height: 20px;vertical-align: top;color: #222;-webkit-line-clamp: 2;}
+.mshopbest__item .info .price {position: relative;top: 4px;font-size: 12px;color: #333;text-align: right;line-height: 1;vertical-align: top;}
+.mshopbest__item .info .price strong {font-weight: 500;font-size: 24px;line-height: 1;vertical-align: -2px;letter-spacing: -.5px;}
+
+/* 홈메인 하단 공지 및 각종 업체 로고 영역 */
+.mainbody__bottom {clear: both;}
+
+/* FAQ 입점문의 등 */
+.msection__faqarea {margin-top:30px;background-color:#f6f6f6;border:1px solid #dddddd;width:968px}
+.mfaqarea {font-size:14px;overflow: hidden;position: relative;margin: 0;}
+.mfaqarea__notice {display: block;position: absolute;top:13px;left:24px;width:370px;}
+.mfaqarea__notice>a {display: block;overflow: hidden;position: relative;height:20px;color: #333;line-height: 14px;text-overflow: ellipsis;white-space: nowrap;letter-spacing:-1px}
+.mfaqarea__notice>a:before { content: "공지사항";display:inline-block;   font-size:15px;height:14px;line-height:14px;color:#222;padding-right:12px;border-right:1px solid #dddddd;margin-top:3px;margin-right:15px}
+.mfaqarea__btngroup {float: right;font-size:14px}
+.mfaqarea__btngroup:after {content: "";display: block;clear: both;}
+.mfaqarea__btngroup>li {padding:13px 16px;float:left;cursor: pointer;border-left:1px solid #ddd}
+.mfaqarea__btngroup>li:hover{background:rgba(0,0,0,.03);}
+.mfaqarea__btngroup>li:hover a{color:#222}
+.mfaqarea__btngroup>li a {display: inline-block;line-height: 20px;}
+.mfaqarea__btngroup>li a img {display:none}
+.mfaqarea__btngroup>li a span {display: inline-block;cursor: pointer;font-size: 13px;color: #666;letter-spacing: -1px;}
+.mfaqarea__btngroup>li .icon_new {vertical-align: 5px;}
+.mfaqarea__btngroup>li .icon_new img {vertical-align: baseline;}
+/* FAQ 입점문의 등 */
+.msection__bottombanner {clear: both;width: 100%;margin-bottom: 0;margin-top:30px}
+.msection__bottombanner img {vertical-align: top;}
+
+/* 200512 : #39786 : [PC/M] 주요쇼핑몰 개선관련 > 기존 쇼핑몰바로가기 대체 */
+.msection__popmall {overflow:hidden;position:relative;}
+.mpopmall {	}
+.mpopmall__head {margin-bottom:25px;}
+.mpopmall__head .msection__tit {letter-spacing: -1px;background: none;text-indent: 0;}
+.mpopmall__cont {overflow:hidden;position:relative;}
+.mpopmall__btn {top:49px;background-color:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.1);z-index: 100;cursor: pointer;display:block}
+.mpopmall__btn:hover{transition-duration:.1s;background-color:rgba(255,255,255,.9)}
+.mpopmall__btn.slide__btn--prev {left:0;background-position:100% -120px;transform:translateX(-30px)}
+.mpopmall__btn.slide__btn--next {right:0;background-position:0 -180px;transform:translateX(30px)}
+.mpopmall__btn.slide__btn--prev:hover{transform:translateX(-15px);background-position-x:70%}
+.mpopmall__btn.slide__btn--next:hover{transform:translateX(15px);background-position-x:30%}
+
+.popularmall{width:968px;border:1px solid #ddd;overflow:hidden;}
+.popularmall.mall_logo{height:158px;}
+.popularmall.mall_group{margin-top:15px}
+.popularmall_list{position:relative;overflow:hidden;}
+.popularmall_list li{float:left;width:120px;height:52px;border-right:1px solid #eee;border-bottom:1px solid #eee;line-height:0;-webkit-transition:.3s all ease;-o-transition:.3s all ease;transition:.3s all ease}
+.popularmall_list li:nth-child(8n+8){width:121px;border-right:0}
+.popularmall_list li a{position:relative;display:block;text-align:center;height:24px;padding:14px 0}
+.popularmall_list li:hover{-webkit-transform:translateY(-2px);-ms-transform:translateY(-2px);transform:translateY(-2px);-webkit-box-shadow:0 2px 0 rgba(0,0,0,0.05);box-shadow:0 2px 0 rgba(0,0,0,0.05)}
+.popularmall_list li:hover a:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.015)}
+.popularmall_list li a img{height:24px;max-width:120px}
+.popularmall_group{float:left;position: relative;padding:15px;width:131px;background-color:#fff}
+.popularmall_group:hover{z-index:1;box-shadow: 0 -20px 20px rgba(0,0,0,.05);}
+.popularmall_group:before{content:"";position:absolute;top:0;height:400px;left:-1px;border-left:1px solid #eee;z-index: 2;}
+.popularmall_group .tx_group_name{line-height:28px;height:28px;font-size:14px;font-weight:bold;letter-spacing:-1px;color:#333;padding-bottom:4px;font-family: 'Noto Sans KR',tahoma,"Apple SD Gothic Neo",'malgun gothic',"맑은고딕",'dotum','돋움','gulim','굴림',verdana,sans-serif !important;;}
+.popularmall_group .list_group{font-family:'Malgun Gothic','Noto Sans KR','맑은고딕',gulim,'굴림',dotum,'돋움',sans-serif;line-height:26px;color:#666;font-size:12px;letter-spacing:-.5px}
+.popularmall_group .list_group a{display:block;height:16px;line-height:16px;padding:5px 0;}
+.popularmall_group .list_group a:hover em{text-decoration:underline;}
+.popularmall_group .list_group a em{display:inline-block;}
+.popularmall_group .list_group a em.ad_type_npay{white-space: nowrap;text-overflow: ellipsis;overflow: hidden;padding-right:36px;position: relative;background: url(http://img.enuri.info/images/home/ico_npay_sm.png) no-repeat 100% 50%;max-width: 85px;}

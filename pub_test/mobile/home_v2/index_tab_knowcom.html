@@ -1,0 +1,323 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/home.css"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<!-- 공통 : 찜레이어 -->
+<span class="zzimly" style="display:none">찜 되었습니다</span>
+<!-- // 찜레이어 -->
+
+<div id="wrap">
+
+    <!-- 특정탭 내용만 따로 분리해 놓은 페이지 입니다. -->
+
+				<!-- 메인탭 :: 쇼핑지식 // index_tab_knowcom.html-->
+				<div id="tab_knowcom" class="swiper-slide m_main_tab">
+					
+					<!-- 200602 : SR#40252 : 이벤트존 배너 -->
+					<div class="m_eventzone m_card_type">
+						<div class="card__head">
+							<p class="card__tit">이벤트존</p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+						<div class="eventzone__inner">
+							<div class="m_eventzone_banner swiper-container noswipe">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_knowcom_evt.jpg" alt=""></a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_knowcom_evt.jpg" alt=""></a>
+									</div>
+									<div class="swiper-slide">
+										<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_knowcom_evt.jpg" alt=""></a>
+									</div>
+								</div>
+								<div class="swiper-ctrl">
+									<div class="swiper-counter"><span class="num_index">1</span> / <span class="num_total"></span></div>
+									<button class="swiper-button comm__sprite btn__play"></button>
+								</div>							
+							</div>
+							<script>
+								// 쇼핑지식 > 이벤트존 슬라이드
+								$(function(){							
+									var $slide = $(".m_eventzone_banner");
+									var $btnPlay = $slide.find('.btn__play');
+									var $txtTotalNum = $slide.find(".num_total");
+									var $txtIndexlNum = $slide.find(".num_index");
+									$txtTotalNum.html( $slide.find(".swiper-slide").length );
+									var bannerSwiper = new Swiper($slide,{
+										watchActiveIndex: true,
+										autoHeight : true,
+										autoplay:3000,
+										autoplayDisableOnInteraction : false,
+										speed : 800,
+										loop : true,
+										spaceBetween : 0,
+										onTransitionEnd  : function(e){
+											var _idx = e.realIndex;
+											$txtIndexlNum.html(_idx+1);
+										}
+									});
+									$btnPlay.click(function(){
+										( $(this).hasClass("stop") ) ? bannerSwiper.startAutoplay() : bannerSwiper.stopAutoplay();
+										$(this).toggleClass("stop");
+									})
+								})
+							</script>												
+						</div>
+					</div>
+					<!-- // -->
+					
+					<!-- 오늘의 뉴스 -->
+					<div class="m_today_news m_card_type">
+						<div class="card__head">
+							<p class="card__tit">오늘의 뉴스</p>
+							<a href="/knowcom/news.jsp" class="btn__card_more">더보기</a>
+						</div>
+						<div class="news__inner">
+							<!-- 상단 가로 이미지형 -->
+							<ul class="news__list_a">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5pbG92ZXBjLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzMwNjUzXzUyODIzXzQxMy5qcGc=_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+							</ul>
+							<!-- // 상단 가로 이미지형 -->
+							<!-- 하단 세로 이미지형 -->
+							<ul class="news__list_b">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTM4XzE1MTIwM18xMzM3LmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo"><img src="http://storage.enuri.info/pic_upload/knowbox/news_source/2018011004.png" alt=""></span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTc1XzE1MTI2OF8zNTQxLmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">케이벤치</span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/enurinews/2019/m1_20197813159.jpg" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo"><img src="http://storage.enuri.info/pic_upload/knowbox/news_source/2018011417.png" alt=""></span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/enurinews/2019/m1_20197813159.jpg" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo"><img src="http://storage.enuri.info/pic_upload/knowbox/news_source/2018011417.png" alt=""></span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+							</ul>
+							<!-- // 하단 세로 이미지형 -->
+						</div>
+					</div>
+					<!-- // 오늘의 뉴스 -->
+
+					<!-- 뉴스카테고리 -->
+					<ul class="m_shortcut m_shortcut__knowcom">
+						<li><a href="/knowcom/news.jsp?cateno=1">디지털/가전</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=2">컴퓨터</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=3">자동차/레저</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=4">유아/라이프</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=5">스포츠/연예</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=6">게임 갤러리</a></li>
+					</ul>
+					<!-- // -->
+
+					<!-- 쇼핑지식 이벤트 배너 -->
+					<!-- inline-style로 background-color 넣어주세요. -->
+					<div class="bnr_aside" style="background:#fbe8e7">
+						<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_bottom_home.png" alt=""></a>
+					</div>
+					<!-- // 쇼핑지식 이벤트 배너 -->
+
+					<!-- 커뮤니티 인기글 -->
+					<div class="m_pop_comm m_card_type">
+						<div class="card__head">
+							<p class="card__tit">커뮤니티 인기글</p>
+							<a href="/knowcom/board.jsp?bbsname=nuri" class="btn__card_more">더보기</a>
+						</div>
+						<div class="news__inner">
+							<!-- 상단 가로 이미지형 -->
+							<ul class="news__list_a">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5pbG92ZXBjLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzMwNjUzXzUyODIzXzQxMy5qcGc=_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+							</ul>
+							<!-- // 상단 가로 이미지형 -->
+							<!-- 하단 세로 리스트형 -->
+							<ul class="news__list_c">
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">삼성 펀치홀 카메라 작동 영상 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+							</ul>
+							<!-- // 하단 세로 리스트형 -->
+						</div>
+					</div>
+					<!-- // 커뮤니티 인기글 -->
+
+					<!-- 쇼핑지식 인기 메뉴 -->
+					<div class="m_pop_menu m_card_type">
+						<div class="card__head">
+							<p class="card__tit">쇼핑지식 인기 메뉴</p>
+							<a href="/knowcom/index.jsp" class="btn__card_more">더보기</a>
+						</div>
+						<ul class="m_shortcut m_shortcut__knowcom">
+							<li><a href="/knowcom/news.jsp">뉴스</a></li>
+							<li><a href="/knowcom/guide.jsp">구매가이드</a></li>
+							<li><a href="/knowcom/board.jsp?bbsname=review">사용기</a></li>
+							<li><a href="/knowcom/board.jsp?bbsname=nuri">자유게시판</a></li>
+							<li><a href="/knowcom/enuritv.jsp?bbsname=enuritv">에누리TV</a></li>
+							<!-- 200402 : SR#39283 : 체험단 -> 쇼핑QNA 변경 -->
+							<li><a href="/knowcom/qna.jsp">쇼핑Q&amp;A</a></li>
+							<!-- <li><a href="/knowcom/exp.jsp">무료체험단</a></li> -->
+							<!-- // -->
+						</ul>
+					</div>
+					<!-- // 쇼핑지식 인기 메뉴 -->
+
+					<!-- 투데이 HOT CLIP -->
+					<div class="m_today_hotclip m_card_type">
+						<div class="card__head">
+							<p class="card__tit">투데이 HOT CLIP</p>							
+						</div>
+						<div class="news__inner">
+							<!-- 상단 가로 이미지 슬라이드형 -->
+							<div class="news__list_d noswipe scroller">
+								<ul class="scroll-cont">
+									<li>
+										<span class="img__clip">
+											<!-- 태그 - 분류 -->
+											<span class="tag__cate">스포츠</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5pbG92ZXBjLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzMwNjUzXzUyODIzXzQxMy5qcGc=_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+									<li>
+										<span class="img__clip">
+											<span class="tag__cate">연예</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+									<li>
+										<span class="img__clip">
+											<span class="tag__cate">코스프레</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+									<li>
+										<span class="img__clip">
+											<span class="tag__cate">스포츠</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+								</ul>
+							</div>
+							<!-- // 단 가로 이미지 슬라이드형 -->
+						</div>
+					</div>
+					<!-- // 투데이 HOT CLIP -->
+
+					<!-- 에누리 TV -->
+					<div class="m_enuri_tv m_card_type">
+						<div class="card__head">
+							<p class="card__tit">에누리 TV</p>
+							<a href="/knowcom/enuritv.jsp?bbsname=enuritv" class="btn__card_more">더보기</a>
+						</div>
+						<div class="news__inner">
+							<!-- 하단 세로 이미지형 + 비디오형 -->
+							<ul class="news__list_b enuri_tv__list">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTM4XzE1MTIwM18xMzM3LmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">영태형TV</span>|<span class="txt__date">2019-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTc1XzE1MTI2OF8zNTQxLmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">엠브로TV</span>|<span class="txt__date">2019-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/enurinews/2019/m1_20197813159.jpg" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">야식이TV</span>|<span class="txt__date">2019-12-10</span>
+										</span>
+									</span>
+								</li>
+							</ul>
+							<!-- // 하단 세로 이미지형 -->
+						</div>
+					</div>
+					<!-- // 에누리 TV -->
+
+				</div>
+				<!-- // 메인탭 :: 쇼핑지식 -->
+
+</div>
+<script>
+	// 공통 : 찜버튼
+	var $btnZzim = $(".btn__zzim");
+	var $layZzim = $(".zzimly");
+	$btnZzim.on('click',function(){				
+		if ( !$(this).hasClass('on') ){
+			$layZzim.show();
+			setTimeout(function(){
+				$layZzim.fadeOut(300);
+			},500)
+			$(this).addClass('on anim');
+		}else{
+			$(this).removeClass('on anim');
+		}
+	})
+</script>
+</body>
+</html>

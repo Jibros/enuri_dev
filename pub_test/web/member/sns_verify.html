@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="/favicon_enuri.ico">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="/css/default.css" type="text/css">
+<link rel="stylesheet" href="/css/member.css" type="text/css"> <!-- [D] 작업 CSS -->
+<!--[if lte IE 8]>
+	<link rel="stylesheet" href="/css/member_ie.css" type="text/css">
+<![endif]-->
+</head>
+<body id="Member">
+<!-- 회원가입 WRAP -->
+<div class="member_wrap">
+	<!-- Member Header -->
+	<div class="mb_header">
+		<!-- container -->
+		<!-- 20190320 헤더 텍스트 가운데 정렬 위한 style 추가 -->
+		<div class="container ex_login_top" style="width:auto">			
+			<h1 class="page_title"><a href="http://enuri.com/" class="pt_logo"><img src="/images/member/page/enuri_logo.gif" alt="ENURI 로고"></a> SNS 회원 본인인증</h1>
+		</div>
+		<!-- //container -->
+	</div>
+
+	<!-- Member Content -->
+	<div class="mb_content">
+		<!-- container -->
+		<div class="container">
+			<div class="join_form">
+				<form id="joinForm" method="post" action="">
+					<fieldset>
+						<legend>SNS 회원 본인인증 페이지</legend>
+
+						<!-- row section -->
+						<div class="sns_auth_wrap">
+							<p class="sns_auth_info">본인인증이 완료되면 e머니 혜택과 이벤트 참여가 가능합니다.</p>
+							
+							<!-- SNS 회원 본인인증 -->
+							<div class="auth_cont sns_auth_cont">
+								<div class="auth_id">
+									<p class="tit">본인인증</p>
+									
+									<p class="info">
+										<span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="" name="" value="N"><b>[필수]</b> 본인확인을 위해 휴대폰번호, 생년월일, 성별, 본인확인정보를 수집하는 것에 동의합니다.</span>
+									</p>
+
+									<div class="btn_group">
+										<div class="sm"><a href="#" class="btn btn_sm default" onclick="alert('본인인증에 성공했습니다.\n본인인증 하신 휴대폰번호로 \n회원정보가 등록됩니다.'); return false;">본인인증</a></div>
+									</div>
+									<p class="hp_info">휴대폰번호 (본인인증 하시면 휴대폰번호가 자동 입력됩니다.)</p>
+									<!--<p class="hp_info numb">010-1234-5678</p>-->
+								</div>
+							</div>
+							<!-- //SNS 회원 본인인증 -->
+						</div>
+						<!-- //row section -->
+					</fieldset>
+				</form>
+			</div>
+
+			<!-- BTN 영역 -->
+			<div class="btn_group">
+				<div><a href="#" class="btn btn_lg active">본인인증 완료</a></div>
+			</div>
+			<!-- //BTN 영역 -->
+		</div>		
+		<!-- //container -->
+
+	</div>
+	<!-- //Member Content -->
+
+	<!-- Member Footer -->
+	<div class="mb_footer">
+		<!-- container -->
+		<div class="container">
+			<p class="copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //Member Footer -->
+</div>
+<!-- //회원가입 WRAP -->
+
+<script>
+/*checkbox*/
+function agreechk(obj){
+	if (obj.className== 'unchk') {
+		obj.className = 'chk';
+	} else {
+		obj.className = 'unchk';
+	}
+}
+
+$(function(){
+	// 상세정보입력 SHOW/HIDE
+	var d_state = false;
+	$("#detailInput").hide();
+	$(".detail_add").click(function(e){
+		e.preventDefault();
+		if(!d_state){
+			$("#detailInput").show();
+			$(this).addClass("open");
+			d_state = true;
+		}else{
+			$("#detailInput").hide();
+			$(this).removeClass("open"); 
+			d_state = false;
+		}
+	});
+
+	// 본인인증, 간편인증 tab
+	var tabs = $(".auth_wrap .tabs li a[href^='#']");
+	$(tabs).click(function(e){
+		e.preventDefault();
+		var target = $(this.hash).selector.substr(1);
+		$(tabs).removeClass("on");
+		$(this).addClass("on");
+		$("#"+target).fadeIn().addClass("open").siblings().hide().removeClass("open");
+	});
+
+	// 성별 남/여 라디오 버튼 checked 
+	var radios = $(".gender input[type='radio']");
+	$(radios).click(function(e){
+		var attr = $(this).attr("name");
+
+		if(typeof attr !== typeof undefined && attr !== false){
+			$(".gender input:radio[name="+attr+"]").removeAttr("checked");
+			$(this).attr("checked","checked");
+		}
+	});
+
+	$(".pw_hint").click(function(e){
+		e.preventDefault();
+		$(this).siblings("#hintLayer").show();
+	});
+
+	/* CUSTOM SELECT */
+	$("div.sel_opt > a").click(function(e) {
+		$(".sub_dp").hide();
+		$(this).next(".sub_dp").toggle(); 
+		return false;
+	});
+	$(".sub_dp ul > li > a").click(function() {
+		$(this).parents(".sub_dp").hide();
+		$(this).parents(".sub_dp").siblings(".showList").find("em").text($(this).text())
+		//$(this).prependTo($(this).parent());
+	});
+});
+
+$(document).on("click", function(e) { 
+	if(e.target.class != $(".sel_opt")) { 		
+		$(".sub_dp").hide();
+	} 
+});
+</script>
+</body>
+</html>

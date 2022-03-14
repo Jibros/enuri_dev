@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<title>:: eNuri Admin 쇼핑몰 로그인 ::</title>
+<meta http-equiv='content-type' content='text/html; charset=euc-kr'>
+<!-- SDU COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=20190104" type="text/css">
+<style>
+.button_1
+{
+		BORDER-RIGHT:	#9c9a9c	1px	solid;
+		BORDER-TOP:	#9c9a9c	1px	solid;
+		FONT-SIZE: 8pt;
+		BORDER-LEFT: #9c9a9c 1px solid;
+		CURSOR:	hand;
+		COLOR: black;
+		LINE-HEIGHT: 140%;
+		BORDER-BOTTOM: #9c9a9c 1px solid;
+		FONT-FAMILY: tahoma;
+		HEIGHT:	19px;
+		BACKGROUND-COLOR:	white
+}
+.button_2
+{
+		BORDER-RIGHT:	#9c9a9c	1px	solid;
+		BORDER-TOP:	#9c9a9c	1px	solid;
+		FONT-SIZE: 8pt;
+		BORDER-LEFT: #9c9a9c 1px solid;
+		CURSOR:	hand;
+		COLOR: black;
+		LINE-HEIGHT: 140%;
+		BORDER-BOTTOM: #9c9a9c 1px solid;
+		FONT-FAMILY: tahoma;
+		HEIGHT:	19px;
+		BACKGROUND-COLOR:	#cfcfcf
+}
+.input_1
+{
+		BORDER-RIGHT:	#9c9a9c	1px	solid;
+		BORDER-TOP:	#9c9a9c	1px	solid;
+		FONT-SIZE: 8pt;
+		BORDER-LEFT: #9c9a9c 1px solid;
+		COLOR: black;
+		LINE-HEIGHT: 140%;
+		BORDER-BOTTOM: #9c9a9c 1px solid;
+		FONT-FAMILY: tahoma;
+		HEIGHT:	19px;
+		BACKGROUND-COLOR:	white
+}
+body, td
+{
+		FONT-SIZE:9pt;
+}
+</style>
+<script language=javascript src="http://img.enuri.gscdn.com/common/js/function.js"></script>
+<script>
+<!--
+	function CmdShopCode(obj)
+	{
+		if(obj.ShopCode.value.trim() == ""){
+			alert("업체번호를 입력하세요.");
+			obj.ShopCode.focus();
+			return false		
+		}
+		var newWin = window.open("","adminLogin","");
+		document.fmSetDelivery.target="adminLogin";
+		document.fmSetDelivery.action="/sdu/Sduadmin_autologin.jsp?LoginType=";
+		//document.fmSetDelivery.submit();		
+	}
+	
+	function MoneyFormat(obj){
+		if(obj.value.replace(/,/g,"").isnumber())
+		{
+			obj.value = obj.value.NumberFormat();
+		}
+		else
+		{
+			alert('숫자만입력하세요');
+			obj.value = "";
+		}
+	}
+//-->
+</script>
+</head>
+<body>
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .content
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">SDU</h2>
+	</div>
+	
+	<!-- SDU content -->
+	<div class="sducontent">
+		<iframe	name=ifrmCateProc	frameborder=1	width=0 height=0></iframe>
+		<table cellpadding=0 cellspacing=0 border=0	width=330 align=center>
+			<form name=fmSetDelivery method=post id=form1 onSubmit='return CmdShopCode(this)'><!--return if(this.ShopCode.value == ""){alert("업체번호를 입력하세요");return false;}-->
+			<tr>
+				<td align=center>
+					<table	cellpadding=1	cellspacing=1	border=0 bgcolor="#E8D5BF"	width=100%>
+						<tr	height=25	bgcolor="#F7EADC">
+							<td	align=center width=40%><b>업체번호</b></td>
+							<td	align=center bgcolor=FFFFFF width="30%" >
+								<input type=text name=ShopCode value='' size=8 style="width:100%" maxlength="8" onKeyUp=if(!this.value.isnumber()){alert("숫자만입력하세요");this.value="";}>
+							</td>
+							<td align=center width="30%">
+								<input type=submit name=btn1 value=" 업체 검색 "	class=button_1>
+							</td>
+						</tr>	
+					</table>
+				</td>
+			</tr>
+			<input type=hidden name=tabCmd value=delivery>
+			</form>
+		</table>
+	</div>
+	<!-- //SDU content -->
+	
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<!-- <ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul> -->
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+</body>
+</html>

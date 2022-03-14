@@ -1,0 +1,102 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+    <script src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    
+    <!-- LIB -->
+    <script type="text/javascript" src="./apps/lib/jquery.onepage-scroll.js"></script>
+    <link href="./apps/lib/onepage-scroll.css" rel="stylesheet" type="text/css">
+
+    <link href="./apps/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="main">
+        <section class="page1">
+            <div class="page_container">
+                <div class="visual">
+                    <span class="obj obj-envelope"></span>
+<!--                    <span class="obj obj-pang"></span>-->
+                    <span class="obj obj-stamp"></span>
+                    <span class="obj obj-mark">E</span>
+                    <p class="tx_msg">
+                        초대장이 도착했습니다.<br>
+                        지금 바로 e클럽을 확인하세요!
+                    </p>
+                    <button type="button" class="btn btn-down">다음</button>
+                </div>
+                <script>
+                    setTimeout(function(){
+                        $('.visual .obj').addClass('start');
+                    },1000);
+                </script>
+            </div>
+        </section>
+      
+        <section class="page2">
+            <div class="page_container">
+                <div class="page_cont">
+                    <img src="./apps/imgs/thumb_e1@x2.png" alt="" class="page_thumb">
+                    <p class="tx_msg" style="margin-bottom: 10px;">
+                        무료 회원 서비스로<br>
+                        개인 맞춤 쇼핑 콘텐츠, 가격 알림 등<br/>
+                        구독 서비스와 구매, 이벤트 참여를 통해서
+                    </p>
+                    <img src="./apps/imgs/thumb_e2@x2.png" alt="" class="page_thumb">
+                    <p class="tx_msg">
+                        현금처럼 사용할 수 있는<br>
+                        e머니 포인트를 적립 제공합니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="fixed_area">
+        <a href="#" class="btn btn-login"><span>로그인하고 혜택받기</span></a>
+    </div>
+    <div class="bg_object"></div>
+</div>
+<script>
+    $(".main").onepage_scroll({
+       sectionContainer: "section",
+       easing: "ease",
+       animationTime: 1000,
+       pagination: true,
+       updateURL: false,
+       beforeMove: function(index) {},
+       afterMove: function(index) {},
+       loop: false,
+       keyboard: true,
+       responsiveFallback: false,
+       direction: "vertical"
+    });
+
+    for(var i = 1; i < 10 ;i++ ){
+        $('.bg_object').append('<div class="obj"><img src="./apps/imgs/r'+ i +'.png"></div>');
+        $('.bg_object').append('<div class="obj"><img src="./apps/imgs/r'+ i +'.png"></div>');
+        $('.bg_object').append('<div class="obj"><img src="./apps/imgs/r'+ i +'.png"></div>');
+        $('.bg_object').append('<div class="obj"><img src="./apps/imgs/r'+ i +'.png"></div>');
+    }
+
+    $('.bg_object .obj').each(function(index, item){
+        var objs_h = $(item).height();
+        var objs_l = Math.floor(Math.random() * 100) + 1;
+        var objs_z = Math.floor(Math.random() * 100) + 1;
+        var objs_duration = Math.floor((Math.random() * 10)) + 4;
+        var objs_delay = Math.floor((Math.random() * 10)/2) + 1;
+        $(item).css({
+            'top': -(objs_h)+'px',
+            'left': objs_l+'%',
+            'animation-duration' : objs_duration + 's',
+            'animation-delay' : objs_delay + 's',
+            'z-index' : objs_z,
+        });
+    });
+</script>
+</body>
+</html>

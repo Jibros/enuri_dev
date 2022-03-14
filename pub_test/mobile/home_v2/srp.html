@@ -1,0 +1,3524 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v2/spinners.css"/>    
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp.css"/>    
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<!-- 공통 : 로더 -->
+<div id="loadingDiv" class="comm__loader" style="display:none">
+	<div class="loader_inner">로딩중</div>
+</div>
+<!-- // 로더 -->
+
+<!-- 공통 : 찜레이어 -->
+<span class="zzimly" style="display:none">찜 되었습니다</span>
+<!-- // 찜레이어 -->
+
+<!-- SRP : 상세검색 레이어 (카테고리) -->
+<div class="com__sr_detail ty_cate">
+	<div class="sr_inner">
+		<!-- 상세검색 헤더 -->
+		<header id="sr_detail_header" class="m_header m_header_cate fixed_top">
+			<div class="header_wrap">
+				<h2>상세검색</h2>			
+				<button class="btn_dt_close comm__sprite">닫기</button>
+			</div>
+		</header>
+		<!-- // 상세검색 헤더 -->
+		
+		<!-- 선택한 항목이 보여질 영역 -->
+		<div class="sr_detail_choice">
+			<span class="sr_choice_default">원하는 항목을 선택해주세요.</span>
+			<!-- 선택한 검색어가 있을때만 노출-->
+			<!-- 키워드 선택되었을때 .on클래스 붙여주세요 -->
+			<div class="sr_choice_list scroller">
+				<ul class="scroll-cont">
+					<!-- <li><em>애플</em><button class="btn__del_related comm__sprite">삭제</button></li> -->
+				</ul>
+			</div>
+		</div>
+
+		<!-- 상세검색 컨텐츠 -->
+		<div class="sr_detail_cnt">
+			<!-- 상세검색 메뉴 -->
+			<ul class="sr_detail_menu">
+				<!-- 활성화 메뉴에 .on클래스 붙여주세요 -->				
+				<li class="on sr_in_result">
+					<span class="txt__sr_menu">결과 내/<br/>가격 검색 <em></em></span>
+				</li>
+				<!-- 대카테고리 -->
+				<li> <!-- 대카테 -->
+					<span class="txt__sr_menu">디지털 <em></em></span>
+				</li>
+				<li>
+					<span class="txt__sr_menu">액세서리 <em></em></span>
+				</li>				
+				<li>
+					<span class="txt__sr_menu">부품 <em></em></span>
+				</li>
+				<li>
+					<span class="txt__sr_menu">문구,사무 <em></em></span>
+				</li>
+				<li>
+					<span class="txt__sr_menu">패션,잡화 <em></em></span>
+				</li>
+				<li>
+					<span class="txt__sr_menu">컴퓨터 <em></em></span>
+				</li>
+				<li>
+					<span class="txt__sr_menu">영상,디카 <em></em></span>
+				</li>
+				<li>
+					<span class="txt__sr_menu">계절가전 <em></em></span>
+				</li>								
+				<!-- // -->
+			</ul>
+
+			<!-- 상세검색 리스트 -->
+			<ul class="sr_detail_list">
+
+				<!-- 결과내 가격검색 -->
+				<li class="sr_list_item ty_re_find">
+					<!-- 결과내 가격검색 - 검색영역  -->
+					<div class="sr_box ty_sr_in_result">
+						<div class="sr_box_row">
+							<span class="box_row_txt">결과내검색</span>
+							<div class="box_row_inp">
+								<div class="inp_wrap_full">
+									<input type="text" placeholder="검색어를 입력해주세요">
+									<button class="btn_inp_del comm__sprite" onclick="$(this).prev('input').val('');">X</button>
+								</div>
+							</div>
+						</div>
+						<div class="sr_box_row">
+							<span class="box_row_txt">가격대 검색</span>
+							<div class="box_row_inp">
+								<div class="inp_wrap_half">
+									<input type="text" value="" placeholder="최소가격">
+									<button class="btn_inp_del comm__sprite" onclick="$(this).prev('input').val('');">X</button>
+								</div>
+								<span class="txt_sp">-</span>
+								<div class="inp_wrap_half">
+									<input type="text" value="" placeholder="최대가격">
+									<button class="btn_inp_del comm__sprite" onclick="$(this).prev('input').val('');">X</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- // -->
+				</li>
+				<!-- // -->
+
+				<!-- SRP > 카테고리 -->
+				<li class="sr_list_item ty_srp" style="display:none">
+					<!-- 첫번째 대카테고리의 중카테고리 노출 -->
+					<ul class="sr_cate_list">
+						<li class="sel_cate"> <!-- 중카테 -->
+							<!-- 중카테고리 선택 시 하위 소카테고리 펼쳐짐 -->
+							<p class="txt__cate">이어폰,헤드폰</p>
+							<!-- // -->
+							<!-- 소카테고리 선택 시 상단 선택한 항목에 해당 카테고리 들어감 -->
+							<ul class="sel_cate_lv2"> <!-- 소카테 -->
+								<!-- 전체보기 -->
+								<li class="sel_cate__s sel_cate__all"><span class="item_key">전체보기</span> <em>(15,258)</em></li>
+								<!-- // -->
+								<!-- 일반 -->
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>
+								<li class="sel_cate__s"><span class="item_key">유선 이어폰</span> <em>(7,258)</em></li>	
+							</ul>
+							<!-- // -->
+						</li>
+						<li class="sel_cate"><p class="txt__cate">카오디오,AV용품</p></li>
+						<li class="sel_cate"><p class="txt__cate">녹음기,MP3,포터블HiFi</p></li>
+						<li class="sel_cate"><p class="txt__cate">휴대용,블루투스 스피커</p></li>
+						<li class="sel_cate"><p class="txt__cate">휴대폰,스마트폰</p></li>
+						<li class="sel_cate"><p class="txt__cate">블루투스,스마트워치</p></li>
+						<li class="sel_cate"><p class="txt__cate">태블릿PC,전자책</p></li>
+					</ul>
+				</li>
+				<!-- // -->
+			</ul>
+		</div>
+
+		<!-- 버튼 : 상세검색 -->
+		<div class="sr_detail_btn">
+			<button class="btn_sr_detail_reset"><span>초기화</span></button>
+			<button class="btn_sr_detail" onclick="$('.btn_dt_close').click();"><span>선택검색</span></button>
+		</div>
+	</div>
+	<script>
+		// 퍼블 테스트용 (상세검색 (카테고리용))
+		$(function(){
+			var $ta = $(".com__sr_detail.ty_cate"); // 상세검색 레이어 (카테고리)
+			var $menu = $ta.find(".sr_detail_menu li"); // 상세검색 레이어 - 메뉴
+			var $srList = $ta.find(".sr_detail_list"); // 
+			var $selCateM = $ta.find(".sel_cate .txt__cate"); // 중카테 선택
+			var $selCateS = $ta.find(".sel_cate__s"); // 소카테 선택
+			var $seledList = $ta.find(".sr_choice_list"); // 선택된 아이템
+
+			$menu.on("click",function(){ // 테스트 - 좌측메뉴 클릭시 - 우측컨텐츠 변경
+				$(this).addClass("on").siblings().removeClass("on");
+				if ( $(this).hasClass('sr_in_result') ){ // 결과내 가격검색 일때
+					$srList.find(".ty_re_find").show().siblings().hide();
+				}else{ // 대카테일때
+					$srList.find(".ty_re_find").hide().siblings().show();
+				}
+			})
+
+			$selCateM.on("click",function(){ // 중카테 열고 닫기
+				var $parent = $(this).closest('.sel_cate');
+				$parent.toggleClass('on');
+			});
+
+			$selCateS.on("click",function(){ // 소카테 선택시 
+				if ( !$(this).hasClass('checked') ){ // 선택 안되있을때
+					var _nextnum = 0; 
+					if ($seledList.find("li").length){
+						_nextnum = parseInt($seledList.find("li:last-child").attr("data-selected-idx"),10)+1;
+					}else{
+						_nextnum = 1;
+					}
+					$(this).attr("data-selected-idx", _nextnum);
+					$seledList.find('ul').append(''
+						+'<li class="ty_cate" data-selected-idx="'+_nextnum+'">'
+						+'	<em>'+$(this).closest('.sel_cate').find('.txt__cate').text()+' &gt '+$(this).find('.item_key').text()+'</em><button class="btn__del_choice comm__sprite">삭제</button>'
+						+'</li>'
+					);
+					$seledList.find('ul').find('li:last-child .btn__del_choice').click(function(){
+						var _idx = $(this).parent().attr("data-selected-idx");
+						$(".com__sr_detail").find(".sel_cate__s[data-selected-idx='"+_idx+"']").click();
+					})
+				}else{ // 체크 되어있을때
+					$seledList.find("li[data-selected-idx='"+$(this).attr("data-selected-idx")+"']").remove();
+					$(this).removeAttr('data-selected-idx');
+				}
+				$seledList.stop(true,false).animate({scrollLeft : $seledList.find("ul").outerWidth()},500);
+				$(this).toggleClass("checked");
+				$seledList.find("li").length ? $seledList.addClass("on") : $seledList.removeClass("on");
+			})			
+		})
+	</script>
+</div>
+<!-- // 상세검색 레이어 -->
+
+<div id="wrap">
+	
+    <!-- 헤더 SRP - C타입-->
+	<!-- 211105 : SR#49656 : [MW] SRP 공통헤더 홈버튼 추가 / no_cate 삭제 -->
+	<!-- <header id="header" class="m_header head__type_c no_cate"> -->
+    <header id="header" class="m_header head__type_c">
+		<div class="header_wrap">
+			<h1 class="m_txt" onclick="alert('검색 레이어');">실생활용품</h1>		
+            <button class="btn_hd_back comm__sprite">뒤로</button>	
+			<button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>		
+            <button class="btn_hd_sr comm__sprite">나의정보</button>
+			<button class="btn_hd_myalarm comm__sprite">MY알림</button>
+		</div>
+	<!-- //211105 : SR#49656 : [MW] SRP 공통헤더 홈버튼 추가 / no_cate 삭제 -->
+		<script>
+			//퍼블 테스트용
+			$(function(){
+				var $mainWrap = $("#wrap"); // 메인컨텐츠 wrapper
+				var $btnCate = $(".btn_hd_cate"); // 카테고리 버튼
+				var $btnClose = $(".btn_hd_close"); // 카테고리 닫기 버튼				
+				var $cateLayer = $(".cate_wrap"); // 카테고리 레이어
+				var $detailSRLayer = $(".com__sr_detail"); // 상세검색 레이어
+				var $btnCloseDetail = $(".btn_dt_close"); // 상세검색 레이어 닫기
+				var $btnSR = $(".btn_hd_sr"); // 검색 버튼
+				var $srLayer = $(".com__sr_layer"); // 검색 레이어
+				var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
+				// 버튼 :: 카테고리 레이어
+				$btnCate.click(function(e){
+					$mainWrap.addClass("scroll_lock"); // 스크롤 잠그기
+					$cateLayer.show(); // 레이어를 활성화 한 후 슬라이딩 
+					setTimeout(function(){
+						$cateLayer.addClass("on");
+					},100)
+				})
+				// 버튼 :: 카테고리 닫기
+				$btnClose.click(function(e){
+					$mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+					$("html,body").scrollTop(0);
+					$cateLayer.removeClass("on");
+					setTimeout(function(){
+						$cateLayer.hide();	
+					},700)
+				})
+				// 버튼 : 상세검색 닫기
+				$btnCloseDetail.click(function(e){
+					$mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+					// $("html,body").scrollTop(0);
+					$detailSRLayer.removeClass("on");
+					setTimeout(function(){
+						$detailSRLayer.hide();	
+					},700)
+				})
+				// 버튼 :: 검색 레이어 열기
+				$btnSR.click(function(e){
+					var _taPos = $(".m_header").offset().top - 5;
+					// 검색창 열기전 위치값 저장
+					$(this).attr('data-scroll-val',$(window).scrollTop() );
+					// 스크롤 이동후 검색창 열기
+					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
+						$srLayer.show();
+						setTimeout(function(){
+							$srLayer.addClass("opened");
+							$mainWrap.addClass("scroll_lock");
+						},300)
+					})
+				})
+				// 버튼 :: 검색 레이어 닫기
+				$btnSRClose.click(function(e){
+					// 스크롤 잠금 해제
+					$mainWrap.removeClass("scroll_lock");
+					// 검색창 닫고 스크롤 이동
+					setTimeout(function(){
+						$(window).scrollTop( $btnSR.attr('data-scroll-val') );
+					},1);
+					$srLayer.hide().removeClass("opened");
+				})
+			})
+		</script>	
+    </header>
+    <!-- // 헤더 -->
+
+	<section id="container" class="m_lp_cont">
+        
+        <!-- SRP : 연관검색어 -->
+        <div class="related_keyword">
+			<div class="related_tit">부분</div>
+            <div class="related_box scroller">
+                <ul class="scroll-cont">
+                    <li>LG 건조기</li>
+                    <li>LG 내장고</li>
+                    <li>LG 청소기</li>
+                    <li>LG 다리미</li>
+                    <li>LG 전자렌지</li>
+                    <li>LG 올레드TV</li>
+                    <li>LG 생활가전</li>
+                </ul>
+            </div>
+        </div>
+		<!-- // SRP : 연관검색어 -->
+		
+		<!-- 200826 : SR#41933 : 부분검색어 추가 -->
+		<div class="part_keyword" style="display:none">
+			<div class="part_tit">연관</div>
+            <div class="part_box scroller">
+                <ul class="scroll-cont">
+					<!-- 선택된 검색어 a태그에 .on 붙여주세요 -->
+                    <li><a href="#" class="on" onclick="$(this).toggleClass('on');return false;">초미세</a></li>
+                    <li><a href="#" onclick="$(this).toggleClass('on');return false;">라이카</a></li>
+                    <li><a href="#" class="on" onclick="$(this).toggleClass('on');return false;">카메라</a></li>
+                    <li><a href="#" class="on" onclick="$(this).toggleClass('on');return false;">뷰파인더</a></li>
+                    <li><a href="#" onclick="$(this).toggleClass('on');return false;">200만화소</a></li>
+                </ul>
+			</div>
+			<button class="btn__research">재검색</button>
+        </div>
+		<!-- // SRP : 부분검색어 -->	
+		
+		<!-- 200826 : SR#41933 : 제외/유사 검색 결과 -->
+		<div class="similar_sr" style="display:none">
+			<span class="tx_similar_sr"><em>"15ZD90"</em> 유사검색 결과 페이지 입니다.</span>
+		</div>
+		<!-- // -->
+
+		<!-- 211117 : SR#49782 : 이달의 브랜드 광고 영역 -->
+		<div class="tbrand-box">
+			<div class="tbrand-box--head">
+				<!-- 로고 클릭 시, #adareaBox 확장 -->
+				<div class="btn-tbrand">
+					<div class="logo">
+						<button type="button" class="btn is-on"><img src="http://img.enuri.info/images/mobile_v2/tbrand_logo_samsung@2x.png" alt="SAMSUNG"></button>
+						<button type="button" class="btn"><img src="http://img.enuri.info/images/mobile_v2/tbrand_logo_samsung@2x.png" alt="SAMSUNG"></button>
+						<button type="button" class="btn"><img src="http://img.enuri.info/images/mobile_v2/tbrand_logo_estla@2x.png" alt="ESTLA"><span class="badge_hit">히트브랜드 뱃지</span></button>
+					</div>
+				</div>
+			</div>
+
+			
+			<style>
+				.bnr-tbrand--belt {background:linear-gradient(to left, #252f6c, #131836)} /* 띠배너 배경색 지정 */
+				.tbrand-box--toast {background:#f5f5f5} /* 토스트배너 배경색 지정 */
+			</style>
+
+			<!-- 띠배너 형태 노출 -->
+			<div id="adareaBelt" class="bnr-tbrand--belt is-shown">
+				<a href="#" target="_blank"><img src="http://img.enuri.info/images/mobile_v2/test/@bnr_720x112.png" alt="띠배너"></a>
+			</div>
+			<!-- // -->
+
+			<!-- 로딩 후 나타났다 사라지는 토스트 배너 -->
+			<div id="adareaToast" class="tbrand-box--toast">
+				<a href="#">
+					<img src="http://img.enuri.info/images/mobile_v2/test/@bnr_720x408.png" alt="" />
+					<span class="ico__ad">AD</span>
+				</a>
+			</div>
+			<!-- // -->
+
+			<!-- 광고 확장 영역 -->
+			<div id="adareaBox" class="tbrand-box--body">
+				<div class="tbrandSwiper swiper-container">
+					<ul class="swiper-wrapper">
+						<!-- 광고 상품 1개  x 4 반복 -->
+						<li class="swiper-slide">
+							<ul class="s_ad_goods_list">
+								<!-- 풀사이즈 : item full -->
+								<li class="item full">
+									<a>
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr_720x408.png">
+											<div class="caption link_type">Galaxy BookㅣProㅣPro 360</div>
+										</div>
+										<div class="goods_name">13.3인치 초경량 노트북! 삼성카드 5% 청구할인과 최대 12개월, 무이자 할부 혜택까지 만나보세요​</div>
+									</a>
+								</li>
+								<!-- 하프사이즈 : item half -->
+								<li class="item half">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr_324x224.png">
+										</div>
+										<div class="goods_name">미스틱 네이비</div>
+									</a>
+								</li>
+								<li class="item half">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr2_324x224.png">
+										</div>
+										<div class="goods_name">미스틱 핑크 골드​</div>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="swiper-slide has-vod"> <!-- 동영상 포함 슬라이드 클래스 추가 : has-vod -->
+							<ul class="s_ad_goods_list">
+								<li class="item full">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr2_720x408.png">
+											<div class="caption">자랑해 마지않을 컬러, 우주를 주머니에 넣을 ...</div>
+											<div class="ico_vod"><!--재생 아이콘(빨간 원)--></div>
+											
+											<!-- 동영상 div : 재생 클릭시 맨위로 올려서 노출함 -->
+											<div id="adYoutubeFrame" class="youtube"><!-- iFrame 노출 영역 --></div>
+										</div>
+										<div class="goods_name">#폴더블 #프리 스탠드 #3,300mAh #183g</div>
+									</a>
+								</li>
+								<li class="item half">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr3_324x224.png">
+										</div>
+										<div class="goods_name">크림</div>
+									</a>
+								</li>
+								<li class="item half">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr4_324x224.png">
+										</div>
+										<div class="goods_name">그린</div>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="swiper-slide">
+							<ul class="s_ad_goods_list">
+								<li class="item full">
+									<a href="#">
+										<div class="thumbs">
+											<div class="hitbrand_symbol"><img src="http://img.enuri.info/images/mobile_v2/hitbrand_ico@60x80.gif"></div>
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr3_720x408.png">
+										</div>
+										<div class="hitbrand_sector_name">중소기업TV 부문</div>
+										<div class="goods_name">이스트라 쿠카 UC651UHD 더 스마트 AI AN650UHD 안드로이드 TV</div>
+									</a>
+								</li>
+								<li class="item half">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr5_324x224.png">
+										</div>
+										<div class="goods_name">AN650UHD 안드로이드 TV AN650UHD 안드로이드 TV</div>
+									</a>
+								</li>
+								<li class="item half">
+									<a href="#">
+										<div class="thumbs">
+											<img src="http://img.enuri.info/images/mobile_v2/test/@bnr6_324x224.png">
+										</div>
+										<div class="goods_name">AN650UHD 안드로이드 TV AN650UHD 안드로이드 TV</div>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+		
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+			<!-- // -->
+		</div>
+			
+		<script>
+			// 동영상 Iframe 세팅
+			var tag = document.createElement('script');
+
+			tag.src = "https://www.youtube.com/iframe_api";
+			var firstScriptTag = document.getElementsByTagName('script')[0];
+			firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+			var tbrandPlayer;
+			function onYouTubeIframeAPIReady() {
+				tbrandPlayer = new YT.Player("adYoutubeFrame", {
+					height: '100%',
+					width: '100%',
+					videoId: "KtDcdIjxpRk",
+					playerVars:{'autoplay':0, 'mute':0, 'rel':1},
+				});			
+			}
+			function stopVideo() {
+				tbrandPlayer.stopVideo();
+			}		
+			// 유투브 API 참고 : https://developers.google.com/youtube/iframe_api_reference?hl=ko
+
+			$(function(){
+				// 로고 영역
+				var adExpandBtn = $(".btn-tbrand .logo .btn"); 
+
+				// 로딩 시, 1초간 배너 보여주기
+				setTimeout(function(){
+					$("#adareaToast").addClass("is-expand");
+					$("#adareaBelt").removeClass("is-shown");
+
+					setTimeout(function(){
+						$("#adareaToast").removeClass("is-expand");
+						$("#adareaBelt").addClass("is-shown");
+					}, 1000);
+				}, 200)
+
+				// 스와이프 생성
+				var superTopSwiper = new Swiper(".tbrandSwiper", {
+					slidesPerView: "auto",
+					centeredSlides: false,
+					spaceBetween: 0,
+					grabCursor: true,
+					autoHeight: true,				
+					pagination: ".tbrandSwiper .swiper-pagination",
+					onTransitionEnd: function(swipe){						
+						var _idx = swipe.activeIndex;
+						$(".btn-tbrand .btn").eq(_idx).addClass("is-on").siblings().removeClass("is-on");
+
+						if ($('.swiper-slide.swiper-slide-active').hasClass('has-vod')) {							
+							// 동영상 터치 영역 비활성화(터치 이벤트제거) 및 동영상 노출
+							$(".ico_vod").on("click", function(){
+								$("#adYoutubeFrame").css("z-index",1).fadeIn();
+								tbrandPlayer.playVideo();
+							})
+						} else {						
+							// 스와이프 시, 영상 숨김/종료
+							$("#adYoutubeFrame").css("z-index",-1).fadeOut();
+							tbrandPlayer.stopVideo();
+						}
+					}
+				});
+
+				var expandSt = false; // 확장 상태
+				adExpandBtn.on("click", function(){ // 로고 영역 클릭
+					var target = $("#adareaBox");
+
+					if(!expandSt){ // 열림
+						openAdareaBox();
+
+						// 딤 클릭 : 닫힘 초기화
+						$(".tbrand_dimmed").on("click", function(){
+							closeAdareaBox();
+						})
+
+						expandSt = true
+					}else{ // 닫힘
+						closeAdareaBox();
+					}
+
+					// 열릴때 실행
+					function openAdareaBox(){
+						adExpandBtn.closest(".btn-tbrand").addClass("is-on");
+						target.addClass("is-expand");
+						
+						// 딤드 APPEND 후 0.2초 후 노출
+						$("body").append("<div class='tbrand_dimmed'></div>");
+						setTimeout(function(){
+							$(".tbrand_dimmed").addClass("is-on"); 
+						},200)
+					}
+
+					// 닫힐때 실행
+					function closeAdareaBox(){
+						adExpandBtn.closest(".btn-tbrand").removeClass("is-on");
+						target.removeClass("is-expand");
+
+						$(".tbrand_dimmed").removeClass("is-on");
+						setTimeout(function(){
+							$(".tbrand_dimmed").detach(); // 딤드 삭제
+						},200);
+
+						// 동영상 돌려놓기
+						$("#adYoutubeFrame").css("z-index",-1).fadeOut();
+						tbrandPlayer.stopVideo();
+
+						// 슬라이드 처음으로 이동
+						setTimeout(function(){
+							superTopSwiper.slideTo(0);
+							$(".btn-tbrand .btn").eq(0).addClass("is-on").siblings().removeClass("is-on");
+						},500)						
+						
+						expandSt = false;
+					}
+				})
+			})
+		</script>
+		<!-- //211117 : SR#49782 : 이달의 브랜드 광고 영역 -->
+
+        <div class="lp__detail_sr detail_sr">
+            <!-- SRP : 브랜드 검색 AD -->
+			<!-- 210609 : SR#47140 : 브랜드 테마검색 기존 영역 삭제(SVN참고)  -->
+            
+            <!-- SRP > C-TYPE: 휴대폰/스마트폰(0304), 태블릿PC(0305) 요금제 특화-->
+            <div class="box_inner type__srp_type_c" style="display:none">
+				<div class="box_head">
+					<p class="type_c_tit">용량선택</p>
+					<div class="detail_sr_tab scroller">
+						<ul class="scroll-cont">
+							<li class="on">32GB</li>
+							<li>64GB</li>
+							<li>128GB</li>
+							<li>256GB</li>
+							<li>512GB</li>
+						</ul>
+					</div>
+				</div>
+				<div class="box_cnt">
+					<table class="tb_srp_type_c">
+						<tbody>
+							<tr>
+								<th rowspan="4" class="tb_cols_com">SKT</th>
+								<td class="tb_cols_type">기기변경</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">번호이동</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">공기계</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">가개통</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<th rowspan="4" class="tb_cols_com">KT</th>
+								<td class="tb_cols_type">기기변경</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">번호이동</td>
+								<td class="tb_cols_price">
+									<!-- <span class="txt_lowest">최저가</span><strong>2,220,950</strong>원 -->
+									품절
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">공기계</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">가개통</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<th rowspan="4" class="tb_cols_com">LG U+</th>
+								<td class="tb_cols_type">기기변경</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">번호이동</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">공기계</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+							<tr>
+								<td class="tb_cols_type">가개통</td>
+								<td class="tb_cols_price">
+									<span class="txt_lowest">최저가</span><strong>2,220,950</strong>원
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+            </div>
+            <!-- // SRP > C-TYPE: 휴대폰/스마트폰(0304), 태블릿PC(0305) 요금제 특화 -->
+
+			<!-- 상세검색 -->
+            <div class="box_inner">
+				<div class="lp__detail_sr_tab detail_sr_tab scroller">
+					<ul class="scroll-cont">
+						<!-- SRP : 카테고리 A-TYPE - 중+소분류 노출 .ty_typea로 구분-->
+						<li data-id="tab_01" class="ty_tapea on"><em>노트북</em></li>
+						<!-- // -->
+						<!-- SRP : 카테고리 B-TYPE - 중분류 노출 (클릭시 소카테고리로 변경) .ty_typeb로 구분 -->
+						<li data-id="tab_02" class="ty_typeb"><em>카테고리</em></li>
+						<!-- // -->
+						<li data-id="tab_03"><em>제조사</em></li>
+						<li data-id="tab_04"><em>브랜드</em></li>
+						<li data-id="tab_05"><em>화면크기</em></li>						
+					</ul>
+				</div>
+				<!-- 슬라이드가 상세검색 1개일때는 .mode_detail_solo 붙여주세요 -->
+				<div class="lp__detail_sr_cnt detail_sr_cnt">
+					<ul>
+						<!-- SRP : 카테고리 A-TYPE - 중+소분류 노출 .ty_typea_cnt로 구분 -->
+						<li id="tab_01" class="ty_typea_cnt swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<!-- 슬라이드 1개에 최대 8개 -->
+									<!-- 부족할시에도 <li></li>로 8개 채워주세요 -->
+									<ul>
+										<li class="item_cate"><em>17형 이상</em>(12,300)</li>
+										<li class="item_cate"><em>15형</em>(1,323)</li>
+										<!-- 선택된 키워드에 .selected 클래스 붙여주세요 -->
+										<!-- <li class="selected"><em>애플</em></li> -->
+										<li class="item_cate"><em>14형</em>(1,323)</li>
+										<li class="item_cate"><em>13형 이하</em>(1,323)</li>
+										<li class="item_cate"><em>기타 일반상품</em>(1,323)</li>
+										<li class="item_cate"><em>HP</em>(1,323)</li>
+										<li class="item_cate"><em>레노버</em></li>
+										<li class="item_cate"><em>ASUS</em></li>
+									</ul>
+								</div>
+								<div class="swiper-slide">
+									<ul>
+										<li><em>LG</em></li>
+										<li><em>삼성</em></li>
+										<li><em>애플</em></li>
+										<li><em>레노버</em></li>
+										<li><em>ASUS</em></li>
+										<li><em>HP</em></li>
+										<li></li>
+										<li></li>
+									</ul>
+								</div>
+							</div>
+							<div class="swiper-pagination"></div>
+							<!-- 200831 : SR#41975 : 더보기 -> 필터	더보기 버튼으로 변경 (마크업수정) -->
+							<a href="#" class="btn_lp__detail_more" onclick="$('.com__sr_detail').fadeIn(300).addClass('on');">
+								<span class="tx_more">필터 더보기</span>
+							</a>
+							<!-- // -->
+						</li>
+						<!-- // -->
+
+						<!-- SRP : 카테고리 B-TYPE - 중분류 노출 .ty_typeb_cnt로 구분 -->
+						<li id="tab_02" class="ty_typeb_cnt swiper-container">
+							<!-- 카테고리 b-type 네비영역 -->
+							<div class="detail_sr_nav">
+								<ul>
+									<li>전체</li>
+									<!-- 200831 : SR#41975 : 현재 위치한 카테고리에 selected 클래스 붙여주세요 (그외 동일)-->
+									<li class="selected">세탁,청소용품</li>
+									<!-- // -->
+								</ul>
+							</div>
+							<!-- // -->
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<!-- location 달린 영역의 슬라이드 1개에 최대 6개 -->
+									<!-- 부족할시에도 <li></li>로 6개 채워주세요 -->
+									<ul>
+										<li><em>LG</em></li>
+										<li><em>삼성</em></li>
+										<!-- 선택된 키워드에 .selected 클래스 붙여주세요 -->
+										<!-- <li class="selected"><em>애플</em></li> -->
+										<li><em>애플</em></li>
+										<li><em>레노버</em></li>
+										<li><em>ASUS</em></li>
+										<li><em>HP</em></li>
+									</ul>
+								</div>
+								<div class="swiper-slide">
+									<ul>
+										<li><em>LG</em></li>
+										<li><em>삼성</em></li>
+										<li><em>애플</em></li>
+										<li><em>레노버</em></li>
+										<li onclick="$(this).unbind('click')"></li>
+										<li onclick="$(this).unbind('click')"></li>
+									</ul>
+								</div>
+							</div>
+							<div class="swiper-pagination"></div>
+							<!-- 200831 : SR#41975 : 더보기 -> 필터	더보기 버튼으로 변경 (마크업수정) -->
+							<a href="#" class="btn_lp__detail_more" onclick="$('.com__sr_detail').fadeIn(300).addClass('on');">
+								<span class="tx_more">필터 더보기</span>
+							</a>
+							<!-- // -->
+						</li>
+
+						<li id="tab_03" class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<ul>
+										<li><em>맥북프로</em></li>
+										<li><em>울트라PC</em></li>
+										<li><em>노트북9 Always</em></li>
+										<li><em>그램15</em></li>
+										<li><em>그램17</em></li>
+										<li><em>올데이그램</em></li>
+										<li><em>맥북프로</em></li>
+										<li><em>울트라PC</em></li>
+									</ul>
+								</div>
+								<div class="swiper-slide">
+									<ul>
+										<li><em>올 뉴 그램</em></li>
+										<li><em>아이디어패드</em></li>
+										<li><em>프레스티지</em></li>
+										<li><em>그램14</em></li>
+										<li><em>노트북Pen</em></li>
+										<li><em>노트북Pen S</em></li>
+										<li><em>올 뉴 그램</em></li>
+										<li><em>아이디어패드</em></li>
+									</ul>
+								</div>
+							</div>
+							<div class="swiper-pagination"></div>
+							<!-- 200831 : SR#41975 : 더보기 -> 필터	더보기 버튼으로 변경 (마크업수정) -->
+							<a href="#" class="btn_lp__detail_more" onclick="$('.com__sr_detail').fadeIn(300).addClass('on');">
+								<span class="tx_more">필터 더보기</span>
+							</a>
+							<!-- // -->
+						</li>
+					</ul>
+					
+					<!-- 200831 : SR#41975 : 선택한 검색어 및 카테고리 / 기존 마크업 동일하며 노출 위치만 이동 -->
+					<!-- LP 연관검색어 검색 -->
+					<!-- 카테고리/속성값 선택되면 on클래스 붙여주세요 (on 없을시 비노출) -->
+					<!-- <div class="lp__cont_related cont_related on"> -->
+					<div class="lp__cont_related cont_related">
+						<div class="related_list scroller">
+							<ul class="scroll-cont">
+								<!-- <li><em>LG</em><button class="btn__del_related comm__sprite">삭제</button></li> -->
+							</ul>
+						</div>
+						<button class="btn__refresh">초기화</button>
+					</div>
+					<!-- // -->					
+				</div>
+				<script>
+					// 퍼블테스트 - 상세검색 슬라이드
+					$(function(){
+						var $tab = $(".lp__detail_sr_tab ul li"); // 탭
+						var slide = ".lp__detail_sr_cnt .swiper-container"; // 탭내부 슬라이드
+						var $related = $('.cont_related .related_list'); // 선택된 키워드 리스트
+						var $slide = $(slide);
+						$slide.each(function(e){
+							var _ta = slide+":nth-child("+(e+1)+")";
+							var swiper = new Swiper(_ta, {
+								watchActiveIndex: true,
+								speed : 600,
+								loop : false,
+								autoHeight : true,
+                				spaceBetween : 0,
+								pagination: _ta + ' .swiper-pagination',
+        						paginationClickable: true
+							});
+						}).find(".swiper-slide li").click(function(){ // 키워드 클릭시
+							if ( !$(this).hasClass('selected') ){ // 선택 안되있을때
+								var _nextnum = 0; 
+								if ( $related.find("li").length){
+									_nextnum = parseInt( $related.find("li:last-child").attr("data-selected-idx"),10)+1;
+								}else{
+									_nextnum = 1;
+								}
+								$(this).attr("data-selected-idx", _nextnum);
+
+								// 키워드 타입 결정하여 dom생성
+								var makeDom = ''
+								makeDom += '<li';
+								if ($(this).hasClass('item_cate')){ // 카테고리를 선택했을때
+									makeDom += ' class="ty_cate"';
+								}
+								makeDom += ' data-selected-idx="'+_nextnum+'">';
+								makeDom += '	<em>'
+								// 카테고리 A 형일때
+								var $parent = $(this).closest('.swiper-container');
+								if ( $parent.hasClass('ty_typea_cnt') ) {
+									makeDom += $(".detail_sr_tab").find("li[data-id='"+$parent.attr("id")+"'] em").text() + " &gt; ";
+								}
+								// 카테고리 B 형일때
+								// if ( $(this).closest('.swiper-container').hasClass('ty_typeb_cnt') ) {}
+								makeDom+=$(this).find('em').text()+'</em><button class="btn__del_related comm__sprite">삭제</button>';
+								makeDom+= '</li>' ;
+								$related.find('ul').append(makeDom);
+								//
+								$related.find('ul').find('li:last-child .btn__del_related').click(function(){
+									var _idx = $(this).parent().attr("data-selected-idx");
+									$slide.find("li[data-selected-idx='"+_idx+"']").click();
+								})
+							}else{ // 선택 되어있을때
+								$related.find("li[data-selected-idx='"+$(this).attr("data-selected-idx")+"']").remove();
+								$(this).removeAttr('data-selected-idx');
+							}
+							$related.stop(true,false).animate({scrollLeft : $related.find('ul').outerWidth()},500);
+							$(this).toggleClass("selected");
+							$related.find("li").length ? $related.parent().addClass("on") : $related.parent().removeClass("on");
+						})
+						$tab.click(function(){
+							$(this).addClass("on").siblings().removeClass("on");
+							$("#"+$(this).attr("data-id")).show().siblings().hide();
+						}).eq(0).click();
+					})
+				</script>
+			</div>
+			<!-- // 상세검색 -->
+		</div>
+
+		<!-- LP/SRP 공통 : 중단 배너 -->
+		<div class="lp__mid_bnr" style="background-color:#37344f">
+			<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@lp__mid_bnr.jpg" alt=""></a>
+		</div>
+		<!-- // 중단 배너 -->
+
+		<!-- SRP : 중고차 -->
+		<div class="m_reborn m_card_type">
+			<div class="card__head">
+				<p class="card__tit">프리미엄 중고차</p>
+				<a href="#" class="btn__card_more">더보기</a>
+			</div>
+			<div class="reborn_goods">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<!-- 배너 타입 -->
+						<div class="swiper-slide type_bnr">
+							<!-- 배너 타입은 a태그에 inline-style로 배경색 / 이미지 경로 넣어주세요 -->
+							<a href="#" style="background-color:#e9f0ff;background-image:url(http://img.enuri.info/images/home/reborncar/m_bnr_reborn_main.jpg)">
+								상담신청만 해도 e머니 10,000점 지급!
+							</a>
+						</div>
+						<!-- // -->
+						<!-- 상품 타입 -->
+						<div class="swiper-slide type_goods">
+							<a href="#">
+								<span class="thumb"><img src="http://sales.autoplus.co.kr/nfs_img/PRODUCT/C19101000060/IMG01.jpg" alt=""></span>
+								<span class="info">
+									<!-- 200611 : SR#40457 : 몰명 추가 노출 (텍스트로 노출합니다) -->
+									<span class="txt_mall">A-CAR</span>
+									<!-- // -->
+									<span class="txt_name">
+										<span class="name">기아 K7 PREMIER</span>
+										<span class="model">3.0 GDI 노블레스</span>
+									</span>
+									<span class="txt_spec">
+										<span class="item">2016연식</span><span class="item">999,999km</span><span class="item">가솔린</span>
+									</span>
+									<span class="txt_price">
+										<span class="org_price"><em>3,400</em>만원</span>
+										<span class="sell_price">
+											<span class="txt">판매가</span><em>1,250</em>만원
+										</span>
+									</span>
+								</span>
+							</a>
+						</div>
+						<!-- // -->
+						<div class="swiper-slide type_goods">
+							<a href="#">
+								<span class="thumb"><img src="http://sales.autoplus.co.kr/nfs_img/PRODUCT/C19101000060/IMG01.jpg" alt=""></span>
+								<span class="info">
+									<span class="txt_mall">리본카</span>
+									<span class="txt_name">
+										<span class="name">기아 K7 PREMIER</span>
+										<span class="model">3.0 GDI 노블레스</span>
+									</span>
+									<span class="txt_spec">
+										<span class="item">2016연식</span><span class="item">999,999km</span><span class="item">가솔린</span>
+									</span>
+									<span class="txt_price">
+										<span class="org_price"><em>3,400</em>만원</span>
+										<span class="sell_price">
+											<span class="txt">판매가</span><em>1,250</em>만원
+										</span>
+									</span>
+								</span>
+							</a>
+						</div>
+						<div class="swiper-slide type_goods">
+							<a href="#">
+								<span class="thumb"><img src="http://sales.autoplus.co.kr/nfs_img/PRODUCT/C19101000060/IMG01.jpg" alt=""></span>
+								<span class="info">
+									<span class="txt_mall">리본카</span>
+									<span class="txt_name">
+										<span class="name">기아 K7 PREMIER</span>
+										<span class="model">3.0 GDI 노블레스</span>
+									</span>
+									<span class="txt_spec">
+										<span class="item">2016연식</span><span class="item">999,999km</span><span class="item">가솔린</span>
+									</span>
+									<span class="txt_price">
+										<span class="org_price"><em>3,400</em>만원</span>
+										<span class="sell_price">
+											<span class="txt">판매가</span><em>1,250</em>만원
+										</span>
+									</span>
+								</span>
+							</a>
+						</div>
+					</div>
+					<div class="swiper-button-prev swiper-button-white"></div>
+					<div class="swiper-button-next swiper-button-white"></div>
+				</div>
+				<script>
+					$(function(){
+						var mySwiper = Swiper('.m_reborn .swiper-container',{
+							// prevButton : '.m_reborn .swiper-button-prev',
+							// nextButton : '.m_reborn .swiper-button-next',
+							spaceBetween : 10,
+							slidesPerView : 2,
+							breakpoints : {
+								767 : {
+									slidesPerView : 'auto'
+								}
+							},
+							loop : true
+						});
+					})
+				</script>
+			</div>
+		</div>
+		<!-- // 중고차 -->
+
+		<!-- 200814 : SR#41743 : SRP > 검색결과 없을때 .lp__cont에 no_head클래스 붙여주세요 -->
+		<div class="lp__cont lp__cont_srp">
+			<!-- 211224 : SRP쪽 sort영역은 예전버전 적용 -->
+            <div class="lp__cont_head cont_head" >
+                <div class="lp__cont_sortable cont_sortable">
+                    <!-- 정렬옵션 -->
+                    <div class="opt__sort">
+                        <select name="sort_option" onchange="selectToLabel(this)" class="select_opt" id="" title="인기순">
+                            <option value="" selected="">인기순</option>
+                            <option value="">최저가순</option>
+                            <option value="">최고가순</option>
+                            <option value="">신규등록순</option>
+                            <option value="">판매량순</option>
+                            <option value="">출시예정상품</option>
+                            <option value="">상품평많은순</option>
+                        </select>
+                        <label for="sort_option">인기순</label>
+                        <script>
+                            // 선택된 옵션값을 라벨에 복사
+                            function selectToLabel(e){
+                                var $label = $(e).next("label");
+                                $label.html( e.options[e.selectedIndex].text );
+                            }
+                        </script>
+                    </div>
+                    <!-- 보기옵션 + 필터 -->
+                    <div class="opt__side">
+                        <!-- 보기옵션 -->
+                        <button class="opt__view btn__view_grid" onclick="$('.lp__cont').toggleClass('grid');$('html,body').scrollTop($('.lp__cont').offset().top - 50);">그리드모드</button>
+                        <button class="opt__view btn__view_list" onclick="$('.lp__cont').toggleClass('grid');$('html,body').scrollTop($('.lp__cont').offset().top - 50);">리스트모드</button>
+                        <!-- 필터 -->
+                        <button class="btn__filter" onclick="$('.com__sr_detail').fadeIn(300).addClass('on');">필터</button>
+                    </div>
+                </div>
+            </div>
+            <!-- // LP Header -->
+
+			<!-- SRP 상품 갯수  -->
+			<div class="lp__cont_total">
+				<span class="txt_amount">
+					<!-- <em>123,456</em>개 상품 -->
+					<em>123,456</em>개 검색결과
+				</span>
+			</div>
+			<!-- // -->
+
+			<!-- 네이버 파워쇼핑 AD  -->
+			<div class="comm_ad ad_powershopping mobile">
+				<div class="comm_ad_tit">
+					<em>파워쇼핑</em>
+					<a href="#" class="comm_btn_apply">신청하기</a>
+				</div>
+				<div class="comm_ad_list ad_goods swiper-container">
+					<ul class="swiper-wrapper">
+						<!-- 광고 상품 1개  x 6 반복 -->
+						<li class="swiper-slide">
+							<a href="#">
+								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+								<span class="ad_info">
+									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+									<span class="ad_info_price">
+										<em>179,000</em>원
+									</span>
+									<span class="ad_info_shop">
+										<em class="ad_type_npay">마이크로소프트코리아</em>
+									</span>
+								</span>
+							</a>
+						</li>
+						<!-- // -->
+						<li class="swiper-slide">
+							<a href="#">
+								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+								<span class="ad_info">
+									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+									<span class="ad_info_price">
+										<em>179,000</em>원
+									</span>
+									<span class="ad_info_shop">
+										<em class="ad_type_npay">마이크로소프트코리아</em>
+									</span>
+								</span>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+								<span class="ad_info">
+									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+									<span class="ad_info_price">
+										<em>179,000</em>원
+									</span>
+									<span class="ad_info_shop">
+										<em class="ad_type_npay">마이크로소프트코리아</em>
+									</span>
+								</span>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+								<span class="ad_info">
+									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+									<span class="ad_info_price">
+										<em>179,000</em>원
+									</span>
+									<span class="ad_info_shop">
+										<em class="ad_type_npay">마이크로소프트코리아</em>
+									</span>
+								</span>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+								<span class="ad_info">
+									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+									<span class="ad_info_price">
+										<em>179,000</em>원
+									</span>
+									<span class="ad_info_shop">
+										<em class="ad_type_npay">마이크로소프트코리아</em>
+									</span>
+								</span>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<span class="ad_thumb"><img src="http://img.enuri.info/images/home/thum_none.gif" alt=""></span>
+								<span class="ad_info">
+									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+									<span class="ad_info_price">
+										<em>179,000</em>원
+									</span>
+									<span class="ad_info_shop">
+										<em class="ad_type_npay">마이크로소프트코리아</em>
+									</span>
+								</span>
+							</a>
+						</li>
+					</ul>
+					<div class="swiper-scrollbar"></div>
+				</div>
+				<script>
+					$(function(){
+						var swiper = new Swiper('.ad_powershopping .swiper-container', {
+							scrollbar: '.ad_powershopping .swiper-scrollbar',
+							scrollbarHide: false,
+							slidesPerView: 'auto',
+							centeredSlides: false,
+							spaceBetween: 10,
+							grabCursor: true
+						});
+					})
+				</script>
+			</div>
+			<!-- // 네이버 파워쇼핑 추가 -->				
+
+			<div class="lp__prod_list prod__list">
+				<ul>
+					<!-- SRP : 검색결과 없음 : 211206 : 공통화진행 -->
+					<li class="no_result">
+						<span class="comm__sprite ico_caution">!</span>
+						<span class="txt_result">
+							<span class="txt_keyword">ㅇㄹㄴㅇㅎ울호</span><br>
+							검색결과가 없습니다.
+						</span>
+						<div class="no-result__txt">
+							<div class="no-result__txt--sub">정확한 검색어인지 확인하시고 다시 검색해 주세요.</div>
+							<ul class="txt_noti">
+								<li>- 검색어의 철자가 맞는지 확인해 주세요.</li>
+								<li>- 붙은 단어일 경우 띄어쓰기를 해보세요.</li>
+								<li>- 단어수를 줄이거나, 일반적인 검색어로 다시 검색해 보세요.</li>
+							</ul>
+						</div>
+					</li>
+					<!-- // -->
+
+					<!-- 
+						******상품 케이스는 LP와 동일합니다 lp.html 참고*** 
+					-->
+
+					<!-- SRP D-Type 일체형 검색 케이스 -->
+					<li class="type__srp_type_d">
+						<!-- SRP D-Type 일체형 검색 문구 -->
+						<div class="txt_type_d">
+							<span class="txt_accurate"><i class="ico__bulb comm__sprite"></i>딱 맞는 상품입니다.</span>
+						</div>
+						<!-- // -->
+						<div class="prod_tag_area">
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img">
+								<img src="http://photo3.enuri.com/data/images/service/img_300/30417000/30417566.jpg" alt="">
+							</div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<span class="prod__name">
+										<span class="prod__name_txt">캐논 EOS 6D MARKⅡ</span>
+									</span>									
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,598,000</strong>원</span>
+									</span>
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,120</strong>원										
+									</span>
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.8</strong> (150)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (160)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품속성정보 -->
+						<div class="prod_info_attr">
+							<!-- 특수케이스 [화장품(0801) 카테고리 – 성분] 적합도 : 화장품 -->
+							<div class="prod_cosmetic_attr prod_attr_row">
+								<p class="prod_attr_tit">적합도</p>
+								<div class="prod_attr_grade">									
+									<div class="cosmetic_grade_01 cosmetic_grade">
+										<span class="grade_tit">지성</span><span class="ico__grade lpsrp__sprite"><span class="ico__grade_score lpsrp__sprite" style="width:50%"></span></span>
+									</div>
+									<div class="cosmetic_grade_02 cosmetic_grade">
+										<span class="grade_tit">건성</span><span class="ico__grade lpsrp__sprite"><span class="ico__grade_score lpsrp__sprite" style="width:20%"></span></span>
+									</div>
+									<div class="cosmetic_grade_03 cosmetic_grade">
+										<span class="grade_tit">민감성</span><span class="ico__grade lpsrp__sprite"><span class="ico__grade_score lpsrp__sprite" style="width:75%"></span></span>
+									</div>
+								</div>
+							</div>
+							<!-- 특수케이스 [가구(1201) 카테고리 – 자재등급, 착석감] -->
+							<div class="prod_furn_attr prod_attr_row">
+								<p class="prod_attr_tit">자재등급</p>
+								<div class="prod_attr_grade">
+									<div class="furn_grade_01 furn_grade">
+										<span class="grade_txt grade_txt_front">비친환경</span>
+										<!--자재등급 class 붙여주세요 -->
+										<!-- .grade_e2 / .grade_e1 / .grade_e0 /.grade_se0  -->
+										<span class="grade_graph grade_e1">
+											<span class="ico__gE2 lpsrp__sprite">E2</span><span class="ico__gE1 lpsrp__sprite">E1</span><span class="ico__gE0 lpsrp__sprite">E0</span><span class="ico__gSE0 lpsrp__sprite">SE0</span>
+										</span>
+										<span class="grade_txt grade_txt_back">친환경</span>
+									</div>
+								</div>
+							</div>
+							<!-- 특수케이스 [가구(1201) 카테고리 – 자재등급, 착석감] -->
+							<div class="prod_furn_attr prod_attr_row">
+								<p class="prod_attr_tit">착석감</p>
+								<!-- <p class="prod_attr_tit">쿠션감</p> -->
+								<div class="prod_attr_grade">
+									<div class="furn_grade_02 furn_grade">
+										<span class="grade_txt grade_txt_front">SOFT</span>
+										<!-- 착석감/쿠션감 등급 class 붙여주세요 -->
+										<!-- .grade_lv1 ~ 5 -->
+										<span class="grade_graph grade_lv3">
+											<span class="ico__lv01 lpsrp__sprite">1</span><span class="ico__lv02 lpsrp__sprite">2</span><span class="ico__lv03 lpsrp__sprite">3</span><span class="ico__lv04 lpsrp__sprite">4</span><span class="ico__lv05 lpsrp__sprite">5</span>
+										</span>
+										<span class="grade_txt grade_txt_back">HARD</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<!-- SRP D타입일때 unfold 클래스 붙여주세요 -->
+						<div class="prod_info_detail unfold">
+							<span class="prod_txt_related">
+								<span class="prod_txt_tag">리뷰</span>터치ID와 터치bar의 혁신 누구나 써보고 싶은 맥북프로 15형
+							</span>							
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								<!-- 2021.12.09 출시가 추가 -->
+								출시가:10,000원 <strong>(12%&darr;)</strong><i class="ico_div">|</i>화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+
+							<!-- SR#46827 : 210521 : LP/SRP 대괄호 속성 노출 -->
+							<!-- 대괄호속성 -->
+							<div class="prod_txt_summ">
+								<!-- 반복 -->
+								<dl>
+									<dt>[전방]</dt>
+									<dd>Full-HD(1920X1080)</dd><dd>30프레임</dd><dd>시야각:136도</dd>
+								</dl>
+								<!-- // -->
+								<dl>
+									<dt>[후방]</dt>
+									<dd>Full-HD(1920X1080)</dd><dd>30프레임</dd><dd>시야각:136도</dd>
+								</dl>
+								<dl>
+									<dt>[녹화기능]</dt>
+									<!-- 재검색기능 : related -->
+									<dd><em class="related">Full-HD(1920X1080)</em></dd><dd>30프레임</dd><dd>시야각:136도</dd>
+								</dl>
+								<dl>
+									<dt>[부가기능]</dt>
+									<dd>Full-HD(1920X1080)</dd><dd>30프레임</dd><dd>시야각:136도</dd><dd>졸음운전방지</dd><dd>저장:microSD카드(최대128G),포맷불필요</dd><dd>전원:방전방지</dd>
+								</dl>
+							</div>
+							<!-- // -->
+							
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										구매옵션 <em>(10개)</em>
+										<!-- 출시년월일 -->
+										<span class="tb_release_month">19년 3월</span>
+									</caption>
+									<thead>
+										<tr>
+											<th class="tb_opt_name">옵션명</th>
+											<th class="tb_val_unit">10g당 가격<span class="tx_unit">(배송포함)</span></th>
+											<th class="tb_val_price">가격</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<td colspan="3">
+												<!-- 옵션더보기 -->
+												<span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">12개의 옵션 더보기</span>
+												<!-- 상품상세보기 -->
+												<!-- <span class="btn__view_detail">쇼핑몰 최저가 더보기</span> -->
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>일반<em class="tb_opt_rank">1위</em></span></td>
+											<!-- 단위 환산가 중 최저가일 경우 unit_lowest 클래스 붙여주세요. -->
+											<td class="tb_val_unit unit_lowest">221원</td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>2,220,950</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>+윈도 10</span></td>
+											<td class="tb_val_unit">1022원</td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>CPU (교체)</span></td>
+											<td class="tb_val_unit">226원</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>SSD 1T (교체)<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_unit">2433원</td>
+											<td class="tb_val_price"><span class="ico__global">직구</span><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>SSD 1T (교체)</span></td>
+											<td class="tb_val_unit">2433원</td>
+											<td class="tb_val_price"><span class="ico__cash">현금</span><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr class="tb_hide">
+											<td class="tb_opt_name"><span>SSD 1T (교체)</span></td>
+											<td class="tb_val_unit">2433원</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr class="tb_hide">
+											<td class="tb_opt_name"><span>SSD 1T (교체)</span></td>
+											<td class="tb_val_unit">2433원</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<!-- I : 구매옵션 있을 경우 표시, 없을 경우 쇼핑몰별 최저가 표시 -->
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">구매 옵션 <em>(99개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // SRP D type 케이스 -->
+
+					<!-- LP 리스트 + Grid형 상품 + 구매옵션 2단 구성 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>895,000</strong>원</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>52,800</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.9</strong> (1250)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (82)</span>
+										<!-- 배송정보 -->
+										<!-- <span class="prod__delivery">무료배송</span> -->
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_related">
+								<span class="prod_txt_tag">가이드</span>터치ID와 터치bar의 혁신 누구나 써보고 싶은 맥북프로 15형
+							</span>
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										구매옵션 <em>(6개)</em>
+										<span class="tb_release_month">19년 4월</span>
+									</caption>
+									<!-- 구분 필요 없을때 그냥 날려주세요. -->
+									<!-- <thead> -->
+										<!-- <tr> -->
+											<!-- <th class="tb_opt_name">옵션명</th> -->
+											<!-- <th class="tb_val_price">가격</th> -->
+										<!-- </tr> -->
+									<!-- </thead> -->
+									<tfoot>
+										<tr>
+											<!-- 두개 타입일때 colspan - 2  -->
+											<td colspan="2">
+												<!-- 옵션더보기 -->
+												<span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">1개의 옵션 더보기</span>
+												<!-- 상품상세보기 -->
+												<!-- <span class="btn__view_detail">쇼핑몰 최저가 더보기</span> -->
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>기변<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>52,850</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>번호이동</span></td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>213,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규</span></td>
+											<td class="tb_val_price"><strong>720,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,기변<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_price"><strong>212,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,번이</span></td>
+											<td class="tb_val_price"><strong>220,950</strong>원</td>
+										</tr>
+										<tr class="tb_hide">
+											<td class="tb_opt_name"><span>자급제폰</span></td>
+											<td class="tb_val_price"><strong>895,000</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">구매 옵션 <em>(99개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // LP 리스트 + Grid 형 상품 + 구매옵션 2단 구성 -->
+
+					<!-- 리스트 내 파워링크 -->
+					<li class="list__type_ad">
+						<div class="comm_ad ad_powerlink mobile">
+							<div class="comm_ad_tit">
+								<em>파워링크</em>
+								<a href="#" class="comm_btn_apply">신청하기</a>
+							</div>
+							<div class="comm_ad_list ad_link">
+								<ul>
+									<!-- 광고 1개  x 2개 반복 -->
+									<li>
+										<a href="#">
+											<!-- 이미지가 없을때는 ad_thumb을 제거 -->
+											<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+											<!-- // -->
+											<span class="ad_info">
+												<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+												<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+											</span>
+										</a>
+									</li>
+									<!-- // -->
+									<li>
+										<a href="#">
+											<span class="ad_info">
+												<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+												<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<!-- // 리스트 내 파워링크 -->
+
+					<!-- 리스트 내 파워클릭 -->
+					<li class="list__type_ad">
+						<div class="comm_ad ad_powerclick mobile">
+							<!-- 201120 : SR#43342 : 오픈쇼핑 / 신청하기 레이어 추가 -->
+							<div class="comm_ad_tit">
+								<em>오픈쇼핑</em>
+								<a href="#" class="comm_btn_apply" onclick="$(this).siblings('.lay_comm_apply').fadeIn(200);return false;">신청하기</a>
+
+								<div class="lay_comm_apply dim">
+									<div class="lay_inner">
+										<div class="lay_head">
+											<h3>오픈쇼핑 광고 신청하기</h3>
+
+											<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+										</div>						
+
+										<div class="lay_cont">
+											<a href="https://ad.esmplus.com" target="_blank" title="새 창에서 열립니다" class="btn_shop btn_shop-ebay"><i>ebay 이베이 광고센터</i></a>
+											<a href="https://adoffice.11st.co.kr" target="_blank" title="새 창에서 열립니다" class="btn_shop btn_shop-11st"><i>11번가 브랜드 광고센터</i></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- // -->
+							<div class="comm_ad_list ad_goods swiper-container">
+								<ul class="swiper-wrapper">
+									<!-- 광고 상품 1개  x 4 반복 -->
+									<li class="swiper-slide">
+										<a href="#">
+											<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+											<span class="ad_info">
+												<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+												<span class="ad_info_price">
+													<!-- 가격 -->
+													<em>179,000</em>원
+												</span>
+												<span class="ad_info_shop">
+													<em>옥션</em>
+												</span>
+												<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+												<span class="ad_info_etc">
+													무료배송
+												</span>
+											</span>
+										</a>
+									</li>
+									<!-- // -->
+									<li class="swiper-slide">
+										<a href="#">
+											<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+											<span class="ad_info">
+												<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+												<span class="ad_info_price">
+													<em>179,000</em>원
+												</span>
+												<span class="ad_info_shop">
+													<em>11번가</em>
+												</span>
+												<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+												<span class="ad_info_etc">
+													무료배송
+												</span>
+											</span>
+										</a>
+									</li>
+									<li class="swiper-slide">
+										<a href="#">
+											<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+											<span class="ad_info">
+												<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+												<span class="ad_info_price">
+													<em>179,000</em>원
+												</span>
+												<span class="ad_info_shop">
+													<em>11번가</em>
+												</span>
+												<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+												<span class="ad_info_etc">
+													쇼핑몰베스트
+												</span>
+											</span>
+										</a>
+									</li>
+									<li class="swiper-slide">
+										<a href="#">
+											<span class="ad_thumb"><img src="http://img.enuri.info/images/home/thum_none.gif" alt=""></span>
+											<span class="ad_info">
+												<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+												<span class="ad_info_price">
+													<em>179,000</em>원
+												</span>
+												<span class="ad_info_shop">
+													<em>옥션</em>
+												</span>
+												<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+												<span class="ad_info_etc">
+													무료배송
+												</span>
+											</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<!-- // 리스트 내 파워클릭 -->					
+
+					<!-- Case1. 모델명2행 / 구매옵션O / 카피문구O / 출시가O / 속성2행 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">3위</em>삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,198,000</strong>원</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,000</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (1,290)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_related">
+								회오리 바람으로 더 강하게! 더 멀리~  삼성 최대1줄 길면 말줄임을 합니다아아아아아아아
+							</span>
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										구매옵션 <em>(6개)</em>
+										<span class="tb_release_month">등록일 등록일 19년 4월</span>
+									</caption>
+									<!-- 구분 필요 없을때 그냥 날려주세요. -->
+									<!-- <thead> -->
+										<!-- <tr> -->
+											<!-- <th class="tb_opt_name">옵션명</th> -->
+											<!-- <th class="tb_val_price">가격</th> -->
+										<!-- </tr> -->
+									<!-- </thead> -->
+									<tfoot>
+										<tr>
+											<!-- 두개 타입일때 colspan - 2  -->
+											<td colspan="2">
+												<!-- 옵션더보기 -->
+												<span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">1개의 옵션 더보기</span>
+												<!-- 상품상세보기 -->
+												<!-- <span class="btn__view_detail">쇼핑몰 최저가 더보기</span> -->
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>기변<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>52,850</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>번호이동</span></td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>213,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규</span></td>
+											<td class="tb_val_price"><strong>720,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,기변<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_price"><strong>212,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,번이</span></td>
+											<td class="tb_val_price"><strong>220,950</strong>원</td>
+										</tr>
+										<tr class="tb_hide">
+											<td class="tb_opt_name"><span>자급제폰</span></td>
+											<td class="tb_val_price"><strong>895,000</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">구매옵션 <em>(3개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // 모델명2행 / 구매옵션O / 카피문구O / 출시가O / 속성2행 -->
+
+					<!-- Case2. 모델명2행 / 구매옵션X / 카피문구X / 출시가X / 속성1행 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">4위</em>삼성전자 스마트에어컨 최대2줄, 넘어가면 말줄임표시</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>2,275,120</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>0.0</strong> (0)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (12,999)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_spec">
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										쇼핑몰 최저가 <em>(10개)</em>
+										<span class="tb_release_month">등록일 등록일 18년 4월</span>
+									</caption>
+									<tfoot>
+										<tr>
+											<td colspan="3">
+												<!-- 옵션더보기 -->
+												<!-- <span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">12개의 옵션 더보기</span> -->
+												<!-- 상품상세보기 -->
+												<span class="btn__view_detail">쇼핑몰 최저가 더보기</span>
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>인터파크<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_delivery">2,500원</td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>2,220,950</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>G마켓</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>엘롯데</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>11번가<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>반디앤루니스 종로지점 3번판매대 길게길게 길게 길게</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">쇼핑몰 최저가 <em>(12,999개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // 모델명2행 / 구매옵션X / 카피문구X / 출시가X / 속성1행 -->
+
+					<!-- Case3. 모델명1행 / PC최저가O / 별점없음 / 속성1행 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">삼성전자 스마트에어컨 최대2줄, 넘어가면 말줄임표시</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="ico__mobile_lowest lpsrp__sprite"></span><span class="txt_lowest">최저가</span><strong>2,275,120</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>0.0</strong> (0)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (12,999)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_spec">
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										쇼핑몰 최저가 <em>(10개)</em>
+										<span class="tb_release_month">등록일 등록일 18년 4월</span>
+									</caption>
+									<tfoot>
+										<tr>
+											<td colspan="3">
+												<!-- 옵션더보기 -->
+												<!-- <span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">12개의 옵션 더보기</span> -->
+												<!-- 상품상세보기 -->
+												<span class="btn__view_detail">쇼핑몰 최저가 더보기</span>
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>인터파크<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_delivery">2,500원</td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>2,220,950</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>G마켓</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>엘롯데</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>11번가<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>반디앤루니스 종로지점 3번판매대 길게길게 길게 길게</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">쇼핑몰 최저가 <em>(12,999개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // 모델명1행 / PC최저가O / 별점없음 / 속성1행 -->
+
+					<!-- Case4. 모델명2행 / 카피문구O / 속성2행 / 출시예정 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt__price">출시예정</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_related">
+								회오리 바람으로 더 강하게! 더 멀리~  삼성 최대1줄 길면 말줄임을 합니다아아아아아아아
+							</span>
+							<span class="prod_txt_spec">
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										쇼핑몰 최저가 <em>(10개)</em>
+										<span class="tb_release_month">등록일 등록일 18년 4월</span>
+									</caption>
+									<tfoot>
+										<tr>
+											<td colspan="3">
+												<!-- 옵션더보기 -->
+												<!-- <span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">12개의 옵션 더보기</span> -->
+												<!-- 상품상세보기 -->
+												<span class="btn__view_detail">쇼핑몰 최저가 더보기</span>
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>인터파크<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_delivery">2,500원</td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>2,220,950</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>G마켓</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>엘롯데</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>11번가<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>반디앤루니스 종로지점 3번판매대 길게길게 길게 길게</span></td>
+											<td class="tb_val_delivery">무료배송</td>
+											<td class="tb_val_price"><strong>2,220,950</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</li>
+					<!-- // 모델명2행 / 카피문구O / 속성2행 / 출시예정 -->
+
+					<!-- 일반상품 Case1. 쇼핑몰로고O / 상품명2행 / 상품평O / 배송비O -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">							
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 쇼핑몰 아이콘 -->
+									<span class="prod__mall">
+										<!-- 로고이미지 : http://img.enuri.info/images/view/ls_logo/2019/ -->
+										<span class="txt_mall"><img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_536.png" alt="Gmarket"></span>
+									</span>
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<strong>2,245,000</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 배송정보 -->
+										<span class="prod__delivery">배송비 25,000원</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- // L쇼핑몰로고O / 상품명2행 / 상품평O / 배송비O -->
+
+					<!-- 일반상품 Case2. 쇼핑몰로고X / 상품명1행 / 상품평X / 배송비O -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 쇼핑몰명 텍스트 -->
+									<span class="prod__mall">
+										<span class="txt_mall">이마트몰</span>
+									</span>									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<strong>2,245,000</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>0.0</strong> (0)</span>
+										<!-- 배송정보  -->
+										<span class="prod__delivery">무료배송</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- // 쇼핑몰로고X / 상품명1행 / 상품평X / 배송비O -->
+
+					<!-- 일반상품 Case3. 쇼핑몰로고X / 네이버페이 / 현금 / 상품명1행 / 상품평X / 배송비O -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 쇼핑몰명 텍스트 -->
+									<span class="prod__mall">
+										<!-- 네이버페이 케이스 : type_npay 붙여주세요 -->
+										<span class="txt_mall type_npay">마이크로소프트전문몰</span>
+									</span>									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">북설악 도라지청(300gX4개)/국산도라지100%/19년12월01일제조</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="ico__cash">현금</span><strong>112,420</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>0.0</strong> (0)</span>
+										<!-- 배송정보  -->
+										<span class="prod__delivery">무료배송</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- // 쇼핑몰로고X / 상품명1행 / 상품평X / 배송비O -->
+
+					<!-- 광고상품 Case1. 스폰서 A타입  -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- AD -->
+							<span class="ico__ad comm__sprite">AD</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>52,800</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.9</strong> (1250)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (82)</span>
+										<!-- 배송정보 -->
+										<!-- <span class="prod__delivery">무료배송</span> -->
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_related">
+								터치ID와 터치bar의 혁신 누구나 써보고 싶은 맥북프로 15형
+							</span>
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										구매옵션 <em>(6개)</em>
+										<span class="tb_release_month">등록일 등록일 19년 4월</span>
+									</caption>
+									<!-- 구분 필요 없을때 그냥 날려주세요. -->
+									<!-- <thead> -->
+										<!-- <tr> -->
+											<!-- <th class="tb_opt_name">옵션명</th> -->
+											<!-- <th class="tb_val_price">가격</th> -->
+										<!-- </tr> -->
+									<!-- </thead> -->
+									<tfoot>
+										<tr>
+											<!-- 두개 타입일때 colspan - 2  -->
+											<td colspan="2">
+												<!-- 옵션더보기 -->
+												<span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">1개의 옵션 더보기</span>
+												<!-- 상품상세보기 -->
+												<!-- <span class="btn__view_detail">쇼핑몰 최저가 더보기</span> -->
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>기변<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>52,850</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>번호이동</span></td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>213,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규</span></td>
+											<td class="tb_val_price"><strong>720,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,기변<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_price"><strong>212,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,번이</span></td>
+											<td class="tb_val_price"><strong>220,950</strong>원</td>
+										</tr>
+										<tr class="tb_hide">
+											<td class="tb_opt_name"><span>자급제폰</span></td>
+											<td class="tb_val_price"><strong>895,000</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">구매 옵션 <em>(99개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // 스폰서 A타입  -->
+
+					<!-- SR#46327 / [MW] 슈퍼탑 디자인 및 노출로직 변경에 의한 퍼블리싱 요청 -->
+					<!-- 광고상품 Case3-A. [스와이프] 슈퍼탑 광고   -->
+					<li>
+						<div class="supertop_list_swiper">
+							<div class="swiper-container">
+								<ul class="swiper-wrapper">
+									<!-- 반복 -->
+									<li class="swiper-slide">
+										<!-- [광고] A 타입 -->
+										<!-- 상품필수정보 -->
+										<div class="prod_info_req">
+											<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+											<div class="prod_info">
+												<div class="prod_info_inner">									
+													<!-- 찜 / AD -->
+													<div class="prod_tag_area">
+														<!-- AD -->
+														<span class="ico__ad comm__sprite">AD</span>
+													</div>
+													<!-- 상품명 -->
+													<span class="prod__name">
+														<span class="prod__name_txt">LG전자 LG V50 ThinQ 5G 128G (LG U+)</span>
+													</span>
+													<!-- 상품가격 -->
+													<span class="prod__price">
+														<span class="txt_lowest">최저가</span><strong>22,952,800</strong>원
+													</span>
+													<!-- 상품평 / 가격비교 -->
+													<span class="prod__grp_info">
+														<!-- 상품평 -->
+														<span class="prod__score"><strong>4.9</strong> (1250)</span>
+														<!-- 가격비교 -->
+														<span class="prod__compare">가격비교 (82)</span>
+														<!-- 배송정보 -->
+														<!-- <span class="prod__delivery">무료배송</span> -->
+														<!-- 쇼핑몰 가격정보 -->
+														<!-- <span class="prod__mallinfo">쇼핑몰에서 가격과 정보를 확인 하세요!</span> -->
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 상품상세정보 -->
+										<div class="prod_info_detail">
+											<span class="prod_txt_related">
+												터치ID와 터치bar의 혁신 누구나 써보고 싶은 맥북프로 15형
+											</span>
+											<span class="prod_txt_spec">
+												<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+												화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+											</span>
+										</div>
+										<!-- //[광고] A 타입 -->
+									</li>
+									<!-- //반복 -->
+									<li class="swiper-slide">
+										<!-- [광고] B 타입 -->
+										<!-- 상품필수정보 -->
+										<div class="prod_info_req">
+											<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+											<div class="prod_info">
+												<div class="prod_info_inner">									
+													<!-- 찜 / AD -->
+													<div class="prod_tag_area">
+														<!-- AD -->
+														<span class="ico__ad comm__sprite">AD</span>
+													</div>
+													<!-- 상품명 -->
+													<span class="prod__name">
+														<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+													</span>
+													<!-- 상품가격 -->
+													<span class="prod__price">
+														<!-- <span class="txt_lowest">최저가</span> --><strong>22,952,800</strong>원
+													</span>
+													<!-- 상품평 / 가격비교 -->
+													<span class="prod__grp_info">
+														<!-- 쇼핑몰 가격정보 -->
+														<span class="prod__mallinfo">쇼핑몰에서 가격과 정보를 확인 하세요!</span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 상품상세정보 -->
+										<div class="prod_info_detail">
+											<span class="prod_txt_related">
+												터치ID와 터치bar의 혁신 누구나 써보고 싶은 맥북프로 15형
+											</span>
+											<span class="prod_txt_spec">
+												<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+												화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+											</span>
+										</div>
+										<!-- //[광고] B 타입 -->
+									</li>
+									<li class="swiper-slide">
+										<!-- [광고] A 타입+텍스트컨텐츠형 -->
+										<!-- 상품필수정보 -->
+										<div class="prod_info_req">
+											<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+											<div class="prod_info">
+												<div class="prod_info_inner">									
+													<!-- 찜 / AD -->
+													<div class="prod_tag_area">
+														<!-- AD -->
+														<span class="ico__ad comm__sprite">AD</span>
+													</div>
+													<!-- 상품명 -->
+													<span class="prod__name">
+														<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+													</span>
+													<!-- 상품가격 -->
+													<span class="prod__price">
+														<span class="txt_lowest">최저가</span><strong>22,952,800</strong>원
+													</span>
+													<!-- 상품평 / 가격비교 -->
+													<span class="prod__grp_info">
+														<!-- 상품평 -->
+														<span class="prod__score"><strong>4.9</strong> (1250)</span>
+														<!-- 가격비교 -->
+														<span class="prod__compare">가격비교 (82)</span>
+														<!-- 배송정보 -->
+														<!-- <span class="prod__delivery">무료배송</span> -->
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 상품상세정보 : A타입+컨텐츠형일 때, "is-atype-cont" 클래스 추가 -->
+										<div class="prod_info_detail is-atype-cont">
+											<span class="prod_txt_spec">
+												<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+												화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+											</span>
+											<!-- 콘텐츠형 광고 ( 슈퍼탑광고 ) -->
+											<ul class="prod_ad">
+												<!-- 일반형 광고 -->
+												<li class="ad_type_com">
+													<span class="prod_ad_cnt">
+														<span class="prod_ad_thumb">
+															<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+														</span>
+														<span class="prod_ad_txt">
+															<span class="prod_ad_tit">쇼핑지식 사용기</span>
+															<span class="prod_ad_txt-name">피나클릿지 AMD 라이젠 2세대 2600의 모든것!</span>
+														</span>
+													</span>
+												</li>
+											</ul>
+											<!-- // -->
+										</div>
+										<!-- //[광고] A 타입+텍스트컨텐츠형 -->
+									</li>
+									
+									<li class="swiper-slide">
+										<!-- [광고] A 타입+배너컨텐츠형 -->
+										<!-- 상품필수정보 -->
+										<div class="prod_info_req">
+											<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+											<div class="prod_info">
+												<div class="prod_info_inner">									
+													<!-- 찜 / AD -->
+													<div class="prod_tag_area">
+														<!-- AD -->
+														<span class="ico__ad comm__sprite">AD</span>
+													</div>
+													<!-- 상품명 -->
+													<span class="prod__name">
+														<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+													</span>
+													<!-- 상품가격 -->
+													<span class="prod__price">
+														<span class="txt_lowest">최저가</span><strong>22,952,800</strong>원
+													</span>
+													<!-- 상품평 / 가격비교 -->
+													<span class="prod__grp_info">
+														<!-- 상품평 -->
+														<span class="prod__score"><strong>4.9</strong> (1250)</span>
+														<!-- 가격비교 -->
+														<span class="prod__compare">가격비교 (82)</span>
+														<!-- 배송정보 -->
+														<!-- <span class="prod__delivery">무료배송</span> -->
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 상품상세정보: A타입+컨텐츠형일 때, "is-atype-cont" 클래스 추가 -->
+										<div class="prod_info_detail is-atype-cont">
+											<span class="prod_txt_spec">
+												<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+												화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+											</span>
+											<!-- 콘텐츠형 광고 ( 슈퍼탑광고 ) -->
+											<ul class="prod_ad">
+												<!-- 배너형 광고 -->
+												<li class="ad_type_bnr"><img src="http://img.enuri.info/images/home/@prod_ad_bnr_01.jpg" alt=""></li>
+											</ul>
+											<!-- // -->
+										</div>
+										<!-- //[광고] A 타입+배너컨텐츠형 -->
+									</li>
+									<li class="swiper-slide">
+										<!-- [광고] A 타입+텍스트컨텐츠형 -->
+										<!-- 상품필수정보 -->
+										<div class="prod_info_req">
+											<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+											<div class="prod_info">
+												<div class="prod_info_inner">									
+													<!-- 찜 / AD -->
+													<div class="prod_tag_area">
+														<!-- AD -->
+														<span class="ico__ad comm__sprite">AD</span>
+													</div>
+													<!-- 상품명 -->
+													<span class="prod__name">
+														<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+													</span>
+													<!-- 상품가격 -->
+													<span class="prod__price">
+														<span class="txt_lowest">최저가</span><strong>22,952,800</strong>원
+													</span>
+													<!-- 상품평 / 가격비교 -->
+													<span class="prod__grp_info">
+														<!-- 쇼핑몰 가격정보 -->
+														<span class="prod__mallinfo">쇼핑몰에서 가격과 정보를 확인 하세요!</span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 상품상세정보 : A타입+컨텐츠형일 때, "is-atype-cont" 클래스 추가 -->
+										<div class="prod_info_detail is-atype-cont">
+											<span class="prod_txt_spec">
+												<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+												화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+											</span>
+											<!-- 콘텐츠형 광고 ( 슈퍼탑광고 ) -->
+											<ul class="prod_ad">
+												<!-- 일반형 광고 -->
+												<li class="ad_type_com">
+													<span class="prod_ad_cnt">
+														<span class="prod_ad_thumb">
+															<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+														</span>
+														<span class="prod_ad_txt">
+															<span class="prod_ad_tit">쇼핑지식 사용기</span>
+															<span class="prod_ad_txt-name">피나클릿지 AMD 라이젠 2세대 2600의 모든것!</span>
+														</span>
+													</span>
+												</li>
+											</ul>
+											<!-- // -->
+										</div>
+										<!-- //[광고] A 타입+텍스트컨텐츠형 -->
+									</li>
+									
+									<li class="swiper-slide">
+										<!-- [광고] A 타입+배너컨텐츠형 -->
+										<!-- 상품필수정보 -->
+										<div class="prod_info_req">
+											<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+											<div class="prod_info">
+												<div class="prod_info_inner">									
+													<!-- 찜 / AD -->
+													<div class="prod_tag_area">
+														<!-- AD -->
+														<span class="ico__ad comm__sprite">AD</span>
+													</div>
+													<!-- 상품명 -->
+													<span class="prod__name">
+														<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+													</span>
+													<!-- 상품가격 -->
+													<span class="prod__price">
+														<span class="txt_lowest">최저가</span><strong>22,952,800</strong>원
+													</span>
+													<!-- 상품평 / 가격비교 -->
+													<span class="prod__grp_info">
+														<!-- 쇼핑몰 가격정보 -->
+														<span class="prod__mallinfo">쇼핑몰에서 가격과 정보를 확인 하세요!</span>
+													</span>
+												</div>
+											</div>
+										</div>
+										<!-- 상품상세정보: A타입+컨텐츠형일 때, "is-atype-cont" 클래스 추가 -->
+										<div class="prod_info_detail is-atype-cont">
+											<span class="prod_txt_spec">
+												<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+												화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+											</span>
+											<!-- 콘텐츠형 광고 ( 슈퍼탑광고 ) -->
+											<ul class="prod_ad">
+												<!-- 배너형 광고 -->
+												<li class="ad_type_bnr"><img src="http://img.enuri.info/images/home/@prod_ad_bnr_01.jpg" alt=""></li>
+											</ul>
+											<!-- // -->
+										</div>
+										<!-- //[광고] A 타입+배너컨텐츠형 -->
+									</li>
+								</ul>
+
+								<button type="button" class="arr arr-prev">이전</button>
+								<button type="button" class="arr arr-next">다음</button>
+
+								<!-- pagination -->
+								<div class="swiper-counter">
+									<span class="num_index">1</span> / <span class="num_total"></span>
+								</div>
+							</div>
+
+							
+						</div>
+
+						<script>
+							$(function(){
+								// 수퍼탑 광고 스와이프 적용
+								var $superTopSlide = $(".supertop_list_swiper"),
+									$txtTotalNum = $superTopSlide.find(".num_total"),
+									$txtIndexlNum = $superTopSlide.find(".num_index");
+								
+								$txtTotalNum.html( $superTopSlide.find(".swiper-slide").length );
+
+								// 스와이프 생성
+								var superTopSwiper = new Swiper(".supertop_list_swiper .swiper-container", {
+									slidesPerView: "auto",
+									centeredSlides: false,
+									spaceBetween: 0,
+									grabCursor: true,
+									autoHeight: true,
+									prevButton : ".supertop_list_swiper .arr-prev",
+									nextButton : ".supertop_list_swiper .arr-next",
+									pagination: ".supertop_list_swiper .swiper-pagination",
+									onTransitionEnd  : function(e){
+										var _idx = e.realIndex;
+										$txtIndexlNum.html(_idx+1);
+									}
+								});
+							})
+						</script>
+					</li>
+					<!-- // [스와이프] 슈퍼탑 광고  -->
+					<!-- // SR#46327 / [MW] 슈퍼탑 디자인 및 노출로직 변경에 의한 퍼블리싱 요청 -->
+
+					<!-- 광고상품 Case2-A. 스폰서 B타입 / 속성 많을 시  -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- AD -->
+							<span class="ico__ad comm__sprite">AD</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<strong>52,800</strong>원
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_caution">
+								쇼핑몰에서 <em>정확한 가격과 상품정보를 꼭 확인</em> 하세요!
+							</span>
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">더보기</span>
+							</span>
+						</span>
+					</li>
+					<!-- // 스폰서 B타입  / 속성 많을 시  -->
+
+					<!-- 광고상품 Case2-B. 스폰서 B타입 / 등록된 속성이 없을 시  -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- AD -->
+							<span class="ico__ad comm__sprite">AD</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<strong>52,800</strong>원
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_caution">
+								쇼핑몰에서 <em>정확한 가격과 상품정보를 꼭 확인</em> 하세요!
+							</span>
+						</div>
+					</li>
+					<!-- // 스폰서 B타입  / 등록된 속성이 없을 시-->
+
+					<!-- 광고상품 Case3. 슈퍼탑 광고  -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- AD -->
+							<span class="ico__ad comm__sprite">AD</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/36986000/36986228.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">LG전자  LG V50 ThinQ 5G 128G (LG U+)</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>22,952,800</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.9</strong> (1250)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (82)</span>
+										<!-- 배송정보 -->
+										<!-- <span class="prod__delivery">무료배송</span> -->
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_related">
+								터치ID와 터치bar의 혁신 누구나 써보고 싶은 맥북프로 15형
+							</span>
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+							<div class="prod_tb_compare">								
+								<table class="tb_fold">
+									<caption>
+										구매옵션 <em>(6개)</em>
+										<span class="tb_release_month">등록일 19년 4월</span>
+									</caption>
+									<!-- 구분 필요 없을때 그냥 날려주세요. -->
+									<!-- <thead> -->
+										<!-- <tr> -->
+											<!-- <th class="tb_opt_name">옵션명</th> -->
+											<!-- <th class="tb_val_price">가격</th> -->
+										<!-- </tr> -->
+									<!-- </thead> -->
+									<tfoot>
+										<tr>
+											<!-- 두개 타입일때 colspan - 2  -->
+											<td colspan="2">
+												<!-- 옵션더보기 -->
+												<span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">1개의 옵션 더보기</span>
+												<!-- 상품상세보기 -->
+												<!-- <span class="btn__view_detail">쇼핑몰 최저가 더보기</span> -->
+											</td>
+										</tr>
+									</tfoot>
+									<tbody>
+										<tr class="opt__lowest">
+											<td class="tb_opt_name"><span>기변<em class="tb_opt_rank">1위</em></span></td>
+											<td class="tb_val_price">
+												<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+												<span class="txt__lowest">최저가</span><strong>52,850</strong>원
+											</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>번호이동</span></td>
+											<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>213,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규</span></td>
+											<td class="tb_val_price"><strong>720,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,기변<em class="tb_opt_rank">2위</em></span></td>
+											<td class="tb_val_price"><strong>212,950</strong>원</td>
+										</tr>
+										<tr>
+											<td class="tb_opt_name"><span>신규약정,번이</span></td>
+											<td class="tb_val_price"><strong>220,950</strong>원</td>
+										</tr>
+										<tr class="tb_hide">
+											<td class="tb_opt_name"><span>자급제폰</span></td>
+											<td class="tb_val_price"><strong>895,000</strong>원</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- 콘텐츠형 광고 ( 슈퍼탑광고 ) -->
+							<ul class="prod_ad">
+								<!-- 동영상형 광고 -->
+								<li class="ad_type_mov">
+									<span class="prod_ad_cnt">
+										<span class="prod_ad_thumb">
+											<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+										</span>
+										<span class="prod_ad_txt">
+											<span class="prod_ad_tit">에누리 리뷰영상</span>
+											<span class="prod_ad_txt-name">요이치 리프레쉬 차량용 공기청정기 YA-AP500 사용후기</span>
+										</span>
+									</span>
+								</li>
+								<!-- 일반형 광고 -->
+								<li class="ad_type_com">
+									<span class="prod_ad_cnt">
+										<span class="prod_ad_thumb">
+											<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+										</span>
+										<span class="prod_ad_txt">
+											<span class="prod_ad_tit">쇼핑지식 사용기</span>
+											<span class="prod_ad_txt-name">피나클릿지 AMD 라이젠 2세대 2600의 모든것!</span>
+										</span>
+									</span>
+								</li>
+								<!-- 배너형 광고 -->
+								<li class="ad_type_bnr"><img src="http://img.enuri.info/images/home/@prod_ad_bnr_01.jpg" alt=""></li>
+							</ul>
+							<!-- // -->
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">구매 옵션 <em>(99개)</em></span>
+							</span>
+						</span>
+					</li>
+					<!-- // 슈퍼탑 광고  -->
+
+					<!-- 성인카테고리 상품 이미지 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<!-- 성인상품 이미지 -->
+							<div class="prod_img"><img src="http://img.enuri.info/images/mobile_v2/m_thumb_adult.png" alt="성인인증 후 확인 가능합니다."></div>
+							<!-- // -->
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 쇼핑몰명 텍스트 -->
+									<span class="prod__mall">
+										<span class="txt_mall">이찬스생활건강</span>
+									</span>									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">에이스제약 클리어페페 블랙젤 360ml</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<strong>6,470</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>0.0</strong> (0)</span>
+										<!-- 배송정보  -->
+										<span class="prod__delivery">무료배송</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- // 성인카테고리 상품 이미지 -->
+
+					<!-- 디폴트 상품 이미지 -->
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<!-- 디폴트 상품 이미지 -->
+							<div class="prod_img"><img src="http://img.enuri.info/images/mobile_v2/m_thumb_base.png" alt="준비된 이미지가 없습니다."></div>
+							<!-- // -->
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 쇼핑몰명 텍스트 -->
+									<span class="prod__mall">
+										<span class="txt_mall">1300k</span>
+									</span>									
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<strong>2,245,000</strong>원
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>0.0</strong> (0)</span>
+										<!-- 배송정보  -->
+										<span class="prod__delivery">무료배송</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- // 디폴트 상품 이미지 -->
+
+				</ul>
+
+				<!-- Pagination -->
+				<div class="prod_pagination">
+					<!-- 이전/다음버튼 비활성화시 disabled 클래스 붙여주세요 -->
+					<span class="prod__page_btn btn__prev disabled">이전</span>
+					<span class="prod__page_btn btn__next">다음</span>
+					<ol>
+						<li class="selected">1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+					</ol>
+				</div>	
+				<!-- // Pagination -->
+			</div>
+		</div>
+
+		<!-- SRP : 소셜인기상품 -->
+		<div class="prd_box_goods prd_social">
+			<div class="box_inner">
+				<div class="box_head">	
+					<p class="title">소셜 인기상품</p>
+					<a href="#" class="btn_apply">더보기</a>
+				</div>
+				<div class="pro__list scroller">
+					<ul class="scroll-cont">
+						<li>
+							<div class="prod_info_req">
+								<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/35300000/35300418.jpg" alt=""></div>
+								<div class="prod_info">
+									<div class="prod_info_inner">
+										<span class="prod__mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_7861.png" alt="Coupang">
+										</span>
+										<span class="prod__name">
+											<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+										</span>
+										<span class="prod__price">
+											<span class="txt_lowest">최저가</span><strong>2,245,000</strong>원
+										</span>
+									</div>
+								</div>
+							</div>		
+						</li>
+						<li>
+							<div class="prod_info_req">
+								<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/35300000/35300418.jpg" alt=""></div>
+								<div class="prod_info">
+									<div class="prod_info_inner">
+										<span class="prod__mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_7861.png" alt="쿠팡">
+										</span>
+										<span class="prod__name">
+											<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+										</span>
+										<span class="prod__price">
+											<span class="txt_lowest">최저가</span><strong>2,245,000</strong>원
+										</span>
+									</div>
+								</div>
+							</div>		
+						</li>
+						<li>
+							<div class="prod_info_req">
+								<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/35300000/35300418.jpg" alt=""></div>
+								<div class="prod_info">
+									<div class="prod_info_inner">
+										<span class="prod__mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_7861.png" alt="쿠팡">
+										</span>
+										<span class="prod__name">
+											<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+										</span>
+										<span class="prod__price">
+											<span class="txt_lowest">최저가</span><strong>2,245,000</strong>원
+										</span>
+									</div>
+								</div>
+							</div>		
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // -->
+
+		<!-- SRP : 추천상품 -->
+		<div class="prd_box_goods prd_recomm">
+			<div class="box_inner">
+				<div class="box_head">	
+					<p class="title">이런 상품은 어떠세요?</p>
+					<a href="#" class="btn_apply">더보기</a>
+				</div>
+				<div class="pro__list scroller">
+					<ul class="scroll-cont">
+						<li>
+							<div class="prod_info_req">
+								<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/35300000/35300418.jpg" alt=""></div>
+								<div class="prod_info">
+									<div class="prod_info_inner">
+										<span class="prod__mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_6641.png" alt="Tmon">
+										</span>
+										<span class="prod__name">
+											<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+										</span>
+										<span class="prod__price">
+											<span class="txt_lowest">최저가</span><strong>2,245,000</strong>원
+										</span>										
+									</div>
+								</div>
+							</div>		
+						</li>
+						<li>
+							<div class="prod_info_req">
+								<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/35300000/35300418.jpg" alt=""></div>
+								<div class="prod_info">
+									<div class="prod_info_inner">
+										<span class="prod__mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_536.png" alt="Gmaket">
+										</span>
+										<span class="prod__name">
+											<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+										</span>
+										<span class="prod__price">
+											<span class="txt_lowest">최저가</span><strong>2,245,000</strong>원
+										</span>
+									</div>
+								</div>
+							</div>		
+						</li>
+						<li>
+							<div class="prod_info_req">
+								<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/big/35300000/35300418.jpg" alt=""></div>
+								<div class="prod_info">
+									<div class="prod_info_inner">
+										<span class="prod__mall">
+											이마트몰
+											<!-- <img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_536.png" alt="Gmaket"> -->
+										</span>
+										<span class="prod__name">
+											<span class="prod__name_txt">애플 맥북프로 15형 레티나</span>
+										</span>
+										<span class="prod__price">
+											<span class="txt_lowest">최저가</span><strong>2,245,000</strong>원
+										</span>
+									</div>
+								</div>
+							</div>		
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- // -->
+
+		<!-- 파워클릭 AD  : 최대 6개 -->
+		<div class="comm_ad ad_powerclick ad_slide mobile">
+			<!-- 201120 : SR#43342 : 오픈쇼핑 / 신청하기 레이어 추가 -->
+			<div class="comm_ad_tit">
+				<em>오픈쇼핑</em>
+				<a href="#" class="comm_btn_apply" onclick="$(this).siblings('.lay_comm_apply').fadeIn(200);return false;">신청하기</a>
+
+				<div class="lay_comm_apply dim">
+					<div class="lay_inner">
+						<div class="lay_head">
+							<h3>오픈쇼핑 광고 신청하기</h3>
+
+							<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+						</div>						
+
+						<div class="lay_cont">
+							<a href="https://ad.esmplus.com" target="_blank" title="새 창에서 열립니다" class="btn_shop btn_shop-ebay"><i>ebay 이베이 광고센터</i></a>
+							<a href="https://adoffice.11st.co.kr" target="_blank" title="새 창에서 열립니다" class="btn_shop btn_shop-11st"><i>11번가 브랜드 광고센터</i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- // -->
+			<div class="comm_ad_list ad_goods swiper-container">
+				<ul class="swiper-wrapper">
+					<!-- 광고 상품 1개  x 6 반복 -->
+					<li class="swiper-slide">
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+								<span class="ad_info_price">
+									<!-- 특가/할인율 등 태그 -->
+									<span class="ad_price_tag">특가</span>
+									<!-- 가격 -->
+									<em>179,000</em>원
+								</span>
+								<span class="ad_info_shop">
+									<em>옥션</em>
+								</span>
+								<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+								<span class="ad_info_etc">
+									무료배송
+								</span>
+							</span>
+						</a>
+					</li>
+					<!-- // -->
+					<li class="swiper-slide">
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+								<span class="ad_info_price">
+									<!-- 특가/할인율 등 태그 -->
+									<span class="ad_price_tag">52%</span>
+									<!-- // -->
+									<em>179,000</em>원
+								</span>
+								<span class="ad_info_shop">
+									<em>11번가</em>
+								</span>
+								<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+								<span class="ad_info_etc">
+									무료배송
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+								<span class="ad_info_price">
+									<em>179,000</em>원
+								</span>
+								<span class="ad_info_shop">
+									<em>11번가</em>
+								</span>
+								<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+								<span class="ad_info_etc">
+									쇼핑몰베스트
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+								<span class="ad_info_price">
+									<em>179,000</em>원
+								</span>
+								<span class="ad_info_shop">
+									<em>옥션</em>
+								</span>
+								<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+								<span class="ad_info_etc">
+									1,244개 구매
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+								<span class="ad_info_price">
+									<em>179,000</em>원
+								</span>
+								<span class="ad_info_shop">
+									<em>옥션</em>
+								</span>
+								<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+								<span class="ad_info_etc">
+									무료배송
+								</span>
+							</span>
+						</a>
+					</li>
+					<li class="swiper-slide">
+						<a href="#">
+							<span class="ad_thumb"><img src="http://img.enuri.info/images/home/thum_none.gif" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+								<span class="ad_info_price">
+									<em>179,000</em>원
+								</span>
+								<span class="ad_info_shop">
+									<em>옥션</em>
+								</span>
+								<!-- 배송 / 쇼핑몰베스트 / 구매수량 등 -->
+								<span class="ad_info_etc">
+									무료배송
+								</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+				<div class="swiper-scrollbar"></div>
+			</div>
+			<script>
+				$(function(){
+					var swiper = new Swiper('.ad_powerclick.ad_slide .swiper-container', {
+						scrollbar: '.ad_powerclick.ad_slide .swiper-container .swiper-scrollbar',
+						scrollbarHide: false,
+						slidesPerView: 'auto',
+						centeredSlides: false,
+						spaceBetween: 10,
+						grabCursor: true
+					});
+				})
+			</script>
+		</div>
+		<!-- // 파워클릭 AD  -->
+
+		<!-- 파워링크 AD : 5개  -->		
+		<div class="comm_ad ad_powerlink mobile">
+			<div class="comm_ad_tit">
+				<em>파워링크</em>
+				<a href="#" class="comm_btn_apply">신청하기</a>
+			</div>
+			<div class="comm_ad_list ad_link">
+				<ul>
+					<!-- 광고 1개  x 5개 반복 -->
+					<li>
+						<a href="#">
+							<!-- 이미지가 없을때는 ad_thumb을 제거 -->
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<!-- // -->
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<!-- // -->
+					<li>
+						<a href="#">
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- // 파워링크 AD 끝 -->
+
+		<!-- 인포애드 컨텐츠형 광고 - 연관가이드 / 뉴스 / 리뷰 -->
+		<div class="related_tab">
+			<div class="box_inner">
+				<ul class="related__tab">
+					<li class="selected" onclick="$(this).addClass('selected').siblings().removeClass('selected');">가이드</li>
+					<li onclick="$(this).addClass('selected').siblings().removeClass('selected');">뉴스</li>
+					<li onclick="$(this).addClass('selected').siblings().removeClass('selected');">리뷰&사용기</li>
+				</ul>
+				<ul class="related__cnt">
+					<!-- 이미지형 -->
+					<li>
+						<div class="img_box">
+							<img src="http://img.enuri.info/images/mobile_v2/@guide_img.jpg" alt="">
+						</div>
+						<div class="tit_area">
+							<span class="txt_tit">한사랑씨앤씨,위슼키레이크 탑재한 ‘삼성노트북 5 Metal’3종 출시</span>
+						</div>
+					</li>
+					<!-- 텍스트형 -->
+					<li>
+						<div class="tit_area">
+							<span class="txt_tit">한사랑씨앤씨,위슼키레이크 탑재한 ‘삼성노트북 5 Metal’3종 출시 Metal’3종 출시 Metal’3종 출시 Metal’3종 출시</span>
+						</div>
+					</li>
+					<li>
+						<div class="tit_area">
+							<span class="txt_tit">한사랑씨앤씨,위슼키레이크 탑재한 ‘삼성노트북 5 Metal’3종 출시 Metal’3종 출시 Metal’3종 출시 Metal’3종 출시</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- // 연관가이드 / 뉴스 / 리뷰 -->
+
+		<!-- 구글 광고 -->
+		<div class="ad__google">
+			구글광고광고광고
+		</div>
+		<!-- // -->
+
+		<!-- 앱 다운로드 -->
+		<ul class="another_app_list">
+			<li class="btn_app_smart">
+				<a href="#">스마트 택배 다운받기</a>
+			</li>
+			<li class="btn_app_social">
+				<a href="#">소셜가격비교 다운받기</a>
+			</li>
+		</ul>
+		<!-- // -->
+
+		<!-- 공통 : 하단 배너 -->
+		<!-- 배경색은 inline-style로 넣어주세요 -->
+		<div class="aside_bnr" style="background-color:#fbe8e7">
+			<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_bottom_home.png"></a>
+		</div>
+		<!-- // -->
+	</section>
+
+	<!-- 210825 : SR#48487 : 모바일웹 하단 탭바 -->
+	<section class="tabbar">
+		<div class="tabbar__inner">
+			<ul class="tabbar__list">
+				<li><a href="javascript:void(0);" class="tab tab-srch"><i class="ico"></i><span class="tx">검색</span></a></li>
+				<li><a href="javascript:void(0);" class="tab tab-cate"><i class="ico"></i><span class="tx">카테고리</span></a></li>
+				<li><a href="./myeclub/my_alarm.html" class="tab tab-eclub"><i class="ico"></i><span class="tx">마이에누리</span></a></li>
+				<li><a href="#tab3" class="tab tab-favor"><i class="ico"></i><span class="tx">관심상품</span></a></li>
+			</ul>
+		</div>
+	</section>
+	<!-- // -->
+
+	<!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+	<footer class="footer footer--com">
+		<!-- Footer : 탑버튼 -->
+		<div class="newquick">
+			<p class="TBtn" onclick="goFooterTop();">TOP</p>
+		</div>
+		<!-- // -->
+		<!-- Footer : 회사정보 -->
+		<div class="footer__info">
+			<!-- 클릭시 .unfold 클래스 toggle -->
+			<button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+			<!-- // -->
+			<div class="footer__info_com">
+				<dl>
+					<dt>대표이사</dt>
+					<dd>김기범</dd>
+					<dt>사업자등록번호</dt>
+					<dd>206-81-18164</dd>
+					<dt>통신판매신고</dt>
+					<!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>2020-서울금천-1949호</dd>
+					<!-- // -->
+					<dt>주소</dt>
+					<!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+					<!-- // -->
+					<dt>문의</dt>
+					<dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+				</dl>
+			</div>
+		</div>
+		<!-- Footer : 푸터메뉴 -->
+		<div class="footer__menu">
+			<div class="footer__menu_top">
+				<a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+			</div>
+			<div class="footer__menu_bot">
+				<a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+			</div>
+		</div>
+		<span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+	</footer>
+	<!-- // -->
+</div>
+
+<!-- 210824 : SR#48387 : MY알림 추가 - 알림함 팝업 -->
+<div class="pop_alarm">
+	<div class="alarm__inner">
+		<div class="alarm__head">
+			<p class="tx_tit">알림함</p>
+
+			<div class="msg_line">
+				<p class="tx_msg">안 읽은 메세지 <span class="tx_num">2건</span></p>
+				<p class="tx_all">전체 <span class="tx_num">16건</span></p>
+			</div>
+
+			<button type="button" class="btn btn-close">닫기</button>
+		</div>
+		<div class="alarm__body">
+			<div class="recent_box">
+				<div class="recent_unit">
+					<p class="tx_cate">최저가 득템</p>
+					<p class="tx_time">10분 전</p>
+				</div>
+
+				<div class="recent_msg">
+					<a href="./myeclub/my_alarm.html" class="btn btn-msg" id="alarmsheetOpenBtn"> <!-- 퍼블 참고용 : 알림함 열기위한 ID 입니다. 개발 시 변경해주세요 -->
+						<span>지금 확인 안하시면 후회하실걸요?</span>
+						<span>50% 급하락한 최저가 득템 상품이 급하락 최저가 득템 상품이...</span>
+					</a>
+				</div>
+			</div>                        
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		var alarmPopup = $(".pop_alarm"), // 팝업 : 알림함 (우측 하단)
+			bottomTabbar = $(".tabbar"); // 하단 탭바
+
+		// 알림함 팝업 펑션
+		var alarmFunction = function(){
+			// 페이지 로딩 후 알림함 노출 -> 20초 뒤 숨김
+			setTimeout(function(){
+				alarmPopup.addClass("is-visible");
+			},300)
+			
+			alarmPopup.find(".btn-close").on("click", function(){
+				alarmPopup.hide().removeClass("is-visible");
+			})
+			setTimeout(function(){ alarmPopup.removeClass("is-visible")},20000)
+		}
+
+		// 스크롤 액션(알림함, 탭바)
+		var lastScrollY = 0;
+		var scrAlarmPop = function(){
+			var standard = 30;
+			if(window.scrollY > standard){ 
+				if(lastScrollY < window.scrollY){    // 스크롤 아래로
+					alarmPopup.removeClass("is-visible");
+					bottomTabbar.addClass("is-hidden");
+				}else{ 								// 스크롤 위로
+					alarmPopup.addClass("is-visible");
+					bottomTabbar.removeClass("is-hidden");
+				}
+			}
+			lastScrollY = window.scrollY;
+		}
+
+		$(window).on({
+			"scroll" : scrAlarmPop,
+			"load" : alarmFunction // 페이지 로딩 시, 알림함 노출
+		})
+		
+	})
+</script>
+<!-- // -->
+
+<script>	
+	// LPSRP : 최상단 GNB 고정
+	$(function(){
+        var position = $(window).scrollTop();
+        var $mainwrap = $("#wrap");
+        var $mhead = $("#wrap .m_header"); // 헤더
+        var $contHeadArea = $(".lp__cont"); // 컨텐츠
+        var $contHead = $contHeadArea.find(".cont_head"); // 컨텐츠 헤더
+        var $btnQuick = $(".footer .newquick"); // Top 버튼
+        var $holdDistance = 30; //cont_head가 상단에 붙은후 미작동되는거리(임시적용, 추후변경될수있음)
+        var rePos = function(){
+            var nowPos = $(window).scrollTop();
+            var headPos = $contHeadArea.offset().top;
+            var gnbH = $mhead.outerHeight();
+            ( nowPos > headPos - gnbH ) ? $contHead.addClass("fixed_top") : $contHead.removeClass("fixed_top");
+            ( nowPos > 0 ) ? $mhead.addClass("fixed_top") : $mhead.removeClass("fixed_top");
+            // TOP버튼 등장
+            if((headPos + $holdDistance) < nowPos) {
+                if(nowPos > position){
+                    $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    $btnQuick.addClass("scr_mode");
+                }else{
+                    $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }
+            }
+            
+            position = nowPos;
+        }
+        $(window).load(rePos).scroll(rePos);
+    });
+
+	// 공통 : 찜버튼
+	var $btnZzim = $(".btn__zzim");
+	var $layZzim = $(".zzimly");
+	$btnZzim.on('click',function(){				
+		if ( !$(this).hasClass('on') ){
+			$layZzim.show();
+			setTimeout(function(){
+				$layZzim.fadeOut(300);
+			},500)
+			$(this).addClass('on anim');
+		}else{
+			$(this).removeClass('on anim');
+		}
+	})
+
+</script>
+</body>
+</html>

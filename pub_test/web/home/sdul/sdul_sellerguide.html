@@ -1,0 +1,791 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<title>고객센터 - eNuri.com</title>
+<SCRIPT LANGUAGE="JavaScript">
+	var var_img_enuri_com = "http://img.enuri.gscdn.com";
+</SCRIPT>
+<META HTTP-equiv="Content-Type" content="text/html; charset=euc-kr">
+<META NAME="description" CONTENT="가격비교(에누리)-전자제품 최저 가격 비교 정보 제공">
+<META NAME="keyword_board" CONTENT="에누리,가격비교,쇼핑몰,쇼핑가이드,가격정보,최저가정보,전자제품,tv,vtr,비디오,오디오,하이파이,카메라,디지털카메라,캠코더,hifi,pc,pcs,컴부품,전자수첩,노트북,notebook,모니터,monitor,프린터,스캐너,핸드폰,휴대폰,냉난방기,가전제품,세탁기,냉방고,청소기,전화기,화장품,스키,스노우보드">
+<LINK REL="SHORTCUT ICON" HREF="/favicon.ico">
+<link rel="StyleSheet" href="/common/css/enuri.css" type="text/css">
+<link REL="stylesheet" HREF="/common/css/paging.css" TYPE="text/css">
+<link REL="stylesheet" HREF="/common/css/fusion.css" TYPE="text/css">
+<link rel="stylesheet" href="/common/css/enuribase1.css" type="text/css">
+<link rel="stylesheet" href="/common/css/default.css" type="text/css">
+<script src="http://img.enuri.gscdn.com/common/js/pager.js" language="JavaScript"></script>
+<script type="text/javascript" src="/common/js/lib/prototype.js"></script>
+<script language="javascript" src="/common/js/function.js"></script>
+<script type="text/javascript" src="/common/js/incfavoritelayer.js"></script>
+<script type="text/javascript" src="/common/js/incfavoritelayer_body.js"></script>
+<link href="/mallregister/new/style.css" rel="stylesheet" type="text/css">
+<!-- SDU/SDUL COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=201901021" type="text/css">
+<script>
+<!--
+function init(){
+	var init_faq = "";
+	var init_Login = "";
+	if (init_faq != ""){
+		main_link(init_faq);
+	}
+	if (init_Login == "Y"){
+		fn_seller_board_onload();
+	}
+	
+	//sdulLoginChkbyBtn();
+	insertLog(7177);
+}
+//회원가입 팝업
+function SellerJoin(){
+	var SellerJoin = window.open("https://www.enuri.com/member/join/joinSDUL.jsp");
+	SellerJoin.focus();
+}
+
+function change_faq(param){
+	for(i=1;i<14;i++){
+		if(i != param){
+			document.getElementById("question_"+i).style.fontWeight = "normal";
+			document.getElementById("question_now_"+i).style.display = "none";
+			document.getElementById("answer_"+i).style.display = "none";
+		}else{
+			document.getElementById("question_"+i).style.fontWeight = "bold";
+			document.getElementById("question_now_"+i).style.display = "inline";
+			document.getElementById("answer_"+i).style.display = "inline";
+		}
+	}
+}
+
+function main_link(param){
+	if (document.getElementById("question_"+param)){
+		//document.getElementById("FSETMAIN").scrollTop = 915;
+		change_faq(param);
+		document.getElementById("faq_img").scrollIntoView(true);
+		if(document.getElementById("FSETMAIN")){
+			document.getElementById("FSETMAIN").scrollTop = document.getElementById("FSETMAIN").scrollTop-10;
+		}
+	}
+}
+
+function viewTitleDesc(param){
+	hideTitleDescAll();
+	document.getElementById("title_"+param).style.display = "none";
+	document.getElementById("title_"+param+"_desc").style.display = "block";
+	cmdScrollTitle(param);
+	parent.syncHeightListFrame();
+}
+function hideTitleDesc(param){
+	document.getElementById("title_"+param).style.display = "block";
+	document.getElementById("title_"+param+"_desc").style.display = "none";
+	parent.syncHeightListFrame();
+}
+function hideTitleDescAll(){
+	for(i=1;i<10;i++){
+		if(document.getElementById("title_"+i)){
+			document.getElementById("title_"+i).style.display = "block";
+			document.getElementById("title_"+i+"_desc").style.display = "none";
+		}else{
+			break;
+		}
+	}
+	parent.syncHeightListFrame();
+}
+function cmdScrollTitle(param){
+	if(document.getElementById("title_"+param)){
+		document.getElementById("title_"+param+"_desc").scrollIntoView(true);
+		if(document.getElementById("FSETMAIN")){
+			document.getElementById("FSETMAIN").scrollTop = document.getElementById("FSETMAIN").scrollTop-18;
+		}
+	}
+	parent.syncHeightListFrame();
+}
+
+// 동영상 재생관련 함수 start
+function cmdKbMovPlay(){
+	$("KbPlayer").play();
+	$("tbl_palyinit").style.display = "none";
+	$("tbl_playscreen").style.display = "block";
+}
+var Pposition;
+function cmdKbMovEnd(){
+	var KbPlayerState = KbPlayer.PlayState;
+	if (Pposition==0 && $("tbl_playscreen").style.display=="block" && KbPlayerState==0){
+		$("tbl_playscreen").style.display = "none";
+		$("tbl_palyinit").style.display = "block";
+	}
+}
+function setPng24(obj) {
+	if (navigator.userAgent.toLowerCase().indexOf('msie 8') < 0){
+	    obj.width=obj.height=1;
+	    obj.className=obj.className.replace(/\bpng24\b/i,'');
+	    obj.style.filter =
+	    "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"+ obj.src +"',sizingMethod='image');"
+	    obj.src='';
+	}
+    return '';
+}
+
+function serviceg_1() {
+	top.location.href = "/sdul/mallregister/SellerMain.jsp?sm=1";
+}
+
+function faqgo_1() {
+	top.location.href = "/sdul/mallregister/SellerMain.jsp?sm=5&faq_type=2&part=1";
+}
+function goServicePage(){
+	//location.href = "/sdul/mallregister/new/IncSdul_List.jsp";
+	sdulLoginChk(1);
+}
+function goServicePage1(){
+	//location.href = "/sdul/mallregister/new/IncSdul_List.jsp";
+	sdulLoginChk(2);
+}
+function sdulLoginChkbyBtn(){
+	var url = "/include/ajax/AjaxSduLoginCheck.jsp";
+	var param = "";
+
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param,onComplete:checkSdulLoginMenu
+		}
+	);
+
+	function checkSdulLoginMenu(originalRequest){
+		var varReturn = originalRequest.responseText.trim();
+		if(varReturn=="1"){
+			 document.getElementById("imgJoinBtn").style.display = "";
+		}else{
+			if(varReturn=="2"){
+				 document.getElementById("imgJoinBtn").style.display = "none";
+			}else{
+				if(varReturn=="24"){ //sdu, sdul 중복 회원
+					top.Cmd_Login('choicesdu');
+				}else{
+					 document.getElementById("imgJoinBtn").style.display = "";
+				}
+			}
+		}
+	}
+}
+
+function sdulLoginChk(param2){
+	var url = "/include/ajax/AjaxSduLoginCheck.jsp";
+	var param = "";
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param,onComplete:checkSdulLoginMenu
+		}
+	);
+	function checkSdulLoginMenu(originalRequest){
+		var varReturn = originalRequest.responseText.trim();
+		if(varReturn=="1"){
+			top.Cmd_Login('sdu');
+		}else{
+			if(varReturn=="2"){
+				//top.document.html.scrollTop = 0;
+				location.href = "/sdul/mallregister/new/IncSdul_List.jsp";
+			}else{
+				if(varReturn=="24"){ //sdu, sdul 중복 회원
+					top.Cmd_Login('choicesdu');
+					if(param2 =="1"){
+						top.document.getElementById("divLoginLayer").style.top = "280px";
+						top.document.getElementById("divLoginLayer").style.left = "500px";
+					}
+				}else{
+					if(varReturn=="3") {
+						if(confirm("판매자 회원이 아닙니다. 판매자 회원으로 가입하시겠습니까?")){
+							//location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=4&guide=1";
+							Win_header('/sdul/mallregister/join/Sdul_Join_Step1.jsp','membermodify','yes',100,100 );
+							//infoTitle = infoTitle_4;
+							//infoDetail = infoDetail_4;
+						}else{
+							window.opener.focus();
+						}
+					}else{
+						sdulLoginAfterDivShow();
+					}
+				}
+			}
+		}
+	}
+}
+function Win_header( sURL, sName, scrollbars,left,top){
+    var win;
+    win = window.open(sURL, sName, "status=no,toolbar=no,resizable=no,scrollbars="+scrollbars+",menubar=no, left="+left+", top="+top);
+    win.opener.self;
+}
+// 동영상 재생관련 함수 end
+//-->
+</script>
+<script language="javascript" for="KbPlayer" event="playStateChange(NewState)">
+Pposition = KbPlayer.currentPosition;
+if (Pposition==0 && $("tbl_playscreen").style.display=="block"){
+	setTimeout("cmdKbMovEnd()",1500);
+}
+</script>
+</head>
+<body leftmargin="0" topmargin="0">
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">SDUL</h2>
+	</div>
+	
+	<!-- SDUL 공통 contents -->
+	<div class="sducontent">
+		<div id="ifrm">
+		<table width="992" !height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<table bgcolor="#FFFFFF" width="992" height="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="755" valign="top" style="padding-left:5px;padding-top:10px" >
+								<table width="992" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="14"></td>
+										<td width="741" align="left" valign="top">
+											<!--본문시작-->
+									<table width="720" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td height="5"></td>
+										</tr>
+							      	<tr>
+							        	<td>
+							        		<img src="http://img.enuri.gscdn.com/images/sdul/openmarket_picture.gif" width="732" height="324" style="margin-bottom:20px">
+							        		<img id="imgJoinBtn" src="http://img.enuri.gscdn.com/images/sellerguide/board/new/btn_join.gif" width="125" height="26" onclick="SellerJoin()" style="display:none;position: absolute;top: 25px;left: 460px;cursor: pointer;">
+							        		<img src="http://img.enuri.gscdn.com/images/sellerguide/board/new/btn_service.gif" width="125" height="26" onclick="goServicePage();" style="position: absolute;top: 25px;left: 600px;cursor: pointer;">
+							        	</td>
+							      	</tr>
+							      	<tr>
+							        	<td height="40">
+							        		<table align="center" border="0" cellspacing="0" cellpadding="0">
+												<tr>
+													<td height="37">
+														<table id="title_1" width="633" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td width="73"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_number01.gif" width="67" height="16" align="absmiddle"></td>
+																<td width="425" valign="bottom" class="text03"><div style="margin-bottom:2px"> - 오픈마켓에 상품을 등록하시면, 자동으로 에누리닷컴에서도 서비스가 시작됩니다.</div></td>
+																<td width="133"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(1)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_1_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td width="73"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_number01.gif" width="67" height="16" align="absmiddle"></td>
+																			<td width="425" valign="bottom" class="text03"><div style="margin-bottom:2px"> - 오픈마켓에 상품을 등록하시면, 자동으로 에누리닷컴에서도 서비스가 시작됩니다.</div></td>
+																			<td width="133" valign="middle"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(1)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="3" style="padding:10 0 10 20;">
+																				오픈마켓에 제품 등록시 가격비교사이트에 등록을 원하신다고 체크하시면, 에누리닷컴에도 자동 등록되어 <br>
+																			 	서비스가 가능합니다.<br><br>
+																			 	Step1. 오픈마켓에 제품을 등록(에누리닷컴에 서비스를 원함을 체크)<br><br>
+																			 	<font color="brown" style="margin-left:12px">예) 옥션<br></font>
+																			 	<font style="margin-left:12px"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/01.jpg" align="absmiddle"></font><br><br>
+																			 	Step2. 오픈마켓에서 에누리닷컴에 제품등록 및 가격수정요청을 위한 '가격정보페이지' 제작 및 전달<br><br>
+																			 	Step3. 해당 '가격정보페이지'를 기반으로 상품등록 & 가격업데이트
+																			 </td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="37">
+														<table id="title_2" width="633" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr>
+																<td width="135"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_number02.gif" width="253" height="17" align="absmiddle"></td>
+																<td width="325" valign="bottom" class="text03">
+																	<div style="margin-top:15px">&nbsp;- Speed상품등록(SDUL) 서비스를 이용하세요.<br></div>
+																	<div style="margin-left:15px">빠르고 간편하게 상품등록 및 가격수정을 할 <br>수 있습니다.</div></td>
+																<td width="163" ><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(2)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_2_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr valign="top">
+																			<td width="135"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_number02.gif" width="253" height="17" align="absmiddle"></td>
+																			<td width="325" valign="bottom" class="text03">
+																				<div style="margin-left:2px;margin-top:2px;">&nbsp;- Speed상품등록(SDUL) 서비스를 이용하세요.<br></div>
+																				<div style="margin-left:15px">빠르고 간편하게 상품등록 및 가격수정을 할 <br>수 있습니다.</div></td>
+																			<td width="163"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(2)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="3" style="padding:10 0 10 20;">
+																				가격비교창에 나오는 상품별 모든 정보(가격, 배송비, 이벤트 등)은 오픈마켓에서 제공받는 <br>
+																				'가격정보페이지'에 있는 정보가 그대로 반영되어 서비스 됩니다.<br><br>
+																				1) 상품이 안보이는 경우:<br>
+																				<font style="margin-left:16px">오픈마켓에서 제공받는 '가격정보페이지'에 상품정보가 누락된 경우입니다.</font><br>
+																				<font style="margin-left:16px">해당 오픈마켓에 에누리에 제공하는 '가격정보페이지'에 상품 등록을 요청하세요.</font><br><br>
+																				2) 가격 업데이트가 안된 경우:<br>
+																				<font style="margin-left:16px">오픈마켓에서 제공받는 '가격정보페이지'에 잘못된 가격이 올라와 있는 경우입니다.</font><br>
+																				<font style="margin-left:16px">해당 오픈마켓에 에누리에 제공하는 '가격정보페이지'에 가격 수정을 요청하세요.</font><br><br>
+																				오픈마켓에서 수정 후 에누리에 반영되기까지 최소30분에서 최대 3시간 정도 시간이 소요됩니다.<br><br>
+																				최저가 상품을 빨리 서비스 하고 싶으시다면,<br><br>
+																				<font style="font-size:12px;font-weight:bold;color:#0088CC;">☞ Speed상품등록(SDUL)서비스를 이용하세요.<br>
+																				빠르고 간편하게 상품등록 및 가격수정을 할 수 있습니다.</font>
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="37" class="text03"><img src="http://img.enuri.gscdn.com/images/sdul/etc/openmarket_number03.gif" width="265" height="17" align="absmiddle" style="margin-bottom:10px"></td>
+												</tr>
+												<tr>
+													<td height="43">
+														<table id="title_3" width="633" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr valign="top">
+																<td width="70"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext01.gif" width="60" height="16" align="absmiddle" style="margin-left:10px"></td>
+																<td width="425">
+																	<div class="text03" style="margin-left:2px;margin-top:2px;">
+																		&nbsp;- 에누리 회원으로 가입하시면서 오픈마켓 판매자 닉네임(미니샵명)을 추가로 <br>
+																		<font style="margin-left:13px">입력하시면 유료로 사용이 가능합니다.&nbsp;&nbsp;<img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/openmarket_bt_s_new_join.gif" width="66" height="19" align="absmiddle" onclick="SellerJoin()" style="cursor:pointer"></font>
+																	</div>
+																</td>
+																<td width="133"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(3)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_3_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr valign="top">
+																			<td width="70">
+																				<img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext01.gif" width="60" height="16" align="absmiddle" style="margin-left:10px">
+																			</td>
+																			<td width="425">
+																				<div class="text03" style="margin-left:2px;margin-top:2px;">
+																					&nbsp;- 에누리 회원으로 가입하시면서 오픈마켓 판매자 닉네임(미니샵명)을 추가로 <br>
+																				 	<font style="margin-left:13px">입력하시면 유료로 사용이 가능합니다.&nbsp;&nbsp;<img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/openmarket_bt_s_new_join.gif" width="66" height="19" align="absmiddle" onclick="SellerJoin()" style="cursor:pointer"></font>
+																				</div>
+																			</td>
+																			<td width="133"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(3)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="3" style="padding:10 0 10 10;">
+																				<div style="margin-left:12px"><font style="font-size:12px;font-weight:bold;color:#0088CC;">≫ 판매자 닉네임(미니샵명)이란?</font><br></div>
+																				<div style="margin-left:29px;margin-top:5px;margin-bottom:3px"> 오픈마켓 상품상세창에 노출되는 판매자 정보입니다.<br></div>
+																				<img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/02_20100205_4.jpg" style="margin-left:12px">
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="25">
+														<table id="title_4" width="633" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr>
+																<td width="125" style="margin-left:20px"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext02.gif" width="102" height="15" align="absmiddle" style="margin-left:10px"></td>
+																<td width="508"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(4)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_4_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td width="125"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext02.gif" width="102" height="15" align="absmiddle" style="margin-left:10px"></td>
+																			<td width="508"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(4)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="2" style="padding:10 0 10 20;">
+																				하단메뉴에서 '판매자SDU(L)'을 클릭하고, '오픈마켓 판매자(SDUL)'를 선택한 후,<br>
+																				아이디와 패스워드를 입력하고 '로그인' 버튼을 클릭하세요.<br>
+																				<img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/03_1.jpg" width="600" height="480">
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="25">
+														<table id="title_5" width="633" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr>
+																<td width="159" style="margin-left:20px"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext03.gif" width="136" height="15" align="absmiddle" style="margin-left:10px"></td>
+																<td width="470"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(5)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_5_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td width="159"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext03.gif" width="136" height="15" align="absmiddle" style="margin-left:10px"></td>
+																			<td width="470"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(5)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="2" style="padding:10 0 10 20;">
+																				① 가격비교창에서&nbsp;<img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/04.jpg" width="108" height="16" align="absmiddle" style="margin-bottom:1px">&nbsp;버튼 클릭<br>
+																				<div style="margin-top:3px;margin-bottom:3px">② 오픈마켓(판매자ID)을 선택하시고, 쇼핑몰 상품코드를 입력한 후 [확인] 버튼을 클릭하세요.<br></div>
+																				<img src="http://img.enuri.gscdn.com/images/sdul/05_1.jpg">
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="25">
+														<table id="title_6" width="633" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr>
+																<td width="159" style="margin-left:20px"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext04.gif" width="136" height="15" align="absmiddle" style="margin-left:10px"></td>
+																<td width="474"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(6)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_6_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td width="159"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext04.gif" width="136" height="15" align="absmiddle" style="margin-left:10px"></td>
+																			<td width="474"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(6)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="2" style="padding:10 0 10 20;">
+																				①&nbsp;<img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/06.jpg" width="58" height="16" align="absmiddle" style="margin-bottom:1px">&nbsp;버튼 클릭<br>
+																				<div style="margin-top:3px;margin-bottom:3px">② 오픈마켓(판매자ID)을 선택하시고, 쇼핑몰 상품코드를 입력한 후 [확인] 버튼을 클릭하세요.<br></div>
+																				<img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/07_1.jpg" align="absmiddle">
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+												<tr>
+													<td height="25">
+														<table id="title_7" width="633" border="0" cellspacing="0" cellpadding="0" style="display:block">
+															<tr>
+																<td width="164" style="margin-left:20px"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext05.gif" width="141" height="16" align="absmiddle" style="margin-left:10px"></td>
+																<td width="469"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_open.gif" width="44" height="13" onclick="viewTitleDesc(7)" style="cursor:pointer"></td>
+															</tr>
+														</table>
+														<table id="title_7_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td width="164"><img src="http://img.enuri.gscdn.com/images/sellerguide/openmarket/openmarket_stext05.gif" width="141" height="16" align="absmiddle" style="margin-left:10px"></td>
+																			<td width="469"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(7)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="2" style="padding:10 0 10 10;">
+																				<img src="http://img.enuri.gscdn.com/images/sdul/08_1.jpg" width="592" height="265" align="absmiddle" style="margin-left:10px">
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											</table>
+							        	</td>
+							      	</tr>
+							      	<tr>
+							      		<td align="center" style="padding:30 0 0 0;">
+							      			<table width="637" border="0" cellpadding="0" cellspacing="0">
+										      	<tr>
+										      		<td>
+														<table id="title_8_desc" width="637" border="0" cellspacing="0" cellpadding="0" style="display:none">
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_top.gif" width="637" height="5"></td>
+															</tr>
+															<tr>
+																<td align="center" background="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bg.gif">
+																	<table width="629" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<td width="576" style="margin-left:20px"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/catalog_tx_03.gif" align="absmiddle" style="margin-left:10px"></td>
+																			<td align="right"><img src="http://img.enuri.gscdn.com/images/sellerguide/board/avi_bt_close.gif" width="44" height="13" onclick="hideTitleDesc(8)" style="cursor:pointer"></td>
+																		</tr>
+																		<tr>
+																			<td colspan="2" style="padding:10 0 10 10;">
+																				<img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/catalog_img2_new.gif" align="absmiddle" style="margin-left:10px">
+																			</td>
+																		</tr>
+																	</table>
+																</td>
+															</tr>
+															<tr>
+																<td><img src="http://img.enuri.gscdn.com/images/sellerguide/selfMall_box_bottom.gif" width="637" height="5"></td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+							      			</table>
+							      		</td>
+							      	</tr>
+									<tr>
+								        <td height="20" align="center" style="padding:0 0 0 0;">
+								        	<table width="637" border="0" cellpadding="0" cellspacing="0">
+												
+												<tr>
+												<td height="20"></td>
+												</tr>
+								       		</table>
+								       		<table width="637" border="0" cellpadding="0" cellspacing="0">
+												<tr>
+													<td width="303" align="right"><img src="http://img.enuri.gscdn.com/images/sellerguide/faqgo_btn.gif" width="162" height="42" align="absmiddle" onclick="faqgo_1()" style="cursor:pointer"></td>
+													<td width="30"></td>
+													<td width="303" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/servicego_btn.gif" width="162" height="42" align="absmiddle" onclick="goServicePage1()" style="cursor:pointer"></td>
+												</tr>
+								       		</table>
+								       	</td>
+									</tr>
+									<tr>
+					        			<td height="5">&nbsp;</td>
+					        		</tr>
+								</table>
+							<!-- 본문 끝 -->
+							</td>
+							<td valign="top" width="1">
+								<!-- <table width="1" cellspacing="0"  height="100%" cellpadding="0" border="0" ><tr><td bgcolor="#9b9b9b"></td></tr></table>  -->
+							</td>
+							<td valign="top" width="220" align="center">
+								<script LANGUAGE="JavaScript">
+		<!--	
+		function pop_seller1(){
+			var pop_seller = window.open("","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function pop_seller4(){
+			var pop_seller = window.open("http://img.enuri.gscdn.com/images/main/sdul_layer.png","err","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function powerseller_sample(){
+			var powerseller_sample = window.open("/sdul/mallregister/new/PowerSellerpopup.jsp","powerseller","width=635,height=836,left=0,top=0,toolbar=no,directories=no,status=yes,scrollbars=yes,resizable=yes,menubar=no");
+			powerseller_sample.focus();
+		}
+		function Sdul_Error_pop(){
+			var Sdul_Error_pop = window.open("/sdul/mallregister/new/Sdul_Error_pop.jsp","Sdul_Error_pop","width=475,height=510,left=0,top=0,toolbar=no,directories=no,status=yes,scrollbars=yes,resizable=yes,menubar=no");
+			Sdul_Error_pop.focus();
+		}
+		
+		function pop_seller(){
+			var pop_seller = window.open("/mallregister/new/SellerPopup8.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		
+		function Sdu_go(){
+			var pop_seller = window.open("/mallregister/new/SellerPopup8.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function Bid_Event_Pop(){
+			var pop_seller = window.open("/event/Top_Sms.jsp","Bid_Event_Pop","width=738,height=1950,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		
+		function Top_View_Pop(){
+			var pop_seller = window.open("/sdul/mallregister/new/Top_View_Pop.jsp","Top_View_Pop","width=720,height=1504,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function GotoSpon(){
+			var GotoSpon = window.open("http://www.esmplus.com/Member/Popup/NoticeDetailView?NoticeSeq=2895","GotoSpon","");
+			GotoSpon.focus();	
+		}
+		
+		function GotoSDU_Login11(){
+		
+			var url = "/sdul/mallregister/new/AjaxSduLoginCheck.jsp";
+			var param = "";
+				
+			var getRec = new Ajax.Request(
+				url,
+				{
+					method:'get',parameters:param,onComplete:checkSdulLogin
+				}
+			);
+					
+			function checkSdulLogin(originalRequest){
+				var varReturn = originalRequest.responseText.trim();
+				if(varReturn=="1"){
+				  alert("로그인서비스입니다")
+				}else{
+					if(varReturn=="2"){
+						top.location.href = '/sdu/Index.jsp';
+					}else{
+						if(confirm("SDU 회원이 아닙니다. SDU 회원으로 가입하시겠습니까?")){
+							top.location.href = '/mallregister/new/SellerGuide2.jsp';
+						}else{
+							window.opener.focus();
+						}
+					}
+				}
+			}
+		}
+		//-->
+		</script>
+				<table align="center" width="220" border="0" cellspacing="0" cellpadding="0" style="margin-top: 7px; align:right;">
+		    		<tr>
+						<td height="4"></td>
+					</tr>
+					<tr>
+						<td height="40" align="center" valign="bottom"><img onclick="top.location.href='/sdul/mallregister/SellerMain.jsp?sm=2&lg=1'" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/bn_top_111208.gif" width="197" height="80"></td>
+					</tr>
+					<!-- <tr>
+						<td height="40" align="center" valign="bottom"><img onclick="pop_seller()" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/bn_yongsan_login_090715.gif" width="197" height="44"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> -->
+					<!-- <tr>
+						<td height="38" align="center" valign="bottom"><img onclick="powerseller_sample()" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/powerseller_197_44.gif" width="197" height="44"></td>
+					</tr>  -->
+					<tr>
+						<td height="4"></td>
+					</tr> 
+					<tr>
+						<td height="40" align="center" valign="bottom"><img onclick="Bid_Event_Pop()" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/bn_balance_bn.gif" width="197" height="44"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> 
+					<tr>
+						<td height="40" align="center" valign="bottom"><img onclick="top.location.href='/sdul/mallregister/SellerMain.jsp?sm=7&lg=1'" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sdul/etc/bt_powerseller.jpg" width="197" height="80"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> 
+					<tr>
+						<td height="38" align="center" valign="bottom"><img onclick="top.location.href='/sdul/mallregister/SellerMain.jsp?sm=6&lg=1'" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sdul/etc/bt_sellerad.jpg" width="197" height="80"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> 			
+				</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		</td>
+		</tr>
+		</table>
+		</div>
+	</div>
+	
+	
+	<!-- //SDU 공통 contents -->
+	
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul>
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+		
+		
+		
+</body>
+</html>
+

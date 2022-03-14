@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/css/enuriLogin.css">
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+	/*checkbox*/
+	function autologin(obj)
+		{
+		if (obj.className== 'unchk') {
+			obj.className = 'chk';
+		} else {
+			obj.className = 'unchk';
+			}
+		}
+
+	function report(obj)
+		{
+		if (obj.className== 'unchk') {
+			obj.className = 'chk';
+		} else {
+			obj.className = 'unchk';
+			} 
+		}
+</script>
+
+<!-- 로그인 -->
+<div class="dim_back" id="loginbox">
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$( ".id_field input, .pw_field input" ).focus(function() {
+			$(this).parent().removeClass("on").slibings().removeClass("on");
+			return false;
+		});
+		$( ".id_field input, .pw_field input" ).focusout(function() {
+			$(this).parent().addClass("on").slibings().removeClass("on");
+			return false;
+		});
+	});
+	</script>
+
+	<!-- 기본 로그인 -->
+	<div class="type_layer loginArea">
+		<a href="javascript:///" class="close" onclick="document.getElementById('loginbox').style.display='none';" >창닫기</a>
+		<h4>로그인</h4>
+		<fieldset>
+			<legend>로그인 및 관련설정</legend>
+
+			<p class="id_field"><label class="idarea">ID</label><input type="text" title="ID"></p>
+			<p class="pw_field"><label class="pwarea">비밀번호</label><input type="password" title="비밀번호"></p>
+			<a href="#" class="btn_login">로그인</a>
+			<div class="auto_login">
+				<span class="unchk" onclick="autologin(this);"><input type="checkbox" />자동로그인</span>
+				<p class="member"><a href="#" class="join">회원가입</a><a href="#">ID/비밀번호 찾기</a></p>
+			</div>
+		</fieldset>
+	</div>
+	<!--// 기본  로그인 -->
+
+	<!-- 보안코드 입력 레이어 161125 추가 -->
+	<div class="type_layer loginArea" id="security">
+		<a href="javascript:///" class="close" onclick="document.getElementById('security').style.display='none';">창닫기</a>
+		<h4>보안코드입력</h4>
+		<div class="seculy">
+			<dl class="security_code">
+				<dt>보안코드</dt>
+				<dd>
+					<img src="http://imgenuri.enuri.gscdn.com/images/home/img_code.gif" alt="" /><a href="#" class="f5">새로고침</a>
+					<span class="num"><input type="text" onfocus="if(this.value =='왼쪽 숫자를 입력해주세요.') this.value='';" onblur="if(this.value =='') this.value='왼쪽 숫자를 입력해주세요.';" value="왼쪽 숫자를 입력해주세요." onkeydown="return onlyNumber(event);" onkeyup="removeChar(event)" maxlength="4" class="f_s" /></span>
+				</dd>
+			</dl>
+			<div class="boxly_c">
+				<span class="btn_send">확인</span>
+			</div>
+		</div>
+	</div>
+	<script>
+	function onlyNumber(event){
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if ((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 ) return;
+		else return false;
+	}
+	function removeChar(event) {
+		event = event || window.event;
+		var keyID = (event.which) ? event.which : event.keyCode;
+		if (keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39){
+			return;
+		}else if(keyID >= 65 && keyID <= 90){
+			// 텍스트 입력시,
+			alert("숫자만 입력하여 주십시오.");
+		}else{
+			event.target.value = event.target.value.replace(/[^0-9]/g, "");
+		}
+	}
+	</script>
+	<!--// 보안코드 입력 레이어 -->
+
+
+	<!-- 판매자 로그인 -->
+	<div class="type_layer loginArea" id="seller">
+		<a href="javascript:///" class="close" onclick="document.getElementById('seller').style.display='none';" >창닫기</a>
+		<h4>로그인</h4>
+		<fieldset>
+			<legend>로그인 및 관련설정</legend>
+			
+			<!-- 판매자용 -->
+			<p class="seller">
+				<span class="unchk" onclick="autologin(this);"><input type="radio" />쇼핑몰 판매자 (SDU)</span>
+				<span class="unchk" onclick="autologin(this);"><input type="radio" />오픈마켓 판매자 (SDUL)</span>
+			</p>
+			<p class="id_field"><label class="idarea">ID</label><input type="text" title="ID"></p>
+			<p class="pw_field"><label class="pwarea">비밀번호</label><input type="password" title="비밀번호"></p>
+			<a href="#" class="btn_login">로그인</a>
+			<div class="auto_login">
+				<span class="unchk" onclick="autologin(this);"><input type="checkbox" />자동로그인</span>
+				<p class="member"><a href="#" class="join">회원가입</a><a href="#">ID/비밀번호 찾기</a></p>
+			</div>
+
+			<!-- 판매자용 -->
+			<a href="#" class="seller_img">상위에 노출해서 더 많이 판매하세요!</a>
+		</fieldset>
+	</div>
+	<!--// 판매자 로그인 -->
+
+
+	<!-- 개인정보 관리 로그인 -->
+	<div class="type_layer loginArea" id="privacy">
+		<a href="javascript:///" class="close" onclick="document.getElementById('privacy').style.display='none';" >창닫기</a>
+		<h4>로그인</h4>
+		<fieldset class="pv_login">
+			<legend>로그인 및 관련설정</legend>
+			<p class="pw_txt">※ 자동로그인 중이므로 개인정보 보호를 위해 비밀번호를<br />입력해주세요</p>
+			<p class="id_field"><label class="idarea">ID</label><input type="text" title="ID"></p>
+			<p class="pw_field"><label class="pwarea">비밀번호</label><input type="password" title="비밀번호"></p>
+			<a href="#" class="btn_login">로그인</a>
+			<div class="auto_login">
+				<p class="member"><a href="#">ID/비밀번호 찾기</a></p>
+			</div>
+
+		</fieldset>
+	</div>
+	<!--// 개인정보 관리 로그인 -->
+
+</div>
+<!--// 로그인 -->
+
+</body>
+</html>

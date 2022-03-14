@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="https://img.enuri.info/images/enuri_rev/assets/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="https://img.enuri.info/images/enuri_rev/assets/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="https://img.enuri.info/images/enuri_rev/assets/css/mobile_v2/lp.css"/>
+	<!-- // -->
+	<script type="text/javascript" src="https://img.enuri.info/images/enuri_rev/assets/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="https://img.enuri.info/images/enuri_rev/assets/js/swiper4.5.3.min.js"></script>
+
+	<style>
+		body {background-color:#242f3f}
+		#m_frame{position:relative;box-sizing: border-box;top:0;bottom:0;left:50%;height:100vh;width:400px;padding:40px 40px 40px 0;z-index: 100;transform: translateX(-50%);transition: transform .4s ease-in-out;transition-delay: .2s}
+		#m_frame .inner{position:absolute;top:40px;left:0;bottom:40px;right:40px;border-radius:0 0 35px 35px;background-color:#fff;overflow:hidden}
+		#m_frame .inner .head{position:absolute;top:0;left:0;width:100%;height:90px;border-bottom:1px solid #eaeaea;background:url(http://img.enuri.info/images/mobile_v2/iframe_header.png) no-repeat 0 0;z-index: 1;}
+		#m_frame .inner .txt_url{position:absolute;width:306px;height:32px;line-height:32px;font-size:14px;text-align:center;overflow:hidden;text-overflow: ellipsis;color:#000;top:48px;left:16px}
+		#m_frame .inner .iframe{position:absolute;top:90px;bottom:40px;left:0;right:0;width:calc(100% + 17px);height:calc(100vh - 170px);overflow:hidden;overflow-y:scroll;}
+	</style>
+
+</head>
+<body>
+
+<!-- 공통 : 로더 -->
+<div id="loadingDiv" class="comm__loader">
+	<div class="loader_inner">로딩중</div>
+</div>
+<!-- // 로더 -->
+<script>
+	$(function(){
+		setTimeout(function(){
+			$("#loadingDiv").fadeOut(100);
+		},100);
+	})
+</script>
+<!-- // -->
+<!-- 스마트파인더 전용 css -->
+<link href="https://img.enuri.info/images/enuri_rev/finder/smart/210702/apps/css/finder_nutrients2.css" rel="stylesheet" />
+<!--<link href="../../node_modules/nouislider/distribute/finder_nutrients2.css" rel="stylesheet" />-->
+<link href="https://img.enuri.info/images/enuri_rev/finder/common/css/spinners.css" rel="stylesheet">
+
+<div class="mockup_wrap">
+	<div class="mockup_cont">
+		<div id="wrap">
+
+			<!-- 헤더 LP - 타입A -->
+			<header id="header" class="m_header head__type_a">
+				<div class="header_wrap">
+					<h1 class="m_txt">건강보조식품</h1>
+					<!-- <button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>	 -->
+					<button class="btn_hd_cate comm__sprite">카테고리</button>
+					<button class="btn_hd_sr comm__sprite">검색</button>
+					<button class="btn_hd_my comm__sprite">나의정보</button>
+				</div>
+
+				<div class="lay-cate">
+					<button type="button" class="is-fold"></button>
+					<img src="http://img.enuri.info/images/mobile_v2/finder/test/lay__cate.png" alt="" />
+				</div>
+
+				<script>
+					var $hd_cate = $(".btn_hd_cate"),
+							$lay_cate = $(".lay-cate"),
+							$btn_fold = $lay_cate.find(".is-fold");
+
+					$hd_cate.on("click", function(){
+						$lay_cate.addClass("is-unfold")
+					})
+					$btn_fold.on("click", function(){
+						$lay_cate.removeClass("is-unfold")
+					})
+				</script>
+			</header>
+			<!-- // 헤더 -->
+
+			<section id="container" class="m_lp_cont">
+
+				<div class="lp__head">
+					<div class="lp__navi scroller">
+						<ul class="scroll-cont">
+							<li class="navi__cate"><span class="txt__cate">식품/건강</span></li>
+							<li class="navi__cate"><span class="txt__cate" onclick="return false;">홍삼,건강식품</span></li>
+							<li class="navi__cate on"><span class="txt__cate" onclick="return false;">건강보조식품</span></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="lp__detail_sr detail_sr">
+					<!-- 상세검색 -->
+					<div class="box_inner">
+						<div class="lp__detail_sr_tab detail_sr_tab scroller">
+							<ul class="scroll-cont">
+								<li data-id="tab_01" class="on"><em>전체보기</em></li>
+								<li data-id="tab_02"><em>비타민</em></li>
+								<li data-id="tab_03"><em>홍삼,인삼,녹용</em></li>
+								<li data-id="tab_04"><em>뷰티푸드</em></li>
+								<li data-id="tab_06"><em>헬스,다이어트</em></li>
+								<li data-id="tab_07"><em>영양제</em></li>
+							</ul>
+						</div>
+					</div>
+					<!-- // 상세검색 -->
+				</div>
+
+				<!-- 리스트형일때 .lp__cont / 그리드형일때 .lp__cont.grid  -->
+				<div class="lp__cont lp__cont--fashion">
+					<!-- LP Header -->
+					<div class="lp__cont_head fashion__head">
+						<div class="fashion__source">
+							<!-- 옵션 버튼 -->
+							<div class="opt__btn scroller">
+								<ul class="scroll-cont">
+									<li><button type="button" class="btn">섭취대상/효능</button></li>
+									<li><button type="button" class="btn">타입/생균/섭취량</button></li>
+									<li><button type="button" class="btn">브랜드</button></li>
+									<li><button type="button" class="btn btn4">추천인기속성</button></li>
+								</ul>
+							</div>
+
+							<!-- 보기옵션 + 필터 -->
+							<div class="list__util">
+								<img src="http://img.enuri.info/images/sample/smartfinder/sample_sort_area.png">
+							</div>
+						</div>
+					</div>
+					<!-- // LP Header -->
+					<div class="mockup__prdlist">
+						<img src="http://img.enuri.info/images/enuri_rev/finder/smart/210702/apps/imgs/nutrients_img1.png" id="pimg" alt="" />
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<!-- 파인더 -->
+	<div class="finder_wrap" style="z-index:-1"><!-- is-shown -->
+		<div class="dimmed"></div>
+		<div class="finder">
+			<div class="finder__inner">
+				<!-- 상단 토글 -->
+				<div class="scroller">
+					<ul class="finder__head ">
+						<li class="is--on"><button type="button" class="tab">섭취대상/효능</button></li>
+						<li><button type="button" class="tab">타입/생균/섭취량</button></li>
+						<li><button type="button" class="tab">브랜드</button></li>
+						<li>
+							<button type="button" class="tab finder__head_tab4">추천인기속성</button>
+							<img class="finder__head_tooltip" src="http://img.enuri.info/images/sample/smartfinder/drug/tooltip_txt2.png">
+						</li>
+					</ul>
+					<script>
+						$('.finder__head_tab4, .opt__btn .btn4').on('click',function(){
+							$(this).next().show().delay(800).fadeOut(500);
+						});
+					</script>
+				</div>
+
+				<div class="finder__cont">
+					<div class="swiper-container finder__swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide finder__item">
+								<!-- 스와이퍼 이너 컨텐츠 -->
+								<div class="f_inner__cont">
+									<img class="tab1imgchange" src="http://img.enuri.info/images/sample/smartfinder/drug/sample_tab1.png">
+								</div>
+								<script type="text/javascript">
+									(function($) {
+										$(function() {
+											$('.tab1imgchange').on('click',function(){
+												$(this).attr('src','http://img.enuri.info/images/sample/smartfinder/drug/sample_tab1_on.png')
+											});
+										});
+									})(jQuery);
+								</script>
+							</div>
+							<div class="swiper-slide finder__item">
+								<!-- 스와이퍼 이너 컨텐츠 -->
+								<div class="f_inner__cont">
+									<img src="http://img.enuri.info/images/sample/smartfinder/drug/sample_tab2.png">
+								</div>
+							</div>
+							<div class="swiper-slide finder__item">
+								<!-- 스와이퍼 이너 컨텐츠 -->
+								<div class="f_inner__cont">
+									<img src="http://img.enuri.info/images/sample/smartfinder/drug/sample_tab3.png">
+								</div>
+							</div>
+							<div class="swiper-slide finder__item">
+								<!-- 스와이퍼 이너 컨텐츠 -->
+								<div class="f_inner__cont">
+									<img src="http://img.enuri.info/images/sample/smartfinder/drug/sample_tab4.png?v=2">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 스와이퍼 이너 푸터 -->
+				<div class="finder__foot">
+					<div class="reset__price">
+						<button type="button" class="btn btn-reset">선택초기화</button>
+						<button type="button" class="btn btn-next" data-idx="3"><em class="prodCnt">0</em>개 상품보기
+							<div class="range_loader">
+								<div class="throbber-loader"></div>
+							</div>
+						</button>
+					</div>
+				</div>
+				<script>
+
+
+					// 금액 3자릿수마다 , 찍기
+					function comma(num){
+						var len, point, str;
+						num = num + "";
+						point = num.length % 3 ;
+						len = num.length;
+						str = num.substring(0, point);
+						while (point < len) {
+							if (str != "") str += ",";
+							str += num.substring(point, point + 3);
+							point += 3;
+						}
+						return str;
+					}
+
+					// 옵션 선택 파인더 여/닫기
+					var $optBtn = $(".fashion__source .opt__btn li");
+					$optBtn.on("click", function(){
+						$optBtn.removeClass('is--on');
+						$(this).addClass('is--on');
+						var _idx = $(this).index();
+						finder_open(_idx);
+
+					});
+
+					// 파인더 여/닫기
+					$(".btn__filter").on("click", function(){ finder_open()});
+
+					var finder_close = function(){
+						$(".finder_wrap").removeClass("is-shown");
+						setTimeout(function(){
+							$(".finder_wrap").css("z-index", "-1");
+						}, 300)
+					}
+					var finder_open = function(i){
+						var _idx = i;
+						$(".finder_wrap").css("z-index", "1");
+						setTimeout(function(){
+							$(".finder_wrap").addClass("is-shown");
+						}, 100)
+						finderSwiper.slideTo(_idx);
+					}
+
+					$('.dimmed').on('click', function(){
+						finder_close();
+					});
+
+					// 레이어 내 스와이퍼 생성
+					var finderSwiper = new Swiper(".finder__swiper", {
+						loop : false,
+						slidesPerView : 1,
+						spaceBetween : 0,
+						runCallbacksOnInit : true,
+						// noSwipingSelector : '#select_goods, #color__list, #origin__list, #brand__list, #volume__list, #egrade__list',
+					});
+
+					var $tabItem = $(".finder__head li"), // 탭 LI
+							$tabBtn = $tabItem.children(".tab");
+
+					$tabBtn.on("click", function(){
+						var _idx = $(this).closest("li").index();
+						finderSwiper.slideTo(_idx);
+					})
+
+					finderSwiper.on('slideChange', function (e) {
+						var _idx = this.activeIndex; // 현재 슬라이드 Index
+						$tabItem.removeClass("is--on").eq(_idx).addClass("is--on");
+					});
+
+					// 상품보기 클릭이벤트
+					$(".btn-next").on("click",function(){
+						finder_close();
+						$("#loadingDiv").fadeIn(100);
+
+
+						setTimeout(function(){
+							$("#loadingDiv").fadeOut(100);
+							$("#pimg").attr("src", "http://img.enuri.info/images/enuri_rev/finder/smart/210702/apps/imgs/nutrients_img2.png")
+						},1000);
+					})
+
+					// 레이어 내 탭
+					$optBtn.on("click", function(){
+						$optBtn.removeClass('is--on');
+						$(this).addClass('is--on');
+						var _idx = $(this).index();
+						finder_open(_idx);
+					});
+
+
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- //파인더 -->
+</div>
+</body>
+</html>

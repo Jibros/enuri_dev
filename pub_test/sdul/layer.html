@@ -1,0 +1,1682 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://img.enuri.info/images/mobilefirst/images/logo_enuri.png">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+    <link rel="stylesheet" href="/css/sdul/common.css" type="text/css">
+    <link rel="stylesheet" href="/css/sdul/layer.css" type="text/css">
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    
+    <!-- 모든 레이어는 #wrap.popup으로 감싸 주세요 -->
+    <div id="wrap" class="popup">
+
+
+        <!-- 210205 : SR#44971  : 프라이스탑 신청 신규개발 .lay_pricetop-->
+        <div class="lay_box lay_pricetop" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>광고등록</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">프라이스탑 광고 선택</span>                                
+                        </div>
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>형태</th>
+                                    <td>
+                                        <button class="btn_radio_spt btn_ad2_comp">상품코드 등록</button>
+                                        <button class="btn_radio_spt btn_ad2_free">자유등록</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <script>
+                            $(function(){ // 퍼블테스트
+                                var $btn = $(".lay_pricetop .btn_radio_spt");
+                                $btn.click(function(){
+                                    if ( !$(this).hasClass("disabled")){
+                                        if ( !$(this).hasClass("selected") ){
+                                            $(this).addClass("selected").siblings().removeClass("selected");
+                                        }
+                                        if ( $(this).hasClass('btn_ad2_comp') ){
+                                            $(".set_ad_group").hide();
+                                            $(".set_comp2").show();
+                                            resizePopSize();
+                                        }
+                                        if ( $(this).hasClass('btn_ad2_free') ){
+                                            $(".set_ad_group").hide();
+                                            $(".set_free2").show();
+                                            resizePopSize();
+                                        }
+                                        var btnSelLen =  $(".lay_pricetop .btn_radio_spt.selected").length;
+                                        if ( btnSelLen == 1 ){
+                                            $(".lay_pricetop .set_ad").show();
+                                            resizePopSize();
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        <!-- 광고설정 -->
+                        <div class="set_ad" style="display:none">
+                        
+                            <!-- 상품코드 등록 -->  
+                            <div class="set_ad_group set_comp2" style="display:none">
+                                <div class="cont_head">
+                                    <span class="cont_tit">광고 설정 <span class="tx_sub">상품코드로 등록</span></span>
+                                </div>                      
+                                <table class="cont_tb">
+                                    <tbody>
+                                        <tr>
+                                            <th>상품코드/<br/>쇼핑몰 검색</th>
+                                            <td>
+                                                <input class="inp_basic inp--model" type="text">
+                                                <select id="sel_mall_01" name="sel_mall_01" class="inp_basic inp--model">
+                                                    <option value="">쇼핑몰 선택</option>
+                                                    <option value="">인터파크</option>	
+                                                    <option value="">G마켓</option>
+                                                    <option value="">옥션</option>
+                                                    <option value="">11번가</option>
+                                                </select>
+                                                <button class="btn_grey btn--md" onclick="showPopup('lay_supertop_find');return false;">상품검색</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>배송정책</th>
+                                            <td>무료배송 / 유료배송</td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고상품</th>
+                                            <td>애플워치 5</td>
+                                        </tr>
+                                        <tr>
+                                            <th>카테고리</th>
+                                            <td>디지털 &gt; 스마트워치</td>
+                                        </tr>
+                                        <tr>
+                                            <th>홍보문구 (필수)</th>
+                                            <td><input class="inp_full" type="text" placeholder="홍보문구를 입력하세요.(최대20자)" maxlength="20"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고기간 (예정)</th>
+                                            <td>2021-01-25 ~ 2021-02-24</td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고비용</th>
+                                            <td><input type="text" class="inp_basic">원(VAT포함)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- // 상품코드 등록 -->
+
+                            <!-- 자유 등록 -->  
+                            <div class="set_ad_group set_free2" style="display:none">
+                                <div class="cont_head">
+                                    <span class="cont_tit">광고 설정 <span class="tx_sub">자유 등록</span></span>
+                                </div>                      
+                                <table class="cont_tb">
+                                    <tbody>
+                                        <tr>
+                                            <th>상품URL/<BR/>판매가 입력</th>
+                                            <td>
+                                                <input class="inp_basic inp--url" type="text" placeholder="URL을 입력하세요">
+                                                <input class="inp_basic inp--price" type="text" placeholder="판매가격 입력">원
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고상품</th>
+                                            <td>
+                                                <div class="box_sr_sort view_search" onclick="showPopup('lay_supertop_find');return false;">
+                                                    <input class="inp_search" type="text" placeholder="에누리 모델명 검색">                                
+                                                    <button class="btn_search"><i class="global__sprite ico_search"></i></button>
+                                                </div>
+                                                <div class="box_sr_sort view_search" onclick="showPopup('lay_supertop_find');return false;">
+                                                    <input class="inp_search" type="text" placeholder="에누리 모델번호 검색">                                
+                                                    <button class="btn_search"><i class="global__sprite ico_search"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>배송정책</th>
+                                            <td>
+                                                <input type="radio" name="deli_radio" id="deliRadio1" checked=""><label for="deliRadio1">무료배송</label>
+                                                <input type="radio" name="deli_radio" id="deliRadio2"><label for="deliRadio2">유료배송</label>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>카테고리</th>
+                                            <td>디지털 &gt; 스마트워치</td>
+                                        </tr>
+                                        <tr>
+                                            <th>홍보문구 (필수)</th>
+                                            <td><input class="inp_full" type="text" placeholder="홍보문구를 입력하세요.(최대20자)" maxlength="20"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고기간 (예정)</th>
+                                            <td>2021-01-25 ~ 2021-02-24</td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고비용</th>
+                                            <td><input type="text" class="inp_basic">원(VAT포함)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- // 자유 등록 -->
+
+                            <!-- 신청자 정보 -->
+                            <div class="cont_head">
+                                <span class="cont_tit">신청자 정보</span>                                
+                            </div>
+                            <table class="cont_tb">
+                                <tbody>
+                                    <tr>
+                                        <th>신청자(업체명)</th>
+                                        <td><input type="text" class="inp_full" value="서문교"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>이메일</th>
+                                        <td><input type="text" class="inp_full" value="zicokor@naver.com"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>전화번호</th>
+                                        <td><input type="text" class="inp_full" value="010-6639-0090"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <script>
+                                $(function(){ // 퍼블테스트
+                                    var fileTarget = $('.lay_supertop .inp_upload');
+                                    fileTarget.on('change', function(){ // 값이 변경되면
+                                        if(window.FileReader){ // modern browser
+                                            var filename = $(this)[0].files[0].name;
+                                        }else { // old IE
+                                            var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+                                        }  
+                                        $(this).siblings('.label_upload').html(filename);
+                                        $(this).siblings('.btn_upload').removeClass('disabled');
+                                    });
+                                })
+                            </script>
+                            <!-- // -->
+
+                            <div class="cont_button">
+                                <button class="btn_blue btn_register">신청</button>
+                                <button class="btn_grey btn_cancel">취소</button>
+                            </div>
+
+                        </div>
+                        <!-- // -->
+
+                    </div>
+                    <!-- // -->
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업]- 프라이스탑 신청 .lay_pricetop -->
+
+        <!-- 200612 : SR#40180 : [팝업]- 슈퍼탑 광고등록 .lay_supertop -->
+        <div class="lay_box lay_supertop" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>광고등록</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">슈퍼탑광고 선택</span>                                
+                        </div>
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>위치</th>
+                                    <td>
+                                        <button class="btn_radio_spt btn_spt">슈퍼탑</button>
+                                        <button class="btn_radio_spt btn_sptl">슈퍼탑 라이트</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>형태</th>
+                                    <td>
+                                        <button class="btn_radio_spt btn_ad_comp disabled">가격비교 서비스로 등록</button>
+                                        <button class="btn_radio_spt btn_ad_free disabled">자유등록</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <script>
+                            $(function(){ // 퍼블테스트
+                                var $btn = $(".lay_supertop .btn_radio_spt");
+                                $btn.click(function(){
+                                    if ( !$(this).hasClass("disabled")){
+                                        $btn.removeClass("disabled");
+                                        if ( !$(this).hasClass("selected") ){
+                                            $(this).addClass("selected").siblings().removeClass("selected");
+                                        }
+                                        if ( $(this).hasClass('btn_ad_comp') ){
+                                            $(".set_ad_group").hide();
+                                            $(".set_comp").show();
+                                            resizePopSize();
+                                        }
+                                        if ( $(this).hasClass('btn_ad_free') ){
+                                            $(".set_ad_group").hide();
+                                            $(".set_free").show();
+                                            resizePopSize();
+                                        }
+                                        var btnSelLen =  $(".lay_supertop .btn_radio_spt.selected").length;
+                                        if ( btnSelLen == 2 ){
+                                            $(".lay_supertop .set_ad").show();
+                                            resizePopSize();
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+                        <!-- 광고설정 -->
+                        <div class="set_ad" style="display:none">
+                        
+                            <!-- 가격비교 서비스로 등록 -->  
+                            <div class="set_ad_group set_comp" style="display:none">
+                                <div class="cont_head">
+                                    <span class="cont_tit">광고 설정 <span class="tx_sub">가격비교 서비스로 등록</span></span>
+                                </div>                      
+                                <table class="cont_tb">
+                                    <tbody>
+                                        <tr>
+                                            <th>광고상품</th>
+                                            <td>
+                                                <div class="tx_model">LG전자 트롬 RH16NA(일반)</div>
+                                                <button class="btn_grey btn--md" onclick="showPopup('lay_supertop_find');return false;">상품검색</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>카테고리</th>
+                                            <td>
+                                                <select id="sel_cate_01" name="sel_cate_01" class="inp_basic">
+                                                    <option value="">대카테고리 전체</option>
+                                                    <option value="">가전/해외직구</option>	
+                                                    <option value="">TV/영상/디카</option>
+                                                    <option value="">컴퓨터/노트북</option>
+                                                    <option value="">태블릿/모바일</option>
+                                                </select>
+                                                <select id="sel_cate_02" name="sel_cate_02" class="inp_basic">
+                                                    <option value="">중카테고리 전체</option>
+                                                    <option value="">가전/해외직구</option>	
+                                                    <option value="">TV/영상/디카</option>
+                                                    <option value="">컴퓨터/노트북</option>
+                                                    <option value="">태블릿/모바일</option>
+                                                </select>
+                                                <script>
+                                                    $(function(){ // Confirm창 테스트
+                                                        $("#sel_cate_02").click(function(){
+                                                            var cf = confirm('해당 카테고리는 현재 광고신청이 불가합니다.\n광고등록이 가능할 때 알림을 받으시겠습니까?') ? alert('알람신청') : alert('취소');
+                                                        })
+                                                    })
+                                                </script>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>기간선택
+                                                <div class="lay_tool_tip">
+                                                    <span class="global__sprite ico_tool_tip" onclick="$(this).next('.layer_box').toggle();">?</span>
+                                                    <div class="layer_box" style="display:none">
+                                                        <div class="lay_cnt">
+                                                            연휴 및 당사 사정에 따라 시작일이 조정될 수 있습니다.<br/>
+                                                            예) 연휴 기간 중 광고가 시작될 경우, 에누리 관리자 확인 후 영업일 이후 시작됨
+                                                        </div>
+                                                        <button class="btn_close global__sprite" onclick="$(this).closest('.layer_box').hide();">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                시작일 : 2020-05-10
+                                                <div class="btn_period">
+                                                    <button class="btn_radio_spt btn--sm">30일</button>
+                                                    <button class="btn_radio_spt btn--sm">60일</button>
+                                                    <button class="btn_radio_spt btn--sm">90일</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>광고비용</th>
+                                            <td><input type="text" class="inp_basic">원(VAT포함)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>신청자(업체명)</th>
+                                            <td><input type="text" class="inp_basic"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>연락처</th>
+                                            <td><input type="text" class="inp_basic"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- // 가격비교 서비스로 등록 -->
+
+                            <!-- 자유 등록 -->  
+                            <div class="set_ad_group set_free" style="display:none">
+                                <div class="cont_head">
+                                    <span class="cont_tit">광고 설정 <span class="tx_sub">자유 등록</span></span>
+                                </div>                      
+                                <table class="cont_tb">
+                                    <tbody>                                
+                                        <tr>
+                                            <th>카테고리</th>
+                                            <td>
+                                                <select id="sel_cate_01" name="sel_cate_01" class="inp_basic">
+                                                    <option value="">대카테고리 전체</option>
+                                                    <option value="">가전/해외직구</option>	
+                                                    <option value="">TV/영상/디카</option>
+                                                    <option value="">컴퓨터/노트북</option>
+                                                    <option value="">태블릿/모바일</option>
+                                                </select>
+                                                <select id="sel_cate_02" name="sel_cate_02" class="inp_basic">
+                                                    <option value="">중카테고리 전체</option>
+                                                    <option value="">가전/해외직구</option>	
+                                                    <option value="">TV/영상/디카</option>
+                                                    <option value="">컴퓨터/노트북</option>
+                                                    <option value="">태블릿/모바일</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>기간선택
+                                                <div class="lay_tool_tip">
+                                                    <span class="global__sprite ico_tool_tip" onclick="$(this).next('.layer_box').toggle();">?</span>
+                                                    <div class="layer_box" style="display:none">
+                                                        <div class="lay_cnt">
+                                                            연휴 및 당사 사정에 따라 시작일이 조정될 수 있습니다.<br/>
+                                                            예) 연휴 기간 중 광고가 시작될 경우, 에누리 관리자 확인 후 영업일 이후 시작됨
+                                                        </div>
+                                                        <button class="btn_close global__sprite" onclick="$(this).closest('.layer_box').hide();">닫기</button>
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <td>
+                                                시작일 : 2020-05-10
+                                                <div class="btn_period">
+                                                    <button class="btn_radio_spt btn--sm">30일</button>
+                                                    <button class="btn_radio_spt btn--sm">60일</button>
+                                                    <button class="btn_radio_spt btn--sm">90일</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>모델명</th>
+                                            <td><input type="text" class="inp_basic"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>가격</th>
+                                            <td><input type="text" class="inp_basic">원</td>
+                                        </tr>
+                                        <tr>
+                                            <th>PC URL</th>
+                                            <td><input type="text" class="inp_basic"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Mobile URL</th>
+                                            <td><input type="text" class="inp_basic"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>상품이미지
+                                                <span class="tx_sub">(300x300px JPG포맷)</span>
+                                            </th>
+                                            <td>
+                                                <div class="inp_wrap">
+                                                    <input type="file" class="inp_upload" id="regist_file"><label for="regist_file" class="label_upload">클릭하여 이미지 추가</label>                                                
+                                                    <!-- 파일 추가되면 업로드 버튼 disabled 제거 -->
+                                                    <input type="submit" class="btn_upload btn_grey btn--md disabled" value="업로드">
+                                                    <span>최대 100kb</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- // 자유 등록 -->
+
+                            <!-- 컨텐츠 설정 -->
+                            <div class="cont_head">
+                                <span class="cont_tit">컨텐츠 설정</span>                                
+                            </div>
+                            <table class="cont_tb">
+                                <tbody>
+                                    <tr>
+                                        <th>타이틀</th>
+                                        <td><input type="text" class="inp_full"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>서브타이틀</th>
+                                        <td><input type="text" class="inp_full"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>PC 랜딩URL</th>
+                                        <td><input type="text" class="inp_full"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>MO 랜딩URL</th>
+                                        <td><input type="text" class="inp_full"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>썸네일
+                                            <span class="tx_sub">(68 x 40px, JPG포맷)</span>
+                                        </th>
+                                        <td>
+                                            <div class="inp_wrap">
+                                                <input type="file" class="inp_upload" id="regist_file"><label for="regist_file" class="label_upload">클릭하여 썸네일 추가</label>                                                
+                                                <!-- 파일 추가되면 업로드 버튼 disabled 제거 -->
+                                                <input type="submit" class="btn_upload btn_grey btn--md disabled" value="업로드">
+                                                <span>최대 50kb</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <script>
+                                $(function(){ // 퍼블테스트
+                                    var fileTarget = $('.lay_supertop .inp_upload');
+                                    fileTarget.on('change', function(){ // 값이 변경되면
+                                        if(window.FileReader){ // modern browser
+                                            var filename = $(this)[0].files[0].name;
+                                        }else { // old IE
+                                            var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+                                        }  
+                                        $(this).siblings('.label_upload').html(filename);
+                                        $(this).siblings('.btn_upload').removeClass('disabled');
+                                    });
+                                })
+                            </script>
+                            <!-- // -->
+
+                            <div class="cont_button">
+                                <button class="btn_blue btn_register">신청</button>
+                                <button class="btn_grey btn_cancel">취소</button>
+                            </div>
+
+                        </div>
+                        <!-- // -->
+
+                    </div>
+                    <!-- // -->
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업]- 슈퍼탑 광고등록 .lay_supertop -->
+
+        <!-- 200612 : SR#40180 : [팝업]- 슈퍼탑 광고등록 > 에누리 상품찾기  .lay_supertop_find -->
+        <div class="lay_box lay_supertop_find" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>에누리 상품찾기</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_search">
+                            <div class="box_sr_sort view_search">
+                                <input class="inp_search" type="text" placeholder="에누리 모델 검색">                                
+                                <button class="btn_search"><i class="global__sprite ico_search"></i></button>
+                            </div>     
+                        </div>
+
+                        <div class="cont_result">
+                            
+                            <div class="cont_head">
+                                <span class="cont_tit">검색결과</span>
+                                <div class="box_sr_sort view_sort">
+                                    <span class="tx_value">인기순</span>
+                                    <!-- 레이어 : 옵션 : hover시에만 활성화 -->
+                                    <ul class="lay_option">
+                                        <li class="selected">인기순</li>
+                                        <li>낮은가격순</li>
+                                        <li>높은가격순</li>
+                                    </ul>
+                                    <!-- // -->
+                                </div>
+                            </div>
+                            <div class="cont_inner_view">
+                                <ul class="goods_list">
+                                    <li class="no_result">검색 결과가 없습니다.</li>
+                                    <li>
+                                        <a href="#" class="btn_goods">
+                                            <span class="thumb"><img src="http://photo3.enuri.info/data/images/service/img_300/39585000/39585057.jpg" alt=""></span>
+                                            <span class="info">
+                                                <span class="tx_name">LG전자 프라엘플러스 더마 LED 마스크(BWL1)(일반)</span>
+                                                <span class="tx_price"><em>689,000</em>원</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn_goods">
+                                            <span class="thumb"><img src="http://photo3.enuri.info/data/images/service/img_300/39585000/39585057.jpg" alt=""></span>
+                                            <span class="info">
+                                                <span class="tx_name">LG전자 프라엘플러스 더마 LED 마스크(BWL1)(일반)</span>
+                                                <span class="tx_price"><em>689,000</em>원</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn_goods">
+                                            <span class="thumb"><img src="http://photo3.enuri.info/data/images/service/img_300/39585000/39585057.jpg" alt=""></span>
+                                            <span class="info">
+                                                <span class="tx_name">LG전자 프라엘플러스 더마 LED 마스크(BWL1)(일반)</span>
+                                                <span class="tx_price"><em>689,000</em>원</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="cont_button">
+                            <button class="btn_blue btn_confirm">확인</button>
+                            <button class="btn_grey btn_cancel">취소</button>
+                        </div>
+
+                    </div>
+                    <!-- // -->
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업]- 충전하기 .lay_supertop_find -->
+
+        <!-- [팝업]- 충전하기 .lay_charge -->
+        <div class="lay_box lay_charge" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>입찰금 충전하기</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <!-- 200413 수정 -->
+                    <div class="cont_inner">
+
+                        <!-- 계정정보 -->
+                        <div class="cont_head">
+                            <span class="cont_tit">계정정보</span>
+                            <div class="button_area">
+                                <button class="btn_grey btn--md" onclick="location.href='layer.html?view=lay_charge_history'">이전 결제내역 보기</button>
+                            </div>
+                        </div>
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>enuri007</td>
+                                </tr>
+                                <tr>
+                                    <th>잔액</th>
+                                    <td>10원</td>
+                                </tr>
+                                <!-- 200413 잔액 알림 서비스 위치 이동 -->
+                                <tr>
+                                    <th>잔액 알림 서비스</th>
+                                    <td>
+                                        <input type="radio" name="alarm_radio" id="alarmRadio1" checked><label for="alarmRadio1">신청</label>
+                                        <input type="radio" name="alarm_radio" id="alarmRadio2"><label for="alarmRadio2">해지</label>
+                                        <!-- 버튼 : 잔액 알림 서비스 상태 저장 -->
+                                        <button class="btn_grey btn--sm btn_alarm_save">저장</button>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <!-- // -->
+                            </tbody>
+                        </table>
+                        <!-- // 계정정보 -->
+
+                        <!-- 결제정보 -->
+                        <div class="cont_head">
+                            <span class="cont_tit">결제정보</span>                                
+                        </div>
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>결제유형</th>
+                                    <td>
+                                        <input type="radio" name="charge_radio" id="chargeRadio1"><label for="chargeRadio1">신용카드</label>
+                                        <input type="radio" name="charge_radio" id="chargeRadio2"><label for="chargeRadio2">실시간 계좌이체</label>
+                                        <!-- 200413 세금계산서 신청 추가 -->
+                                        <button class="btn_grey btn--sm btn_tax_bill" onclick="location.href='layer.html?view=lay_tax_bill'">세금계산서신청</button>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>충전금액</th>
+                                    <td>
+                                        <input class="inp_price" type="text"/>원
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- // -->
+
+                        <div class="cont_button">
+                            <button class="btn_blue btn_charge">결제</button>
+                            <button class="btn_grey btn_cancel">취소</button>
+                        </div>
+                            
+                        <div class="cont_txt">*입찰금 충전시, 1만원 이상 부터 가능합니다.</div>
+                    </div>
+                    <!-- // -->
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업]- 충전하기 .lay_charge -->
+
+        <!-- [팝업] : 결제내역 확인 .lay_charge_history -->
+        <div class="lay_box lay_charge_history" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>결제내역 확인</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <!-- 결제정보 -->
+                        <div class="cont_head">
+                            <span class="cont_tit">결제정보</span>
+                            <div class="button_area">
+                                <button class="btn_grey btn--md" onclick="location.href='layer.html?view=lay_charge'">충전메뉴로 이동</button>
+                            </div>
+                        </div>
+                        <div class="cont_tb">
+                            <!-- 200413 실시간계좌이체 / 카드결제시 추가 -->
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="col_date">결제일</th>
+                                        <th class="col_charge" colspan="2">충전</th>
+                                        <th class="col_charge_before">결제 전 잔액</th>
+                                        <th class="col_charge_after">결제 후 잔액</th>
+                                        <th class="col_charge_confirm"><!-- 카드전표/영수증 --></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 결과 없음 -->
+                                    <tr>
+                                       <td class="no_result" colspan="6">결제내역이 없습니다.</td> 
+                                    </tr>
+                                    <!-- // -->
+                                    <tr>
+                                        <!-- 결제일 -->
+                                        <td class="col_date">2020-02-25<br/>18:45:45</td>
+                                        <!-- 충전금액 -->
+                                        <td class="col_charge_price">50,000원</td>
+                                        <!-- 충전내역 -->
+                                        <td class="col_charge_detail">실시간<br/>계좌이체</td>
+                                        <!-- 결제 전 잔액 -->
+                                        <td class="col_charge_before">-10원</td>
+                                        <!-- 결제 후 잔액 -->
+                                        <td class="col_charge_after">49,990원</td>
+                                        <!-- 버튼 -->
+                                        <td class="col_charge_confirm">
+                                            <button class="btn_grey btn--sm btn-bill">구매영수증</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col_date">2020-02-25<br/>18:45:45</td>
+                                        <td class="col_charge_price">50,000원</td>
+                                        <td class="col_charge_detail">카드결제</td>
+                                        <td class="col_charge_before">-10원</td>
+                                        <td class="col_charge_after">49,990원</td>
+                                        <td class="col_charge_confirm">
+                                            <!-- 버튼 : 구매영수증/카드전표 -->
+                                            <button class="btn_grey btn--sm btn-bill">카드전표</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col_date">2020-02-25<br/>18:45:45</td>
+                                        <td class="col_charge_price">50,000원</td>
+                                        <td class="col_charge_detail">에누리<br/>무상지급</td>
+                                        <td class="col_charge_before">-10원</td>
+                                        <td class="col_charge_after">49,990원</td>
+                                        <td class="col_charge_confirm"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col_date">2020-02-25<br/>18:45:45</td>
+                                        <td class="col_charge_price">1,050,000원</td>
+                                        <td class="col_charge_detail">에누리<br/>무상지급</td>
+                                        <td class="col_charge_before">-10원</td>
+                                        <td class="col_charge_after">49,990원</td>
+                                        <td class="col_charge_confirm"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- // -->
+
+                            <ul class="paging">
+                                <li><a href="#" class="btn prev">이전</a></li>
+                                <li><a href="#" class="selected">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#" class="btn next">다음</a></li>
+                            </ul>
+
+                        </div>
+                        <!-- // 결제정보 -->
+
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업] : 결제내역 확인 .lay_charge_history -->
+
+        <!-- [팝업] : 세금계산서 신청 .lay_tax_bill -->
+        <div class="lay_box lay_tax_bill" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>세금계산서 신청</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <!-- 세금계산서 신청 -->
+                        <div class="cont_txt">
+                            <p>세금계산서 발급은 약 10일 정도 소요되며 신청인 이메일로 보내드립니다.</p><br/>
+                        </div>
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>사업자 등록번호</th>
+                                    <td>
+                                        <input class="inp_basic inp--sm" type="text"/>
+                                        <span class="between_txt">-</span>
+                                        <input class="inp_basic inp--sm" type="text"/>
+                                        <span class="between_txt">-</span>
+                                        <input class="inp_basic inp--sm" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>회사명</th>
+                                    <td>
+                                        <input class="inp_basic" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>대표자명</th>
+                                    <td>
+                                        <input class="inp_basic inp--md" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>사업장 소재지</th>
+                                    <td>
+                                        <input class="inp_basic" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>업태</th>
+                                    <td>
+                                        <input class="inp_basic" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>종목</th>
+                                    <td>
+                                        <input class="inp_basic" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>신청인 이메일</th>
+                                    <td>
+                                        <input class="inp_basic" type="text"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>신청인 연락처</th>
+                                    <td>
+                                        <input class="inp_basic inp--sm" type="text"/>
+                                        <span class="between_txt">-</span>
+                                        <input class="inp_basic inp--sm" type="text"/>
+                                        <span class="between_txt">-</span>
+                                        <input class="inp_basic inp--sm" type="text"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="cont_button">
+                            <button class="btn_blue btn_apply">신청</button>
+                            <button class="btn_grey btn_cancel">취소</button>
+                        </div>
+                        <!-- // 세금계산서 신청 -->
+
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업] : 세금계산서 신청 .lay_tax_bill -->        
+
+        <!-- [팝업] : 상위입찰 > 입찰현황 .lay_bid_status -->
+        <div class="lay_box lay_bid_status" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>입찰현황</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <!-- 입찰현황 -->
+                        <div class="cont_head">
+                            <span class="cont_tit"><em class="tx_model">DIR-885L[일반]</em>의 입찰현황</span>                            
+                        </div>
+
+                        <div class="cont_tb">
+                            <span class="tx_date">2020년 3월 27일</span>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="col_id">ID</th>
+                                        <th class="col_unitprice">단가</th>
+                                        <th class="col_sdate">시작일</th>
+                                        <th class="col_status">서비스상태</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="no_result" colspan="4">
+                                            입찰자가 없습니다.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <!-- 아이디 -->
+                                        <td class="col_id"><span>IDIDIDIDIDIDIDIDIIDIDIDIDIDIDIDIDI</span></td>
+                                        <!-- 단가 -->
+                                        <td class="col_unitprice"><span>25,600원</span></td>
+                                        <!-- 시작일 -->
+                                        <td class="col_sdate">2020-01-25</td>
+                                        <!-- 서비스상태 -->
+                                        <td class="col_status">대기중</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col_id"><span>IDIDIDIDIDIDIDIDIIDIDIDIDIDIDIDIDI</span></td>
+                                        <td class="col_unitprice"><span>25,600원</span></td>
+                                        <td class="col_sdate">2020-01-25</td>
+                                        <td class="col_status">대기중</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col_id"><span>IDIDIDIDIDIDIDIDIIDIDIDIDIDIDIDIDI</span></td>
+                                        <td class="col_unitprice"><span>25,600원</span></td>
+                                        <td class="col_sdate">2020-01-25</td>
+                                        <td class="col_status">대기중</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="col_blue col_id"><span>enuri007</span></td>
+                                        <td class="col_blue col_unitprice"><span>10원</span></td>
+                                        <td class="col_blue col_sdate">-</td>
+                                        <td class="col_blue col_status">대기중 좌 1위</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 상위입찰 > 입찰현황 .lay_bid_status -->        
+
+        <!-- [팝업] : SDUL회원정보 수정 .lay_myinfo -->
+        <div class="lay_box lay_myinfo" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>SDUL회원 정보수정</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <!-- 회원정보 -->
+                        <div class="cont_head">
+                            <span class="cont_tit">회원정보</span>                                
+                        </div>
+
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>전화번호</th>
+                                    <td>
+                                        <input class="inp_tel" type="text" maxlength="3"/><span class="between_txt">-</span><input class="inp_tel" type="text" maxlength="4"/><span class="between_txt">-</span><input class="inp_tel" type="text" maxlength="4"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>이메일</th>
+                                    <td>
+                                        <input class="inp_email" type="text"/><span class="between_txt">@</span><input class="inp_email" type="text" value="naver.com"/>
+                                        <div class="box_sr_sort box_select_email">
+                                            <span class="tx_value">선택하세요</span>
+                                            <!-- 레이어 : 옵션 : hover시에만 활성화 -->
+                                            <ul class="lay_option">
+                                                <li class="selected">직접입력</li>
+                                                <li>naver.com</li>
+                                                <li>daum.net</li>
+                                                <li>nate.com</li>
+                                                <li>hanmail.net</li>
+                                                <li>gmail.com</li>
+                                            </ul>
+                                            <!-- // -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>판매자 닉네임,<br/>미니샵 주소등록</th>
+                                    <td>
+                                        <div class="group_mall">
+                                            <p class="mall_tit">G마켓</p>
+                                            <dl>
+                                                <dt>판매자 닉네임</dt>
+                                                <dd><input type="text" class="inp_mall"></dd>                                                
+                                            </dl>
+                                        </div>
+                                        <div class="group_mall">
+                                            <p class="mall_tit">11번가</p>
+                                            <dl>
+                                                <dt>판매자 닉네임</dt>
+                                                <dd><input type="text" class="inp_mall"></dd>                                                
+                                            </dl>
+                                        </div>
+                                        <div class="group_mall">
+                                            <p class="mall_tit">옥션</p>
+                                            <dl>
+                                                <dt>판매자 닉네임</dt>
+                                                <dd><input type="text" class="inp_mall"></dd>                                                
+                                            </dl>
+                                        </div>
+                                        <div class="group_mall">
+                                            <p class="mall_tit">인터파크</p>
+                                            <dl>
+                                                <dt>판매자 닉네임</dt>
+                                                <dd><input type="text" class="inp_mall"></dd>                                                
+                                            </dl>
+                                        </div>
+                                        <!-- 200709 : SR#40964  : [PC] SDUL 회원가입/수정 레이어 수정 요청 -->
+                                        <!-- 스마트스토어 추가 -->
+                                        <div class="group_mall">
+                                            <p class="mall_tit">스마트스토어</p>
+                                            <dl>
+                                                <dt>SDU ID</dt>
+                                                <dd><input type="text" class="inp_mall"></dd>                                                
+                                            </dl>
+                                        </div>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <!-- 201103 추가 : 대행사 정보 -->
+                                <tr>
+                                    <th>대행사 정보</th>
+                                    <td>
+                                        <div class="group_mall">
+                                            <dl>
+                                                <dt>대행사 정보</dt>
+                                                <dd>
+                                                    <input type="text" class="inp_agency" value="링크프라이스">
+                                                    <button class="btn_grey btn--md btn__termination" onclick="confirm('대행사 변경/종료는 매달 말일까지 유지 후, 다음달\n1일부터 적용됩니다. 신규 진행시 승인 후 적용됩니다. ');">해지신청</button>
+                                                </dd>                                                                                                
+                                            </dl>
+                                            <dl>
+                                                <dt>추천인</dt>
+                                                <dd><input type="text" class="inp_mall" value="손현수"></dd>                                                
+                                            </dl>
+                                        </div>
+                                    </td>
+                                </tr>                                
+                                <!-- // -->
+                            </tbody>
+                        </table>
+                        <!-- // -->
+                            
+                        <!-- // 회원정보 -->
+                        <div class="cont_button">
+                            <button class="btn_blue btn_modify">수정</button>
+                            <button class="btn_grey btn_cancel">취소</button>
+                        </div>
+                            
+                        <div class="cont_txt">
+                            ※ 오픈마켓 판매자 닉네임을 정확하게 입력해주세요.<br/>
+                            ※ 사이트 상에 공개되지 않는 가입정보입니다.
+                        </div>
+
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!-- // [팝업] : SDUL회원정보 수정 .lay_myinfo -->
+
+        <!-- [팝업] : 판매상품/상위입찰 Speed 등록 .lay_register -->
+        <div class="lay_box lay_register" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>판매상품, 상위입찰 Speed 등록요청</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">판매정보 입력</span>
+                            <div class="button_area">
+                                <a href="#" class="btn_clean btn_excel btn--md" download>양식다운로드</a>
+                                <button class="btn_blue btn--md" onclick="showPopup('lay_charge');return false;">충전하기</button>
+                            </div>
+                        </div>
+
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>대량등록</th>
+                                    <td>
+                                        <div class="inp_wrap">
+                                            <input type="file" class="inp_upload" id="regist_file"><label for="regist_file" class="label_upload">클릭하여 .xls파일 추가</label>                                                
+                                            <!-- 파일 추가되면 업로드 버튼 disabled 제거 -->
+                                            <input type="submit" class="btn_upload btn_grey btn--md disabled" value="업로드">
+                                            <span>&nbsp;승인 건당 <em>10원 차감</em></span>
+                                        </div>
+                                        각 cell 별 메모 참고하여 작성
+                                        <script>
+                                            $(function(){ // 퍼블테스트
+                                                var fileTarget = $('.lay_register .inp_upload');
+                                                fileTarget.on('change', function(){ // 값이 변경되면
+                                                    if(window.FileReader){ // modern browser
+                                                        var filename = $(this)[0].files[0].name;
+                                                    }else { // old IE
+                                                        var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+                                                    }  
+                                                    $(this).siblings('.label_upload').html(filename);
+                                                    $(this).siblings('.btn_upload').removeClass('disabled');
+                                                });
+                                            })
+                                        </script>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>충전금 잔액</th>
+                                    <td>
+                                        <p>유상 충전금 : -10원</p>
+                                        <p>무상 충전금 : 40,310원</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            
+                        <div class="cont_txt">
+                            <p>요청이 완료되면, 일반등록에 우선하여 최대한 신속히 등록이 가능하도록 처리하겠습니다.</p>
+                            <p>상기 서비스는 <em>유료 &lt;1건당 10원(VAT포함)&gt;</em> 서비스 이며 '반영완료'건에 한하여 과금이 이루어 집니다.</p>
+                            <p>판매자의 잘못으로 인한 오류 (추가금 설정, 상품명변경 등)으로 인해 등록처리 된 상품이 삭제 처리될 수 있습니다.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 판매상품/상위입찰 Speed 등록 .lay_register -->
+
+        <!-- [팝업] : 판매상품 Speed 등록요청 (VIP) .lay_register_vip -->        
+        <div class="lay_box lay_register_vip" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>판매상품 Speed 등록요청</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">판매정보 입력</span>
+                            <div class="button_area">
+                                <a href="#" class="btn_clean btn_excel btn--md" download>양식다운로드</a>
+                                <!-- 200427 수정 : 버튼 텍스트 -->
+                                <button class="btn_blue btn--md" onclick="showPopup('lay_charge');return false;">충전 및 대량등록 바로가기</button>
+                                <!-- // -->
+                            </div>
+                        </div>
+
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>에누리 모델명</th>
+                                    <td><span class="tx_name">모델명 모델명 모델명 모델명</span></td>
+                                </tr>
+                                <tr>
+                                    <th>에누리 최저가</th>
+                                    <td>
+                                        153,900원
+                                        <!-- 에누리 카탈로그 사용 여부 -->
+                                        <div class="e_catalog">
+                                            <input type="checkbox" id="eCatalog"><label for="eCatalog">에누리 카탈로그 사용중</label>
+                                        </div>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰명</th>
+                                    <td>
+                                        <div class="box_sr_sort box_select_id">
+                                            <span class="tx_value">== 쇼핑몰 선택 ==</span>
+                                            <!-- 레이어 : 옵션 : hover시에만 활성화 -->
+                                            <ul class="lay_option">
+                                                <li class="selected">== 쇼핑몰 선택 ==</li>
+                                                <li>G마켓==판매자ID(enuri007)</li>
+                                                <li>옥션==판매자ID(enuri007)</li>
+                                                <li>11st==판매자ID(enuri007)</li>
+                                            </ul>
+                                            <!-- // -->
+                                        </div>
+                                        <!-- 버튼 : SDUL 회원 정보 수정 -->
+                                        <!-- 200427 수정 : 버튼 텍스트 -->
+                                        <button class="btn_blue btn--md btn_modify" onclick="showPopup('lay_myinfo');">회원정보 수정</button>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰 상품코드</th>
+                                    <td>
+                                        <input type="text" class="inp_code">
+                                        <!-- 버튼 : 상품코드 확인 -->
+                                        <!-- 확인중일때 버튼에 .progress 클래스 붙여주세요 -->
+                                        <button class="btn_blue btn--md btn_code_confirm">
+                                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                            <!-- 200427 수정 : 버튼 텍스트 -->
+                                            등록
+                                            <!-- // -->
+                                        </button>
+                                        <span class="tx_noti_row">&nbsp;승인 건당 <em>10원 차감</em></span>
+                                        <script>
+                                            // 퍼블테스트용
+                                            $(".lay_register_vip .btn_code_confirm").click(function(){
+                                                var $self = $(this);
+                                                if ( $(".lay_register_vip .inp_code").val() != "" ){
+                                                    $(this).addClass("progress");
+                                                    setTimeout(function(){
+                                                        $self.closest('table').find("tr").removeClass("hide");
+                                                        $self.removeClass("progress");
+                                                        resizePopSize();
+                                                    },2000);
+                                                }else{
+                                                    alert('상품코드를 입력해 주세요');
+                                                    $(".lay_register_vip .inp_code").focus();
+                                                }
+                                            })
+                                        </script>
+                                    </td>
+                                </tr>
+                                <!-- 쇼핑몰 상품코드 확인시 노출 -->
+                                <tr class="hide">
+                                    <th>상품명</th>
+                                    <td>테크테크실내건조액체세제리필일반용2L4개</td>
+                                </tr>
+                                <tr class="hide">
+                                    <th>판매가</th>
+                                    <td>15,900원</td>
+                                </tr>
+                                <!-- // -->
+                                <tr>
+                                    <th>대량등록</th>
+                                    <td>
+                                        <div class="inp_wrap">
+                                            <input type="file" class="inp_upload" id="regist_file2"><label for="regist_file2" class="label_upload">클릭하여 .xls파일 추가</label>                                                
+                                            <!-- 파일 추가되면 업로드 버튼 disabled 제거 -->
+                                            <input type="submit" class="btn_upload btn_grey btn--md disabled" value="업로드">
+                                            <span>&nbsp;승인 건당 <em>10원 차감</em></span>
+                                        </div>
+                                        각 cell 별 메모 참고하여 작성
+                                        <script>
+                                            // 퍼블테스트
+                                            $(function(){
+                                                var fileTarget = $('.lay_register_vip .inp_upload');
+                                                fileTarget.on('change', function(){ // 값이 변경되면
+                                                    if(window.FileReader){ // modern browser
+                                                        var filename = $(this)[0].files[0].name;
+                                                    }else { // old IE
+                                                        var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+                                                    }  
+                                                    $(this).siblings('.label_upload').html(filename);
+                                                    $(this).siblings('.btn_upload').removeClass('disabled');
+                                                });
+                                            })
+                                        </script>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>충전금 잔액</th>
+                                    <td>
+                                        <p>유상 충전금 : -10원</p>
+                                        <p>무상 충전금 : 40,310원</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            
+                        <div class="cont_txt">
+                            <em>※ 주의 사항</em>
+                            <p>요청이 완료되면, 일반등록에 우선하여 최대한 신속히 등록이 가능하도록 처리하겠습니다.</p>
+                            <p>상기 서비스는 <em>유료 &lt;1건당 10원(VAT포함)&gt;</em> 서비스 이며 '반영완료'건에 한하여 과금이 이루어 집니다.</p>
+                            <p>판매자의 잘못으로 인한 오류 (추가금 설정, 상품명변경 등)으로 인해 등록처리 된 상품이 삭제 처리될 수 있습니다.</p>
+                        </div>
+                        <!-- 200427 추가 : 닫기 버튼 -->
+                        <div class="cont_button">
+                            <button class="btn_blue btn_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                        </div>
+                        <!-- // -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 판매상품 Speed 등록요청 (VIP) .lay_register_vip -->
+
+        <!-- [팝업] : Direct 상품등록 (VIP).lay_direct_vip -->
+        <div class="lay_box lay_direct_vip" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>Direct 상품등록</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">판매정보 입력</span>                            
+                        </div>
+
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>에누리 모델명</th>
+                                    <td><span class="tx_name">모델명 모델명 모델명 모델명</span></td>
+                                </tr>
+                                <tr>
+                                    <th>에누리 최저가</th>
+                                    <td>153,900원</td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰명</th>
+                                    <td>옥션</td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰 상품코드</th>
+                                    <td>
+                                        <input type="text" class="inp_code">
+                                        <!-- 버튼 : 상품코드 확인 -->
+                                        <!-- 확인중일때 버튼에 .progress 클래스 붙여주세요 -->
+                                        <button class="btn_blue btn--md btn_code_confirm">
+                                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                            등록
+                                        </button>
+                                        <button class="btn_blue btn--md btn_code_delete">삭제</button>
+                                        <script>
+                                            // 퍼블테스트용
+                                            $(".lay_direct_vip .btn_code_confirm").click(function(){
+                                                var $self = $(this);
+                                                if ( $(".lay_direct_vip .inp_code").val() != "" ){
+                                                    $(this).addClass("progress");
+                                                    setTimeout(function(){
+                                                        $self.closest('.lay_box').find('.cont_txt').hide();
+                                                        $self.closest('.lay_box').find(".search_result").show().next('.cont_txt').show();
+                                                        $self.removeClass("progress");
+                                                        resizePopSize();
+                                                    },2000);
+                                                }else{
+                                                    alert('상품코드를 입력해 주세요');
+                                                    $(".lay_direct_vip .inp_code").focus();
+                                                }
+                                            })
+                                        </script>
+                                    </td>
+                                </tr>
+                            </tbody>                            
+                        </table>
+
+                        <div class="cont_txt">
+                            <em>※ 주의사항</em><br/>
+                            <p>신상품을 가격비교리스트에 등록하실 때는 판매하시는 상품이 본 상품과 확실하게 일치하는지 재차확인 부탁드립니다.</p>
+                            <p><em>잘못된 상품이 등록되어 발생할 수 있는 클레임 등 모든 사항은 해당 쇼핑몰에서 처리하여야 합니다.</em></p>
+                            <p>에누리 모델에 여러 개의 쇼핑몰 상품을 등록할 경우 쇼핑몰 상품번호 입력 시 쉼표(,)를 통해 구분해 주시기 바랍니다.</p>
+                            <p><strong>삭제는 당일 등록한 상품에 대해서만 반영됩니다.</strong></p>
+                        </div>
+
+                        <!-- 결과 영역 -->
+                        <!-- 등록이 완료되면 아래 결과를 노출 -->
+                        <!-- 유의사항 .cont_txt 영역도 변경되서 노출됩니다. -->
+                        <div class="search_result" style="display:none">
+                            <div class="tx_result">
+                                <em>등록완료</em> : B7731809235
+                            </div>
+                            <dl class="noti_result">
+                                <dt>? 데이터없음</dt>
+                                <dd>쇼핑몰에서 전달해주는 상품정보페이지(EP)에 해당 상품번호가 없습니다.</dd>
+                                <dt>? 등록불가</dt>
+                                <dd>에누리닷컴에서 서비스 불가 판정을 받은 상품입니다.<br/>SDU게시판을 통해 문의 바랍니다.</dd>
+                            </dl>
+                        </div>
+
+                        <div class="cont_txt" style="display:none">
+                            <em>※ 주의사항</em><br/>
+                            <p><em>잘못된 상품이 등록되어 발생할 수 있는 클레임 등 모든 사항은 해당 쇼핑몰에서 처리하여야 합니다.</em></p>
+                        </div>
+                        <!-- // -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : Direct 상품등록 (VIP) .lay_direct_vip -->
+
+        <!-- [팝업] : 판매상품가격 Update요청 - Page1 : [판매가격 확인하기] .lay_update -->
+        <div class="lay_box lay_update lay_update1" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>판매상품 가격 Update 요청</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">판매가격 확인하기</span>                            
+                        </div>
+
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>에누리 모델명</th>
+                                    <td><span class="tx_name">모델명 모델명 모델명 모델명</span></td>
+                                </tr>
+                                <tr>
+                                    <th>에누리 최저가</th>
+                                    <td>153,900원</td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰명</th>
+                                    <td>
+                                        <select id="sel_id" name="sel_id" style="background-color:#FFFFE7;" onchange="checkMple()">
+                                            <option value="">==== 쇼핑몰 선택 ====</option>
+                                            <option value="인터파크">인터파크 === 판매자ID (enuri007)</option>	
+                                            <option value="G마켓">G마켓 === 판매자ID (enuri007)</option>
+                                            <option value="옥션">옥션 === 판매자ID (enuri007)</option>
+                                            <option value="11번가">11번가 === 판매자ID (enuri007)</option>
+                                        </select>
+                                        <div class="box_sr_sort box_select_id" style="display:none">
+                                            <span class="tx_value">== 쇼핑몰 선택 ==</span>
+                                            <!-- 레이어 : 옵션 : hover시에만 활성화 -->
+                                            <ul class="lay_option">
+                                                <li class="selected">== 쇼핑몰 선택 ==</li>
+                                                <li>G마켓==판매자ID(enuri007)</li>
+                                                <li>옥션==판매자ID(enuri007)</li>
+                                                <li>11st==판매자ID(enuri007)</li>
+                                            </ul>
+                                            <!-- // -->
+                                        </div>
+                                        <!-- 버튼 : SDUL 회원 정보 수정 -->
+                                        <button class="btn_blue btn--md btn_modify" onclick="showPopup('lay_myinfo');">수정</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰 상품코드</th>
+                                    <td>
+                                        <input type="text" class="inp_code">
+                                        <!-- 버튼 : 상품코드 확인 -->
+                                        <!-- 확인중일때 버튼에 .progress 클래스 붙여주세요 -->
+                                        <button class="btn_blue btn--md btn_code_confirm">
+                                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                            확인
+                                        </button>
+                                        <script>
+                                            // 퍼블테스트용
+                                            $(".lay_update1 .btn_code_confirm").click(function(){
+                                                if ( $(".lay_update1 .inp_code").val() != "" ){
+                                                    $(this).addClass("progress");
+                                                    setTimeout(function(){
+                                                        location.href="layer.html?view=lay_update2";
+                                                    },2000);
+                                                }else{
+                                                    alert('상품코드를 입력해 주세요');
+                                                    $(".lay_update1 .inp_code").focus();
+                                                }
+                                            })
+                                        </script>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                            
+                        <div class="cont_txt">
+                            <em>※ 주의사항</em><br/>
+                            <p>쇼핑몰을 선택 후 해당 쇼핑몰의 상품코드를 올바르게 입력해야 Update가 가능합니다.</p>
+                            <p>쇼핑몰에서 제공받는 자료에 제품정보가 올라와 있는 경우에만 Update가 가능합니다.</p>
+                            <p>에누리에서 제공하는 정보(가격,배송비 등)는 해당 쇼핑몰에서 제공받는 정보를 그대로 서비스하고 있습니다. 쇼핑몰에서 제공받는 자료에 가격등의 정보가 틀린 경우에도 그대로 서비스가 됨을 알려드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 판매상품가격 Update요청 .lay_update -->
+
+        <!-- [팝업] : 판매상품가격 Update요청 - Page2 : [업데이트 요청하기] .lay_update -->
+        <div class="lay_box lay_update lay_update2" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>판매상품 가격 Update 요청</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+
+                        <div class="cont_head">
+                            <span class="cont_tit">가격 Update 요청하기</span>                            
+                        </div>
+
+                        <table class="cont_tb">
+                            <tbody>
+                                <tr>
+                                    <th>에누리 모델명</th>
+                                    <td><span class="tx_name">모델명 모델명 모델명 모델명</span></td>
+                                </tr>
+                                <tr>
+                                    <th>에누리 최저가</th>
+                                    <td>153,900원</td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰명</th>
+                                    <td>
+                                        <div class="box_sr_sort box_select_id">
+                                            <span class="tx_value">옥션==판매자ID(enuri007)</span>
+                                            <!-- 레이어 : 옵션 : hover시에만 활성화 -->
+                                            <ul class="lay_option">
+                                                <li>== 쇼핑몰 선택 ==</li>
+                                                <li>G마켓==판매자ID(enuri007)</li>
+                                                <li class="selected">옥션==판매자ID(enuri007)</li>
+                                                <li>11st==판매자ID(enuri007)</li>
+                                            </ul>
+                                            <!-- // -->
+                                        </div>
+                                        <!-- 버튼 : SDUL 회원 정보 수정 -->
+                                        <button class="btn_blue btn--md btn_modify" onclick="showPopup('lay_myinfo');">수정</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>쇼핑몰 상품코드</th>
+                                    <td>
+                                        <input type="text" class="inp_code" value="B060788492">
+                                        <!-- 버튼 : 상품코드 확인 -->
+                                        <!-- 확인중일때 버튼에 .progress 클래스 붙여주세요 -->
+                                        <button class="btn_blue btn--md btn_code_confirm">
+                                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                            확인
+                                        </button>
+                                        <script>
+                                            // 퍼블테스트용
+                                            $(".lay_update2 .btn_code_confirm").click(function(){
+                                                if ( $(".lay_update2 .inp_code").val() != "" ){
+                                                    $(this).addClass("progress");
+                                                    setTimeout(function(){
+                                                        location.href="layer.html?view=lay_update2";
+                                                    },2000);
+                                                }else{
+                                                    alert('상품코드를 입력해 주세요');
+                                                    $("lay_update2 .inp_code").focus();
+                                                }
+                                            })
+                                        </script>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>상품명</th>
+                                    <td>테크테크실내건조액체세제리필일반용2L4개</td>
+                                </tr>
+                                <tr>
+                                    <th>판매가</th>
+                                    <td>15,900원</td>
+                                </tr>
+                                <tr>
+                                    <th class="col_update" colspan="2">
+                                        <strong>가격을 수정하시려면 아래 업데이트 버튼을 클릭하세요.</strong>
+                                        <!-- 업데이트 중일때 버튼에 .progress 클래스 붙여주세요 -->
+                                        <button class="btn_blue btn_update_price">
+                                            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                                            가격 업데이트
+                                        </button>                                        
+                                        <script>
+                                            $(".btn_update_price").click(function(){
+                                                $(this).addClass("progress");
+                                                setTimeout(function(){
+                                                    alert("가격이 업데이트 되었습니다.\n가격정보창에서 확인하세요.");
+                                                    location.href="layer.html?view=lay_update1";
+                                                },1000);
+                                            })
+                                        </script>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                            
+                        <div class="cont_txt">
+                            <em>※ 주의사항</em><br/>
+                            <p>쇼핑몰을 선택 후 해당 쇼핑몰의 상품코드를 올바르게 입력해야 Update가 가능합니다.</p>
+                            <p>쇼핑몰에서 제공받는 자료에 제품정보가 올라와 있는 경우에만 Update가 가능합니다.</p>
+                            <p>에누리에서 제공하는 정보(가격,배송비 등)는 해당 쇼핑몰에서 제공받는 정보를 그대로 서비스하고 있습니다. 쇼핑몰에서 제공받는 자료에 가격등의 정보가 틀린 경우에도 그대로 서비스가 됨을 알려드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 판매상품가격 Update요청 .lay_update -->
+
+        <!-- [팝업] : 상품등록 > 취소사유 .lay_cancel_reason -->
+        <div class="lay_box lay_update lay_cancel_reason" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>취소사유</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+                        <div class="cont_txt">
+                            <em>&lt;모델명이 다름&gt;</em><br/>
+                            <p>요청하신 에누리 모델명과 쇼핑몰 상품명이 다릅니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 상품등록 > 취소사유 .lay_cancel_reason -->
+
+        <!-- 201103 추가 [팝업] : 추천인 ID 변경 .lay_recommender -->
+        <div class="lay_box lay_recommender" style="display:none">
+            <div class="box_wrap">
+                <div class="box_head">
+                    <em>추천인 ID 변경</em>
+                    <button class="btn_box_close" onclick="if( confirm('팝업을 닫습니다. 계속 하시겠습니까?') ){ window.close(); }">닫기</button>
+                </div>
+                <div class="box_cont"> 
+                    <div class="cont_inner">
+                        <input type="text" class="inp_id" placeholder="ID를 입력하세요.">
+                    </div>
+                    <div class="cont_button">
+                        <button class="btn_blue btn_modify">변경</button>
+                        <button class="btn_grey btn_cancel">취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // [팝업] : 추천인 ID 변경 .lay_recommender -->
+
+    </div>
+    <!-- // -->
+
+
+    <script>
+        // 퍼블테스트용 - 선택노출
+        $(function(){
+            var $wrap = $(".popup");
+            var $layer = $(".lay_box");
+            var param = getUrlParams();
+            console.log( param );
+            if ( param.view != undefined ){                
+                // param
+                $wrap.find("."+param.view).show();
+                $(window).load(function(){
+                    // 팝업 사이즈 조절
+                    resizePopSize();
+                })
+            }else{
+                // param 없을때 전체 노출
+                $wrap.addClass("all_view");
+                $layer.show();
+            }
+        })
+        function getUrlParams() {
+            var params = {};
+            window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+            return params;
+        }
+
+        // 팝업 사이즈 조절
+        function resizePopSize(){
+            var strWidth = 520 + (window.outerWidth - window.innerWidth);
+            var strHeight = $('#wrap').outerHeight() + (window.outerHeight - window.innerHeight);
+            if ( strHeight > 800 ) {
+                strWidth += 16;
+                strHeight = 800;
+            }
+            window.resizeTo( strWidth, strHeight );
+        }
+
+        //퍼블테스트용 : 레이어 열기
+        function showPopup(name){
+            window.open("layer.html?view="+name, "", "width=520, height=700, toolbar=no, menubar=no, scrollbars=1, resizable=no" );
+        }
+    </script>
+
+<script>
+    
+</script>    
+</body>
+</html>

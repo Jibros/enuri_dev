@@ -1,0 +1,527 @@
+@charset "utf-8";
+/* ----------------------------------------------------------------
+						common
+-----------------------------------------------------------------*/
+.mb20 {margin-bottom:20px;}
+.mb30 {margin-bottom:30px;}
+.mb40 {margin-bottom:40px;}
+.bold {font-weight: bold;}
+.color-red {color:#ff2424!important;}
+.bgcolor_lightblue {background-color: #e5f4ff;}
+.clear:after {content:"";display: block;clear:both;}
+
+/* ----------------------------------------------------------------
+						animate
+-----------------------------------------------------------------*/
+.animated {opacity: 0;}
+.slideInLeft {opacity: 1; animation-name: slideInLeft;}
+.slideInRight {opacity: 1;animation-name: slideInRight;}
+.slideInUp {opacity: 1;animation-name: slideInUp;}
+@keyframes slideInLeft {
+	0% {transform: translate3d(-100%, 0, 0);visibility: visible; opacity: 0;}
+	100% {transform: translate(0);opacity: 1;	}
+}
+@keyframes slideInRight {
+	0% {transform: translate3d(100%, 0, 0);visibility: visible;opacity: 0;}
+	100% {transform: translate(0);opacity: 1;	}
+}
+@keyframes slideInUp {
+	0% {transform: translate3d(0, 100%, 0);visibility: visible;opacity: 0;}
+	100% {transform: translate(0);opacity: 1;	}
+}
+.duration__1 { animation-duration: 1s; }
+.duration__2 { animation-duration: 2s; }
+
+/* ----------------------------------------------------------------
+					com.enuri.event 에서 너비잡은부분 수정
+-----------------------------------------------------------------*/
+.moving_tap .inner {width: 1280px;}
+.moving_tap .left_area {padding-left: 0;}
+
+.contents h4 {margin-bottom:50px;text-align:center}
+.contents .laypop h4  {margin:0;}
+
+/* SNS공유하기 - 홈족 SNS 사이즈가 달라 별도 적용 */
+.com__btn_share{width:46px;height:46px;background-size:46px;top:20px;left:86px; z-index: 50;}
+.event_wrap, .event_wrap * {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+
+
+/* 상단 비주얼 */
+.visual{position:relative;width: 100%;height:600px;background:#fff;text-align:center;overflow: hidden; background:url("http://img.enuri.info/images/event/2021/chuseok/visual_bg.jpg") no-repeat center;}
+.visual .visual_obj_list {}
+.visual .visual_obj_list .visual_obj {position:absolute; background-repeat: no-repeat; background-position: 0 0;}
+/* 달 */
+.visual .visual_obj_list .obj_moon {width: 582px; height:580px; top:-580px; background: url("http://img.enuri.info/images/event/2021/chuseok/obj_moon.png"); left:50%; margin-left:-291px; transition: all 3s; z-index: 30;}
+.visual.start .visual_obj_list .obj_moon {top:-272px;}
+/* 나머지 오브젝트 (별똥별? 유성인가?)*/
+.visual .visual_obj_list .animated {animation: drop_obj ease-in-out 2.4s infinite; opacity:0;}
+.visual .visual_obj_list .obj_shooting_star1 {width:197px; height:197px; background-image: url("http://img.enuri.info/images/event/2021/chuseok/obj_star1.png"); top:100px; left:100px;}
+.visual .visual_obj_list .obj_shooting_star2 {width:308px; height:315px; background-image: url("http://img.enuri.info/images/event/2021/chuseok/obj_star2.png"); top:-230px; left:300px; animation-delay: .3s;}
+.visual .visual_obj_list .obj_shooting_star3 {width:298px; height:321px; background-image: url("http://img.enuri.info/images/event/2021/chuseok/obj_star3.png"); top:-100px; left:900px; animation-delay: 1.2s;}
+.visual .visual_obj_list .obj_shooting_star4 {width:126px; height:169px; background-image: url("http://img.enuri.info/images/event/2021/chuseok/obj_star4.png"); top:-100; left:800px; animation-delay: .6s;}
+.visual .visual_obj_list .obj_shooting_star5 {width:355px; height:388px; background-image: url("http://img.enuri.info/images/event/2021/chuseok/obj_star5.png"); top:0; left:1200px; animation-delay: 1.6s;}
+@keyframes drop_obj {
+	0% {transform: translate(0, 0); opacity:0;}
+	30% {opacity:1;}
+	80% {opacity:1;}
+	100% {transform: translate(-300px, 300px); opacity:0;}
+}
+
+
+.visual .inner{position: relative;width: 1100px;padding-top:330px;padding-left:220px;margin:0 auto;z-index:10;}
+.visual .inner .react_text_area {font-size: 0;}
+.visual .inner .txt_01{position:relative;display:block;width: 489px;height:39px;background:url(http://img.enuri.info/images/event/2021/chuseok/w_visual_txt1.png) no-repeat 0 0;text-indent:-9999em;transition:.5s all ease-in-out;transform:translateX(20px);margin-bottom: 22px;opacity:0;}
+.visual .inner .txt_02{position: relative; display:block; width: 646px;height:81px;text-indent:-9999px; margin:0 0 32px 6px; padding:0; background:url(http://img.enuri.info/images/event/2021/chuseok/w_visual_txt2.png) no-repeat 0 0; transition:.5s all ease-in-out;transform:translateX(20px);opacity:0;}
+.visual .inner .txt_02 span{display: block;width:240px;height:81px;position: absolute; top:0; left:0; background:url(http://img.enuri.info/images/event/2021/chuseok/w_visual_txt2_active.png) no-repeat 0 0;transition:.5s all ease-in-out;transform:translateX(0);opacity:0;z-index: 10;}
+.visual .inner .txt_date{width:244px;height:16px;display:block;background:url(http://img.enuri.info/images/event/2021/chuseok/w_visual_date.png) no-repeat 0 0;text-indent:-9999em;transition:.5s all ease-in-out;transform:translateX(20px);opacity:0;}
+/* .start 시 작동 */
+.visual.start .inner .txt_01{transform:translateX(0);opacity:1}
+.visual.start .inner .txt_02{transition-delay:.6s;transform:translateX(0);opacity:1}
+.visual.start .inner .txt_02 span{transition-delay:1.8s; transform:translateX(-6px); opacity:1}
+.visual.start .inner .txt_date{transition-delay:1.2s;transform:translateX(0);opacity:.7;}
+
+
+/* 플로팅 배너 */
+.floating_bnr{width: 156px;height: 156px;position: fixed;top: 170px;left: 50%;margin-left: 372px;z-index: 998;animation: bounce ease-in-out 2s infinite alternate;}
+.floating_bnr img{width:156px;}
+/*.floating_bnr.is-fixed{margin-left:500px;top:400px}*/
+.floating_bnr .btn_close{width: 30px;height: 30px;position: absolute;top: 0;right: 7px;}
+@keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {transform: translateY(0);}
+	50%,70% {transform: translateY(-7px);}
+}
+
+/* 탭 */
+.floattab {width:100%;background-color:#fdeda3;}
+.floattab.is-fixed {position:fixed;top:0;left:0;z-index:1000;height:102px;box-shadow:0 2px 5px rgba(0,0,0,.1)}
+.floattab__list {width:970px;margin:0 auto;}
+.floattab__list li {float:left;width: 33.3333%;height:100%;}
+.floattab__list:after {content:"";display:block;clear:both;}
+.floattab__list li a {position:relative;display:block;overflow:hidden;width:100%;height:102px; background-position: center 0;background-repeat: no-repeat; color:#938a5f; font-size: 20px; font-weight: bold; letter-spacing: -1px; text-align: center;line-height: 1.2;padding: 23px 0 24px;}
+.floattab__list li a em {display: block; font-size: 26px;}
+.floattab__list li a.active,
+.floattab__list li a:hover {color:#111111}
+.floattab__list li a:after {content:"";display:block;width:1px;height:20px;background:rgba(0,0,0,0.1);position:absolute;top:50%;right:0;margin-top:-10px;}
+.floattab__list li:last-child a:after {display: none;}
+
+/* ----------------------------------------------------------------
+					event_01
+-----------------------------------------------------------------*/
+.event_01{position:relative;padding:90px 0 70px;overflow:hidden;text-align: center;background: url("http://img.enuri.info/images/event/2021/chuseok/w_evt1_bg.jpg") repeat center;}
+.event_01 .obj_bar {position: absolute;top:0;left:50%; margin-left:-65px;}
+.event_01 .bg {position: absolute;top:278px;left: 50%;margin-left:-750px;z-index: 1;}
+.event_01 .inner {position:relative;z-index: 10;}
+.event_01 h3 {margin-bottom:50px;}
+.event_01 .game_area_wrap {position:relative; margin-top:-340px; margin-bottom: 15px;}
+.event_01 .game_area_wrap .game_area {position:relative;}
+.event_01 .game_area_wrap .btn_play_game {position:absolute; top:55%; left:50%; margin-left:-100px;}
+.event_01 .evt1_con_txt {margin-bottom: 40px;}
+
+
+/* ----------------------------------------------------------------
+					event_02
+-----------------------------------------------------------------*/
+.event_02{position:relative;background:#fef9df; padding:60px 0 70px;overflow:hidden;}
+.event_02 .ico_only_app {display:block; width:102px; height:102px; margin:0 auto 40px; background:#f85757 url("http://img.enuri.info/images/event/2021/chuseok/ico_app_only.png") no-repeat 0 0;}
+.event_02 > .inner{width:970px;margin:0 auto}
+.event_02 h3{padding-bottom:50px;text-align:center}
+.event_02 h3 > span{display:block}
+.event_02 h3 .tit_txt_01{text-indent:-9999em;height:30px;background:url("http://img.enuri.info/images/event/2021/summer_pro/w_sec1_stit.png") no-repeat 50% 0}
+.event_02 h3 .tit_date{display:inline-block;height:49px;line-height:42px;vertical-align:middle;color:#313131;font-size:50px;font-weight:700;margin:16px auto 10px}
+.event_02 h3 .tit_date .txt_month,
+.event_02 h3 .tit_date .txt_day,
+.event_02 h3 .tit_date .txt_sale{display:inline-block;padding-right:50px;height:49px}
+.event_02 h3 .tit_date .txt_month{background:url("http://img.enuri.info/images/event/2021/summer_pro/w_sec1_tit_m.png") no-repeat 100% 0}
+.event_02 h3 .tit_date .txt_day{background:url("http://img.enuri.info/images/event/2021/summer_pro/w_sec1_tit_d.png") no-repeat 100% 0}
+.event_02 h3 .tit_date .txt_sale{width:363px;padding:0;font-size:0;text-indent:-9999px;vertical-align:top;background:url("http://img.enuri.info/images/event/2021/chuseok/w_sec1_tit.png") no-repeat 50% 0}
+
+/* TIMEDEAL 영역 */
+.dealwrap {position:relative; width:970px;height:760px}
+.dealwrap .deal_item {position:relative;text-align: center; outline:none;height:760px}
+.dealwrap .deal_item .deal_img{position: relative;height:390px;background:url(http://img.enuri.info/images/event/2019/hot_summer/w_bg_deal_img.png) no-repeat 50% 0;text-align:center}
+.dealwrap .deal_item .deal_img:after {content:"";display:block;position:absolute;top:0;left:50%;width:390px;height:390px;margin-left:-195px;border-radius:100%;background-color:#fff ;z-index:0;}
+.dealwrap .deal_item .deal_img img{position: relative;margin:0 auto;z-index:100;}
+.dealwrap .deal_item .deal_img .ico_limit{position:absolute;background-color:#f85757;border-radius:50% 50%;width:138px;height:138px;top:10px;left:50%;margin-left:136px;box-shadow:0px 5px 0px rgba(0,0,0,.1);color:#fff;z-index:150;}
+.dealwrap .deal_item .deal_img .ico_limit strong{display:block;padding-top:34px;line-height:42px;font-size:46px;font-weight:700}
+.dealwrap .deal_item .deal_img .ico_limit .txt_limit{display:block;font-weight:400;line-height:26px;font-size:22px;letter-spacing:-2px}
+.dealwrap .deal_item .item_info {position:relative;padding:20px 0 0;text-align:center}
+.dealwrap .deal_item .item_info strong.limit{height:52px;text-align:center;display:inline-block;line-height:52px;font-size:32px;color:#fff;letter-spacing: -2px;padding:0 30px;background:#394a78;border-radius: 5px 5px}
+.dealwrap .deal_item .item_info .tit {height:38px;margin: 14px auto 10px;line-height:36px;font-size:30px;letter-spacing:-3px;color:#1b1b1b;display:block;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word;}
+.dealwrap .deal_item .ad{font-size:18px; line-height:20px; letter-spacing: -1px ;color:#677576}
+.dealwrap .deal_item .ad .mark {display: inline-block; margin-left:4px;width: 66px; height: 24px; overflow: hidden; background-color: transparent; vertical-align: -6px; }
+.dealwrap .deal_item .ad .mark img { display: inline; width:66px }
+/* 가격정보 */
+.dealwrap .deal_item .item_info .price {height:60px;font-size:34px;color:#1b1b1b;font-weight: 700}
+.dealwrap .deal_item .item_info .price strong {font-size: 56px; line-height:54px;color:#000000;vertical-align: -4px}
+
+/* 슬릭DOTS */
+.dealwrap .slick-dots {position:absolute;width:100%;bottom:37px;left:0;text-align:center}
+.dealwrap .slick-dots li {display:inline-block; overflow:hidden; width:12px; height:12px; margin:0 9px;}
+.dealwrap .slick-dots li button {width:12px; height:12px; padding:0; font-size:0; text-indent:-9999px; border-radius: 50% 50%; vertical-align:top; background:#000;border:2px solid #000}
+.dealwrap .slick-dots li.slick-active button {background-color:transparent;}
+
+/* 화살표 */
+.deal_slide .slick-arrow { position:absolute; width:35px; height:55px;text-indent:-9999em;     z-index:10;cursor:pointer; }
+.deal_slide .slick-prev {top: 332px; left: 0px;background:url(http://img.enuri.info/images/event/2019/hot_summer/w_btn_prev.png) no-repeat 0px 0px;opacity:0.6}
+.deal_slide .slick-prev:hover {opacity:1}
+.deal_slide .slick-next {top: 332px; right: 0px;background:url(http://img.enuri.info/images/event/2019/hot_summer/w_btn_next.png) no-repeat 0px 0px;opacity:0.6}
+.deal_slide .slick-next:hover {opacity:1}
+
+/* 버튼영역 */
+.dealwrap .btn_area{ display: block; text-align: center; width:620px; margin:20px auto; letter-spacing:-.5px; font-size: 0;}
+.dealwrap .btn_area a { display: inline-block; vertical-align: middle; width: 305px; padding:19px 0; color:#fff; font-size:26px; text-align:center;}
+.dealwrap .btn_area .btn_view { background-color:#313131; margin-right: 10px;}
+.dealwrap .btn_area .btn_goapp { background-color:#f85757;}
+
+
+/* 딜 리스트 영역 */
+.event_02 .deal_list { width: 100%; /*height: 355px;*/ padding-top:123px;background: url(http://img.enuri.info/images/event/2019/xmas/w_next_tit.png) no-repeat 50% 40px; margin-bottom:70px;}
+.event_02 .deal_list .slick-list{width: 754px; margin: 0 auto;overflow:hidden}
+.event_02 .deal_list .w_item {float:left;position:relative; width:166px; margin:0 15px; text-align:center; cursor:pointer; outline:0;}
+/* default */
+.event_02 .deal_list .w_item .period {position: relative;width:156px;height: 40px;line-height:40px;margin:16px auto 0;border-radius: 5px 5px;background:#626262;}
+.event_02 .deal_list .w_item .period:before{content:"";position:absolute;width:12px;height:12px;background:#626262;top:-6px;left:50%;margin-left:-6px;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);}
+.event_02 .deal_list .w_item .period > span {color:#fff; font-size: 18px; font-weight: bold; letter-spacing: -.5px}
+.event_02 .deal_list .w_item .w_tit {margin: 12px 12px 0;height:44px;line-height:22px; font-size:18px; color:#434343;letter-spacing: -2px;overflow: hidden;display:block;display: -webkit-box;text-overflow: ellipsis;word-wrap: break-word;-webkit-box-orient: vertical;-webkit-line-clamp: 2;}
+.event_02 .deal_list .w_item .w_thumb {position:relative; z-index:1; margin: 0 auto; width: 154px; height: 154px;border:6px solid #626262; overflow: hidden;border-radius: 50% 50%;overflow:hidden}
+.event_02 .deal_list .w_item .w_thumb img {width:224px; height:100%; vertical-align:top;margin-left:-32px}
+/* 선택시 */
+.event_02 .deal_list .w_item.slick-current .w_thumb{border-color:#f85757}
+.event_02 .deal_list .w_item.slick-current .period,
+.event_02 .deal_list .w_item.slick-current .period:before{background-color:#f85757}
+.event_02 .deal_list .w_item.slick-current .period > span {color:#fff;}
+
+.event_02 .deal_list .slick-arrow{text-indent:-9999em;position: absolute; width:35px; height:55px;top: 120px;}
+.event_02 .deal_list .slick-prev {left: 0px;background:url(http://img.enuri.info/images/event/2019/hot_summer/w_btn_prev.png) no-repeat 0px 0px;opacity:0.6}
+.event_02 .deal_list .slick-prev:hover {opacity:1}
+.event_02 .deal_list .slick-next {right: 0px;background:url(http://img.enuri.info/images/event/2019/hot_summer/w_btn_next.png) no-repeat 0px 0px;opacity:0.6}
+.event_02 .deal_list .slick-next:hover {opacity:1}
+
+
+/* 유의사항 BTN */
+.btn_caution{display:block;position: relative;width:134px;height:22px;background:url(http://img.enuri.info/images/event/2019/pre_winter/btn_notice.png) no-repeat 0 0;margin:0 auto;text-indent:-9999em}
+.btn_caution.evt-caution-2{position:relative;left:auto;bottom:auto;margin:50px auto 70px;}
+
+
+/* 이벤트3 - 애플워치쏜다 */
+.event_03{position:relative;background:#fdeed1; padding:60px 0 70px;overflow:hidden}
+.event_03 .ico_only_app {display:block; width:102px; height:102px; margin:0 auto 40px; background:#f78256 url("http://img.enuri.info/images/event/2021/chuseok/ico_app_only.png") no-repeat 0 0;}
+.event_03 > .inner{width:970px;margin:0 auto}
+.event_03 h3{margin-bottom:50px;text-align:center;}
+.event_03 .evt_area {}
+.event_03 .evt_area .prize_img {margin-bottom:58px;}
+
+/* 버튼영역 */
+.event_03 .btn_area{display: block;text-align: center;width:620px;margin:0 auto 50px;letter-spacing:-.5px;font-size: 0;}
+.event_03 .btn_area a {display: inline-block;vertical-align: middle;width: 305px;padding:19px 0;color:#fff;font-size:26px;text-align:center;}
+.event_03 .btn_area .btn_ready {background-color:#313131; margin-right: 10px;}
+.event_03 .btn_area .btn_goapp {background-color:#f78256;}
+
+/* ----------------------------------------------------------------
+					무더위 기획전 (3번째탭)
+-----------------------------------------------------------------*/
+.mid_banner {
+	position: relative;
+	text-align: center;
+}
+.mid_banner > a {
+	position:relative;
+	display: block;
+	padding: 53px 0;
+	background:#bf614b url("http://img.enuri.info/images/event/2021/chuseok/w_mid_banner_pattern.png?v=2") repeat center;
+	z-index: 10;
+}
+.mid_banner:after {
+	content:"";
+	display: block;
+	width:18px;
+	height: 18px;
+	background:#bf614b url("http://img.enuri.info/images/event/2021/chuseok/w_mid_banner_pattern.png?v=2") repeat 111px;
+	position:absolute;
+	bottom:-8px;
+	left:50%;
+	margin-left:-9px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	z-index: 5;
+}
+.pro_itemlist {overflow:hidden;clear:both; text-align:center;background-color:#fff;}
+.pro_itemlist .item_group {padding:60px 0;}
+.pro_itemlist .item_group:nth-child(even) {background:#fef3df;}
+
+.pro_itemlist h3 { font-size: 20px; color: #666; line-height: 32px; text-align: center; letter-spacing: -1.5px; padding-bottom: 24px; }
+.pro_itemlist h3 strong { display: block; height: 45px; line-height: 43px; color: #1b1b1b; font-size: 38px; letter-spacing: -2.5px; font-weight: bold;}
+.pro_itemlist h3 strong em {color: #0099ff;}
+.pro_itemlist h3 .deco_line {font-size: 0; text-align: center; line-height: 0; margin-bottom: 20px;}
+.pro_itemlist h3 .deco_line span {display: inline-block; width: 40px; height: 5px;}
+.pro_itemlist h3 .deco_line span.color1 {background-color: #ff7157;}
+.pro_itemlist h3 .deco_line span.color2 {background-color: #ffd161;}
+.pro_itemlist h3 .deco_line span.color3 {background-color: #6ac488;}
+.pro_itemlist h3 .deco_line span.color4 {background-color: #60a7eb;}
+
+.pro_itemlist ul.pro_tabs {overflow:hidden;position:relative;max-width:970px;margin:0 auto 50px;display:inline-block}
+.pro_itemlist ul.pro_tabs > li {display:block;float:left;text-align:center;width:235px;margin-right:10px}
+.pro_itemlist ul.pro_tabs > li:last-child{margin-right:0;}
+.pro_itemlist ul.pro_tabs > li > a {display:block; position:relative; width:100%;height:52px; padding:0; font-size:20px; color:#fff; background:#bfbfbf;line-height:52px; letter-spacing:-1px}
+.pro_itemlist ul.pro_tabs > li.active > a {background-color:#f78256;}
+
+/* 추천상품 리스트 */
+.tab_content {overflow:visible;width:970px;margin:0 auto;}
+.itemlist {overflow:visible;width:100%;text-align:center;}
+.itemlist .items {overflow:hidden;width:970px;margin:0 auto;}
+.itemlist .items .item {float:left;width:300px;height:430px;margin:0 35px 0 0;}
+.itemlist .items .item a{
+	display: block;
+	outline:none;
+}
+.itemlist .items .item:nth-child(3n) {margin-right:0;}
+.itemlist .items .item .thumb {
+	display:block;
+	position: relative;
+	width:300px;
+	height:300px;
+	border:1px solid #d5d5d5;
+	margin-bottom:15px;
+	overflow:hidden;
+}
+
+.itemlist .items .item .thumb .soldout {position:absolute;width:300px;height:300px;top:0%;left:0%;background:url(http://img.enuri.info/images/event/2019/hot_summer/ico_soldout.png) no-repeat 50% 50%;z-index: 100;text-indent: -9999em;}
+.itemlist .items .item .thumb > img {width:100%;height:100%;-webkit-transition:all .2s ease-out;-ms-transition:all .2s ease-out;transition:all .2s ease-out;image-rendering: -webkit-optimize-contrast}
+.itemlist .items .item:hover .thumb > img {-webkit-transform:scale(1.05);-ms-transform:scale(1.05);transform:scale(1.05);}
+.itemlist .items .item .pro_info  {display:block;text-align:center;}
+.itemlist .items .item .pro_info .pro_name {display:block;padding:0 62px;height:40px;margin-bottom:0;font-size: 16px;letter-spacing: -1px;color: #535353;line-height:20px;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2;}
+.itemlist .items .item .pro_info .price {overflow:hidden;display:block;color:#f24244;font-weight:bold}
+.itemlist .items .item .pro_info .price .price_label {font-size:18px;letter-spacing:-1px; display: none;}
+.itemlist .items .item .pro_info .price > em {font-weight:bold;font-size:29px;letter-spacing:-1.5px;color:#f24244;margin:0 3px;}
+.itemlist .items .item .pro_info .price .pro_unit {font-size:18px;margin-left:-2px; color:#1b1b1b;}
+/* 추천상품 SLICK */
+.itemlist .slick-arrow {position:absolute;top:380px;z-index:10;width:33px;height:55px;border:none;text-indent:-9999em;}
+.itemlist .slick-prev {left:-60px;background: url(http://img.enuri.info/images/event/2019/hot_summer/w_btn_prev.png) no-repeat 0 0;opacity:0.8}
+.itemlist .slick-prev:hover {opacity:1}
+.itemlist .slick-next {right:-60px;background: url(http://img.enuri.info/images/event/2019/hot_summer/w_btn_next.png) no-repeat 0 0;opacity:0.8}
+.itemlist .slick-next:hover {opacity:1}
+.itemlist .slick-dots {display:inline-block;margin:0 auto 30px;padding:0 30px;background-color:transparent;}
+.itemlist .slick-dots li {display:inline-block;overflow:hidden;width:12;height:12;margin:0 9px;}
+.itemlist .slick-dots li button {width:12px;height:12px;padding:0;font-size:0;text-indent:-9999px;border-radius:50% 50%;background-color:#000;border:2px solid #000;vertical-align:top;}
+.itemlist .slick-dots li.slick-active button {background-color:transparent;}
+.tab_content .btn_more {display: block;width:220px;padding:16px 0;margin:0 auto; -webkit-border-radius:5px; border-radius:5px; background:#000 url("http://img.enuri.info/images/event/2021/summer_pro/w_btn_more_goods.png") no-repeat 50% 50%;text-indent:-9999em}
+
+
+/* ----------------------------------------------------------------
+					딤레이어 공통
+-----------------------------------------------------------------*/
+.pop-layer  {position:fixed;_position:absolute;top:0;left:0;width:100%;height:100%;z-index:100000;}
+/*기존*/
+.popupLayer {position:absolute;left:0;top:0;width:100%;height:100%;z-index:10000;-ms-filter: alpha(opacity=60);filter: alpha(opacity=60);opacity:0.6;-moz-opacity:0.6;}
+.popupLayer .dim {position:absolute;left:0;top:0;width:100%;height:100%;background:#000;z-index:10100;}
+/*new*/
+.backdim {position:absolute;left:0;top:0;width:100%;height:100%;background:#000;z-index:10000;-ms-filter: alpha(opacity=60);filter: alpha(opacity=60);opacity:0.6;-moz-opacity:0.6;}
+
+.popup_box {position:absolute;left:50%;top:50%;overflow:hidden;z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top;margin:0;padding:0;}
+.popup_box h4 {height:69px;text-align:center;font-family:Malgun Gothic;font-size:22px;font-weight:normal;line-height:66px;color:#fff;letter-spacing:-0.75px;background-color:#0182ea;}
+.popup_box .layclose {position:absolute;right:19px;top:19px;width:30px;height:30px;background-image:url(http://img.enuri.info/images/event/2021/chuseok/btn_lay_close.png);}
+
+#play_result .popup_box .layclose {position:absolute;right:25px;top:25px;width:19px;height:19px;background-image:url(http://img.enuri.info/images/event/2021/chuseok/btn_lay_close.png);}
+
+/* 당첨 레이어 */
+.vote_box {position:absolute; left:50%; top:50%; z-index:10200; width:420px; height:570px; margin:-285px 0 0 -210px; padding:0;}
+.vote_box .inner {position:relative; width:100%; height:100%;}
+.vote_box .inner .vote_img {display:block;}
+.vote_box .layclose {position:absolute; right:12px; top:12px; width:30px; height:30px; font-size:0; text-indent:-9999px; background-image:url(http://img.enuri.info/images/event/2020/summer_pro/w_btn_close.png);background-repeat:no-repeat}
+
+/* 딤레이어 : 모바일 앱 전용 쇼핑 혜택 */
+.onlyapp {width:410px;height:283px;margin-left:-205px;margin-top:-142px;border:1px solid #0182ea;border-top:0;background:#fff;}
+.onlyapp .inner {width:377px;padding:22px 16px 0;line-height:1.5;font-size:15px;color:#444;}
+.onlyapp .inner .exp {text-align:center;line-height:1.2;padding-bottom:25px;font-size:18px;color:#393939;letter-spacing:-0.5px;}
+.onlyapp .inner .tit {font-weight:bold;font-size:14px;color:#2366aa;letter-spacing:-0.5px;margin:0 0 5px 1px;padding-left:10px;background:url(http://img.enuri.info/images/event/2016/template/bul_circle_blue.gif) no-repeat 0 9px}
+.onlyapp .input_area input {width:213px;padding:0 20px;text-align:left;font-family:Malgun Gothic;font-size:16px;color:#bfbfbf;letter-spacing:-0.5px;height:40px;line-height:36px;background:0;border:1px solid #0182ea;border-right:0;box-sizing:content-box;}
+.onlyapp .watchout {margin-top:13px;}
+.onlyapp .watchout li {font-size:14px;color:#7f7f7f;letter-spacing:-0.5px;margin-left:2px;padding-left:6px;background:url(http://img.enuri.info/images/event/2016/template/bul_sq_grays.gif) no-repeat 0 9px;}
+.onlyapp .laysend {position:absolute;right:0;top:0;width:123px;height:42px;background-image:url(http://img.enuri.info/images/event/2016/template/btn_lay_send2.gif);}
+
+/* 가이드팝업 - 유의사항 */
+.guide { width: 312px;height: 406px;margin-top: -203px;margin-left: -156px;border: 1px solid #0e151c;border-top: 0;background: #fff;}
+
+.guide.entry {height:589px;margin-top:-294px ;text-align:center;color:#333;}
+.guide.entry strong {font-weight:bold;font-size:30px;font-weight:normal;}
+.guide.entry .tip { font-size:24px;}
+.guide.entry .tip strong  {color:#ff0200;}
+.guide h4 {height:69px;text-align:center;font-size:32px;font-weight:normal;line-height:70px;color:#fff;background-color:#0e151c ;}
+.guide .inner {padding:20px;}
+.guide .layentry {position:absolute;left:299px;bottom:30px;width:200px;height:60px;background-image:url(http://img.enuri.info/images/event/2016/emoney/install/btn_lay_entry.gif);}
+.guide .laysubmit {position:absolute;left:299px;bottom:30px;width:200px;height:60px;background-image:url(http://img.enuri.info/images/event/2016/emoney/buy/btn_lay_submit.gif);}
+.guide .layclose {position:absolute;right:33px;top:18px;width:31px;height:31px;background-image:url("http://img.enuri.info/images/event/2021/chuseok/btn_lay_close.png");}
+.guide dl dd.emp {color:#f00;}
+.guide .tb {width:100%;margin:15px 0;}
+.guide .tb table {border-left:1px solid #333;border-top:1px solid #333;border-spacing:0;border-collapse:collapse;}
+.guide .tb table th, .guide .tb table td {text-align:center;padding:3px 20px;font-size:13px;border-right:1px solid #333;border-bottom:1px solid #333;}
+.guide .tb table th {background:#f0f0f0;}
+.guide .tb table td.savepr {width:100px;text-align:right;}
+
+#notetxt2 .guide dl {margin-bottom:10px;font-size:14px;}
+#notetxt2 .guide dl:last-child {margin-bottom:30px;}
+#notetxt2 .guide dt {margin-bottom:3px;font-weight:bold;line-height:20px;padding-top:5px;}
+#notetxt2 .guide dd {padding-left:10px;line-height:24px;background:url(http://img.enuri.info/images/event/2016/emoney/buy/bul_circle_gray.gif) no-repeat 0 10px;}
+#notetxt2 .guide dd ul li {font-size:13px;color:#666;background:none;}
+
+/* 딤레이어 : emoney */
+.emoneypop {width:377px;height:452px;margin-left:-188px;margin-top:-226px;border:1px solid #636363;background:#eaeaea;}
+.emoneypop h4 {height:43px;line-height:41px;font-size:20px;letter-spacing:-0.5px;font-weight:bold;color:#fff;background:#202020;}
+.msgarea {width:377px;height:217px;overflow:hidden;}
+.msgarea.bggrn { background:url(http://img.enuri.info/images/event/2016/attendance/decem/meg_bg1.gif) no-repeat 0 0;}
+.msgarea.bgpup { background:url(http://img.enuri.info/images/event/2016/attendance/decem/meg_bg2.gif) no-repeat 0 0;}
+.msgarea.bgnavy { background:url(http://img.enuri.info/images/event/2016/attendance/decem/meg_bg3.gif) no-repeat 0 0;}
+.msgarea.bgpink { background:url(http://img.enuri.info/images/event/2016/attendance/decem/meg_bg4.gif) no-repeat 0 0;}
+.msgarea.bgblk { background:url(http://img.enuri.info/images/event/2016/attendance/decem/meg_bg5.gif) no-repeat 0 0;}
+.msgarea .message {height:80px;padding:86px 35px 0 35px;overflow:hidden;font-size:20px;color:#ffffff;letter-spacing:-0.5px;}
+.msgarea .icon { text-align:center;line-height:25px;font-family:Malgun Gothic, '맑은고딕';}
+.icon.bubble  {background:url(http://img.enuri.info/images/event/2016/attendance/decem/icon_say1.png) no-repeat 50% 20px;}
+.icon.bell {background:url(http://img.enuri.info/images/event/2016/attendance/decem/icon_say2.png) no-repeat 50% 20px;}
+.icon.owl {background:url(http://img.enuri.info/images/event/2016/attendance/decem/icon_say3.png) no-repeat 50% 20px;}
+.icon.chick {background:url(http://img.enuri.info/images/event/2016/attendance/decem/icon_say4.png) no-repeat 50% 20px;}
+
+
+/* 팝업 추가 css */
+#notetxt1 .popup_box.guide { width: 800px; height: 600px; margin-top:-300px; margin-left:-400px;}
+#notetxt1 .popup_box.guide .inner { height: 491px; overflow: auto;}
+
+#notetxt2 .popup_box.guide { width: 800px; height: 290px; margin-top:-145px; margin-left:-400px;}
+#notetxt2 .popup_box.guide .inner { height: 182px; overflow: auto; }
+
+#notetxt3 .popup_box.guide { width: 800px; height: 600px; margin-top:-300px; margin-left:-400px;}
+#notetxt3 .popup_box.guide .inner { height: 491px; overflow: auto;}
+
+#play_result .popup_box.guide { width: 312px; height: 406px; margin-top:-203px; margin-left:-156px; border:none; }
+#play_result .popup_box.guide .layclose { position: absolute; right: 12px; top: 12px; width: 29px; height: 29px; background-image: url("http://img.enuri.info/images/event/2021/chuseok/btn_lay_close.png");  }
+
+
+.popup_box .popup_inner_tit {font-size: 16px;font-weight: bold;margin-bottom: 3px;color:#222;}
+.list_mb5 > li{margin-bottom:5px;}
+.list_hyphen > li {position:relative;list-style: none;padding-left: 15px;font-size: 14px;}
+.list_hyphen > li:before {content:"";display:block;width: 5px;border-top:1px solid;position:absolute;top:10px;left:2px;}
+.list_dot > li {position:relative;list-style: none;padding-left: 15px;font-size: 14px;}
+.list_dot > li:before {content: "";display: block;width: 0px;height: 0px;border: 2px solid;border-radius: 50%;position: absolute;top: 8px;left: 3px;}
+.popup_inner_table {width: 100%;border-collapse: collapse;border-spacing: 0;}
+.popup_inner_table tr th,
+.popup_inner_table tr td {border: 1px solid #ddd;width: 200px;padding: 4px 0;font-size: 14px;text-align: center;}
+.popup_inner_table tr th {background-color: #eee;}
+
+/* ----------------------------------------------------------------
+					딤레이어 공통
+-----------------------------------------------------------------*/
+/* .evt__enuri_plan {padding:58px 0 60px;}
+.evt__enuri_plan .inner {width: 970px;margin:0 auto;}
+.evt__enuri_plan .inner h3 {display: block;color: #1b1b1b;text-align: center;font-size: 38px;font-weight: bold;line-height: 1;letter-spacing: -2.5px;margin:0 0 40px;}
+.evt__enuri_plan .inner ul {}
+.evt__enuri_plan .inner ul li {float: left;width: 480px;margin: 0 10px 10px 0;}
+.evt__enuri_plan .inner ul li:nth-child(even) {margin-right:0;}
+.evt__enuri_plan .inner ul li a {position:relative;display:block;font-size: 22px;color:#7d7d7d;padding:14px 30px;background: #f2f2f2;-webkit-border-radius: 5px;border-radius: 5px;}
+.evt__enuri_plan .inner ul li a:after {content:"";display:block;width:10px;height: 10px;border-top:2px solid;border-right:2px solid;border-bottom:2px solid transparent;border-left:2px solid transparent;position:absolute;top:50%;margin-top:-5px;right:30px;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);color:#b7b7b7;} */
+
+/* ----------------------------------------------------------------
+					에누리혜택 공통
+-----------------------------------------------------------------*/
+.otherbene {
+	padding:130px 0 80px;
+	background: #be604b url("http://img.enuri.info/images/event/2021/chuseok/w_benefit_bg.jpg") repeat center;
+}
+.otherbene .contents {
+	width: 970px;
+	margin:0 auto;
+}
+.otherbene h3 {
+	text-align: center;
+	line-height: 1;
+	margin:0 0 40px;
+}
+.otherbene .banlist {
+	width:600px;
+	margin:-10px auto 0;
+}
+.otherbene .banlist:after {
+	content:"";
+	display: block;
+	clear:both;
+}
+.otherbene .banlist li {
+	float:left;
+	width:284px;
+	height:284px;
+	margin-bottom:30px;
+	margin-right:30px;
+	border-radius: 50%;
+	transition: all .4s;
+}
+.otherbene .banlist li:nth-child(even){
+	margin-right: 0;
+}
+.otherbene .banlist li a {
+	position:relative;
+	display:-webkit-flex;
+	display:flex;
+	flex-wrap:wrap;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	padding:46px 0;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+	transition: all .4s;
+	line-height: 1;
+	letter-spacing: -1px;
+}
+.otherbene .banlist li:nth-child(1) a,
+.otherbene .banlist li:nth-child(4) a {
+	background-image: url("http://img.enuri.info/images/event/2021/chuseok/w_otherbene_moon1.png");
+}
+.otherbene .banlist li:nth-child(2) a,
+.otherbene .banlist li:nth-child(3) a {
+	background-image: url("http://img.enuri.info/images/event/2021/chuseok/w_otherbene_moon2.png");
+}
+.otherbene .banlist li:hover {
+	box-shadow: 0 0 25px 8px rgba(0,0,0,.15);
+}
+
+.otherbene .banlist li a > div {
+	position:relative;
+	flex:0 0 auto;
+	width: 100%;
+	z-index: 5;
+	-webkit-transition: all .4s;
+	transition: all .4s;
+}
+.otherbene .banlist li a > div.tx1 {
+	font-size: 22px;
+	font-weight: 100;
+	margin-bottom:8px;
+	color:#555;
+}
+.otherbene .banlist li a > div.tx2 {
+	font-size: 34px;
+	font-weight: 500;
+	color:#000;
+}
+.otherbene .banlist li a:hover > div.tx2 {
+	margin-bottom:20px;
+}
+.otherbene .banlist li a > div.comm_btn {
+	opacity: 0;
+	margin-bottom: -32px;
+	transform: translate(0, 100%);
+}
+.otherbene .banlist li a:hover > div.comm_btn {
+	transform: translate(0, 0);
+	margin-bottom: -10px;
+	opacity: 1;
+}
+

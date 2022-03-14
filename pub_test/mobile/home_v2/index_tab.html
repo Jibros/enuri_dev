@@ -1,0 +1,3248 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/home.css"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<!-- 공통 : 프론트배너 -->
+<div class="dim" id="mainLayer" style="z-index:999;">
+	<div class="main_front_bnr">
+		<!-- 배너 이미지  -->
+		<a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@front_bnr.jpg" ></a>
+		<!-- 하단 버튼 그룹 -->
+		<div class="btn_group">
+			<!-- 버튼 : 앱 이동 / 설치 버튼 -->
+			<button class="btn_down_app"><span>에누리 앱에서 보기</span></button>
+			<!-- 버튼 : 닫기 -->
+			<button class="btn_layer_close" onclick="$(this).closest('.dim').fadeOut(200);return false;"><span>모바일웹으로 계속 보기</span></button>
+		</div>
+	</div>
+	<!-- 백그라운드 터치 : 닫기 -->
+	<span class="dim__back" onclick="$(this).closest('.dim').fadeOut(200);return false;"></span>
+</div>
+<!-- // 프론트배너 -->
+
+<!-- 공통 : 카테고리 레이어 -->
+<div class="com__cate_wrap">
+	<div class="cate_inner">
+		<!-- 카테고리 헤더 -->
+		<header id="cate_header" class="m_header m_header_cate fixed_top">
+			<div class="header_wrap">
+				<h2>카테고리</h2>			
+				<!-- <button class="btn_hd_back comm__sprite">뒤로</button> -->
+				<button class="btn_hd_close comm__sprite">닫기</button>
+			</div>
+		</header>
+		<!-- // 카테고리 헤더 -->
+		
+		<!-- 카테고리 리스트 -->
+		<div class="cate_cnt">
+			<!-- 대대카테고리 -->
+			<ul class="cate_menu">
+				<li class="selected"><a href="#">가전<br/>해외직구</a></li>
+				<li><a href="#">TV/디카<br/>영상</a></li>
+				<li><a href="#">컴퓨터<br/>노트북</a></li>
+				<li><a href="#">태블릿<br/>모바일</a></li>
+				<li><a href="#">유아<br/>식품</a></li>
+				<li><a href="#">스포츠<br/>자동차</a></li>
+				<li><a href="#">가구<br/>생활</a></li>
+				<li><a href="#">패션<br/>화장품</a></li>
+				<!-- 이하 : Vertical 서비스 -->
+				<li class="btn_shortcut">
+					<a href="/knowcom/index.jsp">
+						<span class="ico_knowcom comm__sprite"></span>
+						<span class="txt_shortcut">쇼핑지식</span>
+					</a>
+				</li>
+				<li class="btn_shortcut">
+					<a href="/deal/newdeal/index.deal">
+						<span class="ico_social comm__sprite"></span>
+						<span class="txt_shortcut">소셜비교</span>
+					</a>
+				</li>
+				<li class="btn_shortcut">
+					<a href="/view/Flower365.jsp">
+						<span class="ico_flower comm__sprite"></span>
+						<span class="txt_shortcut">꽃배달</span>
+					</a>
+				</li>
+				<li class="btn_shortcut">
+					<a href="/global/m/Index.jsp">
+						<span class="ico_eglobal comm__sprite"></span>
+						<span class="txt_shortcut">해외직구</span>
+					</a>
+				</li>
+				<li class="btn_shortcut">
+					<a href="/enuricar/m/list.jsp">
+						<span class="ico_ereborn comm__sprite"></span>
+						<span class="txt_shortcut">중고차</span>
+					</a>
+				</li>
+			</ul>
+			<!-- // 대대 카테고리 -->
+
+			<div class="cate_list">
+				<!-- 
+					대카테고리 .depth1
+					중카테고리 .depth2 -> 펼쳐침 .depth2.show_child
+					소카테고리 .depth3 -> 펼쳐침 .depth3.show_child
+					미카테고리 .depth4
+
+					선택된 카테고리 표시 -> .selected 붙여주세요 ex) <li class="depth1 selected">
+				 -->
+				<ul class="cate_depth">
+					<li class="depth_01">
+						<a href="#" class="cate_item">생활가전</a>
+						<ul>
+                            <!-- depth_02 활성화는 .show_child 붙여주세요 -->
+                            <!-- <li class="depth_02 show_child"> -->
+							<li class="depth_02">
+								<a href="#" class="cate_tit cate_item">세탁기,건조기,스타일러</a>
+								<ul>
+                                    <!-- 
+                                        depth_03 하위 cate_item 표시 규칙
+                                        .cate_item -> 전체 상품보기 등 depth_03에서 바로 링크시
+                                        .cate_tit.cate_item -> 폴딩되는 서브 뎁스가 있는 카테고리
+                                        .cate_tit.cate_item.type__sub -> L자 아이콘 + 폴딩되는 서브 뎁스가 있는 카테고리
+									-->
+									<!-- 중카테고리 이동 -->
+									<li class="depth_03">
+										<a href="#" class="cate_item">전체상품보기</a>
+									</li>
+									<!-- // 중카테고리 이동 -->
+									<!-- 묶음 하위 없는 소카테고리 -->
+									<li class="depth_03">
+										<a href="#" class="cate_tit cate_item">일반세탁기</a>
+										<ul>
+                                            <!-- 
+                                                depth_04 하위 .cate_item 표시규칙
+                                                .cate_tit.cate_item - L자 아이콘
+                                                .cate_item - 도트 아이콘 
+											 -->
+											<!-- 미카테->소카테고리 이동메뉴 -->
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<!-- // -->
+											<!-- 미카테 - 묶음 상위 미카테고리 -->
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<!-- // -->
+											<!-- 마카테 - 묶음 하위 미카테고리 -->
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<!-- // -->
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+											<!-- 미카테 - 묶음 없음 미카테고리 -->
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">1등급</a></li>
+											<!-- // -->
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">빌트인</a></li>
+										</ul>
+									</li>
+									<!-- // -->
+									<!-- 묶음 상위 소카테고리 -->
+									<li class="depth_03">
+										<a href="#" class="cate_item">드럼세탁기</a>
+									</li>
+									<!-- // -->
+									<!-- 묶음 하위 소카테고리 -->
+									<li class="depth_03">
+										<a href="#" class="cate_item cate_tit type__sub">세탁전용</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+									<!-- // -->
+									<li class="depth_03">
+										<a href="#" class="cate_item cate_tit type__sub">세탁+건조</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_item cate_tit type__sub">드럼+일반</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="depth_02">
+								<a href="#" class="cate_tit cate_item">청소기</a>
+								<ul>
+									<li class="depth_03">
+										<a href="#" class="cate_item">전체상품 보기</a>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_tit cate_item">해외쇼핑</a>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_tit cate_item">Click! 이슈 키워드</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="depth_01">
+						<a href="#" class="cate_item">주방가전</a>
+						<ul>
+							<li class="depth_02">
+							<!-- <li class="depth_02 show_child"> -->
+								<a href="#" class="cate_tit cate_item">세탁기,건조기,스타일러</a>
+								<ul>
+									<li class="depth_03">
+										<a href="#" class="cate_item">전체상품보기</a>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_tit cate_item">일반세탁기</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_item">드럼세탁기</a>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_item cate_tit type__sub">세탁전용</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_item cate_tit type__sub">세탁+건조</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_item cate_tit type__sub">드럼+일반</a>
+										<ul>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">전체보기</a></li>
+											<li class="depth_04"><a href="#" class="cate_tit cate_item">용량별</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~7kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~10kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~14kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">~16kg</a></li>
+											<li class="depth_04"><a href="#" class="cate_item">17kg~</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="depth_02">
+								<a href="#" class="cate_tit cate_item">청소기</a>
+								<ul>
+									<li class="depth_03">
+										<a href="#" class="cate_item">전체상품 보기</a>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_tit cate_item">해외쇼핑</a>
+									</li>
+									<li class="depth_03">
+										<a href="#" class="cate_tit cate_item">Click! 이슈 키워드</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		// 퍼블 테스트용
+		$(function(){
+			var $menuItem = $(".cate_menu li"), // 카테고리 좌측 메뉴 아이템
+				$menuBtn = $menuItem.not(".btn_shortcut"), // 카테고리 좌측 메뉴 중 카테고리 버튼만
+				$cateItem = $(".cate_tit.cate_item");
+			$menuBtn.click(function(){
+				$menuItem.removeClass("selected");
+				$(this).addClass("selected");
+			})
+
+			$cateItem.click(function(e){
+				e.preventDefault();
+				$(this).parent().toggleClass("show_child");
+			})
+		})
+	</script>
+</div>
+<!-- // 카테고리 레이어 -->
+
+<!-- 공통 : 검색 레이어 -->
+<!-- 
+	// 레이어를 visible 시킨 후 .opened 클래스 붙여주세요
+	$srLayer.show(); // 레이어 visible
+	setTimeout(function(){ // .3초뒤 실행
+		$srLayer.addClass("opened"); // 백버튼 모션
+		$mainWrap.addClass("scroll_lock"); // wrapper scroll 잠금
+	},300)
+ -->
+<div class="com__sr_layer">
+	<div class="sr_innner">
+		<div class="search_head">			
+			<button href="#" class="btn__sr_back comm__sprite">뒤로</button>
+			<!-- 검색창 -->
+			<div class="ar_lay_sr">
+				<!-- 검색 입력창 -->
+				<!-- X버튼의 CSS 처리를 위해 required 속성 필수 -->
+				<input type="text" required="required" placeholder="검색어를 입력해주세요."/>
+				<!-- 버튼 : 검색창 비움 -->
+				<button class="btn__delete" onclick="$(this).prev().val('');">삭제</button>
+				<!-- 버튼 : 검색 -->
+				<button class="btn__search">검색</button>
+			</div>
+		</div>
+		<div class="search_cnt">
+			<!-- 자동완성 타입 -->
+			<ul class="sr__list type_autocomplete" style="display:none">
+				<!-- 카테고리 타입 .type_ac_cate -->
+				<li class="type_ac_cate">디지털<span class="ico_spr_cate comm__sprite">&gt;</span><em>블루투스</em>스마트워치</li>
+				<!-- 키워드(검색어) 타입 .type_ac_kwrd -->
+				<li class="type_ac_kwrd"><em>블루투스</em>이어폰</li>
+				<li class="type_ac_kwrd"><em>블루투스</em> 무선이어폰</li>
+				<li class="type_ac_kwrd">무선 <em>블루투스</em> 헤드셋</li>
+				<li class="type_ac_kwrd"><em>블루투스</em> 마우스</li>
+				<li class="type_ac_cate">디지털<span class="ico_spr_cate comm__sprite">&gt;</span>휴대용 <em>블루투스</em> 스피커</li>
+			</ul>
+			<!-- // 자동완성 타입-->
+
+			<!-- 최근검색어/인기검색어 -->
+			<div class="type_recent">
+				<!-- 탭 -->
+				<ul class="sr__tab">
+					<li class="btn__recent on">최근검색어</li>
+					<li class="btn__popular">인기검색어</li>
+				</ul>
+				<!-- 탭 컨텐츠 : 최근 검색어탭 -->
+				<div class="sr__list tab__recent">
+					<!-- 최근 검색어탭 : 최근검색어 있을때  -->
+					<ul>
+						<!-- 반복 : 최근검색어 -->
+						<li>
+							<!-- 키워드 -->
+							<span class="txt__key" onclick="alert('이동');">고로고로 테이프 클리너</span>
+							<!-- 날짜 -->
+							<span class="txt__date">10.03</span>
+							<!-- 버튼 : 삭제 -->
+							<button class="btn__delete" onclick="alert('삭제');return false;">
+								<span class="comm__sprite">삭제</span>
+							</button>
+						</li>
+						<!-- // -->
+						<li>
+							<span class="txt__key" onclick="alert('이동');">고로고로 테이프 클리너</span>
+							<span class="txt__date">10.03</span>
+							<button class="btn__delete" onclick="alert('삭제');return false;">
+								<span class="comm__sprite">삭제</span>
+							</button>
+						</li>
+						<li>
+							<span class="txt__key">고로고로 테이프 클리너</span>
+							<span class="txt__date">10.03</span>
+							<button class="btn__delete" onclick="alert('삭제');return false;">
+								<span class="comm__sprite">삭제</span>
+							</button>
+						</li>
+						<li>
+							<span class="txt__key">고로고로 테이프 클리너</span>
+							<span class="txt__date">10.03</span>
+							<button class="btn__delete" onclick="alert('삭제');return false;">
+								<span class="comm__sprite">삭제</span>
+							</button>
+						</li>
+						<li>
+							<span class="txt__key">고로고로 테이프 클리너</span>
+							<span class="txt__date">10.03</span>
+							<button class="btn__delete" onclick="alert('삭제');return false;">
+								<span class="comm__sprite">삭제</span>
+							</button>
+						</li>										
+					</ul>
+					<!-- 최근 검색어탭 : 최근 검색어 없을 시-->
+					<span class="no__result">
+						<span class="ico__caution comm__sprite">!</span>
+						<span class="txt_caution">최근 검색어가 없습니다.</span>
+						<span class="txt_caution_sub">상품을 검색해 보세요.</span>
+					</span>
+					<!-- 최근 검색어탭 : 최근 검색어 저장이 꺼져있을 때-->
+					<span class="no__recentsave">
+						<span class="ico__caution comm__sprite">!</span>
+						<span class="txt_caution">최근 검색어 저장이 꺼져있습니다.</span>
+						<span class="txt_caution_sub">검색창을 선택하신 후 검색어 저장을 켜주세요.</span>
+					</span>					
+				</div>
+
+				<!-- 탭 : 인기검색어 -->
+				<ul class="sr__list tab__popular" style="display:none">
+					<!-- 반복 : 인기검색어 -->
+					<li>
+						<!-- 검색어 -->
+						<span class="txt__key">브라운 유아물티슈</span>
+						<!-- 랭킹 -->
+						<!-- 랭킹상승 -> .rank_rise -->
+						<!-- 랭킹하락 -> .rank_down -->
+						<span class="txt_rank rank_rise">10</span>
+					</li>
+					<!-- // -->
+					<li>
+						<span class="txt__key">폭스데이</span>
+						<span class="txt_rank rank_down">2</span>
+					</li>
+					<li>
+						<span class="txt__key">후드집업</span>
+						<span class="txt_rank rank_down">2</span>
+					</li>
+					<li>
+						<span class="txt__key">슬랙스</span>
+					</li>
+					<li>
+						<span class="txt__key">HP노트북</span>
+					</li>
+					<li>
+						<span class="txt__key">QCY T3</span>
+						<span class="txt_rank rank_rise">719</span>
+					</li>
+					<li>
+						<span class="txt__key">USB메모리</span>
+					</li>
+					<li>
+						<span class="txt__key">브레이크 패</span>
+						<span class="txt_rank rank_rise">120</span>
+					</li>
+					<li>
+						<span class="txt__key">D1007</span>
+						<span class="txt_rank rank_rise">720</span>
+					</li>
+					<li>
+						<span class="txt__key">에어팟</span>
+					</li>
+				</ul>							
+			</div>
+			<!-- // 최근검색어/인기검색어 -->
+
+			<!-- 최근 검색어탭 : 컨텐츠 박스 내 하단 고정 영역 -->
+			<div class="search_foot">
+				<button class="btn__sr_foot btn__sr_delete" onclick="confirm('최근검색어를 모두 삭제하시겠습니까?')">전체삭제</button>
+				<button class="btn__sr_foot btn__sr_save_on">검색어 저장 켜기</button>
+				<!-- <button class="btn__sr_foot btn__sr_save_off" style="display:none">검색어 저장 끄기</button> -->
+				<!-- 닫기 -->
+				<button class="btn__sr_back">닫기</button>
+			</div>
+
+		</div>
+		<script>
+			$(function(){				
+				// 퍼블 확인용				
+				var $inp = $(".ar_lay_sr input"); // 검색어 인풋박스
+				var $cnt = $(".search_cnt"); // 레이어 컨텐츠 영역
+				var $tabcnt = $(".type_recent > .sr__list"); // 최근,인기검색어 리스트
+				$inp.keydown(function(){
+					if ( $(this).val().length ){
+						$(".type_autocomplete").show();
+						$(".type_recent").hide();
+						$(".btn__sr_foot").hide();
+					}else{
+						$(".type_recent").show();
+						$(".type_autocomplete").hide();						
+					}
+				})
+				var $tab = $(".type_recent .sr__tab li");
+				$tab.click(function(e){
+					$cnt.scrollTop(0);
+					$(this).addClass("on").siblings().removeClass("on");					 
+					var _idx = $(this).index();
+					(_idx) ? $(".btn__sr_foot").hide() : $(".btn__sr_foot").show();
+					$tabcnt.hide();
+					$tabcnt.eq( _idx ).show()
+				})
+			})
+		</script>
+	</div>
+</div>
+<!-- // 검색 레이어 -->
+
+<!-- 메인 AD 배너 영역 - 전체보기 리스트 -->
+<!-- 
+	활성화 시에 레이어 fadeIn 후 active 클래스 붙여주세요.
+	스크롤 되는 전체창 레이어 인관계로 #wrap에 .scroll_lock클래스로 스크롤 잠궈 주셔야 합니다.
+ -->
+<div class="m_main_bnr_all dim" style="display:none">	
+	<div class="lay_tit">
+		전체보기
+		<button href="#" class="btn_close comm__sprite" onclick="$('.m_main_bnr_all').fadeOut(100).removeClass('active');$('#wrap').removeClass('scroll_lock');">닫기</button>
+	</div>
+	<ul>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a></li>
+	</ul>
+	<div class="btn_close_dim" onclick="$(this).parent().find('.btn_close').click()"></div>
+</div>
+<!-- //메인 AD 배너 영역 - 전체보기 리스트 -->
+
+<!-- 공통 : 찜레이어 -->
+<span class="zzimly">찜 되었습니다</span>
+<!-- // 찜레이어 -->
+
+<!-- 공통 : SNS공유하기 -->
+<div class="com__share_wrap dim" style="z-index:999;display:none">
+	<div class="com__layer share_layer">
+		<div class="lay_head">공유하기</div>
+		<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+		<div class="lay_inner">
+			<ul>
+				<li class="share_fb">페이스북 공유하기</li>
+				<li class="share_kakao">카카오톡 공유하기</li>				
+				<li class="share_tw">트위터 공유하기</li>
+				<li class="share_line">라인 공유하기</li>
+			</ul>
+			<div class="btn_group">
+				<span id="txtURL" class="txt__share_url">http://www.enuri.com/event/chuseok.jsp</span>
+				<button class="btn__share_copy" data-clipboard-target="#txtURL">복사</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/clipboard.min.js"></script>
+	<script>
+		$(function(){
+			var clipboard = new ClipboardJS('.com__share_wrap .btn__share_copy');
+			clipboard.on('success', function(e) {
+				alert('주소가 복사되었습니다');
+			});
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+		});
+	</script>
+</div>
+<!-- // -->
+
+<!-- 스크롤 잠글때 #wrap에 .scroll_lock 클래스 붙여주세요 -->
+<div id="wrap">
+<!-- <div id="wrap" class="scroll_lock"> -->
+
+	<!-- 헤더 -->	
+	<!-- inline-style로  배경색 / 배경 이미지 교체 -->
+	<header id="header" class="m_header m_header_main">
+		<div class="header_wrap">
+			<h1 class="m_symbol comm__sprite">ENURI</h1>			
+			<button class="btn_hd_cate comm__sprite">카테고리</button>
+			<button class="btn_hd_my comm__sprite">나의정보</button>
+		</div>
+		<div class="search_wrap">
+			<span class="btn_lay_sr"><!-- 버튼 :: 검색레이어 --></span>
+		</div>
+		<script>
+			//퍼블 테스트용
+			$(function(){
+				var $mainWrap = $("#wrap"); // 메인컨텐츠 wrapper
+				var $btnCate = $(".btn_hd_cate"); // 카테고리 버튼
+				var $btnClose = $(".btn_hd_close"); // 카테고리 닫기 버튼				
+				var $cateLayer = $(".com__cate_wrap"); // 카테고리 레이어
+				var $btnSR = $(".btn_lay_sr"); // 검색 버튼
+				var $srLayer = $(".com__sr_layer"); // 검색 레이어
+				var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
+				// 버튼 :: 카테고리 레이어
+				$btnCate.click(function(e){
+					$mainWrap.addClass("scroll_lock"); // 스크롤 잠그기
+					$cateLayer.show(); // 레이어를 활성화 한 후 슬라이딩 
+					setTimeout(function(){
+						$cateLayer.addClass("on");
+					},100)
+				})
+				// 버튼 :: 카테고리 닫기
+				$btnClose.click(function(e){
+					$mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+					$("html,body").scrollTop(0);
+					$cateLayer.removeClass("on");
+					setTimeout(function(){
+						$cateLayer.hide();	
+					},700)
+				})
+				
+				// 버튼 :: 검색 레이어 열기
+				$btnSR.click(function(e){
+					var _taPos = $(".m_header_main .search_wrap").offset().top - 5;
+					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
+						$srLayer.show();
+						setTimeout(function(){
+							$srLayer.addClass("opened");
+							$mainWrap.addClass("scroll_lock");
+							
+							console.log(3333);
+							
+						},300)
+					})
+				})
+				// 버튼 :: 검색 레이어 닫기
+				$btnSRClose.click(function(e){
+					$mainWrap.removeClass("scroll_lock");
+					$srLayer.hide().removeClass("opened");
+				})
+			})
+		</script>
+	</header>
+	<!-- // 헤더 -->
+
+	<!-- 네비 -->
+	<nav class="m_nav m_nav_main">
+		<div class="m_nav_cont swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide on"><a href="#tab_home">홈</a></div>
+				<div class="swiper-slide"><a href="#tab_best">핫딜베스트</a></div>
+				<div class="swiper-slide"><a href="#tab_season" class="tab__new">#시즌탭</a></div>
+				<div class="swiper-slide"><a href="#tab_trend">트렌드픽업</a></div>
+				<div class="swiper-slide"><a href="#tab_event">이벤트/기획전</a></div>
+				<div class="swiper-slide"><a href="#tab_knowcom">쇼핑지식</a></div>
+				<div class="swiper-slide"><a href="#tab_sale">특가모음</a></div>
+			</div>
+		</div>
+    </nav>	
+	<!--// 네비 -->	
+
+	<section id="container" class="m_main_cont">
+		<!-- 슬라이드 네비 -->
+        <div class="m_main_swiper swiper-container">
+			<div class="swiper-wrapper">
+				
+				<!-- 메인탭 :: 홈 // index_tab_home.html -->
+				<div id="tab_home" class="swiper-slide m_main_tab">
+
+					<!-- Placehold loader : 홈탭 메인 컨텐츠가 완전히 로딩이 끝나기 전까지 노출 -->
+					<div class="m_main_placeholder">
+						<ul class="m_shortcut">
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+						</ul>
+						<div class="ph_banner ph-item"></div>
+						<ul class="m_shortcut">
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+							<li class="ph-item"><span class="ph_ico"></span><span class="ph_txt"></span></li>
+						</ul>
+					</div>
+					<!-- // -->
+
+					<!-- 홈탭 메인 컨텐츠 상단 영역 -->
+					<!-- 로딩이 끝나면 loaded 클래스 붙여주세요. -->
+					<div class="m_main_topcnt">
+						
+						<!-- CPP 및 이벤트/주요쇼핑몰 영역 -->
+						<ul class="m_sc_top m_shortcut">
+							<li>
+								<a href="#">
+									<span class="ico_elec home__sprite"></span>
+									<span class="txt_cate_name">가전/해외직구</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_tv home__sprite"></span>
+									<span class="txt_cate_name">TV/영상/디카</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_pc home__sprite"></span>
+									<span class="txt_cate_name">컴퓨터/노트북</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_tablet home__sprite"></span>
+									<span class="txt_cate_name">태블릿/모바일</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_kids home__sprite"></span>
+									<span class="txt_cate_name">유아/식품</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_sports home__sprite"></span>
+									<span class="txt_cate_name">스포츠/자동차</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_funi home__sprite"></span>
+									<span class="txt_cate_name">가구/생활</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_fashion home__sprite"></span>
+									<span class="txt_cate_name">패션/화장품</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_social home__sprite"></span>
+									<span class="txt_cate_name">소셜비교</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_knowcom home__sprite"></span>
+									<span class="txt_cate_name">쇼핑지식</span>
+								</a>
+							</li>
+						</ul>
+						<!-- //CPP 및 이벤트/주요쇼핑몰 영역 -->
+
+						<!-- 메인 AD 배너 영역 -->
+						<div class="m_main_banner swiper-container noswipe">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a>
+								</div>
+								<div class="swiper-slide">
+									<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_home.jpg" alt=""></a>
+								</div>
+							</div>
+							<div class="swiper-ctrl" onclick="$('.m_main_bnr_all').fadeIn(200).addClass('active');$('#wrap').addClass('scroll_lock');">
+								<div class="swiper-counter"><span class="num_index">1</span> / <span class="num_total"></span></div>
+								<!-- 전체보기 버튼 -->
+								<button class="swiper-button comm__sprite btn__view_all">전체보기</button>
+							</div>						
+						</div>
+						<script>
+							// 메인 배너용 슬라이드
+							$(function(){							
+								var $slide = $(".m_main_banner");
+								var $txtTotalNum = $slide.find(".num_total");
+								var $txtIndexlNum = $slide.find(".num_index");
+								$txtTotalNum.html( $slide.find(".swiper-slide").length );
+								var bannerSwiper = new Swiper($slide,{
+									watchActiveIndex: true,
+									autoHeight : true,
+									autoplay:3000,
+									autoplayDisableOnInteraction : false,
+									speed : 800,
+									loop : true,
+									// loopAdditionalSlides : 1,
+									spaceBetween : 0,
+									onTransitionEnd  : function(e){
+										var _idx = e.realIndex;
+										$txtIndexlNum.html(_idx+1);
+									}
+								});
+							})
+						</script>
+						<!-- // 메인 AD 배너 영역 -->					
+
+						<!-- CPP 및 이벤트/주요쇼핑몰 영역 2 -->
+						<ul class="m_sc_mid m_shortcut">
+							<li>
+								<a href="#">
+									<span class="ico_midsc_01 home__sprite"></span>
+									<span class="txt_cate_name">출석체크</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_midsc_02 home__sprite"></span>
+									<span class="txt_cate_name">첫구매</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_midsc_03 home__sprite"></span>
+									<span class="txt_cate_name">구매혜택</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_midsc_04 home__sprite"></span>
+									<span class="txt_cate_name">VIP</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_midsc_05 home__sprite"></span>
+									<span class="txt_cate_name">이벤트</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_shopsc_01 home__sprite"></span>
+									<span class="txt_cate_name">지마켓</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_shopsc_02 home__sprite"></span>
+									<span class="txt_cate_name">옥션</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_shopsc_03 home__sprite"></span>
+									<span class="txt_cate_name">11번가</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_shopsc_04 home__sprite"></span>
+									<span class="txt_cate_name">티몬</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="ico_shopsc_05 home__sprite"></span>
+									<span class="txt_cate_name">위메프</span>
+								</a>
+							</li>
+						</ul>
+						<!-- //CPP 및 이벤트/주요쇼핑몰 영역 2 -->	
+							
+					</div>
+
+					<script>
+						// 퍼블테스트 
+						$(function(){
+							// 페이지 로딩이 끝나고 플레이스 홀더가 사라지는 액션 보기
+							setTimeout(function(){
+								$(".m_main_placeholder").fadeOut(600);
+								$(".m_main_topcnt").addClass('loaded');
+							},2000)
+						})
+					</script>
+					
+					<!-- 트랜드픽업 -->
+					<div class="m_trend_pickup m_card_type">
+						<div class="card__head">
+							<p class="card__tit">트랜드픽업<span class="txt__sub">(CM추천)</span></p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+
+						<!-- 트랜드픽업 슬라이드 -->
+						<div class="slide_trend_pickup trend_pickup__list swiper-container">
+							<div class="swiper-wrapper">
+								<!-- 트랜드 픽업 타입_a/c타입 -->
+								<div class="swiper-slide trend_pickup__type_a">
+									<div class="card__cnt">
+										<!-- AD 아이콘 -->
+										<div class="ico__trend_ad comm__sprite">AD</div>
+										<!-- // -->
+										<div class="card__img">
+											<img src="http://img.enuri.info/images/mobile_v2/@trend_pickup__bnr_01.jpg" alt="">
+										</div>
+										<!-- A타입 일때 style 제거 / c타입일때 style에 background-color 넣어주세요 -->
+										<div class="card__goods" style="background-color:#d6f0ef">
+											<ul class="trend_pickup__goods">
+												<!-- 상품아이템  -->
+												<li>
+													<div class="goods__inner">
+														<div class="goods__img">
+															<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+														</div>
+														<div class="goods__price">
+															<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+															<span class="goods__price"><strong>299,000</strong>원</span>
+														</div>
+													</div>
+												</li>
+												<!-- // 상품아이템  -->
+												<li>
+													<div class="goods__inner">
+														<div class="goods__img">
+															<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+														</div>
+														<div class="goods__price">
+															<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+															<span class="goods__price"><strong>299,000</strong>원</span>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="goods__inner">
+														<div class="goods__img">
+															<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+														</div>
+														<div class="goods__price">
+															<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+															<span class="goods__price"><strong>299,000</strong>원</span>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- // 트랜드 픽업 타입_a -->
+
+								<!-- 트랜드 픽업 타입_c -->
+								<div class="swiper-slide trend_pickup__type_c">
+									<div class="card__cnt">
+										<!-- AD 아이콘 -->
+										<div class="ico__trend_ad comm__sprite">AD</div>
+										<!-- // -->
+										<!-- B타입은 인라인 스타일로 컬러 넣어주세요 -->
+										<div class="card__info" style="background-color:#f2fcff">
+											<div class="info__inner">
+												<span class="info__tit" style="color:#30a7f6">홈트레이닝 이슈 키워드!</span>
+												<span class="info__sub">키워드로 만나는 Best 홈트레이닝!</span>
+												<div class="info__hash">
+													<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">스쿼트머신</a>
+													<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">꺼꾸리</a>
+													<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">승마기</a>
+													<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">삼성노트북</a>
+												</div>
+											</div>
+										</div>									
+										<div class="card__goods">
+											<ul class="trend_pickup__goods">
+												<!-- 상품아이템  -->
+												<li>
+													<div class="goods__inner">
+														<div class="goods__img">
+															<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+														</div>
+														<div class="goods__price">
+															<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+															<span class="goods__price"><strong>299,000</strong>원</span>
+														</div>
+													</div>
+												</li>
+												<!-- // 상품아이템  -->
+												<li>
+													<div class="goods__inner">
+														<div class="goods__img">
+															<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+														</div>
+														<div class="goods__price">
+															<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+															<span class="goods__price"><strong>299,000</strong>원</span>
+														</div>
+													</div>
+												</li>
+												<li>
+													<div class="goods__inner">
+														<div class="goods__img">
+															<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+														</div>
+														<div class="goods__price">
+															<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+															<span class="goods__price"><strong>299,000</strong>원</span>
+														</div>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<!-- // 트랜드 픽업 타입_c -->
+
+								<!-- 트랜드 픽업 타입_e -->
+								<div class="swiper-slide trend_pickup__type_e">
+									<div class="card__cnt">
+										<div class="card__img">
+											<img src="http://img.enuri.info/images/mobile_v2/@trend_pickup__bnr_02.jpg" alt="">
+										</div>
+									</div>
+								</div>
+								<!-- // 트랜드 픽업 타입_e -->
+							</div>
+							<div class="swiper-button-white swiper-button-next"></div>
+							<div class="swiper-button-white swiper-button-prev"></div>
+							<div class="swiper-ctrl">
+								<div class="swiper-counter"><span class="num_index">1</span> / <span class="num_total"></span></div>
+							</div>	
+						</div>						
+						<!-- // 트랜드픽업 슬라이드 -->
+						<script>
+							// 트랜드픽업용 슬라이드
+							$(function(){							
+								var $slide = $(".slide_trend_pickup");
+								var $txtTotalNum = $slide.find(".num_total");
+								var $txtIndexlNum = $slide.find(".num_index");
+								$txtTotalNum.html( $slide.find(".swiper-slide").length );
+								var crazyDealSwiper = new Swiper($slide,{
+									watchActiveIndex: true,
+									autoHeight : true,
+									autoplayDisableOnInteraction : false,
+									nextButton: '.slide_trend_pickup .swiper-button-next',
+        							prevButton: '.slide_trend_pickup .swiper-button-prev',
+									speed : 800,
+									loop : true,
+									slidesPerView : 2,
+									spaceBetween : 0,
+									breakpoints : {
+										767 : {
+											slidesPerView : 1
+										}
+									},
+									onTransitionEnd  : function(e){
+										var _idx = e.realIndex;
+										$txtIndexlNum.html(_idx+1);
+									}
+								});
+							})
+						</script>
+					</div>
+					<!-- // 트랜드픽업 -->
+
+					<!-- 해외직구 가격비교 -->
+					<div class="m_global m_card_type">
+						<div class="card__head">
+							<p class="card__tit">해외직구 가격비교</p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+						<div class="global_goods">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<!-- 가격비교 타입 -->
+									<div class="swiper-slide type_compare">
+										<div class="list_inner">
+											<span class="thumb">
+												<span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+											</span>
+											<div class="info">
+												<span class="txt_prd_nm">다이슨 V7 헤파필터 무료 툴 3가지 선택가능 V7 헤파필터 무료 툴 3가지 선택가능</span>
+												<div class="area_price">
+													<span class="ico_brand"><img src="http://img.enuri.info/images/home/malllogo/6641_m.jpg" alt="AliExpress"></span>
+													<span class="txt_price">
+													<span class="txt_lowest">최저가</span><strong>455,000</strong>원
+													</span>
+												</div>                                                                        
+											</div>
+											<a href="#" class="btn_purchases">최저가 구매하기</a>  
+										</div>
+									</div>
+									<!-- // -->
+									<!-- 일반상품 타입 -->
+									<div class="swiper-slide type_single">
+										<div class="list_inner">
+											<span class="thumb">
+												<span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+											</span>
+											<div class="info">
+												<span class="txt_prd_nm">다이슨 V7 헤파필터 무료 툴 3가지 선택가능 V7 헤파필터 무료 툴 3가지 선택가능</span>
+												<div class="area_price">
+													<span class="ico_brand"><img src="http://img.enuri.info/images/home/malllogo/6641_m.jpg" alt="AliExpress"></span>
+													<span class="txt_price">
+														<strong>455,000</strong>원
+													</span>
+													<span class="txt_earn">
+														<span class="mglobal__ico_emoney">E</span>머니 1,600점 <span class="txt_sub">(예상적립)</span>
+													</span>
+												</div>                                                                        
+											</div>
+											<a href="#" class="btn_purchases">바로 구매하기</a>  
+										</div>
+									</div>
+									<!-- // -->
+								</div>
+								<div class="swiper-button-prev swiper-button-white"></div>
+								<div class="swiper-button-next swiper-button-white"></div>
+							</div>
+							<script>
+								$(function(){
+									var mySwiper = Swiper('.global_goods .swiper-container',{
+										prevButton : '.global_goods .swiper-button-prev',
+										nextButton : '.global_goods .swiper-button-next',
+										slidesPerView : 2,
+										breakpoints : {
+											767 : {
+												slidesPerView : 1
+											}
+										},
+										loop : true
+									});
+								})
+							</script>
+						</div>
+						<div class="global_bnrlist">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<!-- 반복 -->
+									<div class="swiper-slide">
+										<ul>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<!-- // 반복 -->
+									<div class="swiper-slide">
+										<ul>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+									<div class="swiper-slide">
+										<ul>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<span class="mglobal__item_thumb"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+													<span class="mglobal__item_txt">
+														<span class="mglobal__ico_emoney">E</span>머니 <em>3.0%</em>적립
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="swiper-button-prev swiper-button-white"></div>
+								<div class="swiper-button-next swiper-button-white"></div>
+							</div>
+							<script>
+								$(function(){
+									var mySwiper = Swiper('.global_bnrlist .swiper-container',{
+										prevButton : '.global_bnrlist .swiper-button-prev',
+										nextButton : '.global_bnrlist .swiper-button-next',
+										loop : true
+									});
+								})
+							</script>
+						</div>						
+					</div>
+					<!-- // -->
+
+					<!-- 중고차 -->
+					<div class="m_reborn m_card_type">
+						<div class="card__head">
+							<p class="card__tit">프리미엄 중고차</p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+						<div class="reborn_goods">
+							<div class="swiper-container">
+								<div class="swiper-wrapper">
+									<!-- 배너 타입 -->
+									<div class="swiper-slide type_bnr">
+										<!-- 배너 타입은 a태그에 inline-style로 배경색 / 이미지 경로 넣어주세요 -->
+										<a href="#" style="background-color:#e9f0ff;background-image:url(http://img.enuri.info/images/home/reborncar/m_bnr_reborn_main.jpg)">
+											상담신청만 해도 e머니 10,000점 지급!
+										</a>
+									</div>
+									<!-- // -->
+									<!-- 상품 타입 -->
+									<div class="swiper-slide type_goods">
+										<a href="#">
+											<!-- 중고차 썸네일 기본 이미지 -->
+											<span class="thumb"><img src="http://img.enuri.info/images/home/reborncar/img_default.gif" alt=""></span>
+											<!-- // -->
+											<span class="info">
+												<span class="txt_name">
+													<span class="name">기아 K7 PREMIER</span>
+													<span class="model">3.0 GDI 노블레스</span>
+												</span>
+												<span class="txt_spec">
+													<span class="item">2016연식</span><span class="item">999,999km</span><span class="item">가솔린</span>
+												</span>
+												<span class="txt_price">
+													<span class="org_price"><em>3,400</em>만원</span>
+													<span class="sell_price">
+														<span class="txt">판매가</span><em>1,250</em>만원
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+									<!-- // -->
+									<div class="swiper-slide type_goods">
+										<a href="#">
+											<span class="thumb"><img src="http://sales.autoplus.co.kr/nfs_img/PRODUCT/C19101000060/IMG01.jpg" alt=""></span>
+											<span class="info">
+												<span class="txt_name">
+													<span class="name">기아 K7 PREMIER</span>
+													<span class="model">3.0 GDI 노블레스</span>
+												</span>
+												<span class="txt_spec">
+													<span class="item">2016연식</span><span class="item">999,999km</span><span class="item">가솔린</span>
+												</span>
+												<span class="txt_price">
+													<span class="org_price"><em>3,400</em>만원</span>
+													<span class="sell_price">
+														<span class="txt">판매가</span><em>1,250</em>만원
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+									<div class="swiper-slide type_goods">
+										<a href="#">
+											<span class="thumb"><img src="http://sales.autoplus.co.kr/nfs_img/PRODUCT/C19101000060/IMG01.jpg" alt=""></span>
+											<span class="info">
+												<span class="txt_name">
+													<span class="name">기아 K7 PREMIER</span>
+													<span class="model">3.0 GDI 노블레스</span>
+												</span>
+												<span class="txt_spec">
+													<span class="item">2016연식</span><span class="item">999,999km</span><span class="item">가솔린</span>
+												</span>
+												<span class="txt_price">
+													<span class="org_price"><em>3,400</em>만원</span>
+													<span class="sell_price">
+														<span class="txt">판매가</span><em>1,250</em>만원
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+								</div>
+								<!-- <div class="swiper-button-prev swiper-button-white"></div> -->
+								<!-- <div class="swiper-button-next swiper-button-white"></div> -->
+							</div>
+							<script>
+								$(function(){
+									var mySwiper = Swiper('.m_reborn .swiper-container',{
+										// prevButton : '.m_reborn .swiper-button-prev',
+										// nextButton : '.m_reborn .swiper-button-next',
+										spaceBetween : 10,
+										slidesPerView : 2,
+										breakpoints : {
+											767 : {
+												slidesPerView : 'auto'
+											}
+										},
+										loop : true
+									});
+								})
+							</script>
+						</div>
+					</div>
+					<!-- // 중고차 -->					
+
+					<!-- 크레이지딜 -->
+					<div class="m_crazy_deal m_card_type">
+						<div class="card__head">
+							<p class="card__tit"><span class="ico_crzd home__sprite">크레이지딜</span><span class="txt__sub">세상에 없던 미친할인</span></p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+						<!-- 크레이지딜 슬라이드 -->
+						<div class="slide_crazydeal">
+							<div class="swiper-container noswipe">
+								<div class="swiper-wrapper">
+									<!-- 크레이지딜 슬라이드 딜상품 - KRW -->
+									<div class="swiper-slide">
+										<span class="img_goods">
+											<!-- 태그 리스트 -->
+											<span class="group__tag">
+												<!-- 할인율 / 한정수량 -->
+												<span class="tag__salerate home__sprite">
+													<span class="txt_salerate"><em>80</em>%</span><!-- 할인율 -->
+													<span class="txt_limit">300개</span><!-- 한정수량 -->
+												</span>
+												<!-- 오픈예정 -->
+												<!-- <span class="tag__ready">2/1일(금) 10시 오픈</span> -->
+												<!-- 이벤트 아이콘 -->
+												<!-- <span class="tag__eventbnr home__sprite">EVENT</span> -->
+												<!-- 해외배송 -->
+												<!-- <span class="tag__interdelivery home__sprite">해외배송</span> -->
+												<!-- 품절 -->
+												<span class="tag__soldout home__sprite">품절되었습니다.</span>
+											</span>
+											<!-- // -->
+											<!-- 상품이미지 -->
+											<img src="http://storage.enuri.info/Web_Storage/pic_upload/mobile/newdeal/0434.jpg" alt="">
+										</span>
+										<span class="group_info">
+											<!-- 상품명 -->
+											<span class="info_goods_tit">
+												장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+											</span>
+											<!-- 상품가격 정보 -->
+											<span class="info_price">
+												<!-- 쇼핑몰 아이콘 -->
+												<span class="info_mall">
+													<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_55.png" alt="">
+												</span>
+												<!-- 상품 가격 -->
+												<span class="txt_price">
+													<!-- 기존가격 : 한화/외화 공통 -->
+													<del class="txt_price_origin">4,900원</del>
+													<!-- 할인가격 - 한화 -->
+													<strong>233,789</strong>원
+													<!-- 할인가격 - 외화 -->
+													<!-- $<strong>132</strong> -->
+												</span>												
+											</span>
+											<!-- 이벤트 타입 -->
+											<!-- <span class="txt_event"> -->
+												<!-- <span class="txt_date">2/4(월) 오전 10시</span> -->
+												<!-- <span class="txt_comm">햄버거세트 선착순 100명</span> -->
+											<!-- </span> -->
+										</span>
+									</div>
+									<!-- // 크레이지딜 슬라이드 딜상품 - KRW -->
+
+									<!-- 크레이지딜 슬라이드 딜상품 - USD -->
+									<div class="swiper-slide">
+										<span class="img_goods">
+											<!-- 태그 리스트 -->
+											<span class="group__tag">
+												<!-- 할인율 / 한정수량 -->
+												<span class="tag__salerate home__sprite">
+													<span class="txt_salerate"><em>80</em>%</span><!-- 할인율 -->
+													<span class="txt_limit">300개</span><!-- 한정수량 -->
+												</span>
+												<!-- 오픈예정 -->
+												<span class="tag__ready">2/1일(금) 10시 오픈</span>
+												<!-- 해외배송 -->
+												<span class="tag__interdelivery home__sprite">해외배송</span>
+											</span>
+											<!-- // -->
+											<!-- 상품이미지 -->
+											<img src="http://storage.enuri.info/Web_Storage/pic_upload/mobile/newdeal/0435.jpg" alt="">
+										</span>
+										<span class="group_info">
+											<!-- 상품명 -->
+											<span class="info_goods_tit">
+												장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+											</span>
+											<!-- 상품가격 정보 -->
+											<span class="info_price">
+												<!-- 쇼핑몰 아이콘 -->
+												<span class="info_mall">
+													<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_55.png" alt="">
+												</span>
+												<!-- 상품 가격 -->
+												<span class="txt_price">
+													<!-- 기존가격 : 한화/외화 공통 -->
+													<del class="txt_price_origin">$155</del>
+													<!-- 할인가격 - 한화 -->
+													<!-- <strong>233,789</strong>원 -->
+													<!-- 할인가격 - 외화 -->
+													$<strong>132</strong>
+												</span>												
+											</span>
+										</span>
+									</div>
+									<!-- // 크레이지딜 슬라이드 딜상품 - USD -->
+
+									<!-- 크레이지딜 슬라이드 3 - 이벤트 -->
+									<div class="swiper-slide">
+										<span class="img_goods">
+											<!-- 태그 리스트 -->
+											<span class="group__tag">
+												<span class="tag__eventbnr home__sprite">EVENT</span>
+												<!-- 오픈예정 -->
+												<span class="tag__ready">2/1일(금) 10시 오픈</span>
+											</span>
+											<!-- // -->
+											<!-- 상품이미지 -->
+											<img src="http://storage.enuri.info/Web_Storage/pic_upload/mobile/newdeal/%ED%81%AC%EB%A0%88%EC%9D%B4%EC%A7%80%EB%94%9C_640_400_02.jpg" alt="">
+										</span>
+										<span class="group_info">
+											<!-- 상품명 -->
+											<span class="info_goods_tit">
+												장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+											</span>
+											<!-- 상품가격 정보 -->
+											<span class="info_price">
+												<!-- 상품 가격 -->
+												<span class="txt_price">
+													<!-- 기존가격 : 한화/외화 공통 -->
+													<del class="txt_price_origin">$155</del>
+													<!-- 할인가격 - 한화 -->
+													<!-- <strong>233,789</strong>원 -->
+													<!-- 할인가격 - 외화 -->
+													$<strong>132</strong>
+												</span>												
+											</span>
+										</span>
+									</div>
+									<!-- // 크레이지딜 슬라이드 3 - 이벤트 -->
+
+									<!-- 크레이지딜 슬라이드 4 - e머니 이벤트 -->
+									<div class="swiper-slide">
+										<span class="img_goods">
+											<!-- 태그 리스트 -->
+											<span class="group__tag">
+												<span class="tag__eventbnr home__sprite">EVENT</span>
+												<!-- 오픈예정 -->
+												<span class="tag__ready">2/1일(금) 10시 오픈</span>
+											</span>
+											<!-- // -->
+											<!-- 상품이미지 -->
+											<img src="http://storage.enuri.info/Web_Storage/pic_upload/mobile/newdeal/%ED%81%AC%EB%A0%88%EC%9D%B4%EC%A7%80%EB%94%9C_640_400_02.jpg" alt="">
+										</span>
+										<span class="group_info">
+											<!-- 이벤트 타입 -->
+											<span class="txt_event">
+												<span class="txt_date">2/4(월) 오전 10시</span>
+												<span class="txt_comm">햄버거세트 선착순 100명</span>
+											</span>
+										</span>
+									</div>
+									<!-- // 크레이지딜 슬라이드 4 - e머니 이벤트 -->
+
+									<div class="swiper-slide">
+										<span class="img_goods">											
+											<img src="http://storage.enuri.info/Web_Storage/pic_upload/mobile/newdeal/0434.jpg" alt="">
+										</span>
+										<span class="group_info">
+											<span class="info_goods_tit">
+												장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+											</span>
+											<span class="info_price">
+												<span class="info_mall">
+													<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_55.png" alt="">
+												</span>												
+												<span class="txt_price">
+													<del class="txt_price_origin">4,900원</del>
+													<strong>233,789</strong>원
+												</span>												
+											</span>
+										</span>
+									</div>
+									<div class="swiper-slide">
+										<span class="img_goods">											
+											<img src="http://storage.enuri.info/Web_Storage/pic_upload/mobile/newdeal/0434.jpg" alt="">
+										</span>
+										<span class="group_info">
+											<span class="info_goods_tit">
+												장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+											</span>
+											<span class="info_price">
+												<span class="info_mall">
+													<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_55.png" alt="">
+												</span>
+												<span class="txt_price">
+													<del class="txt_price_origin">4,900원</del>
+													<strong>233,789</strong>원
+												</span>												
+											</span>
+										</span>
+									</div>
+								</div>								
+							</div>
+							<script>
+								// 크레이지딜용 슬라이드
+								$(function(){							
+									var $slide = $(".slide_crazydeal .swiper-container");
+									var crazyDealSwiper = new Swiper($slide,{
+										watchActiveIndex: true,
+										autoHeight : true,
+										autoResize : true,
+										// autoplay:3000,
+										autoplayDisableOnInteraction : false,
+										speed : 800,
+										loop : true,
+										centeredSlides : true,
+										spaceBetween : 10,
+										slidesPerView : 2.5,
+										breakpoints : {
+											640 : {
+												slidesPerView : 1.3
+											}
+										}
+									});
+									$(window).resize(function(){
+										crazyDealSwiper.update();
+									})
+								})
+							</script>
+						</div>
+						<!-- // 크레이지딜 슬라이드 -->
+					</div>
+					<!-- // 크레이지딜 -->
+
+					<!-- 쇼핑지식 -->
+					<div class="m_knowcom">
+						<div class="card__head">
+							<p class="card__tit">쇼핑지식</p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+						<ul class="board__list type_photo_r">
+							<li>
+								<span class="img_thumb"><img src="http://img.enuri.info/images/mobile_v2/@main-news-thumb.jpg" alt=""></span>
+								<span class="txt_info">
+									<span class="txt_tit">신학기 노트북 길라잡이, 2019 학업용 노트북 포인트는 이것! 신학기 노트북 길라잡이</span>
+									<span class="group_info">
+										<span class="tit_author">커뮤니티 인기글</span>
+									</span>
+								</span>
+							</li>
+							<li>
+								<span class="img_thumb"><img src="http://img.enuri.info/images/mobile_v2/@main-news-thumb.jpg" alt=""></span>
+								<span class="txt_info">
+									<span class="txt_tit">신학기 노트북 길라잡이, 2019 학업용 노트북 포인트는 이것! 신학기 노트북 길라잡이</span>
+									<span class="group_info">
+										<span class="tit_author">커뮤니티 인기글</span>
+									</span>
+								</span>
+							</li>
+							<li>
+								<span class="img_thumb"><img src="http://img.enuri.info/images/mobile_v2/@main-news-thumb.jpg" alt=""></span>
+								<span class="txt_info">
+									<span class="txt_tit">신학기 노트북 길라잡이, 2019 학업용 노트북 포인트는 이것! 신학기 노트북 길라잡이</span>
+									<span class="group_info">
+										<span class="tit_author">커뮤니티 인기글</span>
+									</span>
+								</span>
+							</li>
+							<li>
+								<span class="img_thumb"><img src="http://img.enuri.info/images/mobile_v2/@main-news-thumb.jpg" alt=""></span>
+								<span class="txt_info">
+									<span class="txt_tit">신학기 노트북 길라잡이, 2019 학업용 노트북 포인트는 이것! 신학기 노트북 길라잡이</span>
+									<span class="group_info">
+										<span class="tit_author">커뮤니티 인기글</span>
+									</span>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<!-- // 쇼핑지식 -->
+
+					<!-- 에누리 추천 상품 -->
+					<div class="m_recom_goods m_card_type">
+						<div class="card__head">
+							<p class="card__tit">에누리 추천 상품</p>
+							<a href="#" class="btn__card_more">더보기</a>
+						</div>
+						<ul class="card__goods">
+							<!-- 카드 타입 1 : 운영상품카드 -->
+							<li>
+								<span class="img_goods"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_card_01.jpg" alt=""></span>
+								<span class="group_info">
+									<span class="info_head">
+										<!-- 쇼핑몰 아이콘 -->
+										<span class="info_mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_4027.png" alt="">
+										</span>
+										<!-- 평점 -->
+										<span class="group_grade">
+											<span class="ico_grade comm__sprite">
+												<!-- 획득한 별표 width에 %로 입력 -->
+												<span class="ico_grade_gauge comm__sprite" style="width:50%"></span>
+											</span>
+											<span class="txt_score"><em>4.8</em> (150)</span>
+											<!-- 구매함 -->
+											<!-- <span class="txt_purchased">4,868개 구매</span> -->
+										</span>
+										<!-- 찜버튼 -->
+										<button class="btn__zzim">찜버튼</button>
+										<!-- 광고상품 아이콘 -->
+										<!-- <span class="ico__ad comm__sprite">AD</span> -->
+									</span>
+									<!-- 상품명 -->
+									<span class="info_goods_tit">
+										장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+									</span>
+									<span class="info_price">
+										<span class="txt_price">
+											<!-- 할인율 -->
+											<!-- <span class="txt_sale_rate">40%</span> -->
+											<!-- 최저가 등 접두어 -->
+											<span class="txt_prefix">최저가</span>
+											<!-- 할인가격 -->
+											<strong>1,123,456,789</strong>원
+											<!-- 기존가격 -->
+											<!-- <del class="txt_price_origin">1,123,456,789원</del> -->
+										</span>
+										<!-- 가격비교 -->
+										<span class="btn__compare">가격비교 (12)</span>
+									</span>
+								</span>
+							</li>
+							<!-- // 카드 타입 1 : 운영상품카드 -->
+							<!-- 카드 타입 2 : 자동상품카드 -->
+							<li>
+								<span class="img_goods"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_card_02.jpg" alt=""></span>
+								<span class="group_info">
+									<span class="info_head">
+										<!-- 쇼핑몰 아이콘 -->
+										<span class="info_mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_5910.png" alt="">
+										</span>
+										<!-- 평점 -->
+										<span class="group_grade">
+											<!-- 구매함 -->
+											<span class="txt_purchased">4,868개 구매</span>
+										</span>
+										<!-- 찜버튼 -->
+										<button class="btn__zzim on">찜버튼</button>
+									</span>
+									<!-- 상품명 -->
+									<span class="info_goods_tit">
+										장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+									</span>
+									<span class="info_price">
+										<span class="txt_price">
+											<!-- 할인율 -->
+											<span class="txt_sale_rate">40%</span>
+											<!-- 할인가격 -->
+											<strong>1,123,456,789</strong>원
+											<!-- 기존가격 -->
+											<del class="txt_price_origin">1,123,456,789원</del>
+										</span>
+									</span>
+								</span>
+							</li>
+							<!-- // 카드 타입 2 : 자동상품카드 -->
+							<!-- (사용안함) 카드 타입 3 : 광고상품카드 -->							
+							<li style="display:none">
+								<span class="img_goods"><img src="http://img.enuri.info/images/mobile_v2/@bnr_main_card_01.jpg" alt=""></span>
+								<span class="group_info">
+									<span class="info_head">
+										<!-- 쇼핑몰 아이콘 -->
+										<span class="info_mall">
+											<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_6641.png" alt="">
+										</span>
+										<!-- 광고상품 아이콘 -->
+										<span class="ico__ad comm__sprite">AD</span>
+									</span>
+									<!-- 상품명 -->
+									<span class="info_goods_tit">
+										장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+									</span>
+									<span class="info_price">
+										<span class="txt_price">
+											<!-- 최저가 등 접두어 -->
+											<span class="txt_prefix">특별가</span>
+											<!-- 할인가격 -->
+											<strong>1,123,456,789</strong>원
+										</span>
+									</span>
+								</span>
+							</li>
+							<!-- // (사용안함) 카드 타입 3 : 광고상품카드 -->
+							<!-- 카드 타입 4 : 단일 배너 타입 -->
+							<li class="type_bnr">
+								<a href="#"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/hometab_guide_956591.jpg" alt=""></a>
+							</li>
+							<!-- // 카드 타입 4 : 단일 배너 타입 -->
+							<!-- 카드 타입 5 : 멀티 배너 타입 -->
+							<li class="type_multi">
+								<div class="slide_recomm swiper-container noswipe">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide">
+											<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/hometab_bner_20190705102600.jpg" alt="">
+										</div>
+										<div class="swiper-slide">
+											<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/hometab_bner_20190712438000.jpg" alt="">
+										</div>
+										<div class="swiper-slide">
+											<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/hometab_bner_20190710155130.jpg" alt="">
+										</div>
+									</div>									
+								</div>
+							</li>
+							<!-- // 카드 타입 5 : 멀티 배너 타입 -->
+							<script>
+								// 슬라이드 배너 타입 스와이퍼 생성
+								$(function(){
+									var $recommSlide = $(".type_multi .swiper-container");
+									$recommSlide.each(function(){
+										var bannerSwiper = new Swiper(this,{
+											watchActiveIndex: true,
+											autoHeight : true,
+											autoplayDisableOnInteraction : false,
+											speed : 800,
+											loop : false,
+											spaceBetween : 8,
+											slidesPerView : 2.4,
+											breakpoints : {
+												640 : {
+													slidesPerView : 1.2,
+													spaceBetween : 8
+												}
+											}
+										});
+									})
+								});
+							</script>
+						</ul>
+					</div>
+					<!-- // 에누리 추천 상품 -->
+
+					<!-- 인기쇼핑몰 -->
+					<div class="m_mall_list m_card_type">
+						<div class="card__head">
+							<p class="card__tit">인기 쇼핑몰</p>
+						</div>
+						<ul class="mall__list">
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_536.png" alt="G마켓"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_4027.png" alt="옥션"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_5910.png" alt="11번가"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_55.png" alt="인터파크"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_6665.png" alt="SSG"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_49.png" alt="롯데닷컴"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_57.png" alt="현대H몰"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_90.png" alt="AKMall"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_75.png" alt="GS SHOP"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_806.png" alt="CJ Mall"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_663.png" alt="롯데홈쇼핑"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_6588.png" alt="홈앤쇼핑"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_6508.png" alt="위메프"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_6641.png" alt="티몬"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_7861.png" alt="쿠팡"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_7692.png" alt="G9"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_6547.png" alt="elLotte"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_6620.png" alt="갤러리아"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_974.png" alt="NSmall"></a></li>
+							<li><a href="#"><img src="http://img.enuri.info/images/mobile_v2/logo/Ap_logo_7935.png" alt="공영쇼핑"></a></li>
+						</ul>
+					</div>
+					<!-- // 인기쇼핑몰 -->
+
+				</div>
+				<!-- // 메인탭 :: 홈 -->
+
+				<!-- 메인탭 :: 핫딜베스트 // index_tab_hotdeal.html -->
+				<div id="tab_best" class="swiper-slide m_main_tab">
+					<div class="hotdeal_head">
+						<!-- 핫딜베스트 탭 -->
+						<ul class="m__comm_tab">
+							<li class="on btn__sideL">몰별 베스트</li>
+							<li class="btn__sideR">카테고리</li>
+						</ul>
+					</div>
+					<div class="hotdeal_inner">
+						<!-- 몰별베스트 -->
+						<div class="best__group best__group_mall">
+							<ul class="m_shortcut">
+								<li class="on">
+									<a href="#">
+										<span class="ico_supderdeal home__sprite">슈퍼딜</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_allkill home__sprite">올킬</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_shockingdeal home__sprite">쇼킹딜</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_tmon home__sprite">티몬</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_wmk home__sprite">위메프</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_ssendeal home__sprite">쎈딜</span>
+									</a>
+								</li>
+							</ul>
+
+							<ul class="card__goods">
+								<!-- 카드 타입 2 : 자동상품카드 -->
+								<li>
+									<!-- 상품 기본 이미지 -->
+									<span class="img_goods"><img src="http://img.enuri.info/images/m_home/noimg.png" alt=""></span>
+									<!-- // -->
+									<span class="group_info">
+										<span class="info_head">
+											<!-- 쇼핑몰 아이콘 -->
+											<span class="info_mall">
+												<img src="http://img.enuri.com/images/mobilefirst/main/shoplogo/allkill.png" alt="">
+											</span>
+											<!-- 평점 -->
+											<span class="group_grade">
+												<!-- 구매함 -->
+												<span class="txt_purchased">4,868개 구매</span>
+											</span>
+											<!-- 찜버튼 -->
+											<button class="btn__zzim">찜버튼</button>
+										</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<span class="txt_price">
+												<!-- 할인율 -->
+												<span class="txt_sale_rate">40%</span>
+												<!-- 할인가격 -->
+												<strong>1,123,456,789</strong>원
+												<!-- 기존가격 -->
+												<del class="txt_price_origin">1,123,456,789원</del>
+											</span>
+										</span>
+									</span>
+								</li>
+								<!-- // 카드 타입 2 : 자동상품카드 -->
+								<li>
+									<span class="img_goods"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt=""></span>
+									<span class="group_info">
+										<span class="info_head">
+											<!-- 쇼핑몰 아이콘 -->
+											<span class="info_mall">
+												<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_5910.png" alt="">
+											</span>
+											<!-- 평점 -->
+											<span class="group_grade">
+												<!-- 구매함 -->
+												<span class="txt_purchased">4,868개 구매</span>
+											</span>
+											<!-- 찜버튼 -->
+											<button class="btn__zzim">찜버튼</button>
+										</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<span class="txt_price">
+												<!-- 할인율 -->
+												<span class="txt_sale_rate">40%</span>
+												<!-- 할인가격 -->
+												<strong>1,123,456,789</strong>원
+												<!-- 기존가격 -->
+												<del class="txt_price_origin">1,123,456,789원</del>
+											</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img_goods"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt=""></span>
+									<span class="group_info">
+										<span class="info_head">
+											<!-- 쇼핑몰 아이콘 -->
+											<span class="info_mall">
+												<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_5910.png" alt="">
+											</span>
+											<!-- 평점 -->
+											<span class="group_grade">
+												<!-- 구매함 -->
+												<span class="txt_purchased">4,868개 구매</span>
+											</span>
+											<!-- 찜버튼 -->
+											<button class="btn__zzim">찜버튼</button>
+										</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<span class="txt_price">
+												<!-- 할인율 -->
+												<span class="txt_sale_rate">40%</span>
+												<!-- 할인가격 -->
+												<strong>1,123,456,789</strong>원
+												<!-- 기존가격 -->
+												<del class="txt_price_origin">1,123,456,789원</del>
+											</span>
+										</span>
+									</span>
+								</li>
+							</ul>
+						</div>
+
+						<!-- 카테고리 -->
+						<div class="best__group best__group_cate invisible">
+							<ul class="m_shortcut">
+								<li class="on">
+									<a href="#">
+										<span class="ico_elec home__sprite"></span>
+										<span class="txt_cate_name">가전/해외직구</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_tv home__sprite"></span>
+										<span class="txt_cate_name">TV/영상/디카</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_pc home__sprite"></span>
+										<span class="txt_cate_name">컴퓨터/노트북</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_tablet home__sprite"></span>
+										<span class="txt_cate_name">태블릿/모바일</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_sports home__sprite"></span>
+										<span class="txt_cate_name">스포츠/자동차</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_kids home__sprite"></span>
+										<span class="txt_cate_name">유아/식품</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_funi home__sprite"></span>
+										<span class="txt_cate_name">가구/생활</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_fashion home__sprite"></span>
+										<span class="txt_cate_name">패션/화장품</span>
+									</a>
+								</li>
+							</ul>
+
+							<ul class="card__goods">
+								<!-- 카드 타입 2 : 자동상품카드 -->
+								<li>
+									<span class="img_goods"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt=""></span>
+									<span class="group_info">
+										<span class="info_head">
+											<!-- 쇼핑몰 아이콘 -->
+											<span class="info_mall">
+												<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_5910.png" alt="">
+											</span>
+											<!-- 평점 -->
+											<span class="group_grade">
+												<!-- 구매함 -->
+												<span class="txt_purchased">4,868개 구매</span>
+											</span>
+											<!-- 찜버튼 -->
+											<button class="btn__zzim">찜버튼</button>
+										</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<span class="txt_price">
+												<!-- 할인율 -->
+												<span class="txt_sale_rate">40%</span>
+												<!-- 할인가격 -->
+												<strong>1,123,456,789</strong>원
+												<!-- 기존가격 -->
+												<del class="txt_price_origin">1,123,456,789원</del>
+											</span>
+										</span>
+									</span>
+								</li>
+								<!-- // 카드 타입 2 : 자동상품카드 -->
+								<li>
+									<span class="img_goods"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt=""></span>
+									<span class="group_info">
+										<span class="info_head">
+											<!-- 쇼핑몰 아이콘 -->
+											<span class="info_mall">
+												<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_5910.png" alt="">
+											</span>
+											<!-- 평점 -->
+											<span class="group_grade">
+												<!-- 구매함 -->
+												<span class="txt_purchased">4,868개 구매</span>
+											</span>
+											<!-- 찜버튼 -->
+											<button class="btn__zzim">찜버튼</button>
+										</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<span class="txt_price">
+												<!-- 할인율 -->
+												<span class="txt_sale_rate">40%</span>
+												<!-- 할인가격 -->
+												<strong>1,123,456,789</strong>원
+												<!-- 기존가격 -->
+												<del class="txt_price_origin">1,123,456,789원</del>
+											</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img_goods"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt=""></span>
+									<span class="group_info">
+										<span class="info_head">
+											<!-- 쇼핑몰 아이콘 -->
+											<span class="info_mall">
+												<img src="http://img.enuri.info/images/view/ls_logo/2019/Ap_logo_5910.png" alt="">
+											</span>
+											<!-- 평점 -->
+											<span class="group_grade">
+												<!-- 구매함 -->
+												<span class="txt_purchased">4,868개 구매</span>
+											</span>
+											<!-- 찜버튼 -->
+											<button class="btn__zzim">찜버튼</button>
+										</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<span class="txt_price">
+												<!-- 할인율 -->
+												<span class="txt_sale_rate">40%</span>
+												<!-- 할인가격 -->
+												<strong>1,123,456,789</strong>원
+												<!-- 기존가격 -->
+												<del class="txt_price_origin">1,123,456,789원</del>
+											</span>
+										</span>
+									</span>
+								</li>
+							</ul>
+						</div>
+						
+					</div>
+					<script>
+						// 퍼블리싱 확인용
+						$(".hotdeal_head .m__comm_tab").find("li").click(function(){
+							var _idx = $(this).index();
+							var $goods = $(".hotdeal_inner .best__group");
+							$(this).addClass("on").siblings().removeClass("on");
+							$goods.eq(_idx).removeClass("invisible").siblings().addClass("invisible");
+							mvScrTop();// 스크롤 이동
+							cntSwiper.update(); // 탭 리사이즈
+						})
+
+						$(".best__group .m_shortcut li").click(function(e){
+							e.preventDefault();
+							$(this).addClass("on").siblings().removeClass("on")
+						})
+					</script>
+				</div>
+				<!-- // 메인탭 :: 핫딜베스트 -->
+
+				<!-- 메인탭 :: 시즌탭 // index_tab_season.html-->
+				<div id="tab_season" class="swiper-slide m_main_tab">
+					<div class="season_wrap">
+						<img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126151623026.gif" alt="" class="m_img" data-url="" data-num="0">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191127131606027.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=1&amp;freetoken=event" data-num="1">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191127131618027.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=1&amp;freetoken=event" data-num="2">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191127131626027.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=1&amp;freetoken=event" data-num="3">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126152025026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=2&amp;freetoken=event" data-num="4">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126152035026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=3&amp;freetoken=event" data-num="5">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126152043026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=4&amp;freetoken=event" data-num="6">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126152049026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=5&amp;freetoken=event" data-num="7">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126152059026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=6&amp;freetoken=event" data-num="8">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126152106026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=7&amp;freetoken=event" data-num="9">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126153558026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019.jsp?tab=7&amp;freetoken=event" data-num="10">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126153600026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019_evt.jsp?tab=evt1&amp;freetoken=event" data-num="11">        <img src="http://storage.enuri.gscdn.com/pic_upload/season_tab/20191126153608026.jpg" alt="" class="m_img" data-url="/mobilefirst/event2019/xmas_2019_evt.jsp?tab=evt2&amp;freetoken=event" data-num="12">
+					</div>
+				</div>
+				<!-- // 메인탭 :: 시즌탭 -->
+
+				<!-- 메인탭 :: 트랜드픽업 // index_tab_trend.html-->
+				<div id="tab_trend" class="swiper-slide m_main_tab">
+					<div class="m_trend_inner">
+						<ul class="trend_pickup__list">
+							<!-- 트랜드 픽업 타입_a/d타입 -->
+							<li class="trend_pickup__type_a">
+								<div class="card__head">
+									<p class="card__tit">짱짱한 정리수납</p>
+									<span class="card__sub">추천정리수납으로 퍼펙트하게~</span>
+									<a href="#" class="btn__card_more">더보기</a>
+								</div>
+								<div class="card__cnt">
+									<!-- AD 아이콘 -->
+									<div class="ico__trend_ad comm__sprite">AD</div>
+									<!-- // -->
+									<div class="card__img">
+										<img src="http://img.enuri.info/images/mobile_v2/@trend_pickup__bnr_01.jpg" alt="">
+									</div>
+									<!-- A타입 일때 style 제거 / c타입일때 style에 background-color 넣어주세요 -->
+									<div class="card__goods" style="background-color:#d6f0ef">
+										<ul class="trend_pickup__goods">
+											<!-- 상품아이템  -->
+											<li>
+												<div class="goods__inner">
+													<div class="goods__img">
+														<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+													</div>
+													<div class="goods__price">
+														<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+														<span class="goods__price"><strong>299,000</strong>원</span>
+													</div>
+												</div>
+											</li>
+											<!-- // 상품아이템  -->
+											<li>
+												<div class="goods__inner">
+													<div class="goods__img">
+														<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+													</div>
+													<div class="goods__price">
+														<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+														<span class="goods__price"><strong>299,000</strong>원</span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="goods__inner">
+													<div class="goods__img">
+														<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+													</div>
+													<div class="goods__price">
+														<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+														<span class="goods__price"><strong>299,000</strong>원</span>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<!-- // 트랜드 픽업 타입_a -->
+
+							<!-- 트랜드 픽업 타입_c -->
+							<li class="trend_pickup__type_c">
+								<div class="card__head">
+									<p class="card__tit">짱짱한 정리수납</p>
+									<span class="card__sub">추천정리수납으로 퍼펙트하게~</span>
+									<a href="#" class="btn__card_more">더보기</a>
+								</div>
+								<div class="card__cnt">
+									<!-- AD 아이콘 -->
+									<div class="ico__trend_ad comm__sprite">AD</div>
+									<!-- // -->
+									<!-- B타입은 인라인 스타일로 컬러 넣어주세요 -->
+									<div class="card__info" style="background-color:#f2fcff">
+										<div class="info__inner">
+											<span class="info__tit" style="color:#30a7f6">홈트레이닝 이슈 키워드!</span>
+											<span class="info__sub">키워드로 만나는 Best 홈트레이닝!</span>
+											<div class="info__hash">
+												<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">스쿼트머신</a>
+												<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">꺼꾸리</a>
+												<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">승마기</a>
+												<a href="#" class="btn__hash" style="border-color:#30a7f6;color:#30a7f6">삼성노트북</a>
+											</div>
+										</div>
+									</div>									
+									<div class="card__goods">
+										<ul class="trend_pickup__goods">
+											<!-- 상품아이템  -->
+											<li>
+												<div class="goods__inner">
+													<div class="goods__img">
+														<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+													</div>
+													<div class="goods__price">
+														<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+														<span class="goods__price"><strong>299,000</strong>원</span>
+													</div>
+												</div>
+											</li>
+											<!-- // 상품아이템  -->
+											<li>
+												<div class="goods__inner">
+													<div class="goods__img">
+														<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+													</div>
+													<div class="goods__price">
+														<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+														<span class="goods__price"><strong>299,000</strong>원</span>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div class="goods__inner">
+													<div class="goods__img">
+														<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+													</div>
+													<div class="goods__price">
+														<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+														<span class="goods__price"><strong>299,000</strong>원</span>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<!-- // 트랜드 픽업 타입_c -->
+
+							<!-- 트랜드 픽업 타입_e -->
+							<li class="trend_pickup__type_e">
+								<div class="card__head">
+									<p class="card__tit">짱짱한 정리수납</p>
+									<span class="card__sub">추천정리수납으로 퍼펙트하게~</span>
+									<a href="#" class="btn__card_more">더보기</a>
+								</div>
+								<div class="card__cnt">
+									<div class="card__img">
+										<img src="http://img.enuri.info/images/mobile_v2/@trend_pickup__bnr_02.jpg" alt="">
+									</div>
+								</div>
+							</li>
+							<!-- // 트랜드 픽업 타입_e -->
+						</ul>
+					</div>
+				</div>
+				<!-- // 메인탭 :: 트랜드픽업 -->
+
+				<!-- 메인탭 :: 이벤트/기획전 // index_tab_event.html-->
+				<div id="tab_event" class="swiper-slide m_main_tab">
+					<div class="event_head">
+						<!-- 이벤트 탭 -->
+						<ul class="m__comm_tab">
+							<li class="on btn__sideL">인기 기획전</li>
+							<li class="btn__sideR">이벤트 혜택</li>
+						</ul>
+					</div>
+					<div class="event_inner">
+						<!-- 인기기획전 -->
+						<div class="evt_group evt_group_popular">
+							<ul class="popular__list">
+								<li class="bnr-only">
+									<span class="bnr__img">
+										<img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190614050505/B_20190614050505_main.png" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190614050505/B_20190614050505_main.png" alt="">
+									</span>
+									<!-- 상품영역 - 모바일웹 비노출 -->
+									<!-- <div class="evt_bnr__goods noswipe">
+										<ul>
+											<li>
+												<div class="goods__img">
+													<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+												</div>
+												<div class="goods__price">
+													<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+													<span class="goods__price"><strong>299,000</strong>원</span>
+												</div>
+											</li>
+											<li>
+												<div class="goods__img">
+													<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+												</div>
+												<div class="goods__price">
+													<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+													<span class="goods__price"><strong>299,000</strong>원</span>
+												</div>
+											</li>
+											<li>
+												<div class="goods__img">
+													<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mainTrendPick/goods/batch_111.jpg" alt="">
+												</div>
+												<div class="goods__price">
+													<span class="goods__tit">삼성노트북PenS 950SBE-X58A</span>
+													<span class="goods__price"><strong>299,000</strong>원</span>
+												</div>
+											</li>
+											<li class="btn__goods_more">더보기</li>
+										</ul>
+									</div> -->
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190626050505/B_20190626050505_main.png" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190626050505/B_20190626050505_main.png" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190626050505/B_20190626050505_main.png" alt="">
+									</span>
+								</li>
+							</ul>
+						</div>
+						<!-- // 인기기획전 -->
+						<!-- 이벤트혜택 -->
+						<div class="evt_group evt_group_benefit invisible">
+							<ul class="m_shortcut">
+								<li>
+									<a href="#">
+										<span class="ico_ben_01 home__sprite"></span>
+										<span class="txt_cate_name">출석체크</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_ben_02 home__sprite"></span>
+										<span class="txt_cate_name">첫구매</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_ben_03 home__sprite"></span>
+										<span class="txt_cate_name">구매혜택</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_ben_04 home__sprite"></span>
+										<span class="txt_cate_name">VIP</span>
+									</a>
+								</li>
+							</ul>
+							<ul class="benefit__list">
+								<li>
+									<span class="bnr__img">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/190627111310_main.jpg" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/190627111310_main.jpg" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/190627111310_main.jpg" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/190627111310_main.jpg" alt="">
+									</span>
+								</li>
+								<li>
+									<span class="bnr__img">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/190627111310_main.jpg" alt="">
+									</span>
+								</li>
+							</ul>
+							<a href="#" class="btn_benefit_noti">당첨자/공지</a>
+						</div>
+						<!-- // 이벤트혜택 -->
+					</div>
+					<script>
+						// 퍼블리싱 확인용
+						$(".event_head .m__comm_tab").find("li").click(function(){
+							var _idx = $(this).index();
+							var $goods = $(".event_inner .evt_group");
+							$(this).addClass("on").siblings().removeClass("on");
+							$goods.eq(_idx).removeClass("invisible").siblings().addClass("invisible");
+							mvScrTop();// 스크롤 이동
+							cntSwiper.update(); // 탭 리사이즈
+						})
+					</script>
+				</div>
+				<!-- // 메인탭 :: 이벤트/기획전 -->
+
+				<!-- 메인탭 :: 쇼핑지식 // index_tab_knowcom.html-->
+				<div id="tab_knowcom" class="swiper-slide m_main_tab">
+					<!-- 오늘의 뉴스 -->
+					<div class="m_today_news m_card_type">
+						<div class="card__head">
+							<p class="card__tit">오늘의 뉴스</p>
+							<a href="/knowcom/news.jsp" class="btn__card_more">더보기</a>
+						</div>
+						<div class="news__inner">
+							<!-- 상단 가로 이미지형 -->
+							<ul class="news__list_a">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5pbG92ZXBjLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzMwNjUzXzUyODIzXzQxMy5qcGc=_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+							</ul>
+							<!-- // 상단 가로 이미지형 -->
+							<!-- 하단 세로 이미지형 -->
+							<ul class="news__list_b">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTM4XzE1MTIwM18xMzM3LmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo"><img src="http://storage.enuri.info/pic_upload/knowbox/news_source/2018011004.png" alt=""></span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTc1XzE1MTI2OF8zNTQxLmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">케이벤치</span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/enurinews/2019/m1_20197813159.jpg" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo"><img src="http://storage.enuri.info/pic_upload/knowbox/news_source/2018011417.png" alt=""></span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/enurinews/2019/m1_20197813159.jpg" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo"><img src="http://storage.enuri.info/pic_upload/knowbox/news_source/2018011417.png" alt=""></span>|<span class="txt__date">2018-12-10</span>
+										</span>
+									</span>
+								</li>
+							</ul>
+							<!-- // 하단 세로 이미지형 -->
+						</div>
+					</div>
+					<!-- // 오늘의 뉴스 -->
+
+					<!-- 뉴스카테고리 -->
+					<ul class="m_shortcut m_shortcut__knowcom">
+						<li><a href="/knowcom/news.jsp?cateno=1">디지털/가전</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=2">컴퓨터</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=3">자동차/레저</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=4">유아/라이프</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=5">스포츠/연예</a></li>
+						<li><a href="/knowcom/news.jsp?cateno=6">게임 갤러리</a></li>
+					</ul>
+					<!-- // -->
+
+					<!-- 쇼핑지식 이벤트 배너 -->
+					<!-- inline-style로 background-color 넣어주세요. -->
+					<div class="bnr_aside" style="background:#fbe8e7">
+						<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_bottom_home.png" alt=""></a>
+					</div>
+					<!-- // 쇼핑지식 이벤트 배너 -->
+
+					<!-- 커뮤니티 인기글 -->
+					<div class="m_pop_comm m_card_type">
+						<div class="card__head">
+							<p class="card__tit">커뮤니티 인기글</p>
+							<a href="/knowcom/board.jsp?bbsname=nuri" class="btn__card_more">더보기</a>
+						</div>
+						<div class="news__inner">
+							<!-- 상단 가로 이미지형 -->
+							<ul class="news__list_a">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5pbG92ZXBjLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzMwNjUzXzUyODIzXzQxMy5qcGc=_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt=""></span>
+									<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+								</li>
+							</ul>
+							<!-- // 상단 가로 이미지형 -->
+							<!-- 하단 세로 리스트형 -->
+							<ul class="news__list_c">
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">삼성 펀치홀 카메라 작동 영상 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+								<li><span class="txt__tit">어머니가 탕수육을 싫어하셨던 이유 <span class="num_reply">(10)</span></span></li>
+							</ul>
+							<!-- // 하단 세로 리스트형 -->
+						</div>
+					</div>
+					<!-- // 커뮤니티 인기글 -->
+
+					<!-- 쇼핑지식 인기 메뉴 -->
+					<div class="m_pop_menu m_card_type">
+						<div class="card__head">
+							<p class="card__tit">쇼핑지식 인기 메뉴</p>
+							<a href="/knowcom/index.jsp" class="btn__card_more">더보기</a>
+						</div>
+						<ul class="m_shortcut m_shortcut__knowcom">
+							<li><a href="/knowcom/news.jsp">뉴스</a></li>
+							<li><a href="/knowcom/guide.jsp">구매가이드</a></li>
+							<li><a href="/knowcom/board.jsp?bbsname=review">사용기</a></li>
+							<li><a href="/knowcom/board.jsp?bbsname=nuri">자유게시판</a></li>
+							<li><a href="/knowcom/enuritv.jsp?bbsname=enuritv">에누리TV</a></li>
+							<li><a href="/knowcom/exp.jsp">무료체험단</a></li>
+						</ul>
+					</div>
+					<!-- // 쇼핑지식 인기 메뉴 -->
+
+					<!-- 투데이 HOT CLIP -->
+					<div class="m_today_hotclip m_card_type">
+						<div class="card__head">
+							<p class="card__tit">투데이 HOT CLIP</p>							
+						</div>
+						<div class="news__inner">
+							<!-- 상단 가로 이미지 슬라이드형 -->
+							<div class="news__list_d noswipe scroller">
+								<ul class="scroll-cont">
+									<li>
+										<span class="img__clip">
+											<!-- 태그 - 분류 -->
+											<span class="tag__cate">스포츠</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5pbG92ZXBjLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzMwNjUzXzUyODIzXzQxMy5qcGc=_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+									<li>
+										<span class="img__clip">
+											<span class="tag__cate">연예</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+									<li>
+										<span class="img__clip">
+											<span class="tag__cate">코스프레</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+									<li>
+										<span class="img__clip">
+											<span class="tag__cate">스포츠</span>
+											<img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cHM6Ly93d3cuMGRiLmNvLmtyL3Jzcy9maWxlcy9hdHRhY2gvaW1hZ2VzLzE3Mi83NDIvNzkxL2E3M2VmZGQ5MzE0MTM2YmVhMThkM2U2YmVlMTBhYmZjLmpwZw==_s" alt="">
+										</span>
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+									</li>
+								</ul>
+							</div>
+							<!-- // 단 가로 이미지 슬라이드형 -->
+						</div>
+					</div>
+					<!-- // 투데이 HOT CLIP -->
+
+					<!-- 에누리 TV -->
+					<div class="m_enuri_tv m_card_type">
+						<div class="card__head">
+							<p class="card__tit">에누리 TV</p>
+							<a href="/knowcom/enuritv.jsp?bbsname=enuritv" class="btn__card_more">더보기</a>
+						</div>
+						<div class="news__inner">
+							<!-- 하단 세로 이미지형 + 비디오형 -->
+							<ul class="news__list_b enuri_tv__list">
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTM4XzE1MTIwM18xMzM3LmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">영태형TV</span>|<span class="txt__date">2019-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/knowbox_rss/aHR0cDovL3d3dy5uZXdzdGFwLmNvLmtyL25ld3MvcGhvdG8vMjAxOTA3LzkyMTc1XzE1MTI2OF8zNTQxLmpwZw==_s" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">엠브로TV</span>|<span class="txt__date">2019-12-10</span>
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="img__news"><img src="http://storage.enuri.info/pic_upload/enurinews/2019/m1_20197813159.jpg" alt=""></span>
+									<span class="group__info">
+										<span class="txt__tit">게이머를 위해 모든 것을 일신하다! AMD 라데온 RX 5700·RX 5700 XT 벤치마크</span>
+										<span class="txt__info">
+											<span class="ico__logo">야식이TV</span>|<span class="txt__date">2019-12-10</span>
+										</span>
+									</span>
+								</li>
+							</ul>
+							<!-- // 하단 세로 이미지형 -->
+						</div>
+					</div>
+					<!-- // 에누리 TV -->
+
+				</div>
+				<!-- // 메인탭 :: 쇼핑지식 -->
+
+				<!-- 메인탭 :: 특가모음 // index_tab_sale.html-->
+				<div id="tab_sale" class="swiper-slide m_main_tab">
+					<div class="saletab_head">
+						<!-- 특가모음 탭 -->
+						<ul class="m__comm_tab">
+							<!-- 활성화시에 .on 붙여주세요 -->
+							<li class="on btn__sideL">쇼핑몰별 특가</li>
+							<li class="btn__sideR">카테고리</li>
+						</ul>
+					</div>
+					<div class="saletab_inner">
+						<!-- 쇼핑몰별 특가 -->
+						<div class="sale__group sale__group_mall">
+							<ul class="m_shortcut">
+								<li class="on">
+									<a href="#">
+										<span class="ico_gmkt mall__sprite">G마켓</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_iac mall__sprite">옥션</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_11st mall__sprite">11번가</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_intpark mall__sprite">인터파크</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_cjmall mall__sprite">CJ Mall</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_nsmall mall__sprite">NSmall</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_ssgmall mall__sprite">SSG</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_qoo10 mall__sprite">Qoo10</span>
+									</a>
+								</li>
+							</ul>
+							<!-- 특가 상품카드 -->
+							<ul class="card__sale_goods">
+								<!-- 상품카드 -->
+								<li>
+									<!-- 순위 -->
+									<span class="tag_rank">1</span>
+									<!-- // -->
+									<span class="img_goods">										
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<!-- 배송정보 -->
+										<span class="info_delivery">무료배송</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<!-- 할인가격 -->
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<!-- //상품카드 -->
+								<li>
+									<span class="tag_rank">2</span>
+									<span class="img_goods">										
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="tag_rank">3</span>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="tag_rank">4</span>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<!-- 상품카드 -->
+								<li>
+									<span class="tag_rank">5</span>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<!-- 배송정보 -->
+										<span class="info_delivery">무료배송</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<!-- 할인가격 -->
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<!-- //상품카드 -->
+								<li>
+									<span class="tag_rank">6</span>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="tag_rank">7</span>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="tag_rank">8</span>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+							</ul>			
+							<!-- // 특가 상품카드 -->			
+						</div>
+
+						<!-- 카테고리 -->
+						<div class="sale__group sale__group_cate invisible">
+							<ul class="m_shortcut">
+								<li class="on">
+									<a href="#">
+										<span class="ico_elec home__sprite"></span>
+										<span class="txt_cate_name">가전/해외직구</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_tv home__sprite"></span>
+										<span class="txt_cate_name">TV/영상/디카</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_pc home__sprite"></span>
+										<span class="txt_cate_name">컴퓨터/노트북</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_tablet home__sprite"></span>
+										<span class="txt_cate_name">태블릿/모바일</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_sports home__sprite"></span>
+										<span class="txt_cate_name">스포츠/자동차</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_kids home__sprite"></span>
+										<span class="txt_cate_name">유아/식품</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_funi home__sprite"></span>
+										<span class="txt_cate_name">가구/생활</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="ico_fashion home__sprite"></span>
+										<span class="txt_cate_name">패션/화장품</span>
+									</a>
+								</li>
+							</ul>
+
+							<!-- 특가 상품카드 -->
+							<ul class="card__sale_goods">
+								<!-- 상품카드 -->
+								<li>
+									<span class="img_goods">
+										<img src="http://gdimg1.gmarket.co.kr/goods_image2/large_jpgimg/160/213/1602135649.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<!-- 배송정보 -->
+										<span class="info_delivery">무료배송</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<!-- 할인가격 -->
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<!-- //상품카드 -->
+								<li>
+									<span class="img_goods">										
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="img_goods">
+										<img src="http://gdimg1.gmarket.co.kr/goods_image2/large_jpgimg/160/213/1602135649.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<!-- 상품카드 -->
+								<li>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<!-- 배송정보 -->
+										<span class="info_delivery">무료배송</span>
+										<!-- 상품명 -->
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<!-- 할인가격 -->
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<!-- //상품카드 -->
+								<li>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+								<li>
+									<span class="img_goods">
+										<img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/mobile/admin/c_15673834.jpg" alt="">
+									</span>
+									<div class="group_info">
+										<span class="info_delivery">무료배송</span>
+										<span class="info_goods_tit">
+											장흥명품한우할인직판장 장흥한우 한우 구이 선물세트 한우할 인직판장 장흥한우 한우 구이 선물세트
+										</span>
+										<span class="info_price">
+											<strong>1,123,456,789</strong>원
+										</span>
+									</div>
+								</li>
+							</ul>				
+							<!-- // 특가 상품카드 -->			
+						</div>
+					</div>
+					<script>
+						// 퍼블리싱 확인용
+						$(".saletab_head .m__comm_tab").find("li").click(function(){
+							var _idx = $(this).index();
+							var $goods = $(".saletab_inner .sale__group");
+							$(this).addClass("on").siblings().removeClass("on");
+							$goods.eq(_idx).removeClass("invisible").siblings().addClass("invisible");
+							mvScrTop();// 스크롤 이동
+							cntSwiper.update(); // 탭 리사이즈
+						})
+
+						$(".sale__group .m_shortcut li").click(function(e){
+							e.preventDefault();
+							$(this).addClass("on").siblings().removeClass("on")
+						})
+					</script>
+				</div>
+				<!-- // 메인탭 :: 특가모음 -->
+
+				<!-- 메인탭 :: 히든탭 -->
+				<div id="tab_dummy" class="swiper-slide m_main_tab">
+					<span class="m_hidden_cnt">
+						<img src="http://img.enuri.info/images/mobile_v2/m_hidden_visual.jpg" alt="">
+					</span>
+					<span class="m_hidden_cnt">
+						<img src="http://img.enuri.info/images/mobile_v2/m_hidden_cnt.png" alt="">
+					</span>
+					<a href="#" class="btn_hidden_app">
+						<span class="txt_btn_app">앱 다운로드</span>
+					</a>
+					<span class="txt_hidden_noti">혜택은 당사 사정에 따라 변경/종료 될 수 있습니다.</span>
+				</div>
+				<!-- // 메인탭 :: 히든탭 -->
+			</div>
+        </div>
+
+	</section>
+
+	<!-- 공통 : 하단 배너 영역 -->
+	<aside class="common_bnr">	
+		
+		<!-- 패밀리 앱 다운로드 -->
+		<ul class="another_app_list">
+			<li class="btn_app_smart">
+				<a href="#">스마트 택배 다운받기</a>
+			</li>
+			<li class="btn_app_social">
+				<a href="#">소셜가격비교 다운받기</a>
+			</li>
+		</ul>
+		<!-- // -->		
+
+		<!-- 공통 : 하단 배너 -->
+		<!-- 배경색은 inline-style로 넣어주세요 -->
+		<div class="aside_bnr" style="background-color:#fbe8e7">
+			<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_bottom_home.png"></a>
+		</div>
+		<!-- // -->
+	</aside>
+	<!-- // -->
+
+	<!-- 공통 : 푸터 -->
+	<footer class="footer">
+		<div class="newquick">
+        	<p class="TBtn" onclick="goFooterTop();">TOP</p>
+    	</div>
+		<p class="legal_notices">
+			<span class="txt_tit">법적고지</span>
+			㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.
+		</p>
+		<p class="company_info">
+			<span class="txt_company_name">(주)써머스 플랫폼</span>
+			대표이사 : 김기범 / 사업자등록번호 : 206-81-18164 <br/>
+			통신판매신고 : 2015-서울중구-1046호<br/>
+			서울특별시 중구 퇴계로 18(남대문로5가) 9층<br/>
+			문의 : 02-6354-3601 / master@enuri.com<br/>
+		</p>
+		<p class="footer_menu">
+			<a href="#">이용약관</a>
+			<a href="#">개인정보처리방침</a>
+			<a href="#">법적고지</a>
+			<a href="#">PC버전</a>
+		</p>
+	</footer>
+</div>
+
+<script>
+	var cntSwiper;	
+	$(document).ready(function() {
+		// 상단 메뉴 생성
+		$(function(){
+			var navElem = ".m_nav_main .swiper-container";
+			var $navItem = $(navElem).find(".swiper-slide");
+			// 메뉴 탭 스와이퍼 생성
+			var navSwiper = new Swiper(navElem, {
+				loop : false,
+				slidesPerView : 'auto',
+				watchActiveIndex: true,
+				spceBeetween : 0
+			});
+			
+			// 홈탭 : 상위 스크롤시 검색창 노출 + 스크롤시 고정여부 판단
+			var position = $(window).scrollTop(); 
+			var $mainwrap = $("#wrap");
+            var posHeader = function(){
+				var $headWrap = $(".m_header_main"), // 헤더 영역
+				$navWrap = $(".m_nav_main"), // 메인 탭
+				$btnQuick = $(".footer .newquick"), // 우측 하단 탑 버튼
+				$nav = $(".m_nav_cont"), // 메인 탭 컨텐츠
+                $myScroll = $(window).scrollTop();
+                if ( $myScroll > $navWrap.offset().top ){
+					$navWrap.css("margin-top", $headWrap.outerHeight() );
+					$headWrap.addClass("fixed_top");
+					$nav.addClass("fixed_top");
+					$btnQuick.addClass("scr_mode");
+					if ( $myScroll > $navWrap.offset().top + 2 ){
+						if($myScroll > position)  $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+						else $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+					}else{
+						$mainwrap.removeClass("scr_down scr_up").addClass("scr_reset");
+					}
+				}else{
+					$navWrap.css("margin-top",0);
+					$headWrap.removeClass("fixed_top");
+					$nav.removeClass("fixed_top");
+					$btnQuick.removeClass("scr_mode");
+					$mainwrap.removeClass("scr_down scr_up scr_reset");
+				}
+				position = $myScroll;
+            };
+
+			$(window).load(posHeader).scroll(posHeader);
+			
+			// 메인 탭 스와이퍼 생성
+			var nowIdx = 1; // 현재 보고 있는 탭 idx 저장
+			cntSwiper = new Swiper(".m_main_swiper",{
+                watchActiveIndex: true,
+				autoHeight : true,
+				speed : 600,
+				loop : true,
+                spaceBeetween : 0,
+				noSwipingClass : 'noswipe',
+				shortSwipes : false,
+				longSwipes : true,
+				longSwipesMs : 150,
+				longSwipesRatio : .3,
+				iOSEdgeSwipeDetection : true,
+				onTransitionStart : function(e){
+					var _idx = e.realIndex;
+                    $(navElem).find(".swiper-slide").eq(_idx).addClass("on").siblings().removeClass("on");
+				},
+                onTransitionEnd  : function(e){
+					var _idx = e.realIndex;
+					// 탭 이동 후 스크롤Top의 위치를 변경합니다.
+					if ( nowIdx != _idx ){ // 탭 idx의 변화가 있을때만 스크롤 이동
+						mvScrTop();
+						nowIdx = _idx;
+					}
+                    navSwiper.slideTo(_idx-1);
+                }
+            });
+
+			// 메뉴탭 클릭 이벤트
+			$navItem.find("a").click(function(e){
+				e.preventDefault();
+				var index = $(this).parent().index();
+				cntSwiper.slideTo(index+1);
+			})
+
+			// 공통 : 찜버튼
+			var $btnZzim = $(".btn__zzim");
+			var $layZzim = $(".zzimly");
+			$btnZzim.on('click',function(){				
+				if ( !$(this).hasClass('on') ){
+					$layZzim.show();
+					setTimeout(function(){
+						$layZzim.fadeOut(300);
+					},500)
+					$(this).addClass('on anim');
+				}else{
+					$(this).removeClass('on anim');
+				}
+			})
+		})		
+	});
+	
+	// 홈탭 : 탭 이동시 스크롤 체크하여 네비탭으로 이동
+	function mvScrTop(){
+		var nowPos = $(window).scrollTop();
+		var $navPos = $(".m_nav").offset().top;
+		if ( nowPos > $navPos ){
+			$("html,body").stop(true,false).animate({"scrollTop":$navPos + 1},0);
+		}
+	}
+
+	function goFooterTop(){
+		$('html,body').scrollTop(0);
+	}	
+</script>
+</body>
+</html>

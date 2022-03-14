@@ -1,0 +1,491 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta property="og:title" content="에누리 가격비교"/>
+	<meta property="og:description" content="에누리 모바일 가격비교"/>
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/logo_enuri.png"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/vip.css?v=20190424"/>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div id="wrap">
+
+	<section id="vip_wrap_id" class="vip_wrap">
+        <div class="vip_cnt swiper-container">
+            <div class="swiper-wrapper">
+                <!-- Tab#4 :: 상품후기 -->
+                <div class="swiper-slide tab_review tab_cele">
+
+                    <div class="review_tab tab_group">
+                        <ul>
+                            <li class="on"><a href="#">포토후기</a>
+                            <li><a href="#">일반후기</a></li>
+                        </ul>
+                        <script>
+                            // 탭 작동 테스트
+                            $(function(){
+                                $(".review_tab").find("li").each(function(e){
+                                    var $this = $(this);
+                                    $this.find("a").click(function(i){
+                                        i.preventDefault();
+                                        if ( !$this.hasClass("on") ){
+                                            $this.addClass("on").siblings().removeClass("on");
+                                            $(".review_wrap").toggleClass("invisible");
+                                        }
+                                    })
+                                })
+                            })
+                        </script>
+                    </div>
+
+                    <!-- 포토후기 (일반상품평과 동일 / 이미지 박스만 추가된 형태 ) -->
+                    <div class="review_wrap">
+
+                        <!-- 190617 : 상품후기 없을때 -->
+                        <div class="no_posts">
+                            <div class="txt_tit">
+                                <strong>등록된 사용후기가 없습니다.</strong><br/>
+                                상품후기를 등록해주세요!<br/>
+                                <a href="#" class="btn_write_review">
+                                    <span>상품후기 작성</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- // -->
+
+                        <!-- 190617 : 필터로 검색시 상품평이 없을때 -->
+                        <div class="no_posts">
+                            <div class="txt_tit">
+                                <strong>해당하는 조건의 상품후기가 없습니다.</strong><br/>
+                                다른 조건으로 검색해주세요!<br/>
+                            </div>
+                        </div>
+                        <!-- // -->
+
+                        <div class="box_inner box_c_review">
+                            <div class="box_head">
+                                <p class="title">전체</p> 
+                                <span>(1,250)</span>
+                                
+                                <div class="select_menu">
+                                    <!-- 선택 - 평점전체 -->
+                                    
+                                    <!-- 190510 수정 - 평점 / 쇼핑몰 검색 셀렉트 박스 정렬 문제로 아래와 같이 마크업 수정되었습니다. -->
+                                    <!-- 셀렉트 박스 옵션 값이 수정되면 다음에 나오는 라벨 텍스트가 바뀌게 수정 부탁드립니다. -->
+                                    <div class="select_score_w selected">
+                                        <select name="__opt_select_score" onchange="selectToLabel(this)" class="select_score" id="" title="평점선택">
+                                            <option value="" selected="">평점전체</option>
+                                            <option value="">5점</option>
+                                            <option value="">4점</option>
+                                            <option value="">3점</option>
+                                            <option value="">2점</option>
+                                            <option value="">1점</option>
+                                        </select>
+                                        <label for="__opt_select_score">평점전체</label>
+                                    </div>
+                                    <div class="select_mall_w">
+                                        <select name="__opt_select_mall" onchange="selectToLabel(this)" class="select_mall" id="" title="쇼핑몰선택">
+                                            <option value="" selected="">쇼핑몰전체</option>
+                                            <option value="">G마켓</option>
+                                            <option value="">11번가</option>
+                                            <option value="">G9</option>
+                                            <option value="">신세계몰</option>
+                                        </select>
+                                        <label for="__opt_select_mall">쇼핑몰전체</label>
+                                    </div>
+                                    <script>
+                                        // 선택된 옵션값을 라벨에 복사
+                                        function selectToLabel(e){
+                                            var $label = $(e).next("label");
+                                            $label.html( e.options[e.selectedIndex].text );
+                                        }
+                                    </script>
+                                    <!-- //  -->
+                                    <!-- 기존내용 -->
+                                    <!-- <select name="__opt_select_score" class="select_score selected" id="" title="평점선택"> -->
+                                        <!-- <option value="" selected="">평점전체</option> -->
+                                        <!-- <option value="">5</option> -->
+                                        <!-- <option value="">4</option> -->
+                                        <!-- <option value="">3</option> -->
+                                        <!-- <option value="">2</option> -->
+                                        <!-- <option value="">1</option> -->
+                                    <!-- </select> -->
+                                    <!-- 선택 - 쇼핑몰전체 -->
+                                    <!-- <select name="__opt_select_mall" class="select_mall" id="" title="쇼핑몰선택"> -->
+                                        <!-- <option value="" selected="">쇼핑몰전체</option> -->
+                                        <!-- <option value="">G마켓</option> -->
+                                        <!-- <option value="">11번가</option> -->
+                                        <!-- <option value="">G9</option> -->
+                                        <!-- <option value="">신세계몰</option> -->
+                                    <!-- </select> -->
+                                    <!-- 버튼 - 후기작성 -->
+                                    <a href="#" class="btn_write">후기작성</a>
+                                </div>
+                            </div>
+                            
+                            <div class="box_cnt">
+                                <div class="kwd_list noswipe">
+                                    <ul>
+                                        <li class="selected"><a href="#">전체</a></li>
+                                        <li><a href="#">디자인</a></li>
+                                        <li><a href="#">사용성</a></li>
+                                        <li><a href="#">가격</a></li>
+                                        <li><a href="#">편의성</a></li>
+                                        <li><a href="#">사은품</a></li>
+                                        <li><a href="#">품질</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="board_list">
+                                    <li>
+                                        <a href="">
+                                            <span class="img_box">
+                                                <img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+                                            </span>
+                                            <span class="board_box">
+                                                <!-- 선택된 키워드 관련 내용은 em태그로 묶어주세요 -->
+                                                <span class="txt_tit">정말 <em>최고의 노트북</em>입니다! </span>
+                                                <span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+                                                <span class="txt_info">
+                                                    <!-- 에누리일 경우 .txt_enuri 붙여주세요 -->
+                                                    <span class="txt_enuri">에누리</span><span>ab***</span><span>2019.01.21</span>
+                                                    <span class="review_star">																					
+                                                        <span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="img_box">
+                                                <img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+                                            </span>
+                                            <span class="board_box">
+                                                <span class="txt_tit">정말 최고의 노트북입니다! </span>
+                                                <span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+                                                <span class="txt_info">
+                                                    <span>11번가</span><span>ab***</span><span>2019.01.21</span>
+                                                    <!-- 평점정보 없을때 .no_score 붙여주세요 -->
+                                                    <span class="review_star no_score">
+                                                        <span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="img_box">
+                                                <img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+                                            </span>
+                                            <span class="board_box">
+                                                <span class="txt_tit">정말 최고의 노트북입니다! </span>
+                                                <span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+                                                <span class="txt_info">
+                                                    <span>11번가</span><span>ab***</span><span>2019.01.21</span>
+                                                    <span class="review_star">																					
+                                                        <span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- 접기는 .btn_more_close 붙여주세요. -->
+                                <a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+                                    <span class="txt_more">상품후기 더보기</span>
+                                    <span class="txt_close">상품후기 접기</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 포토후기 끝 -->
+
+                    <!-- 일반후기 (포토상품평과 동일 / 이미지 박스만 제거된 형태 ) -->
+                    <div class="review_wrap invisible">
+                        
+                        <!-- 상품후기 없을때 -->
+                        <div class="no_posts">
+                            <div class="txt_tit">
+                            <!-- 190613 : 수정  -->
+                                <strong>해당하는 조건의 상품후기가 없습니다.</strong><br/>
+                                다른 조건으로 검색해주세요!<br/>
+                                <!-- 190613 삭제 : 상품후기 작성 -->
+                                <!-- <a href="#" class="btn_write_review"> -->
+                                    <!-- <span>상품후기 작성</span> -->
+                                <!-- </a> -->
+                            <!--  -->
+                            </div>
+                        </div>
+                        <!-- // -->
+
+                        <div class="box_inner box_c_review">
+                            <div class="box_head">
+                                <p class="title">전체</p> 
+                                <span>(1,250)</span>
+                                <div class="select_menu">
+                                    <!-- 선택 - 평점전체 -->
+                                    <!-- 선택된 Selectbox에 .selected 클래스 붙여주세요. -->
+                                    <select name="__opt_select_score" class="select_score selected" id="" title="평점선택">
+                                        <option value="" selected="">평점전체</option>
+                                        <option value="">5</option>
+                                        <option value="">4</option>
+                                        <option value="">3</option>
+                                        <option value="">2</option>
+                                        <option value="">1</option>
+                                    </select>
+                                    <!-- 선택 - 쇼핑몰전체 -->
+                                    <select name="__opt_select_mall" class="select_mall" id="" title="쇼핑몰선택">
+                                        <option value="" selected="">쇼핑몰전체</option>
+                                        <option value="">G마켓</option>
+                                        <option value="">11번가</option>
+                                        <option value="">G9</option>
+                                        <option value="">신세계몰</option>
+                                    </select>
+                                    <!-- 버튼 - 후기작성 -->
+                                    <a href="#" class="btn_write">후기작성</a>
+                                </div>
+                            </div>
+                            <div class="box_cnt">
+                                <div class="kwd_list">
+                                    <ul>
+                                        <li class="selected"><a href="#">전체</a></li>
+                                        <li><a href="#">디자인</a></li>
+                                        <li><a href="#">사용성</a></li>
+                                        <li><a href="#">가격</a></li>
+                                        <li><a href="#">편의성</a></li>
+                                        <li><a href="#">사은품</a></li>
+                                        <li><a href="#">품질</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                        <li><a href="#">BTS</a></li>
+                                    </ul>
+                                </div>
+
+                                <ul class="board_list">
+                                    <li>
+                                        <a href="">
+                                            <span class="board_box">
+                                                <span class="txt_tit">정말 최고의 노트북입니다! </span>
+                                                <span class="txt_comm">사기전에 엄청 고민을 많이 <em>했었는데</em> 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+                                            </span>
+                                        </a>
+                                        <span class="txt_info">
+                                            <span>11번가</span><span>ab***</span><span>2019.01.21</span>
+                                            <span class="review_star">																					
+                                                <span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+                                            </span>
+                                            <!-- 삭제하기 버튼 - 일반후기에만 노출 -->
+                                            <button class="btn_delete" onclick="$('#layer_del').toggle()">삭제하기</button>
+                                            <!--//삭제 -->
+
+                                            <!-- 삭제하기 레이어 -->
+                                            <div class="layerPop" id="layer_del" style="display:none;">
+                                                <div class="layerPopInner">		
+                                                    <div class="layerPopCont">			
+                                                        <h1 onclick="$('#layer_del').toggle();">비밀번호 입력</h1>			
+                                                        <button class="btnClose" onclick="$('#layer_del').toggle();">창 닫기</button>			
+                                                        <div class="contents">				
+                                                            <input type="password" name="del_pass_input" id="del_pass_input">													
+                                                        </div>			
+                                                        <div class="layerBtn">				
+                                                            <div onclick="$('#layer_del').toggle();" class="btnTxt">닫기</div>
+                                                            <div onclick="$('#layer_del').toggle();" class="btnTxt">삭제</div>
+                                                        </div>		
+                                                    </div>	
+                                                </div>
+                                                <div class="dimmed"></div>
+                                            </div>
+                                            <!-- // -->
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <span class="board_box">
+                                                <span class="txt_tit">정말 최고의 노트북입니다! </span>
+                                                <span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>										
+                                            </span>
+                                        </a>
+                                        <span class="txt_info">
+                                            <span>11번가</span><span>ab***</span><span>2019.01.21</span>
+                                            <span class="review_star">																					
+                                                <span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <span class="board_box">
+                                                <span class="txt_tit">정말 최고의 노트북입니다! </span>
+                                                <span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>										
+                                            </span>
+                                        </a>
+                                        <span class="txt_info">
+                                            <span>11번가</span><span>ab***</span><span>2019.01.21</span>
+                                            <span class="review_star">																					
+                                                <span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+                                            </span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <!-- 접기는 .btn_more_close 붙여주세요. -->
+                                <a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+                                    <span class="txt_more">상품후기 더보기</span>
+                                    <span class="txt_close">상품후기 접기</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // 일반상품평 끝 -->
+                </div>
+                <!-- // Tab#4 :: 상품후기 끝 -->
+            </div>
+        </div>
+
+        <!-- 190613 : CM Q&A 탭 하단 글쓰기 버튼의 탭 외부 위치 -->
+        <div class="btn_write_wrap btn_fixed_bot">
+            <!-- 스크롤시 이쪽으로 이동 -->
+        </div>
+        <!-- // 끝 190613 : CM Q&A 탭 하단 글쓰기 버튼의 탭 외부 위치 -->
+
+	</section>
+
+</div>
+<!-- 레이어 팝업, 공유 & 최저가 가격 알림 -->
+<!-- 공유 레이어 -->
+<section class="layerPop" id="snsPop">
+	<div class="layerPopInner">
+		<div class="layerPopCont">
+			<h1 id="layerPopCont_txt">SNS 공유</h1>
+			<button class="btnClose" onclick="$('#snsPop').hide();">SNS 공유 창 닫기</button>
+			<div class="contents">
+				<div class="linkList">
+					<ul>
+						<li><a href="#" class="kakao" id="kakao-link-btn">카카오톡</a></li>
+						<li><a href="#" class="facebook">페이스북</a></li>
+						<li><a href="#" class="twiter">트위터</a></li>
+						<li><a href="#" class="line">라인</a></li>
+						<li><a href="#" class="url">URL</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 최저가 가격 알림 -->
+<section class="layerPop" id="layer_alarm">
+	<div class="layerPopInner">
+		<input type="hidden" id="nkind" name="nkind" value="1">
+		<input type="hidden" id="userid" name="userid" value="en574">
+		<input type="hidden" id="modelno" name="modelno" value="14701257">
+		<div class="layerPopCont">
+			<h1>최저가 가격알림</h1>
+			<button class="btnClose" type="button" onclick="$('#layer_alarm').hide();">최저가 가격알림 창 닫기</button>
+			<div class="contents">
+				<p class="noticed">고객님이 원하시는 가격이 되면 문자메세지로 알려드립니다.</p>
+				<ul>
+					<li>현재 최저가</li>
+					<li class="price" id="notiprice">495,250 원</li>
+				</ul>
+				<ul>
+					<li><label for="lowPrice">희망 최저가</label></li>
+					<li><input type="tel" name="setprice" id="setprice" style="width:80%;"> 원</li>
+				</ul>
+				<ul>
+					<li><label for="">휴대폰번호</label></li>
+					<li class="floating-align">
+						<span class="selectype2" style="width:30%;">
+							<select name="phonenum1" id="phonenum1">
+								<option value="010" selected="selected">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
+							</select>
+						</span>
+						<input type="tel" name="phonenum2" id="phonenum2" maxlength="4" style="width:30%;">
+						<input type="tel" name="phonenum3" id="phonenum3" maxlength="4" style="width:30%;">
+					</li>
+				</ul>
+
+				<div class="privacyCheck">
+					<p class="chkAgree"><label><input class="chkbox"  id="" type="checkbox">개인 정보 수집 이용 동의</label></p>
+
+					<table summary="개인 정보 수집 목적, 항목, 보유기간 내용">
+						<colgroup>
+							<col />
+							<col />
+							<col />
+						</colgroup>
+						<thead>
+							<tr>
+								<th>목적</th>
+								<th>항목</th>
+								<th>보유기간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>최저가 가격알림 문자 발송</td>
+								<td>휴대폰 번호</td>
+								<td>문자 발송 후 즉시 폐기</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<ul>
+						<li>※ 최저가 가격알림 서비스를  위해 필요한 최소한의 개인정보이므로 동의를 해주셔야 사용 가능합니다.</li>
+						<li>※ 입력하신 정보는 가격알림 이외의 어떠한 목적으로도 사용되지 않습니다.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="layerBtn">
+				<button class="btnTxt">완료</button>
+				<button class="btnTxt" type="button" id="btt_close" onclick="$('#layer_alarm').hide();">닫기</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 최저가 가격 알림 -->
+
+<!-- PC최저가 구매 알림 -->
+<section class="layerPop" id="layerLowPrice">
+	<div class="layerPopInner">
+		<div class="layerPopCont">
+			<h1>PC 최저가 구매 알림</h1>
+			<button class="btnClose" type="button" onclick="$('#layerLowPrice').hide(); $( '.btnzzim' ).removeClass( 'on' );">최저가 가격알림 창 닫기</button>
+			<div class="contents">
+				<p class="noticed">해당 상품은 에누리 PC웹에서 '최저가'로 구매가능합니다. '찜하기' 후 PC웹으로 접속해 주세요.</p>
+			</div>
+			<div class="layerBtn">
+				<button class="btnTxt btnzzim">찜하기
+					<div class="zzimarea"><span class="zzimly fade-out">찜 되었습니다</span></div>
+				</button>
+				<button class="btnTxt" type="button" onclick="$('#layerLowPrice').hide(); $( '.btnzzim' ).removeClass( 'on' );">닫기</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 최저가 구매 알림 -->
+</body>
+</html>

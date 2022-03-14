@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/css/enuriLogin.css">
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript">
+var isfirst = true;
+	$(document).ready(function(){		
+		$('#loginid').focus(function(){
+			$('#lbl_idarea').hide();
+			if ($('#pass').val() == ''){
+				$('#lbl_pwarea').show();
+			}
+
+			// 첫번째는 자동 포커스이므로 이때는 라벨 안사라지게 처리
+			if (isfirst){
+				isfirst = false;
+				if ($('#loginid').val() == ''){
+					$('#lbl_idarea').show();
+				}else{
+					$('#lbl_idarea').hide();
+				}
+				if ($('#pass').val() == ''){
+					$('#lbl_pwarea').show();
+				}else{
+					$('#lbl_pwarea').hide();
+				}
+
+			}
+		});
+
+		$('#pass').focus(function(){
+			$('#lbl_pwarea').hide();
+			if ($('#loginid').val() == ''){
+				$('#lbl_idarea').show();
+			}
+		});
+
+		$('#loginid, #pass').focusout(function(){
+			if ($('#loginid').val() == ''){
+				$('#lbl_idarea').show();
+			}else{
+				$('#lbl_idarea').hide();
+			}
+
+			if ($('#pass').val() == ''){
+				$('#lbl_pwarea').show();
+			}else{
+				$('#lbl_pwarea').hide();
+			}
+		});
+
+		$('#loginid').keypress(function(e){
+			$('#lbl_idarea').hide();
+
+			// 엔터 쳤을 때 이벤트임.
+			CmdKeyPressLogin(e);
+		});
+
+		$('#pass').keypress(function(e){
+			$('#lbl_idarea').hide();
+			CmdKeyPressLogin(e);
+		});
+
+		$('#loginid').focus();
+});
+</script>
+
+</head>
+<body>
+<script type="text/javascript">
+	/*checkbox*/
+	function autologin(obj)
+		{
+		if (obj.className== 'unchk') {
+			obj.className = 'chk';
+		} else {
+			obj.className = 'unchk';
+			}
+		}
+
+	function report(obj)
+		{
+		if (obj.className== 'unchk') {
+			obj.className = 'chk';
+		} else {
+			obj.className = 'unchk';
+			}
+		}
+</script>
+
+<!-- 로그인 -->
+<div class="dim_back" id="loginbox">
+	<!-- 기본 로그인 -->
+	<div class="type_layer loginArea">
+		<a href="javascript:///" class="close" onclick="document.getElementById('loginbox').style.display='none';" >창닫기</a>
+		<h4>로그인</h4>
+		<fieldset>
+			<legend>로그인 및 관련설정</legend>
+
+			<p class="id_field"><label class="idarea">ID</label><input type="text" title="ID"></p>
+			<p class="pw_field"><label class="pwarea">비밀번호</label><input type="password" title="비밀번호"></p>
+			<a href="#" class="btn_login">로그인</a>
+			<div class="auto_login">
+				<span class="unchk" onclick="autologin(this);"><input type="checkbox" />자동로그인</span>
+				<p class="member"><a href="#" class="join">회원가입</a><a href="#">ID/비밀번호 찾기</a></p>
+			</div>
+		</fieldset>
+	</div>
+	<!--// 기본  로그인 -->
+
+
+	<!-- 판매자 로그인 -->
+	<div class="type_layer loginArea" id="seller">
+		<a href="javascript:///" class="close" onclick="document.getElementById('seller').style.display='none';" >창닫기</a>
+		<h4>로그인</h4>
+		<fieldset>
+			<legend>로그인 및 관련설정</legend>
+
+			<!-- 판매자용 -->
+			<p class="seller">
+				<span class="unchk" onclick="autologin(this);"><input type="radio" />쇼핑몰 판매자 (SDU)</span>
+				<span class="unchk" onclick="autologin(this);"><input type="radio" />오픈마켓 판매자 (SDUL)</span>
+			</p>
+			<p class="id_field"><label class="idarea">ID</label><input type="text" title="ID"></p>
+			<p class="pw_field"><label class="pwarea">비밀번호</label><input type="password" title="비밀번호"></p>
+			<a href="#" class="btn_login">로그인</a>
+			<div class="auto_login">
+				<span class="unchk" onclick="autologin(this);"><input type="checkbox" />자동로그인</span>
+				<p class="member"><a href="#" class="join">회원가입</a><a href="#">ID/비밀번호 찾기</a></p>
+			</div>
+
+			<!-- 판매자용 -->
+			<a href="#" class="seller_img">상위에 노출해서 더 많이 판매하세요!</a>
+		</fieldset>
+	</div>
+	<!--// 판매자 로그인 -->
+
+
+	<!-- 개인정보 관리 로그인 -->
+	<div class="type_layer loginArea" id="privacy">
+		<a href="javascript:///" class="close" onclick="document.getElementById('privacy').style.display='none';" >창닫기</a>
+		<h4>로그인</h4>
+		<fieldset class="pv_login">
+			<legend>로그인 및 관련설정</legend>
+			<p class="pw_txt">※ 자동로그인 중이므로 개인정보 보호를 위해 비밀번호를<br />입력해주세요</p>
+			<p class="id_field"><label class="idarea" id='lbl_idarea' style='z-index:999;' >ID</label><input type="text" title="ID" id='loginid'></p>
+			<p class="pw_field"><label class="pwarea" id='lbl_pwarea' style='z-index:999;' >비밀번호</label><input type="password" title="비밀번호" id='pass'></p>
+			<a href="#" class="btn_login">로그인</a>
+			<div class="auto_login">
+				<p class="member"><a href="#">ID/비밀번호 찾기</a></p>
+			</div>
+
+		</fieldset>
+	</div>
+	<!--// 개인정보 관리 로그인 -->
+
+</div>
+<!--// 로그인 -->
+
+</body>
+</html>

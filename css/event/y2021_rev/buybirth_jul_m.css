@@ -1,0 +1,390 @@
+@charset "utf-8";
+
+.wrap{position:relative;width:100%; min-width:320px; /*padding-top:30px; */}
+.wrap a{display:block; }
+.content{width:320px; margin:0 auto; position:relative; overflow:hidden;  }
+.dim{width: 100%; height:100%; position:fixed; left: 0; top: 0; background: rgba(0,0,0,0.7); z-index:10002}
+
+/* 공통 */
+.imgbox{width:100%; padding:0; margin:0; display:block; text-align:center;}
+.imgbox img {max-width:100%; height:auto; vertical-align:top;}
+
+#eventWrap{position:relative; }
+
+/* 커스텀 : 닫기버튼 */
+.win_close{top:35px;}
+.win_close:before, .win_close:after{background-color: #fc088b;}
+.f-nav .win_close {top:45px;}
+.f-nav .win_close:before, .f-nav .win_close:after{background-color:#000}
+
+/* 상단 비주얼 */
+.visual {overflow:hidden; position:relative;height:308px;background-color:#ffe2de;text-align:center}
+.visual .inner{width:320px;padding-top:65px;height:243px;margin:0 auto;position: relative;z-index:10}
+.visual .inner .txt_01{position:relative;margin:0 auto 0 26px;display:block;height:20px;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_top_tit_sub.png) no-repeat 0 0 ;text-indent:-9999em;background-size:141px;}
+.visual .inner h2{width:276px;height:40px;margin:9px auto 0 29px;position: relative;text-indent:-9999em;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_top_tit.png) no-repeat 0 0;background-size:276px;}
+.visual .inner h2:after{content:"";position:absolute;top:-1px;left:-5px;width:84px;height:40px;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_top_tit_cover.png) no-repeat 0 0;background-size:84px;}
+.visual .inner .txt_02{height:25px;display:block;margin:15px auto 0 27px;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_top_txt_sub.png) no-repeat 0 0;text-indent:-9999em;background-size:204px;}
+.visual .inner .box_wrap{position:absolute;left:50%;bottom:-20px;overflow:hidden;width:270px;height:150px;margin-left:-90px;opacity:0;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_obj_box.png) no-repeat 50% 0;background-size:270px;}
+.visual .inner .balloon {display:block;position:absolute;opacity:0;z-index:8;}
+.visual .inner .balloon1 {left:-8px;bottom:-196px;width:56px;height:315px;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_obj_balloon1.png) no-repeat 50% 0;background-size:56px;}
+.visual .inner .balloon2 {right:-22px;bottom:-120px;width:37px;height:211px;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_obj_balloon2.png) no-repeat 50% 0;background-size:37px;}
+.visual .inner .balloon3 {right:-2px;bottom:-40px;width:55px;height:205px;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_obj_balloon3.png) no-repeat 50% 0;background-size:55px;}
+
+.obj_flow_01,
+.obj_flow_02{position: absolute;top:0%;left:50%;transform:translateX(-50%);height:308px;overflow:hidden;}
+.obj_flow_01{z-index:10;width:387px;}
+.obj_flow_02{z-index:9;width:452px;}
+.obj_flow_01 .bg_flow{position:absolute;left:0;width:100%;height:100%;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_obj_flow_white.png) no-repeat 50% 0;background-size:387px;}
+.obj_flow_02 .bg_flow{position:absolute;left:0;width:100%;height:100%;background:url(http://img.enuri.info/images/event/2020/buy_birth/aug/m_obj_flow_pink.png) no-repeat 50% 0;background-size:452px;}
+.flow_obj_01{top:0}
+.flow_obj_02{top:-100%}
+
+/* 모션 */
+.visual .inner .txt_01{transition:.5s all ease-in-out;transform:translateX(20px);opacity:0}
+.visual .inner .txt_02{transition:.5s all ease-in-out;transform:translateX(20px);opacity:0}
+.visual .inner h2{transition:.8s all ease-in-out;transform:translateX(20px);opacity:0}
+.visual .inner h2:after{transition:.3s all ease-in;transform:translateX(6px);opacity:0}
+.obj_flow_01,
+.obj_flow_02{transition:2s all ease-in-out;opacity:0}
+
+/* 모션 intro */
+.visual.intro .inner .box_wrap{animation:cake_mv 1s linear;animation-delay:3s;animation-fill-mode: forwards;}
+@-webkit-keyframes cake_mv { 
+    0% {opacity:0;bottom:-74px}
+    100% {opacity:1;bottom:-20px}
+} 
+@keyframes cake_mv { 
+    0% {opacity:0;bottom:-74px}
+    100% {opacity:1;bottom:-20px}
+} 
+.visual.intro .inner .balloon1{animation:balloon_mv 1s linear;animation-delay:2.1s;animation-fill-mode: forwards;}
+.visual.intro .inner .balloon2{animation:balloon_mv 1s linear;animation-delay:3.0s;animation-fill-mode: forwards;}
+.visual.intro .inner .balloon3{animation:balloon_mv 1s linear;animation-delay:2.5s;animation-fill-mode: forwards;}
+@-webkit-keyframes balloon_mv { 
+    0% {opacity:0;transform:translateY(30%)}
+    100% {opacity:1;transform:translateY(0)}
+} 
+@keyframes balloon_mv { 
+    0% {opacity:0;transform:translateY(30%)}
+    100% {opacity:1;transform:translateY(0)}
+} 
+.visual.intro .inner .txt_01{transform:translateX(0);opacity:1}
+.visual.intro .inner .txt_02{transition-delay:1.2s;transform:translateX(0);opacity:1}
+.visual.intro .inner h2 {transition-delay:.5s;transform:translateX(0);opacity:1}
+.visual.intro .inner h2:after{transition-delay:1.6s;transform:translateX(0);opacity:1}
+
+/* 모션 end */
+.visual.end .obj_flow_01,
+.visual.end .obj_flow_02{opacity:1}
+.visual.end .obj_flow_01 .bg_flow{-webkit-transition:1s all linear;-o-transition:1s all linear;transition:1s all linear;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);-webkit-animation:flowShower 12s linear infinite;animation:flowShower 12s linear infinite;}
+.visual.end .obj_flow_02 .bg_flow{-webkit-transition:1s all linear;-o-transition:1s all linear;transition:1s all linear;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);-webkit-animation:flowShower 50s linear infinite;animation:flowShower 50s linear infinite;}
+@-webkit-keyframes flowShower { 
+    0% {-webkit-transform:translateY(0%);transform:translateY(0%)}
+    100% {-webkit-transform:translateY(100%);transform:translateY(100%)}    
+}
+@keyframes flowShower { 
+    0% {-webkit-transform:translateY(0%);transform:translateY(0%)}
+    100% {-webkit-transform:translateY(100%);transform:translateY(100%)}    
+} 
+.visual.end .inner .balloon1{animation:balloon_wind 4s linear;animation-delay:0;animation-iteration-count:infinite;opacity:1;}
+.visual.end .inner .balloon2{animation:balloon_wind 4s linear;animation-delay:.3s;animation-iteration-count:infinite;opacity:1;}
+.visual.end .inner .balloon3{animation:balloon_wind 4s linear;animation-delay:.7s;animation-iteration-count:infinite;opacity:1;}
+@-webkit-keyframes balloon_wind { 
+    0%,50%,100% {-webkit-transform:rotate(0);transform:rotate(0)}
+    25% {-webkit-transform:rotate(3deg);transform:rotate(3deg)}
+    75% {-webkit-transform:rotate(-3deg);transform:rotate(-3deg)}    
+}
+@keyframes balloon_wind { 
+    0%,50%,100% {-webkit-transform:rotate(0);transform:rotate(0)}
+    25% {-webkit-transform:rotate(3deg);transform:rotate(3deg)}
+    75% {-webkit-transform:rotate(-3deg);transform:rotate(-3deg)}    
+} 
+
+.visual.intro .loader-box{opacity:0}
+.loader-box{display:inline-block;position: relative;-webkit-transition: all .2s ease;-o-transition: all .2s ease;transition: all .2s ease;transform:translateY(-154px)}
+.visual-loader:before{content: "";position: absolute;top: 0px;left: -25px;height: 12px;width: 12px;border-radius: 12px;-webkit-animation: loader10g 3s ease-in-out infinite;		animation: loader10g 3s ease-in-out infinite;}
+.visual-loader{position: relative;width: 12px;height: 12px;border-radius: 12px;-webkit-animation: loader10m 3s ease-in-out infinite;		animation: loader10m 3s ease-in-out infinite;}
+.visual-loader:after{content: "";position: absolute;top: 0px;left: 25px;height: 10px;width: 10px;border-radius: 10px;-webkit-animation: loader10d 3s ease-in-out infinite;		animation: loader10d 3s ease-in-out infinite;}
+@-webkit-keyframes loader10g{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,1);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10g{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,1);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+@-webkit-keyframes loader10m{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,1);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10m{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,1);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+@-webkit-keyframes loader10d{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,1);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10d{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,1);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+/* 플로팅 탭 */
+.floattab {width:100%; height:40px; background-color:#151e2b;}
+.floattab.is-fixed {position:fixed; top:0; z-index:100000;}
+.floattab__list {overflow:hidden; position:absolute; left:50%; top:0; z-index:1000; -webkit-transform:translateX(-50%); transform:translateX(-50%); width:320px;}
+.floattab__list.is-fixed {position:fixed; top:0; left:50%; width:320px; -webkit-transform:translateX(-50%); transform:translateX(-50%);}
+.floattab__list li {display:inline; float:left; height:100%;}
+.floattab__list li.tab1 {width:68px;}
+.floattab__list li.tab2 {width:71px;}
+.floattab__list li.tab3 {width:60px;}
+.floattab__list li.tab4 {width:65px;}
+.floattab__list li.tab5 {width:56px;}
+.floattab__list li .floattab__item {display:block; overflow:hidden; width:100%; height:40px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/event/2020/buy_stamp/sep/m_nav.png) no-repeat; background-size:320px;}
+.floattab__list li .floattab__item--01 {background-position:0 0;}
+.floattab__list li .floattab__item--02 {background-position:-68px 0;}
+.floattab__list li .floattab__item--03 {background-position:-139px 0;}
+.floattab__list li .floattab__item--04 {background-position:-199px 0;}
+.floattab__list li .floattab__item--05 {background-position:-264px 0;}
+.floattab__list li .floattab__item--01.is-on {background-position:0 -40px;}
+.floattab__list li .floattab__item--02.is-on {background-position:-68px -40px;}
+.floattab__list li .floattab__item--03.is-on {background-position:-139px -40px;}
+.floattab__list li .floattab__item--04.is-on {background-position:-199px -40px;}
+.floattab__list li .floattab__item--05.is-on {background-position:-264px -40px;}
+/* 공통 영역 */
+.contents .inner {position:relative;width:320px;margin:0 auto;}
+
+.info_list {margin:22px auto 5px;padding-left:30px;text-align:left;}
+.info_list ul{display:inline-block;text-align:left}
+.info_list li {position:relative;margin-left:70px;padding-left:8px;font-size:12px;line-height:18px;color:#222;letter-spacing:-.5px;text-indent:-70px;}
+.info_list li:after {content: "•"; position:absolute; left:0; top:0;}
+.info_list li strong {font-weight:bold;}
+
+/* 생일혜택 */
+.birthday {position:relative; background:#c1f0f5;}
+.birthday .contents {padding:35px 0 0;}
+.birthday h2{height:170px;background:url(http://img.enuri.info/images/event/2021/buy_birth/jul/m_sec1_tit.png) no-repeat 50% 0;background-size:320px;text-indent:-9999em}
+.birth_img{width:320px;height:225px;background:url(http://img.enuri.info/images/event/2020/buy_birth/oct/m_sec1_img.png) no-repeat 50% 0;background-size:320px;text-indent:-9999em;margin:0 auto}
+.btn_join {display:block;width:320px;height:40px;background:url(http://img.enuri.info/images/event/2019/buy_birth/jul/m_btn_apply.png) no-repeat 50% 0;background-size:320px;text-indent:-9999em;margin:0 auto}
+.btn_caution {display:block;width:100%; height:35px; margin:20px auto;font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/event/2019/buy_birth/jul/w_btn_notice.png) no-repeat 50% 10px; background-size:100px;}
+
+
+.btn__evt_notice,
+.btn__evt_notice span { color: #111; border-bottom-color: #000;}
+.btn__evt_notice.btn__white,
+.btn__evt_notice.btn__white span { color: #fff; border-bottom-color: rgba(255,255,255,.6);}
+
+/* 컴백혜택 */
+.comeback {position:relative;background-color:#ffebb1;}
+.comeback .contents {padding:35px 0 0;}
+.comeback h2{height:175px;background:url(http://img.enuri.info/images/event/2021/buy_birth/jul/m_sec2_tit.png) no-repeat 50% 0;background-size:320px;text-indent:-9999em}
+.comeback_img{width:320px;height:240px;background:url(http://img.enuri.info/images/event/2020/buy_birth/oct/m_sec2_img.png) no-repeat 50% 0;background-size:320px;text-indent:-9999em;margin:0 auto}
+.comeback .evt_notice--btn_area {padding-bottom:35px;}
+
+/* 인기상품 */
+.liveProduct {position:relative; padding-bottom:30px; background-color:#f4f4f4;}
+.liveProduct .top_area {position:relative; width:320px; margin:0 auto; padding:40px 0 20px;}
+.liveProduct .top_area h2 {width:100%; font-size:20px; color:#222; text-align:center; line-height:1; vertical-align:top; letter-spacing:-1px;}
+.liveProduct .top_area a {position:absolute; top:44px; right:10px; width:50px; height:25px; z-index: 100; font-size: 0; text-indent:-9999; background:url(http://img.enuri.info/images/event/2019/buy_birth/common/m_btn_more.png) no-repeat 50% 0; background-size:50px;}
+.liveProduct .itemlist {text-align: center; padding:0 20px; margin:0 auto;}
+.liveProduct .itemlist:after {content:""; display:block; clear:both;}
+.liveProduct .itemlist .lpitem {display:inline; float:left; margin:0; width:48%; margin-bottom:15px; background:#fff;}
+.liveProduct .itemlist .lpitem:first-child {margin-right:4%;}
+.liveProduct .itemlist .lpitem:nth-child(3) {margin-right:4%;}
+.liveProduct .itemlist .lpitem a {display:block; height:100%; }
+.liveProduct .itemlist .lpitem .thumb { display: block; position:relative; width:100%; height:100%;}
+.liveProduct .itemlist .lpitem .thumb img {width:100%; height:100%;}
+.liveProduct .itemlist .lpitem .thumb .soldout {display:block; position:absolute; top:50%; left:50%; width:83px; height:83px; margin:-41px 0 auto -41px; text-indent:-9999em; font-size:0; z-index:20; background-image:url(http://img.enuri.info/images/event/2018/trend/soldout.png); background-size:83px; cursor:default;}
+.liveProduct .itemlist .lpitem .info {display:block; position:relative; width:calc(100% - 20px); height:55px; padding:10px; letter-spacing:-0.5px; text-align:left; background-color:#f8f8f8;}
+.liveProduct .itemlist .lpitem .info strong {display:block; display:-webkit-box; overflow:hidden; font-size:11px; color:#000; line-height:14px; font-weight:bold; font-family:Malgun Gothic; letter-spacing:-1.5px; text-overflow:ellipsis; white-space:normal; word-wrap:break-word; -webkit-box-orient:vertical; -webkit-line-clamp:2;}
+.liveProduct .itemlist .lpitem .info em {display:block; margin-top: 8px; font-size:10px; color:#000; font-family:Malgun Gothic; letter-spacing:-1.5px;}
+.liveProduct .itemlist .lpitem .info em b {margin-left: 6px; font-style:normal; font-size:15px; vertical-align: -1px;}
+
+/* 유의사항 드롭다운 */
+.caution-wrap {overflow:hidden; position:relative; min-height:20px;}
+.caution-wrap .btn_caution_hide {display:block; width:100px; height:30px; margin:30px auto 10px; font-size:14px; color:#fff; line-height:30px; text-align:center; vertical-align:middle;background-color:#333;}
+
+.caution-wrap .moreview {display:none; background-color:#fff;}
+.caution-wrap .moreview h4 {background:#fc088b; line-height:36px; color:#fff; font-size:16px; text-align:center; letter-spacing:-1px; }
+.caution-wrap .moreview .tb {margin-top:15px; }
+.caution-wrap .moreview .tb table {width:100%; border-left:1px solid #333; border-top:1px solid #333;}
+.caution-wrap .moreview .tb table .col1 {width:65%;}
+.caution-wrap .moreview .tb table .col2 {width:35%;}
+.caution-wrap .moreview .tb table th, .appLayer .tb table td {text-align:center; padding:3px 20px; font-size:11px; word-break:keep-all; border-right:1px solid #333; border-bottom:1px solid #333; }
+.caution-wrap .moreview .tb table th {padding:3px 5px; background:#f0f0f0;}
+.caution-wrap .moreview .txt{padding:10px;text-align:left;}
+.caution-wrap .moreview .txt_indent > li{padding-left:8px;margin-top:5px;background:url(http://img.enuri.info/images/event/2016/buy/ico.png) 2px -42px no-repeat;background-size:50px;}
+.caution-wrap .moreview .txt_indent > li:first-child{margin-top:0px;}
+.caution-wrap .moreview .txt_indent > li.no_bul{background:none;}
+.caution-wrap .moreview .txt{font-size:11px;  letter-spacing: -1.3px;}
+.caution-wrap .moreview .txt .stress {color:#e91030;}
+.caution-wrap .moreview .txt strong{display:block; color:#333;margin-top:20px;margin-bottom:5px;font-size:12px;}
+.caution-wrap .moreview .txt strong:first-child{margin-top:0px;}
+.caution-wrap .moreview .txt .inner{padding-left:8px; margin:0; margin-top:10px; }
+.caution-wrap .moreview .txt .inner li{padding-left:1em;text-indent:-1em;margin-top:5px;}
+.caution-wrap .moreview .txt .inner li:first-child{margin-top:0px;}
+.caution-wrap .moreview table{table-layout:fixed;width:100%;border-collapse:collapse;border-style:hidden;border:1px solid #737373;font-size:10px;}
+.caution-wrap .moreview thead th{background:#eeece1;text-align:center;}
+.caution-wrap .moreview th,.moreview td{border:1px solid #737373;padding:2px;text-align:center; background:#fff;}
+
+
+.go_top {width: 39px; height: 39px; position: fixed; bottom: 38px; right: 10px; z-index: 10;}
+.go_top a {background: url(http://img.enuri.info/images/m_deal/common.png) -73px -211px no-repeat; background-size: 125px 250px; display: block; width: 39px; height: 39px; text-indent: -9999em;}
+
+/*레이어*/
+.layer_back{width: 100%; height:100%; position:fixed; left: 0; top: 0; background:url(http://img.enuri.info/images/mobilenew/images/layer_back.png); z-index:100005;}
+.layer_back.appinfo__layer {display:none; position:absolute; top:200px; margin-top:0;}
+.layer_back.appinfo__layer .btn_close {padding-bottom:30px;}
+.dim{position:fixed; left: 0; top: 0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:10000;}
+.btn_close{text-align:center; }
+.appLayer{width:300px;padding-bottom:15px; background:#ffffff; border:1px solid #0182ea; left:50%; top:50%; position:absolute; z-index:1000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%); -moz-transform:translate(-50%,-50%); -ms-transform:translate(-50%,-50%);}
+.appLayer h4{background:#0182ea; line-height:36px; color:#ffffff; font-size:16px; text-align:center; letter-spacing:-1px; }
+.appLayer .close{position:absolute; right:10px; top:10px; width:16px; height:16px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 0 0 no-repeat; background-size:50px; text-indent:-9999em; }
+.appLayer .btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:50px; border:none; text-align:center; font-weight:bold; font-size:18px;}
+.appLayer .txt{text-align:center; padding:15px 0; color:#333333;  font-size:16px; letter-spacing:-1.3px;}
+.appLayer .txt strong{color:#ff2424; display:block; }
+.appLayer .txt em{font-weight:bold; }
+
+/*레이어*/
+.layer_back{width: 100%; height:100%; position:fixed; left: 0; top: 0; z-index:10005;}
+.layer_back.appinfo__layer {display:none; position:absolute; top:200px; margin-top:0;}
+.layer_back.appinfo__layer .btn_close {padding-bottom:30px;}
+.dim{position:fixed; left: 0; top: 0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:10000;}
+.btn_close{text-align:center; }
+.appLayer{width:300px;padding-bottom:15px; background:#ffffff; border:1px solid #0182ea; left:50%; top:50%; position:absolute; z-index:1000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.appLayer h4{background:#0182ea; line-height:36px; color:#ffffff; font-size:16px; text-align:center; letter-spacing:-1px; }
+.appLayer .close{position:absolute; right:10px; top:10px; width:16px; height:16px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 0 0 no-repeat; background-size:50px; text-indent:-9999em; }
+.appLayer .btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:50px; border:none; text-align:center; font-weight:bold; font-size:18px;}
+.appLayer .txt{text-align:center; padding:15px 0; color:#333333;  font-size:16px; letter-spacing:-1.3px;}
+.appLayer .txt strong{color:#ff2424; display:block; }
+.appLayer .txt em{font-weight:bold; }
+
+/*유의사항*/
+.noteLayer {width:300px; background:#fff; border: 1px solid #025e9a; margin: -130px auto 0 -150px; left: 50%; top:50%; position:absolute; z-index:10010;}
+.layer_back.appinfo__layer .noteLayer {margin-bottom:30px;} 
+#appinfo .noteLayer{top:0}
+.noteLayer h4{background:#025e9a; line-height:36px; color:#ffffff; font-size:16px; text-align:center; letter-spacing:-1px; }
+.noteLayer h5{padding:5px 0 0 10px; margin-bottom:-10px}
+.noteLayer .close{position:absolute; right:0px; top:0px; padding:10px; width:16px; height:16px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 10px 10px no-repeat; background-size:50px; text-indent:-9999em; }
+.btn_close{text-align:center; }
+.btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:32px; border:none; text-align:center; font-weight:bold; font-size:12px;}
+.txtlist{padding:15px 10px; color:#333;}
+.txtlist li {position:relative; font-size:10px; padding:0 0 5px 8px; word-break:keep-all;}
+.txtlist li:after{content:"•"; position:absolute; left:0; top:0; }
+.txtlist li .stress {color:#f00;}
+
+.note_txt .tb {margin-top:15px; }
+.note_txt .tb table {width:100%; border-left:1px solid #333; border-top:1px solid #333;}
+.note_txt .tb table .col1 {width:65%;}
+.note_txt .tb table .col2 {width:35%;}
+.note_txt .tb table th, .note_txt .tb table td {text-align:center; padding:3px 5px; font-size:11px; border-right:1px solid #333; border-bottom:1px solid #333; }
+.note_txt .tb table th {background:#f0f0f0;}
+.note_txt {padding:10px;text-align:left; font-size:11px; letter-spacing: -1.3px;}
+.note_txt .txt_indent > li{padding-left:8px;margin-top:5px;background:url(http://img.enuri.info/images/event/2016/buy/ico.png) 2px -42px no-repeat;background-size:50px;}
+.note_txt .txt_indent > li:first-child{margin-top:0px;}
+.note_txt .txt_indent > li.no_bul{background:none;}
+.note_txt .stress {color:#e91030;}
+.note_txt strong{display:block; color:#333;margin-top:20px;margin-bottom:5px;font-size:12px;}
+.note_txt strong:first-child{margin-top:0px;}
+.note_txt .inner{width:auto; padding-left:8px; margin:0; margin-top:10px; }
+.note_txt .inner li{padding-left:1em;text-indent:-1em;margin-top:5px;}
+.note_txt .inner li:first-child{margin-top:0px;}
+.note_txt table{table-layout:fixed;width:100%;border-collapse:collapse;border-style:hidden;border:1px solid #737373;font-size:10px;}
+.note_txt thead th{background:#eeece1;text-align:center;}
+.note_txt th,.moreview td{border:1px solid #737373;padding:2px;text-align:center; background:#fff;}
+
+/*생활혜택*/
+.benefit{background:#ececec; border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8;overflow:hidden;}
+/* .benefit h2{margin-bottom:16px; text-align:center; height:77px;   background: url("http://img.enuri.info/images/event/2017/template/edeal_t3_v2.gif") center top no-repeat; background-size:149px 48px; text-indent:-9999em;}
+.bene_zone {width:320px; margin:0 auto; padding-bottom:37px; position:relative;}
+.emy_exp{width:271px; margin:0 auto; background:none;}
+.emy_exp li:focus {outline: 0;}
+.emy_exp li img {display:block; width:271px; height:267px;}
+.emy_exp li a {display:block; margin:0 auto; width:206px; height:42px; line-height:40px; color:#fff; font-size:17px; font-weight:bold; border:1px solid #0865a3; text-align:center; border-radius:5px; background:#0f82ce;}
+.emy_exp li a span {display:block; margin-right:10px; background: url("http://img.enuri.info/images/event/2017/template/bul_arrrg_wh.gif") right center no-repeat; background-size:8px 10px; }
+.emy_exp button{ text-indent:-9999em; background: url(http://img.enuri.info/images/event/2017/template/slide_arrow.png) no-repeat 0px 0px; background-size: 44px 64px; width:14px; height:26px;  position:absolute; top:132px;  z-index:10; border:none;}
+.emy_exp .slick-prev {left:-14px;}
+.emy_exp .slick-prev:hover {background-position:0 -38px;}
+.emy_exp .slick-next {right:-14px; background-position:-30px 0;}
+.emy_exp .slick-next:hover {background-position:-30px -38px;} */
+
+.goos_zone {padding:26px 0 22px; background:#fff;}
+.goos_zone h3{height:17px; background: url("http://img.enuri.info/images/event/2017/template/edeal_t4.gif") center top no-repeat; background-size:130px 17px; text-indent:-9999em;}
+
+.benefit .bef_goos{overflow:hidden; background:#ffffff; padding-top:17px;}
+.benefit .bef_goos:after{content:"";clear:both;display:block; }
+.benefit .bef_goos li{float:left; width:33.3%;}
+.benefit .bef_goos li:first-child{float:left; width:33.4%}
+.benefit .bef_goos li a{position:relative; text-align:center; color:#171717; font-size:11px; display:block; }
+.benefit .bef_goos li a:before {content:""; position:absolute; top:5px; left:0;width:1px; height:60px; background: url(http://img.enuri.info/images/event/2017/template/m_bul_dotline.gif) left center no-repeat;}
+.benefit .bef_goos li:first-child a:before {display:none}
+.benefit .bef_goos li img{width:74px; height:74px; }
+
+
+/* 이벤트 응모 레이어 */
+.imgbox{display:block; position:relative; width:100%; padding:0; margin:0;}
+.imgs {width:100%; max-width:100%; height:auto; vertical-align:middle;}
+.stripe {
+	display:block;
+	font-size:0;
+	text-indent:-9999px;
+	background:url(http://img.enuri.info/images/event/2018/vip/m_stripe.png) no-repeat;
+	background-size:300px;
+}
+.img_box img {width:100%; vertical-align:top;}
+.stripe_layer {font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/event/2018/recommend/m_stripe_layer.png) no-repeat; background-size:300px;}
+.viewer {padding:0 10px;}
+.viewer fieldset {width:100%; max-width:280px; margin:0 auto 21px; position:relative;}
+.viewer fieldset legend {width:0; height:0; font-size:0; text-indent:-9999px;}
+.viewer fieldset label {display:block; overflow:hidden; clear:both; float:left; width:100%; margin-bottom:6px;}
+.viewer fieldset label p {float:left; width:30%; padding-left:10px; font-size:14px; color:#000; letter-spacing:-1px; line-height:35px; background:url(http://img.enuri.info/images/event/2017/newsemester/dotted.gif) left center no-repeat; background-size:2px;}
+.viewer fieldset label .ipt_box {float:right; width:calc(65% - 12px); height:33px; padding-left:10px; border:1px solid #bbb; font-size:12px; line-height:33px; vertical-align:top; letter-spacing:-1px;}
+.viewer fieldset .agree_chk {position:relative; clear:both;}
+.viewer fieldset .agree_chk span {display:inline-block; width:calc(100% - 77px); height:15px; padding-left:18px; font-size:11px; line-height:18px; letter-spacing:-1px; color:#505050; vertical-align:top; background:url(http://img.enuri.info/images/event/2017/newsemester/agreechk.gif) left top no-repeat; background-size:15px;}
+.viewer fieldset .agree_chk span input {-webkit-appearance:none; border:0; height:1px; width:1px; position:absolute; margin:-9999em;}
+.viewer fieldset .agree_chk .unchk{background-position:0 -15px;}
+.viewer fieldset .agree_chk .chk{background-position:0 0;}
+.viewer fieldset .agree_chk .btn_detail {position:absolute; top:0; right:0; width:60px; height:18px; background-position:-218px -188px;}
+
+/* 생일 이벤트 레이어 */
+.birthday_layer {position:fixed; left:50%; top:50%; width:100%; height:100%; -o-transform:translate(-50%, -50%); -ms-transform:translate(-50%, -50%); -moz-transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%); transform:translate(-50%, -50%); background:url(http://img.enuri.info/images/mobilenew/images/layer_back.png); z-index:100005;}
+.birthday_layer .inner_layer {position:absolute; top:50%; left:50%; z-index:1000; width:300px; margin:0 auto; padding:0; border-radius:15px; border:1px solid #323232; -o-transform:translate(-50%, -50%); -ms-transform:translate(-50%, -50%); -moz-transform:translate(-50%, -50%); -webkit-transform:translate(-50%, -50%); transform:translate(-50%,-50%); background:#fff;-webkit-box-shadow: inset 0px 4px 50px 0px rgba(0,0,0,0.15); -moz-box-shadow: inset 0px 4px 50px 0px rgba(0,0,0,0.15); box-shadow: inset 0px 4px 50px 0px rgba(0,0,0,0.15);}
+.birthday_layer .inner_layer .tit {display:block; margin:20px auto 0; font-weight:bold; font-size:15px; color:#333; text-align:center; line-height:30px; vertical-align:middle;}
+.birthday_layer .inner_layer .close {position:absolute; right:0; top:-25px; width:20px; height:20px; background-position:-280px 0; text-indent:-9999em; }
+.birthday_layer .caution_info {width:278px; height:32px; margin:0 auto 25px; background-position:0 -245px}
+
+.birthdayPrivacy__info {display:block; margin:25px 0 18px; font-size:14px; color:#666; line-height:19px; vertical-align:middle; text-align:center;}
+.birthdayPrivacy__area {display:block; padding:10px; background:#f2f2f2;}
+.birthdayPrivacy__area .u {display:block; margin-bottom:15px; font-size:12px; color:#333; line-height:13px; vertical-aling:middle; text-decoration:underline;}    
+.birthdayPrivacy__area dl dt {font-weight:bold; font-size:11px; color:#000; line-height:14px; word-wrap:keep-all; letter-spacing:-1px; vertical-aling:middle;}      
+.birthdayPrivacy__area dl dd {padding:0; font-size:11px; color:#333; line-height:14px; word-wrap:keep-all; letter-spacing:-1px; vertical-aling:middle;}  
+.birthdayPrivacy__area li {letter-spacing:-1px;}  
+.birthdayPrivacy__ipt {margin:10px auto; font-size:10px; line-height:18px; text-align:center; vertical-align:middle;}
+.birthdayPrivacy__ipt input {vertical-align:middle; margin-right:3px;}
+.birthdayPrivacy__ipt input[type='checkbox'] {width:18px; height:18px; border:0; background: url(http://img.enuri.info/images/event/2018/buy/may/chk_form.jpg) no-repeat 0 0; background-size:36px;}
+.birthdayPrivacy__ipt input[type='checkbox']:checked {background-position:-18px 0;}
+.birthdayPrivacy__close {display:block; width:156px; height:23px; margin:0 auto 27px; border-radius:23px; font-weight:bold; font-size:15px; color:#fff; text-align:center; vertical-align:middle; line-height:23px; background-color:#db1d1d;}
+
+
+

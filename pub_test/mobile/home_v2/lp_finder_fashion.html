@@ -1,0 +1,1333 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp.css"/>
+		<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+	<!-- 파인더 라이브러리 CSS&JS -->
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/spinners.css">
+	<link rel="stylesheet" type="text/css" href="/js/nouislider/distribute/nouislider.min.css">
+	<script src="/js/nouislider/distribute/nouislider.min.js"></script>
+	<script src="/js/highcharts.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp_finder.css"/> <!-- 스마트파인더 CSS -->
+
+	
+</head>
+<body>
+
+<!-- 공통 : 로더 -->
+<div id="loadingDiv" class="comm__loader" style="display:none">
+	<div class="loader_inner">로딩중</div>
+</div>
+<!-- // 로더 -->
+
+<!-- 공통 : 찜레이어 -->
+<span class="zzimly" style="display:none">찜 되었습니다</span>
+<!-- // 찜레이어 -->
+
+<div id="wrap">
+	
+	<!-- 헤더 LP - 타입A -->
+    <!--
+    <header id="header" class="m_header head__type_a">
+        <div class="header_wrap">
+            <h1 class="m_txt">세탁기,건조기,스타일러</h1>
+            <button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>
+            <button class="btn_hd_cate comm__sprite">카테고리</button>
+            <button class="btn_hd_sr comm__sprite">검색</button>
+            <button class="btn_hd_my comm__sprite">나의정보</button>
+        </div>
+        <script>
+            //퍼블 테스트용
+            $(function(){
+                var $mainWrap = $("#wrap"); // 메인컨텐츠 wrapper
+                var $btnCate = $(".btn_hd_cate"); // 카테고리 버튼
+                var $btnClose = $(".btn_hd_close"); // 카테고리 닫기 버튼
+                var $cateLayer = $(".cate_wrap"); // 카테고리 레이어
+                var $detailSRLayer = $(".com__sr_detail"); // 상세검색 레이어
+                var $btnCloseDetail = $(".btn_dt_close"); // 상세검색 레이어 닫기
+                var $btnSR = $(".btn_hd_sr"); // 검색 버튼
+                var $srLayer = $(".com__sr_layer"); // 검색 레이어
+                var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
+                // 버튼 :: 카테고리 레이어
+                $btnCate.click(function(e){
+                    $mainWrap.addClass("scroll_lock"); // 스크롤 잠그기
+                    $cateLayer.show(); // 레이어를 활성화 한 후 슬라이딩
+                    setTimeout(function(){
+                        $cateLayer.addClass("on");
+                    },100)
+                })
+                // 버튼 :: 카테고리 닫기
+                $btnClose.click(function(e){
+                    $mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+                    $("html,body").scrollTop(0);
+                    $cateLayer.removeClass("on");
+                    setTimeout(function(){
+                        $cateLayer.hide();
+                    },700)
+                })
+                // 버튼 : 상세검색 닫기
+                $btnCloseDetail.click(function(e){
+                    $mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+                    // $("html,body").scrollTop(0);
+                    $detailSRLayer.removeClass("on");
+                    setTimeout(function(){
+                        $detailSRLayer.hide();
+                    },700)
+                })
+                // 버튼 :: 검색 레이어 열기
+                $btnSR.click(function(e){
+                    var _taPos = $(".m_header").offset().top - 5;
+                    // 검색창 열기전 위치값 저장
+                    $(this).attr('data-scroll-val',$(window).scrollTop() );
+                    // 스크롤 이동후 검색창 열기
+                    $("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
+                        $srLayer.show();
+                        setTimeout(function(){
+                            $srLayer.addClass("opened");
+                            $mainWrap.addClass("scroll_lock");
+                        },300)
+                    })
+                })
+                // 버튼 :: 검색 레이어 닫기
+                $btnSRClose.click(function(e){
+                    // 스크롤 잠금 해제
+                    $mainWrap.removeClass("scroll_lock");
+                    // 검색창 닫고 스크롤 이동
+                    setTimeout(function(){
+                        $(window).scrollTop( $btnSR.attr('data-scroll-val') );
+                    },1);
+                    $srLayer.hide().removeClass("opened");
+                })
+            })
+        </script>
+    </header>
+    -->
+    <!-- // 헤더 -->
+
+    <!-- 헤더 LP - LP만 적용 -->
+    <header id="header" class="m_header lp_header">
+        <div class="header_wrap">
+            <button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>
+            <a href="" class="input_hd_sr">
+                검색어를 입력해 주세요.
+                <i class="ico_search comm__sprite"></i>
+            </a>
+			<!-- <button class="btn_hd_my comm__sprite">나의정보</button> -->
+			<!-- 210824 : SR#48387 : MY알림 추가 -->
+			<button class="btn_hd_myalarm comm__sprite">MY알림</button>
+        </div>
+    </header>
+    <!-- // 헤더 -->
+
+	<!-- 스마트 파인더 섹션 : m_lp_cont-finder -->
+	<section id="container" class="m_lp_cont m_lp_cont-finder">
+        
+		<div class="lp__head">
+			<div class="lp__navi scroller">
+				<ul class="scroll-cont">
+					<li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">의류,신발</span></li>
+					<li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">여성의류</span></li>
+					<li class="navi__cate on"><span class="txt__cate" onclick="finder_open(1);return false">티셔츠</span></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="lp__detail_sr detail_sr">
+			<!-- 카테고리 -->
+			<div class="box_inner">
+				<div class="lp__detail_sr_tab detail_sr_tab scroller">
+					<ul class="scroll-cont">
+						<li data-id="tab_01" class="on"><a href="#">티셔츠</a></li>
+						<li data-id="tab_02"><a href="#">블라우스,셔츠</a></li>
+						<li data-id="tab_02"><a href="#">니트</a></li>
+						<li data-id="tab_03"><a href="#">바지</a></li>
+						<li data-id="tab_04"><a href="#">스커트</a></li>
+						<li data-id="tab_05"><a href="#">양말</a></li>
+						<li data-id="tab_05"><a href="#">모자</a></li>
+						<!-- 200831 : SR#41975 :  상세검색 탭 및 슬라이드 제거  -->
+						<!-- <li data-id="tab_06"><em>상세검색</em></li> -->
+						<!-- // -->
+					</ul>
+				</div>
+			</div>
+			<!-- // 카테고리 -->
+
+			<!-- 스마트파인더 -->			
+			<div class="box_inner">
+				<!-- 210729 : 스마트파인더  -->
+				<div class="lp__smart_search border-box">
+					<div class="wrap">
+						<div class="search__prop_area type_icon">
+							<div class="prop_name">추천브랜드
+								<div class="logo_smartfinder">
+									<i class="ico_smartfinder comm__sprite"></i>
+									<i class="ico_noti comm__sprite"></i>
+									<div class="tooltiop_sf_summary comm__sprite">스마트파인더란, 카테고리별로 찾고자 하는 상품을 빠르고 쉽게 제공하기 위한 속성검색 추천기능입니다.</div>
+								</div>
+								<script>
+									setTimeout(function(){
+										$('.tooltiop_sf_summary').fadeOut(400);
+									},1000)
+									$('.logo_smartfinder').on('click', function(){
+										$(this).find('.tooltiop_sf_summary').show().delay(1000).fadeOut(400);
+									});
+								</script>
+							</div>
+							<div class="prop_list_wrap">
+								<!-- 추천브랜드일 때, "prop_brand_list" 클래스 추가 -->
+								<ul class="prop_list prop_brand_list scroller">
+									<!-- 아이콘이 배경처리... -->
+									<!-- <li class="item_prop"><a href="#" data-prop="a1"><i class="ico_all comm__sprite"></i>전체</a></li> -->
+									<li class="item_prop"><a href="#" data-prop="32581" class="active"><img src="//img.enuri.info/images/home/luxury/logo40_225090.png" class="ico_sf">프라다</a></li>
+									<li class="item_prop"><a href="#" data-prop="31050"><img src="//img.enuri.info/images/home/luxury/logo40_227039.png" class="ico_sf">버버리</a></li>
+									<li class="item_prop"><a href="#" data-prop="31232"><img src="//img.enuri.info/images/home/luxury/logo40_227388.png" class="ico_sf">몽클레르</a></li>
+									<li class="item_prop"><a href="#" data-prop="28754"><img src="//img.enuri.info/images/home/luxury/logo40_29433.png" class="ico_sf">꼼데가르송</a></li>
+									<li class="item_prop"><a href="#" data-prop="184532"><img src="//img.enuri.info/images/home/luxury/logo40_29535.png" class="ico_sf">메종키츠네</a></li>
+									<li class="item_prop"><a href="#" data-prop="144690"><img src="//img.enuri.info/images/home/luxury/logo40_34285.png" class="ico_sf">산드로</a></li>
+									<li class="item_prop"><a href="#" data-prop="162551"><img src="//img.enuri.info/images/home/luxury/logo40_34648.png" class="ico_sf">아페쎄</a></li>
+									<li class="item_prop"><a href="#" data-prop="165452"><img src="//img.enuri.info/images/home/luxury/logo40_34664.png" class="ico_sf">MSGM</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="search__prop_area">
+							<div class="prop_name">할인율</div>
+							<div class="prop_list_wrap">
+								<ul class="prop_list scroller">
+									<li class="item_prop"><a href="#" data-prop="b1" class="active">70%이상</a></li>
+									<li class="item_prop"><a href="#" data-prop="b2">70%~50%</a></li>
+									<li class="item_prop"><a href="#" data-prop="b3">50%~30%</a></li>
+									<li class="item_prop"><a href="#" data-prop="b4">30%~20%</a></li>
+									<li class="item_prop"><a href="#" data-prop="b5">20%~10%</a></li>
+									<li class="item_prop"><a href="#" data-prop="b6">10%~5%</a></li>
+									<li class="item_prop"><a href="#" data-prop="b7">5%~0%</a></li>
+									<li class="item_prop"><a href="#" data-prop="b8">0%</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!---속성더보기-->
+					<div class="btn__area">
+						<a href="" class="btn btn__smartsearch_more_prop" onclick="finder_open(1);return false">파인더 더보기<i class="ico_arrow_right comm__sprite"></i></a>
+					</div>
+					<!-- //  -->
+				</div>
+				<!-- //  -->
+
+				<!-- 선택된 속성리스트 -->
+				<div class="selected__prop_list active">
+					<ul class="scroller">
+						<li>써스데이아일랜드</li>
+						<li>70%~50%</li>
+					</ul>
+					<button type="button" class="btn_reset"><i class="ico_reset comm__sprite"></i></button>
+				</div>
+				<!-- //  -->
+			</div>
+			<!-- // 스마트파인더 -->
+        </div>
+
+		<!-- 리스트형일때 .lp__cont / 그리드형일때 .lp__cont.grid -->
+		<!-- 파인더 lp__cont-->
+		<div class="lp__cont">
+			<!-- #210726 : 신규 디자인으로 변경하면서, 아래 마크업은 삭제 예정 -->
+            <!-- <div class="lp__cont_head cont_head" style="display:none">
+                <div class="lp__cont_sortable cont_sortable">
+                    <! -- 정렬옵션 - ->
+                    <div class="opt__sort">
+                        <select name="sort_option" onchange="selectToLabel(this)" class="select_opt" id="" title="인기순">
+                            <option value="" selected="">인기순</option>
+                            <option value="">최저가순</option>
+                            <option value="">최고가순</option>
+                            <option value="">신규등록순</option>
+                            <option value="">판매량순</option>
+                            <option value="">출시예정상품</option>
+                            <option value="">상품평많은순</option>
+                        </select>
+                        <label for="sort_option">인기순</label>
+                        <script>
+                            // 선택된 옵션값을 라벨에 복사
+                            function selectToLabel(e){
+                                var $label = $(e).next("label");
+                                $label.html( e.options[e.selectedIndex].text );
+                            }
+                        </script>
+                    </div>
+                    <!- - 보기옵션 + 필터 - ->
+                    <div class="opt__side">
+                        <!- - 보기옵션 - ->
+                        <button class="opt__view btn__view_grid" onclick="$('.lp__cont').toggleClass('grid');$('html,body').scrollTop($('.lp__cont').offset().top - 50);">그리드모드</button>
+                        <button class="opt__view btn__view_list" onclick="$('.lp__cont').toggleClass('grid');$('html,body').scrollTop($('.lp__cont').offset().top - 50);">리스트모드</button>
+                        <!- - 필터 - ->
+                        <button class="btn__filter" onclick="$('.com__sr_detail').fadeIn(300).addClass('on');">필터</button>
+                    </div>
+                </div>
+            </div> -->
+            <!-- // LP Header -->
+            <!-- LP 상품 갯수  -->
+            <!-- <div class="lp__cont_total" style="display:none">
+                <span class="txt_amount">
+                    <em>123,456</em>개 상품
+                    <!- - <em>123,456</em>개 검색결과 - ->
+                </span>
+            </div> -->
+            <!-- //#210726 : 신규 디자인으로 변경하면서, 위 마크업은 삭제 예정 -->
+            <!-- // -->
+
+
+            <!-- #210726 : 신규 디자인 LP Header -->
+            <div class="lp__cont_head cont_head cont_head-sort">
+                <div class="list__util">
+                    <div class="prod_total">
+                        <p class="tx_cnt">총 <strong>50,478,299</strong>개 상품</p>
+                    </div>
+
+                    <div class="prod_list_type">
+                        <!-- 보기옵션 -->
+                        <div class="opt_viewtype">
+                            <!-- default : grid type -->
+                            <button class="btn btn_grid">그리드모드</button>
+                            <button class="btn btn_list active">리스트모드</button>
+
+                            <script>
+                                $(".opt_viewtype .btn").on("click", function(){
+                                    var obj = $(this);
+                                    var _thisType = $(obj).data("type");
+                                    viewtypeChange(obj);
+                                })
+                                var viewtypeChange = function(obj){
+                                    var _obj = obj;
+
+                                    $(_obj).removeClass('active').siblings(".btn").addClass('active');
+                                    $('.lp__cont').toggleClass('grid');
+                                    
+                                    // 상단고정일경우에만 위치이동
+                                    if($('.cont_head').hasClass('fixed_top')) {
+                                        $('html,body').scrollTop($('.lp__cont').offset().top - 50);
+                                    }
+                                }
+
+                            </script>
+                            <!-- 상세검색사이드바 열기버튼 -->
+                            <button class="btn btn_detail_search" type="button" onclick="finder_open(1);return false">
+                                상세검색사이드바
+                                <span class="tx_cnt">99</span>
+                            </button>
+                            <!-- // -->
+                        </div>
+                    </div>
+                </div>
+				<div class="list__util">
+                    <div class="prod_sort">
+                        <div class="opt_sort">
+                            <label for="sort_option">인기순</label>
+                            <select name="sort_option" onchange="selectToLabel(this)" class="select_opt" id="" title="인기순">
+                                <option value="0" selected="selected">인기순</option>
+                                <option value="0">최저가순</option>
+                                <option value="0">최고가순</option>
+                                <option value="0">신규등록순</option>
+                                <option value="0">판매량순</option>
+                                <option value="0">출시예정상품</option>
+                                <option value="0">상품평많은순</option>
+                            </select>
+
+                            <script>
+                                // 선택된 옵션값을 라벨에 복사
+                                function selectToLabel(e){
+                                    var $label = $(e).prev("label");
+                                    $label.html( e.options[e.selectedIndex].text );
+                                }
+                            </script>
+                        </div>
+                    </div>
+                    <div class="prod_sort_deliveryPrice nodraggable">
+                        <label>
+                            <input type="checkbox" class="">
+                            <span class="input_nm">중고/렌탈제외</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="">
+                            <span class="input_nm">배송비 포함</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- // LP Header -->
+
+			<div class="lp__prod_list prod__list" >
+				<ul>
+					<!-- LP : 결과없음 : 혹시나해서 여기도 추가함..211207 -->
+					<li class="no_result">
+						<span class="comm__sprite ico_caution">!</span>
+						<span class="txt_result">
+							<span class="txt_keyword">ㅇㄹㄴㅇㅎ울호</span><br>
+							검색결과가 없습니다.
+						</span>
+						<div class="no-result__txt">
+							<div class="no-result__txt--sub">정확한 검색어인지 확인하시고 다시 검색해 주세요.</div>
+							<ul class="txt_noti">
+								<li>- 검색어의 철자가 맞는지 확인해 주세요.</li>
+								<li>- 붙은 단어일 경우 띄어쓰기를 해보세요.</li>
+								<li>- 단어수를 줄이거나, 일반적인 검색어로 다시 검색해 보세요.</li>
+							</ul>
+						</div>
+					</li>
+					<!-- // -->
+					
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">N위</em>삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,000</strong>원
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,198,000</strong>원</span>
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (1,290)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+						<!-- 상품상세정보 -->
+						<div class="prod_info_detail">
+							<span class="prod_txt_related">
+								회오리 바람으로 더 강하게! 더 멀리~  삼성 최대1줄 길면 말줄임을 합니다아아아아아아아
+							</span>
+							<span class="prod_txt_spec">
+								<!-- 속성간 구분은 <i class="ico_div">|</i> 로 해주세요 -->
+								화면:39.11cm(15.4형)<i class="ico_div">|</i>2880x1800(레티나)<i class="ico_div">|</i>슈퍼브라이트 (500nit)<i class="ico_div">|</i><em class="related">LED백라이트</em><i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>LED백라이트<i class="ico_div">|</i>IPS패널(광시야각)<i class="ico_div">|</i>램:확인 후 구매<i class="ico_div">|</i> SSD:확인 후 구매<i class="ico_div">|</i>
+							</span>
+							<div class="prod_tb_compare">
+								<table class="tb_fold">
+									<caption>
+										구매옵션 <em>(6개)</em>
+										<span class="tb_release_month">등록일 19년 4월</span>
+									</caption>
+									<!-- 구분 필요 없을때 그냥 날려주세요. -->
+									<!-- <thead> -->
+									<!-- <tr> -->
+									<!-- <th class="tb_opt_name">옵션명</th> -->
+									<!-- <th class="tb_val_price">가격</th> -->
+									<!-- </tr> -->
+									<!-- </thead> -->
+									<tfoot>
+									<tr>
+										<!-- 두개 타입일때 colspan - 2  -->
+										<td colspan="2">
+											<!-- 옵션더보기 -->
+											<span class="btn__option_unfold" onclick="$(this).closest('table').removeClass('tb_fold');">1개의 옵션 더보기</span>
+											<!-- 상품상세보기 -->
+											<!-- <span class="btn__view_detail">쇼핑몰 최저가 더보기</span> -->
+										</td>
+									</tr>
+									</tfoot>
+									<tbody>
+									<tr class="opt__lowest">
+										<td class="tb_opt_name"><span>기변<em class="tb_opt_rank">1위</em></span></td>
+										<td class="tb_val_price">
+											<span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span>
+											<span class="txt__lowest">최저가</span><strong>52,850</strong>원
+										</td>
+									</tr>
+									<tr>
+										<td class="tb_opt_name"><span>번호이동</span></td>
+										<td class="tb_val_price"><span class="ico__mobile_lowest lpsrp__sprite"><!-- 모바일최저가 --></span><strong>213,950</strong>원</td>
+									</tr>
+									<tr>
+										<td class="tb_opt_name"><span>신규</span></td>
+										<td class="tb_val_price"><strong>720,950</strong>원</td>
+									</tr>
+									<tr>
+										<td class="tb_opt_name"><span>신규약정,기변<em class="tb_opt_rank">2위</em></span></td>
+										<td class="tb_val_price"><strong>212,950</strong>원</td>
+									</tr>
+									<tr>
+										<td class="tb_opt_name"><span>신규약정,번이</span></td>
+										<td class="tb_val_price"><strong>220,950</strong>원</td>
+									</tr>
+									<tr class="tb_hide">
+										<td class="tb_opt_name"><span>자급제폰</span></td>
+										<td class="tb_val_price"><strong>895,000</strong>원</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 더보기 -->
+						<span class="btn_prod_more">
+							<span class="btn__txt" onclick="$('html,body').stop(true,false).animate({'scrollTop':$(this).closest('li').offset().top - 88},'slow');$(this).closest('li').find('.prod_info_detail').toggleClass('unfold');$(this).closest('li').find('table').addClass('tb_fold');">
+								<span class="btn__txt_fold">구매옵션 <em>(3개)</em></span>
+							</span>
+						</span>
+					</li>
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">N위</em>삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,000</strong>원
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,198,000</strong>원</span>
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (1,290)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">N위</em>삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,000</strong>원
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,198,000</strong>원</span>
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (1,290)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">N위</em>삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,000</strong>원
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,198,000</strong>원</span>
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (1,290)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<!-- 찜 / AD -->
+						<div class="prod_tag_area">
+							<!-- 찜버튼 -->
+							<span class="btn__zzim">찜버튼</span>
+							<!-- AD -->
+							<!-- <span class="ico__ad comm__sprite">AD</span> -->
+						</div>
+						<!-- 상품필수정보 -->
+						<div class="prod_info_req">
+							<div class="prod_img"><img src="http://photo3.enuri.com/data/images/service/img_300/34578000/34578954.jpg" alt=""></div>
+							<div class="prod_info">
+								<div class="prod_info_inner">
+									<!-- 상품명 -->
+									<span class="prod__name">
+										<span class="prod__name_txt"><em class="txt__rank">N위</em>삼성전자 스마트에어컨 AF16M6476LZR</span>
+									</span>
+									<!-- 상품가격 -->
+									<span class="prod__price">
+										<span class="txt_lowest">최저가</span><strong>1,275,000</strong>원
+									</span>
+									<!-- 출시가 -->
+									<span class="prod__release_price">
+										<span class="txt_release">출시가</span><span class="txt_release_price"><strong>2,198,000</strong>원</span>
+									</span>
+									<!-- 상품평 / 가격비교 -->
+									<span class="prod__grp_info">
+										<!-- 상품평 -->
+										<span class="prod__score"><strong>4.7</strong> (1,277)</span>
+										<!-- 가격비교 -->
+										<span class="prod__compare">가격비교 (1,290)</span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 앱 다운로드 -->
+		<ul class="another_app_list">
+			<li class="btn_app_smart">
+				<a href="#">스마트 택배 다운받기</a>
+			</li>
+			<li class="btn_app_social">
+				<a href="#">소셜가격비교 다운받기</a>
+			</li>
+		</ul>
+		<!-- // -->
+
+		<!-- 공통 : 하단 배너 -->
+		<!-- 배경색은 inline-style로 넣어주세요 -->
+		<div class="aside_bnr" style="background-color:#fbe8e7">
+			<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bnr_bottom_home.png"></a>
+		</div>
+		<!-- // -->
+	</section>
+
+	<!-- 210825 : SR#48487 : 모바일웹 하단 탭바 -->
+	<section class="tabbar">
+		<div class="tabbar__inner">
+			<ul class="tabbar__list">
+				<li><a href="javascript:void(0);" class="tab tab-srch"><i class="ico"></i><span class="tx">검색</span></a></li>
+				<li><a href="javascript:void(0);" class="tab tab-cate"><i class="ico"></i><span class="tx">카테고리</span></a></li>
+				<li><a href="./myeclub/my_alarm.html" class="tab tab-eclub"><i class="ico"></i><span class="tx">마이e클럽</span></a></li>
+				<li><a href="#tab3" class="tab tab-favor"><i class="ico"></i><span class="tx">관심상품</span></a></li>
+			</ul>
+		</div>
+	</section>
+	<!-- // -->
+
+	<!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+	<footer class="footer footer--com">
+		<!-- Footer : 탑버튼 -->
+		<div class="newquick">
+			<p class="TBtn" onclick="goFooterTop();">TOP</p>
+		</div>
+		<!-- // -->
+		<!-- Footer : 회사정보 -->
+		<div class="footer__info">
+			<!-- 클릭시 .unfold 클래스 toggle -->
+			<button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+			<!-- // -->
+			<div class="footer__info_com">
+				<dl>
+					<dt>대표이사</dt>
+					<dd>김기범</dd>
+					<dt>사업자등록번호</dt>
+					<dd>206-81-18164</dd>
+					<dt>통신판매신고</dt>
+					<!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>2020-서울금천-1949호</dd>
+					<!-- // -->
+					<dt>주소</dt>
+					<!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+					<!-- // -->
+					<dt>문의</dt>
+					<dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+				</dl>
+			</div>
+		</div>
+		<!-- Footer : 푸터메뉴 -->
+		<div class="footer__menu">
+			<div class="footer__menu_top">
+				<a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+			</div>
+			<div class="footer__menu_bot">
+				<a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+			</div>
+		</div>
+		<span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+	</footer>
+	<!-- // -->
+
+	
+</div>
+
+<script>	
+	// LPSRP : 최상단 GNB 고정
+    $(function(){
+        var position = $(window).scrollTop();
+        var $mainwrap = $("#wrap");
+        var $mhead = $("#wrap .m_header"); // 헤더
+        var $contHeadArea = $(".lp__cont"); // 컨텐츠
+        var $contHead = $contHeadArea.find(".cont_head"); // 컨텐츠 헤더
+        var $btnQuick = $(".footer .newquick"); // Top 버튼
+        var $holdDistance = 30; //cont_head가 상단에 붙은후 미작동되는거리(임시적용, 추후변경될수있음)
+        var rePos = function(){
+            var nowPos = $(window).scrollTop();
+            var headPos = $contHeadArea.offset().top;
+            var gnbH = $mhead.outerHeight();
+            ( nowPos > headPos - gnbH ) ? $contHead.addClass("fixed_top") : $contHead.removeClass("fixed_top");
+            ( nowPos > 0 ) ? $mhead.addClass("fixed_top") : $mhead.removeClass("fixed_top");
+            // TOP버튼 등장
+            if((headPos + $holdDistance) < nowPos) {
+                if(nowPos > position){
+                    $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    $btnQuick.addClass("scr_mode");
+                }else{
+                    $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }
+            }
+            
+            position = nowPos;
+        }
+        $(window).load(rePos).scroll(rePos);
+    });
+	
+	// 공통 : 찜버튼
+	var $btnZzim = $(".btn__zzim");
+	var $layZzim = $(".zzimly");
+	$btnZzim.on('click',function(){				
+		if ( !$(this).hasClass('on') ){
+			$layZzim.show();
+			setTimeout(function(){
+				$layZzim.fadeOut(300);
+			},500)
+			$(this).addClass('on anim');
+		}else{
+			$(this).removeClass('on anim');
+		}
+	})
+</script>
+
+<!-- [패션] 파인더 Bottom Sheet -->
+<div class="finder_wrap" style="z-index:-1"><!-- is-shown -->
+	<div class="dimmed"></div>
+
+	<div class="finder">
+		<div class="finder__inner">
+			<div class="finder__head scroller">
+				<ul class="scroll-cont">
+					<!-- 탭 선택 : is--on, 옵션 선택시, tab tab-choice-->
+					<li><button type="button" class="tab tab-choice">가격</button></li>
+					<li><button type="button" class="tab">카테고리</button></li>
+					<li><button type="button" class="tab">브랜드</button></li>
+					<li><button type="button" class="tab">색상</button></li>
+					<li><button type="button" class="tab">상세옵션</button></li>
+				</ul>
+			</div>
+
+			<div class="finder__cont">
+				<div class="swiper-container finder__swiper">
+					<div class="swiper-wrapper">
+						<!-- 가격 파인더 -->
+						<div class="swiper-slide finder__item">
+							<!-- 스와이퍼 이너 컨텐츠 -->
+							<div class="f_inner__cont">
+								<div class="range__price">
+									<p id="rangeMin" class="tx_price tx_price--min">1,000</p>~<p id="rangeMax" class="tx_price tx_price--max">270,000+</p>
+								</div>
+
+								<div class="chart__slide swiper-no-swiping">
+									<div class="chart__area">
+										<!-- 차트 영역 -->
+										<!-- <img src="http://img.enuri.info/images/mobile_v2/finder/test/lp_finder_graph.png" alt="" /> -->
+										<div id="chartContainer" class="chart_cont"></div>
+									</div>
+
+									<!-- 슬라이더 영역 -->
+									<!-- 라이브러리 참고 : https://refreshless.com/nouislider/ -->
+									<div id="nonlinear"></div>
+								</div>
+							</div>
+						</div>
+						<!-- //가격 파인더 -->
+
+						<!-- 카테고리 파인더 -->
+						<div class="swiper-slide finder__item">
+							<!-- 스와이퍼 이너 컨텐츠 -->
+							<div class="f_inner__cont">
+								<div class="cate__box">
+									<!-- 카테고리 상단, Breadcrumbs -->
+									<div class="cate__head cate__head--category">
+										<div class="f_breadcrumb scroller swiper-no-swiping">
+											<ul class="scroll-cont">												
+												<li><span class="tx_cate">패션/잡화</span></li>
+												<li><span class="tx_cate">여성의류</span></li>
+												<li><span class="tx_cate">니트/가디건</span></li>				
+												<li><span class="tx_cate">패션/잡화</span></li>
+												<li><span class="tx_cate">여성의류</span></li>
+												<li class="is--on"><span class="tx_cate">니트/가디건</span></li>
+											</ul>
+										</div>
+									</div>
+									<!-- 카테고리 목록 -->
+									<ul class="cate__list cate__list--category y-scroll">
+										<!-- 210819 : 체크박스에서 라디오로 변경 : "chk" > "rdo" -->
+										<li class="is--on"><button type="button" class="btn" data-cnt="10210"><i class="rdo"></i> 티셔츠</button></li>
+
+										<!-- 211007 : 속성선택불가 속성시 "is-disabled" 클래스 추가 -->
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="12400"><i class="rdo"></i> 블라우스, 셔츠</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="21200"><i class="rdo"></i> 니트</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="35600"><i class="rdo"></i> 바지</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="442300"><i class="rdo"></i> 스커트</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="5100"><i class="rdo"></i> 원피스</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="64500"><i class="rdo"></i> 자켓</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="7300"><i class="rdo"></i> 코트</button></li>
+										<li><button type="button" class="btn" data-cnt="823400"><i class="rdo"></i> 패딩/점퍼</button></li>
+										<li><button type="button" class="btn" data-cnt="10210"><i class="rdo"></i> 티셔츠</button></li>
+										<li><button type="button" class="btn" data-cnt="12400"><i class="rdo"></i> 블라우스, 셔츠</button></li>
+										<li><button type="button" class="btn" data-cnt="21200"><i class="rdo"></i> 니트</button></li>
+										<li><button type="button" class="btn" data-cnt="35600"><i class="rdo"></i> 바지</button></li>
+										<li><button type="button" class="btn" data-cnt="442300"><i class="rdo"></i> 스커트</button></li>
+										<li><button type="button" class="btn" data-cnt="5100"><i class="rdo"></i> 원피스</button></li>
+										<li><button type="button" class="btn" data-cnt="64500"><i class="rdo"></i> 자켓</button></li>
+										<li><button type="button" class="btn" data-cnt="7300"><i class="rdo"></i> 코트</button></li>
+										<li><button type="button" class="btn" data-cnt="823400"><i class="rdo"></i> 패딩/점퍼</button></li> 
+										<li><button type="button" class="btn" data-cnt="10210"><i class="rdo"></i> 티셔츠</button></li>
+										<li><button type="button" class="btn" data-cnt="12400"><i class="rdo"></i> 블라우스, 셔츠</button></li>
+										<li><button type="button" class="btn" data-cnt="21200"><i class="rdo"></i> 니트</button></li>
+										<li><button type="button" class="btn" data-cnt="35600"><i class="rdo"></i> 바지</button></li>
+										<li><button type="button" class="btn" data-cnt="442300"><i class="rdo"></i> 스커트</button></li>
+										<li><button type="button" class="btn" data-cnt="5100"><i class="rdo"></i> 원피스</button></li>
+										<li><button type="button" class="btn" data-cnt="64500"><i class="rdo"></i> 자켓</button></li>
+										<li><button type="button" class="btn" data-cnt="7300"><i class="rdo"></i> 코트</button></li>
+										<li><button type="button" class="btn" data-cnt="823400"><i class="rdo"></i> 패딩/점퍼</button></li> 
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- //카테고리 파인더 -->
+						
+						<!-- 브랜드 파인더 -->
+						<div class="swiper-slide finder__item">
+							<!-- 스와이퍼 이너 컨텐츠 -->
+							<div class="f_inner__cont no_scrolling">
+								<!-- 
+									선택된 브랜드 옵션이 있을 때, "cate__box has-seltab" 클래스 추가 
+									옵션 체크 영역 높이 변경
+								-->
+								<div class="cate__box has-seltab">
+									<div class="cate__head">
+										<div class="srch_bar">
+											<input type="text" class="ipt-text" value="" placeholder="브랜드를 입력하세요." />
+										</div>
+										
+										<div class="select_tab scroller swiper-no-swiping">
+											<ul class="scroll-cont">
+												<li><button type="button" class="btn btn-sel">닥스</button></li>
+												<li><button type="button" class="btn btn-sel">루이까또즈</button></li>
+												<li><button type="button" class="btn btn-sel">구찌</button></li>
+												<li><button type="button" class="btn btn-sel">레이벤</button></li>
+												<li><button type="button" class="btn btn-sel">아가타</button></li>
+												<li><button type="button" class="btn btn-sel">발렌시아가</button></li>
+												<li><button type="button" class="btn btn-sel">토리버치</button></li>
+											</ul>
+
+										</div>
+
+										<div class="sort_tab">
+											<ul>
+												<li class="is--on"><button type="button" class="btn btn-best">인기순</button></li>
+												<li><button type="button" class="btn" data-char="eng">A-Z</button></li>
+												<li><button type="button" class="btn" data-char="kor">ㄱ-ㅎ</button></li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="brand_container">
+										<!-- 인기순 -->
+										<!-- 노출 : is-shown -->
+										<div class="brand_cont is-shown">
+											<ul class="cate__list cate__list--brand y-scroll"><!-- 브랜드 목록 -->
+												<!-- 210819 : 브랜드 랭킹 추가 -->
+												<li class="is--on"><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 닥스 <i class="tx_rank rank-1">1위</i></button></li>
+												<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 루이까또즈 <i class="tx_rank rank-2">2위</i></button></li>
+												<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i>  구찌 <i class="tx_rank rank-3">3위</i></button></li>
+
+												<!-- 211007 : 속성선택불가 속성시 "is-disabled" 클래스 추가 -->
+												<li class="is-disabled"><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 레이벤</button></li>
+												<li class="is-disabled"><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 아가타</button></li>
+												<li class="is-disabled"><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 발렌시아가</button></li>
+												<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i>  토리버치</button></li>
+												<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 닥스</button></li>
+												<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 루이까또즈</button></li>
+												<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 구찌</button></li>
+												<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i>  레이벤</button></li>
+												<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 아가타</button></li>
+												<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 발렌시아가</button></li>
+												<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 토리버치</button></li>
+												<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i>  닥스</button></li>
+												<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 루이까또즈</button></li>
+											</ul>
+										</div>
+										<!-- 인기순 -->
+
+										<!-- A-Z -->
+										<div class="brand_cont brand_cont-eng">
+											<div class="brand_group">
+												<ul class="brand_list">
+													<li class="brand_item">
+														<p id="tab1" class="group_tit">A</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab2" class="group_tit">B</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab3" class="group_tit">C</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab4" class="group_tit">D</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab5" class="group_tit">E</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab6" class="group_tit">F</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab7" class="group_tit">G</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+												</ul>
+											</div>
+											
+											<div class="brand_sort swiper-no-swiping">
+												<ul class="sort__list">
+													<li data-target="tab1">A</li>
+													<li data-target="tab2">B</li>
+													<li data-target="tab3">C</li>
+													<li data-target="tab4">D</li>
+													<li data-target="tab5">E</li>
+													<li data-target="tab6">F</li>
+													<li data-target="tab7">G</li>
+												</ul>
+											</div>
+										</div>
+										<!-- A-Z, -->
+
+										<!-- ㄱ-ㅎ -->
+										<div class="brand_cont brand_cont-kor">
+											<div class="brand_group">
+												<ul class="brand_list">
+													<li class="brand_item">
+														<p id="tab1" class="group_tit">ㄱ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab2" class="group_tit">ㄴ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab3" class="group_tit">ㄷ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab4" class="group_tit">ㄹ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab5" class="group_tit">ㅁ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab6" class="group_tit">ㅂ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+													<li class="brand_item">
+														<p id="tab7" class="group_tit">ㅅ</p>
+														<ul class="cate__list cate__list--brand"><!-- 브랜드 목록 -->
+															<li><button type="button" class="btn" data-cnt="200"><i class="chk"></i> 라운드 넥</button></li>
+															<li><button type="button" class="btn" data-cnt="120"><i class="chk"></i> 브이넥</button></li>
+															<li><button type="button" class="btn" data-cnt="50"><i class="chk"></i> 카라넥</button></li>
+															<li><button type="button" class="btn" data-cnt="150"><i class="chk"></i> 후드</button></li>
+														</ul>
+													</li>
+												</ul>
+											</div>
+											
+											<div class="brand_sort swiper-no-swiping">
+												<ul class="sort__list">
+													<li data-target="tab1">ㄱ</li>
+													<li data-target="tab2">ㄴ</li>
+													<li data-target="tab3">ㄷ</li>
+													<li data-target="tab4">ㄹ</li>
+													<li data-target="tab5">ㅁ</li>
+													<li data-target="tab6">ㅂ</li>
+													<li data-target="tab7">ㅅ</li>
+												</ul>
+											</div>
+										</div>
+										<!-- ㄱ-ㅎ -->
+									</div>
+									
+								</div>												
+							</div>
+						</div>
+						<!-- //브랜드 파인더 -->
+
+						<!-- 색상 파인더 -->
+						<div class="swiper-slide finder__item">
+							<!-- 스와이퍼 이너 컨텐츠 -->
+							<div class="f_inner__cont">
+								<div class="cate__box cate__box--color y-scroll">
+									<ul class="cate__list cate__list--color">
+										<!-- 선택 li 클래스 : "is--on" -->
+										<li class="is--on">
+											<button type="button" class="btn-color" data-cnt="100">
+												<i class="ico-rnd" style="background-color:#000000"></i>
+												<span class="tx">블랙</span>
+											</button>
+										</li>
+										<li class="is--on">
+											<button type="button" class="btn-color btn-color--white" data-cnt="200"><!-- 예외 색상 : 하얀색 클래스 "btn-color--white" -->
+												<i class="ico-rnd" style="background-color:#FFFFFF"></i>
+												<span class="tx">화이트</span>
+											</button>
+										</li>
+										<li class="is--on">
+											<button type="button" class="btn-color" data-cnt="300">
+												<i class="ico-rnd" style="background-color:#90572C"></i>
+												<span class="tx">브라운</span>
+											</button>
+										</li>
+
+										<!-- 211007 : 속성선택불가 속성시 "is-disabled" 클래스 추가 -->
+										<li class="is-disabled">
+											<button type="button" class="btn-color" data-cnt="400">
+												<i class="ico-rnd" style="background-color:#3074FD"></i>
+												<span class="tx">블루</span>
+											</button>
+										</li>
+										<li class="is-disabled">
+											<button type="button" class="btn-color" data-cnt="100">
+												<i class="ico-rnd" style="background-color:#E8E095"></i>
+												<span class="tx">베이지</span>
+											</button>
+										</li>
+										<li class="is-disabled">
+											<button type="button" class="btn-color" data-cnt="400">
+												<i class="ico-rnd" style="background-color:#888888"></i>
+												<span class="tx">그레이</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="300">
+												<i class="ico-rnd" style="background-color:#EC1615"></i>
+												<span class="tx">레드</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="200">
+												<i class="ico-rnd" style="background-color:#F4AA25"></i>
+												<span class="tx">오렌지</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="100">
+												<i class="ico-rnd" style="background-color:#FFD500"></i>
+												<span class="tx">옐로우</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="200">
+												<i class="ico-rnd" style="background-color:#37B400"></i>
+												<span class="tx">그린</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="300">
+												<i class="ico-rnd" style="background-color:#FFC3DC"></i>
+												<span class="tx">핑크</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="400">
+												<i class="ico-rnd" style="background-color:#8316C1"></i>
+												<span class="tx">퍼플</span>
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn-color" data-cnt="100">
+												<i class="ico-rnd" style="background-color:#1C2B86"></i>
+												<span class="tx">네이비</span>
+											</button>
+										</li>
+									</ul>
+								</div>	
+								
+							</div>
+						</div>
+						<!-- //색상 파인더 -->
+
+						<!-- 상세옵션 파인더 -->
+						<div class="swiper-slide finder__item">
+							<!-- 스와이퍼 이너 컨텐츠 -->
+							<div class="f_inner__cont">
+								<div class="cate__box cate__box--detail y-scroll">
+									
+									<p class="cate__tit">할인율</p>
+									<ul class="cate__list cate__list--detail">
+										<li class="is--on"><button type="button" class="btn" data-cnt="510">70%이상</button></li>
+
+										<!-- 211007 : 속성선택불가 속성시 "is-disabled" 클래스 추가 -->
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="4200">70%~50%</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="180">50%~30%</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="120">30%~20%</button></li>
+										<li><button type="button" class="btn" data-cnt="1546">20%~10%</button></li>
+										<li><button type="button" class="btn" data-cnt="19">10%~5%</button></li>
+										<li><button type="button" class="btn" data-cnt="19">5%~0%</button></li>
+										<li><button type="button" class="btn" data-cnt="19">0%</button></li>
+									</ul>
+
+									<p class="cate__tit">핏</p>
+									<ul class="cate__list cate__list--detail">
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="226">슬림핏</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="15400">오버핏</button></li>
+										<li class="is--on"><button type="button" class="btn" data-cnt="1200">루즈핏/오버핏</button></li>
+										<li><button type="button" class="btn" data-cnt="1057">기타</button></li>
+									</ul>
+
+									<p class="cate__tit">브랜드</p>
+									<ul class="cate__list cate__list--detail">
+										<li class="is--on"><button type="button" class="btn" data-cnt="1003">잇미샤</button></li>
+										<li><button type="button" class="btn" data-cnt="1020">산드로</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="1002">케네스레이디</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="342100">모조에스핀</button></li>
+										<li><button type="button" class="btn" data-cnt="400">샤틴</button></li>
+									</ul>
+
+									<p class="cate__tit">할인율</p>
+									<ul class="cate__list cate__list--detail">
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="1020">70%이상</button></li>
+										<li class="is--on"><button type="button" class="btn" data-cnt="1002">70%~50%</button></li>
+										<li><button type="button" class="btn" data-cnt="342100">50%~30%</button></li>
+										<li><button type="button" class="btn" data-cnt="400">30%~20%</button></li>
+										<li><button type="button" class="btn" data-cnt="400">20%~10%</button></li>
+										<li><button type="button" class="btn" data-cnt="400">10%~5%</button></li>
+										<li><button type="button" class="btn" data-cnt="400">5%~0%</button></li>
+										<li><button type="button" class="btn" data-cnt="400">0%</button></li>
+									</ul>
+
+									<p class="cate__tit">상품평점</p>
+									<ul class="cate__list cate__list--detail cate__list--detail-rate">
+										<li class="is-disabled">
+											<button type="button" class="btn" data-cnt="1020">
+												<span class="shape_star"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star empty_star"></span>
+												</span>
+												4점대
+											</button>
+										</li>
+										<li class="is--on">
+											<button type="button" class="btn" data-cnt="1002">
+												<span class="shape_star"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star empty_star"></span><span class="star empty_star"></span>
+												</span>
+												3점대
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn" data-cnt="342100">
+												<span class="shape_star"><span class="star"></span><span class="star"></span><span class="star empty_star"></span><span class="star empty_star"></span><span class="star empty_star"></span>
+												</span>
+												2점대
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn" data-cnt="400">
+												<span class="shape_star"><span class="star"></span><span class="star empty_star"></span><span class="star empty_star"></span><span class="star empty_star"></span><span class="star empty_star"></span>
+												</span>
+												1점대
+											</button>
+										</li>
+									</ul>
+
+									<p class="cate__tit">배송&amp;상품유형</p>
+									<ul class="cate__list cate__list--detail">
+										<li class="is--on">
+											<button type="button" class="btn" data-cnt="1020">
+												배송비포함
+											</button>
+										</li>
+										<li>
+											<button type="button" class="btn" data-cnt="1002">
+												중고/렌탈제외
+											</button>
+										</li>
+									</ul>
+
+									<p class="cate__tit">브랜드</p>
+									<ul class="cate__list cate__list--detail">
+										<li class="is--on"><button type="button" class="btn" data-cnt="1003">잇미샤</button></li>
+										<li><button type="button" class="btn" data-cnt="1020">산드로</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="1002">케네스레이디</button></li>
+										<li class="is-disabled"><button type="button" class="btn" data-cnt="342100">모조에스핀</button></li>
+										<li><button type="button" class="btn" data-cnt="400">샤틴</button></li>
+									</ul>
+								</div>	
+								
+							</div>
+						</div>
+						<!-- //상세옵션 파인더 -->
+					</div>
+				</div>
+			</div>
+		
+
+			<!-- 파인더 푸터 -->
+			<div class="finder__foot">
+				<div class="reset__price">
+					<button type="button" class="btn btn-reset">초기화</button>
+
+					<!-- loding -->
+					<button type="button" class="btn btn-listing" data-idx="1"><em id="prodCnt1">99,304</em>개 상품보기
+						<div class="range_loader">
+							<div class="throbber-loader"></div>
+						</div>
+					</button>									
+				</div>
+			</div>
+			<!-- // -->
+
+			
+			
+		</div>
+	</div>
+</div>
+
+<!-- 파인더 실행 JS-->
+<script src="/pub_test/js/finder.comm.js"></script>
+<!-- //파인더 -->
+</body>
+</html>

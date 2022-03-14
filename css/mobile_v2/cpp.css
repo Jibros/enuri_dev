@@ -1,0 +1,145 @@
+@charset "utf-8";
+/************************************************************************
+ * 파일명 : cpp.css
+ * 설명 : 에누리 모바일웹 CPP CSS
+ * 작성자  : 신왕섭 > 박현원
+ * 작성일 : 2019.11.13 > 2022.02.22
+ * 내용 : 
+        1. 기획전쇼핑가이드이외 전체삭제
+        2. 상단카테고리내용 추가
+************************************************************************/
+#wrap{overflow:hidden;min-width:320px}
+
+/* common */
+.cpp__sprite{background-image:url("//img.enuri.info/images/mobile_v2/cpp_sprite.png");background-repeat:no-repeat;background-size:320px}
+
+/* ----------------------------------------------------
+                        CPP_ 칼럼 
+---------------------------------------------------- */
+.col_wrap {margin-left:-8px; margin-right:-8px; display: flex; flex-wrap: wrap; justify-content: space-between;}
+.col_wrap > .col {padding-left:8px; padding-right:8px; flex:0 0 auto;;}
+.col_wrap > .col.col_6 {width: 50%;}
+
+/* ----------------------------------------------------
+                        CPP_ 탭 
+---------------------------------------------------- */
+.tab_contents {}
+.tab_contents > div {display: none;}
+.tab_contents > div.active {display: block;}
+
+/* ----------------------------------------------------
+                        CPP_ 상단카테고리 
+---------------------------------------------------- */
+.cpp__allcate {margin-bottom:10px; border-bottom:1px solid #ddd;}
+.cpp__allcate .cpp__allcate_header {position:relative; height:53px; background-color: #fff; border-bottom:1px solid #ddd; font-size: 0;}
+.cpp__allcate .cpp__allcate_header .btn_prev_page {padding:14px 12px;}
+.cpp__allcate .cpp__allcate_header .btn_prev_page i.icon_arrow_left_s24_black {width:24px; height:24px; display: block; background-position: -96px 0;}
+.cpp__allcate .cpp__allcate_header .selected_cate_name {display: inline-block; vertical-align: middle; font-size: 18px; color: #1a70dd; font-weight: 600; line-height: 52px; height: 52px;}
+
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move {position: relative; display: inline-block; vertical-align: middle;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move .btn_view_list_overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move .btn_view_list {padding:14px 8px;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move .btn_view_list i.icon_arrow_down_square_s24_black {width:24px; height:24px; display: block; background-position: -144px 0;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move .btn_view_list.open i.icon_arrow_down_square_s24_black {background-position: -120px 0;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move .cate_name_list_overlay {position: fixed; width: 100%; height: 100%; left: 0; top: 0; z-index: 14;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move ul {display: none; position:absolute; top:45px; left: 50%; margin-left: -104px; width: 208px; padding: 18px 0; border:1px solid #222; border-radius: 8px; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); background-color: #fff; z-index: 15;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move ul li {}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move ul li:hover {background-color: #eaf6ff;}
+.cpp__allcate .cpp__allcate_header .allcate_list_for_move ul li span {font-size: 16px; font-weight: 500; color:#222; width:100%; height:38px; line-height: 38px; padding:0 23px; text-align: left;}
+
+
+.cpp__allcate .cpp__allcate_header .btn_close_sht {display: block; width:24px; height:24px; position:absolute; top:14px; right:12px;}
+.cpp__allcate .cpp__allcate_header .btn_close_sht i.icon_close_s24_black {display: block; width:24px; height:24px; background-position: -72px 0;}
+
+
+/* 시트-left-올카테-리스트 */
+.tab_contents_cpp_allcate { background-color: #fbfbfb;}
+.tab_contents_cpp_allcate > div {position:relative; width:50%; padding:0 0 26px;}
+/* depth1 */
+.cpp__allcate .cpp_cate_name_depth1 {font-size: 15px; font-weight: bold; color:#222; padding-top:24px; padding-left:16px; margin-bottom:15px; text-decoration: underline; letter-spacing: -.5px;}
+
+/* depth2 */
+.cpp__allcate .cpp_allcate_depth2 > ul > li {margin-bottom:4px;}
+.cpp__allcate .cpp_cate_name_depth2 {position: relative; height:28px; line-height: 28px; padding-left:16px; font-size: 0;}
+.cpp__allcate .cpp_cate_name_depth2.active {background-color: #e4edf9;}
+.cpp__allcate .cpp_cate_name_depth2.active .cate_name {color:#1a70dd; font-weight: 600;}
+.cpp__allcate .cpp_cate_name_depth2.active + .cpp_allcate_depth3 {display: block;}
+
+/* depth3 */
+.cpp__allcate .cpp_allcate_depth3 {display: none; position:absolute; top:0; left:100%; width: 100%; min-height:100%; background-color: #fff; border-left: 1px solid #eeeeee;}
+.cpp__allcate .cpp_allcate_depth3 > ul {padding: 20px 0;}
+.cpp__allcate .cpp_allcate_depth3 > ul > li {margin-bottom:4px;}
+.cpp__allcate .cpp_allcate_depth3 > ul > li:last-child {margin-bottom:0;}
+.cpp__allcate .cpp_allcate_depth3 > ul > li a {display: block; font-size: 0; height:28px; line-height: 28px; padding-left:16px;}
+
+/* 시트-left 메인에서 대카테고리 클릭시 .view_allcategory 추가 */
+.cpp__allcate.view_allcategory .sheet_main {transform:translate(-50%, 0);}
+.cpp__allcate.view_allcategory .sheet_allcategory {transform:translate(-100%, 0);}
+.cpp__allcate.view_allcategory .sheet_allcategory .sht_wrap .cpp__allcate_header {display: block;}
+
+/* label */
+.cpp__allcate .cate_name {display: inline-block; vertical-align: middle; white-space: nowrap; overflow: hidden;text-overflow: ellipsis; letter-spacing: -.5px; font-size: 14px; color:#222;}
+.cpp__allcate .cpp_allcate_depth2 .cate_name {max-width: calc(100% - 52px);}
+.cpp__allcate .cpp_allcate_depth3 .cate_name {max-width: calc(100% - 32px);}
+.cpp__allcate .label_visit {display: inline-block; vertical-align: middle; width:32px; height:16px; border-radius: 12px; font-size: 8px; line-height: 16px; color:#fff; text-align: center; margin-left:4px;}
+.cpp__allcate .label_visit_often {background-color: #ffb11e;}
+.cpp__allcate .label_visit_recent {background-color: #30a7f7;}
+.cpp__allcate .label_cate {display: inline-block; vertical-align: middle; width:12px; height:12px; background-image: var(--comm-sprite2); background-size: var(--mobile--sprite-size); margin-left:4px;}
+.cpp__allcate .label_cate_new {background-position:-96px -328px;}
+.cpp__allcate .label_cate_hot {background-position:-108px -328px;}
+.cpp__allcate .label_cate_adult {background-position:-120px -328px;}
+
+/* ----------------------------------------------------
+                        CPP_ 기획전 
+---------------------------------------------------- */
+.m_recomm_banner {position: relative; margin-bottom:10px; border-bottom:1px solid #ddd;}
+.m_recomm_banner img{width:100%}
+.m_recomm_banner .swiper-button-white{position:absolute;width:26px;height:26px;top:50%;margin-top:-13px;background:rgba(0,0,0,.4);z-index: 1}
+.m_recomm_banner .swiper-button-white:before{position:absolute;content:"";width:7px;height:13px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;left:50%;top:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.m_recomm_banner .swiper-button-prev{left:0;border-radius:0 13px 13px 0;margin-left:-4px}
+.m_recomm_banner .swiper-button-prev:before{background-position:-138px -26px}
+.m_recomm_banner .swiper-button-next{right:0;border-radius:13px 0 0 13px;margin-right:-4px}
+.m_recomm_banner .swiper-button-next:before{background-position:-145px -26px}
+
+.m_recomm_banner .swiper-ctrl {width: auto}
+/* ----------------------------------------------------
+                        CPP_ 쇼핑가이드
+---------------------------------------------------- */
+.m_shop_guide {margin-bottom:10px; border-bottom:1px solid #ddd;}
+
+/* ----------------------------------------------------
+                        CPP_ 쇼핑뉴스 커스텀
+---------------------------------------------------- */
+.m_shop_news {margin-bottom:10px; border-bottom:1px solid #ddd;}
+.m_shop_news .news__list_c{margin-top:0}
+.m_shop_news .news__list_c li:first-child{border-top:1px solid #f6f6f6}
+/* ----------------------------------------------------
+                        CPP_ 하단 상품리스트
+---------------------------------------------------- */
+.m_common_goods_list {padding: 20px 16px 0; background: #fff;}
+.m_common_goods_list .col_6 {margin-bottom:20px;}
+.m_common_goods_list .col_6:nth-child(n+11) {display: none;}
+.m_common_goods_list .goods_thumb {position: relative; margin-bottom:12px;}
+.m_common_goods_list .goods_thumb .btn__zzim {display: block; position: absolute; bottom: 8px; right: 8px;}
+.m_common_goods_list .goods_thumb .thumbnail_img {display: block; position: relative; text-align: center;}
+.m_common_goods_list .goods_thumb .thumbnail_img img {width:156px; height:156px; object-fit: cover;}
+.m_common_goods_list .goods_thumb .thumbnail_img:after {content:""; display: block; position:absolute; top:0; left:0; right:0; bottom:0; background-color: rgba(0,0,0,.02);}
+
+.m_common_goods_list .goods_info {letter-spacing: -.5px;}
+.m_common_goods_list .goods_info .goods_name {height:40px; font-size: 15px; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; line-height: 20px; }
+.m_common_goods_list .goods_info .goods_price {height:19px; font-size: 15px; color:#000; margin-top:8px; line-height: 1;}
+.m_common_goods_list .goods_info .goods_price em {font-weight: bold; font-size: 20px;}
+.m_common_goods_list .goods_info .goods_rate {height:14px; font-size: 12px; color:#555; margin-top:13px; letter-spacing: 0;}
+.m_common_goods_list .goods_info .goods_rate i.icon_star {display: inline-block; vertical-align: -3px; width:16px; height:16px; background-position: -112px -300px; margin-right: 2px;}
+.m_common_goods_list .goods_info .goods_rate .rate_score {}
+.m_common_goods_list .goods_info .goods_rate .rate_count {color:#888; margin-left:2px;}
+.m_common_goods_list .goods_info .goods_addinfo {height:14px; font-size: 12px; color:#2d85ed; margin-top:6px;}
+.m_common_goods_list .goods_info .goods_addinfo i.icon_epoint {display: inline-block; vertical-align: -3px; width:16px; height:16px; background-position: -96px -300px; margin-right: 2px;}
+.m_common_goods_list .btn_compare_price {display: inline-block; height:32px; border:1px solid #ddd; border-radius: 18px; padding:0 12px; line-height: 30px; margin-top:11px;}
+.m_common_goods_list .btn_compare_price:after {content:""; display: inline-block; width:12px; height:12px; background-image: var(--comm-sprite2); background-size: var(--mobile--sprite-size); background-position: -144px -328px; vertical-align: -1px; margin-left: 4px; }
+
+.m_common_goods_list .noitem {background:#fff url("//img.enuri.info/images/mobile_v2/logo_noitem.png") no-repeat center; background-size: 82px;}
+
+.m_common_goods_list .btn_more_list {border-top:1px solid #eee; height:45px; line-height: 44px; font-size: 14px; color:#222; text-align: center; width: calc(100% + 32px); margin-left:-16px;}
+.m_common_goods_list .btn_more_list:after {border-top:1px solid #eee; height:45px; line-height: 44px; font-size: 14px; color:#222; text-align: center; width: calc(100% + 32px); margin-left:-16px;}
+.m_common_goods_list .btn_more_list i.icon_arrow {display: inline-block; width: 16px; height: 16px; background-position: 0 0; vertical-align: -4px; background-position: -32px -24px; margin-left:4px}

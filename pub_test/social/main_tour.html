@@ -1,0 +1,872 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+<meta charset="utf-8">	
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi" />	
+<meta property="og:title" content="에누리 가격비교">
+<meta property="og:description" content="에누리 모바일 가격비교">
+<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" type="text/css" href="/common/fonts/notosans/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/social/style.css"/>
+<link rel="stylesheet" type="text/css" href="/css/social/responsive.css"/>
+<link rel="stylesheet" type="text/css" href="/mobilefirst/css/lib/slick.css"/>
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/common/js/jquery.lazyload.js"></script>
+<script type="text/javascript" src="/common/js/iscroll.js"></script>
+<script type="text/javascript" src="/common/js/iscroll-probe.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/lib/slick.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/social/ie8.css"/>
+<![endif]-->
+</head>
+<body id="mainpage">
+<div id="wrap">
+	<!-- TOP AREA -->
+	<div class="top_wrap">
+		<!-- PC TOP ASIDE -->
+		<div id="topAside">
+			<div class="container">
+				<div class="e_search">
+					<h1 class="imgall"><a href="http://www.enuri.com/">enuri</a></h1>
+					<form method="GET" name="frmEnuri" target="_blank" action="/search/Searchlist.jsp" onsubmit="return fnSearchEnuri();">
+					<fieldset>
+						<legend>가격비교 검색</legend>
+						<input type="hidden" name="keyword">
+						<input name="enuriKeyword" id="enuriKeyword" type="text">
+						<button name="search">가격비교</button>
+					</fieldset>
+					</form>
+				</div>
+				<ul class="e_category">
+					<li><a href="/department/index.jsp" target="_blank">백화점비교</a></li>
+					<li><a href="/knowbox/List.jsp" target="_blank">쇼핑지식</a></li>
+					<li><a href="/knowbox2/qna/index.jsp" target="_blank">쇼핑Q&amp;A</a></li>
+					<li><a href="/tour2012/Tour_Index.jsp" target="_blank">여행</a></li>
+					<li><a href="/car/Index.jsp?stp=4" target="_blank">신차비교</a></li>
+					<li><a href="JavaScript:;" onclick="$('#ly_more').toggle();">더보기</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="header">
+			<div class="topper">
+				<div class="container">
+					<a href="#" class="str_ btn back"><i></i>뒤로 가기</a>
+					<a href="javascript:///" id="btnNavMobile" class="btn_side hidden-pc"><span class="cate_m str_"><i></i>주요 서비스 메뉴 펼치기(모바일)</span></a>
+					<h1 class="logo" onclick="goHome()">소셜 가격비교</h1>
+
+					<div class="searchbox">
+						<label class="search_in"><input type="text" id="searchtxt" name="searchtxt" placeholder="검색어 입력"></label>
+						<button class="str_ srch"><i></i><span>검색</span></button>
+					</div>
+					<button class="str_ mybtn"><i></i>마이페이지</button>
+
+					<!-- 모바일 노출 카테고리 -->
+					<div id="m-nav" class="m_nav_wrap">
+						<div class="mn_head">
+							<h2 class="tit">서비스 전체보기</h2>
+							<button class="m_nav_close str_"><i></i>닫기</button>
+						</div>
+						
+						<div id="mNavScrollArea" class="mn_body">
+							<div id="mNavScroll">
+								<div class="sector first">
+									<h3 class="cate_tit"><span class="ct_ ico1 str_"><i></i></span>쇼핑</h3>
+
+									<ul class="list_nav include_icon">
+										<!--
+											.n1 = 쇼핑전체, .n2 = 의류, .n3 = 패션/잡화, .n4 = 뷰티, .n5 = 출산/유아동, .n6 = 식품/건강, 
+											.n7 = 생활/주방, .n8 = 스포츠/레저, .n9 = 홈데코, .n10 = 디지털, .n11 = 문구/도서 .n12 = 온라인/기타
+										-->
+										<li><a href="#"><span class="ico n1"></span>쇼핑전체</a></li>
+										<li><a href="#"><span class="ico n2"></span>의류</a></li>
+										<li><a href="#"><span class="ico n3"></span>패션/잡화</a></li>
+										<li><a href="#"><span class="ico n8"></span>스포츠/레저</a></li>
+										<li><a href="#"><span class="ico n4"></span>뷰티</a></li>
+										<li><a href="#"><span class="ico n6"></span>식품/건강</a></li>
+										<li><a href="#"><span class="ico n7"></span>생활/주방</a></li>
+										<li><a href="#"><span class="ico n5"></span>출산/유아동</a></li>
+										<li><a href="#"><span class="ico n9"></span>홈데코</a></li>
+										<li><a href="#"><span class="ico n10"></span>디지털</a></li>
+										<li><a href="#"><span class="ico n12"></span>온라인/기타</a></li>
+										<li><a href="#"><span class="ico n11"></span>문구/도서</a></li>
+									</ul>
+								</div>
+
+								<div class="sector">
+									<h3 class="cate_tit"><span class="ct_ ico2 str_"><i></i></span>지역</h3>
+
+									<ul class="list_nav">
+										<li><a href="#">전체</a></li>
+										<li><a href="#">맛집/카페</a></li>
+										<li><a href="#">뷰티/헬스</a></li>
+										<li><a href="#">생활/기타</a></li>
+									</ul>
+								</div>
+
+								<div class="sector">
+									<h3 class="cate_tit"><span class="ct_ ico3 str_"><i></i></span>여행/레져</h3>
+
+									<ul class="list_nav">
+										<li><a href="#">전체</a></li>
+										<li><a href="#">해외여행</a></li>
+										<li><a href="#">국내여행</a></li>
+										<li><a href="#">제주여행</a></li>
+										<li><a href="#">호텔/리조트</a></li>
+										<li><a href="#">펜션/캠핑/글램핑</a></li>
+										<li><a href="#">레저/입장권</a></li>
+									</ul>
+								</div>
+
+								<div class="sector">
+									<h3 class="cate_tit"><span class="ct_ ico4 str_"><i></i></span>지역</h3>
+
+									<ul class="list_nav">
+										<li><a href="#">전체</a></li>
+										<li><a href="#">키즈/가족</a></li>
+										<li><a href="#">뮤지컬/연극</a></li>
+										<li><a href="#">콘서트/클래식</a></li>
+										<li><a href="#">전시/체험/영화</a></li>
+									</ul>
+								</div>
+
+								<div class="sector related">
+									<ul class="list_nav">
+										<li><a href="#"><span class="comp ico1 str_"><i></i></span>에누리</a></li>
+										<li><a href="#"><span class="comp ico2 str_"><i></i></span>스마트택배</a></li>
+										<li><a href="#"><span class="comp ico3 str_"><i></i></span>홈쇼핑 가격비교</a></li>
+										<li><a href="#"><span class="comp ico4 str_"><i></i></span>해외직구</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- // 모바일 노출 카테고리 -->
+
+					<!-- PC 아이콘 -->
+					<div class="my_icon_list hidden-m">
+						<ul>
+							<li><a href="recent.html"><span class="ico recent str_pc"><i></i></span>최근 본 상품</a></li>
+							<li><a href="recent.html"><span class="ico zzim str_pc"><i></i></span>찜상품</a></li>
+							<li><a href="#"><span class="ico log str_pc"><i></i></span>로그인</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="main_nav">
+				<div class="container">
+					<!-- 스크롤 시 고정 영역 -->
+					<!-- 201806 수정 -->
+					<div id="fixedNavWrap">
+						<div class="m_scroll_nav">
+							<ul class="nav">
+								<!-- 해당 탭 class="active" -->
+								<li><a href="main_recommend.html">추천</a></li>
+								<li><a href="main_hotdeal.html">핫딜베스트</a></li>
+								<li class="active"><a href="main_tour.html">여행</a></li>
+								<li><a href="main_ecoupon.html">e쿠폰</a></li>
+								<li><a href="main_mallbest.html">몰베스트</a></li>
+							</ul>
+						</div>
+					</div>
+					<!-- //스크롤 시 고정 영역 -->
+
+					<!-- PC 노출 -->
+					<a href="javascript:///" class="btn_side hidden-m" onclick="$('.pc_category').toggle();"><span class="cate_m str_"><i></i>주요 서비스 메뉴 펼치기(PC 카테고리)</span></a>
+					<div class="pc_category hidden-m" style="display:none;">
+						<div class="menu_wrap">
+							<div class="menu_box two-col">
+								<dl>
+									<dt><h2><a href="#"><span class="ico t1 str_pc"><i></i></span> 쇼핑</a></h2></dt>
+									<dd><a href="">의류</a></dd>
+									<dd><a href="">스포츠/레저</a></dd>
+									<dd><a href="">잡화</a></dd>
+									<dd><a href="">홈데코</a></dd>
+									<dd><a href="">뷰티</a></dd>
+									<dd><a href="">디지털/가전</a></dd>
+									<dd><a href="">출산/유아동</a></dd>
+									<dd><a href="">문구/도서</a></dd>
+									<dd><a href="">식품/건강</a></dd>
+									<dd><a href="">온라인/기타</a></dd>
+									<dd><a href="">생활/주방</a></dd>
+								</dl>
+							</div>					
+							<div class="menu_box">
+								<dl>
+									<dt><h2><a href="#"><span class="ico t2 str_pc"><i></i></span> 지역</a></h2></dt>
+									<dd><a href="">맛집/카페</a></dd>
+									<dd><a href="">뷰티/헬스</a></dd>
+									<dd><a href="">생활/기타</a></dd>
+								</dl>
+							</div>					
+							<div class="menu_box">
+								<dl>
+									<dt><h2><a href="#"><span class="ico t3 str_pc"><i></i></span> 여행/레져</a></h2></dt>
+									<dd><a href="">해외여행</a></dd>
+									<dd><a href="">국내여행</a></dd>
+									<dd><a href="">제주여행</a></dd>
+									<dd><a href="">호텔/리조트</a></dd>
+									<dd><a href="">펜션/캠핑/글램핑</a></dd>
+									<dd><a href="">레저/입장권</a></dd>
+								</dl>
+							</div>					
+							<div class="menu_box">
+								<dl>
+									<dt><h2><a href="#"><span class="ico t4 str_pc"><i></i></span> 공연/문화</a></h2></dt>
+									<dd><a href="">키즈/가족</a></dd>
+									<dd><a href="">뮤지컬/연극</a></dd>
+									<dd><a href="">콘서트/클래식</a></dd>
+									<dd><a href="">전시/체험/영화</a></dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<!-- // PC 노출 -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- // TOP AREA -->
+
+	<div id="content">
+		<!-- MD Pick -->
+		<!-- 201806 수정 -->
+		<div class="mdtourWrap">
+			<div class="container">				
+				<div class="row">
+					<div class="mdtourlist">
+						<!-- slide item -->
+						<div class="mdtouritem col-m-1 col-tablet-3 col-pc-4" onclick="///">
+							<div class="p_wrap">
+								<div class="p_box">
+									<div class="p_thum">
+										<img src="http://image.lotte.com/goods/99/03/54/97/3/397540399_10.jpg" alt="MD Pick Image" />
+									</div>
+									<div class="p_info">
+										<a href="#" class="mall" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+										<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+										
+										<div class="price">
+											<strong class="percent"><em>20</em>%</strong>
+											<p class="s_price">9,019,500<em>원</em> <s>200,000원</s></p>
+										</div>
+										<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- slide item -->
+						<!-- slide item -->
+						<div class="mdtouritem col-m-1 col-tablet-3 col-pc-4" onclick="///">
+							<div class="p_wrap">
+								<div class="p_box">
+									<div class="p_thum">
+										<img src="http://image.wemakeprice.com/deal/8/744/3337448/a45bea03ab171067972a0cb616a1dc468c5471bf.jpg" alt="MD Pick Image" />
+									</div>
+									<div class="p_info">
+										<a href="#" class="mall" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+										<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+										
+										<div class="price">
+											<strong class="percent"><em>20</em>%</strong>
+											<p class="s_price"><s>200,000원</s>9,019,500<em>원</em></p>
+										</div>
+										<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- slide item -->
+						<!-- slide item -->
+						<div class="mdtouritem col-m-1 col-tablet-3 col-pc-4" onclick="///">
+							<div class="p_wrap">
+								<div class="p_box">
+									<div class="p_thum">
+										<img src="http://image.gsshop.com/mi09/deal/dealno/248/2017313145435817489.jpg" alt="MD Pick Image" />
+									</div>
+									<div class="p_info">
+										<a href="#" class="mall" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+										<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+										
+										<div class="price">
+											<strong class="percent"><em>20</em>%</strong>
+											<p class="s_price"><s>200,000원</s>9,019,500<em>원</em></p>
+										</div>
+										<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- slide item -->
+						<!-- slide item -->
+						<div class="mdtouritem col-m-1 col-tablet-3 col-pc-4" onclick="///">
+							<div class="p_wrap">
+								<div class="p_box">
+									<div class="p_thum">
+										<img src="http://image.ticketmonster.co.kr/deals/9612/96128849/catlist_3col_v2_9fb19.jpg" alt="MD Pick Image" />
+									</div>
+									<div class="p_info">
+										<a href="#" class="mall" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+										<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+										
+										<div class="price">
+											<strong class="percent"><em>20</em>%</strong>
+											<p class="s_price"><s>200,000원</s>9,019,500<em>원</em></p>
+										</div>
+										<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- slide item -->
+						<!-- slide item -->
+						<div class="mdtouritem col-m-1 col-tablet-3 col-pc-4" onclick="///">
+							<div class="p_wrap">
+								<div class="p_box">
+									<div class="p_thum">
+										<img src="http://image.wemakeprice.com/deal/5/792/2687925/9f7d7b3b682be751d7f9fc77978c21c346d18a7a.jpg" alt="MD Pick Image" />
+									</div>
+									<div class="p_info">
+										<a href="#" class="mall" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+										<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+										
+										<div class="price">
+											<strong class="percent"><em>20</em>%</strong>
+											<p class="s_price"><s>200,000원</s>9,019,500<em>원</em></p>
+										</div>
+										<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- slide item -->
+						<!-- slide item -->
+						<div class="mdtouritem col-m-1 col-tablet-3 col-pc-4" onclick="///">
+							<div class="p_wrap">
+								<div class="p_box">
+									<div class="p_thum">
+										<img src="http://image.wemakeprice.com/deal/1/405/3344051/2e1477c15710dc0dab5632bf1e63a154e4abb1b8.jpg" alt="MD Pick Image" />
+									</div>
+									<div class="p_info">
+										<a href="#" class="mall" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+										<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+										
+										<div class="price">
+											<strong class="percent"><em>20</em>%</strong>
+											<p class="s_price"><s>200,000원</s>9,019,500<em>원</em></p>
+										</div>
+										<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- slide item -->
+					</div>			
+				</div>
+			</div>
+		</div>
+		<!-- //MD Pick -->
+			
+		<div id="hpProdWrap" class="prodWrap">	
+			<!-- 201806 수정 -->	
+			<div class="tourCateList">
+				<div class="container">
+					<ul>
+						<li class="active"><a href="#"><span class="str_mainicon str_mainicon--skypass"><i></i></span>특가 항공권</a></li>
+						<li><a href="#"><span class="str_mainicon str_mainicon--pension"><i></i></span>펜션/캠핑/글램핑</a></li>
+						<li><a href="#"><span class="str_mainicon str_mainicon--hotel"><i></i></span>호텔/리조트</a></li>
+						<li><a href="#"><span class="str_mainicon str_mainicon--jeju"><i></i></span>제주여행</a></li>
+						<li><a href="#"><span class="str_mainicon str_mainicon--domestic"><i></i></span>국내여행</a></li>
+						<li><a href="#"><span class="str_mainicon str_mainicon--overseas"><i></i></span>해외여행</a></li>
+					</ul>
+				</div>
+			</div>
+								
+			<div class="container">
+				<!-- Today's 소셜 -->
+				<!-- 201806 수정 -->
+				<div class="tourProductTitle">
+					<h3 class="tit"><strong>BEST</strong> 특가 항공권</h3>
+				</div>
+			</div>
+				
+			<div class="container">
+				<ul class="row productlist">
+					<li class="col-m-1 col-tablet-2 col-pc-3" onclick="///">
+						<div class="p_wrap">
+							<div class="p_box">
+								<div class="p_thum">
+									<!-- 이미지 LAZY LOADING 
+										- lazyload를 적용할 이미지 태그의 원래 src값을 data-original="" 속성값에 입력
+										- $("img.lazy").lazyload(); 이벤트 실행 (하단 script 내부)
+									-->
+									<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/enuri_rod.png" data-original="http://imgenuri.enuri.gscdn.com/images/dealnew/test_tour_img.jpg" alt="" class="lazy" />
+								</div>
+								<div class="p_info">
+									<!-- 업체 로고, 모바일은 이미지 로고,  PC는 기존과 같이 텍스트 노출 -->
+									<!-- 201806 수정 -->
+									<a href="#" class="mall hidden-pc" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+									<span class="mall hidden-m">오클락</span>
+									<strong class="tit">양털안감기모셔츠/패딩셔츠/양털후드집업/경량</strong>
+									
+									<div class="price">
+										<strong class="percent"><em>20</em>%</strong>
+										<p class="s_price"><s>200,000원</s>9,019,500<em>원</em></p>
+										<span class="buy"><em>1,396</em>개 구매</span>
+									</div>
+									<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									
+								</div>
+							</div>
+
+							<div class="p_relate">
+								<span class="buy"><em>1,396</em>개 구매</span>
+								<ul class="badge_list">
+									<li><i class="bdg">빠른배송</i></li>
+									<li><i class="bdg">무료배송</i></li>
+									<li><i class="bdg">오늘마감</i></li>
+									<li><i class="bdg">바로사용</i></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="col-m-1 col-tablet-2 col-pc-3" onclick="">
+						<div class="p_wrap">
+							<div class="p_box">
+								<div class="p_thum">
+									<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/enuri_rod.png" data-original="http://imgenuri.enuri.gscdn.com/images/dealnew/test_tour_img.jpg" alt="" class="lazy" />
+								</div>
+								<div class="p_info">
+									<!-- 업체 로고, 모바일은 이미지 로고,  PC는 기존과 같이 텍스트 노출 -->
+									<!-- 201806 수정 -->
+									<a href="#" class="mall hidden-pc" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+									<span class="mall hidden-m">오클락</span>
+									<strong class="tit">[KT신규가입] 갤럭시 기어 S3 프론티어 /[현금완납폰]</strong>
+									
+									<div class="price">
+										<strong class="percent"><em>20</em>%</strong>
+										<p class="s_price"><s>200,000원</s>500,500<em>원</em></p>
+											<span class="buy"><em>1,396</em>개 구매</span>
+									</div>
+									<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									
+								</div>
+							</div>
+
+							<div class="p_relate">
+								<span class="buy"><em>1,396</em>개 구매</span>
+								<ul class="badge_list">
+									<li><i class="bdg">빠른배송</i></li>
+									<li><i class="bdg">무료배송</i></li>
+									<li><i class="bdg">오늘마감</i></li>
+									<li><i class="bdg">바로사용</i></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="col-m-1 col-tablet-2 col-pc-3" onclick="">
+						<div class="p_wrap">
+							<div class="p_box">
+								<div class="p_thum">
+									<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/enuri_rod.png" data-original="http://imgenuri.enuri.gscdn.com/images/dealnew/test_tour_img.jpg" alt="" class="lazy" />
+								</div>
+								<div class="p_info">
+									<!-- 업체 로고, 모바일은 이미지 로고,  PC는 기존과 같이 텍스트 노출 -->
+									<!-- 201806 수정 -->
+									<a href="#" class="mall hidden-pc" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+									<span class="mall hidden-m">오클락</span>
+									<strong class="tit">[KT신규가입] 갤럭시 기어 S3 프론티어 /[현금완납폰]</strong>
+									
+									<div class="price">
+										<strong class="percent"><em>20</em>%</strong>
+										<p class="s_price"><s>200,000원</s>500,500<em>원</em></p>
+											<span class="buy"><em>1,396</em>개 구매</span>
+									</div>
+									<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									
+								</div>
+							</div>
+
+							<div class="p_relate">
+								<span class="buy"><em>1,396</em>개 구매</span>
+								<ul class="badge_list">
+									<li><i class="bdg">빠른배송</i></li>
+									<li><i class="bdg">무료배송</i></li>
+									<li><i class="bdg">오늘마감</i></li>
+									<li><i class="bdg">바로사용</i></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li class="col-m-1 col-tablet-2 col-pc-3" onclick="">
+						<!-- if 가격비교 & 아이콘 둘 다 없을 때, no_ico_compare 클래스 추가 -->
+						<div class="p_wrap no_ico_compare">
+							<div class="p_box">
+								<div class="p_thum">
+									<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/enuri_rod.png" data-original="http://imgenuri.enuri.gscdn.com/images/dealnew/test_tour_img.jpg" alt="" class="lazy" />
+								</div>
+								<div class="p_info">
+									<!-- 업체 로고, 모바일은 이미지 로고,  PC는 기존과 같이 텍스트 노출 -->
+									<!-- 201806 수정 -->
+									<a href="#" class="mall hidden-pc" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+									<span class="mall hidden-m">오클락</span>
+									<strong class="tit">[KT신규가입] 갤럭시 기어 S3 프론티어 /[현금완납폰]</strong>
+									
+									<div class="price">
+										<strong class="percent"><em>20</em>%</strong>
+										<p class="s_price"><s>200,000원</s>500,500<em>원</em></p>
+											<span class="buy"><em>1,396</em>개 구매</span>
+									</div>
+									<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									
+								</div>
+							</div>
+
+							<div class="p_relate">
+								<span class="buy"><em>1,396</em>개 구매</span>
+							</div>
+						</div>
+					</li>
+					<li class="col-m-1 col-tablet-2 col-pc-3" onclick="">
+						<div class="p_wrap">
+							<div class="p_box">
+								<div class="p_thum">
+									<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/enuri_rod.png" data-original="http://imgenuri.enuri.gscdn.com/images/dealnew/test_tour_img.jpg" alt="" class="lazy" />
+								</div>
+								<div class="p_info">
+									<!-- 업체 로고, 모바일은 이미지 로고,  PC는 기존과 같이 텍스트 노출 -->
+									<!-- 201806 수정 -->
+									<a href="#" class="mall hidden-pc" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/test_shop_img.gif" alt="쎈DEAL" /></a>
+									<span class="mall hidden-m">오클락</span>
+									<strong class="tit">[KT신규가입] 갤럭시 기어 S3 프론티어 /[현금완납폰]</strong>
+									
+									<div class="price">
+										<strong class="percent"><em>20</em>%</strong>
+										<p class="s_price"><s>200,000원</s>500,500<em>원</em></p>
+											<span class="buy"><em>1,396</em>개 구매</span>
+									</div>
+									<a href="#" class="str_ zzim"><i></i>찜하기</a>
+									
+								</div>
+							</div>
+
+							<div class="p_relate">
+								<span class="buy"><em>1,396</em>개 구매</span>
+								<ul class="badge_list">
+									<li><i class="bdg">빠른배송</i></li>
+									<li><i class="bdg">무료배송</i></li>
+									<li><i class="bdg">오늘마감</i></li>
+									<li><i class="bdg">바로사용</i></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<!--// 인기핫딜 -->
+			</div>
+		</div>
+
+		<div id="filterLayer" class="layer_back">
+			<div class="filter_wrap">
+				<!-- pop-wrap -->
+				<div class="pop_wrap">
+					<div class="pop_head">
+						<h2 class="tit">필터</h2>
+						<a href="#" class="str_ close"><i></i>닫기</a>
+					</div>
+
+					<div id="pop_iscrollArea" class="pop_cont">
+						<div id="scroller">
+							<!-- 구매옵션 -->
+							<div class="opt_box">
+								<h3 class="tit">구매옵션</h3>
+								<ul class="radio_area">
+									<!-- 라디오 체크 li class="chk" 클래스 추가 -->
+									<li class="chk"><input type="radio" id="opt1_1" class="p_rdo" name="opt" value="01" checked="checked"> <label for="opt1_1">전체</label></li>
+									<li><input type="radio" id="opt1_2" class="p_rdo" name="opt" value="02"> <label for="opt1_2">오늘마감</label></li>
+									<li><input type="radio" id="opt1_3" class="p_rdo" name="opt" value="03"> <label for="opt1_3">무료배송</label></li>
+									<li><input type="radio" id="opt1_4" class="p_rdo" name="opt" value="04"> <label for="opt1_4">바로사용</label></li>
+									<li><input type="radio" id="opt1_5" class="p_rdo" name="opt" value="05"> <label for="opt1_5">오늘오픈</label></li>
+								</ul>
+							</div>
+							<!-- // 구매옵션 -->
+							
+							<!-- 쇼핑몰 선택 -->
+							<div class="opt_box">
+								<h3 class="tit">쇼핑몰 선택</h3>
+								<ul class="check_area">
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">쇼핑몰 전체</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">위메프</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">티몬</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">쇼킹딜</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">옥션</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">홈플러스</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">G마켓</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">인터파크</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">롯데닷컴</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">GS SHOP</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">이마트몰</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">홈&쇼핑</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">Hmall</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">신세계몰</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">오클락</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">롯데홈쇼핑</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">패션플러스</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">G9</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">하프클럽</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">엘롯데</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">NS mall</span></li>
+									<li><span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="ID" name="" value="N">우체국쇼핑</span></li>
+								</ul>
+							</div>
+							<!-- // 쇼핑몰 선택 -->
+						</div>
+					</div>
+
+					<div class="pop_foot">
+						<div class="btn_group">
+							<a href="#" class="btn _cancle">취소</a>
+							<a href="#" class="btn _confirm">확인</a>
+						</div>
+					</div>
+				</div>
+				<!-- // pop-wrap -->
+			</div>
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div id="footer">
+		<div class="container">
+			<div class="newquick">
+				<p class="TBtn" style="display: block;" onclick="javascript:goFooterTop()">TOP</p>
+			</div>
+
+			<!-- MOBILE FOOTER -->
+			<div class="m_footer hidden-pc">
+				<div class="mf_info">
+					에누리닷컴㈜는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.
+					<p><strong onclick="goTest()">에누리닷컴㈜</strong>
+						대표이사 : 최문석<span>|</span>사업자등록번호 : 206-81-18164<br>
+						통신판매신고 : 2015-서울중구-1046호<br>
+						서울시 중구 퇴계로 18(남대문로5가) 9 층 <br>
+						문의 : 02-6354-3601<span>|</span>master@enuri.com
+					</p>
+				</div>
+				<ul class="mf_menu">
+					<li><a href="javascript:openTermsWrap()" id="agree">이용약관</a></li>
+					<li><a href="javascript:openPrivacyWrap()">개인정보취급방침</a></li>
+					<li><a href="javascript:openRuleWrap()">법적고지</a></li>
+				</ul>
+			</div>
+
+			<!-- PC FOOTER -->
+			<div class="pc_footer hidden-m">
+				<div class="footer" id="tblFooter">
+					<ul class="footer_menu">
+						<li><span onclick="insertLog(1059);"><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top">회사소개</a></span></li>
+						<li><span onclick="insertLog(1060);"><a href='/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3' target="_top">광고안내</a></span></li>
+						<li><span onclick="insertLog(4555);"><a href="/etc/Secure.jsp" target="_top"><strong>개인정보취급방침</strong></a></span></li>
+						<li><span onclick="insertLog(1064);"><a href="/etc/Duty.jsp" target="_top">법적고지</a></span></li>
+						<li><span onclick="insertLog(1065);"><a href="/view/mallsearch/Listmall.jsp" target="_top">쇼핑몰검색</a></span></li>
+						<li><span><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></span></li>
+					</ul>
+
+					<div class="adr">
+						<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+						<span>대표이사 : 최문석</span>
+						<span>사업자등록번호 : 206-81-18164</span>
+						<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+						<span>전화 : 02-6354-3601</span>
+						<span>팩스 : 02-6354-3600</span>
+						문의 : master@enuri.com
+						<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onClick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a>
+					</div>
+
+					<ul class="award_list">
+						<li>2015, 2017 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+						<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+						<li>2015~2017 모바일어워드 코리아 가격비교서비스 3년연속 대상</li>
+						<li>2016 모바일브랜드 대상 가격비교서비스 대상</li>
+						<li>2015 소비자가 뽑은 한국 소비자 만족지수 1위</li>
+					</ul>
+
+					<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 에누리가격비교의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p><p>
+				 </p>
+			</div>
+		</div>
+	</div>
+	<!-- //FOOTER -->
+
+	<!-- 찜 -->
+	<span class="zzimly">찜 되었습니다</span>
+</div>	
+
+<script>
+// 모바일 카테고리 내부스크롤
+var mNavScroll;
+function mNavScrollLoaded() {
+	mNavScroll = new IScroll('#mNavScrollArea', { 
+		mouseWheel: true,
+		scrollbars: true,
+		fadeScrollbars: true,
+		click: true
+	});
+
+	setTimeout(function () {
+        mNavScroll.refresh();
+    }, 200);
+}
+var dimm = "<div class='layer_back'></div>";
+$("#btnNavMobile").click(function(e){
+	e.preventDefault();
+	$("body").append(dimm);
+	$("#m-nav").animate({"left":0},300);
+	mNavScrollLoaded();	
+});
+$(".m_nav_close").click(function(){
+	$("#m-nav").animate({"left":"-100%"},300, function(){$("body").find(".layer_back").fadeOut(50);});
+	
+	mNavScroll.destroy();
+	mNavScroll = null;
+});
+
+// 팝업 내부스크롤
+var myScroll;
+function iScrollLoaded() {
+	myScroll = new IScroll('#pop_iscrollArea', { 
+		mouseWheel: true,
+		scrollbars: true,
+		fadeScrollbars: true,
+		click: true,
+		onBeforeScrollStart:function(e){
+			var target = e.target;
+			while(target.nodeType != 1) target = target.parentNode;
+
+			if(target.tagName != 'SELECT' && target.tagName != 'INPUT' && target.tagName != 'TEXTAREA' && target.tagName != 'LABEL'){
+				e.preventDefault();
+			}
+		}
+	});
+
+	$(".radio_area li").click(function(e){
+		$(".radio_area li").removeClass("chk");
+		$(this).addClass("chk");
+
+		var rdoval = $(this).find("input[type='radio']").val();
+		//console.log(rdoval);
+	});
+
+	setTimeout(function () {
+        myScroll.refresh();
+    }, 200);
+}
+
+// filter layer
+var filter = $("#filterLayer");
+$("#showFilter").click(function(e){
+	e.preventDefault();
+	$(filter).fadeIn(100);
+	var p_wid = $(filter).outerWidth();
+	var p_hgt = $(filter).outerHeight();
+
+	$(".filter_wrap").css({"margin-left": -(p_wid/2) + 10}).css({"margin-top": -(p_hgt/2) + 10});
+
+	// 팝업 내부스크롤 실행
+	iScrollLoaded();
+});
+// LAYER 닫기
+$(filter).find(".close, ._cancle").click(function(e){
+	e.preventDefault();
+	$(filter).fadeOut(100);
+
+	// 팝업 내부스크롤 해제
+	myScroll.destroy();
+	myScroll = null;
+});
+// LAYER 확인
+$(filter).find("._confirm").click(function(e){
+	e.preventDefault();
+	$(filter).fadeOut(100);
+
+	// 팝업 내부스크롤 해제
+	myScroll.destroy();
+	myScroll = null;
+});
+
+// 찜
+$(".zzim").click(function(e){
+	e.preventDefault();
+	$(this).addClass("on");
+	$(".zzimly").css("display", "block").stop().animate({opacity:1}, 500, function(){
+		$(this).delay(500).animate({opacity:0}, 500, function(){$(this).hide();});
+	});
+});
+
+/*checkbox*/
+function agreechk(obj){
+	if (obj.className== 'unchk') {
+		obj.className = 'chk';
+	} else {
+		obj.className = 'unchk';
+	}
+}
+
+$(function(){
+	// 동적인 이미지 호출
+	$("img.lazy").lazyload({
+		effect: 'fadeIn',
+		 effectTime : 2000
+	});
+	
+	// 여행 MD Pick SLIDE 
+	// 201806 수정
+	$('.mdtourlist').slick({
+		dots: true,
+		arrows: true,
+		infinite: true,
+		slidesToShow: 4,
+		slidesToScroll: 4,
+		speed: 300,
+		swipe: false,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					centerMode: true,
+					swipe: true,
+					slidesToShow: 3,
+					slidesToScroll: 3
+				}
+			},
+			{
+				breakpoint: 768,
+				settings: {
+					centerMode: true,
+					swipe: true,
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					variableWidth: true
+				}
+			}
+		]
+	});
+	
+	/* CUSTOM SELECT */
+	$("div.select > a").click(function() {
+		$(this).next(".sub_dp").toggle();
+		return false;
+	});
+	$(".sub_dp > li > a").click(function() {
+		$(this).parent().parent(".sub_dp").hide();
+		$(this).parent().parent(".sub_dp").siblings(".showList").find("em").text($(this).text())
+		//$(this).prependTo($(this).parent());
+	});
+});
+</script>
+</body>
+</html>

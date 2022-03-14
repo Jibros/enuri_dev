@@ -1,0 +1,97 @@
+@charset "utf-8";
+/* common */
+:root {
+    --common-color : rgba(223,190,106,0.7);
+    --arrow-down : 1s linear infinite both arrow_down;
+}
+html {height:100%;font-size:10px;}
+body {position:relative;height:100%;margin:0;padding:0;background-color:#231f20;-webkit-font-smoothing:antialiased;}
+a,button {outline: none;}
+button {border:none;cursor: pointer;}
+.wrapper {overflow:hidden;width:100%;max-width:36rem;height:100% !important;height:100%;margin:0 auto;}
+
+
+/* visual */
+.visual {overflow:hidden;position:relative;height:100%;}
+.visual .obj {display:block}
+.visual .obj-envelope {position:relative;top:-20px;width:100%;height:278px;/*background:url(../imgs/obj_envelope.png) top center no-repeat;*/}
+.visual .obj-stamp {position:absolute;top:171px;left:50%;width:162px;height:153px;transform:translateX(-50%);background:url(../imgs/obj_stamp.png) top center no-repeat;}
+.visual .obj-mark {position:absolute;top:21.5rem;left:50%;width:48px;height:57px;transform:translateX(-40%);font-size:0;text-indent:-9999px;background:url(../imgs/obj_mark.png) top center no-repeat;}
+
+.tx_msg {display:block;margin:90px auto 0;font-size:18px;letter-spacing:-.4px;font-family: 'Roboto', sans-serif;text-align: center;cursor: pointer;user-select: none;}
+
+/* 요게 중요 */
+.tx_msg span {background: linear-gradient(to right, rgba(223,190,106,1), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0), rgba(223,190,106,1), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));background-size: 300% 300%;background-position: 1% 50%; /*background: linear-gradient(to right, red, rgba(223,190,106,0.7));*/-webkit-background-clip: text;-webkit-text-fill-color: transparent;animation: 4s linear infinite flow_text_bg;}
+@keyframes flow_text_bg { 0% {background-position: 99% 50%} 100% {background-position: 13% 50%;}}
+
+/* btn */
+.btn.btn-down {display:block;position:absolute;bottom:80px;left:50%;width:32px;height:32px;/*transform:translateX(-50%);*/ margin-left: -16px; font-size:0; animation: var(--arrow-down); background: transparent;}
+.btn.btn-down:after {content:"";display: block;width: 20px;height: 20px;border-bottom:2px solid var(--common-color);border-right:2px solid var(--common-color);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);position:absolute;top: 0;left: 50%;margin-left: -10px;}
+
+/* animation */
+@keyframes arrow_down {
+    from {opacity: .2; transform: translateY(0);}
+    to {opacity: 1;transform: translateY(40px);}
+}
+
+/* 메인화살표 위치 */
+.visual .btn.btn-down {bottom:162px;}
+
+/* 메인 로그인버튼  */
+.btn.btn-login {display:block;position:fixed;bottom:44px;left:0;right:0;text-align: center;background: transparent;text-transform: uppercase;font-weight: 500;font-style: normal;font-size: 12px;letter-spacing: 6px;color: var(--common-color);border-radius: 0;padding: 18px 0 20px;transition: all 0.7s ease-out;background: linear-gradient(270deg, rgba(223,190,106,0.8), rgba(146,111,52,0.8), rgba(34,34,34,0), rgba(34,34,34,0));background-position: 1% 50%;background-size: 300% 300%;text-decoration: none;margin: 0.625rem;border: none;border: 1px solid rgba(223,190,106,0.3);}
+.btn.btn-login:hover {border: 1px solid rgba(223,190,106,0);color: #fff;background-position: 99% 50%;}
+
+/* main section */
+.main {width:100%;margin:0 auto;}
+.main section {overflow:hidden;}
+.main section .page_container {position:relative;width:100%;height:100%;margin:0 auto;z-index:3;}
+.main section .page_container .page_cont {position:absolute;top:45%;left:0;right:0;width:100%;transform:translateY(-50%);text-align:center;}
+.main section .page_container .page_cont img {width:auto;height:auto;vertical-align:top}
+.main section .page_container .page_cont .tx_msg {display:block;margin:12px auto;font-size:18px;color:#222;letter-spacing:-.4px;line-height:24px;}
+
+
+.onepage-pagination {display: none;}
+
+
+.bg_object {}
+.bg_object .obj:nth-child(odd) {
+    position:fixed;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-name: obj_effect_odd;
+}
+/* animation */
+@keyframes obj_effect_odd {
+    0% {opacity: 0; transform: translateY(0) rotate3d(1,1,1,45deg);}
+    25% {opacity: 1;}
+    50% {transform: translateY(300px)  rotate3d(1,1,1,360deg);}
+    100% {opacity: 0;transform: translateY(600px) rotate3d(1,1,1,720deg);}
+}
+
+.bg_object .obj:nth-child(even) {
+    position:fixed;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-name: obj_effect_even;
+}
+/* animation */
+@keyframes obj_effect_even {
+    0% {opacity: 0; transform: translateY(0) rotate3d(1,1,1,45deg);}
+    25% {opacity: 1;}
+    50% {transform: translateY(200px)  rotate3d(1,1,1,360deg);}
+    100% {opacity: 0;transform: translateY(500px) rotate3d(1,1,1,720deg);}
+}
+
+
+.bg_object .obj:after {
+    content:"";
+    position:absolute;
+    top:50%;
+    left:50%;
+    width: 1px;
+    height: 1px;
+    background: #fff;
+    box-shadow: 0 0 25px 5px rgba(223, 190, 106,.8);
+}

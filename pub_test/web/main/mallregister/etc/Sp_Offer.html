@@ -1,0 +1,238 @@
+<html>
+<head>
+<title>스폰서상품 상담신청</title>
+<META HTTP-equiv='Content-Type' content='text/html; charset=euc-kr'>
+<META NAME='description' CONTENT='가격비교 에누리닷컴'>
+<META NAME='keyword' CONTENT='가격,가격 검색,가격 사이트,가격검색 사이트,가격비교,가격 비교가격비교 사이트,가격정보'>
+<META NAME='Robots' CONTENT='INDEX, FOLLOW'>
+<LINK REL='SHORTCUT ICON' HREF='/favicon.ico'>
+<link REL="stylesheet" HREF="http://imgenuri.enuri.gscdn.com/common/css/enuribase.css" TYPE="text/css">
+<script language="javascript" src="http://imgenuri.enuri.gscdn.com/common/js/function.js"></script>
+<script src='http://img.enuri.gscdn.com/common/js/prototype-1.4.0.js'></script>
+<style type="text/css">
+/* 20151026 개인정보 이용 동의 절차 추가 */
+.txt_clause {padding:25px 0 8px;}
+.txt_clause .check {display:inline-block; vertical-align:middle; width:19px; height:19px; cursor:pointer; background:url(http://imgenuri.enuri.gscdn.com/images/etcPage/etc_new/ico_check.gif) 0 -19px no-repeat;}
+.txt_clause.on .check {background-position:0 0;}
+.txt_clause.on label {color:#2c87e6; }
+.txt_clause label {margin-left:4px; vertical-align:-2px; font-family:dotum; font-size:13px; font-weight:bold; color:#999999; letter-spacing:-0.075em;cursor:pointer; }
+.txt_clause label em {font-style:normal; color:#2b78bc;}
+.btn_apply {padding:30px 0 20px; text-align:center;}
+table.counsel_agreecon th {width:156px; height:43px; padding:0; font-family:dotum; font-size:12px; color:#666; letter-spacing:-0.05em; background:#f5f5f5;} 
+table.counsel_agreecon td {width:390px;  font-family:dotum; font-size:11px; color:#666; letter-spacing:-0.025em; padding:6px 5px 4px 9px; line-height: 16px; background:#fff;}
+</style>
+
+<script language="javaScript">
+//maxHeight = window.screen.availHeight;
+self.resizeTo(700,700);
+	function validCheck(){
+		if ($F('shop_name').trim() == ""){
+			alert("업체명을 입력해 주십시오");
+			$('shop_name').focus();
+			return false;
+		}
+		if ($F('charge_name').trim() == ""){
+			alert("담당자명을 입력해 주십시오");
+			$('charge_name').focus();
+			return false;
+		}
+		if ($F('charge_tel').trim() == ""){
+			alert("연락처를 입력해 주십시오");
+			$('charge_tel').focus();
+			return false;
+		}		
+		if ($F('charge_email').trim() == ""){
+			alert("E-Mail을 입력해 주십시오");
+			$('charge_email').focus();
+			return false;
+		}
+		if ($F('estimate').trim() == ""){
+			alert("광고예산을 입력해 주십시오");
+			$('estimate').focus();
+			return false;
+		}
+		if ($F('period').trim() == ""){
+			alert("기간을 입력해 주십시오");
+			$('period').focus();
+			return false;
+		}
+		if ($F('purpose').trim() == ""){
+			alert("광고목적 및 타켓을 입력해 주십시오");
+			$('purpose').focus();
+			return false;
+		}
+	}
+	function parant_go(){
+		var condition = "self";
+
+		if(condition == "self"){
+			opener.location.href="/mallregister/Sponsor_Prod_Info.jsp";
+			//self.close();
+			//opener.focus();
+		}else{
+			var sponser = window.open("/mallregister/Sponsor_Prod_Info.jsp","sponser","");
+			sponser.focus();
+		}
+	}
+	function resize(){
+		if (document.all){
+			cW=document.getElementById("tbl_main").clientWidth
+			cH=document.body.offsetHeight
+			window.resizeTo(500,500)
+			barsW=500-document.body.offsetWidth
+			barsH=500-document.body.offsetHeight
+			wW=barsW+cW
+			wH=barsH+cH
+			window.resizeTo(wW,wH)
+			var varHeight = document.body.scrollHeight;
+			var varWidth = document.body.scrollWidth;
+			var h=0;
+			
+			if (navigator.userAgent.indexOf("SV1") > 0){  h=4; } 
+			else if(navigator.userAgent.indexOf("MSIE")>0) { h=4;}
+			else if(navigator.userAgent.indexOf("Gecko")>0 && navigator.userAgent.indexOf("Firefox") <= 0 && navigator.userAgent.indexOf("Netscape") <= 0 ){ h=22; } 
+			else if(navigator.userAgent.indexOf("Firefox") >0 ){  h=18; } 
+			else if(navigator.userAgent.indexOf("Netscape") >0 ){ h=-2; }
+			else { h=4;} 
+			window.resizeTo(varWidth+barsW,varHeight+barsH+h);
+			var varLWidth = document.body.scrollWidth - document.body.clientWidth;
+			window.resizeTo(varWidth+barsW+varLWidth,varHeight+barsH+h);
+		}else{
+			wW=window.outerWidth
+			wH=window.outerHeight
+			window.resizeTo(wW,wH);
+		}
+	}	
+</script>
+<style type="text/css">
+<!--
+	.font_style3 {font-family:굴림;font-size:12px;line-height:20px;color:#4C4C4C}
+form{
+	margin:0px;	
+}
+//-->
+</style>
+</head>
+<body leftmargin="0" topmargin="0" onload="resize()">
+
+<!-- 테이블의 시작 -->
+<table width="580" border="0" cellspacing="0" cellpadding="0" height="100%" id="tbl_main">
+	<tr>
+		<td valign="top">
+		<!-- 테이블의 시작 -->
+			<table width="580" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td style="padding-left:15px;">
+					<!-- 테이블의 시작 -->
+						<table width="549" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td><img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/spoffer_popup_tit01.gif" alt="스폰서상품 상담신청" /></td>
+							</tr>
+							<tr>
+								<td style="padding-bottom:5px"><img src="http://imgenuri.enuri.gscdn.com/images/etcPage/ad_new/advert_consult_txt06.gif" alt="advert_consult_txt06" /></td>
+							</tr>
+							
+							<tr>
+								<td>
+								<!-- 폼의 시작 -->
+								<form name='frmAd' method='post' action='Sp_Offer_Action.jsp' onSubmit='return validCheck();'>
+								<!-- 테이블의 시작 -->
+									<table cellpadding='0' cellspacing='0'  border='0'>
+										<tr style='padding-left:10px;padding-top:5px'>
+											<td>
+											<!-- 테이블의 시작 -->
+												<table cellpadding='1' cellspacing='1' border='0' bgcolor='C6D0D7'>
+												<col width='160'></col><col width='387'></col>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>광고문의 업체명</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='shop_name' size='20'></td>
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>담당자명</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='charge_name' size='20'></td>
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>담당자 연락처</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='charge_tel'size='20'></td>
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>담당자 E-mail</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='charge_email' size='35'></td>
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>광고예산(대략적으로)</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='estimate' size='20'></td>
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>기간</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='period' size='20'></td>
+													</tr>
+													<tr>
+													
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>광고목적 및 타켓</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='text' name='purpose' size='40'></td>
+													
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px' height='30'><font class="font_style3"><b>동영상 홍보 서비스 여부</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><input type='checkbox' name='sponserCh' size='3' style="width:25px;height=25px;"><font color="#808080" style="padding-left:2px;">(체크시 동영상 홍보 서비스를 이용하실 수 있습니다.)</font></td>
+													</tr>
+													<tr>
+														<td bgcolor='EAF2F7' style='padding-left:10px;padding-top:5px'><font class="font_style3"><b>기타 문의사항</b></font></td>
+														<td bgcolor='ffffff' style='padding-left:5px;padding-top:5px'><textarea name='etc' cols='40' rows='10'></textarea></td>
+													</tr>
+												<input type='hidden' name='kind' value=''>
+												</table>
+											<!-- 테이블의 끝 -->
+											</td>
+										</tr>
+										
+										<!--<tr>
+											<td style='padding-top:15px' align='center'><input type='image' src='http://imgenuri.enuri.gscdn.com/images/etcPage/etc_new/submit_btn.gif' border='0'></td>
+										</tr>-->
+									</table>
+								<!-- 테이블의 끝 -->
+									
+								</form>
+								<!-- 폼의 끝 -->
+								</td>
+							</tr>
+							<tr>
+								<td class="txt_clause"><!-- 체크시 선택 class="on" 추가 -->
+									<span class="check"></span><label>개인정보 수집 및 이용에 동의합니다.</label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table border="0"  cellspacing="1" cellpadding="5" bgcolor="#cccccc" class="counsel_agreecon">
+										<tr>
+											<th>수집하는 개인정보 항목</th>
+											<td>(선택) 담당자의 이름, 연락처, e-mail</td>
+										</tr>
+										<tr>
+											<th>개인정보 수집/이용목적</th>
+											<td>상담을 위한 원활한 의사소통 경로의 확보<br />개인/업체 맞춤 광고제안을 위해 이용</td>
+										</tr>
+										<tr>
+											<th>개인정보 보유/이용기간</th>
+											<td>개인정보 수집의 목적이 달성되는 순간 파기됨<br />그렇지 않을 경우, 상담신청 접수 시점으로부터 최장 6개월간 보관할 수 있음</td>
+										</tr>
+									</table>
+								<td>
+							</tr>
+							<tr>
+								<td class="btn_apply"><input type="image" name='cmd' src="http://imgenuri.enuri.gscdn.com/images/etcPage/etc_new/btn_counsel_apply2.gif"  alt="상담신청" /></td>
+							</tr>
+						</table>
+					<!-- 테이블의 끝 -->
+					</td>
+				</tr>
+			</table>
+		<!-- 테이블의 끝 -->
+		</td>
+	</tr>
+</table>
+<!-- 테이블의 끝 -->
+
+</body>
+</html>

@@ -1,0 +1,1364 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>에누리 신차견적</title>
+    <link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/newcar/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/newcar/template.css"/>
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="http://auto.enuri.com/resources/common/js/lib/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <!-- 완료후제거 -->
+    <link rel="stylesheet" href="/css/default.css?v=1" type="text/css">
+</head>
+<body>
+
+    <div id="wrap">
+
+        <div id="header" class="header">
+            
+            <!-- 심플헤더 -->
+            <link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+            <div class="com_simple_header ty_wide">
+                <div class="com_head__inner">
+                    <!-- 심플헤더 - 패밀리탭 -->
+                    <ul class="com_head__tab_fam">
+                        <!-- 노출되지 않는 list는 li태그에 display:none처리 꼭 해주세요 -->
+                        <!-- 해당되는 탭은 on클래스로 활성화 해주세요 -->
+                        <li><a href="/">에누리홈</a></li><!-- 에누리홈에서는 비노출 -->
+                        <li><a href="/global/Index.jsp">해외직구</a></li>
+                        <li><a href="/enuripc">조립PC</a></li>
+                        <li><a href="/deal/newdeal/index.deal">소셜</a></li>
+                        <li><a href="/tour2012/Tour_Index.jsp">여행</a></li>
+                        <li class="on"><a href="#">자동차</a></li>
+                        <li><a href="/knowbox2/index.jsp">쇼핑지식</a></li>
+                    </ul>
+                    <!-- // -->
+                    <!-- 심플헤더 - 배너영역 (에누리홈 only) -->
+                    <ul class="com_head__list_ban" style="display:none">
+                        <li><a href="#">혜택존<span class="ico_simple__sprite ico__sp_ben">쇼핑혜택</span></a></li>
+                    </ul>
+                    <!-- // -->
+                    <!-- 심플헤더 - 우측메뉴 -->
+                    <ul class="com_head__menu">
+                        <!-- 노출되지 않는 메뉴 li태그에 display:none처리 꼭 해주세요 -->
+                        <!-- 로그인 -->
+                        <li style="display:none"><a href="#">로그인</a></li>
+                        <!-- 회원가입 -->
+                        <li style="display:none"><a href="#">회원가입</a></li>
+                        <!-- 사용자 + 마이에누리 레이어 -->
+                        <li>
+                            <a href="#"><em class="user_name">WangKooN</em>님<span class="ico__arr_down ico_simple__sprite"></span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 마이에누리 -->
+                            <div class="com_lay_login com_lay_box">
+                                <div class="lay_inner">
+                                    <ul>
+                                        <li><a href="javascript:goPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+                                        <li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+                                        <li><a href="">SDUL</a></li>
+                                        <li><a href="">상위노출입찰</a></li>
+                                        <li><a href="javascript:showZzim();">찜상품 <em>(n)</em></a></li>
+                                        <li><a href="javascript:logout();">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- // -->
+                        </li>
+                        <!-- 로그아웃 -->
+                        <li><a href="#">로그아웃</a></li>
+                        <!-- 쇼핑Q&A -->
+                        <li style="display:none"><a href="#">쇼핑Q&A</a></li>
+                        <!-- 앱다운로드 + 레이어 -->
+                        <li style="display:none">
+                            <a href="javascript:void(0);">앱다운로드<span class="ico__app_down ico_simple__sprite">받기</span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 앱다운로드 -->
+                            <div class="com_lay_app com_lay_box">
+                                <div class="spbox" id="simpleHeader">
+                                    <ul class="sp_tab">
+                                        <li><a href="javascript:void(0);" onclick="$('.sp_enuri').show().siblings('div').hide();">에누리 가격비교</a></li>
+                                        <li><a href="javascript:void(0);" onclick="$('.sp_hotdeal').show().siblings('div').hide();">소셜비교</a></li>
+                                    </ul>
+                                    <!-- 에누리 -->
+                                    <div class="sp_enuri" style="display:block;">
+                                        <h2>에누리 가격비교 </h2>
+                                        <p>모바일로 더욱 특별해진 가격비교!</p>
+                                        <dl>
+                                            <dt>QR코드 스캔</dt>
+                                            <dd>QR코드</dd>
+                                            <dt>앱 다운로드</dt>
+                                            <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                            <dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                            <dt>다운로드 SMS 보내기</dt>
+                                            <dd>
+                                                <fieldset>
+                                                    <legend>SMS보내기</legend>
+                                                    <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_enuri" id="phonenum_enuri" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('enuri')"></button>
+                                                </fieldset>
+                                            </dd>
+                                            <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                            <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                        </dl>
+                                    </div>
+                                    <!-- 소셜비교 -->
+                                    <div class="sp_hotdeal" style="display:none;">
+                                        <h2>소셜비교</h2>
+                                        <p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+                                        <dl>
+                                            <dt>QR코드 스캔</dt>
+                                            <dd>QR코드</dd>
+                                            <dt>앱 다운로드</dt>
+                                            <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                            <dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                            <dt>다운로드 SMS 보내기</dt>
+                                            <dd>
+                                                <fieldset>
+                                                    <legend>SMS보내기</legend>
+                                                    <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_hotdeal" id="phonenum_hotdeal" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('hotdeal')"></button>
+                                                </fieldset>
+                                            </dd>
+                                            <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                            <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //  -->
+                        </li>
+                        <!-- 더보기 + 레이어 -->
+                        <li>
+                            <a href="javascript:void(0);">더보기<span class="ico__arr_down ico_simple__sprite"></span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 사이트맵 -->
+                            <div class="com_lay_sitemap com_lay_box">
+                                <dl>
+                                    <dt>주요서비스</dt>
+                                    <dd>
+                                        <a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+                                        <a href="/enuripc/" target="_new">PC 견적비교</a>
+                                        <a href="/global/Index.jsp">해외직구</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+                                        <a href="/view/move_mall.jsp" target="_new">이사견적</a>
+                                        <a href="/view/Flower365.jsp" target="_new">꽃배달</a>
+                                        <a href="/tour2012/Tour_Index.jsp" target="_new">여행비교</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>커뮤니티</dt>
+                                    <dd>
+                                        <a href="/knowbox2/index.jsp" target="_new">쇼핑지식</a>
+                                        <a href="/knowcom/news.jsp" target="_new">뉴스</a>
+                                        <a href="/knowcom/guide.jsp" target="_new">구매가이드</a>
+                                        <a href="/knowcom/exp.jsp" target="_new">체험단</a>
+                                        <a href="/knowcom/board.jsp?bbsname=review" target="_new">사용기</a>
+                                        <a href="/knowcom/enuritv.jsp" target="_new">에누리TV</a>
+                                        <a href="/knowcom/board.jsp?bbsname=nuri" target="_new">자유게시판</a>                            
+                                    </dd>
+                                    <dd>
+                                        <a href="/knowcom/board.jsp?bbsname=sale" target="_new">특가게시판</a>
+                                        <a href="/knowcom/qna.jsp" target="_new">쇼핑Q&amp;A</a>
+                                        <a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition" target="_new">쇼핑기획전</a>
+                                        <a href="/infoad_event/eventMain.jsp" target="_new">이벤트</a>
+                                    </dd>
+                                </dl>
+                                <p class="all">
+                                    <a href="/etc/Site_map.jsp" class="enuri_all" target="_new">에누리 서비스 전체보기</a>
+                                </p>
+                            </div>
+                            <!-- // -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+
+            <!-- 메인헤더 + GNB + Search 영역 -->
+            <div class="header_wrap">
+                <div class="inner">
+                    <h1><a href="./" class="comm_sprite" title="에누리 자동차">에누리 자동차</a></h1>
+                    <ul class="nav_global">
+                        <li class="item_nav on"><a href="index.html">신차견적</a></li>
+                        <li class="item_nav"><a href="list_immediate.html">즉시출고</a></li>
+                        <li class="item_nav"><a href="comp_finance.html">금융비교</a></li>
+                        <li class="item_nav"><a href="/enuricar/list.jsp">중고차</a></li>
+                        <!-- 201217 : SR#44117 : 신규탭 추가 -->
+                        <li class="item_nav"><a href="#">내차관리</a></li>
+                        <!-- // -->
+                    </ul>
+                    <ul class="header_bnr">
+                        <li><a href="#"><img src="http://img.enuri.info/images/newcar/@header_bnr.png" alt="8월 판매조건 확인하기"></a></li>
+                    </ul>
+                    <!-- <ul class="shortcuts">
+                        <li><a href="#" class="btn__estimate"><i class="comm_sprite"></i>빠른견적</a></li>
+                        <li><a href="#" class="btn__pricenoti"><i class="comm_sprite"></i>가격알림</a></li>
+                    </ul> -->
+                </div>
+            </div>
+            <!-- // 메인헤더 + GNB + Search 영역 -->
+        </div>
+
+        <div id="container" class="container">
+
+            <!-- 네비게이션 영역 -->
+            <div class="location">
+                <div class="location_wrap">
+                    <div class="location_inner">
+                        <ul class="location_list">
+                            <li><a href="#" class="btn_loc">홈</a></li>
+                            <li>
+                                <div class="sub_loc">
+                                    <a href="#" class="btn_loc">현대</a>
+                                    <ul>
+                                        <li>제네시스</li>
+                                        <li>기아</li>
+                                        <li>쉐보레</li>
+                                        <li>쌍용</li>
+                                        <li>르노삼성</li>
+                                        <li>벤츠</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="sub_loc">
+                                    <a href="#" class="btn_loc">올 뉴 아반테</a>
+                                    <ul>
+                                        <li>제네시스</li>
+                                        <li>기아</li>
+                                        <li>쉐보레</li>
+                                        <li>쌍용</li>
+                                        <li>르노삼성</li>
+                                        <li>벤츠</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <script>
+                        $(function(){
+                            var $subLoc = $(".location_list .sub_loc");
+                            var $btnLoc = $subLoc.find(".btn_loc");
+                            $btnLoc.click(function(e){
+                                e.preventDefault();
+                                var $parent = $(this).parent();
+                                if ( $parent.hasClass("on") ){
+                                    $parent.toggleClass("on");
+                                }else{
+                                    $subLoc.removeClass("on");
+                                    $parent.toggleClass("on");
+                                }
+                            })
+                        })
+                    </script>
+                </div>
+            </div>
+            <!-- // -->
+
+            <!-- 모델 상세보기 -->
+            <div class="section box_inner model_head">
+                <div class="box_head">
+                    <!-- 모델 요약 -->
+                    <div class="model_summary">
+                        <!-- 모델 메인 로고/썸네일 -->
+                        <div class="md_logo">
+                            <img src="http://img.enuri.info/images/newcar/1001.png" alt="">
+                        </div>
+                        <div class="md_thumb">
+                            <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                        </div>
+                        <div class="md_info">
+                            <!-- 제조사+모델명 // 한줄 말줄임 -->
+                            <h2 class="md_name">
+                                <span class="tx_name">벤츠 신형 E-Class</span>                                
+                            </h2>
+                            <!-- 대표제원 표시 -->
+                            <div class="md_spec">
+                                <ul class="tx_spec">
+                                    <li>중형 승용</li>
+                                    <li>복합연비 9.9~14.3km/l</li>
+                                    <li>휘발유,경유</li>
+                                    <li>배기량 1,995~2,998cc</li>
+                                    <li>출력 120~123hp</li>
+                                </ul>
+                            </div>
+                            <div class="md_bottom">
+                                <ul>
+                                    <!-- 모델 출시일 -->
+                                    <!-- * 모델 최초 출시 연도 / 월 표기 -->
+                                    <!-- * 정상 시판중인 경우 ~ 현재 표기 -->
+                                    <!-- * 단종된 모델인 경우 단종된 기간 표기 ex) 2020.4 ~ 2020.6 -->
+                                    <li>2019.04 ~ 현재</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md_price">
+                            <!-- 공식출고가 -->
+                            <div class="box_price">
+                                <span class="tx_tit">공식출고가</span>
+                                <span class="tx_price"><em>5,020~17,450</em> 만원</span>
+                                <!-- 버튼 : 신차견적내기 -->
+                                <!-- 모델 견적내기 화면으로 이동 -->
+                                <button class="btn_estimate" onclick="window.location.href='estimate.html';">신차견적내기</button>
+                                <!-- // -->
+                            </div>
+                            <!-- 리스/렌트 -->
+                            <div class="box_price ty_lease">
+                                <span class="tx_tit">최저가 <em>36</em>개월</span>
+                                <span class="tx_price"><em>164,210</em>원 / 월</span>
+                                <!-- 버튼 : 리스/렌트 보기 -->
+                                <!-- 견적 > 금융 탭 이 리스렌트로 설정된 화면으로 이동 -->
+                                <button class="btn_lease" onclick="window.location.href='estimate.html#finance'">리스/렌트보기</button>
+                                <!-- // -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 가격추세 -->
+                    <div class="price_trend">
+                        <p class="tx_tit">가격추세</p>
+                        <!-- 타입선택 -->
+                        <ul class="radio_basic radio--sm">
+                            <li><input type="radio" id="tyTrendRadio01" name="tyTrendRadio" checked><label for="tyTrendRadio01">모델기준</label></li>
+                            <li><input type="radio" id="tyTrendRadio02" name="tyTrendRadio"><label for="tyTrendRadio02">인기라인업기준</label></li>
+                        </ul>
+                        <!-- 챠트영역 -->
+
+                        <p class="tx_model">2020년형 가솔린 2.5 (개소세 30% 인하) 기준</p>
+
+                        <!-- .ready -> 준비중일때 붙여주세요 -->
+                        <div class="box_chart ready">
+
+                        </div>
+                        
+                        <div class="tx_noti">
+                            <span class="tx_line">에누리 가격추세는 안정화된 데이터 제공을 위해 집계된 최신 월이 현재 월과 1~2개월 차이가 있을 수 있습니다.</span>
+                            <span class="tx_line">인기라인업은 최근 5개월 내 등록율이 가장 높은 라인업을 나타내며 현재 판매중인 라인업과 차이가 있을 수 있습니다.</span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+            <!-- 모델 상세 -->
+            <div class="section box_inner model_body">
+                <!-- 모델 상세 메인 -->
+                <div class="section box_main model_detail">
+                    <div class="list_head">
+                        <ul class="list_tab">
+                            <!-- 앵커 이동 탭 -->
+                            <li class="is-active">제원옵션</li>
+                            <li onclick="window.location.href='#modelStat'">모델 인기 통계</li>
+                            <li onclick="window.location.href='#modelImage'">모델 이미지</li>
+                        </ul>
+                    </div>
+                    <div class="list_body">
+                        <!-- 제원옵션 -->
+                        <div id="modelSpec" class="cont_group model_spec">
+                            <div class="item_head">
+                                <h3 class="tx_tit">제원/옵션</h3>
+
+                                <!-- 버튼 : 비교보기 -->
+                                <a href="#" class="btn__head_more" onclick="showPopup('comp_model.html');return false;">전체 제원/옵션 비교보기 <i class="comm_sprite ico_rarr_sm_b">&gt;</i></a>
+
+                                <!-- 탭 제거 -->
+                                <!-- <ul class="spec_tab">                                    
+                                    <li class="on" onclick="$(this).addClass('on').siblings().removeClass('on');">
+                                        <span class="tx_spec_tab">일반견적</span>
+                                        <span class="tx_spec_price"><em>1,570</em>만원</span>
+                                    </li>
+                                    <li onclick="$(this).addClass('on').siblings().removeClass('on');">
+                                        <span class="tx_spec_tab">리스계약</span>
+                                        <span class="tx_spec_price">월 <em>164,570</em>원~</span>
+                                    </li>
+                                    <li onclick="$(this).addClass('on').siblings().removeClass('on');">
+                                        <span class="tx_spec_tab">렌트계약</span>
+                                        <span class="tx_spec_price">월 <em>161,245</em>원</span>
+                                    </li>
+                                </ul> -->
+                                <!-- // -->
+
+                                <div class="item_head_rside">                                    
+                                    <!-- 버튼 : 추천조건 설정 -->
+                                    <button class="btn__recomm_cond" onclick="$('.lay_selcondi').show();">
+                                        <i class="comm_sprite ico_setting"></i>
+                                        <!-- 맞춤 설정 전 -->
+                                        <!-- <span class="tx_cond">지역/연령/성별 <em>추천조건 설정</em></span> -->
+                                        <!-- 맞춤 설정 후 -->
+                                        <span class="tx_cond selected">서울시 강서구/30대/여성 <em>설정</em></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item_body">
+                                <!-- 라인업 리스트 -->
+                                <div class="tb_box box_lineup">                                    
+                                    <div class="tb_head head_lineup">
+                                        <span class="tx_head col--model">모델명</span>
+                                        <span class="tx_head col--disp">배기량(cc)</span>
+                                        <span class="tx_head col--power">출력(hp)</span>
+                                        <span class="tx_head col--mileage">연비(㎞/l)</span>
+                                        <span class="tx_head col--price">출고가</span>
+                                        <span class="tx_head col--select">선택률</span>
+                                    </div>
+                                    <!-- 모델 종속 라인업 리스트 -->
+                                    <ul class="tb_list list_lineup">
+                                        <!-- 반복 : 라인업 리스트 -->
+                                        <li class="tb_list_item item_lineup selected">                                            
+                                            <div class="row--tb-item">
+                                                <span class="tx_col col--model"><span class="tx_model">2020년형 가솔린 2.0 <span class="tx_desc">(개소세 5% 기준)</span></span></span>
+                                                <span class="tx_col col--disp">1995</span>
+                                                <span class="tx_col col--power">190</span>
+                                                <span class="tx_col col--mileage">12.7~13.0</span>
+                                                <span class="tx_col col--price">12,395 ~ 13,120만원</span>
+                                                <span class="tx_col col--select">89.1%</span>
+                                            </div>
+                                            <!-- // -->
+                                            <!-- 트림 리스트 -->
+                                            <ul class="tb_sub_list list_trims">
+                                                <!-- 반복 : 트림 리스트 -->
+                                                <li class="tb_sub_item item_trims selected">
+                                                    <!-- [트림 리스트 영역] -->
+                                                    <div class="row--sub-item">
+                                                        <div class="tx_col col--trim">
+                                                            <div class="tx_trim">
+                                                                <!-- 라디오 아이콘 -->
+                                                                <i class="comm_sprite ico_radio_lg"></i>
+                                                                <!-- 트림명 -->
+                                                                <!-- title 속성에 트림명 넣어주세요. (말줄임 케이스용) -->
+                                                                <span class="tx_trim_nm" title="트렌디">트렌디</span>
+                                                                <!-- 상세보기 -->
+                                                                <a href="#" class="btn__trim_detail" onclick="showPopup('comp_model.html');return false;"><i class="comm_sprite ico_detail">상세보기</i></a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="tx_col col--disp">1995</span>
+                                                        <span class="tx_col col--power">190</span>
+                                                        <span class="tx_col col--mileage">12.7~13.0</span>
+                                                        <span class="tx_col col--price">2,444,900,000원</span>
+                                                        <span class="tx_col col--select"><span class="ico_tag rank1">출고 1위</span></span>
+                                                    </div>
+                                                    <!-- [트림 정보 상세 표시 영역] -->
+                                                    <div class="info_trims">
+                                                        <div class="trim_spec">
+                                                            <dl>
+                                                                <dt>연료</dt>
+                                                                <dd>경유</dd>
+                                                                <dt>엔진형식</dt>
+                                                                <dd>직렬 4기통 트윈파워 터보</dd>
+                                                                <dt>배기량</dt>
+                                                                <dd>1,995cc</dd>
+                                                                <dt>변속기</dt>
+                                                                <dd>자동 8단</dd>
+                                                                <dt>최고출력</dt>
+                                                                <dd>190/4,000 PS/rpm</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>최대토크</dt>
+                                                                <dd>40.8/1,750~2,500 kg.m/rpm</dd>
+                                                                <dt>정원</dt>
+                                                                <dd>5</dd>
+                                                                <dt>복합연비</dt>
+                                                                <dd>11.2km/l</dd>
+                                                                <dt>도심연비</dt>
+                                                                <dd>11.7km/l</dd>
+                                                                <dt>고속도로 연비</dt>
+                                                                <dd>15.2km/l</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>CO@배출량</dt>
+                                                                <dd>113g/km</dd>
+                                                                <dt>공차중량</dt>
+                                                                <dd>1,350.0kg</dd>
+                                                                <dt>앞타이어규격</dt>
+                                                                <dd>-</dd>
+                                                                <dt>뒷타이어규격</dt>
+                                                                <dd>-</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="trim_btns">
+                                                            <button class="btn_estimate">신차견적내기</button>
+                                                            <button class="btn_lease">리스/렌트 보기</button>
+                                                            <!-- <button class="btn_resellcar">중고차 보기</buttonn> -->
+                                                            <button class="btn_option">옵션 보기</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- //반복 : 트림 리스트 -->
+                                                <li class="tb_sub_item item_trims">
+                                                    <!-- [트림 리스트 영역] -->
+                                                    <div class="row--sub-item row--sub-item">                                                        
+                                                        <div class="tx_col col--trim">
+                                                            <div class="tx_trim">
+                                                                <!-- 라디오 아이콘 -->
+                                                                <i class="comm_sprite ico_radio_lg"></i>
+                                                                <!-- 트림명 -->
+                                                                <!-- title 속성에 트림명 넣어주세요. (말줄임 케이스용) -->
+                                                                <span class="tx_trim_nm" title="냉동/냉장 겸용탑차 (2.5톤) 슈퍼캡 장축고상 슈퍼 트윈컴프">냉동/냉장 겸용탑차 (2.5톤) 슈퍼캡 장축고상 슈퍼 트윈컴프</span>
+                                                                <!-- 상세보기 -->
+                                                                <a href="#" class="btn__trim_detail" onclick="showPopup('comp_model.html');return false;"><i class="comm_sprite ico_detail">상세보기</i></a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="tx_col col--disp">1995</span>
+                                                        <span class="tx_col col--power">190</span>
+                                                        <span class="tx_col col--mileage">12.7~13.0</span>
+                                                        <span class="tx_col col--price">2,444,900,000원</span>
+                                                        <span class="tx_col col--select"><span class="ico_tag">출고 2위</span></span>
+                                                    </div>
+                                                    <!-- [트림 정보 상세 표시 영역] -->
+                                                    <div class="info_trims">
+                                                        <div class="trim_spec">
+                                                            <dl>
+                                                                <dt>연료</dt>
+                                                                <dd>경유</dd>
+                                                                <dt>엔진형식</dt>
+                                                                <dd>직렬 4기통 트윈파워 터보</dd>
+                                                                <dt>배기량</dt>
+                                                                <dd>1,995cc</dd>
+                                                                <dt>변속기</dt>
+                                                                <dd>자동 8단</dd>
+                                                                <dt>최고출력</dt>
+                                                                <dd>190/4,000 PS/rpm</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>최대토크</dt>
+                                                                <dd>40.8/1,750~2,500 kg.m/rpm</dd>
+                                                                <dt>정원</dt>
+                                                                <dd>5</dd>
+                                                                <dt>복합연비</dt>
+                                                                <dd>11.2km/l</dd>
+                                                                <dt>도심연비</dt>
+                                                                <dd>11.7km/l</dd>
+                                                                <dt>고속도로 연비</dt>
+                                                                <dd>15.2km/l</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>CO@배출량</dt>
+                                                                <dd>113g/km</dd>
+                                                                <dt>공차중량</dt>
+                                                                <dd>1,350.0kg</dd>
+                                                                <dt>앞타이어규격</dt>
+                                                                <dd>-</dd>
+                                                                <dt>뒷타이어규격</dt>
+                                                                <dd>-</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="trim_btns">
+                                                            <button class="btn_estimate">신차견적내기</button>
+                                                            <button class="btn_lease">리스/렌트 보기</button>
+                                                            <button class="btn_resellcar">중고차 보기</buttonn>
+                                                            <button class="btn_option">옵션 보기</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="tb_sub_item item_trims">
+                                                    <!-- [트림 리스트 영역] -->
+                                                    <div class="row--sub-item">
+                                                        <div class="tx_col col--trim">
+                                                            <div class="tx_trim">
+                                                                <!-- 라디오 아이콘 -->
+                                                                <i class="comm_sprite ico_radio_lg"></i>
+                                                                <!-- 트림명 -->
+                                                                <!-- title 속성에 트림명 넣어주세요. (말줄임 케이스용) -->
+                                                                <span class="tx_trim_nm" title="220d Gran Coupe M Sport First Edition">220d Gran Coupe M Sport First Edition</span>
+                                                                <!-- 상세보기 -->
+                                                                <a href="#" class="btn__trim_detail" onclick="showPopup('comp_model.html');return false;"><i class="comm_sprite ico_detail">상세보기</i></a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="tx_col col--disp">1995</span>
+                                                        <span class="tx_col col--power">190</span>
+                                                        <span class="tx_col col--mileage">12.7~13.0</span>
+                                                        <span class="tx_col col--price">2,444,900,000원</span>
+                                                        <span class="tx_col col--select"><span class="ico_tag">출고 3위</span></span>
+                                                    </div>
+                                                    <!-- [트림 정보 상세 표시 영역] -->
+                                                    <div class="info_trims">
+                                                        <div class="trim_spec">
+                                                            <dl>
+                                                                <dt>연료</dt>
+                                                                <dd>경유</dd>
+                                                                <dt>엔진형식</dt>
+                                                                <dd>직렬 4기통 트윈파워 터보</dd>
+                                                                <dt>배기량</dt>
+                                                                <dd>1,995cc</dd>
+                                                                <dt>변속기</dt>
+                                                                <dd>자동 8단</dd>
+                                                                <dt>최고출력</dt>
+                                                                <dd>190/4,000 PS/rpm</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>최대토크</dt>
+                                                                <dd>40.8/1,750~2,500 kg.m/rpm</dd>
+                                                                <dt>정원</dt>
+                                                                <dd>5</dd>
+                                                                <dt>복합연비</dt>
+                                                                <dd>11.2km/l</dd>
+                                                                <dt>도심연비</dt>
+                                                                <dd>11.7km/l</dd>
+                                                                <dt>고속도로 연비</dt>
+                                                                <dd>15.2km/l</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>CO@배출량</dt>
+                                                                <dd>113g/km</dd>
+                                                                <dt>공차중량</dt>
+                                                                <dd>1,350.0kg</dd>
+                                                                <dt>앞타이어규격</dt>
+                                                                <dd>-</dd>
+                                                                <dt>뒷타이어규격</dt>
+                                                                <dd>-</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="trim_btns">
+                                                            <button class="btn_estimate">신차견적내기</button>
+                                                            <button class="btn_lease">리스/렌트 보기</button>
+                                                            <button class="btn_resellcar">중고차 보기</buttonn>
+                                                            <button class="btn_option">옵션 보기</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <!-- // 반복 : 라인업 리스트 -->
+                                        <li class="tb_list_item item_lineup">                                            
+                                            <div class="row--tb-item">
+                                                <span class="tx_col col--model"><span class="tx_model">2020년형 가솔린 2.0 <span class="tx_desc">(개소세 5% 기준)</span></span></span>
+                                                <span class="tx_col col--disp">1995</span>
+                                                <span class="tx_col col--power">190</span>
+                                                <span class="tx_col col--mileage">12.7~13.0</span>
+                                                <span class="tx_col col--price">12,395 ~ 13,120만원</span>
+                                                <span class="tx_col col--select">89.1%</span>
+                                            </div>
+                                            <!-- // -->
+                                            <!-- 트림 리스트 -->
+                                            <ul class="tb_sub_list list_trims">
+                                                <!-- 반복 : 트림 리스트 -->
+                                                <li class="tb_sub_item item_trims selected">
+                                                    <!-- [트림 리스트 영역] -->
+                                                    <div class="row--sub-item">
+                                                        <div class="tx_col col--trim">
+                                                            <div class="tx_trim">
+                                                                <!-- 라디오 아이콘 -->
+                                                                <i class="comm_sprite ico_radio_lg"></i>
+                                                                <!-- 트림명 -->
+                                                                <!-- title 속성에 트림명 넣어주세요. (말줄임 케이스용) -->
+                                                                <span class="tx_trim_nm" title="트렌디">트렌디</span>
+                                                                <!-- 상세보기 -->
+                                                                <a href="#" class="btn__trim_detail" onclick="showPopup('comp_model.html');return false;"><i class="comm_sprite ico_detail">상세보기</i></a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="tx_col col--disp">1995</span>
+                                                        <span class="tx_col col--power">190</span>
+                                                        <span class="tx_col col--mileage">12.7~13.0</span>
+                                                        <span class="tx_col col--price">2,444,900,000원</span>
+                                                        <span class="tx_col col--select"><span class="ico_tag rank1">출고 1위</span></span>
+                                                    </div>
+                                                    <!-- [트림 정보 상세 표시 영역] -->
+                                                    <div class="info_trims">
+                                                        <div class="trim_spec">
+                                                            <dl>
+                                                                <dt>연료</dt>
+                                                                <dd>경유</dd>
+                                                                <dt>엔진형식</dt>
+                                                                <dd>직렬 4기통 트윈파워 터보</dd>
+                                                                <dt>배기량</dt>
+                                                                <dd>1,995cc</dd>
+                                                                <dt>변속기</dt>
+                                                                <dd>자동 8단</dd>
+                                                                <dt>최고출력</dt>
+                                                                <dd>190/4,000 PS/rpm</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>최대토크</dt>
+                                                                <dd>40.8/1,750~2,500 kg.m/rpm</dd>
+                                                                <dt>정원</dt>
+                                                                <dd>5</dd>
+                                                                <dt>복합연비</dt>
+                                                                <dd>11.2km/l</dd>
+                                                                <dt>도심연비</dt>
+                                                                <dd>11.7km/l</dd>
+                                                                <dt>고속도로 연비</dt>
+                                                                <dd>15.2km/l</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>CO@배출량</dt>
+                                                                <dd>113g/km</dd>
+                                                                <dt>공차중량</dt>
+                                                                <dd>1,350.0kg</dd>
+                                                                <dt>앞타이어규격</dt>
+                                                                <dd>-</dd>
+                                                                <dt>뒷타이어규격</dt>
+                                                                <dd>-</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="trim_btns">
+                                                            <button class="btn_estimate">신차견적내기</button>
+                                                            <button class="btn_lease">리스/렌트 보기</button>
+                                                            <!-- <button class="btn_resellcar">중고차 보기</button> -->
+                                                            <button class="btn_option">옵션 보기</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- //반복 : 트림 리스트 -->
+                                                <li class="tb_sub_item item_trims">
+                                                    <!-- [트림 리스트 영역] -->
+                                                    <div class="row--sub-item">
+                                                        <div class="tx_col col--trim">
+                                                            <div class="tx_trim">
+                                                                <!-- 라디오 아이콘 -->
+                                                                <i class="comm_sprite ico_radio_lg"></i>
+                                                                <!-- 트림명 -->
+                                                                <!-- title 속성에 트림명 넣어주세요. (말줄임 케이스용) -->
+                                                                <span class="tx_trim_nm" title="트렌디">트렌디</span>
+                                                                <!-- 상세보기 -->
+                                                                <a href="#" class="btn__trim_detail" onclick="showPopup('comp_model.html');return false;"><i class="comm_sprite ico_detail">상세보기</i></a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="tx_col col--disp">1995</span>
+                                                        <span class="tx_col col--power">190</span>
+                                                        <span class="tx_col col--mileage">12.7~13.0</span>
+                                                        <span class="tx_col col--price">2,444,900,000원</span>
+                                                        <span class="tx_col col--select"><span class="ico_tag">출고 2위</span></span>
+                                                    </div>
+                                                    <!-- [트림 정보 상세 표시 영역] -->
+                                                    <div class="info_trims">
+                                                        <div class="trim_spec">
+                                                            <dl>
+                                                                <dt>연료</dt>
+                                                                <dd>경유</dd>
+                                                                <dt>엔진형식</dt>
+                                                                <dd>직렬 4기통 트윈파워 터보</dd>
+                                                                <dt>배기량</dt>
+                                                                <dd>1,995cc</dd>
+                                                                <dt>변속기</dt>
+                                                                <dd>자동 8단</dd>
+                                                                <dt>최고출력</dt>
+                                                                <dd>190/4,000 PS/rpm</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>최대토크</dt>
+                                                                <dd>40.8/1,750~2,500 kg.m/rpm</dd>
+                                                                <dt>정원</dt>
+                                                                <dd>5</dd>
+                                                                <dt>복합연비</dt>
+                                                                <dd>11.2km/l</dd>
+                                                                <dt>도심연비</dt>
+                                                                <dd>11.7km/l</dd>
+                                                                <dt>고속도로 연비</dt>
+                                                                <dd>15.2km/l</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>CO@배출량</dt>
+                                                                <dd>113g/km</dd>
+                                                                <dt>공차중량</dt>
+                                                                <dd>1,350.0kg</dd>
+                                                                <dt>앞타이어규격</dt>
+                                                                <dd>-</dd>
+                                                                <dt>뒷타이어규격</dt>
+                                                                <dd>-</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="trim_btns">
+                                                            <button class="btn_estimate">신차견적내기</button>
+                                                            <button class="btn_lease">리스/렌트 보기</button>
+                                                            <!-- <button class="btn_resellcar">중고차 보기</buttonn> -->
+                                                            <button class="btn_option">옵션 보기</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="tb_sub_item item_trims">
+                                                    <!-- [트림 리스트 영역] -->
+                                                    <div class="row--sub-item">
+                                                        <div class="tx_col col--trim">
+                                                            <div class="tx_trim">
+                                                                <!-- 라디오 아이콘 -->
+                                                                <i class="comm_sprite ico_radio_lg"></i>
+                                                                <!-- 트림명 -->
+                                                                <!-- title 속성에 트림명 넣어주세요. (말줄임 케이스용) -->
+                                                                <span class="tx_trim_nm" title="트렌디">트렌디</span>
+                                                                <!-- 상세보기 -->
+                                                                <a href="#" class="btn__trim_detail" onclick="showPopup('comp_model.html');return false;"><i class="comm_sprite ico_detail">상세보기</i></a>
+                                                            </div>
+                                                        </div>
+                                                        <span class="tx_col col--disp">1995</span>
+                                                        <span class="tx_col col--power">190</span>
+                                                        <span class="tx_col col--mileage">12.7~13.0</span>
+                                                        <span class="tx_col col--price">2,444,900,000원</span>
+                                                        <span class="tx_col col--select"><span class="ico_tag">출고 3위</span></span>
+                                                    </div>
+                                                    <!-- [트림 정보 상세 표시 영역] -->
+                                                    <div class="info_trims">
+                                                        <div class="trim_spec">
+                                                            <dl>
+                                                                <dt>연료</dt>
+                                                                <dd>경유</dd>
+                                                                <dt>엔진형식</dt>
+                                                                <dd>직렬 4기통 트윈파워 터보</dd>
+                                                                <dt>배기량</dt>
+                                                                <dd>1,995cc</dd>
+                                                                <dt>변속기</dt>
+                                                                <dd>자동 8단</dd>
+                                                                <dt>최고출력</dt>
+                                                                <dd>190/4,000 PS/rpm</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>최대토크</dt>
+                                                                <dd>40.8/1,750~2,500 kg.m/rpm</dd>
+                                                                <dt>정원</dt>
+                                                                <dd>5</dd>
+                                                                <dt>복합연비</dt>
+                                                                <dd>11.2km/l</dd>
+                                                                <dt>도심연비</dt>
+                                                                <dd>11.7km/l</dd>
+                                                                <dt>고속도로 연비</dt>
+                                                                <dd>15.2km/l</dd>
+                                                            </dl>
+                                                            <dl>
+                                                                <dt>CO@배출량</dt>
+                                                                <dd>113g/km</dd>
+                                                                <dt>공차중량</dt>
+                                                                <dd>1,350.0kg</dd>
+                                                                <dt>앞타이어규격</dt>
+                                                                <dd>-</dd>
+                                                                <dt>뒷타이어규격</dt>
+                                                                <dd>-</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="trim_btns">
+                                                            <button class="btn_estimate">신차견적내기</button>
+                                                            <button class="btn_lease">리스/렌트 보기</button>
+                                                            <!-- <button class="btn_resellcar">중고차 보기</buttonn> -->
+                                                            <button class="btn_option">옵션 보기</button>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <script>
+                                    $(function(){ // 퍼블테스트
+                                        var $lineup = $(".item_lineup .row--tb-item");
+                                        $lineup.click(function(){
+                                            var $parent = $(this).parent();
+                                            if ( $parent.hasClass("selected") ){
+                                                $parent.removeClass("selected");
+                                            }else{
+                                                $parent.addClass("selected").siblings().removeClass("selected");
+                                            }
+                                        });
+                                        var $trims = $(".item_trims .row--sub-item");
+                                        $trims.click(function(){
+                                            var $parent = $(this).parent();
+                                            if ( $parent.hasClass("selected") ){
+                                                $parent.removeClass("selected");
+                                            }else{
+                                                $parent.addClass("selected").siblings().removeClass("selected");
+                                            }
+                                        });
+                                    })
+                                </script>
+                            </div>
+                        </div>
+                        <!-- // 제원옵션 -->
+
+                        <!-- 모델 인기 통계 -->
+                        <div id="modelStat" class="cont_group model_stat">
+                            <div class="item_head">
+                                <!-- 모델명 + 타이틀 -->
+                                <h3 class="tx_tit"><em>올 뉴 아반떼</em> 모델 인기 통계</h3>
+                                <!-- 라디오 -->
+                                <ul class="radio_basic radio--sm">
+                                    <li><input type="radio" id="tyStatRadio01" name="tyStatRadio" checked><label for="tyStatRadio01">월간</label></li>
+                                    <li><input type="radio" id="tyStatRadio02" name="tyStatRadio"><label for="tyStatRadio02">연간 누적</label></li>
+                                </ul>
+                                <!-- 버튼 : 전체보기 -->
+                                <!-- <a href="#" class="btn__head_more">인기통계 전체보기 <i class="comm_sprite ico_rarr_sm_b">&gt;</i></a> -->
+                            </div>
+                            <div class="item_body">
+                                <div class="box_stat">
+                                    <!-- 통계가 있는 item_stat에 .is--valid 클래스 추가 -->
+                                    <div class="item_stat stat_loc is--valid">
+                                        <span class="ico_stat"><i class="comm_sprite ico_stat_loc"></i></span>
+                                        <dl>
+                                            <dt>신차로 가장 인기있는 지역은</dt>
+                                            <dd>
+                                                <span class="tx_result">
+                                                    <span class="tx_value">서울시 강남구</span>
+                                                    <span class="tx_num">49.2%</span>
+                                                </span>
+                                                <!-- <span class="no_result">등록 자료가 없습니다.</span> -->
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="item_stat stat_age is--valid">
+                                        <span class="ico_stat"><i class="comm_sprite ico_stat_age"></i></span>
+                                        <dl>
+                                            <dt>신차로 가장 선호하는 집단은</dt>
+                                            <dd>
+                                                <span class="tx_result">
+                                                    <span class="tx_value">30대 남성</span>
+                                                    <span class="tx_num">49.2%</span>
+                                                </span>
+                                                <!-- <span class="no_result">등록 자료가 없습니다.</span> -->
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                     <!-- 통계가 있는 item_stat에 .is--valid 클래스 추가 -->
+                                    <div class="item_stat stat_loc_resell">
+                                        <span class="ico_stat"><i class="comm_sprite ico_stat_loc"></i></span>
+                                        <dl>
+                                            <dt>중고차로 가장 인기있는 지역은</dt>
+                                            <dd>
+                                                <!-- <span class="tx_result">
+                                                    <span class="tx_value">남성</span>
+                                                    <span class="tx_num">49.2%</span>
+                                                </span> -->
+                                                <span class="no_result">등록 자료가 없습니다.</span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                    <div class="item_stat stat_age_resell">
+                                        <span class="ico_stat"><i class="comm_sprite ico_stat_age"></i></span>
+                                        <dl>
+                                            <dt>중고차로 가장 선호하는 집단은</dt>
+                                            <dd>
+                                                <!-- <span class="tx_result">
+                                                    <span class="tx_value">30대 남성</span>
+                                                    <span class="tx_num">49.2%</span>
+                                                </span> -->
+                                                <span class="no_result">등록 자료가 없습니다.</span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <span class="tx_stat_noti">
+                                    에누리 모델 인기 통계는 국토교통부에 신고/등록된 자동차 등록원부 데이터를 기반하여 제공됩니다.<br/>
+                                    원본 데이터와 에누리의 자동차 구분 체계가 달라 수치에 일부 차이가 있을 수 있습니다. 
+                                    <span class="tx_source">POWERED by NICE D&amp;R</span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- // 모델 인기 통계 -->
+
+                        <!-- 모델 이미지 -->
+                        <div id="modelImage" class="cont_group model_image">
+                            <div class="item_head">
+                                <!-- 모델명 + 타이틀 -->
+                                <h3 class="tx_tit"><em>올 뉴 아반떼</em> 모델 이미지</h3>
+                            </div>
+
+                            <!-- 201112 : 썸네일 스와이프 적용 -->
+                            <div class="item_body">
+                                <div class="box_image" id="div_box_image">
+                                    <div class="swiper-container">
+                                        <div class="swiper-wrapper" id="div_swiper_wrapper">
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/1.jpg" alt="차량이미지1" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/2.jpg" alt="차량이미지2" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/3.jpg" alt="차량이미지3" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/4.jpg" alt="차량이미지4" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/5.jpg" alt="차량이미지5" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/6.jpg" alt="차량이미지6" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/7.jpg" alt="차량이미지7" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/8.jpg" alt="차량이미지8" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+							                <div class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/9.jpg" alt="차량이미지9" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></div>
+                                        </div>
+                                    </div>
+                                    <button class="btn_image comm_sprite btn__prev">이전</button>
+                                    <button class="btn_image comm_sprite btn__next">다음</button>                                    
+                                </div>
+
+                                <div class="box_thumb">
+                                    <div class="swiper-container">
+                                        <ul class="swiper-wrapper" id="ul_swiper_wrapper">
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/1.jpg" alt="차량이미지1" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/2.jpg" alt="차량이미지2" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/3.jpg" alt="차량이미지3" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/4.jpg" alt="차량이미지4" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/5.jpg" alt="차량이미지5" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/6.jpg" alt="차량이미지6" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/7.jpg" alt="차량이미지7" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/8.jpg" alt="차량이미지8" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+											<li class="swiper-slide"><img src="http://photo3.enuri.info/data/images/service/auto/modelimg/111/10406/9.jpg" alt="차량이미지9" onerror="this.src='http://img.enuri.com/images/newcar/noimg.png'"></li>
+                                        </ul>
+                                    </div>
+                                    <button class="btn_thumb comm_sprite btn__prev">이전</button>
+                                    <button class="btn_thumb comm_sprite btn__next">다음</button>
+                                    <!-- 201125 : pagination 추가 -->
+                                    <div class="swiper-pagination"></div>
+                                    <!-- // -->
+                                </div>                                
+                            </div>
+
+                            <script>
+                                $(function(){
+                                    var boxThumbWrap = ".box_thumb .swiper-container",  // 큰 썸네일
+                                        $boxThumbItem = $(boxThumbWrap).find(".swiper-slide"),  // 큰 썸네일 아이템
+                                        boxImgWrap = ".box_image .swiper-container"    // 작은 썸네일
+
+                                    // 메뉴 탭 스와이퍼 생성
+                                    var bThumbSwiper = new Swiper(boxThumbWrap, {
+                                        loop : true,
+                                        slidesPerView : 5,
+                                        initialSlide: 0,
+                                        loopAdditionalSlides : 2,
+                                        centeredSlides: true,
+                                        prevButton : '.box_thumb .btn_thumb.btn__prev',
+                                        nextButton : '.box_thumb .btn_thumb.btn__next',
+                                        spaceBetween : 0,
+                                        pagination : '.box_thumb .swiper-pagination',
+                                        paginationClickable : true
+                                    });
+
+                                    // 메인 탭 스와이퍼 생성                                    
+                                    var bImgSwiper = new Swiper(boxImgWrap, {
+                                        centeredSlides: true,
+                                        loopAdditionalSlides : 6,
+                                        slidesPerView : 1,
+                                        loop : true,
+                                        prevButton : '.box_image .btn_image.btn__prev',
+                                        nextButton : '.box_image .btn_image.btn__next',
+                                        spaceBeetween : 0,                                        
+                                    });
+
+                                    // 컨트롤러를 서로 묶어줍니다.
+                                    bThumbSwiper.params.control = bImgSwiper;
+                                    bImgSwiper.params.control = bThumbSwiper;
+
+                                    // 메뉴 탭 아이템 클릭 이벤트
+                                    $(boxThumbWrap).find(".swiper-slide").on("click",function(){
+                                        var $pagination = $(".box_thumb .swiper-pagination .swiper-pagination-bullet");
+                                        var _idx = $(this).attr("data-swiper-slide-index");
+                                        $pagination.eq(_idx).click();
+                                    })
+
+                                    // 페이지 로드 후 실행
+                                    $(window).load(function(){
+                                        var imgTab = $(".box_main .list_head .list_tab li:nth-child(3)");
+                                        var imgCont = $("#modelImage");
+                                        $boxThumbItem = $(boxThumbWrap).find(".swiper-slide");
+                                        if ( $boxThumbItem.length ){
+                                            bThumbSwiper.onResize();
+                                            bImgSwiper.onResize();
+                                        }else{
+                                            imgTab.hide();
+                                            imgCont.hide();
+                                        }
+                                    });
+                                });
+                            </script>
+                            <!-- //201112 : 썸네일 스와이프 적용 -->
+                        </div>
+                        <!-- // 모델 이미지 -->
+                    </div>
+                </div>
+                <!-- // -->
+
+                <!-- 모델 상세 우측 윙 -->
+                <div class="box_wing">
+
+                    <!-- AD배너 -->
+                    <div class="bnr_rside">
+                        <a href="#"><img src="http://img.enuri.info/images/newcar/@rside_bnr.png" alt=""></a>
+                    </div>
+                    <!-- // -->
+
+                    <!-- 출고통계 -->
+                    <div class="release_stat">
+                        <div class="list_head">
+                            <span class="tx_tit">준중형 2020.05 <em>월간 출고점유</em></span>
+                        </div>
+                        <div class="list_body">
+                            <table class="tb_release_stat">
+                                <thead>
+                                    <tr>
+                                        <th class="col--r-model" colspan="2">모델명</th>
+                                        <th class="col--r-count">변동비</th>
+                                        <th class="col--r-rate">점유율</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 반복 x 5개 -->
+                                    <tr>
+                                        <!-- 이미지 -->
+                                        <td class="col--r-image">
+                                            <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                                        </td>
+                                        <!-- 모델명 -->
+                                        <td class="col--r-model">
+                                            <span class="tx_r_model">올 뉴 아벤떼</span>
+                                        </td>
+                                        <!-- 변동비 -->
+                                        <td class="col--r-count">                                            
+                                            <!-- 증가 -->                                            
+                                            <span class="tx_r_increase">
+                                                <i class="comm_sprite ico_increase">▲</i>
+                                                10.5%
+                                            </span>
+                                            <!-- 동률 -->                                            
+                                            <!-- <span class="tx_r_tie">
+                                                <i class="comm_sprite ico_tie">-</i>
+                                                0%
+                                            </span> -->
+                                            <!-- 감소 -->
+                                            <!-- <span class="tx_r_decrease">
+                                                <i class="comm_sprite ico_decrease">▼</i>
+                                                10.5%
+                                            </span> -->
+                                        </td>
+                                        <!-- 점유율 -->
+                                        <td class="col--r-rate">67.5%</td>
+                                    </tr>
+                                    <!-- // 반복 -->
+                                    <tr>
+                                        <td class="col--r-image">
+                                            <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                                        </td>
+                                        <td class="col--r-model">
+                                            <span class="tx_r_model">K3</span>
+                                        </td>
+                                        <td class="col--r-count">                                            
+                                            <!-- 감소 -->
+                                            <span class="tx_r_decrease">
+                                                <i class="comm_sprite ico_decrease">▼</i>
+                                                10.5%
+                                            </span>
+                                        </td>
+                                        <td class="col--r-rate">15.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col--r-image">
+                                            <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                                        </td>
+                                        <td class="col--r-model">
+                                            <span class="tx_r_model">The New CLA-Class</span>
+                                        </td>
+                                        <td class="col--r-count">                                            
+                                            <!-- 동률 -->
+                                            <span class="tx_r_tie">
+                                                <i class="comm_sprite ico_tie">-</i>
+                                                0%
+                                            </span>
+                                        </td>
+                                        <td class="col--r-rate">4.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col--r-image">
+                                            <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                                        </td>
+                                        <td class="col--r-model">
+                                            <span class="tx_r_model">아반떼</span>
+                                        </td>
+                                        <td class="col--r-count">                                            
+                                            <!-- 감소 -->
+                                            <span class="tx_r_decrease">
+                                                <i class="comm_sprite ico_decrease">▼</i>
+                                                10.5%
+                                            </span>
+                                        </td>
+                                        <td class="col--r-rate">1.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col--r-image">
+                                            <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                                        </td>
+                                        <td class="col--r-model">
+                                            <span class="tx_r_model">A-Class</span>
+                                        </td>
+                                        <td class="col--r-count">                                            
+                                            <!-- 감소 -->
+                                            <span class="tx_r_decrease">
+                                                <i class="comm_sprite ico_decrease">▼</i>
+                                                10.5%
+                                            </span>
+                                        </td>
+                                        <td class="col--r-rate">0.3%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span class="tx_release_stat">
+                                에누리 월간 출고점유는 제조사 발표 계약 판매실적이 아닌 국토교통부에 신고/등록된 신차 등록 데이터를 취합하여 제공됩니다.<br/>원본 데이터와 에누리의 자동차 구분 체계가 달라 수치에 일부 차이가 있을 수 있습니다. 
+                                <span class="tx_source">POWERED by NICE D&amp;R</span>
+                            </span>
+                        </div>
+                    </div>
+                    <!-- // -->
+
+                </div>
+                <!-- // -->
+
+            </div>
+            <!-- // 모델 상세 -->
+
+            <!-- 레이어 마크업은 layer.html 확인해주세요 -->
+            <!-- 레이어 : 맞춤 추천 선택 -->
+            <div class="lay_box lay_selcondi" style="display:none">
+                <div class="lay_inner">
+                    <div class="lay_head">맞춤 추천 선택</div>
+                    <div class="lay_body">
+                        <!-- 지역선택 -->
+                        <div class="select_region">
+                            <div class="select_city">
+                                <p class="tx_tit">시/도선택</p>
+                                <div class="select_basic">
+                                    <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                        <span class="tx_select">지역 전체</span>
+                                        <i class="comm_sprite ico_size_arr"></i>
+                                    </a>
+                                    <ul class="select_list">
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">서울</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">부산</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">인천</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">대구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">대전</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">울산</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="select_dist">
+                                <p class="tx_tit">시/군/구 선택</p>
+                                <div class="select_basic">
+                                    <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                        <span class="tx_select">지역 전체</span>
+                                        <i class="comm_sprite ico_size_arr"></i>
+                                    </a>
+                                    <ul class="select_list">
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강남구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강동구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강북구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강서구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">광진구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">구로구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">금천구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">노원구</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 성별선택 -->
+                        <div class="select_gender">
+                            <p class="tx_tit">성별 선택</p>
+                            <ul class="radio_basic">
+                                <li><input type="radio" id="tyGenderRadio01" name="tyGenderRadio" checked=""><label for="tyGenderRadio01">성별 무관</label></li>
+                                <li><input type="radio" id="tyGenderRadio02" name="tyGenderRadio"><label for="tyGenderRadio02">남성</label></li>
+                                <li><input type="radio" id="tyGenderRadio03" name="tyGenderRadio"><label for="tyGenderRadio03">여성</label></li>
+                            </ul>
+                        </div>
+                        <!-- 나이선택 -->
+                        <div class="select_age">
+                            <p class="tx_tit">연령 선택</p>
+                            <ul class="radio_basic">
+                                <li><input type="radio" id="tyAgeRadio01" name="tyAgeRadio" checked=""><label for="tyAgeRadio01">연령 무관</label></li>
+                                <li><input type="radio" id="tyAgeRadio02" name="tyAgeRadio"><label for="tyAgeRadio02">10대</label></li>
+                                <li><input type="radio" id="tyAgeRadio03" name="tyAgeRadio"><label for="tyAgeRadio03">20대</label></li>
+                                <li><input type="radio" id="tyAgeRadio04" name="tyAgeRadio"><label for="tyAgeRadio04">30대</label></li>
+                                <li><input type="radio" id="tyAgeRadio05" name="tyAgeRadio"><label for="tyAgeRadio05">40대</label></li>
+                                <li><input type="radio" id="tyAgeRadio06" name="tyAgeRadio"><label for="tyAgeRadio06">50대</label></li>
+                                <li><input type="radio" id="tyAgeRadio07" name="tyAgeRadio"><label for="tyAgeRadio07">60대</label></li>
+                                <li><input type="radio" id="tyAgeRadio08" name="tyAgeRadio"><label for="tyAgeRadio08">70대</label></li>
+                                <li><input type="radio" id="tyAgeRadio09" name="tyAgeRadio"><label for="tyAgeRadio09">80대</label></li>
+                                <li><input type="radio" id="tyAgeRadio10" name="tyAgeRadio"><label for="tyAgeRadio10">90대</label></li>
+                            </ul>
+                        </div>
+                        <span class="tx_lay_box">판매량 부족 등 통계 데이터 확인이 불가한 경우에는 추천 정보가 없을 수도 있습니다.</span>
+                        <!-- 버튼 : 조건검색 -->
+                        <button class="btn__lay_search">조건 검색</button>
+                        <!-- // -->
+                    </div>
+                    <!-- 버튼 : 레이어 닫기 -->
+                    <button class="btn__layin_close comm_sprite" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+                    <!-- // -->
+                </div>
+                <div class="dimmed"></div>
+            </div>
+            <!-- // 레이어 : 맞춤 추천 선택 -->
+
+        </div>
+
+        <!-- 공통 : 푸터 -->
+        <div class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li>
+                        <li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li>
+                        <li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li>
+                        <li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li>
+                        <!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li>
+                        <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li>
+                        <!-- <li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li> -->
+                        <li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층, ㈜써머스플랫폼</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->
+        
+    </div>
+
+    <script>
+        // 공통 : 업/다운 스크롤체크
+        $(function(){
+            var position = $(window).scrollTop();
+            var el = {
+                wrap : $("#wrap"), // 메인래퍼
+                cont : $("#container"), // 메인컨텐츠
+                btnQuick : $(".footer .box_quick") // 탑버튼
+            }
+            var stickyGnb = function(){
+                var $myScroll = $(window).scrollTop();
+                if ( $myScroll > el.cont.offset().top ){
+                    el.btnQuick.addClass("scr_mode");                    
+                    // 업다운 스크롤 체크
+                    if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }else{
+                    el.btnQuick.removeClass("scr_mode");
+                    el.wrap.removeClass("scr_down scr_up");
+                }
+                position = $myScroll;
+            };
+			$(window).load(stickyGnb).scroll(stickyGnb);
+        })
+
+        // 퍼블테스트용 : 팝업 열기
+        function showPopup(url){
+            window.open(url, "newPopWin", "width=1000, height=700, toolbar=no, menubar=no, scrollbars=1, resizable=no" );
+        }
+    </script>
+</body>
+</html>

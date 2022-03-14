@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다.">
+    <META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+    <link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+    <title>에누리(가격비교) eNuri.com</title>
+    <link rel="stylesheet" href="/css/mobile_v2/common.css" type="text/css">    <!-- [M] common(all) -->
+    <link rel="stylesheet" href="/css/newcar/m/default.css" type="text/css">    <!-- [M] newcar default&reset -->
+    <link rel="stylesheet" href="/css/newcar/m/common.css" type="text/css">     <!-- [M] newcar common(header,footer) -->
+    <link rel="stylesheet" href="/css/newcar/m/template.css" type="text/css">       <!-- [M] newcar list -->
+    <link rel="stylesheet" href="/css/newcar/m/swiper.min.css" type="text/css">
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+
+<body>
+<!-- 페이지 로더 -->
+<div id="loadingDiv" class="comm__loader">
+    <div class="loader_inner">로딩중</div>
+</div>
+<script>
+    // 퍼블테스트
+    $(function(){
+        // 페이지 로딩 완료 후 Fadeout
+        var $loadingbar = $("#loadingDiv");
+        setTimeout(function(){
+            $loadingbar.fadeOut(300);
+        },1000)
+    })
+</script>
+
+<!-- 하단 메뉴 노출 시, "inc-menu_gnb" 클래스 추가 -->
+<div class="wrap inc-menu_gnb">
+    <!-- header -->
+    <!-- 하단 여백 삭제 "nomar" 클래스 추가 -->
+    <header id="header" class="nomar">
+        <div class="enuribi">
+            <h1><a href="javascript:///">견적 내기</a></h1>
+            <button type="button" class="back" onclick="window.history.back();">뒤로</button>
+        </div>
+    </header>
+    <!-- // -->
+
+    <!-- CONTAINER -->
+    <div class="container">
+        
+        <!-- 단락 SECTION -->
+        <section class="section">
+            <!-- 견적 모델 상세 -->
+            <div class="esti_model_info">
+                <!-- 모델 대표 정보 -->
+                <div class="emd_info">
+                    <div class="emd_name">
+                        <!-- 제조사+모델명 -->
+                        <p class="tx_model">현대 올 뉴 아반떼</p>
+                    </div>
+
+                    <div class="emd_spec">
+                        <ul class="tx_spec">
+                            <li>준중형</li>
+                            <li>복합연비 10.5~15.4㎞/ℓ</li>
+                            <li>휘발유, LPG</li>
+                            <li>배기량</li>
+                            <li>1,995~2,998cc</li>
+                            <li>출력 120~123hp</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 모델 대표 이미지 -->
+                <div class="emd_thumb">
+                    <div class="emd_brand">
+                        <img src="http://img.enuri.info/images/newcar/1001.png" alt="" />                        
+                    </div>
+                    <img src="http://img.enuri.info/images/newcar/m/8101@2x.png" alt="" class="thumb" />
+                </div>
+                <!-- // -->
+            </div>
+
+            <!-- -->
+            <div class="model_progress">
+                <!--
+                    진행상황 표시 : "ul.depth2~5" 클래스 추가
+                    현재 뎁스, 하위 뎁스 선택 시 해당 "li.on" 클래스 추가
+                -->
+                <ul class="depth4">
+                    <li><a href="#" onclick="alert($(this).text() + ' 탭이동');">세부모델</a></li>
+                    <li><a href="#" onclick="alert($(this).text() + ' 탭이동');">옵션선택</a></li>
+                    <li><a href="#" onclick="alert($(this).text() + ' 탭이동');">기타비용</a></li>
+                    <li class="on"><a href="#" onclick="alert($(this).text() + ' 탭이동');">할인선택</a></li>
+                    <li><a href="#" onclick="alert($(this).text() + ' 탭이동');">금융계획</a></li>
+                </ul> 
+            </div>
+        </section>
+        <!-- // -->
+
+        <!-- 단락 SECTION -->
+        <section class="section">     
+            <!-- 모델 세부모델선택 -->
+            <div clas="model_seldetail">
+                <div class="item_head">
+                    <h3 class="tx_tit">할인 선택</h3>
+                </div>
+
+                <div class="item_body">
+                    <div class="selmodel">
+                        <ul class="tb_list">
+                            <!-- 데이터 없을 때 -->
+                            <li class="no_data">
+                                <p class="nd_txt">수입차 할인조건은 딜러사, 재고상태에 따라 다를 수 있습니다.<br />견적신청 시 문의 주시면 확인하여 답변 드리겠습니다.</p>
+                            </li>
+                            <!-- // -->
+                            
+                            <!-- 반복 : 그룹행 -->
+                            <!-- 모델 LI 내 그룹이 필요할 경우 ".tb_list_group" 추가 -->
+                            <li class="tb_list_group">
+                                <div class="tb_list_tit">월간 조건</div>
+
+                                <ul class="list_selmodel">
+                                    <!-- 열림 "selected" 클래스 추가 -->
+                                    <li class="tb_list_item item_option">                                            
+                                        <div class="row--tb-item">
+                                            <span class="tx_col col--model">
+                                                <span class="tx_checkbox">
+                                                    <input type="checkbox" class="ipt-chkbox" id="chkOptChk1_01" name="chkOptChk1"  />
+                                                </span>
+                                                <span class="tx_model">
+                                                    <label for="chkOptChk1_01">2월 생산</label>
+                                                </span>
+                                            </span>
+                                            <span class="tx_col col--price">                
+                                                <span class="price tx_price"><em>-1,200,000</em>원</span>
+                                            </span>
+                                        </div>
+                                        <!-- // -->
+
+                                        <button class="btn__ext_sub">확장버튼</button>
+
+                                        <div class="tb_sub_ext">
+                                            <ul class="tx_noti">
+                                                <li>개인/개인사업자 고객 중 2회 이상 재구매고객 限 (신규 고객 제외)</li>
+                                                <li>기존 보유중인 블루멤버스 포인트 합산 사용 가능</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- //반복 : 그룹행 -->
+
+                            <!-- 그룹행 -->
+                            <li class="tb_list_group">
+                                <div class="tb_list_tit">전시차</div>
+
+                                <ul class="list_selmodel">
+                                    <!-- 열림 "selected" 클래스 추가 -->
+                                    <li class="tb_list_item item_option">                                            
+                                        <div class="row--tb-item">
+                                            <span class="tx_col col--model">
+                                                <span class="tx_checkbox">
+                                                    <input type="checkbox" class="ipt-chkbox" id="chkOptChk2_01" name="chkOptChk2"  />
+                                                </span>
+                                                <span class="tx_model">
+                                                    <label for="chkOptChk2_01">2월 이후</label>
+                                                </span>
+                                            </span>
+                                            <span class="tx_col col--price">
+                                                <span class="price tx_price"><em>-50,000</em>원</span>
+                                            </span>
+                                        </div>
+                                        <!-- // -->
+        
+                                        <button class="btn__ext_sub">확장버튼</button>
+        
+                                        <div class="tb_sub_ext">
+                                            <ul class="tx_noti">
+                                                <li>개인/개인사업자 고객 중 2회 이상 재구매고객 限 (신규 고객 제외)</li>
+                                                <li>기존 보유중인 블루멤버스 포인트 합산 사용 가능</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="tb_list_item item_option">                                            
+                                        <div class="row--tb-item">
+                                            <span class="tx_col col--model">
+                                                <span class="tx_checkbox">
+                                                    <input type="checkbox" class="ipt-chkbox" id="chkOptChk2_02" name="chkOptChk2"  />
+                                                </span>
+                                                <span class="tx_model">
+                                                    <label for="chkOptChk2_02">2월 이전</label>
+                                                </span>
+                                            </span>
+                                            <span class="tx_col col--price">
+                                                <span class="price tx_price"><em>-350,000</em>원</span>
+                                            </span>
+                                        </div>
+                                        <!-- // -->
+        
+                                        <button class="btn__ext_sub">확장버튼</button>
+        
+                                        <div class="tb_sub_ext">
+                                            <ul class="tx_noti">
+                                                <li>개인/개인사업자 고객 중 2회 이상 재구매고객 限 (신규 고객 제외)</li>
+                                                <li>기존 보유중인 블루멤버스 포인트 합산 사용 가능</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- //그룹행 -->
+
+                            <!-- 그룹행 -->
+                            <li class="tb_list_group">
+                                <div class="tb_list_tit">현대카드 세이브 - 오토</div>
+
+                                <ul class="list_selmodel">
+                                    <!-- 열림 "selected" 클래스 추가 -->
+                                    <li class="tb_list_item item_option">                                            
+                                        <div class="row--tb-item">
+                                            <span class="tx_col col--model">
+                                                <span class="tx_checkbox">
+                                                    <input type="checkbox" class="ipt-chkbox" id="chkOptChk3_01" name="chkOptChk3"  />
+                                                </span>
+                                                <span class="tx_model">
+                                                    <label for="chkOptChk3_01">30만 포인트</label>
+                                                </span>
+                                            </span>
+                                            <span class="tx_col col--price">
+                                                <span class="price tx_price"><em>-50,000</em>원</span>
+                                            </span>
+                                        </div>
+                                        <!-- // -->
+        
+                                        <button class="btn__ext_sub">확장버튼</button>
+        
+                                        <div class="tb_sub_ext">
+                                            <ul class="tx_noti">
+                                                <li>개인/개인사업자 고객 중 2회 이상 재구매고객 限 (신규 고객 제외)</li>
+                                                <li>기존 보유중인 블루멤버스 포인트 합산 사용 가능</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- 서브 설명 없을 때 "no-child" 클래스 추가 -->
+                                    <li class="tb_list_item item_option no-child">                                             
+                                        <div class="row--tb-item">
+                                            <span class="tx_col col--model">
+                                                <span class="tx_checkbox">
+                                                    <input type="checkbox" class="ipt-chkbox" id="chkOptChk3_02" name="chkOptChk1"  />
+                                                </span>
+                                                <span class="tx_model">
+                                                    <label for="chkOptChk3_02">100만 포인트</label>
+                                                </span>
+                                            </span>
+                                            <span class="tx_col col--price">
+                                                <span class="price tx_price"><em>-350,000</em>원</span>
+                                            </span>
+                                        </div>
+                                        <!-- // -->
+        
+                                        <!-- <button class="btn__ext_sub">확장버튼</button>
+        
+                                        <div class="tb_sub_ext">
+                                            <ul class="tx_noti">
+                                                <li>개인/개인사업자 고객 중 2회 이상 재구매고객 限 (신규 고객 제외)</li>
+                                                <li>기존 보유중인 블루멤버스 포인트 합산 사용 가능</li>
+                                            </ul>
+                                        </div> -->
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- //그룹행 -->
+                        </ul>
+
+                        <script>                            
+                            $(function(){ // 퍼블테스트
+                                var $btnExtend = $(".item_option .btn__ext_sub");
+                                $btnExtend.click(function(){
+                                    var $parent = $(this).closest('.item_option');
+                                    $parent.toggleClass("extended");
+                                });
+                            })                        
+                        </script>
+                    </div>
+
+                    <!-- <a href="estimate05.html" class="btn__option_comp">할인 선택 완료</a> -->
+                </div>
+            </div>
+        </section>
+        <!-- // -->
+    </div>
+    <!-- // -->
+    
+    <!-- 할인선택 하단 클래스 추가 "esti_gnb045" -->
+    <div class="menu_gnb esti_gnb045">
+        <div class="inner">
+            <div class="btn__menu_bg"><!-- 버튼 BG --></div>
+            <button type="button" class="btn__menu_toggle">여/닫기</button>
+
+            <!-- 옵션 그룹 -->
+            <div class="option_group">                
+                <!-- 출고비용 -->
+                <div class="model_info">
+                    <div class="md_name">
+                        <!-- 제조사+모델명 -->
+                        <p class="tx_model">현대 올 뉴 아반떼</p>
+                        <p class="tx_desc">2020년형 LPi 1.6 일반 판매 (개소세 30% 인하)</p>
+                        <p class="tx_trim">프레스티지 스마트 M/T</p>
+                    </div>
+
+                    <div class="price_box">
+                        <!-- 차량 가격 -->
+                        <div class="md_price">
+                            <ul>
+                                <li>
+                                    <span class="tx_tit">차량 기본가격</span>
+                                    <span class="price tx_price"><em>44,900,000</em>원</span>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">옵션가격 (1)</span>
+                                    <span class="price tx_price"><em>44,900,000</em>원</span>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">할인가격 (1)</span>
+                                    <span class="price tx_price"><em>44,900,000</em>원</span>
+                                </li>
+                            </ul>
+                            <div class="total">
+                                <span class="tx_tit">(A) 최종 차량가격</span>
+                                <span class="price tx_price"><em>44,900,000</em>원</span>
+                            </div>
+                        </div>
+                        <!-- // -->
+
+                        <!-- 기타비용 -->
+                        <div class="md_price">
+                            <ul>
+                                <li>
+                                    <span class="tx_tit">혜택/면세 (개소세/과세)</span>
+                                    <span class="price tx_price">선택 없음</span>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">탁송 (경기 군포시)</span>
+                                    <span class="price tx_price">선택 없음</span>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">등록 (서울/일반인)</span>
+                                    <span class="price tx_price">선택 없음</span>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">보험료</span>
+                                    <a href="#" class="tx_direct">다이렉트 보험료 조회하기</a>
+                                </li>
+                            </ul>
+                            <div class="total">
+                                <span class="tx_tit">(B) 총 기타비용</span>
+                                <span class="price tx_price"><em>0</em>원</span>
+                            </div>
+                        </div>
+                        <!-- // -->
+
+                        <!-- 총 출고비용 -->
+                        <div class="md_price_total">
+                            <span class="tx_tit">(A+B) 출고비용</span>
+                            <span class="price tx_price"><em>44,900,000</em>원</span>
+                        </div>
+                        <!-- // -->
+                    </div>
+                </div>
+                <!-- // -->
+
+                <!-- 차량옵션 -->
+                <!-- BOTTOM : 상품명/가격/버튼 + 옵션 : "inc_option" 클래스 추가 -->
+                <div class="option_box">
+                    <!-- AS-IS -->
+                    <!--<div class="option_type inc_option">
+                        <div class="detail">
+                            <p class="topprdc_txt cutWord">2020년형 가솔린 2.0(개소세 할인 상품)</p>
+
+                            <p class="opt_cnt">+ 옵션 3</p>
+                            <p class="price"><strong>999,999,999,999</strong>원</p>
+                        </div>
+                        <a href="#" class="btn__blue">견적 신청하기</a>
+                    </div> -->
+                    <!-- // -->
+
+                    <!-- TO-BE -->
+                    <div class="option_type inc_captial">
+                        <div class="detail">
+                            <p class="topprdc_txt cutWord">2020년형 가솔린 2.0(개소세 할인 상품)</p>
+
+                            <p class="price"><strong>999,999,999,999</strong>원</p>
+                        </div>
+                        <a href="#" class="btn__gray">금융 상품 비교 이동</a>
+                        <a href="#" class="btn__blue">견적 신청하기</a>
+                    </div>
+                </div>
+                <!-- // -->
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer footer--com">
+        <!-- Footer : 탑버튼 -->
+        <div class="newquick">
+            <p class="TBtn" onclick="goFooterTop();">TOP</p>
+        </div>
+        <!-- // -->
+        <!-- Footer : 회사정보 -->
+        <div class="footer__info">
+            <!-- 클릭시 .unfold 클래스 toggle -->
+            <button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+            <!-- // -->
+            <div class="footer__info_com">
+                <dl>
+                    <dt>대표이사</dt>
+                    <dd>김기범</dd>
+                    <dt>사업자등록번호</dt>
+                    <dd>206-81-18164</dd>
+                    <dt>통신판매신고</dt>
+                    <dd>2015-서울중구-1046호</dd>
+                    <dt>주소</dt>
+                    <dd>서울특별시 중구 퇴계로 18(남대문로5가) 9층</dd>
+                    <dt>문의</dt>
+                    <dd>02-6354-3601<br><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- Footer : 푸터메뉴 -->
+        <div class="footer__menu">
+            <div class="footer__menu_top">
+                <a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+            </div>
+            <div class="footer__menu_bot">
+                <a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+            </div>
+        </div>
+        <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+    </footer>
+    <!-- //FOOTER -->
+</div>
+<script>
+    $(function(){
+        // 헤더 NAV 스와이프
+        var swiper = new Swiper('#nav .nav_swiper', {
+            scrollbarHide: true,
+            slidesPerView: 'auto',
+            centeredSlides: false,
+            spaceBetween: 12,
+            grabCursor: true,
+            initialSlide: 0
+        });
+
+        // 모바일 헤더,탑버튼 역스크롤
+        var position = $(window).scrollTop(); 
+        var el = {
+            wrap : $(".wrap"), // 래퍼
+            cont : $(".container"), // 컨텐츠
+            btnQuick : $(".footer--com .newquick"), // 탑버튼
+            gnb : $("#nav") // GNB영역
+        }
+        var stickyGnb = function(){
+            var $myScroll = $(window).scrollTop();
+
+            if ( $myScroll > el.cont.offset().top ){ 
+                el.gnb.addClass("hide_top");
+                el.btnQuick.addClass("scr_mode");
+
+                // GNB Sticky
+                if ( $myScroll > el.cont.offset().top ){
+                    el.gnb.removeClass("hide_top").addClass("fixed_top");
+                }else{
+                    el.wrap.addClass("hide_top").removeClass("fixed_top");
+                } 
+
+                // 업다운 스크롤 체크
+                if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+            }else{
+                el.gnb.removeClass("fixed_top hide_top");
+                el.btnQuick.removeClass("scr_mode");
+                el.wrap.removeClass("scr_down scr_up");
+            }
+            position = $myScroll;
+        };
+        $(window).load(stickyGnb).scroll(stickyGnb);
+
+        // 견적내기 > 단계별(1~5단계) 진행상황 표시 영역 역스크롤
+        var md_el = {
+            md_cont : $(".model_progress"), // 단계별 컨텐츠
+            md_progress : $(".model_progress ul") // 단계별 진행상황 목록
+        }
+        var md_stickyGnb = function(){
+            var $myScroll = $(window).scrollTop();
+
+            if ( $myScroll > md_el.md_cont.offset().top ){ 
+                md_el.md_progress.addClass("hide_top");
+
+                // md_progress Sticky
+                if ( $myScroll > md_el.md_cont.offset().top ){
+                    md_el.md_progress.removeClass("hide_top").addClass("fixed_top");
+                }else{
+                    el.wrap.addClass("hide_top").removeClass("fixed_top");
+                } 
+            }else{
+                md_el.md_progress.removeClass("fixed_top hide_top");
+                el.wrap.removeClass("scr_down scr_up");
+            }
+            position = $myScroll;
+        };
+        $(window).load(md_stickyGnb).scroll(md_stickyGnb);
+
+
+        // 하단 TOGGLE  
+        var tg_el = {
+            $menuToggle : $(".btn__menu_toggle"),   // toggle 버튼
+            menuToggleSt : false                   // toggle 상태
+        }        
+        tg_el.$menuToggle.on("click",function(){
+            var _this = this,
+                _body = $("body"),
+                tg_menu = $(_this).parents(".menu_gnb");             
+            
+            if(!tg_el.menuToggleSt){
+                tg_menu.addClass("is-shown");
+                _body.css({"overflow":"hidden"})
+                tg_el.menuToggleSt = true;
+            }else{
+                tg_menu.removeClass("is-shown");
+                _body.css({"overflow":"auto"})
+                tg_el.menuToggleSt = false;
+            }
+        });
+
+    });
+
+    function goFooterTop(){
+        $(window).scrollTop(0);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>상품상세 | 상품 상세 정보 O</title>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="../css/product.css">
+	<!-- 공통 -->
+	<script src="../js/plugin/jquery-2.1.4.min.js"></script>
+	<script src="../js/plugin/jquery.bootstrap.modal.js"></script>
+	<!-- <script src="js/plugin/bootstrap-modalmanager.js"></script> 20150706 updaet -->
+	<script src="../js/plugin/fastclick.min.js"></script><!-- 20150630 update -->
+	<script src="../js/ui.js"></script>
+
+	<!-- Timer plugin -->
+	<script src="../js/plugin/jquery.timerManager.js"></script>
+	<!-- swiper plugin -->
+	<script src="../js/plugin/swiper.min.js?v=3.0.8"></script>
+	<script>
+	'use strict';
+
+	$(document).ready(function() {
+		// 방송종료 타이머.
+		$(".channel strong").timerManager({
+			startDate: new Date(),
+		    endDate: function() {
+		        var currentDate = new Date();
+		        currentDate.setMinutes(59);
+		        return currentDate;
+		    },
+		    callback: function() {
+		    	var target  = this.getTargetContainer();
+		    	var getTimeData = this.getCurrentTimerTime(); // @return {time: 0, day: "00", hour: "00", min: "00", sec: "00"};	    	
+		    	var onAirbtn;
+		        if ( getTimeData.time <= 0 ) {
+		        	
+		        } else {
+		        	var str = getTimeData.min + '분 ' + getTimeData.sec + '초';
+		        	target.text(str);
+		        }
+		    }
+		});
+
+		// 함께 판매하는 상품
+		new Swiper(".elseProduct .swiper-container", {
+			slidesPerView  : 3,
+			slidesPerGroup : 3,
+			spaceBetween   : 8,
+			pagination	   : '.swiper-pagination',
+			paginationClickable : true
+		});
+	});
+
+	</script>
+</head>
+<body>
+<div id="wrap">
+	<header id="header">
+		<img src="../images/temp/@header_prod_header01.jpg" width="100%" alt="Smart홈쇼핑">
+	</header>
+	<div id="container">
+	<!-- container -->
+
+		<div class="onAirMov">
+			<div class="video" style="background-image:url(../images/temp/@productMov.jpg);">
+				<div class="dimd"></div>
+				<a href="#">	
+					<div class="tbl">
+					 	<div class="thumbImage">
+					 		<!-- 20150730 update : span요소 추가. -->
+					 		<span class="img"><img src="../images/temp/@productMov02.jpg" alt="" /></span>
+					 	</div>
+					 	<div class="contArea">
+					 		<div class="bx">
+						 		<span class="spComm label onair"></span>
+								<!--  <span class="spCommBefore label ready">…</span> -->
+								<span class="title">생방송시간</span>
+								<span class="time">16:40 ~ 17:40</span>
+							</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		
+		<div class="onAirCh">
+			<div class="channel">
+				<span class="spComm logo"><img src="../images/category/brand_gsshop.png" alt="GS SHOP"></span>
+				<div class="timer"><span class="label">LIVE</span>방송종료 <strong>41분 56초</strong> 전</div>
+			</div>
+		</div>
+		
+		<div class="onAirProduct">
+			<div class="title">
+				<div class="name">[특집 역대 최대용량] 2015년 New 매직캔 3중 차단 쓰레기통 (25L + 20L + 매직롤</div>
+				<!-- 151013 -->
+				<div class="salePriceArea">
+					<span class="sellPrice"><del>9,999,999</del></span>
+					<div class="tbl-cell">
+						<span class="monInsPlan">무료배송</span>
+						<span class="monInsPlan">무 10</span>
+						<span class="salePrice">9,888,888</span>
+					</div>
+				</div>
+				<!--// 151013 -->
+
+			</div>
+			<div class="benefit">
+				<strong class="sectionTit"><span class="spComm ico_info"></span>혜택 정보</strong>
+				<ul class="listType01">
+					<li>
+						<strong>카드혜택</strong>
+						<p>BC카드 5% 최대 20,000원 할인 (무이자 3개월)</p>
+					</li>
+					<li>
+						<strong>포인트 적립</strong>
+						<p>500P  CJ ONE 포인트</p>
+					</li>
+					<li>
+						<strong>사은품</strong>
+						<p>쿨스카프</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="elseProduct">
+			<strong class="sectionTit"><span class="spComm ico_info"></span>함께 판매하는 상품</strong>
+			<div class="productList">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide">
+							<a href="#">
+								<div class="thumb"><img src="../images/temp/@img187_1.jpg" alt="" /></div>
+								<div class="info">
+									<strong class="title">[다우니] 고농축 섬유유연제 다우니 1L</strong>
+									<span class="price">14,580</span>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<div class="thumb"><img src="../images/temp/@img187_2.jpg" alt="" /></div>
+								<div class="info">
+									<strong class="title">[다우니] 고농축 섬유유연제 다우니 1L</strong>
+									<span class="price">14,580</span>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<div class="thumb"><img src="../images/temp/@img187_3.jpg" alt="" /></div>
+								<div class="info">
+									<strong class="title">[다우니] 고농축 섬유유연제 다우니 1L</strong>
+									<span class="price">14,580</span>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<div class="thumb"><img src="../images/temp/@img187_1.jpg" alt="" /></div>
+								<div class="info">
+									<strong class="title">[다우니] 고농축 섬유유연제 다우니 1L</strong>
+									<span class="price">14,580</span>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<div class="thumb"><img src="../images/temp/@img187_2.jpg" alt="" /></div>
+								<div class="info">
+									<strong class="title">[다우니] 고농축 섬유유연제 다우니 1L</strong>
+									<span class="price">14,580</span>
+								</div>
+							</a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#">
+								<div class="thumb"><img src="../images/temp/@img187_3.jpg" alt="" /></div>
+								<div class="info">
+									<strong class="title">[다우니] 고농축 섬유유연제 다우니 1L</strong>
+									<span class="price">14,580</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+					
+					<div class="swiper-pagination"></div>
+				</div>
+				
+				
+			</div>
+		</div>
+		
+		<!-- 151013 상세정보/고객상품평 -->
+		<script type="text/javascript">
+			$(function(){
+				$( ".detail_tab>li>a" ).click(function() {
+					$(this).parent().addClass("on").siblings().removeClass("on");
+					return false;
+				});
+			});
+		</script>
+		<ul class="detail_tab">
+			<li class="on"><a href="#"><span>상품 상세정보</span></a>
+				<div class="onAirProduct">
+					<div class="detail">
+						<div class="viewArea">
+							<img src="http://photo3.enuri.com/data/images/service/big/11153000/11153524.jpg" alt="" />
+						</div>
+					</div>
+				</div>
+			</li>
+			<li><a href="#"><span>고객 상품평<em>(24)</em></span></a>
+				<div class="onAirReview">
+					<div class="reviewList">
+						<ul>
+							<li>
+								<div class="review">
+									<div class="imgArea">
+										<img src="../images/temp/@img134_1.jpg" alt="" />
+									</div>
+									<div class="txtArea">
+										<strong class="title">상품 너무 좋아요</strong>
+										<p class="cont">상품을 샀는데 너무 좋았고 배송도 너무 빠르고 또 사고 싶어요 앞으로도 자주자주 이용할게요~ 완전 감동감동~ 주변에도 꼭 추천할게요~!</p>
+										<div class="register"><span class="date">2015-04-05</span><span class="user">Jini***</span></div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="review">
+									<!-- <div class="imgArea">
+										<img src="images/temp/@img134_1.jpg" alt="" />
+									</div> -->
+									<div class="txtArea">
+										<strong class="title">대박~ 완전 맘에 드네요</strong>
+										<p class="cont">상품을 샀는데 너무 좋았고 배송도 너무<br/>빠르고 또 사고 싶어요. 좋네요 굿 굿.</p>
+										<div class="register"><span class="date">2015-04-05</span><span class="user">Jini***</span></div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="review">
+									<!-- <div class="imgArea">
+										<img src="images/temp/@img134_1.jpg" alt="" />
+									</div> -->
+									<div class="txtArea">
+										<strong class="title">대박~ 완전 맘에 드네요</strong>
+										<p class="cont">상품을 샀는데 너무 좋았고 배송도 너무<br/>빠르고 또 사고 싶어요. 좋네요 굿 굿.</p>
+										<div class="register"><span class="date">2015-04-05</span><span class="user">Jini***</span></div>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="reviewMore">
+							<button class="btnArea">
+								<strong>52개</strong> 상품평 모두보기
+							</button>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<!--// 151013 상세정보/고객상품평 -->
+
+	<!-- //container -->
+	</div>
+</div>
+<a href="#" class="btnTop">TOP</a>
+
+<!-- case : 생방송 상품( 모바일 구매) - 일반상품 군 -->
+<div class="quickMenuBar">
+	<div class="tbl">
+		<div class="area1">
+			<ul>
+				<li><a href="#" class="icCall">상담원</a></li>
+				<li><a href="#" class="icARS">ARS</a></li>
+			</ul>
+		</div>
+		<div class="area2">
+			<a href="#" class="icMobile">모바일구매</a>
+		</div>
+	</div>
+</div>
+<!-- case : 생방송 상품( 모바일 구매) - 일반상품 군(상담원, ARS) 데이터 크롤링이 안된 경우
+<div class="quickMenuBar">
+	<div class="tbl">
+		<div class="area2">
+			<a href="#" class="icMobile">모바일구매</a>
+		</div>
+	</div>
+</div>
+-->
+<!-- case : 생방송 상품(상담신청) - 가격정보가`0원`, 보험/렌탈의 경우
+<div class="quickMenuBar">
+	<div class="tbl">
+		<div class="area1">
+			<ul>
+				<li><a href="#" class="icCall">상담원</a></li>
+				<li><a href="#" class="icARS">ARS</a></li>
+			</ul>
+		</div>
+		<div class="area2">
+			<a href="#" class="icMobile">상담신청</a>
+		</div>
+	</div>
+</div>
+-->
+<!-- case : 생방송 상품(상담신청) - (상담원, ARS) 데이터 크롤링이 안된 경우
+<div class="quickMenuBar">
+	<div class="tbl">
+		<div class="area2">
+			<a href="#" class="icMobile">상담신청</a>
+		</div>
+	</div>
+</div>
+-->
+<!-- case : 생방송 상품 ( 품절 상품)
+<div class="quickMenuBar">
+	<div class="tbl">
+		<div class="area3">
+			<span>일시 품절된 상품입니다.</span>
+		</div>
+	</div>
+</div>
+-->
+
+</body>
+</html>

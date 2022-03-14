@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no"/>
+<link rel="stylesheet" type="text/css" href="./resource/css/test.css"/>
+<!-- js -->
+<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+<!-- css -->
+
+</head>
+<body>
+<div class="container">
+	<div class="wrap" style="background: #f2f2f2;">
+		<canvas id="canvas"></canvas>
+	</div>
+</div>
+<script>
+	window.onload = function () { // 스크립트 로딩이 완료된 후부터 내용을 시작
+		const canvas = document.getElementById('canvas');
+		const ctx = canvas.getContext('2d');
+		canvas.width = window.innerWidth-15;
+		canvas.height = window.innerHeight-15;
+
+		balls = [];
+		ballNumber = 2;
+
+		class Ball{
+			constructor(x,y){ // ball의 기본 속성들을 정의
+				this.x = x;
+				this.y = y;
+				this.c = 'rgba('+Math.random()*255+','+Math.random()*255+','+Math.random()*255+')';
+				this.size = Math.random()*10+5;
+				this.angle = (Math.random()*360)*((Math.PI*2)/360);
+				this.power = Math.random()*3+2;
+				this.directionX = this.power * Math.cos(this.angle);
+				this.weight = this.power * Math.sin(this.angle);
+				this.bounce =0;
+			}
+
+			update(){ // 프레임마다 속성들을 변화시킴
+				this.y += this.weight;
+				this.x += this.directionX;
+				this.weight += 0.1; // 프레임마다 떨어질때의 가속도 증가
+				this.directionX *= 0.997; // 가로방향 속도 감소.
+
+				if(this.y+this.size>canvas.height || this.y-this.size<0){ // 세로 방향 바운드 처리
+					this.weight *= -0.8; // y 방향을 바꿔주면서 점차 바운스가 감소하게
+					if(Math.abs(this.weight)<0.9){
+						this.y = canvas.height-this.size; // 바운드가 어느 정도 이하가 되면 더 이상 바운드 안하게, 즉, 바닥에 붙게 한다.
+						this.weight =1;
+					} else {
+						this.y -=1 ;
+					} //
+				};
+				if(this.x>canvas.width-this.size || this.x-this.size < 0 ) { // 가로 방향 바운드 처리
+					this.directionX *= -1; // x 방향 전환.
+				}
+
+				// x값의 변동을 계산
+				this.x += this.directionX;
+				this.directionX *= 0.997;
+				if(this.x+this.size > canvas.width || this.x-this.size <0){
+					this.directionX *= -1;
+					this.bounce  += 1;
+				}
+
+
+				// if(this.bounce > 30 && this.gravity < 0.01) {
+				// 	this.gravity = 0;
+				// }
+				// if(this.bounce < 40) {
+				// 	console.log(this.bounce);
+				// 	console.log(this.gravity);
+				// }
+
+			}
+
+			draw(){ // 넘어온 속성값대로 캔버스에 원을 그려줌
+				ctx.fillStyle= this.c;
+				ctx.beginPath();
+				ctx.arc(this.x, this.y, this.size, 0, Math.PI*2, true);
+				ctx.closePath();
+				ctx.fill();
+				// ctx.strokeStyle = 'black';
+				// ctx.strokeWidth = 4;
+				// ctx.stroke();
+			}
+		}
+
+		function init(){ // 그려질 공의 초기 좌표 설정
+			for(i=0;i<ballNumber;i++){
+				balls[i] = new Ball(canvas.width*0.5, canvas.height*0.5)
+			}
+		}
+
+		function animate(){ // 매 프레임마다 벌어지는 일들
+			ctx.fillStyle='rgba(255,255,255,1)'; // 전체 화면 지우기. 하얀색의 alpha값을 변경함에 따라 공의 잔상이 달라진다.
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			for(i=0;i<ballNumber;i++){
+				balls[i].update();
+				balls[i].draw();
+			}
+			// window.addEventListener('resize',function(){ // 화면 크기가 변하면 캔버스 크기도 변경해줌
+			// 	canvas.width=window.innerWidth;
+			// 	canvas.height=window.innerHeight;
+			// })
+			requestAnimationFrame(animate);
+		}
+
+		init(); // 공의 초기 좌표를 설정하고,
+		animate(); // 프레임마다 공을 그려준다.
+
+	}
+</script>
+</body>
+</html>

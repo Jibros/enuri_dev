@@ -1,0 +1,170 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta property="og:title" content="에누리 가격비교"/>
+	<meta property="og:description" content="에누리 모바일 가격비교"/>
+	<meta property="og:image" content="http://img.enuri.info/images/mobilefirst/images/logo_enuri.png"/>
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+    <!-- 200224 : CSS교체 -->
+    <!-- <link rel="stylesheet" type="text/css" href="/css/mobile_v2/zzim_folder.css"/> -->
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v2/resentzzim.css"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>	
+</head>
+<body>
+
+<div id="wrap">
+	
+    <!-- 200224 : 헤더 변경 : 타입D (닫기) -->
+    <header id="header" class="m_header head__type_d">
+        <div class="header_wrap">
+            <h1 class="m_txt">찜 폴더 관리</h1>
+            <button class="btn_hd_back comm__sprite">뒤로</button>
+            <button class="btn_hd_close comm__sprite">닫기</button>
+        </div>
+    </header>
+    <!-- // 헤더 -->
+	
+    <!-- 찜폴더 관리 -->
+    <section class="zzim_wrap">
+        <!-- 200224 : .round_card -> .zzim_inner 변경 -->
+        <div class="zzim_inner">
+            <div class="card_inner">
+                <table class="zzim_tb">
+                    <colgroup>
+                        <col>
+                        <!-- 200224 WIDTH 사이즈 CSS에 작성 -->
+                        <col>
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <!-- 찜폴더 라인1 -->
+                        <tr>
+                            <th class="txt_name">찜폴더 1 <em>(기본)</em></th>
+                            <td class="txt_amount">
+                                <em>12건</em> / 200건
+                            </td>
+                            <td class="btn_area">
+                                <!-- 200224 버튼 수정 -->
+                                <button class="btn_delete"><span class="my__sprite ico_delete"></span>삭제</button>
+                            </td>
+                        </tr>
+                        <!-- // -->
+                        <tr>
+                            <th class="txt_name">찜폴더 2</th>
+                            <td class="txt_amount">
+                                <em>12건</em> / 200건
+                            </td>
+                            <td class="btn_area">
+                                <button class="btn_delete"><span class="my__sprite ico_delete"></span>삭제</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_name">찜폴더 3</th>
+                            <td class="txt_amount">
+                                <em>12건</em> / 200건
+                            </td>
+                            <td class="btn_area">
+                                <button class="btn_delete"><span class="my__sprite ico_delete"></span>삭제</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="txt_name">찜폴더 4</th>
+                            <td class="txt_amount">
+                                <em>12건</em> / 200건
+                            </td>
+                            <td class="btn_area">
+                                <button class="btn_delete"><span class="my__sprite ico_delete"></span>삭제</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 200224 : 새폴더추가 마크업 위치 이동 -->
+            <div class="btn_folder">
+                <button class="btn_add_folder">
+                    <span>새 폴더 추가</span>
+                </button>
+            </div>
+            
+        </div>
+
+        <!-- 앱 다운로드 -->
+		<ul class="another_app_list">
+			<li class="btn_app_smart">
+				<a href="#">스마트 택배 다운받기</a>
+			</li>
+			<li class="btn_app_social">
+				<a href="#">소셜가격비교 다운받기</a>
+			</li>
+		</ul>
+        <!-- // -->
+        
+    </section>
+    <!-- // -->
+
+	<!-- 푸터 -->
+	<footer class="footer">
+        <div class="newquick">
+            <p class="TBtn" onclick="javascript:goFooterTop()">TOP</p>
+    	</div>
+		<p class="legal_notices">
+			<span class="txt_tit">법적고지</span>
+			㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.
+		</p>
+		<p class="company_info">
+			<span class="txt_company_name">(주)써머스플랫폼</span>
+			대표이사 : 김기범 / 사업자등록번호 : 206-81-18164 <br/>
+			통신판매신고 : 2015-서울중구-1046호<br/>
+			서울특별시 중구 퇴계로 18(남대문로5가) 9층<br/>
+			문의 : 02-6354-3601 / master@enuri.com<br/>
+		</p>
+		<p class="footer_menu">
+			<a href="#">이용약관</a>
+			<a href="#">개인정보처리방침</a>
+			<a href="#">법적고지</a>
+			<a href="#">PC버전</a>
+		</p>
+    </footer>
+
+    <script>
+        // 찜폴더 관리 : 헤더 유효성 체크 
+        $(function(){
+            var nowPos;
+            var position = $(window).scrollTop(); 
+            var $wrap = $("#wrap");
+            var $mhead = $(".m_header"); // 헤더
+            // 헤더 상단 고정 및 존재여부 판단 후 스타일 재지정    
+            if ( $mhead.length ){ // 마크업이 존재하고
+                if ( $(".m_header:not([style*='display:none']):not([style*='display: none'])").length ){ // display:none 되어 있지 않음
+                    $mhead.addClass("fixed_top");
+                    $wrap.css({"padding-top": parseInt($mhead.outerHeight(),10) });
+                }
+            }
+            // 스크롤 방향 체크
+            var $btnQuick = $(".footer .newquick"); // Top 버튼
+            var stickyHead = function(){			
+                // TOP버튼 등장 
+                nowPos = $(window).scrollTop(); 
+                if(nowPos > position){
+                    $wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    $btnQuick.addClass("scr_mode");
+                }else{
+                    $wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }
+                position = nowPos;
+            }
+            $(window).load(stickyHead).scroll(stickyHead);
+        });
+
+        function goFooterTop(){
+            $(window).scrollTop( 0 );
+        }
+    </script>
+</div>
+</body>
+</html>

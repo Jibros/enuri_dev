@@ -1,0 +1,427 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<title>SDU LIST - eNuri.com</title>
+<meta http-equiv='content-type' content='text/html; charset=euc-kr'>
+<link REL="stylesheet" HREF="http://img.enuri.gscdn.com/common/css/enuribase.css" TYPE="text/css">
+<!-- SDU COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=20190104" type="text/css">
+<script LANGUAGE="JavaScript" src="http://img.enuri.gscdn.com/common/js/function.js"></script>
+<script language="javascript">
+	<!--
+		function FrmSbChk(theForm)
+		{
+			/*
+			if(theForm.sdub_pswd.value.length < 6 || theForm.sdub_pswd.value.length > 12)
+			{
+				alert("6~12자 사이의 변경 패스워드를 입력하세요~");
+				theForm.sdub_pswd.focus();
+				return false;
+			}
+			if(theForm.sdub_pswd.value != theForm.sdub_pswd1.value)
+			{
+				alert("재확인 패스워드와 일치하지 않습니다~");
+				theForm.sdub_pswd1.value = "";
+				theForm.sdub_pswd1.focus();
+				return false;
+			}
+			*/
+			if(theForm.sb_name.value.length < 2)
+			{
+				alert("2자 이상의 변경 쇼핑몰명을 입력하세요~");
+				theForm.sb_name.focus();
+				return false;
+			}
+			if(theForm.sb_name.value.length > 12)
+			{
+				alert("변경 쇼핑몰명을 줄여 주세여~");
+				theForm.sb_name.focus();
+				return false;
+			}
+			if(theForm.sb_url.value.length < 10)
+			{
+				alert("10자 이상의 변경 쇼핑몰명을 입력하세요~");
+				theForm.sb_url.focus();
+				return false;
+			}
+			//전화번호길이 제약 마케팅 sung35 2004.2.26
+			if(theForm.sb_tel.value.length < 2 || theForm.sb_tel.value.length > 14)
+			{
+				alert("주문전화를 입력하세요~");
+				theForm.sb_tel.focus();
+				return false;
+			}
+			if(theForm.sdub_manager.value.length < 2)
+			{
+				alert("담당자명을 입력하세요~");
+				theForm.sdub_manager.focus();
+				return false;
+			}
+			if(theForm.sdub_tel.value.length < 2 || theForm.sdub_tel.value.length > 14)
+			{
+				alert("담당자전화를 입력하세요~");
+				theForm.sdub_tel.focus();
+				return false;
+			}
+			if(theForm.sdub_email.value.length < 2)
+			{
+				alert("담당자 e-mail을 입력하세요~");
+				theForm.sdub_email.focus();
+				return false;
+			}
+		}
+
+		function OpenWindow(OpenFile,name,nWidth,nHeight,ScrollYesNo,ResizeYesNo)
+		{
+			var newWin = window.open(OpenFile,name,"width="+nWidth+",height="+nHeight+",toolbar=no,directories=no,status=no,scrollbars="+ ScrollYesNo +",resizable="+ ResizeYesNo +",menubar=no");
+				newWin.focus();
+		}
+		
+		function setAddr(zip1, zip2, addr)
+		{
+		
+			document.frmEsRegister.zipcode1.value = zip1;
+			document.frmEsRegister.zipcode2.value = zip2;
+			document.frmEsRegister.address1.value = addr;		
+		}
+		
+		function 	fnselcompany (param)
+		{	
+			if ( param.options[param.selectedIndex].value == "0" ) {
+			document.all["es_address"].style.display = "none";
+			}
+			else {
+				document.all["es_address"].style.display = "";
+			}
+		}
+	//-->
+</script>
+</head>
+<body>
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .content
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">SDU</h2>
+	</div>
+	
+	<!-- SDU content -->
+	<div class="sducontent">
+		<iframe name="HiddeniFrame" id="HiddeniFrame" width="100%" height="0" frameborder="no"></iframe>
+		<!-- LIST-->
+		<TABLE align=center BORDER=0 WIDTH=970 CELLPADDING=0 CELLSPACING=0 BGCOLOR="#F0EFEF">
+			<TR ALIGN=CENTER valign=top HEIGHT=25>
+				<TD>
+					<table bgcolor=#FFFFFF width=800 border=0 cellpadding=0 cellspacing=0>
+						<tr>
+							<td align=center>
+								<br>
+								<a href='javascript:location.reload();'>(결과가 잘 안보일때는 새로고침(여기)을 클릭해주세요)</a>
+								<br>
+								<br><font size=3><b><u>에누리관리자 기본 정보</u></b></font><br>
+								<table border=1 width=90% cellpadding=1 cellspacing=0 borderColorLight=#808080 borderColorDark=#FFFFFF>
+								<form name='frmshopbase' action='Shopinfo_Update.jsp' method=post onSubmit="return FrmSbChk(this)" !target='HiddeniFrame'>
+									<input type=hidden name=beforepath value="">	
+									<tr>
+										<td bgcolor=#D1D1D1 width=100 align=center>ID</td>
+										<td bgcolor=#EFEFEF>
+											
+											<b></b>
+									    	
+										</td>
+									</tr>
+									
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>패스워드</td>
+										<td bgcolor=#EFEFEF>************
+										<img src="http://img.enuri.gscdn.com/images/member/bt_31.gif" border=0 align=absmiddle style=cursor:hand 
+										onClick="OpenWindow('/join/Passchg_Main.jsp?id=','EverpassChg','378','260','no','no');">
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>쇼핑몰명</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sb_name' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus='blur();' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>홈페이지</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sb_url' maxlength=250 style='border:1px solid;width:100%;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>주문전화</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sb_tel' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''> (13자리 이상 입력불가)
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>주문메일</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sb_email' maxlength=50 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									 
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>이벤트</td>
+										<td bgcolor=#EFEFEF>
+											<input type=button style='cursor:hand;border:1px solid;width:60px;height=20;font-size=9pt;' value=전체설정 onClick=Main_OpenWindow('/sdu/shopdelivery/Setcategoryevent.jsp?tabCmd=event&ShopCode=0000&Mode=AllCate','SetCateDel','725','500','YES','YES',200,500);>
+											<input type=button style='cursor:hand;border:1px solid;width:60px;height=20;font-size=9pt;' value=분류설정 onClick=Main_OpenWindow('/sdu/shopdelivery/Setcategoryevent.jsp?tabCmd=event&ShopCode=0000&Mode=PartCate','SetCateDel','725','500','YES','YES',200,500);>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>담당</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_manager' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value='' >
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>담당전화</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_tel' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''> (13자리 이상 입력불가)
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>담당 e-mail</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_email' maxlength=50 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>정산담당자명</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_moneynm' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>정산담당 전화</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_moneytel' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>정산담당 e-mail</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_moneyemail' maxlength=50 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>입금은행</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_banknm' maxlength=20 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>입금계좌</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_account' maxlength=20 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>입금자명</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='sdub_name' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td colspan=2 align=center height=40>
+											<input type=submit name='cmd' value='기본 정보 수정' style='cursor:hand;border:1px solid;width=150px;height=20;font-size=9pt;'>
+											<input type=reset name='' value='다시 작성' style='cursor:hand;border:1px solid;width=150px;height=20;font-size=9pt;'>
+										</td>
+									</tr>
+								</form>
+								</table>
+									
+						
+								<br><font size=3><b><u>상세 정보</u></b></font><br>
+								<table border=1 width=90% cellpadding=1 cellspacing=0 borderColorLight=#808080 borderColorDark=#FFFFFF>
+								<form name='frmshopbase' action='Shopinfo_Detail_Update.jsp' method=post !target='HiddeniFrame'>
+									<input type=hidden name=beforepath value="">
+									<tr>
+										<td bgcolor=#D1D1D1 width=100 align=center>회사명</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='mall_company_name' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>사업자등록번호</td>
+										<td bgcolor=#EFEFEF>
+											<input type=text name='mall_company_number' maxlength=15 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>쇼핑몰 소개</td>
+										<td bgcolor=#EFEFEF>
+											<textarea name='mall_intro' maxlength=500 style='border:1px solid;width:100%;height:60px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white'></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>지원서비스</td>
+										<td bgcolor=#EFEFEF>
+											<table border=0 cellpadding=2 cellspacing=0>
+												<tr>
+													<td><input type=checkbox name='service_ssl' value='1' >SSL</td>
+													<td><input type=checkbox name='service_set' value='1' >SET</td>
+													<td><input type=checkbox name='service_member' value='1' >회원전용</td>
+													<td><input type=checkbox name='service_search' value='1' >상품검색</td>
+													<td><input type=checkbox name='service_shoppingbag' value='1' >장바구니</td>
+													<td><input type=checkbox name='service_order_inquiry' value='1' >주문내역조회</td>
+													<td><input type=checkbox name='service_phone_order' value='1' >전화주문</td>
+												</tr>	
+												<tr>
+													<td colspan=7>
+														&nbsp;기타 : <input type=text name='service_etc' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>결제방법</td>
+										<td bgcolor=#EFEFEF>
+											<table border=0 cellpadding=2 cellspacing=0>
+												<tr>
+													<td><input type=checkbox name='pay_online_money' value='1' >무통장입금</td>
+													<td><input type=checkbox name='pay_credit' value='1' >신용카드</td>
+													<td><input type=checkbox name='pay_cyber_cash' value='1' >사이버캐쉬</td>
+												</tr>
+												<tr>
+													<td colspan=3>
+														&nbsp;기타 : <input type=text name='pay_etc' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value='' >
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>결제신용카드</td>
+										<td bgcolor=#EFEFEF>
+											<table border=0 cellpadding=2 cellspacing=0>
+												<tr>
+													<td><input type=checkbox name='card_visa' value='1'	>비자카드</td>
+													<td><input type=checkbox name='card_master' value='1'	>마스터카드</td>
+													<td><input type=checkbox name='card_foreign' value='1'	>외환카드</td>
+													<td><input type=checkbox name='card_bc' value='1'	>비씨카드</td>
+													<td><input type=checkbox name='card_lg' value='1'	>엘지카드</td>
+													<td><input type=checkbox name='card_gookmin' value='1'	>국민카드</td>
+													<td><input type=checkbox name='card_samsung' value='1'	>삼성카드</td>
+												</tr>	
+												<tr>
+													<td colspan=7>
+														&nbsp;기타 : <input type=text name='card_etc' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>배송안내</td>
+										<td bgcolor=#EFEFEF>
+											<table border=0 cellpadding=2 cellspacing=0>
+												<tr>
+													<td><input type=checkbox name='delivery_refer' value='1' >배송과정조회</td>
+													<td><input type=checkbox name='delivery_foreign' value='1' >국제배달</td>
+												</tr>												
+												<tr>
+													<td colspan=2>
+														&nbsp;배송소요기간 : <input type=text name='delivery_day' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+														<br>&nbsp;배송요금 : <input type=text name='delivery_charge' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+														<br>&nbsp;당일택배 : <input type=text name='delivery_today' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+														<br>&nbsp;당일택배가능지역 : <input type=text name='delivery_area' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>반품<br>및<br>교환</td>
+										<td bgcolor=#EFEFEF>
+											&nbsp;반품기간 : <input type=text name='return_day' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+											<br>&nbsp;반품조건 : <input type=text name='return_condition' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+											<br>&nbsp;교환기간 : <input type=text name='exchange_day' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+											<br>&nbsp;교환조건 : <input type=text name='exchange_condition' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+										</td>
+									</tr>
+									<tr>
+										<td bgcolor=#D1D1D1 align=center>기타</td>
+										<td bgcolor=#EFEFEF>
+											<table border=0 cellpadding=2 cellspacing=0>
+												<tr>
+													<td><input type=checkbox name='etc_bid' value='1' >경매</td>
+													<td><input type=checkbox name='etc_point_increase' value='1' >마일리지적립</td>
+												</tr>
+												<tr>
+													<td colspan=2>
+														&nbsp;가격할인 : <input type=text name='etc_discount' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+														<br>&nbsp;사은품제공 : <input type=text name='etc_bonus' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''><br>&nbsp;기타 : <input type=text name='etc_etc' maxlength=30 style='border:1px solid;width:200px;height:18px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value=''>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+									<tr>
+										<td colspan=2 align=center height=40>
+											<input type=submit name='cmd' value='상세 정보 수정' style='cursor:hand;border:1px solid;width=150px;height=20;font-size=9pt;'>
+				 							<input type=reset name='' value='다시 작성' style='cursor:hand;border:1px solid;width=150px;height=20;font-size=9pt;'>
+										</td>
+									</tr>
+								</form>
+							</table>
+						</td>
+					</tr>
+					</table>
+				</TD>
+			</TR>
+		</TABLE>
+	</div>
+	<!-- //SDU content -->
+
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<!-- <ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul> -->
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+</body>
+</html>
+
+

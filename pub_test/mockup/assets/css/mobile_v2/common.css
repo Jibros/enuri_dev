@@ -1,0 +1,391 @@
+﻿@charset "utf-8";
+@import url("footer.css");
+@import url("gnb.css");
+
+/************************************************************************
+ * 파일명 : common.css
+ * 설명 : 에누리 모바일 웹 (v2019) 공통 CSS
+ * 작성자  :신왕섭
+ * 작성일 :2020.02.06
+************************************************************************/
+
+* {-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);margin:0;padding:0}
+body,input,textarea,select,table,button{font-size:14px;font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Apple SD 산돌고딕 Neo','Microsoft NeoGothic','Helvetica','AppleGothic','Droid sans','Sans-serif','Dotum','Verdana','Helvetica',sans-serif}
+h1,h2,h3,h4,h5 {font-size:100%}
+a:link,a:hover,a:active,a:visited,a:focus {color:#4c5363;text-decoration:none;outline:none;-webkit-tap-highlight-color:transparent}
+ul,ol,li {list-style:none}
+table {width:100%;border-collapse:collapse; word-break: break-all}
+colgroup {background:none}
+input,select,textarea,label,button {vertical-align:middle;font-size:14px; font-family: inherit }
+button{border: 0 none; background-color: transparent; cursor: pointer}
+fieldset,img {border:0}
+img {vertical-align:top}
+td img {vertical-align:middle}
+legend,caption {visibility:hidden;width:0;font-size:0;line-height:0;text-indent:-5000px}
+address,em {font-style:normal}
+hr {display:none}
+.hide {visibility:hidden;position:absolute;font-size:0;line-height:0}
+input,textarea{-webkit-appearance: none;-webkit-border-radius:0}
+input,textarea,button{outline-style:none}
+select,input[type="text"],input[type="password"],input[type="number"],input[type="radio"],input[type="checkbox"] {-webkit-appearance:none;-moz-appearance:none;border-radius:0}
+button{outline:none;background-color:transparent;color:inherit;letter-spacing:inherit;font-size:inherit}
+button::-moz-focus-inner {border:0;padding:0; }
+/* body,#main {background: #dde1e6} */
+.blind {display:block;position:absolute;overflow:hidden;left:-9999px;width:1px;height:1px;font-size:0;line-height:0;text-indent:-9999px} /* hide */
+.ico_m{background:url(http://img.enuri.info/images/m_home/icon_pack.png) 0 0 no-repeat; background-size:250px 400px; border:none; text-indent:-9999em; }
+.m_fixed{position: fixed;top:0;left:0;right:0;z-index:100;box-shadow: 0 0 15px rgba(0,0,0,.2)}
+.invisible{display:none!important}
+.dim{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7)}
+.dim .dim__back{position: absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+
+/* var */
+:root{
+    
+    --color-enuri-blue : #0073be;  /* 에누리 블루 */
+    --color-enuri-sky : #30a7f7; /* 에누리 스카이 */
+    --url-comm-sprite : url(http://img.enuri.info/images/mobile_v2/common_sprite.png); /* 공통 Sprite */
+    --size-comm-sprite : 360px;
+    --url-home-sprite : url(http://img.enuri.info/images/mobile_v2/home_sprite.png); /* 홈메인 Sprite */
+    --size-home-sprite : 360px;    
+    --url-mall-sprite : url(http://img.enuri.info/images/mobile_v2/logo_sprite.png); /* 로고 Sprite */
+    --size-mall-sprite : 360px;
+    --url-my-sprite : url(http://img.enuri.info/images/mobile_v2/myenuri_sprite.png); /* 마이에누리 Sprite */
+    --size-my-sprite : 360px;
+    --url-vip-sprite : url(http://img.enuri.info/images/mobile_v2/ico_pack_vip.png); /* VIP Sprite */
+    --size-vip-sprite : 300px;
+}
+
+/* common layout */
+body{background-color:#f6f6f6}
+
+.round_card{padding:10px 5px 0 5px}
+.round_card .card_inner{position:relative;border-radius:5px 5px;border:1px solid #eeeeee;background:#fff;overflow: hidden}
+.comm__sprite{background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px}
+.home__sprite{background-image:url(http://img.enuri.info/images/mobile_v2/home_sprite.png);background-repeat:no-repeat;background-size:360px}
+.mall__sprite{background-image:url(http://img.enuri.info/images/mobile_v2/logo_sprite.png);background-repeat:no-repeat;background-size:360px}
+
+/* 스크롤 컨텐츠 */
+.scroller{overflow-x: auto;overflow-y: hidden;-webkit-overflow-scrolling: touch}
+.scroller::-webkit-scrollbar-track,
+.scroller::-webkit-scrollbar,
+.scroller::-webkit-scrollbar-thumb{width:0;height:0;background-color:transparent}
+.scroller .scroll-cont{display:-webkit-box;display:-ms-flexbox;display:flex;display: -webkit-inline-box;display: -ms-inline-flexbox}
+
+/* search layer */
+.com__sr_layer{position:fixed;top:0;left:0;width:100%;height:100%;z-index: 1000;background-color:#f6f6f6;letter-spacing: -1px;display:none}
+.com__sr_layer .search_head{position:relative;background-image: -webkit-gradient(linear,left top,right top,from(#30a7f7) ,to(#2d83ed));background-image: -webkit-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: -o-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: linear-gradient(to right,#30a7f7 ,#2d83ed);padding:5px 10px 5px 39px;z-index: 1}
+.com__sr_layer .search_head .btn__sr_back{position: absolute;width:24px;height:24px;background-position:-75px -185px;top:13px;left:9px;text-indent:-9999em}
+.com__sr_layer .search_head .ar_lay_sr{position:relative;display:block;background-color:#fff;height:40px;border-radius:4px 4px;overflow: hidden}
+.com__sr_layer .search_head .ar_lay_sr input{padding:6px 10px;height:28px;line-height:28px;border:0;outline:none;width:calc(100% - 100px);box-sizing:content-box;background-color:transparent}
+.com__sr_layer .search_head .ar_lay_sr input::placeholder{color:#888888}
+.com__sr_layer .search_head .ar_lay_sr input:valid + .btn__delete{display:block !important}
+.com__sr_layer .search_head .ar_lay_sr button{position: absolute;top:0;width:44px;height:40px;z-index: 1;text-indent: -9999em}
+.com__sr_layer .search_head .ar_lay_sr button:after{content:"";position: absolute;width:24px;height:24px;top:8px;right:10px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px}
+.com__sr_layer .search_head .ar_lay_sr .btn__delete{right:44px;display:none}
+.com__sr_layer .search_head .ar_lay_sr .btn__delete:after{background-position:-100px -210px}
+.com__sr_layer .search_head .ar_lay_sr .btn__search{right:0}
+.com__sr_layer .search_head .ar_lay_sr .btn__search:after{background-position:-125px -210px}
+.com__sr_layer .search_cnt{position: absolute;top:60px;bottom:0;left:0;right:0;box-sizing: border-box;padding:0 5px 10px 5px;overflow: auto}
+.com__sr_layer .sr__list{border:1px solid #eeeeee;background:#fff;color:#555;font-size:14px}
+.com__sr_layer .sr__list ul{overflow: hidden}
+.com__sr_layer .sr__list li{position: relative;border-top:1px solid #eee;height:44px;line-height:44px}
+.com__sr_layer .sr__list li .ico_spr_cate{display:inline-block;width:20px;height:20px;background-position:-100px -235px;text-indent:-9999em;position: relative;top:12px;margin:0 4px}
+.com__sr_layer .sr__list li:first-of-type{border-top:0}
+.com__sr_layer .sr__list li em{color:var(--color-enuri-sky)}
+.com__sr_layer .sr__list li.type_ac_cate:after{content:"카테고리";font-size:14px;color:#aaa;display: inline-block;margin-left:8px}
+.com__sr_layer .sr__list li.type_ac_kwrd:after{content:"";position: absolute;width:20px;height:20px;right:16px;top:12px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-140px -235px}
+/* 자동완성 */
+.com__sr_layer .sr__list.type_autocomplete li{padding:0 54px 0 16px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis}
+.com__sr_layer .sr__list.type_autocomplete li .btn__key{position:absolute;top:2px;right:2px;width:40px;height:40px;z-index:10}
+/* 최근검색어/인기검색어 */
+.com__sr_layer .sr__tab{overflow:hidden;position:-webkit-sticky;position:sticky;top:0;z-index: 2;margin-bottom:10px}
+.com__sr_layer .sr__tab li{box-sizing: border-box;width:50%;float:left;text-align:center;line-height:36px;height:36px;background:#e9f4fa;border:1px solid #d4e1e8;color:#5c7395;font-size:14px}
+.com__sr_layer .sr__tab li.on{color:#fff;background:var(--color-enuri-blue);border-color:#036cb1}
+.com__sr_layer .sr__tab li.btn__recent{border-radius:4px 0 0 0}
+.com__sr_layer .sr__tab li.btn__popular{border-radius:0 4px 0 0}
+.com__sr_layer .tab__recent li{padding:0 16px}
+.com__sr_layer .tab__recent li .btn__key{position:absolute;top:2px;left:2px;width:40px;height:40px;z-index:10}
+.com__sr_layer .tab__recent li .txt__key{display:block;position: relative;padding-left:26px;box-sizing: border-box;width:calc(100% - 66px);overflow:hidden;display:block;white-space: nowrap;text-overflow: ellipsis}
+.com__sr_layer .tab__recent li .txt__key:before{content:"";position: absolute;width:20px;height:20px;left:0;top:12px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-140px -235px}
+.com__sr_layer .tab__recent li .txt__date{height:100%;width:30px;font-size:12px;color:#aaa;position: absolute;top:0;right:46px;text-align:center}
+.com__sr_layer .tab__recent li .btn__delete{width:20px;height:20px;position: absolute;top:12px;right:16px}
+.com__sr_layer .tab__recent li .btn__delete .comm__sprite{position:absolute;width:20px;height:20px;top:0;left:0;background-position:-120px -235px;text-indent:-9999em}
+.com__sr_layer .no__result,
+.com__sr_layer .no__recentsave{text-align:center;display:block;padding:80px 0;line-height:18px}
+.com__sr_layer .ico__caution{text-indent:-9999em;width:75px;height:75px;display:block;margin:0 auto 12px;background-position:0 -55px}
+.com__sr_layer .txt_caution{display:block;font-size:16px;color:#222}
+.com__sr_layer .txt_caution_sub{display:block;font-size:12px;color:#aaa}
+
+.com__sr_layer .tab__popular{counter-reset:section}
+.com__sr_layer .tab__popular li{padding:0 16px}
+.com__sr_layer .tab__popular li .txt__key{position:relative;padding:0 60px 0 24px;display:block;color:#555555;overflow:hidden;white-space: nowrap;text-overflow: ellipsis}
+.com__sr_layer .tab__popular li .txt__key:before{counter-increment:section;content:counter(section);width:20px;height:20px;border-radius: 50% 50%;position: absolute;top:12px;left:0;background-color:#cdcdcd;font-size:12px;line-height:20px;color:#fff;text-align:center}
+.com__sr_layer .tab__popular li:nth-child(-n+3) .txt__key{color:var(--color-enuri-sky)}
+.com__sr_layer .tab__popular li:nth-child(-n+3) .txt__key:before{background-color:#2988ef}
+.com__sr_layer .tab__popular li .txt_rank{position: absolute;top:12px;right:0;width:40px;padding-left:24px;height:20px;font-size:12px;line-height:20px;color:#aaa}
+.com__sr_layer .tab__popular li .txt_rank:before{content:"";position: absolute;width:20px;height:20px;top:0;left:0;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px}
+.com__sr_layer .tab__popular li .txt_rank.rank_rise:before{background-position:-160px -235px}
+.com__sr_layer .tab__popular li .txt_rank.rank_down:before{background-position:-180px -235px}
+
+.com__sr_layer .search_foot{border:1px solid #eeeeee;background-color:#fff;height:44px;padding:0 6px;line-height:44px;color:#222;font-size:0;letter-spacing:-1px;position: relative;margin-top:-1px}
+.com__sr_layer .search_foot .btn__sr_foot{padding:0 10px 0 11px;font-size:14px;position:relative;color:#222;height:44px;display:inline-block;line-height:44px}
+.com__sr_layer .search_foot .btn__sr_foot:before{content:"";width:1px;height:14px;border-left:1px solid #888;position: absolute;top:15px;left:0}
+.com__sr_layer .search_foot .btn__sr_foot:first-of-type:before{display:none}
+.com__sr_layer .search_foot .btn__sr_back{font-size:14px;height:44px;padding:0 16px 0 10px;position: absolute;top:0;right:0;color:#222}
+
+/* 검색창 모션 */
+.com__sr_layer .search_head{-webkit-transition:all .3s ease-in-out;-o-transition:all .3s ease-in-out;transition:all .3s ease-in-out;padding:5px 10px 5px 10px}
+.com__sr_layer .search_head .btn__sr_back{-webkit-transition:-webkit-transform .5s ease-in-out;transition:-webkit-transform .5s ease-in-out;-o-transition:transform .5s ease-in-out;transition:transform .5s ease-in-out;transition:transform .5s ease-in-out,-webkit-transform .5s ease-in-out;-webkit-transform:translateX(-35px);-ms-transform:translateX(-35px);transform:translateX(-35px)}
+.com__sr_layer.opened .search_head{padding:5px 10px 5px 44px}
+.com__sr_layer.opened .search_head .btn__sr_back{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}
+
+/* 카테고리 */
+.com__cate_wrap{position:fixed;top:0;left:0;width:100%;height:100%;z-index: 110;display:none;background:rgba(0,0,0,0);-webkit-transition:background .7s ease-in-out;-o-transition:background .7s ease-in-out;transition:background .7s ease-in-out}
+.com__cate_wrap .cate_inner{position: absolute;top:0;left:0;width:100%;height:100%;-webkit-transition:-webkit-transform .7s ease-in-out;transition:-webkit-transform .7s ease-in-out;-o-transition:transform .7s ease-in-out;transition:transform .7s ease-in-out;transition:transform .7s ease-in-out,-webkit-transform .7s ease-in-out;background-color:#fff;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%)}
+.com__cate_wrap.on{background:rgba(0,0,0,.7)}
+.com__cate_wrap.on .cate_inner{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0)}
+.com__cate_wrap .cate_cnt{top:50px;position:absolute;height:calc(100% - 50px);width:100%;z-index: 0}
+.com__cate_wrap .cate_menu{position: absolute;top:0;left:0;width:80px;background:#e9f4fa;height:100%;overflow-y:auto}
+.com__cate_wrap .cate_menu:after{content:"";position: absolute;top:0;right:0;width:1px;height:100%;border-right:1px solid #d4e1e8}
+.com__cate_wrap .cate_menu li{box-sizing: border-box;position:relative;width:100%;height:65px;border-bottom:1px solid #d4e1e8;z-index: 1}
+.com__cate_wrap .cate_menu li a{position:absolute;width:100%;left:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);text-align:center;font-size:15px;line-height:18px;color:#5c7395;letter-spacing: -1px}
+.com__cate_wrap .cate_menu li.selected{background-color:#fff;position: -webkit-sticky;position: sticky;top:0;z-index:10}
+.com__cate_wrap .cate_menu li.selected a{color:var(--color-enuri-sky);font-weight: bold}
+.com__cate_wrap .cate_menu li .txt_shortcut{display:block;margin-top:4px;text-align:center;color:#444}
+.com__cate_wrap .btn_shortcut .comm__sprite{display:block;margin:0 auto;width:24px;height:24px}
+.com__cate_wrap .btn_shortcut .ico_new{position: absolute;width:15px;height:18px;background-position:-225px -210px;top:0;right:7px;text-indent:-9999em;z-index:1}
+.com__cate_wrap .ico_knowcom{background-position:0 -135px}
+.com__cate_wrap .ico_social{background-position:-25px -135px}
+.com__cate_wrap .ico_flower{background-position:-50px -135px}
+.com__cate_wrap .ico_eglobal{background-position:-75px -135px}
+.com__cate_wrap .ico_ereborn{background-position:-100px -135px}
+.com__cate_wrap .cate_list{letter-spacing: -1px;position: absolute;top:0;left:80px;right:0;height:100%;overflow-y: auto}
+.com__cate_wrap .cate_list li{position: relative}
+.com__cate_wrap .cate_list > ul.cate_depth{padding:0 10px;padding-bottom:40px}
+.com__cate_wrap .cate_list > ul.cate_depth a{display:block}
+.com__cate_wrap .cate_list a.selected{font-weight:bold}
+.cate_depth li{display:none}
+.cate_depth .show_child > ul > li{display:block}
+.cate_depth .show_child > .cate_tit{font-weight: bold}
+.cate_depth .depth_01,
+.cate_depth .depth_02{display:block}
+.cate_depth .depth_01 > .cate_item{position: -webkit-sticky;position: sticky;top:0;background:#fff;z-index: 10}
+/* .cate_depth .depth_02 > .cate_tit{position: sticky;top:41px;background:#fff;z-index: 9} */
+.cate_depth a.cate_tit{position: relative}
+.cate_depth a.cate_tit:after{content:"";position: absolute;width:13px;height:13px;top:50%;right:10px;margin-top:-10px;-webkit-transform-origin: center center;-ms-transform-origin: center center;transform-origin: center center;-webkit-box-sizing:border-box;box-sizing:border-box;border:1px solid #999999;border-top:0;border-right:0;border-radius: 1px 1px;-webkit-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg)}
+.cate_depth a.cate_item{overflow:hidden;height:37px;padding-right:34px;line-height:37px;border-bottom:1px solid #f6f6f6;white-space: nowrap;text-overflow: ellipsis}
+.cate_depth .show_child > a.cate_tit:after{-webkit-transform:rotate(135deg);-ms-transform:rotate(135deg);transform:rotate(135deg);margin-top:-4px;border-color:#333}
+.cate_depth .depth_01 > a.cate_item{font-size:15px;color:#333333;height:32px;line-height:32px;padding-top:10px;font-weight: bold;border-bottom:2px solid #333333;padding-left:5px}
+.cate_depth .depth_02 > a.cate_item{font-size:14px;color:#333333;padding-left:10px}
+.cate_depth .depth_03 > a.cate_item{font-size:14px;color:#555555;padding-left:20px}
+.cate_depth .depth_03 > a.cate_item{font-size:14px;color:#555555;padding-left:20px}
+.cate_depth .depth_03 ul{background-color:#fafafa}
+.cate_depth .depth_04 > a.cate_item{font-size:14px;color:#888888;padding-left:40px}
+.cate_depth .depth_04 a.cate_tit:after{display:none}
+.cate_depth .depth_04 a.cate_item:before{content:"";position:relative;top:-2px;display:inline-block;width:4px;height:4px;border:0;border-radius:50% 50%;margin-right:6px;background-color:#ddd}
+.cate_depth .depth_04 a.cate_tit.cate_item{padding-left:30px}
+.cate_depth .depth_04 a.cate_tit.cate_item:before{top:-2px;width:6px;height:6px;border:2px solid #dddddd;border-radius:0;border-top:0;border-right:0;margin-right:6px;background-color:transparent}
+.depth_03 .cate_item.type__sub:before{content:"";position:relative;top:-2px;display:inline-block;width:6px;height:6px;border:2px solid #dddddd;border-top:0;border-right:0;margin-right:6px}
+
+.selected > .cate_item{color:var(--color-enuri-sky)!important}
+.selected > .cate_item:after{border-color:var(--color-enuri-sky)!important}
+.selected > .cate_item:before{background-color:var(--color-enuri-sky)!important}
+.selected > .cate_item.cate_tit:before{background-color:transparent!important;border-color:var(--color-enuri-sky)!important}
+
+@media (min-width:768px) {    
+    .com__cate_wrap{background-color:rgba(0,0,0,.7)}
+	.com__cate_wrap .cate_inner{max-width:420px}
+}
+
+#wrap .another_app_list{margin-top:10px}
+
+/* 스크롤 잠금 */
+#wrap.scroll_lock{position:fixed;left:0;right:0;top:0;height:100%;overflow:hidden;z-index: 0}
+
+/* 탑배너 */
+.header_top_bnr{position:relative;text-align:center;height:26px;padding:3px 0;letter-spacing:-.5px;text-align:left}
+.header_top_bnr .txt__bnr{display:block;margin:0 11px;height:26px;line-height:26px;color:rgba(255,255,255,.9);font-size:12px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis}
+.header_top_bnr .btn_close{z-index: 1;text-indent: -9999em;width: 20px;height: 20px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-193px 0;position: absolute;right: 11px;top: 6px}
+
+@media (min-width:768px) {    
+    .header_top_bnr .txt__bnr{max-width:746px;margin:0 auto;text-align:center}
+}
+
+/* 일반 페이지 - 컨텐츠 상단 여백 */
+.m_sub_cont{padding-top:50px}
+
+/* 찜버튼 효과 */
+.btn__zzim{width:25px;height:25px;border-radius:50% 50%;background-color:#f6f6f6;text-indent:-9999em;z-index: 1}
+.btn__zzim:after,
+.btn__zzim:before{content:"";position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-193px -24px;width:14px;height:14px}
+.btn__zzim:before{background-position:-208px -24px;z-index: 1;opacity:0}
+.btn__zzim.on:after,
+.btn__zzim.on:before{-webkit-animation:zzim_bounce ease-in-out 0s 1 alternate;animation:zzim_bounce ease-in-out 0s 1 alternate;opacity:1}
+.btn__zzim.on.anim:after,
+.btn__zzim.on.anim:before{-webkit-animation-duration:.3s;animation-duration:.3s}
+@-webkit-keyframes zzim_bounce { 
+    0% {opacity:1;-webkit-transform:scale(1.5) translate(-50%,-50%);transform:scale(1.5) translate(-50%,-50%);-webkit-transform-origin:0% 0%;transform-origin:0% 0%}
+    100% {opacity:1;-webkit-transform:scale(1) translate(-50%,-50%);transform:scale(1) translate(-50%,-50%);-webkit-transform-origin:0% 0%;transform-origin:0% 0%} 
+}
+@keyframes zzim_bounce { 
+    0% {opacity:1;-webkit-transform:scale(1.5) translate(-50%,-50%);transform:scale(1.5) translate(-50%,-50%);-webkit-transform-origin:0% 0%;transform-origin:0% 0%}
+    100% {opacity:1;-webkit-transform:scale(1) translate(-50%,-50%);transform:scale(1) translate(-50%,-50%);-webkit-transform-origin:0% 0%;transform-origin:0% 0%} 
+} 
+
+.zzimly{z-index: 100;letter-spacing: -0.5px;width: 90px;height: 42px;background: rgba(0,0,0,0.5);position: fixed;margin: -20px auto 0 -45px;left: 50%;top: 50%;border-radius: 50%;color: #ffffff;text-align: center;font-size: 11px;padding-top: 48px;line-height: 11px;display:none}
+.zzimly:after{background: url(http://img.enuri.info/images/m_home/icon_pack.png) 0 0 no-repeat;background-size: 250px 400px;background-position: -146px -117px;content: "";position: absolute;left: 30px;top: 15px;width: 31px;height: 27px}
+
+/* 메인전면배너 */
+.main_front_bnr{width:320px;min-height:250px;padding-bottom:90px;margin: -170px auto 0 -160px;position:absolute;left:50%;top:50%;z-index:1;letter-spacing:-1px}
+.main_front_bnr > a{display:block;width:320px;min-height:250px;background-color:#fff}
+.main_front_bnr .btn_group{position: absolute;bottom:0;left:0;width:100%;padding:20px 0 0 0;font-size:12px;text-align:center}
+.main_front_bnr .btn_group button{position:relative;display:inline-block}
+.main_front_bnr .btn_group .btn_down_app{width:240px;height:40px;line-height:40px;background:var(--color-enuri-sky);font-size:18px;color:#fff;border-radius: 20px 20px}
+.main_front_bnr .btn_group .btn_layer_close{height:16px;line-height:16px;border-bottom:1px solid #fff;font-size:14px;color:#fff;margin-top:14px;opacity:.75}
+.main_front_bnr img{width:100%}
+
+/* 홈 탑버튼 */
+.footer .newquick.scr_mode .TBtn{display:block}
+.footer .newquick{-webkit-transition:.3s all ease-in-out;-o-transition:.3s all ease-in-out;transition:.3s all ease-in-out;-webkit-transform:translateY(40px);-ms-transform:translateY(40px);transform:translateY(40px);opacity:0}
+.scr_down .footer .newquick.scr_mode{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
+.scr_up .footer .newquick.scr_mode{-webkit-transition-delay:.5s;-o-transition-delay:.5s;transition-delay:.5s}
+
+/* 공통 레이어 */
+.com__layer{background-color:#fff;position:absolute;top:50%;left:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);letter-spacing:-1px}
+.com__layer .lay_head{height:44px;text-align:center;line-height:44px;font-size:16px;color:#333;border-bottom:1px solid rgba(0,0,0,.01)}
+.com__layer .lay_close{background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;width:20px;height:20px;background-position:-292px -21px;position: absolute;top:12px;right:10px;text-indent:-9999em}
+.com__layer .lay_inner{background-color:#f6f6f6;text-align:center}
+/* 공통레이어 : 에누리컬러 */
+.com__layer.grad_blue .lay_head{background-image: -webkit-gradient(linear,left top,right top,from(#30a7f7) ,to(#2d83ed));background-image: -webkit-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: -o-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: linear-gradient(to right,#30a7f7 ,#2d83ed);color:#fff}
+.com__layer.grad_blue .lay_close{background-position:-292px 0}
+
+/* SNS공유하기 */
+.share_layer{width:270px;margin-left:-135px}
+.share_layer .lay_inner{padding:15px 20px 25px}
+.share_layer .lay_inner ul{margin-top:-5px;display:inline-block;overflow:hidden;width:auto;max-width:204px}
+.share_layer .lay_inner ul li{float:left;width:60px;height:60px;text-indent:-9999em;margin:5px 4px 0}
+.share_layer .lay_inner ul li.share_fb{background:url(http://img.enuri.info/images/mobile_v2/ico_share_fb.png) no-repeat 50% 50%;background-size:100% 100%}
+.share_layer .lay_inner ul li.share_kakao{background:url(http://img.enuri.info/images/mobile_v2/ico_share_kakao.png) no-repeat 50% 50%;background-size:100% 100%}
+.share_layer .lay_inner ul li.share_tw{background:url(http://img.enuri.info/images/mobile_v2/ico_share_tw.png) no-repeat 50% 50%;background-size:100% 100%}
+.share_layer .lay_inner ul li.share_line{background:url(http://img.enuri.info/images/mobile_v2/ico_share_line.png) no-repeat 50% 50%;background-size:100% 100%}
+.share_layer .lay_inner ul li.share_mail{background:url(http://img.enuri.info/images/mobile_v2/ico_share_mail.png) no-repeat 50% 0;background-size:60px auto}
+.share_layer .lay_inner ul li.share_mail.on{background-position:50% -62px}
+.share_layer .lay_inner ul li.share_story{background:url(http://img.enuri.info/images/mobile_v2/ico_share_story.png) no-repeat 50% 50%;background-size:100% 100%}
+.share_layer .lay_inner ul li.share_band{background:url(http://img.enuri.info/images/mobile_v2/ico_share_band.png) no-repeat 50% 50%;background-size:100% 100%}
+.share_layer .lay_inner .btn_wrap{margin-top:20px;height:25px;overflow:hidden;width:230px}
+.share_layer .lay_inner .btn_wrap .btn_group{width:460px;height:25px;-webkit-transition:.3s transform ease-in-out;-o-transition:.3s transform ease-in-out;transition:.3s transform ease-in-out}
+.share_layer .lay_inner .btn_item{height:25px;overflow:hidden;position:relative;float:left;width:230px}
+.share_layer .lay_inner .btn_wrap.mail_on .btn_group{-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}
+.btn_item .txt__share_url,
+.btn_item .txt__share_mail,
+.btn_item .btn__share_copy{border:1px solid #ccc;background-color:#fff;font-size:12px;color:#333;border-radius: 2px 2px;line-height:25px}
+.btn_item .btn__share_mail{border:1px solid #222222;background-color:#222222;font-size:12px;color:#fff;border-radius: 2px 2px;line-height:25px}
+.share_layer .lay_inner .btn_item .txt__share_url{display:block;padding:0 10px;margin-right:53px;height:23px;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;letter-spacing: 0}
+.share_layer .lay_inner .btn_item .txt__share_mail{display:block;padding:0 10px;height:23px;overflow:hidden;width:147px;-webkit-appearance: none;-webkit-border-radius: 0}
+.share_layer .lay_inner .btn_item .btn__share_copy,
+.share_layer .lay_inner .btn_item .btn__share_mail{position: absolute;top:0;right:0;text-align:center;width:58px;height:25px}
+.share_layer .lay_inner .btn_item .btn__share_copy{width:48px}
+
+/* e머니 상품권 적립안내 레이어 2017-12-05 */
+.emoney_ticket_layer{padding:10px; position:absolute; left:0; top:50%; margin:0 auto; z-index:100; width:100%; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); -moz-transform:translateY(-50%); transform:translateY(-50%); box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box}
+.emoney_ticket_layer .con{width:100%; background:#fff; padding:20px 15px 15px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}
+.emoney_ticket_layer .con h1 {margin-bottom:10px; padding:0; color:#000; font-size:23px; letter-spacing:-1px; line-height:30px; vertical-align:middle}
+.emoney_ticket_layer .con h1 b {color:#007dc3}
+.emoney_ticket_layer .con .txt{font-size:12px; color:#666; line-height:17px; padding-bottom:3px; letter-spacing:-1px}
+.emoney_ticket_layer .con .txt02{font-size:10px; color:#666666; padding-bottom:10px}
+.emoney_ticket_layer .con .eticket_use_list {clear:both; margin-top:18px; padding-top:13px; background:url(http://img.enuri.info/images/m_home/bg_dashed_line.gif) top left repeat-x; background-size:16px}
+.emoney_ticket_layer .con .eticket_use_list h2 {font-weight:bold; font-size:12px; color:#007dc3; text-align:left; line-height:17px}
+.emoney_ticket_layer .con .eticket_use_list ul {margin:0 0 15px; text-align:left}
+.emoney_ticket_layer .con .eticket_use_list li {position:relative; font-size:12px; line-height:16px; padding-left:10px; letter-spacing:-1px}
+.emoney_ticket_layer .con .eticket_use_list li:after {content:"-"; display:block; position:absolute; left:0; top:0}
+.emoney_ticket_layer .con .eticket_use_list li .subtxt {color:#999}
+.emoney_ticket_layer .con .eticket_use_list .view {display:block; width:calc(100% - 20px); margin:0 auto; border-radius:5px; font-weight:bold; font-size:12px; color:#fff; line-height:35px; vertical-align:middle; background-color:#3a7bd5}
+.emoney_ticket_layer .frontbtn{color:#ffffff; background:#373c40; }
+.emoney_ticket_layer .frontbtn span{box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; height:35px; display:inline-block; text-align:center; font-weight:normal; font-size:12px; position:relative; line-height:33px; vertical-align:middle}
+.emoney_ticket_layer .frontbtn span a{display:block; color:#fff}
+.emoney_ticket_layer .frontbtn span:first-child{width:70%; border-right:1px solid #35373e}
+.emoney_ticket_layer .frontbtn span:last-child{width:30%;border-left:1px solid #626467}
+
+@media screen and (max-height: 480px){
+.emoney_ticket_layer{margin:-242px auto 0; }
+.emoney_ticket_layer .con{height:430px; }
+.emoney_ticket_layer .con h1{font-size:20px; padding:7px 0}
+.emoney_ticket_layer .con .wbox{padding:8px}
+.emoney_ticket_layer .con .wbox li{font-size:12px; letter-spacing:-0.5px; }
+}
+@media screen and (max-width:320px){
+.emoney_ticket_layer .con .wbox li{font-size:12px; letter-spacing:-0.5px; }
+}
+
+.emoney_ticket_layer.app{width:100%; height:100%; background:#dde1e6; top:0; margin:0; padding:0}
+.emoney_ticket_layer.app .con{padding:20px}
+.emoney_ticket_layer.app .btnclose{position:absolute; right:3px; top:3px; width:28px; height:28px; border-radius:3px; background: url(http://img.enuri.info/images/main/ico_popup.png) -49px 5px no-repeat #bcbfc4; background-size:72px; text-indent:-9999em}
+
+/* 위메프 상품권 적립안내 레이어 2018-02-28 */
+.wemap_ticket_layer{padding:10px; position:absolute; left:0; top:50%; margin:0 auto; z-index:100; width:100%; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); -moz-transform:translateY(-50%); transform:translateY(-50%); box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box}
+.wemap_ticket_layer .con{width:100%; background:#fff; padding:20px 15px 3px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}
+.wemap_ticket_layer .con h1 {margin-bottom:10px; padding:0; color:#000; font-size:23px; letter-spacing:-1px; line-height:30px; vertical-align:middle}
+.wemap_ticket_layer .con h1 b {color:#007dc3}
+.wemap_ticket_layer .con .txt{font-size:12px; color:#666; line-height:17px; padding-bottom:3px; letter-spacing:-1px}
+.wemap_ticket_layer .con .txt02{font-size:10px; color:#666666; padding-bottom:10px}
+.wemap_ticket_layer .con .eticket_use_list {clear:both; /* margin-top:18px; */ padding-top:13px; background:url(http://img.enuri.info/images/m_home/bg_dashed_line.gif) top left repeat-x; background-size:16px}
+.wemap_ticket_layer .con .eticket_use_list h2 {font-weight:bold; font-size:12px; color:#007dc3; text-align:left; line-height:17px}
+.wemap_ticket_layer .con .eticket_use_list ul {margin:0 0 20px; text-align:left}
+.wemap_ticket_layer .con .eticket_use_list ul:last-child {margin-bottom:0}
+.wemap_ticket_layer .con .eticket_use_list li {position:relative; margin-bottom:5px; font-size:12px; line-height:16px; padding-left:10px; letter-spacing:-1px}
+.wemap_ticket_layer .con .eticket_use_list li:after {content:"-"; display:block; position:absolute; left:0; top:0}
+.wemap_ticket_layer .con .eticket_use_list li .subtxt {color:#999}
+.wemap_ticket_layer .con .eticket_use_list li .emp-blue {color:#007dc3}
+.wemap_ticket_layer .con .eticket_use_list .cautionment {position:relative; margin-bottom:15px; padding-left:15px; font-size:12px; line-height:16px}
+.wemap_ticket_layer .con .eticket_use_list .cautionment:before {content:"※"; position:absolute; left:0}
+.wemap_ticket_layer .con .eticket_use_list .view {display:block; width:calc(100% - 20px); margin:15px auto 0; border-radius:5px; font-weight:bold; font-size:12px; color:#fff; line-height:35px; vertical-align:middle; background-color:#3a7bd5}
+.wemap_ticket_layer .frontbtn{color:#ffffff; background:#373c40; }
+.wemap_ticket_layer .frontbtn span{box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; height:35px; display:inline-block; text-align:center; font-weight:normal; font-size:12px; position:relative; line-height:33px; vertical-align:middle}
+.wemap_ticket_layer .frontbtn span a{display:block; color:#fff}
+.wemap_ticket_layer .frontbtn span:first-child{width:70%; border-right:1px solid #35373e}
+.wemap_ticket_layer .frontbtn span:last-child{width:30%;border-left:1px solid #626467}
+
+@media (max-height: 480px){
+	.dim {position:absolute; bottom:0; min-height:480px}
+	.wemap_ticket_layer {position:static; top:0; -webkit-transform:translateY(0); -ms-transform:translateY(0); -moz-transform:translateY(0); transform:translateY(0); }
+	.wemap_ticket_layer .con {min-height:400px}
+}
+
+.wemap_ticket_layer.app{width:100%; height:100%; background:#dde1e6; top:0; margin:0; padding:0}
+.wemap_ticket_layer.app .con{padding:20px}
+.wemap_ticket_layer.app .btnclose{position:absolute; right:3px; top:3px; width:28px; height:28px; border-radius:3px; background: url(http://img.enuri.info/images/main/ico_popup.png) -49px 5px no-repeat #bcbfc4; background-size:72px; text-indent:-9999em}
+
+/* paging */
+.paging{text-align:center; background:#ffffff; padding:5px 0}
+.paging.second{margin-top:8px}
+.paging li{display:inline-block; margin:0 2px; position:relative; width:30px }
+.paging li a{width:30px; height:30px; line-height:30px; color:#999999; text-align:center; display:block; font-size:15px; font-family:tahoma}
+.paging li a.btn{position:absolute; text-indent:-9999em; background: url(http://img.enuri.info/images/mobilefirst/ico_paging.png) 0 0 no-repeat; background-size:38px; }
+.paging li a.btn.prev{background-position:-20px 10px; left:-12px; top:-21px}
+.paging li a.btn.prev.none{background-position:12px 10px; }
+.paging li a.btn.next{background-position:-20px -17px; right:-12px; top:-21px}
+.paging li a.btn.next.none{background-position:12px -17px; }
+.paging li a.selected{cursor:default; color:#7bbbee; text-decoration:underline;  font-weight:bold}
+
+/* 공통 로더 */
+.comm__loader{position:fixed;top:0;left:0;width:100%;height:100%;z-index: 100000;background:rgba(0,0,0,.1)}
+.comm__loader .loader_inner{text-indent:-9999em;position:absolute;top:50%;left:50%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius: 50% 50%;background:url(http://img.enuri.info/images/home/enuri_loader.gif) no-repeat #fff;background-size:60px 60px;-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.25);box-shadow: 0 0 30px rgba(0,0,0,0.25);overflow:hidden}
+
+/* 200421 : SR39554 : 외부광고 브릿지 */
+.lay_ad_bridge{z-index:999}
+.lay_ad_bridge .lay_inner{z-index:10;width:280px;height:330px;background-repeat:no-repeat;background-color:transparent;background-size:100%;position: absolute;top:50%;left:50%;margin:-165px 0 0 -140px}
+.lay_ad_bridge.bridge01 .lay_inner{background-image:url(http://img.enuri.info/images/mobile_v2/lay_ad_bridge_m01.png)}
+.lay_ad_bridge.bridge02 .lay_inner{background-image:url(http://img.enuri.info/images/mobile_v2/lay_ad_bridge_m02.png)}
+.lay_ad_bridge .lay_inner button{border:0;background-color:transparent;outline:none;position:absolute;text-indent:-9999em}
+.lay_ad_bridge .lay_inner .btn_bridge_close{width:30px;height:30px;top:0px;right:15px;}
+.lay_ad_bridge .lay_inner .btn_bridge_app{width:100%;height:60px;bottom:0;left:0;}
+
+/* 200512 로고관련 */
+.mall_list{width:100%;margin-top:8px}
+.mall_list ul{overflow:hidden;background-color:#fff;border-top:1px solid #f6f6f6;border-bottom:1px solid #f6f6f6}
+.mall_list ul li{position:relative;box-sizing:border-box;width:25%;float:left;}
+.mall_list ul li:before{content:"";position: absolute;top:0;right:-1px;bottom:0;border-left:1px solid #f6f6f6}
+.mall_list ul li:after{content:"";position: absolute;left:-1px;bottom:-1px;right:0;border-bottom:1px solid #f6f6f6}
+.logo--sm{padding:14px 0;height:20px;display:block;line-height:0;text-align:center}
+.logo--sm img{height:20px;width:auto;}
+

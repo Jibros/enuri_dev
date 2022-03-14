@@ -1,0 +1,636 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="description" content="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다." /> 
+<meta name="keyword" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가" />
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="/css/knowcom/common.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/default.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/write_m.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<div id="WriteWrap_M">
+	<!-- container -->
+	<div class="container">
+		<!-- 헤더영역 -->
+		<header id="header" class="w_header">
+			<h1 class="tit">글쓰기</h1>
+
+			<a href="#" class="btn_close stripe_m" onclick="onoff('registConfirm'); return false;">뒤로</a>
+			<a href="#" class="btn_regist stripe_m"  onclick="onoff('registComplete'); return false;">등록</a>
+		</header>
+		<!--// 헤더영역 -->
+		
+		<section class="w_content">
+			<!-- 작성 영역 -->
+			<div class="w_input_area">
+				<!-- 게시판선택(필수항목) -->
+				<div class="wia_board">
+					<!-- 
+						공통 SELECT CUSTOM 마크업
+						확장 class="on" 
+						<div class="p_select_box on">
+					-->
+					<div class="p_select_box">
+						<a href="#" class="p_select_btn" onclick="$(this).parent().toggleClass('on');">게시판 선택 <span class="stripe_m arrow"></span></a>
+						<div class="p_select_opt">
+							<ul>
+								<li><span>구매가이드</span></li>
+								<li><span>체험단</span></li>
+								<li><span>사용기</span></li>
+								<li><span>에누리TV</span></li>
+								<!-- 20190919 수정 -->
+								<!-- 수정 : 누리게시판 -> 자유게시판  -->
+								<!-- 추가 : 특가게시판 -->
+								<li><span>자유게시판</span></li>
+								<li><span>특가게시판</span></li>
+								<li><span>쇼핑Q&A</span></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- 셀렉트 박스가 두개일 땐, two_col 클래스 추가 -->
+					<div class="p_select_box two_col">
+						<a href="#" class="p_select_btn" onclick="$(this).parent().toggleClass('on');"> 카테고리 선택 <span class="stripe_m arrow"></span></a>
+						<div class="p_select_opt">
+							<ul>
+								<li><span>디지털/가전</span></li>
+								<li><span>컴퓨터</span></li>
+								<li><span>스포츠/자동차</span></li>
+								<li><span>유아/라이프</span></li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- <a href="#modelformLayer" class="modaal btn_detail">리뷰모델 추가 <em class="necessary">(필수)</em></a> -->
+
+					<div class="p_model">
+						<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+						<a href="#" class="pinfo">
+							<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분 아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+							<span class="pprice"><strong>최저가</strong><em>246,000</em>원</span>
+						</a>
+					</div>
+				</div>
+				<!-- //게시판선택(필수항목) -->
+
+				<!-- 220121 : SR#50959 : 에누리뷰 추가 
+					 * 체크박스 추가
+				-->
+				<div class="chk-review" onclick="agreechk(this);">
+					<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span><em class="tx_label">에누리뷰 참여</em></div>
+				</div>
+
+				<!-- 제목내용입력 -->
+				<div class="write_area">
+					<div class="wa_head">
+						<input type="text" id="" name="" class="wa_ipt" placeholder="제목을 입력하세요" />
+					</div>
+					<!-- 20190919 특가게시판 선택시 - URL입력창 추가 -->
+					<!-- 클릭시 write_m2_url.html 레이어를 띄워주세요 (텍스트입력 레이어와 동일 / 문구만 변경 ) -->
+					<div class="wa_cont">
+						<input type="text" id="" name="" class="wa_ipt" placeholder="URL을 입력하세요" />
+					</div>
+					<!-- // -->
+				</div>
+				<!-- //제목내용입력 -->
+			</div>
+			<!-- //작성 영역 -->
+			
+			<!-- 20190919 URL입력 영역 추가 -->
+			<div class="cont_box w_url_area">
+				<div class="w_view_box">
+					<div class="w_url_head">
+						<h2 class="tit">링크주소</h2>
+						<p class="act">삭제</p>
+					</div>
+					<div class="w_url_cont">
+
+						<!-- 최대 5개 -->
+
+						<!-- row : url -->
+						<div class="w_row_wrap">
+							<div class="unit_lt">
+								<p class="add_url">http://deal.11st.co.kr/product/SellerProductDetail.tmall?method=getSellerProductDetail&prdNo=2058693414</p>
+							</div>
+							<div class="unit_rt">
+								<div class="remote">
+									<button class="stripe_m r_del" onclick="onoff('deleteRow');">행 삭제</button>
+								</div>
+							</div>
+						</div>
+						<!-- // -->
+
+						<div class="w_row_wrap">
+							<div class="unit_lt">
+								<p class="add_url">http://www.enuri.com</p>
+							</div>
+							<div class="unit_rt">
+								<div class="remote">
+									<button class="stripe_m r_del" onclick="onoff('deleteRow');">행 삭제</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- //본문내용확인 영역 -->
+
+			<!-- 본문입력내용확인 영역 -->
+			<div class="cont_box w_output_area">
+				<div class="w_view_box">
+					<div class="w_output_head">
+						<h2 class="tit">입력내용</h2>
+						<p class="act">이동<br />/삭제</p>
+					</div>
+					<div class="w_output_cont">
+						<!-- row : text -->
+						<div class="w_row_wrap">
+							<div class="unit_lt">
+								<p class="add_text">NYT는 주요 IT(정보기술)기업에서 일하고 있거나 일자리 제안을 받았던 익명의 AI 전문가 9명을 인용, 막 박사학위를 받았거나 관련 분야 경험이 몇 년에 불과할지라도 이 분야의 통상 연봉 수준은 30만∼50만 달러(약 3억4∼5억6천만 원) 이상에 회사 주식까지 받을 수 있다고 보도했다.</p>
+							</div>
+							<div class="unit_rt">
+								<div class="remote">
+									<button class="stripe_m r_up">위로 올리기</button>
+									<button class="stripe_m r_down">아래로 내리기</button>
+									<button class="stripe_m r_del" onclick="onoff('deleteRow');">행 삭제</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- row : thumb -->
+						<div class="w_row_wrap">
+							<div class="unit_lt">
+								<span class="add_thumb"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/m_test_img1.jpg" alt="" class="imgs" /></span>
+								<span class="add_thumb_info">image.jpeg / 1024*768 / 790kb</span>
+							</div>
+							<div class="unit_rt">
+								<div class="remote">
+									<button class="stripe_m r_up">위로 올리기</button>
+									<button class="stripe_m r_down">아래로 내리기</button>
+									<button class="stripe_m r_del" onclick="onoff('deleteRow');">행 삭제</button>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- //본문내용확인 영역 -->
+			
+			<!-- 작성 영역 -->
+			<div class="w_input_area">
+				<!-- 제목내용입력 -->
+				<div class="write_area">
+					<div class="wa_head">
+						<input type="text" id="" name="" class="wa_ipt wa_ipt-default" placeholder="내용을 입력하세요" />
+					</div>
+				</div>
+				<!-- //제목내용입력 -->
+			</div>
+			
+			<!-- 관련상품 영역 -->
+			<div class="cont_box w_relate_area">
+				<div class="wra_head">
+					<h2 class="tit">관련상품</h2>
+					<a href="#modelformLayer" class="modaal btn_detail">리뷰모델 추가</a>
+				</div>
+
+				<div class="wra_cont">
+					<ul class="wra_p_list">
+						<!-- loop -->
+						<li>
+							<div class="p_model">
+								<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+								<a href="#" class="pinfo">
+									<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+									<span class="pprice"><strong>최저가</strong><em>246,000</em>원</span>
+									<span class="pdel">삭제</span>
+								</a>
+							</div>
+						</li>
+						<!-- //loop -->
+						<li>
+							<div class="p_model">
+								<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+								<a href="#" class="pinfo">
+									<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+									<span class="pprice"><strong>최저가</strong><em>246,000</em>원</span>
+									<span class="pdel">삭제</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="p_model">
+								<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+								<a href="#" class="pinfo">
+									<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+									<span class="pprice"><strong>최저가</strong><em>246,000</em>원</span>
+									<span class="pdel">삭제</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="p_model">
+								<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+								<a href="#" class="pinfo">
+									<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+									<span class="pprice"><strong>최저가</strong><em>246,000</em>원</span>
+									<span class="pdel">삭제</span>
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="p_model">
+								<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+								<a href="#" class="pinfo">
+									<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+									<span class="pprice"><strong>최저가</strong><em>246,000</em>원</span>
+									<span class="pdel">삭제</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- //관련상품 영역 -->
+		</section>
+
+		<div class="w_bottom_btn">
+			<ul>
+				<li><a href="#textformLayer" class="modaal btn_textadd">텍스트 추가</a></li>
+				<!-- 200108 : SR#37750 : 이미지 업로드시 로더 띄워 주세요. -->
+				<li><a href="#" class="btn_thumbadd" onclick="showLoader();return false;">이미지 추가</a></li>
+				<!-- // -->
+			</ul>
+		</div>
+	</div>
+	<!-- //container -->
+</div>
+
+<!-- 200108 : SR#37750 : 이미지 업로드시 로더 노출 -->
+<!-- 이미지 업로드 중일때 .m_loader에 on클래스 붙여주시고, 업로드 끝나면 제거해 주세요. -->
+<div class="m_loader">
+	<span class="txt_m_loader">처리중입니다.</span>
+</div>
+<script>
+	// 퍼블테스트용
+	var $loader = $(".m_loader");
+	function showLoader(){ // 로더 열기
+		$loader.addClass("on");
+		setTimeout(function(){ 
+			hideLoader();
+		},2000)
+	}
+	function hideLoader(){ // 로더 닫기
+		$loader.removeClass("on");
+	}	
+</script>
+<!-- // -->
+
+<script>
+$(function(){
+	$(".modaal").click(function(){
+		var el = $(this).attr("href");
+		$(el).show();
+		//$("body").css({overflow:'hidden'}).bind('touchmove', function(e){e.preventDefault()});
+		$("#WriteWrap_M").css({overflow:'hidden', height:'100vh'});
+	});
+
+	$(".btn_close").click(function(){
+		var el = $(this).attr("href");
+		$(el).hide();
+		//$("body").css({overflow:'visible'}).unbind('touchmove'); 
+		$("#WriteWrap_M").css({overflow:'visible', height:'auto'});
+	});
+});
+</script>
+
+<!-- LAYER 텍스트입력 -->
+<div id="textformLayer" style="display:none;">
+	<div class="full_fixed_layer">
+		<!-- container -->
+		<div class="container">
+			<!-- 헤더영역 -->
+			<header id="header" class="w_header">
+				<h1 class="tit">텍스트 입력</h1>
+
+				<a href="#textformLayer" class="btn_back stripe_m">뒤로</a>
+				<a href="#" class="btn_input stripe_m"  onclick="onoff('registComplete'); return false;">입력</a>
+			</header>
+			<!--// 헤더영역 -->
+			
+			<section class="w_content">
+				<!-- 작성 영역 -->
+				<div class="cont_box text_input_area">
+					<!-- 제목본문입력 -->
+					<div class="write_area">
+						<div class="wa_cont full_h">
+							<textarea cols="60" rows="5" class="wa_ipt" placeholder="내용을 입력하세요"></textarea>
+						</div>
+					</div>
+					<!-- //제목본문입력 -->
+				</div>
+				<!-- //작성 영역 -->
+			</section>
+		</div>
+		<!-- //container -->
+	</div>
+</div>
+<!-- //LAYER 텍스트입력 -->
+
+<!-- LAYER 이미지추가 -->
+<div id="modelformLayer" style="display:none;">
+	<div class="full_fixed_layer">
+		<!-- container -->
+		<div class="container">
+			<!-- 헤더영역 -->
+			<header id="header" class="w_header">
+				<h1 class="tit">모델 찾기</h1>
+
+				<a href="#modelformLayer" class="btn_close stripe_m">뒤로</a>
+				<a href="#" class="btn_regist stripe_m"  onclick="onoff('registComplete'); return false;">등록</a>
+			</header>
+			<!--// 헤더영역 -->
+			
+			<section class="w_content">
+				<!-- 작성 영역 -->
+				<div class="cont_box w_srch_area">
+					<!-- 검색어 입력 -->
+					<form method="" action="">
+						<fieldset>
+							<legend>검색어 입력</legend>
+							<label class="srch_area">
+								<input type="text" id="" name="" class="srch_ipt" placeholder="검색어를 입력하세요." />
+								<input type="submit" id="" name="" class="submit_ipt" />
+							</label>
+						</fieldset>
+					</form>
+				</div>
+				<!-- //작성 영역 -->
+				
+				<!-- 검색결과 -->
+				<div class="cont_box w_result_area">
+					<div class="wsra_head">
+						<h2 class="tit">검색결과</h2>
+						
+						<!-- 
+							공통 SELECT CUSTOM 마크업
+							확장 class="on" 
+							<div class="p_select_box on">
+						-->
+						<div class="p_select_box">
+							<a href="#" class="p_select_btn">인기순 <span class="stripe_m arrow"></span></a>
+							<div class="p_select_opt">
+								<ul>
+									<li><span>인기순</span></li>
+									<li><span>판매순</span></li>
+									<li><span>가격순</span></li>
+									<li><span>서해순</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="wsra_cont">
+						<!--
+							관련상품 : 복수선택 -> class="wsra_p_list multiple">     .multiple 클래스 추가
+							리뷰모델 : 단일선택 (체크박스X)
+						-->
+						<ul class="wsra_p_list multiple">
+							<!-- no data -->
+							<li class="no_data">
+								<p>검색결과가 없습니다.</p>
+							</li>
+							<!-- //no data -->
+
+							<!-- loop -->
+							<li>
+								<div class="p_model" onclick="agreechk(this);">
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<!-- //loop -->
+							<li>
+								<div class="p_model" onclick="agreechk(this);">
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+									
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="p_model" onclick="agreechk(this);"> 
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+									
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="p_model" onclick="agreechk(this);">
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="p_model" onclick="agreechk(this);">
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="p_model" onclick="agreechk(this);"> 
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+									
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="p_model" onclick="agreechk(this);">
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+							<li>
+								<div class="p_model" onclick="agreechk(this);">
+									<div class="ipt_chk"><span class="unchk"><input type="checkbox" id="chk2" name="agreechk" value="N"></span></div>
+
+									<span class="pthum"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_main_thumb4.jpg" alt="" class="imgs" /></span>
+									<a href="#" class="pinfo">
+										<span class="pname cutPara">아이리버 블루투스 이어폰 BEP-C60 체험하실 분</span>
+										<span class="pprice onlynum"><em>246,000</em>원</span>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //관련상품 영역 -->
+			</section>
+		</div>
+		<!-- //container -->
+	</div>
+</div>
+<!-- //LAYER 이미지추가 -->
+
+
+<!-- LAYER 등록취소 -->
+<div class="layer_back fixed" id="registConfirm" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box regist_confirm">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">등록 취소</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('registConfirm'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="txt_q">등록을 취소하겠습니까?<br />작성된 내용은 저장되지 않습니다.</p>
+
+				<div class="btn_group">
+					<a href="#" class="btn" onclick="onoff('registConfirm'); return false;">확인</a>
+					<a href="#" class="btn" onclick="onoff('registConfirm'); return false;">취소</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 등록취소 -->
+
+<!-- LAYER 등록완료 -->
+<div class="layer_back fixed" id="registComplete" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box regist_confirm">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">등록 완료</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('registComplete'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="txt_q">정상적으로<br />등록되었습니다.</p>
+
+				<a href="#" class="btn" onclick="onoff('registComplete'); return false;">확인</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 등록완료 -->
+
+<!-- LAYER 게시판선택 -->
+<div class="layer_back fixed" id="boardSelect" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box regist_confirm">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">게시판 선택</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('boardSelect'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="txt_q">게시판을 <br />선택해주세요.</p>
+
+				<a href="#" class="btn" onclick="onoff('boardSelect'); return false;">확인</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 게시판선택 -->
+
+<!-- LAYER 항목명입력 -->
+<div class="layer_back fixed" id="optionInput" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box regist_confirm">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">항목명 입력</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('optionInput'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="txt_q">항목명을 <br />입력해주세요.</p>
+
+				<a href="#" class="btn" onclick="onoff('optionInput'); return false;">확인</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 항목명입력 -->
+
+<!-- LAYER 입력내용항목삭제 -->
+<div class="layer_back fixed" id="deleteRow" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box regist_confirm">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">입력내용 항목삭제</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('deleteRow'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="txt_q">내용을<br />삭제하시겠습니까?</p>
+
+				<div class="btn_group">
+					<a href="#" class="btn" onclick="onoff('deleteRow'); return false;">확인</a>
+					<a href="#" class="btn" onclick="onoff('deleteRow'); return false;">취소</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 입력내용항목삭제 -->
+
+<script>
+/*레이어*/
+function onoff(id) {
+	var layer = id;
+	$("#" + layer).toggle();
+}
+
+/* CHECKBOX*/
+function agreechk(obj){
+	var obj = $(obj).find(".ipt_chk > span");
+
+	if ($(obj).hasClass('unchk')) {
+		$(obj).addClass('chk').removeClass('unchk');
+	} else {
+		$(obj).addClass('unchk').removeClass('chk');
+	}
+}
+</script>
+</body>
+</html>

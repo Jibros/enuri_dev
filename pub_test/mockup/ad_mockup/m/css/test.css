@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : test.css
+ * 설명 : 특정 기능을위한 테스트 파일입니다. 절대 사용 금지
+ * 작성자  : 박현원
+ * 작성일 :2021.11.02
+************************************************************************/
+#wrap {
+    padding-bottom:0;
+}
+.mockup_cont {
+    padding:0!important;
+    margin:0!important;
+}
+
+/* 모바일에서만 안되게 스크롤바 제거 */
+::-webkit-scrollbar { width: 0px;}
+::-webkit-scrollbar-track { background-color: #e1e1e1; -webkit-border-radius: 2px;border-radius: 2px;}
+::-webkit-scrollbar-thumb { background: #c5c5c5; -webkit-border-radius: 2px;border-radius: 2px;}
+::-webkit-scrollbar-button { display: none; }
+
+
+
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+                    페이지 진입시 작동
+---------------------------------------------------------*/
+.mockup_wrap {
+    position:fixed;
+    width:360px;
+    height:650px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.mockup_wrap .obj_empty {
+    width: 100%;
+    height:100%;
+    transform: translate(0 ,0);
+    overflow: auto;
+}
+.mockup_wrap .obj_empty,
+.mockup_wrap .sheet_comm {
+    transition: all .4s;
+}
+.mockup_wrap.on .obj_empty {
+    transform: translate(-30px ,0);
+}
+.mockup_wrap.on .sheet_comm {
+    transform: translate(330px ,0);
+}
+.mockup_wrap.on .obj_bookmark {
+    transform: translate(-30px ,0);
+}
+
+/* ---------------------------------------------------------
+                   버튼
+---------------------------------------------------------*/
+
+.obj_bookmark {position: absolute; top:90%;right:0;margin-top:-40px;width:80px;height: 34px;line-height: 34px;font-size: 12px;letter-spacing: -1px;color:#fff;background-color: #1665BE;padding-left:10px;border-radius:6px 0 0 6px;animation: warigari ease-in-out 4.5s infinite alternate;transform: translate(0); transition:all .4s; opacity: 1; cursor: pointer; z-index: 100;}
+.obj_bookmark em{color:#E6FF7E; font-weight: bold;}
+.obj_bookmark.off {transform:translate(-360px, 0); opacity: 1; animation-play-state: paused;}
+
+.obj_bookmark_close {position:fixed; bottom:20px; left:50%; margin-left:-22px; width:44px; height:44px; cursor: pointer; transform:translate(0, 150px); transition:all .8s; opacity: 0; z-index: 105;}
+.obj_bookmark_close img {width:100%;}
+.obj_bookmark_close.on {transform:translate(0); opacity: 1;}
+
+@-webkit-keyframes warigari { 
+    0%, 20%, 40%, 60%, 80%, 100% {width: 80px;}
+    50%,70% {width: 100px;}   
+}
+@keyframes warigari { 
+    0%, 20%, 40%, 60%, 80%, 100% {width: 80px;}
+    50%,70% {width: 100px;}   
+} 
+
+
+/* ---------------------------------------------------------
+                    시트
+---------------------------------------------------------*/
+/*  딤 */
+.sheet_bg {position:fixed; top:0; left:0; width:100%; height:100%; z-index: 99; background-color: rgba(0,0,0,.25);}
+/* 시트 공통 */
+.sheet_comm {position:fixed; top:0; right:-100%; background-color: #012D5E; z-index: 101; transition: all .4s; }
+.sheet_wrap {position:relative; width: 100%; height: 100%; padding:12px; overflow: auto;}
+.sheet_comm[data-sheet="right"] {border-radius : 0; transform : translate(100%, 0); top:0; right:0;}
+.sheet_comm[data-sheet="right"] {width:100%; height: 100%;}
+
+/* 시트 활성화 */
+.sheet_comm.active[data-sheet] {transform : translate(0);}
+
+
+/* ---------------------------------------------------------
+                    내용물
+---------------------------------------------------------*/
+.ad_tit {font-size: 18px; font-weight: bold; color:#fff; padding:12px 0; text-align: center;}
+.ad_tit em {color:#E6FF7E;}
+.ad_img {position:relative; margin-bottom:12px;}
+.ad_img:last-child {margin-bottom:0;}
+.ad_img img {max-width:100%;}
+.ad_img .logo {position:absolute; top:13px; left:15px;}
+.ad_img .youtube_play {position:absolute; top:45px; left:0; z-index: 10;}
+.ad_img .youtube_screen {position:absolute; width:100%; padding-top: 56.25%; top:44px; left:0;}
+.ad_img .youtube_screen #youtube { width:100%; height:100%; position:absolute;top:0;left:0;}
+
+.ad_img .txt_hitbrand {position:absolute; top:12px; left:72px;}
+.ad_img .banner_img {position:absolute; top:45px; left:0; z-index: 10;}

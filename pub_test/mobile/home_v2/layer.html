@@ -1,0 +1,181 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/home.css"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>	
+</head>
+<body>
+
+<!-- 공통 : 프론트배너 -->
+<div class="dim" id="mainLayer" style="z-index:999;">
+	<div class="main_front_bnr">
+		<!-- 배너 이미지  -->
+		<a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobile_v2/@front_bnr.jpg" ></a>
+		<!-- 하단 버튼 그룹 -->
+		<div class="btn_group">
+			<!-- 버튼 : 앱 이동 / 설치 버튼 -->
+			<button class="btn_down_app"><span>에누리 앱에서 보기</span></button>
+			<!-- 버튼 : 닫기 -->
+			<button class="btn_layer_close" onclick="$(this).closest('.dim').fadeOut(200);return false;"><span>모바일웹으로 계속 보기</span></button>
+		</div>
+	</div>
+	<!-- 백그라운드 터치 : 닫기 -->
+	<span class="dim__back" onclick="$(this).closest('.dim').fadeOut(200);return false;"></span>
+</div>
+<!-- // 프론트배너 -->
+
+<!-- 공통 : 찜레이어 -->
+<span class="zzimly">찜 되었습니다</span>
+<!-- // 찜레이어 -->
+
+<!-- 공통 : SNS공유하기 -->
+<div class="com__share_wrap dim" style="z-index:999;display:block">
+	<div class="com__layer share_layer">
+		<div class="lay_head">공유하기</div>
+		<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+		<div class="lay_inner">
+			<ul>
+				<li class="share_fb">페이스북 공유하기</li>
+				<li class="share_kakao">카카오톡 공유하기</li>				
+				<li class="share_tw">트위터 공유하기</li>
+				<li class="share_line">라인 공유하기</li>
+				<!-- 메일아이콘 클릭시 활성화(.on) -->
+				<li class="share_mail" onclick="$(this).toggleClass('on');$(this).parents('.share_layer').find('.btn_wrap').toggleClass('mail_on');">메일로 공유하기</li>
+				<li class="share_story">카카오스토리 공유하기</li>
+				<li class="share_band">밴드 공유하기</li>
+			</ul>
+			<!-- 메인보내기 버튼클릭시 .mail_on 추가해 주세요 -->
+			<div class="btn_wrap">
+				<div class="btn_group">
+					<!-- 주소 복사 -->
+					<div class="btn_item">
+						<span id="txtURL" class="txt__share_url">http://www.enuri.com/event/chuseok.jsp</span>
+						<button class="btn__share_copy" data-clipboard-target="#txtURL">복사</button>
+					</div>
+					<!-- 이메일 주소 입력 -->
+					<div class="btn_item">
+						<input type="text" class="txt__share_mail" placeholder="이메일 주소 입력해 주세요">
+						<button class="btn__share_mail">보내기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/clipboard.min.js"></script>
+	<script>
+		$(function(){
+			var clipboard = new ClipboardJS('.com__share_wrap .btn__share_copy');
+			clipboard.on('success', function(e) {
+				alert('주소가 복사되었습니다');
+			});
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+		});
+	</script>
+</div>
+<!-- // -->
+
+<!-- 210825 : SR#48487 : 모바일웹 하단 탭바 -->
+<section class="tabbar">
+	<div class="tabbar__inner">
+		<ul class="tabbar__list">
+			<li><a href="javascript:void(0);" class="tab tab-srch"><i class="ico"></i><span class="tx">검색</span></a></li>
+			<li><a href="javascript:void(0);" class="tab tab-cate"><i class="ico"></i><span class="tx">카테고리</span></a></li>
+			<li><a href="./myeclub/my_alarm.html" class="tab tab-eclub"><i class="ico"></i><span class="tx">마이에누리</span></a></li>
+			<li><a href="#tab3" class="tab tab-favor"><i class="ico"></i><span class="tx">관심상품</span></a></li>
+		</ul>
+	</div>
+</section>
+<!-- // -->
+
+<!-- 210824 : SR#48387 : MY알림 추가 - 알림함 팝업 -->
+<div class="pop_alarm">
+	<div class="alarm__inner">
+		<div class="alarm__head">
+			<p class="tx_tit">알림함</p>
+
+			<div class="msg_line">
+				<p class="tx_msg">안 읽은 메시지 <span class="tx_num">2건</span></p>
+				<p class="tx_all">전체 <span class="tx_num">16건</span></p>
+			</div>
+
+			<button type="button" class="btn btn-close">닫기</button>
+		</div>
+		<div class="alarm__body">
+			<div class="recent_box">
+				<div class="recent_unit">
+					<p class="tx_cate">최저가 득템</p>
+					<!-- <p class="tx_time">10분 전</p> -->
+				</div>
+
+				<div class="recent_msg">
+					<a href="./myeclub/my_alarm.html" class="btn btn-msg" id="alarmsheetOpenBtn"> <!-- 퍼블 참고용 : 알림함 열기위한 ID 입니다. 개발 시 변경해주세요 -->
+						<span>지금 확인 안하시면 후회하실걸요?</span>
+						<!-- <span>50% 급하락한 최저가 득템 상품이 급하락 최저가 득템 상품이...</span> -->
+					</a>
+				</div>
+			</div>                        
+		</div>
+	</div>
+</div>
+<script>
+	$(function(){
+		var alarmPopup = $(".pop_alarm"), // 팝업 : 알림함 (우측 하단)
+			bottomTabbar = $(".tabbar"); // 하단 탭바
+
+		// 알림함 팝업 펑션
+		var alarmFunction = function(){
+			// 페이지 로딩 후 알림함 노출 -> 20초 뒤 숨김
+			setTimeout(function(){
+				alarmPopup.addClass("is-visible");
+			},300)
+			
+			alarmPopup.find(".btn-close").on("click", function(){
+				alarmPopup.hide().removeClass("is-visible");
+			})
+			setTimeout(function(){ alarmPopup.removeClass("is-visible")},20000)
+		}
+		
+
+		// 앱링크 dim 제거 시, 알림함 노출
+		$("#mainLayer .btn_layer_close").on("click", function(){
+			$("#mainLayer").fadeOut(200);
+
+			alarmFunction(); // 페이지 로딩 시, 알림함 노출
+			return false;
+		})
+
+		// 스크롤 액션(알림함, 탭바)
+		var lastScrollY = 0;
+		var scrAlarmPop = function(){
+			var standard = 30;
+			if(window.scrollY > standard){ 
+				if(lastScrollY < window.scrollY){    // 스크롤 아래로
+					alarmPopup.removeClass("is-visible");
+					bottomTabbar.addClass("is-hidden");
+				}else{ 								// 스크롤 위로
+					alarmPopup.addClass("is-visible");
+					bottomTabbar.removeClass("is-hidden");
+				}
+			}
+			lastScrollY = window.scrollY;
+		}
+
+		$(window).on({
+			"scroll" : scrAlarmPop
+		})
+		
+	})
+</script>
+<!-- // -->
+
+</body>
+</html>

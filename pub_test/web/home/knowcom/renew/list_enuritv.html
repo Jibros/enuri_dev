@@ -1,0 +1,833 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다."> 
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="/css/slick.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/default.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/swiper.min.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/common.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/list.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="/js/classChange.js"></script> -->
+<script type="text/javascript" src="/pub_test/js/classChange.simple.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/lib/slick.min.js"></script>
+<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div class="wrap" id="SubWrap">
+	<!-- header -->
+	<div class="header">
+		<!-- 191025 공통 심플헤더 추가 -->
+		<link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+		<!-- 해외직구 / 쇼핑지식에는 ty_wide 클래스 붙여주세요 (확장형) -->
+		<div class="com_simple_header ty_wide">
+			<div class="com_head__inner">
+				<!-- 심플헤더 - 패밀리탭 -->
+				<ul class="com_head__tab_fam">
+					<!-- 노출되지 않는 list는 li태그에 display:none처리 꼭 해주세요 -->
+					<!-- 해당되는 탭은 on클래스로 활성화 해주세요 -->
+					<li><a href="/">에누리홈</a></li><!-- 에누리홈에서는 비노출 -->
+					<li><a href="/global/Index.jsp">해외직구</a></li>
+					<li><a href="/enuripc">조립PC</a></li>
+					<li><a href="/deal/newdeal/index.deal">소셜</a></li>
+					<li><a href="/tour2012/Tour_Index.jsp">여행</a></li>
+					<li class="on"><a href="/knowbox2/index.jsp">쇼핑지식</a></li>
+				</ul>
+				<!-- // -->
+				<!-- 심플헤더 - 배너영역 (에누리홈 only) -->
+				<ul class="com_head__list_ban" style="display:none">
+					<li><a href="#">혜택존<span class="ico_simple__sprite ico__sp_ben">쇼핑혜택</span></a></li>
+				</ul>
+				<!-- // -->
+				<!-- 심플헤더 - 우측메뉴 -->
+				<ul class="com_head__menu">
+					<!-- 노출되지 않는 메뉴 li태그에 display:none처리 꼭 해주세요 -->
+					<!-- 로그인 -->
+					<li style="display:none"><a href="#">로그인</a></li>
+					<!-- 회원가입 -->
+					<li style="display:none"><a href="#">회원가입</a></li>
+					<!-- 사용자 + 마이에누리 레이어 -->
+					<li>
+						<a href="#"><em class="user_name">WangKooN</em>님<span class="ico__arr_down ico_simple__sprite"></span></a>
+						<!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+						<!-- 레이어 : 마이에누리 -->
+						<div class="com_lay_login com_lay_box">
+							<div class="lay_inner">
+								<ul>
+									<li><a href="javascript:goPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+									<li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+									<li><a href="">SDUL</a></li>
+									<li><a href="">상위노출입찰</a></li>
+									<li><a href="javascript:showZzim();">찜상품 <em>(n)</em></a></li>
+									<li><a href="javascript:logout();">로그아웃</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- // -->
+					</li>
+					<!-- 로그아웃 -->
+					<li><a href="#">로그아웃</a></li>
+					<!-- 쇼핑Q&A -->
+					<li style="display:none"><a href="#">쇼핑Q&A</a></li>
+					<!-- 앱다운로드 + 레이어 -->
+					<li style="display:none">
+						<a href="javascript:void(0);">앱다운로드<span class="ico__app_down ico_simple__sprite">받기</span></a>
+						<!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+						<!-- 레이어 : 앱다운로드 -->
+						<div class="com_lay_app com_lay_box">
+							<div class="spbox" id="simpleHeader">
+								<ul class="sp_tab">
+									<li><a href="javascript:void(0);" onclick="$('.sp_enuri').show().siblings('div').hide();">에누리 가격비교</a></li>
+									<li><a href="javascript:void(0);" onclick="$('.sp_hotdeal').show().siblings('div').hide();">소셜비교</a></li>
+								</ul>
+								<!-- 에누리 -->
+								<div class="sp_enuri" style="display:block;">
+									<h2>에누리 가격비교 </h2>
+									<p>모바일로 더욱 특별해진 가격비교!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+										<dt>다운로드 SMS 보내기</dt>
+										<dd>
+											<fieldset>
+												<legend>SMS보내기</legend>
+												<input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_enuri" id="phonenum_enuri" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('enuri')"></button>
+											</fieldset>
+										</dd>
+										<dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+										<dd>입력하신 번호는 저장되지 않습니다.</dd>
+									</dl>
+								</div>
+								<!-- 소셜비교 -->
+								<div class="sp_hotdeal" style="display:none;">
+									<h2>소셜비교</h2>
+									<p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+										<dt>다운로드 SMS 보내기</dt>
+										<dd>
+											<fieldset>
+												<legend>SMS보내기</legend>
+												<input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_hotdeal" id="phonenum_hotdeal" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('hotdeal')"></button>
+											</fieldset>
+										</dd>
+										<dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+										<dd>입력하신 번호는 저장되지 않습니다.</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<!-- //  -->
+					</li>
+					<!-- 더보기 + 레이어 -->
+					<li>
+						<a href="javascript:void(0);">더보기<span class="ico__arr_down ico_simple__sprite"></span></a>
+						<!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+						<!-- 레이어 : 사이트맵 -->
+						<div class="com_lay_sitemap com_lay_box">
+							<dl>
+								<dt>주요서비스</dt>
+								<dd>
+									<a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+									<a href="/enuripc/" target="_new">PC 견적비교</a>
+									<a href="/global/Index.jsp">해외직구</a>
+								</dd>
+								<dd>
+									<a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+									<a href="/view/move_mall.jsp" target="_new">이사견적</a>
+									<a href="/view/Flower365.jsp" target="_new">꽃배달</a>
+									<a href="/tour2012/Tour_Index.jsp" target="_new">여행비교</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>커뮤니티</dt>
+								<dd>
+									<a href="/knowbox2/index.jsp" target="_new">쇼핑지식</a>
+									<a href="/knowcom/news.jsp" target="_new">뉴스</a>
+									<a href="/knowcom/guide.jsp" target="_new">구매가이드</a>
+									<!-- <a href="/knowcom/exp.jsp" target="_new">체험단</a> -->
+									<a href="/knowcom/board.jsp?bbsname=review" target="_new">사용기</a>
+									<a href="/knowcom/enuritv.jsp" target="_new">에누리TV</a>
+									<a href="/knowcom/board.jsp?bbsname=nuri" target="_new">자유게시판</a>                            
+								</dd>
+								<dd>
+									<!-- <a href="/knowcom/board.jsp?bbsname=sale" target="_new">특가게시판</a> -->
+									<a href="/knowcom/qna.jsp" target="_new">쇼핑Q&amp;A</a>
+									<a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition" target="_new">쇼핑기획전</a>
+									<a href="/infoad_event/eventMain.jsp" target="_new">이벤트</a>
+								</dd>
+							</dl>
+							<p class="all">
+								<a href="/etc/Site_map.jsp" class="enuri_all" target="_new">에누리 서비스 전체보기</a>
+							</p>
+						</div>
+						<!-- // -->
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- // -->
+
+		<div class="enuribi">
+			<h1><a href="javascript:///">쇼핑지식</a></h1>
+			<span class="logo"><a href="javascript:///">eNURI</a></span>
+		</div>
+		<!-- PC용 gnb_area -->
+		<div id="topFix" class="gnb_area hidden-sm">
+			<div class="fade prev"></div>
+			<div class="fade next"></div>
+			<div class="gnb_inner">
+				<ul class="">
+					<li><a href="#">뉴스</a></li>
+					<li><a href="#">구매가이드</a></li>
+					<li><a href="#">사용기</a></li>
+					<li><a href="#">자유게시판</a></li>
+					<li class="on"><a href="#">에누리TV</a></li>
+					<li><a href="#">이벤트존</a></li>
+					<li><a href="#">누리GO</a></li>
+					<li><a href="#">쇼핑Q&amp;A</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //PC용 gnb_area -->
+
+		<!-- 모바일용 gnb_area -->
+		<!-- 
+			200824 [MO] 헤더 역스크롤 적용 ID : reverseTopFix
+			하단 역스크롤 script 참고
+		-->
+		<div id="reverseTopFix" class="gnb_area hidden-md hidden-lg">
+			<div class="fade prev"></div>
+			<div class="fade next"></div>
+			<div class="gnb_inner swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide"><a href="#">뉴스</a></li>
+					<li class="swiper-slide"><a href="#">구매가이드</a></li>
+					<li class="swiper-slide"><a href="#">사용기</a></li>
+					<li class="swiper-slide"><a href="#">자유게시판</a></li>
+					<li class="swiper-slide on"><a href="#">에누리TV</a></li>
+					<li class="swiper-slide"><a href="#">이벤트존</a></li>
+					<li class="swiper-slide"><a href="#">누리GO</a></li>
+					<li class="swiper-slide"><a href="#">쇼핑Q&amp;A</a></li>
+				</ul>
+			</div>
+		</div>
+		<script>
+			// 모바일 헤더,탑버튼 역스크롤
+			$(function(){
+				var position = $(window).scrollTop(); 
+				var el = {
+					wrap : $(".wrap"), // 메인래퍼
+					cont : $("#container"), // 메인컨텐츠
+					btnQuick : $(".footer--com .newquick"), // 탑버튼
+					gnb : $("#reverseTopFix") // GNB영역
+				}
+				var stickyGnb = function(){
+					var $myScroll = $(window).scrollTop();
+
+					if ( $myScroll > el.cont.offset().top ){ 
+						el.gnb.addClass("hide_top");
+						el.btnQuick.addClass("scr_mode");
+
+						// GNB Sticky
+						if ( $myScroll > el.cont.offset().top ) el.gnb.removeClass("hide_top").addClass("fixed_top");
+						else el.wrap.addClass("hide_top").removeClass("fixed_top");
+
+						// 업다운 스크롤 체크
+						if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+						else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+					}else{
+						el.gnb.removeClass("fixed_top hide_top");
+						el.btnQuick.removeClass("scr_mode");
+						el.wrap.removeClass("scr_down scr_up");
+					}
+					position = $myScroll;
+				};
+				$(window).load(stickyGnb).scroll(stickyGnb);
+			})
+		</script>
+		<!-- //모바일용 gnb_area -->
+	</div>
+	<!-- //header -->
+
+	<!-- container -->
+	<!-- 모바일 헤더,탑버튼 역스크롤 컨테이너 ID 추가 : id="container" -->
+	<div id="container" class="container">
+		<div class="section">
+			
+			<!-- contents -->
+			<div class="contents">
+
+				<!-- column_left -->
+				<div class="column_left">
+					
+					<!-- enuritv_conts -->
+					<div class="grid_box enuritv_conts">
+						
+						<h2 class="top_msg_area hidden-sm">
+							인기TOP3<a href="#" class="btn_write_go">게시글 작성</a>
+						</h2>
+						
+						<!-- tv_hit -->
+						<ul class="tv_hit">
+							<li>
+								<div class="vod_img"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_list_thumb8.jpg" /></div>
+								<div class="vod_info">
+									<a href="#"><img src="https://yt3.ggpht.com/--YC0rW734IQ/AAAAAAAAAAI/AAAAAAAAAAA/-MAknedKklI/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" class="thum"/></a>
+									<strong><a href="#">채널명이 길면 히든 채널명이 길면 한줄 히든</a></strong>
+									<span class="txt"><a href="#">본문내용이 일부 보여지는 자리입니다. 노출은 두 줄 까지만 되네요. 더이상 쓰면 내가 짤라버려</a></span>
+								</div>
+							</li>
+							<li class="hidden-sm">
+								<div class="vod_img"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_list_thumb5.jpg" /></div>
+								<div class="vod_info">
+									<a href="#"><img src="https://yt3.ggpht.com/--YC0rW734IQ/AAAAAAAAAAI/AAAAAAAAAAA/-MAknedKklI/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" class="thum"/></a>
+									<strong><a href="#">채널명 들어가는 자리</a></strong>
+									<span class="txt"><a href="#">본문내용이 일부 보여지는 자리입니다. 노출은 두 줄 까지만 되네요. 더이상 쓰면 내가 짤라버려</a></span>
+								</div>
+							</li>
+							<li class="hidden-sm">
+								<div class="vod_img"><img src="http://img.youtube.com/vi/cAN1dABR7zY/mqdefault.jpg" /></div>
+								<div class="vod_info">
+									<a href="#"><img src="https://yt3.ggpht.com/--YC0rW734IQ/AAAAAAAAAAI/AAAAAAAAAAA/-MAknedKklI/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" class="thum"/></a>
+									<strong><a href="#">채널명 들어가는 자리</a></strong>
+									<span class="txt"><a href="#">본문내용이 일부 보여지는 자리입니다. 노출은 두줄만 되요</a></span>
+								</div>
+							</li>
+						</ul>
+						<!-- //tv_hit -->
+
+					</div>
+					<!-- //enuritv_conts -->
+
+					<!-- banner_mid -->
+					<div class="banner_mid" style="background:#eee;">
+						<a href="http://www.enuri.com/" target="_blank"><img src="http://imgenuri.enuri.gscdn.com/images/knowcom/smp_ban_mid.jpg" alt="" /></a>	
+					</div>
+					<!-- //banner_mid -->
+				
+					<!-- pupcha_conts -->
+					<div class="grid_box pupcha_conts">
+						<h3>에누리TV 인기채널</h3>
+						<div class="ch_group">
+							<ul>
+								<!-- 전체보기 -->
+								<li class="btn_all_view">
+									<a href="#">에누리TV 전체 보기</a>
+								</li>
+								<!-- // -->
+								<li>
+									<!-- 페이지/카테고리 활성화시 a태그에 .on클래스 붙여주세요 -->
+									<p class="cate_tit"><a href="#">에누리 채널</a></p>
+									<div class="tv_channel">
+										<ul>
+											<li><a href="#">인기채널01번</a></li>
+											<li><a href="#">인기채널02번</a></li>
+											<li><a href="#">인기채널03번</a></li>
+											<li><a href="#">인기채널04번</a></li>
+											<li><a href="#">인기채널05번</a></li>
+											<li><a href="#">인기채널06번</a></li>
+											<li><a href="#">인기채널07번</a></li>
+											<li><a href="#">인기채널08번<i>new</i></a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<p class="cate_tit"><a href="#">IT/테크</a></p>
+									<div class="tv_channel">
+										<ul>
+											<li><a href="#">인기채널01번</a></li>
+											<li><a href="#">인기채널02번</a></li>
+											<li><a href="#">인기채널03번</a></li>
+											<li><a href="#">인기채널08번<i>new</i></a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<p class="cate_tit"><a href="#">키덜트/취미	</a></p>
+									<div class="tv_channel">
+										<ul>
+											<li><a href="#">인기채널01번</a></li>
+											<li><a href="#">인기채널02번</a></li>
+											<li><a href="#">인기채널03번</a></li>
+											<li><a href="#">인기채널08번<i>new</i></a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<p class="cate_tit"><a href="#">라이프/자동차</a></p>
+									<div class="tv_channel">
+										<ul>
+											<li><a href="#">인기채널01번</a></li>
+											<li><a href="#">인기채널02번</a></li>
+											<li><a href="#">인기채널03번</a></li>
+											<li><a href="#">인기채널08번<i>new</i></a></li>
+										</ul>
+									</div>
+								</li>
+								<li>
+									<p class="cate_tit"><a href="#">기타</a></p>
+									<div class="tv_channel">
+										<ul>
+											<li><a href="#">레고매니아</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<script>
+							$(function(){
+								$(".btn_all_view > a").addClass("on").show(); 
+								$(".ch_group li a").click(function(e) {
+									e.preventDefault();
+									$(".ch_group li a").removeClass("on"); 
+									$(this).addClass("on"); 
+								});
+							})
+						</script>
+						<!-- // 에누리 TV 채널 개편-->
+
+						<!-- tv_hit_list -->
+						<div class="tv_hit_list">
+							<ul>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										
+										<a href="#" class="report cutPara">영상 타이틀 노출영역 최대 두줄 까지 노출 초과 시 최대 두줄 까지 노출 초과 시 최대 두줄 까지 노출 초과 시 최대 두줄 까지 노출 초과 시 최대 두줄 까지 노출 초과 시</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<!-- 차단 댓글 -->
+								<li class="is-block">
+									<p class="tx_msg-block">해당 게시글은 요청에 따라 차단된 게시글입니다.</p>
+								</li>
+								<li>
+									<div class="thum"><img src="http://storage.enuri.gscdn.com/pic_upload/knowbox/review/20171025133615025.png" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 여기도 너무 길어지면 안보여요 Why - 최고다! 호기심딱지 여기도 너무 길어지면 안보여요</a>
+										<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://img.youtube.com/vi/cAN1dABR7zY/mqdefault.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+										<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+								<li>
+									<div class="thum"><img src="http://imgenuri.enuri.gscdn.com/images/home/knowbox/sap_thum_news1.jpg" alt=""></div>
+									<div class="bt_info">
+										<span class="chaname cutWord"><a href="#"><span class="txt_cate">라이프/자동차</span>어린이채널 어린이채널이 길면 땡땡땡</a></span>
+										<a href="#" class="report cutPara">Why - 최고다! 호기심딱지 - 위험한 신발_#001</a>
+									<em>조회수 : 3,245</em>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- tv_hit_list -->
+							
+						<!-- [PC/M] 페이징 -->
+                        <div class="paging_wrap">
+                            <ul class="paging">
+                                <!-- 
+                                    prev, next 활성화 : .on 
+                                    페이지 넘버 활성화 : .selected 
+                                -->
+                                <li><a href="#" class="btn prev" title="이전 페이지">이전</a></li>
+                                <li><a href="#" class="selected">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                                <li><a href="#">7</a></li>
+                                <li><a href="#">8</a></li>
+                                <li><a href="#">9</a></li>
+                                <li><a href="#">10</a></li>
+                                <li><a href="#" class="btn next on" title="다음 페이지">다음</a></li>										
+                            </ul>
+                        </div>
+                        <!-- [PC/M] 페이징 -->
+
+
+                        <!-- 검색 -->
+                        <div class="search_wrap">
+                            <fieldset class="search_field">
+                                <legend>제목으로 검색</legend>
+                                <input type="text" class="txtbox" /><button type="button" class="result"><i>검색</i></button>
+                            </fieldset>
+                        </div>
+                        <!-- //검색 -->
+										
+					</div>
+					<!-- pupcha_conts -->
+
+					<!-- 네이버 파워쇼핑 : 기존 동일 -->
+					<div class="comm_ad ad_powershopping">
+						<div class="comm_ad_tit">
+							<em>파워쇼핑</em>
+							<a href="#" class="comm_btn_apply">신청하기</a>
+						</div>
+						<div class="comm_ad_list ad_goods">
+							<ul class="swiper-wrapper">
+								<!-- 광고 상품 1개  x 5 반복 -->
+								<li class="swiper-slide">
+									<a href="#">
+										<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+										<span class="ad_info">
+											<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+											<span class="ad_info_price">
+												<em>179,000</em>원
+											</span>
+											<span class="ad_info_shop">
+												<!-- 200602 SR#40250 파워쇼핑배너 네이버페이플러스 추가 클래스 ".ad_type_npay_plus" -->
+												<em class="ad_type_npay_plus">마이크로소프트코리아</em>
+											</span>
+										</span>
+									</a>
+								</li>
+								<!-- // -->
+								<li class="swiper-slide">
+									<a href="#">
+										<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+										<span class="ad_info">
+											<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+											<span class="ad_info_price">
+												<em>179,000</em>원
+											</span>
+											<span class="ad_info_shop">
+												<em class="ad_type_npay">마이크로소프트코리아</em>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li class="swiper-slide">
+									<a href="#">
+										<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+										<span class="ad_info">
+											<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+											<span class="ad_info_price">
+												<em>179,000</em>원
+											</span>
+											<span class="ad_info_shop">
+												<em class="ad_type_npay">마이크로소프트코리아</em>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li class="swiper-slide">
+									<a href="#">
+										<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+										<span class="ad_info">
+											<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+											<span class="ad_info_price">
+												<em>179,000</em>원
+											</span>
+											<span class="ad_info_shop">
+												<em class="ad_type_npay">마이크로소프트코리아</em>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li class="swiper-slide">
+									<a href="#">
+										<span class="ad_thumb"><img src="http://img.enuri.info/images/home/thum_none.gif" alt=""></span>
+										<span class="ad_info">
+											<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
+											<span class="ad_info_price">
+												<em>179,000</em>원
+											</span>
+											<span class="ad_info_shop">
+												<em class="ad_type_npay">마이크로소프트코리아</em>
+											</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+							<div class="swiper-scrollbar"></div>
+						</div>							
+						<script>
+							// 리스트 - 파워쇼핑 swiper 
+							$(function(){
+								var $ad = $(".ad_powershopping");
+								if ( $(window).width() < 1028 ){ // 모바일 모드에서만 실행
+									$ad.addClass("mobile").find(".comm_ad_list").addClass("swiper-container");
+									var mySwiper = new Swiper('.ad_powershopping .swiper-container', {
+										scrollbar: '.ad_powershopping .swiper-scrollbar',
+										scrollbarHide: false,
+										slidesPerView: 'auto',
+										centeredSlides: false,
+										spaceBetween: 10,
+										grabCursor: true
+									});
+								}
+							})
+						</script>
+					</div>
+					<!-- // -->	
+
+					<!-- 쇼핑 Q&A : 기존 동일 -->
+					<div  class="qna_area hidden-sm">
+						<div class="grid_box">
+							<h2 class="title">쇼핑 QnA</h2>
+							<div class="tip">
+								<b>쇼핑전문가 에누리 CM이 친절히 답변해 드립니다! </b>
+								<a href="#" class="btn_ask">문의하기</a>
+							</div>
+						</div>
+					</div>
+					<!-- //쇼핑 Q&A -->
+				</div>
+				<!-- //column_left -->
+
+				<!-- column_right 중간사이즈PC용 우측윙 -->
+				<div class="column_right visible-md">
+					<!-- 목업페이지 마크업 삭제, 기존과 동일 -->
+				</div>
+				<!-- column_right -->
+				
+				<!-- column_right 큰사이즈PC용 우측윙 -->
+				<div class="column_right visible-lg">
+					<!-- memb_area ty_login -->
+					<div class="grid_box memb_area ty_login">
+						<!-- SR#42303 : PC 쇼핑지식 우측윙 회원정보 영역 개선 -->
+						<div class="memb_inner">
+							<div class="loginstate">
+								<div class="userarea">
+									<span class="grade"><img src="http://img.enuri.info/images/knowcom/ico_grade_green.png" alt="누리그린" /></span>
+									<span class="grade"><img src="http://img.enuri.info/images/knowcom/ico_grade_family.png" alt="누리패밀리" /></span>
+									<span class="grade"><img src="http://img.enuri.info/images/knowcom/ico_grade_vip.png" alt="누리VIP" /></span>
+									<div class="info">
+										<strong class="grade_badge grade_badge-1">누리그린</strong>
+										<strong class="grade_badge grade_badge-2">누리패밀리</strong>
+										<strong class="grade_badge grade_badge-3">누리VIP</strong>
+										<span class="nickname"><b class="cutWord">지식마스터</b> 님</span>
+									</div>
+								</div>
+									
+								<a href="#" class="logst">로그아웃</a>
+							</div>
+							<div class="figure">
+								<dl class="point">
+									<dt>활동점수 등급</dt>
+									<dd>
+										<span>65,000</span>
+										<strong>POINT</strong>
+									</dd>
+								</dl>
+								<dl class="rank">
+									<dt>누적 활동순위</dt>
+									<dd>
+										<span>2,412</span>
+										<strong>위</strong>
+									</dd>
+								</dl>
+								<dl class="emoney">
+									<dt>누적 e머니</dt>
+									<dd>
+										<span>1,200</span>
+										<strong>점</strong>
+									</dd>
+								</dl>
+							</div>
+							<ul class="etcinfo_btns">
+								<li class="on"><a href="#"><em>내가 쓴 글<i>new</i></em></a></li>
+								<li><a href="#">최근 본 글</a></li>
+								<li><a href="#">쇼핑QnA</a></li>
+								<li><a href="#">e머니 교환</a></li>
+							</ul>
+						</div>
+						<!-- // -->
+					</div>
+					<!-- //memb_area -->
+				</div>
+				<!-- //column_right -->
+
+			</div>
+			<!-- //contents -->
+
+		</div>
+	</div>
+	<!-- //container -->
+	
+	<!-- footer PC사이즈 -->
+	<div class="footer_wrap hidden-sm">
+		<!-- 가로 1280px  -> .footer--com.wide -->
+		<div class="footer--com wide">
+			<!-- 푸터 메뉴 -->
+			<div class="footer__menu">
+				<div class="footer__inner">
+					<ul class="footer__menu_list">
+						<li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li>
+						<li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li>
+						<li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li>
+						<li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li>
+						<!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+						<li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+						<li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+						<li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+						<li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li>
+						<li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li>
+						<li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li>
+						<li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- // -->
+			<!-- 푸터 : 회사정보 -->
+			<div class="footer__info footer__inner">
+				<span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+				<div class="footer__info_com">
+					<span class="footer__tx_tit">써머스플랫폼</span>
+					<addr class="footer__tx_adder">서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</addr>
+					<span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+					<span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+					<span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2015-서울중구-1046호</span></span><br/>
+					<span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+					<span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+					<span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+				</div>
+				<span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+			</div>
+			<!-- // -->
+		</div>
+		<!-- // -->  
+	</div>
+	<!-- //footer PC사이즈 -->
+
+	<!-- footer 모바일사이즈 -->
+    <footer class="footer footer--com visible-sm">
+        <!-- Footer : 탑버튼 -->
+        <div class="newquick">
+            <p class="TBtn" onclick="goFooterTop();">TOP</p>
+        </div>
+        <!-- // -->
+        <!-- Footer : 회사정보 -->
+        <div class="footer__info">
+            <!-- 클릭시 .unfold 클래스 toggle -->
+            <button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+            <!-- // -->
+            <div class="footer__info_com">
+                <dl>
+                    <dt>대표이사</dt>
+                    <dd>김기범</dd>
+                    <dt>사업자등록번호</dt>
+                    <dd>206-81-18164</dd>
+                    <dt>통신판매신고</dt>
+                    <dd>2015-서울중구-1046호</dd>
+                    <dt>주소</dt>
+                    <dd>서울특별시 중구 퇴계로 18(남대문로5가) 9층</dd>
+                    <dt>문의</dt>
+                    <dd>02-6354-3601<br><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- Footer : 푸터메뉴 -->
+        <div class="footer__menu">
+            <div class="footer__menu_top">
+                <a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+            </div>
+            <div class="footer__menu_bot">
+                <a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+            </div>
+        </div>
+        <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+    </footer>
+	<!-- //footer 모바일사이즈 -->
+
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+			scrollbarHide: true,
+			slidesPerView: 'auto',
+			centeredSlides: false,
+			spaceBetween: 30,
+			grabCursor: true
+		});
+	</script>
+
+</div>
+</body>
+</html>

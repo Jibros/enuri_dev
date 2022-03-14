@@ -1,0 +1,528 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>에누리 해외직구</title>
+    <link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/global/common_m.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/global/template_m.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/global/vip_m.css"/>
+	<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+    <!-- 공통 : 로그인 레이어 -->
+    <div class="lay_login dimmed" style="display:none">
+        <div class="layer_inner">            
+            <!-- 로고 -->
+            <span class="img_logo"><img src="http://www.mallree.com/images/merchant/388/merchant_index_img.jpg" alt=""></span>
+            <span class="txt_main">에누리 해외직구를 통해 구매하시면 <em>구매금액의 4%</em>가 e머니로 적립됩니다.</span>
+            <div class="btn_group">
+                <!-- 로그인하고 e머니 적립받기 -->
+                <button class="btn_login">
+                    <span class="ico comm_sprite"></span>
+                    <!-- 190920 문구수정 -->
+                    <span class="txt_btn">로그인하고<br/>이벤트 혜택 받기</span>
+                    <!-- // -->
+                </button>
+                <!-- 적립없이 구매하러 가기 -->
+                <button class="btn_no_login">
+                    <span class="ico comm_sprite"></span>
+                    <span class="txt_btn">적립없이<br/>구매하러 가기</span>
+                </button>
+            </div>
+            <span class="txt_noti">에누리 e머니는 구매 확정 후 적립되며,<br/>구매 후 최대 70일 이내 적립됩니다.</span>
+            <button class="btn_close comm_sprite" onclick="$(this).closest('.dimmed').fadeOut(100)">닫기</button>
+        </div>
+        <div class="btn_bg_close" onclick="$(this).parent().fadeOut(100);"></div>
+    </div>
+    <!-- // 공통 : 로그인 레이어 -->
+
+    <!-- 190920 추가 - 공통 : 본인인증 레이어 -->
+    <div class="lay_login lay_cert dimmed" style="display:none">
+        <div class="layer_inner">            
+            <!-- 로고 -->
+            <span class="img_logo"><img src="http://www.mallree.com/images/merchant/388/merchant_index_img.jpg" alt=""></span>
+            <span class="txt_cert">아직 <em>본인인증</em>을 안하셨나요?</span>
+            <span class="txt_main">본인인증 후 에누리 해외직구를 통해 구매하시면<br/><em>구매금액의 4%</em>가 e머니로 적립됩니다.</span>
+            <div class="btn_group">
+                <!--  본인인증하고 e머니 적립받기 -->
+                <button class="btn_cert">
+                    <span class="ico comm_sprite"></span>
+                    <span class="txt_btn">본인인증하고<br/>e머니 적립 받기</span>
+                </button>
+                <!-- 적립없이 구매하러 가기 -->
+                <button class="btn_no_login">
+                    <span class="ico comm_sprite"></span>
+                    <span class="txt_btn">적립없이<br/>구매하러 가기</span>
+                </button>
+            </div>
+            <button class="btn_close comm_sprite" onclick="$(this).closest('.dimmed').fadeOut(100)">닫기</button>
+        </div>
+        <div class="btn_bg_close" onclick="$(this).parent().fadeOut(100);"></div>
+    </div>
+    <!-- // 공통 : 본인인증 레이어  -->
+
+    <!-- 공통 : SNS공유하기 -->
+    <div class="com__share_wrap dimmed" style="z-index:999;display:none">
+        <div class="com__layer share_layer">
+            <div class="lay_head">공유하기</div>
+            <a href="#close" class="lay_close" onclick="$(this).closest('.dimmed').fadeOut(200);return false;">닫기</a>
+            <div class="lay_inner">
+                <ul>
+                    <li class="share_fb">페이스북 공유하기</li>
+                    <li class="share_kakao">카카오톡 공유하기</li>				
+                    <li class="share_tw">트위터 공유하기</li>
+                    <li class="share_line">라인 공유하기</li>
+                </ul>
+                <div class="btn_group">
+                    <span id="txtURL" class="txt__share_url">http://www.enuri.com/event/chuseok.jsp</span>
+                    <button class="btn__share_copy" data-clipboard-target="#txtURL">복사</button>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/clipboard.min.js"></script>
+        <script>
+            $(function(){
+                var clipboard = new ClipboardJS('.com__share_wrap .btn__share_copy');
+                clipboard.on('success', function(e) {
+                    alert('주소가 복사되었습니다');
+                });
+                clipboard.on('error', function(e) {
+                    console.log(e);
+                });
+            });
+        </script>
+    </div>
+    <!-- // -->
+
+    <div id="wrap">
+
+        <!-- 헤더 : VIP용 -->
+        <div id="header" class="header header_vip">
+            <div class="header_wrap">
+                <button class="btn_hd_back" onclick="location.href='./'";><span class="ico comm_sprite">뒤로</span></button>
+                <h1>EBAY <span class="discount_per_store"><em>4.0</em>%적립</span></h1>
+            </div>
+        </div>
+        <!-- // 헤더 : VIP용 -->
+
+        <div id="container" class="container">
+
+            <!-- 샵 요약 -->
+            <div class="shop_summary box_inner">
+                <span class="img_shop"><img src="http://www.mallree.com/images/merchant/440/merchant_week_img.png" alt=""></span>
+                <span class="tag">
+                    <span class="tag_earn_add">추가적립</span>
+                    <span class="tag_earn_x2">2배적립</span>
+                    <span class="tag_coupon">쿠폰</span>
+                </span>
+                <div class="info">
+                    <span class="txt_name">이베이</span> 
+                    <span class="txt_earn">4.0% 적립</span>
+                </div>
+                <div class="btn_wrap">
+                    <button class="btn_share comm_sprite" onclick="$('.com__share_wrap').show()">공유하기</button>
+                </div>
+                <!-- <button class="btn_fav_shop comm_sprite on" onclick="$(this).toggleClass('on');">즐겨찾기</button> -->
+            </div>
+            <!-- // -->
+
+            <!-- 샵 정보 -->
+            <div class="shop_detail box_inner">
+                <!-- 이용안내 -->
+                <ul class="list_tab">
+                    <li class="on"><a href="#tab_guide">이용안내</a></li>
+                    <li><a href="#tab_intro">쇼핑몰/유의사항</a></li>
+                    <li><a href="#tab_benefit">쿠폰&amp;혜택</a></li>
+                    <li><a href="#tab_goods">인기상품</a></li>
+                </ul>
+
+                <div id="tab_guide" class="dt_tab tab_guide">
+                    <div class="tab_cnt">
+                        <div class="tab_title">쉬운 해외직구 이용가이드</div>
+                        <div class="global_shopping_guide">
+                            <div class="swiper-container">
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+                                        <div class="slide_step">
+                                            <div class="step_number"><span>STEP 1</span></div>
+                                            <div class="step_title">에누리 로그인</div>
+                                            <div class="step_summary">로그인 후 해외직구 쇼핑하면 e머니가 적립됩니다.</div>
+                                            <a href="http://m.enuri.com/global/m/guide.jsp" class="step_btn">이용안내 자세히 보기</a>
+                                            <div class="step_img"><img src="//img.enuri.info/images/global/step_img_phon1.png"></div>
+                                        </div>
+									</div>
+									<div class="swiper-slide">
+                                        <div class="slide_step">
+                                            <div class="step_number"><span>STEP 2</span></div>
+                                            <div class="step_title">쿠폰&amp;혜택</div>
+                                            <div class="step_summary">인기 쇼핑몰의 특별한 쿠폰과<br>
+                                                적립률을 확인하고 쇼핑해보세요.</div>
+                                            <a href="http://www.enuri.com/estore/estore.jsp" class="step_btn">이용안내 자세히 보기</a>
+                                            <div class="step_img"><img src="//img.enuri.info/images/global/step_img_phon1.png"></div>
+                                        </div>
+									</div>
+									<div class="swiper-slide">
+                                        <div class="slide_step">
+                                            <div class="step_number"><span>STEP 3</span></div>
+                                            <div class="step_title">e머니 사용하기</div>
+                                            <div class="step_summary">구매 후 적립된 e머니를 사용해보세요.</div>
+                                            <a href="http://m.enuri.com/global/m/guide.jsp" class="step_btn">바로가기</a>
+                                            <div class="step_img"><img src="//img.enuri.info/images/global/step_img_phon1.png"></div>
+                                        </div>
+									</div>
+								</div>
+								<div class="swiper-button-prev swiper-btn"></div>
+								<div class="swiper-button-next swiper-btn"></div>
+                                <div class="swiper-pagination"></div>
+							</div>
+							<script>
+								$(function(){
+									var mySwiper = Swiper('.global_shopping_guide .swiper-container',{
+										prevButton : '.global_shopping_guide .swiper-button-prev',
+										nextButton : '.global_shopping_guide .swiper-button-next',
+                                        pagination : '.global_shopping_guide .swiper-pagination',
+										loop : true,
+                                        autoplay : 2000,
+                                        speed : 500,
+									});
+								})
+							</script>
+                        </div>
+                    </div>
+                </div>
+                <!-- // 이용안내 -->
+
+                <!-- 쇼핑몰/유의사항 -->
+                <div id="tab_intro" class="dt_tab tab_intro">
+                    <div class="tab_cnt">
+                        <div class="tab_title">쇼핑몰/유의사항</div>
+                        <div class="tab_box">
+                            <div class="tab_box_head">소개</div>
+                            알리익스프레스는 알리바바의 영문 서비스 제공 사이트 입니다. 최근에는 한국어도 제공하고 있습니다.<br/>
+                            주로 휴대폰 액세서리를 저렴하게 판매 하여 한국에서 유명해지기 시작하였으며 저렴한 가격 및 무료 배송으로 인해 많은 고객님들이 이용하고 있습니다.</br>
+                            단 주로 작은 물품의 경우 일반 우편으로 배송되어 배송기간은 많이 소요됩니다.<br/><br/>
+
+                            알리 사이트 특성 상 물건을 받으신 후 알리에 접속하여 주문확정을 하셔야 주문내역에 잡히니 참고해주세요(주문확정을 하지 않으시면 늦게 캐시백을 받으실 수 있습니다)<br/>
+                            주문내역이 잡힌 후 30일 후 m캐시 적립되니 유의하시기 바랍니다.<br/><br/>
+                            
+                            - 기프트 카드를 이용한 구매, 및 기프트 카드 구매에 대해서는 캐시백이 적립되지 않습니다.<br/>
+                            - 대량구매 또는 리셀러라고 판단되는 사용자는 캐시백이 적립되지 않습니다.<br/>
+                            - 주문한 상품의 일부가 반송, 교환, 취소 등이 발생 할 경우, 해당 금액은 캐시백적립에서 제외됩니다.<br/>
+                            - 배송비, 포인트 결제, 쿠폰적용 금액, 부가세, 취소된 금액을 제외한 실제 거래 금액 기준으로 캐시백을 적립해 드립니다.<br/>
+                            - 경유 당 1회 주문 건에 한하여 적립됩니다. 여러 개의 주문시 주문건 수 만큼 재 경유해주시기 바랍니다.<br/>
+                            - 몰리를 경유하여 결제한 상품에만 캐시백이 적립되며 바로접속 또는 개인결제창을 통해 결제한 상품에 대해서는 캐시백이 적립되지 않습니다.<br/>
+                            - 몰리 경유한 주문이 누락된 경우, 해당 상점에 확인이 필요하며 확인까지 최대 70일 소요될 수 있습<br/>
+                        </div>
+
+                        <div class="tab_box">
+                            <div class="tab_box_head">카테고리</div>
+                            패션 의류, 패션 잡화, 생활 · 주방 · 애견, 출산 · 유아 · 도서 종합몰 · 백화점
+                        </div>
+
+                        <div class="tab_box">
+                            <div class="tab_box_head">유의사항</div>
+                            등록된 정보가 없습니다.
+                        </div>
+
+                    </div>
+                </div>
+                <!-- // 쇼핑몰/유의사항 -->
+
+                <!-- 쿠폰&혜택 -->
+                <div id="tab_benefit" class="dt_tab tab_benefit">
+                    <div class="tab_cnt">
+                        <div class="tab_title">쿠폰&amp;혜택</div>
+                        <ul class="list_benefit">
+                            <!-- 타입 : 쿠폰 없을때 -->
+                            <li class="no_result">
+                                <span>등록된 쿠폰이 없습니다.</span>
+                            </li>
+                            <!-- // -->
+                            <!-- 타입 : 쿠폰 -->
+                            <li class="type_coupon">
+                                <span class="list_tit">
+                                    <span class="ico comm_sprite"></span>쿠폰
+                                </span>
+                                <a href="#" class="list_info">
+                                    <!-- 200108 : SR#37767 [PC/M] 해외직구 > VIP 개선 퍼블 요청 > 텍스트 강조는 em태그로 감싸주세요-->
+                                    <span class="txt_sub">Today's Daily Deal! Save <em>56%</em> on the Men's Running MSPTES1, now Only $32.99 + $1 Shipping with code DOLLARSHIP at <br/>JoesNewBalanceOutlet.com! Offer valid Monday, 8/19.</span>
+                                    <!-- // -->
+                                    <span class="txt_expire_date">유효기간 : 09/01/2019</span>
+                                </a>
+                                <div class="area_coupon">
+                                    CODE : <span class="txt_code" id="txt_coupon1">COQ10BOGO</span>
+                                    <button class="btn_copy_code" data-clipboard-target="#txt_coupon1">복사</button>
+                                </div>
+                            </li>
+                            <!-- 타입 : 혜택 -->
+                            <li class="type_benefit">
+                                <span class="list_tit">
+                                    <span class="ico comm_sprite"></span>혜택
+                                </span>
+                                <a href="#" class="list_info">
+                                    <span class="txt_sub">Today's Daily Deal! Save 56% on the Men's Running MSPTES1, now Only $32.99 + $1 Shipping with code DOLLARSHIP at <br/>JoesNewBalanceOutlet.com! Offer valid Monday, 8/19.</span>
+                                    <span class="txt_expire_date">유효기간 : 09/01/2019</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- 200108 : SR#37767 [PC/M] 해외직구 > VIP 개선 퍼블 요청 > 더보기 버튼 추가 -->
+                        <button class="btn_list_more">더보기<span class="ico comm_sprite"></span></button>
+                        <!-- // -->
+                    </div>
+                    <script type="text/javascript" src="/js/clipboard.min.js"></script>
+                    <script>
+                        $(function(){
+                            // 쿠폰 코드 복사하기
+                            var clipboard = new ClipboardJS('.btn_copy_code');
+                            clipboard.on('success', function(e) {
+                                alert('Copied!');
+                            });
+                        });
+                    </script>
+                </div>
+                <!-- // 쿠폰&혜택 -->
+                
+                <!-- 인기상품 -->
+                <div id="tab_goods" class="dt_tab tab_goods">
+                    <div class="tab_cnt">
+                        <div class="tab_title">인기상품</div>
+                        <ul class="list_goods_02">
+                            <!-- 타입 : 상품 없을때 -->
+                            <li class="no_result">
+                                <span>등록된 인기상품이 없습니다.</span>
+                            </li>
+                            <!-- // -->
+                            <li>
+                                <a href="#">
+                                    <span class="thumb">
+                                        <span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+                                    </span>
+                                    <span class="info">
+                                        <span class="txt_brand">AliExpress </span>
+                                        <span class="txt_prd_nm">다이슨 V7 헤파필터<br/>무료 툴 3가지 선택가능</span>
+                                        <span class="txt_price">$160.0</span>
+                                        <span class="txt_earn">
+                                            <span class="ico_emoney comm_sprite">E</span>머니 1,600점 <span class="txt_sub">(예상적립)</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <button class="btn_zzim" onclick="$(this).toggleClass('on');"><span class="ico_zzim comm_sprite">찜</span></button>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="thumb">
+                                        <span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+                                    </span>
+                                    <span class="info">
+                                        <span class="txt_brand">AliExpress </span>
+                                        <span class="txt_prd_nm">다이슨 V7 헤파필터<br/>무료 툴 3가지 선택가능</span>
+                                        <span class="txt_price">$160.0</span>
+                                        <span class="txt_earn">
+                                            <span class="ico_emoney comm_sprite">E</span>머니 1,600점 <span class="txt_sub">(예상적립)</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <button class="btn_zzim" onclick="$(this).toggleClass('on');"><span class="ico_zzim comm_sprite">찜</span></button>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="thumb">
+                                        <span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+                                    </span>
+                                    <span class="info">
+                                        <span class="txt_brand">AliExpress </span>
+                                        <span class="txt_prd_nm">다이슨 V7 헤파필터<br/>무료 툴 3가지 선택가능</span>
+                                        <span class="txt_price">$160.0</span>
+                                        <span class="txt_earn">
+                                            <span class="ico_emoney comm_sprite">E</span>머니 1,600점 <span class="txt_sub">(예상적립)</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <button class="btn_zzim" onclick="$(this).toggleClass('on');"><span class="ico_zzim comm_sprite">찜</span></button>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="thumb">
+                                        <span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+                                    </span>
+                                    <span class="info">
+                                        <span class="txt_brand">AliExpress </span>
+                                        <span class="txt_prd_nm">다이슨 V7 헤파필터<br/>무료 툴 3가지 선택가능</span>
+                                        <span class="txt_price">$160.0</span>
+                                        <span class="txt_earn">
+                                            <span class="ico_emoney comm_sprite">E</span>머니 1,600점 <span class="txt_sub">(예상적립)</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <button class="btn_zzim" onclick="$(this).toggleClass('on');"><span class="ico_zzim comm_sprite">찜</span></button>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="thumb">
+                                        <span class="thumb_img" style="background-image:url('https://www.vitacost.com/productfeed/033674156865.jpg')"></span>
+                                    </span>
+                                    <span class="info">
+                                        <span class="txt_brand">AliExpress </span>
+                                        <span class="txt_prd_nm">다이슨 V7 헤파필터<br/>무료 툴 3가지 선택가능</span>
+                                        <span class="txt_price">$160.0</span>
+                                        <span class="txt_earn">
+                                            <span class="ico_emoney comm_sprite">E</span>머니 1,600점 <span class="txt_sub">(예상적립)</span>
+                                        </span>
+                                    </span>
+                                </a>
+                                <button class="btn_zzim" onclick="$(this).toggleClass('on');"><span class="ico_zzim comm_sprite">찜</span></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- // 인기상품 -->
+            </div>
+
+            <div class="btn_shop_area">
+                <!-- 쇼핑몰 이동 -->
+                <a href="#" class="btn_shop" onclick="$('.lay_login').show();return false;">쇼핑몰 이동 (4.0% 적립)</a>
+            </div>
+        </div>
+        
+        <!-- 공통 : 공지사항 -->
+        <div class="comm_notice">
+            <div class="inner">
+                <div class="slide_notice">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="#"><em>[공지]</em> GAP 제휴 종료 안내 <span class="txt_date">19.08.08</span></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><em>[공지]</em> 2GAP 제휴 종료 안내 <span class="txt_date">19.08.08</span></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><em>[공지]</em> 3GAP 제휴 종료 안내 <span class="txt_date">19.08.08</span></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a href="#"><em>[공지]</em> 4GAP 제휴 종료 안내 <span class="txt_date">19.08.08</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(function(){
+                            var swiper = new Swiper('.slide_notice .swiper-container', {
+                                loop : true,
+                                autoplay : 5000,
+                                autoplayDisableOnInteraction : false,
+                                autoHeight: true,
+                                speed : 1000,
+                                simulateTouch : false,
+                                direction: 'vertical'
+                            });
+                        })
+                    </script>
+                </div>
+                <button class="btn_all_view">전체보기</button>
+            </div>
+        </div>
+        <!-- // 공통 : 공지사항 -->
+
+        <!-- 공통 : 푸터 -->
+        <footer id="footer" class="footer">
+            <!-- 탑 버튼 -->
+            <div class="box_quick">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>
+            </div>
+            <!-- // -->            
+            <p class="legal_notices">
+                <span class="txt_tit">법적고지</span>
+                ㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.
+            </p>
+            <p class="company_info">
+                <span class="txt_company_name">(주)써머스 플랫폼</span>
+                대표이사 : 김기범<span> | </span>사업자등록번호 : 206-81-18164<br>
+                통신판매신고 : 2015-서울중구-1046호<br>
+                서울특별시 중구 퇴계로 18(남대문로5가) 9층<br>
+                문의 : 02-6354-3601<span> | </span><a href="mailto:master@enuri.com">master@enuri.com</a>
+            </p>
+            <p class="footer_menu">
+                <a href="javascript:openTermsWrap()" id="agree">이용약관</a>
+                <a href="javascript:openPrivacyWrap()">개인정보처리방침</a>
+                <a href="javascript:openRuleWrap()">법적고지</a>
+                <a href="javascript:goPcEnuri();insertLog('11004')">PC버전</a>
+            </p>
+        </footer>
+        <!-- // -->
+    </div>
+
+    <script>
+        $(function(){
+            var position = $(window).scrollTop();
+            var menuWrap = $(".shop_detail .list_tab");
+            var menuWrapTop = menuWrap.offset().top;
+            var el = {
+                wrap : $("#wrap"), // 메인래퍼
+                cont : $("#container"), // 메인컨텐츠
+                btnQuick : $(".footer .box_quick"), // 탑버튼
+                header : $("#header"), // header
+                btnShop : $(".btn_shop_area"), // 샵이동 버튼
+                btnWrap : $(".shop_summary .btn_wrap")// SNS 버튼 그룹
+            }
+            var stickyGnb = function(){
+				var $myScroll = $(window).scrollTop();
+                if ( $myScroll > 0 ){
+                    el.header.addClass("fixed_top")
+					el.btnQuick.addClass("scr_mode");
+                    // 업다운 스크롤 체크
+					if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                    // 쇼핑몰 이동 버튼 
+                    if ( $myScroll > el.btnShop.offset().top - screen.availHeight + 50) el.btnShop.addClass("no_fixed");
+                    else el.btnShop.removeClass("no_fixed");                    
+				}else{
+					el.header.removeClass("fixed_top");
+					el.btnQuick.removeClass("scr_mode");
+					el.wrap.removeClass("scr_down scr_up");
+				}
+                
+                if($myScroll > menuWrapTop - el.header.outerHeight()) {
+                    menuWrap.addClass('fixed_top');
+                    menuWrap.parent().css('padding-top', menuWrap.outerHeight());
+                } else {
+                    menuWrap.removeClass('fixed_top');
+                    menuWrap.parent().css('padding-top', '0');
+                }
+
+                // SNS 버튼 Sticky
+                ( $myScroll > el.btnWrap.offset().top - 10 ) ? el.btnWrap.addClass("fixed_top") : el.btnWrap.removeClass("fixed_top")
+                
+				position = $myScroll;
+            };
+			$(window).load(stickyGnb).scroll(stickyGnb);
+
+            // 자신의영역일경우 해당메뉴 활성화
+            menuWrap.find('li').each(function(index,item){
+                var this_href = $(item).find('a').attr('href');
+                $(window).scroll(function(){
+                    var $myScroll = $(window).scrollTop();
+                    if($myScroll + 90 >= $(this_href).offset().top && $myScroll < $(this_href).offset().top + $(this_href).outerHeight() ) {
+                        $('a[href='+this_href+']').parent().addClass('on').siblings().removeClass('on');
+                    }
+                });
+            });
+             // 탭 스크롤 이동
+            menuWrap.find('li a').click(function(e){
+                e.preventDefault();
+                var ta = $(this).attr('href');
+                $("html,body").stop().animate({ "scrollTop" : $(ta).offset().top - 90 },500);
+            })
+        })
+    </script>
+</body>
+</html>

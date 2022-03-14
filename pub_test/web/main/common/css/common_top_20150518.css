@@ -1,0 +1,646 @@
+@charset "utf-8";
+#dvMenuFrame{
+	min-width:850px; 
+	max-width:1000px;
+	margin-right:136px;
+}
+#aside{
+	position:fixed;
+	top:30px;
+	width:130px;
+}
+
+/* 20150519 모바일 강화 메인,LP,SRP 공통 맞춤 최근본상품, 찜 재수정(닫힘) */
+.rb_buttons1{position:fixed;width:130px;height:88px;	z-index:100;}
+.rb_buttons1 .rb_buttons_bg {position:relative; width:130px;height:50px;background-image:url(http://img.enuri.gscdn.com/images/main/2015/hp/rvi_bg_130x50.gif);}
+.rb_buttons1 .rb_buttons_bg ul{list-style:none;margin:0px;padding:0px;width:130px;height:28px;}
+.rb_buttons1 .rb_buttons_bg ul li {float:left; width:65px; line-height:26px; text-align:center; }
+.rb_buttons1 .rb_buttons_bg ul li a {display:block; font-family:malgun gothic; font-size:11px; color:#fff; letter-spacing:-0.05em; text-decoration:none;}
+.rb_buttons1 .rb_buttons_bg ul li#li_mysave {margin-left:-1px;}
+.rb_buttons1 .rb_buttons_bg a.btn_appdown {position:absolute; bottom:0; left:0; display:block; width:130px; height:22px; text-indent:-9999em; cursor :pointer;}
+
+
+/* 20150518 불편신고 버튼 분리 */
+.notifiy_singo {height:23px; margin-bottom:15px; text-align:center; line-height: 21px; font-family:malgun gothic; font-size:11px;  color:#343434; border:1px solid #bbb; cursor:pointer;}
+.ico_siren {padding-left:15px; background:url(http://img.enuri.gscdn.com/images/main/2015/common/ico_siren.png) 0 3px no-repeat }
+
+
+/*
+.rb_buttons2{
+	position:fixed;
+	width:156px;
+	height:21px;
+	z-index:1003;
+}*/
+/* 20150325 최근본 상품 수정 */
+/*.rb_buttons1 .rb_buttons_bg{
+	width:130px;height:28px;background-image:url(http://img.enuri.gscdn.com/images/main/2015/hp/rvi_bg_130x28.gif);
+}
+.rb_buttons2 .rb_buttons_bg{
+	/*margin-left:5px;*width:156px;height:21px;background-image:url(http://img.enuri.gscdn.com/images/main/2015/hp/rvi_bg_156x21.gif);
+}
+.rb_buttons2 .rb_buttons_bg ul{
+	list-style:none;margin:0px;padding:0px;width:156px;height:21px;
+}
+.rb_buttons1 .rb_buttons_bg #li_mytoday{
+	margin:3px 0px 0px 10px;text-align:center;	
+}
+.rb_buttons2 .rb_buttons_bg #li_mytoday{
+	float:left;margin:6px 0px 0px 13px;width:80px;;height:21px;	
+}
+.rb_buttons1 .rb_buttons_bg #li_mysave{
+	float:left;margin:3px 0px 0px 15px;width:20px; text-align:center;
+}
+.rb_buttons2 .rb_buttons_bg #li_mysave{
+	float:left;margin:6px 0px 0px 23px;width:40px;;height:21px;
+}
+.rb_buttons1 .rb_buttons_bg #li_com_not{
+	float:left;margin:0px 0px 0px 2px;width:28px;
+}
+.rb_buttons2 .rb_buttons_bg #li_com_not{
+	float:left;margin:6px 0px 0px 12px;width:14px;display:none;
+}
+.rb_buttons1 .rb_buttons_bg #mytoday_cnt{
+	font-size:11px;margin-top:2px;cursor:pointer;height:14px; color:#1073bf;*line-height:14px;
+}
+.rb_buttons1 .rb_buttons_bg #mytoday_cnt, x:-moz-any-link, x:default {margin-top:-3px;} /* FireFox 3 *
+.rb_buttons2 .rb_buttons_bg #mytoday_cnt{
+	font-size:11px;cursor:pointer;float:left;width:15px;height:14px;margin-left:10px;line-height:11px; *line-height:13px; color:#1073bf;
+}
+.rb_buttons1 .rb_buttons_bg #mysave_cnt{
+	font-size:11px;margin-top:2px;cursor:pointer;width:15px;height:14px; color:#1073bf;*line-height:14px;
+}
+.rb_buttons1 .rb_buttons_bg #mysave_cnt, x:-moz-any-link, x:default {margin-top:-3px;} /* FireFox 3 *
+.rb_buttons2 .rb_buttons_bg #mysave_cnt{
+	font-size:11px;cursor:pointer;float:left;width:15px;height:14px;margin-left:10px;line-height:11px; *line-height:13px; color:#1073bf;
+}
+*/
+
+/*
+.rb_buttons1 .rb_buttons_bg{
+	width:130px;height:31px;background-image:url(http://img.enuri.gscdn.com/2012/list/zzim/rvi_bg.gif);
+}
+.rb_buttons1 .rb_buttons_bg ul{
+	list-style:none;margin:0px;padding:0px;width:130px;height:30px;
+}
+.rb_buttons2 .rb_buttons_bg{
+	margin-left:5px;width:156px;height:21px;background-image:url(http://img.enuri.gscdn.com/2012/list/zzim/rvi_bg_simple.gif);
+}
+.rb_buttons2 .rb_buttons_bg ul{
+	list-style:none;margin:0px;padding:0px;width:156px;height:21px;
+}
+.rb_buttons1 .rb_buttons_bg #li_mytoday{
+	float:left;margin:3px 0px 0px 8px;width:40px;	
+}
+.rb_buttons2 .rb_buttons_bg #li_mytoday{
+	float:left;margin:6px 0px 0px 8px;width:80px;;height:21px;	
+}
+.rb_buttons1 .rb_buttons_bg #li_mysave{
+	float:left;margin:3px 0px 0px 20px;width:20px;
+}
+.rb_buttons2 .rb_buttons_bg #li_mysave{
+	float:left;margin:6px 0px 0px 20px;width:40px;;height:21px;
+}
+.rb_buttons1 .rb_buttons_bg #li_com_not{
+	float:left;margin:3px 0px 0px 5px;width:14px;
+}
+.rb_buttons2 .rb_buttons_bg #li_com_not{
+	float:left;margin:6px 0px 0px 12px;width:14px;display:none;
+}
+.rb_buttons1 .rb_buttons_bg #mytoday_cnt{
+	font-size:11px;cursor:pointer;position:relative;left:23px;top:-10px;width:15px;height:14px;
+}
+.rb_buttons1 .rb_buttons_bg #mytoday_cnt, x:-moz-any-link, x:default {top:-13px;} /* FireFox 3 *
+.rb_buttons2 .rb_buttons_bg #mytoday_cnt{
+	font-size:11px;cursor:pointer;float:left;width:15px;height:14px;margin-left:3px;line-height:14px;
+}
+.rb_buttons1 .rb_buttons_bg #mysave_cnt{
+	font-size:11px;margin-top:3px;cursor:pointer;width:15px;height:14px;
+}
+.rb_buttons1 .rb_buttons_bg #mysave_cnt, x:-moz-any-link, x:default {margin-top:0px;} /* FireFox 3 *
+.rb_buttons2 .rb_buttons_bg #mysave_cnt{
+	font-size:11px;cursor:pointer;float:left;width:15px;height:14px;margin-left:3px;line-height:14px;
+}
+*/
+
+.rb_buttons1 .rb_buttons_bg #mytoday_btn{
+	
+}
+.rb_buttons2 .rb_buttons_bg #mytoday_btn{
+	float:left;
+}
+.rb_buttons1 .rb_buttons_bg #mysave_btn{
+	
+}
+.rb_buttons2 .rb_buttons_bg #mysave_btn{
+	float:left;
+}
+
+	
+#catalogListDiv{
+	margin-top:3px;
+	position:fixed;
+	background-image:url(http://img.enuri.gscdn.com/2010/images/view/bt_compare_bg.gif);
+}
+.chkbox{
+	overflow:hidden;
+	width:13px;
+	height:13px;
+	font-size:1%;
+	line-height:1%;
+	padding:0px;
+	float:left;
+}
+.chkbox2{
+	overflow:hidden;
+	width:13px;
+	height:13px;
+	font-size:1%;
+	line-height:1%;
+	padding:0px;
+	margin:0px 4px 0px 4px;
+	position:relative;
+	top:4px;
+	_top:0px;
+}
+#rb_recent_zzim{
+	position:fixed;
+	z-index:101;
+}
+#sponsor_link a.link_overture,#search_sponsor_link a.link_overture{
+	color:#808080;
+}
+#sponsor_link a.link_overture:hover,#search_sponsor_link a.link_overture:hover {
+	color:#808080;
+}
+#sponsor_link a.link_overture:active,#search_sponsor_link a.link_overture:active {
+	color:#808080;
+}
+#sponsor_link a.link_overture:visited,#search_sponsor_link a.link_overture:visited {
+	color:#808080;
+}
+#sponsor_link a.reg_overture{
+	color:#0080ff;
+}
+#search_sponsor_link a.reg_overture{
+	color:#3366FF;
+}
+#sponsor_link a.reg_overture:hover,#search_sponsor_link a.reg_overture:hover {
+	color:#0080ff;
+}
+#sponsor_link a.reg_overture:active,#search_sponsor_link a.reg_overture:active {
+	color:#0080ff;
+}
+#sponsor_link a.reg_overture:visited,#search_sponsor_link a.reg_overture:visited {
+	color:#0080ff;
+}
+#sponsor_link a.desc{
+	text-decoration:none;
+	color:#808080;
+}
+#search_sponsor_link a.desc{
+	text-decoration:none;
+	color:#808080;
+	font-size:11px;
+}
+#sponsor_link a.desc:hover,#search_sponsor_link a.desc:hover {
+	text-decoration:none;
+	color:#FF0000;
+}
+#sponsor_link a.desc:active,#search_sponsor_link a.desc:active {
+	text-decoration:none;
+	color:#FF0000;
+}
+#sponsor_link a.desc:visited,#search_sponsor_link a.desc:visited {
+	color:#444444;
+}
+#sponsor_link a.url{
+	text-decoration:none;
+	color:#808080;
+}
+#search_sponsor_link a.url{
+	text-decoration:none;
+	color:#808080;
+}
+#sponsor_link a.url:hover,#search_sponsor_link a.url:hover {
+	text-decoration:none;
+	color:#808080;
+}
+#sponsor_link a.url:active,#search_sponsor_link a.url:active {
+	color:#808080;
+	text-decoration:none;
+}
+#sponsor_link a.url:visited,#search_sponsor_link a.url:visited {
+	color:#808080;
+	text-decoration:none;
+}
+.cls_ght {word-break:break-all;line-height:16px;font-family:돋움;font-size:11px;font-weight:bold;margin-left:3;padding-left:3px;;float:left;color:#000000}
+.cls_ghd {word-break:break-all;line-height:16px;font-family:돋움;font-size:11px;padding-top:1;padding-left:5px;clear:both;color:#000000}
+.cls_ght2 {word-break:break-all;line-height:16px;font-family:돋움;font-size:11px;font-weight:bold;margin-left:3;float:left;color:#000000}
+.cls_ghd2 {word-break:break-all;line-height:16px;font-family:돋움;font-size:11px;margin-left:3;padding-top:1;clear:both;color:#000000}
+.bgBeginnerTop01 {background-image:url(http://img.enuri.gscdn.com/2012/list/guide/dic_layer_02.png);padding-top:7px;padding-left:8px;}
+.bgBeginnerTop03 {background-image:url(http://img.enuri.gscdn.com/2012/list/guide/dic_layer_01.png)}
+.bgBeginnerTop04 {background-image:url(http://img.enuri.gscdn.com/2012/list/guide/dic_layer_03.png)}
+.bgBeginnerTop05 {background-image:url(http://img.enuri.gscdn.com/2012/list/guide/dic_layer_03.png)}
+
+.bgBeginnerBig1  {background-image:url(http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer01_bg.png)}
+.bgBeginnerBig2  {background-image:url(http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer03_bg.png)}
+.bgBeginnerBig3  {background-image:url(http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer02_bg.png)}
+.bgBeginnerBig4  {background-image:url(http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer04_bg.png)}
+
+.clauseInfo {width:645px;position:absolute;}
+.clauseInfo .clauseInfoTop {width:645px;height:6px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_top.png);overflow:hidden;}
+.clauseInfo .clauseInfoMiddle {width:645px;height:180px;overflow:hidden;}
+.clauseInfo .clauseInfoMiddle .clauseInfoMiddleLeft {float:left;width:640px;height:180px;overflow:hidden;background-color:#d6d6d6;}
+.clauseInfo .clauseInfoMiddle .clauseInfoMiddleRight {float:right;width:5px;height:180px;background:url(http://img.enuri.gscdn.com/images/view/catalog/layer_box_bg_right.png);overflow:hidden;}
+.clauseInfo .clauseInfoBottom {width:645px;height:6px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_bottom.png);overflow:hidden;}
+
+
+.catalogCopyInfo {width:295px;position:absolute;}
+.catalogCopyInfo .catalogCopyInfoTop {width:295px;height:6px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_top_295.png);overflow:hidden;}
+.catalogCopyInfo .catalogCopyInfoMiddle {width:295px;height:90px;overflow:hidden;}
+.catalogCopyInfo .catalogCopyInfoMiddle .catalogCopyInfoMiddleLeft {float:left;width:290px;height:90px;overflow:hidden;background-color:#d6d6d6;}
+.catalogCopyInfo .catalogCopyInfoMiddle .catalogCopyInfoMiddleRight {float:right;width:5px;height:90px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_box_bg_right.png);overflow:hidden;}
+.catalogCopyInfo .catalogCopyInfoBottom {width:295px;height:6px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_bottom_295.png);overflow:hidden;}
+
+.catalogCopyInfo2 {width:295px;position:absolute;}
+.catalogCopyInfo2 .catalogCopyInfoTop {width:295px;height:6px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_top_295.png);overflow:hidden;}
+.catalogCopyInfo2 .catalogCopyInfoMiddle {width:295px;height:75px;overflow:hidden;}
+.catalogCopyInfo2 .catalogCopyInfoMiddle .catalogCopyInfoMiddleLeft {float:left;width:290px;height:75px;overflow:hidden;background-color:#d6d6d6;}
+.catalogCopyInfo2 .catalogCopyInfoMiddle .catalogCopyInfoMiddleRight {float:right;width:5px;height:75px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_box_bg_right.png);overflow:hidden;}
+.catalogCopyInfo2 .catalogCopyInfoBottom {width:295px;height:6px;background-image:url(http://img.enuri.gscdn.com/images/view/catalog/layer_bottom_295.png);overflow:hidden;}
+
+#favoritePoB {width:349px;height:160px;position:absolute;z-index:101;}
+#favoritePoB .favoritePoTop{width:349px;height:35px;background-image:url(http://img.enuri.gscdn.com/2010/images/view/favorite_bg_01.png);}
+#favoritePoB .favoritePoBMiddle{width:349px;height:108px;background-image:url(http://img.enuri.gscdn.com/2010/images/view/favorite_bg_02.png);}
+#favoritePoB .favoritePoBottom{width:349px;height:17px;background-image:url(http://img.enuri.gscdn.com/2010/images/view/favorite_bg_03.png);}
+
+#favoritePoS {width:349px;height:160px;position:absolute;z-index:101;}
+#favoritePoS .favoritePoTop{width:349px;height:35px;background-image:url(http://img.enuri.gscdn.com/2010/images/view/favorite_bg_01.png);}
+#favoritePoS .favoritePoBMiddle{width:349px;height:88px;background-image:url(http://img.enuri.gscdn.com/2010/images/view/favorite_bg_02.png);}
+#favoritePoS .favoritePoBottom{width:349px;height:17px;background-image:url(http://img.enuri.gscdn.com/2010/images/view/favorite_bg_03.png);}
+
+.beg_btn{width:63px;height:20px;position:absolute;cursor:pointer;z-index:116}
+.cls_clauseLayerInner{width:406px;height:195px;background-image:url(http://img.enuri.gscdn.com/images/view/detail/noticedetail/20110916/copy_layer_02.png);}
+
+.googleLayerTop  {height:35px;background:url(http://img.enuri.gscdn.com/2010/images/view/guide/google_bg_01.png);padding-left:15px;}
+.googleLayerMiddle  {height:595px;background:url(http://img.enuri.gscdn.com/2010/images/view/guide/google_bg_02.png);}
+.googleLayerBottom  {height:20px;background:url(http://img.enuri.gscdn.com/2010/images/view/guide/google_bg_03.png);}
+.catekeyword_layer_inner{background-image:url('http://img.enuri.gscdn.com/images/view/catekeyword/layer_02_0812.png');width:314px;}
+.catekeyword_layer_inner_s{background-image:url('http://img.enuri.gscdn.com/images/view/catekeyword/layer_02_0812_s.png');width:314px;}
+.errorInner{background-image:url('http://img.enuri.gscdn.com/images/view/error/error_bg02_1011.png');}
+.popListTop{background-image:url('http://img.enuri.gscdn.com/images/view/detail/ingi/3m_layer_01_120920.png');}
+.popListMiddle{background-image:url('http://img.enuri.gscdn.com/images/view/detail/ingi/3m_layer_02_120920.png');}
+#div_brand_list ul li a{text-decoration:none;color:#00035A;}
+#div_brand_list ul li a:hover {text-decoration:none;color:#666666;}
+#div_brand_list_inner{overflow:auto;width:413px;background-image:url(http://img.enuri.gscdn.com/2010/images/brand/acc_layer02.png);}
+#div_brand_list_bottom{width:413px;height:71px;background-image:url(http://img.enuri.gscdn.com/2010/images/brand/acc_layer03_0515.png);}
+#div_brand_list_inner_top2{overflow:auto;width:413px;background-image:url(http://img.enuri.gscdn.com/2010/images/brand/acc_layer02_top2.png);}
+#div_brand_list_bottom_top2{width:413px;height:71px;background-image:url(http://img.enuri.gscdn.com/2010/images/brand/acc_layer03_top2_0515.png);}
+#div_brand_list_inner ul{list-style:none;margin:10px 0px 0px 20px;padding:0px;width:375px;}
+#div_brand_list_inner ul li{width:125px;height:25px;margin:0px;padding:0px;font-size:11px;}
+#div_brand_list_inner ul li a{text-decoration:none;color:#000000;}
+#div_brand_list_inner ul li a:hover {text-decoration:none;color:#003BC6;}
+#div_brand_list_bottom ul{list-style:none;margin:3px 0px 0px 20px;padding:0px;width:375px;height:40px;}
+#div_brand_list_bottom ul li{width:60px;height:20px;margin:0px;padding:0px;font-size:11px;}
+#div_brand_list_bottom ul li a{text-decoration:none;color:#000000;}
+#div_brand_list_bottom ul li a:hover {text-decoration:none;color:#003BC6;}
+#div_brand_list_inner_top2 ul{list-style:none;margin:10px 0px 0px 20px;padding:0px;width:375px;}
+#div_brand_list_inner_top2 ul li{width:125px;height:25px;margin:0px;padding:0px;font-size:11px;}
+#div_brand_list_inner_top2 ul li a{text-decoration:none;color:#000000;}
+#div_brand_list_inner_top2 ul li a:hover {text-decoration:none;color:#003BC6;}
+#div_brand_list_bottom_top2 ul{list-style:none;margin:3px 0px 0px 20px;padding:0px;width:375px;height:25px;}
+#div_brand_list_bottom_top2 ul li{width:60px;height:20px;margin:0px;padding:0px;font-size:11px;}
+#div_brand_list_bottom_top2 ul li a{text-decoration:none;color:#000000;}
+#div_brand_list_bottom_top2 ul li a:hover {text-decoration:none;color:#003BC6;}
+.air_style1 {font-family: "맑은 고딕";font-size: 12px;color:#c00000;}
+.air_style2 {font-family: "맑은 고딕";font-size:11px;line-height: 16px;color:#c00000;}
+.air_style3 {font-family: "돋움";font-size: 11px;color: #888888;}
+.air_style4 {color: #000000;font-weight: bold;}
+.calairfont{font-family: "맑은 고딕";	font-size: 12px;color: #333333;line-height: 16px;}
+#keyword {margin-top:7px;}
+*:first-child+html #keyword {margin-top:6px;}
+*:first-child+html .chkbox2 {top:0px;}
+
+#n_search_layer #keyword {margin-top:8px;}
+*:first-child+html #n_search_layer #keyword {margin-top:7px;}
+._hideClass{display:none;}
+
+#simpleView {position:fixed;z-index:1001;width:290px;height:100%;background-color:#ffffff;}
+#simpleView #spBanner {width:290px;height:75px;}
+#simpleView #simpleViewFrame {position:relative;top:3px;left:0px;background-color:#ffffff;}
+#simpleView #svfFilter {width:290px;background-color:#ffffff;opacity:0.8;filter:alpha(opacity=80);position:absolute;top:0px;left:0px;z-index:101;}
+#simpleView #svfFilter img{position:absolute;left:120px;top:130px;}
+#simpleView #svfTopborder {width:288px;height:6px;background-color:#ffffff;background-image:url('http://img.enuri.gscdn.com/2012/toolbar/bg_goodsInfo_01.gif');background-repeat:no-repeat;position:relative;z-index:100;left:1px;background-position:left bottom;}
+#simpleView #frmSimpleView{position:relative;top:-6px;z-index:99;}
+#simpleViewBlank {position:absolute;z-index:90;width:290px;height:1px;}
+
+#simpleViewShare {position:fixed;z-index:122;width:231px;height:229px;background-image:url('http://img.enuri.gscdn.com/2012/list/simple/share_layer.png');}
+#simpleViewShare *{font-family:'맑은 고딕','돋움';font-size:9pt;}
+#simpleViewShare #svsTop {width:231px;height:23px;}
+#simpleViewShare #svsTop p {margin:22px 0 0 20px;}
+#simpleViewShare #svsTop img {position:absolute;top:17px;right:16px;}
+#simpleViewShare #svsBody {width:231px;height:175px;}
+#simpleViewShare #svsBody #svsBody1 {position:relative;width:211px;height:127px;left:18px;top:10px;margin:0px;padding:0px;list-style:none;}
+#simpleViewShare #svsBody #svsBody1 dt {clear:both;float:left;width:45px;height:26px;}
+#simpleViewShare #svsBody #svsBody1 dt .shareTxt img {position:relative;top:2px;cursor:pointer;}
+#simpleViewShare #svsBody #svsBody1 dd {float:left;width:160px;margin-top:3px;}
+#simpleViewShare #svsBody hr {margin-top:15px;width:85%;height:1px;border:0px;background-color:silver;}
+#simpleViewShare #svsBody #svsBody2 {position:relative;left:20px;top:0px;margin:0px;padding:0px;list-style:none;}
+#simpleViewShare #svsBody #svsBody2 li {float:left;margin-right:5px;}
+#simpleViewShare #svsBottom {width:231px;height:10px;}
+
+#simpleViewMail {position:fixed;z-index:122;}
+#simpleViewMail * {font-size:12px;font-family:"돋움";}
+
+#simpleViewMail form label {line-height:14px;}
+#simpleViewMail input {font-size:12px;background-color:#ffffff;border:1px solid #808080;font-family:"돋움";}
+#simpleViewMail textarea {font-size:12px;background-color:#ffffff;border:1px solid #7f9db9;font-family:"돋움";}
+
+#simpleViewMail .messageTitle {width:282px;height:38px;background:url(http://img.enuri.gscdn.com/images/view/mail/mail_layer_01.png) no-repeat left top;}
+#simpleViewMail .titleString {float:left;margin:16px 0 0 15px;width:225px;font-size:12px;font-weight:bold;}
+#simpleViewMail .closeBtn {float:right;margin:12px 10px 0 0;width:10px;height:10px;background:url(http://img.enuri.gscdn.com/images/view/mail/x.gif) no-repeat;cursor:pointer;}
+#simpleViewMail .titleInfo .require {color:#f00;margin:0 -3px 0 0;}
+
+#simpleViewMail .messageContent {clear:both;width:282px;background:url(http://img.enuri.gscdn.com/images/view/mail/mail_layer_02.png);}
+#simpleViewMail .bodyContent {margin:0 0 0 10px;padding-top:10px;}
+#simpleViewMail #mailInfo {position:relative;}
+#simpleViewMail #mailInfo .recv {position:relative;display:block;width:250px;margin:0 0 3px 2px;}
+#simpleViewMail #mailInfo .recvEmail {display:inline-block;width:48px;font-size:11px;;}
+#simpleViewMail #mailInfo .receiverMail {width:190px;height:18px;ime-mode:inactive;border:2px solid #616161;}
+
+#simpleViewMail #mailCaptcha {position:relative;margin-top:10px;}
+#simpleViewMail #mailCaptcha div {float:left;width:100px;margin-left:20px;}
+#simpleViewMail #mailCaptcha div .p1 {height:6px;margin:0;padding:0;}
+#simpleViewMail #mailCaptcha div .p2 {height:12px;margin:0;padding:0;font-size:11px;line-height:12px;color:#616161;}
+#simpleViewMail #captchaImg {display:inline;width:62px;height:25px;}
+#simpleViewMail #captchaRefresh {text-decoration:underline;cursor:pointer;}
+#simpleViewMail #imgPassText {width:75px;vertical-align:top;margin-top:4px;border:1px solid #020202;}
+
+#simpleViewMail #emailSend {clear:both;float:right;width:64px;height:37px;margin:5px 15px 0 0;}
+#simpleViewMail #emailSend img {display:block;cursor:pointer;}
+
+#simpleViewMail .messageContent .hr {clear:both;margin-left:5px;width:255px;height:5px;border-top:1px dotted #2b2b2b;}
+
+#simpleViewMail #mailBodyNone {width:260px;height:20px;}
+#simpleViewMail #mailBodyNone p {margin:0;padding:0;float:right;text-align:right;width:100px;font-family:"맑은 고딕";font-size:11px;cursor:pointer;}
+#simpleViewMail #mailBody {position:relative;display:none;}
+#simpleViewMail #mailBody * {font-family:"맑은 고딕";}
+#simpleViewMail #mailBody dl {width:260px;height:22px;margin:5px 0 0 0;}
+#simpleViewMail #mailBody dt {float:left;margin:0;font-size:11px;}
+#simpleViewMail #mailBody dd {float:right;margin:0;font-size:11px;font-weight:bold;cursor:pointer;}
+#simpleViewMail #mailBody input {border:1px solid #808080;background-color:#f7f7f7;}
+#simpleViewMail #mailBody #sender {height:26px;}
+#simpleViewMail #mailBody #senderName {margin-left:1px;width:140px;height:19px;ime-mode:active;color:#676767;}
+#simpleViewMail #mailBody #sendMailSubject {width:233px;height:19px;overflow:hidden;ime-mode:active;color:#000000;}
+#simpleViewMail #mailBody #sendMailContents {width:261px;margin:5px 0 5px 0;padding-top:2px;border:1px solid #808080;background-color:#f7f7f7;ime-mode:active;color:#676767;}
+
+#simpleViewMail .forBottomBg {width:282px;height:8px;overflow:hidden;background:url(http://img.enuri.gscdn.com/images/view/mail/mail_layer_03.png) no-repeat left top;}
+
+
+/*.sv_rz_top {width:254px;height:24px;background-image:url(http://img.enuri.gscdn.com/images/main/2015/hp/svi_bg_top.gif);}
+.sv_rz_goods_sel {width:254px;height:60px;background-image:url(http://img.enuri.gscdn.com/images/main/2015/hp/svi_bg_list.gif);}
+.sv_rz_goods_line { width:254px;height:1px;margin:0px;padding:0px; }
+.sv_rz_goods_line div { width:254px;height:1px;margin:0px 0px 0px 0px; background:#eaeaea; /*background-image:url(http://img.enuri.gscdn.com/2012/list/zzim/svi_bg_list_dotline_0926.png);* /}
+/*
+#rb_recent_zzim #rzFilter {width:268px;background-color:#ffffff;opacity:0.8;filter:alpha(opacity=80);position:absolute;top:0px;left:0px;z-index:124;}
+#ul_search_history{list-style:none;margin:0px;padding:0px;}
+#ul_search_history li{margin:0px;padding:0px;height:19px;line-height:19px;}
+/*
+#bottom_menu{clear:left;margin-top:15px;width:100%;background-color:#898989;height:22px;}
+#bottom_menu li{margin:5px 3px 0px 3px;padding:0px;float:left;color:#ffffff;font-size:11px;cursor:pointer;}
+#footer{width:100%;height:106px;background-image:url('http://img.enuri.gscdn.com/2010/images/view/footer_bg.gif');	
+}
+*/
+#searchlist_loading_filter{background-color:#ffffff;opacity:0.8;filter:alpha(opacity=80);position:absolute;left:0px;top:130px;z-index:998;}
+.popListInfoTop{background-image:url('http://img.enuri.gscdn.com/images/view/detail/ingi/3m_info_layer_01_120920.png');}
+
+.linkagetitle{font-size:11px;font-family:돋움;}
+#ul_linkage{list-style:none;margin:0px;padding:0px;width:320px;height:47px;clear:right;}
+#ul_linkage li{margin:0px;padding:0px;height:19px;line-height:19px;float:right;}
+#ul_linkage li div{height:18px;line-height:18px;cursor:pointer;font-size:11px;color:#5b5b5b;margin-right:15px;}
+
+/* 오류신고 */
+#div_inconv {position:absolute;z-index:150;width:280px;top:185px;left:3px;font-size:11px;}
+#div_inconv * {font-family: "맑은 고딕";color:#000000;}
+#epTop {height:50px;background:url('http://img.enuri.gscdn.com/2012/toolbar2/singo_bg_01.png') left top no-repeat;}
+#epTop.formall {background:url('http://img.enuri.gscdn.com/2012/toolbar2/singo_bg_01_1.png') left top no-repeat;}
+#epTop * {display:none;}
+#div_inconv .closeBtn {position:absolute;top:10px;right:10px;width:17px;height:16px;cursor:pointer;}
+#epTitle {height:24px;font-size:14px;font-weight:bold;}
+#epDetail {height:24px;line-height:16px;}
+#epDetail span {color:#800000;}
+#epMain {width:280px;background:url('http://img.enuri.gscdn.com/2012/toolbar2/singo_bg_02.png') repeat;}
+#epMallChk {display:none;}
+#epMallChk ul {width:240px;list-style:none;margin:0 0 0 16px;padding:0;}
+#epMallChk ul li {list-style:none;float:left;width:110px;height:20px;font-size:12px;font-weight:bold;}
+#epFormTitle {clear:both;margin:0 0 0 18px;padding-top:5px;font-size:12px;line-height:16px;}
+#epFormSubInfo {clear:both;margin:0 0 0 18px;font-size:11px;line-height:14px;display:none;}
+#epFormSubInfo div {margin-top:4px;}
+#epfTitle {font-weight:bold;}
+.inconv_txt {width:244px;height:100px;border:1px solid black;margin:5px 0 5px 16px;font-size:12px;ime-mode:active;}
+#epfDetail {margin-left:16px;width:244px;font-size:12px;}
+/* 최근 1개월 신고 건수 삭제 */
+#epNums { display:none;margin: 5px 0;padding-left:10px;background:url('http://img.enuri.gscdn.com/2012/toolbar2/bu_g.gif') 0 50% no-repeat;}
+#epNums * {color:#5A5A5A;}
+#epnNums {font-weight:bold;}
+#epNumsDummy {width:244px;height:20px;margin:12px 0 0 16px;text-align:right; }
+#epfSubmit {cursor:pointer;}
+#epBottom {width:280px;height:15px;background:url('http://img.enuri.gscdn.com/2012/toolbar2/singo_bg_03.png') left top no-repeat;}
+
+/*
+#search_sns {float:left;list-style:none;margin:-5px 0px 0px 21px;padding:0px;height:27px;display:inline;}
+#search_sns li{float:left;padding:0px;height:27px;font-size:0px;margin-right:10px;}
+*/
+
+
+/* 20150518 모바일 강화 */
+#div_search_top {position:relative; z-index:600;}
+#search_sns {position:absolute;	left:20px; top:40px; z-index:600;}
+#search_sns .sort {line-height:16px;height:16px; }
+#search_sns .sort:after {content:""; clear:both; display:block;}
+#search_sns .sort li {float:left;}
+#search_sns .sort li:first-child {margin-right:10px;}
+#search_sns .sort li img {cursor:pointer;}
+
+.share_box {display:none; position:absolute; top:20px; width:102px; height:152px; margin-left:2px; text-indent:-9999em; z-index:500; background:url(http://img.enuri.gscdn.com/images/main/2015/common/share_box.png) 0 0 no-repeat }
+.share_box.type2 {height:132px; background:url(http://img.enuri.gscdn.com/images/main/2015/common/share_box2.png) 0 0 no-repeat }
+.share_box .list {position:absolute; top:30px; left:1px; width:98px; margin:0; padding:0; }
+.share_box .list li a {display:block; height:23px;}
+.share_box .close {position:absolute; top:5px; right:7px; width:12px; height:11px; padding:5px; text-indent:-9999em; z-index:550; }
+
+.enuriapp_box {display:none; position:absolute; top:20px; width:342px; height:152px; margin-left: 47px;  text-indent:-9999em; z-index:500; background:url(http://img.enuri.gscdn.com/images/main/2015/common/enuriapp_box.png) 0 0 no-repeat }
+.enuriapp_box .qrcode {position:absolute; top:45px;left:23px; width:84px; height:84px;text-indent:0; border:1px solid #e2e2e2}
+.enuriapp_box .qrcode img {width:100%; height:100%}
+.enuriapp_box .inner p {margin:0; padding:0;}
+.enuriapp_box .inner a {position:absolute; top:96px;height:23px;}
+.enuriapp_box .inner a.btn_phone {left:120px; width:82px; }
+.enuriapp_box .inner a.btn_install {left:212px; width:90px; }
+.enuriapp_box .close {position:absolute; top:5px; right:7px; width:12px; height:11px; padding:5px; text-indent:-9999em; z-index:550; }
+
+.enuriapp_box.spread {height:232px;  background:url(http://img.enuri.gscdn.com/images/main/2015/common/enuriapp_box2.png) 0 0 no-repeat }
+.enuriapp_box.spread .phone_trans input {position:absolute; bottom:50px; left:22px;width:168px; height:22px; padding-left:10px; line-height:22px; font-family:Malgun Gothic;  font-size:11px; color:#787878; letter-spacing:-0.05em; border:0; background:0;}
+.enuriapp_box.spread .phone_trans .btn_trans {position:absolute; bottom:50px; right:40px; width:90px; height:24px; }
+
+
+
+
+
+<!--[if lte IE 6]>
+._f{
+}
+#wrap{
+
+}
+.bgBeginnerBig1  {
+	_background-image : none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer01_bg.png',sizingMethod='scale');
+}
+.bgBeginnerBig2  {
+	_background-image : none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer03_bg.png',sizingMethod='scale');
+}
+.bgBeginnerBig3  {
+	_background-image : none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer02_bg.png',sizingMethod='scale');
+}
+.bgBeginnerBig4  {
+	_background-image : none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/sp_bigLayer04_bg.png',sizingMethod='scale');
+}
+.clauseInfo .clauseInfoTop {
+	width:645px;height:6px;overflow:hidden;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/layer_top.png',sizingMethod='scale');
+}
+.clauseInfo .clauseInfoMiddle .clauseInfoMiddleRight {
+	float:right;width:5px;height:200px;overflow:hidden;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/layer_box_bg_right.png',sizingMethod='scale');
+}
+.clauseInfo .clauseInfoBottom {
+	width:645px;height:6px;overflow:hidden;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/layer_bottom.png',sizingMethod='scale');
+}
+.catalogCopyInfo .catalogCopyInfoTop {
+	width:295px;height:6px;overflow:hidden;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/layer_top_295.png',sizingMethod='scale');
+}
+.catalogCopyInfo .catalogCopyInfoMiddle .catalogCopyInfoMiddleRight {
+	width:5px;height:90px;overflow:hidden;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/layer_box_bg_right.png',sizingMethod='scale');
+}
+.catalogCopyInfo .catalogCopyInfoBottom {
+	width:295px;height:6px;overflow:hidden;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/layer_bottom_295.png',sizingMethod='scale');
+}
+
+#favoritePoB .favoritePoTop{
+	width:349px;height:35px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/favorite_bg_01.png',sizingMethod='scale');
+}
+#favoritePoB .favoritePoBMiddle{
+	width:349px;height:108px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/favorite_bg_02.png',sizingMethod='scale');
+}
+#favoritePoB .favoritePoBottom{
+	width:349px;height:17px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/favorite_bg_03.png',sizingMethod='scale');
+}
+#favoritePoS .favoritePoTop{
+	width:349px;height:35px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/favorite_bg_01.png',sizingMethod='scale');
+}
+#favoritePoS .favoritePoBMiddle{
+	width:349px;height:88px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/favorite_bg_02.png',sizingMethod='scale');
+}
+#favoritePoS .favoritePoBottom{
+	width:349px;height:17px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/favorite_bg_03.png',sizingMethod='scale');
+}
+.googleLayerTop{
+	height:35px;
+	padding-left:15px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/google_bg_01.png',sizingMethod='scale');
+}
+.googleLayerMiddle{
+	height:595px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/google_bg_02.png',sizingMethod='scale');
+}
+.googleLayerBottom{
+	height:20px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/view/guide/google_bg_03.png',sizingMethod='scale');
+}
+.catekeyword_layer_inner{
+	width:314px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catekeyword/bg02_0920.png',sizingMethod='scale');
+}
+.cls_clauseLayerInner{
+	width:406px;
+	height:195px;
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/catalog/catalog_02.png',sizingMethod='scale');
+}
+.errorInner{
+	_background-image:none;
+	_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/error/error_bg02_1011.png',sizingMethod='scale');
+}
+.popListTop {
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/detail/ingi/3m_layer_01_120920.png',sizingMethod='scale');
+}
+.popListMiddle{
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/images/view/detail/ingi/3m_layer_02_120920.png',sizingMethod='scale');
+}
+.bgBeginnerTop01 {
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2012/list/guide/layer_02_4.png',sizingMethod='scale');
+}
+.bgBeginnerTop03 {
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2012/list/guide/layer_01_2.png',sizingMethod='scale');
+}
+.bgBeginnerTop04 {
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2012/list/guide/layer_03_2.png',sizingMethod='scale');
+}
+.bgBeginnerTop05 {
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2012/list/guide/layer_03_2.png',sizingMethod='scale');
+}
+#div_brand_list_inner{
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/brand/acc_layer02.png',sizingMethod='scale');
+}
+#div_brand_list_bottom{
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/brand/acc_layer03_0515.png',sizingMethod='scale');
+}
+#div_brand_list_inner_top{
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/brand/acc_layer02_top.png',sizingMethod='scale');
+}
+#div_brand_list_bottom_top{
+	_background-image : none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://img.enuri.gscdn.com/2010/images/brand/acc_layer03_top_0515.png',sizingMethod='scale');
+}
+<![endif]-->
+
+
+

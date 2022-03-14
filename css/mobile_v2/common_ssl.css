@@ -1,0 +1,196 @@
+﻿@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : common_ssl.css
+ * 설명 : 에누리 모바일 웹 (v2019) 공통 CSS (SSL용)
+ * 작성자  :신왕섭
+ * 작성일 :2020.02.06
+************************************************************************/
+
+* {-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0);margin:0;padding:0}
+body,input,textarea,select,table,button{font-size:14px;font-family:'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Apple SD 산돌고딕 Neo','Microsoft NeoGothic','Helvetica','AppleGothic','Droid sans','Sans-serif','Dotum','Verdana','Helvetica',sans-serif}
+h1,h2,h3,h4,h5 {font-size:100%}
+a:link,a:hover,a:active,a:visited,a:focus {color:#4c5363;text-decoration:none;outline:none;-webkit-tap-highlight-color:transparent}
+ul,ol,li {list-style:none}
+table {width:100%;border-collapse:collapse; word-break: break-all}
+colgroup {background:none}
+input,select,textarea,label,button {vertical-align:middle;font-size:14px; font-family: inherit }
+button{border: 0 none; background-color: transparent; cursor: pointer}
+fieldset,img {border:0}
+img {vertical-align:top}
+td img {vertical-align:middle}
+legend,caption {visibility:hidden;width:0;font-size:0;line-height:0;text-indent:-5000px}
+address,em {font-style:normal}
+hr {display:none}
+.hide {visibility:hidden;position:absolute;font-size:0;line-height:0}
+input,textarea{-webkit-appearance: none;-webkit-border-radius:0}
+input,textarea,button{outline-style:none}
+select,input[type="text"],input[type="password"],input[type="number"],input[type="radio"],input[type="checkbox"] {-webkit-appearance:none;-moz-appearance:none;border-radius:0}
+button{outline:none;background-color:transparent;color:inherit;letter-spacing:inherit;font-size:inherit}
+button::-moz-focus-inner {border:0;padding:0; }
+/* body,#main {background: #dde1e6} */
+.blind {display:block;position:absolute;overflow:hidden;left:-9999px;width:1px;height:1px;font-size:0;line-height:0;text-indent:-9999px} /* hide */
+.m_fixed{position: fixed;top:0;left:0;right:0;z-index:100;box-shadow: 0 0 15px rgba(0,0,0,.2)}
+.invisible{display:none!important}
+.dim{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7)}
+.dim .dim__back{position: absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+
+/* var */
+:root{    
+    --color-enuri-blue : #0073be;  /* 에누리 블루 */
+    --color-enuri-sky : #30a7f7; /* 에누리 스카이 */
+    --url-comm-sprite : url(/images/myenuri/m/common_sprite.png); /* 공통 Sprite */
+    --size-comm-sprite : 360px;
+    --url-home-sprite : url(/images/myenuri/m/home_sprite.png); /* 홈메인 Sprite */
+    --size-home-sprite : 360px;    
+    --url-mall-sprite : url(/images/myenuri/m/logo_sprite.png); /* 로고 Sprite */
+    --size-mall-sprite : 360px;
+    --url-my-sprite : url(/images/myenuri/m/myenuri_sprite.png); /* 마이에누리 Sprite */
+    --size-my-sprite : 360px;
+    --url-vip-sprite : url(/images/myenuri/m/ico_pack_vip.png); /* VIP Sprite */
+    --size-vip-sprite : 300px;
+}
+
+/* common layout */
+body{background-color:#f6f6f6}
+.comm__sprite{background-image:url(/images/myenuri/m/common_sprite.png);background-repeat:no-repeat;background-size:360px}
+.home__sprite{background-image:url(/images/myenuri/m/home_sprite.png);background-repeat:no-repeat;background-size:360px}
+.mall__sprite{background-image:url(/images/myenuri/m/logo_sprite.png);background-repeat:no-repeat;background-size:360px}
+
+.m_sub_cont {padding-top: 50px;}
+#wrap .another_app_list {margin-top: 10px;}
+.m_alarm_cont {padding-top:92px}
+
+/* new mobile 전체헤더 신규 */
+header.m_header{position:relative;background-image: -o-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: -webkit-gradient(linear,left top, right top,from(#30a7f7) ,to(#2d83ed));background-image: linear-gradient(to right,#30a7f7 ,#2d83ed);padding:0 10px;-webkit-box-sizing: border-box;box-sizing: border-box;width:100%;}
+header.m_header.fixed_top{position:fixed;top:0;left:0;z-index: 100}
+header.m_header .header_wrap{position:relative;padding:13px 0}
+header.m_header .header_wrap button{margin:0;padding:0;border:0;outline:0;position: absolute;width:24px;height:24px;text-indent:-9999em}
+header.m_header .header_wrap h1.m_symbol{width:76px;height:24px;margin:0 auto;background-position:0 -26px;text-indent:-9999em}
+header.m_header .header_wrap h1.m_txt{text-align:center;/* padding-left:38px;padding-right:60px; */margin:0 60px;box-sizing: border-box;font-size:18px;height:24px;line-height:24px;letter-spacing: -1px;color:#fff;font-weight: normal;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;}
+header.m_header.head__type_c .header_wrap{text-align:center;font-size:0}
+header.m_header.head__type_c .header_wrap h1.m_txt{position:relative;display:inline-block;max-width:calc(100% - 60px);margin:0 auto;padding:0 30px 0}
+header.m_header.head__type_c .header_wrap h1.m_txt:after{content:"";position: absolute;top:0;right:0;width:24px;height:24px;background-image:url(/images/myenuri/m/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-125px -185px}
+header.m_header .header_wrap h2{text-align:center;font-size:18px;color:#fff;line-height:24px;letter-spacing: -1px;font-weight: normal}
+header.m_header .header_wrap .btn_hd_home{width:24px;height:24px;background-position: -49px -158px;left:34px;top:13px}
+header.m_header .header_wrap .btn_hd_cate{background-position: 0 -185px;left:0;top:13px}
+header.m_header .header_wrap .btn_hd_my{background-position: -25px -185px;top:13px;right:0}
+header.m_header .header_wrap .btn_hd_back{background-position: -75px -185px;left:0;top:13px}
+header.m_header .header_wrap .btn_hd_close,
+header.m_header .header_wrap .btn_dt_close{background-position: -100px -185px;top:13px;right:0}
+header.m_header .header_wrap .btn_hd_sr{position: absolute;top:13px;right:34px;background-position: -50px -185px}
+header.m_header .search_wrap{padding:0 0 12px}
+header.m_header .header_wrap .ico_hd_ad{position: absolute;width:24px;height:12px;background-position:-115px -190px;top:50%;right:0px;margin-top:-6px;text-indent:-9999em}
+header.m_header .search_wrap .btn_lay_sr{position:relative;display:block;background-color:#fff;height:40px;border-radius:4px 4px;}
+header.m_header .search_wrap .btn_lay_sr:after{content:"";position: absolute;width:24px;height:24px;top:8px;right:10px;background-image:url(/images/myenuri/m/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-125px -210px}
+header.m_header.m_header_sub{position:fixed;right:0;left:0;z-index:100}
+header.m_header.m_header_sub.shadow{-webkit-box-shadow: 0 3px 3px rgba(0,0,0,.05);box-shadow: 0 3px 3px rgba(0,0,0,.05)}
+header.m_header.m_header_sub h1.m_txt{margin:0 30px}
+/* header.m_header.m_header_sub h1.m_txt{text-align:center;} */
+
+/* 카테고리 없는 헤더 */
+header.m_header.no_cate .header_wrap .btn_hd_cate{display:none}
+header.m_header.no_cate .header_wrap .btn_hd_home{left:0}
+
+/* 흰색헤더 */
+header.m_header.header_white{background:#fff;border-bottom:1px solid #697381}
+header.m_header.header_white .header_wrap h1.m_txt{color:#333}
+header.m_header.header_white .header_wrap .btn_hd_home{background-position:-150px -160px}
+header.m_header.header_white .header_wrap .btn_hd_my{background-position:-175px -160px}
+
+/* 공통 레이어 */
+.com__layer{background-color:#fff;position:absolute;top:50%;left:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);letter-spacing:-1px}
+.com__layer .lay_head{height:37px;text-align:center;line-height:37px;font-size:16px;color:#333;border-bottom:1px solid rgba(0,0,0,.01)}
+.com__layer .lay_close{background-image:url(/images/myenuri/m/common_sprite.png);background-repeat:no-repeat;background-size:360px;width:20px;height:20px;background-position:-292px -21px;position: absolute;top:8px;right:10px;text-indent:-9999em}
+.com__layer .lay_inner{background-color:#f6f6f6;text-align:center}
+/* 공통레이어 : 에누리컬러 */
+.com__layer.grad_blue .lay_head{background-image: -webkit-gradient(linear,left top,right top,from(#30a7f7) ,to(#2d83ed));background-image: -webkit-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: -o-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: linear-gradient(to right,#30a7f7 ,#2d83ed);color:#fff}
+.com__layer.grad_blue .lay_close{background-position:-292px 0}
+
+
+/* 위메프 상품권 적립안내 레이어 2018-02-28 */
+.wemap_ticket_layer{padding:10px; position:absolute; left:0; top:50%; margin:0 auto; z-index:100; width:100%; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); -moz-transform:translateY(-50%); transform:translateY(-50%); box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box}
+.wemap_ticket_layer .con{width:100%; background:#fff; padding:20px 15px 3px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box}
+.wemap_ticket_layer .con h1 {margin-bottom:10px; padding:0; color:#000; font-size:23px; letter-spacing:-1px; line-height:30px; vertical-align:middle}
+.wemap_ticket_layer .con h1 b {color:#007dc3}
+.wemap_ticket_layer .con .txt{font-size:12px; color:#666; line-height:17px; padding-bottom:3px; letter-spacing:-1px}
+.wemap_ticket_layer .con .txt02{font-size:10px; color:#666666; padding-bottom:10px}
+.wemap_ticket_layer .con .eticket_use_list {clear:both; /* margin-top:18px; */ padding-top:13px; background:url(/images/myenuri/m/bg_dashed_line.gif) top left repeat-x; background-size:16px}
+.wemap_ticket_layer .con .eticket_use_list h2 {font-weight:bold; font-size:12px; color:#007dc3; text-align:left; line-height:17px}
+.wemap_ticket_layer .con .eticket_use_list ul {margin:0 0 20px; text-align:left}
+.wemap_ticket_layer .con .eticket_use_list ul:last-child {margin-bottom:0}
+.wemap_ticket_layer .con .eticket_use_list li {position:relative; margin-bottom:5px; font-size:12px; line-height:16px; padding-left:10px; letter-spacing:-1px}
+.wemap_ticket_layer .con .eticket_use_list li:after {content:"-"; display:block; position:absolute; left:0; top:0}
+.wemap_ticket_layer .con .eticket_use_list li .subtxt {color:#999}
+.wemap_ticket_layer .con .eticket_use_list li .emp-blue {color:#007dc3}
+.wemap_ticket_layer .con .eticket_use_list .cautionment {position:relative; margin-bottom:15px; padding-left:15px; font-size:12px; line-height:16px}
+.wemap_ticket_layer .con .eticket_use_list .cautionment:before {content:"※"; position:absolute; left:0}
+.wemap_ticket_layer .con .eticket_use_list .view {display:block; width:calc(100% - 20px); margin:15px auto 0; border-radius:5px; font-weight:bold; font-size:12px; color:#fff; line-height:35px; vertical-align:middle; background-color:#3a7bd5}
+.wemap_ticket_layer .frontbtn{color:#ffffff; background:#373c40; }
+.wemap_ticket_layer .frontbtn span{box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; height:35px; display:inline-block; text-align:center; font-weight:normal; font-size:12px; position:relative; line-height:33px; vertical-align:middle}
+.wemap_ticket_layer .frontbtn span a{display:block; color:#fff}
+.wemap_ticket_layer .frontbtn span:first-child{width:70%; border-right:1px solid #35373e}
+.wemap_ticket_layer .frontbtn span:last-child{width:30%;border-left:1px solid #626467}
+
+@media (max-height: 480px){
+	.dim {position:absolute; bottom:0; min-height:480px}
+	.wemap_ticket_layer {position:static; top:0; -webkit-transform:translateY(0); -ms-transform:translateY(0); -moz-transform:translateY(0); transform:translateY(0); }
+	.wemap_ticket_layer .con {min-height:400px}
+}
+
+.wemap_ticket_layer.app{width:100%; height:100%; background:#dde1e6; top:0; margin:0; padding:0}
+.wemap_ticket_layer.app .con{padding:20px}
+.wemap_ticket_layer.app .btnclose{position:absolute; right:3px; top:3px; width:28px; height:28px; border-radius:3px; background: url(/images/myenuri/m/ico_popup.png) -49px 5px no-repeat #bcbfc4; background-size:72px; text-indent:-9999em}
+
+/* paging */
+.paging{text-align:center; background:#ffffff; padding:5px 0}
+.paging.second{margin-top:8px}
+.paging li{display:inline-block; margin:0 2px; position:relative; width:30px }
+.paging li a{width:30px; height:30px; line-height:30px; color:#999999; text-align:center; display:block; font-size:15px; font-family:tahoma}
+.paging li a.btn{position:absolute; text-indent:-9999em; background: url(/images/myenuri/m/ico_paging.png) 0 0 no-repeat; background-size:38px; }
+.paging li a.btn.prev{background-position:-20px 10px; left:-12px; top:-21px}
+.paging li a.btn.prev.none{background-position:12px 10px; }
+.paging li a.btn.next{background-position:-20px -17px; right:-12px; top:-21px}
+.paging li a.btn.next.none{background-position:12px -17px; }
+.paging li a.selected{cursor:default; color:#7bbbee; text-decoration:underline;  font-weight:bold}
+
+/* 앱 다운로드 */
+.another_app_list{overflow:hidden;background:#fff}
+.another_app_list li{float:left;width:50%;}
+.another_app_list li a{position:relative;display:block;height:23px;padding:7px 0;text-indent:-9999em}
+.another_app_list li a:before{position:absolute;content:"";top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);background:url(/images/myenuri/m/ico_pack_vip.png) no-repeat;background-size:300px;}
+.another_app_list li.btn_app_smart a:before{width:89px;height:23px;background-position:-180px 0}
+.another_app_list li.btn_app_social a:before{width:100px;height:23px;background-position:-180px -25PX}
+
+/* 광고배너 */
+.aside_bnr{position:relative;margin:8px 0;text-align:center}
+.aside_bnr img{width:100%;max-width:480px}
+
+/* 200609 [MW] 푸터 개선건 */
+.footer--com{padding:16px;position:relative;background-color:#f6f6f6;font-size:14px;letter-spacing:-.5px;text-align:center;color:#222}
+.footer--com .footer__info{padding:12px 0 0}
+.footer--com .footer__tx_com{width:100%;border:0;outline:none;height:22px;line-height:22px;text-align:center;display:block;margin-bottom:12px}
+.footer--com .footer__tx_com .ico_farr{width:14px;height:14px;display:inline-block;vertical-align:middle;border:1px solid #ddd;border-radius:50%;margin-left:2px;position:relative}
+.footer--com .footer__tx_com .ico_farr:after{content:"";position:absolute;width:5px;height:5px;border:1px solid #aaa;border-left:0;border-top:0;top:35%;left:50%;-webkit-transform:translate(-50%,-25%) rotate(45deg);-ms-transform:translate(-50%,-25%) rotate(45deg);transform:translate(-50%,-25%) rotate(45deg);-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center}
+.footer--com .footer__tx_com.unfold .ico_farr:after{-webkit-transform:translate(-50%,0) rotate(-135deg);-ms-transform:translate(-50%,0) rotate(-135deg);transform:translate(-50%,0) rotate(-135deg);-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center}
+.footer--com .footer__tx_com.unfold + .footer__info_com{display:block}
+.footer--com .footer__info_com{display:none;max-width:320px;background-color:#efefef;line-height:20px;padding:12px 22px;position:relative;font-size:11px;margin:0 auto 16px}
+.footer--com .footer__info_com dt{position:absolute;color:#888}
+.footer--com .footer__info_com dd{position:relative;padding-left:85px;text-align:left;}
+.footer--com .footer__menu a{display:inline-block;position:relative;color:#222}
+.footer--com .footer__menu a:before{content:"";position:absolute;top:8px;bottom:8px;left:0;border-left:1px solid #dfdfdf}
+.footer--com .footer__menu a strong{font-weight:bold}
+.footer--com .footer__menu_top{height:30px;line-height:30px}
+.footer--com .footer__menu_top a{line-height:30px;font-size:13px;padding:0 12px 0 13px;}
+.footer--com .footer__menu_top a:first-child:before{display:none}
+.footer--com .footer__menu_bot{margin-top:8px}
+.footer--com .footer__menu_bot a{line-height:28px;font-size:12px;padding:0 8px 0 9px;color:#555}
+.footer--com .footer__menu_bot a:first-child:before{display:none}
+.footer--com .footer__tx_noti{display:block;font-size:11px;color:#aaa;line-height:15px;padding-bottom:12px}
+
+/* 탑버튼 관련 */
+#s3dpop_wrap_div{z-index:11 !important}
+.newquick{position:fixed; right:10px; bottom:52px; z-index:100}
+.newquick p{cursor:pointer; background:url(/images/myenuri/m/btn_top.png) -9999em -9999em no-repeat; background-size:40px 83px; display:block; width:40px; height:40px; margin-top:3px}
+.newquick .cateBtn{width:40px; height:40px; background-position:0 0; margin-bottom:3px; text-indent:-9999em; }
+.newquick .TBtn{width:40px; height:41px; background-position:0 -42px; text-indent:-9999em;display:none}

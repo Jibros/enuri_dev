@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : style.css (테스트)
+ * 설명 : 파인더 목업 CSS
+ * 작성자  : 혀우너
+ * 작성일 :2021.07.20
+************************************************************************/
+.mock_sprite {
+    background-image: url(http://img.enuri.info/images/mobile_v2/common_sprite.png);
+}
+
+.top_banner {position: relative;width:100%;margin-bottom:5px;padding-top:50px;background-image: url('../imgs/bg_food_sample.jpg');background-position: center;background-size: cover;}
+.top_banner:before {content:"";display: block;position:absolute;top:0;left:0;width: 100%;height: 100%;background: rgba(0,0,0,.3);z-index: 0;}
+.top_banner .top-banner-txt {position:relative;padding:80px 0 150px;font-size: 21px;font-weight: bold;text-align: center;color:#fff;z-index: 10;text-shadow: 0 0 5px #000;}
+.top_banner .top-banner-txt .summary {font-size: 13px;font-weight: normal;color:#fff;margin-top:10px;}
+
+.main_cate { position:absolute; bottom:0; left:0; width:100%; background: rgba(0,0,0,.3); padding:10px; z-index: 15;}
+.main_cate_nav {display:-webkit-flex;display:-moz-flex;display:flex;overflow-x: scroll; margin-left:-4px; margin-right:-4px;}
+.main_cate_nav li {position:relative;flex:0 0 auto; padding-left:4px; padding-right:4px;}
+.main_cate_nav li a {display: block;padding: 22px 0;color: #fff;width: 60px;height: 60px;border: 1px solid #e0e0e0;-webkit-border-radius: 50%;border-radius: 50%;background: rgba(50, 100, 200,.4);white-space: nowrap;font-size: 10px;text-align: center;}
+.main_cate_nav li a.active {color:var(--color-enuri-sky); border-color:var(--color-enuri-sky)}
+
+.container_nutrient {margin-bottom:5px;}
+
+.detail_cate {position:relative; background: #fff;}
+.detail_cate_nav {display:-webkit-flex;display:-moz-flex;display:flex;padding:9px;overflow-x: scroll;}
+.detail_cate_nav >li {position:relative;flex:0 0 auto;margin-right:10px;}
+.detail_cate_nav >li:last-child{margin-right: 0;}
+.detail_cate_nav >li >a {position:relative; display: block;padding:6px 13px;border:1px solid #eee;border-radius: 15px; color:#333;}
+.detail_cate_nav >li >a.is--on {border:1px solid #30A7F7; color:#30A7F7;}
+
+.detail_cate_nav >li >a:after {content: "";display: inline-block;width: 7px;height: 7px;border-right: 1px solid #999;border-bottom: 1px solid #999;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);margin-left: 7px;vertical-align: 3px;}
+.detail_cate_nav >li >a.is--on:after {border-color:#30A7F7;}
+.detail_cate_nav >li >a.is--on-arrow:after {border-color:#30A7F7; -webkit-transform: rotate(225deg);-moz-transform: rotate(225deg);-o-transform: rotate(225deg);transform: rotate(225deg);vertical-align: 1px;}
+
+
+.detail_subcate_nav {position:relative;z-index: 10;}
+.detail_subcate_nav > div {display: none;position:absolute;top:-4px;left:3%;width: 94%;padding:10px 10px 6px;background: #fff;border:1px solid #ccc;/*box-shadow: 0 0 4px 1px rgba(0,0,0,.1);*/}
+.detail_subcate_nav > div> ul {display: -webkit-flex;display: flex;flex-wrap: wrap;margin-left:-2px;margin-right:-2px;}
+.detail_subcate_nav > div> ul >li {flex:0 0 auto;width: 25%;padding-left:2px;padding-right:2px;margin-bottom: 4px;}
+.detail_subcate_nav > div> ul >li >a {display: block;font-size: 12px;padding:7px 0;text-align: center;border:1px solid #ccc;}
+.detail_subcate_nav > div> ul >li >a.selected {border-color:#80ccff;color:#80ccff;}
+
+.prod_list {}
+.prod_list .list__util {margin-bottom:5px; background: #fff;}
+.prod_list .list__util {clear:both;position:relative;width:100%;height:50px;padding:0;font-size:0;}
+.prod_list .list__util:after {content:"";display:table;clear:both}
+.prod_list .list__util .prod_total {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;float:left;max-width:50%;padding:16px 12px;}
+.prod_list .list__util .prod_total .tx_cnt {font-size:14px;color:#222;line-height:18px;letter-spacing:-.5px;vertical-align:middle}
+.prod_list .list__util .prod_total .tx_cnt strong {font-weight:600}
+
+.prod_list .list__util .opt_viewtype {float:right;position:relative;}
+.prod_list .list__util .opt_viewtype:before {content:"";position:absolute;height:14px;top:18px;border-left:1px solid #eee}
+.prod_list .list__util .opt_viewtype .btn {display:none;position:relative;width:48px;height:50px;text-indent:-9999em;border:0;outline:0;line-height:40px;color:#555}
+.prod_list .list__util .opt_viewtype .btn:before{content:"";position: absolute;width:24px;height:24px;top:13px;left:12px;background-image: url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat: no-repeat;background-size: 360px;}
+
+
+.prod_list .list__util .opt_viewtype .btn_grid {display:inline-block}
+.prod_list .list__util .opt_viewtype .btn_grid:before{background-position:-150px -185px;opacity:.5}
+.prod_list .list__util .opt_viewtype .btn_list:before{background-position:-175px -185px;opacity:1}
+
+.prod_list .list__util .opt_sort {float:right;position:relative;height:20px;margin-right:12px;line-height:20px;margin-top:15px;}
+.prod_list .list__util .opt_sort select {position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;}
+.prod_list .list__util .opt_sort label {display:block;padding-right:14px;color:#333}
+.prod_list .list__util .opt_sort label:after {content:"";width:12px;height:12px;background-image: url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat: no-repeat;background-size: 360px;background-position: -340px -20px;position: absolute;right:0px;top:4px;}
+
+
+
+.prod_list .list__util .opt_viewtype .btn_detail_search {display:inline-block}
+.prod_list .list__util .opt_viewtype .btn_detail_search:before{background-position:-200px -185px;opacity:.5}
+
+.mockup__prdlist {padding:0 5px;}
+.mockup__prdlist img {width:100%;height:auto;}
+

@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>xgolf관리자 개편</title>
+	<link rel="stylesheet" href="/css/reset.css">
+	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/css/button.css">
+	<script src="/js/jquery-1.9.1.min.js"></script>
+	<script src="/js/common.js"></script>
+	<script src="/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<style>
+		#wrap {}
+		#header {padding:10px 0; background:#517fa4;}
+		#header .area {width:1180px; margin:0 auto; zoom:1;}
+		#header .area:after {display:block; content:""; clear:both; height:0; visibility:hidden;}
+		#header .area h1 {}
+		#header .area .main_nav {margin:16px 0 0 0; zoom:1;}
+		#header .area .main_nav:after {display:block; content:""; clear:both; height:0; visibility:hidden;}
+		#header .area .main_nav li {float:left; height:17px; padding:0 10px; border-right:1px solid #8da6c2; line-height:1;}
+		#header .area .main_nav li.first {padding:0 10px 0 0;}
+		#header .area .main_nav li.last {border-right:0 none;}
+		#header .area .main_nav li a {display:inline-block; font-size:14px; color:#fff;}
+		#header .area .main_nav li.on a {font-weight:bold;}
+		#container {width:1180px; margin:20px auto; zoom:1;}
+		#container:after {display:block; content:""; clear:both; height:0; visibility:hidden;}
+		#container #left_nav {float:left; margin-right:20px; width:170px;}
+		#container #left_nav h3 {padding-bottom:10px; font-size:20px; border-bottom:3px solid #8da6c2;}
+		#container #left_nav .tree_area {margin-top:20px;}
+		#container #content {float:left; width:985px;}
+		#container #content .cont_tab_area {margin:11px 0; height:20px;}
+		#container #content .cont_tab_area ul {border-bottom:1px solid #8da6c2; zoom:1;}
+		#container #content .cont_tab_area ul:after {display:block; content:""; clear:both; height:0; visibility:hidden;}
+		#container #content .cont_tab_area ul li {float:left; padding:5px 10px; border:1px solid #ddd; border-right:0 none; border-bottom:0 none; background:#fff;}
+		#container #content .cont_tab_area ul li.on {background:#8da6c2;}
+		#container #content .cont_tab_area ul li.on a {color:#fff;}
+		#container #content .cont_tab_area ul li.last {border-right:1px solid #ddd;}
+		#container #content .cont_tab_area ul li a.btn_tab_close {position:relative; top:2px;}
+	</style>
+</head>
+<body>
+	<div class="section mg_top25">
+		<h3 class="section_tit">테이블 상단  검색타입 / 뷰 타입 / 쓰기 타입 A</h3>				
+		<table summary="" class="view_type_a">
+			<colgroup>
+				<col style="width:18%">
+				<col style="width:32%">
+				<col style="width:18%">
+				<col style="width:32%">
+			</colgroup>
+			<tbody>
+				<tr>
+					<th scope="row">제목</th>
+					<td colspan="3"><input type="text" id="" name="" style="width:480px;"><span class="exam">ex.제목</span></td>
+				</tr>
+				<tr>
+					<th scope="row">지역</th>
+					<td>
+						<select name="" id="">
+							<option>지역선택</option>
+							<option>[경상]&nbsp;경북&middot;경남&middot;대구&middot;대전&middot;울산&middot;부산</option>
+						</select>
+					</td>
+					<th scope="row" class="border_left">골프장</th>
+					<td>
+						<select name="" id="">
+							<option>골프장선택</option>
+							<option>사우스케이프 오너스 클럽</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">문의 구분</th>
+					<td>
+						<select name="" id="">
+							<option>문의구분</option>
+							<option>실시간 패키지</option>
+						</select>
+					</td>
+					<th scope="row" class="border_left">담당 팀명</th>
+					<td>
+						<select id="" name="" style="width:134px;">
+							<option>팀 선택</option>
+							<option>네트워크 팀</option>
+						</select>
+					</td>
+				</tr>		
+				<tr>
+					<th scope="row">체크박스, 레이블</th>
+					<td>
+						<input type="checkbox" id="" name="" />
+						<label for="">체크박스 항목</label>
+						<input type="checkbox" id="" name="" class="mg_left8" />
+						<label for="">체크박스 항목</label>
+					</td>
+					<th scope="row" class="border_left">라디오버튼, 레이블</th>
+					<td>
+						<input type="radio" id="" name="radio" />
+						<label for="">라디오 항목1</label>
+						<input type="radio" id="" name="radio" class="mg_left8" />
+						<label for="">라디오 항목2</label>
+					</td>
+				</tr>	
+				<tr>
+					<th scope="row">검색일자</th>
+					<td colspan="3">
+						<input type="text" id="" name="" style="width:80px;">
+						<a href="javascript:;" class="btn_calendar">
+							<img src="/images/common/btn_calendar.gif" alt="">
+						</a> -
+						<input type="text" id="" name="" style="width:80px;">c
+						<a href="javascript:;" class="btn_calendar">
+							<img src="/images/common/btn_calendar.gif" alt="">
+						</a>							
+					</td>
+				</tr>	
+				<tr>
+					<th scope="row">파일첨부</th>
+					<td colspan="3">
+						<input type="file" id="" name="" style="width:484px;">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">첨부파일</th>
+					<td colspan="3">
+						<a href="javascript:;" class="file_down">20140522_관리자개편.pptx</a>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row" class="last">글작성</th>
+					<td colspan="3" class="last"><textarea id="" name="" style="width:95%; height:150px; overflow-y:scroll;"></textarea></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3 class="section_tit mg_top15">댓글 목록</h3>
+		<div class="reply_area">
+			<ul>
+				<li class="first">
+					<div><strong>원 빈</strong><span class="date">2013.12.03 15:20:04</span><a href="javascript:;" class="btn_reply">답글</a></div>
+					<p class="comment">네 알겠습니다.</p>
+				</li>
+				<li class="depth">
+					<div><strong>김나영</strong><span class="date">2013.12.04 12:20:04</span><a href="javascript:;" class="btn_reply">답글</a></div>
+					<p class="comment"><span class="name">원 빈</span>해당 내용에 대해 처리가 됐나요? <br /> 아직 안됐다면 언제까지 되는지 확인 부탁드립니다</p>
+				</li>
+				<li class="depth write">
+					<div>
+						<p><strong>김나영</strong>님에게 댓글쓰기<a href="javascript:;" class="cancel">댓글쓰기 취소</a></p>
+						<div class="float_box">
+							<div class="float_left"><textarea id="" name="" style="width:98%; height:50px; overflow-y:scroll;"></textarea></div>
+							<div class="float_right"><a href="javascript:;" class="outer_btn blue">댓글 입력</a></div>
+						</div>
+						
+					</div>
+				</li>
+				<li class="depth last">
+					<div><strong>원 빈</strong><span class="date">2013.12.12 13:20:04</span><a href="javascript:;" class="btn_reply">답글</a></div>
+					<p class="comment"><span class="name">김나영</span>작업은 현재 진행중이고, 내일 오전쯤 완료될 예정입니다.</p>
+				</li>
+			</ul>
+		</div>
+
+		<h3 class="section_tit mg_top15">진행상태</h3>
+		<div class="reply_area">
+			<table summary="" class="process_stat_table">
+				<colgroup>
+					<col style="width:5%" />
+					<col style="width:35%" />
+					<col style="width:10%" />
+					<col style="width:10%" />
+					<col style="width:10%" />
+					<col style="width:15%" />
+					<col style="width:10%" />
+					<col style="width:5%" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">제목</th>
+						<th scope="col">작업팀명</th>
+						<th scope="col">작업자</th>
+						<th scope="col">작성자</th>
+						<th scope="col">작성일</th>
+						<th scope="col">처리상태</th>
+						<th scope="col">조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="new">
+						<td class="work_number">2</td>
+						<td class="subject">작업 완료되었습니다.</td>
+						<td>도연팀</td>
+						<td>배남열</td>
+						<td>배남열</td>
+						<td>2014.06.01 11:10:29</td>
+						<td>작업완료</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td class="work_number">1</td>
+						<td class="subject">배남열씨가 작업합니다.</td>
+						<td>도연팀</td>
+						<td>배남열</td>
+						<td>이혜승</td>
+						<td>2014.05.30 11:10:29</td>
+						<td>접수완료</td>
+						<td>10</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="btn_area_center">
+		<a href="javascript:;" class="outer_btn blue">뒤로가기</a>
+		<a href="javascript:;" class="outer_btn blue">목록보기</a>
+		<a href="javascript:;" class="outer_btn blue">업무완료(종료)</a>
+		<a href="javascript:;" class="outer_btn blue">처리내역 등록</a>
+		<a href="javascript:;" class="outer_btn blue">수정하기</a>
+		<a href="javascript:;" class="outer_btn blue">삭제하기</a>
+	</div>
+
+	<div class="section mg_top25">
+		<h3 class="section_tit">테이블 리스트 타입 A</h3>
+		<table summary="" class="list_type_a">
+			<colgroup>
+				<col style="width:5%">
+				<col style="width:7%">
+				<col style="width:37%">
+				<col style="width:10%">
+				<col style="width:8%">
+				<col style="width:15%">
+				<col style="width:8%">
+				<col style="width:10%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">번호</th>
+					<th scope="col">구분</th>
+					<th scope="col">제목</th>
+					<th scope="col">업무요청팀</th>
+					<th scope="col">요청자</th>
+					<th scope="col">작성일시</th>
+					<th scope="col">처리자</th>
+					<th scope="col" class="last">상태 / TASK</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>202</td>
+					<td>디자인</td>
+					<td class="subject al_left"><a href="javascript:;">소셜커머스 SMS DB 요청의 건</a></td>
+					<td>대근팀</td>
+					<td>임희수</td>
+					<td>
+						2014.05.27 / 17:03:30
+					</td>
+					<td>심병기</td>
+					<td><a href="javascript:;">접수대기 (<strong>0</strong>)</a></td>
+				</tr>
+				<tr class="depth">
+					<td>203</td>
+					<td>기획</td>
+					<td class="subject al_left"><a href="javascript:;">RE : 소셜커머스 SMS DB 요청의 건</a></td>
+					<td>희윤팀</td>
+					<td>김종필</td>
+					<td>
+						2014.05.28 /  08:03:30
+					</td>
+					<td>심병기</td>
+					<td><a href="javascript:;">접수대기 (<strong>0</strong>)</a></td>
+				</tr>
+				<tr class="depth">
+					<td>204</td>
+					<td>개발</td>
+					<td class="subject al_left"><a href="javascript:;">RE : RE : 소셜커머스 SMS DB 요청의 건</a></td>
+					<td>길동팀</td>
+					<td>감길수</td>
+					<td>
+						2014.05.29 / 11:03:30
+					</td>
+					<td>심병기</td>
+					<td><a href="javascript:;">접수대기 (<strong>0</strong>)</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="page_nate">
+			<a href="javascript:;" class="btn"><img src="/images/common/btn_paging_first.gif" alt="처음으로"></a>
+			<a href="javascript:;" class="btn"><img src="/images/common/btn_paging_prev.gif" alt="이전페이지"></a>
+			<a href="javascript:;" class="num_first"><strong>1</strong></a>
+			<a href="javascript:;"><span>2</span></a>
+			<a href="javascript:;"><span>3</span></a>
+			<a href="javascript:;"><span>4</span></a>
+			<a href="javascript:;"><span>5</span></a>
+			<a href="javascript:;"><span>6</span></a>
+			<a href="javascript:;"><span>7</span></a>
+			<a href="javascript:;"><span>8</span></a>
+			<a href="javascript:;"><span>9</span></a>
+			<a href="javascript:;" class="num_last"><span>10</span></a>
+			<a href="javascript:;" class="btn"><img src="/images/common/btn_paging_next.gif" alt="다음페이지"></a>
+			<a href="javascript:;" class="btn"><img src="/images/common/btn_paging_last.gif" alt="마지막으로"></a>
+		</div>
+	</div>
+
+	<div class="section mg_top40">
+		<h3 class="section_tit">좌, 우 구분 레이아웃</h3>
+		<div class="float_box pd20">
+			<div class="float_left w50 border_gray">
+				좌측<br />좌측<br />좌측<br />좌측<br />
+			</div>
+			<div class="float_right w45 border_gray">
+				우측<br />우측<br />우측<br />우측<br />
+			</div>
+		</div>
+	<div>
+
+	<div class="section">
+		<h3 class="section_tit">버튼 스타일</h3>
+		<a href="javascript:;" class="outer_btn blue">크고 파란색 버튼</a><em class="mg_left8"></em>
+		<a href="javascript:;" class="outer_btn light_gray">크고 옅은회색 버튼</a><em class="mg_left8"></em>
+		<a href="javascript:;" class="outer_btn green">크고 녹색 버튼</a><em class="mg_left8"></em>
+		<a href="javascript:;" class="small_btn blue">작고 파란색 버튼</a><em class="mg_left8"></em>
+		<a href="javascript:;" class="small_btn light_gray">작고 옅은회색 버튼</a><em class="mg_left8"></em>
+
+	</div>
+
+	<div class="section mg_top40">
+		<h3 class="section_tit">폰트 스타일</h3>
+		<span class="color_red">■ 빨간색 글씨</span><em class="mg_left8"></em><span class="color_blue">■ 파란색 글씨</span><em class="mg_left8"></em><span class="color_green">■ 녹색 글씨</span>
+		<em class="mg_left8"></em>	<span class="color_gold">■ 금색 글씨</span><em class="mg_left8"></em><span class="bold">■ 굵은 글씨</span>
+	<div>
+
+
+	<hr class="mg_top40" />
+</body>
+</html>

@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta charset="utf-8">	
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+<link REL="stylesheet" HREF="http://img.enuri.info/common/css/enuribase.css" TYPE="text/css">
+<title>에누리(가격비교) eNuri.com</title>
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/common/css/eb/default.css">
+<link rel="stylesheet" type="text/css" href="/common/css/eb/common.css">
+<link rel="stylesheet" type="text/css" href="/common/css/customer.css"> <!-- 20141224 신규 css 추가 -->
+<link rel="stylesheet" type="text/css" href="/common/css/footer.css"> <!-- 20141224 신규 css 추가 -->
+
+<div id="wrap">
+
+<!-- 20141224 고객센터 신규 -->
+<!-- customer_wrap -->
+<div class="customer_wrap">
+	<div class="top_navigation">
+		<h2><img src="http://img.enuri.info/images/customer/2014/title_customer.gif" alt="고객 행복센터" /></h2>
+		<p class="nav"><a href="#none">고객센터</a> &gt; <em>문의하기</em></p>
+	</div>
+	<div class="section">
+		<!-- lnb_wrap -->
+		<div class="lnb_wrap">
+			<!-- lnb -->
+			<div class="lnb">
+				<h3><a href="#">자주묻는 질문</a></h3>
+				<ul>
+					<li><a href="#">가격비교</a></li><!-- li class="on"시 선택됨-->
+					<li><a href="#">회원정보</a></li>
+					<li><a href="#">판매자문의</a></li>
+					<li><a href="#">지식통</a></li>
+				</ul>
+				<h3><a href="#">고객문의</a></h3>
+				<ul>
+					<li><a href="#">상품, 가격정보</a></li>
+					<li><a href="#">쇼핑몰 관련</a></li>
+					<li><a href="#">사이트 오류, 제안</a></li>
+					<li><a href="#">기타</a></li>
+					<li><a href="#">내 문의내역 확인</a></li>
+					<li><a href="#">문의하기</a></li>
+				</ul>
+				<h3><a href="#">공지사항</a></h3>
+				<h3><a href="#">신상품 등록 요청</a></h3>
+			</div>
+			<!-- //lnb -->
+			<div class="center_phone">
+				<h4><span class="blind">고객센터</span></h4>
+				<p><span class="blind">02-6354-3601 / 월~금 8:30~18:00 / 업무시간 외 문의는 문의하기에 남겨주시면 답변 드리겠습니다.</span></p>
+			</div>
+		</div>
+		<!-- //lnb_wrap -->
+	
+	<!-- contents --> 
+	<div class="contents">
+		<!-- search_area -->
+		<div class="search_area">
+			<h3 class="blind">검색영역</h3>
+			<form onsubmit="return false;" action="#" method="get" name="search" class="search_form">
+				<fieldset>
+					<legend>고객센터 검색</legend>
+					<div class="search_inner">
+						<div class="search_window">
+							<div class="select" style="width:153px;">
+								<span class="ctrl"><span class="arrow"></span></span>
+								<button type="button" class="my_value">고객센터 전체</button>
+								<ul class="a_list">
+									<li><a href="#1">고객센터 전체</a></li>
+									<li><a href="#2">자주묻는 질문</a></li>
+									<li><a href="#3">고객문의</a></li>
+									<li><a href="#4">공지사항</a></li>
+									<li><a href="#5">신상품 등록 요청</a></li>
+								</ul>
+							</div>
+							
+							<input type="text" class="search_input"  maxlength="180" title="검색어 입력" name="">
+							
+						</div>
+						<button class="btn_search">검색</button>
+					</div>
+				</fieldset>
+			</form>
+			<p class="user_guide">
+				<a href="#">사용자 가이드</a>
+				<span>에누리닷컴 어떻게 이용하나요?</span>
+			</p>
+		</div>
+		<!-- //search_area -->
+
+<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
+<script type="text/javascript">
+jQuery(function($){
+     
+    // Common
+    var select_root = $('div.select');
+    var select_value = $('.my_value');
+    var select_a = $('div.select>ul>li>a');
+    var select_input = $('div.select>ul>li>input[type=radio]');
+    var select_label = $('div.select>ul>li>label');
+     
+    // Line
+    select_value.bind('focusin',function(){$(this).addClass('outLine')});
+    select_value.bind('focusout',function(){$(this).removeClass('outLine')});
+    select_input.bind('focusin',function(){$(this).parents('div.select').children('div.my_value').addClass('outLine')});
+    select_input.bind('focusout',function(){$(this).parents('div.select').children('div.my_value').removeClass('outLine')});
+     
+    // Show
+    function show_option(){
+        $(this).parents('div.select:first').toggleClass('open');
+    }
+     
+    // Hover
+    function i_hover(){
+        $(this).parents('ul:first').children('li').removeClass('hover');
+        $(this).parents('li:first').toggleClass('hover');
+    }
+     
+    // Hide
+    function hide_option(){
+        var t = $(this);
+        setTimeout(function(){
+            t.parents('div.select:first').removeClass('open');
+        }, 1);
+    }
+     
+    // Set Input
+    function set_label(){
+        var v = $(this).next('label').text();
+        $(this).parents('ul:first').prev('.my_value').text('').append(v);
+        $(this).parents('ul:first').prev('.my_value').addClass('selected');
+    }
+     
+    // Set Anchor
+    function set_anchor(){
+        var v = $(this).text();
+        $(this).parents('ul:first').prev('.my_value').text('').append(v);
+        $(this).parents('ul:first').prev('.my_value').addClass('selected');
+    }
+ 
+    // Anchor Focus Out
+    $('*:not("div.select a")').focus(function(){
+        $('.a_list').parent('.select').removeClass('open');
+    });
+             
+    select_value.click(show_option);
+    select_root.removeClass('open');
+    select_root.mouseleave(function(){$(this).removeClass('open')});
+    select_a.click(set_anchor).click(hide_option).focus(i_hover).hover(i_hover);
+    select_input.change(set_label).focus(set_label);
+    select_label.hover(i_hover).click(hide_option);
+     
+});
+</script>
+
+
+		<!-- 문의하기 등록 -->
+		<p class="top_table mgt40">
+			<strong>문의하기</strong>
+		</p>
+		<!-- tb_box -->
+		<style>
+			.order_info tr td {border-top : 0 !important; width : 168px !important;]}
+			.order_info tr td input {width : 165px;}
+		</style>
+		<div class="tb_box">
+			<table class="tbr tb6" cellspacing="0" cellpadding="0">
+			<caption>문의하기 입력</caption>
+				<colgroup>
+					<col class="col1">
+					<col class="col2">
+					<col class="col3">
+				</colgroup>
+				<tbody>
+					<tr class="bt_none">
+						<th scope="row">작성자</th>
+						<td class="writer">김누리</td>
+						<td class="id_hidden">
+							<input name="" type="checkbox" id="id_hidden" value="" /><label for="id_hidden">아이디 비공개</label>
+							<span class="caution">※ 비공개 체크 시 아이디(닉네임)이 노출되지 않습니다.</span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">유형</th>
+						<td colspan="2" class="type">
+							<input type="radio" id="type1" name="typeRadio" value="1" /><label for="type1">상품, 가격정보</label>
+							<input type="radio" id="type2" name="typeRadio" value="8" /><label for="type2">이벤트/e머니</label>
+							<input type="radio" id="type3" name="typeRadio" value="3" /><label for="type3">쇼핑몰 관련</label>
+							<input type="radio" id="type4" name="typeRadio" value="5" /><label for="type4">사이트 오류, 제안</label>
+							<input type="radio" id="type5" name="typeRadio" value="6" /><label for="type5">기타</label>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">제목</th>
+						<td colspan="2" class="tit">
+							<input name="" type="text" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="exp">
+							<textarea name="content" cols="50" rows="5" title="질문 내용"></textarea>
+						</td>
+					</tr>
+					<tr id="orderInfo_tr" style="display:!none;">
+						<th scope="row" class="vtop">주문정보</th>
+						<td colspan="2">
+							<!-- 204021 : SR#39569 : 고객문의 게시판 수정  -->
+							<!-- 이벤트 e머니 문의 > 쇼핑몰 주문정보 중복 입력 기능 추가 -->
+
+							<!-- 쇼핑몰 주문정보 입력 -->
+							<table class="add_order_info">
+								<thead>
+									<tr>
+										<th>구매쇼핑몰</th>
+										<th>쇼핑몰상품번호</th>
+										<th>구매날짜</th>
+										<th>주문번호</th>
+										<th>결제금액</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input type="text" name="ordShopName" maxlength="10" value=""></td>
+										<td><input type="text" name="ordShopGoodsNo" maxlength="20" value=""></td>
+										<td><input type="text" name="ordDate" maxlength="8" onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')" title="숫자만 입력하세요." placeholder="예) 20160328" value=""></td>
+										<td><input type="text" name="ordId" maxlength="20" value=""></td>
+										<td><input type="text" name="ordPrice" maxlength="9" onkeydown="this.value=this.value.replace(/[^0-9]/g,''); $(this).attr('onblur', 'this.value=this.value.replace(/[^0-9]/g,\'\');checkMoneyUnit(this);$(this).removeAttr(\'onblur\'); '); " title="숫자만 입력하세요." onblur="this.value=this.value.replace(/[^0-9]/g,'');checkMoneyUnit(this); $(this).removeAttr('onblur');" value=""></td>
+										<td><button class="btn_add_row">+</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- // -->
+
+							<!-- 입력된 쇼핑몰 주문정보 리스트 -->
+							<table class="add_order_info added_order_info">
+								<tbody>
+									<tr>
+										<!-- 구매쇼핑몰 -->
+										<td>11번가</td>
+										<!-- 쇼핑몰상품번호 -->
+										<td><span class="tx_code">B0039902911</span></td>
+										<!-- 구매날짜 -->
+										<td>2020.03.19</td>
+										<!-- 주문번호 -->
+										<td><span class="tx_code">339882991092</span></td>
+										<!-- 결제금액 -->
+										<td>199,800원</td>
+										<!-- 버튼 : 삭제 -->
+										<td><button class="btn_delete_row" title="클릭시 해당 라인을 삭제합니다.">X</button></td>
+									</tr>
+									<tr>
+										<td>11번가</td>
+										<td><span class="tx_code">B0039902911</span></td>
+										<td>2020.03.19</td>
+										<td><span class="tx_code">339882991092</span></td>
+										<td>199,800원</td>
+										<td><button class="btn_delete_row" title="클릭시 해당 라인을 삭제합니다.">X</button></td>
+									</tr>
+									<tr>
+										<td>11번가</td>
+										<td><span class="tx_code">B0039902911</span></td>
+										<td>2020.03.19</td>
+										<td><span class="tx_code">339882991092</span></td>
+										<td>199,800원</td>
+										<td><button class="btn_delete_row" title="클릭시 해당 라인을 삭제합니다.">X</button></td>
+									</tr>
+									<tr>
+										<td>11번가</td>
+										<td><span class="tx_code">B0039902911</span></td>
+										<td>2020.03.19</td>
+										<td><span class="tx_code">339882991092</span></td>
+										<td>199,800원</td>
+										<td><button class="btn_delete_row" title="클릭시 해당 라인을 삭제합니다.">X</button></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- // -->
+
+							<!-- 삭제 : 기존 주문정보 입력 -->
+							<!-- <table class="order_info" width="100%">
+								<tbody>
+									<tr>
+										<td>
+											<table>
+												<tbody>
+													<tr>
+														<td>
+															구매쇼핑몰<br><br>
+															<input type="text" name="ordShopName" maxlength="10" value="">
+														</td>
+														<td>
+															쇼핑몰 상품번호<br><br>
+															<input type="text" name="ordShopGoodsNo" maxlength="20" value="">
+														</td>
+														<td>
+															구매날짜<br><br>
+															<input type="text" name="ordDate" maxlength="8" onkeydown="this.value=this.value.replace(/[^0-9]/g,'')" onblur="this.value=this.value.replace(/[^0-9]/g,'')" title="숫자만 입력하세요." placeholder="예) 20160328" value="">
+														</td>
+													</tr>
+													<tr>
+														<td>
+															주문번호<br><br>
+															<input type="text" name="ordId" maxlength="20" value="">
+														</td>
+														<td>
+															결제금액<br><br>
+															<input type="text" name="ordPrice" maxlength="9" onkeydown="this.value=this.value.replace(/[^0-9]/g,''); $(this).attr('onblur', 'this.value=this.value.replace(/[^0-9]/g,\'\');checkMoneyUnit(this);$(this).removeAttr(\'onblur\'); '); " title="숫자만 입력하세요." onblur="this.value=this.value.replace(/[^0-9]/g,'');checkMoneyUnit(this); $(this).removeAttr('onblur');" value="">
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table> -->							
+							<div class="caution">※ e머니 관련 문의 시 쇼핑몰 주문정보를 입력해 주시면 더욱 빠른 확인이 가능합니다. <br> &nbsp;&nbsp;&nbsp;입력 된 정보는 에누리 담당자만 볼 수 있습니다.</div>
+							<!-- 200421 유의사항 추가 -->
+							<div class="caution">※ 쇼핑몰 주문정보를 입력 후 "+" 버튼을 눌러 추가해 주세요. 추가는 최대 10개 까지 가능합니다.</div>
+							<!-- // -->
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"  class="vtop">파일첨부</th>
+						<td colspan="2" class="file_add">
+							<p class="add_sel">
+								<input name="" type="text" value="" />
+								<span class="button_fileadd"><input type="file" title="파일 찾기" /></span>
+							</p>
+
+							<!-- 204021 : SR#39569 : 고객문의 게시판 수정  -->
+							<!-- 파일첨부 중복 입력 기능 추가 -->
+							<table class="add_file_list">
+								<tbody>
+									<tr>
+										<td>
+											<span class="tx_uri">c:\fakepath\ppp.jpg</span>
+											<button class="btn_delete_row" title="클릭시 해당 파일을 삭제합니다.">X</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="tx_uri">c:\fakepath\ppp.jpg</span>
+											<button class="btn_delete_row" title="클릭시 해당 파일을 삭제합니다.">X</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="tx_uri">c:\fakepath\ppp.jpg</span>
+											<button class="btn_delete_row" title="클릭시 해당 파일을 삭제합니다.">X</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="tx_uri">c:\fakepath\ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp.jpg</span>
+											<button class="btn_delete_row" title="클릭시 해당 파일을 삭제합니다.">X</button>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="tx_uri">c:\fakepath\ppp.jpg</span>
+											<button class="btn_delete_row" title="클릭시 해당 파일을 삭제합니다.">X</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- // -->
+							<p class="caution">※ 5MB 이하의 파일만 가능하며 exe, zip 등 일부 파일은 첨부하실 수 없습니다.</p>
+							<!-- 200421 유의사항 추가 -->
+							<p class="caution">※ 파일 첨부는 최대 10개 까지 가능합니다.</p>
+							<!-- // -->
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">답변알림</th>
+						<td colspan="2" class="answer_alram">
+							<input name="" type="text" onfocus="this.value='';" value="이메일주소를 입력하세요" />
+							<!--<input name="" type="image" class="btn_input" title="입력" value="" />-->
+							<span class="button_input"><input name="" type="image"  title="입력" value="" /></span>
+							<span class="caution">※ 이메일을 입력하시면 답변을 받으실 수 있습니다.</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- //tb_box -->
+		<div class="btn_wrap">
+			<a class="btn goback" href="#"><em class="blind">뒤로가기</em></a>
+			<a class="btn writeag2" href="#"><em class="blind">다시쓰기</em></a>
+			<a class="btn writeup3" href="#"><em class="blind">요청글 올리기</em></a>
+		</div>
+		<!-- // 문의하기 등록 -->
+	</div>
+	<!-- //contents -->
+</div>
+<!-- //20141224 고객센터 신규 -->
+
+<script>
+	// 2016. 03. 28. 이벤트/e머니 주문정보 폼 추가
+	$("input[name=typeRadio]").click(function(){
+    	var checkMenuTab = $("input[name=typeRadio]:radio:checked").val();
+    	((checkMenuTab == 8) ? $("#orderInfo_tr").show() : $("#orderInfo_tr").hide());
+    });
+</script>
+</div>
+</body>
+</html>

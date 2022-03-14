@@ -1,0 +1,4673 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta property="og:title" content="에누리 가격비교"/>
+	<meta property="og:description" content="에누리 모바일 가격비교"/>
+	<meta property="og:image" content="http://img.enuri.info/images/mobilefirst/images/logo_enuri.png"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/vip.css?v=20190424"/>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div id="wrap">
+	
+	<!-- 200305 : 헤더 추가 :  A-Type : VIP -->
+    <header id="header" class="m_header head__type_a no_cate">
+		<div class="header_wrap">
+			<h1 class="m_txt">상품정보</h1>	
+			<button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>		
+            <!--<button class="btn_hd_sr comm__sprite">검색</button>-->
+			<!--<button class="btn_hd_my comm__sprite">나의정보</button>-->
+			<!--<button class="btn_hd_my comm__sprite" onclick="window.location.href='https://m.enuri.com/my/my_enuri_m.jsp'" >MY알림</button>-->
+			<button class="btn_hd_my comm__sprite" onclick="window.location.href='https://m.enuri.com/my/my_enuri_m.jsp'">MY메뉴</button>
+		</div>
+		<script>
+			//퍼블 테스트용
+			$(function(){
+				var $mainWrap = $("#wrap"); // 메인컨텐츠 wrapper
+				var $btnCate = $(".btn_hd_cate"); // 카테고리 버튼
+				var $btnClose = $(".btn_hd_close"); // 카테고리 닫기 버튼				
+				var $cateLayer = $(".com__cate_wrap"); // 카테고리 레이어
+				var $btnSR = $(".btn_lay_sr"); // 검색 버튼
+				var $srLayer = $(".com__sr_layer"); // 검색 레이어
+				var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
+				// 버튼 :: 카테고리 레이어
+				$btnCate.click(function(e){
+					$mainWrap.addClass("scroll_lock"); // 스크롤 잠그기
+					$cateLayer.show(); // 레이어를 활성화 한 후 슬라이딩 
+					setTimeout(function(){
+						$cateLayer.addClass("on");
+					},100)
+				})
+				// 버튼 :: 카테고리 닫기
+				$btnClose.click(function(e){
+					$mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+					$("html,body").scrollTop(0);
+					$cateLayer.removeClass("on");
+					setTimeout(function(){
+						$cateLayer.hide();	
+					},700)
+				})
+				
+				// 버튼 :: 검색 레이어 열기
+				$btnSR.click(function(e){
+					var _taPos = $(".m_header_main .search_wrap").offset().top - 5;
+					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
+						$srLayer.show();
+						setTimeout(function(){
+							$srLayer.addClass("opened");
+							$mainWrap.addClass("scroll_lock");
+						},300)
+					})
+				})
+				// 버튼 :: 검색 레이어 닫기
+				$btnSRClose.click(function(e){
+					$mainWrap.removeClass("scroll_lock");
+					$srLayer.hide().removeClass("opened");
+				})
+			})
+		</script>		
+    </header>
+    <!-- // 헤더 VIP -->
+
+	<!--// 헤더영역 -->
+	<section id="vip_wrap_id" class="vip_wrap">
+		<!-- 슬라이드 네비 -->
+		<div class="navTabs swiper-container">			 
+			<div class="swiper-wrapper">
+				<div class="swiper-slide on"><a href="#tab_summary">요약정보</a></div>
+				<div class="swiper-slide"><a href="#tab_price">가격비교</a></div>
+				<div class="swiper-slide"><a href="#tab_product">제품정보</a></div>
+				<div class="swiper-slide"><a href="#tab_review">상품후기</a></div>
+				<!-- 200903 : SR#42109 : VIP 스펙비교 탭추가 -->
+                <div class="swiper-slide"><a href="#tab_spec">스펙비교</a></div>
+                <!-- // -->
+				<div class="swiper-slide"><a href="#tab_blog">블로그/동영상</a></div>
+				<div class="swiper-slide"><a href="#tab_qna">CM Q&A</a></div>
+				<div class="swiper-slide"><a href="#tab_recommend">추천상품</a></div>
+			</div>
+		</div>
+
+		<!-- 190613 가격비교 : 상단 고정 바 영역 추가 -->        
+        <div class="vip_fixed swiper-container">
+            <div class="swiper-wrapper">
+                <!-- 슬라이드 개수는 연동된 vip_cnt 슬라이더의 탭수와 동일해야 합니다. -->
+                <div class="swiper-slide">
+                    <!-- 190613 플로팅 배너 위치 이동 (기존동일) -->
+                    <!---
+                        페이지 상단에 작성된 
+                        <style>
+		                    .vip_bnr { margin-top : 270px !important;}
+                        </style>
+                        는 지우셔도 됩니다.
+                    -->
+                    <div id="floating_banner" style="display:none">
+                        <div class="vip_bnr" id="vipbnr" style="background: url(&quot;http://adsvc.enuri.mcrony.com/enuri_M/m_vip/PW/vimp?adsid=470&amp;crid=652&amp;cate=0304&amp;ord=4423314&quot;) center 0px no-repeat;">
+                            <a href="javascript:///" class="evtgo" onclick="go_banner_link('http://adsvc.enuri.mcrony.com/enuri_M/m_vip/PW/click?adsid=470&amp;crid=652&amp;clickid=2671&amp;cate=0304&amp;ord=4423314&amp;freetoken=event','banner_pw_welcome');">banner_pw_welcome</a>
+                            <a href="javascript:///" onclick="new_close_floating('vipbnr');" class="btnclose">닫기</a>
+                        </div>
+                    </div>
+                    <!-- // -->
+                </div>
+                <div class="vip_fixed_slide swiper-slide">
+                    <!-- 190613 가격비교 상단 고정바 들어올 영역 -->
+                </div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+            </div>
+        </div>
+        <!-- // 끝 190613 가격비교 : 상단 고정 바 영역 추가-->
+
+        <div class="vip_cnt swiper-container">
+            <div class="swiper-wrapper">
+                <!-- Tab#1 :: 요약정보 -->        
+                <div class="swiper-slide tab_summary tab_cele">
+					<div class="product_info_wrap first_box_type">
+						<div class="box_inner">
+							<!-- 상품명 영역 -->
+							<p class="txt_title">
+								<span class="txt_nm">애플 맥북프로 15형 레티나 2018년형(MR932KH/A)[일반]</span>
+								<em>터치ID와 터치bar의 혁신~ 누구나 써보고 싶은 맥북프로!</em>
+								<!-- 
+									20190328 라인 class 추가
+									.txt_spec .line0 ~ .line5
+								-->
+								<span class="txt_spec">
+									<em>출시가:10,000원</em> <em>(12%&darr;)</em> | 제조사 : 애플 | 브랜드 : 맥북프로 / 화면 : 39.11cm(15.4형) / 2880x1800(레티나) / 슈퍼브라이트 / (500nit) / LED백라이트 / IPS패널(광시야각) / 램SSD / 듀얼그래픽:UHD630+라데온Pro-555X(메모리4G) / 무선랜ac / 등 이것저것이것저것이것저것이것저것이것저것이것저것이것저것이것저것
+								</span>
+							</p>
+						
+							<!-- 상품 이미지 영역 -->
+
+							<!-- 성인인증  -->
+							<a href="#" class="thum adult_verify" style="display:none">
+								<img src="http://img.enuri.info/images/home/thum_adult.gif" alt="" />
+								<span class="a_v_btn">인증 후 사진보기</span>
+								<span class="preview" style="display:none">확대보기</span>
+							</a> 
+
+							<!-- 이미지 없을때 -->
+							<a href="#" class="thum no_image" style="display:none">
+								<img src="http://img.enuri.info/images/m_home/noimg320.gif" alt="" />
+								<span class="preview" style="display:none">확대보기</span>
+							</a>
+
+							<!-- 상품 일반 -->
+							<a href="#" class="thum x500">
+								<!-- 배지 : 히트브랜드 -->
+								<span class="badge_hitbrand">히트브랜드</span>
+								<!-- // -->
+								<img src="http://storage.enuri.info/pic_upload/enurinews/2020/m1_202042713161.jpg" alt="" />
+								<span class="preview">확대보기</span>
+							</a>
+
+							<!-- 최저가 영역 -->
+							<div class="lowest border-box">
+								<div class="info_lowest">
+									<!-- 20190328 PC아이콘 추가 + 20190416 위치 변경  + 20190425 원위치 -->
+									<div class="txt_subinfo"><span class="txt_mall">11번가</span><span class="delivery">무료배송</span></div>
+									<div class="txt_price">
+										<div class="txt_price_l"><span class="iconPc">PC</span>최저가<em>1,123,456,789</em>원</div>
+										<div class="txt_price_r">
+											<i class="icon_emoney comm__sprite"></i>11,900적립
+											<button type="button" class="btn_open_layer_noti_save"><i class="icon_noti comm__sprite"></i></button>
+										</div>
+										<div class="layer_noti_save">
+											<div class="arrow_shape"></div>
+											<div class="txt1">[에누리앱 구매시]</div>
+											<div class="txt2">기본적립율이 적용된 예상적립 e머니 입니다.</div>
+											<a href="http://www.enuri.com/event/smart_benefits.jsp#appinfo" target="_blank" class="">자세히 보기</a>
+										</div>
+									</div>
+									<div class="release_price">출시가 <span class="txt_release_price"><b>2,199,000</b>원</span></div>
+								</div>
+								<script>
+									var timeout;
+									function autoCloseLayer(elem) {
+										timeout = setTimeout(function(){
+											$(elem).stop().fadeOut();
+									}, 3000);
+									}
+									function openNotiLayer(target) {
+										$(target).show();	
+										autoCloseLayer(target)
+									}
+									function closeNotiLayer(target) {
+										$(target).stop().fadeOut();	
+										clearTimeout(timeout);
+									}
+									$('body').on('click','.btn_open_layer_noti_save', function(){
+										openNotiLayer('.layer_noti_save');
+										// 화살표 좌표계산
+										var btn_center_post = ($(this).offset().left + $(this).width()/2);
+										var box_offset_left =  $('.layer_noti_save').offset().left;
+										var arrow_pos = btn_center_post - box_offset_left;
+										$('.layer_noti_save .arrow_shape').css('left', arrow_pos);
+									});
+								</script>
+							</div>
+							
+							<!-- 일시품절 -->
+							<div class="prd_soldout">
+								<span>일시품절</span>
+							</div>
+
+							<!-- 출시예정 -->
+							<div class="prd_stop">
+								<span>출시예정</span>
+							</div>
+
+							<!-- SR#51009 : 직방가 노출 -->
+							<div class="direct_price"><!-- 확장 : " is-expand" -->
+								<div class="direct_row">
+									<div class="direct_summ">
+										<button type="button" class="btn_tab">클릭 영역(투명)</button>
+										<!-- 
+											할인율타입 적용시 아래형태
+											<p class="tx_price"><em>10%</em>(<em>1,233,570</em>원)</p> 
+										-->
+										<p class="tx_price"><em>1,233,570</em>원</p>
+										<span class="tx_info">에누리혜택 적용중</span>
+										<button type="button" class="btn_tip">
+											<i class="icon_noti comm__sprite"></i>
+											<i class="i_arr"><!--상단꼭지 pc와 위치다름..--></i>
+											<div class="layer_noti">
+												<div class="txt2"><strong class="tx_date">12/12 03:00</strong> 할인혜택 정보 입니다. <span class="tx_noti">(PC기준)</span></div>
+											</div>
+										</button>
+									</div>						
+									
+									<div class="direct_detail">
+										<div class="tb row--min">
+											<p class="tx_th">쇼핑몰최저가</p>
+											<p class="tx_price"><em>1,152,570</em>원</p>
+										</div>
+										<div class="tb row--sale">
+											<p class="tx_th">에누리 경유 할인가</p>
+											<p class="tx_price"><em>-33,570</em>원</p>
+										</div>
+
+										<div class="tb row--total">
+											<p class="tx_th">에누리최저가</p>
+											<p class="tx_price"><em>111,111,119,000</em>원</p>
+										</div>
+
+										<p class="tx_noti">에누리를 통한 방문 구매시 경유할인혜택을 받으실 수 있습니다.</p>
+									</div>
+								</div>
+							</div>
+							<script>
+								// 툴팁 노출
+								$("body").on("click", ".direct_price .btn_tip", function(){
+									var _this = $(this); 
+
+									_this.addClass("is-on");
+									
+									setTimeout(function(){ _this.removeClass("is-on") }, 2300);
+								});
+								// 직방가 확장 토글
+								$("body").on("click", ".direct_price .btn_tab", function(){
+									$(this).closest(".direct_price").toggleClass("is-expand");
+								})
+							</script>
+							<!-- //SR#51009 -->
+
+							<!-- 별점 및 부가기능 영역 -->
+							<div class="product_cmt">
+								<!-- 별점 -->
+								<span class="star_graph"><span class="star_rate" style="width:80%">별점</span></span><em>4.8</em>(150)
+								<!-- 상품평 없음 -->
+								<!-- <span class="no_comment">작성된 상품평이 없습니다.</span> -->
+
+								<ul class="share">
+									<!-- 출시예정, 품절일 때, 최저가 가격알림 display:none; -->
+									<!-- 최저가 알림 신청 후 / 찜 상품에는 "on" 클래스 붙여주세요 -->
+									<li onclick="$('#layer_alarm').show();" class="on">최저가 가격알림</li>
+									<li onclick="$('#snsPop').show();">SNS공유</li>							
+									<li onclick="$('.zzimarea').show().delay(1000).fadeOut(200);">찜
+										<div class="zzimarea"><span class="zzimly">찜 되었습니다</span></div>
+									</li>
+									<li>신고하기</li>
+								</ul>
+							</div>
+
+							<div class="prd_buy">
+								<a href="#" class="btn_buy_lowest"><span>최저가 구매하기</span></a>
+							</div>
+
+							<!-- 혜택영역 -->
+							<div class="product_benefit">
+								<p class="benenfit_list">
+									<span>G9 최대 5만원 할인!</span><span>e머니 적립</span>
+								</p>
+								<a href="#" class="btn_benefit_more" onclick="$(this).toggleClass('on');return false;">더보기</a>
+								<!-- 혜택영역 더보기 -->
+								<div class="product_benefit_more">
+									<dl>
+										<dt><span>G9</span> 추가할인</dt>
+										<dd><span>G9</span>에서 구매 시 추가되는 에누리만의 혜택 입니다. <a href="#" class="btn_detail">자세히 보기</a></dd>
+										<dt>e머니 적립</dt>
+										<dd>에누리 앱을 통해 상품을 구매하면 결제금액의 일부를 e머니로 적립해 드립니다! <a href="#" class="btn_detail">e머니 적립 안내 및 혜택 자세히 보기</a></dd>
+									</dl>
+								</div>
+							</div>	
+							
+							<!-- 201203 : SR#43781 : [PC_M] VIP _ 연관상품개선 관련 수정 건  -->
+                            <div class="product_related" onclick="alert('소모품이동');">
+                                <p class="related_list">
+                                    <span>본 상품에 맞는 액세서리 보기</span>
+                                </p>
+                                <span class="arr_related_more">더보기</span>
+                            </div>
+                            <!-- // -->	
+						</div>			
+					</div>
+
+					<!-- 191119 TLC Banner 추가 -->
+                    <div class="tlc_banner round_box">
+                        <div class="box_inner">
+                            <img src="http://img.enuri.info/images/home/@bnr_tlc_m.jpg" alt="NH올원 Shoppinng & TLC카드 라이트 할부 할인 혜택">
+                        </div>
+                    </div>
+                    <!-- // -->
+
+					<!-- 요약 - AD 광고 배너  -->
+					<ul class="vip_middle_banner">    
+						<li>
+							<a href="#"><img src="http://img.enuri.info/images/mobile_v2/vip_ad_bnr.png" alt="" border="0" width="100%"></a>
+						</li>
+					</ul>
+					<!-- //AD 광고 배너 -->
+
+					<!-- 법적고지 -->
+					<div class="lawnotice">
+						<!-- 일반상품 -->
+						<p class="lawnotice__txt">쇼핑몰에서 정확한 가격과 상품정보를 꼭 확인하세요!</p>		
+						<!-- 출시예정  -->
+						<p class="lawnotice__txt">출시예정 상품으로 판매중인 쇼핑몰이 없습니다. 제품정보, 블로그 /동영상 리뷰, 추천상품 컨텐츠를 즐겨보세요 ! </p>		
+						<!-- 일시품절 -->
+						<p class="lawnotice__txt">일시품절 상품으로 판매중인 쇼핑몰이 없습니다. 제품정보, 블로그 /동영상 리뷰, 추천상품 컨텐츠를 즐겨보세요 ! </p>		
+					</div>
+
+					<!-- 200302 : SR#38662 : 구매옵션 / 가격비교 리뉴얼 -->
+                    <!-- 기존 .prd_option / .prd_compare 대체 -->
+                    <div class="prd_intercompare">
+                        <div class="box_inner">
+                            <div class="box_head"></div>
+                            <!-- 옵션 타입 1 :  단위 환산가 있는 타입 .opt1-->
+                            <div class="box_list prd_inter_opt opt1">
+                                <div class="box_head">
+                                    <p class="title">
+                                        구매옵션 <span>(140)</span> 
+                                    </p>  
+                                    <ul class="select_menu">
+                                        <li>단위당 최저가(배송포함)</li>
+                                    </ul>
+                                </div>
+                                <div class="box_cnt scroller noswipe">
+                                    <!-- 스크롤 게이지 -->
+                                    <span class="slider"><span class="slider-bar"></span></span>
+                                    <!-- // -->
+                                    <!-- 스크롤 컨텐츠 -->
+                                    <ul class="scroll-cont">
+                                        <li class="on">
+                                            <div class="option_inner">
+                                                <!-- 순위 -->
+                                                <em class="txt_rank">1위</em>
+                                                <!-- 옵션명 -->
+                                                <span class="txt_name">
+                                                    1개
+                                                </span>
+                                                <!-- 최저가 -->
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                                <!-- 단위당 환산가 -->
+                                                <span class="txt_unit">
+                                                    37원/100ml
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <em class="txt_rank">2위</em>
+                                                <span class="txt_name">
+                                                    2개
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,524,000</em>원
+                                                </span>
+                                                <span class="txt_unit">
+                                                    37원/100ml
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <em class="txt_rank">3위</em>
+                                                <span class="txt_name">
+                                                    5개
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                                <span class="txt_unit">
+                                                    37원/100ml
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    12개
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                                <span class="txt_unit">
+                                                    37원/100ml
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    36개
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                                <span class="txt_unit">
+                                                    37원/100ml
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 옵션 타입 2 :  단위 환산가 없는 타입 .opt2-->
+                            <div class="box_list prd_inter_opt opt2">
+                                <div class="box_head">
+                                    <p class="title">
+                                        구매옵션 <span>(140)</span>
+                                    </p>  
+                                    <ul class="select_menu">
+                                        <li>배송비 포함</li>
+                                    </ul>
+                                </div>
+                                <div class="box_cnt scroller noswipe">
+                                    <!-- 스크롤 게이지 -->
+                                    <span class="slider"><span class="slider-bar"></span></span>
+                                    <!-- // -->
+                                    <!-- 스크롤 컨텐츠 -->
+                                    <ul class="scroll-cont">
+                                        <li class="on">
+                                            <div class="option_inner">
+                                                <!-- 순위 -->
+                                                <em class="txt_rank">1위</em>
+                                                <!-- 옵션명 -->
+                                                <span class="txt_name">
+                                                    렌즈미포함, 정품
+                                                </span>
+                                                <!-- 최저가 -->
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <em class="txt_rank">2위</em>
+                                                <span class="txt_name">
+                                                    중고품, 정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,524,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <em class="txt_rank">3위</em>
+                                                <span class="txt_name">
+                                                    28~70mm OSS,정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <em class="txt_rank">4위</em>
+                                                <span class="txt_name">
+                                                    28~70mm OSS,35mm F2.8 ZA 정품 옵션은 3줄까지 늘어날 수 있습니다만 쩜이찍히게 됩니다
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    렌즈미포함, 정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    렌즈미포함, 정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    렌즈미포함, 정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    렌즈미포함, 정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="option_inner">
+                                                <span class="txt_name">
+                                                    렌즈미포함, 정품
+                                                </span>
+                                                <span class="txt_price">
+                                                    <em>1,724,000</em>원
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 200601 : SR#40214 / 파워클릭 > PC/모바일 VIP 영역 수정 -->
+                            <div class="comm_ad ad_ebay_pc mobile">
+                                <div class="comm_ad_tit">
+                                    <em>파워클릭</em>
+                                    <a href="#" class="comm_btn_apply">신청하기</a>
+                                </div>
+                                <div class="comm_ad_list">
+                                    <div class="box_inner">
+                                        <table summary="이베이 파워클릭"" class="box_tb">
+                                            <caption>이베이 파워클릭</caption>
+                                            <!-- colgroup 제거 -->
+                                            <!-- <colgroup>
+                                                <col width="40%">
+                                                <col width="20%">
+                                                <col width="40%">
+                                            </colgroup> -->
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt_name"><span>G마켓</span></td>
+                                                    <td class="txt_delivery">2,500원</td>
+                                                    <td class="txt_price"><strong>2,520,000</strong>원</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt_name"><span>옥션</span></td>
+                                                    <td class="txt_delivery">2,500원</td>
+                                                    <td class="txt_price"><strong>2,520,000</strong>원</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // --> 
+
+                            <!-- 판매처 -->
+                            <div class="box_list prod_inter_compare">
+                                <div class="box_head">
+                                    <p class="title">
+                                        가격비교 <span>(140)</span>
+                                    </p>  
+									<!-- 
+									* 가격리스트 개선 : 마크업 삭제	
+									<ul class="select_menu">
+                                        <li>카드할인가 포함</li>
+                                        <li class="on">배송비 포함</li>
+                                    </ul> -->
+                                </div>
+
+								<!-- SR#50685 : 가격리스트 개선 -->
+								<div class="inter_sort">
+									<div class="sort_block">
+										<div class="sort_chk">
+											<label>
+												<input type="checkbox" checked="checked">
+												<span class="input_nm">배송비 포함</span>
+											</label>
+											<label>
+												<input type="checkbox">
+												<span class="input_nm">카드할인가 포함</span>
+											</label>
+										</div>
+									</div>
+								</div>
+								<!-- //SR#50685 -->
+
+                                <!-- 200318 : SR#38994 : [AOS] VIP > 카드최저가 및 현금최저가 위치 변경 -->
+                                <!-- 상단부에서 이동 / 마크업 일부 수정있습니다 -->
+                                <div class="diff_lowest">
+                                    <!-- 현금최저가 -->
+                                    <div class="low_cash type_lowest">
+                                        <div class="low_inner">
+                                            <strong class="tit">현금최저가</strong>
+                                            <span class="txt_mall">이노PC</span>                                            
+                                            <span class="low_price">
+                                                <strong>1,123,456,789</strong>원
+                                            </span>
+                                        </div>
+                                    </div>         
+                                    <!-- 카드최저가 -->
+                                    <div class="low_card type_lowest">
+                                        <div class="low_inner">
+                                            <strong class="tit">카드최저가</strong>
+                                            <span class="txt_mall">인터파크</span>
+                                            <span class="low_price">
+                                                <span class="txt_card">삼성카드</span>
+                                                <strong>1,123,456,789</strong>원
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // -->
+
+                                <div class="box_cnt">
+                                    <!-- 가격비교 로더 -->
+                                    <!-- 가격비교 리스트가 갱신되었음을 인지시키기 위한 효과 영역입니다 -->
+                                    <!-- 옵션이 선택되면 show() 해주시고, complete 0.5초 후 fadeout(300) 처리해주세요. -->
+                                    <div class="box_tb_loader">
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                        <div class="loader_row"><span class="loader_obj obj_01"></span><span class="loader_obj obj_02"></span><span class="loader_obj obj_03"></span></div>
+                                    </div>
+
+                                    <!-- PC 최저가 케이스  -->
+                                    <div class="result_pc_lowest" style="display:none">
+                                        <div class="txt_tit">
+                                            <strong>해당 상품은 판매 쇼핑몰 정책 상<br/>에누리 PC웹에서 &#39;최저가&#39;로 구매 가능합니다.</strong><br/>
+                                            &#39;찜하기&#39; 후 PC웹으로 접속해 주세요.
+                                        </div>
+                                    </div>                                    
+
+                                    <!-- 가격비교 목록 -->
+                                    <table summary="가격 비교 목록" class="box_tb">
+                                        <caption>가격 비교 목록</caption>
+                                        <colgroup>
+                                            <col width="160px"/>
+                                            <col width="130px"/>
+                                            <col width="170px"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <!-- 배송비 포함  -->
+                                            <tr>
+                                                <!-- 201202 :  SR#43722 : 빠른 배송 타입 추가-->
+                                                <!-- span태그 안에 em.tag_qd 넣어주세요 -->
+                                                <td class="txt_name"><span>쿠팡<em class="tag_qd">로켓배송</em></span></td>
+                                                <!-- // -->
+                                                <td class="txt_delivery">2,500원</td>
+                                                <!-- 최저가 일때 아래와 같이 넣어주세요. -->
+                                                <td class="txt_price lowest_price">
+                                                    <span class="iconPc">PC</span><em>최저가</em><strong>2,520,000</strong>원
+                                                    <!-- 카드가격 추가 -->
+                                                    <span class="txt_card_price">(신한카드 495,000원)</span>
+                                                    <!-- // -->
+                                                </td>
+                                                <!-- // -->
+                                            </tr>
+                                            <!-- // -->
+                                            <tr>
+                                                <td class="txt_name"><span>SSG<em class="tag_qd">쓱-배송</em></span></td>
+                                                <td class="txt_delivery">2,500원</td>
+                                                <td class="txt_price">
+                                                    <strong>2,520,000</strong>원
+                                                    <span class="txt_card_price">(신한카드 495,000원)</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt_name"><span>인터파크<em class="tag_qd">빠른배송</em></span></td>
+                                                <td class="txt_delivery">무료배송</td>
+                                                <td class="txt_price">
+                                                    <!-- 현금 최저가 케이스 -->
+                                                    <span class="ico--cash">현금</span><strong>2,520,000</strong>원
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt_name"><span>반디엔루니스</span></td>
+                                                <td class="txt_delivery">2,500원</td>
+                                                <td class="txt_price">
+                                                    <!-- 직구 최저가 케이스 -->
+                                                    <span class="ico--global">직구</span><strong>2,520,000</strong>원
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <!-- 191202 npay 타입 추가 -->                                        
+                                                <td class="txt_name"><span>제로투세븐<em class="ico--npay">NPAY</em></span></td>
+                                                <!-- // -->
+                                                <td class="txt_delivery">2,500원</td>
+                                                <td class="txt_price">
+                                                    <strong>2,520,000</strong>원
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt_name"><span>옥션</span></td>
+                                                <td class="txt_delivery">2,500원</td>
+                                                <td class="txt_price">
+                                                    <strong>2,520,000</strong>원
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="txt_name"><span>G9</span></td>
+                                                <td class="txt_delivery">2,500원</td>
+                                                <td class="txt_price">
+                                                    <strong>2,520,000</strong>원
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 201126 : SR#43624 : [PC/M] VIP 신규 광고 퍼블리싱 요청 : 프라이스탑 -->
+                                <div class="ad_price_top">
+                                    <table summary="광고 상품" class="box_tb">
+                                        <caption>광고 상품</caption>
+                                        <colgroup>
+                                            <col width="160px"/>
+                                            <col width="130px"/>
+                                            <col width="170px"/>
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="txt_name"><span>스폰서 로지텍 <i class="ico_ad">AD</i></span></td>
+                                                <td class="txt_delivery">무료배송</td>
+                                                <td class="txt_price">
+                                                    <strong>2,520,000</strong>원
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- // -->
+
+                                <a href="#" class="btn_more_type2">
+                                    <span>가격비교 더보기</span>
+                                </a>
+                            </div>
+                        </div>
+                        <script>
+                            // 퍼블테스트
+                            $(function(){ 
+                                // 옵션 선택시 구현
+                                var $prod = $(".prd_inter_opt .box_cnt > ul > li"); // 옵션
+                                var $loader = $(".box_tb_loader");
+                                $prod.click(function(e){
+                                    var $scroller = $(this).closest('.scroller'); 
+                                    var _distance = ($scroller.find("ul").offset().left - $(this).offset().left) * -1; // 이동할 거리 계산
+                                    $(this).addClass("on").siblings().removeClass("on"); // 활성화/비활성화
+                                    $scroller.stop(true,false).animate({"scrollLeft": _distance - 16 },600); // 스크롤 이동                                            
+                                    $loader.show(); // 옵션이 선택되면 show
+                                    setTimeout(function(){
+                                        $loader.fadeOut(300); // 로딩후 .5s 뒤에 fadeout
+                                    },500)
+                                })
+                                // 스크롤 바 구현
+                                var $barScrW = $(".prd_inter_opt .scroller");
+                                var resizeBarW = function(target){
+                                    var $this = $(target);
+                                    var $slide = $this.find(".slider").find(".slider-bar");
+                                    var _wd = ($this.width()/$this.find(".scroll-cont").width() * 100 ) + ($this.scrollLeft()/$this.find(".scroll-cont").width() * 100 );
+                                    $slide.css({"width" : _wd.toFixed(2)+"%"})
+                                };                                
+                                $barScrW.each(function(){
+                                    resizeBarW(this);
+                                })
+                                $barScrW.on("scroll",function(){
+                                    resizeBarW(this);
+                                })
+                            })
+                        </script>
+                    </div>
+                    <!-- // -->
+
+					<!-- 요약 - 제품정보 -->
+					<div class="prd_info round_box">
+						<div class="box_inner">
+							<div class="box_head">	
+								<p class="title">제품정보</p>
+							</div>
+							<ul class="prd_info_summary">
+								<li>제조사 : LG</li>
+								<li>브랜드 : ThinQ</li>
+							</ul>
+							<p class="prd_info_detail">
+								<span class="txt_enroll">등록일:19년 2월</span> &#47; 화면:39.11cm(15.4형) &#47; <b>2880x1800(레티나)</b> 0nit) &#47; LED백라이트 &#47; IPS패널(광시야각) &#47; 램:확인 후 구매 &#47; SSD:확인 후 구매 &#47; 듀얼그래픽:UHD630+라데온Pro-555X(메모리4G) &#47; 무선랜ac &#47; 블루투스5.0 &#47; 페이스타임 &#47; 영상출력:썬더볼트3(4개) &#47; 독립형키보드 &#47; 멀티트랙패드 &#47; 터치bar &#47; 터치ID &#47; 포스터치 &#47; 키보드라이트배터리:최대10시간&#47; 색상:스페이스그레이 &#47; 두께:1.55cm &#47; 부피:1304cc &#47; 1.83kg
+							</p>
+							<a href="#" class="btn_more_type2">
+								<span>제품정보 더보기</span>
+							</a>
+						</div>
+					</div>
+
+					<!-- 요약 - 상품후기 -->
+					<div class="prd_review round_box">
+						<div class="box_inner">
+							<div class="box_head">	
+								<p class="title">
+									상품후기 <span>(150)</span>
+								</p>
+							</div>
+							<div class="review_summary">
+								<!-- 상품 후기 - 별점 -->
+								<div class="review_grade">
+									<div class="review_inner">
+										<span class="grade_score">
+											<span class="txt_score">4.8</span> / 5
+										</span>
+										<span class="grade_star">
+											<span class="ico_star" data-given-star="3">
+											<!--
+												1. 별 갯수에 맞게 data-given-star attribute 수정해 주세요. 
+												data-given-star : 0 ~ 5
+												2. 소숫점 까지 표시해야 할때는 data-given-star attribute 제거하고 style="width:45%"와 같이 넣어주세요.
+											-->
+											</span>
+										</span>
+									</div>
+								</div>
+								<!-- 상품 후기 - 점수 분포 -->
+								<div class="review_score">
+									<div class="review_inner">
+										<ul class="score_graph">
+											<li>
+												<span class="txt_tit">5점</span>
+												<span class="bar_gauge">
+													<!-- .bar_gauge_on width에 % 넣어주세요. -->
+													<span class="bar_gauge_on" style="width:80%"></span>
+												</span>
+												<span class="txt_count">345</span>
+											</li>
+											<li>
+												<span class="txt_tit">4점</span>
+												<span class="bar_gauge">
+													<span class="bar_gauge_on" style="width:22%"></span>
+												</span>
+												<span class="txt_count">64</span>
+											</li>
+											<li>
+												<span class="txt_tit">3점</span>
+												<span class="bar_gauge">
+													<span class="bar_gauge_on" style="width:16%"></span>
+												</span>
+												<span class="txt_count">11</span>
+											</li>
+											<li>
+												<span class="txt_tit">2점</span>
+												<span class="bar_gauge">
+													<span class="bar_gauge_on" style="width:4%"></span>
+												</span>
+												<span class="txt_count">5</span>
+											</li>
+											<li>
+												<span class="txt_tit">1점</span>
+												<span class="bar_gauge">
+													<span class="bar_gauge_on" style="width:0%"></span>
+												</span>
+												<span class="txt_count">0</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- 요약 - 후기 리스트 -->
+							<ul class="board_list">
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">정말 최고의 노트북입니다! </span>
+											<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+											<span class="txt_info">
+												<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+												<!-- 평점정보 없을때 .no_score 붙여주세요 -->
+												<span class="review_star no_score">
+													<span class="given_star ico_star" data-given-star="4">&nbsp;
+														<!--
+															1. 별 갯수에 맞게 data-given-star attribute 수정해 주세요. 
+															data-given-star : 0 ~ 5
+															2. 소숫점 까지 표시해야 할때는 data-given-star attribute 제거하고 style="width:45%"와 같이 넣어주세요.
+														-->
+													</span>
+												</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">정말 최고의 노트북입니다! </span>
+											<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+											<span class="txt_info">
+												<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+												<span class="review_star">																					
+													<span class="given_star ico_star" data-given-star="4">&nbsp;
+														<!--
+															1. 별 갯수에 맞게 data-given-star attribute 수정해 주세요. 
+															data-given-star : 0 ~ 5
+															2. 소숫점 까지 표시해야 할때는 data-given-star attribute 제거하고 style="width:45%"와 같이 넣어주세요.
+														-->
+													</span>
+												</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">정말 최고의 노트북입니다! </span>
+											<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+											<span class="txt_info">
+												<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+												<span class="review_star">																					
+													<span class="given_star ico_star" data-given-star="4">&nbsp;
+														<!--
+															1. 별 갯수에 맞게 data-given-star attribute 수정해 주세요. 
+															data-given-star : 0 ~ 5
+															2. 소숫점 까지 표시해야 할때는 data-given-star attribute 제거하고 style="width:45%"와 같이 넣어주세요.
+														-->
+													</span>
+												</span>
+											</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+							<a href="#" class="btn_more_type2">
+								<span>상품후기 더보기</span>
+							</a>
+
+							<!-- 상품후기 없을때  -->
+							<div class="no_posts">
+								<strong>등록된 상품 후기가 없습니다.</strong><br/>상품후기를 등록해 주세요!<br/>
+								<a href="#" class="btn_write_review">
+									<span>상품 후기 작성</span>
+								</a>
+							</div>	
+							<!-- // -->
+						</div>
+					</div>
+					<!-- // 상품후기 -->
+
+					<!-- 200903 : SR#42109 : VIP > 요약탭 > 스펙비교 추가 -->
+                    <div class="prd_compsepc round_box">
+                        <div class="box_inner">
+                            <div class="box_head">	
+                                <p class="title">
+                                    스펙비교
+                                </p>
+                            </div>
+                            
+                            <ul class="compspec_list">
+                                <!-- 반복 : 가격 비교 아이템 -->
+                                <li>
+                                    <div class="thumb">
+                                        <ul class="tag_list">
+                                            <li><i class="ico_new">신제품</i></li>
+                                            <!-- <li><i class="ico_cos">가성비</i></li> -->
+                                            <!-- <li><i class="ico_alo">많이구매</i></li> -->
+                                        </ul>
+                                        <img src="http://photo3.enuri.info/data/images/service/middle/49179000/49179056.jpg" alt="">
+                                        <!-- 선택상품 태그 -->
+                                        <span class="tag_selected">
+                                            <span class="tx_selected">현재상품</span>
+                                        </span>
+                                    </div>
+                                    <div class="info">
+                                        <!-- 상품명 -->
+                                        <span class="tx_name">삼성전자 그랑데WF21T6000KW + DV16T8520</span>
+                                        <!-- 최저가 -->
+                                        <span class="tx_price">최저가 <em>9,999,900</em>원</span>
+                                        <span class="tx_etc">
+                                            <!-- 평점 -->
+                                            <span class="tx_score"><em>4.6</em> <span class="tx_count">(136)</span></span>
+                                            <!-- 등록일자 -->
+                                            <span class="tx_release">2020.08 등록</span>
+                                        </span>
+                                    </div>
+                                    <div class="spec">
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">세탁용량</span>
+                                            <span class="tx_item_desc">21kg</span>
+                                        </span>
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">에너지효율</span>
+                                            <span class="tx_item_desc">1등급</span>
+                                        </span>
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">도어</span>
+                                            <span class="tx_item_desc">블랙틴트도어</span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- // -->
+                                <li>
+                                    <div class="thumb">
+                                        <ul class="tag_list">
+                                            <!-- <li><i class="ico_new">신제품</i></li> -->
+                                            <li><i class="ico_cos">가성비</i></li>
+                                            <!-- <li><i class="ico_alo">많이구매</i></li> -->
+                                        </ul>
+                                        <img src="http://photo3.enuri.info/data/images/service/middle/49179000/49179056.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <!-- 상품명 -->
+                                        <span class="tx_name">삼성전자 그랑데WF21T6000KW + DV16T8520</span>
+                                        <!-- 최저가 -->
+                                        <span class="tx_price">최저가 <em>9,999,900</em>원</span>
+                                        <span class="tx_etc">
+                                            <!-- 평점 -->
+                                            <span class="tx_score"><em>4.6</em> <span class="tx_count">(136)</span></span>
+                                            <!-- 등록일자 -->
+                                            <span class="tx_release">2020.08 등록</span>
+                                        </span>
+                                    </div>
+                                    <div class="spec">
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">세탁용량</span>
+                                            <span class="tx_item_desc">21kg</span>
+                                        </span>
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">에너지효율</span>
+                                            <span class="tx_item_desc">1등급</span>
+                                        </span>
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">도어</span>
+                                            <span class="tx_item_desc">블랙틴트도어</span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumb">
+                                        <ul class="tag_list">
+                                            <!-- <li><i class="ico_new">신제품</i></li> -->
+                                            <!-- <li><i class="ico_cos">가성비</i></li> -->
+                                            <li><i class="ico_alo">많이구매</i></li>
+                                        </ul>
+                                        <img src="http://photo3.enuri.info/data/images/service/middle/49179000/49179056.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <!-- 상품명 -->
+                                        <span class="tx_name">삼성전자 그랑데WF21T6000KW + DV16T8520</span>
+                                        <!-- 최저가 -->
+                                        <span class="tx_price">최저가 <em>9,999,900</em>원</span>
+                                        <span class="tx_etc">
+                                            <!-- 평점 -->
+                                            <span class="tx_score"><em>4.6</em> <span class="tx_count">(136)</span></span>
+                                            <!-- 등록일자 -->
+                                            <span class="tx_release">2020.08 등록</span>
+                                        </span>
+                                    </div>
+                                    <div class="spec">
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">세탁용량</span>
+                                            <span class="tx_item_desc">21kg</span>
+                                        </span>
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">에너지효율</span>
+                                            <span class="tx_item_desc">1등급</span>
+                                        </span>
+                                        <span class="spec_item">
+                                            <span class="tx_item_tit">도어</span>
+                                            <span class="tx_item_desc">블랙틴트도어</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <a href="#" class="btn_more_type2">
+                                <span>스펙비교 더보기</span>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- // -->
+
+					<!-- 블로그/동영상 -->
+					<div class="prd_blog round_box">
+						<div class="box_inner">
+							<div class="box_head">	
+								<p class="title">
+									블로그/동영상 <span>지원:ZUM</span>
+								</p>
+							</div>
+							<!-- 요약 - 블로그/동영상 리스트 -->
+							<ul class="board_list">
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>								
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요 세줄까지  세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지 세줄까지</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<!-- 이미지가 없는 리뷰는 .img_box 영역을 지워주세요 -->
+										<!-- <span class="img_box"> -->
+											<!-- <img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt=""> -->
+										<!-- </span> -->
+										<!-- // -->
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<!-- 동영상 링크 타입 .type_media 붙여주세요 -->
+								<li class="type_media">
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@mv_thumb.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>									
+											<span class="txt_info">
+												<span class="txt_site">Youtube</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<!-- // -->
+							</ul>
+							<a href="#" class="btn_more_type2">
+								<span>블로그/동영상 더보기</span>
+							</a>
+						</div>
+					</div>
+
+					<!-- 요약 - CM Q&A -->
+					<div class="prd_qna round_box">
+						<div class="box_inner">
+							<div class="box_head">	
+								<p class="title">
+									CM Q&amp;A
+								</p>
+							</div>
+							<!-- 요약 - 후기 리스트 -->
+							<ul class="qna_list">
+								<li>
+									<span class="txt_date">2019.01.21</span>
+									<span class="qna_question qna_area">
+										<span class="box_author">
+											<span class="txt_author">ab***</span>
+										</span>
+										<span class="txt_comm">
+											상품 스팩에 대해서 궁금합니다. 혹시 그 전에 나온 시리즈보다 더 나은 것이 무엇인지 설명 좀 부탁드립니다. 감사합니다.  										
+										</span>
+									</span>
+									<span class="qna_answer qna_area">
+										<span class="box_author">
+											<span class="txt_author">담당CM</span>
+										</span>
+										<span class="txt_comm">
+											일단 전반적인 스팩에서 좋아졌다고 생각하시면 됩니다. 화질과 사운드에서 특히 더 공을 들인 모델입니다.										
+										</span>
+									</span>
+								</li>
+							</ul>
+							<a href="#" class="btn_more_type2">
+								<span>CM Q&amp;A 더보기</span>
+							</a>
+
+
+							<!-- Q&A 없을때  -->
+							<div class="no_posts">
+								<strong>등록된 문의글이 없습니다.</strong><br/>상품에 대해 궁금하시면 문의하기를 남겨주세요!<br/><span class="txt_point">CM</span>이 자세하게 답변 드립니다!<br/>
+								<a href="#" class="btn_write_qna">
+									<span>문의하기</span>
+								</a>
+							</div>	
+							<!-- // -->
+						</div>
+					</div>
+
+					<!-- 요약 - 추천상품 -->
+					<div class="prd_recommend round_box">
+						<div class="box_inner">
+							<div class="box_head">
+								<p class="title">
+									<!-- 201015 : SR#42862 : CM추천 악세서리 -> 타이틀 변경 -->
+									추천상품 <span>함께 사용 가능한 상품 (199)</span>
+									<!-- // -->
+									<!-- 추천상품 <span>남들은 뭘샀지? (199)</span> -->
+								</p>
+							</div>
+							<!-- 요약 - 추천상품 리스트 -->
+
+							<!-- 1. 함께 사용 가능한 상품 / 다른 브랜드 / 동일 브랜드 / 동일 카테고리 / 함께 살만한 케이스 -->
+                            <div class="horiScrollWrap noswipe" >
+								<div class="scrollList">
+									<ul class="recommandProdList">
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em class="low">최저가</em>
+														<em>11,449,000</em>원
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>450,340</em>원
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>879,630</em>원
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>1,449,000</em>원
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>12,254,540</em>원
+													</span>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- // CM추천 악세사리 -->
+
+							<!-- 2. 남들은 뭘샀지? -->
+							<div class="pftCont">						
+								<div class="pftCont_head">
+									<div class="onlyOldtab_wrap">
+										<ul class="onlyOld_tab">
+											<li><a href="#" class="on">10대</a></li>
+											<li><a href="#">20대</a></li>
+											<li><a href="#">30대</a></li>
+											<li><a href="#">40대</a></li>
+											<li><a href="#">50대</a></li>
+										</ul>
+									</div>
+
+									<!-- 태그, 성별 영역 .ftProdTit 추가 -->
+									<div class="ftProdTit">
+										<p class="tag_tit"><span class="tag"># 30대</span>가 많이 구매한 상품</p>
+
+										<!-- 성별이 없을 경우, blind 클래스 추가 -->
+										<ul class="gender">
+										<!-- <ul class="gender blind">-->
+											<li onclick="">남성</li>
+											<li class="on" onclick=""></span>여성</li>
+										</ul>
+									</div>
+								</div>
+								
+								<div class="horiScrollWrap noswipe">
+									<div class="scrollList">
+										<ul class="recommandProdList">
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em class="low">최저가</em>
+															<em>11,449,000</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>450,340</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>879,630</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>1,449,000</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>12,254,540</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- // 남들은 뭘샀지? -->
+
+							<!-- 추천상품 리스트 끝 -->
+							<a href="#" class="btn_more_type2">
+								<span>추천상품 더보기</span>
+							</a>
+						</div>
+					</div>
+
+				</div>
+				<!-- // Tab#1 :: 요약정보 끝 -->
+
+				<!-- Tab#2 :: 가격비교 -->
+				<div class="swiper-slide tab_price tab_cele">
+					<div class="price_info_wrap">
+						<div class="box_inner">
+							<div class="box_head">
+								<div class="option_select">
+									<label for="__opt_select1">
+										<span class="txt_tit">옵션선택</span>
+										<span class="txt_selected">SSD 512G (교체)+하드 500G</span>
+									</label>
+									<select name="__opt_select1" id="" title="옵션선택">
+										<option value="" selected >SSD 512G (교체)+하드 500G</option>
+										<option value="">SSD 512G (교체)+하드 1T</option>
+										<option value="">SSD 1T (교체)+하드 500G</option>
+										<option value="">SSD 1T (교체)+하드 1T</option>
+										<option value="">SSD 1T (교체)+하드 3T</option>
+										<option value="">SSD 1T (교체)+하드 6T</option>
+									</select> 
+								</div>
+							</div>					
+							<script>
+								$(function(){
+									// 셀렉트박스 선택 값 Label에 출력
+									var $label = $(".price_info_wrap .box_head label");
+									var $select = $(".price_info_wrap .box_head select");
+									$select.on("change",function(){
+										var $this = $(this);
+										$label.find(".txt_selected").html(
+											$this.find(":selected").html()
+										);
+									})
+								})
+							</script>
+							<div class="box_cont">							
+								<div class="box_summary">
+									<span class="txt_mall">
+										쇼핑몰 <span>123,456</span>
+									</span>
+									
+									<!-- SR#50685 : 가격리스트 개선 -->
+									
+									<!-- @참고 /pub_test/js/bottomsheet.comm.js -->
+									<!-- @바텀시트 마크업 하단 참고해주세요. 검색 클래스 "bottomsheet_wrap" -->
+									<!-- 바텀시트 호출 클래스/컨텐츠타입 : class=bs-trigger, date-type=mall_select -->
+									<button type="button" class="bs-trigger btn_mall" data-type="mall_select">쇼핑몰 선택</button>
+									
+									<!-- LP 정렬과 동일한 마크업 적용 -->
+									<div class="opt_viewtype">
+										<button class="btn btn_grid">그리드모드</button>
+										<button class="btn btn_list active">리스트모드</button>
+			
+										<script>
+											$(".opt_viewtype .btn").on("click", function(){
+												$(this).removeClass('active').siblings(".btn").addClass('active');
+
+												// 판매가순 정렬 토글
+												$('.tab_price .list_head').toggle();
+												$('.tab_price .box_cnt').toggle();
+												
+												// 일반 전문몰 토글
+												//$('.tab_price .box_cnt').not('.type_cashmall').toggle();
+												$('.type_cashmall').toggleClass('list_overview');
+
+												// 뷰타입 변경시, 전체 스와이프 update 
+												// cntSwiper 전역변수
+												cntSwiper.update();
+											})
+										</script>
+									</div>
+									<!-- //SR#50685 -->
+								</div>
+							</div>
+							<!-- 20190424 스크롤시 상단 고정 영역 수정 -->
+							<div class="tab_price_head_wrap">
+								<div id="tab_price_head_3ndline" class="fixed_cnt">
+									<!-- SR#50685 : 가격리스트 개선 -->
+									<div class="box_cont">
+										<!-- 가격비교 뷰타입 : 펼쳐보기용 메뉴 -->
+										<div class="list_head">																			
+											<div class="sort_block">
+												<div class="prod_sort">
+													<div class="opt_sort">
+														<label for="sort_option">판매가순</label>
+														<select name="sort_option" class="select_opt" id="" title="판매가순">
+															<option value="0" selected="selected">판매가순</option>
+															<option value="1">무료배송</option>
+															<option value="2">무이자</option>
+														</select>
+							
+														<script>
+															$(function(){
+																$(".select_opt").on("change", function(){
+																	selectToLabel(this);
+																})
+																// 선택된 옵션값을 라벨에 복사 후 노출 케이스 변경
+																function selectToLabel(e){
+																	var $label = $(e).prev("label");
+																	var optval = $(e).val();
+																	$label.html( e.options[e.selectedIndex].text );
+
+																	// js-sort 클래스는 의미없습니다. 퍼블용이니 참고만 해주세요
+																	$(".js-sort").hide();
+																	if(optval == 0){
+																		$(".sort_chk").show();
+																	}else if(optval == 1){
+																		$(".sort_noti.noti-free").show();
+																	}else if(optval == 2){
+																		$(".sort_noti.noti-interest").show();
+																	}
+																}
+															})
+														</script>
+													</div>
+												</div>
+
+												<!-- 판매가순 선택 시 노출 -->
+												<div class="js-sort sort_chk">
+													<label>
+														<input type="checkbox" checked="checked">
+														<span class="input_nm">배송비 포함</span>
+													</label>
+													<label>
+														<input type="checkbox">
+														<span class="input_nm">카드할인가 포함</span>
+													</label>
+												</div>
+
+												<!-- 무료배송 선택 시 노출 -->
+												<div class="js-sort sort_noti noti-free">
+													<button type="button" class="btn_noti">!</button>
+													<!-- 착불 툴팁 -->
+													<div class="layer_noti">
+														<button type="button"><i class="icon_close_noti comm__sprite"></i></button>
+														
+														<div class="txt2">자세한 무료배송 조건은<br> 쇼핑몰을 통해 확인해주세요.</div>
+													</div>
+												</div>
+												<!-- 무이자 선택 시 노출 -->
+												<div class="js-sort sort_noti noti-interest">
+													<button type="button" class="btn_noti">!</button>
+													<!-- 착불 툴팁 -->
+													<div class="layer_noti">
+														<button type="button"><i class="icon_close_noti comm__sprite"></i></button>
+
+														<div class="txt2">자세한 무이자 할부 조건은<br> 쇼핑몰을 통해 확인해주세요.</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<!-- 가격비교 뷰타입 : 간략보기용 메뉴 -->
+										<div class="list_head" style="display:none">
+											<div class="sort_block">
+												<div class="sort_first">
+													<p class="tx_tit">판매가순</p>
+												</div>
+												<div class="sort_chk">
+													<label>
+														<input type="checkbox" checked="checked">
+														<span class="input_nm">배송비 포함</span>
+													</label>
+													<label>
+														<input type="checkbox">
+														<span class="input_nm">카드할인가 포함</span>
+													</label>
+												</div>
+											</div>
+										</div>
+										<!-- // -->
+									</div>
+									<!-- //SR#50685 -->
+								</div>
+							</div>
+							<!-- // -->
+							<!-- // box head -->
+
+							<!-- PC최저가 케이스 / 노출 : invisible 제거-->
+							<div class="box_cnt">
+								<div class="result_pc_lowest">
+									<div class="txt_tit">
+										<strong>해당 상품은 판매 쇼핑몰 정책 상<br/>에누리 PC웹에서 &#39;최저가&#39;로 구매 가능합니다.</strong><br/>
+										&#39;찜하기&#39; 후 PC웹으로 접속해 주세요.
+									</div>
+								</div>
+							</div>
+							<!-- // -->
+
+							<!-- 가격비교 뷰타입 리스트 : 펼쳐보기 -->
+							<div class="box_cnt">
+								<ul class="product_list">
+									<!-- SR#50685 : 가격리스트 개선 -->
+									<!-- 행 반복 : FULL CASE : 이 LI만 보시면 됩니다 -->
+									<li>
+										<span class="txt_head">
+											<!-- 쇼핑몰 -->
+											<span class="txt_mall">
+												(주)LG아시아총판 
+												<span class="tag_quick ico_qd_rocket">로켓배송</span>
+												<span class="tag_quick ico_qd_ssg">쓱배송</span>
+												<span class="tag_quick ico_qd_normal">빠른배송</span>
+												<span class="ico--global">직구</span>
+												<button type="button" class="btn_noti">!</button>
+												<!-- 쇼핑몰 별 툴팁 -->
+												<span class="box_tip">
+													<span class="txt_detail">
+														본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+														해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+													</span>
+												</span>
+											</span>
+										</span>
+
+										<!-- 20190530 가격비교 - 펼쳐보기 영역 개선 -->
+										<!-- .txt_price > .txt_card_price (카드 할인가) -> .txt_add_info 로 이동 -->
+										<!-- .txt_price > .txt_coupon_price (쿠폰 할인가) -> .txt_add_info 로 이동 -->
+										<!-- .txt_summary > .txt_comm_ad (광고문구) -> .txt_add_info 로 이동 -->
+										<!-- .txt_summary > .txt_comm_promo (프로모션문구) -> .txt_add_info 로 이동 -->
+										<span class="txt_price">
+											<!-- 최저가 케이스 strong 태그에 lowest_sell_price 클래스 붙여주세요 -->
+											<span class="txt_lowest">최저가</span><strong class="lowest_sell_price">1,123,456,789</strong><span class="txt_won">원</span>	
+											<!-- 일반 가격 케이스 -->
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											
+											<!-- 배송료 -->
+											<span class="txt_delivery">무료배송</span>								
+										</span>
+										<span class="txt_add_info">
+                                            <span class="txt_comm_global">구매 전 상품 가격 및 배송비를 꼭 확인하세요!</span>
+                                        </span>
+										<!-- 아래 할인가 / 문구없을때 invisible 클래스 추가 -->
+										<span class="txt_add_info">
+											<!-- 카드 할인가 // 활성 : invisible 제거 -->
+											<span class="txt_card_price">신한카드</span>
+											<!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+											<span class="txt_coupon_price ">(11번가 중복쿠폰할인가 1,178,000원)</span>
+											<!-- 광고 문구 // 활성 : invisible 제거-->
+											<span class="txt_comm_ad ">카카오페이결제 시 인터파크 1% 적립! </span>
+											<!-- 프로모션 문구 // 활성 : invisible 제거 -->
+											<span class="txt_comm_promo ">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+										</span>
+										<span class="txt_summary">									
+											<!-- 상품 간략 설명 -->
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<!-- 태그 없을때 invisible 클래스 추가 -->
+										<ul class="tag_list">
+											<!-- 이머니 적립 -->
+											<li><span class="tag_emoney_save"><em>11,900</em>적립<i class="only_app">(앱전용)</i></span></li>
+											<!-- 기본태그들 : "tag_normal" -->
+											<li><span class="tag_normal">무이자 최대 12개월</span></li>
+											<li><span class="tag_normal">카드할인</span></li>
+											<!-- 에누리할인 -->
+											<li><span class="tag_enuri">10% 할인</span></li>
+											<!-- 티몬-당일배송 -->
+											<li><span class="tag_tmond">당일배송</span></li>
+											<!-- 쿠팡-로켓배송 -->
+											<li><span class="tag_rocketd">로켓배송</span></li>
+											<!-- 해외직구-이머니 적립 -->
+											<li><span class="tag_global_emoney_save">적립</span></li>
+											<!-- 나우배송 -->
+											<li><span class="tag_nowd">나우배송</span></li>
+										</ul>
+									</li>
+									<!-- //행 반복 : FULL CASE -->
+
+									<li>
+										<span class="txt_head">
+											<span class="txt_mall">
+												G마켓 <button type="button" class="btn_noti">!</button>
+												<!-- 몰 툴팁 -->
+												<span class="box_tip">
+													<span class="txt_detail">
+														본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+														해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+													</span>
+												</span>
+											</span>
+										</span>
+
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>	
+											<span class="txt_delivery">배송비 <span>5,000</span>원 포함</span>								
+										</span>
+										<span class="txt_add_info">
+											<span class="txt_card_price">신한카드</span>
+										</span>
+										<span class="txt_summary">
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<ul class="tag_list">
+											<li><span class="tag_emoney_save"><em>11,900</em>적립<i class="only_app">(앱전용)</i></span></li>
+											<li><span class="tag_normal">무이자 최대 12개월</span></li>
+											<li><span class="tag_normal">카드할인</span></li>
+											<li><span class="tag_enuri">10% 할인</span></li>
+											<li><span class="tag_tmond">당일배송</span></li>
+										</ul>
+									</li>
+									<li>
+										<span class="txt_head">
+											<span class="txt_mall">
+												G마켓 <button type="button" class="btn_noti_delivery">착불</button>
+												<!-- 착불 툴팁 -->
+												<div class="layer_noti">
+													<button type="button" onclick="closeNotiLayer('.layer_noti_save');"><i class="icon_close_noti comm__sprite"></i></button>
+													<div class="txt1">착불/유무료</div>
+													<div class="txt2 tx_blue">총 상품금액에 배송비가 포함되어 있지 않습니다.</div>
+													<div class="txt3">쇼핑몰 이동 후 반드시 상품정보 및 가격을 다시 한번 확인하세요.</div>
+												</div>
+											</span>
+										</span>
+
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>	
+											<span class="txt_delivery">배송비 <span>5,000</span>원 포함</span>								
+										</span>
+										<span class="txt_add_info">
+											<span class="txt_coupon_price ">(11번가 중복쿠폰할인가 1,178,000원)</span>
+										</span>
+										<span class="txt_summary">
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<ul class="tag_list">
+											<li><span class="tag_emoney_save"><em>11,900</em>적립<i class="only_app">(앱전용)</i></span></li>
+											<li><span class="tag_normal">무이자 최대 12개월</span></li>
+											<li><span class="tag_normal">카드할인</span></li>
+											<li><span class="tag_enuri">10% 할인</span></li>
+											<li><span class="tag_tmond">당일배송</span></li>
+										</ul>
+									</li>
+									<li>
+										<span class="txt_head">											
+											<!-- NPAY몰 : type_npay 클래스 붙여주세요 -->
+											<span class="txt_mall type_npay">엔페이몰</span>
+										</span>
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											<span class="txt_delivery">20,000원 별도</span>								
+										</span>
+										<span class="txt_add_info">
+											<span class="txt_comm_ad ">카카오페이결제 시 인터파크 1% 적립! </span>
+										</span>
+										<span class="txt_summary">
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<ul class="tag_list">
+											<li><span class="tag_emoney_save"><em>11,900</em>적립<i class="only_app">(앱전용)</i></span></li>
+											<li><span class="tag_normal">무이자 최대 12개월</span></li>
+											<li><span class="tag_normal">카드할인</span></li>
+											<li><span class="tag_enuri">10% 할인</span></li>
+											<li><span class="tag_tmond">당일배송</span></li>
+										</ul>
+									</li>
+									<li>
+										<span class="txt_head">
+											<span class="txt_mall">
+												인터파크 <button type="button" class="btn_noti">!</button>
+												<span class="box_tip">
+													<span class="txt_detail">
+														본 상품은 <span class="txt_mall_top">인터파크</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+														해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+													</span>
+												</span>
+											</span>
+										</span>
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											<span class="txt_delivery">무료배송</span>								
+										</span>
+										<span class="txt_add_info">
+											<span class="txt_comm_promo ">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+										</span>
+										<span class="txt_summary">
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<ul class="tag_list">
+											<li><span class="tag_emoney_save"><em>11,900</em>적립<i class="only_app">(앱전용)</i></span></li>
+											<li><span class="tag_normal">무이자 최대 12개월</span></li>
+											<li><span class="tag_normal">카드할인</span></li>
+											<li><span class="tag_enuri">10% 할인</span></li>
+											<li><span class="tag_tmond">당일배송</span></li>
+										</ul>
+									</li>
+									<!-- 케이스 : 스폰서광고 목록 -->
+									<li class="ad_sponsor">
+										<span class="txt_head">
+											<span class="txt_mall">
+												11번가 <span class="txt_sponsor">/스폰서</span>
+											</span>
+										</span>
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>	
+											<span class="txt_delivery">무료배송</span>									
+										</span>
+										<span class="txt_add_info invisible">
+											<!-- 추가 할인 정보 없을 때 클래스 추가 : "invisible" -->
+										</span>
+										<span class="txt_summary">
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<ul class="tag_list invisible">
+											<!-- 태그 목록 없을 때 클래스 추가 : "invisible" -->
+										</ul>
+									</li>
+									<!-- 케이스 : 파워클릭 AD -->
+									<li class="ad_pwrclk">
+										<!-- 파워클릭 AD 타이틀 -->
+										<span class="txt_ad_tit">파워클릭 AD</span>
+										<!-- // -->
+
+										<span class="txt_head">
+											<span class="txt_mall">
+												<!-- G마켓(shopbid_536) + 스폰서 케이스 -->
+												<span class="brand shopbid shopbid_536">G마켓</span>									
+												<!-- 옥션(shopbid_4027)-->
+												<!-- <span class="brand shopbid shopbid_4027">옥션</span> -->
+											</span>
+										</span>
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>
+										</span>
+										<span class="txt_summary">
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+									</li>
+									<li>
+										<span class="txt_head">
+											<span class="txt_mall">G마켓</span>
+										</span>
+										<span class="txt_price">
+											<strong>1,123,456,789</strong><span class="txt_won">원</span>							
+											<span class="txt_delivery">2,500원</span>
+										</span>
+										<span class="txt_add_info invisible">
+											<!-- 카드 할인가 // 활성 : invisible 제거 -->
+											<span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+											<!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+											<span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+											<!-- 광고 문구 // 활성 : invisible 제거-->
+											<span class="txt_comm_ad">3,0000원 중복할인쿠폰 적용상품 </span>
+											<!-- 프로모션 문구 // 활성 : invisible 제거 -->
+											<span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+										</span>
+										<span class="txt_summary">
+											<!-- 상품 간략 설명 -->
+											[농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+										</span>
+										<ul class="tag_list">
+											<!-- 기본태그들 -->
+											<li><span class="tag_normal">무이자</span></li>
+											<li><span class="tag_normal">카드할인</span></li>
+										</ul>
+									</li>
+								</ul>
+								<!-- 가격비교 더보기 -->
+								<a href="#" class="btn_more_type1">
+									<span class="txt_more">가격 비교 더보기</span>
+								</a>
+							</div>
+							<!-- // 가격비교 뷰타입 : 펼쳐보기 -->
+
+							<!-- - 가격비교 뷰타입 리스트 : 간략보기 -->
+							<div class="box_cnt list_overview" style="display:none">
+								<div class="product_group">
+									<p class="group_tit">무료배송</p>
+
+									<!-- SR#50685 : 가격리스트 개선 -->
+									<ul class="product_list">
+										<li><!-- FULL CASE : 일반가, 최저가, 판매자상위 입찰가 등 -->
+											<span class="txt_head">
+												<!-- 쇼핑몰명  -->
+												<span class="txt_mall">
+													G마켓 <button type="button" class="btn_noti">!</button><!-- onclick 에서 hover 로 교체 : 스크립트 지워주세요. -->
+													<!-- 쇼핑몰 별 툴팁 -->
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">G마켓</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>
+											
+											<!-- 1단 : 케이스 - 일반가격 판매가 -->
+											<span class="txt_price">
+												<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<!-- 1단 : 케이스 - 최저가 : "span.txt_lowest" -->
+											<span class="txt_price">
+												<span class="txt_lowest">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<!-- 1단 : 케이스 - 판매자 상위입찰 광고 클래스 추가 : "storng.lowest_sell_price" -->
+											<span class="txt_price">
+												<strong class="lowest_sell_price">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<!-- 1단 : 케이스 - 11번가 중복쿠폰 할인가 -->
+											<span class="txt_price">
+												<strong>1,123,456,789</strong><span class="txt_won">원</span>
+												<span class="txt_coupon_price">(11번가 중복쿠폰할인가 1,178,000원)</span>
+											</span>
+											<!-- 1단 : 케이스 - 직구 가격 -->
+											<span class="txt_price">
+												<span class="ico--global">직구</span>
+												<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<!-- 1단 : 케이스 - 현금 가격 -->
+											<span class="txt_price">
+												<span class="ico--cash">현금</span>
+												<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<!-- 2단 : 카드할인가 -->
+											<span class="txt_card">
+												<span>하나카드</span> 
+												<span>90,000</span>원+<span>5,000</span>원												
+											</span>
+											<!-- 3단 : 배송료 -->
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>	
+										</li><!-- // FULL CASE -->
+										
+										<li>
+											<span class="txt_head">
+												<!-- NPAY몰 : type_npay 클래스 붙여주세요 -->
+												<span class="txt_mall type_npay">엔페이몰</span>								
+											</span>	
+											<span class="txt_price">
+												<span class="txt_lowest">최저가</span><strong class="">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										<!-- 스폰서 클래스 추가 : "li.card_sponsor" -->
+										<li class="card_sponsor">
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>	
+											<span class="txt_price">
+												<strong class="">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										<!-- 해외직구 클래스 추가 : "li.card_global" -->
+										<li class="card_global">
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>	
+											<span class="txt_price">
+												<span class="ico--global">직구</span>
+												<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										<!-- 파워셀러 클래스 추가 : "li.card_powerseller" -->
+										<li class="card_powerseller">
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>
+											<span class="txt_price">
+												<span class="ico--cash">현금</span>
+												<strong>1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										<!-- 스폰서 파워셀러 클래스 추가 : "li.card_sponsor.card_powerseller" -->
+										<li class="card_sponsor card_powerseller">
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>	
+											<span class="txt_price">
+												<strong class="">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										
+										<!-- 결과 없을때 -->
+										<li>
+											<span class="txt_comm">
+												해당 쇼핑몰이 없습니다.
+											</span>
+										</li>
+
+									</ul>
+
+									<div class="btn_more_list">
+										<button type="button" class="btn_more"><span>더보기</span></button>
+									</div>
+									<!-- //SR#50685 -->
+								</div>
+
+								<div class="product_group">
+									<p class="group_tit">배송비 유/무료</p>
+									<ul class="product_list">
+										<li>
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>	
+											<span class="txt_price">
+												<strong class="">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										<li>
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>	
+											<span class="txt_price">
+												<strong class="">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+										<li>
+											<span class="txt_head">
+												<span class="txt_mall">
+													11번가 <button type="button" class="btn_noti">!</button>
+													
+													<span class="box_tip">											
+														<span class="txt_detail">
+															본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+															해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+														</span>
+													</span>
+												</span>									
+											</span>	
+											<span class="txt_price">
+												<strong class="">1,123,456,789</strong><span class="txt_won">원</span>
+											</span>
+											<span class="txt_card"><span>하나카드</span> <span>90,000</span>원+<span>5,000</span>원</span>
+											<span class="txt_delivery">배송비 <span>2,500</span>원 포함</span>
+										</li>
+
+										<!-- 결과 없을때 -->
+										<li>
+											<span class="txt_comm">
+												해당 쇼핑몰이 없습니다.
+											</span>
+										</li>
+									</ul>
+
+									<div class="btn_more_list">
+										<button type="button" class="btn_more"><span>더보기</span></button>
+									</div>
+								</div>
+
+								<!-- 가격비교 더보기 -->
+								<!-- 공통 버튼 삭제 : 좌/우 각 영역 더보기 별도 노출 -->
+								<!-- <a href="#" class="btn_more_type1">
+									<span class="txt_more">가격 비교 더보기</span>
+								</a> -->
+							</div>
+
+							<!-- 191108 현금몰/해외직구 추가 - 현금몰 노출 -->
+                            <!-- 요약보기시 list_overview 클래스 붙여주세요. -->
+                            <div class="box_cnt type_cashmall">
+                                <div class="box_head">
+                                    <p class="title">일반전문몰 
+                                        <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                        <span class="box_tip" onclick="$(this).toggle();">
+                                            <span class="txt_detail">본 상품은 무통장 입금을 이용한 현금 결제 쇼핑몰입니다.<br/>구매하기 전 재고 및 가격 확인을 꼭 해주세요</span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <ul class="product_list">
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                </ul>
+                                <!-- 가격비교 더보기 -->
+                                <a href="#" class="btn_more_type1">
+                                    <span class="txt_more">더보기</span>
+                                </a>
+                            </div>
+                            <!-- // -->
+
+						</div>
+					</div>
+				</div>
+				<!-- // Tab#2 :: 가격비교 끝 -->
+				
+				<!-- Tab#3 :: 제품정보 -->
+				<div class="swiper-slide tab_product tab_cele">
+
+					<div class="product_detail_tab tab_group">
+						<ul>
+							<li class="on"><a href="#">에누리 제공</a>
+							<li><a href="#"><span class="txt_mall">G마켓</span> 제공</a></li>
+						</ul>
+						<script>
+							// 탭 작동 테스트
+							$(function(){
+								$(".product_detail_tab").find("li").each(function(e){
+									var $this = $(this);
+									$this.find("a").click(function(i){
+										i.preventDefault();
+										if ( !$this.hasClass("on") ){
+											$this.addClass("on").siblings().removeClass("on");
+											$(".product_detail_wrap").toggleClass("invisible");
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+
+					<!-- 에누리 제공 제품정보 -->
+					<div class="product_detail_wrap type_enuri">
+						<!-- 성분분석  -->
+						<div class="box_inner box_cosmetics">
+							<div class="box_head">
+								<p class="title">성분분석</p>
+								<a href="#" class="btn_view_icid">전성분보기</a>
+							</div>
+							<div class="box_cnt">
+								<div class="cosmetics_div">
+									<div class="txt_tit">
+										피부타입별 적합도&nbsp;
+										<a href="#" class="btn_cosmetics_detail" onclick="$(this).next('.box_tip').toggle();return false;">?</a>
+										<!-- 카드사별할인 툴팁 -->
+										<div id="cosmetics_tip" class="box_tip tip_card" onclick="$(this).toggle();">
+											<span class="tit">피부타입별 적합도</span>
+											<span class="txt_detail">
+												%가 높을 수록해당 피부타입에 적합한 제품이며, 적합도는 전성분의 특성을 분석하여 산출된 값입니다. 
+											</span>
+										</div>
+									</div>
+									<!-- type1 - 피부타입별 적합도 -->
+									<!-- em태그 classname : p0 / p10 / p20 / p30 / p40 / p50 / p60 / p70 / p80 / p90 / p100 -->
+									<ul class="cosmetics_graph type1">
+										<li><em class="p0">0%</em>지성</li>
+										<li><em class="p0">0%</em>민감성</li>
+										<li><em class="p100">100%</em>건성</li>
+									</ul>
+								</div>
+								<div class="cosmetics_div">
+									<p class="txt_tit">좋은성분</p>
+									<!-- type2 - 좋은성분 -->
+									<!-- em태그 classname : non(비활성화) / on(활성화) -->
+									<ul class="cosmetics_graph type2">
+										<li><em class="non">0</em>피부 미백</li>
+										<li><em class="non">0</em>피부 탄력</li>
+										<li><em class="on">2</em>피부 보습</li>
+									</ul>
+								</div>
+								<div class="cosmetics_div">
+									<p class="txt_tit">주의성분</p>
+									<!-- type3 - 주의성분 -->
+									<!-- em태그 classname : non(비활성화) / on(활성화) -->
+									<ul class="cosmetics_graph type3">
+										<li><em class="non">0</em>알레르기</li>
+										<li><em class="on">2</em>여드름</li>
+										<li><em class="non">0</em>자극</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- // 성분분석 -->
+
+						<!-- 가구 속성 이미지 컨텐츠 노출 : VIP -->
+						<div class="box_inner box_fun_grade">
+							<!-- 자재등급.fun_grade_01 --><!-- 비활성은 .inactive 붙여주세요 -->
+							<div class="fun_grade fun_grade_01">
+								<h1>자재등급</h1>
+								<!-- 
+								등급에 따라 아래 .grade_level 클래스만 변경
+								E2 - .level_e2
+								E1 - .level_e1
+								E0 - .level_e0
+								SE0 - .level_se0
+								-->
+								<div class="grade_level level_e0">
+									<div class="txt_level"><!-- 등급 타이틀 --></div>
+									<ul class="grade_graph">
+										<li><span>E2</span></li>
+										<li><span>E1</span></li>
+										<li><span>E0</span></li>
+										<li><span>SE0</span></li>
+									</ul>
+								</div>
+								<span class="txt_noti">유해물질 포름알데히드 방출량에 따른 등급분류</span>
+							</div>
+							<!-- 쿠션감/착석감 .fun_grade_02 --><!-- 비활성은 .inactive 붙여주세요 -->
+							<div class="fun_grade fun_grade_02">
+								<h1>쿠션감</h1>
+								<!-- <h1>착석감</h1> -->
+								<!-- 
+								등급에 따라 아래 .grade_level 클래스만 변경
+								1 - .level_01
+								2 - .level_02
+								3 - .level_03
+								4 - .level_04
+								5 - .level_05
+								-->
+								<div class="grade_level level_03">
+									<div class="txt_level"><!-- 등급 타이틀 --></div>
+									<ul class="grade_graph">
+										<li><span>1</span></li>
+										<li><span>2</span></li>
+										<li><span>3</span></li>
+										<li><span>4</span></li>
+										<li><span>5</span></li>
+									</ul>
+								</div>
+								<span class="txt_noti">푹신함의 강도를 나타내며, 1이 가장 푹신하고 5가 가장 단단합니다.</span>
+							</div>
+						</div>
+						<!-- // -->
+
+						<!-- 구매가이드 -->
+						<div class="box_inner box_guide">
+							<div class="box_head">
+								<p class="title">구매가이드</p>
+							</div>
+							<ul class="board_list">
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">2018년 새롭게 선보이는 뉴 맥북 프로 air를 소개합니다. </span>
+											<span class="txt_info">
+												<span>2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">정말 최고의 노트북입니다! </span>
+											<span class="txt_info">
+												<span>2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">정말 최고의 노트북입니다! </span>
+											<span class="txt_info">
+												<span>2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+							<!-- 접기는 .btn_more_close 붙여주세요. -->
+							<a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+								<span class="txt_more">구매가이드 더보기</span>
+								<span class="txt_close">구매가이드 접기</span>
+							</a>
+						</div>
+						<!-- // 구매가이드 -->
+
+						<!-- 요약설명 -->
+						<div class="box_inner box_summary">
+							<div class="box_head">
+								<p class="title">요약설명</p>
+							</div>
+							<div class="prd_desc_tbl">
+								<table summary="제품 요약 설명">
+									<caption>제품 요약 설명</caption>
+									<tbody>
+										<!-- 요약설명 -->
+										<tr>
+											<th colspan="2" class="title">기본사양</th>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">화면크기</th>
+											<td>86인치(217cm)</td>
+										</tr>								
+										<tr>
+											<th scope="row" rowspan="1">형태</th>
+											<td>평면형</td>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">종류</th>
+											<td>240Hz(트루모션)</td>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">패널</th>
+											<td><a href="#">사운드싱크</a>, 블루투스</td>
+										</tr>
+										<!-- // -->
+										<tr>
+											<th colspan="2" class="title">디스플레이</th>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">스마트</th>
+											<td>T인공지능씽큐, 인터넷, 앱스토어, 매직리모컨, 스마트 키</td>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">화면크기</th>
+											<td>86인치(217cm)</td>
+										</tr>
+										<tr>
+											<th colspan="2" class="title">부가정보</th>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">주요성분</th>
+											<td>장미수(90.89%)</td>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">유통기한</th>
+											<td>개봉후12개월</td>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">용량</th>
+											<td>150ml</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- // 요약설명 -->
+						
+						<!-- 인증정보 -->
+						<div class="box_inner box_cert">
+							<div class="box_head">
+								<p class="title">인증정보</p>
+							</div>
+							<div class="prd_desc_tbl">
+								<table summary="제품 인증 정보">
+									<caption>제품 인증 정보</caption>
+									<!-- 인증정보 -->
+									<tbody>
+										<tr>
+											<th colspan="2" class="title">안전인증</th>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">인증번호</th>
+											<td>
+												상세내용 쇼핑몰 참고
+												<a href="#" class="btn_kc_confirm">인증정보 확인</a>
+											</td>
+										</tr>								
+										<tr>
+											<th colspan="2" class="title">
+												적합성평가인증&nbsp;
+												<a href="#" class="btn_view_cert" onclick="$(this).next('.box_tip').toggle();return false;">?</a>
+												<!-- 적합성 평가 인증 툴팁 -->
+												<div id="cert_tip" class="box_tip tip_card" onclick="$(this).toggle();">
+													<span class="tit">적합성평가인증</span>
+													<span class="txt_detail">
+														전파 환경 및 방송통신망 등에 유해를 줄 우려가 있는 <br/>기자재에 해당하는 적합인증, 적합등록 또는 잠정인증 중 <br/>하나의 인증을 받아야 합니다.
+													</span>
+												</div>
+											</th>
+										</tr>
+										<tr>
+											<th scope="row" rowspan="1">인증번호</th>
+											<td>
+												상세내용 쇼핑몰 참고
+												<a href="#" class="btn_kc_confirm">인증정보 확인</a>
+											</td>
+										</tr>
+									</tbody>
+									<!-- // -->
+								</table>
+							</div>
+						</div>
+						<!-- // 인증정보 -->
+
+						<!-- 상세설명 -->
+						<div class="box_inner box_detail_comm">
+							<div class="box_head">
+								<p class="title">상세설명</p>
+							</div>
+							<!-- 펼쳐졌을때 .open 붙여주세요. 기본값 : .prd_preform -->
+							<div class="prd_preform">
+								<!-- 기존동일 -->
+								<pre>
+		<h3>▶지금까지 없었던 32:9 비율의 대화면 모니터!</h3>
+		<strong class="func_part_title">화면:</strong><br>*크기: 124.2 cm (49형)<br> *비율: 32:9 (와이드)<br> *최대 해상도: 3840 x 1080<br> *밝기: 350 cd/㎡<br> *명암비: 3000:1 (동적 명암비: 무한:1)<br> *응답속도: 1 ms (MPRT)<br> *주사율: 144 Hz<br><strong class="func_part_title">색 표현:</strong><br> *sRGB 125% (일반 모니터는 sRGB 80%)<br> *퀀텀닷 컬러<br><strong class="func_part_title">패널:</strong><br> *VA 패널<br> *커브드 (1800R)<br> *LED 백라이트<br> *시야각(좌우/상하): 178도/178도<br><strong class="func_part_title_first">부가기능:</strong><br> *eco모드: 절전 모드<br> *화면분할:<br> ㆍPIP: 화면을 작은 창으로 띄움<br> ㆍPBP: 화면을 1:1로 분할<br> *시력보호:<br> ㆍ플리커 프리: 화면 깜빡임 제거<br> ㆍ로우 블루 라이트: 청색 파장 감소<br> *HDR 지원: 선명하고 화려한 영상 감상 <br> *게임 특화:<br> ㆍ블랙 이퀄라이저: 화면의 어두운 부분을<br>  밝고 선명하게 표현<br> ㆍ인풋렉 감소: 클릭과 동시에 즉각 반응<br> ㆍFreeSync2: 고퀄리티 게임이나 동영상<br>  재생시 화면 끊김 및 지연 감소<br><strong class="func_part_title_first">스탠드:</strong><br> *틸트: 상하 조절<br> *스위블: 좌우 조절<br><strong class="func_part_title">VESA 마운트(벽걸이): 100 x 100 mm</strong><br><strong class="func_part_title">단자:</strong><br> *HDMI (2 개)<br> *DisplayPort<br> *USB 허브 <br><strong class="func_part_title">전력량:</strong><br> *소비전력: 최대 113 W<br> *대기전력: 0.3 W 이하
+								</pre>						
+								<!-- // -->
+							</div>
+							<!-- 접기는 .btn_more_close 붙여주세요. -->
+							<a href="#" class="btn_more_type2" onclick="$(this).parent().find('.prd_preform').toggleClass('open');$(this).toggleClass('btn_more_close');$('html,body').animate({scrollTop:$(this).parents('.box_inner').offset().top-46},100);return false;">
+								<span class="txt_more">상품설명 더보기</span>
+								<span class="txt_close">상품설명 접기</span>
+							</a>
+						</div>
+						<!-- // 상세설명 -->
+
+						<!-- 용어사전 -->
+						<div class="box_inner box_dic">
+							<div class="box_head">
+								<p class="title">용어사전</p>
+							</div>
+							<!-- 펼쳐졌을때 .open 붙여주세요. 기본값 : .prd_preform -->
+							<div class="prd_preform">
+								<!-- 기존동일 -->
+		<pre><div class="term_contents"><h3>화면크기</h3><pre>화면의 대각선 길이입니다. (1 inch = 2.54 cm)<br><img align="left" src="http://storage.enuri.info/pic_upload/termdictitle/TDTitle_192540_201077117509.gif" style="border:1px solid gray;margin:0 4px 2px 0;padding:0 0 0 0;">23형 모니터, 27형 TV모니터
+		제품이 인기가 많습니다. 
+		너무 큰 제품의 경우 화면이
+		한눈에 안들어와 시청할때
+		불편할 수 있습니다.</pre></div>
+		<div class="term_contents"><h3>곡면형</h3><pre>패널이 둥그스름하게 휘어있는 곡면형 액정입니다.
+		시청자 방향으로 4 ~ 6<font style="font-size:9pt">˚</font> 휘어져 있기 때문에 화면과 
+		시청자의 거리가 일정하게 되어, 시야에서 먼 액정의 
+		끝부분이 흐려지는 왜곡 현상을 최소화 합니다. 
+		또한 몰입감이 배가되어 현장감 넘치는 화면을
+		감상할 수 있습니다.</pre></div></pre>
+								<!-- // -->
+							</div>
+							<!-- 접기는 .btn_more_close 붙여주세요. -->
+							<a href="#" class="btn_more_type2" onclick="$(this).parent().find('.prd_preform').toggleClass('open');$(this).toggleClass('btn_more_close');$('html,body').animate({scrollTop:$(this).parents('.box_inner').offset().top-46},100);return false;">
+								<span class="txt_more">용어사전 더보기</span>
+								<span class="txt_close">용어사전 접기</span>
+							</a>
+						</div>
+						<!-- // 용어사전 -->
+
+					</div>
+					<!-- //에누리 제공 제품정보 -->
+
+					<!-- 쇼핑몰 제공 제품정보 -->
+					<div class="product_detail_wrap type_mall invisible">
+						
+						<!-- 20190417 추가 - 케이스 : 데이터 없을때  -->
+						<div class="box_empty invisible">
+							<span class="txt_comm">
+								제공되는 쇼핑몰 정보가 없습니다.
+							</span>
+						</div>
+						<!-- // -->
+						
+						<!-- 케이스 : 정보 있을때  -->
+						<!-- 정보제공안내 -->
+						<div class="offer_info">
+							본 정보는 <span class="txt_mall">G마켓</span>에서 제공하는<br/>
+							<em>상품 상세정보 미리보기 화면입니다.</em>
+						</div>
+						<!-- // -->
+
+						<!-- 쇼핑몰제공 상세정보 -->
+						<div class="mall_detail_view">
+							<div class="box_inner">
+
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+								쇼핑몰상품정보
+
+							</div>
+						</div>
+						<!-- // -->
+
+					</div>
+					<!-- // -->
+
+				</div>
+				<!-- // Tab#3 :: 제품정보 끝 -->
+
+				<!-- Tab#4 :: 상품후기 -->
+				<div class="swiper-slide tab_review tab_cele">
+
+					<div class="review_tab tab_group">
+						<ul>
+							<li class="on"><a href="#">포토후기</a>
+							<li><a href="#">일반후기</a></li>
+						</ul>
+						<script>
+							// 탭 작동 테스트
+							$(function(){
+								$(".review_tab").find("li").each(function(e){
+									var $this = $(this);
+									$this.find("a").click(function(i){
+										i.preventDefault();
+										if ( !$this.hasClass("on") ){
+											$this.addClass("on").siblings().removeClass("on");
+											$(".review_wrap").toggleClass("invisible");
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+
+					<!-- 포토후기 (일반상품평과 동일 / 이미지 박스만 추가된 형태 ) -->
+					<div class="review_wrap">
+
+						<!-- 상품후기 없을때 -->
+						<div class="no_posts">
+							<div class="txt_tit">
+							<!-- 190613 : 수정  -->
+								<strong>해당하는 조건의 상품후기가 없습니다.</strong><br/>
+								다른 조건으로 검색해주세요!<br/>
+								<!-- 190613 삭제 : 상품후기 작성 -->
+								<!-- <a href="#" class="btn_write_review"> -->
+									<!-- <span>상품후기 작성</span> -->
+								<!-- </a> -->
+							<!--  -->
+							</div>
+						</div>
+						<!-- // -->
+
+						<div class="box_inner box_c_review">
+							<div class="box_head">
+								<p class="title">전체</p> 
+								<span>(1,250)</span>
+								
+								<div class="select_menu">
+									<!-- 선택 - 평점전체 -->
+									
+									<!-- 190510 수정 - 평점 / 쇼핑몰 검색 셀렉트 박스 정렬 문제로 아래와 같이 마크업 수정되었습니다. -->
+									<!-- 셀렉트 박스 옵션 값이 수정되면 다음에 나오는 라벨 텍스트가 바뀌게 수정 부탁드립니다. -->
+									<div class="select_score_w selected">
+										<select name="__opt_select_score" onchange="selectToLabel(this)" class="select_score" id="" title="평점선택">
+											<option value="" selected="">평점전체</option>
+											<option value="">5점</option>
+											<option value="">4점</option>
+											<option value="">3점</option>
+											<option value="">2점</option>
+											<option value="">1점</option>
+										</select>
+										<label for="__opt_select_score">평점전체</label>
+									</div>
+									<div class="select_mall_w">
+										<select name="__opt_select_mall" onchange="selectToLabel(this)" class="select_mall" id="" title="쇼핑몰선택">
+											<option value="" selected="">쇼핑몰전체</option>
+											<option value="">G마켓</option>
+											<option value="">11번가</option>
+											<option value="">G9</option>
+											<option value="">신세계몰</option>
+										</select>
+										<label for="__opt_select_mall">쇼핑몰전체</label>
+									</div>
+									<script>
+										// 선택된 옵션값을 라벨에 복사
+										function selectToLabel(e){
+											var $label = $(e).next("label");
+											$label.html( e.options[e.selectedIndex].text );
+										}
+									</script>
+									<!-- //  -->
+									<!-- 기존내용 -->
+									<!-- <select name="__opt_select_score" class="select_score selected" id="" title="평점선택"> -->
+										<!-- <option value="" selected="">평점전체</option> -->
+										<!-- <option value="">5</option> -->
+										<!-- <option value="">4</option> -->
+										<!-- <option value="">3</option> -->
+										<!-- <option value="">2</option> -->
+										<!-- <option value="">1</option> -->
+									<!-- </select> -->
+									<!-- 선택 - 쇼핑몰전체 -->
+									<!-- <select name="__opt_select_mall" class="select_mall" id="" title="쇼핑몰선택"> -->
+										<!-- <option value="" selected="">쇼핑몰전체</option> -->
+										<!-- <option value="">G마켓</option> -->
+										<!-- <option value="">11번가</option> -->
+										<!-- <option value="">G9</option> -->
+										<!-- <option value="">신세계몰</option> -->
+									<!-- </select> -->
+									<!-- 버튼 - 후기작성 -->
+									<a href="#" class="btn_write">후기작성</a>
+								</div>
+							</div>
+							
+							<div class="box_cnt">
+								<div class="kwd_list">
+									<ul>
+										<li class="selected"><a href="#">전체</a></li>
+										<li><a href="#">디자인</a></li>
+										<li><a href="#">사용성</a></li>
+										<li><a href="#">가격</a></li>
+										<li><a href="#">편의성</a></li>
+										<li><a href="#">사은품</a></li>
+										<li><a href="#">품질</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+									</ul>
+								</div>
+
+								<ul class="board_list">
+									<li>
+										<a href="">
+											<span class="img_box">
+												<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+											</span>
+											<span class="board_box">
+												<!-- 선택된 키워드 관련 내용은 em태그로 묶어주세요 -->
+												<span class="txt_tit">정말 <em>최고의 노트북</em>입니다! </span>
+												<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+												<span class="txt_info">
+													<!-- 에누리일 경우 .txt_enuri 붙여주세요 -->
+													<span class="txt_enuri">에누리</span><span>ab***</span><span>2019.01.21</span>
+													<span class="review_star">																					
+														<span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="img_box">
+												<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+											</span>
+											<span class="board_box">
+												<span class="txt_tit">정말 최고의 노트북입니다! </span>
+												<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+												<span class="txt_info">
+													<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+													<!-- 평점정보 없을때 .no_score 붙여주세요 -->
+													<span class="review_star no_score">
+														<span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</li>
+									<li>
+										<a href="">
+											<span class="img_box">
+												<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+											</span>
+											<span class="board_box">
+												<span class="txt_tit">정말 최고의 노트북입니다! </span>
+												<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+												<span class="txt_info">
+													<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+													<span class="review_star">																					
+														<span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</li>
+								</ul>
+								<!-- 접기는 .btn_more_close 붙여주세요. -->
+								<a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+									<span class="txt_more">상품후기 더보기</span>
+									<span class="txt_close">상품후기 접기</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- // 포토후기 끝 -->
+
+					<!-- 일반후기 (포토상품평과 동일 / 이미지 박스만 제거된 형태 ) -->
+					<div class="review_wrap invisible">
+						
+						<!-- 상품후기 없을때 -->
+						<div class="no_posts">
+							<div class="txt_tit">
+							<!-- 190613 : 수정  -->
+								<strong>해당하는 조건의 상품후기가 없습니다.</strong><br/>
+								다른 조건으로 검색해주세요!<br/>
+								<!-- 190613 삭제 : 상품후기 작성 -->
+								<!-- <a href="#" class="btn_write_review"> -->
+									<!-- <span>상품후기 작성</span> -->
+								<!-- </a> -->
+							<!--  -->
+							</div>
+						</div>
+						<!-- // -->
+
+						<div class="box_inner box_c_review">
+							<div class="box_head">
+								<p class="title">전체</p> 
+								<span>(1,250)</span>
+								<div class="select_menu">
+									<!-- 선택 - 평점전체 -->
+									<!-- 선택된 Selectbox에 .selected 클래스 붙여주세요. -->
+									<select name="__opt_select_score" class="select_score selected" id="" title="평점선택">
+										<option value="" selected="">평점전체</option>
+										<option value="">5</option>
+										<option value="">4</option>
+										<option value="">3</option>
+										<option value="">2</option>
+										<option value="">1</option>
+									</select>
+									<!-- 선택 - 쇼핑몰전체 -->
+									<select name="__opt_select_mall" class="select_mall" id="" title="쇼핑몰선택">
+										<option value="" selected="">쇼핑몰전체</option>
+										<option value="">G마켓</option>
+										<option value="">11번가</option>
+										<option value="">G9</option>
+										<option value="">신세계몰</option>
+									</select>
+									<!-- 버튼 - 후기작성 -->
+									<a href="#" class="btn_write">후기작성</a>
+								</div>
+							</div>
+							<div class="box_cnt">
+								<div class="kwd_list">
+									<ul>
+										<li class="selected"><a href="#">전체</a></li>
+										<li><a href="#">디자인</a></li>
+										<li><a href="#">사용성</a></li>
+										<li><a href="#">가격</a></li>
+										<li><a href="#">편의성</a></li>
+										<li><a href="#">사은품</a></li>
+										<li><a href="#">품질</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+										<li><a href="#">BTS</a></li>
+									</ul>
+								</div>
+
+								<ul class="board_list">
+									<li>
+										<a href="">
+											<span class="board_box">
+												<span class="txt_tit">정말 최고의 노트북입니다! </span>
+												<span class="txt_comm">사기전에 엄청 고민을 많이 <em>했었는데</em> 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>
+											</span>
+										</a>
+										<span class="txt_info">
+											<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+											<span class="review_star">																					
+												<span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+											</span>
+											<!-- 삭제하기 버튼 - 일반후기에만 노출 -->
+											<button class="btn_delete" onclick="$('#layer_del').toggle()">삭제하기</button>
+											<!--//삭제 -->
+
+											<!-- 삭제하기 레이어 -->
+											<div class="layerPop" id="layer_del" style="display:none;">
+												<div class="layerPopInner">		
+													<div class="layerPopCont">			
+														<h1 onclick="$('#layer_del').toggle();">비밀번호 입력</h1>			
+														<button class="btnClose" onclick="$('#layer_del').toggle();">창 닫기</button>			
+														<div class="contents">				
+															<input type="password" name="del_pass_input" id="del_pass_input">													
+														</div>			
+														<div class="layerBtn">				
+															<div onclick="$('#layer_del').toggle();" class="btnTxt">닫기</div>
+															<div onclick="$('#layer_del').toggle();" class="btnTxt">삭제</div>
+														</div>		
+													</div>	
+												</div>
+												<div class="dimmed"></div>
+											</div>
+											<!-- // -->
+										</span>
+									</li>
+									<li>
+										<a href="#">
+											<span class="board_box">
+												<span class="txt_tit">정말 최고의 노트북입니다! </span>
+												<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>										
+											</span>
+										</a>
+										<span class="txt_info">
+											<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+											<span class="review_star">																					
+												<span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+											</span>
+										</span>
+									</li>
+									<li>
+										<a href="">
+											<span class="board_box">
+												<span class="txt_tit">정말 최고의 노트북입니다! </span>
+												<span class="txt_comm">사기전에 엄청 고민을 많이 했었는데 여기 저기 리뷰들을 확인하고 실제 매장에 사기</span>										
+											</span>
+										</a>
+										<span class="txt_info">
+											<span>11번가</span><span>ab***</span><span>2019.01.21</span>
+											<span class="review_star">																					
+												<span class="given_star ico_star" data-given-star="4">&nbsp;</span>
+											</span>
+										</span>
+									</li>
+								</ul>
+								<!-- 접기는 .btn_more_close 붙여주세요. -->
+								<a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+									<span class="txt_more">상품후기 더보기</span>
+									<span class="txt_close">상품후기 접기</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<!-- // 일반상품평 끝 -->
+
+				</div>
+				<!-- // Tab#4 :: 상품후기 끝 -->
+
+				<!-- 200903 : SR#42109 : VIP 스펙비교 탭추가 -->
+				<div class="swiper-slide tab_spec tab_cele">
+					<div class="spec_wrap">
+
+						<!-- 스펙비교 -->
+						<div class="box_inner compspec">
+							<div class="box_head">
+								<p class="title">
+									스펙비교
+									<span class="tx_sub">인기 상품 주요 스펙을 한 번에 비교하세요! </span>
+								</p>
+							</div>
+							<div class="box_cnt">
+								<!-- 2 - 비교유형 -->
+								<div class="compspec_tab">
+									<ul>
+										<!-- 2.1 소카테전체(디폴트) -->
+										<li class="selected"><a href="#">세탁+건조</a></li>
+										<!-- 2.2 동일브랜드 -->
+										<li><a href="#">그랑데</a></li>
+										<!-- 2.3 미카테 -->
+										<li><a href="#">21kg~</a></li>
+									</ul>
+								</div>
+								<!-- // -->
+								<!-- 3 - 정렬/필터 -->
+								<div class="compspec_sort">
+									<ul>
+										<li class="selected"><a href="#">인기상품</a></li>
+										<li><a href="#">비슷한 가격대</a></li>
+										<li><a href="#">신상품</a></li>
+									</ul>
+								</div>
+
+								<div class="compspec_wrap">
+									<!-- 스펙비교 항목 -->
+									<div class="comp_item">
+										<table class="tb_compspec">
+											<!-- 상품정보 .spec_info -->
+											<tr>
+												<td class="spec_info">
+													상품정보
+													<em>(10)</em>
+												</td>
+											</tr>
+											<!-- 주요스펙 .row_spec 레코드에 spec_main클래스 붙여주세요 -->
+											<!-- 반복 -->
+											<tr class="row_spec">
+												<td>최저가</td>
+											</tr>
+											<!-- // -->
+											<tr class="row_spec">
+												<td>평점</td>
+											</tr>
+											<tr class="row_spec">
+												<td>등록일</td>
+											</tr>
+											<tr class="row_spec spec_main">
+												<td>세탁용량</td>
+											</tr>
+											<tr class="row_spec spec_main">
+												<td>에너지 효율</td>
+											</tr>
+											<tr class="row_spec">
+												<td>인기브랜드</td>
+											</tr>
+											<tr class="row_spec">
+												<td>품목</td>
+											</tr>
+											<tr class="row_spec">
+												<td>건조용량</td>
+											</tr>
+											<tr class="row_spec">
+												<td>도어</td>
+											</tr>
+										</table>
+									</div>
+									<!-- 비교상품 리스트 -->
+									<div class="comp_prod scroller noswipe">
+										<ul class="comp_prod_list scroll-cont">
+											<li>
+												<table class="tb_compspec">
+													<tr>
+														<td class="spec_info">
+															<span class="thumb">
+																<!-- 비교 상품 태그 리스트 -->
+																<ul class="tag_list">
+																	<li><i class="ico_new">신제품</i></li>
+																	<!-- <li><i class="ico_cos">가성비</i></li> -->
+																	<!-- <li><i class="ico_alo">많이구매</i></li> -->
+																</ul>
+																<!-- // -->
+																<img src="http://photo3.enuri.info/data/images/service/middle/51205000/51205125.jpg" alt="">
+																<!-- 선택상품 태그 -->
+																<span class="tag_selected">
+																	<span class="tx_selected">현재상품</span>
+																</span>
+															</span>
+															<span class="info">
+																<span class="tx_name">삼성전자 플렉스워시<br/>WV24R9980KP</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc ty_price"><em>1,999,999</em>원</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="score">
+																<span class="star star_bg">
+																	<span class="star star_active" style="width:92.5%"></span>
+																</span>
+																<span class="num_score">4.8</span>
+																<span class="num_count">(112)</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">2020.09</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">21kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">1등급</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">그랑데</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">세탁건조</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">16kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">화이트</span>
+														</td>
+													</tr>                                                   
+												</table>									
+											</li>
+											<li>
+												<table class="tb_compspec">
+													<tr>
+														<td class="spec_info">
+															<span class="thumb">
+																<!-- 비교 상품 태그 리스트 -->
+																<ul class="tag_list">
+																	<!-- <li><i class="ico_new">신제품</i></li> -->
+																	<li><i class="ico_cos">가성비</i></li>
+																	<!-- <li><i class="ico_alo">많이구매</i></li> -->
+																</ul>
+																<!-- // -->
+																<img src="http://photo3.enuri.info/data/images/service/middle/33055000/33055676.jpg" alt="">
+															</span>
+															<span class="info">
+																<span class="tx_name">LG전자 시그니처<Br/>FH21BBS</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc ty_price"><em>1,999,999</em>원</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="score">
+																<span class="star star_bg">
+																	<span class="star star_active" style="width:92.5%"></span>
+																</span>
+																<span class="num_score">4.8</span>
+																<span class="num_count">(112)</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">2020.09</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">21kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">1등급</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">그랑데</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">세탁건조</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">16kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">화이트</span>
+														</td>
+													</tr>  
+												</table>									
+											</li>
+											<li>
+												<table class="tb_compspec">
+													<tr>
+														<td class="spec_info">
+															<span class="thumb">
+																<!-- 비교 상품 태그 리스트 -->
+																<ul class="tag_list">
+																	<!-- <li><i class="ico_new">신제품</i></li> -->
+																	<!-- <li><i class="ico_cos">가성비</i></li> -->
+																	<li><i class="ico_alo">많이구매</i></li>
+																</ul>
+																<!-- // -->
+																<img src="http://photo3.enuri.info/data/images/service/middle/51205000/51205125.jpg" alt="">
+															</span>
+															<span class="info">
+																<span class="tx_name">삼성전자 플렉스워시<br/>WV24R9980KP</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc ty_price"><em>1,999,999</em>원</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="score">
+																<span class="star star_bg">
+																	<span class="star star_active" style="width:92.5%"></span>
+																</span>
+																<span class="num_score">4.8</span>
+																<span class="num_count">(112)</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">2020.09</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">21kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">1등급</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">그랑데</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">세탁건조</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">16kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">화이트</span>
+														</td>
+													</tr>  
+												</table>									
+											</li>
+											<li>
+												<table class="tb_compspec">
+													<tr>
+														<td class="spec_info">
+															<span class="thumb"><img src="http://photo3.enuri.info/data/images/service/middle/33055000/33055676.jpg" alt=""></span>
+															<span class="info">
+																<span class="tx_name">LG전자 시그니처<Br/>FH21BBS</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc ty_price"><em>1,999,999</em>원</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="score">
+																<span class="star star_bg">
+																	<span class="star star_active" style="width:92.5%"></span>
+																</span>
+																<span class="num_score">4.8</span>
+																<span class="num_count">(112)</span>
+															</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">2020.09</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">21kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec spec_main">
+														<td>
+															<span class="tx_spec_desc">1등급</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">그랑데</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">세탁건조</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">16kg</span>
+														</td>
+													</tr>
+													<tr class="row_spec">
+														<td>
+															<span class="tx_spec_desc">화이트</span>
+														</td>
+													</tr>  
+												</table>									
+											</li>
+										</ul>                                        
+									</div>
+									<span class="comp_guage"></span>
+								</div>
+								<script>
+									$(function(){
+										// 선택,비교 상품 테이블간 table-row의 높이를 맞춤
+										var $row = $(".comp_item tr"); // 선택상품 Table-row
+										var $compProd = $(".comp_prod > ul > li"); // 비교상품 Table
+										$row.each(function(e){
+											var tdH = $(this).find(">td").height();
+											$compProd.each(function(i){
+												var cptdH = $(this).find("tr").eq(e).find(">td").height();
+												if ( tdH < cptdH ) tdH = cptdH;
+											})
+											$(this).find(">td").height( tdH );
+											$compProd.each(function(i){
+												$(this).find("tr").eq(e).find(">td").height( tdH );
+											})								
+										})
+
+										// 비교상품 스크롤 발생시 하단 게이지 노출
+										var compOriginW = $(".comp_item").outerWidth(); // 선택상품과 좌측 여백포함 너비
+										var compProdItemW = $(".comp_prod").find("ul li").eq(0).outerWidth(); // 비교상품 너비
+										var $compProdw = $(".comp_prod"); // 비교상품
+										var $compGauge = $(".comp_guage"); // 비교상품 스크롤 게이지
+										var gaugeResize = function(){ // 리사이즈, 스크롤 이벤트용
+											var _compProdW = compProdItemW*$compProd.length, // 비교상품 전체 너비
+												_rsideW = $(window).width() - compOriginW; // 비교상품이 노출되는 너비
+											if ( _compProdW > _rsideW ){ // 비교상품에 스크롤이 생길때만
+												var _rate = _rsideW / _compProdW, // 비교상품과 게이지간 비율
+												_sizeW = _rate * _rsideW, // 비교상품 스크롤 게이지 너비
+												_scrPos = $(this).scrollLeft(); // 이동한 스크롤 값
+												if ( _scrPos > 0 ){
+													$compGauge.show().css({
+														"width" : _sizeW, 
+														"transform":"translateX("+(_scrPos * _rate)+"px)",
+													})
+												}else{ // 스크롤 음수값 나올때 대응
+													$compGauge.show().css({
+														"width" : _sizeW + _scrPos/2, 
+														"transform":"translateX(0)",
+													})
+												}
+											}else{ 
+												$compGauge.hide();
+											}
+										}
+										$compProdw.on("scroll",gaugeResize)
+										$(window).load(gaugeResize).resize(gaugeResize);
+									})
+								</script>
+
+							</div>
+						</div>
+						<!-- // -->
+
+					</div>
+				</div>
+				<!-- // Tab# :: 스펙비교 끝 -->  
+				
+				<!-- Tab#5 :: 블로그/동영상 -->
+				<div class="swiper-slide tab_blog tab_cele">
+
+					<div class="blog_tab tab_group">
+						<ul>
+							<li class="on"><a href="#">블로그</a>
+							<li><a href="#">동영상</a></li>
+						</ul>
+						<script>
+							// 탭 작동 테스트
+							$(function(){
+								$(".blog_tab").find("li").each(function(e){
+									var $this = $(this);
+									$this.find("a").click(function(i){
+										i.preventDefault();
+										if ( !$this.hasClass("on") ){
+											$this.addClass("on").siblings().removeClass("on");
+											$(".blog_wrap").toggleClass("invisible");
+										}
+									})
+								})
+							})
+						</script>
+					</div>
+					<!-- 블로그 리스트 -->
+					<div class="blog_wrap type_blog">
+
+						<!-- 케이스 : 데이터 없을때  -->
+						<div class="box_empty invisible">
+							<span class="txt_comm">
+								제공되는 블로그가 없습니다.
+							</span>
+						</div>
+						<!-- // -->
+
+						<!-- 케이스 : 데이터 있을때 -->
+						<div class="box_inner">
+							<ul class="board_list">
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>								
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>								
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>								
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>								
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@img_review.jpg" alt="">
+										</span>								
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>
+											<span class="txt_comm">작은 놋북 땜에 글씨는 안보인다는 어머니께 좀 더 크고 가성비 좋은 놋북을 사드린 것 같아 좋아요</span>
+											<span class="txt_info">
+												<span class="txt_author">찐머로그</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+							<!-- 접기는 .btn_more_close 붙여주세요. -->
+							<a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+								<span class="txt_more">블로그 더보기</span>
+								<span class="txt_close">블로그 접기</span>
+							</a>
+						</div>
+					</div>
+					<!-- // 블로그 리스트 -->
+
+					<!-- 동영상 리스트 -->
+					<div class="blog_wrap type_movie invisible">
+
+						<!-- 케이스 : 데이터 없을때  -->
+						<div class="box_empty invisible">
+							<span class="txt_comm">
+								제공되는 동영상이 없습니다.
+							</span>
+						</div>
+						<!-- // -->
+
+						<!-- 케이스 : 동영상 있을때  -->
+						<div class="box_inner">
+							<ul class="board_list">
+								<!-- 동영상 링크 타입 .type_media 붙여주세요 -->
+								<li class="type_media">
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@mv_thumb.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>									
+											<span class="txt_info">
+												<span class="txt_site">Youtube</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<!-- // -->
+								<li class="type_media">
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@mv_thumb.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>									
+											<span class="txt_info">
+												<span class="txt_site">Youtube</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li class="type_media">
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@mv_thumb.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>									
+											<span class="txt_info">
+												<span class="txt_site">Youtube</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li class="type_media">
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@mv_thumb.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>									
+											<span class="txt_info">
+												<span class="txt_site">Youtube</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+								<li class="type_media">
+									<a href="">
+										<span class="img_box">
+											<img src="http://img.enuri.info/images/mobile_v2/@mv_thumb.jpg" alt="">
+										</span>
+										<span class="board_box">
+											<span class="txt_tit">[부모님 선물] 2018년형 맥북프로를 사드렸어요</span>									
+											<span class="txt_info">
+												<span class="txt_site">Youtube</span><span class="txt_date">2019.01.21</span>
+											</span>
+										</span>
+									</a>
+								</li>
+							</ul>
+							<!-- 접기는 .btn_more_close 붙여주세요. -->
+							<a href="#" class="btn_more_type2" onclick="$(this).toggleClass('btn_more_close');return false;">
+								<span class="txt_more">동영상 더보기</span>
+								<span class="txt_close">동영상 접기</span>
+							</a>
+						</div>
+					</div>
+					<!-- // 동영상 리스트 -->            
+
+				</div>
+				<!-- // Tab#5 :: 블로그/동영상 끝-->
+
+				<!-- Tab#6 :: CM Q&A -->
+				<div class="swiper-slide tab_qna tab_cele">
+					
+					<!-- 문의글 없을때 -->
+					<div class="no_posts">
+						<div class="txt_tit">
+							<strong>등록된 문의글이 없습니다.</strong><br/>
+							상품에 대해 궁금하시면 문의하기를 남겨주세요!<br/>
+							<span class="txt_point">CM</span>이 자세하게 답변 드립니다!<br/>
+							<!-- 문의글 작성 -->
+							<a href="#" class="btn_write_qna">
+								<span>문의글 작성</span>
+							</a>
+						</div>
+					</div>
+					<!-- // -->
+
+					<div class="qna_wrap">
+						<div class="box_inner">
+							<ul class="qna_list">
+								<li>
+									<span class="txt_date">2019.01.21</span>
+									<span class="qna_question qna_area">
+										<span class="box_author">
+											<span class="txt_author">ab***</span>
+										</span>
+										<span class="txt_comm">
+											상품 스팩에 대해서 궁금합니다. 혹시 그 전에 나온 시리즈보다 더 나은 것이 무엇인지 설명 좀 부탁드립니다. 감사합니다.  										
+										</span>
+									</span>
+									<span class="qna_answer qna_area">
+										<span class="box_author">
+											<span class="txt_author">담당CM</span>
+										</span>
+										<span class="txt_comm">
+											일단 전반적인 스팩에서 좋아졌다고 생각하시면 됩니다. 화질과 사운드에서 특히 더 공을 들인 모델입니다.										
+										</span>
+									</span>
+								</li>
+								<li>
+									<span class="txt_date">2019.01.21</span>
+									<span class="qna_question qna_area">
+										<span class="box_author">
+											<span class="txt_author">ab***</span>
+										</span>
+										<span class="txt_comm">
+											상품 스팩에 대해서 궁금합니다. 혹시 그 전에 나온 시리즈보다 더 나은 것이 무엇인지 설명 좀 부탁드립니다. 감사합니다.  										
+										</span>
+									</span>
+									<span class="qna_answer qna_area">
+										<span class="box_author">
+											<span class="txt_author">담당CM</span>
+										</span>
+										<span class="txt_comm">
+											일단 전반적인 스팩에서 좋아졌다고 생각하시면 됩니다. 화질과 사운드에서 특히 더 공을 들인 모델입니다.										
+										</span>
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<!-- 로그인 버튼 및 글쓰기 버튼 -->
+                    <div class="btn_write_wrap">
+                        <div class="btn_write_area">
+                            <!-- 로그인 전 -->
+                            <div class="sta_non_login" onclick="alert('로그인창 띄움');return false;" style="display:none">
+                                <span class="txt_comm">CM Q&amp;A는 로그인 후 문의하실 수 있습니다.</span>
+                                <a href="#" class="btn_type btn_login">로그인</a>
+                            </div>
+                            <!-- 로그인 후 -->
+                            <div class="sta_login" onclick="alert('등록창 띄움');return false;" style="/* display:none */">
+                                <span class="txt_comm">담당 CM에게 궁금한 점을 물어보세요</span>
+                                <a href="#" class="btn_type btn_write">등록</a>
+                            </div>
+                        </div>
+                        <!-- 190613 : 로그인 버튼 및 글쓰기 버튼 ( 기존 스크롤 이벤트 제거 ) -->
+                        <script>
+                        // $(function(){
+                            // var rePosWriteBtn = function(){
+                                // var $btnArea = $('.tab_qna .btn_write_wrap');
+                                // var $btnWrite = $btnArea.find(".btn_write_area");
+                                // if ( $(window).scrollTop() < $btnArea.offset().top - window.innerHeight + $btnArea.outerHeight() ){
+                                    // $btnWrite.addClass("fixedBot");
+                                // }else{
+                                    // $btnWrite.removeClass("fixedBot");
+                                // }
+                            // }
+                            // $(window).scroll(rePosWriteBtn);
+                        // })
+                        </script>
+                        <!-- // 끝 190613 : 로그인 버튼 및 글쓰기 버튼 ( 기존 스크롤 이벤트 제거 ) -->
+                    </div>
+                </div>
+                <!-- // Tab#6 :: CM Q&A 끝-->
+
+				<!-- Tab#7 :: 추천상품 -->
+				<div class="swiper-slide tab_recommend tab_cele">
+
+					<!-- CM 추천 액세서리 -->
+					<div class="recommend_wrap">
+						<div class="box_inner">
+							<div class="box_head">
+								<p class="title">CM추천 액세서리</p>						
+							</div>
+							<div class="box_cnt">
+								<div class="horiScrollWrap noswipe">
+									<div class="scrollList">
+										<ul class="recommandProdList">
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em class="low">최저가</em>
+															<em>11,449,000</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>450,340</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>879,630</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>1,449,000</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>12,254,540</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- // -->
+
+					<!-- 남들은 뭘 샀지 / 다른브랜드 / 동일 브랜드 / 동일카테고리 -->
+					<div class="recommend_wrap">
+						<div class="box_inner">
+							<div class="box_head tab_list noswipe">
+								<ul>
+									<li class="selected" onclick="$(this).addClass('selected').siblings().removeClass('selected');$('#fTab1').show().siblings().hide();return false;"><a href="#">남들은 뭘샀지</a></li>
+									<li onclick="$(this).addClass('selected').siblings().removeClass('selected');$('#fTab2').show().siblings().hide();return false;"><a href="#">다른브랜드</a></li>
+									<li onclick="$(this).addClass('selected').siblings().removeClass('selected');$('#fTab3').show().siblings().hide();return false;"><a href="#">동일브랜드</a></li>
+									<li onclick="$(this).addClass('selected').siblings().removeClass('selected');$('#fTab3').show().siblings().hide();return false;"><a href="#">동일카테고리</a></li>
+								</ul>
+							</div>
+							<div class="box_cnt">
+								<!-- 남들은 뭘 샀지 -->
+								<div id="fTab1" class="pftCont" style="display:block">
+									<div class="pftCont_head">
+										<div class="onlyOldtab_wrap">
+											<ul class="onlyOld_tab">
+												<li><a href="#" class="on">10대</a></li>
+												<li><a href="#">20대</a></li>
+												<li><a href="#">30대</a></li>
+												<li><a href="#">40대</a></li>
+												<li><a href="#">50대</a></li>
+											</ul>
+										</div>
+
+										<!-- 태그, 성별 영역 .ftProdTit 추가 -->
+										<div class="ftProdTit">
+											<p class="tag_tit"><span class="tag"># 30대</span>가 많이 구매한 상품</p>
+
+											<!-- 성별이 없을 경우, blind 클래스 추가 -->
+											<ul class="gender">
+											<!-- <ul class="gender blind">-->
+												<li onclick="">남성</li>
+												<li class="on" onclick=""></span>여성</li>
+											</ul>
+										</div>
+									</div>
+									
+									<ul class="whatProdList">
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em class="low">최저가</em>
+														<em>11,449,000</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>450,340</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>879,630</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>1,449,000</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>12,254,540</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<!-- // 남들은 뭘 샀지 -->
+
+								<!-- 다른브랜드 -->
+								<div id="fTab2" class="ftCont" style="display:none;">
+									<div class="table-responsive">
+										<table class="table ft_table">
+											<thead>
+											<tr>
+												<th class="model">비교모델 <br>(11)</th>
+												<th>최저가</th>
+												<th>제조사</th>
+												<th class="th1">CPU</th>
+												<th class="th2">화면</th>
+												<th class="th3">RAM</th>
+												<th class="th4">SSD</th>
+												<th class="th5" style="height:40px;">GPU</th>
+												<th class="th6" style="height:80px;">USB</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+												<td class="model">
+													<a href="#">
+														<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+														<span class="pname">LG 올데이 그램 15ZD970-GX55K 15ZD970-GX55KLG 올데이 그램 15ZD970-GX55K 15ZD970-GX55K</span>
+													</a>
+												</td>
+												<td class="low_price"><a href="#"><strong>379,000</strong>원</a></td>
+												<td>LG전자</td>
+												<td class="td1">인텔</td>
+												<td class="td2">33.78cm(13.3형)</td>
+												<td class="td3">4G(DDR4)</td>
+												<td class="td4">128G</td>
+												<td class="td5 multiline" style="height:40px;">지포스940MX(메모리2G)</td>
+												<td class="td6 multiline" style="height:80px;">USB3.0(2개)<br>USB2.0<br> USB3.0 <br>Type-c</td>
+											</tr>
+											<tr>
+												<td class="model">
+													<a href="#">
+														<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+														<span class="pname">LG 올데이 그램 15ZD970-GX55K 15ZD970-GX55KLG 올데이 그램 15ZD970-GX55K 15ZD970-GX55K</span>
+													</a>
+												</td>
+												<td class="low_price"><a href="#"><strong>111,379,000</strong>원</a></td>
+												<td>LG전자</td>
+												<td class="td1">인텔</td>
+												<td class="td2">33.78cm(13.3형)</td>
+												<td class="td3">4G(DDR4)</td>
+												<td class="td4">128G</td>
+												<td class="td5 multiline" style="height:40px;">지포스940MX(메모리2G)</td>
+												<td class="td6 multiline" style="height:80px;">USB3.0(2개)</td>
+											</tr>
+											<tr>
+												<td class="model">
+													<a href="#">
+														<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+														<span class="pname">소니 알파 FE 85mm F1.4 GM [정품]</span>
+													</a>
+												</td>
+												<td class="low_price"><a href="#"><strong>379,000</strong>원</a></td>
+												<td>LG전자</td>
+												<td class="td1">인텔</td>
+												<td class="td2">33.78cm(13.3형)</td>
+												<td class="td3">4G(DDR4)</td>
+												<td class="td4">128G</td>
+												<td class="td5 multiline" style="height:40px;">지포스940MX(메모리2G)</td>
+												<td class="td6 multiline" style="height:80px;">USB3.0(2개)<br>USB2.0<br> USB3.0</td>
+											</tr>
+											<tr>
+												<td class="model">
+													<a href="#">
+														<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+														<span class="pname">마르시아스포츠 프리미엄 올양피 골프장갑 오른손잡이용(남성용)</span>
+													</a>
+												</td>
+												<td class="low_price"><a href="#"><strong>379,000</strong>원</a></td>
+												<td>LG전자</td>
+												<td class="td1">인텔</td>
+												<td class="td2">33.78cm(13.3형)</td>
+												<td class="td3">4G(DDR4)</td>
+												<td class="td4">128G</td>
+												<td class="td5 multiline" style="height:40px;">지포스940MX(메모리2G)</td>
+												<td class="td6 multiline" style="height:80px;">USB3.0(2개)<br>USB2.0</td>
+											</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- //다른브랜드 -->
+
+								<!-- 동일 브랜드 --> <!-- 동일카테고리 --> 
+								<div id="fTab3" class="pftCont"style="display:none;">
+									<ul class="whatProdList">
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em class="low">최저가</em>
+														<em>11,449,000</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>450,340</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>879,630</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>1,449,000</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+												<span class="info">
+													<span class="txt">삼성 UN50KU6300 FXKR</span>
+													<span class="price">
+														<em>12,254,540</em><span class="won">원</span>
+													</span>
+												</span>
+											</a>
+										</li>
+									</ul>
+								</div>						
+								<!-- //함께 살만한 상품 -->
+							</div>
+						</div>
+					</div>
+					<!-- // 남들은 뭘 샀지 / 다른브랜드 / 동일 브랜드 / 동일카테고리  -->
+
+					<!-- 함께 살만한 상품 - CM 추천 액세서리와 동일 -->
+					<div class="recommend_wrap">
+						<div class="box_inner">
+							<div class="box_head">
+								<p class="title">함께 살만한 상품</p>						
+							</div>
+							<div class="box_cnt">
+								<div class="horiScrollWrap" >
+									<div class="scrollList">
+										<ul class="recommandProdList">
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em class="low">최저가</em>
+															<em>11,449,000</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>450,340</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>879,630</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>1,449,000</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+											<li>
+												<a href="#">
+													<img src="http://img.enuri.info/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb">
+													<span class="info">
+														<span class="txt">삼성 UN50KU6300 FXKR</span>
+														<span class="price">
+															<em>12,254,540</em>원
+														</span>
+													</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- // -->
+
+				</div>
+				<!-- // Tab#7 :: 추천상품 끝-->
+			</div>
+		</div>
+
+		<!-- 190613 : CM Q&A 탭 하단 글쓰기 버튼의 탭 외부 위치 -->
+        <div class="btn_write_wrap btn_fixed_bot">
+            <!-- 스크롤시 이쪽으로 이동 -->
+        </div>
+        <!-- // 끝 190613 : CM Q&A 탭 하단 글쓰기 버튼의 탭 외부 위치 -->
+
+		<!-- SR#37991 : 200121 : [PC/M] VIP > 파워링크 항목 개선 퍼블 요청 - 신규 파워링크 AD  -->		
+		<div class="comm_ad ad_powerlink mobile round_box">
+			<div class="comm_ad_tit">
+				<em>파워링크</em>
+				<a href="#" class="comm_btn_apply">신청하기</a>
+			</div>
+			<div class="comm_ad_list ad_link">
+				<ul>
+					<!-- 광고 1개  x 10개 반복 -->
+					<li>
+						<a href="#">
+							<!-- 이미지가 없을때는 ad_thumb을 제거 -->
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<!-- // -->
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어
+                                    <!-- 200714 : SR#41042 : 네이버페이 아이콘 추가 -->
+									<i class="ico_npay">네이버페이</i>
+									<!-- // -->
+                                </span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+                        </a>
+                        <!-- 200420 파워링크 확장 소재 추가 (LP/SRP/VIP 동일) -->
+                        <!-- 가격링크 / 2개, 3개 타입에 맞게 갯수별 노출 -->
+						<div class="ad_extension">
+							<a class="ad_price_link">
+								<span class="ad_tx_prod">키즈무알콜 프로폴리스</span>
+								<span class="ad_tx_price">43,000원 부터</span>
+							</a>											
+							<a class="ad_price_link">
+								<span class="ad_tx_prod">홍삼스틱</span>
+								<span class="ad_tx_price">10원 부터</span>
+							</a>
+							<a class="ad_price_link">
+								<span class="ad_tx_prod">홍삼정</span>
+								<span class="ad_tx_price">43,000원 부터</span>
+							</a>
+                        </div>
+                        <!-- // -->
+                        
+                        <!-- 서브링크 / 노출은 1줄만 -->
+						<div class="ad_extension">
+							<div class="ad_sub_link">
+								<a href="#" class="ad_tx_sub">언론매체출연</a>
+								<a href="#" class="ad_tx_sub">헛걸음보상실시</a>
+								<a href="#" class="ad_tx_sub">그랑데세탁기</a>
+								<a href="#" class="ad_tx_sub">그랑데건조기</a>
+							</div>
+						</div>										
+						<!-- // -->                        
+					</li>
+					<!-- // -->
+					<li>
+						<a href="#">
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어
+                                    <!-- 200714 : SR#41042 : 네이버페이 아이콘 추가 -->
+									<i class="ico_npay plus">네이버페이 플러스</i>
+									<!-- // -->
+                                </span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어 <i class="ico_npay">네이버페이</i></span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어 <i class="ico_npay">네이버페이</i></span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어 <i class="ico_npay">네이버페이</i></span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
+							<span class="ad_info">
+								<span class="ad_info_nm">아키클래식 공식 온라인스토어</span>
+								<span class="ad_info_txt">올겨울 롱패딩, 프리미엄 구스로 급이다른 퀄리티, 트렌디한 스타일로 경험해보세요.</span>
+							</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- // 파워링크 AD 끝 -->
+
+		<!-- 빠른배송 안내 -->
+		<div class="quickd_noti" onclick="$(this).toggleClass('on');return false;">
+			<a href="" class="btn_quickd_noti">빠른배송 안내</a>
+			<span class="noti_cnt">
+				각 쇼핑몰 마다 빠른배송에 대한 명칭은 상이하오니 참고바랍니다.<br/>
+				<em>(쿠팡 : 로켓배송,  11번가 : 나우배송,  티몬 : 당일발송)</em><br/><br/>
+				주문시간에 따라 당일 발송되는 상품으로 쇼핑몰마다 묶음배송 조건이나배송 대상 지역의 차이가 있을 수 있으므로 쇼핑몰 상세페이지를 꼭 확인하시기 바랍니다.
+			</span>
+		</div>
+		<!-- // -->
+
+		<!-- 앱 다운로드 -->
+		<ul class="another_app_list">
+			<li class="btn_app_smart">
+				<a href="#">스마트 택배 다운받기</a>
+			</li>
+			<li class="btn_app_social">
+				<a href="#">소셜가격비교 다운받기</a>
+			</li>
+		</ul>
+		<!-- // -->
+
+		<!-- 광고배너 -->
+		<div class="aside_bnr">
+			<a href="#"><img src="http://img.enuri.info/images/mobile_v2/@bottom_bnr.jpg" alt=""></a>
+		</div>
+		<!-- // -->
+	</section>
+
+	<!-- 201117 : SR#43376 : 하단 구매하기 & 최저가 알림 버튼 추가 -->
+    <section class="buy_bottom_bar">
+        <!-- 최저가 알림 -->
+        <div class="box__noti_lowest">
+            <!-- 최저가 알림 신청되어있을때 .on 클래스 붙어주세요 -->
+            <button class="btn__noti_lowest" onclick="$(this).toggleClass('on');">최저가 알림</button>
+            <!-- 말풍선 -->
+            <span class="tx_noti">최저가 알림하고 저렴하게 구매하세요.</span>
+            <!-- // -->
+        </div>
+        <!-- // -->
+        <!-- 구매하기 -->
+        <button class="btn__buy_lowest">최저가 구매하기</button>
+        <!-- // -->
+    </section>
+    <!-- // -->
+
+    <!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+    <footer class="footer footer--com">
+        <!-- Footer : 탑버튼 -->
+        <div class="newquick">
+            <p class="TBtn" onclick="goFooterTop();">TOP</p>
+        </div>
+        <!-- // -->
+        <!-- Footer : 회사정보 -->
+        <div class="footer__info">
+            <!-- 클릭시 .unfold 클래스 toggle -->
+            <button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+            <!-- // -->
+            <div class="footer__info_com">
+                <dl>
+                    <dt>대표이사</dt>
+                    <dd>김기범</dd>
+                    <dt>사업자등록번호</dt>
+                    <dd>206-81-18164</dd>
+                    <dt>통신판매신고</dt>
+                    <!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+                    <dd>2020-서울금천-1949호</dd>
+                    <!-- // -->
+                    <dt>주소</dt>
+                    <!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+                    <dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+                    <!-- // -->
+                    <dt>문의</dt>
+                    <dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- Footer : 푸터메뉴 -->
+        <div class="footer__menu">
+            <div class="footer__menu_top">
+                <a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+            </div>
+            <div class="footer__menu_bot">
+                <a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+            </div>
+        </div>
+        <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+    </footer>
+    <!-- // -->
+</div>
+
+<!-- 레이어 팝업, 공유 & 최저가 가격 알림 -->
+<!-- 공유 레이어 -->
+<section class="layerPop" id="snsPop">
+	<div class="layerPopInner">
+		<div class="layerPopCont">
+			<h1 id="layerPopCont_txt">SNS 공유</h1>
+			<button class="btnClose" onclick="$('#snsPop').hide();">SNS 공유 창 닫기</button>
+			<div class="contents">
+				<div class="linkList">
+					<ul>
+						<li><a href="#" class="kakao" id="kakao-link-btn">카카오톡</a></li>
+						<li><a href="#" class="facebook">페이스북</a></li>
+						<li><a href="#" class="twiter">트위터</a></li>
+						<li><a href="#" class="line">라인</a></li>
+						<li><a href="#" class="url">URL</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- 최저가 가격 알림 -->
+<section class="layerPop" id="layer_alarm">
+	<div class="layerPopInner">
+		<input type="hidden" id="nkind" name="nkind" value="1">
+		<input type="hidden" id="userid" name="userid" value="en574">
+		<input type="hidden" id="modelno" name="modelno" value="14701257">
+		<div class="layerPopCont">
+			<h1>최저가 가격알림</h1>
+			<button class="btnClose" type="button" onclick="$('#layer_alarm').hide();">최저가 가격알림 창 닫기</button>
+			<div class="contents">
+				<p class="noticed">고객님이 원하시는 가격이 되면 문자메세지로 알려드립니다.</p>
+				<ul>
+					<li>현재 최저가</li>
+					<li class="price" id="notiprice">495,250 원</li>
+				</ul>
+				<ul>
+					<li><label for="lowPrice">희망 최저가</label></li>
+					<li><input type="tel" name="setprice" id="setprice" style="width:80%;"> 원</li>
+				</ul>
+				<ul>
+					<li><label for="">휴대폰번호</label></li>
+					<li class="floating-align">
+						<span class="selectype2" style="width:30%;">
+							<select name="phonenum1" id="phonenum1">
+								<option value="010" selected="selected">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
+							</select>
+						</span>
+						<input type="tel" name="phonenum2" id="phonenum2" maxlength="4" style="width:30%;">
+						<input type="tel" name="phonenum3" id="phonenum3" maxlength="4" style="width:30%;">
+					</li>
+				</ul>
+
+				<div class="privacyCheck">
+					<p class="chkAgree"><label><input class="chkbox"  id="" type="checkbox">개인 정보 수집 이용 동의</label></p>
+
+					<table summary="개인 정보 수집 목적, 항목, 보유기간 내용">
+						<colgroup>
+							<col />
+							<col />
+							<col />
+						</colgroup>
+						<thead>
+							<tr>
+								<th>목적</th>
+								<th>항목</th>
+								<th>보유기간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>최저가 가격알림 문자 발송</td>
+								<td>휴대폰 번호</td>
+								<td>문자 발송 후 즉시 폐기</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<ul>
+						<li>※ 최저가 가격알림 서비스를  위해 필요한 최소한의 개인정보이므로 동의를 해주셔야 사용 가능합니다.</li>
+						<li>※ 입력하신 정보는 가격알림 이외의 어떠한 목적으로도 사용되지 않습니다.</li>
+					</ul>
+				</div>
+			</div>
+			<div class="layerBtn">
+				<button class="btnTxt">완료</button>
+				<button class="btnTxt" type="button" id="btt_close" onclick="$('#layer_alarm').hide();">닫기</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 최저가 가격 알림 -->
+
+<!-- PC최저가 구매 알림 -->
+<section class="layerPop" id="layerLowPrice">
+	<div class="layerPopInner">
+		<div class="layerPopCont">
+			<h1>PC 최저가 구매 알림</h1>
+			<button class="btnClose" type="button" onclick="$('#layerLowPrice').hide(); $( '.btnzzim' ).removeClass( 'on' );">최저가 가격알림 창 닫기</button>
+			<div class="contents">
+				<p class="noticed">해당 상품은 에누리 PC웹에서 '최저가'로 구매가능합니다. '찜하기' 후 PC웹으로 접속해 주세요.</p>
+			</div>
+			<div class="layerBtn">
+				<button class="btnTxt btnzzim">찜하기
+					<div class="zzimarea"><span class="zzimly fade-out">찜 되었습니다</span></div>
+				</button>
+				<button class="btnTxt" type="button" onclick="$('#layerLowPrice').hide(); $( '.btnzzim' ).removeClass( 'on' );">닫기</button>
+			</div>
+		</div>
+	</div>
+</section>
+<!--// 최저가 구매 알림 -->
+
+<!-- SR#50685 : 가격리스트 개선 -->
+<!-- [쇼핑몰 선택] Bottom Sheet -->
+<div class="bottomsheet_wrap" style="z-index:-1"><!-- is-shown -->
+	<div class="dimmed"></div>
+
+	<div class="bottomsheet">
+		<div class="bs_inner">
+			<div class="bs_head">
+				<div class="bs_head_tit">쇼핑몰 선택</div>
+				<button type="button" class="bs_head_close">닫기</button>
+			</div>
+
+			
+			
+			<div class="mallbox_tab">
+				<button type="button" class="tab-item is-on">국내쇼핑몰(<em id="mallCountDomestic">21</em>)</button>
+				<button type="button" class="tab-item">해외쇼핑몰(<em id="mallCountOverseas">0</em>)</button>
+			</div>
+			<!-- 스크롤 영역 -->
+			<div class="bs_cont mallbox_cont">
+				<!-- 쇼핑몰 선택 목록 -->
+				<ul class="mallbox_list">
+					<li class="no-data"><p class="tx_msg">본 상품에는 선택할 쇼핑몰이 없습니다.</p></li>
+					<li><label><input type="checkbox"><span class="input_nm">전체</span><em>(615)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+					<li><label><input type="checkbox"><span class="input_nm">CJ온스타일</span><em>(218)</em></label></li>
+				</ul>
+				<!-- // -->
+			</div>			
+			<!-- // -->
+			<div class="mallbox_foot">
+				<button type="button" class="btn btn__cancel">초기화</button>
+				<button type="button" class="btn btn__apply">적용(<em>90</em>)</button>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!-- //SR#50685 -->
+
+<script src="/pub_test/js/bottomsheet.comm.js"></script>
+<!-- //[COMMON] Bottom Sheet -->
+
+<script>	
+
+	// 20190617 추가
+    // IOS 계열 브라우저에서 fixed 속성 내 컨포넌트 Focus시 Top 강제 이동 차단    
+    var UserAgent = navigator.platform; //하드웨어 플랫폼
+    if (UserAgent.match(/i(Phone|Pod)/i) != null ){
+        $('input, select, textarea').on('focus',function() {
+            var curScroll = $(window).scrollTop();
+            $('html, body').animate({scrollTop:curScroll},1);
+        });
+    }
+
+	// 스와이퍼 전역변수
+	var cntSwiper;
+
+	$(document).ready(function() {
+		//찜 VIP 상품 
+		$( ".share li" ).click(function() {
+			$( this ).addClass( "on" );
+		});
+		//찜 PC 최저가 
+		$( ".layerBtn .btnzzim" ).click(function() {
+			$( this ).addClass( "on" );
+		});
+		//찜 가격정보가 없습니다
+		$( ".noListInfo .btnzzim" ).click(function() {
+			$( this ).addClass( "on" );
+		});
+		
+		// 상단 메뉴 생성
+		$(function(){
+			var navElem = ".vip_wrap .navTabs";
+			// 네비 스와이퍼 생성
+			var navSwiper = new Swiper(navElem, {
+				loop : false,
+				slidesPerView : 'auto',
+				watchActiveIndex: true,					
+				spceBeetween : 10
+            });
+            
+            var nav = $('.navTabs'); 
+            var tmpTabObj = $(navElem).find("a");
+            
+            // 200407 스크립트 추가 / 수정
+            var position = $(window).scrollTop(); 
+            var $btnQuick = $(".footer .newquick"); // Top 버튼
+            var posHeader = function(){
+                var nowPos = $(window).scrollTop();
+                var $mainwrap = $("#wrap");
+                var $fixed = $(".tab_price_head_wrap"),
+                $fixedCnt =  $fixed.find(".box_cont"),
+                $vipFixed = $(".vip_fixed"),
+                $vipFixedSlide = $(".vip_fixed_slide"),
+                $gnb = $(".m_header.head__type_a"), // 200305 클래스명 수정
+                $myScroll = $(this).scrollTop(),                
+                gnbH = ( $gnb.outerHeight() != null && $gnb.outerHeight() != undefined ) ? $gnb.outerHeight()-1 : 0;
+
+                // 200302 : margin-top 수정 
+                if ( $myScroll > gnbH ) nav.addClass("fixed_top").parents("#vip_wrap_id").css("margin-top","50px");
+                else nav.removeClass("fixed_top").parents("#vip_wrap_id").css("margin-top","0");
+                                
+                // 가격비교탭 활성화시 
+                var $tabPrice = $(".tab_price");
+                if ( $tabPrice.is(".swiper-slide-active") ){
+                    $fixed.css("height",$fixedCnt.outerHeight());
+                    if ( $myScroll > $fixed.offset().top - nav.outerHeight()-1 && $myScroll < $tabPrice.outerHeight() ){                                                                        
+                        $vipFixedSlide.append( $("#tab_price_head_3ndline") );
+                    }else{
+                        $fixed.append( $("#tab_price_head_3ndline") );
+                    }
+                }
+
+                // CM&QNA 활성화시
+                var $tabPrice = $(".tab_qna"),
+                    $insideTabBtn = $(".tab_qna .btn_write_wrap"),
+                    $outsideTabBtn = $(".btn_write_wrap.btn_fixed_bot");                
+                if ( $tabPrice.is(".swiper-slide-active") ){
+                    if ( $(window).scrollTop() < $insideTabBtn.offset().top - window.innerHeight ){
+                        $outsideTabBtn.append ( $(".btn_write_area") );
+                        $outsideTabBtn.addClass("rising");
+                    }else{
+                        $insideTabBtn.append ( $(".btn_write_area") );
+                        $outsideTabBtn.removeClass("rising");
+                    }
+                }else{
+                    $outsideTabBtn.removeClass("rising");
+                }
+
+                // TOP버튼 등장 
+                if(nowPos > position){
+                    $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    $btnQuick.addClass("scr_mode");
+                }else{
+                    $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }
+                position = nowPos;
+
+            };   
+            // 끝 : 스크립트 수정
+            
+            $(window).load(posHeader).scroll(posHeader);
+            
+            // 200302 : Swiper 옵션 수정
+            // 아래 옵션 추가
+            // shortSwipes : false,
+			// longSwipes : true,
+			// longSwipesMs : 150,
+			// longSwipesRatio : .3,
+			// iOSEdgeSwipeDetection : true,    
+            // onTransitionEnd -> onSlideChangeEnd 로 변경
+            cntSwiper = new Swiper(".vip_cnt",{
+                watchActiveIndex: true,
+                autoHeight : true,
+                spaceBeetween : 0,
+                noSwipingClass : 'noswipe',
+                shortSwipes : false,
+				longSwipes : true,
+				longSwipesMs : 150,
+				longSwipesRatio : .3,
+				iOSEdgeSwipeDetection : true,                
+                onSlideChangeEnd  : function(e){
+                    var _idx = e.realIndex;
+                    $(navElem).find(".swiper-slide").eq(_idx).addClass("on").siblings().removeClass("on");
+                    $("html,body").stop(true,false).animate({"scrollTop":"0px"},0);
+                    navSwiper.slideTo(_idx-1);
+                    // getTabData(_idx);
+                }
+            });
+
+            $(tmpTabObj).click(function(i){
+                $("html,body").stop(true,false).animate({"scrollTop":"0px"},0); 
+                i.preventDefault();
+                var tabParent = $(this).parent();
+                var tabParentIndex = tabParent.index();
+                if(!tabParent.hasClass("on")){
+                    tabParent.addClass("on").siblings().removeClass("on");
+                    cntSwiper.slideTo(tabParentIndex);
+                    // $(".tab_cele").addClass("invisible");
+                    $(tabParent).fadeIn(100);
+                    // getTabData(tabParentIndex);
+                    // renewURL = renewURL.replace(/\&tab=([0-9]+)/ig,'');
+                    // if(tabParentIndex != 0 ){
+                        // renewURL += '&tab='+tabParentIndex;	
+                    // }
+                    // history.pushState(null, null, renewURL);
+                }
+            });
+
+            // 20190613 스크립트 추가 (2)
+            var fixedSwiper = new Swiper(".vip_fixed",{
+                watchActiveIndex: true,
+                autoHeight : true,
+                spaceBeetween : 0,
+                noSwipingClass : 'noswipe',
+                onTransitionEnd  : function(e){
+                    posHeader();
+                }
+            });
+
+            cntSwiper.params.control = fixedSwiper;
+            fixedSwiper.params.control = cntSwiper;
+            // 끝 : 20190613 스크립트 수정 (2)
+		})		
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<title>마이e클럽</title>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/myeclub.css"/>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>	
+	<script type="text/javascript" src="./common.js"></script><!-- 퍼블 참고용 JS -->
+</head>
+<body>
+
+<div id="wrap">
+	
+	<!-- 헤더 : 마이e클럽 헤더 "mye_header" -->
+    <header id="header" class="m_header mye_header">
+		<div class="header_wrap">
+			<h1 class="m_txt">배송 조회</h1>
+            <button class="btn_hd_back comm__sprite">뒤로</button>
+		</div>	
+    </header>
+    <!-- // 헤더 -->
+
+	<!-- 컨테이너 : 마이e클럽 컨텐츠 "m_mye_cont"  -->
+	<section id="container" class="m_mye_cont">
+		<!-- 마이e클럽 WRAPPER -->
+		<div class="mye_wrapper">
+			<!-- 마이e클럽 INNER -->
+			<div class="mye_inner">
+
+				<div class="mye_box">
+                    <div class="mye_body mye_body-rect">
+                        <div class="rect_inner">
+                            <!-- 택배사,운송장 정보 -->
+                            <ul class="delivery_info">
+                                <li>
+                                    <p class="tx_th">택배사</p>
+                                    <p class="tx_td">CJ대한통운</p>
+                                </li>
+                                <li>
+                                    <p class="tx_th">운송장 번호</p>
+                                    <p class="tx_td">1234567895412652</p>
+                                </li>
+                            </ul>
+                            <!-- // -->
+                        </div>
+                    </div>  
+
+                    <!-- 케이스 : 배송정보 없을 때 -->
+					<div class="mye_body mye_body-rect">
+						<div class="rect_inner nodata">
+							<!-- 배송정보 없을 때 -->
+							<div class="no-box">
+								<p class="tx_nomsg is-delivery">배송정보가 없습니다</p>
+                                <p class="tx_sub">운송장이 등록되지 않았거나 상품을 배송 준비 중일 경우<br>상세정보가 조회되지 않을 수 있습니다</p>
+							</div>
+							<!-- // -->
+						</div>
+					</div>
+                    
+                    <div class="mye_body mye_body-rect">
+                        <div class="rect_inner">
+                            <!-- 배송 상태 등급 -->
+                            <div class="delivery_level">
+                                <p class="tx_level">현재 배송출발 상태입니다</p>
+
+                                <div class="bar_progress"><!-- level 1~4 -->
+                                    <ul class="point">
+                                        <!-- 활성화 : is-on -->
+                                        <li class="step1">결제완료</li>
+                                        <li class="step2">배송중</li>
+                                        <li class="step3">배송출발</li>
+                                        <li class="step4">배송완료</li>
+                                    </ul>
+                                </div>
+
+                                <script>
+                                    $(function(){
+                                        setTimeout(function(){
+                                            // 페이지 로딩 후 클래스 추가해 주세요.
+                                            var _level = 3;
+                                            $(".bar_progress").addClass("level"+_level);
+                                            setTimeout(function(){
+                                                $(".bar_progress li.step"+_level).addClass("is-on");
+                                            },700);                                            
+                                        }, 300)
+                                        
+                                    })
+                                </script>
+                            </div>
+                            <!-- // -->
+
+                            <ul class="delivery_detail">
+                                <li class="is-on">
+                                    <div class="tx_th">
+                                        <p class="tx_level">배송출발</p>
+                                    </div>
+                                    <div class="tx_td">
+                                        <p class="tx_where">KC집배점</p>
+                                        <p class="tx_detail">배송출발(배송예정시간 11~13시)</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx_th">
+                                        <p class="tx_level">2021-08-20 00:12:34</p>
+                                    </div>
+                                    <div class="tx_td">
+                                        <p class="tx_where">광명B</p>
+                                        <p class="tx_detail">배송할 터미널에 도착하였습니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx_th">
+                                        <p class="tx_level">2021-08-20 00:12:34</p>
+                                    </div>
+                                    <div class="tx_td">
+                                        <p class="tx_where">이천MPHub</p>
+                                        <p class="tx_detail">상품이 이동중입니다.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx_th">
+                                        <p class="tx_level">2021-08-20 00:12:34</p>
+                                    </div>
+                                    <div class="tx_td">
+                                        <p class="tx_where">이천MPHub</p>
+                                        <p class="tx_detail">상품이 이동중입니다.</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>  
+                </div>
+
+			</div>
+			<!-- // -->
+		</div>
+		<!-- // -->
+
+	</section>
+
+	<!-- 210825 : SR#48487 : 모바일웹 하단 탭바 -->
+	<section class="tabbar">
+		<div class="tabbar__inner">
+			<ul class="tabbar__list">
+				<li><a href="javascript:void(0);" class="tab tab-cate"><i class="ico"></i><span class="tx">카테고리</span></a></li>
+				<li><a href="javascript:void(0);" class="tab tab-srch"><i class="ico"></i><span class="tx">검색</span></a></li>
+				<li><a href="./myeclub/my_alarm.html" class="tab tab-eclub"><i class="ico"></i><span class="tx">마이e클럽</span></a></li>
+				<li><a href="#tab3" class="tab tab-favor"><i class="ico"></i><span class="tx">관심상품</span></a></li>
+			</ul>
+		</div>
+	</section>
+	<!-- // -->
+
+	<!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+	<footer class="footer footer--com">
+		<!-- Footer : 탑버튼 -->
+		<div class="newquick">
+			<p class="TBtn" onclick="goFooterTop();">TOP</p>
+		</div>
+		<!-- // -->
+		<!-- Footer : 회사정보 -->
+		<div class="footer__info">
+			<!-- 클릭시 .unfold 클래스 toggle -->
+			<button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+			<!-- // -->
+			<div class="footer__info_com">
+				<dl>
+					<dt>대표이사</dt>
+					<dd>김기범</dd>
+					<dt>사업자등록번호</dt>
+					<dd>206-81-18164</dd>
+					<dt>통신판매신고</dt>
+					<!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>2020-서울금천-1949호</dd>
+					<!-- // -->
+					<dt>주소</dt>
+					<!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+					<!-- // -->
+					<dt>문의</dt>
+					<dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+				</dl>
+			</div>
+		</div>
+		<!-- Footer : 푸터메뉴 -->
+		<div class="footer__menu">
+			<div class="footer__menu_top">
+				<a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+			</div>
+			<div class="footer__menu_bot">
+				<a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+			</div>
+		</div>
+		<span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+	</footer>
+	<!-- // -->
+</div>
+
+</body>
+</html>

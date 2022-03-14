@@ -1,0 +1,523 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>에누리 신차견적</title>
+    <link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/newcar/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/newcar/template.css"/>
+	<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <!-- 완료후제거 -->
+    <link rel="stylesheet" href="/css/default.css?v=1" type="text/css">
+</head>
+<body>
+
+    <div id="wrap">
+
+        <div id="header" class="header">
+            
+            <!-- 심플헤더 -->
+            <link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+            <div class="com_simple_header ty_wide">
+                <div class="com_head__inner">
+                    <!-- 심플헤더 - 패밀리탭 -->
+                    <ul class="com_head__tab_fam">
+                        <!-- 노출되지 않는 list는 li태그에 display:none처리 꼭 해주세요 -->
+                        <!-- 해당되는 탭은 on클래스로 활성화 해주세요 -->
+                        <li><a href="/">에누리홈</a></li><!-- 에누리홈에서는 비노출 -->
+                        <li><a href="/global/Index.jsp">해외직구</a></li>
+                        <li><a href="/enuripc">조립PC</a></li>
+                        <li><a href="/deal/newdeal/index.deal">소셜</a></li>
+                        <li><a href="/tour2012/Tour_Index.jsp">여행</a></li>
+                        <li class="on"><a href="#">자동차</a></li>
+                        <li><a href="/knowbox2/index.jsp">쇼핑지식</a></li>
+                    </ul>
+                    <!-- // -->
+                    <!-- 심플헤더 - 배너영역 (에누리홈 only) -->
+                    <ul class="com_head__list_ban" style="display:none">
+                        <li><a href="#">혜택존<span class="ico_simple__sprite ico__sp_ben">쇼핑혜택</span></a></li>
+                    </ul>
+                    <!-- // -->
+                    <!-- 심플헤더 - 우측메뉴 -->
+                    <ul class="com_head__menu">
+                        <!-- 노출되지 않는 메뉴 li태그에 display:none처리 꼭 해주세요 -->
+                        <!-- 로그인 -->
+                        <li style="display:none"><a href="#">로그인</a></li>
+                        <!-- 회원가입 -->
+                        <li style="display:none"><a href="#">회원가입</a></li>
+                        <!-- 사용자 + 마이에누리 레이어 -->
+                        <li>
+                            <a href="#"><em class="user_name">WangKooN</em>님<span class="ico__arr_down ico_simple__sprite"></span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 마이에누리 -->
+                            <div class="com_lay_login com_lay_box">
+                                <div class="lay_inner">
+                                    <ul>
+                                        <li><a href="javascript:goPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+                                        <li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+                                        <li><a href="">SDUL</a></li>
+                                        <li><a href="">상위노출입찰</a></li>
+                                        <li><a href="javascript:showZzim();">찜상품 <em>(n)</em></a></li>
+                                        <li><a href="javascript:logout();">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- // -->
+                        </li>
+                        <!-- 로그아웃 -->
+                        <li><a href="#">로그아웃</a></li>
+                        <!-- 쇼핑Q&A -->
+                        <li style="display:none"><a href="#">쇼핑Q&A</a></li>
+                        <!-- 앱다운로드 + 레이어 -->
+                        <li style="display:none">
+                            <a href="javascript:void(0);">앱다운로드<span class="ico__app_down ico_simple__sprite">받기</span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 앱다운로드 -->
+                            <div class="com_lay_app com_lay_box">
+                                <div class="spbox" id="simpleHeader">
+                                    <ul class="sp_tab">
+                                        <li><a href="javascript:void(0);" onclick="$('.sp_enuri').show().siblings('div').hide();">에누리 가격비교</a></li>
+                                        <li><a href="javascript:void(0);" onclick="$('.sp_hotdeal').show().siblings('div').hide();">소셜비교</a></li>
+                                    </ul>
+                                    <!-- 에누리 -->
+                                    <div class="sp_enuri" style="display:block;">
+                                        <h2>에누리 가격비교 </h2>
+                                        <p>모바일로 더욱 특별해진 가격비교!</p>
+                                        <dl>
+                                            <dt>QR코드 스캔</dt>
+                                            <dd>QR코드</dd>
+                                            <dt>앱 다운로드</dt>
+                                            <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                            <dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                            <dt>다운로드 SMS 보내기</dt>
+                                            <dd>
+                                                <fieldset>
+                                                    <legend>SMS보내기</legend>
+                                                    <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_enuri" id="phonenum_enuri" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('enuri')"></button>
+                                                </fieldset>
+                                            </dd>
+                                            <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                            <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                        </dl>
+                                    </div>
+                                    <!-- 소셜비교 -->
+                                    <div class="sp_hotdeal" style="display:none;">
+                                        <h2>소셜비교</h2>
+                                        <p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+                                        <dl>
+                                            <dt>QR코드 스캔</dt>
+                                            <dd>QR코드</dd>
+                                            <dt>앱 다운로드</dt>
+                                            <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                            <dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                            <dt>다운로드 SMS 보내기</dt>
+                                            <dd>
+                                                <fieldset>
+                                                    <legend>SMS보내기</legend>
+                                                    <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_hotdeal" id="phonenum_hotdeal" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('hotdeal')"></button>
+                                                </fieldset>
+                                            </dd>
+                                            <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                            <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //  -->
+                        </li>
+                        <!-- 더보기 + 레이어 -->
+                        <li>
+                            <a href="javascript:void(0);">더보기<span class="ico__arr_down ico_simple__sprite"></span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 사이트맵 -->
+                            <div class="com_lay_sitemap com_lay_box">
+                                <dl>
+                                    <dt>주요서비스</dt>
+                                    <dd>
+                                        <a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+                                        <a href="/enuripc/" target="_new">PC 견적비교</a>
+                                        <a href="/global/Index.jsp">해외직구</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+                                        <a href="/view/move_mall.jsp" target="_new">이사견적</a>
+                                        <a href="/view/Flower365.jsp" target="_new">꽃배달</a>
+                                        <a href="/tour2012/Tour_Index.jsp" target="_new">여행비교</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>커뮤니티</dt>
+                                    <dd>
+                                        <a href="/knowbox2/index.jsp" target="_new">쇼핑지식</a>
+                                        <a href="/knowcom/news.jsp" target="_new">뉴스</a>
+                                        <a href="/knowcom/guide.jsp" target="_new">구매가이드</a>
+                                        <a href="/knowcom/exp.jsp" target="_new">체험단</a>
+                                        <a href="/knowcom/board.jsp?bbsname=review" target="_new">사용기</a>
+                                        <a href="/knowcom/enuritv.jsp" target="_new">에누리TV</a>
+                                        <a href="/knowcom/board.jsp?bbsname=nuri" target="_new">자유게시판</a>                            
+                                    </dd>
+                                    <dd>
+                                        <a href="/knowcom/board.jsp?bbsname=sale" target="_new">특가게시판</a>
+                                        <a href="/knowcom/qna.jsp" target="_new">쇼핑Q&amp;A</a>
+                                        <a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition" target="_new">쇼핑기획전</a>
+                                        <a href="/infoad_event/eventMain.jsp" target="_new">이벤트</a>
+                                    </dd>
+                                </dl>
+                                <p class="all">
+                                    <a href="/etc/Site_map.jsp" class="enuri_all" target="_new">에누리 서비스 전체보기</a>
+                                </p>
+                            </div>
+                            <!-- // -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+
+            <!-- 메인헤더 + GNB + Search 영역 -->
+            <div class="header_wrap">
+                <div class="inner">
+                    <h1><a href="./" class="comm_sprite" title="에누리 자동차">에누리 자동차</a></h1>
+                    <ul class="nav_global">
+                        <li class="item_nav"><a href="index.html">신차견적</a></li>
+                        <li class="item_nav on"><a href="list_immediate.html">즉시출고</a></li>
+                        <li class="item_nav"><a href="comp_finance.html">금융비교</a></li>
+                        <li class="item_nav"><a href="/enuricar/list.jsp">중고차</a></li>
+                        <!-- 201217 : SR#44117 : 신규탭 추가 -->
+                        <li class="item_nav"><a href="#">내차관리</a></li>
+                        <!-- // -->
+                    </ul>
+                    <ul class="header_bnr">
+                        <li><a href="#"><img src="http://img.enuri.info/images/newcar/@header_bnr.png" alt="8월 판매조건 확인하기"></a></li>
+                    </ul>
+                    <!-- <ul class="shortcuts">
+                        <li><a href="#" class="btn__estimate"><i class="comm_sprite"></i>빠른견적</a></li>
+                        <li><a href="#" class="btn__pricenoti"><i class="comm_sprite"></i>가격알림</a></li>
+                    </ul> -->
+                </div>
+            </div>
+            <!-- // 메인헤더 + GNB + Search 영역 -->
+        </div>
+
+        <div id="container" class="container">
+
+            <!-- 즉시출고 상세보기 -->
+            <div class="section box_inner model_immediate">
+
+                <!-- 즉시출고 상세보기 좌측 윙 -->
+                <div class="box_wing">
+                    <!-- 기본화면 요약정보 -->
+                    <div class="wing_immediate">
+                        <div class="btn_area">
+                            <button class="btn__back" onclick="window.history.back(-1);"><i class="comm_sprite ico_back"></i> 리스트로 이동</button>
+                        </div>
+                        <div class="info_model">
+                            <!-- 로고 -->
+                            <div class="md_logo">
+                                <img src="http://img.enuri.info/images/newcar/1001.png" alt="">
+                            </div>
+                            <!-- 썸네일 -->
+                            <div class="md_thumb">
+                                <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                            </div>
+                            <!-- 모델명 -->
+                            <div class="md_name">
+                                <!-- 제조사+모델명 -->
+                                <span class="tx_model">현대 올 뉴 아반떼</span>
+                            </div>
+                            <!-- 대표 제원 표시 -->
+                            <div class="md_spec">
+                                <ul class="tx_spec">
+                                    <li>중형 승용</li>
+                                    <li>복합연비 9.9~14.3km/l</li>
+                                    <li>휘발유,경유</li>
+                                    <li>배기량 1,995~2,998cc</li>
+                                    <li>출력 120~123hp</li>
+                                </ul>
+                            </div>
+                            <div class="md_bottom">
+                                <ul>
+                                    <!-- 모델 출시일 -->
+                                    <li>2019.04 ~ 현재</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md_price">
+                            <!-- 공식출고가 -->
+                            <div class="box_price">
+                                <span class="tx_tit">공식출고가</span>
+                                <span class="tx_price"><em>5,020~17,450</em> 만원</span>
+                                <!-- 버튼 : 신차견적내기 -->
+                                <!-- 모델 견적내기 화면으로 이동 -->
+                                <button class="btn_estimate" onclick="window.location.href='estimate.html';">신차견적내기</button>
+                                <!-- // -->
+                            </div>
+                            <!-- 리스/렌트 -->
+                            <div class="box_price ty_lease">
+                                <span class="tx_tit">최저가 <em>36</em>개월</span>
+                                <span class="tx_price"><em>162,150</em> 원 / 월</span>
+                                <!-- 버튼 : 리스/렌트 보기 -->
+                                <!-- 금융 탭이 리스렌트로 설정된 화면으로 이동 -->
+                                <button class="btn_lease">리스/렌트보기</button>
+                                <!-- // -->
+                            </div>
+                        </div>
+                        
+                        <!-- 월간 출고량 -->
+                        <div class="release_graph" style="display:none">
+                            <span class="tx_tit"><em>아반떼</em> 월간 출고량</span>
+                            <!-- 챠트 -->
+                            <div class="box_chart">
+                                
+                            </div>
+                        </div>
+                        <!-- // -->
+                    </div>
+                    <!-- // -->
+                </div>
+                <!-- // -->   
+
+                <!-- 즉시출고 상세보기 리스트 -->
+                <div class="section box_main">
+
+                    <!-- 즉시출고 리스트 -->
+                    <ul class="list_imme_detail">
+                        <!-- 반복 : 아이템 -->
+                        <li class="item_imme_detail">
+                            <div class="item_inner">
+                                <div class="item_head">
+                                    <div class="tx_name">2021년형 가솔린 2.5 T (개소세 30% 인하) AWD</div>
+                                    <span class="tx_price">
+                                        <em>17,450</em> 만원
+                                    </span>
+                                    <span class="ico_tag">3대</span>
+                                    <!-- 버튼 : 상담 신청 -->
+                                    <button class="btn__consult">상담신청</button>
+                                    <!-- // -->
+                                </div>
+                                <div class="item_option">
+                                    <dl>
+                                        <dt>옵션</dt>
+                                        <dd>
+                                            245/40R20(앞), 275/35R20(뒤) 피렐리 타이어 & 스퍼터링 휠 (2,450,000) <br/>
+                                            시그니쳐 디자인 셀렉션II (2,950,000) <br/>
+                                            파퓰러 패키지 (5,010,000) <br/>
+                                            파노라마 선루프 (1,370,000) <br/>
+                                            컨비니언스 패키지 (1,180,000) <br/>
+                                            드라이빙 어시스턴스 패키지Ⅱ (1,470,000) <br/>
+                                            렉시콘 사운드 패키지 (1,370,000) <br/>
+                                            빌트인 캠 패키지 (690,000)
+                                        </dd>
+                                        <dt>외장</dt>
+                                        <dd>우유트 화이트</dd>
+                                        <dt>내장</dt>
+                                        <dd>하바나 브라운 모노톤</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="item_bottom">
+                                <ul>
+                                    <li>BMW X4 20i xLine 특판 특별 프로모션 + 프리미엄 신차 패키지 !!!</li>
+                                    <li>350만원 즉시할인+신차 프리미엄 패키지</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- // 반복 : 아이템 -->
+                        <li class="item_imme_detail">
+                            <div class="item_inner">
+                                <div class="item_head">
+                                    <div class="tx_name">2021년형 가솔린 2.5 T (개소세 30% 인하) AWD</div>
+                                    <span class="tx_price">
+                                        <em>17,450</em> 만원
+                                    </span>
+                                    <span class="ico_tag">3대</span>
+                                    <!-- 버튼 : 상담 신청 -->
+                                    <button class="btn__consult">상담신청</button>
+                                    <!-- // -->
+                                </div>
+                                <div class="item_option">
+                                    <dl>
+                                        <dt>옵션</dt>
+                                        <dd>
+                                            245/40R20(앞), 275/35R20(뒤) 피렐리 타이어 & 스퍼터링 휠 (2,450,000) <br/>
+                                            시그니쳐 디자인 셀렉션II (2,950,000) <br/>
+                                            파퓰러 패키지 (5,010,000) <br/>
+                                            파노라마 선루프 (1,370,000) <br/>
+                                            컨비니언스 패키지 (1,180,000) <br/>
+                                            드라이빙 어시스턴스 패키지Ⅱ (1,470,000) <br/>
+                                            렉시콘 사운드 패키지 (1,370,000) <br/>
+                                            빌트인 캠 패키지 (690,000)
+                                        </dd>
+                                        <dt>외장</dt>
+                                        <dd>우유트 화이트</dd>
+                                        <dt>내장</dt>
+                                        <dd>하바나 브라운 모노톤</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="item_bottom">
+                                <ul>
+                                    <li>BMW X4 20i xLine 특판 특별 프로모션 + 프리미엄 신차 패키지 !!!</li>
+                                    <li>350만원 즉시할인+신차 프리미엄 패키지</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="item_imme_detail">
+                            <div class="item_inner">
+                                <div class="item_head">
+                                    <div class="tx_name">2021년형 가솔린 2.5 T (개소세 30% 인하) AWD</div>
+                                    <span class="tx_price">
+                                        <em>17,450</em> 만원
+                                    </span>
+                                    <span class="ico_tag">3대</span>
+                                    <!-- 버튼 : 상담 신청 -->
+                                    <button class="btn__consult">상담신청</button>
+                                    <!-- // -->
+                                </div>
+                                <div class="item_option">
+                                    <dl>
+                                        <dt>옵션</dt>
+                                        <dd>
+                                            245/40R20(앞), 275/35R20(뒤) 피렐리 타이어 & 스퍼터링 휠 (2,450,000) <br/>
+                                            시그니쳐 디자인 셀렉션II (2,950,000) <br/>
+                                            파퓰러 패키지 (5,010,000) <br/>
+                                            파노라마 선루프 (1,370,000) <br/>
+                                            컨비니언스 패키지 (1,180,000) <br/>
+                                            드라이빙 어시스턴스 패키지Ⅱ (1,470,000) <br/>
+                                            렉시콘 사운드 패키지 (1,370,000) <br/>
+                                            빌트인 캠 패키지 (690,000)
+                                        </dd>
+                                        <dt>외장</dt>
+                                        <dd>우유트 화이트</dd>
+                                        <dt>내장</dt>
+                                        <dd>하바나 브라운 모노톤</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="item_bottom">
+                                <ul>
+                                    <li>BMW X4 20i xLine 특판 특별 프로모션 + 프리미엄 신차 패키지 !!!</li>
+                                    <li>350만원 즉시할인+신차 프리미엄 패키지</li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- // -->
+
+                    <span class="tx_noti">
+                        에누리 즉시출고 차량은 실제 자동차 판매 제휴점 과의 실시간 데이터 연동을 통해 제공되는 실제 계약/출고 가능한 차량입니다. <br/>간혹 제휴점의 계약, 재고관리에 따라 일부 계약 완료된 차량이 표시될 수 있으니 상세 사항은 필히 상담 신청을 통해 확인 바랍니다.
+                    </span>
+
+                </div>
+                <!-- // -->
+
+            </div>
+            <!-- // 견적 -->
+
+        </div>
+
+        <!-- 공통 : 푸터 -->
+        <div class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li>
+                        <li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li>
+                        <li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li>
+                        <li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li>
+                        <!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li>
+                        <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li>
+                        <!-- <li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li> -->
+                        <li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층, ㈜써머스플랫폼</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->
+        
+    </div>
+
+    <script>
+        // 공통 : 업/다운 스크롤체크
+        $(function(){
+            var position = $(window).scrollTop();
+            var el = {
+                wrap : $("#wrap"), // 메인래퍼
+                cont : $("#container"), // 메인컨텐츠
+                btnQuick : $(".footer .box_quick") // 탑버튼
+            }
+            var stickyGnb = function(){
+                var $myScroll = $(window).scrollTop();
+                if ( $myScroll > el.cont.offset().top ){
+                    el.btnQuick.addClass("scr_mode");                    
+                    // 업다운 스크롤 체크
+                    if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }else{
+                    el.btnQuick.removeClass("scr_mode");
+                    el.wrap.removeClass("scr_down scr_up");
+                }
+                position = $myScroll;
+            };
+			$(window).load(stickyGnb).scroll(stickyGnb);
+        })
+
+        // 견적 : 우측윙 Sticky
+        $(function(){
+            var $wrap = $(".model_immediate");
+            var $wing = $(".wing_immediate");
+            var $footer = $(".footer");
+            var stickyWing = function(){
+                var dist = $footer.offset().top - $wing.outerHeight(); 
+                var myScroll = $(window).scrollTop();
+                if ( myScroll > $wrap.offset().top - 40){
+                    $wing.addClass("fixed");
+                    if ( myScroll > dist - 80 ){
+                        $wing.addClass("stop_fixed").css("top", dist - $wrap.offset().top - 40 );
+                    }else{
+                        $wing.removeClass("stop_fixed").removeAttr("style");
+                    }
+                }else{
+                    $wing.removeClass("fixed");
+                }
+            }
+            $(window).load(stickyWing).scroll(stickyWing);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://img.enuri.info/images/mobilefirst/images/logo_enuri.png">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+    <link rel="stylesheet" href="/css/sdul/common.css" type="text/css">
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+    <div id="wrap">
+        
+        <!-- 공통 : 판매자센터 헤더 -->
+	    <div class="header">
+	        <div class="header_wrap">
+	            <div class="inner">
+	                <h1><span class="obj_bi" onclick="top.location.href='/'">ENURI</span> 판매자 광고센터</h1>
+	                <div class="menu_list">
+                        <!-- <div class="menu_item">
+                            <a href="#">로그인</a>
+                        </div> -->
+                        <div class="menu_item">
+                            <span class="menu_item_inner"><em>향봉이다</em>님 <span class="ico__arr_down home__sprite"></span></span>
+                            <div class="com_lay_login com_lay_box">
+                                <div class="lay_inner">
+                                    <ul>
+                                        <li class="js-myenuri"><a href="javascript:goMyPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+                                        <li><a href="javascript:showPopup('lay_myinfo');">SDUL회원 정보수정</a></li>
+                                        <li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+                                        <li><a href="javascript:logout();">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu_item">
+                            <span class="menu_item_inner">SDUL(대기중) <em>0</em>건</span>
+                        </div>
+                        <div class="menu_item">
+                            <span class="menu_item_inner">상위입찰 <em>4</em>건</span>
+                        </div>
+                        <div class="menu_item">
+                            <span class="menu_item_inner">유상잔액 <em>-10</em>원</span>
+                        </div>
+                        <div class="menu_item">
+                            <div class="menu_item_inner">무상잔액 
+                                <div class="lay_tool_tip">
+                                    <span class="global__sprite ico_tool_tip" onclick="$(this).next('.layer_box').toggle();">?</span>
+                                    <div class="layer_box" style="display:none">
+                                        <div class="lay_cnt">
+                                            <ul>
+                                                <li>무상잔액이 있는 경우에는 유상잔액(현금/카드) 보다 먼저 사용됩니다.</li>
+                                                <li>무상잔액은 지급 이후 3개월이 지나면 자동 소멸합니다.</li>
+                                                <li>무상잔액은 현금, 쿠폰등으로 환불할 수 없습니다.</li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn_close global__sprite" onclick="$(this).closest('.layer_box').hide();">닫기</button>
+                                    </div>
+                                    <em>40,300</em>원
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu_item">
+                            <button class="btn_blue btn_charge" onclick="showPopup('lay_charge');return false;">충전하기</button>
+                        </div>
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+        <!-- // 판매자 센터 헤더 -->        
+        
+        <!-- 공통 : GNB -->
+        <div class="gnb">
+            <div class="inner">
+                <ul>
+                    <!-- 선택된 탭은 .selected 클래스 붙여주세요 -->
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="sdul_register.html">상품등록</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">상품등록</div>
+                                <div class="lay_cnt">
+                                    G마켓, 옥션, 11번가 등의 오픈마켓 판매자들의 판매상품 중 <br/>
+                                    아직 에누리에 등록되지 않은 상품을 판매자 여러분들이 <br/>
+                                    직접 신속히 등록할 수 있습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_bidding.html">상위노출입찰</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">동일 최저가 상위노출 입찰</div>
+                                <div class="lay_cnt">
+                                    에누리 가격비교에 동일한 가격의 최저가 존재시,<br/>
+                                    자신의 가격을 최상위에 노출시키도록 입찰 할 수 있습니다.<br/>
+                                    (동일 최저가 시 최상위 가격의 클릭율은 75% 이상입니다.)
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_adcopy.html">판매자 광고문구</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">판매자 광고문구</div>
+                                <div class="lay_cnt">
+                                    신규회원가입 혜택, 적립금 안내등 다양한 이벤트 및 홍보문구를<br/>
+                                    노출하여 동일가 판매 업체 대비 고객의 시선을 확보하여<br/>
+                                    매출 상승을 기대할 수 있습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="sdul_supertop.html">슈퍼탑 광고</a>
+                    </li>
+                    <li>
+                        <a href="sdul_pricetop.html">프라이스탑 광고</a>
+                    </li>
+                    <li><a href="sdul_catalog.html">카탈로그</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">카탈로그 퍼가기</div>
+                                <div class="lay_cnt">
+                                    오픈마켓 판매자 및 전문몰을 대상으로 에누리의 상품정보를<br/>
+                                    무료로 제공합니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_guide.html">판매자가이드</a></li>
+                    <li class="selected"><a href="sdul_entering.html">입점안내</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">입점안내</div>
+                                <div class="lay_cnt">
+                                    에누리 방문자 = 최고 충성도 고객<br/>
+                                    에누리 입점을 통해 매출을 올려보세요!
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_board.html">FAQ/게시판</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">FAQ/게시판</div>
+                                <div class="lay_cnt">
+                                    판매자들이 자주 궁금해하시는 질문에 대한 답변모음과<br/>
+                                    질문,제안을 할 수 있는 게시판을 보실 수 있습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- // -->
+
+        <div class="container">
+
+            <div class="sub_conts">
+
+                <div class="sub_head">
+                    <h2>입점안내</h2>
+                    <span class="tx_sub">에누리 가격비교에 입점하여 구매전환이 높은 소비자를 유치하자!</span>
+                    <span class="tx_manager">문의 : 전재원 차장 (070-8661-2389)</span>
+                    <!-- <a href="#" class="btn_grey btn_guide"><span>판매자 가이드</span></a> -->
+                </div>
+
+                <div class="sub_contents">
+
+                    <div class="sub_tab">
+                        <ul>
+                            <li class="selected"><a href="sdul_entering.html?view=alliance01">전문몰(입점,비용)</a></li>
+                            <li><a href="sdul_entering.html?view=alliance02">상품정보 제휴</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 입점안내 : 전문몰 입점 안내 -->
+                    <div class="sub_inner guide_cont" id="alliance01">
+                        <div class="sub_head">
+                            <h3>전문몰 입점 안내</h3>
+                            <span class="tx_sub">입점 쇼핑몰 대상으로 <em>에누리 카탈로그를 무료</em>로 사용할 수 있는 권한을 드립니다.</span>
+                            <a href="http://www.enuri.com/knowcom/detail.jsp?kbno=281268" target="_blank" class="btn_grey btn_guide"><span>상세안내 바로가기</span></a>                  
+                        </div>
+                        <div class="sub_cont">
+                            <ul class="box_guide">                                
+                                <li>
+                                    <span class="tx_tit">1) 입점 제휴 문의</span>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            담당자 : 070-8661-2389 / <a href="mailto:member@enuri.com">member@enuri.com</a>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">2) 서비스 비용 및 입점 조건</span>                                    
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            상품의 가전/비가전 여부 및 상품 수량을 고려하여 비용 책정 후 안내해 드립니다.
+                                        </span>
+                                        <span class="tx_step_sub">
+                                            - 가전/비가전 : 월 고정 입점비 납부 방식으로 진행 가능
+                                        </span>
+                                    </div>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            <em class="tx_tit">서비스 비용 안내 <span class="tx_tit_sub">(카테고리 구분 기준은 에누리 가격비교의 기준입니다.)</span></em>
+                                            <span class="tx_sub">
+                                                쇼핑몰 입점 서비스 비용은 월 고정 과금 방식으로만 진행됩니다.<br/>
+                                                판매상품이 가전인 경우 등록 상품 수량에 따라 월 고정 과금 방식이 다르게 적용됩니다.
+                                            </span>                                            
+                                        </span>
+                                        <div class="tx_step_sub">
+                                            <span class="tx_tit">가전정액제 &nbsp;
+                                                <span class="tx_sub">(영상/음향, 생활가전, 컴퓨터, iT/휴대폰, 자동차(차량용 IT용품만 해당))</span>
+                                            </span>
+                                            <div class="tb_step">
+                                                <span class="tx_tb_top">(부가세별도)</span>
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>상품수</th>
+                                                            <th>월 가격</th>
+                                                            <th>세팅비</th>
+                                                            <th>합계</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>500개 이하</td>
+                                                            <td>300,000</td>
+                                                            <td>60,000</td>
+                                                            <td>360,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>1,000개 이하</td>
+                                                            <td>500,000</td>
+                                                            <td>100,000</td>
+                                                            <td>600,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3,000개 이하</td>
+                                                            <td>700,000</td>
+                                                            <td>140,000</td>
+                                                            <td>840,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3,000개 초과</td>
+                                                            <td>별도협의</td>
+                                                            <td>20%</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <span class="tx_step_sm">※ 상품수가 3,000개 초과인 쇼핑몰은 별도협의에 의해 서비스 비용이 정해집니다.</span>
+                                            </div>
+                                        </div>
+                                        <div class="tx_step_sub">
+                                            <span class="tx_tit">비가전 정액제 &nbsp;
+                                                <span class="tx_sub">자동차 용품(차량용 IT용품 제외), 스포츠, 유아/완구, 가구, 화장품, 패션/잡화, 식품)</span>
+                                            </span>
+                                            <div class="tb_step">
+                                                <span class="tx_tb_top">(부가세별도)</span>
+                                                <table class="tb_step">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>상품수</th>
+                                                            <th>월 가격</th>
+                                                            <th>세팅비</th>
+                                                            <th>합계</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1,000개 이하</td>
+                                                            <td>100,000</td>
+                                                            <td>20,000</td>
+                                                            <td>120,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4,000개 이하</td>
+                                                            <td>200,000</td>
+                                                            <td>40,000</td>
+                                                            <td>240,000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4,000개 초과</td>
+                                                            <td>별도협의</td>
+                                                            <td>20%</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <span class="tx_step_sm">※ 상품수가 4,000개 초과인 쇼핑몰은 별도협의에 의해 서비스 비용이 정해집니다.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            <em class="tx_tit">전문몰 입점 조건</em>
+                                        </span>
+                                        <div class="tx_step_sub">
+                                            <span class="tx_tit">* 필요서류</span>
+                                            ㆍ사업자등록증 보유<br/>
+                                            ㆍ통신판매신고증 보유(간이사업자 제외)
+                                        </div>
+                                        <div class="tx_step_sub">
+                                            <span class="tx_tit">*서비스 조건</span>
+                                            ㆍ사업자등록증 보유<br/>
+                                            ㆍ모든 상품 부가세 포함가 판매<br/>
+                                            ㆍ모든 상품 카드, 현금 동일가 판매<br/>
+                                            ㆍ에스크로 또는 전자보증보험 가입 및 적용 필수<br/>
+                                            ㆍ판매상품에 대한 상품정보 페이지, 주문 페이지 별도 존재
+                                        </div>
+                                        <span class="tx_step_sm">※ 위에 모든 조건이 다 갖추어져 있어야지만, 에누리 가격비교 내에 쇼핑몰 상품 등록이 가능 합니다.</span>
+                                    </div>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            <em class="tx_tit">쇼핑몰 판매상품DB (EP : 엔진페이지) 란?</em>
+                                            <span class="tx_sub">쇼핑몰에 등록된 상품 정보, 가격을 에누리에 정확하게 업데이트 하기 위한 상품목록 페이지 입니다.</span>
+                                        </span>
+                                        <div class="tx_step_sub">
+                                            <span class="tx_tit">※ 제작시 주의 사항</span>
+                                            ㆍ가격 정보 페이지 기준으로 에누리에 상품 정보가 노출되므로 정확한 정보로 업데이트 해 주시기 바랍니다.<br/>
+                                            ㆍ제작에 대한 자세한 문의사항은 <em>member@enuri.com</em> 또는 <em>070-8661-2389</em>번으로 문의 바랍니다.
+                                        </div>
+                                        <!-- 에누리 EP가이드 pdf 다운로드 -->
+                                        <a class="btn_blue btn_ep_guide" title="쇼핑몰 판매상품DB(EP) 제작 가이드 다운로드" download><span>쇼핑몰 판매상품DB(EP) 제작 가이드</span></a>
+                                        <!-- // -->
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">3) SDU 회원가입</span>
+                                    <div class="in_box_guide guide_step">
+                                        입점 완료후 쇼핑몰 담당자가 직접 상품 정보를 갱신할 수 있는 SDU 프로그램 회원가입 안내입니다.
+                                    </div>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            <em class="tx_tit">SDU(Shoppingmall Direct Update)란 ?</em>
+                                            <span class="tx_sub">
+                                                쇼핑몰 입점 완료후 쇼핑몰 담당자가 직접 상품 정보를 갱신하는 프로그램입니다.<br/>
+                                                에누리에 서비스 비용 납부 및 상품 등록작업을 진행중인 판매자만 이용할 수 있으며, SDU에서 수정한 내용은 쇼핑몰 가격정보 페이지의 내용보다 우선시됩니다. 로그인은 필수이며, 보다 자세한 기능 안내는 아래 내용을 참고하여 주시기 바랍니다.
+                                            </span>
+                                        </span>
+                                        <div class="tx_step_sub">
+                                            <span class="tx_tit">※ SDU 주요 기능들</span>
+                                            1) 가격 업데이트 및 수정<br/>
+                                            2) 상품추가, 삭제<br/>
+                                            3) 신상품 등록 요청<br/>
+                                            4) 상품 등록현황 조회<br/>
+                                            5) 각 상품별 특별 판매 조건(예, 사은품 지급 여부 등)입력<br/>
+                                            6) 쇼핑몰정보 및 업체소개 변경<br/>
+                                            7) 신규상품 등록시 상품설명 및 사진자료 송부<br/>
+                                            8) 상품 사진 및 설명 자료의 오류 발생시 수정 및 보완 요청<br/>
+                                            9) 판매상품 품절시 제품 일시품절 처리 가능<br/>
+                                            10) 판매자 문의 게시판 운영<br/>
+                                        </div>
+                                        <!-- 버튼 : 상품등록 관리페이지(SDU) 가입신청 -->
+                                        <button class="btn_blue btn_join_sdu"><span>상품등록 관리페이지(SDU) 가입신청</span></button>
+                                        <!-- // -->
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">4) 서류전송 및 서비스 비용 납부</span>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            입점에 필요한 내용을 이메일(<a href="mailto:member@enuri.com">member@enuri.com</a>)로 전달하고, 비용을 납부 하면 절차가 완료됩니다.
+                                        </span>
+                                        <span class="tx_step_sub">
+                                            ① 필요 서류 : 사업자등록증/통신판매 신고증 스캔(PDF) 파일 <br/>
+                                            ② 쇼핑몰 판매상품DB(EP) 인터넷주소(URL)는 이메일(member@enuri.com)으로 전달하여 주시기 바랍니다.<br/>
+                                            ③ 상품 등록 관리페이지(SDU)에 가입 해 주시기 바랍니다.<br/>
+                                            ④ 서비스비용 입금 처리후 준비 절차 완료 됩니다.
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">5) 가격비교 서비스 시작</span>
+                                    <div class="in_box_guide guide_step">  
+                                        <span class="tx_step">
+                                            쇼핑몰에서 제공한 가격정보페이지 기반으로 에누리 가격비교 담당자가 상품 등록을 시작합니다.<br/>
+                                        </span>                   
+                                        <span class="tx_step_sub">
+                                            - 쇼핑몰의 상품정보 및 가격정보는 하루 7~8회 업데이트 되고 있습니다.<br/>
+                                            - 실제 과금이 나가는 시점은 입금일과 상관없이 상품 등록이 최초로 이루어진 시점부터 시작됩니다.
+                                        </span>                   
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // 입점안내 : 전문몰 입점 안내 -->
+
+                    <!-- 입점안내 : 상품정보 제휴 -->
+                    <div class="sub_inner guide_cont" id="alliance02">
+                        <div class="sub_head">
+                            <h3>상품정보 제휴</h3>
+                            <span class="tx_sub">상품정보를 제공해 주세요. 좋은 이미지는 상품의 매출을 높여줍니다.</span>
+                            <a href="mailto:master@enuri.com" class="btn_grey btn_guide"><span>상품정보(사진등) 제공신청</span></a>                  
+                        </div>
+                        <div class="sub_cont">
+                            <ul class="box_guide">
+                                <li>
+                                    <span class="box_img">
+                                        <img src="/images/sdul/v2020/alliance_01.jpg" alt="상품정보에 대한 파급효과">
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">상품정보(사진 등) 제공</span>
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            - 상품정보(사진 등) 제공신청 버튼을 클릭하고 상품정보와 사진 등을 보냅니다.<br/>
+                                            - 제공신청은 제조사 또는 총판에서 하시길 부탁드립니다.
+                                        </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="tx_tit">카탈로그 및 이미지 업데이트</span>                                    
+                                    <div class="in_box_guide guide_step">
+                                        <span class="tx_step">
+                                            - 영업일 2일 이내 카탈로그와 이미지를 업데이트합니다.
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // 입점안내 : 상품정보 제휴 -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 200903 : SR#42125 : [PC] SDUL 푸터 정보 변경 요청 -->
+        <div id="footer" class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick scr_mode">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li>
+                        <li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li>
+                        <!-- <li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li> -->
+                        <!-- <li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li> -->
+                        <!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <!-- <li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li> -->
+                        <!-- <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li> -->
+                        <!-- <li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li> -->
+                        <!-- <li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->
+    </div>
+
+    <script>
+        // 퍼블테스트용 - 선택노출
+        $(function(){
+            var $tab = $(".sub_tab");
+            var param = getUrlParams();
+            // console.log( param );
+            if ( param.view != undefined && $("#"+param.view).length ){                
+                $("#"+param.view).show();
+                $tab.find("li").eq( parseInt(param.view.replace("alliance",""),10)-1 ).addClass("selected").siblings().removeClass("selected");
+            }else{
+                // param 없을때 기본 노출
+                $(".guide_cont").eq(0).show();
+                $tab.find("li").eq(0).addClass("selected");
+            }
+        })
+        function getUrlParams() {
+            var params = {};
+            window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+            return params;
+        }
+        //퍼블테스트용 : 레이어 열기
+        function showPopup(name){
+            window.open("layer.html?view="+name, "sdulPopWin", "width=520, height=700, toolbar=no, menubar=no, scrollbars=1, resizable=no" );
+        }
+    </script>
+</body>
+</html>

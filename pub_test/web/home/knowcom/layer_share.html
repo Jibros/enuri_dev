@@ -1,0 +1,409 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다."> 
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<!-- 191025 쇼핑지식 내 전페이지 Favicon 변경 -->
+<link rel="shortcut icon" href="http://img.enuri.info/images/layout/favicon_enuri_knowcom.ico">
+<!-- // -->
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="http://www.enuri.com/css/slick.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/default.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/swiper.min.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/common.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/classChange.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/lib/slick.min.js"></script>
+<script type="text/javascript" src="/js/swiper.min.js"></script>
+<script type="text/javascript">
+// gnb 플로팅
+$(function(){
+   var menupos = $("#topFix").offset().top;
+   $(window).scroll(function(){
+		if($(window).scrollTop() >= menupos) {
+			$("#topFix").css("position","fixed");
+			$("#topFix").css("top","0");
+			} else {
+			$("#topFix").css("position","absolute");
+			$("#topFix").css("top","");
+		}
+   });
+});
+</script>
+</head>
+<body>
+
+<!-- 공통 : SNS공유하기 -->
+<!-- 191122 SNS 공유하기 추가 (웹 / 모바일 공통) -->
+<div class="com__share_wrap dim" style="z-index:10000;display:block">
+	<div class="com__layer share_layer">
+		<div class="lay_head">공유하기</div>
+		<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+		<div class="lay_inner">
+			<ul>
+				<li class="share_fb">페이스북 공유하기</li>
+				<li class="share_kakao">카카오톡 공유하기</li>				
+				<li class="share_tw">트위터 공유하기</li>
+				<li class="share_line">라인 공유하기</li>
+				<!-- 메일아이콘 클릭시 활성화(.on) -->
+				<li class="share_mail" onclick="$(this).toggleClass('on');$(this).parents('.share_layer').find('.btn_wrap').toggleClass('mail_on');">메일로 공유하기</li>
+				<li class="share_story">카카오스토리 공유하기</li>
+				<li class="share_band">밴드 공유하기</li>
+			</ul>
+			<!-- 메인보내기 버튼클릭시 .mail_on 추가해 주세요 -->
+			<div class="btn_wrap">
+				<div class="btn_group">
+					<!-- 주소복사하기 -->
+					<div class="btn_item">
+						<span id="txtURL" class="txt__share_url">http://www.enuri.com/event/chuseok.jsp</span>
+						<button class="btn__share_copy" data-clipboard-target="#txtURL">복사</button>
+					</div>
+					<!-- 이메일주소 입력하기 -->
+					<div class="btn_item">
+						<input type="text" class="txt__share_mail" placeholder="이메일 주소 입력해 주세요">
+						<button class="btn__share_mail">보내기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/clipboard.min.js"></script>
+	<script>
+		$(function(){
+			var clipboard = new ClipboardJS('.com__share_wrap .btn__share_copy');
+			clipboard.on('success', function(e) {
+				alert('주소가 복사되었습니다');
+			});
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+		});
+	</script>
+</div>
+<!-- // -->	
+
+<div class="wrap" id="MainWrap">
+	<!-- header -->
+	<div class="header">
+
+		<!-- 191025 공통 심플헤더 추가 -->
+		<link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+		<!-- 해외직구 / 쇼핑지식에는 ty_wide 클래스 붙여주세요 (확장형) -->
+		<div class="com_simple_header ty_wide">
+			<div class="com_head__inner">
+				<!-- 심플헤더 - 패밀리탭 -->
+				<ul class="com_head__tab_fam">
+					<!-- 노출되지 않는 list는 li태그에 display:none처리 꼭 해주세요 -->
+					<!-- 해당되는 탭은 on클래스로 활성화 해주세요 -->
+					<li><a href="/">에누리홈</a></li><!-- 에누리홈에서는 비노출 -->
+					<li><a href="/global/Index.jsp">해외직구</a></li>
+					<li><a href="/enuripc">조립PC</a></li>
+					<li><a href="/deal/newdeal/index.deal">소셜</a></li>
+					<li><a href="/tour2012/Tour_Index.jsp">여행</a></li>
+					<li class="on"><a href="/knowbox2/index.jsp">쇼핑지식</a></li>
+				</ul>
+				<!-- // -->
+				<!-- 심플헤더 - 배너영역 (에누리홈 only) -->
+				<ul class="com_head__list_ban" style="display:none">
+					<li><a href="#">혜택존<span class="ico_simple__sprite ico__sp_ben">쇼핑혜택</span></a></li>
+				</ul>
+				<!-- // -->
+				<!-- 심플헤더 - 우측메뉴 -->
+				<ul class="com_head__menu">
+					<!-- 노출되지 않는 메뉴 li태그에 display:none처리 꼭 해주세요 -->
+					<!-- 로그인 -->
+					<li style="display:none"><a href="#">로그인</a></li>
+					<!-- 회원가입 -->
+					<li style="display:none"><a href="#">회원가입</a></li>
+					<!-- 사용자 + 마이에누리 레이어 -->
+					<li>
+						<a href="#"><em class="user_name">WangKooN</em>님<span class="ico__arr_down ico_simple__sprite"></span></a>
+						<!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+						<!-- 레이어 : 마이에누리 -->
+						<div class="com_lay_login com_lay_box">
+							<div class="lay_inner">
+								<ul>
+									<li><a href="javascript:goPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+									<li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+									<li><a href="">SDUL</a></li>
+									<li><a href="">상위노출입찰</a></li>
+									<li><a href="javascript:showZzim();">찜상품 <em>(n)</em></a></li>
+									<li><a href="javascript:logout();">로그아웃</a></li>
+								</ul>
+							</div>
+						</div>
+						<!-- // -->
+					</li>
+					<!-- 로그아웃 -->
+					<li><a href="#">로그아웃</a></li>
+					<!-- 쇼핑Q&A -->
+					<li style="display:none"><a href="#">쇼핑Q&A</a></li>
+					<!-- 앱다운로드 + 레이어 -->
+					<li style="display:none">
+						<a href="javascript:void(0);">앱다운로드<span class="ico__app_down ico_simple__sprite">받기</span></a>
+						<!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+						<!-- 레이어 : 앱다운로드 -->
+						<div class="com_lay_app com_lay_box">
+							<div class="spbox" id="simpleHeader">
+								<ul class="sp_tab">
+									<li><a href="javascript:void(0);" onclick="$('.sp_enuri').show().siblings('div').hide();">에누리 가격비교</a></li>
+									<li><a href="javascript:void(0);" onclick="$('.sp_hotdeal').show().siblings('div').hide();">소셜비교</a></li>
+								</ul>
+								<!-- 에누리 -->
+								<div class="sp_enuri" style="display:block;">
+									<h2>에누리 가격비교 </h2>
+									<p>모바일로 더욱 특별해진 가격비교!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+										<dt>다운로드 SMS 보내기</dt>
+										<dd>
+											<fieldset>
+												<legend>SMS보내기</legend>
+												<input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_enuri" id="phonenum_enuri" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('enuri')"></button>
+											</fieldset>
+										</dd>
+										<dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+										<dd>입력하신 번호는 저장되지 않습니다.</dd>
+									</dl>
+								</div>
+								<!-- 소셜비교 -->
+								<div class="sp_hotdeal" style="display:none;">
+									<h2>소셜비교</h2>
+									<p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+									<dl>
+										<dt>QR코드 스캔</dt>
+										<dd>QR코드</dd>
+										<dt>앱 다운로드</dt>
+										<dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+										<dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+										<dt>다운로드 SMS 보내기</dt>
+										<dd>
+											<fieldset>
+												<legend>SMS보내기</legend>
+												<input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_hotdeal" id="phonenum_hotdeal" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('hotdeal')"></button>
+											</fieldset>
+										</dd>
+										<dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+										<dd>입력하신 번호는 저장되지 않습니다.</dd>
+									</dl>
+								</div>
+							</div>
+						</div>
+						<!-- //  -->
+					</li>
+					<!-- 더보기 + 레이어 -->
+					<li>
+						<a href="javascript:void(0);">더보기<span class="ico__arr_down ico_simple__sprite"></span></a>
+						<!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+						<!-- 레이어 : 사이트맵 -->
+						<div class="com_lay_sitemap com_lay_box">
+							<dl>
+								<dt>주요서비스</dt>
+								<dd>
+									<a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+									<a href="/enuripc/" target="_new">PC 견적비교</a>
+									<a href="/global/Index.jsp">해외직구</a>
+								</dd>
+								<dd>
+									<a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+									<a href="/view/move_mall.jsp" target="_new">이사견적</a>
+									<a href="/view/Flower365.jsp" target="_new">꽃배달</a>
+									<a href="/tour2012/Tour_Index.jsp" target="_new">여행비교</a>
+								</dd>
+							</dl>
+							<dl>
+								<dt>커뮤니티</dt>
+								<dd>
+									<a href="/knowbox2/index.jsp" target="_new">쇼핑지식</a>
+									<a href="/knowcom/news.jsp" target="_new">뉴스</a>
+									<a href="/knowcom/guide.jsp" target="_new">구매가이드</a>
+									<a href="/knowcom/exp.jsp" target="_new">체험단</a>
+									<a href="/knowcom/board.jsp?bbsname=review" target="_new">사용기</a>
+									<a href="/knowcom/enuritv.jsp" target="_new">에누리TV</a>
+									<a href="/knowcom/board.jsp?bbsname=nuri" target="_new">자유게시판</a>                            
+								</dd>
+								<dd>
+									<a href="/knowcom/board.jsp?bbsname=sale" target="_new">특가게시판</a>
+									<a href="/knowcom/qna.jsp" target="_new">쇼핑Q&amp;A</a>
+									<a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition" target="_new">쇼핑기획전</a>
+									<a href="/infoad_event/eventMain.jsp" target="_new">이벤트</a>
+								</dd>
+							</dl>
+							<p class="all">
+								<a href="/etc/Site_map.jsp" class="enuri_all" target="_new">에누리 서비스 전체보기</a>
+							</p>
+						</div>
+						<!-- // -->
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- // -->
+
+		<div class="enuribi">
+			<h1><a href="/">쇼핑지식</a></h1>			
+			<span class="logo"><a href="javascript:///">eNURI</a></span>
+			<a href="#" class="mymenu visible-sm">MY</a>
+		</div>
+
+		<!-- PC용 gnb_area -->
+		<div id="topFix" class="gnb_area hidden-sm">
+			<div class="fade prev"></div>
+			<div class="fade next"></div>
+			<div class="gnb_inner">
+				<ul class="">
+					<li class="on"><a href="#">홈</a></li>
+					<li><a href="#">뉴스</a></li>
+					<li><a href="#">구매가이드</a></li>
+					<li><a href="#">사용기</a></li>
+					<li><a href="#">자유게시판</a></li>
+					<li><a href="#">에누리TV</a></li>
+					<li><a href="#">특가게시판</a></li>
+					<li><a href="#">체험단/언박싱특가</a></li>
+					<li><a href="#">쇼핑Q&A</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //PC용 gnb_area -->
+
+		<!-- 모바일용 gnb_area -->
+		<div id="topFix" class="gnb_area hidden-md hidden-lg">
+			<div class="fade prev"></div>
+			<div class="fade next"></div>
+			<div class="gnb_inner swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide on"><a href="#">홈</a></li>
+					<li class="swiper-slide"><a href="#">뉴스</a></li>
+					<li class="swiper-slide"><a href="#">구매가이드</a></li>
+					<li class="swiper-slide"><a href="#">사용기</a></li>
+					<li class="swiper-slide"><a href="#">자유게시판</a></li>
+					<li class="swiper-slide"><a href="#">에누리TV</a></li>
+					<li class="swiper-slide"><a href="#">특가게시판</a></li>
+					<li class="swiper-slide"><a href="#">체험단</a></li>
+					<li class="swiper-slide"><a href="#">쇼핑Q&A</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //모바일용 gnb_area -->
+	</div>
+	<!-- //header -->
+
+	<!-- container -->
+	<div class="container"></div>
+	<!-- //container -->
+
+	<!-- footer PC사이즈 -->
+	<div class="footer_wrap hidden-sm">
+		<div class="bnr_area">
+			 <ul>
+				 <li><a href="/event/stampEvent_ReviewPage.jsp" target="_new" onclick="insertLog(12158);">에누리 추가할인 평균 -8.3% 혜택</a></li>
+				 <li><a href="/common/jsp/App_Landing.jsp" target="_new" onclick="insertLog(12159);">에누리되는 가격비교 모바일 에누리</a></li>
+			 </ul>
+		</div>
+		<div class="footer">
+			<ul class="footer_menu">
+				<li><a href="#" target="_top">회사소개</a></li>
+				<li><a href="#" target="_top">광고안내</a></li>
+				<li><a href="#" target="_top">판매자가이드</a></li>
+				<li><a href="#" >이용자 약관</a></li>
+				<li><a href="#" target="_top"><strong>개인정보처리방침</strong></a></li>
+				<li><a href="#" target="_top">법적고지</a></li>
+				<li><a href="#" target="_top">쇼핑몰검색</a></li>
+				<li><a href="#" target="_top">고객센터</a></li>
+				<li><a href="#" >전체메뉴</a></li>
+				<li><a  href="#" target="_top">사이트맵</a></li>
+			</ul>
+
+			<!-- PC_U 비노출 -->
+			<div class="adr hidden-md">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 김기범</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				<br>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onClick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a>
+			</div>
+			
+			<!-- PC_U 노출 -->
+			<div class="adr visible-md">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 김기범</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span>
+				<br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onClick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a>
+			</div>
+
+			<ul class="award_list">
+				<li>2015, 2017, 2018 소비자가 뽑은 가장 신뢰하는 브랜드 대상, 가격비교 서비스 대상 3회 수상</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015~2018 모바일어워드 코리아 가격비교서비스 4년 연속 대상</li>
+				<li>2016 모바일브랜드 대상 가격비교서비스 대상</li>
+				<li>2015 소비자가 뽑은 한국 소비자 만족지수 1위</li>
+			</ul>
+
+			<p class="copyright">
+				<strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>
+				<em>Copyright ⓒ SummercePlatform Inc. All rights reserved.</em>
+			</p>
+		</div>
+	</div>
+	<!-- //footer PC사이즈 -->
+
+	<!-- footer 모바일사이즈 -->
+	<footer class="visible-sm">
+		<!--<nav class="new_footer">
+			<ul>
+				<li class="com_info"><a href="#n">사업자 정보</a></li>
+				<li><a href="javascript:goPcEnuri();insertLog('11004')" target="_blank">PC버전</a></li>
+			</ul>
+		</nav>-->
+		
+		<div class="cominfo_txt" >
+			<section>
+				<p class="law_tit">법적고지</p>
+				<p class="info">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</p>
+				<!-- 에누리닷컴㈜는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다. -->
+				<p><strong>㈜써머스플랫폼</strong>
+					대표이사 : 김기범<span>|</span>사업자등록번호 : 206-81-18164<br />
+					통신판매신고 : 2015-서울중구-1046호<br />
+					서울특별시 중구 퇴계로 18 대우재단빌딩 9층<br />
+					문의 : 02-6354-3601<span>|</span>master@enuri.com
+				</p>
+			</section>
+			<ul class="rule">
+				<li><a href="#" onclick="onoff('agree')">이용약관</a></li>
+				<li><a href="#" onclick="onoff('privacy')">개인정보취급방침</a></li>
+				<li><a href="#">법적고지</a></li>
+				<!--<li><a href="#">PC버전</a></li>-->
+			</ul>
+		</div>
+	</footer>
+	<!-- //footer 모바일사이즈 -->
+
+	<script>
+		var swiper = new Swiper('.swiper-container', {
+			scrollbarHide: true,
+			slidesPerView: 'auto',
+			centeredSlides: false,
+			spaceBetween: 30,
+			grabCursor: true
+		});
+	</script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<title>기획전 등록신청</title>
+<style type="text/css">
+<!--
+td {
+	font-family: "돋움";
+	font-size: 12px; line-height: 16px;
+	color: #333333;	
+}
+IMG {border: none;}
+.input {border:solid #808080 1px;font-size: 12px;font-family: "맑은 고딕"; color: #333333; }
+.selectbox {border:solid #808080 1px;font-size: 12px;font-family: "맑은 고딕"; color: #3333330; }
+.style6 {font-family: "돋움";color: #4d4d4d;font-size: 11px;line-height: 1.5;}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	overflow-X:hidden;
+	overflow-Y:hidden;
+}
+
+/* 20151026 개인정보 이용 동의 절차 추가 */
+	.txt_clause {padding:25px 0 8px 10px;}
+	.txt_clause .check {display:inline-block; vertical-align:middle; width:19px; height:19px; cursor:pointer; background:url(http://imgenuri.enuri.gscdn.com/images/etcPage/etc_new/ico_check.gif) 0 -19px no-repeat;}
+	.txt_clause.on .check {background-position:0 0;}
+	.txt_clause.on label {color:#2c87e6; }
+	.txt_clause label {margin-left:4px; vertical-align:-2px; font-family:dotum; font-size:13px; font-weight:bold; color:#999999; letter-spacing:-0.075em;cursor:pointer; }
+	.txt_clause label em {font-style:normal; color:#2b78bc;}
+	.faq_agreecon {padding-left:10px;}
+	.faq_agreecon ol {width:518px; padding:15px 15px 0; margin:0; overflow:hidden; border:1px solid #ccc; background:#f5f5f5;}
+	.faq_agreecon ol li {list-style:none; padding-bottom:12px;}
+	.faq_agreecon ol li p {margin:0; font-family:dotum; font-size:12px; color:#666; letter-spacing:-0.005em; }
+	.faq_agreecon ol li .tit {font-weight:bold; margin-bottom:6px;}
+	.faq_agreecon ol li .sub {padding-left:13px; margin-left:18px; font-size:11px; background:url(http://imgenuri.enuri.gscdn.com/images/faq/bul_arrow_gray.gif) 0 3px no-repeat; }
+	.btn_apply {padding:30px 0 20px; text-align:center;}
+-->
+</style>
+<script type="text/javascript" src="/common/js/lib/prototype.js"></script>
+<script language="javascript">
+<!--
+	function getRadioButtonValue( radioField ) { 
+	    for (var i =0; i<radioField.length; i++) { 
+	        if( radioField[i].checked == true ) { 
+	            return radioField[i].value; 
+	        } 
+	    } 
+	}
+
+	
+	
+	function sendform()
+	{
+	
+	var email_text= fmEmail_plan.plan_email.value;
+
+	
+		if (fmEmail_plan.mall_name.value == "")
+		{
+			alert("쇼핑몰명을 입력해주세요.");
+			fmEmail_plan.mall_name.focus();
+		}
+		else if (fmEmail_plan.plan_name.value == "")
+		{
+			alert("기획전 제목을 입력해주세요.");
+			fmEmail_plan.plan_name.focus();
+		}
+		else if (fmEmail_plan.planbanner_img.value == "")
+		{
+			alert("배너 이미지를 입력해주세요.");
+			fmEmail_plan.planbanner_img.focus();
+		}
+		else if (fmEmail_plan.planbanner_url.value == "" || fmEmail_plan.planbanner_url.value.length < 10 )
+		{
+			alert("배너 url 를 입력해주세요.");
+			fmEmail_plan.planbanner_url.focus();
+		}
+		else
+		{
+			var varF_flag = getRadioButtonValue(document.fmEmail_plan.f_flag)
+			if(varF_flag > 0){
+				fmEmail_plan.action = "/view/plan/Plan_Application_upload.jsp?f_flag="+varF_flag; 
+				fmEmail_plan.submit();
+			}else{
+				alert("일반 또는 패션을 선택해주세요");
+				return false;
+			}
+		}
+	
+		//	alert("SDU 회원 전용입니다.");
+			//window.close();
+	
+	}
+	
+	function MM_swapImgRestore() { //v3.0
+	  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+	}
+	function MM_preloadImages() { //v3.0
+	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+	    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+	    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+	
+	function MM_swapImage() { //v3.0
+	  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+	   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+	}
+	
+	function guideOpen(){
+		var varUrl = "/view/plan/Plan_Guide_Pop.jsp";
+		window.open(varUrl,"_new1","width=628,height=780, toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no");
+	}
+	function obj_clean(obj){
+		if(obj.value=="띄어쓰기 포함 23자 입력 가능" || obj.value=="전화번호" || obj.value=="메일주소"){
+			obj.value = "";
+		}
+	}
+	
+	function cmdDevalue(str){
+		if(str=="plan_tel" && fmEmail_plan.plan_email.value==""){
+			fmEmail_plan.plan_email.value="메일주소";
+		}
+		if(str=="plan_email" && fmEmail_plan.plan_tel.value==""){
+			fmEmail_plan.plan_tel.value="전화번호";
+		}
+	}
+	
+	document.observe('dom:loaded',function(){
+	    $('plan_tel').observe('click',function(){
+	        if(this.value.strip() == '전화번호')
+	            this.value = '';
+	        else
+	            this.select();
+	        });
+	    $('plan_tel').observe('blur',function(){
+	        if(this.value.strip() == '')
+	            this.value = '전화번호';
+	        }); 
+        
+        $('plan_email').observe('click',function(){
+            if(this.value.strip() == '메일주소')
+                this.value = '';
+            else
+                this.select();
+            });
+        $('plan_email').observe('blur',function(){
+            if(this.value.strip() == '')
+                this.value = '메일주소';
+            });         
+	});	
+//-->
+</script>
+</head>
+<body>
+<table width="570" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #666666">
+<form name="fmEmail_plan" action="Plan_Application_upload.jsp" method="post" onSubmit="return sendform();" enctype="multipart/form-data">
+  <tr>
+    <td><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/tit_01.gif" width="570" height="53" /></td>
+  </tr>  
+  <tr>
+    <td><table width="550" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td><table width="550" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/tit_03.gif" width="71" height="14" /></td>
+          </tr>
+          <tr>
+            <td><table width="520" border="0" align="center" cellpadding="0" cellspacing="5">
+              <tr>
+                <td>현재 에누리닷컴에 유료 입점한 쇼핑몰들에 한해 신청 가능합니다.<br />
+                  등록된 기획전 건수 기준하여 AP업체는 100개까지, 전문몰은 3개까지 등록가능합니다.<br />
+                  신청 접수된 내용중 에누리 사정상 반려될 수도 있습니다.</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="1" background="http://imgenuri.enuri.gscdn.com/images/view/plan/dotline.gif"></td>
+      </tr>
+      <tr>
+        <td><table width="550" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="35"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="130"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/tit_04.gif" width="71" height="14" /></td>
+                <td width="170">
+					<!--<table width="170" border="0" cellspacing="0" cellpadding="0">
+						<tr>
+						  <td><input type="radio" name="f_flag" value="1" checked/></td>
+						  <td width="50"><strong>일반</strong></td>
+						  <td><input type="radio" name="f_flag" value="2" /></td>
+						  <td><strong>패션(중분류)</strong></td>
+						</tr>
+					</table>-->
+				</td>
+                <td>&nbsp;</td>
+                <td width="60"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/tx_input.gif" width="50" height="10" /></td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+            <td><table width="540" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="120" height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_01.gif" width="4" height="3" align="absmiddle" /> 쇼핑몰명</td>
+                <td><input name="mall_name" type="text" value=""  size="20">
+					<input name="shop_logoimg" type="hidden" value="_Main.gif">
+				</td>
+              </tr>
+              <tr>
+                <td height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_01.gif" width="4" height="3" align="absmiddle" /> 기획전 제목</td>
+                <td><input name="plan_name" type="text" value="띄어쓰기 포함 23자 입력 가능" size="40" onclick="obj_clean(this);"></td>
+              </tr>
+              <tr>
+                <td height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_01.gif" width="4" height="3" align="absmiddle" /> 배너 이미지</td>
+                <td><input type="file" style="cursor:hand" size="40" class="input" name="planbanner_img"></td>
+              </tr>
+              <tr>
+                <td height="20">&nbsp;</td>
+                <td valign="top"><a href="#" onclick="guideOpen();"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/tx_guide.gif" width="84" height="12" /></a></td>
+              </tr>
+              <tr>
+                <td height="30" colspan="2"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_01.gif" width="4" height="3" align="absmiddle" /> 위 배너 클릭시 이동되는 화면 URL (에누리 매출코드 포함된 경로)</td>
+                </tr>
+              <tr>
+                <td height="30" colspan="2"><input name="planbanner_url" type="text" value="http://" class="input" id="planbanner_url" size="70" /></td>
+                </tr>
+              <tr>
+                <td height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_01.gif" width="4" height="3" align="absmiddle" /> 기획전 기간</td>
+                <td>
+	                <select name="p_sYear" class="selectbox" onchange=chk();></select><font size=2>년</font>
+			      	<select name="p_sMonth" class="selectbox" onchange=chk();></select><font size=2>월</font>
+			      	<select name="p_sDay" class="selectbox"></select><font size=2>일~</font> 
+			      	<select name="p_sYear2" onchange=chk2(); class="selectbox"></select><font size=2>년</font>
+			        <select name="p_sMonth2" onchange=chk2(); class="selectbox"></select><font size=2>월</font>
+			        <select name="p_sDay2" class="selectbox"></select><font size=2>일</font>
+              </td>
+              </tr>
+              <tr>
+                <td height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_02.gif" width="4" height="3" align="absmiddle" /> 담당자 연락처</td>
+                <td><input name="plan_tel" type="text" class="input" id="plan_tel" value="전화번호" size="20" onclick="obj_clean(this);cmdDevalue('plan_tel');"/> <input name="plan_email" type="text" class="input" id="plan_email" value="메일주소"  size="20" onclick="obj_clean(this);cmdDevalue('plan_email');" /></td>
+              </tr>
+              <tr>
+                <td height="30" valign="top"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/bu_02.gif" width="4" height="3" align="absmiddle" /> 전하실 말씀</td>
+                <td><textarea name="plan_text" cols="45" rows="8" class="style6" id="plan_text" style="border:1px solid #808080"></textarea></td>
+              </tr>
+
+            </table></td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="1" background="http://imgenuri.enuri.gscdn.com/images/view/plan/dotline.gif"></td>
+      </tr>
+      <tr>
+        <td><table width="550" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="30"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/tit_05.gif" width="88" height="12" /></td>
+          </tr>
+          <tr>
+            <td><table width="520" border="0" align="center" cellpadding="0" cellspacing="5">
+                <tr>
+                  <td>메일 : member@enuri.com<br />
+                    신청 후, 확인 요청 메일을 보내주시면 빠른 등록이 가능합니다.</td>
+                </tr>
+            </table></td>
+          </tr>         
+        </table></td>
+      </tr>
+
+    </table></td>
+  </tr>
+	<tr>
+		<td class="txt_clause"><!-- 체크시 선택 class="on" 추가 -->
+			<span class="check"></span><label>개인정보 수집 및 이용에 동의합니다.</label>
+		</td>
+	</tr>
+	<tr>
+		<td class="faq_agreecon">
+			<ol>
+				<li><p class="tit">1. 수집하는 개인정보 항목</p><p class="sub">담당자 전화번호 및 e-mail </p></li>
+				<li><p class="tit">2. 개인정보 수집/이용목적</p><p class="sub">원활한 의사소통 경로의 확보</p></li>
+				<li><p class="tit">3. 개인정보 보유/이용기간</p><p class="sub">개인정보 수집의 목적이 달성되는 순간 파기됨</p></li>
+			</ol>
+		</td>
+	</tr>
+
+  <tr>
+    <td height="50" align="center"><a href="#" onClick="javascript:sendform();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image13','','http://imgenuri.enuri.gscdn.com/images/view/plan/btn_send_ov.gif',1)"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/btn_send.gif" name="Image13" width="60" height="20" border="0" id="Image13" /></a>  &nbsp;&nbsp;    <a href="#" onClick="window.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Image14','','http://imgenuri.enuri.gscdn.com/images/view/plan/btn_close_ov.gif',1)"><img src="http://imgenuri.enuri.gscdn.com/images/view/plan/btn_close.gif" name="Image14" width="60" height="20" border="0" id="Image14" /></a></td>
+  </tr>
+
+</form>
+</table>
+
+</body>
+</html>
+
+
+
+<script language="javascript">
+  var now = new Date();
+  var YY = now.getFullYear();
+  var MM =now.getMonth()+1; 
+  var DD = now.getDate();
+  
+  function makeSel(tgt,fr,to,def) {
+    var cnt = 0;
+    var f = document.fmEmail_plan;
+    
+    f.elements[tgt].options.length=0;
+    var str='';
+    
+    for ( var i=fr; i<=to; i++){     
+      newItem=new Option(cnt);
+      f.elements[tgt].options[cnt]=newItem;
+      f.elements[tgt].options[cnt].text=i;
+      f.elements[tgt].options[cnt].value=i;
+      
+      if(i==def) {
+        f.elements[tgt].options[cnt].selected=true;
+      }
+      cnt++;
+    }  
+  }
+
+ function init() {
+  makeSel('p_sYear',YY-1,YY+4,YY);
+  makeSel('p_sMonth',1,12,MM); 
+
+  chk();
+ }
+
+ function chk(){
+  var f = document.fmEmail_plan;
+  
+  var sdate = new Date(f.p_sYear.value,f.p_sMonth.value,0);
+  var slastDay = sdate.getDate();
+
+  makeSel('p_sDay',1,slastDay,DD);
+
+ } 
+ 
+ init();
+
+  var YY2 = now.getFullYear();
+  var MM2 =12; 
+  var DD2 = 1;
+  
+  function makeSel2(tgt,fr,to,def) {
+    var cnt = 0;
+    var f = document.fmEmail_plan;
+    
+    f.elements[tgt].options.length=0;
+    var str='';
+    
+    for ( var i=fr; i<=to; i++){     
+      newItem=new Option(cnt);
+      f.elements[tgt].options[cnt]=newItem;
+      f.elements[tgt].options[cnt].text=i;
+      f.elements[tgt].options[cnt].value=i;
+      
+      if(i==def) {
+        f.elements[tgt].options[cnt].selected=true;
+      }
+      cnt++;
+    }  
+  }
+
+ function init2() {
+  makeSel('p_sYear2',YY-1,YY+4,YY2);
+  makeSel('p_sMonth2',1,12,MM2); 
+
+  chk2();
+ }
+
+ function chk2(){
+  var f2 = document.fmEmail_plan;
+  
+  var sdate = new Date(f2.p_sYear.value,f2.p_sMonth2.value,0);
+  var slastDay = sdate.getDate();
+
+  makeSel('p_sDay2',1,slastDay,DD2);
+ } 
+ 
+ init2();
+</script>

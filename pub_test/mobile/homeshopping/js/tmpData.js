@@ -1,0 +1,93 @@
+var tmpArr = [
+	{
+		productNo:34914077,
+		imageSeq:null,
+		startDate:"11:30",
+		broadcastSeq:15605,
+		imageUrl:null,
+		productCode:34914077,
+		showTime:"Y",
+		endDate:"12:40",
+		endTime:5454,
+		moreItemCnt:0,
+		productName:"LG 이오나이저 받고!! 장학금혜택 받고!!",
+		marketCode:"0000"
+	},
+	{
+		productNo:16762562,
+		startDate:"11:30",
+		productCode:16762562,
+		imageUrl:"http://image.gsshop.com/image/16/76/16762562_L1.jpg",
+		showTime:"N",
+		endDate:"12:40",
+		endTime:5454,
+		imageSeq:445123,
+		broadcastSeq:15174,
+		moreSeq:2,
+		moreItemCnt:1,
+		productName:"★글래드 매직랩 디자인팩 한정판 12개★  특별 구성!!",
+		marketCode:"0001"
+	},
+	
+	{
+		productNo:12480684,
+		startDate:"11:30",
+		productCode:12480684,
+		imageUrl:"http://image2.lotteimall.com/goods/84/06/48/12480684_H.jpg",
+		showTime:"N",
+		endDate:"12:40",
+		endTime:5454,
+		imageSeq:657008,
+		broadcastSeq:15401,
+		moreSeq:3,
+		moreItemCnt:1,
+		productName:"(방송) 삼성 제습기 13L",
+		marketCode:"0002"
+	},
+	
+	{
+		productNo:2032774142,
+		startDate:"11:40",
+		productCode:"tvprd999",
+		imageUrl:null,
+		showTime:"Y",
+		endDate:"12:40",
+		endTime:5454,
+		imageSeq:null,
+		broadcastSeq:14596,
+		moreSeq:5,
+		moreItemCnt:2,
+		productName:"정관장 홍삼정 마일드",
+		marketCode:"0004"
+	}/*,
+	{
+		productNo:34100113,
+		startDate:"12:40",
+		productCode:34100113,
+		imageUrl:"http://itemimage.cjmall.com/goods_images/34/113/34100113M.jpg",
+		showTime:"Y",
+		endDate:"13:40",
+		endTime:9054,
+		imageSeq:438459,
+		broadcastSeq:14859,
+		moreSeq:6,
+		moreItemCnt:1,
+		productName:"미키 썸머 슬럽 그래픽 티셔츠 4종 여성",
+		marketCode:"0000"
+	},
+	{
+		productNo:17018562,
+		startDate:"12:40",
+		productCode:817018562,
+		imageUrl:"http://image.gsshop.com/image/17/01/17018562_L1.jpg",
+		showTime:"N",
+		endDate:"13:40",
+		endTime:9054,
+		imageSeq:1979453,
+		broadcastSeq:15176,
+		moreSeq:7,
+		moreItemCnt:0,
+		productName:"퍼실 컬러젤 밀리언파워 2.7*6개 + 브레프6개",
+		marketCode:"0001"
+	}*/
+];

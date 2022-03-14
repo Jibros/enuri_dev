@@ -1,0 +1,718 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+<meta charset="utf-8">	
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+<meta property="og:title" content="에누리 가격비교">
+<meta property="og:description" content="에누리 모바일 가격비교">
+<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+<meta name="format-detection" content="telephone=no" />
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" type="text/css" href="/mobilefirst/css/lib/slick.css"/>
+<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+<!-- 프로모션 공통 CSS (Mobile) -->
+<link rel="stylesheet" href="/css/event/com.enuri.event.m.css" type="text/css">
+<!-- 프로모션별 커스텀 CSS  -->
+<link rel="stylesheet" href="/css/event/y2021_rev/buyfirst_nov_m.css" type="text/css">
+<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/lib/slick.min.js"></script>
+<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+
+<body>
+<!-- 200826 : SR#41911 : [MO] SNS 공유 딥링크 연결 팝업  -->
+<div class="lay_only_mw">
+	<div class="lay_inner">
+		<div class="lay_head">
+			앱에서는 득템의 기회 <em>타임특가</em>에 참여할 수 있어요!
+		</div>
+		<!-- 버튼 : 에누리앱으로 보기 -->
+		<button class="btn_go_app" onclick="alert('APP으로 보기');">에누리앱으로 보기</button>
+		<!-- 버튼 : 모바일웹으로 보기 -->
+		<a href="javascript:void(0);" class="btn_keep_mw" onclick="$('.lay_only_mw').fadeOut(100);">괜찮아요. 모바일 웹으로 볼래요</a>
+	</div>
+</div>
+<!-- // -->
+
+<div id="eventWrap" class="border-box">
+	<div class="myarea">
+		<p class="name">홍길동 님<span onclick="alert('마이에누리 이동');">14,005,005점</span></p>
+		<p class="name" style="display:none;">더 많은 혜택을 누리고 싶다면? 로그인 후 확인하세요.<button type="button" class="btn_login">로그인</button></p>
+		<a href="#" class="win_close">창닫기</a>
+	</div>
+
+	<!-- 비쥬얼,플로팅탭 -->
+	<div class="toparea">		
+		<!-- 공통 : 상단비주얼 -->
+		<div class="visual">
+			<!-- 공통 : 공유하기 버튼  -->
+			<button class="com__btn_share btn_white" onclick="$('.com__share_wrap').show();">공유하기</button>
+			<!-- // -->
+			<div class="inner">
+				<span class="txt_01">WELCOME 혜택</span>
+				<h2>첫만남에-누리다</h2>
+				<span class="txt_02">오직 에누리 신규 회원님을 위한 특별혜택!</span>
+				<span class="box_wrap"><!--상자--></span>
+			</div>
+			<div class="loader-box">
+				<div class="visual-loader"></div>
+			</div>
+			<script>
+				// 상단 타이틀 등장 모션
+				$(window).load(function(){
+					var $visual = $(".toparea .visual");
+						$visual.addClass("intro");
+					setTimeout(function(){
+						$visual.addClass("end");
+					},100)
+				})
+			</script>
+		</div>
+
+		<!-- 공통 : 탭 -->	
+		<div class="section navtab">
+			<div class="navtab_inner">
+				<ul class="navtab_list">
+					<li><a href="newmember.html" class="navtab_item--01">신규회원 혜택</a></li>
+					<li><a href="welcome.html" class="navtab_item--02">웰컴 혜택</a></li>
+					<li class="is-on"><a href="invite.html" class="navtab_item--03">초대 혜택</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- // -->
+		
+	</div>
+	<!-- // -->
+	
+	<!-- area1. 초대자혜택 -->
+	<div class="section invite_benefit1" id="evt1">
+		<div class="contents">
+			<h3><img src="http://img.enuri.info/images/event/2021/buy_first/sep/mobile/m_invite_evt1_tit.png" alt="초대코드를 전하세요. nice to cu 1천원!"></h3>
+			<div class="invite_benefit1_img">
+				<img src="http://img.enuri.info/images/event/2021/buy_first/sep/mobile/m_invite_evt1_img.png" alt="3명 등록시 혜택지급">
+			</div>
+			<div class="invite_mycode_cnt">
+				나의 초대코드 등록친구 <span>0</span>/3명
+				<!-- 비로그인시 카운트 ? 로 출력 -->
+				<!-- 나의 초대코드 등록친구 <span>?</span>/3명 -->
+			</div>
+			<!-- if(로그인후) > 확인버튼클릭시 > 기존에 뜨던 팝업 제거됨 > 바로 코드출력되며 확인버튼이 복사버튼으로 변경됨 -->
+			<div class="input_area invite_mycode" style="display: none;">
+				<input type="text" class="in_code" maxlength="15" value="thisismycode" readonly>
+				<button type="button" class="btn btn_check_mycode">복사</button>
+			</div>
+			<!-- if(로그인후) -->
+			<div class="input_area invite_mycode">
+				<input type="text" class="in_code" maxlength="15" value="나의 초대코드" readonly>
+				<button type="button" class="btn btn_check_mycode">확인</button>
+			</div>
+			<!-- if(로그인전) > 로그인 레이어 [class=logout] 추가 -->
+			<div class="input_area invite_mycode logout" style="display: none;">
+				<input type="text" class="in_code" maxlength="15" value="나의 초대코드" readonly>
+				<button type="button" class="btn btn_check_mycode">확인</button>
+			</div>
+			<script>
+				// 퍼블테스트 
+				// 로그인시 버튼 텍스트 복사로 바뀜
+				// 비로그인시 로그인페이지로 이동
+				$('.invite_mycode .btn_check_mycode').on('click', function(){
+					if(!$(this).parent().hasClass('logout')) {
+						$(this).text('복사');
+						$(this).prev().val('thisismycode');
+					} else {
+						window.location.assign('https://www.enuri.com/member/login/login.jsp');
+					}
+				});
+			</script>
+		</div>
+	</div>
+	<!-- // 초대자혜택 -->
+
+	<!-- area2. 초대친구혜택 -->
+	<div class="section invite_benefit2" id="evt2">
+		<div class="contents">
+			<h3><img src="http://img.enuri.info/images/event/2021/buy_first/sep/mobile/m_invite_evt2_tit.png" alt="초대코드를 등록하세요. 즉시 e머니 500점"></h3>
+			<div class="invite_benefit2_img">
+				<img src="http://img.enuri.info/images/event/2021/buy_first/sep/mobile/m_invite_evt2_img.png" alt="앱전용">
+			</div>
+			<!-- if(로그인후) > 확인버튼클릭시 > 기존에 뜨던 팝업 제거됨(onoff('infoAgree')) > [class=complete]  클래스 추가 -->
+			<div class="input_area invite_friendcode complete" style="display: none;">
+				<input type="text" id="" class="in_code" maxlength="15" value="" placeholder="초대코드 입력">
+				<button type="button" class="btn_code_apply">등록</button>
+			</div>
+			<!-- if(로그인후) -->
+			<div class="input_area invite_friendcode">
+				<input type="text" id="" class="in_code" maxlength="15" value="" placeholder="초대코드 입력" >
+				<button type="button" class="btn_code_apply">등록</button>
+			</div>
+			<!-- if(로그인전) > 로그인 레이어 [class=logout] 추가 -->
+			<div class="input_area invite_friendcode logout" style="display: none;">
+				<input type="text" id="" class="in_code" maxlength="15" value="" placeholder="초대코드 입력">
+				<button type="button" class="btn_code_apply">등록</button>
+			</div>
+			<script>
+				// 퍼블테스트 
+				// 로그인시 버튼 텍스트 완료로 바뀜, 클래스 생성
+				// 비로그인시 로그인페이지로 이동
+				$('.invite_friendcode .btn_code_apply').on('click', function(){
+					if(!$(this).parent().hasClass('logout')) {
+						$(this).parent().addClass('complete');
+						$(this).text('완료');
+					} else {
+						window.location.assign('https://www.enuri.com/member/login/login.jsp');
+					}
+				});
+			</script>
+		</div>
+		<!-- 버튼 : 꼭 확인하세요 -->
+		<div class="com__evt_notice">
+			<div class="evt_notice--btn_area"><button class="btn__evt_notice btn__white" data-laypop-id="slidePop1"><span>꼭! 확인하세요</span></button></div> <!-- 열기 : 유의사항 열기 -->
+		</div>
+		<div id="slidePop1" class="evt_notice--slide">
+			<div class="evt_notice--inner">
+				<div class="evt_notice--head">유의사항</div>
+				<div class="evt_notice--cont">
+					<div class="evt_notice--continner">
+						<h1 class="htit">[초대자 혜택]</h1>
+						<dl>
+							<dt>이벤트 대상 및 혜택</dt>
+							<dd>
+								<ul>
+									<li>이벤트 대상 : 이벤트 기간 내 나의 초대코드를 등록한 친구가 3명인 고객</li>
+									<li>이벤트 기간 : 매월 1일 ~ 말일</li>
+									<li>이벤트 혜택 : [CU] 모바일 금액권 1천원 (e머니 1,000점)</li>
+									<li>혜택 지급일 :초대코드 3건 등록 시 즉시 적립</li>
+									<li><span class="stress">e머니 유효기간 : 적립일로부터 15일 (유효기간 만료 후 재적립 불가)</span><br />
+										<span class="noti">※ 적립된 e머니는 e쿠폰 스토어에서 다양한 쿠폰으로 교환가능합니다.</span>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>이벤트 참여방법 및 유의사항</dt>
+							<dd>
+								<ul>
+									<li>참여방법 : 에누리 가격비교 모바일 앱 로그인 &rarr; 초대 혜택 이벤트 나의 초대코드 확인  &rarr; 친구에게 초대코드 전달 &rarr; 친구가 초대코드 등록 시 자동 누적<br/>
+										※ 나의 초대코드는 PC 및 모바일 앱/웹에서 로그인 후에도 확인 가능합니다. 
+									</li>
+									<li>본 이벤트는 초대하는 친구 수에는 제한이 없습니다.</li>
+									<li>초대하는 친구 수에는 제한이 없습니다. </li>
+									<li>본 이벤트는 본인인증 ID당 1회만 참여 가능합니다. (처음 초대코드 받은 ID만 유효 / ※ 본인인증 필수)</li>
+									<li><span class="stress">이벤트 대상 제외 :</span> 아래의 경우에는 이벤트 대상 및 혜택 지급에서 제외됩니다. <br />
+										<ul class="sub">
+											<li>- 나의 초대코드 등록이 3건 미만인 경우</li>
+											<li>- 동일한 본인인증으로 가입한 다수의 ID로 중복 참여한 경우</li>
+										</ul>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<h1 class="htit">[초대친구 혜택]</h1>
+						<dl>
+							<dt>이벤트 대상 및 혜택</dt>
+							<dd>
+								<ul>
+									<li>이벤트 대상 : 친구에게 받은 초대코드 등록한 고객</li>
+									<li>이벤트 혜택 : e머니 500점</li>
+									<li>혜택 지급일 : 초대코드 등록 시 즉시 적립</li>
+									<li><span class="stress">e머니 유효기간 : 적립일로부터 15일 (유효기간 만료 후 재적립 불가)</span><br />
+										※ 적립된 e머니는 e쿠폰 스토어에서 다양한 쿠폰으로 교환가능합니다.
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>이벤트 참여방법 및 유의사항</dt>
+							<dd>
+								<ul>
+									<li>참여방법 : 에누리 가격비교 모바일 앱 로그인 &rarr; 초대 혜택 이벤트 초대코드 등록</li>
+									<li>초대자-초대친구 맞초대 불가합니다.</li>
+									<li>본 이벤트는 모바일 앱에서 본인인증 ID당 1회만 참여 가능합니다. (※ 본인인증 필수)</li>
+									<li><span class="stress">이벤트 대상 제외</span> : 아래의 경우에는 이벤트 대상 및 혜택 지급에서 제외됩니다. 
+										<ul class="sub">
+											<li>- 친구에게 받은 초대코드를 등록하지않은 경우</li>
+											<li>- 동일한 본인인증으로 가입한 다수의 ID로 중복 참여한 경우</li>
+										</ul>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="evt_notice--foot">						
+					<button class="btn__evt_confirm">확인</button> <!-- 닫기 : 유의사항 닫기 -->
+				</div>
+			</div>
+		</div>
+		<!-- // -->
+		
+	</div>
+	<!-- // 초대친구혜택 -->
+
+	<!-- area3. step3 친구도 나도 e머니 9000점 -->
+	<div class="section invite_benefit3" id="evt3">
+		<div class="contents">
+			<h3><img src="http://img.enuri.info/images/event/2021/buy_first/sep/mobile/m_invite_evt3_tit.png" alt="초대코드를 전하세요. nice to cu 1천원!"></h3>
+			<div class="invite_benefit3_img">
+				<img src="http://img.enuri.info/images/event/2021/buy_first/sep/mobile/m_invite_evt3_img.png" alt="3명 등록시 혜택지급">
+			</div>
+			<!-- 버튼 : 웰컴 페이백신청하기 -->
+			<a href="javascript:void(0);" onclick="onoff('onlyApp1');return false;" class="btn btn_apply_invite">
+				<span>초대 혜택 신청하기</span>
+				<span class="sub_text">※ 첫 구매일로부터 30일 이내 신청 가능</span>
+			</a>
+			<!-- // -->
+			<div class="invite_notice">
+				<ul>
+					<li>ID(본인인증), 초대코드 등록, 첫 구매, 초대 혜택 신청을 모두 동일한 모바일 기기에서 진행한 경우에만 혜택 지급 가능합니다.</li>
+					<li>본 이벤트는 모바일 앱에서 본인인증 ID당 1회만 참여 가능합니다. (※ 본인인증 필수)</li>
+					<li>웰컴 페이백 이벤트와 중복 참여 불가합니다.</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 버튼 : 꼭 확인하세요 -->
+		<div class="com__evt_notice">
+			<div class="evt_notice--btn_area"><button class="btn__evt_notice" data-laypop-id="slidePop2"><span>꼭! 확인하세요</span></button></div> <!-- 열기 : 유의사항 열기 -->
+		</div>
+		<div id="slidePop2" class="evt_notice--slide">
+			<div class="evt_notice--inner">
+				<div class="evt_notice--head">유의사항</div>
+				<div class="evt_notice--cont">
+					<div class="evt_notice--continner">
+						<dl>
+							<dt>이벤트 대상 및 혜택</dt>
+							<dd>
+								<ul>
+									<li>이벤트 대상 : 이벤트 기간 내 에누리 모바일 앱에서 초대코드 등록 후 1만원 이상 첫 구매하고 초대 혜택 이벤트 신청 고객</li>
+									<li>이벤트 기간 : 첫 구매일로부터 30일 이내</li>
+									<li>이벤트 혜택 : e머니 9,000점 (※ 초대자 & 초대친구 각각 지급)</li>
+									<li>혜택 지급일 : 첫 구매일로부터 최대 30일 이내 적립 (※ 해외직구 상품 구매 시 최대 70일 소요)</li>
+									<li><span class="stress">E머니 유효기간 : 적립일로부터 30일 (유효기간 만료 후 재적립 불가)</span><br>
+										※ 적립된 e머니는 e쿠폰 스토어에서 다양한 쿠폰으로 교환가능합니다.</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>이벤트 참여방법 및 유의사항</dt>
+							<dd>
+								<ul>
+									<li>참여방법 : 에누리 가격비교 모바일 앱 로그인 &rarr; 초대코드 등록 &rarr; 적립대상 쇼핑몰 이동 &rarr; <span class="stress">1만원 이상 구매</span> &rarr; 초대 혜택 이벤트 신청</li>
+									<li>적립대상 쇼핑몰 : G마켓, 옥션, 11번가, 인터파크, 티몬, 위메프, 쿠팡, GS SHOP, Cjmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스), 에누리 해외직구관, SK스토아, 홈플러스<br>
+										<span class="stress">※ 구매 유의사항 및 구매적립 제외 카테고리는 이벤트 페이지 하단 'e머니 구매혜택' 유의사항을 꼭 확인하세요!</span></li>
+									<li>본 이벤트는 모바일 앱에서 본인인증 ID당 1회만 참여 가능합니다. (※ 본인인증 필수)</li>
+									<li><span class="stress">ID(본인인증), 초대코드 등록, 첫 구매, 초대 혜택 신청을 모두 동일한 모바일 기기에서 진행한 경우에만 혜택 지급 가능합니다.</span></li>
+									<li><span class="stress">ID(본인인증), 모바일 기기 모두 첫 구매일 경우 이벤트 신청 가능합니다. (구매한 기기에 구매이력 있을 경우 불가)</span></li>
+									<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 금액만 반영됩니다. </li>
+									<li><span class="stress">이벤트 대상 제외</span> : 아래의 경우에는 이벤트 대상 및 혜택 지급에서 제외됩니다. 
+										<ul class="sub">
+											<li>- 초대 혜택 이벤트 신청하지 않은 경우</li>
+											<li>- 실제 구매금액이 1만원 미만의 구매일 경우</li>
+											<li>- 구매적립 제외 카테고리 구매일 경우 (※ 신청일로부터 30일 이내 재구매 시 혜택 지급 가능)</li>
+											<li>- 구매 후 취소/환불/교환/반품한 경우 (※ 신청일로부터 30일 이내 재구매 시 혜택 지급 가능)</li>
+											<li>- 동일한 본인인증으로 가입한 다수의 ID로 중복 참여한 경우</li>
+											<li><span class="stress">- 웰컴 페이백 이벤트 신청 및 혜택 받은 고객 (중복 불가)</span></li>
+										</ul>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>공통 이벤트 유의사항</dt>
+							<dd>
+								<ul>
+									<li>부정 참여 시 본 이벤트 대상 제외 및 혜택 지급이 취소될 수 있습니다. </li>
+									<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<div class="evt_notice--foot">						
+					<button class="btn__evt_confirm">확인</button> <!-- 닫기 : 유의사항 닫기 -->
+				</div>
+			</div>
+		</div>
+		<!-- // -->
+	</div>
+	<!-- // app 알림동의-->
+
+	<!-- 에누리 혜택 -->
+	<div class="otherbene">
+		<div class="contents">
+			<h3><img src="http://img.enuri.info/images/event/2021/buy_first/sep/common/m_benefit_tit.png" alt="놓칠 수  없는 특별한 혜택, 에누리 혜택"></h3>
+			<ul class="banlist">
+				<li>
+					<a href="http://m.enuri.com/mobilefirst/emoney/emoney_store.jsp?freetoken=emoney" target="_blank" title="새창으로 이동">
+						<div class="tx1">쌓인 e머니는 어떻게?</div>
+						<div class="tx2">e쿠폰스토어</div>
+						<div class="comm_btn"><img src="http://img.enuri.info/images/event/2021/chuseok/mobile/m_other_btn.png"></div>
+					</a>
+				</li>
+				<li>
+					<a href="http://m.enuri.com/m/event/visit.jsp?oc=#evt1" target="_blank" title="새창으로 이동">
+						<div class="tx1">100% 당첨! 매일받는 e머니</div>
+						<div class="tx2">도전! 프로출첵러</div>
+						<div class="comm_btn"><img src="http://img.enuri.info/images/event/2021/chuseok/mobile/m_other_btn.png"></div>
+					</a>
+				</li>
+				<li>
+					<a href="http://m.enuri.com/m/event/buy_stamp.jsp" target="_blank" title="새창으로 이동">
+						<div class="tx1">스탬프 찍고 추가적립까지!</div>
+						<div class="tx2">쇼핑에-누리다</div>
+						<div class="comm_btn"><img src="http://img.enuri.info/images/event/2021/chuseok/mobile/m_other_btn.png"></div>
+					</a>
+				</li>
+				<li>
+					<a href="http://m.enuri.com/m/index.jsp#evt" target="_blank" title="새창으로 이동">
+						<div class="tx1">끝나지 않은 에누리 혜택</div>
+						<div class="tx2">더 많은 이벤트</div>
+						<div class="comm_btn"><img src="http://img.enuri.info/images/event/2021/chuseok/mobile/m_other_btn.png"></div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- //에누리 혜택 -->
+    
+    <!-- 공통 : 하단 e머니 구매혜택 -->
+    <div class="com_event_benefit">
+        <div class="com_event__inner">
+            <h3 class="blind">에누리에서 구매하고 현금같은 e머니 적립 받으세요!</h3>
+            <div class="com_benefit_slide swiper-container">
+                <div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="http://img.enuri.info/images/event/2021/common/m_evt_ben_slide_01.png" alt="STEP1. 에누리 앱에서 로그인 후 적립대상 쇼핑몰 이동하기">
+					</div>
+					<div class="swiper-slide">
+						<img src="http://img.enuri.info/images/event/2021/common/m_evt_ben_slide_02.png" alt="STEP2. 상품 구매하기">
+					</div>
+					<div class="swiper-slide">
+						<img src="http://img.enuri.info/images/event/2021/common/m_evt_ben_slide_03.png" alt="STEP3. 구매금액의 최대 1.5% E머니 적립!">
+					</div>
+                </div>
+                <div class="swiper-button-prev btn_prev"></div>
+                <div class="swiper-button-next btn_prev"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <!-- 200207 : 유의사항 버튼  수정-->
+            <a href="#appinfo" class="btn_com_benefit_noti btn__evt_notice" data-laypop-id="appinfo">유의사항</a>	
+            <!-- // -->
+        </div>
+        <script>
+            $(function(){
+                var mySwiper = new Swiper('.com_benefit_slide',{
+                    prevButton : '.com_event_benefit .swiper-button-prev',
+                    nextButton : '.com_event_benefit .swiper-button-next',
+                    pagination : '.com_event_benefit .swiper-pagination',
+                    speed : 1000,
+                    loop : true,
+                    paginationClickable : true
+                })
+            })
+        </script>
+    </div>
+
+    <!-- 200207 구매적립 유의사항 이동 / 레이어 -> flip형으로 수정 / 문구수정 -->			
+    <div id="appinfo" class="evt_notice--slide">
+        <div class="evt_notice--inner">
+            <div class="evt_notice--head">유의사항</div>
+            <div class="evt_notice--cont">
+                <div class="evt_notice--continner">
+                    <dl>
+						<dt>구매 적립 기준 및 유의사항</dt>
+						<dd>
+							<ul>
+								<li>적립 방법 : 에누리 가격비교 모바일 앱 로그인 → 적립 대상 쇼핑몰 이동 → <span class="stress">1천 원 이상 구매</span> → 구매확정(배송 완료) 시 e머니 적립</li>
+								<li>적립 대상 쇼핑몰: G마켓, 옥션, 11번가, 인터파크, 티몬, 위메프, 쿠팡, GS SHOP, Cjmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스), 에누리 해외직구관, SK스토아, 홈플러스<br>
+									<span class="stress">※ 티몬 및 에누리 해외직구관의 경우 PC 및 모바일 앱/웹에서 로그인 후 구매 시에도 구매 적립 가능합니다.</span></li>
+								<li>구매 적립 e머니는 구매일로부터 10 ~ 30일간 취소/환불/교환/반품 여부 확인 후 적립됩니다.</li>
+								<li><span class="stress">구매 적립 e머니 유효기간 : 적립일로부터 60일 (유효기간 만료 후 재 적립 불가)</span><br>
+										※ 적립된 e머니는 e쿠폰 스토어에서 다양한 쿠폰으로 교환 가능합니다.</li>
+								<li>구매 적립 e머니는 최소 10점(구매금액 1천 원 이상)부터 적립되며, 1원 단위 e머니는 적립되지 않습니다.</li>
+								<li>구매 적립 e머니는 구매확정(구매일로부터 최대 30일) 시점부터 MY 에누리 적립내역 페이지에서 확인 가능합니다.</li>
+								<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 금액만 반영됩니다. </li>
+								<li>적립 대상 쇼핑몰에서 장바구니에 여러 상품을 담아 한 번에 결제하는 경우 구매건수는 1건이며 구매금액은 통합된 금액으로 e머니 적립됩니다.</li>
+							</ul>
+						</dd>
+
+						<dt>※ 카테고리별 구매적립률 상세</dt>
+						<dd>
+							<table class="evt_noti_tb" style="width:100%;">
+								<colgroup>
+									<col width="50%">
+									<col>
+								</colgroup>
+								<tbody>
+									<tr>
+										<th>카테고리</th>
+										<th>적립률</th>
+									</tr>
+									<tr>
+										<td>유아,완구</td>
+										<td>1.5%</td>
+									</tr>
+									<tr>
+										<td>식품/스포츠,레저/자동차/화장품</td>
+										<td>1.0%</td>
+									</tr>
+									<tr>
+										<td>컴퓨터/도서/문구,사무/PC부품</td>
+										<td>0.8%</td>
+									</tr>
+									<tr>
+										<td>디지털/영상,디카</td>
+										<td rowspan="4">0.3%</td>
+									</tr>
+									<tr>
+										<td>가전(생활,주방,계절)</td>
+									</tr>
+									<tr>
+										<td>패션/잡화</td>
+									</tr>
+									<tr>
+										<td>가구,인테리어</td>
+									</tr>
+									<tr>
+										<td>생활,취미</td>
+										<td rowspan="2">0.2%</td>
+									</tr>
+									<tr>
+										<td>모바일쿠폰,상품권<br/>
+											<p class="stress">*특정 상품에 한하여 적립되오니<br/>적립가능 상품은 하단에서 확인해주세요.</p>
+										</td>													
+									</tr>
+								</tbody>
+							</table>
+						</dd>
+					</dl>
+					<dl>
+						<dt class="stress">[모바일쿠폰,상품권 ] 구매적립 기준</dt>
+						<dd>									
+							<ul>
+								<!-- 201106 : 내용 수정 -->
+								<li>적립가능 쇼핑몰 : G마켓, 옥션, 인터파크</li>
+								<!-- // -->	
+								<li>적립가능 상품 (0.2% 적립) : 문화상품권(해피머니, 컬쳐랜드), 도서상품권, 백화점상품권, 영화예매권, 국민관광 상품권</li>
+								<li>백화점상품권 기준 상세
+									<ul class="sub">
+										<li>1) 상품명에 '백화점 상품권' 명시된 상품 또는 백화점에서만 사용할 수 있는 상품권만 적립가능</li>
+										<li>2) 복합상품권 적립불가 (삼성 상품권, 신세계 기프트카드, 롯데카드 상품권, 이랜드 상품권, AK플라자 상품권, 통합 상품권 등)<br />
+											- 복합 상품권의 경우 사용처에 백화점이 기재되어 있는 경우에도 적립불가
+										</li>
+										<li>3) 백화점 상품권으로 전환 가능한 포인트 구매 시 적립불가</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl>
+						<dt>적립대상 쇼핑몰 중 구매적립 제외 카테고리 및 서비스</dt>
+						<dd>
+							<ul>
+								<li>에누리 가격비교에서 검색되지 않는 상품</li>
+								<li>모바일쿠폰,상품권 : 상품권, 지역쿠폰, e교환권, e쿠폰 등</li>
+								<li>쇼핑몰 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리</li>
+							</ul>
+							<ul class="sub">
+								<li>- G마켓 : 중고장터, 실시간 여행, 항공권, 도서/음반, 모바일쿠폰/상품권(일부 적립가능)</li>
+								<li>- 옥션 : 중고장터, 실시간 여행, 항공권, 모바일쿠폰/상품권(일부 적립가능)</li>
+								<li>- 11번가 : 여행/숙박/항공, 모바일쿠폰/상품권</li>
+								<li>- 인터파크 : 라이프 서비스(티켓, 투어, 아이마켓 등), 모바일쿠폰/상품권(일부 적립가능)</li>
+								<li>- 티몬 : 특가 판매 상품(슈퍼꿀딜, 슈퍼마트 등), 모바일쿠폰/상품권</li>
+								<li>- 위메프 : 모바일쿠폰/상품권</li>
+								<li>- GS SHOP, CJmall : 모바일쿠폰/상품권</li>
+								<li>- SSG : 도서/음반/문구/취미/여행, 모바일쿠폰/상품권</li>
+							</ul>
+						</dd>
+					</dl>
+					<dl>
+						<dt>공통 구매 유의사항</dt>
+						<dd>
+							<ul>
+								<li>아래의 경우에는 구매 확인 및 구매적립이 불가합니다.
+									<ul class="sub">
+										<li>- 에누리 가격비교 모바일 앱이 아닌 다른 모바일 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리 가격비교 모바일 앱으로 결제만 한 경우</li>
+										<li>- 에누리 가격비교 미 로그인 후 구매한 경우</li>
+										<li>- 에누리 가격비교 PC 및 모바일 웹에서 구매한 경우 (※ 티몬 및 에누리 해외직구관은 PC 및 모바일 앱/웹 구매 시에도 가능)</li>
+									</ul>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+                </div>
+            </div>
+            <!-- // -->
+            <div class="evt_notice--foot">						
+                <button class="btn__evt_confirm">확인</button> <!-- 닫기 : 유의사항 닫기 -->
+            </div>
+        </div>
+    </div>
+
+	<!-- SR#47141 2021.06.07 추가 e머니 스토어 인기브랜드 -->
+	<div class="benefit">
+		<div class="goos_zone">
+			<h3>스토어 인기브랜드</h3>
+			<ul class="bef_goos">
+				<li>
+					<a href="javascript:///" onclick="onoff('app_only2')"><img src="http://img.enuri.info/images/event/2017/template/m_stbrand1.jpg" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:///"><img src="http://img.enuri.info/images/event/2017/template/m_stbrand2.jpg" alt="" /></a>
+				</li>
+				<li>
+					<a href="javascript:///"><img src="http://img.enuri.info/images/event/2017/template/m_stbrand3.jpg" alt="" /></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<span class="go_top"><a href="#">TOP</a></span>
+</div>
+
+<!-- 공통 : SNS공유하기 -->
+<div class="com__share_wrap dim" style="z-index:10000;display:none">
+	<div class="com__layer share_layer">
+		<div class="lay_head">공유하기</div>
+		<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+		<div class="lay_inner">
+			<ul>
+				<li class="share_fb">페이스북 공유하기</li>
+				<li class="share_kakao">카카오톡 공유하기</li>				
+				<li class="share_tw">트위터 공유하기</li>
+				<!-- <li class="share_line">라인 공유하기</li> -->
+				<!-- 메일아이콘 클릭시 활성화(.on) -->
+				<!-- <li class="share_mail" onclick="$(this).toggleClass('on');$(this).parents('.share_layer').find('.btn_wrap').toggleClass('mail_on');">메일로 공유하기</li> -->
+				<!-- <li class="share_story">카카오스토리 공유하기</li> -->
+				<!-- <li class="share_band">밴드 공유하기</li> -->
+			</ul>
+			<!-- 메인보내기 버튼클릭시 .mail_on 추가해 주세요 -->
+			<div class="btn_wrap">
+				<div class="btn_group">
+					<!-- 주소복사하기 -->
+					<div class="btn_item">
+						<span id="txtURL" class="txt__share_url">http://www.enuri.com/event/chuseok.jsp</span>
+						<button class="btn__share_copy" data-clipboard-target="#txtURL">복사</button>
+					</div>
+					<!-- 이메일주소 입력하기 -->
+					<div class="btn_item">
+						<input type="text" class="txt__share_mail" placeholder="이메일 주소 입력해 주세요">
+						<button class="btn__share_mail">보내기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/clipboard.min.js"></script>
+	<script>
+		$(function(){
+			var clipboard = new ClipboardJS('.com__share_wrap .btn__share_copy');
+			clipboard.on('success', function(e) {
+				alert('주소가 복사되었습니다');
+			});
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+		});
+	</script>
+</div>
+<!-- // -->	
+
+<!-- 모바일웹 공통 : 모바일 앱 전용 이벤트  -->
+<div class="layer_back" id="app_only" style="display:none;">
+	<div class="appLayer">
+		<h4>모바일 앱 전용 이벤트</h4>
+		<a href="javascript:///" class="close" onclick="$('#app_only').hide();">창닫기</a>
+		<p class="txt"><strong>가격비교 최초!</strong><em>현금 같은 혜택</em>을 제공하는<br />에누리앱을 설치합니다.</p>
+		<p class="btn_close"><button type="button">설치하기</button></p>
+	</div>
+</div>
+
+<!-- layer 개인정보수집 이용동의 -->
+<div class="layer_back" id="agree" style="display:none;">
+	<div class="agreeLayer">
+		<h3>개인정보 수집 및 이용동의</h3>
+		<a href="javascript:///" class="close" onclick="onoff('agree')">창닫기</a>
+		<div class="agree_txt">
+			<span class="code_num">입력한 코드<em>enuritest1234565</em></span>
+			<p>이벤트 참여를 위해 초대한 친구에게<br />앱설치, 첫구매 정보가 공유됩니다.<br />(쇼핑몰ID, 구매내역 등은 제공되지 않음)</p>
+			<p><label><input type="checkbox" class="chkbox" id="" checked>정보 공유 동의</label></p>
+			<button class="agreebtn" onclick="alert('환영합니다!\n초대코드가 등록되었습니다.\n앱에서 초대 혜택을 받으세요!');">동의 후 초대코드 등록</button>
+		</div>
+	</div>
+</div>
+<!--// layer 개인정보수집 이용동의 -->
+
+<!-- layer 인증하고초대코드받기 -->
+<div class="layer_back" id="myInvite1" style="display:none;">
+	<div class="inviteLayer">
+		<a href="javascript:///" class="close" onclick="onoff('myInvite1')">창닫기</a>
+		<div class="agree_txt">
+			<p class="txt1">이벤트 참여를 위해서<br />본인인증정보를 저장합니다.</p>
+			<p class="txt2">인증정보는 이벤트 종료시까지 저장되며<br />이벤트 종료 후 파기됩니다.</p>
+			<p class="ipt"><label><input type="checkbox" class="chkbox" id="" checked>정보 수집 동의</label></p>
+			<button class="agreebtn">초대코드받기</button>
+		</div>
+	</div>
+</div>
+<!-- //layer 인증하고초대코드받기 -->
+
+
+<script type="text/javascript">
+    // 공통 : 상단 탭 고정
+    (function (global, $) {
+        var $nav = $('.navtab'); // 탭
+		var $myarea = $('.myarea');
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();     
+            if (scroll > $nav.offset().top) {
+                $nav.addClass("is-fixed")
+				$myarea.addClass("f-nav");
+            }else{
+                $nav.removeClass("is-fixed")
+				$myarea.removeClass("f-nav");
+            }
+        });	
+    }(window, window.jQuery));
+
+	// 공통 : 유의사항 레이어 열기/닫기
+	$(function(){
+		var el = {
+			btnSlide: $(".btn__evt_notice"), // 열기 버튼
+			btnSlideClose : $(".btn__evt_confirm") // 닫기 버튼
+		}
+		el.btnSlide.click(function(){ // 슬라이드 유의사항 열기
+			$(this).toggleClass('on');
+			$("#"+$(this).attr("data-laypop-id")).slideToggle();
+		})
+		el.btnSlideClose.click(function(){ // 슬라이드 유의사항 닫기
+			var thisClosest = $(this).closest('.evt_notice--slide')
+			$(thisClosest).slideToggle();
+			$('html,body').stop(0).animate({scrollTop:$(thisClosest).siblings(".com__evt_notice").offset().top - 50});
+		})
+	})
+
+	// 공통 :  하단 컨텐츠로 바로 진입시 포지션 보정을 위한 스크립트 처리
+	$(function(){
+		if(window.location.hash) {
+			var $hash = $("#"+window.location.hash.substring(1));
+			var navH = $(".navtab").outerHeight();
+			if ( $hash.length ){
+				$("html,body").stop(true,false).animate({"scrollTop": $hash.offset().top - navH},"slow");
+			}
+  		}
+	})
+
+	/* 퍼블테스트 : 레이어 열고 닫기*/
+	function onoff(id){
+		var mid = $("#"+id);
+		if(mid.css("display") !== "none"){
+			mid.css("display","none");
+		}else{
+			mid.css("display","");
+		}
+	}
+</script> 
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="/css/default.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/swiper.min.css" type="text/css">
+<script type="text/javascript" src="/js/swiper.min.js"></script>
+<link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+<style>
+    body {overflow-x:hidden;width:100%;height:100%;}
+    body *{font-family:'Noto Sans KR',tahoma,"Apple SD Gothic Neo",'malgun gothic',"맑은고딕",'dotum','돋움','gulim','굴림',verdana,sans-serif !important;}
+    img {vertical-align:top;}
+    .wrap {position:relative;width:100%;height:100%;}
+    .inner {width:1280px;margin:0 auto}
+    .header {position:relative;width:100%;height:210px;margin-bottom:0;}
+    .header_bg {display:block;position:absolute;top:0;left:0;width:100%;height:210px;z-index:0;}
+    .header:before {position:absolute;top:0;left:0;}
+    .header .back {display:block;overflow:hidden;position:absolute;top:40px;left:0;width:110px;height:56px;font-size:0;text-indent:-9999px;z-index:10000;}
+    .content {position:relative;width:1300px;margin-top:-210px;}
+    .content:after {content:"";display:table;clear:both;}
+    .content > div {position:relative;}
+    .content .tabs_cont {position:absolute;top:0;left:50%;width:1920px;margin-left:-970px;z-index:10;}
+    
+    .tabs {position:fixed;bottom:30px;left:0;width:100%;text-align:center;z-index:999;}
+    .tabs li {display:inline-block;width:50px;height:50px;margin:0 5px;border:1px solid #eee;border-radius:100%;font-size:16px;font-weight:bold;font-weight:500;cursor:pointer;text-align:center;line-height:50px;vertical-align:middle;background-color:#14171e;transition:all .1s ease-in-out;}
+    .tabs li.tab {color:#333;background:rgba(255,255,255,1);}
+    .tabs li.tab:hover {background:rgba(0,0,0,.1);}
+    .tabs li.tab.on {color:#fff;background-color:#005faf}
+    .tabs li.goback {width:100px;border-radius:25px;}
+    .tabs li.goback a {display:block;color:#fff;}
+    .tabs li.goback:hover {opacity:.8;}
+
+    .header .header__core {position:absolute;top:0;left:0;right:0;z-index:100;opacity:0;}
+    .header .header__core > div {height:56px;font-size:0;text-indent:-9999px;background:#1a70dd url(http://img.enuri.info/images/homemain/201221/main_s.jpg) 50% 0 no-repeat}
+    .header .header__core.fixed_top {position:fixed;top:0;left:0;width:100%;height:56px;-webkit-transition:.3s all ease-in-out;-o-transition:.3s all ease-in-out;transition:.3s all ease-in-out;-webkit-transform:translateY(54px);-ms-transform:translateY(54px);transform:translateY(54px);opacity:0}
+    .header .header__core.fixed_top > div {height:56px;}
+    .scr_down .header .header__core.fixed_top{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
+    .scr_up .header .header__core.fixed_top{-webkit-transform:translateY(-100%);-ms-transform:translateY(-100%);transform:translateY(-100%);-webkit-transition-delay:.5s;-o-transition-delay:.5s;transition-delay:.5s}
+</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="inner">
+        <div class="header_bg"></div>
+        <div class="header">
+            <a href="./main_event.html" class="back" title="메인으로">메인</a>
+
+            <div class="header__core"><div>FIXED MENU</div></div>
+        </div>
+
+        <div class="content">
+            <div class="tabs_cont">
+                <div><img src="http://img.enuri.info/images/homemain/210330/event_hot.jpg" alt="" /></div>
+                <div><img src="http://img.enuri.info/images/homemain/210330/event_buy.jpg" alt="" /></div>
+                <div><img src="http://img.enuri.info/images/homemain/210330/event_day.jpg" alt="" /></div>
+                <div><img src="http://img.enuri.info/images/homemain/210330/event_pick.jpg" alt="" /></div>
+                <div><img src="http://img.enuri.info/images/homemain/210330/event_couponstroe.jpg" alt="" /></div>
+            </div>
+        </div>
+    </div>
+    
+    <ul class="tabs">
+        <li class="goback"><a href="./main_event.html" title="메인으로">메인</a></li>
+        <li class="tab on">1</li>
+        <li class="tab">2</li>
+        <li class="tab">3</li>
+        <li class="tab">4</li>
+        <li class="tab">5</li>
+    </ul>
+</div>
+<script>
+    $(function(){ // GNB Sticky
+        var position = $(window).scrollTop(); 
+        var el = {
+            wrap : $(".wrap"), // 래퍼
+            cont : $(".content"), // 컨텐츠
+            gnb : $(".header__core") // GNB영역
+        }
+        var stickyGnb = function(){
+            var $myScroll = $(window).scrollTop();
+
+            if ( $myScroll > el.cont.offset().top+180 ){                 
+                // GNB Sticky
+                if ( $myScroll > el.cont.offset().top+180 ){
+                    el.gnb.stop(0).addClass("fixed_top");
+                }else{
+                    el.wrap.stop(0).removeClass("fixed_top");
+                } 
+
+                // 업다운 스크롤 체크
+                if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+            }else{
+                el.gnb.removeClass("fixed_top");
+                el.wrap.removeClass("scr_down scr_up");
+            }
+            position = $myScroll;
+        };
+        $(window).load(stickyGnb).scroll(stickyGnb);
+    })
+</script>
+
+<script>
+    // 공통 :  하단 컨텐츠로 바로 진입시 포지션 보정을 위한 스크립트 처리
+    $(function(){
+        // 탭 클릭 전환
+        var tabs_li = $(".tabs > .tab"),
+            tabs_cont = $(".tabs_cont > div"),
+            header_bg = $(".header_bg");
+
+        $(tabs_li).on("click", tabsChange)
+        $(tabs_cont).hide();
+        $(tabs_cont).eq(0).show();
+
+        function tabsChange(){
+            var itsme = $(this),
+                this_n = itsme.index() - 1;
+
+            itsme.siblings().removeClass("on");
+            itsme.addClass("on");
+
+            tabs_cont.hide();
+            tabs_cont.eq(this_n).show();
+            $('html, body').stop(0).animate({scrollTop: '0'}, 1000);
+            
+            return false;
+        }
+
+        if(window.location.hash) {
+            var $hash = $("#"+window.location.hash.substring(1)),
+                $tabnum = $hash.selector.substr(-1),
+                header_bg = $(".header_bg");
+
+            tabs_li.removeClass("on");
+            tabs_li.eq($tabnum - 1).addClass("on");
+
+            tabs_cont.hide();
+            tabs_cont.eq($tabnum - 1).show(); 
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<meta charset="utf-8">
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <style>
+            *{margin:0;padding:0}
+            #wrap{width:100%;overflow:hidden;}
+            #getImage{position: relative;left:50%;-webkit-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%)}
+            .comm__loader{position:fixed;top:0;left:0;width:100%;height:100%;z-index: 100000;text-align:left;background:rgba(0,0,0,.8)}
+            .comm__loader .loader_inner{text-indent:-9999em;position:absolute;top:50%;left:50%;width:80px;height:80px;background:url(http://img.enuri.info/images/home/enuri_loader.gif) no-repeat; background-size:80px 80px;margin:-40px 0 0 -40px;border-radius: 50% 50%;-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.25);box-shadow: 0 0 30px rgba(0,0,0,0.25);overflow:hidden;}
+        </style>
+        <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+        <script>
+            $(function(){
+                var getImageURL = GetSearchQuery("filename");
+                if ( getImageURL != -1){
+                    $("#getImage").attr("src","images/"+getImageURL);
+                    $("#getImage").load(function(){
+                        setTimeout(function(){
+                            $("#loadingDiv").fadeOut(100);
+                        },1000);
+                    });
+                }else{
+                    $("#loadingDiv").fadeOut(100);
+                }
+            })
+            function GetSearchQuery(strName){
+                var oLocation = location.href;
+                if(oLocation.indexOf('?') > 0){
+                    var strUri = oLocation.split('?');
+                    var strParam = strUri[1].split('&');
+                    for(var i=0; i<strParam.length; i++){
+                        if(strParam[i].indexOf('=') > 0){
+                            var strQuery = strParam[i].split('=');
+                            // 0에는 parameter 이름, 1에는 값이 저장된다.
+                            if(strQuery[0] == strName) return strQuery[1];
+                        }
+                    }
+                }
+                return -1;
+            }
+        </script>
+
+    </head>
+    <body>
+        <div id="loadingDiv" class="comm__loader">
+            <div class="loader_inner">로딩중</div>
+        </div>
+        <div id="wrap">            
+            <img src="#" alt="" id="getImage">
+        </div>
+    </body>
+</html>

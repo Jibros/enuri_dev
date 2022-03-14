@@ -1,0 +1,1125 @@
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<link rel="stylesheet" href="http://imgenuri.enuri.gscdn.com/common/css/enuribase.css" type="text/css">
+<link rel="stylesheet" href="http://imgenuri.enuri.gscdn.com/common/css/paging.css" type="text/css">
+<link rel="stylesheet" href="/common/css/kbpaging.css" type="text/css">
+<link type="text/css" href="../common/css/listvip.css" rel="stylesheet"> <!-- 20150506 VIP 내 상품평+평점 정보 노출 css 신규 -->
+<style type="text/css">
+* {margin:0;padding:0;font-family:'돋움';} /* background-color:#f9f9f9; 삭제 */
+table {clear:both;}
+img {vertical-align:middle;border:none;}
+ul, dl {clear:both;}
+li, dt {float:left;list-style:none;}
+.subtitle {width:140px;height:30px;font-family:'맑은 고딕';font-size:12px;font-weight:bold;color:#2f2f2f;}
+.linebg {height:2px;margin:3px 0 3px 0;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/gray_dotline.gif) repeat-x;}
+.kkname {font-family:'맑은 고딕';font-size:11px;font-weight:bold;color:#969696;}
+.kbtitle {font-family:'맑은 고딕';font-size:12px;color:#5f5f5f;cursor:pointer;}
+.kbchildnum {color:#969696;}
+.kbregdate {font-family:'맑은 고딕';font-size:11px;color:#969696;text-align:right;}
+.paging_on {width:16px;padding-top:0px;}
+.paging_off {width:16px;padding-top:0px;}
+.paging_off_over {width:16px;padding-top:0px;}
+
+.layer_info {display:none;position:absolute;z-index:10;}
+#layer_info_6 {width:267px;height:36px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/layer_info_06.png) no-repeat;}
+.layer_info_6_btn {position:absolute;width:16px;height:14px;margin:8px 0 0 241px;background:none;cursor:pointer;}
+.layer_info_6_close {position:absolute;width:32px;height:17px;margin:10px 0 0 192px;background:none;cursor:pointer;}
+#layer_info_12 {width:282px;height:180px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_12.png) no-repeat;}
+.layer_info_12_btn {position:absolute;width:14px;height:16px;margin:14px 0 0 260px;background:none;cursor:pointer;}
+.gbwrite1 {width:483px;height:3px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/w_box_01.gif) no-repeat;}
+.gbwrite1Y {width:483px;height:3px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/s_box_01.gif) no-repeat;}
+.gbwrite2 {width:483px;height:148px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/w_box_02.gif) repeat-y;}
+.gbwrite2Y {width:483px;height:148px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/s_box_02.gif) repeat-y;}
+.gbwrite2 * {margin:0;padding:0;background-color:#f0f8ff;}
+.gbwrite2Y * {margin:0;padding:0;background-color:#f0f8ff;}
+.gbwrite3 {width:483px;height:3px;margin-bottom:10px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/w_box_03.gif) no-repeat;}
+.gbwrite3Y {width:483px;height:3px;margin-bottom:10px;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/s_box_03.gif) no-repeat;}
+.gbwrite2_tit {width:104px;height:24px;margin:0 0 0 8px;background-color:#f0f8ff;font-family:'맑은 고딕';font-size:12px;font-weight:bold;color:#2f2f2f;}
+.gbwrite2_etc {width:358px;margin:4px 10px 0 0;background-color:#f0f8ff;text-align:right;}
+.gbwrite2_etcY {width:381px;margin:4px 0 0 0;background-color:#f0f8ff;text-align:right;}
+.gbwrite2_etc img {cursor:pointer;}
+.gbwrite2_etcY img {padding-right:2px;cursor:pointer;}
+.gbwrite2_writer {clear:both;margin:0 0 0 16px;width:455px;height:19px;font-family:'돋움';font-size:11px;color:#505050;background-color:#f0f8ff;}
+.gbwrite2_writerY {clear:both;margin:0 0 0 16px;width:455px;height:19px;font-family:'돋움';font-size:11px;color:#505050;background-color:#f0f8ff;}
+.gbwrite2_input_login {float:right;background-color:#f0f8ff;}
+.gbwrite2_input_login dt {float:left;margin:3px 5px 0 12px;background-color:#f0f8ff;}
+//.gbwrite2_input_login dt img {cursor:pointer;}
+.gbwrite2_input_login dd {float:left;background-color:#f0f8ff;}
+.gbwrite2_input_id {width:80px;height:14px;padding:2px 0px 0px 1px;font-family:돋움;font-size:11px;color:#505050;border:1px solid #adadad;background:#ffffff;ime-mode:disable;}
+.gbwrite2_input_pass  {width:80px;height:14px;padding:2px 0 0 1px;font-family:'돋움';font-size:11px;color:#505050;border:1px solid #adadad;background:#ffffff;}
+.gbwrite2_input_pass2 {width:80px;height:14px;padding:2px 0 0 1px;font-family:'돋움';font-size:11px;color:#505050;border:1px solid #adadad;background:#ffffff;}
+.gbwrite2_login {width:360px;margin:5px 0 0 0;background-color:#f0f8ff;color:#969696;font-family:'맑은 고딕';font-size:11px;}
+.gbwrite2_input_contents {width:451px;height:64px;margin:0 0 0 16px;padding:1px;line-height:16px;font-family:'돋움';font-size:11px;color:#505050;border:1px solid #adadad;background:#ffffff url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/tx_login_3.gif) no-repeat 1px 3px;}
+.gbwrite2_input_contentsY {width:451px;height:64px;margin:0 0 0 16px;padding:1px;line-height:16px;font-family:'돋움';font-size:11px;color:#505050;border:1px solid #adadad;background:#ffffff url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/tx_login_3.gif) no-repeat 1px 3px;}
+.gbwrite2_input_mail {width:455px;margin:4px 0 0 16px;background-color:#f0f8ff;}
+.gbwrite2_input_mail dt {float:left;margin:2px 0 0 10px;background-color:#f0f8ff;}
+.gbwrite2_input_mail dt img {cursor:pointer;background-color:#f0f8ff;}
+.gbwrite2_input_mail dd {float:left;background-color:#f0f8ff;}
+.gbwrite2_input_mailflag {margin:1px 0 0 2px;width:14px;height:14px;padding:0;overflow:hidden;line-height:1%;font-size:1%;background:#ffffff;}
+.gbwrite2_input_email {width:345px;height:18px;overflow:hidden;}
+#interest_email {display:none;width:220px;height:15px;margin:0 0 0 6px;padding:0;font-family:'돋움';font-size:11px;color:#505050;border:1px solid #adadad;background:#ffffff url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/tx_mail.gif) no-repeat 1px 1px;}
+.gbwrite2_input_submit {float:right;margin-top:1px;cursor:pointer;}
+.gbwrite2_input_submitY {float:right;margin-top:1px;width:117px;text-align:right;cursor:pointer;}
+#div_gblist {width:470px;margin-left:10px;background-color:#f9f9f9;}
+.gb_dotline {width:470px;height:1px;margin:5px 0 10px 0;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/bg_dotline.gif) repeat;}
+.gb_dotlineY {width:470px;height:1px;margin:5px 0 10px 0;background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/bg_dotline.gif) repeat;}
+.gb_contents {width:470px;line-height:150%;color:#575757;font-size:12px;font-family:'맑은 고딕';word-break:break-all;}
+.gb_contentsY {width:470px;line-height:150%;color:#575757;font-size:12px;font-family:'맑은 고딕';word-break:break-all;}
+.gb_etc {width:465px;margin-top:5px;text-align:right;font-family:돋움;font-size:11px;color:#808080;}
+.gb_etcY {width:465px;margin-top:5px;text-align:right;font-family:돋움;font-size:11px;color:#808080;}
+.gb_endline {width:470px;height:1px;margin:5px 0 5px 0;background-color:#cccccc;}
+.gb_endlineY {width:470px;height:1px;margin:5px 0 5px 0;background-color:#cccccc;}
+.gb_bottom_blank {height:40px;}
+#goodsbbsFrm {margin:0;padding:0;}
+#goodsbbsdelFrm {margin:0;padding:0;width:0;height:0;}
+#del_pass_input {margin:9px 0 0 72px;}
+.inputCheckRadioStyle {margin:0 0 0 2px;width:13px;height:13px;padding:0;overflow:hidden;line-height:1%;font-size:1%;background:#ffffff;}
+</style>
+<script type="text/javascript" src="/common/js/lib/prototype.js"></script>
+<script type="text/javascript" src="/common/js/lib/scriptaculous.js?load=effects,slider"></script><script type="text/javascript" src="http://192.168.2.31/common/js/lib/effects.js"></script><script type="text/javascript" src="http://192.168.2.31/common/js/lib/slider.js"></script>
+<script type="text/javascript" src="/common/js/function.js"></script>
+<script type="text/javascript">
+function pageResize() {
+	try {
+	
+		var vH = getGbHeight();
+		var oFrame = parent.document.getElementById("goodsBBSFrm");
+		parent.setFrameHeight('goodsBBSFrm',vH);
+		oFrame.style.height = vH+"px";
+	
+	} catch(e) {}
+}
+function getGbHeight(){
+	return document.getElementById("gblist_body").offsetHeight;
+}
+function kbWrite(){
+	insertLog(8670);
+	knowboxLinkByUri("/knowbox/List.jsp?modelno=2436198&rcontent=write","");
+}
+function kbRead(kbno){
+	insertLog(8671);
+	kowboxLinkByKbno(kbno);
+}
+function goKbPage(pageNo){
+	function inputKbList(originalRequest){
+		document.getElementById("div_kblist").innerHTML = originalRequest.responseText;
+		pageResize();
+	}
+	var url = "/view/goodsbbs/Ajax_kb_list.jsp";
+	var param = "cate=08010207&isCompare=&intCompareWidth=0&modelno=2436198&modelnos=10890930,9991893,12071537,2436198&pagesize=5&listsize=10&page="+pageNo;
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param,onComplete:inputKbList
+		}
+	);
+}
+function goGbPage(pageNo){
+	function inputGbList(originalRequest){
+		document.getElementById("div_gblist").innerHTML = originalRequest.responseText;
+		pageResize();
+		top.document.body.scrollTop = 0;
+	}
+	var url = "/view/goodsbbs/Ajax_bbs_list.jsp";
+	var param = "isCompare=&intCompareWidth=0&modelno=2436198&modelnos=10890930,9991893,12071537,2436198&pagesize=20&listsize=10&page="+pageNo;
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param,onComplete:inputGbList
+		}
+	);
+}
+
+function showInfo(param){
+	closeAllInfo(param);
+	
+	var obj 		= document.getElementById("layer_info_"	+ param);
+	var obj_btn 	= document.getElementById("btn_info_"	+ param);
+
+	var obj_left 	= 0;
+	var obj_top 	= 0;
+
+	switch(param)
+	{
+		case 1 : {	//비회원글쓰기안내
+					insertLog(8672);
+					if(obj_btn){
+						obj_left = Position.cumulativeOffset(obj_btn)[0] + 105;
+						obj_top  = Position.cumulativeOffset(obj_btn)[1] + 35;
+					}else{
+						obj_left = 105;
+						obj_top  = 35;
+					}
+					break; }
+		case 2 : {	//닉네임
+					insertLog(8674);
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 135;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break; }
+		case 3 : {	//비밀번호
+					insertLog(8675);
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 90;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 18;
+					break;}
+		case 4 : {	//댓글알림
+					insertLog(8673);
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 15;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 15;
+					break; }
+		case 5 :{	
+					obj_btn  = document.getElementById("btn_info_3");
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 225;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break; }
+		case 6 : {	//게시판글삭제
+					obj_btn  = document.getElementById("btn_del_"+del_modelno+"_"+del_no);
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 280;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] - 15;
+					break; }
+		case 7 : {	//게시판글삭제 비번오류
+					obj_btn  = document.getElementById("btn_del_"+del_modelno+"_"+del_no);
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 280;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] - 15;
+					break; }
+		case 8 : {	//닉네임미입력,비번4자 이하 입력
+					obj_btn  = document.getElementById("btn_info_3");
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 225;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break;}
+		case 9 : {	//닉네임,비번 미입력
+					obj_btn  = document.getElementById("btn_info_2");
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 135;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break;}
+		case 10 : {	//닉네임 미입력,비번4자이상
+					obj_btn  = document.getElementById("btn_info_2");
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 135;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break;}
+		case 11 : {	//닉네임 입력,비번3자 이하 입력
+					obj_btn  = document.getElementById("btn_info_3");
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 225;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break;}
+		case 12 : {	//자동로그인 안내
+					obj_btn  = document.getElementById("btn_autologin");
+					obj_left = Position.cumulativeOffset(obj_btn)[0] - 214;
+					obj_top  = Position.cumulativeOffset(obj_btn)[1] + 13;
+					break;}
+	}
+	
+	if(obj){
+		if(obj.style.display == "block"){
+			obj.style.display = "none";
+		}else{
+			obj.style.left 		= obj_left+"px";
+			obj.style.top 		= obj_top+"px";
+			obj.style.display 	= "block";
+			if(param==12){
+				insertLog(9944);
+			}
+		}
+	}
+}
+function closeAllInfo(param){
+	for(i=1;i<13;i++){
+		if(document.getElementById("layer_info_"+i)){
+			if(i!=param){
+				document.getElementById("layer_info_"+i).style.display = "none";
+			}
+		}else{
+			break;
+		}
+	}
+}
+function pageInputTypeReload(){ //로그아웃 후 호출됨
+	document.location.reload();
+}
+function InputLoginId(obj){
+	obj.style.background = "#ffffff";
+	closeAllInfo();
+	obj.focus();
+	obj.select();
+}
+function OutLoginId(obj){
+	if(obj.value==""){
+		obj.style.background = "#ffffff";
+	}
+}
+function InputLoginPass(obj){
+	obj.style.background = "#ffffff";
+	closeAllInfo();
+	obj.focus();
+	obj.select();
+}
+function InputLoginLayerPass(obj){
+	obj.style.background = "#ffffff";
+}
+function OutLoginPass(obj){
+	if(obj.value==""){
+		obj.style.background = "#ffffff";
+	}
+}
+
+function InputLoginContents(obj){
+	obj.style.background = "#ffffff";
+	closeAllInfo();
+	obj.focus();
+	obj.select();
+}
+function OutLoginContents(obj){
+	if(obj.value==""){
+		
+		obj.style.background = "#ffffff url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/tx_login_3.gif) no-repeat 1px 3px";
+		
+	}
+}
+function InputLoginMail(obj){
+	obj.style.background = "#ffffff";
+	closeAllInfo();
+	obj.focus();
+	obj.select();
+}
+function OutLoginMail(obj){
+	if(obj.value==""){
+		obj.style.background = "#ffffff url(http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/tx_mail.gif) no-repeat 1px 2px";
+	}
+}
+// 세션을 통해 스팸을 막는것이 가장 효율적인 것으로 판단됨(지식통 댓글의 경우)
+// 상품 게시판의 경우 세션이 1시간으로(지식통과같이) 세팅되어 만약  입력 하다가 끊기면 오류 팝업이 뜨면서 입력이 안됨
+function setGoodsBBSSession() {
+	var url = "/view/goodsbbs/Goods_BBS_SetSession.jsp";
+	var param = "sessionVal=true";
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'post',parameters:param
+		}
+	);			
+}
+function overImg(obj){
+	if(obj.src.indexOf("_ov.gif")<0){
+		obj.src = obj.src.replace(".gif", "_ov.gif");
+	}
+}
+function outImg(obj){
+	if(obj.src.indexOf("_ov.gif")>0){
+		obj.src = obj.src.replace("_ov.gif", ".gif");
+	}
+}
+function checkInterestFlag(obj){
+	var obj_input = document.getElementById("interest_email");
+	if(obj.checked){
+		obj_input.style.display = "block";
+	}else{
+		obj_input.style.display = "none";
+	}
+}
+
+function chkPassChar2(strPass) {
+	var regExp = /^[a-zA-Z0-9_]{2,20}$/;
+	
+	return regExp.test(strPass);
+}
+var insertFlag = false;
+/* 비회원글쓰기 회원가입으로 전환 */
+function insertBBS(){
+	
+	alert("로그인을 하시면 글을 작성할 수 있습니다.");
+	
+}
+function afterNickCheck(nick){
+	parent.CmdJoin(5);
+}
+
+var del_modelno = 0;
+var del_no 		= 0;
+
+/*
+ * delBbs : 댓글을 삭제한다.
+ */
+function delBbs(modelno,no){
+	insertLog(3363);
+	var formObj = document.getElementById("goodsbbsdelFrm");
+	formObj.reset();
+	document.getElementById("del_pass_input").value = "";
+	OutLoginPass(document.getElementById("del_pass_input"));
+	del_modelno = modelno;
+	del_no = no;
+	closeAllInfo();
+	showInfo(6);
+}
+
+/*
+ * reDelBbs : 2차 댓글을 삭제한다.
+ */
+function reDelBbs(){
+	var formObj = document.getElementById("goodsbbsdelFrm");
+	formObj.reset();
+	document.getElementById("del_pass_input").value = "";
+	OutLoginPass(document.getElementById("del_pass_input"))
+	showInfo(6);
+}
+function showDelMsgFlase(modelno,no){
+	del_modelno = modelno;
+	del_no = no;
+	showInfo(7);
+}
+function CmdKeyPressDelPwd(e){
+	if (e.keyCode==13){
+		submitDelBbs();
+	}
+}
+
+function submitDelBbs(){
+	var formObj = document.getElementById("goodsbbsdelFrm");
+	formObj.del_pass.value = document.getElementById("del_pass_input").value;
+	
+	if(formObj.del_pass.value.length < 2) {
+		alert("2~12자의 영문,숫자로 입력하세요.");
+		return;
+	}
+	
+	if(!chkPassChar2(formObj.del_pass.value)) {
+		alert("2~12자의 영문,숫자로 입력하세요.");
+		return;
+	}
+	
+	formObj.del_modelno.value 	= del_modelno;
+	formObj.del_no.value 		= del_no;
+	formObj.procType.value 		= "del";
+	formObj.method 				= "post";
+	formObj.target 				= "hFrame";
+	formObj.action 				= "Goods_bbs_proc.jsp";
+	
+	formObj.submit();
+}
+
+// 글저장후
+function cmdAfterKbWrite(newkbno) {
+	try {
+		parent.setKbNumShow(1);
+		parent.$("deliveryCateFrm").contentWindow.document.location.href = parent.$("deliveryCateFrm").src;
+	} catch(e) {}
+	alert("등록 되었습니다.");
+	location.reload();
+}
+//글삭제후
+function cmdAfterKbDel(){
+	try {
+		parent.setKbNumShow(-1);
+		parent.$("deliveryCateFrm").contentWindow.document.location.href = parent.$("deliveryCateFrm").src;
+	} catch(e) {}
+	alert("삭제 되었습니다.");
+	location.reload();
+}
+
+
+/*
+ * trim : 문자열 전후의 공백을 제거
+ */
+ String.prototype.trim = function() { 
+    return this.replace(/^\s*|\s*$/g,"");
+}
+
+/*
+ * prototype.getBytes : 바이트 수를 계산해서 반환한다
+ */
+String.prototype.getBytes = function() {
+    var str = this.trim();
+    var l   = 0;
+    
+    if (str != null && str != 'undefined')
+	    for (var i=0; i<str.length; i++) l += (str.charCodeAt(i) > 128) ? 2 : 1;
+	        return l;
+}
+
+/*
+ * chkNickByte : 닉네임의 바이트 수를 검증한다.
+ */
+function chkNickByte(strNickname) {
+	var len = strNickname.trim().getBytes();
+	
+	if ( len < 2 || len > 16)
+		return true;
+	else
+		return false;
+}
+
+/*
+ * mailCheck : 이메일 체크
+ */
+function mailCheck(mailObj) {
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+
+	if(!regExp.test(mailObj.value.trim()))
+	{
+		alert("올바른메일주소를 입력해 주세요");
+		mailObj.focus();
+		return false;
+	} else return true;
+}
+
+function fnPwdKeyDown(obj,strObjTar)
+{
+	if(event.keyCode >= 32 && event.keyCode <= 40)
+		event.returnValue = false;
+
+	if(event.srcElement.value.length >= event.srcElement.maxLength && parseInt(event.keyCode) != 8)
+	{
+		alert('최대 입력 값을 초과하셨습니다.');
+		event.returnValue = false;return;
+	}
+
+	var objTar = document.getElementById(strObjTar);
+
+	if(parseInt(event.keyCode) == 8)
+	{
+		objTar.value = objTar.value.substring(0,objTar.value.length-1);
+
+		obj.value = "";
+
+		for(i=0;i<objTar.value.length+1;i++)
+			obj.value += "●";
+	}
+}
+
+function fnPwdKeyPress(obj,strObjTar)
+{
+	var objTar = document.getElementById(strObjTar);
+
+	objTar.value += String.fromCharCode(event.keyCode);
+
+	obj.value = "";
+
+	for(i=0;i<objTar.value.length-1;i++)
+		obj.value += "●";
+}
+
+function fnPwdKeyUp(obj)
+{
+	document.getElementById('guidePwdText').innerText = "";
+	
+	if(obj.value.length >=1 && obj.value.length <=3)
+		document.getElementById('guidePwdText').innerText = '2~12자 영문숫자';
+	else if(obj.value.length >=4)
+		document.getElementById('guidePwdText').innerText = '비밀번호를 기억하세요';
+}
+
+/*
+ * fnChkByteLength : maxlength 기준 최대 바이트 수 검증
+ */
+function fnChkByteLength(objTar)
+{
+    if(event.keyCode > 31 || event.keyCode == "") 
+    {
+        if(objTar.value.getBytes() > objTar.maxLength)
+        {
+            alert("최대 한글 1~8자, 영문 2~16자까지 입력이 가능합니다");
+            objTar.value = objTar.value.cut(objTar.maxLength);
+        }
+    }
+}
+
+String.prototype.cut = function(len) {
+    var str = this;
+    var l   = 0;
+    
+    for (var i=0; i<str.length; i++) {
+        l += (str.charCodeAt(i) > 128) ? 2 : 1;
+        
+        if (l > len) return str.substring(0,i);
+    }
+    return str;
+}
+//ID비번찾기
+function goFindPassID(){
+	var newWin;
+	newWin = window.open("/join/find_id_pass/Find_Id_Pass_2013.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,left=300, top=200");
+	newWin.focus();
+}
+</script>
+</head>
+<body onload="pageResize();" style="margin: 0px; background: url(http://imgenuri.enuri.gscdn.com/images/blank.gif) fixed rgb(249, 249, 249);">
+<table id="gblist_body" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td>
+
+<div id="div_searching" style="display: none; position: absolute; left: 0px; top: 70px; width: 100%; height: 100%; text-align: center;">
+<img src="http://imgenuri.enuri.gscdn.com/images/view/detail/loading_sangpum_121205.gif" usemap="#loading_sangpum" border="0" style="margin:20px 0px 0px 0px;">
+</div>
+<map name="loading_sangpum" id="loading_sangpum">
+<area shape="rect" coords="278,10,290,23" href="javascript://" onclick="document.getElementById('div_searching').style.display='none';">
+<area shape="rect" coords="124,92,175,108" href="javascript://" onclick="document.location.reload();">
+</map>
+
+<!-- 각종 레이어 -->
+<div id="layer_info_1" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_01.png" usemap="#map_layer_info_1" align="absmiddle"></div>
+<map name="map_layer_info_1" id="map_layer_info_1"><area shape="rect" coords="252,13,269,26" href="JavaScript:showInfo(1)"></map>
+<div id="layer_info_2" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_02.png" usemap="#map_layer_info_2" align="absmiddle"></div>
+<map name="map_layer_info_2" id="map_layer_info_2"><area shape="rect" coords="241,9,258,22" href="JavaScript:showInfo(2)"></map>
+<div id="layer_info_3" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_03.png" usemap="#map_layer_info_3" align="absmiddle"></div>
+<map name="map_layer_info_3" id="map_layer_info_3"><area shape="rect" coords="242,9,258,23" href="JavaScript:showInfo(3)"></map>
+<div id="layer_info_4" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/layer_info_04.png" usemap="#map_layer_info_4" align="absmiddle"></div>
+<map name="map_layer_info_4" id="map_layer_info_4"><area shape="rect" coords="242,8,256,23" href="JavaScript:showInfo(4)"></map>
+<div id="layer_info_5" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_05.png" usemap="#map_layer_info_5" align="absmiddle"></div>
+<map name="map_layer_info_5" id="map_layer_info_5"><area shape="rect" coords="252,11,268,27" href="JavaScript:showInfo(5)"></map>
+<div id="layer_info_6" class="layer_info" usemap="#map_layer_info_6">
+	<div class="layer_info_6_btn" onclick="showInfo(6)"></div>
+	<div class="layer_info_6_close" onclick="submitDelBbs()"></div>
+	<form name="goodsbbsdelFrm" id="goodsbbsdelFrm" onsubmit="return false">
+		<input type="hidden" name="del_modelno" value="">
+		<input type="hidden" name="del_no" value="">
+		<input type="hidden" name="procType" value="">
+		<input type="hidden" name="del_pass" value="">
+	</form>
+	<input type="password" id="del_pass_input" maxlength="12" onkeypress="CmdKeyPressDelPwd(event)" class="gbwrite2_input_pass" onfocus="InputLoginLayerPass(this)" onblur="OutLoginPass(this)">
+</div>
+<div id="layer_info_7" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/layer_info_07.png" usemap="#map_layer_info_7" align="absmiddle"></div>
+<map name="map_layer_info_7" id="map_layer_info_7">
+<area shape="rect" coords="241,8,257,22" href="JavaScript:showInfo(7)">
+<area shape="rect" coords="192,10,224,27" href="JavaScript:reDelBbs()">
+</map>
+<div id="layer_info_8" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/layer_info_08.png" usemap="#map_layer_info_8" align="absmiddle"></div>
+<map name="map_layer_info_8" id="map_layer_info_8"><area shape="rect" coords="243,9,256,22" href="JavaScript:showInfo(8)"></map>
+<div id="layer_info_9" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_09.png" usemap="#map_layer_info_9" align="absmiddle"></div>
+<map name="map_layer_info_9" id="map_layer_info_9"><area shape="rect" coords="243,7,257,22" href="JavaScript:showInfo(9)"></map>
+<div id="layer_info_10" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/layer_info_10.png" usemap="#map_layer_info_10" align="absmiddle"></div>
+<map name="map_layer_info_10" id="map_layer_info_10"><area shape="rect" coords="243,7,257,22" href="JavaScript:showInfo(10)"></map>
+<div id="layer_info_11" class="layer_info"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/20130416/layer_info_03.png" usemap="#map_layer_info_11" align="absmiddle"></div>
+<map name="map_layer_info_11" id="map_layer_info_11"><area shape="rect" coords="243,7,257,22" href="JavaScript:showInfo(11)"></map>
+<div id="layer_info_12" class="layer_info">
+	<div class="layer_info_12_btn" onclick="showInfo(12)"></div>
+</div>
+<!-- //각종 레이어 -->
+<!-- 게시판 로그인 관련 시작 -->
+
+
+
+	<script language="javascript">
+	//아이디 영문.숫자만 입력
+	function CmdKeyPressId(e){
+		if ( e.keyCode!=13){
+			if ( !((e.keyCode >= 48 && e.keyCode <=57) || (e.keyCode >= 65 && e.keyCode <=90) || (e.keyCode >= 97 && e.keyCode <=122) )){
+				e.returnValue = false;
+			}
+		}
+	}
+	function CmdKeyPressLogin(e,obj){
+		if ( e.keyCode!=13){
+			if ( !((e.keyCode >= 48 && e.keyCode <=57) || (e.keyCode >= 65 && e.keyCode <=90) || (e.keyCode >= 97 && e.keyCode <=122) )){
+				e.returnValue = false;
+			}
+		}else{
+			if(typeof(obj)=="undefined"){
+				if (chkFrmValue(document.frmLogin)){
+					document.frmLogin.submit();
+				}
+			}else{
+				if (chkFrmValue(obj)){
+					obj.submit();
+				}
+			}
+		}
+	}
+	function chkIDChar(strID) {
+		var validChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+		for (var i=0;i<strID.length;i++) {
+			if (validChar.indexOf(strID.charAt(i)) == -1)
+				return false;
+		}
+		return true;
+	}
+	function chkPassChar(strPass) {
+		var validChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+		for (var i=0;i<strPass.length;i++) {
+			if (validChar.indexOf(strPass.charAt(i)) == -1)
+				return false;
+		}
+		return true;
+	}
+	//분실신고
+	function goFindPassID(){
+		var newWin
+		newWin = window.open("/join/find_id_pass/Find_Id_Pass_2013.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,left=300, top=200");
+		newWin.focus();
+	}
+	function cmdHideMyMenu(){
+		if(document.getElementById("div_my_menu")){
+			document.getElementById("div_my_menu").style.display = "none";
+		}
+		if(document.getElementById("div_my_nick_menu")){
+			document.getElementById("div_my_nick_menu").style.display = "none";
+		}
+	}
+	function cmdHideMemMenu(){
+		document.getElementById("div_mem_menu").style.display = "none";
+	}
+	function overMyMenuLine(obj){
+		obj.style.backgroundColor = "#E5E9F6";
+	}
+	function outMyMenuLine(obj){
+		obj.style.backgroundColor = "#FFFFFF";
+	}
+	</script>
+	<style type="text/css">
+	#div_mem_menu {
+		display:none;	position:absolute;
+		width:102px;	height:23px;
+		background:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/list_layer02.gif) no-repeat;
+	}
+	.clsMemMenu {
+		font-family:돋움;	font-size:8pt;
+		color:#505050;
+	}
+	</style>
+	<div id="infoAutoLogin" style="position:absolute;display:none">
+		<map name="MapClose" id="MapClose"><area shape="rect" coords="252,10,279,37" href="#" onmouseover="this.style.cursor = 'pointer'" onmouseout="this.style.cursor = 'default'" onclick="document.getElementById('infoAutoLogin').style.display = 'none'"></map>	
+	   <img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/login_layer_01.png" usemap="#MapClose">
+	</div>
+
+	<script language="javascript">
+	function chkFrmValue(form){
+		if(form.loginid.value.length==0 || form.loginid.value==form.loginid.defaultValue){
+			alert("ID를 입력하세요");
+			form.loginid.focus();
+			form.loginid.select();
+			return false;
+		}
+		if(form.pass.value.length==0){
+			alert("비밀번호를 입력하세요");
+			form.pass.focus();
+			form.pass.select();
+			return false;
+		}
+		/* 비회원글쓰기 회원가입으로 전환 */
+		/*
+		if(form.loginid.value.length < 4 || form.loginid.value.length > 12 || chkIDChar(form.loginid.value) == false){
+			alert("ID는 4~12자의 영문, 숫자만 가능합니다");
+			form.loginid.focus();
+			form.loginid.select();
+			return false;
+		}
+		if(form.pass.value.length < 4 || form.pass.value.length > 12 || chkPassChar(form.pass.value) == false){
+			alert("비밀번호는 6~12자의 영문, 숫자만 가능합니다");
+			form.pass.select();
+			return false;
+		}
+		*/
+		parent.setLogintopCmdtype('detailbbs');
+		return true;
+	}
+	//회원가입
+	function goJoin(){
+		parent.CmdJoin(1); //회원가입페이지 레이어 호출(join/join2009/IncJoin2009_2010.jsp)
+		parent.hideLoginLayer(); //로그인레이어 숨김
+	}
+	//로그인후 호출
+	function afterLoginLayer(uid, unick){
+	
+			top.insertLog(9943);
+			var tempLoc = location.href;
+			if(tempLoc.indexOf("modelInfoSelect")) {
+				tempLoc = tempLoc.replace("modelInfoSelect=", "");
+			}
+	//		location.href = tempLoc+"&modelInfoSelect="+selectedModelInfoNum;
+			try{
+				top.opener.top.cmdMyAreaReload();
+				top.opener.top.showLoginStatus();
+				top.opener.top.cmdAfterLoginKbTop();
+			}catch(e){}
+			try{
+				if (top.location.pathname == "/view/Comparemulti.jsp"){
+					for (i=0;i<top.arrSelectedTab.length;i++){
+						if (top.document.getElementById("div_tab_goodsbbs_"+(i+1)).style.display != "none"){
+							top.document.frames("goodsBBSFrm_"+(i+1)).location.reload();
+						}
+					}
+				}
+			}catch(e){
+			}
+			location.reload();
+	
+	}
+	function cmdViewMyMenu(obj){
+		if(document.getElementById("div_my_menu").style.display=="block"){
+			document.getElementById("div_my_menu").style.display = "none";
+		}else{
+			var vLeft = Position.cumulativeOffset(obj)[0];
+			var vTop = Position.cumulativeOffset(obj)[1] + 11;
+			document.getElementById("div_my_menu").style.left = vLeft+"px";
+			document.getElementById("div_my_menu").style.top = vTop+"px";
+			document.getElementById("div_my_menu").style.display = "block";
+		}
+	}
+	function cmdViewMemMenu(obj,param1,param2){
+		var vLeft = Position.cumulativeOffset(obj)[0];
+		var vTop = Position.cumulativeOffset(obj)[1] + 11;
+		document.getElementById("div_mem_menu").style.left = vLeft;
+		document.getElementById("div_mem_menu").style.top = vTop;
+		document.getElementById("div_mem_menu").style.display = "block";
+		document.getElementById("div_mem_menu").getAttribute("userid") = param1;
+		document.getElementById("div_mem_menu").getAttribute("usernick") = param2;
+	}
+	function cmdMyMenuClick(param){
+		if(param==1){ //내가쓴글
+			//var win = window.open("/knowbox/MyList.jsp?menuno=2");
+			var win = window.open("/view/mybbs/MyBbs_List.jsp?listType=1&userid=&usernic="+escape(''),"MyBbs","width=500,height=600,toolbar=no,directories=no,status=yes,scrollbars=yes,resizable=no,menubar=no,left=300,top=100");
+			win.focus();
+			top.insertLog(2099);
+		}else if(param==2){ //회원정보변경
+		
+			
+				parent.setLogintopCmdtype('detailbbs');
+			
+			parent.CmdJoin(3);
+		
+		}else if(param==3){ //로그아웃
+			document.getElementById("hiddenLoginFrame").src = "/login/Logout_Exe_2010.jsp?from=detailbbs";
+		}
+		cmdHideMyMenu();
+	}
+	function cmdMemMenuClick(){
+		var vUserid = document.getElementById("div_mem_menu").getAttribute("userid");
+		var vUsernick = document.getElementById("div_mem_menu").getAttribute("usernick");
+		var win = window.open("/view/mybbs/MyBbs_List.jsp?listType=1&userid="+vUserid+"&usernic="+vUsernick,"MyBbs","width=500,height=600,toolbar=no,directories=no,status=yes,scrollbars=yes,resizable=no,menubar=no,left=300,top=100");
+		win.focus();
+		cmdHideMemMenu();
+		top.insertLog(2098);
+	}
+	</script>
+	<style type="text/css">
+	#div_my_menu {
+		display:none;	position:absolute;
+		width:89px;
+	
+	}
+	#div_my_menu * {background-color:#FFFFFF;}
+	.clsMyMenu {
+		cursor:pointer;		background-color:#FFFFFF;
+		font-family:돋움;	font-size:11px;
+		color:#505050;
+	}
+	</style>
+	<iframe name="hiddenLoginFrame" id="hiddenLoginFrame" width="0" height="0" frameborder="0" src=""></iframe>
+	<div id="div_my_menu">
+		<table width="82" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;margin:2px 0px 0px 1px;">
+			<tbody><tr>
+				<td height="10&quot;" align="right"><div style="width:7px;height:10px;overflow:hidden;"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/list_layer_close.gif" onclick="cmdHideMyMenu()" style="cursor:pointer"></div></td>
+			</tr>
+		
+			<tr>
+				<td height="15" class="clsMyMenu" onclick="cmdMyMenuClick(3)" onmouseover="overMyMenuLine(this)" onmouseout="outMyMenuLine(this)">&nbsp;로그아웃</td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div id="div_mem_menu" userid="" usernick="">
+		<table width="97" border="0" cellpadding="0" cellspacing="0" style="margin:1px 0 0 1px">
+			<tbody><tr>
+				<td align="right" height="20" class="clsMemMenu">
+					&nbsp;<span onclick="cmdMemMenuClick()" style="cursor:pointer">작성글목록</span>
+					<img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/list_layer_close.gif" onclick="cmdHideMemMenu()" style="cursor:pointer;margin:-10 2 0 20;">
+				</td>
+			</tr>
+		</tbody></table>
+	</div>
+
+<!-- 게시판 로그인 관련 끝 -->
+<!-- 현재상품 관련글 시작 -->
+<div id="div_kblist">
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+	<div style="width:480px;text-align:right">
+		<img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/btn_new.gif" width="44" height="12" onclick="kbWrite()" align="absmiddle" style="cursor:pointer">
+
+	</div>
+	<div style="clear:both;height:5px;"></div>
+
+</div>
+<!-- 현재상품 관련글 끝 -->
+<!-- 글쓰기폼 -->
+<div class="gbwrite1"></div>
+<div class="gbwrite2">
+	<ul>
+		<li class="gbwrite2_tit"> 글쓰기</li>
+		<li class="gbwrite2_login">
+
+			<form name="frmLogin" autocomplete="off" action="http://stagedev.enuri.com/login/LoginLayer_Proc_2010.jsp" method="post" target="hiddenLoginFrame" onsubmit="return chkFrmValue(this)">
+			<input type="hidden" name="cmd" value="bbslogin">
+			<dl class="gbwrite2_input_login">
+				<dt><img id="btn_info_2" src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/id.gif" align="absmiddle"></dt>
+				<dd><input type="text" name="loginid" id="loginid" maxlength="16" tabindex="11" class="gbwrite2_input_id" style="ime-mode:disabled" onfocus="InputLoginId(this)" onblur="OutLoginId(this)" onkeyup="fnChkByteLength(this);"></dd>
+				<dt><img id="btn_info_3" src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/pw.gif" align="absmiddle"></dt>
+				<dd><input type="password" name="pass" id="pass" maxlength="12" tabindex="12" class="gbwrite2_input_pass" onfocus="InputLoginPass(this)" onblur="OutLoginPass(this)"></dd>
+				<dt><input type="image" src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/btn_login.gif" style="cursor:pointer;margin-top:-2px;"></dt>
+			</dl>
+			</form>
+
+		</li>
+	</ul>
+	<div style="clear:both;width:10px;height:5px;margin-left:10px;overflow:hidden;"></div>
+	<div class="gbwrite2_writer">
+
+		<dl class="gbwrite2_input_login">
+			<dt style="width:100px;"></dt><dt>
+			</dt><dd><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/join.gif" align="absmiddle" style="cursor:pointer;margin-top:4px;" onclick="insertLog(5976);parent.CmdJoin(1)"></dd>
+			<dt style="margin:0;width:15px"></dt><dt>
+			</dt><dd><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/id_search.gif" align="absmiddle" style="cursor:pointer;margin-top:4px;" onclick="insertLog(5977);goFindPassID()"></dd>
+			<dt><input type="checkbox" id="autologin" name="autologin" checked="" class="inputCheckRadioStyle" value="Y"></dt>
+			<dd><img id="btn_autologin" src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/login_under.gif" onclick="showInfo(12)" align="absmiddle" style="margin-top:4px;cursor:pointer;"></dd>
+		</dl>
+
+	</div>
+	<form name="goodsbbsFrm" id="goodsbbsFrm" style="width:0;height:0;">
+	<input type="hidden" name="modelno" value="2436198">
+	<input type="hidden" name="procType" value="">
+	<input type="hidden" name="cmd" value="bbslogin">
+	<textarea id="contents" name="contents" class="gbwrite2_input_contents" tabindex="13" onfocus="InputLoginContents(this);setGoodsBBSSession();" onblur="OutLoginContents(this)" onclick="alert('로그인이 필요합니다');document.getElementById('loginid').focus();"></textarea>
+
+	<dl class="gbwrite2_input_mail">
+		<dt><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/tx_reply.gif" id="btn_info_4" onclick="showInfo(4)" align="absmiddle"></dt>
+		<dd><input type="checkbox" name="interest_flag" class="gbwrite2_input_mailflag" value="1" tabindex="14" onclick="checkInterestFlag(this)" onfocus="this.blur()"></dd>
+		<dd class="gbwrite2_input_email"><input type="text" name="interest_email" id="interest_email" tabindex="15" value="" maxlength="40" onfocus="InputLoginMail(this)" onblur="OutLoginMail(this)"></dd>
+		<dd class="gbwrite2_input_submit"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/goodboard/btn_write_ok.gif" onclick="insertBBS()" align="absmiddle" onmouseover="overImg(this)" onmouseout="outImg(this)"></dd>
+	</dl>
+
+</form></div>
+<div class="gbwrite3"></div>
+
+<!-- //글쓰기폼 -->
+
+<!-- 20150506 LP 및 VIP 내 상품평,평점 정보 노출 -->
+<div class="comment_mark2">
+	<ul>
+		<li class="score1">
+			<strong class="tit">사용자 총 평점</strong>
+			<p class="star_comm">
+				<span class="img_star2 star_rate2"><span class="img_star2 inner_star2" style="width:90%;">별점</span></span>
+				<span class="score_mark"><strong>4.6</strong> / 5</span><span class="screen_out">점</span>
+			</p>
+		</li>
+		<li class="score2">
+			<strong class="tit">가장 많은 평점</strong>
+			<p class="star_comm">
+				<span class="img_star2 star_rate2"><span class="img_star2 inner_star2" style="width:100%;">별점</span></span>
+				<span class="score_mark"><strong>5.0</strong></span><span class="screen_out">점</span>
+				<span class="case">28건</span>
+			</p>
+		</li>
+		<li class="score3">
+			<strong class="tit">전체 리뷰수</strong>
+			<span class="case">28건</span>
+		</li>
+	</ul>
+</div>
+
+<div class="comment_mark2">
+	<ul>
+		<li class="score1">
+			<strong class="tit">사용자 총 평점</strong>
+			<p class="star_comm noscore"><!-- 상품평이 없을 때 class="noscore" 추가 -->
+				등록된 평점이 없습니다
+			</p>
+		</li>
+		<li class="score2">
+			<strong class="tit">가장 많은 평점</strong>
+			<p class="star_comm noscore"><!-- 상품평이 없을 때 class="noscore" 추가 -->
+				등록된 평점이 없습니다
+			</p>
+		</li>
+		<li class="score3">
+			<strong class="tit">전체 리뷰수</strong>
+			<span class="case">258건</span>
+		</li>
+	</ul>
+</div>
+<!-- //20150506 LP 및 VIP 내 상품평,평점 정보 노출 -->
+
+
+<!-- 상품게시판글 시작 -->
+<div id="div_gblist">
+	
+
+
+
+
+
+
+
+
+
+
+
+		<div class="gb_contents">진짜 쫀득쫀득하고 너무좋아요 양도 많아서 몇개더살껄 후회되네요ㅠ</div>
+		<div class="gb_etc">
+<b>최*은 [롯데닷컴]</b> 2015-5-1
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">정말 ㅠㅠ너무좋아요 촛촉하고 다음에도 많이이용할게용</div>
+		<div class="gb_etc">
+<b>ha****** [11번가]</b> 2015-4-30
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">빌리프더트루크림아쿠아밤세트좋아요                                 [G마켓 안드로이드 앱에서 작성]</div>
+		<div class="gb_etc">
+<b>jks7*** [G마켓]</b> 2015-4-30
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">대용량이라서 여름까지 사용할 수 있을 것 같아요</div>
+		<div class="gb_etc">
+<b>진*혜 [롯데닷컴]</b> 2015-4-30
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">샘플써보고 괜찮아서 구매했어요 샘픔도 많이 들어있어서 좋네요!</div>
+		<div class="gb_etc">
+<b>나*숙 [엘롯데]</b> 2015-4-29
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">예민한 피부인데 제 피부에도 잘맞네요.여름철에 산뜻하게 쓸 수분크림으로 딱인것같아요.</div>
+		<div class="gb_etc">
+<b>김*음 [엘롯데]</b> 2015-4-29
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">저렴하게 잘 구매한것 같네요.. 배송도 빨라 만족합니다.</div>
+		<div class="gb_etc">
+<b>char****** [GS SHOP]</b> 2015-4-28
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">제가 즐겨쓰는 수분크림이예여~ 칭구가 생일선물로 수분크림 필요하다고해서~제가 쓰는 수분크림 추천했어요~촉촉하니 흡수도잘되고~ 향도 진하지 않아서~ 딱 좋아요~</div>
+		<div class="gb_etc">
+<b>na*** [인터파크]</b> 2015-4-28
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">빌리프 제품은 처음 사용해보는데요샘플도 테스터 해볼수있게 다양하게 보내주셨구요제품도 잘맞는것 같습니다.</div>
+		<div class="gb_etc">
+<b>정*주 [롯데닷컴]</b> 2015-4-28
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">그럭저럭 쓸만하네요~첨바르면 좀 끈적이는게 아쉬워요</div>
+		<div class="gb_etc">
+<b>mari**** [GS SHOP]</b> 2015-4-27
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">백화점보다 더저렴하게 잘샀네용 좋아용ㅎㅎ</div>
+		<div class="gb_etc">
+<b>rhcj*** [GS SHOP]</b> 2015-4-27
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">수분크림으로 유명하다기래 어떤지  써보러고 주문했어요  얼굴엔 수분이  중요하잔아여    수분빠지면  잔주름도 생기고  무엇보다도 중요한 기초아날까요?..  써보고 좋으면  계속 써볼까해요[G마켓 안드로이드 앱에서 작성]</div>
+		<div class="gb_etc">
+<b>soongm*** [G마켓]</b> 2015-4-26
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">소문이자자해서 벼르고있었는데 드뎌 구매했어요 ㅋ 샘플도많이오고 잘 쓰겠읍니다</div>
+		<div class="gb_etc">
+<b>박*영 [롯데닷컴]</b> 2015-4-26
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">생각보단 그닥... 촉촉함이 오래가진 않네요  ㅠㅠ 너무 기대를 많이했나</div>
+		<div class="gb_etc">
+<b>hynp*** [GS SHOP]</b> 2015-4-26
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">샘플 사용해봤는데 좋더라구요.  이번에 핫딜에 떳길래 냉큼 주문했어요. 대용량이고 케이스도 예쁜데요. 필름지 샘플도 잘 쓸게요.</div>
+		<div class="gb_etc">
+<b>gab** [GS SHOP]</b> 2015-4-26
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">빌리프는어디서사든 늘샘플구성올린데로안주는것같아요이런식으로하셔도되나요?두세트면  다챙겨서보내주셔야지 아까우신가요?기분이네요 다시보내주세요</div>
+		<div class="gb_etc">
+<b>kima****** [GS SHOP]</b> 2015-4-26
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">대용량이라 좋아용 빌리프 제품은 민감한 피부도 트러블없이 순한듯해서 좋네요</div>
+		<div class="gb_etc">
+<b>mars*** [GS SHOP]</b> 2015-4-26
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">쓰던제품이라 또 구입했습니다. 좋아요</div>
+		<div class="gb_etc">
+<b>sang**** [GS SHOP]</b> 2015-4-25
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">수분크림 좋아요 빌리프는 천연제품이라 믿고 써요</div>
+		<div class="gb_etc">
+<b>yaza***** [GS SHOP]</b> 2015-4-25
+		</div>
+
+		<div class="gb_dotline"></div>
+
+		<div class="gb_contents">배송은 빠른데 샘플은 안 보내주셨네요</div>
+		<div class="gb_etc">
+<b>jhhh*** [GS SHOP]</b> 2015-4-24
+		</div>
+
+	<div class="gb_endline"></div>
+	
+
+	<!-- 페이징 -->
+	<table width="460" border="0" cellspacing="0" cellpadding="0">
+		<tbody><tr>
+			<td height="35" align="center"><table border="0" cellpadding="0" cellspacing="0" align="center"><tbody><tr><td align="center"><div class="paging_on" title="">1</div></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(2);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">2</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(3);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">3</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(4);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">4</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(5);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">5</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(6);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">6</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(7);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">7</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(8);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">8</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(9);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">9</div></a></td><td width="5"></td><td align="center"><a href="javascript:goGbPage(10);" class="cls1"><div class="paging_off" style="cursor:pointer" onmouseover="this.className='paging_off_over';" onmouseout="this.className='paging_off';">10</div></a></td><td width="5"></td><td><select name="list" class="paging_select" onchange="goGbPage(this.value)" style="behavior: url('/common/htc/selectBox_2010.htc');"><option value="1" selected="">1~10</option><option value="11">11~20</option><option value="21">21~30</option><option value="31">31~40</option><option value="41">41~50</option><option value="51">51~60</option><option value="61">61~70</option><option value="71">71~80</option><option value="81">81~90</option><option value="91">91~97</option></select></td></tr></tbody></table></td>
+		</tr>
+	</tbody></table>
+
+</div>
+<!-- 상품게시판글 끝 -->
+<div class="gb_bottom_blank"></div>
+<iframe width="0" height="0" frameborder="0" src="" name="hFrame" id="hFrame"></iframe>
+<script type="text/javascript">
+try {
+	$("div_searching").style.display = "none";
+	document.body.style.backgroundImage = "url(http://imgenuri.enuri.gscdn.com/images/blank.gif)";
+	document.body.style.backgroundColor = "#f9f9f9";
+} catch(e) {}
+</script>
+</td></tr></tbody></table>
+
+</body></html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="/css/rev/common.css" type="text/css">
+<link rel="stylesheet" href="/pub_test/mockup/reporting/apps/css/common.css" type="text/css">
+</head>
+<body>
+<!-- 모바일 목업 -->
+<div class="mock_wrap">
+    <div class="dimmed"></div>
+    <div class="mock_box">
+        <div class="mock_head">
+            <span class="txt_url">AI 쇼핑진단 설문</span>
+        </div>
+        <div class="mock_cont">
+            <div id="wrap">
+
+                <div class="mock_inner">
+                    <div class="tabs_cont">
+                        <div><img src="http://img.enuri.info/images/homemain/210607/m-shopcare1.png" alt="" /></div>
+                        <div><img src="http://img.enuri.info/images/homemain/210607/m-shopcare2.png" alt="" /></div>
+                        <div><img src="http://img.enuri.info/images/homemain/210607/m-shopcare3.png" alt="" /></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ul class="m-tabs">
+    <li class="goback"><a href="./main.html" title="메인으로">메인</a></li>
+    <li class="tab on">1</li>
+    <li class="tab">2</li>
+    <li class="tab">3</li>
+    <li class="gotop"><a href="#" title="상단이동">TOP</a></li>
+</ul>
+
+<script>
+    // 공통 :  하단 컨텐츠로 바로 진입시 포지션 보정을 위한 스크립트 처리
+    $(function(){
+        // 탭 클릭 전환
+        var tabs_li = $(".m-tabs > .tab"),
+            tabs_cont = $(".tabs_cont > div");
+
+        $(tabs_li).on("click", tabsChange)
+        $(".gotop").on("click", function(){
+            $('.mock_cont').stop(0).animate({scrollTop: '0'}, 300);
+        })
+        $(tabs_cont).hide();
+        $(tabs_cont).eq(0).show();
+
+        function tabsChange(){
+            var itsme = $(this),
+                this_n = itsme.index() - 1;
+
+            itsme.siblings().removeClass("on");
+            itsme.addClass("on");
+
+            tabs_cont.hide();
+            tabs_cont.eq(this_n).show();
+
+            $('.mock_cont').stop(0).animate({scrollTop: '0'}, 300);
+            
+            return false;
+        }
+
+        if(window.location.hash) {
+            var $hash = $("#"+window.location.hash.substring(1)),
+                $tabnum = $hash.selector.substr(-1);
+
+            tabs_li.removeClass("on");
+            tabs_li.eq($tabnum - 1).addClass("on");
+
+            tabs_cont.hide();
+            tabs_cont.eq($tabnum - 1).show(); 
+        }
+    })
+</script>
+<!-- //모바일 목업 -->
+</body>
+</html>

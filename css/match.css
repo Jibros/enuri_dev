@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+
+/*=============================
+20170602 하드웨어 배틀_기능비교 신규
+=============================*/
+
+* {margin:0;padding:0;}
+html,body{width:100%;height:100%;margin:0;padding:0;font-family:malgun gothic, "맑은고딕", verdana, sans-serif;font-size:12px;line-height:1.5}
+ul, ol, li{list-style:none}
+hr{display:none}
+em{font-style:normal}
+fieldset, img{border:none;}
+legend, caption{display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height: 0;}
+h1,h2,h3,h4,h5,h6{font-weight:normal; margin:0; padding:0;}
+
+/* table { border-collapse: collapse;} */
+
+.hide {display:none}  /* none */
+.blind {display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height: 0;} /* hide */
+.png24 {tmp:expression(setPng24(this));}
+
+/* Link Css */
+a {cursor:pointer; color:#343434}
+a:link,  a:visited,  a:active {text-decoration:none}
+a:hover{text-decoration:none; }
+/*a:focus, button:focus {outline:1px solid #a5c7fe}*/
+
+/* form */
+textarea, input, select, label{font-family:Malgun Gothic, verdana, dotum, sans-serif;font-size:12px;outline:none}
+button {border:0 none;cursor:pointer;vertical-align:middle}
+
+
+
+
+/* 레이어 */
+.dim_back {position:fixed; left:0; top:0; z-index:11000; width:100%; height:100%; background:rgba(0,0,0,0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000); -ms-filter: "progid:DXImageTransform.Microsoft.gradient( startColorStr=#80000000, endColorStr=#80000000 )"; 
+zoom: 1;}
+.layer_pop {position:absolute; top:50%; left:50%; width:900px; min-height:800px; height:800px; margin:-400px auto 0 -450px; z-index:10; border:1px solid #575c67; box-shadow: 0px 1px 2px 0px #000; background:#fff;}
+.layer_pop h1 {color:#fff; font-size:18px; font-weight:bold; height:48px; line-height:46px; vertical-align:middle; text-indent:19px; background:#575c67; }
+.layer_pop .close{width:18px; height:18px; position:absolute; right:15px; top:14px; background: url(http://img.enuri.info/images/home/match/btn_closex.gif) 0 0 no-repeat; text-indent:-9999em;}
+.match_wrap {font-family:Malgun Gothic; letter-spacing:-0.5px; }
+
+.tab_compare {height:38px; border-top:1px solid #e4e4e4; border-bottom:1px solid #e4e4e4; background:#f9f9f9;}
+.tab_compare .tab {overflow:hidden; margin-left:16px;}
+.tab_compare .tab li {float:left;width:98px;}
+.tab li  {height:38px;}
+.tab li a {display:block;width:100%;height:100%;line-height:38px;text-align:center}
+.tab li a img {vertical-align:bottom;}
+
+.scr {height: 700px; overflow-x:hidden; overflow-y: auto; }
+.con_wrap {position:relative;}
+.con_wrap .tabcon  {padding:45px 15px;}
+.con_wrap .con2 {display:none}
+.con_wrap .con3 {display:none}
+.con_wrap .tabcon h2 {font-size:32px; color:#181818; text-align:center}
+.con_wrap .tabcon h2 b {color:#267fb8; font-weight:normal}
+
+.versus_zone {}
+.versus {width:760px; margin:25px auto 0; background:url(http://img.enuri.info/images/home/match/txt_vs.gif) 50% 10px no-repeat;}
+.versus:after {content:""; display:block; clear:both;}
+.versus .select {position:relative; float:left; display:inline-block; text-align:left; vertical-align:-8px;}
+.versus .select.sel2 {float:right;}
+.versus .select a {width:285px; letter-spacing:-1px; color:#343434; display:block; height:40px; line-height:37px; font-size:13px; border:5px solid #2d9fe8; padding:0 30px 0 15px; overflow:hidden; white-space: nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; -ms-text-overflow:ellipsis; -moz-text-overflow:ellipsis;  text-decoration:none; background:url(http://img.enuri.info/images/home/match/ico_sch.gif) right top no-repeat #ffffff; }
+.versus .select .sub_dp {position:absolute; left:4px; top:45px; box-shadow: 0px 2px 0px #e5e5e5; max-height:220px; overflow:auto; border-radius:2px; width:328px; display:none; border:1px solid #787878; padding:5px 0 5px 2px; background:#ffffff; z-index:10;}
+.versus .select .sub_dp li.type{background:none; padding:0; width:100%; color:#953735; font-weight:bold;  padding-bottom:3px; text-indent:3px; }
+.versus .select .sub_dp li a {height:25px; line-height:24px; font-size:13px;  color: #343434; font-weight:normal; border:none; background:none; display:block; padding:0; margin:0; width:100%; overflow:hidden; font-weight:normal;text-indent:15px; }
+.versus .select .sub_dp li a:hover{background:#f2f2f2; font-weight:bold }
+.versus .chargebtn{background:#115078; color:#ffffff; border:1px solid #154563; padding: 1px 9px 0 9px; height: 21px; display: inline-block; box-shadow: 0px 2px 0px #ebebeb; cursor:pointer; }
+.versus_zone .btn_area {text-align:center; margin-top:10px;  line-height:1;}
+.versus_zone .btn_compare {width:240px; height:50px; display:inline-block; font-size:0; text-indent:-9999em; box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1); background:url(http://img.enuri.info/images/home/match/btn_compare.gif) 0 0 no-repeat;}
+
+.tabs{width:100%; margin-top:38px; margin-left:-1px; border-bottom: 1px solid #57575f;}
+.tabs:after {display:block; clear:both; content:""}
+.tabs li {float:left; width:178px; height:44px;}
+.tabs li.on a {margin-left:-1px;}
+.tabs li a{letter-spacing:-1px; display:block; color:#9c9c9c; text-align:center; height:35px; padding-top:8px; font-size:15px; background:#f9f9f9; border-top:1px solid #d2d2d2; border-right:1px solid #d2d2d2;}
+.tabs li:first-child a{border:1px solid #d2d2d2; border-bottom:none; }
+.tabs li a span{font-size:11px; color:#999999; letter-spacing:0;  padding-left:3px}
+.tabs li.on a{font-weight:bold; height:35px; padding-top:9px; background:#ffffff; color:#5d5d5d; border:1px solid #57575f; border-bottom:none;}
+
+.tabcon .tit {color:#343434; font-weight:bold; font-size:15px;}
+
+.tab_container {padding:30px 0;}
+.tab_container .prodvs_area {width:760px; margin:30px auto 40px; background:url(http://img.enuri.info/images/home/match/img_vs.gif) 50% 104px no-repeat;}
+.tab_container .prodvs_area:after {display:block; clear:both; content:""}
+.tab_container .prodvs_area .pro {float:left; width:300px;}
+.tab_container .prodvs_area .pro.p2 {float:right; }
+.tab_container .prodvs_area .pro .thumb {display:block; width:300px; height:300px; overflow:hidden; line-height:300px; vertical-align: middle;}
+.tab_container .prodvs_area .pro .thumb img {max-width:300px; max-height:300px; vertical-align:middle;}
+.tab_container .prodvs_area .pro strong {display:block; margin-top:12px; font-size:14px; color:#343434; line-height:17px; text-align:center;}
+
+
+table {padding:0; border-spacing:0px; border:0; border-collapse:collapse; table-layout:fixed;}
+th, td {padding:0; font-weight:normal}
+.tb {width:100%; margin-top:20px; border-top:1px solid #e2e2e2; border-right:1px solid #e2e2e2;}
+.tb .col1 {width:40%;} .tb .col2 {width:20%;} .tb .col3 {width:40%;} 
+.tb th.title {padding:10px 14px; font-size:13px; color:#343434; border-left:1px solid #e2e2e2; border-bottom:1px solid #e2e2e2; background-color:#fff;}
+.tb td {text-align:center;padding:10px 14px;  font-size:12px; color:#666; border-bottom:1px solid #e2e2e2; border-left:1px solid #e2e2e2; background-color:#fff;}
+.tb td.con_mid {text-align:center; background:#fcfcfc;}
+.tb td.con_right {text-align:right;}
+.tb td.con_left {text-align:left;}
+
+.tb2 {width:100%; border:1px solid #e2e2e2; border-top:0;}
+.tb2 .col1 {width:40%;} .tb2 .col2 {width:60%;}
+.tb2 th, .tb2 td {text-align:left; }
+.tb2 th {padding-left:14px; border-top:1px solid #e2e2e2; background:#fcfcfc;}
+.tb2 th.title {padding:10px 14px; font-size:12px; color:#9a9999; border-top:1px solid #e2e2e2; border-left:none; background-color:#fff;}
+.tb2 th.title strong {margin-right:10px; font-size:13px; color:#343434;}
+.tb2 td {padding:8px 0 5px; padding-left:0; font-size:13px; border-top:1px solid #e2e2e2; border-left:1px solid #e2e2e2; background-color:#fff;}
+
+
+.i_graph{position:relative;line-height:normal;white-space:nowrap}
+.i_graph .g_bar{display:inline-block;position:relative;width:100%; height:23px; border-top:1px solid #eeecec; border-bottom:1px solid #eeecec;background:#f8f8f8;}
+.i_graph .g_action{display:inline-block;position:relative;height:23px; }
+.i_graph.ty1 .g_action {border:1px solid #5195c1; border-left:0; background:#5aa0ce}
+.i_graph.ty2 .g_action {border:1px solid #ff2222; border-left:0; background:#f85757}
+.i_graph .g_percent {margin-left:6px; vertical-align:8px; font-weight:bold;}
+.i_graph.ty1 .g_percent {color:#5195c1}
+.i_graph.ty2 .g_percent {color:#ff2222}
+
+
+/* 비교 인기순위 */
+/* .tab_container .tit.bt {position:relative; text-indent:7px; margin-top:75px; padding-bottom:12px; border-bottom:1px solid #bbb;}*/
+.ranklinst_area {margin-top:75px;}
+.ranklinst_area .tit {position: relative;  text-indent:7px; padding-bottom:12px; border-bottom:1px solid #bbb;}
+.ranklinst:after{clear:both; display:block; content:""; }
+.ranklinst li{position: relative;  float:left; width:154px; height:266px;  padding:20px 8px;}
+.ranklinst li .thum_area{width:154px; float:left; position:relative;  }
+.ranklinst li .thum_area img{width:152px; height:152px; border:1px solid #e2e2e2;}
+.ranklinst .info_area{width:154px; margin:0; height:38px; overflow:hidden;}
+.ranklinst .info_area strong{font-size:12px; font-weight:normal; padding-top:5px; }
+.ranklinst .info_area strong a i {font-style:normal; color:#ff3333; font-weight:bold; font-size:11px; margin-right:5px; vertical-align: 1px;}
+.ranklinst .info_area strong a{line-height:17px;}
+.ranklinst .info_area strong a span{margin-right:2px;}
+.ranklinst .price_area{color:#0073be; min-width:150px; text-align:right;  letter-spacing:-1px; float:left; padding-top:5px;}
+.ranklinst .price_area strong{font-size:16px; vertical-align:-2px; margin-left:5px; cursor:pointer; }
+.ranklinst .price_area .won_b{ text-align:center;font-weight:bold; display:block; width:154px; height:30px; line-height: 28px; background:#0073be; border-radius:3px; font-size:14px; margin:10px 0 0 0; box-shadow: 0px 3px 0px #ebebeb; cursor:pointer;}
+.ranklinst .price_area .won_b a{color:#c4e8ff; display:block; }
+.m_price{display:inline-block; width:8px; background: url(http://img.enuri.info/images/home/ico_stick.png) no-repeat -97px -22px; text-indent:-999em;margin-left:5px; cursor:pointer; text-align:left;}
+.ranklinst_area .tit .btn_topgo {position:absolute; right:0; bottom:9px; display:inline-block; width:36px; height:36px; text-align:center; color:#fff; text-indent:-9999em; font-size:0; background-image: url(http://img.enuri.info/images/home/match/btn_topgo.gif);}
+
+.notify {text-align:center; padding-top:110px;  line-height:18px; font-size:16px; font-weight:bold; letter-spacing:-0.25px; color:#cccccc; background:url(http://img.enuri.info/images/home/match/exclamark.gif) no-repeat 50% 50px;}

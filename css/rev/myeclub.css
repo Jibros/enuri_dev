@@ -1,0 +1,1250 @@
+@charset "utf-8";
+/************************************************************************
+* 파일명 : myeclub.css
+* 설명 : 에누리 가격비교 PC Rev / 마이E클럽 CSS
+* 작성자 :  박현원
+* 작성일 : 2021.09.27
+************************************************************************/
+/* var */
+:root {
+--color-white-alpha75 : rgba(255,255,255,.75);
+--color-enuri-blue : #296edf;
+}
+/* font */
+html, body {font-family :Arial, "맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+body {height: auto;}
+/* Sprite */
+.myeclub_sprite{background-image:url("//img.enuri.info/images/rev/myeclub_sprite.png");background-repeat:no-repeat; background-size: 800px;}
+.myeclub_sprite_after:after {content:"";background-image:url("//img.enuri.info/images/rev/myeclub_sprite.png");background-repeat:no-repeat;}
+
+/* util */
+a, a:hover {text-decoration: none;}
+img {max-width:100%; vertical-align: top;}
+.nopadding {padding:0!important;}
+.nomargin {margin:0!important;}
+.clear:after {content:"";display:table;clear:both}
+.open_layer {cursor: pointer;}
+
+/* color */
+.color-enuri {color:#296edf!important;}
+.color-white {color:#fff!important;}
+
+/* number type font style */
+.number_type {font-family: Arial, Helvetica, sans-serif;}
+
+footer {padding-top: 0;}
+/* -----------------------------------------------------------
+                        common-header--eclub
+----------------------------------------------------------- */
+.header--eclub{letter-spacing:-1px;position: relative;height:51px;z-index:1000;}
+.header--eclub h1{float:left;margin:20px 0 0 0;position: relative;}
+.header--eclub h1 .header-core__bi{text-indent:-9999em;display:block;width:104px;height:30px;background-position:0 -60px}
+.header--eclub .header-core{position:relative;height:70px;border-top:1px solid rgba(255,255,255,.12)}
+.header--eclub .header__inner{width:1280px;margin:0 auto;position: relative;}
+.header--eclub .header-top,
+.header--eclub .header-core{position:absolute;top:0;left:0;transform:translateY(-100%);width:100%;}
+.header--eclub .header-top{top:-31px}
+.header--eclub .header-core{background: url("//img.enuri.info/images/rev/bg_header.png") repeat-y 100% 0 #198FF6;}
+.header--eclub .header-top{transform: translateY(0);transition:.3s transform ease;}
+.header--eclub .header-core{transform: translateY(0);transition:.3s transform ease;box-shadow:0 2px 5px rgba(0,0,0,.07)}
+.header--eclub .header-core h1{margin-top:10px}
+.header--eclub .header-core{height:50px;}
+.header--eclub .header-sr{top:8px}
+.header--eclub .header-cate{top:12px;}
+.header--eclub .header-cate__list,
+.header--eclub .header-ad{display:none}
+.header--eclub .header-top__menu{top:46px}
+
+/* ----------------------------------------------------------- 
+                        tab_menu
+----------------------------------------------------------- */
+.tab_menu {}
+.tab_contents > div {display: none;}
+.tab_contents > div.active {display: block!important;}
+
+/* ----------------------------------------------------------- 
+                        list_style_hyphen
+----------------------------------------------------------- */
+.list_hyphen li {position:relative; padding-left:10px;}
+.list_hyphen li:before {content:"-"; display: inline-block; position:absolute; top:0; left:0;}
+
+/* ----------------------------------------------------------- 
+                        scrollbar_style
+----------------------------------------------------------- */
+.scrollbar::-webkit-scrollbar { width: 2px;}
+.scrollbar::-webkit-scrollbar-track { background-color: #e1e1e1; -webkit-border-radius: 1px;border-radius: 1px;}
+.scrollbar::-webkit-scrollbar-thumb { background: #c5c5c5; -webkit-border-radius: 1px;border-radius: 1px;}
+.scrollbar::-webkit-scrollbar-button { display: none; }
+
+.scrollbar.blue::-webkit-scrollbar-track { background-color: #f5f5f5;}
+.scrollbar.blue::-webkit-scrollbar-thumb { background: #1a70dd;}
+
+
+/* -------------------------------------------------
+                        checkbox_style
+----------------------------------------------------------- */
+.input_wrap { padding: 4px 6px; margin-right: 10px; line-height: 1;}
+.input_wrap input[type=checkbox] {display:inline-block; vertical-align: middle; width: 20px; height: 20px;}
+.input_wrap .input_nm {display:inline-block; vertical-align: middle; font-size: 16px; font-weight: bold; color:#222; margin-left:6px; line-height: 1;}
+
+.input_wrap input[type=checkbox]:checked {appearance: none; border-radius:3px; background-image:url("//img.enuri.info/images/rev/myeclub_sprite.png");background-repeat:no-repeat; background-position: -160px -20px;}
+
+/* ----------------------------------------------------------- 
+                        popup layer
+----------------------------------------------------------- */
+.lay_overlay {position:fixed;width: 100%;height: 100%;top:0;left:0;background: rgba(0,0,0,.4);z-index: 9999;}
+.lay_comm { display:none; position:fixed; top:50%; left:50%; width:440px; background: #fff;-webkit-border-radius: 6px;border-radius: 6px;z-index: 10000; border:1px solid #aaaaaa; box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1); text-align: center; letter-spacing: -1px; overflow: hidden;}
+.lay_comm .btn-close {position: absolute; top: 16px; right: 16px; width:24px; height: 24px; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_close_s24.png.png"); text-indent:-9999px;line-height: 1; cursor: pointer;z-index: 1;}
+.lay_comm .lay_content {position:relative; padding:0 20px; margin-top:30px;}
+.lay_comm .lay_footer {position:relative; padding:0 20px; margin-top:24px;}
+
+.lay_comm .tx_tit {font-size: 18px; font-weight: bold; color:#222; line-height: 1.2; margin-top:30px;}
+.lay_comm .tx_tit em {color:#1a70dd;}
+.lay_comm .tx_sub {font-size: 13px; color:#999; line-height: 1.4; margin-top:8px;}
+.lay_comm .btn_area {margin: 0 0 32px; font-size: 0; display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;}
+.lay_comm .btn_area button {flex:0 0 auto; height:40px; line-height: 40px;font-size: 14px; font-weight: bold; border-radius: 6px; text-align: center;}
+.lay_comm .btn_area button.btn_confirm {color:#fff; background-color: #1a70dd; border:1px solid #1a70dd;}
+.lay_comm .btn_area button.btn_cancle {color:#999; background-color: #fff; border:1px solid #ddd;}
+.lay_comm .btn_area button.w30 {width:30%}
+.lay_comm .btn_area button.w49 {width:49%}
+.lay_comm .btn_area button.w68 {width:68%}
+.lay_comm .btn_area button.w100 {width:49%}
+/* ----------------------------------------------------------- 
+                        global layout
+----------------------------------------------------------- */
+#wrap {background-color: #f8f8f8;}
+.container {position:relative; width:1280px; padding:24px 0 0; margin:0 auto;}
+.global_wrap {position:relative; padding-left: 216px; min-height: 900px;}
+.global_wrap .global_left {position:absolute; top:0; left:0; width:200px; margin-right:16px; background-color: #f2f2f2;}
+.global_wrap .global_left.is--fixed {position:fixed; top:0; z-index: 1000;}
+.global_wrap .global_right {width:1064px;}
+
+/* ----------------------------------------------------------------
+                        캘린더 수정
+-----------------------------------------------------------------*/
+.ui-icon {width: 20px; height: 20px;}
+.ui-datepicker,
+.ui-datepicker *,
+.ui-datepicker *:before,
+.ui-datepicker *:after {-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;  }
+.ui-datepicker {width: 286px; border-radius: 6px; padding:9px 16px; background: #fff; margin-top:12px;}
+.ui-datepicker .ui-datepicker-header {position: relative;padding: 14px 0;border: 1px solid #fff;background: #fff;margin-bottom: 4px;}
+.ui-datepicker .ui-datepicker-title {font-size: 16px;font-weight: bold;line-height: 1; color:#333;    letter-spacing: -1px;}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {top:50%;margin-top:-10px;width: 20px;height: 20px;cursor: pointer;}
+.ui-datepicker .ui-datepicker-prev {left:34px;}
+.ui-datepicker .ui-datepicker-next {right:34px;}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {margin-left: -10px; margin-top: -10px; opacity: .4;}
+.ui-datepicker .ui-datepicker-prev span {background: url('//img.enuri.info/images/rev/icon_calendar_arrow.png') no-repeat center; }
+.ui-datepicker .ui-datepicker-next span {background: url('//img.enuri.info/images/rev/icon_calendar_arrow.png') no-repeat center; transform-origin: center; transform: rotate(180deg);}
+.ui-datepicker .ui-datepicker-prev-hover span ,
+.ui-datepicker .ui-datepicker-next-hover span {opacity: 1;} 
+/*
+.ui-datepicker .ui-datepicker-prev span {background-position: -100px -200px;}
+.ui-datepicker .ui-datepicker-next span {background-position: -80px -200px;}
+*/
+.ui-datepicker .ui-state-hover,
+.ui-datepicker .ui-widget-content .ui-state-hover,
+.ui-datepicker .ui-widget-header .ui-state-hover,
+.ui-datepicker .ui-state-focus, .ui-widget-content .ui-state-focus,
+.ui-datepicker .ui-widget-header .ui-state-focus, .ui-button:hover,
+.ui-datepicker .ui-button:focus {border: none;background: transparent;}
+.ui-datepicker table {font-size: 12px;margin-bottom:10px;}
+.ui-datepicker th {padding: 0; font-size: 13px; font-weight: bold;border-bottom:none}
+.ui-datepicker th span {display: block; width: 30px; height: 30px; line-height: 30px; margin:0 auto;}
+.ui-datepicker td {padding:3px 0; font-size: 15px;}
+
+.ui-datepicker .ui-state-default,
+.ui-datepicker .ui-widget-content .ui-state-default,
+.ui-datepicker .ui-widget-header .ui-state-default,
+.ui-datepicker .ui-button,
+.ui-datepicker .ui-button.ui-state-disabled:hover,
+.ui-datepicker .ui-button.ui-state-disabled:active {border: none; background: #fff; font-weight: normal;color: #ccc;}
+.ui-datepicker td span, .ui-datepicker td a {display: block; padding: 0 2px 0 0; width: 30px; height: 30px; line-height: 28px; text-align: center;text-decoration: none;-webkit-border-radius: 50%;border-radius: 50%;margin:0 auto; letter-spacing: -2px;}
+.ui-datepicker .ui-state-highlight,
+.ui-datepicker .ui-widget-content .ui-state-highlight,
+.ui-datepicker .ui-widget-header .ui-state-highlight {background: transparent;color:#333;}
+.ui-datepicker .ui-state-active,
+.ui-datepicker .ui-widget-content .ui-state-active,
+.ui-datepicker .ui-widget-header .ui-state-active,
+.ui-datepicker a.ui-button:active,
+.ui-datepicker .ui-button:active,
+.ui-datepicker .ui-button.ui-state-active:hover {border: solid 1px #bce6ff;  background-color: #f2faff; color:#1a70dd; font-weight: bold;}
+
+
+/* ----------------------------------------------------------- 
+                        left - lnb area
+----------------------------------------------------------- */
+.mec_wrap {border-radius: 6px; background-color: #515b6d; transition: all .4s; padding-bottom:128px; overflow: hidden;}
+.mec__welcome {font-size: 16px; color:#fff; padding: 30px 16px 24px;}
+.mec__welcome .txt {color:#ccc; margin-bottom:11px;}
+.mec__welcome .username {}
+.mec__welcome .certificate {display: block; height:44px; line-height: 44px; font-size: 16px; font-weight: bold; color:#1a70dd; background-color: #fff; border-radius: 2px; text-align: center; margin:24px -8px 0;}
+
+.mec__welcome .emoney {position:relative; height:44px; font-size:16px; font-weight: bold; color:#000; text-align: right; padding:8px 8px 8px 38px; border-radius: 2px; background-color: #fff; margin:24px -8px 0;}
+.mec__welcome .emoney .icon_emoney {width: 22px; height:22px; background-position: 0 0; position:absolute; top:10px; left:8px;}
+.mec__welcome .emoney em {font-size: 20px; vertical-align: -1px;}
+
+.mec__lnb {border-top:1px solid #58657d;}
+.mec__lnb .menu_name {position:relative; display: block; font-size: 16px; color:#fff; border-bottom:1px solid #58657d; padding:13px 16px; transition:all .4s;}
+.mec__lnb .menu_name[data-dropdown]:after {content:"";display: block; width: 20px; height: 20px; background-image:url("//img.enuri.info/images/rev/myeclub_sprite.png"); background-repeat:no-repeat; background-position: -200px 0; position:absolute; top:50%; right:20px; margin-top:-10px;}
+.mec__lnb .menu_name.active {background-color: #198ff6;}
+.mec__lnb .menu_name.active[data-dropdown]:after {background-position: -220px 0; }
+
+.mec__lnb .mec__lnb_submenu {display: none; background:#40495a; border-bottom:1px solid #58657d; padding:15px 0;}
+.mec__lnb .submenu_name {display: block; font-size: 14px; color:rgba(255,255,255,.25); padding:8px 16px;}
+.mec__lnb .submenu_name.active {font-weight: bold; color:#84c6ff;}
+
+/* ----------------------------------------------------------- 
+                        right - layout
+----------------------------------------------------------- */
+.page_tit {position:relative; font-size: 20px; font-weight: bold; color:#222; border-bottom:1px solid #666; padding:25px 0 6px; letter-spacing: -1px;}
+.col_tit {font-size: 16px; font-weight: bold; color:#515b6d; margin:29px 0 16px; letter-spacing: -1px;}
+
+.col_wrap {margin-left:-8px;margin-right:-8px;}
+.col_wrap:after {content:"";display: block;clear:both;}
+.col_wrap .col {float: left;padding-left:8px;padding-right:8px;}
+
+.col_wrap .col_2 {width: 16.6666%;}
+.col_wrap .col_20 {width: 20%;}
+.col_wrap .col_3 {width: 25%;}
+.col_wrap .col_4 {width: 33.3333%;}
+.col_wrap .col_6 {width: 50%;}
+.col_wrap .col_12 {width: 100%;}
+
+/* ----------------------------------------------------------- 
+                blue 라인 - 기본테이블로 처리
+----------------------------------------------------------- */
+.grid {margin-bottom:16px; padding:3px 23px 30px; border-radius: 6px; border: 1px solid #ddd; background-color: #fff; transition: all .4s; letter-spacing: -1px;}
+.grid .grid_nm {font-size: 16px; font-weight: bold; color:#222; margin-top: 25px; }
+.grid .grid_nm a {display:inline-block; color:#222;}
+.grid .grid_sm {font-size: 12px; color:#999; margin-top: 4px;}
+.grid .grid_cont {margin-top: 17px;}
+.grid_seperat_line {width: 100%; height: 1px; margin-top:26px; background-color: #eee;}
+.icon_more_arrow {display:inline-block; width: 20px; height: 20px; background-position: -160px 0; vertical-align: -4px;}
+
+.grid_noti {padding: 2px 23px 22px; border-color:#eee; background-color: #eee;}
+.grid_noti .grid_nm {font-size: 14px;}
+.grid_noti .list_hyphen { margin-top: 5px;}
+.grid_noti .list_hyphen li {font-size:12px; color:#999; line-height: 1.7;}
+
+
+/* ----------------------------------------------------------- 
+                swiper common - btn_ prev,next 
+----------------------------------------------------------- */
+.swiper_common_wrap {position:relative;}
+.swiper_common {width: 100%; overflow: hidden;}
+.swiper_common .swiper-btn {position: absolute; width: 49px; height: 49px; font-size: 0; text-indent: -9999px; opacity: 0; transition: all .1s ease-in-out; top:50%; z-index: 50; cursor: pointer;} /* 이거 top : 50%고정이야 건들지마 */
+.swiper_common .swiper-btn.btn_prev {left:0; background-position: -100px -50px;}
+.swiper_common .swiper-btn.btn_next {right:0; background-position: -150px -50px;}
+.swiper_common:hover .btn_prev {left:-25px; opacity: 1;}
+.swiper_common:hover .btn_next {right:-25px; opacity: 1;}
+
+/* ----------------------------------------------------------- 
+                swiper common - goodslist
+----------------------------------------------------------- */
+.swiper_goods {}
+.swiper_goods .thumbs {}
+.swiper_goods .thumbs .thumbnail_img {height:152px; border:1px solid #ddd; border-radius: 6px; overflow: hidden;}
+.swiper_goods .thumbs .thumbnail_img img {width: 150px; height: 150px; object-fit: cover;}
+
+.swiper_goods .info {margin-top:12px; text-align: left;}
+.swiper_goods .info .nm {font-size: 14px; color:#333; line-height: 1.45; margin-bottom: 2px; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;overflow: hidden;}
+.swiper_goods .info .emoney {font-size: 14px; color:#000;}
+.swiper_goods .info .emoney .icon_emoney {display:inline-block; width: 14px; height: 14px; background-position: -4px -26px; margin-right: 2px; vertical-align: -1px;}
+.swiper_goods .info .emoney em {font-size: 18px; font-weight: bold; margin-right:1px;}
+.swiper_goods .info .price {font-size: 14px; color:#000;}
+.swiper_goods .info .price em {font-size: 18px; font-weight: bold; margin-left:6px; margin-right:1px;}
+
+/* ----------------------------------------------------------- 
+                공통 - 페이지바텀배너
+----------------------------------------------------------- */
+.page_bottom_bnnr {margin-top:68px;}
+.page_bottom_bnnr a {display:block;}
+
+.layer_common {display: none; position:absolute; top:100%; right:0; width: 286px; border:1px solid #aaa; border-radius:6px; background-color: #fff; box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.1); margin-top:4px; z-index: 10;}
+
+
+
+/* ----------------------------------------------------------- 
+                @메인 - e클럽 혜택 - 테이블
+----------------------------------------------------------- */
+.my_info {width:100%; height:80px; border-radius: 6px; border:1px solid #1a70dd;}
+.my_info ul:after{content:"";display: block; clear:both;}
+.my_info ul li {float:left; position:relative; font-size: 16px; color:#000; padding:15px 0; text-align: center; cursor: pointer;}
+.my_info ul li+li:before {content:"";display:block;position:absolute;top:16px;bottom:16px;left:0;width:1px;background-color:#eee}
+.my_info ul.row_2 li {width:50%;}
+.my_info ul.row_3 li {width:33.3333%;}
+
+.my_info ul li .info_nm {font-size: 14px; font-weight:normal; color:#1a70dd; margin-bottom:1px;}
+.my_info ul li .info_val {font-weight: bold;}
+.my_info ul li .info_val em {font-size: 20px; font-weight: bold; margin-right: 1px; vertical-align: -1px;} 
+.my_info ul li > .d_gift {position:absolute;top:5px;bottom:5px;left:5px;right:5px;margin:0 auto;text-align:center;background-color:#fff;transition:opacity .5s ease}
+.my_info ul li > .d_gift.is-hidden {opacity:0;pointer-events:none;}
+.my_info ul li > .d_gift>img {position:absolute;top:0;bottom:0;left:0;right:0;width:54px;height:54px;margin:auto}
+.my_info ul li > .d_gift .d_badge {display:inline-block;position:absolute;top:-5px;left:-4px;height:24px;padding:0 8px;border-radius:2px;font-weight:500;font-size:12px;line-height:26px;color:#fff;background:rgba(0,0,0,.6)}
+
+
+/* 개인메세지 영역 */
+.message_info {display:block;clear:both;position:relative;margin-top:8px;padding:11px 20px;border-radius:8px;background-color:var(--color-enuri-blue)}
+.message_info:before {content:"";position:absolute;top:-4px;left:calc(33.3333% / 2.1);width:8px;height:8px;border-radius:2px;background-color:var(--color-enuri-blue);transform:rotate(45deg)}
+.message_info .tx_info {display:block;position:relative;padding-left:26px;font-size:13px;line-height:18px;color:#fff;letter-spacing:-.3px}
+.message_info .tx_info:before {content:"";display:inline-block;position:absolute;top:0;left:0;width:20px;height:20px;margin-right:2px;background:url("//img.enuri.info/images/rev/myeclub_sprite.png") 0 -100px no-repeat;}
+.message_info .tx_info .tx_gift {color:#fff;text-decoration:underline}
+.message_info .tx_info-gift {display:none}
+.message_info.inc_gift:before {left:auto;right:calc(33.3333% / 2.1)}
+.message_info.inc_gift .tx_info {display:none;}
+.message_info.inc_gift .tx_info-gift {display:block;}
+
+/* ----------------------------------------------------------- 
+                @메인 - e클럽 혜택 - 배너 스와이퍼
+----------------------------------------------------------- */
+.bnnr_swiper {margin-top:16px;}
+.bnnr_swiper .swiper-slide a {display: block; height: 171px; background-position:right bottom; background-repeat: no-repeat; background-size: 183px; padding:29px 202px 0 24px; -webkit-border-radius: 5px;border-radius: 5px;}
+.bnnr_swiper .swiper-slide a .txt1 {font-size: 23px; font-weight: bold; color:#222; margin-bottom:16px; line-height: 1.35; letter-spacing: -1.5px;}
+.bnnr_swiper .swiper-slide a .txt2 {font-size: 14px;color:#666;margin-bottom:10px; height: 20px; line-height: 20px;}
+.bnnr_swiper .swiper-pagination {position: relative; margin-top:12px; bottom: 0;left: 0;font-size: 0; text-align: center;}
+.bnnr_swiper .swiper-pagination span {width: 6px; height: 6px; background-color: #ddd; opacity: 1; transition:all .4s; border-radius: 4px;}
+.bnnr_swiper .swiper-pagination span.swiper-pagination-bullet-active {width:19px; background-color: #888;}
+
+/* e클럽 혜택 텍스트 영역 추가*/
+.eclub_ben {margin-top:16px}
+.eclub_ben {width:100%; height:74px; border-radius: 6px; border:1px solid #eee;}
+.eclub_ben ul:after{content:"";display: block; clear:both;}
+.eclub_ben ul li {float:left; width:33.3333%; position:relative; font-size: 16px; color:#000; padding:12px 0; text-align: center;}
+.eclub_ben ul li+li:before {content:"";display:block;position:absolute;top:16px;bottom:16px;left:0;width:1px;background-color:#eee}
+
+.eclub_ben ul li .btn {display:block; height:40px; margin:5px auto; font-size: 14px; font-weight:normal; color:#333; line-height:20px; letter-spacing:-1px}
+.eclub_ben ul li .btn em {display:inline-block; position:relative; font-weight:bold; color:#1a70dd; letter-spacing:-1px;} 
+.eclub_ben ul li .btn em:after {content:'';position:absolute;bottom:1px;left:0;right:0;border-bottom:1px solid #1a70dd}
+
+/* ----------------------------------------------------------- 
+                @메인 - 쇼핑매니저 설명
+----------------------------------------------------------- */
+.shop_related {clear:both;position:relative;margin-top:12px;border-radius:6px;border:1px solid #ccc}
+.shop_related:after {content:'';display:table;clear:both}
+.shop_related .tx_msg {display:block;height:36px;padding:0 20px;border-top-left-radius:6px;border-top-right-radius:6px;border-bottom:1px solid #eee;font-size:13px;line-height:36px;color:#666;background-color:#fbfbfb}
+.shop_related .tx_msg em {font-weight:bold;color:#222;letter-spacing:-.4px}
+.shop_related .btn-shopmg {position:absolute;top:-30px;right:0;font-size:12px;color:#aaa;letter-spacing:-.3px;text-decoration:underline;background-color:#fff}
+.shop_related .shop_link {overflow:hidden;clear:both;position:relative;width:100%;height:68px;padding:11px 20px 13px;font-size:0;}
+.shop_related .shop_link .shop_benefit {display:block;height:100%}
+.shop_related .shop_link .shop_e {}
+.shop_related .shop_link .shop_e .i_logo {display:inline-block;width:44px;height:44px;margin-right:8px;vertical-align:middle}
+.shop_related .shop_link .shop_e .i_logo>img {width:100%;height:100%;vertical-align:top}
+.shop_related .shop_link .shop_e .tx_info {display:inline-block;width:calc(100% - 52px);font-size:13px;line-height:20px;color:#666;letter-spacing:-.4px;vertical-align:middle}
+.shop_related .shop_link .shop_e .tx_info .tx_re {display:inline-block;position:relative;padding-left:22px;font-weight:bold;font-size:18px;color:#000;letter-spacing:-.8px}
+.shop_related .shop_link .shop_e .tx_info .tx_re:before {content:"";display:inline-block;position:absolute;top:0;left:0;width:20px;height:20px;margin-right:2px;background:url("//img.enuri.info/images/rev/myeclub_sprite.png") -20px -100px no-repeat;}
+.shop_related .shop_link .btn-join {position:absolute;top:50%;bottom:50%;right:20px;z-index:10;width:80px;height:33px;margin:auto 0;border-radius:6px;font-size:13px;color:#fff;letter-spacing:-.5px;text-align:center;line-height:33px;background-color:#515b6d}
+
+/* ----------------------------------------------------------- 
+                쇼핑매니저 설명 슬라이드
+----------------------------------------------------------- */
+.modal_overlay {position: fixed;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,.4);z-index: 9999;}
+/* 교환레이어 */
+.lay-comm, .lay-comm * {-webkit-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing: border-box;}
+.lay-comm {width:440px; height: auto; border:1px solid #aaa; border-radius: 6px; box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+position: fixed; top: 50%; left: 50%; margin-left:-220px; z-index: 10000; transition: margin-top .4s; overflow: hidden;}
+.lay-comm .lay-comm--inner {padding:25px 20px;}
+.lay-comm .lay-comm--inner:after {content:"";display: block; clear:both;}
+.lay-comm .lay-comm__btn--close {top:10px; right:10px; width: 24px; height: 24px; background-position: -198px -278px; z-index: 10;}
+
+.lay-connect-shop-guide {border-radius: 20px;}
+.lay-connect-shop-guide .lay-comm--inner {padding:53px 0 77px}
+.lay-connect-shop-guide .swiper_inner {position:relative;text-align:center}
+.lay-connect-shop-guide .swiper_inner .intro_img {display:block;width:290px;margin:0 auto}
+.lay-connect-shop-guide .swiper_inner .btn-detail {display:block;width:180px;height:42px;margin:8px auto 0;border-radius:4px;border:1px solid #ddd;font-weight:bold;font-size:14px;color:#222;letter-spacing:-.6px;background-color:#F6F6F6}
+.lay-connect-shop-guide .swiper_inner .btn-join {display:block;width:180px;height:42px;margin:8px auto 0;border-radius:4px;font-weight:bold;font-size:14px;color:#fff;letter-spacing:-.6px;background-color:#296EDF}
+.lay-connect-shop-guide .swiper-button-prev {left:26px;width:21px;height:21px;background:url("//img.enuri.info/images/rev/myeclub_sprite.png") -105px 0 no-repeat;}
+.lay-connect-shop-guide .swiper-button-next {right:26px;width:21px;height:21px;background:url("//img.enuri.info/images/rev/myeclub_sprite.png") -126px 0 no-repeat;}
+.lay-connect-shop-guide .swiper-pagination {position:absolute; bottom:30px; left:0; text-align: center; z-index: 10; width:100%;}
+.lay-connect-shop-guide .swiper-pagination span {width:8px; height:8px; margin:0 5px; background-color: #ccc;opacity:1}
+.lay-connect-shop-guide .swiper-pagination span.swiper-pagination-bullet-active {background: #1a70dd;}
+
+/* ----------------------------------------------------------- 
+                @메인 - 최근본상품
+----------------------------------------------------------- */
+.recent_cate_list {}
+.recent_cate_list ul {}
+.recent_cate_list ul li {padding:14px 20px; border-radius: 6px; border:1px solid #eee; font-size: 0; margin-bottom:8px;}
+.recent_cate_list ul li:last-child {margin-bottom:0;}
+.recent_cate_list ul li span {display: inline-block; vertical-align: middle; font-size: 12px; color:#666;}
+.recent_cate_list ul li .icon_next_arrow:after {display:inline-block;     vertical-align: -2px; width: 12px; height: 12px; background-position:-240px 0; margin:0 4px;}
+.recent_cate_list ul li a {display: inline-block; vertical-align: middle; font-size: 12px; font-weight:bold; color:#000; text-decoration: underline;}
+
+/* ----------------------------------------------------------- 
+                @메인 - 최근본상품 - nolist
+----------------------------------------------------------- */
+.recent_cate_list div.nolist {font-size: 16px; text-align: center; color:#aaa; padding:94px 0;}
+
+/* ----------------------------------------------------------- 
+                @메인 -  e머니 사용하기
+----------------------------------------------------------- */
+.emoney_sort {font-size: 0; margin-top:12px; margin-bottom:16px;}
+.emoney_sort .sort_list {display: inline-block; height:36px; font-size: 13px; padding:8px 14px; border:1px solid #ddd; color:#999; border-radius: 20px; margin-right:4px; line-height:20px; cursor: pointer;}
+.emoney_sort .sort_list:last-child {margin-right:0;}
+.emoney_sort .sort_list.active {font-weight: bold; border:1px solid #1a70dd; color:#1a70dd;}
+
+.emoney_coupon_list_swiper .swiper_goods .info {text-align: center; margin-top:10px;}
+.emoney_coupon_list_swiper .swiper_goods .info .nm {margin-bottom: 0; white-space: nowrap; width: 100%; word-break: break-all; text-overflow: ellipsis; overflow: hidden; height: 20px;}
+.emoney_coupon_list_swiper .swiper-pagination {position: absolute; top: -84px; right: 0; width: auto; left: auto; font-size: 13px;}
+.emoney_coupon_list_swiper .swiper-pagination .swiper-pagination-current {font-weight: bold;}
+
+/* ----------------------------------------------------------- 
+                @메인 - 카드 혜택 - 하프 배너 스와이퍼
+----------------------------------------------------------- */
+.half_bnnr_swiper {margin-top:12px;}
+.half_bnnr_swiper .swiper-slide {width:234px; margin-right:8px;}
+.half_bnnr_swiper .swiper-slide a {display: block; height: 98px; }
+
+.half_bnnr_swiper .swiper-pagination {position: relative; margin-top:12px; bottom: 0;left: 0;font-size: 0;}
+.half_bnnr_swiper .swiper-pagination span {width: 6px; height: 6px; background-color: #ddd; opacity: 1; transition:all .4s; border-radius: 4px;}
+.half_bnnr_swiper .swiper-pagination span.swiper-pagination-bullet-active {width:19px; background-color: #888;}
+
+/* ----------------------------------------------------------- 
+                @메인 - 찜상품
+----------------------------------------------------------- */
+.zzim_swiper {margin-top:16px;}
+.zzim_swiper .swiper-pagination {position: absolute; top: -36px; right: 0; width: auto; left: auto; font-size: 13px;}
+.zzim_swiper .swiper-pagination .swiper-pagination-current {font-weight: bold;}
+
+/* ----------------------------------------------------------- 
+                @메인 - 최근본상품
+----------------------------------------------------------- */
+.recent_goods_swiper {margin-top:16px;}
+.recent_goods_swiper .swiper-pagination {position: absolute; top: -36px; right: 0; width: auto; left: auto; font-size: 13px;}
+.recent_goods_swiper .swiper-pagination .swiper-pagination-current {font-weight: bold;}
+
+/* ----------------------------------------------------------- 
+                @메인 - 찜상품,최근본상품 - nolist
+----------------------------------------------------------- */
+.swiper_common_wrap div.nolist {font-size: 16px; text-align: center; color:#aaa; padding:92px 0;}
+.swiper_common_wrap div.nolist a {display: inline-block; border:1px solid #ddd; border-radius: 6px; line-height: 30px; height:32px; padding:0 15px; font-size: 12px; color:#aaa; margin-top:10px;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 구매리포트 - 상단
+----------------------------------------------------------- */
+.icon_calendar {display: inline-block; width:22px; height:22px; background-position: 0 -44px; vertical-align: -7px;}
+.page_tit .data_date {position:relative; float:right; font-size: 14px; font-weight: bold; color:#444; margin-top: 2px; cursor: pointer;}
+.layer_calendar {height: 232px; padding:5px 0; overflow-y: auto; }
+.layer_calendar:after{content:""; display: block; width: 100%; height: 52px; background-image: linear-gradient(to bottom, rgba(255,255,255,0) 0, rgba(255,255,255,1) 55%); position: sticky; bottom: -5px; left: 0;}
+
+.ca_year {padding:0 20px; margin-top:10px; font-size: 20px; font-weight: bold; color:#333;}
+.ca_month {padding: 0 5px; margin-top:9px;}
+.ca_month span {display: inline-block; vertical-align: middle; width: 48px; height:30px; padding: 3px 0; border:1px solid transparent; font-size: 15px; color:#999; text-align: center; border-radius: 16px; margin: 0 10px 11px; cursor: pointer;}
+.ca_month span:after {content:"월"; display: inline-block; font-size: 13px; margin-left:1px;}
+.ca_month span.active {color:#1a70dd; font-weight: bold; border:1px solid #bce6ff; background-color: #f2faff;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 구매리포트 - 추가정보
+----------------------------------------------------------- */
+.my_addinfo {padding:24px 23px; font-size: 0;}
+.my_addinfo > div {display: inline-block; vertical-align: middle;}
+.my_addinfo > div.addinfo_txt {width: 126px; margin-right:10px;}
+.my_addinfo > div.addinfo_icon {width: 70px;}
+.my_addinfo .addinfo_nm {font-size: 14px; font-weight:bold; color:#1a70dd; margin-bottom:1px;}
+.my_addinfo .addinfo_val {font-size: 16px; font-weight: bold;}
+.my_addinfo .addinfo_val em {font-size: 20px; font-weight: bold; margin-right: 1px; vertical-align: -1px;} 
+
+.my_addinfo > div.addinfo_icon img {width: 100%;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 구매리포트 - 도넛차트 (어떤것을 많이 샀을까요?)
+----------------------------------------------------------- */
+.chart_donut {width: 100%; height: 213px; margin-top:20px; background-color: #f5f5f5;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 구매리포트 - 라인차트 (월별 구매액)
+----------------------------------------------------------- */
+.chart_line {width: 100%; height: 249px; margin-top:20px; background-color: #f5f5f5;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 구매리포트 - 프로그레스바 (쇼핑몰별 구매금액)
+----------------------------------------------------------- */
+.chart_progress_bar {width: 100%; height: 224px; margin-top:20px; background-color: #f5f5f5;}
+
+.grid_nm .allview_btn {position:relative; float:right; cursor: pointer;}
+.grid_nm .allview_btn .icon_more_plus {display: block; width: 24px; height: 24px; background-position: 0 -72px;}
+.layer_allview {height: 289px; padding:21px 23px;}
+/* 쇼핑몰별 구매금액 */
+.allshop_buy_price li {position:relative; padding:6px 100px 6px 0; border-bottom:1px solid #aaaaaa;}
+.allshop_buy_price li:last-child {border-bottom:none;}
+.allshop_buy_price li .shop_nm {font-size: 14px; color:#666;}
+.allshop_buy_price li .shop_price {position: absolute;top: 5px;right: 0;width: 100px;font-size: 14px;color: #666;text-align: right;}
+.allshop_buy_price li .shop_price em {font-size: 16px; margin-right:1px;}
+
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 혜택리포트 - 에누리에서 누린 혜택
+----------------------------------------------------------- */
+.e_benefit {margin-top:-12px;}
+.e_benefit li {position:relative; padding:16px 100px 15px 0; border-bottom:1px solid #eee;}
+.e_benefit li:last-child {border-bottom:none;}
+.e_benefit li .e_benefit_nm {font-size: 14px; color:#666;}
+.e_benefit li .e_benefit_point {position: absolute;top: 14px;right: 0;width: 100px;font-size: 14px;color: #666;text-align: right;}
+.e_benefit li .e_benefit_point em {font-size: 16px; margin-right:1px;}
+
+.total_box {position:relative; padding: 13px 30px; border-radius: 6px; border: 1px solid #bce6ff; background-color: #f2faff; font-size: 14px; font-weight: bold; margin-top: 8px; line-height: 18px;}
+.total_box .total_save_point {position:absolute; top:12px; right:30px; font-size: 13px; font-weight: bold; color:#1a70dd;}
+.total_box .total_save_point em {font-size:16px; margin-right:1px;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 혜택리포트 - 쇼핑몰별 적립금액
+----------------------------------------------------------- */
+.allshop_save_point li {position:relative; padding:6px 100px 6px 0; border-bottom:1px solid #aaaaaa;}
+.allshop_save_point li:last-child {border-bottom:none;}
+.allshop_save_point li .shop_nm {font-size: 14px; color:#666;}
+.allshop_save_point li .shop_point {position: absolute;top: 5px;right: 0;width: 100px;font-size: 14px;color: #666;text-align: right;}
+.allshop_save_point li .shop_point em {font-size: 16px; margin-right:1px;}
+
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 혜택리포트 - 쇼핑몰별 적립금액
+----------------------------------------------------------- */
+.e_allshop_save_point {margin-top:-12px;}
+.e_allshop_save_point li {position:relative; padding:16px 100px 15px 0; border-bottom:1px solid #eee;}
+.e_allshop_save_point li:last-child {border-bottom:none;}
+.e_allshop_save_point li .e_allshop_save_point_nm {display:block; font-size: 14px; color:#666; height: 20px;}
+.e_allshop_save_point li .e_allshop_save_point_point {position: absolute;top: 14px;right: 0;width: 100px;font-size: 14px;color: #666;text-align: right;}
+.e_allshop_save_point li .e_allshop_save_point_point em {font-size: 16px; margin-right:1px;}
+
+.total_box.total_e_allshop_save_point {text-align: center;}
+.total_box.total_e_allshop_save_point em {font-size: 16px; color:#1a70dd;}
+
+/* ----------------------------------------------------------- 
+        @쇼핑리포트 - 혜택리포트 - 최근 3개월 e머니 적립
+----------------------------------------------------------- */
+.chart_stick {width: 100%; height: 245px; margin-top:20px; background-color: #f5f5f5;}
+
+                                        
+
+/* ----------------------------------------------------------- 
+                @카드혜택 - 탭
+----------------------------------------------------------- */
+.benefit_cart_tab_menu { margin: 29px 0 16px; font-size: 0;}
+.benefit_cart_tab_menu li { position:relative; display:inline-block; vertical-align: middle; font-size: 16px; font-weight: bold; color: #a5aab3; letter-spacing: -1px; padding-right:8px; margin-right:8px; cursor: pointer;}
+.benefit_cart_tab_menu li:after {content:"";display: block;width:2px;height:16px;background-color: #515b6d;position:absolute;top:50%;right:-1px;margin-top:-8px;}
+.benefit_cart_tab_menu li:last-child {padding-right:0; margin-right:0;}
+.benefit_cart_tab_menu li:last-child:after {display: none;}
+.benefit_cart_tab_menu li.active {color:#515b6d;}
+
+
+/* ----------------------------------------------------------- 
+                @카드혜택 - 쇼핑몰별 메뉴
+----------------------------------------------------------- */
+#tab_shoppingmall .swiper_common_wrap {padding: 11px 24px; background-color: #eee; border-bottom:1px solid #ddd;}
+.shoppingmall_logo_swiper {width: 940px!important; margin: 0 auto!important; padding:0 4px;}
+.shoppingmall_logo_swiper .swiper-wrapper {align-items: center; padding: 3px 0;}
+.shoppingmall_logo_swiper .shop_logo {width: 100%; border-radius: 12px; overflow: hidden;}
+.shoppingmall_logo_swiper .shop_logo img {max-width: 100%; object-fit: cover;}
+
+.shoppingmall_logo_swiper .shop_logo.active {box-shadow: 0 0 3px 1px rgba(48,167,247,.5);}
+
+.shoppingmall_logo_swiper .swiper-btn {width:21px; height: 21px; margin-top:-10px; opacity: 1;}
+.shoppingmall_logo_swiper .swiper-btn.swiper-button-disabled {opacity: .4;}
+.shoppingmall_logo_swiper .swiper-btn.btn_prev {left: 27px; background-position: -105px 0;}
+.shoppingmall_logo_swiper .swiper-btn.btn_next {right: 27px; background-position: -126px 0;}
+
+/* ----------------------------------------------------------- 
+                @카드혜택 - 카드사별 메뉴
+----------------------------------------------------------- */
+/* 상단 스와이프 */
+#tab_cardbrand .swiper_common_wrap {padding: 11px 24px; background-color: #eee; border-bottom:1px solid #ddd;}
+.cardbrand_logo_swiper {width: 940px!important; margin: 0 auto!important; padding:0 4px;}
+.cardbrand_logo_swiper .swiper-wrapper {align-items: center; padding: 3px 0;}
+.cardbrand_logo_swiper .cardbrand_logo {border-radius: 6px; overflow: hidden; border:1px solid #ddd; height:56px; line-height: 54px; padding:0 10px; background-color: #fff; text-align: center;}
+.cardbrand_logo_swiper .cardbrand_logo img {max-width: 100%; height:16px; object-fit: cover; vertical-align: middle;}
+.cardbrand_logo_swiper .cardbrand_logo.active {box-shadow: 0 0 3px 1px rgba(48,167,247,.5);}
+.cardbrand_logo_swiper .swiper-btn {width:21px; height: 21px; margin-top:-10px; opacity: 1;}
+.cardbrand_logo_swiper .swiper-btn.swiper-button-disabled {opacity: .4;}
+.cardbrand_logo_swiper .swiper-btn.btn_prev {left: 27px; background-position: -105px 0;}
+.cardbrand_logo_swiper .swiper-btn.btn_next {right: 27px; background-position: -126px 0;}
+
+/* 공통 */
+.benefit_wrap {padding:24px;}
+.benefit_wrap .info_tit {font-size: 16px; font-weight: bold; color:#333; margin-top: 6px;}
+.benefit_wrap .info_cont {margin-bottom:50px;}
+.benefit_wrap .info_cont:last-child {margin-bottom:26px;}
+.benefit_wrap .info_ul > li {margin-top:26px;}
+.benefit_wrap .info_ul > li:first-child {margin-top:15px;}
+.benefit_wrap .info_ul > li .op_nm {font-size: 14px; font-weight: bold; color:#515b6d;}
+.benefit_wrap .info_ul > li .op_list {margin-top:6px; margin-left:-7px; margin-right:-7px;}
+.benefit_wrap .info_ul > li .op_list:after {content:"";display: block; clear:both;}
+
+/* 카드타입 */
+.benefit_wrap.shape_card .info_ul > li .op_list li {float:left; width:20%; padding-left:7px; padding-right:7px; margin-bottom:14px;}
+.benefit_wrap.shape_card .info_ul > li .op_list li .shape {position:relative; height: 121px; border-radius: 6px; border:1px solid #eee; padding-top:32px; overflow: hidden; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;}
+.benefit_wrap.shape_card .info_ul > li .op_list li .shape .installment_period {width:100%; height:32px; line-height: 32px; font-size: 12px; color:#fff; text-align: center; background-color: #555555; position:absolute; top:0; left:0;}
+.benefit_wrap.shape_card .info_ul > li .op_list li .shape img {width:auto; height:20px;}
+
+/* 아이콘타입 */
+.benefit_wrap.shape_icon .info_ul > li .op_list li {float:left; width:82px; padding-left:7px; padding-right:7px; margin-bottom:14px;}
+.benefit_wrap.shape_icon .info_ul > li .op_list li .shape {position:relative; overflow: hidden; display: flex; align-items: center; justify-content: center; border-radius: 12px;}
+.benefit_wrap.shape_icon .info_ul > li .op_list li .shape .installment_period {width:100%; height:26px; line-height: 26px; font-size: 12px; color:#fff; text-align: center; background-color: rgba(0,0,0,.6); position:absolute; top:0; left:0; border-radius: 12px 12px 0 0;}
+.benefit_wrap.shape_icon .info_ul > li .op_list li .shape img {max-width: 100%; width:68px; height: 68px;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼
+----------------------------------------------------------- */
+.page_control {position: relative; padding:12px 0; border-bottom:1px solid #e8e8e8; z-index: 100;}
+.page_control:after {content:""; display:block; clear:both;}
+.page_control > div {position:relative;}
+.page_control .f_left {float:left;}
+.page_control .f_left:after {content:""; display:block; clear:both;}
+.page_control .f_left > div {float:left; position:relative; margin-right:4px;}
+.page_control .f_left .select_wrap:after {content:""; display:block; clear:both;}
+.page_control .f_left .select_wrap > div {float:left; position:relative; margin-right:4px;}
+.page_control .btn_shape {padding: 5px 12px;border-radius: 4px;border: 1px solid #aaa;background-color: #fff; font-size: 12px; color:#666; cursor: pointer;}
+.page_control .btn_shape.disabled {color:#aaa; border-color:#ddd; background: #f8f8f8;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼(좌)
+----------------------------------------------------------- */
+.page_control .select_list {position:absolute; display:none; top:100%; left:0; width:100%; background-color: #fff; border:1px solid #666; border-top:1px solid #ccc; z-index: 5; margin-top:-1px; padding:9px 0; border-radius: 0 0 4px 4px;}
+.page_control .select_list li a {display:block; padding: 4px 16px; font-size: 12px; color:#666;}
+.page_control .select_list li a .div_cnt {margin-left:4px;}
+.page_control .select_list li.active a,
+.page_control .select_list li a:hover {color:#1a70dd;}
+
+/* -- active -- */
+.page_control .f_left .select_wrap > div:hover .btn_shape {border-color:#666;}
+.page_control .f_left .select_wrap > div.active .btn_shape {border-color:#666; border-radius: 4px 4px 0 0;}
+.page_control .f_left .select_wrap > div.active .select_list{display: block;}
+.page_control .f_left .select_wrap > div.active .btn_shape:after {background-position: -264px 0;}
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼(공통) - 편집관련
+----------------------------------------------------------- */
+.page_whole_container .modify_option {display: none;}
+.page_whole_container.mode_modify .modify_option {display: block!important;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼(좌) - 카테고리선택, 폴더선택
+----------------------------------------------------------- */
+.select_category .btn_shape,
+.select_folder .btn_shape {padding-right: 36px;}
+.select_category .btn_shape:after,
+.select_folder .btn_shape:after {display: block; width: 12px; height: 12px; margin-top:-6px; position:absolute; top:50%; right:12px; background-position: -252px 0;}
+.page_control .btn_shape .div_nm {margin-right:4px;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼(좌)- 폴더 관리
+----------------------------------------------------------- */
+.page_control .manage_folder {position:relative;}
+.page_control .manage_folder .layer_common {width:274px; left:0; right:auto; }
+.page_control .manage_folder .layer_common h3 {font-size: 16px; font-weight: bold; color:#222; padding:19px 16px 13px 20px;}
+.page_control .manage_folder .layer_common h3 .icon_close_ex {float:right; display: block; width: 20px; height: 20px; background-position: -180px -20px;}
+.page_control .manage_folder .layer_common ul {padding-bottom: 17px;}
+.page_control .manage_folder .layer_common ul li {font-size: 13px; color:#666; padding:5px 16px 6px 20px}
+.page_control .manage_folder .layer_common ul li .folder_cnt {color:#999; margin-left:4px;}
+.page_control .manage_folder .layer_common ul li a {display: block; float:right; width:48px; height: 24px; line-height: 24px; text-align: center; font-size:12px; color:#666; border-radius: 4px; border:1px solid #ccc; margin-top:-3px;}
+.page_control .manage_folder .layer_common ul li a:hover {border-color:#666;}
+.page_control .manage_folder .layer_common .btn_addfolder {font-size: 13px; color:#999; text-align: center; border-top:1px solid #ddd; padding: 11px 0 12px;}
+.page_control .manage_folder .layer_common .btn_addfolder .icon_add_plus {display:inline-block; width:12px; height: 12px; vertical-align: -1px; background-position: -240px -24px; margin-right:4px;}
+
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼(우)
+----------------------------------------------------------- */
+.page_control .f_right {float:right;}
+.page_control .f_right .modify_option {text-align: right;}
+.page_control .f_right .modify_option .btn_shape {display: inline-block;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상단버튼(우) - 찜상품이동 폴더리스트 
+----------------------------------------------------------- */
+.move_zzim_folder_list_layer {display: none; position: absolute; top: 100%; right: 108px; width: 234px; border: 1px solid #aaa; border-radius: 6px; background-color: #fff; box-shadow: 0 4px 6px 0 rgba(0,0,0,.1); margin-top: 4px; z-index: 10;}
+.move_zzim_folder_list_layer h3 {font-size: 14px; font-weight: bold; color:#222; padding:19px 16px 13px 20px;}
+.move_zzim_folder_list_layer h3 .icon_close_ex {float:right; display: block; width: 20px; height: 20px; background-position: -180px -20px; margin-top: -2px;}
+.move_zzim_folder_list_layer ul {padding-bottom: 17px;}
+.move_zzim_folder_list_layer ul li {font-size: 13px; color:#666; padding:5px 16px 6px 20px}
+.move_zzim_folder_list_layer ul li .folder_cnt {color:#999; margin-left:4px;}
+.move_zzim_folder_list_layer ul li a {display: block; float:right; width:48px; height: 24px; line-height: 24px; text-align: center; font-size:12px; color:#666; border-radius: 4px; border:1px solid #ccc; margin-top:-3px;}
+.move_zzim_folder_list_layer ul li a:hover {border-color:#666;}
+.move_zzim_folder_list_layer .btn_addfolder {font-size: 13px; color:#999; text-align: center; border-top:1px solid #ddd; padding: 11px 0 12px;}
+.move_zzim_folder_list_layer .btn_addfolder .icon_add_plus {display:inline-block; width:12px; height: 12px; vertical-align: -1px; background-position: -240px -24px; margin-right:4px;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상품리스트 - nolist
+----------------------------------------------------------- */
+.page_content .nolist {text-align: center; padding:180px 0;}
+.page_content .nolist .txt {margin-top:4px; font-size: 20px; color:#666;}
+.page_content .nolist a {display: inline-block; height:32px; font-size: 12px; line-height: 32px; color:#999; border-radius: 4px; border:1px solid #ddd; background-color: #fff; margin: 20px auto 0; padding:0 15px;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상품리스트 - 체크박스,날짜
+----------------------------------------------------------- */
+.page_content .bundle {padding-top:16px;}
+.page_content .bundle .bundle_header {margin-top:15px; margin-bottom:10px;}
+.page_content .bundle .bundle_header > div {float:left;}
+.page_content .bundle .bundle_header:after {content:""; display: block; clear:both;}
+.page_content .bundle .bundle_header .input_wrap {margin-right:0!important;}
+.page_content .bundle .bundle_header .bundle_tit {font-size: 16px; font-weight: bold; color:#515b6d; padding: 3px 0;}
+.page_content .bundle .bundle_header .bundle_date {font-size: 16px; font-weight: bold; color:#000; padding: 3px 0;}
+.page_content .bundle .bundle_header .bundle_date:before{content:""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: #ccc; margin: 7px 13px; vertical-align: -4px;}
+.page_control.mode_modify .page_content .bundle .bundle_header .bundle_date:before {display: none;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 상품리스트 - 상품
+----------------------------------------------------------- */
+.page_content .col_wrap > div {margin-bottom:16px;}
+.page_content .goods {position:relative; border: 1px solid #ddd; border-radius:6px; letter-spacing: -.5px; overflow: hidden;}
+.page_content .goods.selected {border-color:#30a7f7;}
+.page_content .goods a {position: relative; display: block; padding:24px 18px 16px; background-color: #fff; }
+
+/* 임시처리.... */
+.page_content .goods .input_wrap {position: absolute;top: 0;left: 0;margin-right: 0!important;z-index: 50;width: 100%;height: 100%;padding: 16px!important; cursor: pointer; }
+.page_content .goods .input_wrap input {pointer-events: none;}
+
+
+.page_content .goods a .goods_msg {position:absolute; top:0; left:0; width:100%; font-size: 12px; padding: 18px 0; text-align: center; color:#fff; background-color: rgba(0,0,0,.6);}
+.page_content .goods a .thumbs {width: 100%; height: 216px; margin-bottom:8px;}
+.page_content .goods a .thumbs .thumbsnail_img img {width: 216px; height: 216px;}
+.page_content .goods a .goods_date {width: 100%; height: 15px; font-size: 13px; color:#aaa; line-height: 15px; letter-spacing: 0; margin-bottom:4px;}
+.page_content .goods a .goods_name {width: 100%; height: 38px; font-size: 14px; color:#333; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; margin-bottom:6px;}
+.page_content .goods a .goods_addinfo {height: 18px; font-size: 0;}
+.page_content .goods a .goods_addinfo span {position:relative; display: inline-block; vertical-align: middle; font-size: 12px; color:#999; padding-right:8px; margin-right:8px;}
+.page_content .goods a .goods_addinfo span:last-child {padding-right:0; margin-right:0;}
+.page_content .goods a .goods_addinfo span:after {content:""; display: block; width: 1px; height: 10px; background-color: #ccc; position:absolute; top: 50%; right:0; margin-top:-5px;}
+.page_content .goods a .goods_addinfo span:last-child:after {display: none;}
+
+.page_content .goods a .alarm_price {height: 49px; margin-top:12px; font-size: 14px; color:#000;}
+.page_content .goods a .alarm_price > div {position:relative; height: 24px; padding-left:65px; text-align: right;}
+.page_content .goods a .alarm_price .prefix {position:absolute; top:3px; left:0; font-size: 13px;}
+.page_content .goods a .alarm_price .price {font-weight: bold;}
+.page_content .goods a .alarm_price .price em {font-size: 18px; margin-right:1px; vertical-align: -1px; line-height: 1;}
+.page_content .goods a .alarm_price .setting_price {margin-bottom: 1px;}
+.page_content .goods a .alarm_price .current_price {color:#1a70dd;}
+
+.page_content .goods .btn_set_alarm {font-size: 13px; color:#666; text-align: center; border-top:1px solid #ddd; line-height: 45px; background-color: #fff; cursor: pointer;}
+.page_content .goods .btn_set_alarm .icon_alarm {display: inline-block; vertical-align: -5px; width: 21px; height: 21px; background-position: -63px 0;}
+.page_content .goods .btn_set_alarm.on .icon_alarm {background-position: -42px 0;}
+
+.page_content .goods .goods_shop_logo {text-align: center; border-top:1px solid #ddd; padding:12px 0; background-color: #fff; cursor: pointer; height:46px;}
+.page_content .goods .goods_shop_logo img {height:20px;}
+
+/* 편집모드 */
+.mode_modify .page_content a .goods_msg { padding: 18px 20px 18px 40px; color: #999; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-break: break-all; transition: all .2s;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜상품 - 레이어팝업(알람설정)
+----------------------------------------------------------- */
+
+#alarm_set .btn-close {top:10px; right:10px;}
+#alarm_set {text-align: left;}
+#alarm_set .lay_header {background-color: #575C67; font-size: 12px; font-weight: normal; color:#ccc; height:42px; line-height: 42px; padding-left:15px; text-align: left;}
+#alarm_set .lay_header strong {font-size: 15px; color:#fff; margin-right:4px; vertical-align: -1px;}
+#alarm_set .lay_content {margin-top:19px; padding: 0 19px;}
+#alarm_set .alarm_goods {position:relative;}
+#alarm_set .alarm_goods:after {content:""; display: block; clear:both;}
+#alarm_set .alarm_goods > div {float:left;}
+#alarm_set .alarm_goods .thumbs {width:90px; margin-right:20px;}
+#alarm_set .alarm_goods .thumbs img {width:90px; height:90px;}
+#alarm_set .alarm_goods .info {width:290px;}
+#alarm_set .alarm_goods .goods_name {display: block; display: -webkit-box; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-wrap: break-word; -webkit-box-orient: vertical; -webkit-line-clamp: 2; height: 36px; margin-bottom: 6px; font-size: 13px; color: #333; letter-spacing: -.4px; line-height: 18px;}
+#alarm_set .alarm_goods .goods_subinfo {display: block; margin-bottom: 6px; font-size: 12px; color: #666; letter-spacing: -.4px; line-height: 20px;}
+#alarm_set .alarm_goods .goods_price {font-weight: bold; font-size: 13px; color: #1A70DD; letter-spacing: -.4px; line-height: 20px;}
+#alarm_set .alarm_goods .goods_price em {margin-left: 12px; font-family: Arial, Helvetica, sans-serif; font-size: 20px;}
+
+#alarm_set .alarm_setting {position:relative; padding: 20px 16px; background-color: #FBFBFB; margin-top:20px;}
+#alarm_set .alarm_setting .set_tit { display: block; font-weight: bold; font-size: 14px; color: #333; line-height: 18px; margin-bottom: 15px;}
+#alarm_set .set_unit_list {position:absolute; top:17px; right:16px; font-size: 0;}
+#alarm_set .set_unit_list li {display: inline-block; vertical-align: middle;}
+#alarm_set .set_unit_list li label {display: block; font-size: 0; margin-right:4px;}
+#alarm_set .set_unit_list li label input {width: 16px; height: 16px; background-position: -162px -22px;}
+#alarm_set .set_unit_list li label .input_nm {font-size: 14px; font-weight: normal;}
+
+#alarm_set .set_range__bar input[type="range"] {overflow: hidden;margin: auto;-webkit-appearance: none;position: relative;width: 100%;height: 16px;cursor: pointer;border-radius: 8px; background: linear-gradient(to right, #1A70DD 0%, #1A70DD 0%, #aaaaaa 0%, #aaaaaa 100%)}
+
+#alarm_set .set_range__bar {display:block;width:100%;margin:18px 0 20px}
+#alarm_set .set_range__bar input[type="range"] {overflow:hidden;margin:auto;-webkit-appearance:none;position:relative;width:100%;height:16px;cursor:pointer;border-radius:8px;background:#ddd}
+#alarm_set .set_range__bar input[type="range"]::-webkit-slider-thumb {-webkit-appearance:none;width:34px;height:16px;border:1px solid #1A70DD;border-radius:8px;box-shadow: -100vw 0 0 99.5vw #1A70DD;background:#fff}
+#alarm_set .set_range__bar input[type="range"]::-moz-range-thumb{-webkit-appearance:none;width:34px;height:16px;border:1px solid #1A70DD;border-radius:8px;box-shadow: -100vw 0 0 99.5vw #1A70DD;background:#fff;cursor:pointer}
+#alarm_set .set_range__bar input[type="range"]::-ms-thumb {background:#fff;border:1px solid #1A70DD;width:34px;height:16px;box-sizing:border-box; border-radius:8px;box-shadow: -100vw 0 0 99.5vw #1A70DD; cursor:pointer}
+#alarm_set .set_range__bar input[type="range"]::-ms-fill-lower {background:#1A70DD}
+#alarm_set .set_range__bar input[type="range"]::-ms-fill-upper {background:#ddd}
+#alarm_set .set_range__bar input[type="range"]::-ms-track {background:#ddd;color:transparent;height:16px;border:none;}
+#alarm_set .set_range__bar input[type="range"]::-ms-ticks-after {display:none;}
+#alarm_set .set_range__bar input[type="range"]::-ms-ticks-before {display:none;}
+#alarm_set .set_range__bar input[type="range"]::-ms-tooltip {display:none;}
+
+#alarm_set .set_detail {}
+#alarm_set .set_detail:after {content:""; display: block; clear:both;}
+#alarm_set .set_detail > div {float: left;}
+#alarm_set .set_detail > div.set_detail_item_discount {width:32%; margin-right:10%;}
+#alarm_set .set_detail > div.set_detail_item_setprice {width:58%; }
+#alarm_set .set_detail .set_detail_tit {font-size: 14px; font-weight: bold; color:#333; margin-bottom:4px;}
+#alarm_set .set_detail input { width: calc(100% - 20px); border:1px solid #ddd; height:30px; line-height: 28px; padding:0 10px; font-size: 12px; background-color: #fff;}
+
+#alarm_set .lay_footer {margin-top:20px; padding:20px; background-color: #eee;}
+#alarm_set .phon_setting {position:relative; padding-left:50px;}
+#alarm_set .phon_setting .set_tit {position:absolute; top:5px; left:0; font-size: 14px; font-weight: bold; color:#333;}
+#alarm_set .phon_setting .input_wrap {position:relative; padding:0 94px 0 0;}
+#alarm_set .phon_setting .input_wrap input {width: 100%; border:1px solid #ddd; height:30px; line-height: 30px; padding:0 10px; font-size: 12px; background-color: #fff;}
+#alarm_set .phon_setting .input_wrap button {width:94px; height:30px; line-height: 28px; text-align: center; background-color: #1A70DD; color:#fff; position:absolute; top:0; right:0;}
+#alarm_set .phon_setting .set_tip {font-size: 12px; color:#999; line-height: 1.4; margin-top:10px;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 최근 본 상품 - 상단 전체갯수
+----------------------------------------------------------- */
+.page_control .total_cnt {font-size: 16px; font-weight: bold; color:#222; padding: 3px 6px; letter-spacing: -.5px;}
+
+/* ----------------------------------------------------------- 
+        @관심상품 - 최근 본 카테고리 
+----------------------------------------------------------- */
+.page_content .recent_list {}
+.page_content .recent_list li {position:relative; padding-left:36px; margin-bottom:8px;}
+.page_content .recent_list li:last-child {margin-bottom:0;}
+.page_content .recent_list li:before {content: "";display: block;width: 10px;height: 10px;border: 2px solid #ccc;border-radius: 50%;position: absolute;top: 18px;left: 12px;}
+.page_content .recent_list li:after {content: "";display: block;width: 1px;height: 100%;background-color: #ccc;position: absolute;top: 28px;left: 16px;opacity: 1;transform-origin: 50% 50%;transform:scale(1);transition: all .2s;}
+.page_content .recent_list li:last-child:after {display: none;}
+
+.page_content .recent_list li .input_wrap {position: absolute; top: 0; left: 0; padding: 13px 6px; margin: 0; width: 100%; z-index: 10; cursor: pointer;}
+.page_content .recent_list li .input_wrap input {pointer-events: none;}
+
+.page_content .recent_list li .list_box {position: relative;}
+.page_content .recent_list li .list_box a.list_wrap {display: block; font-size: 0; padding:14px 20px; border-radius: 6px; border:1px solid #ddd; background-color: #fff;}
+.page_content .recent_list li .list_box a.list_wrap:hover,
+.page_content .recent_list li.selected .list_box a.list_wrap {border-color:#30a7f7;}
+.page_content .recent_list li .list_box span {display: inline-block; vertical-align: middle; font-size: 12px; color:#666;}
+.page_content .recent_list li .list_box .icon_next_arrow:after {display:inline-block;     vertical-align: -2px; width: 12px; height: 12px; background-position:-240px 0; margin:0 4px;}
+.page_content .recent_list li .list_box .last_cate {color:#222; font-weight: bold; text-decoration: underline;}
+
+.page_content .recent_list li .list_box a.btn_delete_cate_list {display: block; position:absolute; top:13px; right:18px;}
+.page_content .recent_list li .list_box a.btn_delete_cate_list .icon_delete_ex {display: block; width: 20px; height: 20px; background-position: -180px 0;}
+
+
+/* 편집모드시 */
+.mode_modify .page_content .recent_list li:before {display: none;}
+.mode_modify .page_content .recent_list li:after {transform:scale(0); opacity: 1;}
+.mode_modify .page_content .recent_list li .list_box a.btn_delete_cate_list {display: none;}
+
+
+/* ----------------------------------------------------------- 
+        @쿠폰함 - 쿠폰리스트
+----------------------------------------------------------- */
+/* 공통 */
+.coupons {position:relative;}
+.coupons .coupons_msg {position:absolute; top:0; left:0; width: 100%; padding: 7px 0 6px; font-size: 15px; font-weight: bold; color:#1a70dd; text-align: center; border: 1px solid #bce6ff; background-color: #f2faff; border-radius: 6px 6px 0 0; z-index: 1;}
+.coupons a {position:relative; display: block; border-radius: 6px; border: 1px solid #ddd; background-color: #fff; padding:40px 15px 24px;}
+.coupons a .thumbs {width: 168px; height: 168px; margin-bottom: 10px;}
+.coupons a .thumbs img {object-fit: cover; width: 100%;}
+.coupons a .coupons_name {width: 100%; height: 41px; font-size: 14px; color: #333; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.45;}
+
+/* 사용완료 */
+.bundle_unavailable {}
+.bundle_unavailable .coupons:after {content: ""; display: block; background-color: rgba(255,255,255,.6); background-repeat: no-repeat; background-position: center; width: 100%; height: 100%; position: absolute; top: 0; left: 0;}
+
+
+.bundle_unavailable .coupons.used:after{ background-image: url('//img.enuri.info/images/rev/icon_msg_used.png');}
+.bundle_unavailable .coupons.refunded:after{ background-image: url('//img.enuri.info/images/rev/icon_msg_refunded.png');}
+.bundle_unavailable .coupons.expired:after{ background-image: url('//img.enuri.info/images/rev/icon_msg_expired.png');}
+
+
+/* ----------------------------------------------------------- 
+        @e머니
+----------------------------------------------------------- */
+.page_control .option_sort {}
+.page_control .option_sort ul {font-size: 0;}
+.page_control .option_sort ul li {position:relative; display: inline-block; font-size: 16px; color:#aaa; margin-right:15px; padding: 3px 0; cursor: pointer;}
+.page_control .option_sort ul li:last-child {margin-right:0;}
+.page_control .option_sort ul li.active {font-weight:bold; color:#1a70dd;}
+.page_control .option_sort ul li.active:after {content:""; display:block; width:100%; height:4px; position:absolute; bottom:-13px; left:0; background: #1a70dd;}
+
+.page_control .option_month,
+.page_control .option_calendar,
+.page_control .btn_search_list {display: inline-block; vertical-align: middle;}
+
+.page_control .option_month {margin-right:20px;}
+.page_control .option_month ul:after {content:""; display: block; clear:both;}
+.page_control .option_month ul li {float:left; margin-right:4px;}
+.page_control .option_month ul li:last-child {margin-right:0;}
+
+
+.page_control .option_calendar {position:relative; padding-left: 28px;}
+.page_control .option_calendar:before {content:""; display:inline-block; vertical-align: middle; width:24px; height:24px; background:url("//img.enuri.info/images/rev/icon_calendar@s24.png"); position:absolute; top:50%; left:0; margin-top:-12px;}
+.page_control .option_calendar .input_date {width:94px;}
+
+.lay_calendar{display:none;position:absolute;top:50px;left:0;width:240px;border:1px solid #3a7bd5;border-radius: 2px 2px;text-align:center;background-color:#fff;z-index: 10}
+.lay_calendar .calendar_head{height:40px;line-height:40px;position: relative;font-size:16px;border-bottom:1px solid #ddd}
+.lay_calendar .calendar_head button{position:absolute;width:8px;height:15px;text-indent:-9999em;top:12px}
+.lay_calendar .calendar_body{padding:6px 0}
+.tb_calendar{width:100%;font-size:12px;}
+.tb_calendar th{padding:4px 0}
+.tb_calendar td a{padding:4px 0;display:block}
+.tb_calendar td a.blank{display:none}
+.tb_calendar tr td:first-child{color:#f2412c}
+.tb_calendar tr td:last-child{color:#3a7bd5}
+.tb_calendar tr td a:hover{background-color:#eee}
+
+.page_emoney .e_list {}
+.page_emoney .e_list li {position:relative; padding-left:36px; margin-bottom:8px;}
+.page_emoney .e_list li:last-child {margin-bottom:0;}
+.page_emoney .e_list li:before {content: "";display: block;width: 10px;height: 10px;border: 2px solid #ccc;border-radius: 50%;position: absolute;top: 18px;left: 12px;}
+.page_emoney .e_list li:after {content: "";display: block;width: 1px;height: 100%;background-color: #ccc;position: absolute;top: 28px; left: 16px; opacity: 1; transform-origin:  50% 50%; transform:scale(1); transition: all .2s;}
+.page_emoney .e_list li:last-child:after {display: none;}
+
+.page_emoney .e_list li .item_wrap {position: relative; display: block; font-size: 0; padding:11px 20px; border-radius: 6px; border:1px solid #ddd; background-color: #fff;}
+.page_emoney .e_list li .item_wrap:after {content:""; display: block; clear:both;}
+.page_emoney .e_list li .item_wrap > div {float:left;}
+.page_emoney .e_list li .item_wrap > div.item_left {width:85%; font-size: 0;}
+.page_emoney .e_list li .item_wrap > div.item_right {width:15%; text-align: right;}
+.page_emoney .e_list li .item_wrap > div.item_bottom {width:100%}
+.page_emoney .e_list .e_status,
+.page_emoney .e_list .use_period,
+.page_emoney .e_list .e_eventname,
+.page_emoney .e_list .bar,
+.page_emoney .e_list .e_date,
+.page_emoney .e_list .e_name {display: inline-block; vertical-align: middle; line-height: 22px;}
+/* status color*/
+.page_emoney .e_list .e_status {font-size: 12px; font-weight: bold;}
+.page_emoney .e_list .blue {color:#1a70dd;}
+.page_emoney .e_list .red {color:#d43031;}
+.page_emoney .e_list .gray {color:#666666;}
+.page_emoney .e_list .lightblue {color:#00a7ee;}
+.page_emoney .e_list .turquoise {color:#2e9db4;}
+
+.page_emoney .e_list .use_period,
+.page_emoney .e_list .e_eventname {font-size: 12px; color:#999;}
+
+.page_emoney .e_list .bar {width:1px; height: 12px; background-color: #ccc; margin: 0 8px;}
+
+.page_emoney .e_list .e_point {font-size: 12px;}
+.page_emoney .e_list .e_point em {font-size: 16px; font-weight: bold; margin-right: 1px; vertical-align: -1px;}
+
+.page_emoney .e_list .e_detail {border-top: 1px solid #eee; padding-top: 11px; margin-top:11px; font-size: 12px;; color:#666}
+.page_emoney .e_list .e_detail > span.e_date {margin-right:10px;}
+.page_emoney .e_list .e_detail > span.e_price  {font-size: 13px; font-weight:bold; color:#333; float:right;}
+.page_emoney .e_list .e_detail > span.e_price em {font-size: 14px}
+
+.page_emoney .btn_area {padding-left:36px;}
+.page_emoney .btn_more {display: block; margin-top:30px; color:#666; font-size: 14px; border:1px solid #ddd; background-color: #eee; text-align: center; border-radius: 6px; line-height: 44px; height:46px; }
+
+
+
+/* ----------------------------------------------------------- 
+        @견적관리 - 내차견적
+----------------------------------------------------------- */
+.newcar_sprite{background-image:url("//img.enuri.info/images/home/myenuri/newcar/my_car_sprite.png");background-repeat:no-repeat;}
+
+/*================= 내차시세 공통 ================= */
+.clear:after{content:"";display: block;clear:both;}
+.tabs__cont {display:none}
+.tabs__cont:first-child {display:block;}
+
+.page_estimate {letter-spacing: -.5px;}
+.page_estimate .box_head {font-size: 16px; font-weight: bold; color:#515b6d; line-height:1; margin-bottom:15px; }
+
+/*================= // ================= */
+
+
+/*================= 상단 내차정보리스트 swiper type ================= */
+.vaild_estimate_swiper {border: 1px solid #d4d4d4; border-radius: 0 6px 6px 0;} 
+.vaild_estimate_swiper.swiper-after:after {content:""; display: block; width: 30px; height: 100%; position:absolute; top:0; right:0; background:linear-gradient(to left, rgba(0,0,0,.4), rgba(0,0,0,0));     z-index: 20;} 
+.vaild_estimate_swiper .swiper-slide{height:98px; width:300px; border-left:1px solid #d4d4d4; position: relative; z-index:1;background-color:#fff}
+.vaild_estimate_swiper .swiper-slide:first-child {border-left:none;}
+.vaild_estimate_swiper .swiper-slide.selected,
+.vaild_estimate_swiper .swiper-slide.selected:before{z-index:4;border-color:#1a70dd}
+.vaild_estimate_swiper .swiper-scrollbar{left:0;right:0;height:2px;bottom:0;width:100%;background:transparent;z-index:6}
+.vaild_estimate_swiper .swiper-scrollbar-drag{background-color:#3a7bd5}
+.vaild_estimate_swiper .swiper-slide > a {position:relative; display:block; height:100%; padding-top: 20px; padding-left: 164px; text-align: left;}
+.vaild_estimate_swiper .swiper-slide i.ico_new{}
+.vaild_estimate_swiper .swiper-slide .thumb{position:absolute; top:50%;margin-top:-34px; left:20px; display:block;width:136px;height:68px;}
+.vaild_estimate_swiper .swiper-slide .thumb img{width:136px;height:68px;}
+.vaild_estimate_swiper .swiper-slide .tx_tit {display:block; width:110px; max-height:38px; font-size:16px;font-weight:bold;color:#333; line-height: 1.2; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; overflow:hidden; word-break:keep-all; text-overflow:ellipsis; -webkit-box-orient:vertical; word-wrap:break-word;}
+.vaild_estimate_swiper .swiper-slide .tx_summary{display:block; width:110px; max-height:34px; font-size:12px;color:#999; letter-spacing:0; height:16px; overflow: hidden;}
+.vaild_estimate .ico_unread{width:16px; height:16px;position:absolute;top:0;right: 0; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_unread_s16.png") no-repeat 0 0;}
+.vaild_estimate_swiper .swiper__delete {position:absolute;top:10px;right:10px; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_close_s16.png") no-repeat 0 0; width: 14px;height: 14px;}
+/*================= // ================= */
+
+/*================= 상단 내차정보리스트 default type - 3개기준 ================= */
+.vaild_estimate{height:100px; position: relative;padding-left:152px;text-align:center;letter-spacing:-1px;overflow:hidden; margin: 30px 0  44px; background-color:#fff;}
+.vaild_estimate .box_tit{position: absolute;top:0;left:0;width:152px;height:100px;background-color:#515b6d;line-height:24px;font-size:15px;color:#fff;font-weight:bold;z-index:5; border-radius: 6px 0 0 6px;}
+.vaild_estimate .box_tit .tx_count{font-weight: normal;}
+.vaild_estimate .box_tit .ico_car{display:block; width:60px; height:44px;margin:15px auto 3px; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_car_s60x44.png") no-repeat 0 0;}
+.vaild_estimate .box_tit .ico_list{display:block; width:60px; height:44px;margin:15px auto 3px; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_list_s60x44.png") no-repeat 0 0;} 
+.vaild_estimate .box_list{position: relative;}
+.vaild_estimate .box_list .no_result{height:100px;line-height:100px;font-size:15px;color:#333;letter-spacing:-1px}
+
+.vaild_estimate .box_list .mytabs {}
+.vaild_estimate .box_list .mytabs li {float: left; width: 33.3333%;height: 100px;padding-top: 20px;padding-left: 164px;text-align: left;position: relative;border-style: solid;cursor: pointer;border-width: 1px;border-color: #d4d4d4 #d4d4d4 #d4d4d4 transparent;z-index: 10;}
+.vaild_estimate .box_list .mytabs li:last-child {border-radius: 0 6px 6px 0;}
+.vaild_estimate .box_list .mytabs li:hover,
+.vaild_estimate .box_list .mytabs li.is-on{border-color: #377cd6}
+.vaild_estimate .box_list .mytabs i.ico_new{}
+.vaild_estimate .box_list .mytabs .thumb{position:absolute; top:50%;margin-top:-34px; left:20px; display:block;width:136px;height:68px;}
+
+.vaild_estimate .box_list .mytabs .thumb img {width:136px;height:68px;}
+.vaild_estimate .box_list .mytabs .tx_tit{display:block; width:110px; font-size:16px;font-weight:bold;color:#333;height:20px;line-height:20px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-bottom:4px;}
+.vaild_estimate .box_list .mytabs .tx_summary{ display:block; width:110px; max-height:34px; font-size:12px; color:#999; line-height: 1.4; letter-spacing:0; display:-webkit-box; -webkit-line-clamp:2; overflow:hidden; word-break:keep-all; text-overflow:ellipsis; -webkit-box-orient:vertical; word-wrap:break-word;}
+.vaild_estimate .ico_unread{width:16px; height:16px;position:absolute;top:0;right: 0; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_unread_s16.png") no-repeat 0 0;}
+.vaild_estimate .box_list .mytabs .tab__delete {position:absolute;top:10px;right:10px; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_close_s16.png") no-repeat 0 0; width: 14px;height: 14px;}
+
+.vaild_estimate .box_list .mytabs li.add_quote {padding:0; background-color: #f5f5f5;}
+.vaild_estimate .box_list .mytabs li.add_quote a {display: block; font-size: 15px; color:#999; text-align: center;padding: 38px 0;}
+.vaild_estimate .box_list .mytabs li.add_quote a .ico_plus {display: inline-block; width: 16px; height: 16px; background:url("//img.enuri.info/images/home/myenuri/newcar/icon_plus_s16.png") no-repeat 0 0; vertical-align: bottom; margin-right: 4px;}
+/*================= // ================= */
+
+/*================= 내차정보 상세정보 ================= */
+.box_inner {margin-bottom:60px;}
+.box_inner .box_cont {position:relative; border-radius: 6px; background-color: #fff; border:1px solid #efefef;}
+
+.mycar_quote .box_cont { margin-top:20px; }
+.mycar_quote .box_cont:before{content:""; display: block; width:1px; height: 100%; background-color: #efefef; position:absolute;top:0; left:350px;}
+.mycar_quote .box_cont > div {float:left; min-height: 375px;}
+.mycar_quote .info_left {width: 350px;padding:44px 36px 32px; letter-spacing: -1px;}
+.mycar_quote .info_right {width: 712px;padding:34px 30px;}
+
+.info_left .mycar_name {font-size: 24px; font-weight: bold; color:#444; line-height: 1.2; max-height: 56px; margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; overflow: hidden; word-break: break-all; text-overflow: ellipsis; -webkit-box-orient: vertical; word-wrap: break-word;}
+.info_left .mycar_info {font-size: 14px ;color:#999; margin-bottom: 52px;}
+.info_left .mycar_thumbnail {position:relative;width: 276px; height: 138px;}
+.info_left .mycar_thumbnail .brand_logo {position:absolute; top:-23px; left:0;width: 70px;height: 46px;}
+.info_left .mycar_thumbnail .thumbnail_img {height: 100%;background-position: center;background-repeat: no-repeat;background-size: 100% auto;background-color: #fff;}
+
+.info_right .detailinfo {background-color: #fbfbfb; border:1px solid #efefef; border-radius: 6px;padding:19px 0;}
+.info_right .detailinfo > div {position:relative;float:left;width: 33.3333%;font-size: 18px; font-weight:bold; color:#333; text-align: center;}
+.info_right .detailinfo > div:before {display:block;font-size: 14px;color:#999;margin-bottom:5px;}
+.info_right .detailinfo > div:after {content:"";display: block;width: 1px;height: 54px;background-color: #dedede;position:absolute;top:50%;margin-top:-27px;right:0;}
+.info_right .detailinfo > div:last-child:after{display: none;}
+.info_right .detailinfo .d_info_mycarNo:before {content:"차량번호";}
+.info_right .detailinfo .d_info_mycarRelease:before {content:"최초등록일";}
+.info_right .detailinfo .d_info_mycarDistance:before {content:"주행거리(Km)";}
+
+.mycar_quote .btn_sell_mycar {display: block; width: 188px; height: 40px; line-height:40px; font-size: 18px; text-align: center;-webkit-border-radius: 6px; border-radius: 6px; margin:0 auto; background-color: #377cd6; color:#fff;}
+
+/* 시세 프로그레스 바 */
+.info_right .quote_wrap {padding:75px 0 50px 50px;}
+.quote_bar {position: relative; background: #ccc;width: 80%;height: 6px;float:left; -webkit-border-radius: 4px; border-radius: 4px;}
+.quote_bar .value_bar {display: block;width: 80%;margin:0 10%;height: 6px;background-color: #3a7bd5;position: absolute;top:0;-webkit-transition: all .4s;transition: all .4s; }
+.quote_bar .value_bar > span {display: block;position:absolute;width: 16px;height: 16px;background-color: #3a7bd5;-webkit-border-radius: 50%;border-radius: 50%;top:-5px;}
+.quote_bar .value_bar > span.low_dot {left:-8px;}
+.quote_bar .value_bar > span.high_dot {right:-8px;}
+.quote_bar .value_bar > span.low_dot:hover,
+.quote_bar .value_bar > span.high_dot:hover {z-index: 10;}
+.quote_bar .value_bar > span:before {content:"";display: block;width: 36px;height: 36px;-webkit-border-radius: 50%;border-radius: 50%;background: #3a7bd5;opacity: .5;position:absolute;top:-10px;left:-10px;animation: .8s linear 0s infinite circle_expand;}
+@keyframes circle_expand {
+	0% {transform: scale(0); opacity: .5;}
+	100% {transform: scale(1); opacity: 0;}
+}
+
+.quote_bar .value_bar > span .value_tooltip {position: absolute;display: block;bottom: 100%;width: 68px;left: 50%;margin-left: -34px;margin-bottom: 10px;font-size: 14px;color: #3a7bd5;text-align: center;letter-spacing: -.5px;padding: 6px 0;background: #fff;border: 1px solid #dedede;-webkit-border-radius: 15px;border-radius: 15px;line-height: 1;}
+.quote_bar .value_bar > span .value_tooltip:after {content:"";display: block;background: #fff;width:6px;height: 6px;border-right: 1px solid #dedede;border-bottom: 1px solid #dedede;-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg);position:absolute;bottom:-4px;left:50%;margin-left:-3px;}
+.quote_bar .value_bar > span .value_price {position: absolute;display: block;top: 100%; left: 0; margin-top:10px; font-size: 18px; color:#3a7bd5;font-weight: 500; white-space: nowrap; text-indent: -34%;}
+.quote_bar .value_bar > span .value_price:after {font-size: 16px;}
+
+/* 출고가 바 */
+.page_estimate .release_value {position:relative;width:20%;float:right;text-align: center;line-height: 1.4;margin-top:-20px;}
+.page_estimate .release_value .txt {color: #999;font-size: 14px;}
+.page_estimate .release_value .releaseprice {color: #999;font-size: 16px;}
+.page_estimate .release_value .releaseprice > span:after {font-size: 14px;}
+
+/* 금액 단위 */
+.page_estimate .unit_billion:after {content:"억";}
+.page_estimate .unit_default:after {content:"만원";}
+
+.page_estimate .qoute_caution {font-size: 12px;color:#999; margin-top:8px; padding-left:5px; line-height: 1.5; letter-spacing: 0;}
+/*================= // ================= */
+
+/*================= 내차정보 차트영역 ================= */
+.page_estimate .box_cont_chart {margin-top:20px;}
+/*================= // ================= */
+
+/*================= 내차정보 노데이터 ================= */
+.page_estimate .mycar_no_result {padding:80px 0 295px; margin-bottom: 45px; text-align: center;}
+.page_estimate .mycar_no_result .box_cont {padding:70px 0;border-bottom:1px solid #efefef; text-align: center;}
+.page_estimate .mycar_no_result .no_result_txt {font-size: 20px;font-weight: 500;color:#666; margin-bottom:12px; letter-spacing: -1px;}
+.page_estimate .mycar_no_result a {display:block; width: 132px; height:32px; line-height:30px; margin:0 auto;color:#999;font-size: 12px;background:#fff; text-align: center; border:1px solid #ddd; border-radius: 6px;}
+.page_estimate .mycar_no_result a:hover {color:#1a70dd; border-color:#1a70dd;}
+/*================= // ================= */
+
+
+/* 견적 리스트 */
+.list_estimate{}
+.list_estimate .box_cont {padding:15px 24px;}
+.tb_estimate thead th {font-size: 16px; font-weight: bold; padding: 16px 0; border-bottom:1px solid #999;}
+
+.tb_estimate tbody td{height:140px; padding: 24px 0; border-bottom:1px solid #eee;}
+.tb_estimate tbody tr:last-child td{border-bottom:1px solid #999;}
+.tb_estimate tbody td.tx_model{text-align:left}
+.tb_estimate tbody td.tx_price{padding-right:24px; text-align:right}
+.tb_estimate tbody td.tx_status{padding-left:24px; position: relative;text-align:left}
+.tb_estimate tbody td.tx_status:before{content:"";position:absolute;top:32px;left:0;bottom:32px;border-left:1px solid #f5f5f5}
+.tb_estimate tbody tr:hover {background-color:#fafafa}
+.tb_estimate tbody tr:hover .tx_model_nm{text-decoration:underline;}
+.tb_estimate tbody tr:hover .thumb img{transform:translateX(-4px)}
+
+
+.tb_estimate tbody tr.list_bnr td {padding:0; height:auto; background-color:#fff}
+.tb_estimate tbody tr.list_bnr td a{display:block;width:100%;}
+.tb_estimate tbody tr.list_bnr td a img{width:100%}
+.tb_estimate tbody td.no_result{font-size:13px;color:#333;letter-spacing:-1px;line-height:28px}
+.tb_estimate tbody td.no_result em{font-size:17px;font-weight:bold;display:block}
+.tb_estimate tbody td.no_result .btn__apply{display:block;margin:10px auto 0;width:182px;height:44px;line-height:44px;background-color:#666;color:#fff;text-align:center;font-size:16px}
+
+.box_esti_info{padding:0 20px 0 228px;position: relative;height:140px;line-height:24px;letter-spacing:-1.2px;cursor:pointer;}
+.box_esti_info > span{display:block;height:24px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.box_esti_info .logo{position:absolute;left:0;top:-6px; width:58px;height:38px}
+.box_esti_info .logo img{width:100%}
+.box_esti_info .thumb{position:absolute;left:0;top:26px;width:204px;height:102px}
+.box_esti_info .thumb img{width:100%;transition: .3s all ease-out;}
+
+.box_esti_info .tx_date {color:#999; font-size:14px; letter-spacing:-.5px}
+.box_esti_info .tx_model_nm{color:#333; font-size:18px; font-weight:bold; margin:6px 0;letter-spacing:-2px}
+.box_esti_info .tx_lineup,
+.box_esti_info .tx_trim{color:#666;font-size:14px;}
+.box_esti_info .tx_sel_opt{color:#999; font-size:12px; margin-top:6px}
+
+.box_esti_price{line-height:26px;}
+.box_esti_price > span{display:block;height:24px;}
+.box_esti_price .tx_price_all{font-size:15px;color:#999}
+.box_esti_price .tx_price_all em{font-size:16px}
+.box_esti_price .tx_price_sale{font-size:15px;color:#666}
+.box_esti_price .tx_price_sale em{font-size:16px}
+.box_esti_price .tx_total{font-size:15px;color:#444;margin-top:16px}
+.box_esti_price .tx_total em{font-size:18px;font-weight:bold}
+
+.box_esti_status{line-height:22px;}
+.box_esti_status > span{display:block;font-size:14px;letter-spacing:-1px}
+.box_esti_status .tx_now{font-weight:bold; font-size:16px;letter-spacing:-1px}
+.box_esti_status .tx_now .tx_count{font-size:15px;vertical-align:2px;}
+.box_esti_status .tx_now_desc{margin-top:6px;color:#999;word-break: keep-all;}
+.box_esti_status .tx_remaining_time{font-size:12px; font-weight:bold; margin-top:6px; color:#d33030;}
+.box_esti_status .tx_remaining_time em{letter-spacing: 1px;}
+.st_complete,
+.st_receive,
+.st_release{color:#3a7bd5}
+.st_waiting,
+.st_standby,
+.st_expiration{color:#666666}
+
+/* 페이징 */
+.list_paging {text-align:center; padding:30px 0 25px;}
+.list_paging .paging_wrap {position: relative; font-size: 0;}
+.list_paging .paging_wrap a,
+.list_paging .paging_wrap button {display: inline-block; vertical-align: middle; width:32px; height:32px; line-height: 30px; font-size:14px;letter-spacing:-1px;color:#666; border:1px solid #eee; margin:0 2px;}
+.list_paging .paging_wrap button {border: none; background: none; margin:0 15px} 
+.list_paging .paging_wrap button i {display:block; width:30px; height:30px;} 
+.list_paging .paging_wrap button .ico_page_prev {background: url("//img.enuri.info/images/home/myenuri/newcar/icon_prev_paging@s16.png") no-repeat center;} 
+.list_paging .paging_wrap button .ico_page_next {background: url("//img.enuri.info/images/home/myenuri/newcar/icon_next_paging@s16.png") no-repeat center;} 
+
+.list_paging .paging_wrap a:hover,
+.list_paging .paging_wrap a.on {color:#fff; font-weight:500; background-color:#1a70dd; border-color:#1a70dd;}
+
+
+
+
+/* 견적내역 */
+.cont_estimate{ letter-spacing: 0;}
+.cont_estimate .box_cont {margin-bottom:23px;}
+.info_model{position:relative; padding-top:40px; padding-bottom: 45px; padding-left:356px; min-height:221px; color:#666; letter-spacing:-1px}
+.info_model .logo{position: absolute; top:30px; left:40px; width: 70px; height:46px;}
+.info_model .logo img{width:70px; height:46px;}
+.info_model .thumb{position:absolute;top:53px;left:40px;width:276px; height:138px;cursor: pointer;}
+.info_model .thumb img{width:276px;height:138px;}
+.info_model .info{padding-right:20px;position: relative;margin-top:-6px}
+.info_model .info > span{display:block;}
+.info_model .info .tx_date{height:17px; line-height: 17px;font-size:16px; color:#999; letter-spacing:0;}
+.info_model .info .tx_model{height:32px;line-height:32px; font-weight:bold; font-size:24px;color:#333;margin-top:16px;letter-spacing:-2px;}
+.info_model .info .tx_model_sub{height:21px; line-height: 21px; font-size:16px; color:#1a70dd; margin-top:8px; overflow:hidden;text-overflow:ellipsis; white-space:nowrap;}
+.info_model .info .info_opt {margin-top:20px; font-size: 0;}
+.info_model .info .info_opt li {height:18px; line-height: 18px; position: relative; display: inline-block; margin-right:15px; padding-right:16px;}
+.info_model .info .info_opt li:after {content:""; display: block; width:1px; height:14px; position: absolute; top:50%; right:0; margin-top:-7px; background-color: #ddd;}
+.info_model .info .info_opt li:last-child:after {display: none;}
+.info_model .info .info_opt li > span {display: inline-block; vertical-align: middle;}
+.info_model .info .info_opt li .opt_nm {font-size: 14px; font-weight: bold; color:#333; margin-right:8px;}
+.info_model .info .info_opt li .opt_ct {font-size: 14px; color:#666; overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+.info_price{margin-right:540px;}
+.info_price .box_cont {padding:30px 24px}
+.info_price table{width:100%}
+.info_price th,
+.info_price td{height:41px; vertical-align:middle; border-bottom:1px solid #eee}
+.info_price tr:first-child th,
+.info_price tr:first-child td{border-top:1px solid #ddd;}
+.info_price th{background-color:#f5f5f5; font-size:14px;font-weight:normal; letter-spacing:-1px;color:#666}
+.info_price .col--tit{text-align:center}
+.info_price .col--tit .tx_count{color:#1a70dd}
+.info_price .col--price{text-align:right; color:#666; font-size:14px}
+.info_price .col--price.tx_price_grey{color:#999}
+.info_price .col--price em{font-size:16px}
+.info_price .col--exp{text-align:center}
+.info_price .row_total th,
+.info_price .row_total td{border-bottom-color:#ddd;height:46px}
+.info_price .row_total th{background-color:#e8f1fd;}
+.info_price .row_total td{background-color:#f3f8fe;}
+.info_price .row_total .col--tit{font-weight: bold;}
+.info_price .row_total .col--price{color:#333; font-weight: bold;}
+.info_price .row_total .col--price em{font-size:20px;}
+.info_price .lay_expend_detail{display:none; position: absolute; top:0;left:100%; width:540px; height:272px; padding-left:18px;}
+.info_price .btn__expend.is-active + .lay_expend_detail{display:block}
+
+.info_price .lay_expend_detail_inner_wrap { height:100%; border:1px solid #1a70dd; border-radius:6px; background-color: #fff; overflow-y:auto; padding:20px 8px 20px 0;}
+.info_price .list_detail{padding:0 24px 0 33px; overflow-y: auto; height: 100%;}
+.info_price .list_detail::-webkit-scrollbar { width: 2px;}
+.info_price .list_detail::-webkit-scrollbar-track { background-color: #f9f9f9; -webkit-border-radius: 1px;border-radius: 1px;}
+.info_price .list_detail::-webkit-scrollbar-thumb { background: #1a70dd; -webkit-border-radius: 1px;border-radius: 1px;}
+.info_price .list_detail::-webkit-scrollbar-button { display: none; }
+
+.info_price .list_detail li{border-top:1px solid #eee;line-height:42px;position: relative;color:#666;font-size:14px;}
+.info_price .list_detail li:first-child{border-top:0}
+/* .info_price .list_detail li .tx_tit{position: absolute;top:0;left:0;text-align:left}
+.info_price .list_detail li .tx_price{display:block;text-align:right} */
+.info_price .list_detail li .tx_tit{display:block;text-align:left;width:220px;line-height:20px;padding:11px 0}
+.info_price .list_detail li .tx_price{position: absolute;top:50%;margin-top:-21px;right:0;text-align:right}
+.info_price .list_detail li .tx_price em{font-size:16px; font-weight: bold;}
+.info_price .list_detail li.no_result{text-align:center;padding:64px 0}
+
+.tx_valid_period{margin-top:16px; height:50px;line-height:50px; border-radius: 6px; background-color:#eee;color:#666;text-align:center;font-size:14px;letter-spacing:-.5px}
+.tx_valid_period em{font-size:16px; color:#333; font-weight: bold;}
+
+/* 견적 응답 수신 */
+.respon_estimate{}
+.respon_estimate .box_head .tx_count{color:#1a70dd}
+.respon_estimate .box_cont {position:relative; overflow:hidden; border-color:#ddd; padding-right:24%;}
+.respon_estimate .box_cont:after{content:""; display: block; clear:both;}
+.respon_estimate .box_cont .box_cont_left {width:100%; padding:28px 24px; border-right:1px solid #ddd; min-height:120px;}
+.respon_estimate .box_cont .box_cont_right { width:24%; padding:24px; height:100%; display: flex; align-items: center; justify-content: center; position:absolute; top:0; right:0; flex-wrap: wrap; flex-flow: column;}
+.list_response {position: relative; overflow:hidden;}
+.list_response li {margin-bottom:8px;}
+.list_response li .tx_header {font-size: 0; margin-bottom:8px;}
+.list_response li .tx_header > span {position:relative; display: inline-block; vertical-align: middle; padding-right:14px; margin-right:11px;}
+.list_response li .tx_header > span:after {content:""; display: block; width:1px; height: 12px; background-color: #ccc; position:absolute; top:50%; right:0; margin-top:-6px;}
+.list_response li .tx_header > span:last-child {padding-right:0; margin-right:0;}
+.list_response li .tx_header > span:last-child:after {display: none;}
+.list_response .tx_date{color:#666; font-size:14px; letter-spacing: 0;}
+.list_response .tx_status{font-size:12px; letter-spacing: 0;}
+.list_response .tx_status.ing {color:#1a70dd}
+.list_response .tx_status.end {color:#999;}
+.list_response .tx_msg{display:block;font-size:14px;line-height:1.6;color:#333; letter-spacing:-.5px; overflow: hidden;}
+
+.list_response .tx_price{display:block; text-align:center; color:#1a70dd; font-size:16px;font-weight:bold;}
+.list_response .tx_price em{font-size:24px;}
+.list_response .btn__regist,
+.list_response .btn__contract {width:100%; height: 40px; line-height: 40px; background-color: #1a70dd; color:#fff; font-weight: bold; font-size:14px; border-radius: 6px; text-align: center; margin-top:6px;}
+
+
+.list_response .no_result {width:100%; text-align:center; padding-right:0;}
+.list_response .no_result:after,
+.list_response .no_result:before {display: none;}
+.list_response .no_result .tx_result{font-size: 14px; color:#999; padding:62px 0;}
+.list_response .no_result .tx_result em{display: block; margin-bottom:8px; font-size: 18px; font-weight: bold; color:#333;}
+
+.ico_page_prev{width:16px;height:16px;background-position:-76px -30px}
+.ico_page_next{width:16px;height:16px;background-position:-60px -30px}
+
+.ico_expend{width:22px;height:22px;background-position:-102px -60px; background-color: #fff;}
+.ico_expend.is-active{background-position:-80px -60px}
+.ico_expend.is-active:after{content:"";position:absolute;right:-20px;margin-top:-12px;width:18px;height:24px;background-image:url("/images/newcar/my_car_sprite.png");background-repeat:no-repeat;background-position:-124px 0;z-index:1}
+
+
+.test_btn {display:inline-block; width: 100px; height:50px; line-height: 50px; background-color: #198ff6; color:#fff; text-align: center; font-size: 15px; font-weight: bold;}
+
+/* 레이어 안쪽 */
+.carnum_input_wrap {position:relative; border-radius: 6px; margin-bottom: 36px;}
+.carnum_input_wrap input {border:1px solid #aaa; width: 100%; height:44px; padding:0 15px; border-radius: 6px;}
+.carnum_input_wrap .txt_error {display: none; position:absolute; top:100%; left:0; margin-top:4px; color:#d43031; font-size: 12px;}
+.carnum_input_wrap input.error {border-color:#d43031;}
+.carnum_input_wrap input.error + .txt_error {display: block; }
+
+.copy_input_wrap {position:relative; border:1px solid #aaa; border-radius: 6px; overflow: hidden; margin-bottom:32px;}
+.copy_input_wrap input {border:none; width: 100%; height:44px; line-height: 44px; padding:0 15px; font-size: 16px; color:#333; font-weight: bold;}
+.copy_input_wrap button {position:absolute; top:0; right:0; width:148px; height:44px; line-height: 44px; background-color: #666; color:#fff; font-size: 14px; font-weight: bold;}

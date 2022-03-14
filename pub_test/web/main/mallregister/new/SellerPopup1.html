@@ -1,0 +1,326 @@
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>쇼핑몰 등록 신청</title>
+<META HTTP-equiv='Content-Type' content='text/html; charset=euc-kr'>
+<META NAME='description' CONTENT='가격비교 에누리닷컴'>
+<META NAME='keyword' CONTENT='가격,가격 검색,가격 사이트,가격검색 사이트,가격비교,가격 비교가격비교 사이트,가격정보'>
+<META NAME='Robots' CONTENT='INDEX, FOLLOW'>
+<LINK REL='SHORTCUT ICON' HREF='/favicon.ico'>
+<link REL="stylesheet" HREF="http://imgenuri.enuri.gscdn.com/common/css/enuribase.css" TYPE="text/css">
+<style type="text/css">
+form{margin:0px;}
+table tr td img {vertical-align:middle;}
+table tr td {text-align:left;}
+td.btn_apply {padding:30px 0 20px; text-align:center;}
+</style>
+
+<script language=javascript src="/common/js/function.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+function CmdIDKeyPress(){
+	if ( !((event.keyCode >= 48 && event.keyCode <=57) || (event.keyCode >= 65 && event.keyCode <=90) || (event.keyCode >= 97 && event.keyCode <=122) )){
+		event.returnValue =false;
+	}
+}
+function resize(){
+	if (document.all){
+		cW=document.getElementById("tbl_main").clientWidth
+		cH=document.body.offsetHeight
+		window.resizeTo(500,500)
+		barsW=500-document.body.offsetWidth
+		barsH=500-document.body.offsetHeight
+		wW=barsW+cW
+		wH=barsH+cH
+		window.resizeTo(wW,wH)
+		var varHeight = document.body.scrollHeight;
+		var varWidth = document.body.scrollWidth;
+		var h=0;
+
+		if (navigator.userAgent.indexOf("SV1") > 0){  h=4; }
+		else if(navigator.userAgent.indexOf("MSIE")>0) { h=4;}
+		else if(navigator.userAgent.indexOf("Gecko")>0 && navigator.userAgent.indexOf("Firefox") <= 0 && navigator.userAgent.indexOf("Netscape") <= 0 ){ h=22; }
+		else if(navigator.userAgent.indexOf("Firefox") >0 ){  h=18; }
+		else if(navigator.userAgent.indexOf("Netscape") >0 ){ h=-2; }
+		else { h=4;}
+		window.resizeTo(varWidth+barsW,varHeight+barsH+h);
+		var varLWidth = document.body.scrollWidth - document.body.clientWidth;
+		window.resizeTo(varWidth+barsW+varLWidth,varHeight+barsH+h);
+	}else{
+		wW=window.outerWidth
+		wH=window.outerHeight
+		window.resizeTo(wW,wH);
+	}
+}
+function CmdKindRdoChk(n){
+	document.MallRegFrm.srr_goodsregcnt.length = 0;
+    document.MallRegFrm.srr_goodsregcnt.selectedIndex = null;
+	if(n=="1"){
+		document.MallRegFrm.srr_goodsregcnt.options[0] = new Option("500개 이하","500");
+		document.MallRegFrm.srr_goodsregcnt.options[1] = new Option("~ 1,000개","1000");
+		document.MallRegFrm.srr_goodsregcnt.options[2] = new Option("~ 3,000개","3000");
+		document.MallRegFrm.srr_goodsregcnt.options[3] = new Option("3,000개 초과","300000");
+
+	}else{
+		document.MallRegFrm.srr_goodsregcnt.options[0] = new Option("제한 없음","300000");
+		document.MallRegFrm.srr_goodsregcnt.options[1] = new Option("1,000개 이하","1000");
+		document.MallRegFrm.srr_goodsregcnt.options[2] = new Option("~ 4,000개","4000");
+		document.MallRegFrm.srr_goodsregcnt.options[3] = new Option("~ 20,000개","20000");
+		document.MallRegFrm.srr_goodsregcnt.options[4] = new Option("20,000개 이상","299999");
+	}
+}
+function MR_IdChk(){
+	var tmp_id;
+	tmp_id = MallRegFrm.srr_id.value;
+	window.open("/sdu/login/Overlapidchk.jsp?cmd=&tmp_id="+ tmp_id,"id_chk","width=300,height=200,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no");
+}
+function frmChk() //전송 폼 체크
+{
+	try{
+		if(MallRegFrm.agree[0].checked == "0"){
+			alert("약관에 동의하셔야 신청이 가능합니다.");
+			MallRegFrm.agree[1].focus();
+			return false;
+		}
+		else if(MallRegFrm.srr_id.value.length < 4 || MallRegFrm.srr_id.value.length > 12){
+			alert("4자 이상의 ID를 입력하세요~~");
+			MallRegFrm.srr_id.focus();
+			return false;
+		}else if(MallRegFrm.srr_id.value.isid()==false){
+			alert("ID는 4~12의 영문이나 숫자만 가능합니다.");
+			MallRegFrm.srr_id.focus();
+			return false;
+		}else if(MallRegFrm.srr_id.value.charAt(0).isalpha()==false){
+			alert("ID의 첫글자는 영문만 가능합니다.");
+			MallRegFrm.srr_id.focus();
+			return false;
+		}else if(!chkPassChar(MallRegFrm.srr_pswd.value)) {
+			alert("8~15자의 영문,숫자가 조합된 비밀번호로\n입력해 주세요.");
+			MallRegFrm.srr_pswd.select();
+			return false;
+		}else if(MallRegFrm.srr_pswd.value != MallRegFrm.tmp_srr_pswd.value){
+			alert("확인 암호와 일치 하지 않습니다.");
+			MallRegFrm.srr_pswd.focus();
+			MallRegFrm.srr_pswd.value = "";
+			MallRegFrm.tmp_srr_pswd.value = "";
+			return false;
+		}else if(MallRegFrm.srr_companynm.value.length < 1){
+			alert("올바른 회사명을 입력하세요~~");
+			MallRegFrm.srr_companynm.focus();
+			return false;
+		}else if(MallRegFrm.srr_companyno.value.length < 5){
+			alert("사업자 등록 번호를 입력하세요~~");
+			MallRegFrm.srr_companyno.focus();
+			return false;
+		}else if(MallRegFrm.srr_mallnm.value.length < 2){
+			alert("쇼핑몰 명을 입력하세요~~");
+			MallRegFrm.srr_mallnm.focus();
+			return false;
+		}else if(MallRegFrm.srr_mallnm.value.length > 12){
+			alert("쇼핑몰명을 줄여 주세여~~");
+			MallRegFrm.srr_mallnm.focus();
+			return false;
+		}else if(MallRegFrm.srr_homeurl.value.length < 3){
+			alert("홈페이지 URL을 입력하세요~~");
+			MallRegFrm.srr_homeurl.focus();
+			return false;
+		}else if(MallRegFrm.srr_managernm.value.length < 3){
+			alert("담당자명을 입력하세요~~");
+			MallRegFrm.srr_managernm.focus();
+			return false;
+		}else if(MallRegFrm.srr_managertel.value.length < 3){
+			alert("담당자 전화번호를 입력하세요~~");
+			MallRegFrm.srr_managertel.focus();
+			return false;
+		}else if(MallRegFrm.srr_manageremail.value.length < 3){
+			alert("담당자 이메일을 입력하세요~~");
+			MallRegFrm.srr_manageremail.focus();
+			return false;
+		}else if(MallRegFrm.srr_moneynm.value.length < 3){
+			alert("정산담당자명을 입력하세요~~");
+			MallRegFrm.srr_moneynm.focus();
+			return false;
+		}else if(MallRegFrm.srr_moneytel.value.length < 3){
+			alert("정산담당자 전화번호를 입력하세요~~");
+			MallRegFrm.srr_moneytel.focus();
+			return false;
+		}else if(MallRegFrm.srr_moneyemail.value.length < 3){
+			alert("정산담당자 이메일을 입력하세요~~");
+			MallRegFrm.srr_moneyemail.focus();
+			return false;
+		}else if(MallRegFrm.srr_accountnm.value.length < 2){
+			alert("입금자명을 입력하세요~~");
+			MallRegFrm.srr_accountnm.focus();
+			return false;
+		}else if (MallRegFrm.esAgree[0].checked){
+			if (MallRegFrm.es_manager.value.trim()=="")
+			{ alert("에스크로 담당자명을 입력하세요~~"); return false;  }
+			if (MallRegFrm.es_telephone.value.trim()=="")
+			{ alert("에스크로 담당자 전화번호를 입력하세요~~"); return false; }
+			if (MallRegFrm.es_email.value.trim()=="" || isValidEmail(MallRegFrm.es_email.value)==false)
+			{ alert("이메일이 잘못되었습니다.\n에스크로 담당자 이메일을 입력하세요~~"); return false; }
+			if (MallRegFrm.es_pg.value.trim()=="")
+			{ alert("에스크로 사용 PG 업체를 입력하세요~~"); return false;  }
+			if (MallRegFrm.delterm.value.trim()=="" || MallRegFrm.delterm.value.isnumber()==false)
+			{ alert("표준배송기일이 잘못되었습니다.\n에스크로 표준배송기일을 입력하세요~~"); return false;  }
+		}
+		return true;
+	}catch(e){
+		alert(e);
+		return false;
+	}
+}
+function chkPassChar(strPass) {
+	var validPass = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+	if(strPass.length < 8 || strPass.length > 15) return false;
+	for(var i=0; i<strPass.length; i++) {
+		if(validPass.indexOf(strPass.charAt(i)) == -1) return false;
+	}
+	return true;
+}
+</script>
+</head>
+<body style="margin:0 0 10 0 ;padding:0" onload="resize()">
+	<table width="580" border="0" cellspacing="0" cellpadding="0" id="tbl_main">
+		<tr>
+			<td colspan=2 align=center>
+				<table width="580" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td style="padding-left:15px">
+						<form name='frmAd' method='post' action='Ad_Offer_Action.jsp' onSubmit='return validCheck();'>
+							<table cellpadding='0' cellspacing='0' width='549' border='0'>
+								<tr>
+									<td><img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/selfMall_popup_tit03n.gif" alt="상품 등록관리 페이지 (SDU가입)" /></td>
+								</tr>
+								<tr>
+									<td style="padding-bottom:5px"><img src="http://imgenuri.enuri.gscdn.com/images/etcPage/ad_new/advert_consult_txt03n.gif" alt="회원 정보를 입력해주세요. (필수)항목은 모두 입력하셔야 가입이 가능합니다." /></td>
+								</tr>
+								<tr>
+									<td>
+										<table width="549" cellspacing="1" cellpadding="5" border="0" bgcolor="#cecece">
+											<tr bgcolor="#EAEAEA">
+												<td width="120" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 희망ID</td>
+												<td>
+													<input type=text name='srr_id' onKeyPress="CmdIDKeyPress()" maxlength=12 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'" value=''>
+													<img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/mjoin_page3_05.gif" align="absmiddle" onClick="MR_IdChk();" style='cursor:hand;border:0px solid;width:59px;height:19px;font-size:9pt;font-weight:bold;'>(필수)<br>(4~12자 이상의 영문이나 숫자만 가능합니다.)
+												</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 패스워드</td>
+												<td><input type=password name='srr_pswd' onkeyPress="CmdIDKeyPress()" maxlength=15 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수, 8~15자의 영문자, 숫자조합)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 패스워드확인</td>
+												<td><input type=password name='tmp_srr_pswd' onkeyPress="CmdIDKeyPress()" maxlength=15 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 회사명</td>
+												<td><input type=text name='srr_companynm' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 사업자등록번호</td>
+												<td><input type=text name='srr_companyno' maxlength=15 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 쇼핑몰명</td>
+												<td><input type=text name='srr_mallnm' maxlength=12 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 홈페이지 URL</td>
+												<td><input type=text name='srr_homeurl' maxlength=250 style='font-size:9pt; height:20px;width:250px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<input type="hidden" name="srr_ap" value="0">
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 주문전화번호</td>
+												<td><input type=text name='srr_ordertel' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'"></td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> FAX</td>
+												<td><input type=text name='srr_fax' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'"></td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 주문이메일</td>
+												<td><input type=text name='srr_orderemail' maxlength=50 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'"></td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 담당자명</td>
+												<td><input type=text name='srr_managernm' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 담당자 전화번호</td>
+												<td><input type=text name='srr_managertel' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 담당자 이메일</td>
+												<td><input type=text name='srr_manageremail' maxlength=50 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 정산담당자명</td>
+												<td><input type=text name='srr_moneynm' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 정산담당자 전화</td>
+												<td><input type=text name='srr_moneytel' maxlength=50 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 정산담당자 이메일</td>
+												<td><input type=text name='srr_moneyemail' maxlength=50 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 주요취급상품</td>
+												<td><input type=text name='srr_maingoods' maxlength=30 style='font-size:9pt; height:20px;width:250px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">
+												</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 서비스희망상품수</td>
+												<td><input type=radio name=srr_goodskind value=1 checked onclick=CmdKindRdoChk(this.value)>가전 <input type=radio name=srr_goodskind value=0 onclick=CmdKindRdoChk(this.value)>비가전<br>
+												<select name="srr_goodsregcnt" !style="behavior: url('/common/htc/selectBox.htc');">
+													<option value=300000>3000개 초과</option>
+													<option value=500>500개 이하</option>
+													<option value=1000>~ 1000개</option>
+													<option value=3000>~ 3000개</option>
+												</select></td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 판매가격기준</td>
+												<td>
+													<select name="srr_enuri" style="behavior: url('/common/htc/selectBox.htc');">
+														<option value='0' selected>쇼핑몰 가격 기준 판매</option>
+													</select>
+												</td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 배송조건</td>
+												<td><select name="srr_delivery" style="behavior: url('/common/htc/selectBox.htc');">
+													<option value='0' selected>배송무료(전상품, 전지역)</option>
+													<option value='1'>금액별 유무료</option>
+													<option value='2'>지역별 유무료</option>
+													<option value='3'>금액 지역별 유무료</option>
+													<option value='4'>일부유료</option>
+													<option value='5'>일부무료</option>
+													<option value='6'>유료</option>
+													<option value='9'>해당사항 없음</option>
+												</select></td>
+											</tr>
+											<tr bgcolor="#EAEAEA">
+												<td width="150" style="padding-left:20px"><img src="http://imgenuri.enuri.gscdn.com/images/MallRegister/dot_khaki.gif"> 입금자명</td>
+												<td><input type=text name='srr_accountnm' maxlength=30 style='font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff' onBlur="this.style.backgroundColor='white'">(필수)</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td class="btn_apply"><input type='image' src='http://imgenuri.enuri.gscdn.com/images/etcPage/etc_new/btn_member_join.gif' alt="회원가입" /></td>
+								</tr>
+							</table>
+						</form>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<!-- 200219 CSS 교체 -->
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common_ssl.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/myenuri_ssl.css"/>
+	<!-- // -->
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div id="wrap">
+	
+    <!-- 헤더 SUB -->
+    <header id="header" class="m_header m_header_sub">
+		<div class="header_wrap">
+			<h1 class="m_txt">MY알림</h1>
+            <button class="btn_hd_back comm__sprite">뒤로</button>
+			<button class="btn_hd_close comm__sprite">닫기</button>
+		</div>	
+
+		<div class="tabs_wrap">
+			<div class="alarmtabs swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide is--on"><button type="button" class="btn btn-tab">전체보기</button></div> <!-- 탭 선탭 : "is--on" -->
+					<div class="swiper-slide is--new"><button type="button" class="btn btn-tab">e머니</button></div> <!-- 새로운 알림 : "is--new" -->
+					<div class="swiper-slide"><button type="button" class="btn btn-tab">누리e클럽</button></div>
+					<div class="swiper-slide"><button type="button" class="btn btn-tab">최저가 알림</button></div>
+					<div class="swiper-slide"><button type="button" class="btn btn-tab">이벤트 알림</button></div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(function(){
+				// 알림함 구분 탭 스와이퍼 생성
+				var alarmTabSwiper = new Swiper(".alarmtabs", {
+					loop : false,
+					slidesPerView: "auto",
+					cssMode : true,
+					spaceBetween: 8,
+					freeMode: true,
+				})
+
+				// 탭 클릭 -> 목록 전환
+				var alarmSheetInner = $(".alarmsheet");
+				alarmTabSwiper.on("click", function(swiper, index){
+					var selItem = swiper.clickedSlide; // 선택한 탭 아이템
+					var newItem = $(selItem).hasClass("is--new"); // 신규 알람이 있는 탭 
+
+					if(newItem){
+						$(selItem).removeClass("is--new");
+					}
+					$(selItem).addClass("is--on").siblings().removeClass("is--on"); // 탭 활성화
+					alarmTabSwiper.slideTo(swiper.clickedIndex) // 선택한 탭으로 스와이프 이동       
+					
+					$("html, body").animate({scrollTop:0},300);
+
+					// 각 탭 카드 삽입
+					// 
+					//
+				});
+			})
+		</script>
+    </header>
+    <!-- // 헤더 SUB -->
+
+	<section id="container" class="m_sub_cont m_alarm_cont">
+		<!-- MY알림 목록 -->
+		<div class="alarmsheet">
+			<div class="card_box">
+				<!-- ※ 알림없을때 -->
+				<div class="card_item no-data">
+					<p class="tx_noti">받은 알림이 없습니다</p>
+				</div>
+				<!-- // -->
+				<!-- 반복 : 알림 메세지 -->
+				<div class="card_item is--new"> <!-- 신규 알람 : "is--new" -->
+					<a href="#" class="card_link"><!-- 클릭시 설정된 페이지 이동 -->
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다<br>
+								지금 바로 확인해 보세요!<br>
+								최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<!-- // -->
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다<br>
+								지금 바로 확인해 보세요!<br>
+								최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다<br>
+								최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								지금 바로 확인해 보세요!<br>
+								최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다<br>
+								지금 바로 확인해 보세요!
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+				<div class="card_item">
+					<a href="#" class="card_link">
+						<span class="tx_cate">최저가 득템</span>
+						<span class="tx_time">10분 전</span>
+
+						<span class="tx_msg">
+							<span class="tx_nm">(광고) 지금 확인 안하시면 후회하실걸요?</span>
+							<span>
+								50% 급하락한 최저가 득템 상품이 새롭게 올라왔습니다<br>
+								지금 바로 확인해 보세요!<br>
+								최저가 득템 상품이 새롭게 올라왔습니다
+							</span>
+						</span>
+					</a>                                
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 200102 추가 : e머니 적립예정 / 적립완료 레이어  -->
+
+	<!-- 레이어 : e머니 적립예정 상세 -->
+	<!-- 활성화 시에 .lay_expected 페이드 인 후 on 클래스 붙여주세요  -->
+	<!-- ex: $layEarn.fadeIn(100).addClass('on'); -->
+	<section class="lay_emoney_detail lay_expected">
+		<div class="lay_inner">
+			<div class="lay_head">
+				<p class="lay_head_txt">e머니 적립예정 상세</p>
+				<button class="lay_in_close my__sprite" onclick="$('.lay_expected').fadeOut(100).removeClass('on');">닫기</button>
+			</div>
+			<div class="lay_cnt">
+				<div class="earn__detail">
+					<!-- 적립예정일 -->
+					<span class="earn__date">2019-12-06</span>
+					<!-- // -->
+					<!-- 적립예정 포인트 -->
+					<span class="earn__summary">
+						<span class="tx_tit">적립예정 포인트</span>
+						<span class="tx_txt_sub">※ 실제 적립금액은 변경될 수 있습니다.</span>
+						<span class="tx_point">
+							<em>123,456</em>점
+						</span>
+					</span>
+					<!-- // -->
+					<!-- 구매정보 -->
+					<div class="earn__info">
+						<span class="tx_tit">구매정보</span>
+						<ul class="tb_earn_info">
+							<li>
+								<span class="tb_tx_tit">구매일자</span>
+								<span class="tb_tx_value">2019-11-30 12:34:56</span>
+							</li>
+							<li>
+								<span class="tb_tx_tit">쇼핑몰</span>
+								<span class="tb_tx_value">Marc Jacobs</span>
+							</li>
+							<li>
+								<span class="tb_tx_tit">구매금액</span>
+								<span class="tb_tx_value"><em class="tx_price">879,000원</em></span>
+							</li>
+						</ul>
+					</div>
+					<!-- // -->
+					<!-- 구매내역 -->
+					<div class="earn__buy_list">
+						<ul>
+							<li>
+								<span class="tx_name">[오늘출발] [로켓배송] [로켓배송은 오늘 주문 내일 도착 / 로켓와우 고객 최대 3% 캐시 적립 / 로켓와우 30일 무료 체험 중] Apple 애플워치5 GPS + 셀룰러 40mm 스포츠밴드 S/M + M/L + 스테인리스스틸 케이스 골드(MWX62KH/A) 스톤(밴드)</span>
+								<span class="tx_price"><em>879,000</em>원</span>
+							</li>
+							<li>
+								<span class="tx_name">[오늘출발] [로켓배송] [로켓배송은 오늘 주문 내일 도착 / 로켓와우 고객 최대 3% 캐시 적립 / 로켓와우 30일 무료 체험 중] Apple 애플워치5 GPS + 셀룰러 40mm 스포츠밴드 S/M + M/L + 스테인리스스틸 케이스 골드(MWX62KH/A) 스톤(밴드)</span>
+								<span class="tx_price"><em>879,000</em>원</span>
+							</li>
+						</ul>
+					</div>
+					<!-- // -->
+					<!-- e머니 적립 유의사항 -->
+					<div class="earn__noti">
+						<div class="tx_tit">e머니 적립 유의사항</div>
+						<div class="tx_noti">
+							<!-- 구매완료상태 : 티몬 web구매시 -->
+							<ul>
+								<li>적립예정금은 구매일로부터 2~7일 후에 확인할 수 있습니다</li>
+								<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰포인트 등 제외한 상품 결제금액 기준입니다</li>
+								<li>일부 쇼핑몰은 해당 쇼핑몰에서 확인하신 구매내역과 다소 상이할 수 있습니다</li>
+								<li>e머니 적립 제외 카테고리의 상품을 구매하신 경우 적립되지 않습니다</li>
+								<li>e머니와 관련된 사항은 고객센터 내 e머니 FAQ를 확인해주세요</li>
+							</ul>
+							<!-- // -->
+							<!-- 적립가능상태 : 1차대사 완료 -->
+							<ul>
+								<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰포인트 등 제외한 상품 결제금액 기준입니다</li>
+								<li>일부 쇼핑몰은 해당 쇼핑몰에서 확인하신 구매내역과 다소 상이할 수 있습니다</li>
+								<li>e머니 적립 제외 카테고리의 상품을 구매하신 경우 적립되지 않습니다</li>
+								<li>해외직구 쇼핑몰은 구매내역이 제공되지 않습니다</li>
+								<li>해외직구의 경우, 실제 적립까지 구매일로부터 30~70일 정도 소요될 수 있습니다</li>
+								<li>e머니와 관련된 사항은 고객센터 내 e머니 FAQ를 확인해주세요</li>
+							</ul>
+							<!-- // -->
+						</div>
+					</div>
+					<!-- // -->
+				</div>
+			</div>
+		</div>
+		<!-- 딤영역 클릭시 닫기 -->
+		<a href="#" class="btn_dim_close" onclick="$('.lay_expected').fadeOut(100).removeClass('on');return false;">닫기</a>
+		<!-- // -->
+	</section>
+	<!-- // -->
+	
+	<!-- 레이어 : e머니 적립 상세 -->
+	<!-- 활성화 시에 .lay_earned 페이드 인 후 on 클래스 붙여주세요  -->
+	<!-- ex: $layEarn.fadeIn(100).addClass('on'); -->
+	<section class="lay_emoney_detail lay_earned">
+		<div class="lay_inner">
+			<div class="lay_head">
+				<p class="lay_head_txt">e머니 적립 상세</p>
+				<button class="lay_in_close my__sprite" onclick="$('.lay_earned').fadeOut(100).removeClass('on');">닫기</button>
+			</div>
+			<div class="lay_cnt">
+				<div class="earn__detail">
+					<!-- 적립일 -->
+					<span class="earn__date">2019-12-06</span>
+					<!-- // -->
+					<!-- 적립 포인트 -->
+					<span class="earn__summary">
+						<span class="tx_tit">적립 포인트</span>
+						<span class="tx_txt_sub tx_date">사용기간 : 2019-08-24 ~ 2019-12-22 까지</span>
+						<span class="tx_point">
+							<em>123,456</em>점
+						</span>
+					</span>
+					<!-- // -->
+					<!-- 구매정보 -->
+					<div class="earn__info">
+						<span class="tx_tit">구매정보</span>
+						<ul class="tb_earn_info">
+							<li>
+								<span class="tb_tx_tit">구매일자</span>
+								<span class="tb_tx_value">2019-11-30 12:34:56</span>
+							</li>
+							<li>
+								<span class="tb_tx_tit">쇼핑몰</span>
+								<span class="tb_tx_value">Marc Jacobs</span>
+							</li>
+							<li>
+								<span class="tb_tx_tit">구매금액</span>
+								<span class="tb_tx_value"><em class="tx_price">879,000원</em></span>
+							</li>
+						</ul>
+					</div>
+					<!-- // -->
+					<!-- 구매내역 -->
+					<div class="earn__buy_list">
+						<ul>
+							<li>
+								<span class="tx_name">[오늘출발] [로켓배송] [로켓배송은 오늘 주문 내일 도착 / 로켓와우 고객 최대 3% 캐시 적립 / 로켓와우 30일 무료 체험 중] Apple 애플워치5 GPS + 셀룰러 40mm 스포츠밴드 S/M + M/L + 스테인리스스틸 케이스 골드(MWX62KH/A) 스톤(밴드)</span>
+								<span class="tx_price"><em>879,000</em>원</span>
+							</li>
+							<li>
+								<span class="tx_name">[오늘출발] [로켓배송] [로켓배송은 오늘 주문 내일 도착 / 로켓와우 고객 최대 3% 캐시 적립 / 로켓와우 30일 무료 체험 중] Apple 애플워치5 GPS + 셀룰러 40mm 스포츠밴드 S/M + M/L + 스테인리스스틸 케이스 골드(MWX62KH/A) 스톤(밴드)</span>
+								<span class="tx_price"><em>879,000</em>원</span>
+							</li>
+						</ul>
+					</div>
+					<!-- // -->
+					<!-- e머니 적립 유의사항 -->
+					<div class="earn__noti">
+						<div class="tx_tit">e머니 적립 유의사항</div>
+						<div class="tx_noti">
+							<ul>
+								<!-- 적립완료 - 국내쇼핑몰 -->
+								<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰포인트 등 제외한 상품 결제금액 기준입니다</li>
+								<li>일부 쇼핑몰은 해당 쇼핑몰에서 확인하신 구매내역과 다소 상이할 수 있습니다</li>
+								<li>e머니 적립 제외 카테고리의 상품을 구매하신 경우 적립되지 않습니다</li>
+								<li>e머니와 관련된 사항은 고객센터 내 e머니 FAQ를 확인해주세요</li>
+								<!-- // -->
+								<!-- 적립완료 - 해외직구일 경우 -->
+								<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰포인트 등 제외한 상품 결제금액 기준입니다</li>
+								<li>해외직구 쇼핑몰은 일부 구매내역이 제공되지 않습니다</li>
+								<li>해외직구의 경우, 실제 적립까지 구매일로부터 30~70일 정도 소요될 수 있습니다</li>
+								<li>일부 쇼핑몰은 해당 쇼핑몰에서 확인하신 구매내역과 다소 상이할 수 있습니다</li>
+								<li>e머니 적립 제외 카테고리의 상품을 구매하신 경우 적립되지 않습니다</li>
+								<li>e머니와 관련된 사항은 고객센터 내 e머니 FAQ를 확인해주세요</li>
+								<!-- // -->
+							</ul>
+						</div>
+					</div>
+					<!-- // -->
+				</div>
+			</div>
+		</div>
+		<!-- 딤영역 클릭시 닫기 -->
+		<a href="#" class="btn_dim_close" onclick="$('.lay_earned').fadeOut(100).removeClass('on');return false;">닫기</a>
+		<!-- // -->
+	</section>
+	<!-- // -->
+	<script>
+		// 퍼블테스트용 - 레이어 띄우기 모션
+		// 레이어는 아래처럼 띄워주세요
+		// - dim 페이드 후 on 클래스 붙여주세요.
+		$(function(){
+			var $layExpected = $(".lay_expected"); // 적립예정 레이어
+			var $layEarned = $(".lay_earned"); // 적립완료 레이어
+			var $btnLayEarn = $("li.ty_earn");
+			$btnLayEarn.click(function(){
+				if ( $(this).hasClass("ty_expected") ){
+					// 적립예정일때
+					$layExpected.fadeIn(100).addClass('on');
+				}else{
+					// 적립완료일때
+					$layEarned.fadeIn(100).addClass('on');
+				}
+			});
+		})
+	</script>
+	<!-- // -->
+
+
+    <!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+    <footer class="footer footer--com">
+        <!-- Footer : 탑버튼 -->
+        <div class="newquick">
+            <p class="TBtn" onclick="goFooterTop();">TOP</p>
+        </div>
+        <!-- // -->
+        <!-- Footer : 회사정보 -->
+        <div class="footer__info">
+            <!-- 클릭시 .unfold 클래스 toggle -->
+            <button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+            <!-- // -->
+            <div class="footer__info_com">
+                <dl>
+                    <dt>대표이사</dt>
+                    <dd>김기범</dd>
+                    <dt>사업자등록번호</dt>
+                    <dd>206-81-18164</dd>
+                    <dt>통신판매신고</dt>
+                    <!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+                    <dd>2020-서울금천-1949호</dd>
+                    <!-- // -->
+                    <dt>주소</dt>
+                    <!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+                    <dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+                    <!-- // -->
+                    <dt>문의</dt>
+                    <dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- Footer : 푸터메뉴 -->
+        <div class="footer__menu">
+            <div class="footer__menu_top">
+                <a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+            </div>
+            <div class="footer__menu_bot">
+                <a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+            </div>
+        </div>
+        <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+    </footer>
+    <!-- // -->
+</div>
+
+<script>	
+
+	// 최상단 GNB 고정
+	$(function(){
+		var $mhead = $(".m_header"); // 헤더
+		var $topBnr = $(".header_top_bnr"); // 최상단 배너
+		var topBnrH = ( $topBnr.length && $topBnr.is(':visible') ) ? topBnrH = $topBnr.outerHeight() : topBnr = 0; // 최상단 배너의 visible 여부 판단 + 높이 계산
+		var rePos = function(){
+			var nowPos = $(window).scrollTop();
+			( nowPos > topBnrH ) ? $mhead.addClass("fixed_top").css("top",0) : $mhead.removeClass("fixed_top").css("top",topBnrH);
+		}
+		$(window).load(rePos).scroll(rePos);
+	});
+
+</script>
+</body>
+</html>

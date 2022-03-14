@@ -1,0 +1,567 @@
+
+<!doctype html>
+<head>
+<meta charset="utf-8">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다."> 
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="prd.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/common/js/function.js"></script>
+<script>
+	String.prototype.isEmail 		= function() {return this.match(/^[_a-zA-Z0-9-]+@[\._a-zA-Z0-9-]+\.[a-zA-Z]+$/);}
+	String.prototype.isNumber 		= function() {return this.match(/^\d+$/);}
+	String.prototype.isAllowImage 	= function() {return this.match(/(\.jpg)+$/i);}
+	String.prototype.isEmpty 		= function() {return this.trim().length == 0;}
+	String.prototype.trim    		= function() {return this.replace(/(^\s*)|(\s*$)|($\s*)/g, "");}
+	String.prototype.toSpcLetter 	= function() {return this.trim().replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\"","&quot;");}
+	
+	function fnAddComma(obj){
+		var num = parseFloat(obj.value);
+
+	    var reg = /(^[+-]?\d+)(\d{3})/;
+	    var n = obj.value.replace(/,/g,'');
+	 
+	    while (reg.test(n))
+	    	n = n.replace(reg, '$1' + ',' + '$2');
+	 
+	    obj.value = n;
+	}
+	
+	String.prototype.ByteLength = function() {
+	    var i,ch;
+	    var strLength = this.length;
+	    var count = 0;
+	
+	    for(i=0;i<strLength;i++)
+	    {
+	        ch = escape(this.charAt(i));
+	
+	        if(ch.length > 4)
+	            count += 2;
+	        else if(ch!='\r') 
+	            count++;
+	    }
+	    return count;
+	}
+	
+    function fnChkNum() {
+        var obj = event.srcElement;
+ 
+        if ((event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 96 && event.keyCode <= 105) ||   
+             event.keyCode == 8  || event.keyCode == 46 || event.keyCode == 37 || event.keyCode == 39 || 
+             event.keyCode == 35 || event.keyCode == 36 || event.keyCode == 9  || event.keyCode == 45){ 
+        } else {
+            event.preventDefault ? event.preventDefault() : event.returnValue = false;
+        }
+    }	
+    
+    function setAddr(zip1,zip2,addr1,addr2){
+    	var obj = document.frmStampEvent;
+    	obj.txtZipCode.value = zip1 + "-" + zip2;
+    	obj.txtAddr1.value = addr1;
+    	obj.txtAddr2.value = addr2;
+    	
+    	$("#txtZipCode").focusin().blur();
+    	$("#txtAddr1").focusin().blur();
+    	$("#txtAddr2").focusin().blur();
+    }    
+    
+    function fnChkValidate(){
+    	var obj = document.frmStampEvent;
+    	
+    	if(obj.txtEnImageSrc.value.isEmpty()){
+    		alert('이미지를 업로드 해 주세요.');
+    		return false;
+    	}
+    	
+    	if(obj.enPrice.value.isEmpty() || parseInt(obj.enPrice.value.trim()) == 0){
+    		alert('에누리를 통해 이동한 쇼핑몰의 가격을 입력해 주세요.');
+    		obj.enPrice.focus();
+    		
+    		return false;
+    	}
+    	
+    	if(obj.txtModelno.value.isEmpty()){
+    		alert('에누리 모델번호를 입력해 주세요.');
+    		obj.txtModelno.focus();
+    		
+    		return false;
+    	}
+
+    	if(!obj.txtModelno.value.isNumber()){
+    		alert('모델번호는 숫자를 입력 해 주세요.');
+    		obj.txtModelno.value = "";
+    		obj.txtModelno.focus();
+    		
+    		return false;
+    	}
+    	
+    	if(obj.txtShopImageSrc.value.isEmpty()){
+    		alert('이미지를 업로드 해 주세요.');
+
+    		return false;
+    	}      	
+
+    	if(obj.shopPrice.value.isEmpty() || parseInt(obj.shopPrice.value.trim()) == 0){
+    		alert('직접 방문한 쇼핑몰의 가격을 입력해 주세요.');
+    		obj.shopPrice.focus();
+    		
+    		return false;
+    	}
+
+    	if(obj.txtPhoneNo.value.isEmpty()){
+    		alert('경품 배송을 위해\n휴대폰 번호를 남겨주세요.');
+    		obj.txtPhoneNo.focus();
+    		
+    		return false;
+    	}
+    	
+    	if(obj.txtEmail.value.isEmpty()){
+    		alert('경품 배송을 위해\n이메일 주소를 남겨주세요.');
+    		obj.txtEmail.focus();
+    		
+    		return false;
+    	}
+
+    	if(obj.txtZipCode.value.isEmpty() || obj.txtAddr1.value.isEmpty()){
+    		alert('경품 배송을 위해 주소를 입력해주세요.');
+    		
+    		return false;
+    	}
+
+    	if(!obj.agree1.checked){
+    		alert('개인 정보 수집, 이용에 대한 안내를 읽고 동의해주세요.');
+    		
+    		return false;
+    	}
+    	
+    	if(!obj.agree2.checked){
+    		alert('개인정보의 제 3자 제공에 대한 안내를 읽고 동의해주세요.');
+    		
+    		return false;
+    	}
+    	
+    	if(!obj.agree3.checked){
+    		alert('부정행위 방지를 위한 규정을 읽고 동의해주세요.');
+    		
+    		return false;
+    	}
+    	
+        $('#divScreen').css({
+            "opacity" : "0.4",
+            "background-color" : "#000000",
+            "width" : document.body.scrollWidth,
+            "height" : document.body.scrollHeight,
+            "display" : "block"
+        }); 
+    	
+    	return true;
+    }
+
+    function fnValidateImg(obj,tar){
+    	if(obj.value.length != 0){
+	    	if(obj.value.isAllowImage())
+	    		document.getElementById(tar).value = obj.value;
+	    	else{
+	    		obj.value = '';
+	    		alert('Jpg 파일만 업로드 가능합니다.');    		
+	    	}
+    	}
+    }
+    
+    $(document).ready(function(){
+    	fnResize();
+    	
+    	fnMoveTo();
+    	
+    	fnSetScrollTop();
+
+    	if(window.opener){
+    		if(!window.opener.closed){
+    			if(window.opener.location.href.indexOf("stampEventMain.jsp")<0)
+    				window.opener.close();
+    		}
+    	}
+    	
+    	window.focus();
+    	
+/*     	$('#enImgFile').fileupload({
+            url : '/event/stampEvent_FileUpload.jsp', 
+            dataType: 'json',
+
+            add: function(e, data){
+                var uploadFile = data.files[0];
+                if (!(/jpe?g/i).test(uploadFile.name)) {
+                    alert('jpg 만 가능합니다');
+                    goUpload = false;
+                } else if (uploadFile.size > 5000000) { // 5mb
+                    alert('파일 용량은 5메가를 초과할 수 없습니다.');
+                }
+                data.submit();
+            },
+            done: function (e, data) {
+                var filename = data.result["file_name"];
+    			$('#txtEnImageSrc').val(filename);
+            },
+            fail: function(){
+                alert("서버와 통신 중 문제가 발생했습니다");
+            }
+        });	
+    	
+    	$('#shopImgFile').fileupload({
+            url : '/event/stampEvent_FileUpload.jsp', 
+            dataType: 'json',
+
+            add: function(e, data){
+                var uploadFile = data.files[0];
+                if (!(/jpe?g/i).test(uploadFile.name)) {
+                    alert('jpg 만 가능합니다');
+                    goUpload = false;
+                } else if (uploadFile.size > 5000000) { // 5mb
+                    alert('파일 용량은 5메가를 초과할 수 없습니다.');
+                }
+                data.submit();
+            },
+            done: function (e, data) {
+                var filename = data.result["file_name"];
+    			$('#txtShopImageSrc').val(filename);
+            },
+            fail: function(){
+                alert("서버와 통신 중 문제가 발생했습니다");
+            }
+        });	  */   	
+/*     	$('#enImgFile').bind('change', function(){
+            $.ajax({
+                url: "/event/stampEvent_FileUpload.jsp",
+                files: $("#enImgFile"),
+                iframe: true,
+                processData: false
+            }).done(function(data){
+            	alert(data)
+                console.log(data);
+            });
+        });   */      
+    });
+    
+    function fnResize(){
+    	var nWidth    	= 0;
+    	var nHeight 	= 0;
+        var nMenuWidth 	= 0;
+        var nMenuHeight = 0;
+         
+        if(window.outerHeight) {
+            nMenuWidth  = window.outerWidth  - window.innerWidth;
+            nMenuHeight = window.outerHeight - window.innerHeight + 1;
+        } else {
+            // ie8 이하
+            var nDocWidth  = $(document).outerWidth();
+            var nDocHeight = $(document).outerHeight();
+             
+            window.resizeTo ( nDocWidth, nDocHeight );
+             
+            nMenuWidth  = nDocWidth  - $(window).width();
+            nMenuHeight = nDocHeight - $(window).height();
+        }
+
+        nWidth = $(".popup.pop2_1").outerWidth() + nMenuWidth + 17;
+        nWidth = window.screen.availWidth > nWidth ? nWidth: window.screen.availWidth;
+        
+/*         nHeight = $(document.frmStampEvent).outerHeight() + nMenuHeight;
+        nHeight = window.screen.availHeight > nHeight ? nHeight: window.screen.availHeight; */
+        
+    	self.resizeTo(nWidth, window.screen.availHeight);
+    }
+    
+    function fnSetScrollTop(){
+    	if (document.body.scrollTop) {
+    		document.body.scrollTop = "0px";
+    	} else {
+    		document.documentElement.scrollTop = "0px";
+    	}     	
+    }
+    
+    function fnMoveTo(){
+    	window.moveTo(0,0);
+    }
+    
+    function fnEntrySuccess(){
+    	$("#popup").show().css({"top":document.body.clientWidth/2-$("#popup").height()/2 + "px","left":document.body.clientWidth/2-$("#popup").width()/2+"px"});    	
+    }
+    
+    function fnEntrySuccessOk(){
+    	var win = window.open('stampEventUserEntry.jsp','','left=0,top=0,toolbar=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=no');
+    	
+    	win.focus();
+    	
+    	self.close();
+    }
+    
+    function fnShowPriceInfo(){
+    	var win = window.open("","","width=" + (503 + (window.screen.availHeight > 856 ? 0 : 17)) + ",height=" + ( window.screen.availHeight > 856 ? 856 : window.screen.availHeight) + ",left=0,top=0,toolbar=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=auto");
+    	
+    	if(win){
+    		win.document.write("<body style='margin:0px'><img src='http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_img2.jpg'/></body>");
+    		win.focus();
+    	}
+    }
+    
+    function fnShowModelnoInfo(){
+    	var win = window.open("","","width=" + (418 + (window.screen.availHeight > (962+20) ? 0 : 17)) + ",height=" + ( window.screen.availHeight > (962+20) ? 962 : window.screen.availHeight) + ",left=0,top=0,toolbar=no,directories=no,status=no,menubar=no,resizable=no,scrollbars=yes");
+    	
+    	if(win){
+    		win.document.write("<body style='margin:0px'><img src='http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_img3.jpg'/></body>");
+    		win.focus();
+    	}    	
+    	
+    }
+    	
+    function fnFindFile(fileObj){
+    	$("#" + fileObj).click();
+    }
+</script>
+</head>
+<body>
+<div>
+	<div id="divScreen" style='position:absolute;display:none;z-index:99998;'></div>
+	<div id="popup" style='position:absolute;z-index:99999;'>
+		<span class="button b-close"><span><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/btn_laypop_submit.gif" alt="확인" onclick="fnEntrySuccessOk();"/></span></span>
+		<p>
+			<img style="border:none;" src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/event_done2.jpg" alt="[추가할인가 스템프 찍기] 이벤트 응모되었습니다. 당첨자는 12월 23일(화) 이벤트 페이지에 공지 됩니다. (선착순 이벤트 참여내역 페이지 확인)" />
+		</p>
+	</div>
+</div>
+<form name="frmStampEvent" method="post" encType="multipart/form-data" onsubmit="return fnChkValidate();" action="/event/stampEvent_Proc.jsp" target="iframeEventProc">
+	<!-- width:1000px; height:906px; -->
+	<div class="popup pop2_1">
+		<div class="f_left">
+            <h1><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_title.gif" alt="추가할인 스템프 찍기 참여하기" /></h1>
+			<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_img1.jpg" alt="추가할인 스탬프 찍기 참여방법" />
+         </div>
+		<div class="f_right">
+			<h2><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_title2.gif" alt="정보 입력" /></h2>
+			<div class="contents">
+				<p class="subtit"><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt1.gif" alt="업로드 시 유의사항" /></p>
+				<ul class="subtit_list">
+					<li>① 쇼핑몰명, 상품명, 가격이 보이는 이미지여야 합니다.  <em>(JPG만 업로드 가능)</em></li>
+					<li>② 정확한 가격을 입력하지 않거나, 업로드 누락/손실 시 무효처리됩니다.</li>
+				</ul>
+				<!-- input_box  box1-->
+				<div class="input_box  box1">
+					<div class="inner">
+						<p class="tit">
+							<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt2.gif" alt="에누리를 경유한 쇼핑몰 가격정보 입력" />
+							</strong>
+							
+							<a href="javascript://" onclick="fnShowPriceInfo();"><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_btn2.gif" alt="가격정보 입력 방법" /></a>
+						</p>
+						<ul>
+							<li>
+								<span>캡쳐이미지 업로드</span>
+								<input type="text" name="txtEnImageSrc" id="search1" style="width:0px;display:none;" />
+								
+								<input type="file" id="enImgFile" name="enImgFile" onchange="fnValidateImg(this,'search1');" style="width:238px;" />
+							</li>
+							<li>
+								<span>쇼핑몰 가격 입력</span>
+								<select name="shopList1" style="width:134px;" onchange="document.getElementById('shopList2').selectedIndex = this.selectedIndex;">
+									<option value='4027'>옥션</option>
+									<option value='536'>지마켓</option>
+									<option value='5910'>11번가</option>
+									<option value='55'>인터파크</option>
+									<option value='47'>신세계몰</option>
+									<option value='49'>롯데닷컴</option>
+									<option value='663'>롯데i몰</option>
+									<option value='57'>현대Hmall</option>
+									<option value='75'>GS샵</option>
+									<option value='90'>AK몰</option>
+									<option value='974'>NS몰</option>
+									<option value='374'>이마트몰</option>
+									<option value='6361'>홈플러스</option>
+									<option value='6547'>엘롯데</option>
+									<option value='6508'>위메프</option>
+									<option value='806'>CJ몰</option>
+									<option value='6588'>홈앤쇼핑</option>
+									<option value='6252'>하이마트</option>
+									<option value='1634'>컴퓨존</option>
+									<option value='273'>아이코다</option>
+									<option value='58'>전자랜드</option>
+									<option value='6346'>올레닷컴</option>
+									<option value='5438'>우체국쇼핑</option>
+									<option value='6095'>제로투세븐</option>
+									<option value='6193'>동원몰</option>
+									<option value='6603'>보리보리</option>
+									<option value='6389'>패션플러스</option>
+									<option value='6634'>LF mall</option>	
+								</select>
+								<input type="text" name="enPrice" id="enPrice" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur1');" class="input_blur1" style="width:101px;ime-mode:disabled;text-align:right;" onkeydown="fnChkNum();" onkeyup="fnAddComma(this);" maxlength="13"/>
+							</li>
+							<li>
+								<span style="width:110px;">에누리 모델번호</span>
+								<input type="text" name="txtModelno" id="txtModelno" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur2');" class="input_blur2" style="width:159px;ime-mode:disabled;" onkeydown="fnChkNum();" maxlength="8"/>
+								<a href="javascript://" onclick="fnShowModelnoInfo();"><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_btn4.gif" alt="확인방법" /></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //input_box  box1-->
+				<!-- input_box  box2-->
+				<div class="input_box box2">
+					<div class="inner">
+						<p class="tit">
+							<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt3.gif" alt="2. 쇼핑몰에 직접 접속한 가격정보 입력" />
+							</strong>
+							<a href="javascript://" onclick="fnShowPriceInfo();"><img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_btn2.gif" alt="가격정보 입력 방법" /></a>
+						</p>
+						<ul>
+							<li>
+								<span>캡쳐이미지 업로드</span>
+								<input type="text" name="txtShopImageSrc" id="search2" style="width:0px;display:none;" readonly disabled/>
+								
+								<input type="file" id="shopImgFile" name="shopImgFile" onchange="fnValidateImg(this,'search2');" />
+							</li>
+							<li>
+								<span>쇼핑몰 가격 입력</span>
+								<select name="shopList2" id="shopList2" style="width:134px;" disabled>
+									<option value='4027'>옥션</option>
+									<option value='536'>지마켓</option>
+									<option value='5910'>11번가</option>
+									<option value='55'>인터파크</option>
+									<option value='47'>신세계몰</option>
+									<option value='49'>롯데닷컴</option>
+									<option value='663'>롯데i몰</option>
+									<option value='57'>현대Hmall</option>
+									<option value='75'>GS샵</option>
+									<option value='90'>AK몰</option>
+									<option value='974'>NS몰</option>
+									<option value='374'>이마트몰</option>
+									<option value='6361'>홈플러스</option>
+									<option value='6547'>엘롯데</option>
+									<option value='6508'>위메프</option>
+									<option value='806'>CJ몰</option>
+									<option value='6588'>홈앤쇼핑</option>
+									<option value='6252'>하이마트</option>
+									<option value='1634'>컴퓨존</option>
+									<option value='273'>아이코다</option>
+									<option value='58'>전자랜드</option>
+									<option value='6346'>올레닷컴</option>
+									<option value='5438'>우체국쇼핑</option>
+									<option value='6095'>제로투세븐</option>
+									<option value='6193'>동원몰</option>
+									<option value='6603'>보리보리</option>
+									<option value='6389'>패션플러스</option>
+									<option value='6634'>LF mall</option>	
+								</select>
+								<input type="text" name="shopPrice" id="shopPrice" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur3');" class="input_blur3" style="width:102px;ime-mode:disabled;text-align:right;" onkeydown="fnChkNum();" onkeyup="fnAddComma(this);" maxlength="13"/>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //input_box  box2-->
+				<!-- input_box  box3-->
+				<div class="input_box box3">
+					<div class="inner">
+						<p class="tit">
+							<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt4.gif" alt="3. 경품 발송 정보 입력" />
+							</strong>
+						</p>
+						<ul>
+							<li>
+								<span>휴대폰 번호</span>
+								<input type="text" name="txtPhoneNo" id="txtPhoneNo" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur4');" class="input_blur4" style="width:89px;ime-mode:disabled;" onkeydown="fnChkNum();" maxlength="11"/>
+								<span style="width:37px;margin-left:14px;">이메일</span>
+								<input type="text" name="txtEmail" id="" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur5');" class="input_blur5" style="width:123px;ime-mode:disabled;" maxlength="50" />
+							</li>
+							<li>
+								<span>우편 번호</span>
+								<input type="text" name="txtZipCode" id="txtZipCode" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur6');" class="input_blur6" style="width:56px;" readonly tabIndex=-1/>
+								<input type="text" name="txtAddr1" id="txtAddr1" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur7');" class="input_blur7" style="width:218px;"  readonly tabIndex=-1/>
+							</li>
+							<li>
+								<span>주소</span>
+								<input type="text" name="txtAddr2" id="txtAddr2" value="" onFocus="this.className='input_focus'" onBlur="this.className = (this.value != '' ? 'input_blur' : 'input_blur8');" class="input_blur8" style="width:229px;"  readonly tabIndex=-1/>
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/btn_find_addr.gif" alt="주소 입력" onclick="OpenWindow('/join/Findaddr_Main.jsp','addrFind','370','227','no','no');" style='cursor:pointer;' />
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //input_box  box3-->
+				<!-- input_box  box4-->
+				<div class="input_box box4">
+					<div class="inner">
+						<p class="tit">
+							<strong class="step4"><span class="blind">Step4</span>
+							<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt5.gif" alt="4. 이벤트 약관 동의" />
+							</strong>
+						</p>
+						<dl>
+							<dt>
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt6.gif" alt="개인정보 수집ㆍ이용안내" />
+								<span class="agree">
+									<input type="checkbox" id="agree1" name="agree1"/><label for="agree1">개인정보 수집 및 이용에 동의</label>
+								</span>
+							</dt>
+							<dd class="clause">
+								<p class="first">에누리 가격비교는 이벤트 참여확인 및 경품 발송을 위하여 아래와 같이 개인 정보를 수집하고 있습니다. </p>
+								<ol>
+									<li>1. 개인정보 수집 항목
+										이름, 휴대폰 번호, 이메일 주소, 주소, 참여 일시, IP정보</li>
+
+									<li> 2. 개인정보 수집 및 이용 목적
+										이벤트를 위해 수집된 개인정보는 이벤트 참여확인 및 경품 발송을 위한 본인확인 이외의 목적으로 활용되지 않습니다.</li>
+
+									<li> 3. 개인정보 보유 및 이용 기간
+										개인 정보 수집자(에누리 가격비교)는 개인 정보의 수집 및 이용 목적이 달성되면 개인 정보를 즉시 파기합니다.</li>
+								</ol>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt7.gif" alt="개인정보 제 3자 제공" />
+								<span class="agree">
+									<input type="checkbox" id="agree2" name="agree2"/><label for="agree2">개인정보 제 3자 제공에 동의</label>
+								</span>
+							</dt>
+							<dd class="clause">
+								<p class="first">회사는 이벤트 경품 배송을 위해서 아래와 같이 개인정보를 제 3자와 제휴하고 있으며, 관계 법령에 따라 개인 정보의 제 3자 제공 시 개인 정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다.</p>
+								<p>회사의 개인정보 제 3자 제공 내용은 아래와 같습니다.</p>
+								<ul>
+									<li>ㆍ제공 받는 자</li> 
+									<li>ㆍ개인정보 이용 목적: 이벤트 경품 발송</li> 
+									<li>ㆍ제공하는 개인정보 항목: 이름, 휴대폰 번호, 이메일 주소, 참여 일시</li> 
+									<li>ㆍ보유 기간: 이벤트 경품 발송 후, 즉시 파기됨</li> 
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_txt8.gif" alt="이벤트 참여 시 부정행위 처리" />
+								<span class="agree">
+									<input type="checkbox" id="agree3" name="agree3"/><label for="agree3">부정행위 관련 규정에 동의</label>
+								</span>
+							</dt>
+							<dd class="clause">
+								<p class="first">회사는 이벤트 참여 및 경품 획득을 목적으로 한 부정 행위(이미지 변조 등)를 방지하고자 아래와 같이 규정하고 있습니다.
+</p>
+								<ul>
+									<li>ㆍ이미지 변조행위: 이벤트참여내역 삭제 및 경품 당첨 취소 (사후 발견 시 경품 회수 조치), 해당 아이디 및 IP 접근 금지</li> 
+									<li>ㆍ가격 변조행위: 이벤트 응모 무효 처리</li> 
+									<li>ㆍ아이디 /명의 도용: 이벤트참여내역 삭제 및 경품 당첨 취소 (사후 발견 시 경품 회수 조치), 해당 아이디 및 IP 접근 금지</li> 
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- //input_box  box4-->
+				<p class="btn_center small pop1"><a href="javascript://"><input type="image" name="submit" value="submit" id="submitBtn" src="http://imgenuri.enuri.gscdn.com/images/event/2014/prd/pop2_1_btn1.gif" alt="업로드 하기" style="width:414px;height:42px;"/></a></p>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+<iframe name='iframeEventProc' width="0" height="0" frameborder="0" scrolling="no" marginheight="0" scrolltop="0" scrollleft="0" marginwidth="0"></iframe>
+</body>
+</html>

@@ -1,0 +1,306 @@
+@charset "utf-8";
+
+/* 이벤트 공통 */
+* {-webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent; /* For some Androids */}
+
+.event_conts {margin-top:0;}
+.mobile .event_conts {border:0;}
+
+/*
+ * PC 레이어
+ */ 
+/*딤레이어 공통 */
+.pop-layer  {display:none; position:fixed; _position:absolute; top:0; left:0; z-index:100000; width:100%; height:100%;}
+.pop-layer .dim {position:absolute; left:0; top:0; width:100%; height:100%; z-index:10000; -ms-filter: alpha(opacity=70); filter: alpha(opacity=70); opacity:0.7; -moz-opacity:0.7;}
+.popup_box {position:absolute; left:50%; top:50%; overflow:hidden; z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top; margin:0; padding:0;}
+.popup_box h4 {height:69px; text-align:center; font-family:Malgun Gothic;font-size:22px; font-weight:normal; line-height:66px;  color:#fff;letter-spacing:-0.75px; background-color:#1689d3;}
+.popup_box .layclose {position:absolute; right:25px; top:25px; width:19px; height:19px; background-image:url(http://img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+.popup_box .layclose:hover {background-color:transparent;}
+.popup_box .emp {color: #ff0200}
+.popup_box .under {text-decoration:underline;}
+
+/*
+ * M 레이어
+ */ 
+/*딤레이어 공통 */
+.mobile .popup_box h4 {height:35px; font-size:14px; line-height:35px;}
+.mobile .popup_box .layclose {right:12px; top:12px; width:19px; height:19px; background-image:url(http://img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+
+
+/* 181026 쇼핑지식 고정이벤트2 (슬롯머신) */
+/*
+ * PC 슬롯머신 
+ */
+.slotbox {position:relative;width:846px;height:624px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/pc_visual_bg.jpg) no-repeat;}
+.slotbox > .tit {position:absolute;top:60px;left:275px;z-index:90;width:290px;height:124px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/pc_visual_tit.png) no-repeat;}
+.slotbox .info {display:block;position:absolute;bottom:94px;left:228px;width:390px;height:44px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/pc_visual_info.png) no-repeat;}
+.slotbox .btn_caution {display:block;position:absolute;bottom:32px;left:308px;width:230px;height:40px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/btn_caution_blk.png) no-repeat;opacity:.8;}
+.slotbox .btn_caution:hover {opacity:1;}
+/* 유의사항 레이어 커스텀 defulat @view.css */
+.slotbox #slotNoticePc .tit {width:71px;background:url(http://img.enuri.info/images/knowcom/layer_tit_caution_pc.png) no-repeat;}
+.slotbox .wheelbox {position:absolute;top:163px;left:127px;z-index:80;width:594px;height:266px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/visual_slotbody.png) no-repeat;}
+.slotbox .wheelbox__inner {overflow:hidden;position:absolute;top:46px;left:112px;width:366px;height:160px;margin:0 auto;vertical-align:top;}
+.slotbox .wheelbox__inner .wheel {opacity:0;-ms-filter: alpha(opacity=0);filter: alpha(opacity=0); position:absolute;top:0;margin-left:20px;z-index:110;padding:42px 0;width:76px;height:76px;}
+.slotbox .wheelbox__inner .wheel img {position: absolute;}
+.slotbox .wheelbox__inner .wheel .slotSpinAnimation {top:0;}
+.slotbox .wheelbox__inner .wheel#wheel1 {left: 0;}
+.slotbox .wheelbox__inner .wheel#wheel2 {left: 125px;}
+.slotbox .wheelbox__inner .wheel#wheel3 {left: 251px;}
+.slotSpinAnimation {display: none;}
+
+/* 화면 진입 시 보여지는 모션, 망치 클릭 시, 사라지고 실제 슬롯 opacity값 1 변경 */
+.slotbox .wheelbox #initWheel {overflow:hidden;position:absolute;top:0;left:0;z-index:120;width:366px;height:160px;margin:0 auto;vertical-align:top;}
+.slotbox .wheelbox #initWheel span {position:absolute;top:0;z-index:110;margin:0 auto;padding:30px 0;width:116px;height:160px;}
+.slotbox .wheelbox #initWheel span img {position:absolute;top:-38px;left:20px;}
+.slotbox .wheelbox #initWheel span.slot1 {left: 0;}
+.slotbox .wheelbox #initWheel span.slot2 {left: 125px;}
+.slotbox .wheelbox #initWheel span.slot3 {left: 251px;}
+.slotbox .wheelbox #initWheel span.slot1 img {top: -38px; -webkit-animation: slotMoving1 2s linear  0s infinite alternate;-moz-animation: slotMoving1 2s linear  0s infinite alternate;-ms-animation: slotMoving1 2s linear  0s infinite alternate;animation: slotMoving1 2s linear  0s infinite alternate;}
+.slotbox .wheelbox #initWheel span.slot2 img {top: -114px;-webkit-animation: slotMoving2 2s linear  1s infinite alternate;-moz-animation: slotMoving2 2s linear  1s infinite alternate;-ms-animation: slotMoving2 2s linear  1s infinite alternate;animation: slotMoving2 2s linear  1s infinite alternate;}
+.slotbox .wheelbox #initWheel span.slot3 img {top: -76px; -webkit-animation: slotMoving3 2s linear .5s infinite alternate;-moz-animation: slotMoving3 2s linear .5s infinite alternate;-ms-animation: slotMoving3 2s linear .5s infinite alternate;animation: slotMoving3 2s linear .5s infinite alternate;}
+@-webkit-keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}} @-moz-keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}} @-ms-keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}} @keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}}
+@-webkit-keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} @-moz-keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} @-ms-keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} @keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} 
+@-webkit-keyframes slotMoving3 {0% {top:-76px;}	 100% {top:-304px;}} @-moz-keyframes slotMoving3 {0% {top:-76px;}  100% {top:-304px;}} @-ms-keyframes slotMoving3 {0% {top:-76px;}	100% {top:-304px;}} @keyframes slotMoving3 {0% {top:-76px;}	 100% {top:-304px;}}
+
+
+.slotbox .slot__trigger {position:absolute;top:361px;left:182px;width:456px;height:100px;cursor:pointer;}
+.slotbox .slot__trigger button {position:relative;z-index:90;width:360px;height:90px;margin-left:61px;border:0;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/slot_trigger.png) no-repeat;outline:0;}
+/* .slotbox .slot__trigger button .txt {position:absolute;top:28px;left:118px;width:93px;height:26px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/pc_slot_trigger-txt.png) no-repeat;} */
+.slotbox .slot__trigger.slotTriggerDown button {background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/slot_trigger--tab.png) no-repeat;}
+.slotbox .slot__trigger.slotTriggerEnd {cursor:default;}
+.slotbox .slot__trigger.slotTriggerEnd button {cursor:default;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/slot_trigger--end.png) no-repeat;}
+.slotbox .front-coin {display:block;position:absolute;z-index:99;top:27px;left:0;width:456px;height:72px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/front_coin.png) no-repeat;}
+
+/* 200406 추후 삭제 : 슬롯머신 당첨 레이어 */
+.vote_box {position:absolute; left:50%; top:50%; z-index:10200; width:510px; height:440px; margin:-220px 0 0 -482px;}
+.vote_box .inner {position:relative; width:100%; height:100%;}
+.vote_box .inner .vote_img {display:block; margin:0 auto;}
+.vote_box .inner .btn__confirm {position:absolute; bottom:44px; left:118px; width:297px; height:59px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_btn_confirm.png) no-repeat; outline:0;}
+.vote_box .btn__close {position:absolute; right:2px; top:-36px; width:30px; height:30px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_btn_close.png) no-repeat; outline:0;}
+@media (min-width:984px) and (max-width:1279px){
+	.vote_box {margin-left:-334px;}	
+}
+/* // */
+
+/* PC 매일추천 */
+.lottobox {position:relative; width:100%;}
+.lottobox .inner {padding:0 15px;}
+.lottobox .inner .tit {display:block; width:816px; height:190px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_tit.jpg) no-repeat;}
+.lottobox .inner .btn__morelist {display:block; width:224px; height:52px; margin:4px auto 60px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_more.png) no-repeat;}
+.lotto__list {overflow:hidden; clear:both; width:786px; margin:0 13px;}
+.lotto__list li {display:inline; float:left; position:relative; width:246px; height:138px; margin:0 8px 16px;}
+.lotto__list li a {display:block; position:relative; width:100%; height:100%; vertical-align:middle;}
+.lotto__list li a:hover {text-decoration:underline;}
+.lotto__list li.type--thumb {overflow:hidden; cursor:pointer;}
+.lotto__list li.type--thumb img {width:100%; height:100%;}
+.lotto__list li.type--thumb .hover__info {opacity:0; -ms-filter: alpha(opacity=0); filter: alpha(opacity=0); transition: opacity .2s ease-out;}
+.lotto__list li.type--thumb:hover .hover__info {display:block; position:absolute; top:0; left:0; opacity:1; -ms-filter: alpha(opacity=100); filter: alpha(opacity=100); transition: opacity .2s ease-out;}
+.lotto__list li.type--thumb .hover__info .txt {display:table-cell; position:relative; z-index:100; width:210px; height:133px; padding:0 18px 5px; font-size:18px; line-height:22px; color:#fff; vertical-align:middle; letter-spacing:-1px;}
+.lotto__list li.type--thumb .hover__info .dimm {display:block; width:100%; height:100%; position:absolute; top:0; left:0; z-index:10; background:rgba(0, 0, 0, 0.75);}
+.lotto__list li.type--txt {position:relative; transition:all .2s ease-out;}
+.lotto__list li.type--txt a {display:table-cell; width:210px; height:133px; padding:0 18px 5px; font-size:18px; line-height:22px; color:#fff; vertical-align:middle; letter-spacing:-1px; text-decoration:none;}
+.lotto__list li.bg0 {background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_purple.jpg) no-repeat;}
+.lotto__list li.bg0:hover {background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_purple_on.jpg) no-repeat;}
+.lotto__list li.bg1 {background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_pink.jpg) no-repeat;}
+.lotto__list li.bg1:hover {background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_pink_on.jpg) no-repeat;}
+.lotto__list li.bg2 {background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_skyblue.jpg) no-repeat;}
+.lotto__list li.bg2:hover {background:url(http://img.enuri.info/images/knowcom/slotevt/pc_lottoevt_skyblue_on.jpg) no-repeat;}
+
+/* PC 매일댓글 */
+.replybox {clear:both; position:relative; width:100%;}
+.replybox .inner {padding:0 15px;}
+
+.reply__head {position:relative;}
+.reply__head .tit {display:block; width:816px; height:416px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_replyevt_tit2.jpg) no-repeat;}
+.reply__head .evtname {position:absolute; top:95px; left:22px; width:710px; height:44px; padding:25px 30px; font-size:36px; color:#333; line-height:1; letter-spacing:-1px; letter-spacing:-3px; text-align:center;}
+
+/* 191230 SR#37617 히트브랜드 배너 영역 추가 */
+.reply_in_bnr{margin:0 0 20px 0}
+.reply_in_bnr a{display:block;text-align:center}
+.reply_in_bnr a img{max-width:640px;width:100%}
+
+.reply__board {clear:both;}
+.reply__board .reply__write {overflow:hidden; position:relative; width:100%; margin-bottom:14px;}
+.reply__board .reply__write .txt_area {float:left; width:660px; height:94px; padding:14px 23px 13px; border-radius:3px; border:1px solid #d9d9d9; font-size:14px; line-height:21px; color:#333; letter-spacing:-1px; box-sizing:border-box; resize:none; -webkit-box-shadow:1px 2px 0px 0px rgba(231,231,231,1); -moz-box-shadow:1px 2px 0px 0px rgba(231,231,231,1); box-shadow:1px 2px 0px 0px rgba(231,231,231,1);}
+.reply__board .reply__write .btn.regist {display:inline; float:right; width:149px; height:96px; margin-right:3px; border:0; font-size:0; text-indent:-9999px; outline:0; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_replyevt_btn.png) no-repeat;}
+.reply__board .reply__write .curr {position:absolute; bottom:8px; right:180px; font-family:"돋움", Dotum, sans-serif; font-size:13px; color:#989898; line-height:20px; letter-spacing:-.5px;}
+.reply__board .reply__write .curr span {margin-right:2px; color:#3b6fd8;}
+
+.reply__board .reply__list {width:811px; margin:0 auto 20px 1px; padding:0;}
+.reply__board .reply__list ul {}
+.reply__board .reply__list ul li {padding:11px 0 14px 22px; border-bottom:1px solid #eee;}
+.reply__board .reply__list ul li .user {display:block; margin:0 0 1px; font-weight:bold; font-size:14px; color:#272727; line-height:20px;}
+.reply__board .reply__list ul li .date {display:inline-block; margin-left:3px; font-weight:normal; font-size:13px; color:#999; vertical-align:-2px; letter-spacing:-1px;}
+.reply__board .reply__list ul li .cont {font-size:14px; color:#272727; line-height:20px;}
+.reply__board .reply__list ul li.reply__divide {position:relative; width:100%; height:69px; padding:0; border-radius:3px; border-bottom:0; background-color:#e3ecff;}
+.reply__board .reply__list ul li.reply__divide:before {position:absolute; top:-1px; width:100%; height:1px; background-color:red;}
+.reply__board .reply__list ul li.reply__divide .endtxt {padding:17px 0 22px; font-weight:bold; font-size:16px; color:#333; line-height:30px; text-align:center; vertical-align:middle;}
+.reply__board .reply__list ul li.reply__divide .endtxt i {display:inline-block; width:49px; height:24px; margin-right:5px; font-size:0; text-indent:-9999px; vertical-align:middle; background:url(http://img.enuri.info/images/knowcom/slotevt/pc_icon_divide.png) no-repeat;}
+
+.reply__board .paging {display:block; position:relative; width:100%; margin-bottom:20px; padding:0; text-align:center;}
+.reply__board .paging .btn {display:inline-block; overflow:hidden; position:relative; width:33px; height:33px; border:1px solid #c6cace; background:url(http://img.enuri.info/images/event/2017/workers/paging_arrow2.png) no-repeat;}
+.reply__board .paging .btn.prev {background-position:-33px 0;}
+.reply__board .paging .btn.next {background-position:0 -33px;}
+.reply__board .paging .btn.first {background-position:0 0;}
+.reply__board .paging .btn.last {background-position:-33px -33px;}
+.reply__board .paging .list {display:inline-block; text-align:center; vertical-align:top;}
+.reply__board .paging .list li {display:inline-block; margin:0 1px;}
+.reply__board .paging .list li a {display:inline-block; width:33px; height:33px; padding-top:0; font:bold 14px/33px Arial, sans-serif; color:#323232; vertical-align:middle; border:1px solid #ccc; background-color:#fcfcfc;}
+.reply__board .paging .list li a:hover,
+.reply__board .paging .list li a.selected {border-color:#323232; color:#3b6fd8; background-color:#fff;}
+
+
+/*
+ * M 슬롯머신 
+ */
+.mobile .m_slotbox {position:relative;width:100%;height:380px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/m_visual_bg.jpg) repeat-x 50% 50%;background-size:320px}
+.mobile .m_slotbox__inner {position:absolute;top:0;left:50%;width:320px;height:100%;margin-left:-160px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/m_back_coin.jpg) no-repeat 50% 50%;background-size:320px}
+.mobile .m_slotbox__inner > .tit {position:absolute;top:33px;left:50%;z-index:90;width:165px;height:78px;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/m_visual_tit.png) no-repeat;background-size:165px;}
+.mobile .m_slotbox .info {display:block;position:absolute;bottom:65px;left:50%;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:246px;height:54px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/m_visual_info.png) center no-repeat;background-size:246px;}
+.mobile .m_slotbox .btn_caution {display:block;position:absolute;bottom:30px;left:50%;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:92px;height:15px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/m_btn_caution_blk.png) center no-repeat;background-size:92px;}
+/* 유의사항 레이어 커스텀 defulat @view.css */
+.mobile .m_slotbox #mSlotNoticePc .tit {width:42.5px;background:url(http://img.enuri.info/images/knowcom/layer_tit_caution_m.png) no-repeat;background-size:42.5px;}
+
+.mobile .m_slotbox .wheelbox {position:absolute;top:92px;left:50%;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);z-index:80;width:297px;height:133px; background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/visual_slotbody.png) center no-repeat;background-size:297px;}
+.mobile .m_slotbox .wheelbox__inner {overflow:hidden;position:absolute;top:23px;left:50%;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:183px;height:79px;vertical-align:top;}
+.mobile .m_slotbox .wheelbox__inner .mwheel {opacity:0;-ms-filter: alpha(opacity=0);filter: alpha(opacity=0);position:absolute;top:0;z-index:110;margin:0 auto;padding:18px 0;width:44px;height:44px;}
+.mobile .m_slotbox .wheelbox__inner .mwheel img {position: absolute;}
+.mobile .m_slotbox .wheelbox__inner .mwheel .mSlotSpinAnimation {top:0;}
+.mobile .m_slotbox .wheelbox__inner .mwheel#mWheel1 {left: 7px;}
+.mobile .m_slotbox .wheelbox__inner .mwheel#mWheel2 {left: 70px;}
+.mobile .m_slotbox .wheelbox__inner .mwheel#mWheel3 {left: 132px;}
+.mobile .mSlotSpinAnimation {display: none;height:80px;}
+
+/* 화면 진입 시 보여지는 모션, 망치 클릭 시, 사라지고 실제 슬롯 opacity값 1 변경 */
+.mobile .m_slotbox .wheelbox #mInitWheel {overflow:hidden;position:absolute;top:0;left:50%;z-index:120;width:190px;height:79px;margin-left:-95px;vertical-align:top;}
+.mobile .m_slotbox .wheelbox #mInitWheel span {display:block;position:absolute;top:0;z-index:110;margin:0 auto;padding:30px 0;width:44px;height:44px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span img {position:absolute;top:-22px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot1 {left: 7px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot2 {left: 70px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot3 {left: 132px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot1 img {top: -22px; -webkit-animation: mSlotMoving1  1.5s linear  0s infinite alternate;-moz-animation: mSlotMoving1 1.5s linear  0s infinite alternate;-ms-animation: mSlotMoving1 1.5s linear  0s infinite alternate;animation: mSlotMoving1 1.5s linear  0s infinite alternate;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot2 img {top: -110px;-webkit-animation: mSlotMoving2  1.5s linear .6s infinite alternate;-moz-animation: mSlotMoving2 1.5s linear .6s infinite alternate;-ms-animation: mSlotMoving2 1.5s linear .6s infinite alternate;animation: mSlotMoving2 1.5s linear .6s infinite alternate;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot3 img {top: -66px; -webkit-animation: mSlotMoving3  1.5s linear .3s infinite alternate;-moz-animation: mSlotMoving3 1.5s linear .3s infinite alternate;-ms-animation: mSlotMoving3 1.5s linear .3s infinite alternate;animation: mSlotMoving3 1.5s linear .3s infinite alternate;}
+@-webkit-keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}} @-moz-keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}} @-ms-keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}} @keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}}
+@-webkit-keyframes mSlotMoving2 {0% {top:-110px;} 100% {top:-198px;}} @-moz-keyframes mSlotMoving2 {0% {top:-110px;} 100% {top:-198px;}} @-ms-keyframes mSlotMoving2 {0% {top:-110px;} 100% {top:-198px;}} @keyframes mSlotMoving2 {0% {top:-110px;} 100% {top:-198px;}} 
+@-webkit-keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}} @-moz-keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}} @-ms-keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}} @keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}}
+
+
+.mobile .m_slotbox .slot__trigger {position:absolute;top:196px;left:50%;z-index:90;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:100%;height:100px;}
+.mobile .m_slotbox .slot__trigger button {display:block;position:relative;z-index:90;width:180px;height:45px;margin:0 auto;border:0;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/slot_trigger.png) no-repeat;background-size:180px;}
+.mobile .m_slotbox .slot__trigger.mSlotTriggerDown button {background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/slot_trigger--tab.png) no-repeat;background-size:180px;}
+.mobile .m_slotbox .slot__trigger.mSlotTriggerEnd {cursor:default;}
+.mobile .m_slotbox .slot__trigger.mSlotTriggerEnd button {cursor:default;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/slot_trigger--end.png) no-repeat;background-size:180px;}
+.mobile .m_slotbox .front-coin {display:block;position:absolute;z-index:100;top:13px;left:50%;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:228px;height:36px;z-index:100;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/ver2/front_coin.png) no-repeat;background-size:228px;}
+
+/* 200406 추후 삭제 : 슬롯머신 당첨 레이어 */
+.mobile .m_vote_box {position:absolute;left:50%;top:50%;z-index:10200;width:310px;height:264px;margin:-132px 0 0 -161px;}
+.mobile .m_vote_box .inner {position:relative;width:100%;height:100%;}
+.mobile .m_vote_box .inner .btn__confirm {position:absolute;bottom:21px;left:78px;width:170px;height:34px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/m_btn_confirm.png) no-repeat;outline:0;background-size:170px;}
+.mobile .m_vote_box .btn__close {position:absolute;right:0;top:-29px;width:24px;height:24px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/knowcom/slotevt/m_btn_close.png) no-repeat;outline:0;background-size:24px;}
+/* // */
+
+/* M 매일추천 */
+.mobile .m_lottobox {position:relative;width:100%; background-color:#fff;}
+.mobile .m_lottobox .inner {max-width:320px; padding:0; margin:0 auto;}
+.mobile .m_lottobox .inner .tit {display:block; width:320px; height:132px; margin:0 auto; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/m_lottoevt_tit.jpg) no-repeat; background-size:320px;}
+.mobile .m_lottobox .inner .btn__morelist {display:block; position:relative; width:246px; height:42px; margin:0 auto 10px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/m_lottoevt_more.png) no-repeat; background-size:246px;}
+.mobile .m_lottobox .inner .btn__morelist .paging {position:absolute; top:14px; left:137px; font:bold 14px/1 Tahoma, sans-serif; color:#999; text-indent:0; line-height:1; letter-spacing:-1px;}
+.mobile .m_lottobox .inner .btn__morelist .paging b {color:#333;}
+.mobile .m_lotto__list {overflow:hidden; clear:both; width:246px; margin:0 auto;}
+.mobile .m_lotto__list li {display:inline; float:left; position:relative; width:246px; height:138px; margin-bottom:10px;}
+.mobile .m_lotto__list li a {display:block; position:relative; width:100%; height:100%; vertical-align:middle;}
+.mobile .m_lotto__list li a:hover {text-decoration:underline;}
+.mobile .m_lotto__list li.type--thumb {overflow:hidden; cursor:pointer;}
+.mobile .m_lotto__list li.type--thumb img {width:100%; height:100%;}
+.mobile .m_lotto__list li.type--thumb .hover__info {opacity:0; -ms-filter: alpha(opacity=0); filter: alpha(opacity=0);}
+.mobile .m_lotto__list li.type--thumb:hover .hover__info {display:block; position:absolute; top:0; left:0; opacity:1; -ms-filter: alpha(opacity=100); filter: alpha(opacity=100); transition:opacity .1s ease-out;}
+.mobile .m_lotto__list li.type--thumb .hover__info .txt {display:table-cell; position:relative; z-index:100; width:210px; height:133px; padding:0 18px 5px; font-size:18px; line-height:22px; color:#fff; vertical-align:middle; letter-spacing:-1px;}
+.mobile .m_lotto__list li.type--thumb .hover__info .dimm {display:block; width:100%; height:100%; position:absolute; top:0; left:0; z-index:10; background:rgba(0, 0, 0, 0.75);}
+.mobile .m_lotto__list li.type--txt {position:relative;}
+.mobile .m_lotto__list li.type--txt a {display:table-cell; width:226px; height:138px; padding:0 20px; font-size:20px; line-height:24px; color:#fff; vertical-align:middle; letter-spacing:-1px; text-decoration:none;}
+.mobile .m_lotto__list li.bg0 {background:#bba5f0;}
+.mobile .m_lotto__list li.bg1 {background:#eea5be;}
+.mobile .m_lotto__list li.bg2 {background:#8fd1f1}
+.mobile .m_lotto__list li.type--txt:before {content:""; display:block; position:absolute; top:10px; left:10px; width:25px; height:21px; background:url(http://img.enuri.info/images/knowcom/slotevt/m_lottoevt_txtbg.png) no-repeat; background-size:50px;}
+.mobile .m_lotto__list li.type--txt:after {content:""; display:block; position:absolute; bottom:10px; right:10px; width:25px; height:21px; background:url(http://img.enuri.info/images/knowcom/slotevt/m_lottoevt_txtbg.png) -25px 0 no-repeat; background-size:50px;}
+
+/* M PC 매일댓글 */
+.mobile .m_replybox {clear:both; position:relative; width:100%;/*  margin-bottom:8px; border-bottom:1px solid #d9d9d9; */}
+.mobile .m_replybox .inner {max-width:320px; padding:0; margin:0 auto;}
+
+.mobile .m_reply__head {position:relative;}
+.mobile .m_reply__head .tit {display:block; width:320px; height:381px; font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/knowcom/slotevt/m_replyevt_tit3.jpg) no-repeat; background-size:320px;}
+.mobile .m_reply__head .evtname {display:-webkit-flex; display:flex; -webkit-align-items:center; align-items:center; -webkit-justify-content:center; justify-content:center; position:absolute; top:256px; left:0; width:270px; height:56px; padding:11px 25px; font-family:sans-serif; font-size:24px; color:#333; line-height:28px; letter-spacing:-1px; text-align:center;}
+
+.mobile .m_reply__board {clear:both;}
+.mobile .m_reply__board .reply__write {position:relative; width:calc(100% - 20px); margin:0 10px;}
+.mobile .m_reply__board .reply__write .input {overflow:hidden; position:relative;}
+.mobile .m_reply__board .reply__write .input #touchBox {display:block; position:absolute; top:0; left:0; z-index:1000; width:100%; height:100%; font-size:0; text-indent:-9999px;}
+.mobile .m_reply__board .reply__write .input .txt_area {float:left; width:calc(100% - 60px); height:48px; padding:6px 9px; border-radius:3px; border-top-right-radius:0; border-bottom-right-radius:0; border:1px solid #d9d9d9; border-right:0; font-size:12px; line-height:16px; color:#333; letter-spacing:-1px; resize:none; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-appearance:none; -webkit-appearance:none; appearance:none; outline:0;}
+.mobile .m_reply__board .reply__write .input .btn.regist {display:inline; float:right; width:60px; height:48px; border:0; font-size:0; text-indent:-9999px; outline:0; background:url(http://img.enuri.info/images/knowcom/slotevt/m_replyevt_btn.png) no-repeat; background-size:60px;}
+.mobile .m_reply__board .reply__write .input .curr {position:absolute; bottom:4px; right:65px; font-size:11px; color:#999; line-height:1; box-shadow:none;}
+.mobile .m_reply__board .reply__write .input .curr span {color:#3b6fd8;}
+
+/* 로그인 후 */
+.mobile .m_reply__board .reply__write .input.login {position:relative;}
+.mobile .m_reply__board .reply__write .input.login .box1 {overflow:hidden; clear:both; width:calc(100% - 22px); padding:10px; border:1px solid #d9d9d9; background-color:#fff;}
+.mobile .m_reply__board .reply__write .input.login .box1 .user {margin-bottom:10px; font-weight:bold; font-size:13px; color:#272727;}
+.mobile .m_reply__board .reply__write .input.login .box1 .txt_area {width:100%; height:70px; padding:0; border:0; outline:0; resize:none; font-size:12px; color:#333; line-height:16px;}
+.mobile .m_reply__board .reply__write .input.login .box1 .txt_area:focus {color:#000}
+.mobile .m_reply__board .reply__write .input.login .box2 {overflow:hidden; clear:both; border:1px solid #d9d9d9; border-top:0; background-color:#fff;} 
+.mobile .m_reply__board .reply__write .input.login .box2 .word_num {float:left; width:calc(100% - 76px); padding:0 8px; font-size:11px; color:#999; text-align:right; line-height:48px; vertical-align:middle;}
+.mobile .m_reply__board .reply__write .input.login .box2 .word_num span {color:#3b6fd8;}
+.mobile .m_reply__board .reply__write .input.login .box2 .btn.regist {width:60px; height:48px; border:0; outline:0; background-position:0 0;}
+
+
+.mobile .m_reply__board .reply__list {width:calc(100% - 20px); margin:0 10px 20px; padding:0;}
+.mobile .m_reply__board .reply__list ul {}
+.mobile .m_reply__board .reply__list ul li {padding:9px 0 13px; border-bottom:1px solid #eee;}
+.mobile .m_reply__board .reply__list ul li .user {display:block; margin:0 0 1px; font-family:sans-serif; font-weight:bold; font-size:13px; color:#272727; line-height:20px;}
+.mobile .m_reply__board .reply__list ul li .date {display:inline-block; margin-left:3px; font-family:sans-serif; font-weight:normal; font-size:11px; color:#989898; vertical-align:0; letter-spacing:-1px;}
+.mobile .m_reply__board .reply__list ul li .cont {font-family:sans-serif; font-size:16px; color:#343235; line-height:22px;}
+.mobile .m_reply__board .reply__list ul li.reply__divide {position:relative; width:100%; height:63px; padding:0; border-bottom:0; background-color:#e3ecff;}
+.mobile .m_reply__board .reply__list ul li.reply__divide:before {content:""; display:block; position:absolute; top:-1px; width:100%; height:1px; background-color:#fff;}
+.mobile .m_reply__board .reply__list ul li.reply__divide .endtxt {display:block; overflow:hidden; padding:16px 10px 18px; font-weight:bold; font-size:18px; color:#343235; line-height:29px; text-align:center; vertical-align:middle; letter-spacing:-1px; text-overflow:ellipsis; white-space:nowrap;}
+.mobile .m_reply__board .reply__list ul li.reply__divide .endtxt i {display:inline-block; width:55px; height:24px; margin-right:5px; font-size:0; text-indent:-9999px; vertical-align:4px; background:url(http://img.enuri.info/images/knowcom/slotevt/m_icon_divide.png) no-repeat; background-size:55px;}
+
+.mobile .m_reply__board .paging {display:block; position:relative; width:100%; margin-bottom:30px; padding:0; text-align:center;}
+.mobile .m_reply__board .paging .btn {display:inline-block; overflow:hidden; position:relative; width:29px; height:29px; border:1px solid #c6cace; background:url(http://img.enuri.info/images/event/2017/workers/paging_arrow2.png) -2px -2px no-repeat;}
+.mobile .m_reply__board .paging .btn.prev {background-position:-35px -2px;}
+.mobile .m_reply__board .paging .btn.next {background-position:-2px -34px;}
+.mobile .m_reply__board .paging .list {display:inline-block; text-align:center; vertical-align:top;}
+.mobile .m_reply__board .paging .list li {display:inline-block; margin:0 2px;}
+.mobile .m_reply__board .paging .list li a {display:inline-block; width:29px; height:29px; padding-top:0; font:bold 17.5px/31px Arial, sans-serif; color:#616161; vertical-align:middle; border:1px solid #ccc; background-color:#fcfcfc;}
+.mobile .m_reply__board .paging .list li a:hover,
+.mobile .m_reply__board .paging .list li a.selected {border-color:#323232; color:#3b6fd8; background-color:#fff;}
+
+/* SR#39236 : 고정이벤트 럭키세븐, 출석체크 얼럿창 퍼블 요청 건 */
+/* 기본 레이아웃 -> view.css */
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result{height:440px;margin:0;font-size:0;text-indent:-9999px;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_01{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_01.jpg) no-repeat 50% 50%;background-size:100%}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_02{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_02.jpg) no-repeat 50% 50%;background-size:100%}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_03{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_03.jpg) no-repeat 50% 50%;background-size:100%}
+
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_button {height:187px;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_enuritv{width:200px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_01.png) no-repeat 50% 50%;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_board{width:200px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_02.png) no-repeat 50% 50%;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_attend{width:200px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_03.png) no-repeat 50% 50%;}
+
+@media (max-width:768px){
+	.mobile .notice {bottom:20px;}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result{height:220px;}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_01{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_01.jpg) no-repeat 50% 50%;background-size:300px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_02{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_02.jpg) no-repeat 50% 50%;background-size:300px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_03{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_03.jpg) no-repeat 50% 50%;background-size:300px}
+
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_button {height:93px;}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_enuritv{width:100px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_01.png) no-repeat 50% 50%;background-size:100px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_board{width:100px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_02.png) no-repeat 50% 50%;background-size:100px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_attend{width:100px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_03.png) no-repeat 50% 50%;background-size:100px}
+}
+
+/* // */

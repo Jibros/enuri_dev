@@ -1,0 +1,516 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp.css"/>
+	<!-- // -->
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+
+	<style>
+		body {background-color:#242f3f}
+		#m_frame{position:relative;box-sizing: border-box;top:0;bottom:0;left:50%;height:100vh;width:400px;padding:40px 40px 40px 0;z-index: 100;transform: translateX(-50%);transition: transform .4s ease-in-out;transition-delay: .2s}
+		#m_frame .inner{position:absolute;top:40px;left:0;bottom:40px;right:40px;border-radius:0 0 35px 35px;background-color:#fff;overflow:hidden}
+		#m_frame .inner .head{position:absolute;top:0;left:0;width:100%;height:90px;border-bottom:1px solid #eaeaea;background:url(http://img.enuri.info/images/mobile_v2/iframe_header.png) no-repeat 0 0;z-index: 1;}
+		#m_frame .inner .txt_url{position:absolute;width:306px;height:32px;line-height:32px;font-size:14px;text-align:center;overflow:hidden;text-overflow: ellipsis;color:#000;top:48px;left:16px}
+		#m_frame .inner .iframe{position:absolute;top:90px;bottom:40px;left:0;right:0;width:calc(100% + 17px);height:calc(100vh - 170px);overflow:hidden;overflow-y:scroll;}
+	</style>
+</head>
+<body>
+
+<!-- 공통 : 로더 -->
+<div id="loadingDiv" class="comm__loader">
+	<div class="loader_inner">로딩중</div>
+</div>
+<!-- // 로더 -->
+<script>
+	$(function(){ 
+		setTimeout(function(){
+			$("#loadingDiv").fadeOut(100);
+		},100);
+	})
+</script>
+<!-- // -->
+	<!-- 패션,의류 > 스마트파인더 전용 css -->
+	<link rel="stylesheet" type="text/css" href="/pub_test/mockup/finder/node_modules/nouislider/distribute/lp_fashion.css"/>
+	<link href="/pub_test/mockup/finder/node_modules/nouislider/distribute/nouislider.css" rel="stylesheet">
+	<script src="/pub_test/mockup/finder/node_modules/nouislider/distribute/nouislider.js"></script>
+	<link href="/pub_test/mockup/finder/node_modules/nouislider/distribute/spinners.css" rel="stylesheet">
+
+	<div class="mockup_wrap">
+		<div class="mockup_head">
+			<span class="txt_url">상품 파인더</span>
+		</div>
+		<div class="mockup_cont">
+			<div id="wrap">
+				
+				<!-- 헤더 LP - 타입A -->
+				<header id="header" class="m_header head__type_a">
+					<div class="header_wrap">
+						<h1 class="m_txt">여성의류</h1>	
+						<!-- <button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>	 -->	
+						<button class="btn_hd_cate comm__sprite">카테고리</button>
+						<button class="btn_hd_sr comm__sprite">검색</button>
+						<button class="btn_hd_my comm__sprite">나의정보</button>
+					</div>	
+				</header>
+				<!-- // 헤더 -->
+
+				<section id="container" class="m_lp_cont">
+
+					<div class="lp__head">
+						<div class="lp__navi scroller">
+							<ul class="scroll-cont">
+								<li class="navi__cate"><span class="txt__cate">의류,신발</span></li>
+								<li class="navi__cate"><span class="txt__cate" onclick="return false;">여성의류</span></li>
+								<li class="navi__cate"><span class="txt__cate" onclick="return false;">전체보기</span></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="lp__detail_sr detail_sr">
+						<!-- 상세검색 -->
+						<div class="box_inner">
+							<div class="lp__detail_sr_tab detail_sr_tab scroller">
+								<ul class="scroll-cont">
+									<li data-id="tab_01" class="on"><em>전체보기</em></li>
+									<li data-id="tab_02"><em>티셔츠</em></li>
+									<li data-id="tab_03"><em>블라우스,셔츠</em></li>
+									<li data-id="tab_04"><em>니트</em></li>
+									<li data-id="tab_05"><em>바지</em></li>
+									<li data-id="tab_05"><em>스커트</em></li>
+									<li data-id="tab_05"><em></em></li>
+									<li data-id="tab_05"><em>바지</em></li>
+								</ul>
+							</div>
+						</div>
+						<!-- // 상세검색 -->
+					</div>		
+					
+					<!-- 리스트형일때 .lp__cont / 그리드형일때 .lp__cont.grid  -->
+					<div class="lp__cont lp__cont--fashion">
+						<!-- LP Header -->
+						<div class="lp__cont_head fashion__head">
+							<div class="fashion__source">
+								<!-- 옵션 버튼 -->
+								<div class="opt__btn scroller">
+									<ul class="scroll-cont">
+										<li class="is--on"><button type="button" class="btn">가격</button></li>
+										<li><button type="button" class="btn">카테고리</button></li>
+										<li><button type="button" class="btn">품목</button></li>
+										<li><button type="button" class="btn">옵션</button></li>
+									</ul>
+								</div>
+								
+								<!-- 보기옵션 + 필터 -->
+								<div class="opt__side">
+									<!-- 필터 -->
+									<button class="btn__filter"></button>
+								</div>
+							</div>
+						</div>
+						<!-- // LP Header -->
+
+						<div class="mockup__prdlist">
+							<img src="http://img.enuri.info/images/mobile_v2/finder/test/lp_finder_plist.png" alt="" />
+						</div>
+					</div>
+				</section>
+				
+			</div>
+		</div>
+		
+		<!-- 파인더 -->				
+		<div class="finder_wrap" style="z-index:-1"><!-- is-shown -->
+			<div class="dimmed"></div>
+
+			<div class="finder">
+				<div class="finder__inner">
+					<!-- 상단 토글 -->
+					<button type="button" class="btn_toggle_bar"></button>
+
+					<ul class="finder__head">
+						<li class="is--on"><button type="button" class="tab has-choice">가격</button></li>
+						<li><button type="button" class="tab">카테고리</button></li>
+						<li><button type="button" class="tab">품목</button></li>
+						<li><button type="button" class="tab">옵션</button></li>
+					</ul>
+
+					<div class="finder__cont">
+						<div class="swiper-container finder__swiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide finder__item">
+									<!-- 스와이퍼 이너 컨텐츠 -->
+									<div class="f_inner__cont">
+										<div class="range__price">
+											<p id="rangeMin" class="tx_price tx_price--min">1,000</p> ~ <p id="rangeMax" class="tx_price tx_price--max">270,000+</p>
+										</div>
+	
+										<div class="chart__slide">
+											<div class="chart__img">
+												<img src="http://img.enuri.info/images/mobile_v2/finder/test/lp_finder_graph.png" alt="" />
+											</div>
+											<div id="nonlinear"></div>
+										</div>
+									</div>
+
+									<!-- 스와이퍼 이너 푸터 -->
+									<div class="f_inner__foot">
+										<div class="reset__price">
+											<button type="button" class="btn btn-reset">가격 재설정</button>
+
+											<!-- loding -->
+											<button type="button" class="btn btn-next" data-idx="1"><em id="prodCnt1">99,304</em>개 상품보기
+												<div class="range_loader">
+													<div class="throbber-loader"></div>
+												</div>
+											</button>
+
+											
+										</div>
+									</div>
+								</div>
+								<div class="swiper-slide finder__item">
+									<!-- 스와이퍼 이너 컨텐츠 -->
+									<div class="f_inner__cont">
+										<div class="cate__box">
+											<ul class="cate__list">
+												<li><button type="button" class="btn" data-cnt="100">티셔츠</button></li>
+												<li><button type="button" class="btn" data-cnt="100">블라우스, 셔츠</button></li>
+												<li><button type="button" class="btn" data-cnt="200">니트</button></li>
+												<li><button type="button" class="btn" data-cnt="300">바지</button></li>
+												<li><button type="button" class="btn" data-cnt="400">스커트</button></li>
+												<li><button type="button" class="btn" data-cnt="500">원피스</button></li>
+												<li><button type="button" class="btn" data-cnt="600">자켓</button></li>
+												<li><button type="button" class="btn" data-cnt="700">코트</button></li>
+												<li><button type="button" class="btn" data-cnt="800">패딩/점퍼</button></li> 
+											</ul>
+										</div>
+									</div>
+
+									<!-- 스와이퍼 이너 푸터 -->
+									<div class="f_inner__foot">
+										<div class="reset__price">
+											<button type="button" class="btn btn-reset">옵션 재설정</button>
+
+											<button type="button" class="btn btn-next" data-idx="2"><em id="prodCnt2">0</em>개 상품보기</button>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-slide finder__item">
+									<!-- 스와이퍼 이너 컨텐츠 -->
+									<div class="f_inner__cont">
+										<div class="cate__box">
+											<ul class="cate__list">
+												<li><button type="button" class="btn" data-cnt="200">라운드 넥</button></li>
+												<li><button type="button" class="btn" data-cnt="120">브이넥</button></li>
+												<li><button type="button" class="btn" data-cnt="50">카라넥</button></li>
+												<li><button type="button" class="btn" data-cnt="150">후드</button></li>
+											</ul>
+										</div>												
+									</div>
+
+									<!-- 스와이퍼 이너 푸터 -->
+									<div class="f_inner__foot">
+										<div class="reset__price">
+											<button type="button" class="btn btn-reset">옵션 재설정</button>
+
+											<button type="button" class="btn btn-next" data-idx="3"><em id="prodCnt3">0</em>개 상품보기</button>
+										</div>
+									</div>
+								</div>
+								<div class="swiper-slide finder__item">
+									<!-- 스와이퍼 이너 컨텐츠 -->
+									<div class="f_inner__cont">
+										<div class="cate__box">
+											<p class="cate__tit">주요소재</p>
+											<ul class="cate__list">
+												<li><button type="button" class="btn" data-cnt="510">데님</button></li>
+												<li><button type="button" class="btn" data-cnt="4200">시폰</button></li>
+												<li><button type="button" class="btn" data-cnt="180">면</button></li>
+												<li><button type="button" class="btn" data-cnt="120">폴리에스테르</button></li>
+												<li><button type="button" class="btn" data-cnt="1546">기모</button></li>
+												<li><button type="button" class="btn" data-cnt="19">폴리</button></li>
+											</ul>
+
+											<p class="cate__tit">핏</p>
+											<ul class="cate__list">
+												<li><button type="button" class="btn" data-cnt="226">슬림핏</button></li>
+												<li><button type="button" class="btn" data-cnt="15400">오버핏</button></li>
+												<li><button type="button" class="btn" data-cnt="1200">루즈핏/오버핏</button></li>
+												<li><button type="button" class="btn" data-cnt="1057">기타</button></li>
+											</ul>
+
+											<p class="cate__tit">브랜드</p>
+											<ul class="cate__list">
+												<li><button type="button" class="btn" data-cnt="1003">잇미샤</button></li>
+												<li><button type="button" class="btn" data-cnt="1020">산드로</button></li>
+												<li><button type="button" class="btn" data-cnt="1002">케네스레이디</button></li>
+												<li><button type="button" class="btn" data-cnt="342100">모조에스핀</button></li>
+												<li><button type="button" class="btn" data-cnt="400">샤틴</button></li>
+											</ul>
+										</div>	
+										
+									</div>
+
+									<!-- 스와이퍼 이너 푸터 -->
+									<div class="f_inner__foot">
+										<div class="reset__price">
+											<button type="button" class="btn btn-reset">옵션 재설정</button>
+
+											<button type="button" class="btn btn-next" data-idx="4"><em id="prodCnt4">0</em>개 상품보기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<script>
+						// 가격 슬라이더
+						var nonLinearSlider = document.getElementById('nonlinear');
+
+						// 슬라이더 생성
+						noUiSlider.create(nonLinearSlider, {
+							connect: true,
+							behaviour: 'tap',
+							start: [1000, 270000],
+							range: {
+								// Starting at 500, step the value by 500,
+								// until 4000 is reached. From there, step by 1000.
+								'min': [1000, 50],
+								'10%': [5000, 1000],
+								'50%': [134500, 1000],
+								'max': [270000]
+							}
+						});
+
+						// 슬라이더 min,max 노드
+						var nodes = [
+							document.getElementById('rangeMin'), // 0
+							document.getElementById('rangeMax')  // 1
+						];
+
+						// Display the slider value and how far the handle moved
+						// from the left edge of the slider.
+						
+						// 슬라이더 이동시
+						nonLinearSlider.noUiSlider.on('update', function (values, handle, unencoded, isTap, positions) {
+							//nodes[handle].innerHTML = values[handle] + ', ' + positions[handle].toFixed(2) + '%';
+							//console.log(Math.floor(values[0], values[1])/* , handle, unencoded, isTap, positions */)
+							var values = nonLinearSlider.noUiSlider.get();
+							var value = Math.floor(values[handle]);
+							
+								nodes[handle].innerHTML = comma(Math.floor(values[handle]));
+						});
+
+						// 슬라이더 이동 끝난 후
+						nonLinearSlider.noUiSlider.on('end', function(values, handle){
+							// spinner 실행
+							$(".btn-next").addClass("is-loading");
+							setTimeout(function(){
+								// 1초뒤 spinner 제거
+								$(".btn-next").removeClass("is-loading");
+
+								// spinner 제거 후 버튼에 상품 갯수 입력
+								var $price = $("#prodCnt1").text();
+								var price = parseInt($price.replace(/,/g,''),10);
+								
+								$( {countNum: price } ).stop(true,true).animate({countNum : values[handle]/3 },{
+									duration : 400,
+									easing : 'linear',
+									step : function(){
+										$("#prodCnt1").text( comma(Math.floor(this.countNum)) )
+									},
+									complete : function(){
+										$("#prodCnt1, #prodCnt2").text( comma(Math.floor(this.countNum)) )
+
+										_totalCount = Math.floor(this.countNum)
+										
+									}
+								})								
+							},1000)
+						});
+
+						// 금액 3자릿수마다 , 찍기
+						function comma(num){
+							var len, point, str; 
+							num = num + ""; 
+							point = num.length % 3 ;
+							len = num.length; 
+							str = num.substring(0, point); 
+							while (point < len) { 
+								if (str != "") str += ","; 
+								str += num.substring(point, point + 3); 
+								point += 3; 
+							} 
+							return str;
+						}
+
+						// 옵션 선택 파인더 여/닫기
+						var $optBtn = $(".fashion__source .opt__btn li");
+						$optBtn.on("click", function(){ 
+							$optBtn.removeClass('is--on');
+							$(this).addClass('is--on');
+							var _idx = $(this).index();
+							finder_open(_idx);
+							
+						});
+						
+						// 파인더 여/닫기
+						$(".btn_toggle_bar, .finder_wrap .dimmed").on("click", function(){ finder_close()});
+						$(".btn__filter").on("click", function(){ finder_open()});
+
+						var finder_close = function(){
+							$(".finder_wrap").removeClass("is-shown");
+							setTimeout(function(){
+								$(".finder_wrap").css("z-index", "-1");
+							}, 300)
+						}
+						var finder_open = function(i){
+							var _idx = i;
+							$(".finder_wrap").css("z-index", "1");
+							setTimeout(function(){
+								$(".finder_wrap").addClass("is-shown");
+							}, 100)
+							finderSwiper.slideTo(_idx);
+						}
+
+						
+
+						// 레이어 내 스와이퍼 생성                                    
+						var finderSwiper = new Swiper(".finder__swiper", {
+							loop : false,
+							slidesPerView : 1,
+							spaceBetween : 0
+						});
+
+						var $tabItem = $(".finder__head li"), // 탭 LI
+							$tabBtn = $tabItem.children(".tab"), // 탭 버튼
+							$resetBtn = $(".btn-reset"); // 탭 버튼
+
+						$tabBtn.on("click", function(){									
+							var _idx = $(this).closest("li").index();
+							finderSwiper.slideTo(_idx);
+						})
+						$resetBtn.on("click", function(){
+							// spinner 제거 후 버튼에 상품 갯수 입력
+							var $price = $(".btn-next em").text();
+							var price = 0;
+							
+							console.log()
+							$( {countNum: price } ).stop(true,true).animate({countNum : price },{
+								duration : 400,
+								easing : 'linear',
+								step : function(){
+									$(".btn-next em").text( 0 )
+								},
+								complete : function(){
+									$(".btn-next em").text( 0 )
+									
+									$cateTab.removeClass("is--on")
+									_totalCount = 0;
+								}
+							})
+						})
+
+						finderSwiper.on("slideChangeStart", function(e){
+							var _idx = e.activeIndex; // 현재 슬라이드 Index
+
+							$tabItem.removeClass("is--on").eq(_idx).addClass("is--on")
+						})
+
+						// 상품보기 클릭이벤트
+						$(".btn-next").on("click",function(){
+							var _idx = $(this).data("idx");
+							
+							if(_idx != 4){
+								finderSwiper.slideTo(_idx);
+							}else{ // 마지막 버튼 클릭 시 파인더 닫고, 상품 리스트 spinner실행 후 상품 목록 뿌려주기
+								finder_close();
+							
+								$("#loadingDiv").fadeIn(100);
+								setTimeout(function(){
+									$("#loadingDiv").fadeOut(100);
+								},1000);
+							
+							}
+						})
+
+						// 레이어 내 탭 
+						$optBtn.on("click", function(){ 
+							$optBtn.removeClass('is--on');
+							$(this).addClass('is--on');
+							var _idx = $(this).index();
+							finder_open(_idx);
+							
+						});
+
+						var $cateTab = $(".cate__list li"),
+							_thisLength = 0,
+							_thisCount = new Array, 
+							_totalCount = 0;
+						$cateTab.on("click", function(){
+							
+							var _this = $(this),
+								_thisState = _this.hasClass("is--on"),
+								_thisIdx = _this.closest(".finder__item").index() + 1;
+
+							_thisLength++;
+
+							_cnt = _this.find(".btn").data("cnt");
+
+							if(!_thisState){
+								$(this).addClass("is--on");
+
+								_totalCount += _cnt;
+
+								// spinner 제거 후 버튼에 상품 갯수 입력
+								var $price = $("#prodCnt"+_thisIdx).text();
+								var price = parseInt($price.replace(/,/g,''),10);
+								
+								$( {countNum: price } ).stop(true,true).animate({countNum : _totalCount },{
+									duration : 400,
+									easing : 'linear',
+									step : function(){
+										$("#prodCnt"+_thisIdx).text( comma(Math.floor(this.countNum)) )
+									},
+									complete : function(){
+										$("#prodCnt"+_thisIdx).text( comma(Math.floor(this.countNum)) )
+										$("#prodCnt"+(_thisIdx+1)).text( comma(Math.floor(this.countNum)) )
+									}
+								})
+							}else{
+								$(this).removeClass("is--on");
+
+								_totalCount -= _cnt;
+
+								// spinner 제거 후 버튼에 상품 갯수 입력
+								var $price = $("#prodCnt"+_thisIdx).text();
+								var price = parseInt($price.replace(/,/g,''),10);
+								
+								$( {countNum: price } ).stop(true,true).animate({countNum : _totalCount },{
+									duration : 400,
+									easing : 'linear',
+									step : function(){
+										$("#prodCnt"+_thisIdx).text( comma(Math.floor(this.countNum)) )
+									},
+									complete : function(){
+										$("#prodCnt"+_thisIdx).text( comma(Math.floor(this.countNum)) )
+									}
+								})
+							}
+						})
+					</script>
+				</div>
+			</div>
+		</div>
+		<!-- //파인더 -->	
+	</div>
+</body>
+</html>

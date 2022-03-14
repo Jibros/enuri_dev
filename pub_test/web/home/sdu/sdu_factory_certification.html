@@ -1,0 +1,885 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+<!-- SDU COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=20190104" type="text/css">
+<style type="text/css">
+body{font-size:9pt;font-family:돋움;padding:0px;margin:5px;}
+input[type="button"], input[type="submit"], input[type="reset"], button {margin:0px;padding:0px;}
+input[type="submit"]{width:100px;}
+.header{width:100%;height:40px;margin:10px;text-align:center;}
+
+
+.tbl{background-color:#ffffff;width:100%;border-collapse:collapse;border:1px solid #979797;clear:both;float:none;}
+.td_t {background-color: #d4d0c8;}
+th {background-color: #d4d0c8;height:25px;}
+td {background-color: #ffffff;padding:5px;}
+
+.fl{float:left;display:inline;}
+.tb{margin-left:1%;background-color:#ffffff;border-width:1px;border-style:inset;}
+
+
+#quotation_list, #div_agg_list, .cb{clear:both;float:none;}
+
+form{margin:0px;padding:0px;}
+#modelno{width:100px;height:16px;}
+#goodscode{width:100px;height:16px;}
+#mincnt{width:30px;height:16px;}
+
+.tab	{height:30px;float:left;width:49%;}
+.login {height:24px;margin:0px 1% 0px 0px;width:49%;float:left;}
+.login ul{float:right;margin:0px 1% 0px 0px;padding:0px;list-style:none;height:22px;display:inline;}
+.login li{float:left;margin:0px;padding:0px 2px 0px 2px;line-height:22px;}
+.login li #logout{width:80px;height:24px;}
+
+
+
+.tab_btn{width:140px;height:26px;margin:10px 0px 0px 0px;padding:0px;}
+.tab_btn_check{width:120px;height:26px;margin:10px 0px 0px 0px;padding:0px;}
+
+.tab_r{height:25px;float:right;padding-top:5px;}
+.tab_l{height:25px;float:left;padding-top:5px;}
+
+
+
+.btn_submit_cmd{width:80px;height:20px;margin:0px;padding:0px;}
+.btn_reject_cmd{width:80px;height:20px;margin:0px;padding:0px;}
+#find_modelno{display:none;}
+#find_oldmodelno{display:none;}
+.chkbox{overflow:hidden;width:13px;height:13px;font-size:1%;line-height:1%;position:relative;}
+
+#paging{list-style:none;margin:0px;padding:0px;height:18px;float:left;}
+#paging li{text-align:center;float:left;padding:0px;margin:0px 0px 0px 5px;}
+#paging .paging_on_100{border:2px solid #ff0000;color:#ff6600;font-family:arial;font-weight:bold;height:16px;width:24px;}
+#paging .paging_off_100{border:1px solid #d6e3e9;color:#006699;font-family:arial;height:17px;width:25px;}
+#paging .paging_over_100{border:1px solid #ff6600;color:#ff6600;font-family:arial;height:17px;width:25px;cursor:pointer;}
+#paging .paging_on{border:2px solid #ff0000;color:#ff6600;font-family:arial;font-weight:bold;height:16px;width:16px;}
+#paging .paging_off{border:1px solid #d6e3e9;color:#006699;font-family:arial;height:17px;width:17px;}
+#paging .paging_over{border:1px solid #ff6600;color:#ff6600;font-family:arial;height:17px;width:17px;cursor:pointer;}
+#paging_group{float:left;list-style:none;margin:0px 0px 0px 17px;padding:0px;display:inline;}
+#paging_group li{float:left;padding:0px;height:18px;overflow:hidden;}
+#paging_group p{border-left:1px solid #949494;border-top:1px solid #949494;border-bottom:1px solid #949494;padding-left:2px;height:14px;width:45px;	font-size:11px;	color:#616161;	line-height:16px;*line-height:14px;}
+#select_paging_group{border-left:1px solid #949494;border-right:1px solid #949494;border-bottom:1px solid #949494;position:absolute;}
+#select_paging_group ul{list-style:none;margin:0px;padding:0px;width:59px;}
+#select_paging_group .out{font-size:11px;color:#616161;padding-left:2px;line-height:16px;background-color:#ffffff;cursor:pointer;}
+#select_paging_group .over{font-size:11px;color:#ffffff;padding-left:2px;line-height:16px;background-color:#08246b;cursor:pointer;}
+.cb{clear:both;padding:0px;margin:0px;}
+
+.turl{word-wrap:break-word;}
+
+/* Button Common */
+.button,
+.button *{ position:relative; margin:0; padding:0; display:-moz-inline-stack; display:inline-block; text-decoration:none !important; border:0; font-size:12px; font-family:Tahoma, Sans-serif; white-space:nowrap; background:url(http://img.enuri.gscdn.com//2010/images/view/button_0126.gif) no-repeat; vertical-align:top; overflow:visible; color:#333;}
+.button { margin-right:4px;}
+.button *{ left:4px; cursor:pointer; _cursor:hand;}
+
+/* Button Size = medium | large | xLarge | small */
+.button.medium, .button.medium *{ height:24px; line-height:24px;}
+.button.large, .button.large *{ height:30px; line-height:30px;}
+.button.xLarge, .button.xLarge *{ height:36px; line-height:36px;}
+.button.small, .button.small *{ height:19px; line-height:19px;}
+.button.medium { background-position:left 0;}
+.button.large { background-position:left -30px;}
+.button.xLarge { background-position:left -65px;}
+.button.small { background-position:left -106px;}
+.button.medium *{ padding:0 10px 0 6px; font-size:12px; background-position:right top;}
+.button.large *{ padding:0 10px 0 6px; font-size:16px; background-position:right -30px;}
+.button.xLarge *{ padding:0 10px 0 6px; font-size:20px; background-position:right -65px;}
+.button.small *{ padding:0 6px 0 2px; font-size:11px; background-position:right -106px;}
+
+/* Button Hover */
+.button *:hover,
+.button *:active,
+.button *:focus{ color:#690;}
+
+/* Button Strong */
+.button.strong *{ font-weight:bold !important;}
+
+/* Button Icon Variation */
+.button.icon *{ padding-left:20px;}
+.button.small.icon *{ padding-left:16px;}
+.button.icon span{ width:20px; margin-right:-20px; padding:0 !important;}
+.button.medium .check{ background-position:4px -150px;}
+.button.large .check{ background-position:4px -146px;}
+.button.xLarge .check{ background-position:5px -144px;}
+.button.small .check{ background-position:3px -153px;}
+.button.medium .add{ background-position:-16px -150px;}
+.button.large .add{ background-position:-14px -146px;}
+.button.xLarge .add{ background-position:-14px -144px;}
+.button.small .add{ background-position:-18px -153px;}
+.button.medium .delete{ background-position:-34px -150px;}
+.button.large .delete{ background-position:-34px -146px;}
+.button.xLarge .delete{ background-position:-34px -144px;}
+.button.small .delete{ background-position:-37px -153px;}
+.button.medium .calendar{ background-position:-56px -150px;}
+.button.large .calendar{ background-position:-56px -146px;}
+.button.xLarge .calendar{ background-position:-56px -144px;}
+.button.small .calendar{ background-position:-59px -153px;}
+.button.medium .refresh{ background-position:-76px -150px;}
+.button.large .refresh{ background-position:-76px -146px;}
+.button.xLarge .refresh{ background-position:-76px -144px;}
+.button.small .refresh{ background-position:-79px -153px;}
+
+.hide{display:none;}
+
+
+</style>
+</head>
+<body>
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">제조사 인증 공식 판매자 관리</h2>
+	</div>
+	
+	<!-- <div class="header"><h1>제조사 인증 공식 판매자 관리</h1></div> -->
+	<div class="tab">
+		<span class="button large strong"><span class="check hide"></span><input type="button" class="tab_btn" value="신청업체"/></span>
+		<span class="button large strong"><span class="check hide"></span><input type="button" class="tab_btn" value="진행업체"/></span>
+		<span class="button large strong"><span class="check hide"></span><input type="button" class="tab_btn" value="업체등록"/></span>
+		<span class="button large strong"><span class="check hide"></span><input type="button" class="tab_btn" value="효율측정"/></span>
+		<span class="button large strong"><span class="check hide"></span><input type="button" class="tab_btn" value="일괄승인"/></span>
+	</div>		
+	<div class="login">
+		<ul>
+			<li><a href='/sdu/Index.jsp?to=shopinfo'>에누리관리자</a></li>
+			<li><span class="button medium strong"><input id="logout" type="button" name="logout" value="로그아웃"></span></li>
+		</ul>
+	</div>
+	<div class="cb"><!--  --></div>
+		
+		<form name="frmSearch" id="frmSearch" method="get" >
+		<table class="tbl" border="1" cellpadding="0" cellspacing="0">
+			<tr>
+				<th id="td_t_lcate" width="5%">대분류</th>
+				<td id="td_lcate" width="7%">
+					<select name="lcate" id="lcate" >
+						<option value="">대분류</option>
+					</select>
+				</td>
+				<th id="td_t_mcate" width="5%">중분류</th>
+				<td id="td_mcate" width="15%"><select name="mcate" id="mcate" ><option value="">중분류</option></select></td>
+				
+				<th width="5%">모델번호</th>
+				<td id="td_modelno" width="25%">
+					<input type="text" name="modelno" id="modelno" value=""/><span class="button medium strong"> <input id="find_modelno"  type="button" value="진행모델찾기" ></span>
+					<span class="button medium strong"><input id="find_oldmodelno"  type="button" value="이전모델번호찾기" ></span>
+				</td>
+				<th width="5%">쇼핑몰명</th>
+				<td width="7%">
+					<select name="p_shop_code" id="p_shop_code" >
+						<option value="">쇼핑몰명</option>
+					</select>
+				</td>
+				<th width="5%">상품코드</th>
+				<td width="5%"><input type="text" name="goodscode" id="goodscode" value=""/></td>			
+				<th width="5%" id="td_t_min" class="hide">가격</th>
+				<td width="5%" id="td_min" class="hide"><input type="text" name="mincnt" id="mincnt" value="20"/></td>
+				<td width="6%" align="center"><span class="button medium strong"><input type="submit" value="검색" ></span></td>
+			</tr>
+		</table>
+		<input type="hidden" name="_t" id="_t" value="1"/>		
+		<input type="hidden" name="page" id="page" value=""/>
+		<input type="hidden" name="factory" id="factory" value=""/>
+		<input type="hidden" name="org_cate" id="org_cate" value=""/>
+		</form>
+		<div class="tab_l">
+			<input type="checkbox" name="chkAll" id="chkAll">전체선택
+		</div>
+		<div class="tab_r">
+			<span class="button medium strong" style="float:right"><input type="button" class="btn_cmd_reject" value="불가"/></span>
+			<span class="button medium strong" style="float:right"><input type="button" class="btn_cmd_submit" value="승인"/></span>
+			<span class="button medium strong" style="float:right;margin-right:30px;"><input type="button" class="btn_cmd_direct" value="상품창 바로가기"/></span>
+		</div>
+		<div id="quotation_list">
+			<table class="tbl" border="1" cellpadding="0" cellspacing="0">
+				<tr>
+					<th width="3%"></th>
+					<th class="treg_date" width="9%">신청일</th>
+					<th class="tshop_name" width="7%">쇼핑몰명</th>
+					<th class="tseller_name" width="7%">업체명</th>
+					<th class="tgoods_code" width="7%">상품코드</th>
+					<th class="tminprice" width="5%">가격</th>
+					<th class="tmodelno" width="7%">모델번호</th>
+					<th class="turl" width="14%">URL</th>
+					<th class="tmanager" width="7%">담당자</th>
+					<th class="ttel" width="7%">연락처</th>
+					<th class="temail" width="11%">이메일</th>
+					<th class="tstatus" width="5%">상태</th>
+					<th class="tcmd" width="14%">처리</th>			
+				</tr>
+				<tr>
+					<td id="td_blank" align="center" colspan="8">모델번호를 입력후 검색하세요 <span style="cursor:pointer;color:#ff0000" onclick="window.open('Listprereg_Matching_Help.jsp','Listprereg_Matching_Help','width=470, height=340; resizable=yes');">검색방법</span></td>
+				</tr>
+			</table>		
+		</div>	
+	
+	</div>
+		
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<!-- <ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul> -->
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+	
+
+<script type="text/javascript" src="http://img.enuri.gscdn.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script type="text/javascript" src="/sdu/js/xlsx.core.min.js"></script>
+<script type="text/javascript" src="/sdu/js/xls.js"></script>
+<script type="text/javascript" src="/common/js/jquery.ui.datepicker-ko.js"></script>
+<script type="text/javascript" src="/common/js/function.js"></script>
+<script language="javascript">
+	//xls
+	function filePicked(oEvent) {
+	    var oFile = oEvent.target.files[0];
+	    var sFilename = oFile.name;
+	    var reader = new FileReader();
+	    var modelnos = "";
+	    var goodscodes = "";
+	
+	    reader.onload = function(e) {
+	        var data = e.target.result;
+	        var cfb = XLS.CFB.read(data, {type: 'binary'});
+	        var wb = XLS.parse_xlscfb(cfb);
+	        var sheet_name_list = wb.SheetNames;
+            var sCSV = XLS.utils.make_csv(wb.Sheets[sheet_name_list[0]]);   
+            var oJS = XLS.utils.sheet_to_row_object_array(wb.Sheets[sheet_name_list[0]]);   
+	    	var worksheet = wb.Sheets[sheet_name_list[0]];
+	    	var headers = {};
+	    	var data = [];
+	    	for(z in worksheet) {
+                if(z[0] === '!') continue;
+                var tt = 0;
+                for (var i = 0; i < z.length; i++) {
+                    if (!isNaN(z[i])) {
+                        tt = i;
+                        break;
+                    }
+                };
+                var col = z.substring(0,tt);
+                var row = parseInt(z.substring(tt));
+                var value = worksheet[z].v;
+                if(z.indexOf("A")>-1) {
+                	if(modelnos!="") modelnos +=",";
+                	modelnos += value;
+                }else if(z.indexOf("B")>-1) {
+                	if(goodscodes!="") goodscodes +=",";
+                	goodscodes += value;
+                }
+               
+                if(row == 0 && value) {
+                    headers[col] = value;
+                    continue;
+                }
+
+                if(!data[row]) data[row]={};
+            }
+
+	    	var names = modelnos.split(",");
+	    	var uniqueNames = [];
+
+	    	$.each(names, function(i, el){
+	    		if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+	    	});
+	    	
+	    	modelnos = uniqueNames.toString();
+
+	    	$("#modelnos").val(modelnos);
+	    	$("#goodscodes").val(goodscodes);
+	    };
+	    reader.readAsBinaryString(oFile);
+	}
+	
+	//xlsx
+	function handleFile(e) {
+		var files = e.target.files;
+		var ext = $('#files').val().split('.').pop().toLowerCase();
+		if(ext=='xlsx'){
+			var i, f;
+		    var modelnos = "";
+	        var goodscodes = "";
+	        
+		    for (i = 0, f = files[i]; i != files.length; ++i) {
+		    	var reader = new FileReader();
+		        var name = f.name;
+		        reader.onload = function (e) {
+		        	var data = e.target.result;
+		            var result;
+		            var workbook = XLSX.read(data, { type: 'binary' });
+		               
+		            var sheet_name_list = workbook.SheetNames;
+		            sheet_name_list.forEach(function(y) {
+		                   var worksheet = workbook.Sheets[y];
+		                   var headers = {};
+		                   var data = [];
+		                   for(z in worksheet) {
+		                       if(z[0] === '!') continue;
+		                       //parse out the column, row, and value
+		                       var tt = 0;
+		                       for (var i = 0; i < z.length; i++) {
+		                           if (!isNaN(z[i])) {
+		                               tt = i;
+		                               break;
+		                           }
+		                       };
+		                       var col = z.substring(0,tt);
+		                       var row = parseInt(z.substring(tt));
+		                       var value = worksheet[z].v;
+		                       if(z.indexOf("A")>-1) {
+			                       	if(modelnos!="") modelnos +=",";
+			                       	modelnos += value;
+		                       }else if(z.indexOf("B")>-1) {
+			                       	if(goodscodes!="") goodscodes +=",";
+			                       	goodscodes += value;
+		                       }
+		                      
+		                       if(row == 0 && value) {
+		                           headers[col] = value;
+		                           continue;
+		                       }
+
+		                       if(!data[row]) data[row]={};
+		                   }
+		                    var names = modelnos.split(",");
+			       	    	var uniqueNames = [];
+	
+			       	    	$.each(names, function(i, el){
+			       	    		if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+			       	    	});
+			       	    	
+			       	    	modelnos = uniqueNames.toString();
+			       	    	
+		                   $("#modelnos").val(modelnos);
+			       	       $("#goodscodes").val(goodscodes);
+		                   data.shift();
+		                   data.shift();
+	               });
+	           };
+		       reader.readAsArrayBuffer(f);
+	       }
+		}else if(ext=='xls'){
+			var agent = navigator.userAgent.toLowerCase(); 
+			if (agent.indexOf("chrome") != -1) {
+				filePicked(e);
+			}else{
+				alert("xls확장자는 크롬 브라우저에서만 지원합니다.");
+			}
+		}else{
+			alert("파일을 다시 확인해주세요.");
+		}
+	}
+	
+	$(document).ready(function(){
+	  $("#file_output").html("");
+	  $('#files').change(handleFile);
+	});
+	
+	/*함수 정의*/
+	/*테이블 컬럼 조정*/
+	function setTableColumn(_t){
+		if (_t == 1){
+			$("#td_blank").attr("colspan", "13");
+			$("#td_blank").text("결과가 없습니다.");
+			/*모델번호 입력 안되었을때 바로가기 보이지 않게*/
+			var modelno = $("#modelno").val();
+			if ($.trim(modelno).length == 0  || !modelno.isnumber()){
+				$(".tab_r .btn_cmd_direct").hide();
+			}else{
+				$(".tab_r .btn_cmd_direct").show();
+			}
+			/*페이징*/
+			$("#paging li").click(function(){
+				var pageId = $(this).attr("id"); 
+				var page = this.id.substring(5,pageId.length);
+		 		$("#page").val(page);
+ 				$("#frmSearch").trigger("submit");
+			});
+		}else if(_t == 2){
+			$("#td_blank").attr("colspan", "13");
+			//$("#td_t_lcate").hide(); 
+			//$("#td_lcate").hide(); 
+			//$("#td_t_mcate").hide(); 
+			//$("#td_mcate").hide(); 
+			$("#td_lcate").attr("width", "7%");
+			$("#td_mcate").attr("width", "10%");
+			$("#td_modelno").attr("width", "20%");
+			
+			$("#td_t_min").hide();
+			$("#td_min").hide();		
+			$("#find_modelno").show();	
+			$("#find_oldmodelno").show();
+		}else if (_t == 3){
+			//$("#td_t_lcate").hide(); 
+			//$("#td_lcate").hide(); 
+			//$("#td_t_mcate").hide(); 
+			//$("#td_mcate").hide(); 
+		
+			$("#td_t_min").show();
+			$("#td_min").show();		
+			
+			$(".treg_date").hide(); 
+			$(".tseller_name").hide();
+			
+			$(".ttel").hide();
+			$(".temail").hide();
+			$(".tstatus").hide();
+				
+			$(".tshop_name").attr("width", "10%");			
+			$(".tgoods_code").attr("width", "10%");
+			$(".tminprice").attr("width", "10%");
+			$(".tmodelno").attr("width", "9%");
+			$(".turl").attr("width", "30%");
+			$(".tmanager:eq(0)").text("판매자명");
+			$(".tmanager").attr("width", "15%");
+			$(".tcmd").attr("width", "13%");	
+			$("#td_blank").attr("colspan", "9");
+		}else if (_t == 4){
+		
+		//	$("#frmSearch").hide();
+		//	$(".tab_l").hide();
+		//	$(".tab_r").hide();
+		//	$("#quotation_list").hide();
+		}
+	}
+	/*승인/불가 버튼 이벤트 할당*/
+	function setAttachEvent(_t){
+		$(".tcmd .btn_submit_cmd").click(function(){
+			var varId = $(this).attr("id");
+			varId = varId.substring(7,varId.length);
+			var plno = $("#chk_"+varId).val();
+			var seller = $("#seller_name_"+varId).val()+"_";
+			Certificate(plno,seller,"Y");
+		});	
+		$(".tcmd .btn_reject_cmd").click(function(){
+			var varId = $(this).attr("id");
+			varId = varId.substring(7,varId.length);
+			var plno = $("#chk_"+varId).val();
+			var seller = $("#seller_name_"+varId).val()+"_";
+			Certificate(plno,seller,"N");			
+		});	
+	}
+	/*승인/불가처리*/
+	function Certificate(plnos,seller,status){
+		$.ajax({
+			type: "POST",
+			url: "/sdu/Factory_Certification_Process.jsp",  
+			data: "plno="+plnos+"&seller_name="+seller+"&status="+status,
+			success: function(result){
+				if ($.trim(result).indexOf("OK") >= 0 ){
+					alert("처리 되었습니다.");
+				}else{
+					alert("오류가 발생했습니다.");
+				}
+				$("#frmSearch").trigger("submit");
+			}
+		});		
+	}
+	/* 인증 모델리스트 */
+	function GetCertificate_ModelList(){
+		if("1"=="4"){
+			if($.trim($("#lcate").val()) == "") $.trim($("#mcate").val()) == ""		
+			if($.trim($("#lcate").val()) == ""){
+				$("#modelno_agg").html("<option value=\"\">모델명</option>");
+				return;
+			} 
+			var cate = ($("#mcate").val() == "")?$("#lcate").val():$("#mcate").val();
+			$.ajax({			
+				type: "GET",
+				url: "/sdu/getCategoryFactoryCertification.jsp",  
+				data: "shop_code=0&_g=g&cate="+cate,  
+				success: function(result){
+					var getModel = $.trim(result).split(",");
+					var modelno = $.map(getModel,function(value, i){
+						if (i%3 == 0 ){
+							return value;
+						}
+					});
+					var modelcnt = $.map(getModel,function(value, i){
+						if (i%3 == 1 ){
+							return value;
+						}
+					});
+					var modelnm = $.map(getModel,function(value, i){
+						if (i%3 == 2 ){
+							return value;
+						}
+					});					
+					var varModelHtml = "<option value=\"\">모델명</option>";
+					for(var i=0;i<modelno.length;i++){
+						varModelHtml += "<option value=\""+modelno[i]+"\">"+modelnm[i]+" ("+modelcnt[i]+")</option>";
+					}
+					$("#modelno_agg").html(varModelHtml);
+				}
+			});
+		};
+	}
+	
+	
+	/* 이벤트 할당*/
+	/*모델번호 최저가 갯수 숫자만 입력*/
+	$("#modelno,#mincnt").keydown(function(event) {
+	    if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || 
+    	    ((event.keyCode == 67 || event.keyCode == 65 || event.keyCode == 86)&& event.ctrlKey === true) || 
+        	(event.keyCode >= 35 && event.keyCode <= 39)) {
+            	 return;
+    	}else {
+        	if ((event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+            	event.preventDefault(); 
+        	}   
+    	}
+    });		
+	/*대분류선택*/
+	$("#lcate").change(function(){
+		GetCertificate_ModelList();
+		if ($.trim($("#lcate").val()) == 0 ){		
+			$("#mcate").html("<option value=\"\">중분류 선택</option>");
+			return false;
+		}
+		$.ajax({
+			type: "GET",
+			url: "/sdu/getCategoryFactoryCertification.jsp",  
+			data: "shop_code=0&lv=2&cate="+$("#lcate").val(),  
+			success: function(result){
+				var getCate = $.trim(result).split(",");
+				var cateCodes = $.map(getCate,function(value,i){
+					if (i%2 == 0 ){
+						return value;
+					}
+				});
+				var cateNames = $.map(getCate,function(value,i){
+					if (i%2 != 0 ){
+						return value;
+					}
+				});
+				var varMCateHtml = "<option value=\"\">중분류 선택</option>";
+				for(var i=0;i<cateCodes.length;i++){
+					varMCateHtml += "<option value=\""+cateCodes[i]+"\">"+cateNames[i]+"</option>";
+				}
+				$("#mcate").html(varMCateHtml);
+			}
+		});
+	});
+
+	/*중분류선택*/
+	$("#mcate").change(function(){
+		GetCertificate_ModelList();	
+		if ($.trim($("#mcate").val()) == 0 ){
+			return false;
+		}
+	});	
+	
+	/*검색*/
+	$("#frmSearch").submit(function(event){
+		event.preventDefault();
+		var varRtnMsg = ""; 
+		if ($("#_t").val() == "1" && $("#_t").val() != "5"){
+			if ($("#lcate").val().trim().length == 0 && $("#mcate").val().trim().length == 0 ){
+				varRtnMsg = "분류를 선택해 주십시요.\r\n";
+			}
+		} 
+		if ($("#_t").val() != "1" && $("#_t").val() != "5"){
+			if ($("#modelno").val().trim().length == 0 ){
+				varRtnMsg += "모델번호를 입력해 주십시요.";
+				$("#modelno").focus();
+			}
+		}
+		
+		if ($("#_t").val() == "5"){
+			if ($("#modelnos").val().trim().length == 0 || $("#goodscodes").val().trim().length == 0){
+				varRtnMsg += "파일을 선택해주세요";
+				$("#files").focus();
+			}
+		}
+		
+		if (varRtnMsg.trim().length > 0 ){
+			alert(varRtnMsg);
+			return false;
+		}else{
+			var dataToSend = $("#frmSearch").serialize();
+			$.ajax({
+				type: "POST",
+				url: "/sdu/getCertificationList.jsp",  
+				data: dataToSend+"&_d=t",  
+				success: function(result){
+					$("#quotation_list").html(null); 
+					$("#quotation_list").html(result);		
+					setTableColumn(1);		
+					setAttachEvent(1);
+				}
+			});
+			
+			if ($("#_t").val() != "5"){
+				$.ajax({
+					type: "GET",
+					url: "/sdu/getCertificationList.jsp",  
+					data: dataToSend+"&_d=s",
+					success: function(result){
+						var getShop = $.trim(result).split(",");
+						var shopCodes = $.map(getShop,function(value,i){
+							if (i%2 == 0 ){
+								return value;
+							}
+						});
+						var shopNames = $.map(getShop,function(value,i){
+							if (i%2 != 0 ){
+								return value;
+							}
+						});
+						var varShopHtml = "<option value=\"\">전체쇼핑몰</option>";
+						for(var i=0;i<shopCodes.length;i++){
+							if ($.trim(shopCodes[i]).length > 0 && $.trim(shopNames[i]).length > 0 ){ 
+								varShopHtml += "<option value=\""+shopCodes[i]+"\">"+shopNames[i]+"</option>";
+							}
+						}
+						var oldShopCode = $("#p_shop_code").val(); 
+						$("#p_shop_code").html(varShopHtml);
+						$("#p_shop_code").val(oldShopCode);
+					}
+				});		
+			}
+		}
+	});
+
+	/*효율성 집계 검색*/
+	$("#frmSearchCfAgg").submit(function(event){
+		event.preventDefault();
+		var varRtnMsg = ""; 
+		if ($("#lcate").val().trim().length == 0 && $("#mcate").val().trim().length == 0 ){
+			varRtnMsg = "분류를 선택해 주십시요.\r\n";
+		}
+		
+		var sdate = $("#sdate").datepicker("getDate");
+		var edate = $("#edate").datepicker("getDate");
+		if(sdate && edate){
+			var diff = new Date(edate - sdate)
+			var days = diff/1000/60/60/24;
+			if(days>30){
+				varRtnMsg="검색 기간(최대 31일)을 줄여주세요.";
+			}
+		}		
+		if (varRtnMsg.trim().length > 0 ){
+			alert(varRtnMsg);
+			return false;
+		}else{
+			var dataToSend = $("#frmSearchCfAgg").serialize();
+			
+			if($("#frmSearchCfAgg").children("input[name=cmd]").val() == ("excel")){
+				window.open("/sdu/getCertificationAggList.jsp?cmd=excel&"+dataToSend+"&_d=t", "", "");
+			}else{			
+				$.ajax({
+					type: "GET",
+					url: "/sdu/getCertificationAggList.jsp",  
+					data: dataToSend+"&_d=t&cmd=list",  
+					success: function(result){
+						$("#div_agg_list").html(null); 
+						$("#div_agg_list").html(result);		
+					},
+					error: function(){
+						alert("error");
+					}
+				});
+			}
+			
+		}
+	});
+
+	/*버튼 이벤트 할당*/
+	/*여러건 승인*/
+	$(".tab_r .btn_cmd_submit").click(function(){
+		var varCheckedPlNos = "";
+		var varSellerNames = "";
+		if($(".chkbox:checked").length){
+			for (var i=0;i<$(".chkbox:checked").length;i++){
+				if (i > 0 ){
+					varCheckedPlNos += ",";
+					varSellerNames += ",";
+				}
+				varCheckedPlNos += $(".chkbox:checked:eq("+i+")").val();
+				varSellerNames += $("#seller_name_"+$(".chkbox:checked:eq("+i+")").val()).val()+"_";
+			}
+			Certificate(varCheckedPlNos,varSellerNames,"Y");
+		}else{
+			alert("승인할 상품을 선택해 주십시오");
+		}
+		
+	});
+	/*여러건 불가*/
+	$(".tab_r .btn_cmd_reject").click(function(){
+		var varCheckedPlNos = "";
+		var varSellerNames = "";
+		if($(".chkbox:checked").length){
+			for (var i=0;i<$(".chkbox:checked").length;i++){
+				if (i > 0 ){
+					varCheckedPlNos += ",";
+					varSellerNames += ",";
+				}
+				varCheckedPlNos += $(".chkbox:checked:eq("+i+")").val();
+				varSellerNames += $("#seller_name_"+$(".chkbox:checked:eq("+i+")").val()).val()+"_";
+			}
+			Certificate(varCheckedPlNos,varSellerNames,"N");
+		}else{
+			alert("승인 불가할 상품을 선택해 주십시오");
+		}
+	});
+	/*바로가기*/
+	$(".tab_r .btn_cmd_direct").click(function(){
+		var modelno = $("#modelno").val();
+		if ($.trim(modelno).length == 0  || !modelno.isnumber()){
+			alert("숫자를 입력하세요");
+			return;
+		}
+		var OpenFile = "/detail.jsp?modelno="+modelno;
+		if(navigator.userAgent.indexOf("Chrome/")>0 && BrowserDetect.browser != "Explorer") {
+			window.detailWin = window.open("","detailMultiWin","width=0,height=0,left=0,top=0");
+			window.detailWin.close();
+			window.detailWin = null;
+		}
+		window.open(OpenFile,"detailMultiWin","width=804,height="+window.screen.height+",left=0,top=0,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=yes,menubar=no");
+	});
+	$("#logout").click(function(){
+		location.href="/sdu/login/Login.jsp?cmd=logout&to_url=/sdu/login/Login.jsp";
+	});	
+	$("#find_modelno").click(function(){
+		var findModelNo = window.open("./getModelno.jsp","findModelNo","width=500,height=300,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=yes,menubar=no,Top=200,left=200");
+	});
+	$("#find_oldmodelno").click(function(){
+		var varUrl = "./getOldModelno.jsp";
+		if ($("#modelno").val().trim().length > 0){
+			varUrl += "?modelno="+$("#modelno").val();
+		}
+		var findOldModelNo = window.open(varUrl,"findOldModelNo","width=400,height=300,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=yes,menubar=no,Top=200,left=200");
+	});	
+	/*시작프로그램*/
+	$(".tab").find(".check.hide:eq(0)").removeClass("hide");
+	$(".tab").find(".tab_btn:eq(0)").removeClass("tab_btn").addClass("tab_btn_check");
+	$(".tab").find(".tab_btn ,.tab_btn_check").click(function(){
+		var varTabBtn = $(this);
+		var varTabBtns = $(".tab").find("input[type='button']"); 
+		for (var i=0;i<varTabBtns.length;i++){
+			if (varTabBtn.val() == $(varTabBtns[i]).val()){
+				location.href = "Factory_Certification.jsp?_t="+(i+1);
+			}  
+		}
+	});
+	/*탭별 초기화*/
+	setTableColumn(1);	
+	
+	(function() {
+		$.ajax({
+			type: "GET",
+			url: "/sdu/getCategoryFactoryCertification.jsp",  
+			data: "shop_code=0&lv=1",  
+			success: function(result){
+				var getCate = $.trim(result).split(",");
+				var cateCodes = $.map(getCate,function(value,i){
+					if (i%2 == 0 ){
+						return value;
+					}
+				});
+				var cateNames = $.map(getCate,function(value,i){
+					if (i%2 != 0 ){
+						return value;
+					}
+				});
+				var varLCateHtml = "<option value=\"\">대분류 선택</option>";
+				for(var i=0;i<cateCodes.length;i++){
+					varLCateHtml += "<option value=\""+cateCodes[i]+"\">"+cateNames[i]+"</option>";
+				}
+				$("#lcate").html(varLCateHtml);
+				$("#lcate").trigger("change");
+			}
+		});
+	})();
+	$("#btnExcelDown").click(function(){
+		document.frmExcelDown.excel_body.value = $("#div_agg_list").html();
+		document.frmExcelDown.excel_filename.value = "fc_20190101.xls";
+		document.frmExcelDown.action="./getCertificationAggListExcelDown.jsp";
+		document.frmExcelDown.method="POST";
+		document.frmExcelDown.submit();
+	});
+	
+	/*전체선택*/
+	$("#chkAll").click(function(){
+		if($(".tbl .chkbox").length){
+			for (var i=0;i<$(".tbl .chkbox").length;i++){
+				if (this.checked){
+					$(".tbl .chkbox:eq("+i+")").attr('checked','checked');
+				}else{
+					$(".tbl .chkbox:eq("+i+")").removeAttr('checked');
+				}
+			}		
+		}
+	});	
+	(function() {
+		$.ajax({
+			type: "GET",
+			url: "/sdu/getCategoryFactoryCertification.jsp",  
+			data: "shop_code=0&_g=f",  
+			success: function(result){
+				$("#factory").val($.trim(result));				
+			}
+		});
+	})();
+	(function() {
+		$.ajax({
+			type: "GET",
+			url: "/sdu/getCategoryFactoryCertification.jsp",  
+			data: "shop_code=0&_g=a",  
+			success: function(result){
+				$("#org_cate").val($.trim(result));				
+			}
+		});
+	})();	
+	
+	$("#sdate").datepicker();
+	$("#edate").datepicker();
+	//(function() {
+	//	GetCertificate_ModelList();
+	//})();		
+</script>
+</body>
+</html>

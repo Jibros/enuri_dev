@@ -1,0 +1,134 @@
+<div class="close-detail_search_area"><i class="ico_close mock_sprite"></i></div>
+<div style="">
+	<img src="./resource/imgs/search_area_sample.png" width="100%">
+</div>
+<!--
+<div class="detail_search_area_title">상세검색</div>
+<div class="option">
+	<h3>효능</h3>
+	<div class="swiper-container swiper-container-type1">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<ul>
+					<li><a href="">눈건강</a></li>
+					<li><a href="">면역력</a></li>
+					<li><a href="">영양보충</a></li>
+					<li><a href="">피로회복</a></li>
+					<li><a href="">뼈건강</a></li>
+					<li><a href="">피부</a></li>
+					<li><a href="">치아</a></li>
+					<li><a href="">체지방감소</a></li>
+					<li><a href="">장건강</a></li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul>
+					<li><a href="">치아</a></li>
+					<li><a href="">체지방감소</a></li>
+					<li><a href="">장건강</a></li>
+					<li><a href="">피로회복</a></li>
+					<li><a href="">뼈건강</a></li>
+					<li><a href="">피부</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+<div class="option">
+	<h3>타입</h3>
+	<ul>
+		<li><a href=""><img src="./resource/imgs/icon_type_1@2x.png"><div class="drug_type_name">캡슐</div></a></li>
+		<li><a href=""><img src="./resource/imgs/icon_type_2@2x.png"><div class="drug_type_name">정</div></a></li>
+		<li><a href=""><img src="./resource/imgs/icon_type_3@2x.png"><div class="drug_type_name">액상</div></a></li>
+		<li><a href=""><img src="./resource/imgs/icon_type_4@2x.png"><div class="drug_type_name">분말</div></a></li>
+		<li><a href=""><img src="./resource/imgs/icon_type_5@2x.png"><div class="drug_type_name">츄어블</div></a></li>
+	</ul>
+</div>
+<div class="option">
+	<h3>함량</h3>
+	<ul>
+		<li><a href="">~10억 CFU</a></li>
+		<li><a href="">10억~100억 CFU</a></li>
+		<li><a href="">100억 CFU~</a></li>
+	</ul>
+</div>
+<div class="option">
+	<h3>브랜드</h3>
+	<div class="swiper-container swiper-container-type2">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<ul class="drug_brand">
+					<li><a href="">종근당건강</a></li>
+					<li><a href="">나우푸드</a></li>
+					<li><a href="">내츄럴 플러스</a></li>
+					<li><a href="">뉴트리원</a></li>
+					<li><a href="">풍기인삼</a></li>
+					<li><a href="">일화</a></li>
+					<li><a href="">JW중외제약</a></li>
+					<li><a href="">에이치엘사이언스</a></li>
+					<li><a href="">하이엘</a></li>
+					<li><a href="">내츄럴 라이즈</a></li>
+				</ul>
+			</div>
+			<div class="swiper-slide">
+				<ul class="drug_brand">
+					<li><a href="">종근당건강</a></li>
+					<li><a href="">나우푸드</a></li>
+					<li><a href="">내츄럴 플러스</a></li>
+					<li><a href="">JW중외제약</a></li>
+					<li><a href="">에이치엘사이언스</a></li>
+					<li><a href="">하이엘</a></li>
+					<li><a href="">내츄럴 라이즈</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+</div>
+-->
+<script>
+	// 스와이프 작동시 생성
+	var search_swiper1 = new Swiper(".swiper-container-type1", {
+		slidesPerView: 1,
+		spaceBetween: 4,
+		pagination: {
+			el: ".swiper-pagination"
+		}
+	});
+	// 스와이프 작동시 생성
+	var search_swiper2 = new Swiper(".swiper-container-type2", {
+		slidesPerView: 1,
+		spaceBetween: 4,
+		pagination: {
+			el: ".swiper-pagination",
+			type: "fraction",
+		}
+	});
+
+	function detailSearch(elem) {
+		var target = $(elem);
+		$(target).before('<div class="search_area_overlay"></div>')
+		$(target).addClass('active');
+
+		$('.close-detail_search_area', target).on('click', function () {
+			closeDetailSearch(elem);
+		});
+		$('.search_area_overlay').on('click', function () {
+			closeDetailSearch(elem);
+		});
+	}
+
+	function closeDetailSearch(elem) {
+		var target = $(elem),
+				target_overlay = $('.search_area_overlay');
+		target_overlay.fadeOut(400, function () {
+			$(this).remove();
+		});
+		target.removeClass('active');
+	}
+
+	$('.btn_detail_search').on('click', function () {
+		detailSearch('#detail_search_area');
+	});
+</script>

@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다.">
+		<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+		<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+		<title>기획전 - 개별상품 관리</title>
+		<link rel="stylesheet" href="css/admin.css" type="text/css">
+		<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="/cmexhibition/js/common.js"></script>
+		<script type="text/javascript" src="/common/js/function.js"></script>
+		<script type="text/javascript" src="/cmexhibition/js/ads.js"></script>
+		
+		<script type="text/javascript">
+	function numberFormat(num) {
+		num += ''; //문자열로 치환
+		var pattern = /(-?[0-9]+)([0-9]{3})/;
+		while(pattern.test(num)) {
+			num = num.replace(pattern,"$1,$2");
+		}
+		return num;
+	}
+	</script>
+	<script type="Text/javascript">
+		function reloadpage(){
+			var chkgoodstype = 0;
+			$('input[name=GOODSTYPE]').each(function(){
+				if ($(this).is(':checked')){
+					chkgoodstype = $(this).val();
+				}
+			});
+			
+			location.href = "exadsgoods.jsp?adsno=34&detailno=127&pgoodstype=" + chkgoodstype + "&goodsno=0&bannertitleno=105 ";
+		}
+		
+		function isexistsortorder(){
+			var sortorder = $('#SORTORDER').val();
+			if (sortorder == 0){
+				return false;
+			}
+			
+			
+			var bannertitle = 105;
+			var bannerdetail = 127;
+			var goodsno =0;
+			
+			var vparam = "?bannertitle=" + bannertitle + "&bannerdetail=" + bannerdetail + "&goodsno=" + goodsno + "&sortorder=" + sortorder;
+			
+			var vresult = true;
+			$.ajax({
+				url : "exadsgoodsajax.jsp" + vparam ,
+				async : false,
+				success : function(result){
+					result = eval(result);					
+					if (result == "false"){
+						vresult = false;
+					}
+					if (result == false){
+						vresult = false;
+					}
+				}
+			});
+			
+			if (vresult == false){
+				alert('순서가 중복되어 있습니다.');
+				return false;
+			}else{
+				return true;
+			}
+			
+		}
+		
+		function bindhas500(){
+			var goodstype = '1';
+			var ISSINGLEMODEL = '';
+			$('input[name=ISSINGLEMODEL]').each(function(){
+				if ($(this).is(':checked')){
+					ISSINGLEMODEL = $(this).val();
+				}
+			});
+			
+			var ajaxparamname = "";
+			var shopcode = "";
+			
+			if (goodstype == 1 && ISSINGLEMODEL == 'Y'){
+				ajaxparamname = "modelno";				
+			}
+			else if (goodstype == 1 && ISSINGLEMODEL == 'N'){
+				ajaxparamname = "groupmodelno";
+			}
+			else if (goodstype == 2){
+				ajaxparamname = "goods_code";
+				shopcode = "&shopcode=" + $('#shop_code').val();
+			}
+			
+			var url = 'expopbannergoodsajax.jsp?'+ ajaxparamname  + "=" + $('#MODELNO').val() + shopcode;
+			
+			$.ajax({
+				url : url ,
+				async : false,
+				success : function(result){
+					var v = eval(result);
+					if (v.length > 0){
+						var v1 = v[0];
+						$('#MODELNAME').val(v1['strModelnm']);
+						$('#MAKER').val(v1['strFactory']);
+						$('#spncategory').text(v1['strMCateNm'] + " =>" + v1['strSCateNm'] + " =>" + v1['strDCateNm']);
+						$('#spnhas500image').text(v1['has500image'] == "true" ? "사용가능" : "사용불가");
+						$('#CANENURI500').val(v1['has500image'] == 'true' ? 'Y' : 'N');						
+						$('#COPYTEXT').val(v1['keyword2']);
+						$('#BRANDNAME').val(v1['brand']);
+						//$('#spncurrentprice').text(numberFormat(v1['price']));
+						if (goodstype == 2){
+							$('#SHOPLINK').val(v1['strShop_url']);	 
+						}
+					}else{
+						alert('검색결과가 없습니다.');
+					}
+				}
+			});
+		}
+	</script>
+	<script type="Text/javascript">
+		$(document).ready(function(){
+			
+			
+			$('input[name=GOODSTYPE]').click(function(){				
+				reloadpage();
+			});
+			
+			$('#btnmodelsearch').click(function(){
+				bindhas500();
+			});
+			
+			$('#abtnregist').click(function(){
+				var ret = true;
+				var isvalid = false;
+				
+				var ISSINGLEMODEL = $('input[name="ISSINGLEMODEL"]');				
+				ISSINGLEMODEL.each(function(){
+					if ($(this).is(':checked'))	{
+						isvalid = true;
+					}
+				});
+				
+				if (isvalid == false){
+					alert('상품 구성을 선택해 주십시오');
+					ret = false;
+				}
+				
+				if ($('#SORTORDER').val() == '' && ret){
+					alert('노출 순서를 선택해 주십시오.');
+					ret = false;
+				}
+				
+				if ($('#MODELNAME').val() == '' && ret){
+					alert('모델(상품)명을 입력해 주십시오.');
+					ret = false;
+				}				
+				if ($('#IMGSRC').val() == '' && $('#hidimgsrc').val() == '' && $('#USEENURI500').is(":checked") == false  && ret){
+					alert('상품 이미지를 등록해 주십시오');
+					ret = false;
+				}
+				
+				if (isexistsortorder() && ret){
+					$("#frm").submit();
+				}
+				
+				return false;
+			});
+		});
+		
+		
+	</script>
+		
+	</head>
+	<body>
+	<div style='height:800px;overflow-y:scroll;'>
+		<form method="post" enctype="multipart/form-data" id="frm" name="frm">
+			<div style="text-align:right;width:700px;top:0px;margin-left:50px;">
+			* 필수항목
+			</div>
+			<table class="register_info" style="margin-left:50px;">
+			<tr>
+					<th>* 등록 광고</th>
+					<td colspan="3">
+						<input type="radio" name="GOODSTYPE" value="1"  checked="checked"  /> INFO AD
+						
+						<input type="radio" name="GOODSTYPE" value="2" disabled /> 스폰서
+						
+					</td>
+			</tr>
+			<tr>
+					<th>* 노출 기간</th>
+					<td colspan="3" class="day">					
+						<input type="text" class="input03" onfocus="this.className='focus03'" title="날짜" id="txtStartDT" name="txtStartDT" /><input type="text" size="4" id="txtStartTime" name="txtStartTime" />시 <input type="text" size="4" id="txtStartMinute" name="txtStartMinute" />분<span>~</span> 
+						<input type="text" class="input03" onfocus="this.className='focus03'" title="날짜" id="txtEndDT" name="txtEndDT" /><input type="text" size="4" id="txtEndTime" name="txtEndTime" />시 <input type="text" size="4" id="txtEndMinute" name="txtEndMinute" />분<span class="stress">(24시간 기준)</span>
+					</td>
+			</tr>			
+			
+			<tr>
+					<th>* 상품 선택</th>
+					<td>
+						<input type="radio" name="GOODSTYPE" value="1"  checked="checked"  /> 가격비교 상품
+						<input type="radio" name="GOODSTYPE" value="2" disabled  /> 일반상품
+					</td>
+					<th>* 노출순서</th>
+					<td>
+						<select name="">
+							<option  selected="selected"  value="">비노출</option>
+							<option  value="">1</option>
+							<option  value="">2</option>
+						</select>
+					</td>
+			</tr>		
+			
+			<tr>
+				<th>* 상품 검색</th>
+				<td colspan="3">
+					<input type="text" id="MODELNO" name="MODELNO" value="" />
+					<input type="button" id="btnmodelsearch" name="btnmodelsearch" value="모델번호 검색" />
+				</td>
+			</tr>
+
+			<tr>
+					<th>* 노출 카테고리<br />선택</th>
+					<td colspan="3">
+						<select name="">
+							<option  selected="selected"  value="">대분류</option>
+							<option  value="">컴퓨터</option>
+						</select>
+						<select name="">
+							<option  selected="selected"  value="">중분류</option>
+							<option  value="">노트북</option>
+							<option  value="">모니터</option>
+							<option  value="">복합기,프린터,스캐너</option>
+						</select>
+					</td>
+			</tr>
+
+			<tr>
+					<th>* 모델(상품)명</th>
+					<td colspan="3">
+						<span>[위니아] 선풍기 100kw</span>
+						<span class="stress">수정불가 항목</span><br />
+					</td>
+			</tr>
+			
+			<tr>
+					<th>제조사</th>
+					<td><span>제조사명</span></td>
+					<th>브랜드</th>
+					<td><span>브랜드명</span></td>
+			</tr>	
+
+			<tr>
+					<th>에누리 카테고리</th>
+					<td colspan="3">
+						<span id="">컴퓨터 > 노트북(0404)</span>
+					</td>
+			</tr>
+			<tr>
+					<th>* 카피문구</th>
+					<td colspan="3">
+						<span>▶강력한 진동 선풍기 위니아에서만 가능했던 초강력 에어컨 같은 선풍기</span>
+						<span class="stress">수정불가</span><br />
+						<input type="checkbox" id="USEENURI500" name="USEENURI500"  value="Y" /> 사용
+						<input type='hidden' name="CANENURI500" id="CANENURI500" value="N" />
+					</td>
+			</tr>
+			<tr>
+					<th>* 상품 이미지</th>
+					<td colspan="3">
+						<img src="http://storage.enuri.gscdn.com/pic_upload/cmexhibition/1446011036499.png" alt=""  width="100" height="100" />
+					</td>
+			</tr>
+
+			<tr>
+					<th>추천상품</th>
+					<td>
+						<input type='text' name="" onfocus="this.value='';" value="링크 URL 입력해주십시오" style="width:143px;" />
+						<input type="checkbox" id="USEENURI500" name="USEENURI500"  value="Y" /> 사용
+					</td>
+					<th>관련이벤트</th>
+					<td>
+						<input type='text' name="" onfocus="this.value='';" value="링크 URL 입력해주십시오" style="width:143px;" />
+						<input type="checkbox" id="USEENURI500" name="USEENURI500"  value="Y" /> 사용
+					</td>
+			</tr>	
+			<tr>
+					<th>가이드</th>
+					<td>
+						<input type='text' name="" onfocus="this.value='';" value="지식통 글 번호 입력" style="width:143px;"   />
+						<input type="button" id="btnmodelsearch" name="btnmodelsearch" value="검색" /><br />
+						<input type='text' name="" onfocus="this.value='';" value="지식통 타이틀 자동로딩,수정가능" style="width:143px;margin-top:5px;" />
+						<input type="checkbox" id="USEENURI500" name="USEENURI500"  value="Y" /> 사용<br />
+						<input type='text' name="" onfocus="this.value='';" value="검색 실패 시 직접 URL 입력" style="width:143px;margin-top:5px;"  />
+					</td>
+					<th>뉴스</th>
+					<td>
+						<input type='text' name="" onfocus="this.value='';" value="지식통 글 번호 입력" style="width:143px;"  />
+						<input type="button" id="btnmodelsearch" name="btnmodelsearch" value="검색" /><br />
+						<input type='text' name="" onfocus="this.value='';" value="지식통 타이틀 자동로딩,수정가능" style="width:143px;margin-top:5px;" />
+						<input type="checkbox" id="USEENURI500" name="USEENURI500"  value="Y" /> 사용<br />
+						<input type='text' name="" onfocus="this.value='';" value="검색 실패 시 직접 URL 입력" style="width:143px;margin-top:5px;"  />
+					</td>
+			</tr>	
+			<tr>
+					<th>사용기</th>
+					<td colspan="3">
+						<input type='text' name="" onfocus="this.value='';" value="지식통 글 번호 입력" style="width:143px;"  />
+						<input type="button" id="btnmodelsearch" name="btnmodelsearch" value="검색" /><br />
+						<input type='text' name="" onfocus="this.value='';" value="지식통 타이틀 자동로딩,수정가능" style="width:143px;margin-top:5px;" />
+						<input type="checkbox" id="USEENURI500" name="USEENURI500"  value="Y" /> 사용<br />
+						<input type='text' name="" onfocus="this.value='';" value="검색 실패 시 직접 URL 입력" style="width:143px;margin-top:5px;"  />
+					</td>
+			</tr>	
+			
+			<tr>
+				<td width="100%" colspan="6">
+					<div class="btn_c">
+						<a href="" class="type01" id="abtnregist">등록</a>
+						<a href="" class="type01" id="abtnclose" onclick='self.close();'>닫기</a>
+					</div>
+				</td>
+			</tr>
+			</table>
+		</form>
+		</div>
+	</body>
+</html>
+ 
+ 
+ 
+		
+ 
+ 
+

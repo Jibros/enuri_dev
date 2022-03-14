@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+/* Reset CSS */
+* {margin:0; padding:0; }
+html,body{width:100%; height:100%; margin:0; padding:0; font-family:malgun gothic, "맑은고딕", verdana, sans-serif; font-size:12px; line-height:1.5; letter-spacing:-1px;}
+ul, ol, li{list-style:none;}
+hr{display:none;}
+em{font-style:normal;}
+fieldset, img{border:none;}
+legend, caption{display:none;overflow:hidden; /*position:absolute;top:-9999px; left:-9999px;*/ text-indent:-9999px;font-size:0;width:1px;height:1px; line-height: 0;}
+/* 사파리에서 col 오류로 caption의 position:absolute가 충돌나 삭제함. */
+h1,h2,h3,h4 {font-weight:normal; margin:0; padding:0;}
+
+table {border-collapse:collapse; word-break: break-all; font-size:12px;}
+
+.hide {display:none}  /* none */
+.blind {display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height: 0;} /* hide */
+.png24{tmp:expression(setPng24(this));}
+
+/* Link Css */
+a {cursor:pointer; color:#666;}
+a:link,  a:visited,  a:active {text-decoration:none;}
+a:hover{text-decoration:none;}
+
+/* form */
+textarea, input, select, label{font-family:malgun gothic, "맑은고딕", verdana, sans-serif;font-size:12px;outline:none;}
+button {border:0 none;cursor:pointer;vertical-align:middle;}
+/*input {-webkit-appearance:none;-moz-appearance:none; -ms-appearance:none; appearance:none;}
+*::-webkit-search-cancel-button {-webkit-appearance:none;-moz-appearance:none; -ms-appearance:none; appearance:none;}*/
+
+/* 
+	COMMON CSS - 수정금지 : 
+	수정이 필요할 땐, 해당 영역 상위 클래스 하위로 수정하시기 바랍니다. (ex. .상위클래스 .nodata .txt {attr:value; attr:value;}) 
+*/
+.container {position:relative; width:970px; margin:0 auto;}
+.imgs {max-width:100%; vertical-align:top;}
+/* stripe image */
+.icon {display:inline-block; font-size:0; text-indent:-9999px; vertical-align:middle; background:url(http://img.enuri.info/images/enuripc/stripe_img.png) no-repeat;}
+
+
+/* 툴팁 레이어 공통 */
+.has-helpwrap {position:absolute; top:10px; right:0;}                            
+.has-helpwrap > p {display:inline; font-weight:bold; font-size:13px; color:#555;}
+
+/* HELP BOX LAYER (버전별) */
+.help_box {display:inline; position:relative;}
+.help_box .icon.help {width:18px; height:18px; vertical-align:-4px; background-position:-22px -50px; cursor:pointer;}
+.help_box .layer_help {display:; position:absolute; top:24px; left:-65px; z-index:1001; width:130px; padding:5px 10px 10px; border:1px solid #000; background-color:#fff;}
+.help_box .layer_help .tit {margin-bottom:5px; border-bottom:1px solid #333; font-weight:bold; font-size:12px; color:#333; line-height:24px;}
+.help_box .layer_help .txt {font-weight:normal; font-size:12px; color:#555; line-height:18px;}
+.help_box .layer_help .cont {display:block; padding:25px 20px 30px;}
+.help_box .layer_help .cont .txt {font-weight:normal; font-size:13px; line-height:17px; color:#171717;}
+.help_box .layer_help .cont strong {display:block;}
+.help_box .layer_help .cont .dot_list {}
+.help_box .layer_help .cont .dot_list li {height:auto; margin:0 0 15px; padding:0; font-size:13px; line-height:17px; color:#555;}
+.help_box .layer_help .cont .dot_list li .gr {font-weight:bold; color:#2da4a8;}
+
+.help_box._v2 .icon.help {width:16px; height:16px; margin-top:2px; vertical-align:middle; background-position:-222px -72px; cursor:pointer;}
+.help_box._v2 .layer_help {width:280px; padding:0;}
+.help_box._v2 .layer_help .tit {display:block; height:30px; padding-left:10px; font-size:12px; color:#fff; line-height:30px; vertical-align:middle; background-color:#575c67;}
+
+/* online_lp 적용 */
+.help_box._v3 .icon.help {width:16px; height:16px; margin-left:3px; margin-top:-2px; vertical-align:middle; background-position:-250px -72px; cursor:pointer;}
+.help_box._v3 .layer_help {width:280px; padding:0;}
+.help_box._v3 .layer_help .tit {display:block; height:30px; padding-left:10px; border:0; font-size:12px; color:#fff; line-height:30px; vertical-align:middle; background-color:#575c67;}
+.help_box._v3 .layer_help .cont .os_info {color:#171717;}
+
+/* HELP BOX 각 사이즈 */
+.help_box #makeInfoLayer.layer_help {width:350px;}
+
+/* 개별 CSS 적용 */
+.help_box .layer_help .cont .os_info {margin-bottom:20px;}
+.help_box .layer_help .cont .list_enoti,
+.help_box .layer_help .cont .tit_enoti{color:#171717;line-height:17px;font-size:13px;overflow:hidden;font-weight:normal;letter-spacing: -1px}
+.help_box .layer_help .cont .list_enoti li{height:auto;font-size:13px}
+.help_box .layer_help .cont .tit_enoti{display:block;margin-top:20px;font-weight: bold}
+.help_box .layer_help .cont .btn_enoti{color:#00a7ec;line-height:17px;font-size:13px;text-decoration: underline;font-weight: normal;letter-spacing:-.5px}
+
+.cutWord {overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} /* 문장 말줄임 */
+.cutPara {/*display:-ms-flexbox; */ display:block; display:-webkit-box; overflow:hidden; text-overflow:ellipsis; white-space:normal; word-wrap:break-word; -webkit-box-orient:vertical;} /* 문단 말줄임 line-height, height, -webkit-line-clamp 속성은 해당 css 라인에서 기재 */
+.disNone {display:none !important;}
+
+.btn:hover, 
+.btn:focus {transition:0s !important; opacity:1 !important;}
+
+/*페이징*/
+.paging{text-align:center; margin:40px 0 0 !important; position:relative;}
+.paging li{display:inline-block; margin:0 1px; vertical-align:middle}
+.paging li a{width:34px; height:30px; padding-top:4px; border:1px solid #e2e2e2; color:#999; text-align:center; display:block; font-size:18px; font-family:tahoma;}
+.paging li a.btn{background: url(http://img.enuri.info/images/home/bullet.gif) 0 0 no-repeat; color:#181818; width:78px; height:30px; padding-top:4px; font-family:malgun gothic; font-size:16px; }
+.paging li a.btn.prev{background-position:10px -247px; text-indent:7px;}
+.paging li a.btn.next{background-position:right -300px; text-indent:-7px;}
+.paging li a.selected{cursor:default; background:#2da4a8 !important; border:1px solid #219397 !important; color:#fff}
+.paging li a.selected:hover{border:1px solid #219397 !important; color:#fff}
+.paging li a:hover{border:1px solid #787878; color:#343434; text-decoration:none; box-shadow:0 2px 0 #ebebeb;}
+
+/* small 페이징 */
+.paging.sm{margin:0 0 30px; position:relative;}
+.paging.sm li{}
+.paging.sm li a{width:22px; height:22px; padding-top:0; font-size:16px; line-height:22px; vertical-align:middle;}
+.paging.sm li a.btn{background: url(http://img.enuri.info/images/home/bullet.gif) 0 0 no-repeat; border:1px solid #e2e2e2; color:#181818; width:22px; height:22px; padding-top:0; font-size:0; text-indent:-9999px;}
+.paging.sm li a.btn.prev{background-position:7px -253px;}
+.paging.sm li a.btn.next{background-position:7px -306px;}
+.paging.sm li a.selected{cursor:default; background:#575c67; border:1px solid #575c67; color:#fff}
+.paging.sm li a.selected:hover{border:1px solid #575c67; color:#fff}
+.paging.sm li a:hover{border:1px solid #575c67; color:#343434; text-decoration:none; box-shadow:0 2px 0 #ebebeb;}
+
+/* 견적, 검색 등이 없을 때 */
+.no_result {padding:100px 0; text-align:center;}
+.no_result .txt {font-size:24px; color:#787878;}
+.no_result .none {margin-top:30px; width:271px; height:176px; background-position:-250px -200px;}
+
+.nodata {clear:both; padding:220px 0; text-align:center;}
+.nodata .msg {margin-bottom:30px; font-size:24px; color:#787878; line-height:1.4;}
+.nodata .none {margin-bottom:50px; width:271px; height:176px; background-position:-250px -200px;}
+.nodata .txt {margin-bottom:22px; font-size:15px; color:#343434; line-height:22px;}
+.nodata .srch_help {font-size:13px; color:#787878; line-height:22px;}
+
+/*체크박스*/
+.chk{display:inline-block; background:url(http://img.enuri.info/images/enuripc/chkbox.gif) 0 0 no-repeat; cursor:pointer; width:14px; height:14px; vertical-align:middle;}
+.chk.on{background-position:0 bottom}
+.chk input{position:absolute; left:-9999em; top:-9999em}
+
+/* 에누리머니 */
+.emoney{display:inline-block;position: relative;height:14px;padding-left:18px;color:#00a7ec;font-size:12px;line-height:12px}
+.emoney em{font-size:14px;letter-spacing:-.4px;vertical-align:-1px}
+.emoney:before{content:"";position:absolute;top:0;left:0;width:14px;height:14px;background:url(http://img.enuri.info/images/enuripc/stripe_img.png) no-repeat -500px -80px}
+.emoney.extend{padding-left:42px;}
+.emoney.extend:before{width:37px}
+
+
+/* 로그인 후 레이어 */
+.lay_login{position: absolute;background-color:#fff;border: 2px solid #0083e8;right:50% !important;margin-right:-300px !important;width:150px;letter-spacing:0}
+.lay_login .lay_inner{position:relative;padding:16px}
+.lay_login .lay_inner ul li{height:30px;line-height:30px;font-size:13px;font-family:dotum,'돋움',malgun gothic,'맑은고딕',sans-serif;color:#666666}
+.lay_login .lay_inner ul li em{font-family:tahoma,dotum,'돋움',malgun gothic,'맑은고딕',sans-serif;color:#52b3f1;font-size:12px}
+.lay_login .lay_inner ul li a{text-decoration: none;display:block;color:inherit}
+.lay_login .lay_inner ul li:hover a{color:#222}
+.lay_login .ly_close{z-index: 10;position: absolute;right: 0;bottom: 0;background: url(http://img.enuri.info/images/main/ico_service.gif) 7px -23px no-repeat;width: 23px;height: 23px;text-indent: -9999em;}

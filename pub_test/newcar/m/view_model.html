@@ -1,0 +1,954 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다.">
+    <META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+    <link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+    <title>에누리(가격비교) eNuri.com</title>
+    <link rel="stylesheet" href="/css/mobile_v2/common.css" type="text/css">    <!-- [M] common(all) -->
+    <link rel="stylesheet" href="/css/newcar/m/default.css" type="text/css">    <!-- [M] newcar default&reset -->
+    <link rel="stylesheet" href="/css/newcar/m/common.css" type="text/css">     <!-- [M] newcar common(header,footer) -->
+    <link rel="stylesheet" href="/css/newcar/m/template.css" type="text/css">       <!-- [M] newcar list -->
+    <link rel="stylesheet" href="/css/newcar/m/swiper.min.css" type="text/css">
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+
+<body>
+<!-- 페이지 로더 -->
+<div id="loadingDiv" class="comm__loader">
+    <div class="loader_inner">로딩중</div>
+</div>
+<script>
+    // 퍼블테스트
+    $(function(){
+        // 페이지 로딩 완료 후 Fadeout
+        var $loadingbar = $("#loadingDiv");
+        setTimeout(function(){
+            $loadingbar.fadeOut(300);
+        },1000)
+    })
+</script>
+
+<div class="wrap">
+    <!-- header -->
+    <header id="header" class="nomar">
+        <div class="enuribi">
+            <h1><a href="javascript:///">모델 정보</a></h1>
+            <button type="button" class="back" onclick="window.history.back();">뒤로</button>
+        </div>
+
+        <!-- 화면 북마크 앵커 -->
+        <div class="bookmark">
+            <div class="scroll_line">
+                <ul class="bookmark_tabs">
+                    <li><a href="#bmsection1" class="is-on">요약정보</a></li>
+                    <li><a href="#bmsection2">제원/옵션</a></li>
+                    <li><a href="#bmsection3">인기통계</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <script>            
+
+            //플로팅 상단 탭 이동
+            $(document).on('click', '.bookmark_tabs li a', function(e) {
+                var $anchor = Math.ceil($($(this).attr('href')).offset().top);
+                    $navHgt = Math.ceil($(".bookmark_tabs").height());
+
+                $('html, body').stop().animate({scrollTop: $anchor - $navHgt}, 500);
+                e.preventDefault();
+            });
+        
+            $(window).load(function(){
+                var posScr = new Array(),
+                $nav = $(".bookmark"), // scroll tabs
+                $navTop = $nav.offset().top,
+                $scrTarget = $(".wrap .scroll");
+                // 네비 활성화
+                var activeNavi = function(num){
+                    $nav.find("a").removeClass("is-on");
+                    $nav.find("li").eq(num).find("a").addClass("is-on").siblings().removeClass("is-on");
+                }
+                // 네비 이동영역의 ScrollTop 보관
+                $scrTarget.each(function(e){
+                    posScr[e] = $(this).offset().top - $nav.outerHeight();
+                })
+                // 상단 탭 position 변경 및 버튼 활성화
+                $(window).scroll(function(){
+                    var $currY = $(this).scrollTop() // 현재 scroll
+                    var _nowPos = 0;
+
+                    if ($currY > $navTop-1) {
+                        $nav.addClass("is-fixed");
+                        $(posScr).each(function(e){
+                            if ( e != posScr.length - 1 ){
+                                if ( posScr[e] <= $currY && posScr[e+1] > $currY ){
+                                    activeNavi(e);
+                                    return false;
+                                }
+                            }else{
+                                activeNavi(e);
+                            }
+                        });
+                    } else {
+                        $nav.removeClass("is-fixed").find("a").removeClass("is-on");
+                    }
+                });
+            });
+        
+        </script>
+        <!-- // -->
+    </header>
+    <!-- // -->
+
+    <!-- CONTAINER -->
+    <div class="container">
+        
+        <!-- 단락 SECTION -->
+        <section class="section scroll" id="bmsection1">
+            <!-- 모델 대표 정보 -->
+            <div class="model_summary">
+                <!-- 모델 대표 이미지 -->
+                <div class="md_thumb">
+                    <div class="md_brand">
+                        <img src="http://img.enuri.info/images/newcar/1001.png" alt="" />
+                    </div>
+
+                    <div class="md_thumb_swiper swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide md_thumb-item"><img src="http://img.enuri.info/images/newcar/m/model_img@720.png" alt="" /></li>
+                            <li class="swiper-slide md_thumb-item"><img src="http://img.enuri.info/images/newcar/m/model_img@720.png" alt="" /></li>
+                            <li class="swiper-slide md_thumb-item"><img src="http://img.enuri.info/images/newcar/m/model_img@720.png" alt="" /></li>
+                            <li class="swiper-slide md_thumb-item"><img src="http://img.enuri.info/images/newcar/m/model_img@720.png" alt="" /></li>
+                            <li class="swiper-slide md_thumb-item"><img src="http://img.enuri.info/images/newcar/m/model_img@720.png" alt="" /></li>
+                        </ul>
+                    </div>
+                    <div class="pagination"><!-- pagination --></div>
+                </div>
+                <!-- // -->
+                
+                <script>
+                    $(function(){
+                        // 모델 대표 이미지 
+                        var swiperBrand = new Swiper('.md_thumb .md_thumb_swiper', {            
+                            spaceBetween: 0,
+                            initialSlide: 0,
+                            autoHeight: true,
+                            pagination:".md_thumb .pagination"
+                        });
+                    });
+                </script>
+
+                <!-- 모델 대표 정보 -->
+                <div class="md_info">
+                    <div class="md_name">
+                        <!-- 제조사+모델명 -->
+                        <p class="tx_model">현대 올 뉴 아반떼</p>
+
+                        <!-- 201218 : 소개글 추가, 소개글 없을 때 태그 빼주세요. -->
+                        <p class="tx_msg">여유가 된다면 가족을 위한 최고의 선택, 하지만 덩치 때문에 버스 운전하는 기분, 메인 소개글 없을 경우 태그 미노출</p>
+                    </div>
+
+                    <div class="md_price">
+                        <div class="row">
+                            <span class="tx_tit">공식출고가</span>
+                            <!-- 색표시 "hg_price" 클래스추가 -->
+                            <span class="price tx_price hg_price"><em>1,531~2,392</em>만원</span>
+
+                            <a href="estimate01.html" class="btn__estimate">견적</a>
+                        </div>
+                        <div class="row">
+                            <span class="tx_tit">리스/렌트 최저가</span>
+                            <span class="price tx_price">월 <em>164,210</em>원</span>
+
+                            <a href="estimate01.html" class="btn__estimate">견적</a>
+                        </div>
+                    </div>
+
+                    <div class="md_spec">
+                        <ul class="tx_spec">
+                            <li>준중형</li>
+                            <li>복합연비 10.5~15.4㎞/ℓ</li>
+                            <li>휘발유, LPG</li>
+                            <li>배기량</li>
+                            <li>1,995~2,998cc</li>
+                            <li>출력 120~123hp</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // -->
+
+        <!-- 단락 SECTION -->
+        <section class="section">
+            <!-- 모델 가격추세 -->
+            <div class="model_graph">
+                <div class="item_head">
+                    <h3 class="tx_tit">가격추세</h3>
+
+                    <ul class="radio_basic">
+                        <li><input type="radio" id="tyGraphRadio01" name="tyGraphRadio" class="ipt-radio" checked=""><label for="tyGraphRadio01">모델기준</label></li>
+                        <li><input type="radio" id="tyGraphRadio02" name="tyGraphRadio" class="ipt-radio"><label for="tyGraphRadio02">인기라인업기준</label></li>
+                    </ul>
+                </div>
+
+                <div class="item_body">
+                    <p class="tx_model">2020년형 가솔린 2.5 (개소세 30% 인하) 기준</p>
+
+                    <!-- .ready -> 준비중일때 붙여주세요 -->
+                    <div class="box_chart ready">
+
+                    </div>
+
+                    <div class="tx_noti">
+                        <span class="tx_line">에누리 가격추세는 안정화된 데이터 제공을 위해 집계된 최신 월이 현재 월과 1~2개월 차이가 있을 수 있습니다.</span>
+                        <span class="tx_line">인기라인업은 최근 5개월 내 등록율이 가장 높은 라인업을 나타내며 현재 판매중인 라인업과 차이가 있을 수 있습니다.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // -->
+
+        <!-- 단락 SECTION -->
+        <section class="section scroll" id="bmsection2">
+            <!-- 모델 제원 옵션 -->
+            <div clas="model_option">
+                <div class="item_head">
+                    <h3 class="tx_tit">제원/옵션</h3>
+
+                    <!-- 버튼 :추천조건 설정 -->
+                    <button class="btn__recomm_cond" onclick="$('.lay_selcondi').fadeIn(100);">
+                        <i class="ico_setting"></i>
+                        <!-- 맞춤 설정 전 -->
+                        <span class="tx_cond"><em>추천조건 설정</em></span>
+                        <!-- 맞춤 설정 후 -->
+                        <!-- <span class="tx_cond selected">서울 / 30대 / 여성 <em>설정</em></span> -->
+                    </button>
+                    <!-- // -->
+                </div>
+
+                <div class="item_body">
+                    <div class="selmodel">
+                        <!--
+                        [D] 201029 삭제 요청
+                        
+                        <ul class="spec_tab">
+                            <!- - 활성화시 .on클래스 붙여주세요 - ->
+                            <li class="on" onclick="$(this).addClass('on').siblings().removeClass('on');">
+                                <span class="tx_spec_tab">일반견적</span>
+                                <span class="tx_spec_price"><em>1,570</em>만원~</span>
+                            </li>
+                            <li onclick="$(this).addClass('on').siblings().removeClass('on');">
+                                <span class="tx_spec_tab">리스계약</span>
+                                <span class="tx_spec_price">월 <em>164,570</em>원~</span>
+                            </li>
+                            <li onclick="$(this).addClass('on').siblings().removeClass('on');">
+                                <span class="tx_spec_tab">렌트계약</span>
+                                <span class="tx_spec_price">월 <em>161,245</em>원</span>
+                            </li>
+                        </ul>
+                        -->
+
+                        <ul class="tb_list list_lineup">
+                            <!-- 반복 : 세부모델 리스트 -->
+                            <!-- 열림 "selected" 클래스 추가 -->
+                            <li class="tb_list_item item_lineup selected">                                            
+                                <div class="row--tb-item">
+                                    <span class="tx_col col--model"><span class="tx_model">2020년형 가솔린 2.0 <span class="tx_desc">(개소세 5% 기준)</span></span></span>
+                                    <span class="tx_col col--percent">99.99%</span>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 트림 리스트 -->
+                                <ul class="tb_sub_list list_trims">
+                                    <!-- 반복 : 트림 리스트 -->
+                                    <li class="tb_sub_item item_trims selected">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 (M/T)
+                                                        <button type="button" class="btn__trim_detail" onclick="$('.lay_dtmodel').fadeIn(100);"><i class="ico_detail">상세보기</i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _1th">출고 1위</span>
+                                                <span class="price tx_price"><em>1,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                    <!-- //반복 : 트림 리스트 -->
+                                    <li class="tb_sub_item item_trims">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 스마트 스마트 스마트 (M/T)
+                                                        <button type="button" class="btn__trim_detail" onclick="$('.lay_dtmodel').fadeIn(100);"><i class="ico_detail">상세보기</i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _2th">출고 2위</span>
+                                                <span class="price tx_price"><em>12,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="tb_sub_item item_trims">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 (M/T)</span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _3th">출고 3위</span>
+                                                <span class="price tx_price"><em>12,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- // 반복 : 세부모델 리스트 -->
+
+                            <li class="tb_list_item item_lineup">                                            
+                                <div class="row--tb-item">
+                                    <span class="tx_col col--model"><span class="tx_model">2020년형 가솔린 1.6 터보 가솔린 1.6 터보 <span class="tx_desc">(개소세 5% 기준)</span></span></span>
+                                    <span class="tx_col col--percent">89.1%</span>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 트림 리스트 -->
+                                <ul class="tb_sub_list list_trims">
+                                    <!-- 반복 : 트림 리스트 -->
+                                    <li class="tb_sub_item item_trims selected">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 (M/T)
+                                                        <button type="button" class="btn__trim_detail" onclick="$('.lay_dtmodel').fadeIn(100);"><i class="ico_detail">상세보기</i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _1th">출고 1위</span>
+                                                <span class="price tx_price"><em>1,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                    <!-- //반복 : 트림 리스트 -->
+                                    <li class="tb_sub_item item_trims">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 스마트 스마트 스마트 (M/T)
+                                                        <button type="button" class="btn__trim_detail" onclick="$('.lay_dtmodel').fadeIn(100);"><i class="ico_detail">상세보기</i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _2th">출고 2위</span>
+                                                <span class="price tx_price"><em>12,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="tb_sub_item item_trims">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 스마트 스마트 스마트 (M/T)</span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _3th">출고 3위</span>
+                                                <span class="price tx_price"><em>12,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="tb_list_item item_lineup">                                            
+                                <div class="row--tb-item">
+                                    <span class="tx_col col--model"><span class="tx_model">2020년형 가솔린 1.6 터보 <span class="tx_desc">(개소세 5% 기준)</span></span></span>
+                                    <span class="tx_col col--percent">89.1%</span>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 트림 리스트 -->
+                                <ul class="tb_sub_list list_trims">
+                                    <!-- 반복 : 트림 리스트 -->
+                                    <li class="tb_sub_item item_trims selected">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 (M/T)
+                                                        <button type="button" class="btn__trim_detail" onclick="$('.lay_dtmodel').fadeIn(100);"><i class="ico_detail">상세보기</i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _1th">출고 1위</span>
+                                                <span class="price tx_price"><em>1,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                    <!-- //반복 : 트림 리스트 -->
+                                    <li class="tb_sub_item item_trims">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 스마트 스마트 스마트 (M/T)
+                                                        <button type="button" class="btn__trim_detail" onclick="$('.lay_dtmodel').fadeIn(100);"><i class="ico_detail">상세보기</i></button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _2th">출고 2위</span>
+                                                <span class="price tx_price"><em>12,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                    <li class="tb_sub_item item_trims">
+                                        <!-- [트림 리스트 영역] -->
+                                        <div class="row--sub-item">
+                                            <div class="tx_col col--trim">
+                                                <div class="tx_trim">
+                                                    <!-- 트림명 -->
+                                                    <span class="tx_trim_nm">스마트 스마트 스마트 스마트 (M/T)</span>
+                                                </div>
+                                            </div>
+                                            <span class="tx_col col--price">                                            
+                                                <span class="tx_badge _3th">출고 3위</span>
+                                                <span class="price tx_price"><em>12,570</em>만원</span>
+                                            </span>
+                                            <span class="tx_col col--btn"><a href="estimate01.html" class="btn__estimate">견적</a></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <script>
+                            $(function(){ // 퍼블테스트
+                                var $lineup = $(".item_lineup .row--tb-item");
+                                $lineup.click(function(){
+                                    var $parent = $(this).parent();
+                                    if ( $parent.hasClass("selected") ){
+                                        $parent.removeClass("selected");
+                                    }else{
+                                        $parent.addClass("selected").siblings().removeClass("selected");
+                                    }
+                                });
+                                var $trims = $(".item_trims .row--sub-item");
+                                $trims.click(function(){
+                                    var $parent = $(this).parent();
+                                    if ( $parent.hasClass("selected") ){
+                                        $parent.removeClass("selected");
+                                    }else{
+                                        $parent.addClass("selected").siblings().removeClass("selected");
+                                    }
+                                });
+                            })
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // -->
+
+        <!-- 단락 SECTION -->
+        <section class="section">
+            <!-- 광고배너 -->
+            <div class="bnr_area">
+                <a href="#"><img src="http://img.enuri.info/images/newcar/m/banner_img@1080.png" alt="" /></a>
+            </div>
+            <!-- // -->
+        </section>
+        <!-- // -->
+
+        <!-- 단락 SECTION-->
+        <section class="section scroll" id="bmsection3">
+            <!-- 모델 인기 통계 -->
+            <div class="model_stat">
+                <!-- 정렬 박스 -->
+                <div class="item_head">
+                    <h3 class="tx_tit">모델 인기 통계</h3>
+
+                    <ul class="radio_basic">
+                        <li><input type="radio" id="tyStatRadio01" name="tyStatRadio" class="ipt-radio" checked=""><label for="tyStatRadio01">월간</label></li>
+                        <li><input type="radio" id="tyStatRadio02" name="tyStatRadio" class="ipt-radio"><label for="tyStatRadio02">연간 누적</label></li>
+                    </ul>
+                </div>
+                <!-- // -->
+
+                <div class="item_body">
+                    <div class="box_stat">
+                        <!-- 통계가 있는 item_stat에 .is--valid 클래스 추가 -->
+                        <div class="item_stat is--valid">
+                            <span class="ico_stat"><i class="ico_stat_loc"></i></span>
+                            <dl>
+                                <dt>신차로 가장 인기있는 지역은</dt>
+                                <dd>
+                                    <span class="tx_result">
+                                        <span class="tx_value">서울시 강남구</span>
+                                        <span class="tx_num"><em>49.2</em>%</span>
+                                    </span>
+                                    <!-- <span class="no_result">등록 자료가 없습니다.</span> -->
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="item_stat is--valid">
+                            <span class="ico_stat"><i class="ico_stat_age"></i></span>
+                            <dl>
+                                <dt>신차로 가장 선호하는 집단은</dt>
+                                <dd>
+                                    <span class="tx_result">
+                                        <span class="tx_value">30대 여성</span>
+                                        <span class="tx_num"><em>49.2</em>%</span>
+                                    </span>
+                                    <!-- <span class="no_result">등록 자료가 없습니다.</span> -->
+                                </dd>
+                            </dl>
+                        </div>
+                        <!-- 통계가 있는 item_stat에 .is--valid 클래스 추가 -->
+                        <div class="item_stat">
+                            <span class="ico_stat"><i class="ico_stat_loc"></i></span>
+                            <dl>
+                                <dt>중고차로 가장 인기있는 지역은</dt>
+                                <dd>
+                                    <!-- <span class="tx_result">
+                                        <span class="tx_value">남성</span>
+                                        <span class="tx_num">999대</span>
+                                    </span> -->
+                                    <span class="no_result">등록 자료가 없습니다.</span>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="item_stat">
+                            <span class="ico_stat"><i class="ico_stat_age"></i></span>
+                            <dl>
+                                <dt>중고차로 가장 선호하는 집단은</dt>
+                                <dd>
+                                    <!-- <span class="tx_result">
+                                        <span class="tx_value">30대 남성</span>
+                                        <span class="tx_num">999대</span>
+                                    </span> -->
+                                    <span class="no_result">등록 자료가 없습니다.</span>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="tx_stat_noti">
+                        에누리 모델 인기 통계는 국토교통부에 신고/등록된 자동차 등록원부 데이터를 기반하여 제공됩니다.<br>
+                        원본 데이터와 에누리의 자동차 구분 체계가 달라 수치에 일부 차이가 있을 수 있습니다. 
+                        <span class="tx_source">POWERED by NICE D&amp;R</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // -->
+
+        <!-- 단락 SECTION-->
+        <section class="section">
+            <!-- 모델 인기 통계 -->
+            <div class="model_release">
+                <!-- 정렬 박스 -->
+                <div class="item_head">
+                    <h3 class="tx_tit">준중형 2020.05 <em>월간 출고점유</em></h3>
+                </div>
+                <!-- // -->
+
+                <div class="item_body">
+                    <div class="tb_release">
+                        <table>
+                            <colgroup>
+                                <col width="80px" />
+                                <col width="*" />
+                                <col width="20%" />
+                                <col width="20%" />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">모델명</th>
+                                    <th>변동비</th>
+                                    <th>점유율</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 반복 -->
+                                <tr>
+                                    <td><a href="#" class="tx_thumb"><img src="http://img.enuri.info/images/newcar/m/model_img@160.png" alt="" /></a></td>
+                                    <td><span class="tx_name">현대 올 뉴 아반떼</span></td>
+                                    <td>
+                                        <span class="tx_point">
+                                            <!-- default -->
+                                            <span class="release">-</span>
+                                            <!-- up -->
+                                            <!-- <span class="release up"><i></i> 15.5%</span> -->
+                                            <!-- down -->
+                                            <!-- <span class="release down"><i></i> 4.3%</span> -->
+                                        </span>
+                                    </td>
+                                    <td><span class="tx_share">67.5%</span></td>
+                                </tr>
+                                <!-- //반복 -->
+                                <tr>
+                                    <td><a href="#" class="tx_thumb"><img src="http://img.enuri.info/images/newcar/m/model_img@160.png" alt="" /></a></td>
+                                    <td><span class="tx_name">현대 올 뉴 아반떼</span></td>
+                                    <td>
+                                        <span class="tx_point">
+                                            <!-- up -->
+                                            <span class="release up"><i>▲</i> 15.5%</span>
+                                        </span>
+                                    </td>
+                                    <td><span class="tx_share">67.5%</span></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="tx_thumb"><img src="http://img.enuri.info/images/newcar/m/model_img@160.png" alt="" /></a></td>
+                                    <td><span class="tx_name">현대 올 뉴 아반떼</span></td>
+                                    <td>
+                                        <span class="tx_point">
+                                            <!-- down -->
+                                            <span class="release down"><i>▼</i> 4.3%</span>
+                                        </span>
+                                    </td>
+                                    <td><span class="tx_share">67.5%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="tb_release_noti">
+                            에누리 월간 출고점유는 제조사 발표 계약 판매실적이 아닌 국토교통부에 신고/등록된 신차 등록 데이터를 취합하여 제공됩니다. <br />
+                            원본 데이터와 에누리의 자동차 구분 체계가 달라 수치에 일부 차이가 있을 수 있습니다. 
+                            <span class="tb_source">POWERED by NICE D&amp;R</span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- // -->
+    
+
+    <!-- FOOTER -->
+    <footer class="footer footer--com">
+        <!-- Footer : 탑버튼 -->
+        <div class="newquick">
+            <p class="TBtn" onclick="goFooterTop();">TOP</p>
+        </div>
+        <!-- // -->
+        <!-- Footer : 회사정보 -->
+        <div class="footer__info">
+            <!-- 클릭시 .unfold 클래스 toggle -->
+            <button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+            <!-- // -->
+            <div class="footer__info_com">
+                <dl>
+                    <dt>대표이사</dt>
+                    <dd>김기범</dd>
+                    <dt>사업자등록번호</dt>
+                    <dd>206-81-18164</dd>
+                    <dt>통신판매신고</dt>
+                    <dd>2015-서울중구-1046호</dd>
+                    <dt>주소</dt>
+                    <dd>서울특별시 중구 퇴계로 18(남대문로5가) 9층</dd>
+                    <dt>문의</dt>
+                    <dd>02-6354-3601<br><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+                </dl>
+            </div>
+        </div>
+        <!-- Footer : 푸터메뉴 -->
+        <div class="footer__menu">
+            <div class="footer__menu_top">
+                <a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+            </div>
+            <div class="footer__menu_bot">
+                <a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+            </div>
+        </div>
+        <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+    </footer>
+    <!-- //FOOTER -->
+</div>
+
+<script>
+    $(function(){
+        // 모바일 헤더,탑버튼 역스크롤
+        $(function(){
+            var position = $(window).scrollTop(); 
+            var el = {
+                wrap : $(".wrap"), // 래퍼
+                cont : $(".container"), // 컨텐츠
+                btnQuick : $(".footer--com .newquick"), // 탑버튼
+                gnb : $("#nav") // GNB영역
+            }
+            var stickyGnb = function(){
+                var $myScroll = $(window).scrollTop();
+
+                if ( $myScroll > el.cont.offset().top ){ 
+                    el.gnb.addClass("hide_top");
+                    el.btnQuick.addClass("scr_mode");
+
+                    // GNB Sticky
+                    if ( $myScroll > el.cont.offset().top ){
+                        el.gnb.removeClass("hide_top").addClass("fixed_top");
+                    }else{
+                        el.wrap.addClass("hide_top").removeClass("fixed_top");
+                    } 
+
+                    // 업다운 스크롤 체크
+                    if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }else{
+                    el.gnb.removeClass("fixed_top hide_top");
+                    el.btnQuick.removeClass("scr_mode");
+                    el.wrap.removeClass("scr_down scr_up");
+                }
+                position = $myScroll;
+            };
+            $(window).load(stickyGnb).scroll(stickyGnb);
+        })
+    });
+
+    function goFooterTop(){
+        $(window).scrollTop(0);
+    }
+</script>
+
+<!-- 레이어 : 맞춤추천 -->
+<div class="lay_box lay_selcondi">
+    <div class="lay_inner">
+        <div class="lay_head">
+            <h1>맞춤 추천 선택</h1>
+            <button class="btn__close" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+        </div>
+        <div class="lay_body">
+            <section class="section"> 
+                <div class="top_blue_info">
+                    <span class="topfit_bg"><!--BG--></span>
+                    <p class="fit_txt">
+                        맞춤 추천 선택은 일정 기간 동안 실제 <br />
+                        출고되어 등록된 차량 통계를 기반하여 <br />
+                        사용자의 거주 지역과 연령, 성별에 맞는 <br />
+                        차량 선택을 도와주는 가이드입니다.
+                    </p>
+
+                    <p class="fit_utxt">최적의 추천을 위해 아래 조건을 선택해주세요</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="select_wrap">
+                    <!-- 지역선택 -->
+                    <div class="select_region">
+                        <div class="select_box">
+                            <p class="tx_tit">시/도 선택</p>
+
+                            <div class="sr_detail">
+                                <select class="sr_select">
+                                    <option value="">지역 전체</option>
+                                    <option value="">서울</option>
+                                    <option value="">부산</option>
+                                    <option value="">인천</option>
+                                    <option value="">대구</option>
+                                    <option value="">대전</option>
+                                    <option value="">울산</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="select_box">                            
+                            <p class="tx_tit">시/군/구 선택</p>
+
+                            <div class="sr_detail">
+                                <select class="sr_select">
+                                    <option value="">지역 전체</option>
+                                    <option value="">강남구</option>
+                                    <option value="">강동구</option>
+                                    <option value="">강북구</option>
+                                    <option value="">강서구</option>
+                                    <option value="">광진구</option>
+                                    <option value="">구로구</option>
+                                    <option value="">금천구</option>
+                                    <option value="">노원구</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 성별선택 -->
+                    <div class="select_div select_gender">
+                        <p class="tx_tit">성별 선택</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyGenderRadio01" name="tyGenderRadio" class="ipt-radio" checked=""><label for="tyGenderRadio01">무관</label></li>
+                            <li><input type="radio" id="tyGenderRadio02" name="tyGenderRadio" class="ipt-radio"><label for="tyGenderRadio02">남성</label></li>
+                            <li><input type="radio" id="tyGenderRadio03" name="tyGenderRadio" class="ipt-radio"><label for="tyGenderRadio03">여성</label></li>
+                        </ul>
+                    </div>
+                    <!-- 나이선택 -->
+                    <div class="select_div select_age">
+                        <p class="tx_tit">연령 선택</p>
+                        <ul class="radio_basic">
+                            <li><input type="radio" id="tyAgeRadio01" name="tyAgeRadio" class="ipt-radio" checked=""><label for="tyAgeRadio01">무관</label></li>
+                            <li><input type="radio" id="tyAgeRadio02" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio02">10대</label></li>
+                            <li><input type="radio" id="tyAgeRadio03" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio03">20대</label></li>
+                            <li><input type="radio" id="tyAgeRadio04" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio04">30대</label></li>
+                            <li><input type="radio" id="tyAgeRadio05" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio05">40대</label></li>
+                            <li><input type="radio" id="tyAgeRadio06" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio06">50대</label></li>
+                            <li><input type="radio" id="tyAgeRadio07" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio07">60대</label></li>
+                            <li><input type="radio" id="tyAgeRadio08" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio08">70대</label></li>
+                            <li><input type="radio" id="tyAgeRadio09" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio09">80대</label></li>
+                            <li><input type="radio" id="tyAgeRadio10" name="tyAgeRadio" class="ipt-radio"><label for="tyAgeRadio10">90대</label></li>
+                        </ul>
+                    </div>
+
+                    <div class="tx_lay_box">판매량 부족 등 통계 데이터 확인이 불가한 경우에는 추천 정보가 없을 수도 있습니다.</div>
+                    <!-- 버튼 : 조건검색 -->
+                    <button class="btn__lay_search" onclick="$(this).parents('.lay_box').fadeOut(100);">조건 검색</button>
+                    <!-- // -->
+                </div>
+                
+            </section>
+        </div>
+    </div>
+    <div class="dimmed"></div>
+</div>
+<!-- //레이어 : 맞춤추천 -->
+
+<!-- 레이어 : 모델상세 -->
+<div class="lay_box lay_dtmodel">
+    <div class="lay_inner">
+        <div class="lay_head">
+            <h1>사양/옵션 보기</h1>
+            <button class="btn__close" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+        </div>
+        <div class="lay_body">
+            <section class="section"> 
+                <div class="md_info">
+                    <p class="md_model_nm">현대 올 뉴 아반떼</p>
+
+                    <div class="md_detail">
+                        <select class="md_select">
+                            <option value="">2020년형 가솔린 1.6 (개소세 30% 인하)</option>
+                            <option value="">value1</option>
+                            <option value="">value2</option>
+                            <option value="">value3</option>
+                            <option value="">value4</option>
+                            <option value="">value5</option>
+                            <option value="">value6</option>
+                            <option value="">value7</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="opt_detail">
+                    <div class="opt_head">
+                        <div class="col--opt">스마트 M/T</div>
+                        <div class="price col--price"><em>15,700,000</em>원</div>
+                    </div>
+                    <ul class="opt_list">
+                        <!-- 반복 -->
+                        <li>
+                            <div class="row_head">기본 품목</div>
+                            <div class="row_detail">
+                                <!-- 사양 -->
+                                <div class="box_specs col--opt">
+                                    <ul>
+                                        <li><strong>파워트레인/성능</strong> : 스마트스트림 가솔린 1.6 엔진, 6단 수동변속기, 디스크 브레이크 </li>
+                                        <li><strong>지능형 안전 기술</strong> : 전방 충돌방지 보조, 전방 충돌 경고, 차로 유지 보조, 차로 이탈방지 보조, 차로 이탈 경고, 운전자 주의경고, 하이빔 보조, 전방 차량 출발 알림 </li>
+                                        <li><strong>안전</strong> : 6에어백 시스템(앞좌석 어드밴스드, 앞좌석 사이드, 전복 대응 커튼), 세이프티 언락, 타이어 응급처치 키트</li>
+                                        <li><strong>외관</strong> : 다크 크롬 라디에이터 그릴, 프로젝션 헤드램프(바이펑션), LED 주간주행등(DRL, 포지셔닝 포함), 벌브 보조제 동등, 15인치 스틸 휠 &amp; 타이어, 아웃사이드 미러(열선, 전동 조절, LED 방향지시등) </li>
+                                        <li><strong>내장</strong> : 4.2인치 컬러 LCD 클러스터, 선바이저 거울, 룸램프 </li>
+                                        <li><strong>시트</strong> : 직물 시트, 운전석 수동 높이 조절, 뒷좌석 높이조절 헤드레스트 </li>
+                                        <li><strong>편의</strong> : 폴딩타입 도어 리모컨키, 파워 윈도우, 마이크로 에어 필터, 수동식 틸트 &amp; 텔레스코픽 스티어링 휠, 스티어링 휠 리모컨, 중앙집중식 도어잠금 장치, USB 포트, 후방 주차거리 경고, 크루즈 컨트롤, 오토 라이트 컨트롤, 후석 승객알림 </li>
+                                        <li><strong>인포테인먼트</strong> : 일반 오디오 시스템(6스피커, 라디오, MP3, 블루투스 핸즈프리)     </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- // -->
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="opt_detail">
+                    <div class="row_head">선택 품목</div>
+                    <div class="row_detail">
+                        <!-- 옵션 -->
+                        <div class="box_opt">
+                            <ul class="box_opt_list">
+                                <li class="selected" onclick="$(this).toggleClass('selected');">
+                                    <!-- SR#51106 : 말줄임 제거 요청 : .cutWord 클래스 제거해주세요. -->
+                                    <!-- <span class="tx_col col--opt cutWord"><i class="ico_chk_lg"></i> 익스테리어 디자인</span> -->
+                                    <span class="tx_col col--opt"><i class="ico_chk_lg"></i> 익스테리어 디자인</span>
+                                    <span class="tx_col price col--price"><em>750,000</em>원</span>
+                                </li>
+                                <li onclick="$(this).toggleClass('selected');">
+                                    <span class="tx_col col--opt"><i class="ico_chk_lg"></i> 인조가죽시트 (인조가죽 도어 센터트림 포함)</span>
+                                    <span class="tx_col price col--price"><em>12,750,000</em>원</span>
+                                </li>
+                                <li class="selected" onclick="$(this).toggleClass('selected');">
+                                    <span class="tx_col col--opt"><i class="ico_chk_lg"></i> 인포테인먼트 라이트</span>
+                                    <span class="tx_col price col--price"><em>12,750,000</em>원</span>
+                                </li>
+                                <li class="selected" onclick="$(this).toggleClass('selected');">
+                                    <span class="tx_col col--opt"><i class="ico_chk_lg"></i> 하이패스 시스템 + ECM 룸미러</span>
+                                    <span class="tx_col price col--price"><em>750,000</em>원</span>
+                                </li>
+                                <li class="selected" onclick="$(this).toggleClass('selected');">
+                                    <span class="tx_col col--opt"><i class="ico_chk_lg"></i> [TUIX] gksptm, ISOFIX 안전벨트, 안전벨트 테더 </span>
+                                    <span class="tx_col price col--price"><em>750,000</em>원</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- // -->
+
+                        <!-- 합계 -->
+                        <div class="box_total">
+                            <span class="tx_tit">합계</span>
+                            <span class="price tx_price"><em>16,820,100</em>원</span>
+                        </div>
+                        <!-- // -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="dimmed"></div>
+</div>
+<!-- //레이어 : 모델상세 -->
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/home.css"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div id="wrap" class="border-box">
+    <header id="header" class="m_header head__type_b">
+        <div class="header_wrap">
+            <h1 class="m_txt">상세보기</h1>            
+            <button class="btn_hd_back comm__sprite">뒤로</button>            
+		</div>	
+    </header>
+
+	<section id="container" class="m_savedetail_cont">
+        <div class="page_wrap">
+            <div class="sd_box selected_detail_info">
+                <img src="http://placehold.it/304x159?text=image">
+                <div class="info">
+                    <div class="txt_title">사이다뱅크 입출금계좌 개설 사이다뱅크 입출금계좌 개설 사이다뱅크 입출금계좌 개설 </div>
+                    <div class="txt_summary">최초 신규 비대면 계좌개설</div>
+                    <div class="txt_emoney">9,000</div>
+                    <button type="button">미션 참여하기</button>
+                </div>
+            </div>
+            <div class="sd_box noti_mission">
+                <div class="sd_box_title">적립미션 안내</div>
+                <div class="noti_mission_list_title">[참여방법]</div>
+                <ul class="noti_mission_list list_num">
+                    <li>페이지 내 [계좌개설하고 포인트받기] 버튼 클릭 후 계좌개설 시 포인트를 증정합니다. (신규 고객 대상)</li>
+                    <li>SBI저축은행 사이다뱅크 입출금통장의 금리는 2억원 이하 시 연1.2% 2억원 초과 시 연 0.2% (2021.11.15기준, 세전)으로 이자는 매월 결산하여 지급합니다.</li>
+                    <li>이 상품은 만 17세 이상 주민등록증 또는 운전면허증소지 자에 한하여 가입이 가능합니다.</li>
+                    <li>기타 자세한 상품내용은 미션 참여하기 버튼을 클릭하여 확인해주시기 바랍니다.</li>
+                    <li>저축은행중앙회 심의필 2021-01730<br>
+                        (21.11.19~22.11.18)</li>
+                </ul>
+            </div>
+            <div class="sd_box noti_caution">
+                <div class="sd_box_title">주의사항</div>
+                <ul class="noti_caution_list list_hyphen">
+                    <li>본 이벤트는 사전에 고지 없이 변경 및 취소될 수 있습니다.</li>
+                    <li>e머니 유효기간 : 적립일로부터 15일 (유효기간 만료 후 재 적립 불가)</li>
+                    <li>적립된 e머니는 1,000여가지 인기 e쿠폰으로 교환 가능 합니다.</li>
+                    <li>참여 시 부정참여, 중복참여 확인 시 이벤트 참여 및 e머니 지급에 제한을 받을 수 있습니다. <a href="">[사용하기]</a></li>
+                    <li>Wifi 아닌 환경에서는 데이터 이용료가 발생할 수 있습니다.</li>
+                    <li>e머니 적립 및 문의는 <a href="">[고객샌터]</a>에서 확인 해주세요</li>
+                </ul>
+            </div>
+        </div>
+	</section>
+</div>
+
+<script>
+    var saveTopBanner = new Swiper(".save_top_banner .swiper-container", {
+        loop : false,
+        slidesPerView : 1,
+        initialSlide: 0,
+        spaceBetween : 10,
+        slideToClickedSlide:true,
+        pagination : '.save_top_banner .swiper-pagination',
+    });
+
+    // 탭기능
+    $('body').on('click','[data-tabname]', function(){
+		var tabname = $(this).data('tabname');
+		$(this).addClass('active').siblings().removeClass('active');
+		$(tabname).addClass('active').siblings().removeClass('active');
+	});
+
+	// 자주 묻는 질문 최상단 고정 
+    $(function(){
+        var nowPos;
+		var position = $(window).scrollTop(); 
+		var $wrap = $("#wrap");
+		var $mhead = $(".m_header"); // 헤더
+		var $subFixed = $(".cs_inquiry_view .txt_tit"); // 헤더 밑으로 고정될 아이    
+        // 헤더 상단 고정 및 존재여부 판단 후 스타일 재지정    
+        if ( $mhead.length ){ // 마크업이 존재하고
+            if ( $(".m_header:not([style*='display:none']):not([style*='display: none'])").length ){ // display:none 되어 있지 않음
+                $mhead.addClass("fixed_top");
+                $wrap.css({"padding-top": parseInt($mhead.outerHeight(),10) });
+                $subFixed.css("top","50px");
+            }
+        }
+        // 스크롤 방향 체크
+        var $btnQuick = $(".footer .newquick"); // Top 버튼
+		var stickyHead = function(){			
+			// TOP버튼 등장 
+            nowPos = $(window).scrollTop(); 
+			if(nowPos > position){
+				$wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+				$btnQuick.addClass("scr_mode");
+			}else{
+				$wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+			}
+			position = nowPos;
+		}
+		$(window).load(stickyHead).scroll(stickyHead);
+	});
+
+</script>
+</body>
+</html>

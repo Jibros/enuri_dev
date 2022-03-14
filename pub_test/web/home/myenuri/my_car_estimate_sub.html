@@ -1,0 +1,704 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>마이 에누리</title>
+    <link rel="shortcut icon" href="/images/member/page/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+    <link rel="stylesheet" type="text/css" href="/common/css/jquery-ui.css">
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/pc_v2/common_ssl.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/pc_v2/emoney_ssl.css"/>
+    <!-- // -->
+    <!-- 200914 : SR#42033 : 자동차 견적관리 CSS 추가 -->
+    <link rel="stylesheet" type="text/css" href="/css/pc_v2/newcar_ssl.css"/>
+    <!-- // -->
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/common/js/lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery.ui.datepicker-ko.js"></script>
+</head>
+<body>
+
+    <div id="wrap">
+
+        <!-- 공통 : 헤더 -->
+        <div id="header" class="header header-mypage">
+            <!-- 심플헤더 -->
+            <div class="header_simple_bar">
+                <div class="inner">
+                    <ul class="tab_family">
+                        <li><a href="#">소셜비교</a></li>
+                        <li><a href="#">쇼핑지식</a></li>
+                        <li><a href="#">조립PC</a></li>
+                        <li><a href="#">해외직구</a></li>
+                    </ul>
+                    <ul class="menu_user">
+                        <li><em>wangsub</em>님</li>
+                        <li><a href="#">My에누리</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">M캐시전환</a></li>
+                        <li><a href="#" class="btn_sitemap" onclick="$('.sitemap').toggle();return false;">더보기<span class="ico_sitemap my_sprite"></span></a>
+                            <!-- 더보기 레이어 -->
+                            <div class="sitemap" id="morepop" style="display:none">
+                                <dl>
+                                    <dt>주요서비스</dt>
+                                    <dd>
+                                        <a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+                                        <a href="/enuripc/">PC 견적비교</a>
+                                        <a href="/">해외직구</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+                                        <a href="/view/move_mall.jsp">이사견적</a>
+                                        <a href="/view/Flower365.jsp">꽃배달</a>
+                                        <a href="/tour2012/Tour_Index.jsp">여행비교</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>커뮤니티</dt>
+                                    <dd>
+                                        <a href="/knowbox2/index.jsp">쇼핑지식</a>
+                                        <a href="/knowbox2/news/index.jsp">뉴스</a>
+                                        <a href="/knowbox2/guide/index.jsp">구매가이드</a>
+                                        <a href="/knowbox2/exp/index.jsp">체험단</a>
+                                        <a href="/knowbox2/review/index.jsp">사용기</a>
+                                        <a href="/knowcom/enuritv.jsp">에누리TV</a>
+                                        <a href="/knowcom/board.jsp?bbsname=nuri">자유게시판</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/knowcom/board.jsp?bbsname=sale">특가게시판</a>
+                                        <a href="/knowbox2/qna/index.jsp">쇼핑Q&amp;A</a>
+                                        <a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition">쇼핑기획전</a>
+                                        <a href="/infoad_event/eventMain.jsp">이벤트</a>
+                                    </dd>
+                                </dl>
+                                <p class="all">
+                                    <a href="/etc/Site_map.jsp" class="enuri_all">에누리 서비스 전체보기</a>
+                                    <a href="javascript:///" class="layer_close" onclick="$('#morepop').hide();">닫기</a>
+                                </p>
+                            </div>
+                            <!-- // 더보기 레이어 -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // 심플헤더 -->
+
+            <!-- 메인헤더 + GNB + Search 영역 -->
+            <div class="header_wrap">
+                <div class="inner">
+                    <h1><a href="/" title="에누리닷컴">에누리닷컴</a></h1>
+                    <!-- GNB -->
+                    <!-- 211105 : SR#49658 : 마이e클럽 개편일정 지연되어, 자동차 서비스 메뉴만 삭제하여 진행함. -->
+                    <ul class="nav_menu">
+                        <!-- <li class="item_nav"><a href="#">My 에누리</a></li>
+                        <li class="item_nav"><a href="#">e머니</a></li>
+                        <li class="item_nav"><a href="#">e쿠폰 스토어</a></li>
+                        <li class="item_nav"><a href="#">관심 상품</a></li> -->
+                        <li class="item_nav"><a href="#">내차 시세 관리</a></li>
+                        <!-- 200914 : SR#42033 : 자동차 견적관리 추가 -->
+                        <li class="item_nav on"><a href="#">자동차 견적관리</a></li>
+                        <!-- // -->
+                        <!-- 20190918 메뉴 변경 : 찜 쇼핑몰 -> 회원정보 수정 -->
+                        <!-- <li class="item_nav"><a href="#">회원정보수정</a></li> -->
+                        <!-- // -->
+                    </ul>
+                    <!-- //GNB -->
+                </div>
+            </div>
+            <!-- // 메인헤더 + GNB + Search 영역 -->
+        </div>
+        <!-- // 공통 : 헤더 -->
+
+        <div id="container" class="container">
+
+            <div class="my_cont">
+                <!-- 공통 : 좌측메뉴 -->
+                <div class="menu">
+                    <h2>MY 에누리</h2>
+                    <ul class="list">
+                        <!-- 211105 : SR#49658 : 마이e클럽 개편일정 지연되어, 자동차 서비스 메뉴만 삭제하여 진행함. -->
+                        <!-- <li class="item">
+                            <a href="#" class="item_tit">e머니</a>
+                            <ul class="item_cnt">
+                                <!- - 활성화는 li태그에 on 붙여주세요 - ->
+                                <li><a href="#">전체내역</a></li>
+                                <li><a href="#">적립내역</a></li>
+                                <li><a href="#">사용내역</a></li>
+                                <li><a href="#">환불내역</a></li>
+                            </ul>
+                        </li>
+                        <li class="item"><a href="#" class="item_tit">e쿠폰 스토어</a></li>
+                        <li class="item">
+                            <a href="#" class="item_tit">관심상품</a>
+                            <ul class="item_cnt">
+                                <li><a href="#">최근본상품</a></li>
+                                <li><a href="#">찜 상품</a></li>
+                            </ul>
+                        </li> -->
+                        <li class="item"><a href="#" class="item_tit">내차 시세 관리</a></li>
+                        <!-- 200914 : SR#42033 : 자동차 견적관리 추가 -->
+                        <li class="item"><a href="#" class="item_tit">자동차 견적관리</a></li>
+                        <!-- // -->
+                    </ul>
+                </div>
+                <!-- // 공통 : 좌측메뉴 -->
+
+                <!-- 200914 : SR#42033 : 자동차 견적관리 컨텐츠 -->
+                <div class="cont_inner">
+
+                    <!-- 활성화 견적 리스트 -->
+                    <div class="vaild_estimate">
+                        <div class="box_tit">
+                            <i class="newcar_sprite ico_estimate"></i>
+                            견적관리 <em class="tx_count">(3)</em>
+                        </div>
+                        <div class="box_list">
+                            <!-- 견적 없을 때 -->
+                            <div class="no_result" style="display:none">
+                                유효한 견적이 없습니다.
+                            </div>
+                            <!-- // -->
+                            
+                            <!-- 견적 리스트 -->
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <!-- 반복 : 유효한 견적 아이템 -->
+                                    <!-- 선택된 아이템은 .selected 붙여주세요 -->
+                                    <div class="swiper-slide selected">
+                                        <a href="my_car_estimate_sub.html">
+                                            <!-- 읽지 않은 딜러 메시지 수신시 -->
+                                            <i class="newcar_sprite ico_unread"></i>
+                                            <!-- 모델이미지 -->
+                                            <span class="thumb"><img src="/images/newcar/img_1600.png" alt=""></span>
+                                            <!-- 모델명 -->
+                                            <span class="tx_model">올 뉴 아반떼</span>
+                                            <!-- 견적접수일자 -->
+                                            <span class="tx_date">2020.09.09</span>
+                                        </a>
+                                    </div>
+                                    <!-- // -->
+                                    <div class="swiper-slide">
+                                        <a href="my_car_estimate_sub.html">
+                                            <!-- <i class="newcar_sprite ico_unread"></i> -->
+                                            <span class="thumb"><img src="/images/newcar/img_1600.png" alt=""></span>
+                                            <span class="tx_model">K5 3세대</span>
+                                            <span class="tx_date">2020.06.15</span>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="my_car_estimate_sub.html">
+                                            <!-- <i class="newcar_sprite ico_unread"></i> -->
+                                            <span class="thumb"><img src="/images/newcar/img_1600.png" alt=""></span>
+                                            <span class="tx_model">K5 3세대</span>
+                                            <span class="tx_date">2020.06.15</span>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="my_car_estimate_sub.html">
+                                            <!-- <i class="newcar_sprite ico_unread"></i> -->
+                                            <span class="thumb"><img src="/images/newcar/img_1600.png" alt=""></span>
+                                            <span class="tx_model">K5 3세대</span>
+                                            <span class="tx_date">2020.06.15</span>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="my_car_estimate_sub.html">
+                                            <!-- <i class="newcar_sprite ico_unread"></i> -->
+                                            <span class="thumb"><img src="/images/newcar/img_1600.png" alt=""></span>
+                                            <span class="tx_model">K5 3세대</span>
+                                            <span class="tx_date">2020.06.15</span>
+                                        </a>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <a href="my_car_estimate_sub.html">
+                                            <!-- <i class="newcar_sprite ico_unread"></i> -->
+                                            <span class="thumb"><img src="/images/newcar/img_1600.png" alt=""></span>
+                                            <span class="tx_model">K5 3세대</span>
+                                            <span class="tx_date">2020.06.15</span>
+                                        </a>
+                                    </div>                                    
+                                </div>
+                                <div class="swiper-scrollbar"></div>
+                            </div>
+                            <script>
+                                $(function(){  // 활성화 견적 리스트 스와이퍼 ( minLength 개를 초과할때만 생성 )
+                                    var minLength = 5;
+                                    var $wrap = $(".vaild_estimate");
+                                    var container = '.vaild_estimate .swiper-container';
+                                    var settings = {
+                                        scrollbar: container +' .swiper-scrollbar',
+                                        scrollbarHide: false,
+                                        slidesPerView: 'auto',
+                                        centeredSlides: false                              
+                                    }
+                                    if ( $(container).find(".swiper-slide").length > minLength ){
+                                        var mySwiper = new Swiper(container,settings); // 스와이퍼 생성                                  
+                                    }
+                                })
+                            </script>
+                            <!-- // -->
+                        </div>
+                    </div>
+                    <!-- // -->
+
+                    <!-- 견적 내역 -->
+                    <div class="box_inner cont_estimate">
+                        <div class="box_head"><em>견적 내역</em></div>
+                        <div class="box_cnt">
+                            <!-- 차량 기본정보  -->
+                            <div class="info_model">
+                                <span class="logo">
+                                    <img src="/images/newcar/img_1001.png" alt="">
+                                </span>
+                                <span class="thumb">
+                                    <img src="/images/newcar/img_1600.png" alt="">
+                                </span>
+                                <div class="info">
+                                    <span class="tx_date"><em>2020.09.09</em> 10:44</span>
+                                    <span class="tx_model">현대 올 뉴 아반떼</span>
+                                    <span class="tx_model_sub">2020년형 가솔린 1.6 (개소세 5%기준) 인스퍼레이션 A/T</span>
+                                    <dl class="info_opt">
+                                        <dt>색상</dt>
+                                        <dd>파이어리 레드 (PR2)</dd>
+                                        <dt>옵션</dt>
+                                        <dd>하이패스 시스템 + ECM 룸미러</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <!-- // -->
+                            <!-- 사용자 견적정보 -->
+                            <div class="info_price">
+                                <table class="tb_info_price">
+                                    <tbody>
+                                        <tr>
+                                            <th class="col--tit">차량 기본가</th>
+                                            <td class="col--price tx_price_grey"><em>24,990,000</em>원</td>
+                                            <td class="col--exp">&nbsp;</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="col--tit">옵션가 <span class="tx_count">(2)</span></th>
+                                            <td class="col--price"><em>+570,000</em>원</td>
+                                            <td class="col--exp">
+                                                <!-- 버튼 : 확장 -->
+                                                <button class="btn__expend newcar_sprite ico_expend"></button>
+                                                <!-- // -->
+                                                <!-- 확장 레이어 : .btn__expend에 .is-active 붙이면 노출
+                                                 -->
+                                                <div class="lay_expend_detail">
+                                                    <ul class="list_detail">
+                                                        <!-- 반복 : 내용 -->
+                                                        <li>
+                                                            <span class="tx_tit">개소세 인하</span>
+                                                            <span class="tx_price"><em>-1,104,817</em>원</span>
+                                                        </li>
+                                                        <!-- // -->
+                                                        <li>
+                                                            <span class="tx_tit">블루멤버스 포인트 선사용</span>
+                                                            <span class="tx_price"><em>-200,000</em>원</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tx_tit">전시차</span>
+                                                            <span class="tx_price"><em>-200,000</em>원</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tx_tit">개소세 인하</span>
+                                                            <span class="tx_price"><em>-1,104,817</em>원</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tx_tit">블루멤버스 포인트 선사용</span>
+                                                            <span class="tx_price"><em>-200,000</em>원</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tx_tit">전시차</span>
+                                                            <span class="tx_price"><em>-200,000</em>원</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="col--tit">할인가 <span class="tx_count">(3)</span></th>
+                                            <td class="col--price"><em>-1,404,817</em>원</td>
+                                            <td class="col--exp">
+                                                <!-- 버튼 : 확장 -->
+                                                <!-- .btn__expend.is-active : 활성화 -->
+                                                <button class="btn__expend is-active newcar_sprite ico_expend"></button>
+                                                <!-- // -->
+                                                <!-- 확장 레이어 : .btn__expend에 .is-active 붙이면 노출
+                                                 -->
+                                                <div class="lay_expend_detail">
+                                                    <ul class="list_detail">
+                                                        <!-- 반복 : 내용 -->
+                                                        <li>
+                                                            <span class="tx_tit">개소세 인하</span>
+                                                            <span class="tx_price"><em>-1,104,817</em>원</span>
+                                                        </li>
+                                                        <!-- // -->
+                                                        <li>
+                                                            <span class="tx_tit">내용이 길면 아래줄로 내려갑니다 내용이 길면 아래줄로 내려갑니다내용이 길면 아래줄로 내려갑니다내용이 길면 아래줄로 내려갑니다내용이 길면 아래줄로 내려갑니다</span>
+                                                            <span class="tx_price"><em>-1,104,817</em>원</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="tx_tit">블루멤버스 포인트 선사용</span>
+                                                            <span class="tx_price"><em>-200,000</em>원</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="col--tit">기타비용</th>
+                                            <td class="col--price"><em>0</em>원</td>
+                                            <td class="col--exp">
+                                                <!-- 버튼 : 확장 -->
+                                                <button class="btn__expend newcar_sprite ico_expend"></button>
+                                                <!-- // -->
+                                                <!-- 확장 레이어 : .btn__expend에 .is-active 붙이면 노출
+                                                 -->
+                                                <div class="lay_expend_detail">
+                                                    <ul class="list_detail">
+                                                        <!-- 내용없음 -->
+                                                        <li class="no_result">
+                                                            선택된 항목이 없습니다.
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="row_total">
+                                            <th class="col--tit">출고가격</th>
+                                            <td class="col--price"><em>25,798,543</em>원</td>
+                                            <td class="col--exp">&nbsp;</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <script>
+                                    $(function(){
+                                        var $box = $(".info_price")
+                                        var $btnExpend = $box.find(".btn__expend");
+                                        $btnExpend.click(function(){
+                                            $btnExpend.removeClass("is-active");
+                                            $(this).addClass("is-active");
+                                        })
+                                    })
+                                </script>
+                            </div>
+                            <!-- // -->
+                            <!-- 견적 유효기간 -->
+                            <div class="tx_valid_period">
+                                견적유효기간 : <em>2020.06.20</em> 까지
+                            </div>
+                            <!-- // -->
+                        </div>
+                    </div>
+
+                    <!-- 견적 응답 수신 -->
+                    <div class="box_inner respon_estimate">
+                        <div class="box_head"><em>견적 응답 수신 <span class="tx_count">(3)</span></em></div>
+                        <div class="box_cnt">
+                            <ul class="list_response">
+                                <!-- 결과없음 -->
+                                <li class="no_result">
+                                    <div class="tx_result">
+                                        <em>복수의 담당자에게 <br/>응답을 기다리고 있습니다.</em>
+                                        다양한 혜택과 서비스를 알려드릴 수 있도록 최선을 다하겠습니다.<br/>
+                                        잠시만 기다려 주세요.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="box_inner respon_estimate">
+                        <div class="box_head"><em>견적 응답 수신 <span class="tx_count">(3)</span></em></div>
+                        <div class="box_cnt">
+                            <ul class="list_response">
+                                <!-- 반복 -->
+                                <li>
+                                    <div class="tx_date"><em>2020.06.05</em> 10:44</div>
+                                    <div class="tx_info">
+                                        <span class="tx_price">
+                                            <em>-1,500,000</em>원
+                                        </span>
+                                        <span class="tx_msg">
+                                            딜러회신메시지표시영역딜러회신메시지표시영역딜러회신메시지딜러회신메시지표시영역딜러회신메시지표시영역딜러회신메시지딜러회신메시지표시영역딜러회신메시지표시영역딜러회신메시지딜러회신메시지표시영역딜러회신메시지표시영역딜러회신메시지
+                                        </span>
+                                        <!-- 상태 : 출고 진행중 -->
+                                        <a href="#" class="btn__release tx_status release">
+                                            출고 진행중
+                                        </a>
+                                    </div>
+                                </li>
+                                <!-- // -->
+                                <li>
+                                    <div class="tx_date"><em>2020.06.05</em> 10:44</div>
+                                    <div class="tx_info">
+                                        <span class="tx_price">
+                                            <em>-1,500,000</em>원
+                                        </span>
+                                        <span class="tx_msg">
+                                            딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 
+                                        </span>
+                                        <!-- 상태 : 계약 중 -->
+                                        <a href="#" class="btn__contract tx_status contract">
+                                            계약 중 <span class="tx_sub">(차대번호 입력하기)</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx_date"><em>2020.06.05</em> 10:44</div>
+                                    <div class="tx_info">
+                                        <span class="tx_price">
+                                            <em>-1,500,000</em>원
+                                        </span>
+                                        <span class="tx_msg">
+                                            딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시 회신 메시지 표시영역 딜러 회신 메시지 표시 회신 메시지 표시영역 딜러 회신 메시지 표시
+                                        </span>
+                                        <!-- 상태 : 계약 희망 의사 전달하기 -->
+                                        <a href="#" class="btn__send tx_status">
+                                            계약 희망 의사 전달하기
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="tx_date"><em>2020.06.05</em> 10:44</div>
+                                    <div class="tx_info">
+                                        <span class="tx_price">
+                                            <em>-1,500,000</em>원
+                                        </span>
+                                        <span class="tx_msg">
+                                            딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시
+                                        </span>
+                                        <!-- 상태 : 계약 희망 의사 전달하기 -->
+                                        <a href="#" class="btn__send tx_status">
+                                            계약 희망 의사 전달하기
+                                        </a>
+                                    </div>
+                                </li>
+                                <!-- 종료된 상담 .end -->
+                                <li class="end">
+                                    <div class="tx_date"><em>2020.06.05</em> 10:44</div>
+                                    <div class="tx_info">
+                                        <span class="tx_price">
+                                            <em>-1,500,000</em>원
+                                        </span>
+                                        <span class="tx_msg">
+                                            딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시영역 딜러 회신 메시지 표시
+                                        </span>
+                                        <!-- 상태 : 종료된 상담입니다 -->
+                                        <span class="tx_status end">
+                                            종료된 상담입니다
+                                        </span>
+                                    </div>
+                                </li>
+                                <!-- // -->
+                            </ul>
+                            <!-- 201209 : SR#43908 : 딜러응답 리스트 전체 텍스트 표시를 위한 높이 맞춤 -->
+                            <script>
+                                // 리스트 내 딜러응답 호출 완료 후 실행시켜주세요
+                                var listCalcHeight = function(){
+                                    var $item = $(".respon_estimate .list_response > li:not(.no_result)");
+                                    if ( $item.length-1 ){
+                                        $item.each(function(e){
+                                            var num = e%3;
+                                            // 리스트 최 좌측 아이템이 우측아이템과 높이를 비교합니다.
+                                            if ( !num ){
+                                                var maxH = 110; // defualt Height
+                                                for ( var i = 0 ; i < 3 ; i++ ){
+                                                    var itemH = $item.eq(e+i).find(".tx_info .tx_msg").height();
+                                                    maxH = Math.max(maxH,itemH);
+                                                }
+                                                for ( var i = 0 ; i < 3 ; i++ ){
+                                                    $item.eq(e+i).find(".tx_info .tx_msg").css("height",maxH);
+                                                }
+                                            }
+                                        })
+                                    }
+                                }();
+                            </script>
+                            <!-- // -->
+                        </div>
+                    </div>
+
+                </div>
+                <!-- // -->
+            </div>
+                        
+        </div>
+
+        <!-- 200914 : SR#42033 : 신규 레이어 -->
+
+        <!-- 레이어 : 계약의사 표시하기 -->
+        <div class="lay_popup lay_apply">
+            <div class="lay_wrap">
+                <div class="lay_box">
+                    <div class="lay_head">
+                        이 담당자에게<br/><em>계약의사</em>를 표현하시겠어요?
+                    </div>
+                    <div class="lay_cont">
+                        즉시 해당 담당자에게 고객님의 연락처가 오픈됩니다. <br/>
+                        또한, 다른 담당자들의 회신은 비활성화 처리됩니다.
+                    </div>
+                    <div class="lay_btn">
+                        <button class="btn__apply">네, 이담당자에게 계약할게요</button>
+                        <button class="btn__cancel" onclick="$(this).closest('.lay_popup').fadeOut(100);">아니오</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 레이어 : 계약안내 후 차대번호 입력 -->
+        <div class="lay_popup lay_idnum">
+            <div class="lay_wrap">
+                <div class="lay_box">
+                    <div class="lay_head">
+                        담당자로 부터<br/><em>계약에 대한 안내</em>를 받으셨나요?
+                    </div>
+                    <div class="lay_cont">
+                        계약 중 차량 출고가 진행되면 차대번호를 받으실 수 있습니다.<br/>
+                        차대번호를 등록해 주시면 출고 후 주유권으로 교환 가능한 <br/>
+                        e머니를 적립해 드립니다.
+                        <!-- 입력 : 차대번호 -->
+                        <div class="lay_inp_area">
+                            <input type="text" placeholder="17자리의 차대번호를 입력해 주세요.">                            
+                        </div>
+                        <!-- 입력 : 차대번호 : 유효성체크 -->
+                        <!-- 유효성 체크 -->
+                        <div class="lay_inp_area" style="display:none">
+                            <input type="text" placeholder="17자리의 차대번호를 입력해 주세요." class="error">
+                            <span class="tx_error">올바른 차대번호가 아닙니다.</span>
+                        </div>
+                        <!-- // -->
+                    </div>
+                    <div class="lay_btn">
+                        <button class="btn__inp_id" onclick="$(this).closest('.lay_popup').find('.lay_inp_area').toggle();">차대번호 등록하기</button>
+                        <button class="btn__cancel" onclick="$(this).closest('.lay_popup').fadeOut(100);">취소</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- 레이어 : 차대번호 등록후 확인 -->
+        <div class="lay_popup lay_cfidnum">
+            <div class="lay_wrap">
+                <div class="lay_box">
+                    <div class="lay_head">
+                        등록된 <em>차대번호</em>는 다음과 같습니다.
+                    </div>
+                    <div class="lay_cont">
+                        <!-- 확인 : 차대번호 -->
+                        <div class="lay_inp_area">
+                            <input type="text" value="1234567890ABCDEFG" readonly>
+                            <!-- 버튼 : 복사 -->
+                            <button class="btn__copy">복사</button>
+                            <!-- // -->
+                        </div>
+                        <!-- // -->
+                        보험 가입 등 차대번호가 필요하시다면<br/>복사 버튼을 눌러 사용하세요
+                    </div>
+                    <div class="lay_btn">
+                        <button class="btn__close" onclick="$(this).closest('.lay_popup').fadeOut(100);">닫기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        <!-- // -->
+
+        <!-- // -->
+
+        <!-- 공통 : 푸터 -->       
+        <!-- 200605 : 리뉴얼 푸터 -->
+        <!-- 가로 1280px  -> .footer--com.wide -->
+        <div id="footer" class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <!-- <li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li> -->
+                        <!-- <li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li> -->
+                        <!-- <li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li> -->
+                        <!-- <li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li> -->
+                        <!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <!-- <li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li> -->
+                        <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li>
+                        <!-- <li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li> -->
+                        <!-- <li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2015-서울중구-1046호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->    
+        <!-- // 공통 : 푸터 -->
+    </div>
+
+    <!-- 달력추가 -->
+    <!-- <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="position: absolute; top: 481px; left: 1017.5px; z-index: 1; display: block;"><div class="ui-datepicker-header ui-widget-header ui-helper-clearfix ui-corner-all"><a class="ui-datepicker-prev ui-corner-all" data-handler="prev" data-event="click" title="이전달"><span class="ui-icon ui-icon-circle-triangle-w">이전달</span></a><a class="ui-datepicker-next ui-corner-all" data-handler="next" data-event="click" title="다음달"><span class="ui-icon ui-icon-circle-triangle-e">다음달</span></a><div class="ui-datepicker-title"><span class="ui-datepicker-year">2019</span>년&nbsp;<span class="ui-datepicker-month">9월</span></div></div><table class="ui-datepicker-calendar"><thead><tr><th class="ui-datepicker-week-end"><span title="일요일">일</span></th><th><span title="월요일">월</span></th><th><span title="화요일">화</span></th><th><span title="수요일">수</span></th><th><span title="목요일">목</span></th><th><span title="금요일">금</span></th><th class="ui-datepicker-week-end"><span title="토요일">토</span></th></tr></thead><tbody><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">1</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">2</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">3</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">4</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">5</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">6</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">7</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">8</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">9</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">10</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">11</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">12</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">13</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">14</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">15</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">16</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">17</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">18</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">19</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">20</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">21</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">22</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">23</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">24</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">25</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">26</a></td><td class=" " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">27</a></td><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">28</a></td></tr><tr><td class=" ui-datepicker-week-end " data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default" href="#">29</a></td><td class=" ui-datepicker-days-cell-over  ui-datepicker-today" data-handler="selectDay" data-event="click" data-month="8" data-year="2019"><a class="ui-state-default ui-state-highlight" href="#">30</a></td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td><td class=" ui-datepicker-week-end ui-datepicker-other-month ui-datepicker-unselectable ui-state-disabled">&nbsp;</td></tr></tbody></table></div> -->
+    <!-- //   -->
+
+    <script>
+        $(function(){
+            var position = $(window).scrollTop(); 
+            var el = {
+                wrap : $("#wrap"), // 메인래퍼
+                cont : $("#container .my_cont"), // 메인컨텐츠
+                menu : $("#container .menu"), // 메뉴
+                btnQuick : $(".footer .box_quick") // 탑버튼
+            }
+            var stickyMenu = function(){
+				var $myScroll = $(window).scrollTop();
+                if ( $myScroll > el.cont.offset().top - 20){
+					el.menu.addClass("sticky");
+					el.btnQuick.addClass("scr_mode");
+                    // 업다운 스크롤 체크
+					if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+					else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+				}else{
+					el.menu.removeClass("sticky");
+					el.btnQuick.removeClass("scr_mode");
+					el.wrap.removeClass("scr_down scr_up");
+				}
+				position = $myScroll;
+            };
+			$(window).load(stickyMenu).scroll(stickyMenu);
+        })
+    </script>
+</body>
+</html>

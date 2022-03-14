@@ -1,0 +1,1085 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>고객센터 - eNuri.com</title>
+<META HTTP-equiv="Content-Type" content="text/html; charset=utf-8">
+<SCRIPT LANGUAGE="JavaScript"> 
+	var var_img_enuri_com = "http://img.enuri.gscdn.com";
+</SCRIPT>
+<META NAME="description" CONTENT="가격비교(에누리)-전자제품 최저 가격 비교 정보 제공">
+<META NAME="keyword_board" CONTENT="에누리,가격비교,쇼핑몰,쇼핑가이드,가격정보,최저가정보,전자제품,tv,vtr,비디오,오디오,하이파이,카메라,디지털카메라,캠코더,hifi,pc,pcs,컴부품,전자수첩,노트북,notebook,모니터,monitor,프린터,스캐너,핸드폰,휴대폰,냉난방기,가전제품,세탁기,냉방고,청소기,전화기,화장품,스키,스노우보드">
+<LINK REL="SHORTCUT ICON" HREF="/favicon.ico">
+<link rel="StyleSheet" href="/common/css/enuri.css" type="text/css">
+<link REL="stylesheet" HREF="/common/css/fusion.css" TYPE="text/css">
+<link rel="stylesheet" href="/common/css/enuribase1.css" type="text/css">
+<!-- SDU/SDUL COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=201901022" type="text/css">
+
+<script src="http://img.enuri.gscdn.com/common/js/pager.js" language="JavaScript"></script>
+<script type="text/javascript" src="/common/js/lib/prototype.js"></script>
+<script language="javascript" src="/common/js/function.js"></script>
+<script type="text/javascript" src="/common/js/incfavoritelayer.js"></script>
+<script type="text/javascript" src="/common/js/incfavoritelayer_body.js"></script>
+<link href="/mallregister/new/style.css" rel="stylesheet" type="text/css">
+<script LANGUAGE="JavaScript">
+<!--	
+var title_faq_selected = 2;
+function select_faq_title(num){
+	title_faq_selected = num;
+	select_faq_title_out();
+}
+function select_faq_type(num){
+	if(num == 1){
+		location.href = "/sdul/faq/Faq_List.jsp?faq_type="+num+"&part=&kind=9";
+	}else if(num == 4){
+		top.location.href = "/faq/customer_seller_write.jsp?faq_type=4&kind=0&faq_seq=0";
+	}else{
+		location.href = "/sdul/faq/Faq_List.jsp?faq_type="+num+"&part=";
+	}
+	/*
+	title_faq_selected = num;
+//	if(num != 5){
+//		faq_total.faq_type.value=num;
+//	}
+	faq_total.target = "detail_list";
+	//faq_total.keyword.value="";
+	faq_total.target="detail_list";
+
+	if(num == 1){
+		faq_total.action="Faq_Frame_List.jsp?faq_type=0&kind=8";
+	}else if(num == 2){
+		faq_total.action="Qna_Frame_List.jsp?faq_type=2&keyword=";											
+	}else if(num == 3){
+		faq_total.action="Info_Frame_List.jsp?faq_type=3&keyword=";
+	}else if(num == 4){
+		faq_total.action="Seller_Frame_List.jsp?faq_type=4&keyword=";
+	}else if(num == 5){
+		faq_total.action="User_Frame_List.jsp";				
+	}
+	faq_total.submit();
+	*/		
+}
+	
+function select_faq_title_out(){
+	$("faq_title").src ="http://img.enuri.gscdn.com/images/sellerguide/new_img/q_btn.gif";
+	$("qna_title").src ="http://img.enuri.gscdn.com/images/sellerguide/new_img/qna_btn.gif";
+	$("info_title").src = "http://img.enuri.gscdn.com/images/sellerguide/new_img/notice_btn.gif";
+	$("seller_title").src = "http://img.enuri.gscdn.com/images/sellerguide/new_img/sinsang_btn.gif";
+
+	select_faq_title(2);
+}
+function select_faq_title(idx){
+	if(idx == 1){
+		$("faq_title").src = "http://img.enuri.gscdn.com/images/sellerguide/new_img/q_btn_on.gif";
+	}else if(idx == 2){
+		$("qna_title").src = "http://img.enuri.gscdn.com/images/sellerguide/new_img/qna_btn_on.gif";
+	}else if(idx == 3 || idx == 7){
+		$("info_title").src = "http://img.enuri.gscdn.com/images/sellerguide/new_img/notice_btn_on.gif";
+	}else if(idx == 4){
+		$("seller_title").src = "http://img.enuri.gscdn.com/images/sellerguide/new_img/sinsang_btn_on.gif";
+	}
+}
+
+function go_Info_write(){
+	//page_form.target="_top";
+//	faq_total.action="Info_Write.jsp?faq_type=2&kind=9";
+//	faq_total.submit();
+	document.location.href = "/sdul/faq/Info_Write.jsp?page=1&faq_type=2";
+}
+
+function go_seller_write(){
+	//page_form.target="_top";
+//	faq_total.action="Info_Write.jsp?faq_type=2&kind=9";
+//	faq_total.submit();
+	document.location.href = "/sdul/faq/Seller_Write.jsp?faq_type=2";
+}
+
+function go_Qna_write(){
+ if(islogin()){
+	//page_form.target="_top";
+	//faq_total.action="Qna_Write.jsp?faq_type=2&kind=9";
+	//faq_total.submit();
+	document.location.href = "/sdul/faq/Qna_Write.jsp?faq_type=2";
+	}else{
+		GotoSDUL_Login_1();
+	}
+}
+
+function go_Faq_write(){
+	//page_form.target="_top";
+	//faq_total.action="Faq_Write.jsp?faq_type=2&kind=9";
+	location.href = "Faq_Write.jsp?faq_type=2&kind=9";
+	//faq_total.submit();
+}
+
+function go_search(){
+	/*
+	var num = faq_total.faq_type.value;
+	if(num == 1){
+		faq_total.action="Faq_Frame_List.jsp?faq_type=1&kind=9";
+	}else if(num == 2){
+		faq_total.action="Qna_Frame_List.jsp?faq_type=2&keyword=";												
+	}else if(num == 3){
+		faq_total.action="Info_Frame_List.jsp?faq_type=3&keyword=";
+	}else if(num == 4){
+		faq_total.action="Seller_Frame_List.jsp?faq_type=4&keyword=";
+	}else if(num == 5){
+		faq_total.action="User_Frame_List.jsp";				
+	}
+	faq_total.target="detail_list";
+	faq_total.submit();
+	*/
+	alert("개발자 문의");
+}
+
+function go_hit(hit){
+	alert("개발자 문의");
+	/*
+	faq_total.target="_top";
+	faq_total.action="?";
+	faq_total.keyword.value=hit;
+	faq_total.submit();
+	faq_total.keyword.value="";
+	*/
+}
+
+function faq_bt(){
+	location.href="/mallregister/new/SellerGuide1.jsp";
+}
+
+function syncHeightListFrame() {
+	document.getElementById("detail_list").style.height = document.getElementById("detail_list").contentWindow.document.body.scrollHeight;
+	//parent.parent.parent.syncHeightMenuFrame();
+}
+ 
+function guid_enuir(){
+	$("detail_list").src = "Faq_Frame_List.jsp?faq_type=1&kind=9";
+	select_faq_title(1);
+}
+function tgate_banner(){
+	maxWidth = window.screen.availWidth;     //현재 해상도를 기준으로 width와 height의 제한을 둔다.
+	maxHeight = window.screen.availHeight;
+	var new_phon_pop1 = window.open("/move/Redirectad.jsp?register_no=1367&pageNm=list","tgate_banner","toolbar=yes,menubar=yes,statusbar=yes,location=yes,scrollbars=yes,resizable=yes width="+maxWidth+" height="+maxHeight);
+}
+
+function SellerGuide7(){
+	var SellerGuide7 = window.open("/mallregister/new/SellerGuide7.jsp","SellerGuide7","toolbar=yes,menubar=yes,statusbar=yes,location=yes,scrollbars=yes");
+	SellerGuide7.focus();
+}
+
+function pop_seller(){
+	var pop_seller = window.open("/mallregister/new/SellerPopup8.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+	pop_seller.focus();		
+}
+
+function insertLog(logNum){
+	var url = "/view/Loginsert.jsp";
+	var param = "kind="+logNum;
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param
+		}
+	);			
+}
+//페이징
+
+
+function GoNextPage(pageNo){
+	var faq_selected = 2;
+	if( faq_selected ==1) {
+		location.href = "/sdul/faq/Faq_List.jsp?page="+pageNo+"&faq_type=2&kind=9&part=0&isAnswer=0";
+	}else if( faq_selected ==4) {
+		location.href = "/sdul/faq/Faq_List.jsp?page="+pageNo+"&faq_type=2&part=0&ca_lcode=&ca_mcode=&isAnswer=0";
+	}else{
+		location.href = "/sdul/faq/Faq_List.jsp?page="+pageNo+"&faq_type=2&part=0&isAnswer=0";
+	}
+}
+
+
+function gopage(value){
+	GoNextPage(value);
+}
+
+
+//서브 항목 선택
+function GotoSDUL_Login_1(){
+	var url = "/include/ajax/AjaxSduLoginCheck.jsp";
+	var param = "";
+		
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param,onComplete:checkSdulLogin
+		}
+	);
+
+	function checkSdulLogin(originalRequest){
+		var varReturn = originalRequest.responseText.trim();
+		if(varReturn=="1"){
+			top.Cmd_Login('sdu');
+		}else{
+			if(varReturn=="2"){
+				//top.location.href = '/sdul/mallregister/SellerMain.jsp?sm=1';
+				cmdChangePart(9);
+				go_Qna_write();
+			}else{
+				if(varReturn=="24"){ //sdu, sdul 중복 회원
+					top.Cmd_Login('choicesdu');
+				}else{
+					if(varReturn=="3") {
+						if(varReturn=="3") {
+							top.location.href = '/sdul/mallregister/SellerMain.jsp';
+						}
+					}else{
+						sdulLoginAfterDivShow();
+					}
+				}
+			}
+		}
+	}
+}
+
+function GotonoAnswer(faq_type){
+	location.href = "/sdul/faq/Faq_List.jsp?page=1&faq_type=2&isAnswer=0";
+}
+
+
+function cmdChangePart(part){
+	location.href = "/sdul/faq/Faq_List.jsp?page=&faq_type=2&part="+part;
+}
+
+function cmdChangePartFaq(faq_type, kind){
+	location.href = "/sdul/faq/Faq_List.jsp?page=1&faq_type="+faq_type+"&kind="+kind;
+}
+
+function go_listview(seq, part){
+	//alert(seq);
+	location.href = "/sdul/faq/Qna_View.jsp?page=1&seq="+seq+"&part="+part;
+}
+
+function go_listview_2(faq_seq, faq_type){
+	//alert("/sdul/faq/Info_View.jsp??faq_seq="+faq_seq+"&faq_type="+faq_type);
+	location.href = "/sdul/faq/Info_View.jsp?page=1&faq_seq="+faq_seq+"&faq_type="+faq_type;
+}
+
+
+function go_listview_3(faq_type, kind){
+		location.href = "/sdul/faq/Faq_View.jsp?page=1&faq_type="+faq_type+"&kind="+kind;
+}
+
+
+
+function go_listview_seller(faq_type, faq_seq){
+		location.href = "/sdul/faq/Seller_View.jsp?page=1&faq_type="+faq_type+"&faq_seq="+faq_seq;
+}	
+//-->
+function movePlanTop(){
+	document.body.scrollTop = "0";
+}
+</script>
+</head>
+<body onload="insertLog(7178);movePlanTop();">
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">SDUL</h2>
+	</div>
+	
+	<!-- SDUL 공통 contents -->
+	<div class="sducontent"> 
+		<div id="faqMian">
+			<table width="992" !height="100%" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<table bgcolor="#FFFFFF" width="992" height="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="755" valign="top" style="padding-left:5px;padding-top:10px" >	
+								<table width="992" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="14"></td>
+										<td width="741" align="left" valign="top">
+											<!--본문시작-->
+									<table width="720" border="0" cellspacing="0" cellpadding="0">
+										<!-- 메뉴 -->
+										<tr>
+											<td cellspacing="0" cellpadding="0" height="10"></td>
+										</tr>
+										<tr>
+											<td width="14"></td>
+											<td style="border:0px solid red;">
+												<table width=741 border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td width="134" align="left">
+															<img id="faq_title" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/q_btn.gif" onmouseover="select_faq_title(1)" onmouseout="select_faq_title_out();" border="0" style="cursor:pointer" onclick="select_faq_type(1);insertLog(4563);" align="absmiddle"><td width="5px"></td>
+														</td>
+														<td width="134" align="left">
+															<img id="qna_title" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/qna_btn_on.gif" onmouseover="select_faq_title(2)" onmouseout="select_faq_title_out();" border="0" style="cursor:pointer" onclick="select_faq_type(2);insertLog(4564);" align="absmiddle"><td width="5px"></td>
+														</td>
+														<td width="134" align="left">
+															<img id="info_title" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/notice_btn.gif" onmouseover="select_faq_title(3)" onmouseout="select_faq_title_out();" border="0" style="cursor:pointer" onclick="select_faq_type(7);insertLog(4565);" align="absmiddle"><td width="5px"></td>
+														</td>
+														<td valign="top">&nbsp;</td>
+														<td width="134">
+															<img id="seller_title" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/sinsang_btn.gif" onmouseover="select_faq_title(4)" onmouseout="select_faq_title_out();" border="0" style="cursor:pointer" onclick="select_faq_type(4);insertLog(4566);" align="absmiddle"><td width="5px"></td>
+														</td>
+													</tr>
+													<tr>
+														<td cellspacing="0" cellpadding="0" height="10"></td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<!-- 분류 -->
+										
+										
+		
+		
+		
+		
+		
+		
+		<script>
+		function reply_nolist(num){
+				location.href="/sdul/faq/Faq_List.jsp?no_list=no_list&page=&faq_type=4&service="+num+"&part=&ca_lcode="+document.getElementById("ca_lcode").value+"&ca_mcode="+document.getElementById("ca_mcode").value;
+				//alert("location.href="+location.href);
+			}
+		function go_category(level){
+			/*
+			alert(document.getElementById("faq_type").value);
+			if(level=="1"){ //대분류
+				document.getElementById("ca_mcode").value="";
+			}
+			document.getElementById("page").value="1";
+			page_form_2.target="_self";
+			page_form_2.action="?";
+			document.all.page_form_2.submit();
+			*/
+			if(level=="1"){ //대분류
+				location.href="/sdul/faq/Faq_List.jsp?page=&faq_type=4&part=&ca_lcode="+document.getElementById("ca_lcode").value;
+			}else if(level=="2"){ //중분류
+		
+				location.href="/sdul/faq/Faq_List.jsp?page=&faq_type=4&part=&ca_lcode="+document.getElementById("ca_lcode").value+"&ca_mcode="+document.getElementById("ca_mcode").value;
+			}
+			
+			//alert(document.getElementById("ca_lcode").value);
+		}
+		
+		function setLogintopCmdtype(param){
+			logintop_cmdtype = param;
+		}
+		
+		</script>
+										<tr>
+											<td width="14"></td>
+											<td>
+												<table width="741" border="0" align="center" cellpadding="0" cellspacing="0" style="border:#b9c4d4 1px solid">
+													<tr>
+														
+														<td height="30" bgcolor="eaeef3" style="padding-left:20px;padding-top:3px;border:0px solid red;">
+															<font color="#7088a3" style="cursor: pointer;" onclick="cmdChangePart(1);">일반문의</font> |
+															<font color="#7088a3" style="cursor: pointer;" onclick="cmdChangePart(3);">광고관련</font> | 
+															<font color="#7088a3" style="cursor: pointer;" onclick="cmdChangePart(7);">상위입찰</font> |
+															<font color="#7088a3" style="cursor: pointer;" onclick="cmdChangePart(5);">기타문의</font>
+														</td>
+														<td bgcolor="eaeef3" align="right" style="padding-right:20px;">
+																
+														<font color="#7088a3" style="cursor: pointer;" onclick="GotoSDUL_Login_1();">SDUL상품문의</font>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+		
+		
+		
+										
+										<!-- 목록 -->
+										
+										
+										
+		
+		
+		<style type="text/css">
+		<!--
+		.btn_text7 { margin:0px; cursor: hand; font-weight: bold; height: 20px; width: 80px; padding: 2px, 0, 0, 0px; color:#5B5B5B; border: #5B5B5B 1 solid; background:#ffffff; }
+		.btn_text8 { font-weight: normal; height: 20px; width: 120px; margin: 3px 0px 0px 0px ; align:absmiddle; padding: 0px, 0, 0, 3px; color:#5B5B5B; border: #5B5B5B 1 solid; background:#ffffff; }
+		
+		-->
+		</style>
+		<script LANGUAGE="JavaScript">
+		<!--
+		function go_write(){
+				location.href="Info_Write.jsp";
+		}
+		function showPaging() {
+			if (document.getElementById("select_paging_group").style.display != "none") {
+				document.getElementById("select_paging_group").style.display = "none";
+				// cmdAllLayerClose();
+			} else {
+				// cmdAllLayerClose();
+				var posLeftTop = Position.cumulativeOffset($("paging_group_list"));
+				document.getElementById("select_paging_group").style.left = posLeftTop[0]
+						+ "px";
+				document.getElementById("select_paging_group").style.top = posLeftTop[1]
+						+ 16 + "px";
+				document.getElementById("select_paging_group").style.display = "";
+				document.getElementById("img_paging_btn").src = var_img_enuri_com
+						+ "/2010/images/view/newdown_close.gif";
+			}
+		}
+		function hidePaging() {
+			if (document.getElementById("select_paging_group")) {
+				document.getElementById("select_paging_group").style.display = "none";
+			}
+		}
+		function over_view_mode(obj) {
+			obj.className = "over";
+		}
+		function out_view_mode(obj) {
+			obj.className = "out";
+		}
+		
+		
+		function goPage(pageNum){
+			location.href = "/sdul/faq/Faq_List.jsp?page="+pageNum+"&faq_type=2&part=1,3,5,7&isAnswer=2&search_text="+document.getElementById("search_text").value;
+		}
+		
+		function Search_id(){
+			location.href = "/sdul/faq/Faq_List.jsp?page=&faq_type=2&part=1,3,5,7&search_text="+document.getElementById("search_text").value;	
+		}
+		
+		function Search_keyup(){
+			if(event.keyCode==13){
+				Search_id();	
+			}
+		}
+		//-->
+		</script>
+		<tr style="">
+			<td width="14"></td>
+			<td>
+				<table width="741" border="0" cellspacing="0" cellpadding="0">
+				    <tr>
+				    	<td>&nbsp;</td>
+				    </tr>
+				    <tr>
+				    	
+				    </tr>     
+					<tr>
+				  		<td align="right"><input type="button" onclick="Search_id();"   class="btn_text7" value="아이디 검색"><input align="absmiddle" style="padding: 2px 0px 0px 3px" onkeyup="Search_keyup();" class="btn_text8" type="text" id="search_text" value=""></td>
+				    </tr>
+				    <tr>
+				    	<td>
+				    		<table width="725" border="0" align="center" cellpadding="0" cellspacing="0">
+							    <tr>
+								    <td height="1" bgcolor="E6EAEF"></td>
+								    <td height="1" bgcolor="E6EAEF"></td>
+								    <td height="1" bgcolor="E6EAEF"></td>
+								    <td height="1" bgcolor="E6EAEF"></td>
+								    <td height="1" bgcolor="E6EAEF"></td>
+							    </tr>
+							    <tr>
+								    <td width="70" height="30" align="center"><img src="http://img.enuri.gscdn.com/images/faq/help_board_tit_01.gif" width="19" height="12" /></td>
+								    <td width="80" align="center"><img src="http://img.enuri.gscdn.com/images/faq/help_board_tit_02.gif" width="20" height="12" /></td>
+						            <td align="center"><img src="http://img.enuri.gscdn.com/images/faq/help_board_tit_03.gif" width="20" height="12" /></td>
+						            <td width="80" align="center"><img src="http://img.enuri.gscdn.com/images/faq/help_board_tit_04.gif" width="30" height="12" /></td>
+						            <td width="100" align="center"><img src="http://img.enuri.gscdn.com/images/faq/help_board_tit_05.gif" width="28" height="12" /></td>
+					            </tr>
+					            <tr>
+						            <td height="2" bgcolor="#96a0ae"></td>
+						            <td height="2" bgcolor="#96a0ae"></td>
+									<td height="2" bgcolor="#96a0ae"></td>
+									<td height="2" bgcolor="#96a0ae"></td>
+									<td height="2" bgcolor="#96a0ae"></td>
+								</tr>
+															<tr>
+														            <td align="center">17611</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17611',1)" style="cursor:pointer;" class="list">
+									            	SDUL 입찰 시 충전금액에 대한 문의
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">hyo0508</td>
+									            
+								            <td align="center">2019-01-02</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17608</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17608',1)" style="cursor:pointer;" class="list">
+									            	모바일 찜 쿠폰 제외 요청
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">mhdbxhd</td>
+									            
+								            <td align="center">2018-12-31</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17607</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	기타문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17607',5)" style="cursor:pointer;" class="list">
+									            	유상잔액 입금하고 세금계산서로 신청하고 싶은데 어떻게 하면될까요
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">ecot</td>
+									            
+								            <td align="center">2018-12-28</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17605</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17605',1)" style="cursor:pointer;" class="list">
+									            	페이지 매칭 요청
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">sewindow</td>
+									            
+								            <td align="center">2018-12-24</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17602</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17602',1)" style="cursor:pointer;" class="list">
+									            	가격비교 서비스 문의
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">cubiz</td>
+									            
+								            <td align="center">2018-12-21</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17601</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17601',1)" style="cursor:pointer;" class="list">
+									            	매칭오류 수정요청
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">duke397</td>
+									            
+								            <td align="center">2018-12-21</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17591</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17591',1)" style="cursor:pointer;" class="list">
+									            	매칭오류 수정요청
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">coinbms</td>
+									            
+								            <td align="center">2018-12-20</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17590</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17590',1)" style="cursor:pointer;" class="list">
+									            	문의드립니다.
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">nine2018</td>
+									            
+								            <td align="center">2018-12-20</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17589</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	일반문의
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17589',1)" style="cursor:pointer;" class="list">
+									            	브랜드명 등록 오류
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">kcominfo</td>
+									            
+								            <td align="center">2018-12-20</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																	<tr>
+														            <td align="center">17588</td>
+								            <td align="center" style="color:#7088a3">
+								            							            	광고관련
+		
+								            							            </td>
+								            <td style="padding-left:10px;padding-top:8px;padding-bottom:8px;">
+								            	<span onClick = "go_listview('17588',3)" style="cursor:pointer;" class="list">
+									            	매칭오류요-
+												</span>
+												
+												<img src="http://img.enuri.gscdn.com/images/sellerguide/icon_qna_ok_1209.gif" border="0" align="absmiddle" style="margin-left:5px" >
+											
+											</td>
+												
+									            <td align="center">skawlsrnr1</td>
+									            
+								            <td align="center">2018-12-19</td>
+							            </tr>
+							            <tr>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+								            <td height="1" bgcolor="E6EAEF"></td>
+							            </tr>
+																		<tr>
+							            	<td height="1" bgcolor="#eaeaea"></td>            
+								            <td height="1" bgcolor="#eaeaea"></td>           
+								            <td height="1" bgcolor="#eaeaea"></td>
+								            <td height="1" bgcolor="#eaeaea"></td>           
+								            <td height="1" bgcolor="#eaeaea"></td>
+									    </tr>
+							            <tr>
+							            	<td height="2" bgcolor="#b8b8b8"></td>            
+								            <td height="2" bgcolor="#b8b8b8"></td>           
+								            <td height="2" bgcolor="#b8b8b8"></td>
+								            <td height="2" bgcolor="#b8b8b8"></td>           
+								            <td height="2" bgcolor="#b8b8b8"></td>
+									    </tr>
+						            </table>
+						        </td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td align="center" >
+									<table border="0" cellpadding="0" cellspacing="0">
+										<tr>
+										   <!-- 페이징 처리부분 -->
+										    <td bgcolor="#FFFFFF" colspan=12>
+											
+												<div style="height:19px;margin:0 auto;width:380px;">
+				<ul id="paging" >
+					<li class="paging_on" onclick="goPage(1)" onmouseover="this.className='paging_on'" onmouseout="this.className='paging_on'">1</li>
+					<li class="paging_off" onclick="goPage(2)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">2</li>
+					<li class="paging_off" onclick="goPage(3)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">3</li>
+					<li class="paging_off" onclick="goPage(4)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">4</li>
+					<li class="paging_off" onclick="goPage(5)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">5</li>
+					<li class="paging_off" onclick="goPage(6)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">6</li>
+					<li class="paging_off" onclick="goPage(7)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">7</li>
+					<li class="paging_off" onclick="goPage(8)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">8</li>
+					<li class="paging_off" onclick="goPage(9)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">9</li>
+					<li class="paging_off" onclick="goPage(10)" onmouseover="this.className='paging_over'" onmouseout="this.className='paging_off'">10</li>
+				</ul>
+				<ul id="paging_group">
+					<li id="paging_group_list" style="cursor:pointer;" onclick="showPaging()"><p style="width:60px">1~10</p></li>
+					<li><img src="http://img.enuri.gscdn.com/2010/images/view/newdown.gif" width="13" height="16" class="img_button" onclick="showPaging()" id="img_paging_btn"></li>
+				</ul>
+				<div id="select_paging_group" style="display:none;height:160px;overflow:auto;width:74px;">
+					<ul !style="width:59px">
+						<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(1)">1~10</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(11)">11~20</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(21)">21~30</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(31)">31~40</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(41)">41~50</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(51)">51~60</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(61)">61~70</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(71)">71~80</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(81)">81~90</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(91)">91~100</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(101)">101~110</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(111)">111~120</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(121)">121~130</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(131)">131~140</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(141)">141~150</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(151)">151~160</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(161)">161~170</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(171)">171~180</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(181)">181~190</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(191)">191~200</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(201)">201~210</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(211)">211~220</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(221)">221~230</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(231)">231~240</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(241)">241~250</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(251)">251~260</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(261)">261~270</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(271)">271~280</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(281)">281~290</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(291)">291~300</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(301)">301~310</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(311)">311~320</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(321)">321~330</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(331)">331~340</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(341)">341~350</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(351)">351~360</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(361)">361~370</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(371)">371~380</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(381)">381~390</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(391)">391~400</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(401)">401~410</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(411)">411~420</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(421)">421~430</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(431)">431~440</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(441)">441~450</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(451)">451~460</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(461)">461~470</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(471)">471~480</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(481)">481~490</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(491)">491~500</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(501)">501~510</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(511)">511~520</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(521)">521~530</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(531)">531~540</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(541)">541~550</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(551)">551~560</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(561)">561~570</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(571)">571~580</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(581)">581~590</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(591)">591~600</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(601)">601~610</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(611)">611~620</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(621)">621~630</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(631)">631~640</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(641)">641~650</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(651)">651~660</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(661)">661~670</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(671)">671~680</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(681)">681~690</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(691)">691~700</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(701)">701~710</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(711)">711~720</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(721)">721~730</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(731)">731~740</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(741)">741~750</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(751)">751~760</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(761)">761~770</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(771)">771~780</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(781)">781~790</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(791)">791~800</li>
+		<li class="out" onmouseover="over_view_mode(this)" onmouseout="out_view_mode(this)" onclick="goPage(801)">801~808</li>
+					</ul>			
+				</div>
+			</div>
+		
+										 </td>
+										</tr>
+									</table>
+								</td>
+								<tr>
+									<td width="100%" align="right"><img src="http://img.enuri.gscdn.com/images/faq/btn_q.gif" width="67" height="21" border="0" onclick="go_Qna_write()" style="cursor:pointer"></td>
+								</tr>
+							</tr>
+							<tr>
+								<td height="30" align="center">&nbsp;</td>
+							</tr>
+					</table>
+				</td>
+			</tr>
+		
+				
+										
+										
+										
+										<!-- 
+										<tr>
+											<td>
+										
+												
+												
+												<iframe id="detail_list" name="detail_list" src="Qna_Frame_List.jsp?faq_type=2&kind=9&keyword=" style="width:767;height:100;"  border="0" frameborder="0" scrolling="no" onLoad="syncHeightListFrame()"></iframe>
+												
+											</td>
+										</tr>
+										 -->
+									</table>
+							</td>
+							<td valign="top" width="1">
+								<!-- <table width="1" cellspacing="0"  height="100%" cellpadding="0" border="0" ><tr><td bgcolor="#9b9b9b"></td></tr></table> -->
+							</td>
+							<td valign="top" width="220" align="center">
+								<script LANGUAGE="JavaScript">
+		<!--	
+		function pop_seller1(){
+			var pop_seller = window.open("","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function pop_seller4(){
+			var pop_seller = window.open("http://img.enuri.gscdn.com/images/main/sdul_layer.png","err","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function powerseller_sample(){
+			var powerseller_sample = window.open("/sdul/mallregister/new/PowerSellerpopup.jsp","powerseller","width=635,height=836,left=0,top=0,toolbar=no,directories=no,status=yes,scrollbars=yes,resizable=yes,menubar=no");
+			powerseller_sample.focus();
+		}
+		function Sdul_Error_pop(){
+			var Sdul_Error_pop = window.open("/sdul/mallregister/new/Sdul_Error_pop.jsp","Sdul_Error_pop","width=475,height=510,left=0,top=0,toolbar=no,directories=no,status=yes,scrollbars=yes,resizable=yes,menubar=no");
+			Sdul_Error_pop.focus();
+		}
+		
+		function pop_seller(){
+			var pop_seller = window.open("/mallregister/new/SellerPopup8.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		
+		function Sdu_go(){
+			var pop_seller = window.open("/mallregister/new/SellerPopup8.jsp","find_id_pass","width=380,height=582,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function Bid_Event_Pop(){
+			var pop_seller = window.open("/event/Top_Sms.jsp","Bid_Event_Pop","width=738,height=1950,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		
+		function Top_View_Pop(){
+			var pop_seller = window.open("/sdul/mallregister/new/Top_View_Pop.jsp","Top_View_Pop","width=720,height=1504,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,left=10, top=10");
+			pop_seller.focus();	
+		}
+		
+		function GotoSpon(){
+			var GotoSpon = window.open("http://www.esmplus.com/Member/Popup/NoticeDetailView?NoticeSeq=2895","GotoSpon","");
+			GotoSpon.focus();	
+		}
+		
+		function GotoSDU_Login11(){
+		
+			var url = "/sdul/mallregister/new/AjaxSduLoginCheck.jsp";
+			var param = "";
+				
+			var getRec = new Ajax.Request(
+				url,
+				{
+					method:'get',parameters:param,onComplete:checkSdulLogin
+				}
+			);
+					
+			function checkSdulLogin(originalRequest){
+				var varReturn = originalRequest.responseText.trim();
+				if(varReturn=="1"){
+				  alert("로그인서비스입니다")
+				}else{
+					if(varReturn=="2"){
+						top.location.href = '/sdu/Index.jsp';
+					}else{
+						if(confirm("SDU 회원이 아닙니다. SDU 회원으로 가입하시겠습니까?")){
+							top.location.href = '/mallregister/new/SellerGuide2.jsp';
+						}else{
+							window.opener.focus();
+						}
+					}
+				}
+			}
+		}
+		//-->
+		</script>
+				<table align="center" width="220" border="0" cellspacing="0" cellpadding="0" style="margin-top: 7px; align:right;">
+		    		<tr>
+						<td height="4"></td>
+					</tr>
+					<tr>
+						<td height="40" align="center" valign="bottom"><img onclick="top.location.href='/sdul/mallregister/SellerMain.jsp?sm=2&lg=1'" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/bn_top_111208.gif" width="197" height="80"></td>
+					</tr>
+					<!-- <tr>
+						<td height="40" align="center" valign="bottom"><img onclick="pop_seller()" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/bn_yongsan_login_090715.gif" width="197" height="44"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> -->
+					<!-- <tr>
+						<td height="38" align="center" valign="bottom"><img onclick="powerseller_sample()" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/powerseller_197_44.gif" width="197" height="44"></td>
+					</tr>  -->
+					<tr>
+						<td height="4"></td>
+					</tr> 
+					<tr>
+						<td height="40" align="center" valign="bottom"><img onclick="Bid_Event_Pop()" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sellerguide/new_img/bn_balance_bn.gif" width="197" height="44"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> 
+					<tr>
+						<td height="40" align="center" valign="bottom"><img onclick="top.location.href='/sdul/mallregister/SellerMain.jsp?sm=7&lg=1'" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sdul/etc/bt_powerseller.jpg" width="197" height="80"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> 
+					<tr>
+						<td height="38" align="center" valign="bottom"><img onclick="top.location.href='/sdul/mallregister/SellerMain.jsp?sm=6&lg=1'" style="cursor:pointer" src="http://img.enuri.gscdn.com/images/sdul/etc/bt_sellerad.jpg" width="197" height="80"></td>
+					</tr>
+					<tr>
+						<td height="4"></td>
+					</tr> 			
+				</table> 
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- //SDU 공통 contents -->
+	
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul>
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+</body>
+</html>

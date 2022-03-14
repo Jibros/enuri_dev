@@ -1,0 +1,287 @@
+
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/home/gnb.css"/>
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/home/default.css"/>
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/event/m_chuseok.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="m_chuseok.css"/> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/event/css_animate.css"/> -->
+	<link rel="stylesheet" type="text/css" href="http://m.enuri.com/mobilefirst/css/event/filck.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://m.enuri.com/mobilefirst/css/footer.css"> -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/flick.event.js"></script>
+	<!-- <script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/iscroll.js"></script> -->
+	<script src="http://dev.enuri.com/pub_test/mobile/event/m_chuseok/jquery.refineslide.js"></script> 
+	<script type="text/javascript">
+			//레이어
+			function onoff(id) {
+				var mid=document.getElementById(id);
+				if(mid.style.display=='') {
+				mid.style.display='none';
+			}else{
+				mid.style.display='';
+				}; 
+			}
+
+			//탭top스크롤
+			/*
+			$(document).ready(function() {
+			var nav = $('.nav'); 
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > $(".top_visual").height()) {
+					nav.addClass("topnav");
+				} else {
+					nav.removeClass("topnav");
+				}
+				});
+			});
+			*/
+
+	</script> 
+	<script type="text/javascript">
+	$(function(){
+		$('#images1,#images2').refineSlide({
+			transition : 'cubeV',
+			keyNav : false,
+			perspective : 100,
+			useThumbs : false,
+			autoPlay : true,
+			thumbMargin : 0,
+			delay : 1000
+		});
+	})	
+	</script>
+
+	<script type="text/javascript">
+	$(function(){
+		//2016-06-29_s
+		function topmotion(){
+			function bg01(){
+				//$(".evtop01").animate({backgroundPositionX:"46%"}, 2000, "swing");
+				$(".txt_area .moving").animate({"bottom":"-90px"},2000,"swing")
+			}
+			var bg01 = setTimeout(bg01, 1000);
+		}
+		topmotion();
+	})
+	</script>
+	
+<script type="text/javascript">
+$(function(){
+/*
+$(window).scroll(function(){
+	$(".TBtn").show();
+	if ( $(window).scrollTop() < 50 ){
+		$(".TBtn").hide();
+	}
+});
+*/
+$(document).scroll(function(){
+	var head = $(".nav").outerHeight();
+	var visual = $(".top_visual").outerHeight() + $("header").outerHeight();
+	var con01 = $(".con01").offset().top - head;
+	var nav = $(".nav").offset().top;
+	var top = $(this).scrollTop();
+	if(top < visual || top >= nav){
+		$(".nav").removeClass("topnav");
+		$(".contents").css("padding-top",0)
+	};
+
+	if(top >= visual){
+		$(".nav").addClass("topnav");
+		$(".contents").css("padding-top",head );
+	};
+});
+$("body").on('click', '.TBtn', function(event) {
+	scrollTo(0,0);    
+	$("#app_miniPop_F").hide();
+});
+
+$(".over_ht").height($(document).height());
+
+})
+</script>
+</head>
+
+
+<body>
+<div class="layer_back over_ht" id="btn_info01" style="display:none;">
+	<div class="appLayer">
+		<h4>유의사항</h4>
+		<a href="javascript:///" class="close" onclick="onoff('btn_info01')">창닫기</a>
+		<div class="txt">
+			<strong>이벤트 유의사항</strong>
+			<ul class="txt_indent">
+				<li>이벤트 기간: 2016년 8월 22일 ~ 2016년 9월 11일</li><!-- 2016-08-25 -->
+				<li>ID당 1회 참여</li>
+				<li>참여방법: 에누리 APP &gt; 적립대상 쇼핑몰이동 &gt; 상품구매 &gt; 응모하기</li>
+				<li>당첨자 발표: 2016년 10월 5일 수요일 <br />
+                     [에누리 PC 사이트 &gt; 고객센터] 또는 [에누리 APP &gt; 당첨자 발표]</li>
+				<li>e머니 유효기간: 적립일로부터 30일</li>
+				<li>본 이벤트는 당사의 사정에 따라 사전고지 없이 변경 또는 조기종료 될 수 있습니다.</li>
+			</ul>
+
+			<strong>구매 유의사항</strong>
+			<ul class="txt_indent">
+				<li><b>적립대상 쇼핑몰:</b> G마켓, 옥션, 11번가, 인터파크, 티몬, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스)</li>
+				<li><b>e머니 적립 제외 카테고리/서비스</b></li>
+			</ul>
+
+			<ol class="inner" style="margin-top:0px">
+				<li>- 에누리 앱에서 검색되지 않는 상품</li>
+				<li>- 옥션, G마켓 : 중고장터, 실시간 여행, 항공권</li>
+				<li>- 11번가 : 여행/숙박/항공, e쿠폰/상품권</li>
+				<li>- 인터파크 : 모바일쿠폰/상품권, 라이프 서비스(쇼핑/도서 외 티켓, 투어, 아이마켓 등)</li>
+				<li>- 이마트/신세계/SSG : 도서/음반/문구/취미/여행/상품권/서비스 및 현금성 상품</li>
+				<li>- 이 외 쇼핑몰에 입점한 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리 제외</li>
+			 </ol>
+
+			<ul class="txt_indent">
+				<li style="margin-top:5px;"><b>아래의 경우에는 구매 확인 및 적립이 불가합니다.</b></li>
+			</ul>
+			<ol class="inner" style="margin-top:0px">
+				<li>- 에누리 앱이 아닌 다른 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리앱으로 결제만 한 경우</li>
+				<li>- 에누리 앱에서 로그인하지 않고 구매한 경우</li>
+				<li>- 에누리 PC, 모바일 웹에서 구매한 경우</li>
+				<li>- 구매 후 상품 취소/환불/반품한 경우</li>
+			</ol>
+		</div>
+		<p class="btn_close"><button type="button" onclick="onoff('btn_info01')">확인</button></p>
+	</div>
+</div>
+
+<!-- 개인화영역 -->
+<!-- layer--> 
+<div class="layer_back" id="app_only" style="display:none;">
+	<div class="appLayer">
+		<h4>모바일 앱 전용 이벤트</h4>
+		<a href="javascript:///" class="close" onclick="onoff('app_only')">창닫기</a>
+		<p class="txt"><strong>가격비교 최초!</strong><em>현금 같은 혜택</em>을 제공하는<br />에누리앱을 설치합니다.</p>
+		<p class="btn_close"><button type="button">설치하기</button></p>
+	</div>
+</div>
+
+<header>
+	<!-- 상단 띠배너 -->
+	<div class="topbnr" id="topbnr" style="background:#114ea5">
+		<a href="javascript:///" class="close">닫기</a>
+		<a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/attend_july/top_bnr_new.jpg" alt=""></a>
+	</div>
+
+	<div class="mainTop">
+		<a href="#" class="btn_side"><span class="cate_m ico_m">주요 서비스 메뉴 펼치기</span></a>
+		<h1 class="logo ico_m">에누리 가격비교</h1>
+		<div class="searchbox"><p class="search_in">모기와의 전쟁? 백전백승!<input type="text" id="searchtxt" name="searchtxt"></p><button class="srp"><span class="ico_m">검색</span></button></div>
+		<button class="mybtn"><span class="ico_m">마이메뉴</span></button>
+	</div>
+</header>
+
+<div id="eventWrap">
+	<div class="evtop01">
+		<div class="top_visual">
+			<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_top.jpg" alt="bg">
+			<ul id="images1" class="rs-slider">
+				<li class="group"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/a1.png" alt=""/> </li>
+				<li class="group"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/a2.png" alt=""/> </li>
+				<li class="group"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/a3.png" alt=""/> </li>
+			</ul>
+		</div>
+	</div>
+	<a href="#" class="win_close">창닫기</a>
+</div>
+
+<!-- tab -->
+<div class="nav">
+	<div class="trd_scroll" id="trd_scroll">
+			<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/tab.jpg" alt="" style="width:100%;"/>
+				<ul>
+					<li><a href="#"><div><span>All</span>추석</div></a></li>
+					<li><a href="#"><div><span>추석</span>상차림</div></a></li>
+					<li><a href="#"><div><span>추석</span>선물</div></a></li>
+					<li class="on"><a href="#"><div><span>쇼핑하면</span>최대5만점</div></a></li>
+				</ul>
+		</div>
+		<a href="#" class="win_close">창닫기</a>
+</div>
+<!--// tab -->
+
+<div class="contents v3">
+	<div class="con01">
+		<div class="inner">
+			<a href="javascript:///" class="app_only" onclick="onoff('app_only')">응모하기</a>
+		</div>
+	</div>
+	<div class="con01_1">
+		<div class="inner">
+			<div class="txt_box">
+				<ul>
+					<li>*해당 경품으로 교환 가능한 e머니로 적립</li>
+					<li>*해당 경품 외에도 1,000여 가지 다양한 쿠폰으로 교환 가능</li>
+					<li>*ID당 1회만 응모해도 이벤트 기간 내 구매 자동 누적</li>
+					<li>*당첨자 발표 : 2016년 10월 5일 수요일</li>
+				</ul>
+			</div>
+			<a href="#" class="btn_check" onclick="onoff('btn_info01')">꼭! 확인하세요.</a>
+		</div>
+	</div>
+
+	<div class="con02">
+		<div class="inner">
+			<a href="javascript:///" class="btn_kakao">카카오톡</a>
+			<a href="javascript:///" class="btn_face">페이스북</a>
+		</div>
+	</div>
+	<div class="con02_1">
+		<div class="inner">
+			<div class="txt_box">
+				<ul>
+					<li>*해당 경품으로 교환 가능한 e머니로 적립</li>
+					<li>*해당 경품 외에도 1,000여 가지 다양한 쿠폰으로 교환 가능</li>
+					<li>*ID당 1회만 응모해도 이벤트 기간 내 구매 자동 누적</li>
+					<li>*당첨자 발표 : 2016년 10월 5일 수요일</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="news_list">
+	<div class="innder_scroll">
+		<ul class="swiper-wrapper thumb">
+			<li class="news"><a href="#" ><strong class="tit">추석 뉴스</strong><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+
+<!-- 푸터 -->
+<span class="go_top"><a href="#">TOP</a></span>
+
+<!-- 푸터 -->
+<footer>
+	<div class="footer">
+		<p class="alert">에누리닷컴<span style="font-size:8px">(주)</span>는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</p>
+		<p class="cop">에누리닷컴<span style="font-size:8px">(주)</span></p>
+		<p class="info">대표이사 : 최문석<em>|</em>사업자등록번호 : 206-81-18164<br>통신판매신고 : 종로통신 제 4406호<br />
+		서울특별시 중구 퇴계로 18 대우재단빌딩 9층<br />
+		문의 : 02-6354-3601<em>|</em>master@enuri.com
+		</p>
+	</div>
+</footer>
+<!--// 푸터 -->
+
+</body>
+</html>

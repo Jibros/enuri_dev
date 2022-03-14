@@ -1,0 +1,1307 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : lp.css
+ * 설명 : 에누리 가격비교 PC Rev / LP,SRP CSS
+ * 작성자 : 신왕섭
+ * 작성일 : 2021.01.04
+************************************************************************/
+
+/* Sprite */
+.lp__sprite{background-image:url(//img.enuri.info/images/rev/lp_sprite.png);background-repeat:no-repeat}
+
+/* LP Content */
+.list-page{position:relative}
+
+/* Location */
+.location{padding-bottom:17px;border-bottom:1px solid #666666;margin-bottom:20px;letter-spacing:-1px}
+.location__list{height:16px;text-align:left}
+.location__list .location__item:first-child{margin-left:0}
+.location__list .location__item:last-child .location__tit{padding-right:0}
+.location__list .location__item:last-child .location__tit:after{display:none}
+.location__item{float:left;height:16px;line-height:16px;font-size:14px;color:#666;margin-left:5px;position:relative}
+.location__item.is--selected .location__tit{font-weight:bold;text-decoration:underline}
+.location__tit{position:relative;display:block;padding-right:21px}
+.location__tit:after{content:"";position:absolute;width:12px;height:12px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat 0 -20px;top:2px;right:2px}
+.location__btn--cate{display:block;height:16px;background-color:transparent;font-size:inherit;letter-spacing:inherit;line-height:inherit;padding-right:21px;position:relative;cursor:default}
+.location__btn--cate:after{content:"";position:absolute;width:16px;height:16px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat -20px 0;top:0;right:0}
+.location__item:hover .location__btn--cate:after{background-position:-40px 0}
+.location__list--extend{position:absolute;left:0;padding-top:10px;z-index:5;display:none}
+.location__list--extend > ul{min-width:140px;max-height:300px;display:inline-block;border:1px solid #666;background-color:#fff;padding:10px 0;line-height:24px;overflow-y:auto;box-shadow:0 4px 8px rgba(0,0,0,0.15)}
+.location__list--extend > ul li{white-space:nowrap;padding:0 16px}
+.location__list--extend > ul li:hover{background-color:#f2f2f2}
+.location__list--extend > ul li > a{position:relative;display:block;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666}
+.location__list--extend > ul li.is--selected a{color:#1A70DD!important;font-weight:bold}
+.location__list--extend > ul li.is--sub{line-height:21px}
+.location__list--extend > ul li.is--sub > a{padding-left:12px;font-size:11px;color:#999999}
+.location__list--extend > ul li.is--sub > a:before{content:"";position:absolute;width:2px;height:2px;background-color:#999;left:3px;top:8px}
+.location__item:hover .location__list--extend{display:block}
+.ico-loc-home{display:inline-block;width:16px;height:16px;background-position:0 0;text-indent:-9999em}
+
+/* 최근 본 카테고리 */
+.category-recent{height:28px;width:140px}
+.location + .category-recent{position:absolute;right:0;margin-top:-60px;z-index:1}
+
+.select-box--basic{position:relative;display:block;height:26px;border:1px solid #ccc;background-color:#fff;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666;letter-spacing:-.5px}
+.select-box--basic .select-box--selected{height:18px;line-height:18px;padding:4px 30px 4px 16px}
+.select-box--basic .ico-arr-select-box{position:absolute;top:7px;right:12px}
+.select-box--basic .select-box__list{position:absolute;left:-1px;right:-1px;margin-top:1px;border:1px solid #666;border-top:0;background-color:#fff;display:none;padding:9px 0;box-shadow:0 4px 8px rgba(0,0,0,0.15);z-index:1}
+.select-box--basic .select-box__list li{line-height:24px;padding:0 14px}
+.select-box--basic .select-box__list li a{font-size:12px;color:#666666;overflow:hidden;display:block;text-overflow:ellipsis;white-space:nowrap}
+.select-box--basic .select-box__list li.is--selected a{color:#1a70dd}
+.select-box--basic:hover{border-color:#666}
+.select-box--basic:hover .select-box--selected{opacity:.5}
+.select-box--basic:hover .ico-arr-select-box{transform:rotate(180deg);transform-origin:center center}
+.select-box--basic:hover .select-box__list{display:block}
+.ico-arr-select-box{width:12px;height:12px;background-position:-20px -20px}
+
+/* 분류검색어 */
+.category-from-search{padding:10px 16px;background-color:#f5f5f5;margin:-20px 0 20px;height:16px;font-size:12px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:-.5px}
+.category-from-search .tx--msg{color:#333}
+.category-from-search .tx--msg em{color:#1A70DD;font-weight:bold}
+.category-from-search--side{float:right}
+.category-from-search--side .btn--to-search{display:inline-block;color:#1A70DD;vertical-align:middle}
+.ico-rarr-blue--sm{float:right;width:12px;height:12px;background-position:-200px 0;text-indent:-9999em;margin-top:2px}
+.category-from-search__keyword{height:16px;display:inline-block;vertical-align:middle;position:relative;padding-right:20px}
+.category-from-search__keyword:after{content:"";position:absolute;top:0;bottom:0;right:16px;border-right:1px solid #ccc}
+.category-from-search__keyword dt,
+.category-from-search__keyword dd{float:left}
+.category-from-search__keyword dt i{width:40px;height:16px;text-indent:-9999em;display:block}
+.category-from-search__keyword dd{padding:0 12px 0 6px;font-size:11px;color:#666666 }
+.ico-tit-search-word{background-position:-220px 0}
+.ico-tit-synonym{background-position:-220px -20px}
+
+/* LP 상단부 */
+.list-head{margin-bottom:40px;position:relative}
+.list-head:after{content:"";clear:both;display:block}
+.list-head .category-lp{float:left}
+.list-head__cont--rside{float:right;width:1064px}
+
+/* LP > 카테고리 */
+.category-lp{width:200px;text-align:left;line-height:18px}
+.category-lp.is--fixTop{position:fixed;top:70px}
+.category-lp.is--fixBot{position:absolute;bottom:0}
+.category-lp__name{position:relative;border:1px solid #4d5667;background-color:#515B6D;text-align:center;font-size:16px;font-weight:bold;letter-spacing:-1px;color:#fff;padding:10px 20px;z-index:2}
+.category-lp__name a{color:inherit;display:block;}
+.category-lp__item{position:relative;padding:10px 20px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;margin-top:-1px}
+.category-lp__item:after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid #ddd}
+.category-lp__item a{position:relative;z-index:2;color:inherit;display:block}
+.category-lp__item.is--on{font-weight:bold;background-color:#1A70DD;color:#fff;z-index:2}
+.category-lp__item.is--on:after{border-color:rgba(0,0,0,.05)}
+
+/* LP > 광고배너 */
+.lp-ad--top{width:1064px;height:90px;margin-bottom:16px;overflow:hidden;background-color:rgba(0,0,0,.1)}
+
+/* [LP] 상단_소카테_특이케이스 */
+.category-exception--acc{margin-bottom:20px;width:1065px;color:#333}
+.category-exception--acc .category-exception__tit{height:18px;font-size:14px;font-weight:bold;letter-spacing:-1px}
+.category-exception--acc .category-exception__list{height:58px;margin-top:16px}
+.category-exception--acc .category-exception__list li{float:left;position:relative;width:132px;height:56px;border:1px solid #ddd;margin-left:-1px;overflow:hidden;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 50px}
+.category-exception--acc .category-exception__list li:first-child{margin-left:0}
+.category-exception--acc .category-exception__list li:hover{border-color:#999;z-index:1}
+.category-exception--acc .category-exception__list li.is--on{border-color:#1A70DD;z-index:2}
+.category-exception--acc .category-exception__list li:hover:before,
+.category-exception--acc .category-exception__list li.is--on:before{opacity:0}
+.category-exception--acc .category-exception__list li a{display:block;position:relative;line-height:0}
+.category-exception--acc .category-exception__list li a:before{content:"";position:absolute;top:0;right:0;bottom:0;left:50px;background:rgba(255,255,255,.3)}
+.category-exception--acc .category-exception__list li:hover a:before,
+.category-exception--acc .category-exception__list li.is--on a:before{opacity:0}
+.category-exception--acc .category-exception__list li img{width:132px;height:56px}
+.category-exception--acc .category-exception__list li.is--disabled{background-color:#FBFBFB}
+.category-exception--acc .category-exception__list li.is--disabled:hover{border-color:#ddd}
+
+/* LP > 미카테고리 */
+.category-lp--fine{border-bottom:1px solid #ddd;position:relative}
+.category-lp--fine.is--disabled:before{content:"";top:1px;left:1px;right:1px;bottom:0;position:absolute;z-index:10;background:rgba(255,255,255,.7)}
+.category-lp--fine + .adv-search{margin-top:-1px}
+
+/* LP > 상세검색 */
+/* .adv-search{width:1064px} */
+.adv-search.is--disabled{position:relative}
+.adv-search.is--disabled:before{content:"";top:1px;left:1px;right:1px;bottom:1px;position:absolute;z-index:10;background:rgba(255,255,255,.7)}
+.adv-search-box{border-bottom:1px solid #ddd}
+.adv-search__btn--more,
+.adv-search__btn--close{width:100%;height:36px;background-color:#FCFCFC;font-size:11px;text-align:center;border:1px solid #ddd;margin-top:-1px}
+.adv-search__btn--more:hover,
+.adv-search__btn--close:hover{background-color:#FaFaFa}
+.ico-adv-arr-down,
+.ico-adv-arr-up{display:inline-block;width:16px;height:16px;text-indent:-9999em;vertical-align:-4px}
+.ico-adv-arr-down{background-position:-140px -20px}
+.ico-adv-arr-up{background-position:-140px 0}
+
+.search-box-row{position:relative;border:1px solid #ddd;border-bottom:0;min-height:46px}
+.search-box-row.type--line2{min-height:76px}
+/* .search-box-row.is--unfold{height:auto} */
+.search-box-row.is--hide{display:none}
+.search-box-row .search-box__btn--unfold{position:absolute;background:transparent;top:12px;right:16px}
+.search-box__head{position:absolute;top:0;left:0;height:calc(100% - 28px);width:132px;border-right:1px solid #ddd;line-height:16px;padding:14px 16px}
+.search-box__head--title{position:absolute;height:32px;line-height:16px;width:calc(100% - 52px);margin-top:-7px}
+.search-box-row.type--line2 .search-box__head--title,
+.search-box-row.is--unfold .search-box__head--title{position:relative;margin-top:0;height:auto;width:calc(100% - 20px)}
+.search-box__head--inner{position:absolute;top:50%;transform:translateY(-50%)}
+.search-box-row.type--line2 .search-box__head--inner,
+.search-box-row.is--unfold .search-box__head--inner{position:relative;top:auto;transform:none;margin-top:1px}
+.search-box__head--name{font-size:13px;font-weight:bold;color:#333;display:block;letter-spacing:-1px}
+.search-box__head--count{font-size:11px;color:#1A70DD}
+.search-box__head--sub{font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#999}
+
+.is--unfold .search-box__sort{display:block}
+.search-box__sort{display:none;position:absolute;left:10px;bottom:12px;line-height:18px}
+.search-box__sort > button{position:relative;display:block;height:18px;text-align:left;font-size:11px;padding:0 6px 0 7px;color:#999;background-color:transparent;letter-spacing:-1px;float:left;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.search-box__sort > button:before{content:"";position:absolute;top:3px;height:10px;left:0;border:1px solid #ddd}
+.search-box__sort > button:first-child:before{display:none}
+.search-box__sort .is--selected{color:#333;text-decoration:underline}
+/* .search-box__sort .is--selected:after{content:"";position:absolute;width:12px;height:12px;top:8px;right:0;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat -80px -20px} */
+.search-box__sort--seq{position:relative;padding:13px 16px;height:20px;border-bottom:1px solid #ddd;background-color:#fff}
+.list--consonant{height:20px}
+.list--consonant > li{float:left;margin-right:4px}
+.list--consonant > li > button{height:20px;min-width:20px;text-align:center;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#333;background-color:#fff;border:1px solid #ccc}
+.list--consonant .btn--consonant.is--selected{border-color:#1A70DD!important;color:#1A70DD;font-weight:bold}
+.list--consonant .btn--consonant.is--all{padding:0 8px}
+.list--consonant .btn--consonant:hover{border-color:#aaa}
+.btn--consonant-kr,
+.btn--consonant-en{padding:0 4px}
+
+.search-box__body{position:relative;margin-left:165px;line-height:16px;transition:.3s background ease;background-color:#fff;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px}
+.search-box__inner{padding:8px 0;overflow-y:auto;max-height:148px}
+.search-box-row.is--unfold .search-box__body{background-color:#FBFBFB}
+.search-box__list{position:relative}
+.search-box__list:after{content:"";display:block;clear:both}
+.search-box__list > li{position:relative;height:18px;padding:6px 0 6px 16px;float:left;width:calc(16.666% - 16px)}
+.search-box-row .list--unfold{display:none}
+.search-box-row.is--unfold .list--unfold{display:block}
+.search-box-row label{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#666;display:inline-block;max-width:calc(100% - 34px)}
+.search-box-row label .btn--dic{font:inherit;padding-bottom:2px;text-decoration:underline;cursor:help;color:#666}
+.search-box-row input:checked + label{font-weight:bold;color:#333}
+.search-box-row label + i{text-indent:-9999em;position:absolute;vertical-align:top;margin:-4px 0 0 2px}
+.ico-hit--sm{width:12px;height:12px;background-position:-220px -40px}
+.ico-new--sm{width:12px;height:12px;background-position:-240px -40px}
+/* 상세검색 > 상세검색 row > 추천키워드 */
+.search-box__keyword{margin-left:-6px;padding-right:20px}
+.search-box__keyword li{display:inline-block;height:18px;padding:6px 0 6px 22px}
+.btn--keyword{background-color:transparent;font:inherit;color:#666;padding-bottom:1px;height:18px}
+.btn--keyword:hover{text-decoration:underline}
+.btn--keyword:before{content:"#"}
+.btn--keyword.is--active{font-weight:bold;color:#1A70DD}
+/* 상세검색 > 상세검색 row > 가격대 */
+.row-price-range .search-box__inner{overflow:visible}
+.search-box__range--price,
+.search-box__range--search{float:left;padding:1px 0 1px 16px;height:28px}
+.search-box__range--price{min-width:496px}
+.search-box__range--price > li{float:left;margin-left:-1px;font:inherit;margin-left:-1px;position:relative}
+.search-box__range--price > li:hover{z-index:1}
+.search-box__range--price > li:hover .btn--range-price{border-color:#aaa}
+.search-box__range--price > li .ico-range-hit{position:absolute;top:1px;right:0px;z-index:2;width:32px;height:6px;background-position:-220px -74px;text-indent:-9999em}
+.search-box__range--price > li:hover .ico-range-hit{top:-13px;z-index:2;height:20px;background-position:-220px -60px}
+.btn--range-price{position:relative;background-color:#fff;border:1px solid #ccc;height:28px;padding-bottom:2px;font:inherit;color:#666;letter-spacing:-.5px;text-align:center;padding:0 5px}
+.search-box__range--price.range-class--05 .btn--range-price{min-width:100px}
+.search-box__range--price.range-class--04 .btn--range-price{min-width:125px}
+.search-box__range--price.range-class--03 .btn--range-price{min-width:166px}
+.search-box__range--price.range-class--02 .btn--range-price{min-width:249px}
+.btn--range-price.is--active,
+.btn--range-price.is--active:hover{border-color:#1A70DD!important;color:#1A70DD;z-index:2}
+.search-box__range--search{margin-left:4px}
+.search-box__range--search > input,
+.search-box__range--search > button{border:1px solid #ccc;font:inherit}
+.search-box__range--search .input--text-item{width:86px;display:inline-block;text-align:right;padding:0 4px;height:26px}
+.search-box__range--search .btn--range-search{border-radius:2px;background-color:#F8F8F8;width:70px;height:28px;font-size:11px;margin-left:2px}
+.input--text-item{background-color:transparent;border:1px solid #ccc;border-radius:2px}
+.input--text-item:hover{border-color:#aaa}
+/* 상세검색 > 상세검색 row > 선택한 조건 */
+.search-box-row.row-selected--condition,
+.search-box-row.row-selected--condition .search-box__body{background-color:#F9FCFD}
+/* .search-box__keyword{} */
+.tx--selected{color:#1A70DD;vertical-align:-1px}
+.tx--selected.btn--dic{text-decoration:underline;cursor:help}
+.btn--key-deleted{width:16px;height:16px;background-position:-40px -20px;text-indent:-9999em;margin-left:4px}
+.btn--key-reset{width:92px;height:24px;background-position:0 -40px;text-indent:-9999em;vertical-align:-5px;top:-3px;position:relative}
+/* 상세검색 > 상세검색 row > 명품관 */
+.search-box__except1 {position:relative;padding:8px 15px 0 16px}
+.search-box__except1 .list__luxury:after {content:"";display:block;clear:both}
+.search-box__except1 .list__luxury > li {float:left;width:166px;height:42px;margin-right:9px;margin-bottom:8px;}
+.search-box__except1 .list__luxury > li:nth-child(5n) {margin-right:0}
+.search-box__except1 .list__luxury > li a {display:block;position:relative;width:100%;font-weight:normal;font-size:12px;color:#333;line-height:1;text-align:center;background-color:#fff;box-sizing:border-box;-webkit-box-sizing:border-box}
+.search-box__except1 .list__luxury > li a:after {content:"";position:absolute;top:0;bottom:0;left:0;right:0;border:1px solid #ddd}
+.search-box__except1 .list__luxury > li a img {width:auto;height:36px;padding:3px 0;vertical-align:top}
+.search-box__except1 .list__luxury > li a em {display:block;margin-top:2px;font-weight:normal;font-size:11px;color:#0073be;line-height:1}
+.search-box__except1 .list__luxury > li a:hover:after {border-color:#0073be;font-weight:bold}
+.search-box__except1 .list__luxury > li.is--on a {background-color:#fff}
+.search-box__except1 .list__luxury > li.is--on a:after {border-color:#3a7bd5;}
+.type--except1 .search-box__sort--seq,
+.type--except1 .search-box__inner {display:none}
+.type--except1.is--unfold .search-box__sort--seq,
+.type--except1.is--unfold .search-box__inner {display:block}
+.type--except1.is--unfold .search-box__except1 {padding-bottom:1px}
+.type--except1.is--unfold .search-box__except1:after {content:"";position:absolute;bottom:0;left:0;right:0;border-bottom:1px solid #ddd}
+/* 확장버튼 */
+.search-box__btn--unfold{width:20px;height:20px;position:relative}
+.search-box__btn--unfold:before,
+.search-box__btn--unfold:after{content:"";position:absolute;left:50%;top:50%;background-color:#666;transition:.3s all ease}
+.search-box__btn--unfold:hover:before,
+.search-box__btn--unfold:hover:after{background-color:#333}
+.search-box__btn--unfold:before{margin:-6px 0 0 -1px;height:12px;width:2px}
+.search-box__btn--unfold:after{margin:-1px 0 0 -6px;height:2px;width:12px}
+.is--unfold .search-box__btn--unfold:before{transform:rotate(270deg);transform-origin:center center}
+.is--unfold .search-box__btn--unfold:after{transform:rotate(180deg);transform-origin:center center}
+/* 버튼:용어사전 */
+.btn--dic{background:transparent}
+
+/* [LP] 잉크,토너 (0402,040207) 빠르게 찾기 리스팅 */
+.category-exception--ink{margin-top:20px;margin-bottom:20px}
+.category-exception--ink .category-exception__head{height:18px;line-height:18px;padding:10px 0;color:#999;font-weight:normal;letter-spacing:-.5px}
+.category-exception--ink .category-exception__head h1{display:inline-block;font-size:16px;font-weight:bold;padding-left:10px;color:#333}
+.category-exception--ink .category-exception__head--sub{font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px}
+.category-exception--ink .category-exception__head--align{float:right;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px}
+.category-exception--ink .category-exception__body{}
+.category-exception--ink .category-exception__body h2{padding:5px 10px;height:18px;border-top:1px solid #eee;border-bottom:1px solid #eee;background-color:#FBFBFB;color:#666;font-weight:bold;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px}
+.category-exception--ink .category-exception__body h2:before{content:"· "}
+.category-exception--ink .category-exception__list{font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;overflow:hidden;padding:6px 0}
+.category-exception--ink .category-exception__list li{float:left;width:20%;height:18px;padding:7px 0}
+.category-exception--ink .category-exception__list li a{display:block;height:18px;line-height:18px;overflow:hidden;margin:0 10px 0 20px;color:#666;white-space:nowrap;text-overflow:ellipsis;letter-spacing:0}
+
+/* [LP] 잉크,토너 (0402,040207) 모델정보 */
+.category-exception--model{border:1px solid #ddd;margin-bottom:-1px}
+.category-exception--model .exc-model{height:88px}
+.category-exception--model .exc-model__thumb{float:left;width:165px;height:88px;text-align:center}
+.category-exception--model .exc-model__thumb img{width:88px;height:88px}
+.category-exception--model .exc-model__info{float:left;width:calc(100% - 165px);box-sizing:border-box;padding:0 16px;margin-top:20px;color:#333}
+.category-exception--model .exc-model__company{font-size:14px}
+.category-exception--model .exc-model__name{display:block;margin-top:4px;font-size:18px;font-weight:bold;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:inherit}
+
+/* [LP] 히트브랜드 */
+.list-head .hitbrand-box{margin-top:16px}
+.hitbrand-box{width:1062px;position:relative;border:1px solid #333;background-color:#fff;letter-spacing:-.5px}
+.hitbrand-box h1{position:relative;height:20px;line-height:21px;padding:6px 6px 10px 50px;background-color:#333;color:#fff;font-size:14px;font-weight:bold;letter-spacing:-1px}
+.hitbrand-box h1 .ico-hitbrand--medal{position:absolute;top:0;left:14px;width:36px;height:32px;background-position:0 -180px}
+.hitbrand-box__btn--view{line-height:16px;height:16px;position:absolute;top:10px;right:10px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#fff}
+.hitbrand-box__btn--view i{float:right;margin:2px 0 0 4px}
+.hitbrand-box__inner{padding:18px 24px 24px}
+.hitbrand-box__brand{padding-left:82px;position:relative;height:32px;line-height:16px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;color:#999;overflow:hidden}
+.hitbrand-box__brand--logo{position:absolute;width:72px;height:28px;left:0;top:0}
+.hitbrand-box__brand--logo img{width:100%;height:100%}
+.hitbrand-box__prod{margin-top:18px;height:100px}
+.hitbrand-box__list{float:left;margin:0 0 0 40px;height:100px}
+.hitbrand-box__list > li{float:left;margin-left:16px}
+.hitbrand-box__list > li:first-child{margin-left:0}
+.hitbrand-box__thumb{position:relative;float:left;width:100px;height:100px;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 50px}
+.hitbrand-box__thumb img{width:100%;height:100%}
+.hitbrand-box__thumb .ico-hitbrand--best{position:absolute;top:-4px;left:-4px;z-index:1;text-indent:-9999em}
+.hitbrand-box__thumb:after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0, 0, 0, 0.133)}
+.hitbrand-box__info{float:left;margin-left:12px;width:280px}
+.hitbrand-box__tag{display:inline-block;font-size:11px;padding:0 4px 0 3px;border-radius:2px;background-color:#FFC60E;height:16px;line-height:16px;color:#fff}
+.hitbrand-box__name{overflow:hidden}
+.hitbrand-box__price{color:#1A70DD;font-size:13px}
+.hitbrand-box__price em{font-weight:bold;font-size:20px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:bold}
+.hitbrand-box__item--best{float:left;display:block;color:inherit;width:392px;height:100px;padding-right:20px;border-right:1px solid #ddd}
+.hitbrand-box__item--best:hover .hitbrand-box__name{text-decoration:underline}
+.hitbrand-box__item--best .hitbrand-box__name{margin-top:6px;height:40px;line-height:20px;font-size:13px;font-weight:bold;width:240px}
+.hitbrand-box__item--best .hitbrand-box__price{margin-top:6px}
+.hitbrand-box__item{display:block;color:inherit;width:270px;height:100px}
+.hitbrand-box__item:hover .hitbrand-box__name{text-decoration:underline}
+.hitbrand-box__item .hitbrand-box__info{width:156px;padding-top:12px}
+.hitbrand-box__item .hitbrand-box__name{height:48px;line-height:16px;font-size:12px;width:156px;color:#666;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.hitbrand-box__item .hitbrand-box__price{margin-top:10px}
+.hitbrand-box__item .hitbrand-box__price em{font-size:16px}
+.ico-hitbrand--best{width:32px;height:36px;background-position:-40px -180px}
+.ico-rarr--sm--white{width:12px;height:12px;background-position:-200px -40px}
+
+/* [LP] 잉크토너 파인더 */
+.list-head .model-finder--ink{margin-top:16px}
+.model-finder--ink{width:1064px;height:72px;background-color:#FBFBFB;letter-spacing:-.5px;position:relative}
+.model-finder--ink:before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,0,0,.06)}
+.model-finder--ink h1{line-height:18px;font-size:18px;font-weight:bold;color:#3D4E4E}
+.model-finder--ink h1 .img--finder{width:94px;height:18px;display:inline-block;vertical-align:top;background-position:-80px -180px;text-indent:-9999em}
+.model-finder--ink h2{line-height:22px;font-size:15px;font-weight:normal;color:#333;width:142px;float:left;height:44px;text-align:center;letter-spacing:-2px}
+.model-finder--ink h2 em{font-weight:bold;letter-spacing:-1px}
+.model-finder--ink .model-finder__head{width:226px;float:left;padding:27px 0;height:18px;text-align:center;background-color:#E9F4FF;border-right:1px solid #dbe6f0}
+.model-finder--ink .model-finder__body{float:left;padding:14px 16px}
+.model-finder--ink .model-finder__form{float:left;margin-top:2px;height:40px;position:relative;z-index:1}
+.model-finder--ink .model-finder__input{height:40px;padding:11px 56px 11px 16px;width:574px;border:1px solid #666;box-sizing:border-box;font-size:14px;color:#666;letter-spacing:-1px}
+.model-finder--ink .model-finder__btn{position:absolute;top:0;right:0;width:40px;height:40px;background-color:#666;text-align:center}
+.model-finder--ink .model-finder__btn i{width:26px;height:26px;display:inline-block;background-position:-120px -120px;text-indent:-9999em;text-align:left}
+.model-finder--ink .lay-finder-result--ink{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000}
+.lay-finder-result--ink .lay-comm{position:absolute;left:50%;top:50%;z-index:10;width:852px;transform:translate(-50%,-50%);z-index:1}
+.lay-finder-result--ink .lay-comm__tit{display:inline-block;vertical-align:middle}
+.lay-finder-result--ink .lay-comm__tit--sub{margin-left:12px;color:#ddd;font-weight:normal;font-size:13px}
+.lay-finder-result--ink .lay-comm__tit--sub em{font-weight:bold}
+.lay-finder-result--ink .finder-result--ink:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.lay-finder-result--ink .lay-comm--inner{max-height:400px;overflow-y:auto}
+.lay-finder-result__dimmed{position:absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.5)}
+.finder-result--ink{letter-spacing:-1px;padding:16px 0 0 0;border-top:1px solid #ddd;margin-top:12px}
+.finder-result__tit{height:20px;line-height:20px;font-size:14px;color:#333;padding:0 0 12px;font-weight:bold}
+/* .finder-result__list{} */
+.finder-result__list:after{content:"";display:block;clear:both}
+.finder-result__list li{float:left;width:25%;padding-right:16px;box-sizing:border-box;height:24px;padding:3px 0}
+.finder-result__list li a{display:block;overflow:hidden;line-height:18px;color:#999999;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;letter-spacing:0;white-space:nowrap;text-overflow:ellipsis}
+.finder-result__list li.is--active a{color:#1A70DD}
+
+/* 상품리스트 */
+.list-body{position:relative}
+.list-body:after{content:"";display:block;clear:both}
+/* LP 좌측 컨텐츠 */
+.list-body-cont{width:1010px;float:left}
+/* 필터 */
+.list-filter{margin-bottom:28px}
+.list-filter-top{height:49px;border-bottom:1px solid #666;position:relative}
+/* 상품리스트 > 탭 */
+.list-filter__tab{height:49px}
+.list-filter__tab li{position:relative;float:left;width:126px;border:1px solid #eee;border-bottom:0;background-color:#FBFBFB;margin-left:-1px}
+.list-filter__tab li > a{display:block;height:18px;text-align:center;padding:15px 0;line-height:18px;font-size:13px;letter-spacing:-1px;color:#333}
+.list-filter__tab li:hover{font-weight:bold}
+.list-filter__tab li:hover > a{text-decoration:none}
+/* .list-filter__tab li .list-tab--tx{} */
+.list-filter__tab li .list-tab--count{display:none;font-size:12px;color:#1A70DD;margin-left:4px;font-weight:normal}
+.list-filter__tab li:first-child{margin-left:0}
+.list-filter__tab li.is--on{z-index:1;background-color:#fff;padding-bottom:1px;border-color:#666}
+.list-filter__tab li.is--on .list-tab--tx{font-weight:bold}
+.list-filter__tab li.is--on .list-tab--count{display:inline}
+.list-filter__tab li .lay-tab-caution,
+.list-filter__tab li.is--on:hover .lay-tab-caution{display:none}
+.list-filter__tab li:hover .lay-tab-caution{display:block}
+/* 상품리스트 > 결과내검색 */
+.list-filter__search{position:absolute;right:0;top:10px;width:180px;height:26px;border:1px solid #ccc}
+.list-filter__search--input{width:calc(100% - 60px);height:26px;background-color:#fff;border:0;outline:none;padding:0 44px 0 16px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666}
+.list-filter__search--btn{position:absolute;top:0;right:0;width:27px;height:26px;background-color:#F4F4F4;border-left:1px solid #ccc}
+.list-filter__search--btn:hover{background-color:#eee}
+.list-filter__search--btn i{display:block;text-indent:-999em;font-size:0;margin:0 auto}
+.ico-search-btn{width:16px;height:16px;background-position:-60px -20px}
+/* 필터 하단 */
+.list-filter-bot{position:relative;height:56px;border-bottom:1px solid #ddd}
+/* 상품 리스트 > 정렬 */
+.list-filter__sort{height:16px;float:left;margin:20px 0 0 2px}
+.list-filter__sort > li{position:relative;height:16px;float:left;margin-left:12px}
+.list-filter__sort > li > a{position:relative;display:block;padding-left:18px;color:#666;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;letter-spacing:-.5px}
+.list-filter__sort > li > a:before{content:"";position:absolute;top:0;left:0;width:16px;height:16px;background-image:url(//img.enuri.info/images/rev/lp_sprite.png);background-repeat:no-repeat;background-position:-80px 0}
+.list-filter__sort > li.is--on > a{color:#1A70DD}
+.list-filter__sort > li.is--on > a:before{background-position:-60px 0}
+.list-filter__sort > li .lay-filter-tip{display:none}
+.list-filter__sort > li:hover .lay-filter-tip{display:block}
+/* 상품리스트 > 필터 > 출시예정 */
+.list-filter__btn{float:left;position:relative;margin:14px 0 0 16px;padding:0 8px;height:28px;border:1px solid #ccc;text-align:center;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;letter-spacing:-.5px;background-color:#fff}
+.list-filter__btn:hover{border-color:#999}
+.list-filter__btn .lay-filter-tip{display:none;text-align:left;margin-left:-12px;width:280px}
+.list-filter__btn:hover .lay-filter-tip{display:block}
+.ico-rarr--sm{width:8px;height:8px;background-position:-180px -20px;display:inline-block}
+/* 필터 > 우측 고정 메뉴 */
+.list-filter-side{position:absolute;top:0;right:0}
+/* 상품리스트 > 필터 > 조건 */
+.list-filter__condition{float:left;margin:20px 0 0 0;letter-spacing:-.5px}
+.list-filter__condition ul{height:16px}
+.list-filter__condition ul li{position:relative;float:left;height:16px;margin-left:16px}
+.list-filter__condition ul li:first-child{margin-left:0}
+.list-filter__condition ul li .lay-filter-tip{display:none;width:280px;right:0}
+.list-filter__condition ul li:hover .lay-filter-tip{display:block}
+/* 상품리스트 > 필터 > 노출갯수 */
+.list-filter__select{float:left;margin:14px 0 0 16px;width:110px}
+/* 상품리스트 > 필터 > 뷰타입 */
+.list-filter__view{float:left;margin:14px 0 0 16px}
+.view-type{height:28px}
+.view-type li{position:relative;float:left;width:28px;height:28px;margin-left:-1px}
+.view-type li:first-child{margin-left:0}
+.view-type li:hover{z-index:1}
+.view-type li.is--on{z-index:2}
+.view-type li a{display:block;width:26px;height:26px;border:1px solid #ccc}
+.view-type li.is--on a,
+.view-type li:hover a{border-color:#555}
+.view-type li a i{text-indent:-9999em;display:block;float:left;width:14px;height:14px;margin:6px 0 0 6px}
+.ico-type-list{background-position:-100px 0}
+.view-type li.is--on .ico-type-list{background-position:-100px -20px}
+.ico-type-grid{background-position:-120px 0}
+.view-type li.is--on .ico-type-grid{background-position:-120px -20px}
+
+.btn-go-social{float:left;margin:14px 0 0 16px;width:178px;height:26px;line-height:26px;background-color:#fff;border:1px solid #ccc;text-align:center;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;letter-spacing:-.5px}
+.btn-go-social:hover{border-color:#555;text-decoration:none}
+.btn-go-social .ico-rarr-bold{display:inline-block;width:12px;height:12px;background-position:-200px -20px;vertical-align:-1px}
+
+/* 필터 > 레이어 툴팁 */
+.lay-filter-tip{position:absolute;margin-top:16px;background-color:#fff;border:1px solid #666;line-height:20px;padding:15px 14px;width:392px;box-shadow:0 4px 8px rgba(0,0,0,0.15);z-index:2}
+.lay-filter-tip dl{position:relative}
+.lay-filter-tip dt{position:absolute;top:0;left:0;font-weight:bold;text-indent:4px;font-size:12px;font-weight:bold;color:#333}
+.lay-filter-tip dd{display:block;margin-left:32px;font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.lay-filter-tip dd em{color:#1A70DD}
+
+/* 필터 > 레이어 툴팁 */
+.lay-tab-caution{position:absolute;margin-top:0;margin-left:-1px;background-color:#fff;border:1px solid #666;line-height:24px;padding:12px 14px;width:190px;box-shadow:0 4px 8px rgba(0,0,0,0.15);z-index:2;letter-spacing:-1px;opacity:.9}
+.lay-tab-caution dl{position:relative}
+.lay-tab-caution dt{font-weight:bold;font-size:12px;font-weight:bold;color:#333}
+.lay-tab-caution dd{display:block;font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.lay-tab-caution dd em{color:#FA3E3D}
+
+/* 프린터 파인터 검색시 필터 */
+.list-filter--finder{margin-bottom:28px;position:relative;z-index:1}
+.list-filter--finder .list-filter__head{height:28px;padding-bottom:10px;border-bottom:1px solid #aaa}
+.list-filter--finder .list-filter__head > dl{height:28px;line-height:26px;float:left}
+.list-filter--finder .list-filter__head > dl dt,
+.list-filter--finder .list-filter__head > dl dd{float:left;font-size:14px;letter-spacing:-1px}
+.list-filter--finder .list-filter__head > dl dt{color:#666;position:relative;padding-right:21px}
+.list-filter--finder .list-filter__head > dl dt:after {content:"";position:absolute;width:12px;height:12px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat 0 -20px;top:8px;right:2px}
+.list-filter--finder .list-filter__head > dl dt em{color:#1A70DD;font-weight:bold}
+.list-filter--finder .list-filter__head > dl dd{color:#333;font-weight:bold}
+.list-filter--finder .list-filter__prod{background-color:#FBFBFB;border-bottom:1px solid #aaa;padding:28px 0}
+.list-filter--finder .list-filter__prod .item__box,
+.list-filter--finder .list-filter__prod .item__info,
+.list-filter--finder .list-filter__prod .goods-item{min-height:146px}
+.list-filter--finder .list-filter__prod .item__info{float:none;padding-left:168px;margin:0;display:table-cell;vertical-align:middle}
+.list-filter--finder .list-filter-side{float:right}
+.list-filter--finder .list-filter-side .list-filter__view{margin-top:0}
+.list-filter--finder .list-filter-side .lay-filter-tip{right:0;left:auto;margin-top:14px}
+.list-filter--finder .list-filter__sort{margin-top:8px}
+.list-filter--finder .btn--search-more{float:left;margin-left:8px;width:152px;height:28px;border:1px solid #ccc;background-color:#fff;text-align:center;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666}
+.ico-adv-rarr{display:inline-block;width:16px;height:16px;text-indent:-9999em;vertical-align:-4px;background-position:-140px -20px;transform:rotate(-90deg)}
+.ico-enuripc-rarr{display:inline-block;width:16px;height:16px;text-indent:-9999em;vertical-align:-4px;background-position:-300px -20px;transform:rotate(-90deg)}
+
+/* 상품리스트 */
+/* .goods-list{} */
+.gooods-list__tx--noti{padding:9px 20px;line-height:18px;font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#999;background-color:#F8F8F8;border:1px solid #eee}
+
+/* 페이징 */
+.paging{height:32px;padding:30px 0;text-align:center;position:relative}
+.paging__count{position:absolute;top:0;left:0;padding:30px 0;height:32px;line-height:32px;font-size:11px;color:#666}
+.paging__count em{font-weight:bold;color:#333}
+.paging__inner{display:inline-block;padding:0 50px;height:32px;position:relative;overflow:hidden}
+.paging__item{display:block;float:left;padding:0 2px;min-width:26px;height:30px;line-height:30px;border:1px solid #eee;margin:0 2px;color:#666;font-size:14px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.paging__item:hover{border-color:#bbb}
+.paging__item.is--on{color:#fff;background-color:#1A70DD;font-weight:bold;border-color:#1A70DD}
+.paging button{position:absolute;width:32px;height:32px;background-color:transparent;top:0;opacity:.6}
+.paging button:hover{opacity:1}
+.paging button.is--disabled{opacity:.2;pointer-events:none}
+.paging .paging__btn--prev{left:0}
+.paging .paging__btn--next{right:0}
+.ico-paging-prev{width:16px;height:16px;margin:0 auto;background-position:-100px -300px;text-indent:-9999em;display:block}
+.ico-paging-next{width:16px;height:16px;margin:0 auto;background-position:-120px -300px;text-indent:-9999em;display:block}
+
+/* LP 우측 리스트 */
+.list-body-side{float:right;width:230px}
+.list-body-side:before{content:"";position:absolute;top:0;right:250px;bottom:0;border-left:1px solid #ddd}
+/* .list-body-side .side__inner{} */
+.list-body-side .side__inner.is--fixTop{position:fixed;top:70px}
+.list-body-side .side__inner.is--fixBot{position:fixed;bottom:0}
+.list-body-side .side__inner.is--fixBotOv{position:absolute;bottom:0}
+
+/* 우측 쇼핑지식 컨텐츠 */
+.knowcom-box{width:230px;font-size:12px;color:#666}
+.knowcom-box--head{font-size:20px;color:#222;padding:0 0 9px;border-bottom:1px solid #222;line-height:26px;letter-spacing:-1px;margin-bottom:22px;margin-top:-4px}
+.knowcom-box--head .tx--cate{display:block;color:#0073be;word-break:keep-all}
+.knowcom-box--body{position:relative}
+.knowcom-group{letter-spacing:-.5px}
+.knowcom-group--head{position:relative;height:24px;line-height:24px;padding:10px 0;color:#000;font-size:15px;letter-spacing:-1px;font-weight:bold}
+.knowcom-group--body{padding-bottom:20px;position:relative;min-height:200px}
+.knowcom-group.group--news .knowcom-group--body{min-height:110px}
+.knowcom-group--body .knwocom-group__thum{display:block}
+.knowcom-group--body .knwocom-group__thum--img{position:relative;display:block;width:230px;height:172px;overflow:hidden;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 100px}
+.knowcom-group--body .knwocom-group__thum--img:after{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.015)}
+.knowcom-group--body .knwocom-group__thum--img img{width:100%;height:100%;transition:.3s all ease}
+/* .knowcom-group--body .knwocom-group__thum--img.type--movie{} */
+.knowcom-group--body .knwocom-group__thum--img.type--movie:before{content:"";position:absolute;width:41px;height:41px;background:url(//img.enuri.info/images/home/ico_wingr_knowcom.png) no-repeat 0 100%;left:8px;bottom:8px;z-index:1}
+.knowcom-group--body .knwocom-group__thum--img.type--movie:after{background-color:rgba(0,0,0,.1)}
+.knowcom-group--body .knwocom-group__thum:hover img{transform:scale(1.05);transform-origin:center center}
+.knowcom-group--body .knwocom-group__thum .tx--thumb{display:block;padding-top:12px;line-height:22px;font-size:14px;font-weight:bold;color:#333;overflow:hidden;max-height:44px;letter-spacing:-1px}
+.knowcom-group--body .knwocom-group__thum:hover .tx--thumb{text-decoration:underline}
+.knowcom-group__list{padding-top:10px;line-height:22px}
+.knowcom-group__list a{display:block;height:22px;overflow:hidden;color:inherit;white-space:nowrap;text-overflow:ellipsis;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.knowcom-group__list a:hover{text-decoration:underline}
+.knowcom-group__list .tx--fix a{font-weight:bold;color:#333}
+.knowcom-group__btn{float:right;overflow:hidden}
+.knowcom-group__btn button{position:relative;width:24px;height:24px;background:url(//img.enuri.info/images/home/ico_wingr_knowcom.png) transparent;border:1px solid #ddd;float:left;text-indent:-9999em;outline:none;transition:.3s background ease}
+.knowcom-group__btn button:hover{z-index:1;border-color:#bbb}
+.knowcom-group__btn .knowcom-group__btn--prev{background-position:0 0}
+.knowcom-group__btn .knowcom-group__btn--prev:hover{background-position:-2px 0}
+.knowcom-group__btn .knowcom-group__btn--next{margin-left:-1px;background-position:-22px 0}
+.knowcom-group__btn .knowcom-group__btn--next:hover{background-position:-20px 0}
+
+/* [SRP] 핫키워드 */
+.hot-keyword{border:1px solid #eee;padding:12px;width:204px;line-height:18px;margin-bottom:32px}
+.hot-keyword__tit{padding:7px 0 12px;font-size:15px;font-weight:bold;color:#333;letter-spacing:-1px}
+.hot-keyword__tit em{color:#FA3E3D;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:18px}
+.hot-keyword__list{height:28px;padding-bottom:260px;position:relative}
+.hot-keyword__list > li{float:left;width:50%;height:28px}
+.hot-keyword__tab{display:block;position:relative;height:18px;padding:5px 0;text-align:center;font-size:12px;color:#666}
+.hot-keyword__tab:before{content:"";position:absolute;top:0;left:-1px;right:0;bottom:0;border:1px solid #ddd}
+.is--on .hot-keyword__tab{background-color:#515B6D;color:#fff;font-weight:bold;z-index:1}
+.is--on .hot-keyword__tab:before{border-color:#515B6D}
+.hot-keyword__tab + ol{display:none;position:absolute;left:0;width:214px;padding-top:12px}
+.is--on .hot-keyword__tab + ol{display:block}
+.hot-keyword__tab + ol li{height:18px;padding:3px 0;color:#666}
+.hot-keyword__tab + ol li a{color:inherit;display:block;overflow:hidden;height:18px;white-space:nowrap;text-overflow:ellipsis;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.hot-keyword__tab + ol li .tx--rank{float:left;width:20px;font-weight:bold;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#333}
+.hot-keyword__tab + ol li:nth-child(-n+3),
+.hot-keyword__tab + ol li:nth-child(-n+3) .tx--rank{color:#1A70DD}
+
+/* AD 파워클릭 / 파워링크 / 오픈쇼핑 */
+.lp-ad--powershopping{margin-bottom:20px}
+.lp-ad--powerlink,
+.lp-ad--openad{margin-top:40px}
+.lp-ad--openad .lay-apply-openad,
+.ad-openad--list .lay-apply-openad{position:absolute;right:0;z-index:1;margin-top:-20px}
+
+.comm_ad{position:relative;letter-spacing:-.5px}
+.comm_ad_tit{padding:0 0 16px;position:relative;height:20px;line-height:20px;font-size:16px;font-weight:bold;color:#333;letter-spacing:-1px;border-bottom:1px solid #666}
+.comm_ad_tit em{display:inline-block;padding-right:28px;position:relative}
+.comm_ad_tit em:after{content:"";position:absolute;top:2px;right:0;width:24px;height:16px;background:url(//img.enuri.info/images/rev/common_sprite.png) no-repeat -240px -40px}
+.comm_ad_tit .comm_ad_tx_sub{font-size:12px;color:#999;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:normal;vertical-align:top;margin-left:10px}
+.comm_ad_tit .comm_btn_apply{float:right;color:#aaa;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;font-weight:normal;padding-right:16px;background:url(//img.enuri.info/images/home/ico_comm_ad_apply.png) no-repeat 100% 50%}
+.comm_ad_list{position:relative;overflow:hidden;width:100%}
+.ad_powershopping .ad_goods ul li .ad_info{height:94px}
+.ad_powerclick .ad_goods ul li .ad_info{height:120px}
+.comm_ad_list.ad_goods{padding:16px 0}
+.comm_ad_list.ad_goods ul{margin-left:-16px;width:1026px;overflow:hidden}
+.comm_ad_list.ad_goods ul li{width:155px;margin-left:16px;position:relative;float:left}
+.comm_ad_list.ad_goods ul li a{display:block}
+.comm_ad_list.ad_goods ul li a:hover{text-decoration:none}
+.comm_ad_list.ad_goods ul li .ad_thumb{width:155px;height:155px;position:relative;display:block;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 100px #fff}
+.comm_ad_list.ad_goods ul li .ad_thumb img{width:100%;height:100%}
+.comm_ad_list.ad_goods ul li .ad_thumb:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.015)}
+.comm_ad_list.ad_goods ul li .ad_info{display:block;padding:8px 0 0;line-height:20px}
+.comm_ad_list.ad_goods ul li .ad_info > span{display:block}
+.comm_ad_list.ad_goods ul li a:hover .ad_info_nm{text-decoration:underline}
+.comm_ad_list.ad_goods ul li .ad_info_nm{font-size:14px;height:40px;color:#666;display:-webkit-box; -o-text-overflow:ellipsis; text-overflow:ellipsis; white-space:normal; word-wrap:break-word; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;letter-spacing:-.5px}
+.comm_ad_list.ad_goods ul li .ad_info_price{font-size:14px;color:#000;margin-top:6px}
+.comm_ad_list.ad_goods ul li .ad_info_price em{font-weight:bold;font-size:18px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:bold;text-decoration:inherit}
+.comm_ad_list.ad_goods ul li .ad_info_shop{font-size:12px;color:#666;margin-top:8px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo"}
+.comm_ad_list.ad_goods ul li .ad_info_shop em{display:inline-block}
+.comm_ad_list.ad_goods ul li .ad_info_shop .ad_type_npay{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-right:36px;position:relative;background:url(//img.enuri.info/images/home/ico_npay_sm.png) no-repeat 100% 50%;max-width:108px}
+.comm_ad_list.ad_goods ul li .ad_info_shop .ad_type_npay_plus{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;padding-right:46px;position:relative;background:url(//img.enuri.info/images/home/ico_npay_plus_sm.png) no-repeat 100% 50%;max-width:98px}
+.comm_ad_list.ad_goods ul li .ad_info_etc{font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#999999;margin-top:2px}
+.comm_ad_list.ad_goods ul li .ad_price_tag{display:inline-block;color:#FA3E3D;margin-right:4px;font-weight:bold}
+
+.comm_ad_list.ad_link{overflow:hidden}
+.comm_ad_list.ad_link ul{position:relative;overflow:hidden;width:1059px;margin-left:-49px}
+.comm_ad_list.ad_link ul li{position:relative;width:480px;padding:16px 0 16px 49px;height:88px;float:left;border-bottom:1px solid #eeeeee}
+.comm_ad_list.ad_link ul li:before{content:"";position:absolute;top:0;bottom:0;left:24px;height:132px;border-left:1px solid #eee}
+.comm_ad_list.ad_link ul li a{display:block}
+.comm_ad_list.ad_link ul li a:after {content:"";display:table;clear:both}
+.comm_ad_list.ad_link ul li .ad_thumb{position:relative;width:88px;height:88px;border-radius:2px 2px;overflow:hidden;float:right;margin-left:24px}
+.comm_ad_list.ad_link ul li .ad_thumb img{width:100%;height:100%}
+.comm_ad_list.ad_link ul li .ad_thumb:before{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.015)}
+.comm_ad_list.ad_link ul li .ad_info{line-height:22px}
+.comm_ad_list.ad_link ul li .ad_info_nm{display:block;padding:10px 0;height:22px;font-size:14px;font-weight:bold;color:#0073be;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;letter-spacing:-1px}
+.comm_ad_list.ad_link ul li .ad_info_nm .ico_npay{margin-left:4px;text-indent:-9999em;width:30px;height:13px;display:inline-block;position:relative;background:url(//img.enuri.info/images/home/ico_npay_plus_sm.png) no-repeat 0 0;vertical-align:-5px}
+.comm_ad_list.ad_link ul li .ad_info_nm .ico_npay.plus{width:42px}
+.comm_ad_list.ad_link ul li .ad_info_txt{display:block;display:-webkit-box;color:#666;font-size:12px;-o-text-overflow:ellipsis; text-overflow:ellipsis; white-space:normal; word-wrap:break-word; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;height:36px;line-height:18px;letter-spacing:-.5px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+
+/* [SRP] 연관 검색어 */
+.related-keyword{padding-bottom:15px;border-bottom:1px solid #666666;margin-bottom:16px;letter-spacing:-1px}
+.related-keyword__inner{height:18px;text-align:left;letter-spacing:-.5px;line-height:18px}
+.related-keyword__tit{float:left;font-size:13px;font-weight:bold;letter-spacing:-1px;padding-right:12px;border-right:1px solid #ccc}
+.related-keyword__list{float:left;height:18px;overflow:hidden;max-width:calc(100% - 90px);padding:0 8px}
+.related-keyword__list li{padding:0 8px;float:left}
+.related-keyword__list li a{color:#666;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px}
+
+/* [SRP] 부분 검색어*/
+.part-keyword{padding-bottom:15px;border-bottom:1px solid #666666;margin-bottom:16px;letter-spacing:-1px}
+.part-keyword__inner{height:18px;text-align:left;letter-spacing:-.5px;line-height:18px}
+.part-keyword__tit{float:left;font-size:13px;font-weight:bold;letter-spacing:-1px;padding-right:12px;border-right:1px solid #ccc}
+.part-keyword__list{float:left;height:18px;overflow:hidden;max-width:calc(100% - 150px);padding:0 8px}
+.part-keyword__list li{padding:0 8px;float:left}
+.part-keyword__list li input + label{text-decoration:line-through;color:#999}
+.part-keyword__list li input:checked + label{text-decoration:none;color:#666}
+.part-keyword__btn--research{float:left;position:absolute;margin-top:-3px;width:60px;height:24px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;border:1px solid #CCCCCC;background-color:#F8F8F8;text-align:center}
+.part-keyword__btn--research:hover{border-color:#aaa}
+
+/* [SRP] 유사검색 */
+.similar-keyword{padding-bottom:15px;border-bottom:1px solid #666666;margin-bottom:16px;letter-spacing:-1px}
+.similar-keyword__inner{height:18px;text-align:left;letter-spacing:-.5px;line-height:18px;font-size:13px}
+.similar-keyword__inner i{float:left;margin-top:1px;text-indent:-9999em;margin-right:4px}
+.ico-info{width:16px;height:16px;background-position:-160px 0}
+
+/* [SRP] 검색결과 */
+.search-result-summ{padding:6px 0;margin-bottom:10px}
+.search-result__head{height:22px;line-height:22px}
+.search-result__head .sr-keyword{font-weight:bold;display:inline-block;max-width:calc(100% - 300px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:22px;color:#0060AF;letter-spacing:-1.4px}
+.search-result__head .sr-keyword--info{color:#333;font-size:15px;vertical-align:bottom}
+.search-result__head .sr-keyword--info-sub{font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px}
+.search-result__head .sr-keyword--info-sub em{font-weight:bold}
+
+/* [SRP] 삭제된 LP/VIP에서 유입된 경우 > LP 이동 버튼 */
+.move-lp{position:absolute;right:0;margin-top:-41px}
+.move-lp__btn{padding:0 12px;height:28px;border:1px solid #ccc;background-color:#fff;text-align:center;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666}
+.move-lp__btn em{color:#333}
+
+/* [SRP] C 타입 (스마트폰, 태블릿 PC) */
+.srp-type--c{height:225px;margin-bottom:30px}
+.srp-type--c .srp-type__list{height:28px;margin-bottom:16px;position:relative}
+.srp-type--c .srp-type__list li{float:left;margin-left:8px}
+.srp-type--c .srp-type__list li:first-child{margin-left:0}
+.srp-type--c .srp-type__tab{min-width:88px;height:28px;border:1px solid #ddd;border-radius:4px;background-color:#fff;color:#222;font-size:12px;font-weight:bold;text-align:center;padding:0 10px 2px}
+.srp-type--c .srp-type__tab:hover{background-color:#FBFBFB;border-color:#bbb}
+.srp-type--c .srp-type__list li.is--on .srp-type__tab{background-color:#1A70DD;border-color:#1764C5;color:#fff}
+.srp-type--c .srp-type__cont{position:absolute;left:0;right:0;margin-top:16px;display:none}
+.srp-type--c .srp-type__list li.is--on .srp-type__cont{display:block}
+.srp-type--c .srp-type__cond{height:181px;border-bottom:1px solid #666;position:relative}
+.srp-type--c .srp-type__cond:before{content:"";position:absolute;top:0;left:0;right:0;border-top:1px solid #666}
+.srp-type--c .srp-type__cond:after{content:"";display:block;clear:both}
+.srp-type--c .srp-type__cond dt,
+.srp-type--c .srp-type__cond dd{height:180px;float:left;border-top:1px solid #ddd;border-right:1px solid #ddd}
+.srp-type--c .srp-type__cond dt:first-of-type{border-left:1px solid #ddd}
+.srp-type--c .srp-type__cond dt{width:80px;text-align:center;background-color:#FBFBFB;font-size:14px;font-weight:bold;color:#333;line-height:180px}
+.srp-type--c .srp-type__cond dd{width:344px}
+.srp-type--c .srp-type__cond dd:first-of-type{width:345px}
+.tb-conditon--type-c{width:100%}
+.tb-conditon--type-c tr:first-child th,
+.tb-conditon--type-c tr:first-child td{border-top:0;height:45px}
+.tb-conditon--type-c th,
+.tb-conditon--type-c td{height:44px;border-top:1px solid #ddd;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px}
+.tb-conditon--type-c th{border-right:1px solid #ddd;width:120px;text-align:center;color:#666}
+.tb-conditon--type-c td{padding:0 12px;text-align:right}
+.tb-conditon--type-c td em{font-weight:bold;font-size:15px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.tb-conditon--type-c td a{color:inherit}
+.tb-conditon--type-c td.is--soldout{color:#FA3E3D}
+.tb-conditon--type-c tr.is--empty{background-color:#FBFBFB;color:#aaa}
+
+/* [SRP] 카테고리 */
+.category-srp--list-cate{border:1px solid #ddd;margin-bottom:-1px}
+.category-srp--list-cate .category-srp__head{height:16px;padding:16px;background-color:#FBFBFB;border-bottom:1px solid #ddd}
+.category-srp--list-cate .category-srp__location li{float:left;height:16px;line-height:16px;font-size:13px;color:#333;position:relative;margin-left:5px;letter-spacing:-1px}
+.category-srp--list-cate .category-srp__location li:first-child{margin-left:0}
+.category-srp--list-cate .category-srp__location li > a{position:relative;display:block;padding-right:21px;color:inherit}
+.category-srp--list-cate .category-srp__location li > a:after{content:"";position:absolute;width:12px;height:12px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat 0 -20px;top:2px;right:2px}
+.category-srp--list-cate .category-srp__location li .tx--cate{font-weight:bold}
+.category-srp--list-cate .category-srp__location li .tx--count{color:#1A70DD;font-size:12px}
+.category-srp--list-cate .category-srp__location li .tx--count em{font-weight:bold}
+.category-srp--list-cate .category-srp__list{position:relative;padding:3px 0}
+.category-srp--list-cate .category-srp__list li{float:left;width:calc(16.66% - 47px);padding:10px 0 10px 16px;line-height:18px;height:18px}
+.category-srp--list-cate .category-srp__list li a{position:relative;display:block;height:18px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666}
+.category-srp--list-cate .category-srp__list li a .tx--cate{display:inline-block;max-width:calc(100% - 20px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:bottom}
+.category-srp--list-cate .category-srp__list li a:hover .tx--cate{text-decoration:underline}
+.category-srp--list-cate .category-srp__list li a .tx--count{color:#999;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;vertical-align:bottom}
+.category-srp--list-cate .category-srp__list:after{content:"";display:block;clear:both}
+
+/* [SRP] 추천카테고리 */
+.category-srp--recom-cate{position:relative;z-index:2}
+.category-srp--recom-cate.is--disabled:before{content:"";top:1px;left:1px;right:1px;bottom:1px;position:absolute;z-index:10;background:rgba(255,255,255,.7)}
+.category-srp--recom-cate .search-box__list{margin:0 10px;position:relative}
+.category-srp--recom-cate .search-box__list li{width:calc(20% - 12px);margin:0 6px;padding:0;height:32px}
+.category-srp--recom-cate .category-srp__item{display:block;position:relative;height:18px;padding:6px;border:1px solid #ccc;border-radius:16px;line-height:18px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666;text-align:center;letter-spacing:-.5px}
+.category-srp--recom-cate .category-srp__item:hover{border-color:#aaa;text-decoration:none}
+.category-srp--recom-cate .category-srp__item .tx--name{display:inline-block;max-width:calc(100% - 52px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:bottom}
+.category-srp--recom-cate .category-srp__item .tx--count{margin-left:4px;font-size:11px;color:#1A70DD;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.category-srp--recom-cate .search-box-row.is--unfold .search-box__body{background:#fff}
+.category-srp--recom-cate .search-box--expend .search-box__head--name{font-size:12px;font-weight:normal}
+
+/* [SRP] 추천브랜드 */
+.category-srp--recom-brnd{position:relative;z-index:1}
+.category-srp--recom-brnd .search-box__list{margin:0 10px;position:relative}
+.category-srp--recom-brnd .search-box__list li{width:calc(25% - 12px);margin:0 6px;padding:0;height:30px}
+.category-srp--recom-brnd.luxury .search-box__list li{width:calc(20% - 12px);margin:0 6px;padding:0;height:30px}
+.category-srp--recom-brnd .search-box--expend .search-box__list{margin:0}
+.category-srp--recom-brnd .search-box--expend .search-box__list li{width:calc(16.666% - 16px);margin:0;padding:6px 0 6px 16px;height:18px}
+.category-srp--recom-brnd .category-srp__item{display:block;position:relative;height:30px;text-align:center;border:1px solid #eee;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#333}
+.category-srp--recom-brnd .category-srp__item img{height:30px;width:auto}
+.category-srp--recom-brnd .category-srp__item:hover{border-color:#bbb;text-decoration:none}
+.category-srp--recom-brnd .is--on .category-srp__item{border-color:#1A70DD}
+.category-srp--recom-brnd .search-box-row.is--unfold .search-box__body{background:#fff}
+.category-srp--recom-brnd .search-box--expend .search-box__head--name{font-size:12px;font-weight:normal}
+
+.search-box--expend{display:none}
+.is--unfold + .search-box--expend{display:block}
+.search-box--expend .search-box__head,
+.search-box--expend .search-box__body{background-color:#FBFBFB}
+.search-box--expend .is--unfold .search-box__body{background:#FBFBFB!important}
+.category-srp--recom-cate .search-box--expend .search-box__inner{padding:2px 0 3px;overflow:visible}
+.search-box__list--recomcate{position:relative}
+.search-box__list--recomcate:after{content:"";display:block;clear:both}
+.search-box__list--recomcate > li{position:relative;height:38px;border:1px solid transparent;float:left;width:calc(20% - 1px);margin-left:-1px}
+.search-box__list--recomcate > li:nth-child(5n+1){margin-left:0;width:calc(20% - 2px)}
+.search-box__list--recomcate > li:hover{border-color:#aaa}
+.search-box__list--recomcate > li:hover a{text-decoration:none}
+.search-box__list--recomcate .category-srp__item--expend{display:block;padding:12px 16px;height:16px;line-height:16px}
+.search-box__list--recomcate .category-srp__item--expend .tx--name{display:inline-block;overflow:hidden;max-width:calc(100% - 52px);white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:bottom;color:#666}
+.search-box__list--recomcate .category-srp__item--expend .tx--count{margin-left:4px;font-size:11px;color:#999;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.search-box__list--recomcate .ico-expend-arr{width:12px;height:12px;position:absolute;background-position:-160px -20px;margin-left:4px;vertical-align:top;margin-top:2px}
+.search-box__list--recomcate > li.is--active .ico-expend-arr{transform:rotate(180deg);transform-origin:center center}
+.search-box__list--recomcate > li.is--active{border-color:#666;background-color:#fff}
+.search-box__list--recomcate .search-box__sub{position:absolute;left:-1px;right:-1px;border:1px solid #666;background-color:#fff;z-index:1;max-height:120px;margin-top:-2px;padding:6px;overflow-y:auto;display:none;box-shadow:0 5px 10px rgba(0,0,0,0.15)}
+.search-box__list--recomcate > li.is--active .search-box__sub{display:block}
+.search-box__list--recomcate .search-box__sub li{height:18px;line-height:18px;padding:3px 10px}
+.search-box__list--recomcate .search-box__sub li:hover{background-color:#1A70DD}
+.search-box__list--recomcate .search-box__sub li a{display:block;height:18px}
+.search-box__list--recomcate .search-box__sub li a .tx--name{display:inline-block;max-width:calc(100% - 40px);overflow:hidden;height:18px;white-space:nowrap;text-overflow:ellipsis;vertical-align:middle;color:#333}
+.search-box__list--recomcate .search-box__sub li:hover a .tx--name{color:#fff}
+.search-box__list--recomcate .search-box__sub li a .tx--count{display:inline-block;vertical-align:middle;color:#999;margin-left:4px}
+.search-box__list--recomcate .search-box__sub li:hover a .tx--count{color:#fff}
+.search-box__list--recomcate .search-box__sub li a:before{content:"•  ";color:#ccc}
+.search-box__list--recomcate .search-box__sub li:hover a:before{color:#fff}
+
+/* [SRP] 키워드 브랜드 광고 */
+.srp-ad--keybrand{margin-bottom:30px}
+.srp-ad--keybrand__tit{height:18px;font-size:14px;font-weight:bold;letter-spacing:-1px;color:#333;padding-bottom:16px}
+.srp-ad--keybrand__tit em{color:#FA3E3D}
+.srp-ad--keybrand__cont{height:233px;border:1px solid #ddd}
+.srp-ad--keybrand--main{padding:24px 20px;width:534px;height:185px;float:left}
+.srp-ad--keybrand__thumb{float:left;width:246px;height:189px;position:relative;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 100px}
+.srp-ad--keybrand__thumb:before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,0,0,.05)}
+.srp-ad--keybrand__info{float:left;width:268px;margin-left:16px}
+.srp-ad--keybrand__name img{width:192px;height:60px}
+.srp-ad--keybrand__sub{line-height:18px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#666;height:54px;overflow:hidden;margin-top:20px}
+.srp-ad--keybrand__btn{display:block;line-height:18px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;color:#1A70DD;margin-top:26px}
+.srp-ad--keybrand--related{position:relative;width:434px;padding:24px 0;height:189px;float:left}
+.srp-ad--keybrand--logo{height:20px;position:absolute;right:24px;top:29px}
+.srp-ad--keybrand__txt{padding-top:6px;font-size:13px;font-weight:bold;height:18px;overflow:hidden}
+.srp-ad--keybrand__prod{margin-top:24px}
+.srp-ad--keybrand__prod > li{width:95px;margin-left:12px;float:left}
+.srp-ad--keybrand__prod > li:first-child{margin-left:0}
+.srp-ad--keybrand__prod--thumb{display:block;width:95px;height:95px;position:relative;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 50px}
+.srp-ad--keybrand__prod--thumb:before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,0,0,.05)}
+.srp-ad--keybrand__prod--thumb img{width:100%;height:100%}
+.srp-ad--keybrand__prod--name{display:block;line-height:18px;height:18px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;margin-top:8px;text-align:center}
+
+/* [SRP/LP] 검색결과 없음 */
+.no-result{border:1px solid #eee}
+.no-result--list{padding-bottom:28px;border-bottom:1px solid #eee;margin-bottom:28px}
+.no-result__inner{padding:66px 0;height:290px;box-sizing:border-box;text-align:center;}
+.no-result__tit{font-size:20px;letter-spacing:-1px;color:#333;line-height:32px;}
+.no-result__tit em{font-weight:bold;color:#1A70DD;display:inline-block;vertical-align:top;height:32px;overflow:hidden;max-width:760px;text-overflow:ellipsis;white-space:nowrap;}
+.no-result__tit em:before{content:"\201C"}
+.no-result__tit em:after{content:"\201D"}
+.no-result__tit .ico-caution{display:block;margin:0 auto 20px;width:118px;height:118px;text-indent:-9999em;background:url(//img.enuri.info/images/rev/ico_caution.png) no-repeat 0 0 / 100%}
+.no-result__tit .ico-caution + em:before,
+.no-result__tit .ico-caution + em:after{display:none}
+.no-result__txt{display:inline-block;text-align:left;margin-top:34px;}
+.no-result__txt--sub{font-size:14px;letter-spacing:-1px;color:#333;line-height:18px;font-weight:bold}
+.no-result__txt--case{margin-top:12px}
+.no-result__txt--case li{font-size:12px;line-height:18px;padding:3px 0;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#666}
+.no-result__foot{padding:15px 0;background-color:#FBFBFB;height:28px;line-height:28px;border-top:1px solid #eee;text-align:center;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#333;font-size:12px}
+.no-result__foot .btn--request{padding:0 17px;height:26px;line-height:24px;border:1px solid rgba(0,0,0,.16);background-color:#fff;color:inherit;font:inherit;display:inline-block;margin-left:16px;vertical-align:top}
+.no-result--list .no-result__inner{height:auto;}
+
+/* [SRP] 최근 본 & 연관 인기상품 */
+.related-prod{position:relative;border:1px solid #eee;margin:32px 0}
+
+/*[SRP] 최근본상품*/
+.recent-prod__cont {position:absolute;top:0;left:0;bottom:0;right:0;width:128px;padding:25px 50px;border-right:1px solid #eee;background-color:#F9FCFD}
+.recent-prod__tit{height:18px;margin-bottom:12px;font-weight:bold;font-size:13px;letter-spacing:-1px;color:#333}
+.recent-prod__tit em{font-weight:bold;color:#1A70DD}
+.recent-prod__tit em:before{content:"\201C"}
+.recent-prod__tit em:after{content:"\201D"}
+.recent-prod__inner{position:relative;height:190px}
+.recent-prod__paging{position:absolute;right:0;top:-28px;font-size:12px}
+.recent-prod__paging em{font-weight:bold}
+.recent-prod__btn--prev,
+.recent-prod__btn--next{width:28px;height:40px;position:absolute;top:50%;margin-top:-30px;text-indent:-9999em;z-index:1;background-color:transparent}
+.recent-prod__btn--prev{background-position:-200px -100px;left:-50px}
+.recent-prod__btn--next{background-position:-240px -100px;right:-50px}
+.recent-prod__list{width:128px;height:190px;margin-left:-14px}
+.recent-prod__item{width:128px;float:left;margin-left:14px}
+.recent-prod__item > a{display:block;width:128px}
+.recent-prod__item > a:hover{text-decoration:none}
+.recent-prod__thumb{position:relative;width:126px;height:126px;border:1px solid rgba(0,0,0,.16);background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 75px}
+.recent-prod__thumb img{width:100%;height:100%}
+.recent-prod__name{height:36px;line-height:18px;font-size:12px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#333;overflow:hidden;margin-top:3px}
+.recent-prod__item > a:hover .recent-prod__name{text-decoration:underline}
+.recent-prod__price{line-height:18px;font-size:12px;margin-top:8px;color:#333}
+.recent-prod__price em{font-weight:bold;font-size:13px}
+
+/*[SRP] 연관인기상품*/
+.related-prod__cont {margin-left:228px;padding:25px 42px}
+.related-prod__tit{height:18px;margin-bottom:12px;font-size:13px;letter-spacing:-1px;color:#333}
+.related-prod__tit em{font-weight:bold;color:#1A70DD}
+.related-prod__tit em:before{content:"\201C"}
+.related-prod__tit em:after{content:"\201D"}
+.related-prod__inner{position:relative;height:190px}
+.related-prod__paging{position:absolute;right:0;top:-28px;font-size:12px}
+.related-prod__paging em{font-weight:bold}
+.related-prod__btn--prev,
+.related-prod__btn--next{width:28px;height:40px;position:absolute;top:50%;margin-top:-30px;text-indent:-9999em;z-index:1;background-color:transparent}
+.related-prod__btn--prev{background-position:-200px -100px;left:-41px}
+.related-prod__btn--next{background-position:-240px -100px;right:-42px}
+.related-prod__list{width:994px;height:190px;margin-left:-14px}
+.related-prod__item{width:128px;float:left;margin-left:14px}
+.related-prod__item > a{display:block;width:128px}
+.related-prod__item > a:hover{text-decoration:none}
+.related-prod__thumb{position:relative;width:126px;height:126px;border:1px solid rgba(0,0,0,.16);background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 75px}
+.related-prod__thumb img{width:100%;height:100%}
+.related-prod__name{height:36px;line-height:18px;font-size:12px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#333;overflow:hidden;margin-top:3px}
+.related-prod__item > a:hover .related-prod__name{text-decoration:underline}
+.related-prod__price{line-height:18px;font-size:12px;margin-top:8px;color:#333}
+.related-prod__price em{font-weight:bold;font-size:13px}
+
+/* [LP/SRP] 상품카드 */
+.goods-cont{position:relative}
+.goods-cont.type--list:after{content:"";position:absolute;left:0;right:0;bottom:0;border-bottom:1px solid #aaa;display:block;clear:both}
+
+/* [LP] 슈퍼탑/슈퍼탑 라이트 */
+.type--list .goods-bundle > li.ad-supertop,
+.type--list .goods-bundle > li.ad-supertop--light{padding:18px 0 0;border-bottom:0}
+.ad-supertop__list > li{padding:28px 0;background-color:#F9FCFD;border-top:1px solid #eee}
+.ad-supertop__list > li:first-child{border-top:0}
+/* [LP] 슈퍼탑 > 콘텐츠형 광고*/
+.ad-supertop__cont{width:835px;margin-left:168px;float:left;padding:12px 0 0;height:62px;overflow:hidden}
+.ad-supertop__cont .prod-ad{width:834px;border-left:1px solid #f1f1f1;overflow:hidden;height:62px;overflow:hidden}
+.ad-supertop__cont .prod-ad li{border:1px solid #f1f1f1;width:416px;height:40px;padding:10px 0 !important;cursor:pointer;float:left;clear:none;min-height:auto;border-left:0;background-color:#fff}
+.ad-supertop__cont .prod-ad .prod-ad__box{display:block;margin:0 10px;position:relative;height:40px}
+.ad-supertop__cont .prod-ad .prod-ad__thumb{position:absolute;display:block;width:68px;height:40px;overflow:hidden;top:0;left:0}
+.ad-supertop__cont .prod-ad .prod-ad__thumb img{width:100%;height:100%}
+.ad-supertop__cont .prod-ad .prod-ad__tx{display:block;padding-left:77px;line-height:16px;font-size:12px;padding-top:2px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:-.5px}
+.ad-supertop__cont .prod-ad .prod-ad__tx .prod-ad__tit{display:block;height:18px;color:#333}
+.ad-supertop__cont .prod-ad .prod-ad__tx .prod-ad__tx--name{display:block;color:#999;height:18px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ad-supertop__cont .prod-ad .prod-ad--mov .prod-ad__thumb:after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:url(http://img.enuri.info/images/home/prd_ad_av_cover.png) no-repeat 50% 50% rgba(0,0,0,.6)}
+.ad-supertop__cont .prod-ad .prod-ad--bnr{border-color:#f1f1f1;line-height:0}
+.ad-supertop__cont .prod-ad .prod-ad--bnr img{width:400px;height:50px;margin-top:-5px;position:relative}
+
+/* [LP] 오픈쇼핑 */
+.ad-openad--list .ad-openad__list > li{padding:20px 0;background-color:#F9FCFD;border-top:1px solid #eee}
+.ad-openad--list .ad-openad__list > li:first-child{border-top:0}
+.ad-openad--list .item__mall{height:16px;line-height:16px;font-size:12px;margin-bottom:10px}
+.ad-openad--list .item__mall img{height:16px}
+.type--list .goods-bundle > li.ad-openad--list{padding:18px 0 0;border-bottom:0}
+.type--list .goods-bundle > li.ad-openad--list:hover{background-color:#fff}
+.type--list .ad-openad__list .item__model{font-weight:normal;max-height:88px;-webkit-line-clamp:4}
+.type--list .ad-openad__list .item__thumb{left:24px}
+.type--list .ad-openad__list .item__thumb a:before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;border:1px solid rgba(0,0,0,.1)}
+.type--list .ad-openad__list .goods-item,
+.type--list .ad-openad__list .item__box,
+.type--list .ad-openad__list .item__info{min-height:146px}
+.type--list .ad-openad__list .price__mall .col--price{width:100%;float:none;color:#333}
+.type--list .ad-openad__list .item__info{float:none;display:table-cell;padding:0 10px 0 182px;vertical-align:middle;width:490px}
+.type--list .ad-openad__list .item__price{width:260px;padding-right:62px}
+
+/* [LP/SRP] 리스트형 */
+.goods-cont.type--list{margin-top:-29px}
+.type--list .goods-bundle > li{border-top:1px solid #eee;padding:28px 0}
+.type--list .goods-bundle > li:hover{background-color:#F9FCFD}
+.type--list .goods-bundle > li.ad-supertop:hover,
+.type--list .goods-bundle > li.ad-supertop--light:hover,
+.type--list .goods-bundle > li.ad-wide-bnr:hover{background:none}
+.type--list .goods-item{position:relative;min-height:178px}
+.type--list .goods-item:after{content:"";display:block;clear:both}
+.type--list .item__box{position:relative;display:table;width:100%;min-height:178px}
+.type--list .item__box:after{content:"";display:block;clear:both}
+.type--list .item__thumb{width:146px;height:146px;position:absolute;top:0;left:6px;z-index:1;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 75px #fff}
+.type--list .item__thumb > a,
+.type--list .item__thumb > img,
+.type--list .item__thumb > a img{width:146px;height:146px;display:block}
+.item__thumb .badge_hitbrand {width:45px;height:48px;position:absolute;left:8px;top:0;background:url(http://img.enuri.info/images/home/ico_hitbrand_45x48.png) 0 0 no-repeat;text-indent:-9999em}
+
+/* [LP/SRP] 리스트형 - 배너타입 */
+.type--list .goods-bundle > li.ad-wide-bnr{padding:0}
+.type--list .ad-wide-bnr{background-color:rgba(0,0,0,.1);height:92px}
+.type--list .ad-wide-bnr a{display:block;line-height:0;font-size:0}
+.type--list .ad-wide-bnr img{width:1010px;height:92px}
+
+/* [LP/SRP] 썸네일 태그 */
+.goods-item .item__thumb .img_tag_v2{position:absolute;overflow:hidden}
+.type--list .item__thumb .img_tag_v2{width:146px;height:146px;left:0;top:0}
+.type--grid .item__thumb .img_tag_v2{width:200px;height:200px;left:8px;top:8px}
+.goods-item .item__thumb .img_tag_v2 .tag_group > span,
+.goods-item .item__thumb .img_tag_v2 .tag_group .tag_list{-webkit-transition:.3s all ease-in;-o-transition:.3s all ease-in;transition:.3s all ease-in}
+.goods-item .item__thumb:hover .tag_list.pos_tr,
+.goods-item .item__thumb:hover .tag_list.pos_br{transform:translateX(60px);opacity:0}
+.goods-item .item__thumb:hover .tag_list.pos_tl,
+.goods-item .item__thumb:hover .tag_list.pos_bl,
+.goods-item .item__thumb:hover .tag_list.tag_hue{transform:translateX(-60px);opacity:0}
+.tag_type_a .tag_list{position:absolute}
+.tag_type_a .tag_list.pos_tr{top:0;right:0;text-align:right}
+.tag_type_a .tag_list.pos_tl{top:0;left:0}
+.tag_type_a .tag_list.pos_br{bottom:0;right:0}
+.tag_type_a .tag_list.pos_bl{bottom:0;left:0}
+.tag_type_a .tag_list span{letter-spacing:-0.5px;font-size:12px;display:inline-block;margin:0 2px;line-height:18px;height:20px;padding:0 3px;font-weight:bold;vertical-align:top;border-radius:3px;color:#ffffff}
+.tag_type_a .tag_list.tag_blk span{float:right;background:#181818}
+.tag_type_a .tag_list.tag_blu span{float:right;background:#41bce9; /* Old browsers */
+background:-moz-linear-gradient(left,  #41bce9 0%, #3a7dd9 100%); /* FF3.6-15 */
+background:-webkit-linear-gradient(left,  #41bce9 0%,#3a7dd9 100%); /* Chrome10-25,Safari5.1-6 */
+background:linear-gradient(to right,  #41bce9 0%,#3a7dd9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#41bce9', endColorstr='#3a7dd9',GradientType=1 ); /* IE6-9 */}
+.tag_type_a .tag_hue{position:absolute; left:0; bottom:0}
+.tag_type_a .tag_hue li{margin:0 1px 2px; padding:0 !important; border-bottom:none; display:block; border-radius:50%; background:#fff; width:14px; height:14px !important; min-height:14px; overflow:hidden}
+.tag_type_a .tag_hue li.w{border:1px solid #bbbbbb; width:12px; height:12px !important; min-height:12px; box-shadow:none}
+.tag_type_a .tag_hue li em{display:block; text-align:left; text-indent:-9999em; }
+.tag_type_a .tag_hue li em.half{width:50%; float:left; }
+.tag_type_a .blue{position:absolute;bottom:6px;right:4px;margin-bottom:-1px}
+.tag_type_a .blue .tag_list.tag_blu{position:relative;top:auto;bottom:auto;right:auto;float:right;margin-bottom:1px}
+.tag_type_a .tag_list.pos_tr.tag_blk{margin-top:-1px}
+.tag_type_a .tag_list.pos_tr.tag_blk span{margin-top:1px}
+
+.type--list .item__info{float:left;margin:0 0 0 168px;width:480px;min-height:178px;display:table;letter-spacing:-.5px}
+.type--list .item__info-box{display:table-cell;vertical-align:middle}
+.type--list .item__price{padding-right:6px;width:340px;display:table-cell;vertical-align:middle}
+.type--list .item__menu{height:20px;position:absolute;bottom:-32px;left:0;right:0;text-align:center}
+.goods-item .item__menu__inner{display:inline-block}
+.goods-item .item__menu button{position:relative;float:left;width:20px;height:20px;background:transparent;font-size:0;line-height:0;margin-left:15px}
+.goods-item .item__menu button:before{content:"";position:absolute;top:0;left:-7px;bottom:0;border-left:1px solid #eee}
+.goods-item .item__menu button:first-of-type{margin-left:0}
+.goods-item .item__menu button:first-of-type:before{display:none}
+.goods-item .item__menu button i{text-indent:-9999em;width:20px;height:20px;display:block}
+.ico-item--movie{background-position:-180px -60px}
+.ico-item--movie:hover{background-position:-180px -80px}
+.ico-item--view{background-position:-140px -60px}
+.ico-item--view:hover{background-position:-140px -80px}
+.ico-item--compare{background-position:-160px -60px}
+.ico-item--compare:hover{background-position:-160px -80px}
+.ico-item--zzim{background-position:-120px -60px}
+.ico-item--zzim:hover{background-position:-120px -80px}
+.is--on > .ico-item--zzim{background-position:-100px -60px}
+
+.type--list .item__model{line-height:22px;font-size:16px;font-weight:bold;color:#000;max-height:44px;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.type--list .item__model .tag--rank{font-weight:normal;min-width:20px;height:20px;line-height:20px;float:left;margin:1px 4px 0 0;background-color:#515B6D;color:#fff;font-size:14px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:center}
+.type--list .item__model .tag--ad{width:22px;height:18px;line-height:18px;border:1px solid #ddd;float:left;margin:1px 4px 0 0;background-color:#fff;color:#999;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:center;font-weight:normal;font-size:11px}
+.type--list .item__model .tag--brand{display:inline-block;width:60px;height:16px;text-indent:-9999em;background-position:0 -80px;vertical-align:-3px}
+.type--list .item__model .tag--enuripc{display:inline-block;width:84px;height:16px;text-indent:-9999em;background-position:0 -100px;vertical-align:-3px}
+.type--list .item__model .tag--discount{display:inline-block;position:relative;height:14px;border:1px solid #1a70dd;background-position:0 -120px;padding-right:2px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;color:#1a70dd;line-height:16px;font-weight:normal;vertical-align:2px;letter-spacing:-1px}
+.type--list .item__model .tag--discount .ico-tag-enuri{width:12px;height:14px;float:left;margin-right:2px;background-position:-1px -121px}
+.type--list .item__model a{vertical-align:top;color:inherit}
+.type--list .item__tx--copy{height:18px;margin-top:12px;line-height:18px;font-size:12px;font-weight:bold;color:#515B6D;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.type--list .item__attr{color:#999;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;margin-top:8px}
+.type--list .item__attr:after{content:"";display:block;clear:both}
+/* .type--list .item__attr li{float:left;position:relative;padding-left:12px;line-height:18px;letter-spacing:0}
+.type--list .item__attr li:before{content:"/";position:absolute;top:0;left:0;width:12px;text-align:center;color:#ccc} */
+.type--list .item__attr li{position:relative;line-height:18px;letter-spacing:0;display:inline;word-break:break-all}
+.type--list .item__attr li:before{content:" / ";color:#ccc;font-size:11px}
+.type--list .item__attr li:first-child:before{display:none}
+.type--list .btn--dic{color:inherit;border-bottom:1px solid #e0e0e0;cursor:help}
+.type--list .btn--dic:hover{text-decoration:none;border-color:#aaa;color:#666}
+.type--list .item__attr li em{color:#27B9BE;background-color:#E5F9F9}
+.type--list .item__attr li b{font-weight:normal;color:#666}
+.type--list .item__summ{color:#999;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:12px;margin-top:8px;letter-spacing:0;overflow:hidden}
+.type--list .item__summ dl{line-height:18px;margin-left:-12px}
+.type--list .item__summ dl:after{content:"";display:block;clear:both}
+.type--list .item__summ dt,
+.type--list .item__summ dd{float:left;position:relative;padding-left:12px}
+.type--list .item__summ dt:before,
+.type--list .item__summ dd:before{content:"/";position:absolute;top:0;left:0;width:12px;text-align:center;color:#ccc}
+.type--list .item__summ dt{font-weight:bold;color:#777}
+.type--list .item__summ dl dd:first-of-type{padding-left:6px}
+.type--list .item__summ dl dd:first-of-type:before{display:none}
+.type--list .item__summ em{color:#27B9BE;background-color:#E5F9F9}
+.type--list .item__summ b{font-weight:normal;color:#666}
+.type--list .item__cont{margin-top:12px}
+.type--list .item__cont dl{position:relative;line-height:16px;margin-top:4px;height:16px;overflow:hidden;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.type--list .item__cont dl:first-of-type{margin-top:0}
+.type--list .item__cont dt{position:absolute;top:0;left:0;border:1px solid #CCCCCC;border-radius:1px;background-color:#fff;text-align:center;font-size:11px;color:#333;line-height:16px;height:14px;width:46px;letter-spacing:-.5px}
+.type--list .item__cont dd{margin-left:52px;height:16px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;color:#666;font-size:11px}
+.type--list .item__cont dd a{color:inherit}
+.goods-item .item__etc{height:16px;overflow:hidden}
+.type--list .goods-item .item__etc{margin-top:16px}
+.type--grid .goods-item .item__etc{margin-top:4px}
+.goods-item .item__etc ul{height:16px;margin-left:-7px}
+.goods-item .item__etc ul li{position:relative;padding:0 6px 0 7px;float:left;font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#666;letter-spacing:0}
+.goods-item .item__etc ul li:before{content:"";position:absolute;top:2px;left:0;height:12px;border-left:1px solid #ccc}
+.goods-item .item__etc ul li.item__etc--enuripc a{color:#42A4A9;font-weight:bold}
+.goods-item .item__etc .ico-etc-star{float:left;margin:1px 2px 0 0}
+.goods-item .item__etc .ico-etc-sr{display:inline-block;vertical-align:top}
+.goods-item .item__etc .btn--go-enuripc .ico-enuripc-rarr,
+.goods-item .item__etc .btn--go-cate .ico-adv-rarr{margin-left:-2px}
+.ico-etc-star{width:12px;height:12px;background-position:-180px -40px}
+.ico-etc-sr{width:12px;height:12px;background-position:-200px -60px}
+
+.item__addinfo{margin-top:12px}
+/* 화장품 전성분 */
+.lpcosmetics {height:15px}
+/* .lpcosmetics__inner {} */
+.lpcosmetics__label {display:inline; float:left; position:relative; padding-right:10px; font-weight:bold; font-size:11px; color:#666; line-height:13px;text-decoration:underline}
+.lpcosmetics__label > .btn--dic{border-bottom:0;}
+.lpcosmetics__label--info {display:inline-block; width:13px; height:13px; margin-left:4px; border:1px solid #e2e2e2; font-weight:bold; font-size:13px; color:#171717; line-height:12px; text-align:center; letter-spacing:-0.5px; background-color:#fff}
+.lpcosmetics__list {float:left}
+.lpcosmetics__list li {display:inline-block; min-height:0; margin:0 6px 0 0; padding:0 !important; border:0; text-align:right}
+.lpcosmetics__list li:last-child {margin-right:0}
+.lpcosmetics__list li .lpcosmetics__tit {display:inline-block; position:relative; margin:0; padding-left:5px; font-size:11px; color:#666; line-height:14px; vertical-align:2px; letter-spacing:-1.5px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+.lpcosmetics__list li .lpcosmetics__tit:before {content:""; display:block; position:absolute; top:7px; left:0; width:2px; height:2px; background-color:#b0b0b0}
+.lpcosmetics__list li .watergraph {display:inline-block; position:relative; top:0; width:52px; height:11px; margin-left:0; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/home/bg_cosmetics_lp_pc.png) 0 0 no-repeat}
+.lpcosmetics__list li .data {display:block; position:absolute; top:0; left:0; background-position:0 -15px}
+.lpcosmetics__list li .data.data0 {width:0}
+.lpcosmetics__list li .data.data10 {width:4px}
+.lpcosmetics__list li .data.data20 {width:8px}
+.lpcosmetics__list li .data.data30 {width:15px}
+.lpcosmetics__list li .data.data40 {width:19px}
+.lpcosmetics__list li .data.data50 {width:26px}
+.lpcosmetics__list li .data.data60 {width:30px}
+.lpcosmetics__list li .data.data70 {width:37px}
+.lpcosmetics__list li .data.data80 {width:41px}
+.lpcosmetics__list li .data.data90 {width:48px}
+.lpcosmetics__list li .data.data100 {width:52px}
+.lay-cosmetics-box{width:320px;z-index:1;position:absolute}
+
+/* 가구 속성 */
+.lpfurniture{width:100%;clear:both;margin-top:10px;font-size:11px;overflow:hidden}
+.lpfurniture .is--off{display:none}
+.lpfurniture .lpfurniture__grade{position:relative;height:16px;margin-bottom:9px;float:left;text-decoration:underline}
+.lpfurniture .lpfurniture__grade:last-child{margin-bottom:0}
+.lpfurniture .lpfurniture__tit{position:relative;padding-right:10px;height:16px;line-height:14px;font-weight:bold;text-decoration:underline;color:#666;float:left}
+.lpfurniture .lpfurniture__tit > .btn--dic{border-bottom:0;}
+.lpfurniture .lpfurniture__grade .grade__level{overflow:hidden;height:100%}
+.lpfurniture .lpfurniture__grade .grade__level li{text-align:center;height:16px;line-height:16px;font-size:11px;color:#888888;padding:0 !important;margin:0;min-height:auto;float:left;clear:none}
+.lpfurniture .lpfurniture__grade .grade__level li:after{display:none}
+.lpfurniture .lpfurniture__level{background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat;float:left;height:14px}
+
+/* 자재등급 */
+.lpfurniture .grade--01 .lpfurniture__level{width:264px}
+.lpfurniture .grade--01 .level--e2{background-position:-340px 0}
+.lpfurniture .grade--01 .level--e1{background-position:-340px -20px}
+.lpfurniture .grade--01 .level--e0{background-position:-340px -40px}
+.lpfurniture .grade--01 .level--se0{background-position:-340px -60px}
+
+/* 착석감 , 쿠션감 */
+.lpfurniture .grade--02 .lpfurniture__level{width:250px}
+.lpfurniture .grade--02 .level--01{background-position:-340px -80px}
+.lpfurniture .grade--02 .level--02{background-position:-340px -100px}
+.lpfurniture .grade--02 .level--03{background-position:-340px -120px}
+.lpfurniture .grade--02 .level--04{background-position:-340px -140px}
+.lpfurniture .grade--02 .level--05{background-position:-340px -160px}
+
+/* 구매옵션 */
+.type--list .option__row{height:16px;line-height:17px;padding:7px 0;position:relative;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#999;cursor:pointer}
+.type--list .option__row.is--hide{display:none}
+.type--list .option__row.is--selected,
+.type--list .option__row:hover{background-color:rgba(0, 192, 198, .08)}
+.type--list .option__row:after{content:"";display:block;clear:both}
+.type--list .option__row a{color:inherit}
+.type--list .option__row .opt--condition{float:left;height:16px;width:150px;height:16px;font-size:11px;letter-spacing:-.5px;text-align:right;overflow:hidden}
+.type--list .option__row .opt--condition > span{margin-left:4px}
+.type--list .option__row .opt--condition > span:first-of-type{margin-left:0}
+.type--list .option__row .tx--rank{color:#1A70DD}
+.type--list .option__row .tx--condition{color:#999;display:inline-block;max-width:150px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:top}
+.type--list .option__row .tx--condition em{color:#27B9BE;background-color:#E5F9F9}
+.type--list .option__row .tx--rank + .tx--condition{max-width:120px}
+.type--list .option__row .tx--unit{color:#666}
+.type--list .option__row .opt--price{color:#1A70DD;float:left;height:16px;width:138px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:right}
+.opt--price .tag--cash,
+.opt--price .tag--global,
+.opt--price .tag--mobile,
+.opt--price .tag--coupon{vertical-align:top}
+.type--list .col--price .tag--cash,
+.type--list .col--price .tag--global,
+.type--list .col--price .tag--mobile,
+.type--list .col--price .tag--coupon{vertical-align:-4px}
+.type--grid .tx--price .tag--cash,
+.type--grid .tx--price .tag--global,
+.type--grid .tx--price .tag--mobile,
+.type--grid .tx--price .tag--coupon{vertical-align:-3px}
+.tag--cash{width:26px;height:16px;background-position:-260px -20px;display:inline-block;text-align:left;text-indent:-9999em}
+.tag--global{width:26px;height:16px;background-position:-260px 0px;display:inline-block;text-align:left;text-indent:-9999em}
+.tag--coupon{width:26px;height:16px;background-position:-260px -40px;display:inline-block;text-align:left;text-indent:-9999em;position:relative}
+.tag--coupon .ico-tag--coupon{width:26px;height:16px;background-position:-260px -40px;display:block;text-align:left;text-indent:-9999em;cursor:pointer}
+.tag--coupon .lay-comm{position:absolute;right:0;text-indent:0;display:none}
+.tag--coupon:hover .lay-comm{display:block}
+.tag--mobile{width:8px;height:16px;background-position:-300px 1px;display:inline-block;text-align:left;text-indent:-9999em}
+.type--list .option__row .tx--price{font-size:16px;font-weight:bold;height:18px;line-height:18px;display:inline-block}
+.type--list .option__row .opt--count{float:left;height:16px;width:30px;text-align:right;font-size:11px}
+.type--list .option__row .opt--chk{float:right;height:18px;position:relative;margin-top:-1px}
+.type--list .option__row .opt--chk label{padding-left:18px}
+
+/* [LP/SRP] 상품카드 > 옵션 > 체크박스 레이어 */
+.lay-opt--chk{display:none;position:absolute;height:18px;right:0;bottom:16px;width:71px;z-index:1;box-shadow:0 0 5px rgba(0,0,0,.15)}
+.option__row:hover .opt--chk input[type="checkbox"]:checked + label + .lay-opt--chk{display:block}
+.lay-opt--chk button{float:left;width:36px;height:18px;border:1px solid #aaa;color:#999;background-color:#fff;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;margin-left:-1px;text-align:center;letter-spacing:-1px;overflow:hidden}
+.lay-opt--chk button:hover{position:relative;z-index:1;background-color:#fbfbfb;color:#666}
+.ico-opt-zzim{width:16px;height:16px;display:inline-block;background-position:-220px -80px;vertical-align:top;margin-left:-2px}
+.btn--opt-zzim.is--on .ico-opt-zzim{background-position:-240px -80px}
+
+.type--list .btn--opt-unfold{position:relative;display:block;margin:18px 0 0 auto;height:16px;margin-top:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;text-align:center;letter-spacing:-.5px;color:#666;background-color:transparent;padding-right:21px}
+.type--list .btn--opt-unfold em{color:#000}
+.type--list .btn--opt-unfold:after{content:"";position:absolute;width:16px;height:16px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat -20px 0;top:0;right:1px}
+.type--list .btn--opt-fold{display:none;position:relative;margin:18px 0 0 auto;height:16px;margin-top:8px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;text-align:center;letter-spacing:-.5px;color:#666;background-color:transparent;padding-right:21px}
+.type--list .btn--opt-fold:after{content:"";position:absolute;width:16px;height:16px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat -40px 0;top:0;right:1px}
+.type--list .is--unfold .option__row.is--hide{display:block}
+.type--list .is--unfold .btn--opt-unfold{display:none}
+.type--list .is--unfold .btn--opt-fold{display:block}
+.type--list .btn--opt-more{display:none;text-align:right;position:relative;width:40px;margin:18px 0 0 auto;height:16px;margin-top:8px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;letter-spacing:-.5px;color:#666;background-color:transparent;padding-right:10px}
+.type--list .btn--opt-more:after{content:"";position:absolute;width:16px;height:16px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat -140px -20px;transform:rotate(-90deg);top:-1px}
+.type--list .is--unfold .btn--opt-more{display:block}
+
+.type--list .price__mall{height:26px}
+.type--list .price__mall .col--mall{width:150px;float:left;height:26px;line-height:26px;font-size:12px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:right;color:#666}
+.type--list .price__mall .col--mall .tx--mall{display:inline-block;vertical-align:top}
+.type--list .price__mall .col--mall .tx--mall-npay{display:inline-block;padding-right:36px;max-width:110px;background:url(//img.enuri.info/images/home/ico_npay_sm.png) no-repeat 100% 50%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align:top}
+.type--list .price__mall .col--mall img{height:16px;float:right;margin-top:5px}
+
+.type--list .price__mall .col--price{width:189px;float:left;color:#1A70DD;font-size:15px;line-height:26px;text-align:right}
+.type--list .price__mall .col--price > em,
+.type--list .price__mall .col--price a > em{font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:bold;font-size:20px}
+.type--list .col--price a{color:inherit}
+.type--list .price__mall .col--price a:hover{text-decoration:none}
+.type--list .price--exception{height:26px;line-height:26px;text-align:right}
+.type--list .price--exception .col--price{font-size:20px;color:#1A70DD;font-weight:bold;letter-spacing:-1px}
+
+/* 스폰서 b타입 */
+.tx--confirm{height:16px;font-size:12px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#999;padding:0 0 8px;text-align:right}
+.tx--confirm .ico-info{width:16px;height:16px;display:inline-block;background-position:-160px 0;vertical-align:top}
+.tx--delivery,
+.tx--delivery--paid{float:right;height:12px;line-height:12px;font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;margin:8px 0 0;padding:2px 2px 1px;letter-spacing:-.5px}
+.tx--delivery{border:1px solid #2D9FE8;background-color:#2D9FE8;color:#fff}
+.tx--delivery--paid{border:1px solid #2D9FE8;background-color:transparent;color:#2D9FE8}
+
+/* 그리드형 */
+.type--grid{}
+.type--grid .goods-bundle{width:1024px;}
+.type--grid .goods-bundle:after{content:"";display:block;clear:both}
+.type--grid .goods-bundle > li{width:240px;height:440px;border:1px solid #eee;float:left;margin:20px 14px 0 0;background-color:#fff}
+.type--grid .goods-bundle > li:hover{/* border-color:#2580ec */background-color:#F9FCFD}
+.type--grid .goods-bundle > li.ad--supertop{background-color:#F9FCFD}
+.type--grid .goods-bundle > li.is--unfold{border-color:#2580ec;box-shadow:0 0 10px rgba(0,0,0,.15)}
+.type--grid .goods-item{margin:12px}
+.type--grid .goods-item .item__thumb{width:216px;height:216px;position:relative;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 100px #fff}
+.type--grid .goods-item .item__thumb a{display:block;width:100%;height:100%}
+.type--grid .goods-item .item__thumb a:before{content:"";position:absolute;top:0;left:0;right:0;bottom:0}
+.type--grid .goods-item .item__thumb img{width:100%;height:100%}
+.type--grid .goods-item .item__thumb .item__menu{display:none}
+.type--grid .goods-item .item__thumb:hover .item__menu{display:block}
+.type--grid .goods-item .item__menu{position:absolute;left:0;right:0;bottom:12px;text-align:center}
+.type--grid .goods-item .item__menu .item__menu__inner{display:inline-block;background-color:rgba(0,0,0,.5);padding:7px 14px;border-radius:17px}
+.type--grid .goods-item .item__menu button:before{border-color:rgba(255,255,255,.2)}
+.type--grid .goods-item .item__menu button i{opacity:.5}
+.type--grid .goods-item .item__menu button i:hover{opacity:1}
+.type--grid .goods-item .item__box{height:168px;margin-top:12px;position:relative}
+.type--grid .goods-item .item__info{position:absolute;top:0;left:0;right:0}
+.type--grid .goods-item .item__model{max-height:44px;line-height:22px;font-size:15px;color:#000;letter-spacing:-1px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-wrap:break-word}
+.type--grid .goods-item .item__model.type--luxury,
+.type--grid .goods-item .item__model.type--general{max-height:66px;-webkit-line-clamp:3}
+.type--grid .goods-item .item__model a{font-weight:bold;color:inherit}
+.type--grid .goods-item .item__model .tag--rank{font-weight:normal;min-width:20px;height:20px;line-height:20px;float:left;margin:1px 4px 0 0;background-color:#515B6D;color:#fff;font-size:14px;font-family:"Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:center}
+.type--grid .goods-item .item__model .tag--ad{width:22px;height:18px;line-height:18px;border:1px solid #ddd;float:left;margin:1px 4px 0 0;background-color:#fff;color:#999;font-family:"Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:center;font-weight:normal;font-size:11px}
+.type--grid .goods-item .item__model .tx--brand{font-size:14px;color:#666;font-weight:normal}
+.type--grid .goods-item .item__model .tx--brand:after{content:'';display:block}
+.type--grid .goods-item .item__summ{font-size:11px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;color:#666;line-height:16px;margin-top:10px}
+.type--grid .goods-item .item__summ dl{height:16px}
+.type--grid .goods-item .item__summ dl dt{float:left;margin-right:10px}
+.type--grid .goods-item .item__price{position:absolute;bottom:4px;left:0;right:0;text-align:right}
+.type--grid .goods-item .btn--opt-unfold{height:32px;font-size:11px;background-color:transparent;letter-spacing:-1px;color:#999;display:block;width:100%}
+.type--grid .goods-item .btn--opt-unfold i{width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-left:2px;opacity:.7}
+.type--grid .goods-item .btn--opt-unfold:hover{color:#666;background-color:#fbfbfb}
+.type--grid .goods-item .btn--opt-unfold:hover i{opacity:1}
+.type--grid .is--unfold .btn--opt-unfold i{transform:rotate(180deg)}
+.type--grid .goods-item .item__price .tx--release-price{height:18px;font-size:12px;color:#999;text-decoration:line-through;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:0}
+.type--grid .goods-item .item__price .tx--deleveryfee{height:18px;font-size:11px;color:#2D9FE8;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:-.5px}
+.type--grid .goods-item .item__price .tx--price{line-height:24px;color:#1A70DD;font-size:11px;letter-spacing:-1px}
+.type--grid .goods-item .item__price .tx--price:hover{text-decoration:none}
+.type--grid .goods-item .item__price .tx--price em{font-weight:bold;font-size:16px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:0}
+.type--grid .goods-item .item__price .tx--price .tx--sold{font-size:18px;font-weight:bold;letter-spacing:-2px}
+.type--grid .ico-item--movie{background-position:-180px -100px}
+.type--grid .ico-item--view{background-position:-140px -100px}
+.type--grid .ico-item--compare{background-position:-160px -100px}
+.type--grid .ico-item--zzim{background-position:-120px -100px}
+.type--grid .is--on > .ico-item--zzim{background-position:-100px -60px}
+
+.type--grid .goods-item .item__foot{margin:-1px -12px -12px;height:32px;border-top:1px solid #eee;text-align:center;background:rgba(255,255,255,.8)}
+.type--grid .goods-item .item__foot .tx--mall{padding:7px 8px;height:18px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:-.5px}
+.type--grid .goods-item .item__foot .tx--mall:hover{background-color:#fbfbfb}
+.type--grid .goods-item .item__foot .tx--mall > a{display:block;color:#666}
+.type--grid .goods-item .item__foot .tx--mall > a:hover{text-decoration:none}
+.type--grid .goods-item .item__foot .tx--mall .mall--logo{height:16px}
+.type--grid .goods-item .item__foot .tx--mall .mall--logo img{height:16px;max-width:80px}
+.type--grid .goods-item .item__foot .tx--mall .mall--text{font-size:12px}
+.type--grid .goods-item .item__foot .tx--mall .mall--npay{position:relative;height:18px;display:inline-block;overflow:hidden;white-space:nowrap; text-overflow:ellipsis;letter-spacing:-1px;background:url(http://img.enuri.info/images/home/ico_npay_sm.png) no-repeat 100% 50%;padding-right:36px}
+.type--grid .goods-item .item__foot .tx--mall .mall--npay.plus{background:url(http://img.enuri.info/images/home/ico_npay_plus_sm.png) no-repeat 100% 50%;padding-right:42px}
+
+/* 그리드형 > 상품옵션 */
+.goods-option-bundle{display:none;position:absolute;top:0;left:0;right:0}
+.goods-option{display:none;border:1px solid #ccc;border-bottom:0;background-color:#fbfbfb;position:relative;margin-top:14px}
+.goods-option:before{content:"";position:absolute;top:-11px;width:18px;height:11px;background:url(//img.enuri.info/images/rev/lp_sprite.png) no-repeat -180px -120px}
+.goods-option.option--type1:before{left:104px}
+.goods-option.option--type2:before{left:366px}
+.goods-option.option--type3:before{left:622px}
+.goods-option.option--type4:before{left:880px}
+.goods-option:after{content:"";position:absolute;left:0;bottom:0;right:0;border-bottom:1px solid #ccc;z-index:1}
+.goods-option__list{}
+.goods-option__list:after{content:"";display:block;clear:both}
+.goods-option__item{position:relative;height:16px;padding:7px 16px;width:calc(50% - 32px);float:left;border-bottom:1px solid #eee}
+.goods-option__item:after{content:"";position:absolute;top:0;right:-1px;bottom:0;border-right:1px solid #eee;z-index:1}
+.goods-option__list > li:nth-child(2n+2):after{display:none}
+.goods-option__item > a,
+.goods-option__inner{display:table;width:100%;text-align:right;line-height:16px;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;color:#333;cursor:pointer}
+.goods-option__item > a:hover,
+.goods-option__inner:hover{text-decoration:none}
+.goods-option__item:hover{background-color:#f2f2f2}
+.goods-option__item .tag--rank{display:inline-block;margin-left:4px;padding:0 4px;height:14px;border:1px solid #1A70DD;background-color:#fff;color:#1A70DD;font-size:11px}
+.goods-option__item .col--zzim,
+.goods-option__item .col--select,
+.goods-option__item .col--name,
+.goods-option__item .col--mallname,
+.goods-option__item .col--unit,
+.goods-option__item .col--price,
+.goods-option__item .col--mall,
+.goods-option__item .col--delivery{display:table-cell;vertical-align:middle;cursor:pointer}
+.goods-option__item .col--zzim,
+.goods-option__item .col--select{text-align:left;width:22px;position:relative}
+.goods-option__item .col--name{text-align:left;overflow:hidden;height:16px;white-space:nowrap; text-overflow:ellipsis;font-size:12px}
+.goods-option__item .col--name .tx--shop{display:inline-block;height:16px;position:relative;color:#666}
+.goods-option__item .col--name .tx--shop img{height:16px}
+.goods-option__item .col--name .tx--shop.type--npay{padding-right:34px;background:url(http://img.enuri.info/images/home/ico_npay_sm.png) no-repeat 100% 1px}
+.goods-option__item .col--name .tx--shop.type--npayplus{padding-right:44px;background:url(http://img.enuri.info/images/home/ico_npay_plus_sm.png) no-repeat 100% 1px}
+.goods-option__item .col--unit{width:120px;color:#666}
+.goods-option__item .col--unit em{color:#1A70DD}
+.goods-option__item .col--price{width:120px;font-size:12px}
+.goods-option__item .col--price strong{font-weight:bold;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:13px}
+.goods-option__item .col--price em{color:#1A70DD}
+.goods-option__item .col--delivery{width:110px;color:#666;text-align:left}
+.goods-option__item .col--mall{width:44px;color:#999}
+.goods-option__item .btn--zzim{width:18px;height:18px;background-color:transparent}
+.goods-option__item .ico-item--zzim{display:block;text-align:left;background-position:-121px -61px;text-indent:-9999em;width:18px;height:18px}
+.goods-option__item .btn--zzim:hover .ico-item--zzim{background-position:-121px -81px}
+.goods-option__item .btn--zzim.is--on .ico-item--zzim{background-position:-101px -61px}
+.goods-option__item .btn--compare{display:none;position:absolute;top:1px;left:17px;width:50px;height:16px;border:1px solid #1A70DD;background-color:#fff;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:11px;color:#666;letter-spacing:-1px}
+.input--checkbox-item:checked + label + .btn--compare{display:block}
+
+/* 상품리스트 :소셜형 */
+.type--social .goods-bundle{margin:-20px 0 0 -14px;width:1024px}
+.type--social .goods-bundle:after{content:"";clear:both;display:block}
+.type--social .goods-bundle > li{width:240px;height:416px;border:1px solid #eee;margin:20px 0 0 14px;float:left;background-color:#fff}
+.type--social .goods-bundle > li:hover{/* border-color:#2580ec */background-color:#F9FCFD}
+.type--social .goods-item{margin:12px}
+.type--social .goods-item .item__thumb{position:relative;width:216px;height:216px;background:url(//img.enuri.info/images/rev/bg_noimg.png) no-repeat 50% 50% / 100px #fff}
+.type--social .goods-item .item__thumb .tag--rank{position:absolute;top:0;left:0;min-width:20px;height:20px;line-height:20px;background-color:#515B6D;color:#fff;font-size:14px;font-family:"Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;text-align:center}
+.type--social .goods-item .item__thumb a{display:block;width:100%;height:100%}
+.type--social .goods-item .item__thumb img{width:100%;height:100%}
+.type--social .goods-item .item__box{margin-top:12px}
+.type--social .goods-item .item__head{height:18px;font-size:11px;color:#666;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+/* .type--social .goods-item .item__head .tx--mall{} */
+.type--social .goods-item .item__head .tx--count{float:right;font-weight:bold}
+.type--social .goods-item .item__name{line-height:22px;letter-spacing:-1px;font-size:15px;color:#000;height:44px;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-weight:bold}
+.type--social .goods-item .item__name a{color:inherit}
+.type--social .goods-item .item__price{position:relative;margin-top:20px;padding-top:22px;height:38px;text-align:right;line-height:26px}
+.type--social .goods-item .item__price .tx--org-price{position:absolute;top:0;right:0;line-height:22px;color:#aaa;font-size:14px;text-decoration:line-through}
+.type--social .goods-item .item__price .tx--org-price em{font-size:16px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:0}
+.type--social .goods-item .item__price .tx--sale-price{color:#000;display:inline-block;vertical-align:top;font-size:14px;margin-left:4px}
+.type--social .goods-item .item__price .tx--sale-price:hover{text-decoration:none}
+.type--social .goods-item .item__price .tx--sale-price em{font-size:20px;font-family:"Roboto","Helvetica",Helvetica,'Arial',Arial,dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;letter-spacing:0;font-weight:bold}
+.type--social .goods-item .item__price .tx--prefix{display:inline-block;vertical-align:top;font-weight:bold;color:#E64243;font-size:14px}
+.type--social .goods-item .item__foot{height:16px}
+.type--social .goods-item .item__foot > span{vertical-align:top;width:52px;height:16px;float:left;margin-right:2px;text-indent:-9999em}
+.tag--sold{background-position:0 -220px}
+.tag--use-quick{background-position:-60px -220px}
+.tag--deli-free{background-position:-120px -220px}
+.tag--deli-quick{background-position:-180px -220px}
+
+/* 미니VIP */
+.list-body-side .lay-minvip{position:absolute;top:0;right:0;z-index:9}
+.lay-minvip.is--fixTop{position:fixed;top:70px;right:auto;margin-left:-20px}
+
+/* [AD] 구글광고 */
+.google-adsense-lp-bottom{margin:20px auto 0;width:1010px;height:90px;}
+
+/* [LP] 성인(1640) 관련 */
+.lay_adult_wrap{color:#666666;letter-spacing:-1px}
+.lay_adult_wrap.dim{position:fixed;top:0;left:0;width:100%; height:100%;background-color:rgba(0,0,0,.7);-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorStr=#b3000000,endColorStr=#b3000000)";zoom:1}
+.lay_adult_gate{width:970px;height:485px;background-color:#fff;position:absolute;top:50%;left:50%;margin:-242px 0 0 -485px}
+.lay_adult_gate .lay_img{position: absolute;top:0;left:0;width:485px;height:485px}
+.lay_adult_gate .lay_img img{width:100%;height:100%}
+.lay_adult_gate .lay_info{padding:30px;margin:0 0 0 485px;text-align:center;position: relative}
+.lay_adult_gate .area_caution{padding:24px 0 22px;height:104px;line-height:22px;font-size:14px;letter-spacing:-1px}
+.lay_adult_gate .area_caution .txt_tit{color:#000;font-size:22px;line-height:32px;padding-bottom:6px;font-weight:bold;letter-spacing:-2px}
+.lay_adult_gate .area_caution .txt_tit em{color:#ff2222}
+.lay_adult_gate .area_caution > span{display:block}
+.lay_adult_gate .area_login,
+.lay_adult_gate .area_account{position: absolute;width:100%;left:0}
+.lay_adult_gate .area_login .btn_login{width:350px;height:50px;font-size:18px;color:#fff;background-color:#274877;display:block;margin:0 auto 10px;padding-bottom:2px;}
+.lay_adult_gate .area_login .btn_login:hover{background-color:#14243b}
+.lay_adult_gate .area_login .btn_find_account{height:24px;color:#3a7bd5;font-size:14px;background-color:transparent;letter-spacing:-1px}
+.lay_adult_gate .area_login .btn_find_account:hover{text-decoration: underline}
+.lay_adult_gate .area_account > span{display:block}
+.lay_adult_gate .area_account .txt_name{color:#3c6aab;font-size:20px;padding:0 0 6px}
+.lay_adult_gate .area_account .txt_name em{font-weight:bold}
+.lay_adult_gate .area_account .txt_comm{line-height:20px;font-size:14px;letter-spacing:-1px}
+.lay_adult_gate .area_account .txt_comm em{color:#ff2222;display:block}
+.lay_adult_gate .area_cert{margin-top:132px;border-top:1px solid #dddddd}
+.lay_adult_gate .area_cert button{background-color:#fff}
+.lay_adult_gate .area_cert .txt_tit{display:inline-block;height:24px;padding:0 16px;background-color:#fff;color:#333;font-size:16px;position: relative;top:-13px}
+.lay_adult_gate .area_cert .btn_area{display:block;font-size:13px;margin:9px 0}
+.lay_adult_gate .area_cert .btn_area button{border:1px solid #aaaaaa;height:50px;font-size:16px;border-radius: 2px 2px;width:144px;margin:0 10px;padding-bottom:2px;letter-spacing:-1px}
+.lay_adult_gate .area_cert .btn_area button:hover{border-color:#666}
+.lay_adult_gate .area_cert .btn_area .ifrm_btn_cert{height:50px !important;width:425px !important;display:inline-block;;vertical-align: -20px}
+.lay_adult_gate .area_cert .btn_close_after{height:24px;margin:15px 0;color:#666;font-size:14px}
+.lay_adult_gate .area_cert .btn_close_after:hover{text-decoration: underline}
+.lay_adult_gate .btn_close_gate{width:36px;height:36px;background:url(http://img.enuri.info/images/home/adult/btn_close_gate.png) no-repeat 0 0;position: absolute;right:0;top:-50px;text-indent:-9999em}
+.lay_adult_bottom{width:968px;height:147px;position:fixed;bottom:0;left:50%;margin-left:-485px;border:1px solid #cfcfcf;border-bottom:0;background:rgba(255,255,255,.95);letter-spacing:-1px;z-index:100}
+.lay_adult_bottom .lay_adult_inner{padding:30px 0;text-align:center}
+.lay_adult_bottom .txt_tit{display:block;padding-top:3px;line-height:30px;margin-bottom:10px;color:#000;font-size:16px;font-weight:bold}
+.lay_adult_bottom .btn_cert_adult{width:190px;height:46px;border:0;background-color:#274877;color:#fff;font-size:16px;border-radius: 2px 2px;line-height:44px;padding-bottom:2px;}
+.lay_adult_bottom .btn_cert_adult:hover{background-color:#14243b;}
+.lay_adult_bottom .btn_close_aday{height:24px;color:#999999;font-size:12px;position: absolute;right:40px;bottom:22px;text-decoration:underline;background-color:transparent;font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif}

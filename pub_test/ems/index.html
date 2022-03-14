@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>EMS Tower</title>
+<script type="text/javascript" src="http://m.enuri.com/mobilenew/js/lib/jquery-2.1.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./ems.css" />
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<section class="wrapper">
+	<header id="header" class="header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="option">
+						<select onchange="onTypeChange($(this).val())">
+							<option value="1">최근 2시간</option>
+							<option value="2">오늘 시간별</option>
+							<option value="3">최근 7일</option>
+							<option value="4">이번 달</option> 
+						</select>
+						<input type="radio" onclick="requestAllData();" name="opt" value="0" id="radio_1" checked="checked"/>
+						<label id="label_1" for="radio_1">없음</label>
+						<input type="radio" onclick="requestAllData();" name="opt" value="1" id="radio_2"/>
+						<label id="label_2" for="radio_2">전일 대비</label>
+						<input type="radio" onclick="requestAllData();" name="opt" value="2" id="radio_3"/>
+						<label id="label_3" for="radio_3">전주 대비</label>
+						<input type="radio" onclick="requestAllData();" name="opt" value="3" id="radio_4" style="display: none;"/>
+						<label id="label_4" for="radio_4" style="display: none;">전월 대비</label>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</header>
+	
+	<article id="content" class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-12">
+					<div class="row box1">
+						<div class="col-xl-4">
+							<!-- 전체쇼핑몰 -->
+							<div class="mall_total_chart" id="chart_mall_total" ></div>
+							<script type="text/javascript">
+								$(document).ready(function() {
+									Highcharts.setOptions({
+									    global: {
+									        timezoneOffset: -9 * 60
+									    }
+									});
+									
+									Highcharts.theme = {
+										// ['전체그래프', 'GSSHOP', 'G마켓', 'CJ몰', '옥션', '11번가', '위메프', '티몬', '', '']
+									   colors: ['#2b908f', '#00F8DC', '#3BAFDA', '#FFAA00', '#f35056', '#F76397',
+									      '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+									   chart: {
+									      backgroundColor: {
+									         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+									         stops: [
+									            [0, '#36404a'],
+									            [1, '#36404a']
+									         ]
+									      },
+									      style: {
+									         fontFamily: '\'Unica One\', sans-serif'
+									      },
+									      plotBorderColor: '#606063'
+									   },
+									   title: {
+									      style: {
+									         color: '#98a6ad',
+									         textTransform: 'uppercase',
+									         fontSize: '16px'
+									      }
+									   },
+									   subtitle: {
+									      style: {
+									         color: '#98a6ad',
+									         textTransform: 'uppercase'
+									      }
+									   },
+									   xAxis: {
+									      gridLineColor: '#707073',
+									      labels: {
+									         style: {
+									            color: '#98a6ad' // x축 라벨
+									         }
+									      },
+									      lineColor: '#434f5c',
+									      minorGridLineColor: '#505053',
+									      tickColor: '#434f5c',
+									      title: {
+									         style: {
+									            color: '#A0A0A3'
+
+									         }
+									      }
+									   },
+									   yAxis: {
+									      gridLineColor: '#434f5c', // Y축 내부 line
+									      labels: {
+									         style: {
+									            color: '#98a6ad' // x축 라벨
+									         }
+									      },
+									      lineColor: '#434f5c',
+									      minorGridLineColor: '#505053',
+									      tickColor: '#434f5c',
+									      tickWidth: 1,
+									      title: {
+									         style: {
+									            color: '#A0A0A3'
+									         }
+									      }
+									   },
+									   tooltip: {
+									      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+									      style: {
+									         color: '#F0F0F0'
+									      }
+									   },
+									   plotOptions: {
+									      series: {
+									         dataLabels: {
+									            color: '#B0B0B3'
+									         },
+									         marker: {
+									            lineColor: '#333'
+									         }
+									      },
+									      boxplot: {
+									         fillColor: '#505053'
+									      },
+									      candlestick: {
+									         lineColor: 'white'
+									      },
+									      errorbar: {
+									         color: 'white'
+									      }
+									   },
+									   legend: {
+									      itemStyle: {
+									         color: '#E0E0E3'
+									      },
+									      itemHoverStyle: {
+									         color: '#FFF'
+									      },
+									      itemHiddenStyle: {
+									         color: '#606063'
+									      }
+									   },
+									   credits: {
+									      style: {
+									         color: '#666'
+									      }
+									   },
+									   labels: {
+									      style: {
+									         color: '#707073'
+									      }
+									   },
+
+									   drilldown: {
+									      activeAxisLabelStyle: {
+									         color: '#F0F0F3'
+									      },
+									      activeDataLabelStyle: {
+									         color: '#F0F0F3'
+									      }
+									   },
+
+									   navigation: {
+									      buttonOptions: {
+									         symbolStroke: '#fff',
+									         theme: {
+									            fill: 'transparent'
+									         }
+									      }
+									   },
+
+									   // scroll charts
+									   rangeSelector: {
+									      buttonTheme: {
+									         fill: '#505053',
+									         stroke: '#000000',
+									         style: {
+									            color: '#CCC'
+									         },
+									         states: {
+									            hover: {
+									               fill: '#707073',
+									               stroke: '#000000',
+									               style: {
+									                  color: 'white'
+									               }
+									            },
+									            select: {
+									               fill: '#000003',
+									               stroke: '#000000',
+									               style: {
+									                  color: 'white'
+									               }
+									            }
+									         }
+									      },
+									      inputBoxBorderColor: '#505053',
+									      inputStyle: {
+									         backgroundColor: '#333',
+									         color: 'silver'
+									      },
+									      labelStyle: {
+									         color: 'silver'
+									      }
+									   },
+
+									   navigator: {
+									      handles: {
+									         backgroundColor: '#666',
+									         borderColor: '#AAA'
+									      },
+									      outlineColor: '#CCC',
+									      maskFill: 'rgba(255,255,255,0.1)',
+									      series: {
+									         color: '#7798BF',
+									         lineColor: '#A6C7ED'
+									      },
+									      xAxis: {
+									         gridLineColor: '#505053'
+									      }
+									   },
+
+									   scrollbar: {
+									      barBackgroundColor: '#808083',
+									      barBorderColor: '#808083',
+									      buttonArrowColor: '#CCC',
+									      buttonBackgroundColor: '#606063',
+									      buttonBorderColor: '#606063',
+									      rifleColor: '#FFF',
+									      trackBackgroundColor: '#404043',
+									      trackBorderColor: '#404043'
+									   },
+
+									   // special colors for some of the
+									   legendBackgroundColor: 'rgba(0, 0, 0, 0.5)',
+									   background2: '#505053',
+									   dataLabelsColor: '#B0B0B3',
+									   textColor: '#C0C0C0',
+									   contrastTextColor: '#F0F0F3',
+									   maskColor: 'rgba(255,255,255,0.3)'
+									};
+
+									// Apply the theme
+									Highcharts.setOptions(Highcharts.theme);
+								});
+							</script>
+							
+							<!-- 전체쇼핑몰 SCRIPT BEGIN -->
+							<script type="text/javascript">
+								var mallTotalData = [];
+								var mallTotalDataOld = [];
+								
+								function requestMallTotalData(type){
+									type = parseInt(type);
+									var optVal = document.querySelector('input[name="opt"]:checked').value;
+									var url = 'http://dev.enuri.com/mobilefirst/ems/emstower_get_reward_cnt.jsp'
+										+ '?type=' + type + '&date=' + callTime.toTimeStampM0() + '&opt=' + optVal;
+									
+									$.ajax({
+										url: url,
+										dataType: 'json'
+									}).done(function(data){
+										parsingMallTotalCount(type, data);
+										drawTotalChart(type);
+									});
+									
+								}
+								
+								function parsingMallTotalCount(type, data) {
+									mallTotalData = [];
+									mallTotalDataOld = [];
+									
+									switch(type) {
+									case 1:
+										parsingMallTotalCountType1(data);
+										break;
+									case 2:
+										parsingMallTotalCountType2(data);
+										break;
+									case 3:
+									case 4:
+										parsingMallTotalCountType3(data);
+										break;
+									}
+								}
+								
+								function parsingMallTotalCountType1(data) {
+									
+									var nowData = data.now;
+									var oldData = data.old;
+									
+									var start = new Date(nowData[0].time);
+									var cnt = 0;
+									
+									for(var time = start.getTime(); time<callTime.getTime(); time += 600000) {
+										var dataTime = new Date(time);
+										var rewardData;
+										
+										for(var idx in nowData) {
+											if(nowData[idx].time ==  dataTime.toTimeStamp()) {
+												var rewardData = nowData[idx];
+												var sum = 0;
+												for(var shopCode in rewardData.count)
+													sum += parseInt(rewardData.count[shopCode]);
+												
+												var totalData = [];
+												totalData[0] = dataTime.getTime();
+												totalData[1] = sum;
+												mallTotalData.push(totalData);
+												
+												if(oldData) {
+													rewardData = oldData[idx];
+													sum = 0;
+													for(var shopCode in rewardData.count)
+														sum += parseInt(rewardData.count[shopCode]);
+													
+													var totalDataOld = [];
+													totalDataOld[0] = dataTime.getTime();
+													totalDataOld[1] = sum;
+													mallTotalDataOld.push(totalDataOld);
+												}
+											}
+										}
+										
+										if(mallTotalData.length > 12)
+											mallTotalData.shift();
+										if(mallTotalDataOld.length > 12)
+											mallTotalDataOld.shift();
+									}
+								}
+								
+								function parsingMallTotalCountType2(data) {
+									
+									var nowData = data.now;
+									var oldData = data.old;
+									
+									var start = new Date(nowData[0].time);
+									var cnt = 0;
+									for(var time = start.getTime(); time<callTime.getTime(); time += 3600000) {
+										var dataTime = new Date(time);
+										var rewardData;
+										
+										for(var idx in nowData) {
+											if(nowData[idx].time ==  dataTime.toTimeStampHH()) {
+												var rewardData = nowData[idx];
+												var sum = 0;
+												for(var shopCode in rewardData.count)
+													sum += parseInt(rewardData.count[shopCode]);
+												
+												var totalData = [];
+												totalData[0] = dataTime.getTime();
+												totalData[1] = sum;
+												mallTotalData.push(totalData);
+												
+												if(oldData) {
+													rewardData = oldData[idx];
+													sum = 0;
+													for(var shopCode in rewardData.count)
+														sum += parseInt(rewardData.count[shopCode]);
+													
+													var totalData = [];
+													totalData[0] = dataTime.getTime();
+													totalData[1] = sum;
+													mallTotalDataOld.push(totalData);
+												}
+											}
+										}
+									}
+								}
+								
+								function parsingMallTotalCountType3(data) {
+									var nowData = data.now;
+									var oldData = data.old;
+									
+									var start = new Date(nowData[0].time);
+									var cnt = 0;
+									for(var time = start.getTime(); time<callTime.getTime(); time += 86400000) {
+										var dataTime = new Date(time - 86400000);
+										var rewardData;
+										
+										for(var idx in nowData) {
+											if(nowData[idx].time ==  dataTime.toTimeStampHH()) {
+												var rewardData = nowData[idx];
+												var sum = 0;
+												for(var shopCode in rewardData.count)
+													sum += parseInt(rewardData.count[shopCode]);
+												
+												var totalData = [];
+												totalData[0] = dataTime.getTime();
+												totalData[1] = sum;
+												mallTotalData.push(totalData);
+												
+												if(oldData) {
+													rewardData = oldData[idx];
+													sum = 0;
+													for(var shopCode in rewardData.count)
+														sum += parseInt(rewardData.count[shopCode]);
+													
+													var totalData = [];
+													totalData[0] = dataTime.getTime();
+													totalData[1] = sum;
+													mallTotalDataOld.push(totalData);
+												}
+											}
+										}
+									}
+								}
+								
+								function drawTotalChart(type) {
+									
+									var interval = 0;
+									switch(type) {
+									case 1:
+										interval = 600000;
+										axisX = {
+											type: 'datetime',
+											labels: {
+												format: '{value:%H:%M}'
+											},
+											tickInterval: interval
+										}
+										break;
+									case 2:
+										interval = 600000 * 6
+										axisX = {
+											type: 'datetime',
+											labels: {
+												format: '{value:%H:%M}'
+											},
+											tickInterval: interval
+										}
+										break;
+									case 3:
+									case 4:
+										interval = 600000 * 6 * 24;
+										axisX = {
+											type: 'datetime',
+											labels: {
+												format: '{value:%m. %d}'
+												
+											},
+											tickInterval: interval
+										}
+										break;
+									}
+									
+									Highcharts.chart('chart_mall_total', {
+										chart: {
+									        type: 'spline'
+									    },
+										title :{
+											text: '전체 쇼핑몰'
+										},
+										yAxis: {title: {text: ' '}},
+										xAxis: axisX,
+										series: [{
+											name: " ",
+											animation: false,
+											showInLegend:false,
+											data:mallTotalData,
+											pointInterval: interval
+										}, {
+											name: " ",
+											animation: false,
+											showInLegend:false,
+											data:mallTotalDataOld,
+											pointInterval: interval,
+											dashStyle:'dash'
+										}]
+									});
+									
+									$('.highcharts-credits').hide();
+								}
+							</script>
+							<!--// 전체쇼핑몰 SCRIPT END -->	
+						</div>
+						<div class="col-xl-4">
+							<!-- Mall Parallel Chart -->
+							<div class="parallel_chart" id="chart_parallel"></div>
+							
+							<!-- Parallel SCRIPT -->
+							<script type="text/javascript">
+							function drawParallelChart(type) {
+								
+								var interval = 0;
+								switch(type) {
+								case 1:
+									interval = 600000;
+									axisX = {
+										type: 'datetime',
+										labels: {
+											format: '{value:%H:%M}'
+										},
+										tickInterval: interval
+									}
+									break;
+								case 2:
+									interval = 600000 * 6
+									axisX = {
+										type: 'datetime',
+										labels: {
+											format: '{value:%H:%M}'
+										},
+										tickInterval: interval
+									}
+									break;
+								case 3:
+								case 4:
+									interval = 600000 * 6 * 24;
+									axisX = {
+										type: 'datetime',
+										labels: {
+											format: '{value:%m. %d}'
+											
+										},
+										tickInterval: interval
+									}
+									break;
+								}
+								
+								var series = [];
+								for(var idx in savedMallData) {
+									var mallData = {
+										name: mallMap[idx],
+										animation: false,
+										showInLegend:false,
+										data:savedMallData[idx],
+										pointInterval: interval
+									};
+									series.push(mallData);
+								}
+								
+								Highcharts.chart('chart_parallel', {
+									zoomType: 'xy',
+									chart: {
+								        type: 'spline'
+								    },
+									title :{
+										text: '전체 쇼핑몰'
+									},
+									yAxis: {title: {text: ' '}},
+									xAxis: axisX,
+									series: series
+								});
+								
+								$('.highcharts-credits').hide();
+							}
+							</script>
+						</div>
+						<div class="col-xl-4">
+							<!-- JCA ERROR -->
+							<div class="jca_chart" id="chart_jca"></div>
+							
+							<!-- JCA ERROR SCRIPT -->
+							<script type="text/javascript">
+								var jcaData = [];
+								function requestJcaData(){
+									jcaData = [];
+									$.ajax({
+										url: 'http://dev.enuri.com/mobilefirst/ems/get_jca_error_log.jsp?minute=120',
+										dataType:'json'
+									}).done(function(data){
+										drawJcaChart(data);
+									});
+								}
+								
+								function drawJcaChart(dataList) {
+									
+									var lastMin = (callTime.getMinutes() % 10) * 60000;
+									
+									for(var i=11; i>=0; i--) {
+										var min = i * 600000 + lastMin;
+										var tempData = [];
+										tempData[0] = callTime.getTime() - min;
+										tempData[1] = 0;
+										
+										jcaData.push(tempData);
+									}
+									
+									for(var idx in dataList) {
+										var data = dataList[idx];
+										var date = new Date(data.E_REGDATE);
+										
+										if(callTime.getTime() - date.getTime() < scheduleInterval){
+											continue;
+										}
+										
+										var timeMs = date.getTime();
+										for(var idx2 in jcaData) {
+											var tempData = jcaData[idx2];
+											if(timeMs >= (tempData[0]-600000) && timeMs < tempData[0]) {
+												jcaData[idx2][1] += 1;
+												break;
+											}
+										}
+									}
+									
+									var axisX = {
+											type: 'datetime',
+											labels: {
+												format: '{value:%H:%M}'
+											},
+											tickInterval: 600000
+										};
+									
+									Highcharts.chart('chart_jca', {
+										chart: {
+									        type: 'spline'
+									    },
+										title :{
+											text: 'JCA 오류'
+										},
+										yAxis: {title: {text: ' '}},
+										xAxis: axisX,
+										series: [{
+											name: " ",
+											animation: false,
+											showInLegend:false,
+											data: jcaData,
+											pointInterval: 600000
+										}]
+									});
+									$('.highcharts-credits').hide();
+								}
+
+</script>
+							<!--// JCA ERROR SCRIPT -->
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="col-xl-8">					
+					<div class="row mall_chart_wrapper box2">
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_55"></div>
+						</div>
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_75"></div>
+						</div>
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_536"></div>
+						</div>
+					</div>
+					
+					<div class="row mall_chart_wrapper box2">
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_806"></div>
+						</div>
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_4027"></div>
+						</div>
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_5910"></div>
+						</div>
+					</div>
+					
+					<div class="row mall_chart_wrapper box2">
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_6508"></div>
+						</div>
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_6641"></div>
+						</div>
+						<div class="col-xl-4">
+							<div class="mall_chart" id="chart_6665"></div>
+						</div>
+					</div>
+					
+					<!-- 업체별 SCRIPT -->
+					<script type="text/javascript">
+					var mallMap = {
+						55:'인터파크',
+						75:'GS Shop',
+						536:'G마켓',
+						806:'CJ Mall',
+						4027:'옥션',
+						5910:'11번가',
+						6508:'위메프',
+						6641:'티몬',
+						6665:'SSG'
+					};
+					
+					var colorMap = {
+							55:'#FF5252',
+							75:'#CDDC39',
+							536:'#43A047',
+							806:'#03A9F4',
+							4027:'#D50000',
+							5910:'#FFA726',
+							6508:'#43A047',
+							6641:'#8E24AA',
+							6665:'#795548'	
+					}
+					
+					var savedMallData = {
+						55:[],
+						75:[],
+						536:[],
+						806:[],
+						4027:[],
+						5910:[],
+						6508:[],
+						6641:[],
+						6665:[]
+					};
+					
+					var savedMallDataOld = {
+						55:[],
+						75:[],
+						536:[],
+						806:[],
+						4027:[],
+						5910:[],
+						6508:[],
+						6641:[],
+						6665:[]
+					};
+					
+					function requestMallData(type) {
+						var optVal = document.querySelector('input[name="opt"]:checked').value;
+						type = parseInt(type);
+						
+						var url = 'http://dev.enuri.com/mobilefirst/ems/emstower_get_reward_cnt.jsp'
+								+ '?type=' + type + '&date=' + callTime.toTimeStampM0() + '&opt=' + optVal;
+						$.ajax({
+							url:  url,
+							dataType: 'json'
+						}).done(function(data){
+							parsingRewardCount(type, data);
+							drawMallChart(type);
+							drawParallelChart(type);
+						});
+					}
+					
+					function parsingRewardCount(type, data) {
+						
+						switch(type) {
+						case 1:
+							parsingRewardCountType1(data);
+							break;
+						case 2:
+							parsingRewardCountType2(data);
+							break;
+						case 3:
+						case 4:
+							parsingRewardCountType3(data);		
+							break;
+						}
+					}
+					
+					function parsingRewardCountType1(data) {
+						clearSavedMallData();
+						
+						var nowData = data.now;
+						var oldData = data.old;
+						var start = new Date(nowData[0].time);
+						
+						for(var time = start.getTime(); time<callTime.getTime(); time += 600000) {
+							/* 
+							* API에서 넘겨주는 데이터는 10분 ~ 20분 사이의 결과가 10분에 포함됨.
+							* 그래프에서는 10분 ~ 20분 사이의 결과를 20분에 보여아 하므로 10분 전에 대한 데이터를 사용한다
+							*/
+							//var dataTime = new Date(time - 600000);
+							var dataTime = new Date(time);
+							var rewardData;
+							var dataIdx = 0;
+							for(var idx in nowData) {
+								if(nowData[idx].time ==  dataTime.toTimeStamp()) {
+									rewardData = nowData[idx];
+									dataIdx = idx;
+									break;
+								}
+							}
+							
+							for(var idx in savedMallData) {
+								var yValue = 0;
+								if(rewardData != null) yValue = rewardData.count[idx];
+								
+								var insertData = [];
+								insertData[0] = dataTime.getTime();
+								insertData[1] = yValue;
+								savedMallData[idx].push(insertData);
+								
+								if(savedMallData[idx].length > 12)
+									savedMallData[idx].shift();
+								
+								if(oldData) {
+									yValue = 0;
+									if(rewardData != null) yValue = oldData[dataIdx].count[idx];
+									
+									var insertDataOld = [];
+									insertDataOld[0] = dataTime.getTime();
+									insertDataOld[1] = yValue;
+									savedMallDataOld[idx].push(insertDataOld);
+									
+									if(savedMallDataOld[idx].length > 12)
+										savedMallDataOld[idx].shift();
+								}
+							}
+						}
+					}
+					
+					function parsingRewardCountType2(data) {
+						var nowData = data.now;
+						var oldData = data.old;
+						
+						var start = new Date(nowData[0].time);
+						clearSavedMallData();
+						
+						for(var time = start.getTime(); time<callTime.getTime(); time += 3600000) {
+							/* 
+							* API의 값과 차트간의 시점 차이를 위해 1-interval 전의 데이터 사용
+							*/
+							var dataTime = new Date(time);
+							var rewardData;
+							var dataIdx = 0;
+							
+							for(var idx in nowData) {
+								
+								if(nowData[idx].time ==  dataTime.toTimeStampHH()) {
+									rewardData = nowData[idx];
+									dataIdx = idx;
+									break;
+								}
+							}
+							
+							for(var idx in savedMallData) {
+								var yValue = 0;
+								
+								if(rewardData != null) yValue = rewardData.count[idx];
+								
+								var insertData = [];
+								insertData[0] = dataTime.getTime();
+								insertData[1] = yValue;
+								savedMallData[idx].push(insertData);
+								
+								if(oldData) {
+									yValue = 0;
+									if(rewardData != null) yValue = oldData[dataIdx].count[idx];
+									
+									var insertDataOld = [];
+									insertDataOld[0] = dataTime.getTime();
+									insertDataOld[1] = yValue;
+									savedMallDataOld[idx].push(insertDataOld);
+								}
+								
+								//savedMallData[idx].push({x:dataTime, y:yValue});
+							}
+						}
+					}
+					
+					function parsingRewardCountType3(data) {
+						var nowData = data.now;
+						var oldData = data.old;
+						
+						var start = new Date(nowData[0].time);
+						clearSavedMallData();
+						
+						for(var time = start.getTime(); time<callTime.getTime(); time += 86400000) {
+							/* 
+							* API의 값과 차트간의 시점 차이를 위해 1-interval 전의 데이터 사용
+							*/
+							var dataTime = new Date(time);
+							var rewardData;
+							var dataIdx = 0;
+							for(var idx in nowData) {
+								if(nowData[idx].time ==  dataTime.toTimeStampHH()) {
+									rewardData = nowData[idx];
+									dataIdx = idx;
+									break;
+								}
+							}
+							
+							for(var idx in savedMallData) {
+								var yValue = 0;
+								
+								if(rewardData != null) yValue = rewardData.count[idx];
+								
+								var insertData = [];
+								insertData[0] = dataTime.getTime();
+								insertData[1] = yValue;
+								savedMallData[idx].push(insertData);
+								
+								if(oldData) {
+									yValue = 0;
+									if(rewardData != null) yValue = oldData[dataIdx].count[idx];
+									
+									var insertDataOld = [];
+									insertDataOld[0] = dataTime.getTime();
+									insertDataOld[1] = yValue;
+									savedMallDataOld[idx].push(insertDataOld);
+								}
+							}
+						}
+					}
+					
+					function drawMallChart(type) {
+						var axisX = {
+								type: 'datetime',
+								labels: {
+									format: '{value:%H:%M}'
+								},
+							};
+						var axisY = {min:0, tickInterval:5,
+								title: {text: ' '}
+							};
+						switch(type) {
+						case 1:
+							interval = 600000;
+							axisX.labels.format = '{value:%H:%M}';
+							axisX.tickInterval = interval;
+							break;
+						case 2:
+							interval = 600000 * 6;
+							axisX.labels.format = '{value:%H:%M}';
+							axisX.tickInterval = interval;
+							break;
+						case 3:
+						case 4:
+							interval = 600000 * 6 * 24;
+							axisX.labels.format = '{value:%m. %d}';
+							axisX.tickInterval = interval;
+							break;
+						}
+						for(var idx in savedMallData) {
+							var chartID = 'chart_' + idx;
+							
+							Highcharts.chart(chartID, {
+							 	chart: {
+							        type: 'spline'
+							    },
+								title :{
+									text: mallMap[idx]
+								},
+								xAxis: axisX,
+								yAxis: axisY,
+								series: [{
+									name: " ",
+									animation: false,
+									showInLegend:false,
+									data:savedMallData[idx],
+									pointInterval: interval,
+									color:"#00BFA5"
+								}, {
+									name: " ",
+									animation: false,
+									showInLegend:false,
+									data:savedMallDataOld[idx],
+									pointInterval: interval,
+									dashStyle:'dash',
+									color: "#F06292"
+								}]
+							});
+						}
+						$('.highcharts-credits').hide();
+					}
+					
+					function clearSavedMallData() {
+						for(var idx in savedMallData) {
+							savedMallData[idx] = [];
+							savedMallDataOld[idx] = [];
+						}
+					}
+					
+					</script>
+					<!--// 업체별 SCRIPT -->
+				</div>
+				
+				
+				<div class="col-xl-4">
+					<table class="table table-sm">
+						<colgroup>
+							<col width="15%" />
+							<col width="20%" />
+							<col width="*" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">시간</th>
+								<th scope="col">페이지</th>
+								<th scope="col">설명</th>
+							</tr>
+						</thead>
+						<tbody id="jca_error_table">
+							<tr>
+								<td>&nbsp;</td>
+								<td><p class="txt"></p></td>
+								<td><p class="explain"></p></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<table class="table table-sm">
+						<colgroup>
+							<col width="15%" />
+							<col width="20%" />
+							<col width="*" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">시간</th>
+								<th scope="col">제목</th>
+								<th scope="col">내용</th>
+							</tr>
+						</thead>
+						<tbody id="push_log_table">
+							<tr>
+								<td>&nbsp;</td>
+								<td><p class="txt"></p></td>
+								<td><p class="explain"></p></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<!-- JCA ERROR & PUSH LOG -->
+					<script type="text/javascript">
+						var scheduleMinutes = 1; // 10분 간격
+						var scheduleInterval = 1000 * 60 * scheduleMinutes;
+						//var scheduleInterval = 1000;
+						var visibleChartLength = 60 / scheduleMinutes;
+						
+						var callTime = new Date();
+						callTime.setMilliseconds(0);
+						var timerID;
+						$(document).ready(function(){
+							requestAllData();
+							
+						});
+						
+						var timeType = 1;
+						function onTypeChange(value) {
+							timeType = parseInt(value);
+							
+							switch(timeType) {
+							case 1:
+							case 2:
+								$('#radio_2').show();
+								$('#label_2').show();
+								
+								$('#radio_3').show();
+								$('#label_3').show();
+								
+								$('#radio_4').hide();
+								$('#label_4').hide();
+								
+								if($('#radio_4').prop("checked")) {
+									$("#radio_3").prop("checked", true);
+								}
+								break;
+							case 3:
+								$('#radio_2').hide();
+								$('#label_2').hide();
+								
+								$('#radio_3').show();
+								$('#label_3').show();
+								
+								$('#radio_4').hide();
+								$('#label_4').hide();
+								
+								if($('#radio_1').attr("checked", true)) {
+									$("#radio_3").prop("checked", true);
+								}
+								break;
+							case 4:
+								$('#radio_2').hide();
+								$('#label_2').hide();
+								
+								$('#radio_3').hide();
+								$('#label_3').hide();
+								
+								$('#radio_4').show();
+								$('#label_4').show();
+								
+								if($('#radio_1').attr("checked", true)) {
+									$("#radio_4").prop("checked", true);
+								}
+								break;
+							}
+							
+							requestAllData();
+							
+							$("text:contains('Highcharts.com')").hide();
+						}
+						
+						function requestAllData() {
+							
+							if(timerID)
+								clearTimeout(timerID);
+							
+							callTime = new Date();
+							
+							requestEmsPushLog();
+							requestRecentJcaErrorMessage();
+							requestJcaData();
+							requestMallData(timeType);
+							
+							requestMallTotalData(timeType);
+							
+							var now = new Date();
+							var sec = (60 - now.getSeconds()) * 1000;
+						
+							// 매 0분재 호출
+							timerID = setTimeout("requestAllData()", sec);
+						}
+						
+						function requestEmsPushLog() {
+							
+							$.ajax({
+								url: 'http://jca.enuri.com:8080/mobile/ems/ajax/get_push_log.jsp',
+								dataType:'json'
+							}).done(function(data){
+								$('#push_log_table').empty();
+								for(var idx in data) {
+									var msgObject = JSON.parse(data[idx]);
+									
+									var query = '<tr>'
+									+ '<td>' + msgObject.insDate.replace(' ', '<br>') + '</td>'
+									+ '<td><p class="txt">' + msgObject.title + '</p></td>'
+									+ '<td><p class="explain">' + msgObject.message + '</p></td>'
+									+ '</tr>';
+									
+									$('#push_log_table').append(query);
+								}
+							});
+							//var logs = ["{\"pushId\":\"20180126160002\",\"insDate\":\"2018-01-26 16:00:02.0\",\"title\":\"[W] 최근 2시간 건수 이상\",\"message\":\"[2018-01-26 14:00~2018-01-26 16:00]\\n인터파크:1||\\nCJmall:0||\"}","{\"pushId\":\"20180126160002\",\"insDate\":\"2018-01-26 16:00:02.0\",\"title\":\"[W] 리워드 전주 대비 이상 (16h, 1C/H)\",\"message\":\"[ 인터파크 : 1 (전 3 )]\"}","{\"pushId\":\"20180126150002\",\"insDate\":\"2018-01-26 15:00:02.0\",\"title\":\"[W] 리워드 전주 대비 이상 (15h, 1C/H)\",\"message\":\"[ 옥션 : 13 (전 35 )] \\n [ 티몬 : 19 (전 57 )]\"}","{\"pushId\":\"20180126142001\",\"insDate\":\"2018-01-26 14:20:01.0\",\"title\":\"[INFO] 에누리 푸시 등록 안내\",\"message\":\"[20180126140635] 푸시 등록\\n[20180126141043] 푸시 등록\"}","{\"pushId\":\"20180126140321\",\"insDate\":\"2018-01-26 14:03:21.0\",\"title\":\"~？？？？？？ ？？？？\",\"message\":\"try/catch [hmall] java.net.SocketTimeoutException: Read timed out\"}"];
+							
+						}
+						
+						function requestRecentJcaErrorMessage() {
+							$.ajax({
+								url: 'http://dev.enuri.com/mobilefirst/ems/get_jca_error_log.jsp?type=2',
+								dataType:'json'
+							}).done(function(data){
+								$('#jca_error_table').empty();
+								for(var idx in data) {
+									if(parseInt(idx) == 5)
+										break;
+									var msgObject = data[idx];
+									
+									var query = '<tr onclick=\"onJcaDetailPopup(' + msgObject.IDX + ');\" style=\"cursor:pointer;\">'
+									+ '<td>' + msgObject.E_REGDATE.toDate("yyyy-mm-dd hh:mi:ss").twoLineString() + '</td>'
+									+ '<td><p class="txt">' + msgObject.E_PAGE + '</p></td>'
+									+ '<td><p class="explain">' + decodeURIComponent(msgObject.E_DESCRIPTION1).split("<br>")[0].replace(/\+/g," ") + '</p></td>'
+									+ '</tr>';
+									
+									$('#jca_error_table').append(query);
+								}
+							});
+						}
+						
+						function onJcaDetailPopup(idx) {
+							window.open("http://jca.enuri.com/DEV/ErrorReport/ER_Modify.asp?chk=" + idx, 
+									"DEV_MOD",
+									"width=600 height=700");
+						}
+						
+						Date.prototype.toTimeStampHH = function() {
+							
+							var yy = this.getFullYear();
+							var month = this.getMonth() + 1;
+							var dd = this.getDate();
+							
+							var hh = this.getHours();
+							var mm = '00';
+							
+							if(month < 10)
+								month = '0' + month;
+								
+							if(dd < 10)
+								dd = '0' + dd;
+								
+							if(hh < 10)
+								hh = '0' + hh;
+							
+							return yy + '-' + month + '-' + dd + ' ' + hh + ':' + mm;
+						}
+						
+						Date.prototype.toTimeStampM0 = function() {
+							
+							var yy = this.getFullYear();
+							var month = this.getMonth() + 1;
+							var dd = this.getDate();
+							
+							var hh = this.getHours();
+							var mm = Math.floor(this.getMinutes() / 10) + '0';
+							
+							if(month < 10)
+								month = '0' + month;
+								
+							if(dd < 10)
+								dd = '0' + dd;
+								
+							if(hh < 10)
+								hh = '0' + hh;
+							
+							return yy + '-' + month + '-' + dd + ' ' + hh + ':' + mm;
+						}
+						
+						Date.prototype.toTimeStamp = function() {
+								
+							var yy = this.getFullYear();
+							var month = this.getMonth() + 1;
+							var dd = this.getDate();
+							
+							var hh = this.getHours();
+							var mm = this.getMinutes();
+							
+							if(month < 10)
+								month = '0' + month;
+								
+							if(dd < 10)
+								dd = '0' + dd;
+								
+							if(hh < 10)
+								hh = '0' + hh;
+							
+							if(mm < 10)
+								mm = '0' + mm;
+							
+							return yy + '-' + month + '-' + dd + ' ' + hh + ':' + mm;
+						}
+						
+						Date.prototype.twoLineString = function() {
+							
+							var yy = this.getFullYear();
+							var month = this.getMonth() + 1;
+							var dd = this.getDate();
+							
+							var hh = this.getHours();
+							var mm = this.getMinutes();
+							var ss = this.getSeconds();
+							
+							if(month < 10)
+								month = '0' + month;
+								
+							if(dd < 10)
+								dd = '0' + dd;
+								
+							if(hh < 10)
+								hh = '0' + hh;
+							
+							if(mm < 10)
+								mm = '0' + mm;
+							
+							if(ss < 10)
+								ss = '0' + ss;
+							
+							return yy + '-' + month + '-' + dd + '<br>' + hh + ':' + mm + ':' + ss;
+						}
+						
+						String.prototype.toDate = function(format) {
+						  var normalized      = this.replace(/[^a-zA-Z0-9]/g, '-');
+						  var normalizedFormat= format.toLowerCase().replace(/[^a-zA-Z0-9]/g, '-');
+						  var formatItems     = normalizedFormat.split('-');
+						  var dateItems       = normalized.split('-');
+
+						  var monthIndex  = formatItems.indexOf("mm");
+						  var dayIndex    = formatItems.indexOf("dd");
+						  var yearIndex   = formatItems.indexOf("yyyy");
+						  var hourIndex     = formatItems.indexOf("hh");
+						  var minutesIndex  = formatItems.indexOf("mi");
+						  var secondsIndex  = formatItems.indexOf("ss");
+
+						  var today = new Date();
+
+						  var year  = yearIndex>-1  ? dateItems[yearIndex]    : today.getFullYear();
+						  var month = monthIndex>-1 ? dateItems[monthIndex]-1 : today.getMonth()-1;
+						  var day   = dayIndex>-1   ? dateItems[dayIndex]     : today.getDate();
+
+						  var hour    = hourIndex>-1      ? dateItems[hourIndex]    : today.getHours();
+						  var minute  = minutesIndex>-1   ? dateItems[minutesIndex] : today.getMinutes();
+						  var second  = secondsIndex>-1   ? dateItems[secondsIndex] : today.getSeconds();
+
+						  return new Date(year,month,day,hour,minute,second);
+						};
+						
+						
+</script>
+					<!--// JCA ERROR & PUSH LOG -->
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+
+</body>
+</html>

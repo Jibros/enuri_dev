@@ -1,0 +1,695 @@
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta charset="utf-8">	
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link REL="stylesheet" HREF="http://img.enuri.info/common/css/enuribase.css" TYPE="text/css">
+<script src="/common/js/common_top.js"></script>
+<script src="/common/js/function.js"></script>
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/common/css/eb/default.css">
+<link rel="stylesheet" type="text/css" href="/common/css/eb/common.css">
+<link rel="stylesheet" type="text/css" href="/common/css/customer.css"> <!-- 20141224 신규 css 추가 -->
+<link rel="stylesheet" type="text/css" href="/common/css/footer.css"> <!-- 20141224 신규 css 추가 -->
+
+<div id="wrap">
+
+<!-- 20141224 고객센터 신규 -->
+<!-- customer_wrap -->
+<div class="customer_wrap">
+	<div class="top_navigation">
+		<h2><img src="http://img.enuri.info/images/customer/2014/title_customer.gif" alt="고객 행복센터" /></h2>
+		<p class="nav"><a href="#none">고객센터</a> &gt; <a href="#none">고객문의</a> &gt; <em>상품,가격정보</em></p>
+	</div>
+	<div class="section">
+		<!-- lnb_wrap -->
+		<div class="lnb_wrap">
+			<!-- lnb -->
+			<div class="lnb">
+				<h3><a href="#">자주묻는 질문</a></h3>
+				<ul>
+					<li><a href="#">가격비교</a></li>
+					<li><a href="#">회원정보</a></li>
+					<li><a href="#">판매자문의</a></li>
+					<li><a href="#">지식통</a></li>
+				</ul>
+				<h3><a href="#">고객문의</a></h3>
+				<ul>
+					<li class="on"><a href="#">상품, 가격정보</a></li><!-- li class="on"시 선택됨-->
+					<li><a href="#">쇼핑몰 관련</a></li>
+					<li><a href="#">사이트 오류, 제안</a></li>
+					<li><a href="#">기타</a></li>
+					<li><a href="#">내 문의내역 확인</a></li>
+					<li><a href="#">문의하기</a></li>
+				</ul>
+				<h3><a href="#">공지사항</a></h3>
+				<h3><a href="#">신상품 등록 요청</a></h3>
+			</div>
+			<!-- //lnb -->
+			<div class="center_phone">
+				<h4><span class="blind">고객센터</span></h4>
+				<p><span class="blind">02-6354-3601 / 월~금 8:30~18:00 / 업무시간 외 문의는 문의하기에 남겨주시면 답변 드리겠습니다.</span></p>
+			</div>
+		</div>
+		<!-- //lnb_wrap -->
+	
+	<!-- contents --> 
+	<div class="contents">
+		<!-- search_area -->
+		<div class="search_area">
+			<h3 class="blind">검색영역</h3>
+			<form onsubmit="return false;" action="#" method="get" name="search" class="search_form">
+				<fieldset>
+					<legend>고객센터 검색</legend>
+					<div class="search_inner">
+						<div class="search_window">
+							<div class="select" style="width:153px;">
+								<span class="ctrl"><span class="arrow"></span></span>
+								<button type="button" class="my_value">고객센터 전체</button>
+								<ul class="a_list">
+									<li><a href="#1">고객센터 전체</a></li>
+									<li><a href="#2">자주묻는 질문</a></li>
+									<li><a href="#3">고객문의</a></li>
+									<li><a href="#4">공지사항</a></li>
+									<li><a href="#5">신상품 등록 요청</a></li>
+								</ul>
+							</div>
+							
+							<input type="text" class="search_input"  maxlength="180" title="검색어 입력" name="">
+							
+						</div>
+						<button class="btn_search">검색</button>
+					</div>
+				</fieldset>
+			</form>
+			<p class="user_guide">
+				<a href="#">사용자 가이드</a>
+				<span>에누리닷컴 어떻게 이용하나요?</span>
+			</p>
+		</div>
+		<!-- //search_area -->
+
+<!--<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>-->
+<script type="text/javascript">
+jQuery(function($){
+     
+    // Common
+    var select_root = $('div.select');
+    var select_value = $('.my_value');
+    var select_a = $('div.select>ul>li>a');
+    var select_input = $('div.select>ul>li>input[type=radio]');
+    var select_label = $('div.select>ul>li>label');
+     
+    // Line
+    select_value.bind('focusin',function(){$(this).addClass('outLine')});
+    select_value.bind('focusout',function(){$(this).removeClass('outLine')});
+    select_input.bind('focusin',function(){$(this).parents('div.select').children('div.my_value').addClass('outLine')});
+    select_input.bind('focusout',function(){$(this).parents('div.select').children('div.my_value').removeClass('outLine')});
+     
+    // Show
+    function show_option(){
+        $(this).parents('div.select:first').toggleClass('open');
+    }
+     
+    // Hover
+    function i_hover(){
+        $(this).parents('ul:first').children('li').removeClass('hover');
+        $(this).parents('li:first').toggleClass('hover');
+    }
+     
+    // Hide
+    function hide_option(){
+        var t = $(this);
+        setTimeout(function(){
+            t.parents('div.select:first').removeClass('open');
+        }, 1);
+    }
+     
+    // Set Input
+    function set_label(){
+        var v = $(this).next('label').text();
+        $(this).parents('ul:first').prev('.my_value').text('').append(v);
+        $(this).parents('ul:first').prev('.my_value').addClass('selected');
+    }
+     
+    // Set Anchor
+    function set_anchor(){
+        var v = $(this).text();
+        $(this).parents('ul:first').prev('.my_value').text('').append(v);
+        $(this).parents('ul:first').prev('.my_value').addClass('selected');
+    }
+ 
+    // Anchor Focus Out
+    $('*:not("div.select a")').focus(function(){
+        $('.a_list').parent('.select').removeClass('open');
+    });
+             
+    select_value.click(show_option);
+    select_root.removeClass('open');
+    select_root.mouseleave(function(){$(this).removeClass('open')});
+    select_a.click(set_anchor).click(hide_option).focus(i_hover).hover(i_hover);
+    select_input.change(set_label).focus(set_label);
+    select_label.hover(i_hover).click(hide_option);
+     
+});
+</script>
+
+
+		<!-- 고객문의 -->
+		<div class="top_table mgt40">
+			<strong>상품,가격정보</strong>
+			<!-- 200421 : SR#39569 : 유형별 정렬 추가 -->
+			<div class="select_type">
+				<span class="tx_selected">전체</span>
+				<ul style="display:none">
+					<li>전체</li>
+					<li>상품,가격정보</li>
+					<li>이벤트/e머니</li>
+					<li>쇼핑몰 관련</li>
+					<li>사이트 오류,제안</li>
+					<li>기타</li>
+				</ul>
+				<script>
+					$(function(){ // 퍼블테스트용
+						var $select = $(".top_table .select_type");
+						var $option = $select.find("ul li");
+						$select.find(".tx_selected").click(function(){
+							$(this).next('ul').toggle();
+						})
+						$option.click(function(){
+							var _text = $(this).text();
+							$select.find(".tx_selected").text(_text);
+							$(this).closest('ul').hide();
+						})
+					})
+				</script>
+			</div>
+			<!-- // -->
+			<button class="answer_waiting">순서변경</button>
+			<button class="inquiry">문의하기</button>
+		</div>
+		<!-- tb_box -->
+		<div class="tb_box">
+			<table class="tb tb2" cellspacing="0" cellpadding="0"> 
+				<colgroup>
+					<col class="col1">
+					<col class="col2">
+					<col class="col3">
+					<col class="col4">
+					<col class="col5">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">NO</th>
+						<th scope="col">유형</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- loop -->
+					<tr class="bt_none">
+						<td class="number">1</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt"><em class="icostate waiting"><span class="blind">작업중</span></em>로그인이 안돼요 어떻게 합니까?</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage">
+								<em class="addfile"><span>첨부파일 : </span><a href="#">cap01.jpg</a></em>
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+
+							<!-- replyrg_area 답변하기 -->
+							<form method="post" action="#" style="display:block;">
+								<fieldset>
+								<legend>답변 등록 폼</legend>
+									<div class="replyrg_area">
+										<strong class="profile">
+											에누리
+										</strong>
+										<div class="txt_area">
+											<!-- txt_box -->
+											<div class="txt_box">
+												<textarea name="" rows="20" cols="80"></textarea>
+												<div class="btn_area">
+													<p class="alarm_mail">
+														<input type="checkbox" class="" id="chk_alarm" name="chk_alarm">
+														<label class="" for="chk_alarm">알림 메일 받기</label>
+													</p>
+													<input type="image" src="http://img.enuri.info/images/customer/2014/btn_writeag.gif" alt="다시쓰기"  />
+													<input type="image" src="http://img.enuri.info/images/customer/2014/btn_answerup.gif" alt="답변 올리기"  />
+												</div>
+											</div>
+											<!-- //txt_box -->
+											<!-- bt_mode -->
+											<div class="bt_mode" style="display:none;">
+												<div class="line">
+													<strong>서비스상태</strong>
+													<div class="select" style="width:138px;">
+														<span class="ctrl"><span class="arrow"></span></span>
+														<button type="button" class="my_value">작업중</button>
+															<ul class="a_list">
+															<li><a href="#1">작업중</a></li>
+															<li><a href="#2">등록완료</a></li>
+														<li><a href="#3">등록불가</a></li>
+														</ul>
+													</div>
+												</div>
+												<div class="line">
+													<strong>모델번호</strong>
+													<p>
+														<input type="text" class="number" />
+														<input type="text" class="number" />
+														<input type="text" class="number" />
+														<input type="image" src="http://img.enuri.info/images/customer/2014/btn_add.gif" alt="추가"  />
+													</p>
+												</div>
+											</div>
+											<!-- //bt_mode -->
+										</div>
+									</div>
+								</fieldset>
+							</form>
+							<!-- //replyrg_area 답변하기 -->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">2</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt"><em class="icostate done"><span class="blind">작업중</span></em>렌츠 소프트 귀마개 10PAIR</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+
+								<!-- 200514 : SR#39897 : 고객문의 확인페이지 > 기존영역 -> .view_usr_info로 대체 -->
+								<!-- <p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip">IP : 19.168.1.11</span>
+								</p> -->
+
+
+							</div>
+
+							<!-- 200514 : SR#39897 : 고객문의 확인페이지 > 에누리 담당자 전용 노출영역 수정 -->
+							<div class="view_usr_info">
+								<!-- row : 작성일 -->
+								<dl class="usr_info_row tx_date">
+									<dt>작성일시</dt>
+									<dd>2020-05-13 23:48</dd>
+								</dl>
+								<!-- row : IP -->
+								<dl class="usr_info_row tx_ip">
+									<dt>IP</dt>
+									<dd>58.234.199.20</dd>
+								</dl>
+								<!-- row : 전화번호 -->
+								<dl class="usr_info_row tx_telnum">
+									<dt>전화번호</dt>
+									<dd>01073300162</dd>
+								</dl>
+								<!-- row : 주문정보  -->
+								<dl class="usr_info_row bx_orderinfo">
+									<dt>주문정보</dt>
+									<dd>
+										<ul>
+											<li>
+												<span class="tx_order_info tx_info_mall"><b>쇼핑몰</b> : 인터파크</span>
+												<span class="tx_order_info tx_info_date"><b>구매날짜</b> : 2020-04-16</span>
+												<span class="tx_order_info tx_info_ordn"><b>주문번호</b> : 3211287987</span>
+												<span class="tx_order_info tx_info_ordp"><b>결제금액</b> : 1,433,900원</span>
+												<span class="tx_order_info tx_info_gdsc"><b>상품번호</b> :</span>
+											</li>
+											<li>
+												<span class="tx_order_info tx_info_mall"><b>쇼핑몰</b> : 11번가</span>
+												<span class="tx_order_info tx_info_date"><b>구매날짜</b> : 2020-04-16</span>
+												<span class="tx_order_info tx_info_ordn"><b>주문번호</b> : 3211287987</span>
+												<span class="tx_order_info tx_info_ordp"><b>결제금액</b> : 1,433,900원</span>
+												<span class="tx_order_info tx_info_gdsc"><b>상품번호</b> :</span>
+											</li>
+											<li>
+												<span class="tx_order_info tx_info_mall"><b>쇼핑몰</b> : G마켓</span>
+												<span class="tx_order_info tx_info_date"><b>구매날짜</b> : 2020-04-16</span>
+												<span class="tx_order_info tx_info_ordn"><b>주문번호</b> : 3211287987</span>
+												<span class="tx_order_info tx_info_ordp"><b>결제금액</b> : 1,433,900원</span>
+												<span class="tx_order_info tx_info_gdsc"><b>상품번호</b> :</span>
+											</li>
+											<li>
+												<span class="tx_order_info tx_info_mall"><b>쇼핑몰</b> : 옥션</span>
+												<span class="tx_order_info tx_info_date"><b>구매날짜</b> : 2020-04-16</span>
+												<span class="tx_order_info tx_info_ordn"><b>주문번호</b> : 3211287987</span>
+												<span class="tx_order_info tx_info_ordp"><b>결제금액</b> : 1,433,900원</span>
+												<span class="tx_order_info tx_info_gdsc"><b>상품번호</b> :</span>
+											</li>
+											<li>
+												<span class="tx_order_info tx_info_mall"><b>쇼핑몰</b> : 기타등등</span>
+												<span class="tx_order_info tx_info_date"><b>구매날짜</b> : 2020-04-16</span>
+												<span class="tx_order_info tx_info_ordn"><b>주문번호</b> : 3211287987</span>
+												<span class="tx_order_info tx_info_ordp"><b>결제금액</b> : 1,433,900원</span>
+												<span class="tx_order_info tx_info_gdsc"><b>상품번호</b> :</span>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+								<!-- // -->
+								<!-- row : 파일첨부 -->
+								<dl class="usr_info_row bx_addfile">
+									<dt><i class="ico_file"></i>첨부파일</dt>
+									<dd>
+										<a href="#">cap01.jpg</a>
+										<a href="#">cap02.jpg</a>
+										<a href="#">cap03.jpg</a>
+										<a href="#">cap04.jpg</a>
+										<a href="#">cap05.jpg</a>
+										<a href="#">cap06.jpg</a>
+										<a href="#">cap07.jpg</a>
+										<a href="#">cap08.jpg</a>
+										<a href="#">cap09.jpg</a>
+										<a href="#">cap10.jpg</a>
+									</dd>
+								</dl>
+							</div>
+							<!-- // -->
+							
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage">
+								<!-- 200514 : SR#39897 : 고객문의 확인페이지 > 기존영역 -> .view_usr_info내부로 이동 -->
+								<!-- <em class="addfile"><span>첨부파일 : </span><a href="#">cap01.jpg</a></em> -->
+								<!-- // -->
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span  style="display:none;"> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+
+							<!-- replyst_area 답변 게시글 -->
+							<div class="replyst_area">
+								<div class="replyst_inner">
+									<strong class="profile">에누리</strong>
+									<div class="subst">안녕하세요 에누리 가격비교입니다. ~~<br />
+									고객센터(02-6354-3601)로 연락 주시면 확인 후 처리해드릴 수 있도록 하겠습니다. <br />
+									감사합니다. </div>
+									<span class="date">2014-12-30  16:14</span>
+								</div>
+								<p class="bt_manage2"><strong><a href="#none">수정</a> | <a href="#none">삭제</a></strong></p>
+							</div>
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">3</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt"><em class="icostate done"><span class="blind">작업중</span></em>렌츠 소프트 귀마개 10PAIR</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+							
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage" style="display:none;">
+								<em class="addfile"><span>첨부파일 : </span><a href="#">cap01.jpg</a></em>
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span  style="display:none;"> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+
+							<!-- replyst_area 답변 게시글 -->
+							<div class="replyst_area">
+								<div class="replyst_inner">
+									<strong class="profile">에누리</strong>
+									<div class="subst">안녕하세요 에누리 가격비교입니다. ~~<br />
+									고객센터(02-6354-3601)로 연락 주시면 확인 후 처리해드릴 수 있도록 하겠습니다. <br />
+									감사합니다. </div>
+									<span class="date">2014-12-30  16:14</span>
+								</div>
+								<p class="bt_manage2" style="display:none;"><strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span></strong></p>
+							</div>
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">4</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage">
+								<em class="addfile" style="display:none;"><span>첨부파일 : </span><a href="#">cap01.jpg</a></em>
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span  style="display:none;"> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">5</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage">
+								<em class="addfile"><span>첨부파일 : </span><a href="#">cap01.jpg</a></em>
+								<strong style="display:none;"><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">6</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage"  style="display:none;">
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">7</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage"  style="display:none;">
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">8</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage"  style="display:none;">
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">9</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage"  style="display:none;">
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+					<!-- loop -->
+					<tr>
+						<td class="number">10000</td>
+						<td class="type">상품,가격정보</td>
+						<td class="title"><p class="txt">상품수가 너무 많아 원하는 상품 선택이 어렵습니다. 상품수가 너무 많아 원하는 상품 선택이 어렵습니다.</p></td>
+						<td class="writer">욜라뽕따</td>
+						<td class="date">2014-12-30</td>
+					</tr>
+					<tr>
+						<td colspan="5"  class="spread">
+							<div class="txt_con">
+								<p>안녕하세요.<br />로그인이 안되네요 !!!<br />
+								1월에는 가장 깨끗한 마음과 새로운 각오로 	서로를 감싸줄 수 있는 따뜻한 친구이고 싶고 2월에는 조금씩 성숙해지는 우정을 맛볼 수 있는 친구이고 싶고	 3월에는 평화스런 하늘빛과 같은 거짓없는 속삭임을 나눌 수 있는 솔직한 친구이고 싶고...</p>
+								<p class="dateip">
+									<span class="date">2014-12-30  16:14</span>
+									<span class="ip" style="display:none;">IP : 19.168.1.11</span>
+								</p>
+							</div>
+
+							<!-- 답변하기, 관리자-->
+							<p class="bt_manage"  style="display:none;">
+								<strong><span><a href="#none">수정</a> | <a href="#none">삭제</a></span>
+								<span> | <a href="#none">답변하기</a></span></strong>
+							</p>
+							<!-- //답변하기, 관리자-->
+						</td>
+					</tr>
+					<!-- //loop -->
+				</tbody>
+			</table>
+		</div>
+		<!-- //tb_box -->
+		<!-- //고객문의 -->
+		<script type="text/javascript">  
+			$(document).ready(function(){
+				$(".tb2 tr:odd").addClass("odd");
+				$(".tb2 tr:not(.odd)").hide().css('position','relative');
+				$(".tb2 tr:not(.odd):first-child").css('position','static');
+				$(".tb2 tr:first-child").css('display','table-row');
+				$(".tb2 tr.odd").click(function(){
+					$(this).next("tr").toggle();
+				});
+				// 200514 (임시) 작업영역 자동펼침 처리
+				$('.tb2 tr.odd').eq(1).click();
+			});
+		</script>
+		<div class="paginate">페이징 영역</div>
+	</div>
+	<!-- //contents -->
+</div>
+<!-- //20141224 고객센터 신규 -->
+
+</div>
+
+</div>
+
+</body>
+</html>

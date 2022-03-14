@@ -1,0 +1,547 @@
+<!doctype html>
+<meta charset="utf-8">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다."> 
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<title>에누리 가격비교 - 최저가 쇼핑은 에누리 가격비교 사이트</title>
+<!-- Noto Sans KR - Hestia (CDN) -->
+<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css" type="text/css"> -->
+<!-- // -->
+<link rel="stylesheet" href="/common/css/eb/common.css" type="text/css">
+<link rel="stylesheet" href="/common/css/footer.css" type="text/css">
+<link rel="stylesheet" href="/css/gnb.css" type="text/css">
+<link rel="stylesheet" href="/css/wing.css" type="text/css">
+<link rel="stylesheet" href="/css/default.css" type="text/css">
+<link rel="stylesheet" href="/css/ad_center.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<!-- Popup-Layer :: 광고문의 레이어-->
+<div id="layContact" class="dimmed__layer scroll_type" style="display:none">
+    <div class="lay__wrap lay__contact">
+        <div class="lay__tit">
+            광고상담신청
+            <a href="#" onclick="toggleContactLayer();return false;" class="btn__close"></a>
+        </div>
+        <div class="lay__inner">
+            <span class="lay__txt">
+                에누리에서 광고를 원하시거나, 자세한 문의를 원하신다면 아래 사항을 남겨주세요.<br/>
+                효과적이고 적절한 광고 서비스를 약속드리겠습니다.
+                <!-- 20190717 : 문구 추가 -->
+                <span class="lay__txt_contact">광고문의 : 010-8648-1271 / 02-6903-9162 / <a href="mailto:adbiz@enuri.com">adbiz@enuri.com</a></span>
+                <!-- // -->
+            </span>
+            <div class="info_group">
+                <div class="info_row">
+                    <label for="txt_name">성명</label><input type="text" name="txt_name" placeholder="홍길동"/><span class="txt_error">필수</span>
+                </div>
+                <!-- 상담신청 클릭시 필수입력칸이 비어있을때 .val_error 클래스 붙여주세요 -->
+                <div class="info_row val_error">
+                    <label for="txt_tel">연락처</label><input type="text" name="txt_tel" placeholder="010 1234 5678"/><span class="txt_error">필수</span>
+                </div>
+                <div class="info_row">
+                    <label for="txt_com">회사명</label><input type="text" name="txt_com" placeholder="써머스플랫폼"/>
+                </div>
+                <div class="info_row">
+                    <label for="txt_email">이메일</label><input type="text" name="txt_email" placeholder="enuri12345@enuri.com" style="width:338px"/><span class="txt_error">필수</span>
+                </div>
+                <div class="info_row">
+                    <label for="txt_cont" style="height:140px;line-height:140px">문의내용</label><textarea type="text" name="txt_cont" placeholder="광고하려면 어떻게 하나요?"></textarea>
+                </div>
+            </div>
+            <div class="info_agree">
+                <div class="chk_agree">
+                    <input type="checkbox" name="cb_agree" id="cb_agree"/>
+                    <label for="cb_agree">개인정보 수집 및 이용에 동의합니다.</label>
+                </div>
+                <table class="tb_agree">
+                    <colgroup>
+                        <col width="206"/>
+                        <col/>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>수집하는 개인정보 항목</th>
+                            <td>
+                                (필수) 담당자의 성명, 연락처, 이메일<br/>
+                                (선택) 회사명
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>개인정보 수집/이용목적</th>
+                            <td>
+                                광고 상담의 원활한 의사소통 경로의 확보<br/>
+                                개인/업체 맞춤 광고 제안을 위해 이용
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>개인정보 보유/이용기간</th>
+                            <td>
+                                개인정보 수집의 목적이 달성되는 순간 파기됨. 그렇지 않을 경우, <br/>
+                                상담신청 접수 시점으로부터 최장 6개월간 보관할 수 있음
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="btn__apply"><span>상담신청</span></button>
+            </div>            
+        </div>
+    </div>
+    <div class="dimmed" onclick="toggleContactLayer()"></div>
+    <script>
+        // 퍼블리싱 테스트용
+        $(function(){
+            $(".btn__apply").click(function(){
+                if ( $("#cb_agree").is(":checked") ){
+                    // 체크완료
+                    $("#layContact").hide(); // 광고문의 레이어 닫고
+                    $("#layFinSend").show(); // 완료 레이어 띄우기
+                }else{
+                    // 체크안함
+                    $("#layNotAgree").show() // 동의안내 레이어를 추가로 띄움
+                }
+            })
+        })
+    </script>
+</div>
+<!-- // Popup-Layer :: 광고문의-->
+
+<!-- Popup-Layer :: 개인정보 수집 동의 X시 -->
+<div id="layNotAgree" class="dimmed__layer" style="display:none">
+    <div class="lay__wrap lay__notagree">
+        <div class="lay__inner">
+            <div class="lay__txt">개인정보 수집 및 이용에 동의하셔야<br/>상담신청이 가능합니다.</div>
+            <button class="btn__confirm" onclick="$('#layNotAgree').hide();return false;"><span>확인</span></button>
+            <!-- 닫기 -->
+            <a href="#" onclick="$('#layNotAgree').hide();return false;" class="btn__close">닫기</a>
+            <!-- // -->
+        </div>
+    </div>    
+    <div class="dimmed dim_op5"></div>
+</div>
+<!-- // Popup-Layer ::  개인정보 수집 동의 X시 -->
+
+<!-- Popup-Layer :: 등록완료 -->
+<div id="layFinSend" class="dimmed__layer" style="display:none">
+    <div class="lay__wrap lay__finsend">
+        <div class="lay__inner">
+            <div class="lay__tit">등록완료</div>
+            <div class="lay__txt">문의하신 내용이 등록되었습니다.<br/>최대한 빨리 연락 드리겠습니다.<br/>감사합니다.</div>
+            <button class="btn__confirm" onclick="$('#layFinSend').hide();return false;"><span>확인</span></button>
+            <!-- 닫기 -->
+            <a href="#" onclick="$('#layFinSend').hide();return false;" class="btn__close">닫기</a>
+            <!-- // -->
+        </div>
+    </div>    
+    <div class="dimmed"></div>
+</div>
+<!-- // Popup-Layer :: 등록완료 -->
+
+<div id="ad_wrap">
+    <!-- 광고센터 헤더 -->
+    <div class="ad_header">
+        <div class="header_wrap">
+            <div class="inner">
+                <h1><a href="./index.html" class="obj_bi">ENURI</a> 광고센터</h1>
+                <ul class="menu_list">
+                    <li><a href="#" onclick="toggleContactLayer();return false;" class="btn_adq">광고문의</a></li>
+                    <li><a href="#" class="btn_adintro" download>광고소개서</a></li>
+                    <li><a href="#" class="btn_pricetag" download>단가표 다운로드</a></li>
+                    <li><a href="./banner_guide.html" class="btn_bnrguide">배너 가이드</a></li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            // 광고문의 열고 닫기
+            function toggleContactLayer(){
+                var $layer = $('#layContact');
+                if ( !$layer.is(':visible') ){
+                    $("html,body").scrollTop(0);
+                    $layer.fadeIn(300).addClass('fly');
+                }else{
+                    $layer.fadeOut(100).removeClass('fly');
+                }
+            }
+        </script>
+    </div>
+    <!-- // 광고센터 헤더 -->
+    
+    <!-- 컨텐츠 컨테이너 -->
+    <div id="ad_container">
+
+        <!-- 메뉴 영역 -->
+        <div class="guide__tabs">
+            <div class="guide__inner">
+                <dl class="tabs">
+                    <dt>홈메인</dt>
+                    <dd>
+                        <ul class="tabs__list">
+                            <li class="is-on">
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/1_home_top2.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/1_home_top2.psd"
+                                    data-tit="<em>홈메인</em> 상단 A1"
+                                    data-size="1064 x 90, 0, jpg / 80kb 이하" class="btn">상단(A1)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/2_home_middle.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/2_home_middle.psd"
+                                    data-tit="<em>홈메인</em> 중단 A2"
+                                    data-size="1280 x 90, 0, jpg / 80kb 이하" class="btn">중단(A2)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/3_home_right_bottom.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/3_home_right_bottom.psd"
+                                    data-tit="<em>홈메인</em> 우하단 A3"
+                                    data-size="308 x 332, 0, jpg / 50kb 이하" class="btn">우하단(A3)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/4_home_wing_left1.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/4_home_wing_left1.psd"
+                                    data-tit="<em>홈메인</em> 좌측윙 상A5"
+                                    data-size="100 x 200, 0, jpg / 50kb 이하" class="btn">좌측윙(상A5)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/5_home_wing_left2.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/5_home_wing_left2.psd"
+                                    data-tit="<em>홈메인</em> 좌측윙 하A6"
+                                    data-size="100 x 200, 0, jpg / 50kb 이하" class="btn">좌측윙(하A6)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/6_home_search_right.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/6_home_search_right.psd"
+                                    data-tit="<em>홈메인</em> 검색창우측 B1"
+                                    data-size="168 x 60, 0, png / 20kb 이하" class="btn">검색창우측(B1)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/7_home_search_pc.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/7_home_search_pc.psd"
+                                    data-tit="<em>홈메인</em> PC 검색창 B3"
+                                    data-size="270 x 290, 0, jpg / 50kb 이하" class="btn">PC 검색창(B3)</button>
+                            </li>
+                            <li>
+                                <button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/8_home_gnb.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/8_home_gnb.psd"
+                                    data-tit="<em>홈메인</em> GNB B2"
+                                    data-size="259 x 419, 0, jpg / 30kb 이하" class="btn">GNB(B2)</button>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="tabs">
+                    <dt>트렌드픽업</dt>
+                    <dd>
+                        <ul class="tabs__list">
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/9_home_trend_ab.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/9_home_trend_ab.psd"
+                                    data-tit="<em>트렌드픽업</em> 상품형"
+                                    data-size="516 x 260, 0, jpg / 50kb 이하" class="btn">상품형</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/10_home_trend_c.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/10_home_trend_c.psd"
+                                    data-tit="<em>트렌드픽업</em> 배너형"
+                                    data-size="516 x 496, 0, jpg / 50kb 이하" class="btn">배너형</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/11_home_trend_d.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/11_home_trend_d.psd"
+                                    data-tit="<em>트렌드픽업</em> 동영상형"
+                                    data-size="516 x 496, 0, jpg / 50kb 이하" class="btn">동영상형</button>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="tabs">
+                    <dt>카테고리</dt>
+                    <dd>
+                        <ul class="tabs__list">
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/12_lp_top.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/12_lp_top.psd"
+                                    data-tit="<em>카테고리</em> 상단 T1"
+                                    data-size="1064 x 90, 0, jpg / 80kb 이하" class="btn">상단(T1)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/13_lp_left_small.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/13_lp_left_small.psd"
+                                    data-tit="<em>카테고리</em> 좌측소 T2"
+                                    data-size="100 x 100, 0, jpg / 20kb 이하" class="btn">좌측소(T2)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/14_lp_left_big.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/14_lp_left_big.psd"
+                                    data-tit="<em>카테고리</em> 좌측대 T3"
+                                    data-size="100 x 200, 0, jpg / 50kb 이하" class="btn">좌측대(T3)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/15_lp_middle.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/15_lp_middle.psd"
+                                    data-tit="<em>카테고리</em> 중단 T5"
+                                    data-size="1010 x 130, 0, jpg / 80kb 이하" class="btn">중단(T5)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/16_lp_right.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/16_lp_right.psd"
+                                    data-tit="<em>카테고리</em> 우측배너 T6"
+                                    data-size="100 x 200, 0, jpg / 50kb 이하" class="btn">우측배너(T6)</button>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="tabs">
+                    <dt>검색결과</dt>
+                    <dd>
+                        <ul class="tabs__list">
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/17_srp_left2.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/17_srp_left2.psd"
+                                    data-tit="<em>검색결과</em> 좌측2 S2"
+                                    data-size="100 x 200, 0, jpg / 50kb 이하" class="btn">좌측2(S2)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/18_srp_right1.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/18_srp_right1.psd"
+                                    data-tit="<em>검색결과</em> 우측1 S3"
+                                    data-size="100 x 200, 0, jpg / 50kb 이하" class="btn">우측1(S3)</button>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="tabs">
+                    <dt>상품창</dt>
+                    <dd>
+                        <ul class="tabs__list">
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/19_vip_top.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/19_vip_top.psd"
+                                    data-tit="<em>상품창</em> 상단 C1"
+                                    data-size="1280 x 90, 0, jpg / 80kb 이하" class="btn">상단(C1)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/20_vip_mallprice.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/20_vip_mallprice.psd"
+                                    data-tit="<em>상품창</em> 가격리스트 C2"
+                                    data-size="640 x 148, 0, jpg / 80kb 이하" class="btn">가격리스트(C2)</button>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+                <dl class="tabs">
+                    <dt>동영상</dt>
+                    <dd>
+                        <ul class="tabs__list">
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/21_video_popbt.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/21_video_popbt.psd"
+                                    data-tit="<em>동영상</em> 팝업버튼 D1"
+                                    data-size="140 x 140, 0, png / 30kb 이하" class="btn">팝업버튼(D1)</button>
+                            </li>
+                            <li><button type="button"
+                                    data-href="http://img.enuri.info/images/rev/bnrguide/22_video_right.jpg"
+                                    data-psd="http://img.enuri.info/images/rev/bnrguide/PSD/22_video_right.psd"
+                                    data-tit="<em>동영상</em> 우측 D2"
+                                    data-size="308 x 548, 0, jpg / 50kb 이하" class="btn">동영상 우측(D2)</button>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <a href="http://img.enuri.info/images/rev/bnrguide/PSD/package_psd.zip" class="btn btn-download--all" download>전체 PSD 다운로드</a>
+            </div>
+        </div>
+        <!-- //메뉴 영역 -->
+
+        <div class="guide__container">
+            <div class="guide__inner">                
+                <div class="guide__header">
+                    <div class="bnr__tit">
+                        <h1 id="bnrTit" class="tx_tit"><em>홈메인</em> 상단 A1</h1>
+                        <a id="bnrPsd" href="http://img.enuri.info/images/rev/bnrguide/PSD/1_home_top2.psd" class="btn btn-download" download>PSD 다운로드</a>
+                    </div>
+
+                    <div class="bnr__info">
+                        <div class="bnr__head"><!--PC아이콘--></div>
+
+                        <div class="bnr__source">
+                            <ul id="bnrSize">
+                                <li><p class="tx_spec tx_spec--dt">Size : </p> <p class="tx_spec tx_spec--dd">1064 x 90</p></li>
+                                <li><p class="tx_spec tx_spec--dt">Border : </p> <p class="tx_spec tx_spec--dd">0</p></li>
+                                <li><p class="tx_spec tx_spec--dt">Format : </p> <p class="tx_spec tx_spec--dd">jpg / 80kb 이하</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide__imgs">
+                    <ul class="imgs__list">
+                        <li id="bnrHref"><a href="http://img.enuri.info/images/rev/bnrguide/1_home_top2.jpg" target="_blank" title="새 창에서 열립니다."><img src="http://img.enuri.info/images/rev/bnrguide/1_home_top2.jpg" alt="" /></a></li>
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $(function(){
+                var $bnr_btn = $(".tabs__list li"),
+                    _bnr_tit = $("#bnrTit"),
+                    _bnr_psd = $("#bnrPsd"),
+                    _bnr_size = $("#bnrSize > li"),
+                    _bnr_href = $("#bnrHref");
+
+                    $bnr_btn.find(".btn").on("click", function(){
+                        var _this = $(this),
+                            _this_tit = _this.data("tit"),
+                            _this_psd = _this.data("psd"),
+                            _this_size = _this.data("size"),
+                            _this_href = _this.data("href");
+
+                        $bnr_btn.closest("li").removeClass("is-on");
+                        $(this).closest("li").addClass("is-on");
+
+                        // data 삽입
+                        _bnr_tit.html(_this_tit);
+                        _bnr_psd.attr("href", _this_psd);
+                        _bnr_href.find("a").attr("href", _this_href);
+                        _bnr_href.find("img").attr("src", _this_href);
+
+                        var bnrSize = _this_size.split(", ");
+                        _bnr_size.eq(0).find(".tx_spec--dd").text(bnrSize[0])
+                        _bnr_size.eq(1).find(".tx_spec--dd").text(bnrSize[1])
+                        _bnr_size.eq(2).find(".tx_spec--dd").text(bnrSize[2])
+                    })
+            })
+        </script>
+    </div>
+    <!-- // 컨텐츠 컨테이너 -->
+    
+    <!-- 플로팅 탑이동 버튼 -->
+    <ul class="fixedarea" id="ulFixed">
+        <li class="top"><a href="javascript:;" onclick="$('html,body').scrollTop(0);return false;" id="grGoTop">TOP</a></li>
+    </ul>
+    <!-- // 플로팅 탑이동 버튼 -->
+    
+    <!-- 하단 배너 및 푸터 -->
+    <div class="bnr_area">
+        <ul>
+            <li><a href="/event/stampEvent_ReviewPage.jsp" target="_new" onclick="insertLog(12158);">에누리 추가할인 평균 -8.3% 혜택</a></li>
+            <li><a href="/common/jsp/App_Landing.jsp" target="_new" onclick="insertLog(12159);">에누리되는 가격비교 모바일 에누리</a></li>
+        </ul>
+    </div>
+    <div class="footer" id="tblFooter" style="width: 970px;">
+        <ul class="footer_menu">
+            <li><span onclick="insertLog(1059);"><a href="/etc/enuri_intro/Enuriintro.jsp" target="_top">회사소개</a></span></li>
+            <li><span onclick="insertLog(1060);"><a href="/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3" target="_top">광고안내</a></span></li>
+            <li><span onclick="insertLog(1061);"><a href="/sdul/mallregister/SellerMain.jsp?sm=1&amp;lg=1" target="_top">판매자가이드</a></span></li>
+            <li><span id="sdulogin" onclick="insertLog(1062);GotoSDUL_Login();"><a href="#" onclick="this.blur();return false;">판매자SDU(L)&nbsp;</a></span></li>
+            <!-- <li><span><a href='/etc/provision.jsp' target="_top">이용약관</a></span></li>  -->
+            <li><span onclick="insertLog(4555);"><a href="/etc/Secure.jsp" target="_top"><strong>개인정보처리방침</strong></a></span></li>
+            <li><span onclick="insertLog(1064);"><a href="/etc/Duty.jsp" target="_top">법적고지</a></span></li>
+            <li><span onclick="insertLog(1065);"><a href="/view/mallsearch/Listmall.jsp" target="_top">쇼핑몰검색</a></span></li>
+            <li><span><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></span></li>
+            <li><span onclick="insertLog(1067);Cmd_Sitemap_All_Bottom();"><a href="#" onclick="this.blur();return false;">전체메뉴</a></span></li>
+            <li><span onclick="insertLog(1068);"><a href="/etc/Site_map.jsp" target="_top">사이트맵</a></span></li>
+        </ul>
+
+        <div class="adr">
+            <span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+            <span>대표이사 : 김기범</span>
+            <span>사업자등록번호 : 206-81-18164</span>
+            <span>통신판매신고 : 2015-서울중구-1046호</span><br>
+            <span>전화 : 02-6354-3601</span>
+            <span>팩스 : 02-6354-3600</span>
+            문의 : master@enuri.com
+            <a href="#"><img src="http://img.enuri.info/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onclick="window.open('http://img.enuri.info/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://img.enuri.info/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+        </div>
+
+        <ul class="award_list">
+            <li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+            <li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+            <li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+            <li>2016 모바일브랜드 대상 가격비교서비스 대상</li>
+            <li>한국온라인쇼핑협회 정회원사</li>
+        </ul>
+
+        <p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+    </div>
+    <!-- // 하단 배너 및 푸터 -->
+
+    <script>
+        $(function(){
+            var $wrap = $("#ad_wrap"),
+                $header = $(".ad_header"),
+                $headerWrap = $(".header_wrap"),
+                $nav = $(".in_nav"),
+                $navWrap = $(".nav_wrap"),
+                $navItem = $navWrap.find("li"),
+                $scrTarget = $(".ad__scroll"),
+                posScr = [];
+            var _position = $(window).scrollTop(); 
+
+            // 200521 수정 : 네비 클릭 이벤트 ( is-link 클래스 없을때만 스크롤 이동 )
+            $navItem.click(function(i){
+                if ( !$(this).hasClass('is-link') ){
+                    i.preventDefault();
+                    $("html,body").stop(true,false).animate({"scrollTop":$scrTarget.eq($(this).index()).offset().top - $header.outerHeight() - $nav.outerHeight()},"slow")
+                }
+            })
+            // 스크롤 대상의 scrollTop 재설정
+            var recalcPos = function(){
+                $scrTarget.each(function(e){
+			    	posScr[e] = $(this).offset().top - $header.outerHeight() - $nav.outerHeight();
+			    })
+            }
+            // 스크롤에 따른 상단 고정여부 판단
+            var stickyBars = function(){
+                var _myScroll = $(window).scrollTop();
+                ( _myScroll > $header.offset().top ) ? $headerWrap.addClass("fixed") : $headerWrap.removeClass("fixed");
+                ( _myScroll > $nav.offset().top - $header.outerHeight() -1 ) ? $navWrap.addClass("fixed").css("top",$header.outerHeight() -1 ) : $navWrap.removeClass("fixed").removeAttr("style");
+                $(posScr).each(function(e){
+                    $navItem.removeClass("selected");
+					if ( e != posScr.length -1 ){
+						if ( posScr[e] <= _myScroll && posScr[e+1] > _myScroll ){
+                            $navItem.eq(e).addClass("selected");
+							return false;
+						}
+					}else{
+                        if ( posScr[e] <= _myScroll ){
+                            $navItem.eq(e).addClass("selected");
+                            return false;
+                        }else{
+                            $navItem.removeClass("selected");
+                        }
+					}
+			    });
+                // 스크롤 다운시 네비 사라짐
+                if ( _myScroll > $nav.offset().top ){
+                    (_myScroll > _position) ? $wrap.addClass('scrDn').removeClass('scrUp') : $wrap.addClass('scrUp').removeClass('scrDn')
+                    _position = _myScroll;
+                }else{
+                    $wrap.removeClass('scrUp').removeClass('scrUp');
+                    _position = _myScroll;
+                }
+            }
+
+            $(window).load(function(){
+                recalcPos();
+                stickyBars();
+            })
+            .scroll(stickyBars)
+            .resize(recalcPos);            
+        });   
+    </script>
+</div>
+</body>
+</html>

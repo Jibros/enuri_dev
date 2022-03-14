@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : regular_chk.css
+ * 설명 : 에누리 가격비교 PC/M / 정기점검중 CSS
+ * 작성자 : 지승호
+ * 작성일 : 2021.03.19
+************************************************************************/
+
+/********************** PC CSS **********************/
+.regular--pc {position:relative;width:100%;padding-bottom:100px;background:url(http://img.enuri.info/images/notice/2015/bg_notice_wrap.jpg) 0 0 no-repeat}
+.regular__inner {position:relative;width:1280px;margin:0 auto}
+.regular__info {position:relative;width:100%;height:480px;background:url(http://img.enuri.info/images/notice/2015/txt_system.jpg) 50% 0 no-repeat}
+.chktime {position:absolute;top:248px;left:502px}
+.chktime .tx_date {font-weight:bold;font-size:23px;color:#1333ac;line-height:23px;letter-spacing:-0.5px}
+
+/* [공통] 메인 컨텐츠(m-container 하위) : 열과 행 */
+.m-container {display:block;width:100%;margin-right:0;margin-left:0;padding-right:0;padding-left:0}
+.m-row {display:block;width:1296px;margin-right:-8px;margin-left:-8px;box-sizing:border-box}
+.m-row:after {content:"";display:table;clear:both}
+.m-row + .m-row {margin-top:32px}
+.col {float:left;margin:0 8px;box-sizing:border-box}
+.col-1 {width:92px} /* 108*n-16 */
+.col-2 {width:200px}
+.col-3 {width:308px}
+.col-4 {width:416px}
+.col-5 {width:524px}
+.col-6 {width:632px}
+.col-7 {width:740px}
+.col-8 {width:848px}
+.col-9 {width:956px}
+.col-10 {width:1064px}
+.col-11 {width:1172px}
+.col-12 {width:1280px}
+.col__inner {position:relative;width:100%}
+
+/* [공통] 화살표--네모형태 */
+.arrows--rect {position:absolute;top:71px;left:0;right:0;width:100%;z-index:10;opacity:0;transition:all .5s linear}
+.arrows--rect .arr {position:absolute;width:38px;height:38px;border-radius:4px;border:1px solid rgba(212,219,232,0.5);box-shadow:0 3px 3px 0 rgba(0, 0, 0, 0.16);font-size:0;text-indent:-9999px;background:#fff;opacity:1;transition:all .1s ease-in-out}
+.arrows--rect .arr-prev {left:0}
+.arrows--rect .arr-next {right:0}
+.arrows--rect .arr:after {content:"";display:block;position:absolute;top:8px;left:8px;width:20px;height:20px;background:url(//img.enuri.info/images/rev/main_sprite.png);opacity:0.5;transition:all .2s ease-in-out}
+.arrows--rect .arr-prev:after {background-position:-80px 0}
+.arrows--rect .arr-next:after {background-position:-100px 0}
+.arrows--rect .arr:active {opacity:0.8;transform:translateY(2px)}
+.arrows--rect .arr:hover:after {opacity:1}
+/* 화살표 :hover */
+.mallbox:hover .arrows--rect {opacity:1}
+.mallbox:hover .arrows--rect .arr-prev {left:-19px}
+.mallbox:hover .arrows--rect .arr-next {right:-19px}
+/* 화살표 : 위치 별도 적용 */
+.bestmall .mallbox .arrows--rect {top:55px}
+
+/* 인기쇼핑몰 목록 */
+.bestmall {padding-top:88px}
+.bestmall .mallbox {position:relative;height:150px}
+.bestmall .mallbox:after {content:"";position:absolute;top:0;right:0;bottom:0;left:0;border:solid 1px #ddd;pointer-events:none}
+.bestmall .mall__list {display:none;width:100%;height:100%;padding:1px 0}
+.bestmall .mall__list.is-shown {display:block}
+.bestmall .mall__list:after {content:"";display:table;clear:both}
+.bestmall .mall__list > li {float:left;position:relative;width:160px;height:50px}
+.bestmall .mall__list > li:before {content:"";position:absolute;top:0;right:0;bottom:0;width:1px;height:100%;background-color:#eee}
+.bestmall .mall__list > li:after {content:"";position:absolute;left:0;right:0;bottom:0;width:100%;height:1px;background-color:#eee}
+.bestmall .mall__list > li:nth-child(n+17):after {display:none}
+.bestmall .mall__list > li > a {display:block;overflow:hidden}
+.bestmall .mall__list > li > a .thum {display:block;width:auto;height:24px;margin:12px auto;transition:all .2s ease-in-out}
+.bestmall .mall__list > li:hover {background-color:rgba(0,0,0,0.02)}
+.bestmall .mall__list > li:hover > a .thum {transform:translateY(-2px)}
+
+/* 주요 카테고리 */
+.bestcate {position:relative;width:100%;overflow:hidden}
+.bestcate:before {content:"";position:absolute;top:0;right:0;bottom:0;left:0;border:solid 1px #ddd;pointer-events:none;z-index:10}
+.bestcate:after {content:"";display:table;clear:both}
+.bestcate .catebox {float:left;position:relative;width:163px;height:100%;padding:0 25px 25px;background-color:#fff}
+.bestcate .catebox:hover{z-index:1;box-shadow: 0 -20px 20px rgba(0,0,0,.05)}
+.bestcate .catebox:after {content:"";position:absolute;top:0;right:0;bottom:0;width:1px;height:400px;background-color:#ddd;pointer-events:none}
+.bestcate .catebox:first-child, 
+.bestcate .catebox:nth-child(6n) {width:164px}
+.bestcate .catebox:nth-child(6n):after {display:none}
+.bestcate .cate__tit {display:block;margin:25px 0 10px;font-weight:bold;font-size:14px;letter-spacing:-.6px;color:#333;line-height:1}
+.bestcate .cate__list {position:relative}
+.bestcate .cate__list li > a {display:block;height:26px}
+.bestcate .cate__list li > a em {display:inline-block;font-size:12px;line-height:26px;color:#666}
+.bestcate .cate__list li > a em.ad_type_npay {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;padding-right:36px;position: relative;background: url(http://img.enuri.info/images/home/ico_npay_sm.png) no-repeat 100% 50%;max-width: 85px}
+.bestcate .cate__list li > a:hover em {text-decoration:underline;text-underline-position:under}
+
+
+
+/********************** M CSS **********************/
+.regular--mo{width:320px;margin:-210px 0px auto -160px;height:420px;position:absolute;left:50%;top:50%}
+.regular--mo header{margin-bottom:20px;text-align:center;background:url(http://img.enuri.info/images/mobilenew/images/bg_check.gif) center top no-repeat;background-size:89px 115px}
+.regular--mo header h1{height:50px;color:#4b5054;font-weight:bold;font-size:37px;letter-spacing:-2px;padding-top:30px}
+.regular--mo header h1 span{color:#0081e5}
+.regular--mo header h2{letter-spacing:-1px;font-size:11px;font-weight:normal}
+.regular--mo header .time{font-size:14px;color:#454545;font-weight:bold;padding:15px 0 10px 0 }
+.regular--mo header .time span{color:#0081e5}
+.regular--mo section{padding:0 13px}
+.regular--mo .mall{width:100%;float:left;margin-top:20px }
+.regular--mo .mall:after{content: "";display: block;clear: both;width: 0px;height: 0px}
+.regular--mo .mall li{width:73px;float:left;text-align:center;border:1px solid #d6d6d6;margin:-1px}
+.regular--mo .mall li a{color:#666666;font-size:10px;text-align:center}
+.regular--mo .mall li img{width:100%}
+
+.regular--mo footer{text-align:center;padding:7px 0;font-size:8px;clear:both; }
+
+@media screen and (orientation:landscape){
+    .regular--mo{width:320px;margin:0 auto;position:static;left:0;top:0;padding-bottom:50px}
+    .regular--mo header{margin-top:50px}
+}
+
+/* 인기쇼핑몰 */
+.m_mall__list{position:relative;overflow:hidden;background:#fff}
+.m_mall__list:after{content:"";position:absolute;top:0;bottom:0;left:0;right:0;border:1px solid #ddd;pointer-events:none}
+.m_mall__list li{float:left;position:relative;width:25%;background:#fff;padding:12px 0}
+.m_mall__list li:after {content:"";position:absolute;top:0;bottom:0;left:0;right:0;outline:1px solid #eee;pointer-events:none}
+.m_mall__list li a{width:74px;height:25px;display:block;margin:0 auto;overflow:hidden}
+.m_mall__list li a img{width:100%}

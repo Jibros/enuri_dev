@@ -1,0 +1,270 @@
+@charset "utf-8";
+
+/*******************************
+	Name			: layout.css
+	Description		: layout css (HEADER, CONTENT, FOOTER, FIXED TOP)
+	Writer			: I-UI팀
+	Create Date		: 2017-02-06
+	Modify Date		: 2017-07-24 13:53 (221 line 변경)
+	Modification	: JSH (수정시 직접 변경)
+*******************************/
+/* 
+	* LAYOUT : HEADER 
+*/
+.navbar {min-height:50px; margin-bottom:0; border-bottom:1px solid #c1c1c1}
+.navbar-brand {float:left; height:auto; padding:12px 15px 11px; font-size:18px; line-height:20px}
+.navbar-enuri {
+  background-color: #fff;
+  border-color: #e7e7e7;
+}
+.navbar-enuri .navbar-brand {
+  color: #777;
+}
+.navbar-enuri .navbar-brand:hover,
+.navbar-enuri .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.navbar-enuri .navbar-text {
+  color: #777;
+}
+.navbar-enuri .navbar-nav > li > a {
+  color: #777;
+  line-height:40px;
+}
+.navbar-enuri .navbar-nav > li > a:hover,
+.navbar-enuri .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+}
+.navbar-enuri .navbar-nav > .active > a,
+.navbar-enuri .navbar-nav > .active > a:hover,
+.navbar-enuri .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+.navbar-enuri .navbar-nav > .disabled > a,
+.navbar-enuri .navbar-nav > .disabled > a:hover,
+.navbar-enuri .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.navbar-enuri .navbar-toggle {
+  border-color: #ddd;    
+    float: right;
+    padding: 9px 10px;
+    margin-top: 18px;
+    margin-right: 18px;
+    margin-bottom: 18px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.navbar-enuri .navbar-toggle:hover,
+.navbar-enuri .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.navbar-enuri .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.navbar-enuri .navbar-collapse,
+.navbar-enuri .navbar-form {
+  border-color: #e7e7e7;
+}
+.navbar-enuri .navbar-nav > .open > a,
+.navbar-enuri .navbar-nav > .open > a:hover,
+.navbar-enuri .navbar-nav > .open > a:focus {
+  background-color: #e7e7e7;
+  color: #555;
+}
+@media (max-width: 767px) {
+  .navbar-enuri .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .navbar-enuri .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-enuri .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  .navbar-enuri .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-enuri .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-enuri .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  .navbar-enuri .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-enuri .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-enuri .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+.navbar-enuri .navbar-link {
+  color: #777;
+}
+.navbar-enuri .navbar-link:hover {
+  color: #333;
+}
+.navbar-enuri .btn-link {
+  color: #777;
+}
+.navbar-enuri .btn-link:hover,
+.navbar-enuri .btn-link:focus {
+  color: #333;
+}
+.navbar-enuri .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-enuri .btn-link:hover,
+.navbar-enuri .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-enuri .btn-link:focus {
+  color: #ccc;
+}
+
+/* haadroom css */
+.headroom {position:fixed; z-index:100; width:100%; will-change:transform; transition: transform 200ms linear; background-color:#fff;} 
+.headroom--pinned {transform: translateY(0%);}
+.headroom--unpinned {transform: translateY(-100%);}
+
+/* Animated for headroom */ 
+.animated {-webkit-animation-duration: .5s; animation-duration: .5s; -webkit-animation-fill-mode: both; animation-fill-mode: both}
+.animated.slideDown {-webkit-animation-name:slideDown; animation-name:slideDown; } 
+@-webkit-keyframes slideDown{ 
+	0% {-webkit-transform:translateY(-100%)} 
+	100% {-webkit-transform:translateY(0)} 
+} 
+@keyframes slideDown{ 
+	0% {transform:translateY(-100%)} 
+	100% {-webkit-transform:translateY(0)} 
+} 
+
+/* SlideUp for headroom */ 
+.animated.slideUp {-webkit-animation-name:slideUp; animation-name:slideUp} 
+.animated.slideUpImpotant {-webkit-animation-name:slideUp; animation-name:slideUp} 
+@-webkit-keyframes slideUp{ 
+	0% {-webkit-transform:translateY(0)} 
+	100% {-webkit-transform:translateY(-100%)} 
+} 
+@keyframes slideUp{ 
+	0% {transform:translateY(0)} 
+	100% {-webkit-transform:translateY(-100%)} 
+} 
+
+@media (max-width: 767px) {
+	.navbar-enuri .navbar-nav > li > a {
+	  line-height:20px;
+	}
+}
+@media (min-width: 768px) {
+	/*.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+		margin-right: -15px;
+		margin-left: -15px;
+	}*/
+}
+@media (min-width:768px) and (max-width:991px) {
+	.navbar-enuri .navbar-nav > li > a {
+		font-size:.9rem;
+		padding:15px 10px;
+	}
+	.dropdown-menu>li>a {
+		font-size:.8rem;
+	}
+}
+@media (min-width: 992px) {
+	.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
+		float:left;
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+}
+@media (min-width: 1200px) {
+
+}
+
+
+/* 
+	* LAYOUT : CONTENT 
+	* 기본 heading, sector 외 Style은 docs.css 에 추가
+*/
+#content {padding-top:70px;}
+
+/* top head */
+.title-heading {padding:80px 0; background-color:#2e95d7; color:#fff}
+.title-heading h1 {color:#fff}
+.title-heading span.glyphicon {top:-1px; font-size:2.3rem; vertical-align:middle}
+
+/* docs-heading */
+.docs-heading {padding:30px 0; border-bottom:2px solid #787878}
+.docs-heading h2 {}
+
+/* docs-sector */
+.docs-sector {overflow:hidden; clear:both; padding:0 0 2.5rem; border-bottom:2px dotted #e1e1e1}
+.docs-sector:last-child {padding-bottom:8rem; border-bottom:0}
+
+.docs-sector .page-header {padding:40px 0 20px;}
+
+.ds-section {margin-bottom:60px;}
+.ds-section h4 {margin-bottom:20px; font-weight:bold;}
+
+.table>tbody>tr>td, .table>tbody>tr>th, 
+.table>tfoot>tr>td, .table>tfoot>tr>th, 
+.table>thead>tr>td, .table>thead>tr>th {vertical-align:middle; word-break:keep-all;}
+.table>thead>tr>td, .table>thead>tr>th {border:1px solid #2e95d7; color:#fff; text-align:center; background-color:#2e95d7;}
+
+/* dl, dt, dd style */
+.def_list {}
+.def_list dt {margin-bottom:10px;}
+ 
+
+#ui-guideCss .lead, #ui-accessibility .lead, #ui-outputs .lead {margin-top:45px;}
+
+#ui-outputs .list-group > a {display:block;}
+#ui-outputs .list-group .list-def {}
+#ui-outputs .list-group .list-def dt {margin-bottom:10px;}
+#ui-outputs .list-group .list-def dd {line-height:24px;}
+#ui-outputs .list-group .list-def dd span {margin-right:10px; font-size:13px;}
+#ui-outputs .tab_wrap {margin-top:60px;}
+
+#ui-guideImg dl ul li {margin:10px 0;}
+
+
+blockquote:before {
+  content: "\201C";
+  font-size: 4em;
+  font-family: Georgia;
+  color: #bcbcbc;
+  float: left;
+  margin: -22px 10px 0px -10px;
+}
+blockquote cite {color:#999; display:block; font-size:14px;}
+dl dt {font-weight:600}
+dl dd {margin:0;}
+/*dl dd:before {content:'- '}*/
+
+/* 
+	* LAYOUT : FOOTER
+*/
+#footer {padding:1rem; background-color:#f2f2f2}
+#footer p {margin:0; font-size:1rem; word-break:keep-all;}
+@media (min-width: 992px) {
+	#footer p {font-size:.8rem}
+}
+
+/* FIXED TOP */ 
+#grGoTop {
+	position:fixed;
+	bottom:20px;
+	right:20px;
+	width: 47px;
+    padding-top: 9px;
+    height: 47px;
+    border: 1px solid #d5d5d5;
+    box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: block;
+    color: #666666;
+    line-height: 14px;
+    text-decoration: none;
+	background:#fff url(http://img.enuri.info/images/home/wing_gotop.png) center 11px no-repeat;
+    text-indent: -9999em;
+}

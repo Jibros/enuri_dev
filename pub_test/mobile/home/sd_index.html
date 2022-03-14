@@ -1,0 +1,692 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no" />
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/swiper.js"></script>
+	<link rel="stylesheet" href="http://m.enuri.com/mobilefirst/css/home/swiper.css" />
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/home/default.css" />
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/home/gnb.css?v=20181219" />
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/home/main.css" />
+	<!-- 20190507 스마트택배용 CSS 추가 -->
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/home/incSmartDelivery.css" />
+</head>
+<body>
+
+<!-- 20190507 에누리 가격비교 최초 진입 시 딤 팝업 노출-->
+<div class="dim" id="smd_gate"  onclick="$(this).hide();" style="display:;">
+	<div class="gate_con">
+		<img src="http://img.enuri.info/images/smd/lay_gate.png" alt="">
+	</div>
+	<a href="#" onclick="$(this).parent().hide();return false;" class="btn_close">닫기</a>
+</div>
+<!-- // -->
+
+<div class="dim" id="appLayer" style="display:none">
+	<div class="app_install">
+		<a href="javascript:///" class="go_app">에누리 앱 설치하기</a>
+		<a href="javascript:///" class="closebtn" onclick="$('#appLayer').hide();">닫기</a>
+	</div>
+</div>
+
+<div id="main">
+
+	<!-- 20190507  1. [ 검색 BAR ]  스마트택배용으로 구성 -->
+	<!-- 홈메인 GNB .type_smd 붙여주세요.-->
+	<header class="type_smd">
+		<div class="mainTop">
+			<!-- <a href="#" class="btn_side"><span class="cate_m ico_m">주요 서비스 메뉴 펼치기</span></a> -->
+			<h1 class="logo ico_m">에누리 가격비교</h1>
+			<div class="searchbox"><p class="search_in"><input type="text" id="searchtxt" name="searchtxt" onclick="$('#searchWrap').toggle();"" placeholder="최저가를 검색해 보세요"></p><button class="srp"><span class="ico_m">검색</span></button></div>
+			<!-- <button class="mybtn"><span class="ico_m">마이메뉴</span></button> -->
+		</div>
+    </header>
+    
+	<!-- 검색레이어 -->
+	<div id="searchWrap" class="sch_box_area">
+		<!-- 기존과 동일 합니다. header.sub에 .type_smd 만 붙여주세요. -->
+        <header class="sub type_smd">
+            <div class="mainTop lp">
+                <a href="javascript:///" class="btn_back" onclick="$('#searchWrap').hide()"><span class="cate_m ico_m">이전</span></a>
+                <form id="search" name="searchForm" action="/mobilefirst/search.jsp" method="post" onsubmit="return false;" accept-charset="utf-8">
+                    <div class="searchbox">
+                        <p class="search_in"><input type="text" id="search_keyword" name="searchtxt" placeholder="검색어를 입력해 주세요" autocomplete="off"></p>
+                        <button type="button" class="del ico_m" id="search_text_del">검색어 삭제</button>
+                        <button class="srp"><span class="ico_m btn-search">검색</span></button>
+                    </div>
+                </form>
+            </div>
+        </header>
+        <section class="sch_area">
+            <div id="searchCont">
+                <div class="recent_sch">
+                    <ul class="sch_tab">
+                        <li class="on" onclick="CmdSchTab(1);"><a href="javascript:///">최근 검색어</a></li>
+                        <li onclick="CmdSchTab(2);"><a href="javascript:///">인기 검색어</a></li>
+                    </ul>
+                    <div class="sch_con" id="sch02" style="display:none;">
+                        <ul class="hit_sch">
+                        </ul>
+                    </div>
+                </div>
+                <div class="searchList" id="searchList">
+                    <ul class="sch_input">
+                        <li><em class="del ico_m" onclick="javascript:deleteRec_one('아이폰xs__03월25일');">삭제</em><a href="javascript:///">아이폰xs</a><span class="date">03월25일</span><em onclick="javascript:inSearchGo('아이폰xs');" class="in_go ico_m">검색어 입력</em></li>
+                    </ul>
+                </div>
+            </div>        
+            <div class="sch_history">
+                <span id="all_delete" onclick="javascript:all_delete_rec()">전체삭제</span><em id="bar">|</em><span id="delect_rec" onclick="javascript:iosDelete_rec()">검색어저장 끄기</span><span class="close" onclick="$('#searchWrap').toggle();">닫기</span>
+            </div>
+        </section>
+	</div>    
+	<!-- // 20190507  1. [ 검색 BAR ]  스마트택배용으로 구성 -->
+	
+	<!-- 20190507  2. [ 탭  ]  가격비교 홈’ 탭, ‘핫딜베스트’ 탭,  ‘특가모음’ 탭 총 3개 탭으로 구성 -->
+	<!-- .type_smd 붙여주세요. -->
+	<nav class="m_top type_smd">
+		<div class="gnbarea">
+			<ul class="smdgnb">
+				<li><a href="#" class="on">가격비교 홈</a></li>
+				<li><a href="#">핫딜베스트</a></li>
+				<li><a href="#">특가모음</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!-- 2-1. 화면 스크롤 시 탭 영역 상단 고정 -->
+	<script> 
+		$(function(){
+			var $gnb = $(".m_top.type_smd");
+			var fixedGnb = function(){
+				var $myScroll = $(window).scrollTop();
+				if ( $gnb.offset().top-1 < $myScroll ) $gnb.addClass("fixed");
+				else $gnb.removeClass("fixed");
+			}
+			$(window).load(fixedGnb).scroll(fixedGnb).resize(fixedGnb);
+		});
+	</script>
+	<!-- // 20190507  2. [ 탭  ]  가격비교 홈’ 탭, ‘핫딜베스트’ 탭,  ‘특가모음’ 탭 총 3개 탭으로 구성 -->
+	
+	<!-- My MENU -->
+	<div class="my_back" style="display:none"></div>
+	<div class="mymenu" style="display:none">
+		<h1><span class="login after">hahahamk 님</span></h1><!--h1><span class="login"><a href="#">로그인</a></span></h1-->
+		<span class="logout"><a href="#">로그아웃</a></span>
+		
+		<h2><a href="#">최근 본 상품 (20)</a></h2>
+		<div class="scrollbox_area" style="overflow-x: auto;">
+			<div class="innder_scroll">
+				<ul class="swiper-wrapper">
+					<li><button type="button" class="del">상품 삭제</button><a href="#"><img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt="" /></a></li>
+					<li><button type="button" class="del">상품 삭제</button><a href="#"><img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt="" /></a></li>
+					<li><button type="button" class="del">상품 삭제</button><a href="#"><img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt="" /></a></li>
+					<li><button type="button" class="del">상품 삭제</button><a href="#"><img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt="" /></a></li>
+					<li><button type="button" class="del">상품 삭제</button><a href="#"><img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt="" /></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- div class="recent_txt">최근 본 상품이 없습니다.</div-->
+
+		<h2><a href="#">찜 상품 (20)</a></h2>
+		<ul class="zzim" style="height:230px"><!-- 20181219 버튼 추가로 zzim 높이 250px에서 230px로 변경 -->
+			<!-- <li class="zzim_txt">찜 상품이 없습니다.<br /><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/ico_zzim.png" alt="찜" />을 선택하여 담아보세요.</li> -->
+			<li><a href="#">
+				<img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt=""  class="thum" />
+				<strong><em>해태</em>달콤한 벌꿀 허니버터칩 달콤한 벌꿀 허니버터칩</strong>
+				<span><em>2,150</em>원</span>
+			</a></li>
+			<li><a href="#">
+				<img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt=""  class="thum" />
+				<strong>해태<br />달콤한 벌꿀 허니버터칩</strong>
+				<span><em>2,150</em>원</span>
+			</a></li>
+			<li><a href="#">
+				<img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt=""  class="thum" />
+				<strong>해태<br />달콤한 벌꿀 허니버터칩</strong>
+				<span><em>2,150</em>원</span>
+			</a></li>
+			<li><a href="#">
+				<img src="http://photo3.enuri.com/data/images/service/middle/11352000/11352221.jpg" alt=""  class="thum" />
+				<strong>해태<br />달콤한 벌꿀 허니버터칩</strong>
+				<span><em>2,150</em>원</span>
+			</a></li>
+		</ul>
+		
+		<!-- 20181219 버튼 추가 -->
+		<div class="agree_group">
+			<a href="http://m.enuri.com/mobilefirst/login/policy.jsp?param=1" target="_blank" class="agreebtn">이용약관</a>
+			<a href="http://m.enuri.com/mobilefirst/login/policy.jsp?param=2" target="_blank" class="agreebtn privacy">개인정보처리방침</a>
+		</div>
+	</div>
+	<!-- //My MENU -->
+
+	<div id="home_wrap" class="swiper-container"><!-- swiper -->
+		 <div class="swiper-wrapper">
+			<!-- 히든탭
+			<div class="swiper-slide">
+				<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/extra_tab/buftab/extratab_bg_20170103_aos.jpg" alt="" width="100%"/>
+			</div> -->
+
+			<!-- 1 -->
+			<div class="swiper-slide">
+				<div class="Maincontent">
+
+					<!-- 190507  3-1. 쇼핑몰 바로가기 - 총 10개의 쇼핑몰 노출 (신규) -->
+					<div class="smd_shortcut">
+						<h3>쇼핑몰 바로가기 <span class="txt_comm">(평균 8.3% 추가할인)</span></h3>
+						<ul class="shop_list">
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_gmkt.png" alt="지마켓"></span>
+								<span class="txt_shop">지마켓</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_iac.png" alt="옥션"></span>
+								<span class="txt_shop">옥션</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_11st.png" alt="11번가"></span>
+								<span class="txt_shop">11번가</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_tmon.png" alt="티몬"></span>
+								<span class="txt_shop">티몬</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_wmp.png" alt="위메프"></span>
+								<span class="txt_shop">위메프</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_inter.png" alt="인터파크"></span>
+								<span class="txt_shop">인터파크</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_g9.png" alt="이마트몰"></span>
+								<span class="txt_shop">G9</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_hmall.png" alt="H Mall"></span>
+								<span class="txt_shop">Hmall</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_gs.png" alt="GS SHOP"></span>
+								<span class="txt_shop">GS SHOP</span>
+							</li>
+							<li>
+								<span class="img_shop"><img src="http://img.enuri.info/images/smd/ico_ssg.png" alt="SSG"></span>
+								<span class="txt_shop">SSG</span>
+							</li>
+						</ul>
+						<span class="deco_cir cir_l"></span>
+						<span class="deco_cir cir_r"></span>
+					</div>
+					<!-- // 190507  3-1. 쇼핑몰 바로가기 - 총 10개의 쇼핑몰 노출 (신규) -->
+
+					<!-- 190507 3-2. Crazy Deal 노출 - 기존동일 / 위치 변경 -->
+					<div class="enuri_deal swiper-container"  id="home_deal" >
+						<h3>CRAZY DEAL 세상에 없던 미친 할인</h3>
+						<span class="myset">전체보기</span>
+						<ul class="deal_goods swiper-wrapper">
+							<li class="swiper-slide">
+								<div class="edeal_area">
+									<span class="soldout">SOLD OUT</span>
+									<span class="soon"  style="display:none;">06/07 오전10시</span>
+									<!-- <div id="zoom_img" onclick="$('#appLayer').show();"> -->
+									<div id="zoom_img"><img src="http://imgenuri.enuri.gscdn.com/images/event/2017/crazydeal/pc_testimg01.jpg" alt="" class="thum" /></div>
+									<a href="javascript:///">
+										<strong>당도가 꿀이야! 산지직송 함안 하우스 수박 수박 수박 사세요  수박 수박 수박 사세요</strong>
+										
+										<!-- 20180927 마켓 로고 추가 -->
+										<!-- <span class="market market1">인터파크</span>
+										<span class="market market2">티몬</span> -->
+										<span class="market market3">테일리스트</span>
+										<div class="price">
+											<span class="sale"><b>5</b>%<em>100개</em></span>
+											<span class="prc"><b>$119.99</b></span>
+											<del><b>$299.99</b></del>
+										</div>
+									</a>
+								</div>
+							</li>
+							
+							<li class="swiper-slide">
+								<div class="edeal_area">
+									<span class="soon">10/10(월) 10시 오픈</span>
+									<div id="zoom_img"><img src="http://imgenuri.enuri.gscdn.com/images/event/2017/crazydeal/pc_testimg01.jpg" alt="" class="thum" /></div>
+									<a href="javascript:///">
+										<strong>당도가 꿀이야! 산지직송 함안 하우스 수박 수박 수박 사세요  수박 수박 수박 사세요</strong>
+										
+										<span class="market market1">인터파크</span>
+										<div class="price">
+											<span class="sale evt">EVENT</span>
+											<span class="prc"><b>9,820</b>원</span>
+											<del><b>15,900</b>원</del>
+										</div>
+									</a>
+								</div>
+							</li>
+
+							<li class="swiper-slide">
+								<div class="edeal_area">
+									<span class="soon">10/10(월) 10시 오픈</span>
+									<div id="zoom_img"><img src="http://imgenuri.enuri.gscdn.com/images/event/2017/crazydeal/pc_testimg01.jpg" alt="" class="thum" /></div>
+									<a href="javascript:///">
+										<strong>당도가 꿀이야! 산지직송 함안 하우스 수박 수박 수박 사세요  수박 수박 수박 사세요</strong>
+										
+										<span class="market market2">티몬</span>
+										<div class="price">
+											<span class="sale"><b>80</b>%<em>50개</em></span>
+											<span class="prc"><b>110,320</b>원</span>
+											<del><b>15,900</b>원</del>
+										</div>
+									</a>
+								</div>
+							</li>
+
+							<li class="swiper-slide">
+								<div class="edeal_area">
+									<span class="soon">10/10(월) 10시 오픈</span>
+									<div id="zoom_img"><img src="http://imgenuri.enuri.gscdn.com/images/event/2017/crazydeal/pc_testimg01.jpg" alt="" class="thum" /></div>
+									<a href="javascript:///">
+										<strong>당도가 꿀이야! 산지직송 함안 하우스 수박 수박 수박 사세요  수박 수박 수박 사세요</strong>
+										<div class="price">
+											<span class="sale"><b>38</b>%<em>100개</em></span>
+											<span class="prc"><b>10,320</b>원</span>
+											<del><b>15,900</b>원</del>
+										</div>
+									</a>
+								</div>
+							</li>
+
+							<li class="swiper-slide">
+								<div class="edeal_area">
+									<span class="soon">10/10(월) 10시 오픈</span>
+									<div id="zoom_img"><img src="http://imgenuri.enuri.gscdn.com/images/event/2017/crazydeal/pc_testimg01.jpg" alt="" class="thum" /></div>
+									<a href="javascript:///">
+										<strong>당도가 꿀이야! 산지직송 함안 하우스 수박 수박 수박 사세요  수박 수박 수박 사세요</strong>
+										<div class="price">
+											<span class="sale"><b>38</b>%<em>100개</em></span>
+											<span class="prc"><b>10,320</b>원</span>
+											<del><b>15,900</b>원</del>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--// 190507 3-2. Crazy Deal 노출 - 기존동일 / 위치 변경 -->
+							
+					<!-- 190507 3-3. CPP바로가기 icon - 기존동일 / 위치 변경 -->
+					<ul class="m_depth">
+						<li><span>가전/해외직구</span></li>
+						<li><span>TV/영상/디카</span></li>
+						<li><span>컴퓨터/노트북</span></li>
+						<li><span>태블릿/모바일</span></li>
+						<li><span>스포츠/자동차</span></li>
+						<li><span>유아/식품</span></li>
+						<li><span>가구/생활</span></li>
+						<li><span>패션/화장품</span></li>
+						<li><span>소셜비교</span></li>
+						<li><span>쇼핑지식</span></li>
+					</ul>
+					<!-- // 190507 3-3. CPP바로가기 icon - 기존동일 / 위치 변경 -->
+
+					<!-- 190507 3-4. 광고배너 노출 - 기존동일 / 위치 변경 -->
+					<div class="mainbnr swiper-container"  id="home_bnr" >
+						<ul class="evtbnr swiper-wrapper">
+							<!-- 2017-10-11 사이즈 통일 1.홈 메인배너 (640*260) -->
+							<li class="swiper-slide"><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@640x260bnr.jpg" alt=""  /></li>
+							<li class="swiper-slide"><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@banner.png" alt=""  /></li>
+							<li class="swiper-slide"><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@banner.png" alt="" /></li>
+							<li class="swiper-slide"><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@banner.png" alt=""  /></li>
+						</ul>
+						<div class="pagination"></div>
+						<div class="btn_prev swbtn"></div>
+						<div class="btn_next swbtn"></div>
+					</div>
+					<!--// 3-4. 광고배너 노출 - 기존동일 / 위치 변경 -->					
+
+					<!-- 190507 혜택존 비노출 -->
+					<!-- <ul class="evt_cate" style="display:none">
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico01.gif" alt="출석체크"  /><span>출석체크</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico02.gif" alt="웰컴혜택"  /><span>웰컴혜택</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico03.gif" alt="구매스탬프"  /><span>구매스탬프</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico04.gif" alt="스토어"  /><span>스토어</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico05.gif" alt="더보기"  /><span>더보기</span></li>
+					</ul> -->
+					<!-- // -->
+					<!-- 190507 쇼핑몰 5사 비노출-->
+					<!-- <ul class="mall_cate" style="display:none">
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_gmarket.gif" alt="Gmarket"  /><span>지마켓</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_auction.gif" alt="Auction"  /><span>옥션</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_11st.gif" alt="11번가"  /><span>11번가</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_interpark.gif" alt="INTERPARK"  /><span>인터파크</span></li>
+						<li><img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_tmon.gif" alt="TMON"  /><span>티몬</span></li>
+					</ul> -->
+					<!--//  -->
+
+					<!-- 190507 3-5. 추천상품 노출 (기존동일) -->
+					<!-- 오늘의 추천상품 -->
+					 <div class="today_goods">
+						<h3>오늘의 추천상품</h3>
+						<span class="myset">맞춤설정</span>
+						
+						<ul class="today_list">
+							<li>
+								<a href="javascript:///">
+									<div class="thum sq"><img src="http://image.wemakeprice.com/deal/9/905/1349059/dfc8827d7a3ea3b4eec902d0a5eb74ca2e8fd341.jpg" alt="" /></div>
+									<span class="hotpic ico_m">HOT PICK</span>
+									<p class="ment"><em>텍스트는 맘대로 넣어보아요<br />BG영역이 늘어나지요!</em></p>
+									
+									<!-- 찜 -->
+									<script>
+										$(document).ready(function(){
+											$(".heart").click(function(){
+												$(".zzimly").fadeIn(400);
+											});
+										});
+										function heart(obj)
+											{
+												if (obj.className== 'heart') {
+												obj.className = 'hearton';
+												} else {
+												obj.className = 'heart';
+												}
+											}
+									</script>
+									<div class="zzimarea">
+										<button type="button" class="heart" onclick="heart(this);">찜</button>
+										<span class="zzimly fade-out">찜 목록에<br />추가 되었습니다</span>
+									</div>
+									<!--// 찜 -->
+
+									<span class="mall"><img src="http://imgenuri.enuri.gscdn.com/images/board/big/logo_4027b.gif" alt="옥션" /></span>
+									<div class="titarea"><strong>무선영상어댑터로 TV 활용도 UP! 무선영상어댑터로 TV 활용도 UP! 무선영상어댑터로 TV 활용도 UP! 무선영상어댑터로 TV 활용도 UP!</strong></div>
+									<div class="price">
+										<span class="sale"><b>38</b>%</span>
+										<span class="prc"><b>10,320</b>원</span>
+										<span class="buy">1,900개 구매</span>
+									</div>
+								</a>
+								<div class="info_btn"><span class="go_store onebtn"><em>레저/소셜 비교</em></span></div>
+							</li>
+
+							<li>
+								<a href="javascript:///">
+									<div class="thum">
+										<em class="play ico_m">PLAY</em><!-- 170523 동영상  -->
+										<span class="lazy">
+											<img src="http://i.011st.com/browsing/banner/2016/06/15/15951/2016061514481525200_9657607_1.jpg" alt="" />
+										</span>
+									</div>
+									
+									<span class="mall"><img src="http://imgenuri.enuri.gscdn.com/images/view/ls_logo/2013/Ap_logo_55.png" alt="인터파크" /></span>
+									<div class="titarea"><strong>추억을 만들어주는 인스탁스! 사진 찍고, 바로보고</strong></div>
+									<div class="price">
+										<span class="sale">최저가</span>
+										<span class="prc"><b>10,320</b>원</span>
+										<span class="buy">1,900개 구매</span>
+									</div>
+								</a>
+								<div class="info_btn">
+									<span class="comt">상품평(23)<span class="star_graph ico_m"><span class="ico_m" style="width:80%">별점</span></span></span>
+									<span class="pr">가격비교<em>236</em></span>
+								</div>
+							</li>
+
+							<li>
+								<a href="javascript:///">
+									<div class="thum"><img src="//static.ssgcdn.com/cmpt/banner/201606/2016060917441059767155971815_155.jpg" alt="" /></div>
+									<span class="depart galleria">갤러리아백화점</span>
+									<!--<span class="depart hyundai">현대백화점</span>
+									<span class="depart ak">AK플라자</span>
+									<span class="depart shinsegae">신세계백화점</span>
+									<span class="depart lotte">롯데백화점</span>-->
+									<p class="ment">백화점이 좋아요~ 얼마나 좋은데<br />세상에서 제일 좋아요!</p>
+									<span class="mall txt">민경이네가게</span>
+									<div class="titarea"><strong>추억을 만들어주는 인스탁스! 사진 찍고, 바로보고</strong></div>
+									<div class="price">
+										<span class="sale"><b>7</b>%</span>
+										<span class="prc"><b>10,320</b>원</span>
+										<span class="buy">1,900개 구매</span>
+									</div>
+								</a>
+								<div class="info_btn">
+									<span class="go_store"><em>패션/화장품</em></span>
+									<span class="pr">가격비교<em>236</em></span>
+								</div>
+							</li>
+							
+							<!-- 기획전 -->
+							<li>
+								<div class="guide">
+									<div class="cam_tip">
+										<div class="txtbox"><span>너무 길지않게 넣어보아요<em>퍼펙트한 데일리룩으로<br />패서니스타 되기</em></span></div>
+										<img src="http://imgenuri.enuri.gscdn.com/images/m_home/@planimg.jpg" alt="" />
+									</div>
+									<div class="cam_tip img" style="display:none;">
+										<img src="http://imgenuri.enuri.gscdn.com/images/m_home/@planimg.jpg" alt="" />
+									</div>
+									<ul class="buy_tip">
+										<li>
+											<a href="#">
+												<img src="http://storage.enuri.gscdn.com/pic_upload/main/news/news_568895(1).png" alt="" />
+												<span class="tit">언브러시드 솔리드 테리 티셔츠</span>
+												<b>10,500<em>원</em></b>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://storage.enuri.gscdn.com/pic_upload/main/news/news_568895(1).png" alt="" />
+												<span class="tit">언브러시드 솔리드 테리 티셔츠</span>
+												<b>10,500<em>원</em></b>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<img src="http://storage.enuri.gscdn.com/pic_upload/main/news/news_568895(1).png" alt="" />
+												<span class="tit">언브러시드 솔리드</span>
+												<b>10,500<em>원</em></b>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<!--// 기획전 -->
+							
+							<!-- 170523 기획전 -->
+							<li class="bnrarea">
+								<div class="plan_area swiper-container"  id="home_plan" >
+									<ul class="swiper-wrapper">
+										<li class="swiper-slide "><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@plan.png" alt="" /></li>
+										<li class="swiper-slide "><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@plan.png" alt="" /></li>
+										<li class="swiper-slide "><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@plan.png" alt="" /></li>
+									</ul>
+								</div>
+							</li>
+							<!--// 170523 기획전 -->
+
+							<!-- 2017-10-11 사이즈 통일 3.모바일 중단(middle)배너 (640*260) -->
+							<li class="bnrarea"><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@640x260bnr.jpg" alt="" /></li>
+
+							<li>
+								<a href="javascript:///">
+									<div class="thum"><img src="http://i.011st.com/browsing/banner/2016/06/15/15951/2016061514481525200_9657607_1.jpg" alt="" /></div>
+									<span class="mall"><img src="http://imgenuri.enuri.gscdn.com/images/view/ls_logo/2013/Ap_logo_55.png" alt="인터파크" /></span>
+									<div class="titarea"><strong>추억을 만들어주는 인스탁스! 사진 찍고, 바로보고</strong></div>
+									<div class="price">
+										<span class="sale">최저가</span>
+										<span class="prc"><b>10,320</b>원</span>
+										<span class="buy">1,900개 구매</span>
+									</div>
+								</a>
+								<div class="info_btn">
+									<span class="comt">상품평(23)<span class="star_graph ico_m"><span class="ico_m" style="width:80%">별점</span></span></span>
+									<span class="pr">가격비교<em>236</em></span>
+								</div>
+							</li>
+
+							<li>
+								<a href="javascript:///">
+									<div class="thum"><img src="//static.ssgcdn.com/cmpt/banner/201606/2016060917441059767155971815_155.jpg" alt="" /></div>
+									<span class="depart hyundai">현대백화점</span>
+									<p class="ment">백화점이 좋아요~ 얼마나 좋은데<br />세상에서 제일 좋아요!</p>
+									<span class="mall txt">민경이네가게</span>
+									<div class="titarea"><strong>추억을 만들어주는 인스탁스! 사진 찍고, 바로보고</strong></div>
+									<div class="price">
+										<span class="sale"><b>7</b>%</span>
+										<span class="prc"><b>10,320</b>원</span>
+										<span class="buy">1,900개 구매</span>
+									</div>
+								</a>
+								<div class="info_btn">
+									<span class="go_store"><em>패션/화장품</em></span>
+									<span class="pr">가격비교<em>236</em></span>
+								</div>
+							</li>
+
+						</ul>
+					 </div>
+					<!--// 오늘의 추천상품 -->
+					
+					<!--  인기쇼핑몰 -->
+					<div class="shop_mall">
+						<h3 class="maintit">인기 쇼핑몰</h3>
+						<ul class="newMallList">
+							<!--1번줄-->
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_gmarket.gif" alt="지마켓"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_auction.gif" alt="옥션"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_11st.gif" alt="11번가"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_interpark.gif" alt="인터파크"></a></li>
+							<!--2번줄-->
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo02.gif" alt="신세계몰"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_lotte.gif" alt="롯데닷컴"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo03.gif" alt="현대H몰"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo_AKmall.gif" alt="ak mall"></a></li>
+							<!--3번줄-->
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo05.gif" alt="GS SHOP"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo06.gif" alt="CJmall"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo07.gif" alt="롯데 홈쇼핑"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo09.gif" alt="홈앤쇼핑"></a></li>
+							<!-- 4번째줄 -->
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_wema.gif" alt="위메프"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_timon.gif" alt="티몬"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo11.gif" alt="이마트"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_g9.gif" alt="G9"></a></li>
+							<!--5번줄-->										
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_ellotte.gif" alt="엘롯데"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo04.gif" alt="갤러리아"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/img_logo_lm.gif" alt="롯데마트"></a></li>
+							<li><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/tmp/logo_boribori.gif" alt="보리보리"></a></li>
+						</ul>
+					</div>
+					<!--  인기쇼핑몰 -->
+
+				</div>
+
+			</div>
+			<!--// 1 -->
+			
+			<div class="swiper-slide">PAGE PAGE PAGE</div>
+			<div class="swiper-slide">PAGE PAGE PAGE</div>
+			<div class="swiper-slide">PAGE PAGE PAGE</div>
+		</div>
+	</div><!--// swiper -->
+	
+
+	<ul class="family_app">
+		<!-- 190507  3.6. Family APP  - 스마트택배 APP 대신 에누리앱 추가 -->
+		<li><a href="javascript:///">에누리 가격비교</a></li>
+		<!-- // -->
+		<li><a href="javascript:///">소셜가격비교</a></li>
+		<!-- <li><a href="javascript:///">홈쇼핑 가격비교</a></li> -->
+		<!-- <li><a href="javascript:///">해외직구</a></li> -->
+	</ul>
+
+	<!-- 2017-10-11 사이즈 통일 4.홈 하단 footer배너 (640*100) -->
+	<section class="evtbanner_btm">
+		<a href="javascript:///" onclick=""><img src="http://imgenuri.enuri.gscdn.com/images/m_home/@640x100bnr.jpg" alt="광고배너이미지"></a>
+	</section>
+
+	<div class="newquick">
+		<p class="cateBtn">카테고리</p>
+		<p class="TBtn">TOP</p>
+	</div>
+
+	<!-- 푸터 -->
+	<footer>
+		<nav class="new_footer">
+			<ul>
+				<li class="com_info"><a href="#n">사업자 정보</a></li>
+				<li><a href="javascript:goPcEnuri();insertLog('11004')" target="_blank">PC버전</a></li>
+			</ul>
+		</nav>
+		
+		<!-- 20180903 법적고지 -->
+		<div class="cominfo_txt" >
+			<section>
+				<p class="law_tit">법적고지</p>
+				<p class="info">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</p> 
+				<p><strong>㈜써머스플랫폼</strong>
+					대표이사 : 김기범<span>|</span>사업자등록번호 : 206-81-18164<br />
+					통신판매신고 : 2015-서울중구-1046호<br />
+					서울특별시 중구 퇴계로 18(남대문로5가) 9층<br />
+					문의 : 02-6354-3601<span>|</span><a href="mailto:master@enuri.com">master@enuri.com</a>
+				</p>
+			</section>
+			<ul class="rule">
+				<li><a href="#" onclick="onoff('agree')">이용약관</a></li>
+				<li><a href="#" onclick="onoff('privacy')">개인정보취급방침</a></li>
+				<li><a href="#">법적고지</a></li>
+				<li><a href="#">PC버전</a></li>
+			</ul>
+		</div>
+		<!-- //20180903 법적고지 -->
+	</footer>
+	<!-- //푸터 -->
+
+</div>	
+
+
+<script>
+	//전체플리킹
+    var swiper = new Swiper('#home_wrap', {
+        slidesPerView: 1,
+        paginationClickable: true,
+        spaceBetween: 30,
+        loop: true
+    });
+	
+	//상단배너
+	var swiper = new Swiper('#home_bnr', {
+        pagination: '.pagination',
+        nextButton: '.btn_next',
+        prevButton: '.btn_prev',
+		paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 3500,
+        autoplayDisableOnInteraction: false,
+		loop: true
+    });
+	
+	//이딜
+    var swiper = new Swiper('#home_deal', {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+		loop: true
+    });
+
+	//기획전
+    var swiper = new Swiper('#home_plan', {
+        slidesPerView: 'auto',
+    });
+ </script>
+
+
+</body>
+</html>

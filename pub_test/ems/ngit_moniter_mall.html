@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>ngit 모니터링 mall</title>
+<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./assets/css/ngit_dashboard.css" />
+<!-- fontawesome all.min.css -->
+<link rel="stylesheet" type="text/css" href="./assets/css/all.min.css" />
+<script type="text/javascript" src="http://m.enuri.com/mobilenew/js/lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+<!--[if lt ie 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<!-- 로딩중 -->
+<div id="loading">
+	<div class="dimm"></div>
+	<div class="loader">
+		<div class="dot dot1"><i></i></div>
+		<div class="dot dot2"><i></i></div>
+		<div class="dot dot3"><i></i></div>
+		<div class="dot dot4"><i></i></div>
+		<div class="dot dot5"><i></i></div>
+		<div class="dot dot6"><i></i></div>
+		<div class="dot dot7"><i></i></div>
+		<div class="dot dot8"><i></i></div>
+		<div class="dot dot9"><i></i></div>
+	</div>
+</div>
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">NGIT 모니터링 수집</a>
+	<!-- <input class="form-control form-control-dark w-100" type="text" placeholder="search" aria-label="search">
+	<ul class="navbar-nav px-3">
+		<li class="nav-item text-nowrap">
+			<a class="nav-link" href="#">sign out</a>
+		</li>
+	</ul> -->
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<nav class="col-md-1 d-none d-md-block sidebar">
+			<div class="sidebar-sticky bg-light">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link active" href="./ngit_moniter_mall.html">NGIT Collection</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./ngit_moniter_eslp.html">NGIT ESLP</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./ngit_moniter_apps.html">NGIT 응용프로듀서</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./ngit_moniter_platform.html">NGIT 플랫폼</a>
+					</li>
+				</ul>
+
+				<h2 class="sidebar-heading px-3 mt-4 mb-1 text-muted">
+					<span>비상연락망</span>
+				</h2>
+				<ul class="nav flex-column mb-2 emergency">
+					<li class="nav-item">
+						<a class="nav-link" href="tel:010-3581-5834">
+							<span class="author text-muted">홍성배 이사</span>
+							<span class="tel-numb"><i class="fas fa-mobile"></i> 010-6309-7099<br /><i class="fas fa-fax"></i> 385(내선)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="tel:010-3581-5834">
+							<span class="author text-muted">김성호 수석</span>
+							<span class="tel-numb"><i class="fas fa-mobile"></i> 010-3581-5834<br /><i class="fas fa-fax"></i> 204(내선)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="tel:010-3581-5834">
+							<span class="author text-muted">이철용 수석</span>
+							<span class="tel-numb"><i class="fas fa-mobile"></i> 010-2486-9273<br /><i class="fas fa-fax"></i> 333(내선)</span>
+						</a>
+					</li>
+				</ul>
+
+				<h2 class="sidebar-heading px-2 mt-4 mb-1 text-danger">경고 표시 조건</h2>
+				<div class="btn-group ml-2">
+					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ngitCollectionModal">Collection</button>
+					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ngitESLPModal">ESLP</button>
+				</div>
+			</div>
+		</nav>
+
+        <main role="main" class="col-md-11 ml-sm-auto col-lg-11 pt-3 px-4">          
+			<h2 class="mb-3">NGIT Collection <span class="sub-txt">(1분마다 Refresh)</span></h2>
+			
+			<div class="table-responsive">
+				<!-- 오픈마켓 
+					( 4개 ) : 55, 536, 4027, 5910 (인터피크, G마켓, 옥션, 11번가) 
+				-->
+				<table class="table table-hover table-sm table-bordered text-center">
+					<caption><span class="float-left"><i class="fas fa-shopping-cart"></i> 오픈마켓 4개</span> 김성호 수석 / 핸드폰번호 : 010-3581-5834, 내선 : 204</caption>
+					<colgroup>
+						<col width="3%" />
+						<col width="8%" />
+						<col width="10%" />
+						<col width="10%" />
+						<col width="7%" />
+						<col width="7%" />
+						<col width="7%" />
+						<col width="10%" />
+						<col width="7%" />
+						<col width="8%" />
+						<col width="5%" />
+						<col width="5%" />
+						<col width="5%" />
+						<col width="8%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>Mall</th>
+							<th>기준시작시간</th>
+							<th>시작시간</th>
+							<th>Step 1</th>
+							<th>Step 2</th>
+							<th>Step 3</th>
+							<th>종료시간</th>
+							<th>Run Time</th>
+							<th>Total Count</th>
+							<th>추가</th>
+							<th>수정</th>
+							<th>삭제</th>
+							<th>상태</th>
+						</tr>
+					</thead>
+					<tbody>						
+						<tr>
+							<td>1</td>
+							<td>인터파크 (55)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 10분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<!-- 오류 있는 행 표시 클래스 "state-danger" -->
+							<td>2</td>							
+							<td>G마켓 (536)</td>
+							<td>2018.08.14 12:55</td>
+							<td class="state-danger">2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td class="state-danger">2018.08.14 01:31</td>
+							<td>1시간 10분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>34,567</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>옥션 (4027)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 10분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>11번가 (5910)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 10분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- //오픈마켓 -->
+				
+				<!-- 종합몰 
+					( 25개 ) : 47, 49, 57, 75, 90, 374, 663, 806, 974, 6361, 6508, 6547, 6588, 6620, 6641, 6665, 7455, 7692, 7695, 7851, 7852, 7857, 7870, 7908, 7935
+                      (신세계몰, 롯데닷컴, 현대Hmall, GS SHOP, AKmall, 이마트몰, 롯데홈쇼핑, CJmall, nsmall, 홈플러스, 위메프, 엘롯데, 홈&쇼핑, 갤러리아몰, 티몬, SSG.COM, 롯데마트몰, G9, 토이저러스 온라인몰, 더현대닷컴, K쇼핑, Qoo10, 신세계TV
+ 				-->
+				<table class="table table-hover table-sm table-bordered text-center mb-5">
+					<caption><span class="float-left"><i class="fas fa-shopping-cart"></i> 종합몰 25개</span> 김성호 수석 / 핸드폰번호 : 010-3581-5834, 내선 : 204</caption>
+					<colgroup>
+						<col width="3%" />
+						<col width="8%" />
+						<col width="10%" />
+						<col width="10%" />
+						<col width="7%" />
+						<col width="7%" />
+						<col width="7%" />
+						<col width="10%" />
+						<col width="7%" />
+						<col width="8%" />
+						<col width="5%" />
+						<col width="5%" />
+						<col width="5%" />
+						<col width="8%" />
+					</colgroup>
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>Mall</th>
+							<th>기준시작시간</th>
+							<th>시작시간</th>
+							<th>Step 1</th>
+							<th>Step 2</th>
+							<th>Step 3</th>
+							<th>종료시간</th>
+							<th>Run Time</th>
+							<th>Total Count</th>
+							<th>추가</th>
+							<th>수정</th>
+							<th>삭제</th>
+							<th>상태</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>신세계몰 (47)</td>
+							<td>2018.08.14 12:55</td>
+							<td class="state-danger">2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td class="state-danger">2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>롯데닷컴 (49)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>현대Hmall (57)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>GS SHOP (90)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td>AKmall (374)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td>이마트몰 (663)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td>롯데홈쇼핑 (806)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td>CJmall (974)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td>nsmall (6361)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td>홈플러스 (6508)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td>위메프 (6547)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td>엘롯데 (6588)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>13</td>
+							<td>홈&쇼핑 (6620)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td class="state-danger">2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>10,955</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td>신세계몰 (47)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td class="state-danger">2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td>롯데닷컴 (49)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td>현대Hmall (57)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>17</td>
+							<td>GS SHOP (90)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>18</td>
+							<td>AKmall (374)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>이마트몰 (663)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>20</td>
+							<td>롯데홈쇼핑 (806)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>21</td>
+							<td>CJmall (974)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>22</td>
+							<td>nsmall (6361)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>23</td>
+							<td>홈플러스 (6508)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>24</td>
+							<td>위메프 (6547)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>25</td>
+							<td>엘롯데 (6588)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 01:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>26</td>
+							<td>홈&쇼핑 (6620)</td>
+							<td>2018.08.14 01:00</td>
+							<td>2018.08.14 01:28</td>
+							<td>-</td>
+							<td>-</td>
+							<td>-</td>
+							<td>2018.08.14 0:31</td>
+							<td>2시간 30분</td>
+							<td>126,734</td>
+							<td>2,354</td>
+							<td>74</td>
+							<td>2,345</td>
+							<td>0</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- //종합몰 25개 -->
+			</div>
+		</main>
+	</div>
+</div>
+
+<!-- NGIT Collection Modal -->
+<div class="modal fade" id="ngitCollectionModal" tabindex="-1" role="dialog" aria-labelledby="NGIT Collection 푸시 발송 및 경고 표시 조건" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ngitCollectionModaltitle">NGIT Collection</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-custom-inner">
+					<p>푸시 발송 및 경고 표시 조건</p> 
+					<ol>
+						<li>기준 시작 시간보다 시작 시간이 30분 이상 차이가 날 경우 경고</li>
+						<li>시작 시간과 종료 시간이 3시간 이상 차이 날 경우 경고</li>
+					</ol>
+				</div>		
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- NGIT ESLP Modal -->
+<div class="modal fade" id="ngitESLPModal" tabindex="-1" role="dialog" aria-labelledby="NGIT ESLP 푸시 발송 및 경고 표시 조건" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ngitESLPModaltitle">NGIT ESLP</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-custom-inner">
+					<p>푸시 발송 및 경고 표시 조건</p> 
+					<ol>
+						<li>상품 변경 기록 개수,ESLP 개수 차이가 서로 10배 차이</li>
+						<li>상품 변경 기록 개수 백만건 이상일 때</li>
+						<li>ESLP 개수 백만건 이상일 때</li>
+						<li>마리너 DB 개수 2백만건 이상일 때</li>
+						<li>ES 개수 시작시간 최근 기록이 30분 이상 없을 때</li>
+					</ol>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

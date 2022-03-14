@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+    <title>MCSS lowprice</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="../../../../../css/swiper.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/default.css">
+    <script src="../../../common/js/lib/jquery-1.9.1.min.js"></script>
+    <script src="../../../common/js/lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="./js/default.js"></script>
+    <script src="../../../js/swiper4.5.3.min.js"></script>
+</head>
+<body>
+
+<!--header-->
+<div id="mcss_lowprice" class="document-common">
+
+    <div class="global-column">
+        <!--왼쪽 메뉴바영역 -->
+        <div class="global-column-left">
+            <!--메뉴바의 왼쪽영역-->
+            <div id="gnb_left" class="fixed-global-menu">
+                <h1><a href="index.html" class="logo">SUMMERCE FLATFOTM</a></h1>
+                <nav class="gnb-left">
+                    <ul>
+                        <li data-toggle="slide" data-target="#static_cate" class="active"><i class="ico ico-static-cate"></i><span class="vertical-middle">카테고리 분석</span></li>
+                        <li data-toggle="slide" data-target="#static_zzim"><i class="ico ico-static-zzim"></i><span class="vertical-middle">찜상품 분석</span></li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- // -->
+            <!--메뉴바의 오른쪽영역-->
+            <div class="global-fold-menu">
+                <div id="static_cate" class="active">
+                    <button type="button" class="fold-menu-header" data-toggle="slide-close"><span class="vertical-middle">카테고리별 분석</span></button>
+                    <form class="form-static-category">
+                        <div class="acc-section acc-section-category">
+                            <div class="acc-nm" data-toggle="accordion">카테고리</div>
+                            <div class="acc-content" style="display: none;">
+                                <!-- 기존 버튼에서 체크박스 타입으로 변경되었습니다. 해당버튼 클릭시 뜨는 레이어는 삭제되었습니다.-->
+                                <label class="label-checkbox" style="display: inline-block; margin-bottom: 4px;">
+                                    <input type="checkbox" class="checkAll-list" name="cate-prod-selected-list" value="all" checked>
+                                    <span class="checkbox-custom"></span>
+                                    <span class="vertical-middle text">전체선택</span>
+                                </label>
+                                <ul class="cate-prod-selected-list">
+                                    <!-- 체크리스트 기본형태 -->
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="남성의류" checked>
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">남성의류</span>
+                                        </label>
+                                    </li>
+                                    <!-- // -->
+                                </ul>
+                            </div>
+                        </div>
+                        <script>
+                            // 210706 임의로 배열로 카테고리 체크박스, 오른쪽상단 탭 컨트롤 되었습니다.
+                            // 실제 처리시에는 기본형태에 데이터 출력하시면될것같습니다. 오른쪽 탭도 동일
+                            // 탭이 실시간 제거되는건줄알았는데.. 적용버튼 클릭시 작동이었네요
+                            cate_list_arr = ['노트북', '향수', '등산화,등산용품', '여성의류', '홍삼,건강식품', '남성의류','임의카테1','임의카테2']
+                            function checkListUpdate() {
+                                $('.cate-prod-selected-list').html('');
+                                $.each(cate_list_arr, function(index, item){
+                                    $('.cate-prod-selected-list').append('<li><label class="label-checkbox"><input type="checkbox" class="" value="'+ cate_list_arr[index] +'" checked><span class="checkbox-custom"></span><span class="vertical-middle text">'+ cate_list_arr[index] +'</span></label></li>')
+                                });
+                            }
+                            checkListUpdate()
+                        </script>
+                        <div class="acc-section acc-section-date">
+                            <div class="acc-nm" data-toggle="accordion">기준일자</div>
+                            <div class="acc-content" style="display: none; margin-bottom: 4px;">
+                                <input type="text" class="type-date" readonly>
+                            </div>
+                        </div>
+                        <div class="acc-section acc-section-orijin">
+                            <div class="acc-nm" data-toggle="accordion">제조사</div>
+                            <div class="acc-content" style="display: none;">
+                                <div class="common-search-form mb10">
+                                    <input type="text" placeholder="입력해주세요">
+                                    <button type="button" class="common-btn btn-default-type2 btn-search"></button>
+                                </div>
+                                <label class="label-checkbox" style="display: inline-block; margin-bottom: 4px;">
+                                    <input type="checkbox" class="checkAll-list" name="cate-prod-orijin-list" value="all">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="vertical-middle text">전체선택</span>
+                                </label>
+                                <ul class="cate-prod-orijin-list">
+                                    <!-- 체크리스트 기본형태-->
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="LG전자">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">LG전자</span>
+                                        </label>
+                                    </li>
+                                    <!-- // -->
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위니아대우">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위니아대우</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="미디어">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">미디어</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위닉스">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위닉스</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="베코">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">베코</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="히츠">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">히츠</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="SK매직">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">SK매직</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="로퍼">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">로퍼</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="한경희생활과학">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">한경희생활과학</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="SK매직">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">SK매직</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="로퍼">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">로퍼</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="한경희생활과학">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">한경희생활과학</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="acc-section acc-section-brand">
+                            <div class="acc-nm" data-toggle="accordion">브랜드</div>
+                            <div class="acc-content" style="display: none;">
+                                <div class="common-search-form mb10">
+                                    <input type="text" placeholder="입력해주세요">
+                                    <button type="button" class="common-btn btn-default-type2 btn-search"></button>
+                                </div>
+                                <label class="label-checkbox" style="display: inline-block; margin-bottom: 4px;">
+                                    <input type="checkbox" class="checkAll-list" name="cate-prod-brand-list" value="all">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="vertical-middle text">전체선택</span>
+                                </label>
+                                <ul class="cate-prod-brand-list">
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="LG전자">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">LG전자</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위니아대우">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위니아대우</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="미디어">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">미디어</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위닉스">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위닉스</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="베코">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">베코</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="히츠">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">히츠</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="SK매직">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">SK매직</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="로퍼">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">로퍼</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="한경희생활과학">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">한경희생활과학</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="acc-section acc-section-prod">
+                            <div class="acc-nm" data-toggle="accordion">상품별</div>
+                            <div class="acc-content" style="display: none;">
+                                <div class="acc-content-sub">상품코드</div>
+                                <input type="text" class="mb10" name="prod_code" placeholder="입력해주세요">
+                                <div class="acc-content-sub">쇼핑몰명</div>
+                                <div class="common-search-form mb10">
+                                    <input type="text" name="mall_name_input" placeholder="입력해주세요">
+                                    <button type="button" class="common-btn btn-default-type2 btn-search"></button>
+                                </div>
+                                <ul class="mall_name-list">
+                                    <li>
+                                        <label class="label-radio">
+                                            <input type="radio" class="" name="mall_name" value="LG전자" >
+                                            <span class="radio-custom"></span>
+                                            <span class="vertical-middle text">LG전자</span>
+                                            <span class="vertical-middle m-code"> / 53</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-radio">
+                                            <input type="radio" class="" name="mall_name" value="위니아대우">
+                                            <span class="radio-custom"></span>
+                                            <span class="vertical-middle text">LG화학</span>
+                                            <span class="vertical-middle m-code"> / 54</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-radio">
+                                            <input type="radio" class="" name="mall_name" value="미디어">
+                                            <span class="radio-custom"></span>
+                                            <span class="vertical-middle text">LG디스플레이</span>
+                                            <span class="vertical-middle m-code"> / 55</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="btn-area row row-cols-btn-2 row-cols-space-between pt15">
+                            <button type="submit" class="common-btn btn-default btn-adjust">적용</button>
+                            <button type="button" class="common-btn btn-white btn-refresh">초기화</button>
+                            <button type="button" class="common-btn btn-white btn-down col-12" style="margin-top:8px;">다운로드</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="static_zzim">
+                    <button type="button" class="fold-menu-header" data-toggle="slide-close"><span class="vertical-middle">찜상품 분석</span></button>
+                    <form class="form-static-zzim">
+                        <div class="acc-section acc-section-category">
+                            <div class="acc-nm" data-toggle="accordion">찜목록</div>
+                            <div class="acc-content" style="display: none;">
+                                <label class="label-checkbox" style="display: inline-block; margin-bottom: 4px;">
+                                    <input type="checkbox" class="checkAll-list" name="zzim-folder-list" value="all">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="vertical-middle text">전체선택</span>
+                                </label>
+                                <ul class="zzim-folder-list mb0">
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="all">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">찜폴더1</span>
+                                            <span class="vertical-middle cnt">(4)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="all">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">찜폴더2</span>
+                                            <span class="vertical-middle cnt">(7)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="all">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">찜폴더3</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="all">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">찜폴더4</span>
+                                            <span class="vertical-middle cnt">(321)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="all">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">찜폴더5</span>
+                                            <span class="vertical-middle cnt">(543)</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                <div class="btn-area row row-cols-btn-3 row-cols-space-between pt20">
+                                    <button type="button" class="common-btn btn-default btn-modify-zzim-folder" data-dialog="#zzim-folder-nm-change" data-dialogwidth="300">수정</button>
+                                    <button type="button" class="common-btn btn-red btn-delete-zzim-folder">삭제</button>
+                                    <button type="button" class="common-btn btn-white btn-add-zzim-folder">추가</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acc-section acc-section-date">
+                            <div class="acc-nm" data-toggle="accordion">기준일자</div>
+                            <div class="acc-content" style="display: none; margin-bottom: 4px;">
+                                <input type="text" class="type-date" readonly>
+                            </div>
+                        </div>
+                        <div class="acc-section acc-section-orijin">
+                            <div class="acc-nm" data-toggle="accordion">제조사</div>
+                            <div class="acc-content" style="display: none;">
+                                <div class="common-search-form mb10">
+                                    <input type="text" placeholder="입력해주세요">
+                                    <button type="button" class="common-btn btn-default-type2 btn-search"></button>
+                                </div>
+                                <label class="label-checkbox" style="display: inline-block; margin-bottom: 4px;">
+                                    <input type="checkbox" class="checkAll-list" name="zzim-prod-orijin-list" value="all">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="vertical-middle text">전체선택</span>
+                                </label>
+                                <ul class="zzim-prod-orijin-list">
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="LG전자">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">LG전자</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위니아대우">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위니아대우</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="미디어">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">미디어</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위닉스">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위닉스</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="베코">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">베코</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="히츠">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">히츠</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="SK매직">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">SK매직</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="로퍼">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">로퍼</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="한경희생활과학">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">한경희생활과학</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="SK매직">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">SK매직</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="로퍼">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">로퍼</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="한경희생활과학">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">한경희생활과학</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="acc-section acc-section-brand">
+                            <div class="acc-nm" data-toggle="accordion">브랜드</div>
+                            <div class="acc-content" style="display: none;">
+                                <div class="common-search-form mb10">
+                                    <input type="text" placeholder="입력해주세요">
+                                    <button type="button" class="common-btn btn-default-type2 btn-search"></button>
+                                </div>
+                                <label class="label-checkbox" style="display: inline-block; margin-bottom: 4px;">
+                                    <input type="checkbox" class="checkAll-list" name="zzim-prod-brand-list" value="all">
+                                    <span class="checkbox-custom"></span>
+                                    <span class="vertical-middle text">전체선택</span>
+                                </label>
+                                <ul class="zzim-prod-brand-list">
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="LG전자">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">LG전자</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위니아대우">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위니아대우</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="미디어">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">미디어</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="위닉스">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">위닉스</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="베코">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">베코</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="히츠">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">히츠</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="SK매직">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">SK매직</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="로퍼">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">로퍼</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-checkbox">
+                                            <input type="checkbox" class="" value="한경희생활과학">
+                                            <span class="checkbox-custom"></span>
+                                            <span class="vertical-middle text">한경희생활과학</span>
+                                            <span class="vertical-middle cnt">(24)</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="acc-section acc-section-prod">
+                            <div class="acc-nm" data-toggle="accordion">상품별</div>
+                            <div class="acc-content" style="display: none;">
+                                <div class="acc-content-sub">상품코드</div>
+                                <input type="text" class="mb10" name="prod_code" placeholder="입력해주세요">
+
+                                <div class="acc-content-sub">쇼핑몰명</div>
+                                <div class="common-search-form mb10">
+                                    <input type="text" name="mall_name_input" placeholder="입력해주세요">
+                                    <button type="button" class="common-btn btn-default-type2 btn-search"></button>
+                                </div>
+                                <ul class="mall_name-list">
+                                    <li>
+                                        <label class="label-radio">
+                                            <input type="radio" class="" name="mall_name" value="LG전자" >
+                                            <span class="radio-custom"></span>
+                                            <span class="vertical-middle text">LG전자</span>
+                                            <span class="vertical-middle m-code"> / 53</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-radio">
+                                            <input type="radio" class="" name="mall_name" value="위니아대우">
+                                            <span class="radio-custom"></span>
+                                            <span class="vertical-middle text">LG화학</span>
+                                            <span class="vertical-middle m-code"> / 54</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="label-radio">
+                                            <input type="radio" class="" name="mall_name" value="미디어">
+                                            <span class="radio-custom"></span>
+                                            <span class="vertical-middle text">LG디스플레이</span>
+                                            <span class="vertical-middle m-code"> / 55</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="btn-area row row-cols-btn-2 row-cols-space-between pt15">
+                            <button type="submit" class="common-btn btn-default btn-adjust">적용</button>
+                            <button type="button" class="common-btn btn-white btn-refresh">초기화</button>
+                            <button type="button" class="common-btn btn-white btn-down col-12" style="margin-top:8px;">다운로드</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->
+        <!--오른쪽 출력데이터 영역-->
+        <div class="global-column-right">
+            <div class="main-header">
+                <h2><a href="index.html" class="mcss_sprite">SUMMERCE FLATFOTM</a></h2>
+                <div class="main-header-page-title">표준 상품 데이터 MCSS 조회</div>
+                <div class="my_menu">
+                    <a href="#" class="icon_my_menu mcss_sprite" onclick="stopAction(event);"></a>
+                    <div class="my_menu_info">
+                        <div class="member_id">
+                            parkiv8647
+                        </div>
+                        <ul>
+                            <li><a href="https://dcenter.dvision.com" target="_blank">데이터센터</a></li>
+                            <li><a href="#로그아웃">로그아웃</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="result_list_wrap">
+                    <!-- 210705 : 제목이 탭형태로 바뀌며 갯수가 5개 이상일경우 슬라이드 형태로 적용됨-->
+                    <div id="result_list" class="swiper-container no_active">
+                        <div class="swiper-wrapper">
+                            <!-- 스와이퍼 탭리스트 기본형태, 최초리스트에 active클래스 추가-->
+                            <!--<div class="swiper-slide active" data-tabname="#탭명"><div class="result_name">전체선택</div></div>-->
+                            <!-- // -->
+
+                            <!-- 디자인상 swiper-container 밖으로 버튼을 내보낼수없어 따로 버튼추가하여 트리거로 처리 -->
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <!-- // -->
+                        </div>
+                    </div>
+                    <!-- // -->
+                    <script>
+                        // 상단 cate_list_arr 리스트가 스와이프 리스트로 출력됨
+                        // 임의로 배열로 처리된것. 실제 데이터넣을경우에 <스와이퍼 탭리스트 기본형태>에 직접삽입하셔서 작업하시면되겠습니다.
+                        function swipeListUpdate() {
+                            $.each(cate_list_arr, function(index, item){
+                                $('#result_list .swiper-wrapper').append('<div class="swiper-slide'+ (index === 0 ? ' active' : '')+'" data-tabname="#result_tab'+ (index+1) + '"><div class="result_name">'+ cate_list_arr[index] +'</div></div>')
+                            });
+                        }
+                        swipeListUpdate();
+                        // 생성된 리스트 스와이프 실행
+                        // 5개 이상일경우에만 실행 조건변경가능
+                        // 찜상품경우 찜한 상품이있는 카테고리만 출력
+                        // 데이터센터에서 카테고리 8개선택했어도 선택한찜이 3가지 카테고리를 가지고있으면 3개출력
+                        function startSwiper() {
+                            if($('#result_list .swiper-slide').length > 5) {
+                                // 스와이퍼 작동시에만 버튼생성
+                                $('.result_list_wrap').append(' <div class="swiper-button result_list-prev-btn"></div><div class="swiper-button result_list-next-btn"></div>');
+                                // 스와이퍼 작동시 클래스제거
+                                $('#result_list').removeClass('no_active')
+
+                                var finderSwiper = new Swiper("#result_list", {
+                                    loop : false,
+                                    freeMode: true,
+                                    slidesPerView: 6,
+                                    spaceBetween: 0,
+                                    runCallbacksOnInit : true,
+                                    navigation: {
+                                        nextEl: ".swiper-button-next",
+                                        prevEl: ".swiper-button-prev",
+                                    },
+                                    // 화면사이즈에따라 출력되는갯수 임의처리.
+                                    breakpoints: {
+                                        1100: {
+                                            slidesPerView: 3,
+                                        },
+                                        1500: {
+                                            slidesPerView: 4,
+                                        },
+                                        1700: {
+                                            slidesPerView: 5,
+                                        }
+                                    }
+                                });
+                            }
+                            // 이전,다음버튼 트리거
+                            $('.result_list-prev-btn').on('click', function(){ $('.swiper-button-prev').trigger('click')});
+                            $('.result_list-next-btn').on('click', function(){ $('.swiper-button-next').trigger('click')});
+                        }
+                        startSwiper();
+                    </script>
+                    <!-- // -->
+                </div>
+                <!-- 추가된 내용입니다. (현재 조회한 가격이 몇시 기준 가격인지 보여짐)-->
+                <!-- 찜선택에서 해당텍스트 삭제-->
+                <div class="adj_time">※ 08:00 ~ 23:00 까지 30분 간격으로 가격이 업데이트 되며, 현재는 <em>12:30분</em> 기준의 가격 입니다.</div>
+
+                <!-- // -->
+                <div class="tab_content result_list_tab_content">
+                    <!-- 탭카테고리 증가시 하단 카테고리도 같이 늘어나야합니다. 클릭시 해당탭이 출력되는 형태 (id= result_tab1++ ) -->
+                    <div id="result_tab1" class="tab_content_inner active">
+                        <!-- 데이터탭 제목출력과 버튼이 탭별로 구분되어야할듯하여 탭안으로 이동됨-->
+                        <div class="table-header clear">
+                            <div class="tab_title">노트북<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+                            </div>
+                        </div>
+                        <!-- 리스트 내용이 탭으로 분할되어 전체선택이 각탭별로 구분되게하기위해 테이블별 'table-mcss-숫자' 클래스추가 checkAll-list name에서 타겟받아서 체크 -->
+                        <table class="table table-default table-mcss table-mcss-1">
+                            <colgroup>
+                                <col width="50">
+                                <col width="80">
+                                <col width="80">
+                                <col width="100">
+                                <col width="90">
+                                <col>
+                                <col width="140">
+                                <col width="120">
+                                <col width="100">
+                                <col width="120">
+                                <col width="100">
+                                <col width="50">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><label class="label-checkbox type2"><input type="checkbox" class="checkAll-list" name="table-mcss-1"><span class="checkbox-custom"></span></label></th>
+                                <th>인기순위<i class="ico ico-sort-asc"></i></th>
+                                <th>이미지</th>
+                                <th>제조사<i class="ico ico-sort-asc active"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>브랜드<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>모델명<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>최저가<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>최저가 쇼핑몰<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>차저가<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>차저가 쇼핑몰<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>평균가<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>찜</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- top100에서 제외된 상품처리 -->
+                            <tr class="except">
+                                <td><label class="label-checkbox type2"><input type="checkbox" disabled><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">1</td>
+                                <td><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <!-- 제외상품시 except_txt 출력으로 변경 -->
+                                <td class="prod-nm">
+                                    <span class="except_txt">TOP100 상품에서 삭제 처리 되었습니다. (YYYY.MM.DD)</span>
+                                    <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a>
+                                </td>
+                                <td class="prod-lowprice">
+                                    <span class="per priceupPer">3%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <!-- 데이타 리스트 기본형 -->
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">2</td>
+                                <td class="prod-img">
+                                    <!-- 이미지 마우스오버시 확대/ default.js : line : 203 / 컨트롤 -->
+                                    <div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div>
+                                </td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm">
+                                    <!--링크추가되었습니다.-->
+                                    <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a>
+                                    <!-- // -->
+                                </td>
+                                <!-- 최저가 전일대비가격상승 -->
+                                <td class="prod-lowprice">
+                                    <!-- per 고정 이하클래스 상태에따라 변경
+                                    <span class="per priceupPer">3%</span> 가격상승
+                                    <span class="per pricedownPer">3%</span> 가격하락
+                                    <span class="per pricenoPer">3%</span> 변동없음
+                                    -->
+                                    <span class="per priceupPer">3%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group">
+                                    <span class="label-group group1">A그룹</span>
+                                    <!-- 그룹별로 컬러나눠질줄..
+                                    <span class="label-group group2">B그룹</span>
+                                    <span class="label-group group3">C그룹</span>
+                                    <span class="label-group group4">D그룹</span>
+                                    -->
+                                </td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <!-- // -->
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">3</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"><a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">4</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"> <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제되어야 합니다. -->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab2" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">향수<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <table class="table table-default table-mcss table-mcss-2">
+                            <colgroup>
+                                <col width="50">
+                                <col width="80">
+                                <col width="80">
+                                <col width="100">
+                                <col width="90">
+                                <col>
+                                <col width="140">
+                                <col width="120">
+                                <col width="100">
+                                <col width="120">
+                                <col width="100">
+                                <col width="50">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><label class="label-checkbox type2"><input type="checkbox" class="checkAll-list" name="table-mcss-2"><span class="checkbox-custom"></span></label></th>
+                                <th>인기순위<i class="ico ico-sort-asc"></i></th>
+                                <th>이미지</th>
+                                <th>제조사<i class="ico ico-sort-asc active"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>브랜드<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>모델명<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>최저가<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>최저가 쇼핑몰<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>차저가<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>차저가 쇼핑몰<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>평균가<i class="ico ico-sort-asc"></i><i class="ico ico-sort-desc"></i></th>
+                                <th>찜</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- top100에서 제외된 상품처리 -->
+                            <tr class="except">
+                                <td><label class="label-checkbox type2"><input type="checkbox" disabled><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">1</td>
+                                <td><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <!-- 제외상품시 except_txt 출력으로 변경 -->
+                                <td class="prod-nm">
+                                    <span class="except_txt">TOP100 상품에서 삭제 처리 되었습니다. (YYYY.MM.DD)</span>
+                                    <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a>
+                                </td>
+                                <td class="prod-lowprice">
+                                    <span class="per priceupPer">3%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <!-- 데이타 리스트 기본형 -->
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">2</td>
+                                <td class="prod-img">
+                                    <div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div>
+                                </td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm">
+                                    <!--링크추가되었습니다.-->
+                                    <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a>
+                                    <!-- // -->
+                                </td>
+                                <td class="prod-lowprice">
+                                    <span class="per priceupPer">3%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group">
+                                    <span class="label-group group1">A그룹</span>
+                                </td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <!-- // -->
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">3</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"><a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">4</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"> <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">4</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"> <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">4</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"> <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            <tr>
+                                <td><label class="label-checkbox type2"><input type="checkbox"><span class="checkbox-custom"></span></label></td>
+                                <td class="prod-no">4</td>
+                                <td class="prod-img"><div class="thumbnail-img" style="background-image:url('//img.enuri.info/images/mcsstransition/sample2.png');"></div></td>
+                                <td class="prod-orijin">삼성전자</td>
+                                <td class="prod-brand">비스포크</td>
+                                <td class="prod-nm"> <a href="#해당상품페이지로 이동">SDFHQSD133(배송,스탠드)</a></td>
+                                <td class="prod-lowprice">
+                                    <span class="per pricedownPer">4%</span>
+                                    <span class="compare" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280">1,111,222,000</span>
+                                </td>
+                                <td class="prod-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-second-lowprice">
+                                    <span data-dialog="#chart-second-lowprice-compare" data-dialogwidth="1280">111,222,000</span>
+                                </td>
+                                <td class="prod-second-group"><span class="label-group group1">A그룹</span></td>
+                                <td class="prod-average"><span class="price-average">11,222,000</span></td>
+                                <td class="prod-zzim"><i class="ico ico-zzim ico_s24 btn-select-one" data-dialog="#zzim-complete" data-dialogwidth="300"></i></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab3" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">등산화,등산용품<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <div style="padding:150px 0; text-align: center; font-size: 20px; color:#333; background: #f2f2f2;">LIST 등산화,등산용품</div>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab4" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">여성의류<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <div style="padding:150px 0; text-align: center; font-size: 20px; color:#333; background: #f2f2f2;">LIST 여성의류</div>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab5" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">홍삼,건강식품<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <div style="padding:150px 0; text-align: center; font-size: 20px; color:#333; background: #f2f2f2;">LIST 홍삼,건강식품</div>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab6" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">남성의류<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <div style="padding:150px 0; text-align: center; font-size: 20px; color:#333; background: #f2f2f2;">LIST 남성의류</div>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab7" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">임의카테1<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <div style="padding:150px 0; text-align: center; font-size: 20px; color:#333; background: #f2f2f2;">LIST 임의카테1</div>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                    <div id="result_tab8" class="tab_content_inner">
+                        <div class="table-header clear">
+                            <div class="tab_title">임의카테2<span class="date">(2021-02-16)</span></div>
+
+                            <div class="btn-area full-right">
+                                <button type="button" class="common-btn btn-trans-gray btn-select-multi" data-dialog="#zzim-complete" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-move-prod" data-dialog="#zzim-folder-move" data-dialogwidth="300"><span class="vertical-middle">선택상품 찜 이동</span></button>
+                                <button type="button" class="common-btn btn-red btn-delete-prod"><span class="vertical-middle">선택상품 찜 삭제</span></button>
+                                <button type="button" class="common-btn btn-trans-gray btn-compare-prod" data-dialog="#chart-lowprice-compare" data-dialogwidth="1280"><span class="vertical-middle">선택상품 비교</span></button>
+
+                            </div>
+                        </div>
+                        <div style="padding:150px 0; text-align: center; font-size: 20px; color:#333; background: #f2f2f2;">LIST 임의카테2</div>
+                        <!-- 내용 추가 -->
+                        <!-- 찜선택에서 해당텍스트 삭제-->
+                        <div class="text-caution mt10">
+                            ※ 2021년 3월 11일 데이터부터 최대 1개월 단위로 조회 가능<br>
+                        </div>
+                        <!-- // -->
+
+                        <div class="mcss_pagination">
+                            <span class="page_prev_btn"></span>
+                            <span class="page_number active">1</span>
+                            <span class="page_number">2</span>
+                            <span class="page_number">3</span>
+                            <span class="page_number">4</span>
+                            <span class="page_shortening"></span>
+                            <span class="page_number">110</span>
+                            <span class="page_next_btn"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 찜 노리스트인경우 -->
+            <div class="main-content">
+                <div class="zzim_no_list">
+                    <div class="zzim_no_list_icon mcss_sprite"></div>
+                    <div class="zzim_no_list_txt">
+                        현재 찜 상품이 없습니다.
+                        <span>카테고리별 분석에서 찜상품을 선택하세요!</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 로더 아이콘 -->
+            <div class="reviewall__loader">
+                <div class="loader">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                </div>
+            </div>
+            <script>
+                (function($) {
+                    $(function() {
+                        $(window).load(function(){
+                            setInterval(function(){
+                                $('.reviewall__loader').fadeOut();
+                            }, 1000);
+                        });
+                    });
+                })(jQuery);
+            </script>
+        </div>
+        <!-- // -->
+    </div>
+</div>
+
+
+
+<div id="zzim-folder-nm-change" class="common-dialog" title="폴더명 변경" style="display: none;">
+    <div class="inner-wrap">
+        <div class="dialog-content-title">
+            현재 : <span class="selected_folder_nm"></span><br>
+            변경할 폴더명을 기재해주세요.
+        </div>
+        <form name="" action="">
+            <div class="">
+                <span class="before-forder-nm"></span>
+                <input type="text" class="atter-forder-nm">
+            </div>
+            <div class="btn-area row row-cols-btn-2 row-cols-space-between pt20">
+                <button type="submit" class="common-btn btn-default">확인</button>
+                <button type="submit" class="common-btn btn-white btn-cancel">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="zzim-complete" class="common-dialog" title="찜 완료 안내" style="display: none;">
+    <div class="inner-wrap">
+        <div class="dialog-content-title">
+            <span class="selected_prod_nm"></span>
+            저장할 폴더를 선택해주세요.
+        </div>
+        <form name="" action="">
+            <ul class="zzim-folder-list">
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="select_z_folder" value="찜폴더1" checked>
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더1</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="select_z_folder" value="찜폴더2">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더2</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="select_z_folder" value="찜폴더3">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더3</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="select_z_folder" value="찜폴더4">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더4</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="select_z_folder" value="찜폴더5">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더5</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+            </ul>
+            <div class="btn-area row row-cols-btn-2 row-cols-space-between pt20">
+                <button type="submit" class="common-btn btn-default">확인</button>
+                <button type="submit" class="common-btn btn-white btn-cancel">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="zzim-folder-move" class="common-dialog" title="찜상품 이동" style="display: none;">
+    <div class="inner-wrap">
+        <div class="dialog-content-title">
+            <span class="selected_prod_nm"></span>
+            이동할 폴더를 선택해주세요.
+        </div>
+        <form name="" action="">
+            <ul class="zzim-folder-list">
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="move_folder" value="찜폴더1">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더1</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="move_folder" value="찜폴더2">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더2</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="move_folder" value="찜폴더3">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더3</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="move_folder" value="찜폴더4">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더4</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+                <li>
+                    <label class="label-radio type2">
+                        <input type="radio" class="" name="move_folder" value="찜폴더5">
+                        <span class="radio-custom"></span>
+                        <span class="vertical-middle text">찜폴더5</span>
+                        <span class="vertical-middle cnt">(24)</span>
+                    </label>
+                </li>
+            </ul>
+            <div class="btn-area row row-cols-btn-2 row-cols-space-between pt20">
+                <button type="submit" class="common-btn btn-default">확인</button>
+                <button type="submit" class="common-btn btn-white btn-cancel">취소</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div id="chart-lowprice" class="common-dialog" title="가격추세" style="display: none;">
+    <div class="inner-chart-wrap">
+        <div class="chart-lowprice-area">
+            <div style="width: 100%; background: #f1f1f1; color:#000; font-size: 20px; font-weight: bold; padding:300px 0;
+text-align: center;">Chart area</div>
+        </div>
+        <div class="chart-caution mt10">
+            ※ TOP100에 포함되지 않은 경우 최저가 데이터가 제공되지 않습니다.
+        </div>
+    </div>
+</div>
+
+<div id="chart-lowprice-compare" class="common-dialog" title="가격추세" style="display: none;">
+    <div class="inner-chart-wrap">
+        <div class="chart-lowprice-compare-area">
+            <div style="width: 100%; background: #f1f1f1; color:#000; font-size: 20px; font-weight: bold; padding:300px 0;
+text-align: center;">Chart area</div>
+        </div>
+        <div class="chart-caution mt10">
+            ※ TOP100에 포함되지 않은 경우 최저가 데이터가 제공되지 않습니다.
+        </div>
+    </div>
+</div>
+<div id="chart-second-lowprice-compare" class="common-dialog" title="가격추세" style="display: none;">
+    <div class="inner-chart-wrap">
+        <div class="chart-lowprice-compare-area">
+            <div style="width: 100%; background: #f1f1f1; color:#000; font-size: 20px; font-weight: bold; padding:300px 0;
+text-align: center;">Chart area</div>
+        </div>
+        <div class="chart-caution mt10">
+            ※ TOP100에 포함되지 않은 경우 최저가 데이터가 제공되지 않습니다.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,301 @@
+@charset "utf-8";
+
+/* 이벤트 공통 */
+* {-webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-tap-highlight-color: transparent; /* For some Androids */}
+
+.event_conts {margin-top:0;}
+.mobile .event_conts {border:0;}
+
+/*
+ * PC 레이어
+ */ 
+/*딤레이어 공통 */
+.pop-layer  {display:none; position:fixed; _position:absolute; top:0; left:0; z-index:100000; width:100%; height:100%;}
+.pop-layer .dim {position:absolute; left:0; top:0; width:100%; height:100%; z-index:10000; -ms-filter: alpha(opacity=70); filter: alpha(opacity=70); opacity:0.7; -moz-opacity:0.7;}
+.popup_box {position:absolute; left:50%; top:50%; overflow:hidden; z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top; margin:0; padding:0;}
+.popup_box h4 {height:69px; text-align:center; font-family:Malgun Gothic;font-size:22px; font-weight:normal; line-height:66px;  color:#fff;letter-spacing:-0.75px; background-color:#1689d3;}
+.popup_box .layclose {position:absolute; right:25px; top:25px; width:19px; height:19px; background-image:url(//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+.popup_box .layclose:hover {background-color:transparent;}
+.popup_box .emp {color: #ff0200}
+.popup_box .under {text-decoration:underline;}
+
+/*
+ * M 레이어
+ */ 
+/*딤레이어 공통 */
+.mobile .popup_box h4 {height:35px; font-size:14px; line-height:35px;}
+.mobile .popup_box .layclose {right:12px; top:12px; width:19px; height:19px; background-image:url(//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+
+
+/* 181026 쇼핑지식 고정이벤트2 (슬롯머신) */
+/* ----------------------------------------------------
+					최상단 슬롯영역
+---------------------------------------------------- */
+.slotbox {position:relative;width:846px;height:820px;background-image:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_visual_bg.png), linear-gradient(#ffebe8 ,#faddd8); background-repeat: no-repeat; background-size: 100% auto;background-position-y: 26%;}
+.slotbox > .tit {position:absolute;top:60px;left:50%;margin-left:-224px;width:414px;height:163px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_visual_tit.png) no-repeat;z-index:50;}
+.slotbox .info {display:block;position:absolute;bottom:94px;left:50%;margin-left:-256px;width:512px;height:104px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_visual_info.png) no-repeat;}
+.slotbox .btn_caution {display:block;position:absolute;bottom:50px;left:308px;width:230px;height:40px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/knowcom/slotevt/ver2/btn_caution_blk.png) no-repeat;}
+
+/* 유의사항 레이어 커스텀 defulat @view.css */
+.slotbox #slotNoticePc .tit {width:71px;background:url(//img.enuri.info/images/knowcom/layer_tit_caution_pc.png) no-repeat;}
+.slotbox .wheelbox {position:absolute;top:172px;left:50%;margin-left:-272.5px; z-index:80;width:545px;height:366px;background:url(//img.enuri.info/images/knowcom/slotevt/ver3/visual_slotbody.png) no-repeat;}
+.slotbox .wheelbox__inner {overflow: hidden;position: absolute;top: 67px;left: 117px;width: 303px;height: 141px;margin: 0 auto;vertical-align: top;}
+
+.slotSpinAnimation {display: none;}
+
+/* ----------------------------------------------------
+					PC 슬롯모션
+---------------------------------------------------- */
+.slotbox .wheelbox #initWheel {overflow:hidden;position:absolute;top:0;left:0;z-index:120;width:100%;height:100%;margin:0 auto;vertical-align:top;}
+.slotbox .wheelbox #initWheel span {position:absolute;top:0;z-index:110;margin:0 auto;padding:30px 0;width:78px;height:141px;}
+.slotbox .wheelbox #initWheel span img {position:absolute;top:-38px;left:1px;}
+.slotbox .wheelbox #initWheel span.slot1 {left: 0;}
+.slotbox .wheelbox #initWheel span.slot2 {left: 113px;}
+.slotbox .wheelbox #initWheel span.slot3 {left: 225px;}
+.slotbox .wheelbox #initWheel span.slot1 img {top: -38px; -webkit-animation: slotMoving1 2s linear  0s infinite alternate;-moz-animation: slotMoving1 2s linear  0s infinite alternate;-ms-animation: slotMoving1 2s linear  0s infinite alternate;animation: slotMoving1 2s linear  0s infinite alternate;}
+.slotbox .wheelbox #initWheel span.slot2 img {top: -114px;-webkit-animation: slotMoving2 2s linear  1s infinite alternate;-moz-animation: slotMoving2 2s linear  1s infinite alternate;-ms-animation: slotMoving2 2s linear  1s infinite alternate;animation: slotMoving2 2s linear  1s infinite alternate;}
+.slotbox .wheelbox #initWheel span.slot3 img {top: -76px; -webkit-animation: slotMoving3 2s linear .5s infinite alternate;-moz-animation: slotMoving3 2s linear .5s infinite alternate;-ms-animation: slotMoving3 2s linear .5s infinite alternate;animation: slotMoving3 2s linear .5s infinite alternate;}
+@-webkit-keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}} @-moz-keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}} @-ms-keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}} @keyframes slotMoving1 {0% {top:-38px;}  100% {top:-228px;}}
+@-webkit-keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} @-moz-keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} @-ms-keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} @keyframes slotMoving2 {0% {top:-114px;} 100% {top:-380px;}} 
+@-webkit-keyframes slotMoving3 {0% {top:-76px;}	 100% {top:-304px;}} @-moz-keyframes slotMoving3 {0% {top:-76px;}  100% {top:-304px;}} @-ms-keyframes slotMoving3 {0% {top:-76px;}	100% {top:-304px;}} @keyframes slotMoving3 {0% {top:-76px;}	 100% {top:-304px;}}
+
+.slotbox .front-coin {display: block; position: absolute; z-index: 80; top: 107px; left: 0; width: 100%; height: 510px; font-size: 0; text-indent: -9999px; background: url(//img.enuri.info/images/knowcom/slotevt/ver3/front_coin.png) no-repeat;}
+
+/* ----------------------------------------------------
+					PC 추천횟수
+---------------------------------------------------- */
+.check_my_recom_cnt {padding:60px 0; background-color: #f8d2ce;}
+.check_my_recom_cnt .recom_cnt_tit {font-size: 32px; font-weight: 500;text-align: center; color:#222; letter-spacing: -2px; line-height: 1;     margin-bottom: 30px;} 
+.check_my_recom_cnt .recom_cnt_tit span {color:#f52019;} 
+.check_my_recom_cnt .recom_cnt_content {width: 704px; margin:0 auto; padding:5px 0; border:2px solid #e0b7b3; border-radius: 12px; background-color: #fff;}
+/* 좌우칼럼 */
+.check_my_recom_cnt .recom_cnt_content:after{content:"";display: block;clear:both;}
+.check_my_recom_cnt .recom_cnt_content .left {float: left; width: 408px; height: 200px; padding-right:4px;background: url('//img.enuri.info/images/knowcom/slotevt/ver3/dot_pink.png') repeat-y 100% 0;}
+.check_my_recom_cnt .recom_cnt_content .right {float: left; width:291px; height: 200px;}
+/* 좌우 타이틀 */ 
+.check_my_recom_cnt .recom_cnt_content .inner_tit {font-size:20px; font-weight:500; text-align: center; color:#000; margin: 21px 0 14px;}
+.check_my_recom_cnt .recom_cnt_content .left .inner_tit {color:#222;}
+.check_my_recom_cnt .recom_cnt_content .right .inner_tit {color:#f74a38;}
+.check_my_recom_cnt .recom_cnt_content .right .inner_tit .icon-plus {display: inline-block; width: 16px; height: 16px; background: url('//img.enuri.info/images/knowcom/slotevt/ver3/icon_plus_red.png');}
+/* 추천수 공통 */
+.check_my_recom_cnt .recom_cnt_content .inner_recom_list {font-size: 0; text-align: center;}
+.check_my_recom_cnt .recom_cnt_content .inner_recom_list li {display:inline-block; vertical-align: middle; width: 92px; padding:0 10px;}
+.check_my_recom_cnt .recom_cnt_content .inner_recom_list li .ico {width: 74px; height: 74px; margin:0 auto 14px; border-radius: 50%; background: #888 url('//img.enuri.info/images/knowcom/slotevt/ver3/icon_heart.png') no-repeat center;}
+.check_my_recom_cnt .recom_cnt_content .inner_recom_list li.active .ico {background-color:#f74a38;}
+.check_my_recom_cnt .recom_cnt_content .inner_recom_list li .txt {color:#fff; font-size: 18px; text-align: center; background-color: #b4645b; padding:1px 0 2px; border-radius: 15px;}
+
+.check_my_recom_cnt .recom_cnt_apply {text-align: center;margin-top:30px;}
+.check_my_recom_cnt .recom_cnt_apply a {display: inline-block;vertical-align: middle;color: #fff;font-size: 28px;background-color: #444;line-height: 1;width: 260px;padding: 19px 0;border-radius: 33px;}
+/* 버튼 컬러 */
+.check_my_recom_cnt .recom_cnt_apply.is-lack a {background-color: #ffae00;}
+.check_my_recom_cnt .recom_cnt_apply.is-posible a {background-color: #f52019;}
+
+.check_my_recom_cnt .recom_cnt_noti {color:rgba(0,0,0,.6); font-size: 18px; font-weight: 500; text-align: center; letter-spacing: -.5px; margin-top: 24px;}
+
+
+
+/* ----------------------------------------------------
+					PC 매일추천
+---------------------------------------------------- */
+.lottobox {position:relative; width:100%;}
+.lottobox .inner {padding:0 15px;}
+.lottobox .inner .tit {display:block; width:100%; height:94px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_lottoevt_tit.png) no-repeat center;margin: 60px 0 40px;}
+.lottobox .inner .btn__morelist {display:block; width:266px; height:66px; margin:24px auto 60px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_lottoevt_more.png) no-repeat;}
+.lotto__list {overflow:hidden; clear:both; width:786px; margin:0 13px;}
+.lotto__list li {display:inline; float:left; position:relative; width:246px; height:138px; margin:0 8px 16px;}
+.lotto__list li a {display:block; position:relative; width:100%; height:100%; vertical-align:middle;}
+.lotto__list li a:hover {text-decoration:underline;}
+.lotto__list li.type--thumb {overflow:hidden; cursor:pointer;}
+.lotto__list li.type--thumb img {width:100%; height:100%;}
+.lotto__list li.type--thumb .hover__info {opacity:0; -ms-filter: alpha(opacity=0); filter: alpha(opacity=0); transition: opacity .2s ease-out;}
+.lotto__list li.type--thumb:hover .hover__info {display:block; position:absolute; top:0; left:0; opacity:1; -ms-filter: alpha(opacity=100); filter: alpha(opacity=100); transition: opacity .2s ease-out;}
+.lotto__list li.type--thumb .hover__info .txt {display:table-cell; position:relative; z-index:100; width:210px; height:133px; padding:0 18px 5px; font-size:18px; line-height:22px; color:#fff; vertical-align:middle; letter-spacing:-1px;}
+.lotto__list li.type--thumb .hover__info .dimm {display:block; width:100%; height:100%; position:absolute; top:0; left:0; z-index:10; background:rgba(0, 0, 0, 0.75);}
+.lotto__list li.type--txt {position:relative; transition:all .2s ease-out;}
+.lotto__list li.type--txt a {display:table-cell; width:210px; height:133px; padding:0 18px 5px; font-size:18px; line-height:22px; color:#fff; vertical-align:middle; letter-spacing:-1px; text-decoration:none;}
+.lotto__list li.bg0 {background:url(//img.enuri.info/images/knowcom/slotevt/pc_lottoevt_purple.jpg) no-repeat;}
+.lotto__list li.bg0:hover {background:url(//img.enuri.info/images/knowcom/slotevt/pc_lottoevt_purple_on.jpg) no-repeat;}
+.lotto__list li.bg1 {background:url(//img.enuri.info/images/knowcom/slotevt/pc_lottoevt_pink.jpg) no-repeat;}
+.lotto__list li.bg1:hover {background:url(//img.enuri.info/images/knowcom/slotevt/pc_lottoevt_pink_on.jpg) no-repeat;}
+.lotto__list li.bg2 {background:url(//img.enuri.info/images/knowcom/slotevt/pc_lottoevt_skyblue.jpg) no-repeat;}
+.lotto__list li.bg2:hover {background:url(//img.enuri.info/images/knowcom/slotevt/pc_lottoevt_skyblue_on.jpg) no-repeat;}
+
+
+/* ----------------------------------------------------
+				PC 유저가 뽑은 하앗~뉴스
+---------------------------------------------------- */
+.hotnews {}
+.hotnews .inner {width:769px; margin:0 auto; border-top:3px solid #eee;}
+.hotnews .tit {display:block; width:770px; height:124px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_hotnewsevt_tit.png) no-repeat center;margin: 60px 0 40px;}
+.hotnews .txt_explain {display:block; width:770px; height:236px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_hotnewsevt_txt_explain.png) no-repeat center; margin-bottom:40px;}
+
+.hotnews ul:after {content:""; display: block; clear:both;}
+.hotnews ul li {float:left; width: 246px; margin-right:15px; text-align: center; margin-bottom:30px;}
+.hotnews ul li:last-child {margin-right:0;}
+.hotnews ul li .hn__conent {display: block; text-align: left;; font-size: 18px; background-color: #f2f2f2; margin-bottom:20px;}
+.hotnews ul li .hn__conent .img {}
+.hotnews ul li .hn__conent .txt {height: 72px; padding: 14px 18px; line-height: 1.4;}
+.hotnews ul li input[name=user_pick] {appearance: none; width: 18px;height: 18px; border:2px solid #333; border-radius: 50%; vertical-align: top;}
+.hotnews ul li input[name=user_pick]:checked:after {content: "";display: block;width: 10px;height: 10px;border-radius: 50%;background-color: #333;margin: 2px;}
+.hotnews .btn_pick_news { width: 100%; background-color: #444; color:#fff; font-size: 30px; padding:10px 0;}
+.hotnews .inner .btn__morelist {display:block; width:266px; height:66px; margin:30px auto 60px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/pc_hotnewsevt_more.png)}
+
+/* pick 클릭 후 */
+.hotnews .picked_result {text-align: center;}
+.hotnews .picked_result .line{display: inline-block; vertical-align: middle; width: 2px; height:20px; background-color: #e5e5e5;}
+.hotnews .picked_result .picked_result_info {margin-top:14px; font-size: 24px; font-weight: 500; letter-spacing: -.5px; color:#222; line-height: 1.4;}
+.hotnews .picked_result .picked_result_info .picked_grade {font-size: 29px;}
+
+
+/* ----------------------------------------------------
+				M 슬롯머신 
+---------------------------------------------------- */
+.mobile #SubWrap .event_view {padding-top: 44px;}
+.mobile .m_slotbox {position:relative;width:100%;height:454px;background-image: linear-gradient(#ffebe8 ,#faddd8); background-repeat: no-repeat;}
+.mobile .m_slotbox__inner {}
+.mobile .m_slotbox__inner > .tit {font-size:0;text-indent:-9999px;}
+.mobile .m_slotbox .info {display:block; width:320px;height: 75px; font-size: 0; margin: 20px auto 0;text-indent:-9999px;background:url(//img.enuri.info/images/knowcom/slotevt/ver3/m_visual_info.png) center no-repeat;background-size:100% auto;}
+.mobile .m_slotbox .btn_caution {display:block;position:absolute;bottom:30px;left:50%;-webkit-transform:translateX(-50%);-moz-transform:translateX(-50%);-ms-transform:translateX(-50%);transform:translateX(-50%);width:92px;height:15px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/knowcom/slotevt/ver2/m_btn_caution_blk.png) center no-repeat;background-size:92px;}
+
+/* 유의사항 레이어 커스텀 defulat @view.css */
+.mobile .m_slotbox #mSlotNoticePc .tit {width:42.5px;background:url(//img.enuri.info/images/knowcom/layer_tit_caution_m.png) no-repeat;background-size:42.5px;}
+
+.mobile .m_slotbox .wheelbox {position:relative; z-index:80;width:320px;height:263px; margin:30px auto 0; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/m_visual_slotbody.png) center no-repeat;background-size:100% auto;}
+.mobile .m_slotbox .wheelbox__inner { overflow: hidden;position: absolute;top: 107px;left: 84px;width: 152px;height: 71px;vertical-align: top;}
+
+
+/* 화면 진입 시 보여지는 모션, 망치 클릭 시, 사라지고 실제 슬롯 opacity값 1 변경 */
+.mobile .m_slotbox .wheelbox #mInitWheel {overflow: hidden;position: absolute;top: 0;left: 0;z-index: 120;width: 100%;height: 100%;vertical-align: top;}
+.mobile .m_slotbox .wheelbox #mInitWheel span {display:block;position:absolute;top:0;z-index:110;margin:0 auto; padding: 16px 0;width: 39px;height: 39px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span img {position:absolute;top:-22px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot1 {left: 0;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot2 {left: 57px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot3 {left: 113px;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot1 img {top: -22px; -webkit-animation: mSlotMoving1  1.5s linear  0s infinite alternate;-moz-animation: mSlotMoving1 1.5s linear  0s infinite alternate;-ms-animation: mSlotMoving1 1.5s linear  0s infinite alternate;animation: mSlotMoving1 1.5s linear  0s infinite alternate;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot2 img {top: -60px;-webkit-animation: mSlotMoving2  1.5s linear .6s infinite alternate;-moz-animation: mSlotMoving2 1.5s linear .6s infinite alternate;-ms-animation: mSlotMoving2 1.5s linear .6s infinite alternate;animation: mSlotMoving2 1.5s linear .6s infinite alternate;}
+.mobile .m_slotbox .wheelbox #mInitWheel span.mslot3 img {top: -66px; -webkit-animation: mSlotMoving3  1.8s linear .3s infinite alternate;-moz-animation: mSlotMoving3 1.8s linear .3s infinite alternate;-ms-animation: mSlotMoving3 1.8s linear .3s infinite alternate;animation: mSlotMoving3 1.85s linear .3s infinite alternate;}
+@-webkit-keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}} @-moz-keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}} @-ms-keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}} @keyframes mSlotMoving1 {0% {top:-22px;}  100% {top:-110px;}}
+@-webkit-keyframes mSlotMoving2 {0% {top:-60px;} 100% {top:-188px;}} @-moz-keyframes mSlotMoving2 {0% {top:-60px;} 100% {top:-188px;}} @-ms-keyframes mSlotMoving2 {0% {top:-60px;} 100% {top:-188px;}} @keyframes mSlotMoving2 {0% {top:-60px;} 100% {top:-188px;}} 
+@-webkit-keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}} @-moz-keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}} @-ms-keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}} @keyframes mSlotMoving3 {0% {top:-66px;}  100% {top:-154px;}}
+/* ----------------------------------------------------
+					M 추천횟수
+---------------------------------------------------- */
+.mobile .check_my_recom_cnt {padding:30px 0; background-color: #f8d2ce;}
+.mobile .check_my_recom_cnt .recom_cnt_tit {font-size: 20px; font-weight: 600;text-align: center; color:#222; letter-spacing: -2px; line-height: 1; margin-bottom: 15px;} 
+.mobile .check_my_recom_cnt .recom_cnt_tit span {color:#f52019;} 
+.mobile .check_my_recom_cnt .recom_cnt_content {width: 290px; margin:0 auto; padding:0; border:2px solid #e0b7b3; border-radius: 12px; background-color: #fff;}
+/* 좌우칼럼 */
+.mobile .check_my_recom_cnt .recom_cnt_content:after{content:"";display: block;clear:both;}
+.mobile .check_my_recom_cnt .recom_cnt_content .left {float: left; width: 170px; height: 123px; padding-right:4px;background: url('//img.enuri.info/images/knowcom/slotevt/ver3/dot_pink.png') repeat-y 100% 0;}
+.mobile .check_my_recom_cnt .recom_cnt_content .right {float: left; width:116px; height: 123px;}
+/* 좌우 타이틀 */ 
+.mobile .check_my_recom_cnt .recom_cnt_content .inner_tit {font-size:12px; text-align: center; color:#000; margin: 13px 0;font-weight: 600;}
+.mobile .check_my_recom_cnt .recom_cnt_content .left .inner_tit {color:#222;}
+.mobile .check_my_recom_cnt .recom_cnt_content .right .inner_tit {color:#f74a38;}
+.mobile .check_my_recom_cnt .recom_cnt_content .right .inner_tit .icon-plus {display: inline-block;width: 12px;height: 12px;background: url('//img.enuri.info/images/knowcom/slotevt/ver3/icon_plus_red.png') no-repeat 0 0;background-size: 12px auto; vertical-align: -2px; margin-right: 2px;}
+/* 추천수 공통 */
+.mobile .check_my_recom_cnt .recom_cnt_content .inner_recom_list {font-size: 0; text-align: center;}
+.mobile .check_my_recom_cnt .recom_cnt_content .inner_recom_list li {display:inline-block; vertical-align: middle; width: 46px; padding:0 2.5px;}
+.mobile .check_my_recom_cnt .recom_cnt_content .inner_recom_list li .ico {width: 41px; height: 41px; margin:0 auto 7px; border-radius: 50%; background: #888 url('//img.enuri.info/images/knowcom/slotevt/ver3/icon_heart.png') no-repeat center; background-size: 19px;}
+.mobile .check_my_recom_cnt .recom_cnt_content .inner_recom_list li.active .ico {background-color:#f74a38;}
+.mobile .check_my_recom_cnt .recom_cnt_content .inner_recom_list li .txt {color:#fff; font-size: 11px; text-align: center; background-color: #b4645b; padding:1px 0 2px; border-radius: 15px;}
+.mobile .check_my_recom_cnt .recom_cnt_apply {text-align: center;margin-top:15px;}
+.mobile .check_my_recom_cnt .recom_cnt_apply a {display: inline-block;vertical-align: middle;color: #fff;font-size: 14px;background-color: #444;line-height: 1;width: 130px;padding: 10px 0;border-radius: 17px;}
+/* 버튼 컬러 */
+.mobile .check_my_recom_cnt .recom_cnt_apply.is-lack a {background-color: #ffae00;}
+.mobile .check_my_recom_cnt .recom_cnt_apply.is-posible a {background-color: #f52019;}
+.mobile .check_my_recom_cnt .recom_cnt_noti {color:rgba(0,0,0,.6); font-size: 11px; font-weight: 500; text-align: center; letter-spacing: -.5px; margin-top: 15px;}
+
+
+
+/* ----------------------------------------------------
+					M 매일추천 
+---------------------------------------------------- */
+.mobile .m_lottobox {position:relative;width:100%; background-color:#fff;}
+.mobile .m_lottobox .inner {max-width:320px; padding:0; margin:0 auto;}
+.mobile .m_lottobox .inner .tit {display:block; width:320px; height:69px; margin:30px auto 15px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/m_lottoevt_tit.png) no-repeat; background-size:320px;}
+.mobile .m_lottobox .inner .btn__morelist {display:block; position:relative; width:320%; height:33px; margin:6px auto 30px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/m_lottoevt_more.png) no-repeat; background-size:320px;}
+.mobile .m_lotto__list {overflow:hidden; clear:both; width:246px; margin:0 auto;}
+.mobile .m_lotto__list li {display:inline; float:left; position:relative; width:246px; height:138px; margin-bottom:10px;}
+.mobile .m_lotto__list li a {display:block; position:relative; width:100%; height:100%; vertical-align:middle;}
+.mobile .m_lotto__list li a:hover {text-decoration:underline;}
+.mobile .m_lotto__list li.type--thumb {overflow:hidden; cursor:pointer;}
+.mobile .m_lotto__list li.type--thumb img {width:100%; height:100%;}
+.mobile .m_lotto__list li.type--thumb .hover__info {opacity:0; -ms-filter: alpha(opacity=0); filter: alpha(opacity=0);}
+.mobile .m_lotto__list li.type--thumb:hover .hover__info {display:block; position:absolute; top:0; left:0; opacity:1; -ms-filter: alpha(opacity=100); filter: alpha(opacity=100); transition:opacity .1s ease-out;}
+.mobile .m_lotto__list li.type--thumb .hover__info .txt {display:table-cell; position:relative; z-index:100; width:210px; height:133px; padding:0 18px 5px; font-size:18px; line-height:22px; color:#fff; vertical-align:middle; letter-spacing:-1px;}
+.mobile .m_lotto__list li.type--thumb .hover__info .dimm {display:block; width:100%; height:100%; position:absolute; top:0; left:0; z-index:10; background:rgba(0, 0, 0, 0.75);}
+.mobile .m_lotto__list li.type--txt {position:relative;}
+.mobile .m_lotto__list li.type--txt a {display:table-cell; width:226px; height:138px; padding:0 20px; font-size:20px; line-height:24px; color:#fff; vertical-align:middle; letter-spacing:-1px; text-decoration:none;}
+.mobile .m_lotto__list li.bg0 {background:#bba5f0;}
+.mobile .m_lotto__list li.bg1 {background:#eea5be;}
+.mobile .m_lotto__list li.bg2 {background:#8fd1f1}
+.mobile .m_lotto__list li.type--txt:before {content:""; display:block; position:absolute; top:10px; left:10px; width:25px; height:21px; background:url(//img.enuri.info/images/knowcom/slotevt/m_lottoevt_txtbg.png) no-repeat; background-size:50px;}
+.mobile .m_lotto__list li.type--txt:after {content:""; display:block; position:absolute; bottom:10px; right:10px; width:25px; height:21px; background:url(//img.enuri.info/images/knowcom/slotevt/m_lottoevt_txtbg.png) -25px 0 no-repeat; background-size:50px;}
+
+
+/* ----------------------------------------------------
+				M 유저가 뽑은 하앗~뉴스
+---------------------------------------------------- */
+.hotnews_mobile {}
+.hotnews_mobile .inner {width:320px; margin:0 auto; border-top:1px solid #eee;}
+.hotnews_mobile .tit {display:block; width:320px; height:105px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/m_hotnewsevt_tit.png) no-repeat center; background-size:320px; margin: 30px 0;}
+.hotnews_mobile .txt_explain {display:block; width:320px; height:203px; font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/knowcom/slotevt/ver3/m_hotnewsevt_txt_explain.jpg) no-repeat center; background-size:320px; margin-bottom: 20px;}
+.hotnews_mobile .form_pick_hotnews {width:290px; margin:0 auto;}
+.hotnews_mobile ul {}
+.hotnews_mobile ul:after {content:""; display: block; clear:both;}
+.hotnews_mobile ul li {float:none; width: 100%; margin-right:0; text-align: left; margin-bottom:10px; border:1px solid #666; border-radius: 10px; overflow: hidden; font-size:0;}
+.hotnews_mobile ul li:last-child {margin-right:0;}
+.hotnews_mobile ul li .hn__conent {display: inline-block; vertical-align: middle; text-align: left; font-size: 0; background-color: #fff; margin-bottom:0;padding: 17px 0;}
+.hotnews_mobile ul li .hn__conent .img {display: inline-block; vertical-align: middle; width: 115px;}
+.hotnews_mobile ul li .hn__conent .img img {width: 100%; height: 65px;}
+.hotnews_mobile ul li .hn__conent .txt {display: inline-block;vertical-align: middle;width: 136px;height: 57px;padding: 4px 8px;line-height: 1.6;font-size: 12px;letter-spacing: -1px;}
+.hotnews_mobile ul li input[name=user_pick] {appearance: none; display:inline-block; width: 13px;height: 13px; border:2px solid #333; border-radius: 50%; vertical-align: middle;margin: 0 5px;}
+.hotnews_mobile ul li input[name=user_pick]:checked:after {content: "";display: block;width: 7px;height: 7px;border-radius: 50%;background-color: #333;margin: 1px;}
+.hotnews_mobile .btn_pick_news { width: 100%; background-color: #444; color:#fff; font-size: 15px; padding:5px 0;}
+.hotnews_mobile .inner .btn__morelist {display: block;width: 320px;height: 33px;margin: 15px auto 30px;font-size: 0;text-indent: -9999px;background: url(//img.enuri.info/images/knowcom/slotevt/ver3/m_hotnews_mobileevt_more.png) no-repeat 0 0;background-size: 100%;}
+
+/* pick 클릭 후 */
+.hotnews_mobile .inner_after ul li .hn__conent{padding:17px 11px;}
+.hotnews_mobile .picked_result {text-align: left;}
+.hotnews_mobile .picked_result .picked_result_info {font-size: 12px; font-weight: 600; letter-spacing: -.5px; color:#222; line-height: 1.4; padding: 5px 15px; border-bottom: 1px solid #eeeeee;}
+.hotnews_mobile .picked_result .picked_result_info .picked_grade {font-size: 14px;}
+.hotnews_mobile .picked_result .picked_result_info .picked_cnt {float:right; color:#52acea;}
+.hotnews_mobile .picked_result .picked_result_info .picked_cnt:before {content: "";display: inline-block;vertical-align: -3px;width: 16.5px;height: 16.5px;background: url(//img.enuri.info/images/knowcom/slotevt/ver3/icon_target.png) no-repeat 0 0;background-size: 100%;margin-right: 4px;}
+
+/*1위*/
+.hotnews_mobile .winner .picked_result .picked_result_info .picked_grade {color:#f74a38;}
+.hotnews_mobile .winner .picked_result .picked_result_info .picked_grade:after {content: "";display: inline-block;vertical-align: -1px;width: 16px;height: 13px;background: url(//img.enuri.info/images/knowcom/slotevt/ver3/icon_crown.png) no-repeat 0 0;background-size: 100%;margin-left: 8px;}
+
+
+
+
+/* SR#39236 : 고정이벤트 럭키세븐, 출석체크 얼럿창 퍼블 요청 건 */
+/* 기본 레이아웃 -> view.css */
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result{height:440px;margin:0;font-size:0;text-indent:-9999px;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_01{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_01.jpg) no-repeat 50% 50%;background-size:100%}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_02{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_02.jpg) no-repeat 50% 50%;background-size:100%}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_03{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_03.jpg) no-repeat 50% 50%;background-size:100%}
+
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_button {height:187px;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_enuritv{width:200px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_01.png) no-repeat 50% 50%;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_board{width:200px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_02.png) no-repeat 50% 50%;}
+.lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_attend{width:200px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_03.png) no-repeat 50% 50%;}
+
+@media (max-width:768px){
+	.mobile .notice {bottom:20px;}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result{height:220px;}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_01{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_01.jpg) no-repeat 50% 50%;background-size:300px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_02{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_02.jpg) no-repeat 50% 50%;background-size:300px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_result.result_03{background:url(http://img.enuri.info/images/knowcom/slotevt/lay_luck_result_03.jpg) no-repeat 50% 50%;background-size:300px}
+
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_button {height:93px;}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_enuritv{width:100px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_01.png) no-repeat 50% 50%;background-size:100px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_board{width:100px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_02.png) no-repeat 50% 50%;background-size:100px}
+	.mobile .lay_evt_emoney.lay_slotevt .lay_inner .lay_btn_attend{width:100px;background:url(http://img.enuri.info/images/knowcom/lay_luck_btn_03.png) no-repeat 50% 50%;background-size:100px}
+}
+
+/* // */

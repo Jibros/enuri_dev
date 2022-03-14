@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+/************************************************************************
+ * 파일명 : layout.css
+ * 설명 : 데이터센터 > MCSS 최저가 추이 CSS
+ * 작성자  : 지승호
+ * 작성일 : 2021.04.14
+************************************************************************/
+
+/* CSS RESET */
+button{border:0 none;cursor:pointer}
+button:disabled {cursor:default} 
+
+/* var */
+:root{
+    --color-enuri-blue : #0073be;  /* 에누리 블루 */
+    --color-enuri-sky : #30a7f7; /* 에누리 스카이 */
+    --url-comm-sprite : url(//img.enuri.info/images/rev/common_sprite.png); /* 공통 Sprite */
+}
+
+/* BODY SET */ 
+body {overflow-y:scroll;height:100%;background-color:#fff}
+.wrapper {display:flex;align-items:stretch;width:100%;height:100%;}
+
+/* SIDEBAR */
+.sidebar {display:block;position:fixed;top:0;bottom:0;left:0;z-index:10;min-width:248px;max-width:248px;direction:ltr;margin-left:0;background-color:#1F2640;transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out}
+.sidebar__content {position:-webkit-sticky;position:sticky;flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start;height:100vh;top:0;left:0;}
+.sidebar__brand {display:block;width:120px;height:40px;margin:9px 20px;}
+.sidebar__brand > a {display:block;width:120px;height:40px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/mcsstransition/mcss_sprite.png) 0 0 no-repeat}
+
+/* SIDEBAR > NAV */
+.sidebar__nav {}
+.nav__list {padding:0}
+.nav__item {display:block}
+.nav__item .nav__link {display:block;position:relative;padding:14px 20px;font-size:14px;color:rgba(255,255,255,.75);letter-spacing:-.3px;line-height:20px;text-decoration:none;transition:all .2s ease-in-out}
+.nav__item .nav__link .ico {display:inline-block;position:relative;top:-2px;width:20px;height:20px;margin-right:8px;vertical-align:middle;background:url(//img.enuri.info/images/mcsstransition/mcss_sprite.png) no-repeat}
+.nav__item .nav__link .ico--cate {background-position:0 -40px}
+.nav__item .nav__link .ico--zzim {background-position:-20px -40px}
+.nav__item .nav__link:hover,
+.nav__item.is-on .nav__link {color:rgba(255,255,255,1);}
+.nav__item .nav__link:hover .ico,
+.nav__item.is-on .nav__link .ico {background-position-y:-60px}
+
+/* MAIN 컨테이너 */
+.main-container {display:flex;flex-wrap:wrap;flex-direction:row;align-items:flex-start;width:calc(100% - 248px);min-height:100vh;min-width:0;margin-left:248px;transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out}
+
+
+/* 메뉴 하위 컨텐츠 */
+.source__content {display:block;position:fixed;top:0;bottom:0;min-width:248px;max-width:248px;direction:ltr;margin-left:0;background-color:#1F2640;transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out}
+.source__inner {position:-webkit-sticky;position:sticky;height:100vh;top:0;left:0;padding:0 20px 20px;color:rgba(255,255,255,1);}
+.source__inner {flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start;}
+.source__head {display:block;position:relative;min-height:48px;padding-left:44px}
+.source__head .tx_tit {display:block;font-size:14px;color:#fff;line-height:48px}
+.source__head .btn--fold {position:absolute;top:14px;left:18px;width:20px;height:20px;padding:0;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/mcsstransition/mcss_sprite.png) -20px -140px no-repeat}
+
+.source__body {}
+.source__list {position:relative}
+.source__item {display:block}
+.source__item .row-head {display:block;position:relative}
+.source__item .row-head:after {content:"";position:absolute;bottom:0;left:0;right:0;border-bottom:1px solid rgba(255,255,255,0.2);pointer-events:none}
+.source__item .row-head .btn--tit {display:block;position:relative;width:100%;padding:14px 0;border:none;font-size:16px;color:#919293;letter-spacing:-.3px;line-height:20px;text-align:left;background:transparent;transition:all .2s ease}
+.source__item .row-head .btn--tit:after {content:"";position:absolute;top:14px;right:0;width:20px;height:20px;background:url(//img.enuri.info/images/mcsstransition/mcss_sprite.png) 0 -140px no-repeat}
+.source__item .row-head .btn--tit:hover {color:#fff}
+
+.source__item .row-body {display:none}
+
+/* SHOWN */
+.source__item.is-shown .row-head:after {display:none}
+.source__item.is-shown .row-head .btn--tit:after {background-position:0 -160px}
+.source__item.is-shown .row-body {display:block}
+
+.source__item .btn-cate-all {display:block;position:relative;width:100%;height:40px;font-size:14px;color:#919293;letter-spacing:-.3px;background-color:#151A30;transition:all .2s ease}
+.source__item .btn-cate-all:after {content:"";position:absolute;top:0;bottom:0;left:0;right:0;border:1px solid #0088FF;opacity:.3;pointer-events:none}
+.source__item .btn-cate-all:hover {color:#fff}
+
+
+.table__content {display:block;flex:1;direction:ltr;margin-left:248px;padding:30px 24px;transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out}
+
+.source-container {display:block;min-width:248px;max-width:248px;direction:ltr;margin-left:0;background-color:#1F2640;transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out}
+.source-container .source-inner {position:-webkit-sticky;position:sticky;height:calc(100vh - 20px);top:0;left:0;padding:0 20px 20px;color:rgba(255,255,255,1);}
+.source-container .source-inner {flex-direction:column;flex-wrap:wrap;justify-content:flex-start;align-content:flex-start;align-items:flex-start;}
+
+.table-container {display:flex;width:100%;min-height:100vh;min-width:0;transition:margin-left .35s ease-in-out,left .35s ease-in-out,margin-right .35s ease-in-out,right .35s ease-in-out;flex-direction:column;}
+
+.main-container.is--fold .source__content {margin-left:-248px;z-index:0}
+.main-container.is--fold .table__content {margin-left:0;z-index:0}

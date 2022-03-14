@@ -1,0 +1,651 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/event/nov.css"/>
+	<link rel="stylesheet" type="text/css" href="http://m.enuri.com/mobilefirst/css/lib/slick.css"/>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/slick.min.js"></script>
+	<script type="text/javascript">
+	//레이어
+	function onoff(id) {
+		var mid=document.getElementById(id);
+		if(mid.style.display=='') {
+		mid.style.display='none';
+	}else{
+		mid.style.display='';
+		}; 
+	}
+	$(function(){
+	   var menupos = $("#topFix").offset().top;
+	   $(window).scroll(function(){
+			var ht = $("#topFix").outerHeight(true) + 1;
+			var sc = $(window).scrollTop() + ht;
+			if(sc >= menupos + ht) {
+				$("#topFix").css("position","fixed");
+				$("#topFix").css("top","30px");
+				$("#topFix .tabmenu").css("background","none");
+				$("#topFix .win_close").show();
+				} else {
+				$("#topFix").css("position","absolute");
+				$("#topFix").css("top","");
+				$("#topFix .win_close").hide();
+			};
+			if(sc > 0 && sc <= $("#con2").offset().top){
+				$("#topFix li").removeClass("on");
+				$("#topFix li:eq(0)").addClass("on");
+			}else if(sc > $("#con2").offset().top && sc <= $("#con3").offset().top){
+				$("#topFix li").removeClass("on");
+				$("#topFix li:eq(1)").addClass("on");
+			}else if(sc > $("#con3").offset().top){
+				$("#topFix li").removeClass("on");
+				$("#topFix li:eq(2)").addClass("on");
+			}
+	   });
+
+		$("#topFix li").click(function(){
+			var idx = $(this).index();
+			var ht = $("#topFix").outerHeight(true);
+			//$("body").animate({"scrollTop":},500)
+			$('html, body').animate({
+				scrollTop: parseInt($("#con"+(idx+1)).offset().top - ht)
+			}, 500);
+			return false;
+		})
+
+		$(".over_ht").height($(document).height());
+	});
+	</script>
+
+</head>
+
+
+<body>
+
+<!-- layer--> 
+<div class="layer_back" id="app_only" style="display:none;">
+	<div class="appLayer">
+		<h4>모바일 앱 전용 이벤트</h4>
+		<a href="javascript:///" class="close" onclick="onoff('app_only')">창닫기</a>
+		<p class="txt"><strong>가격비교 최초!</strong><em>현금 같은 혜택</em>을 제공하는<br />에누리앱을 설치합니다.</p>
+		<p class="btn_close"><button type="button">설치하기</button></p>
+	</div>
+</div>
+
+<div class="layer_back" id="buy_layer" style="display:none;">
+	<div class="appLayer">
+		<h4>구매왕 도전하기</h4>
+		<a href="javascript:///" class="close" onclick="onoff('buy_layer')">창닫기</a>
+		<!-- <p class="txt"><em>참여완료!<br />나의 순위는 오후1시 이후<br />반영됩니다.<br />(주말/공휴일 제외)</em></p> -->
+		<p class="txt"><em>참여완료!<br />나의 순위는 내일 오후1시 이후<br />반영됩니다.<br />(주말/공휴일 제외)</em></p>
+		<!-- <p class="txt"><em>이미 참여완료!<br />한번만 응모해도<br />구매금액 자동 누적됩니다.</em></p> -->
+		<p class="btn_close"><button type="button">확인</button></p>
+	</div>
+</div>
+
+<div class="layer_back" id="event1000" style="display:none;">
+	<div class="appLayer">
+		<h4>무조건 1,000점</h4>
+		<a href="javascript:///" class="close" onclick="onoff('event1000')">창닫기</a>
+		<p class="txt"><em>참여완료!<br />당첨자 발표일을 기다려주세요~</em></p>
+		<!-- <p class="txt"><em>구매 후 응모 가능합니다!</em></p> -->
+		<!-- <p class="txt"><em>이미 참여완료!<br />당첨자 발표일을 기다려주세요~</em></p> -->
+		<p class="btn_close"><button type="button">확인</button></p>
+	</div>
+</div>
+
+<div class="layer_back" id="ranking_layer" style="display:none;">
+	<div class="appLayer">
+		<h4>★ 오늘의 랭킹 ★</h4>
+		<a href="javascript:///" class="close" onclick="onoff('ranking_layer')">창닫기</a>
+		<p class="txt"><em>이벤트 참여 후에<br />순위 확인 가능합니다.</em>
+		</p>
+		<p class="btn_close"><button type="button">확인</button></p>
+	</div>
+</div>
+
+
+<!-- 구매왕 유의사항 -->
+<div class="layer_back over_ht" id="btn_info01" style="display:none">
+	<div class="appLayer">
+		<h4>구매왕 유의사항</h4>
+		<a href="javascript:///" class="close" onclick="onoff('btn_info01')">창닫기</a>
+		<div class="txt">
+			<strong>이벤트 기간</strong>
+			<ul class="txt_indent">
+				<li>2016년 11월 1일 ~ 11월 30일</li>
+			</ul>
+
+			<strong>당첨자 혜택</strong>
+			<ul class="txt_indent">
+				<li>구매왕(5명) : 10월 누적구매금액(확정구매금액 기준)이 높은 상순위 5분께 e머니 각 1,000,000점 적립 (제세공과금 해당 사항 없음)</li>
+				<li><b>당첨자 발표 및 적립일: 2017년 1월 6일</b></li>
+				<li><b>e머니 유효기간 : 적립일로부터 30일</b></li>
+				<li>적립된 e머니는 에누리 앱 설치 후 해당 경품 외에도 다양한 e쿠폰으로 교환 가능합니다.</li>
+			</ul>
+			
+
+			<strong>참여 방법 & 구매 유의사항</strong>
+			<ul class="txt_indent">
+				<li><span style="color:red">에누리 앱 로그인</span> &#8594 적립대상 쇼핑몰 이동 &#8594 구매하기 &#8594 구매왕 이벤트 참여</li>
+				<li><b>적립대상 쇼핑몰</b>: G마켓, 옥션, 11번가, 인터파크, 티몬, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스)</li>
+				<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 상품 결제금액만 반영됩니다.</li>
+				<li>이벤트 참여자의 10월 구매내역 중 11월 30일까지의 구매확정(배송완료) 내역 기준으로 당첨자 선정됩니다.</li>
+				<li>결제 이후 취소/환불/교환/반품한 경우에는 구매 확정 금액에서 제외됩니다.</li>
+				<li><span style="color:red">상품권, 이용권 등 유효기간 내 취소 가능한 상품은 최종 구매왕 선별시 누적금액에서 제외됩니다.</span></li>
+			</ul>
+
+			 <strong>아래의 경우에는 구매 확인 및 적립이 불가합니다.</strong>
+			 <ul class="txt_indent">
+				<li>에누리 앱이 아닌 다른 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리앱으로 결제만 한 경우<br />(에누리 앱을 통해 쇼핑몰로 이동 후 장바구니/관심상품 등록 후 구매 시에는 가능)</li>
+				<li>에누리 앱 미 로그인 후 구매한 경우 또는 에누리 PC, 모바일 웹에서 구매한 경우</li>
+				<li><b>적립대상쇼핑몰 중 e머니 적립 제외 카테고리/서비스</b></li>
+			 </ul>
+			 
+			 <ol class="inner" style="margin-top:0px">
+				<li>- 에누리 앱에서 검색되지 않는 상품</li>
+				<li>- 인터파크 : 모바일쿠폰/상품권, 라이프 서비스(쇼핑/도서 외 티켓, 투어, 아이마켓 등)</li>
+				<li>- 11번가 : 여행/숙박/항공, e쿠폰/상품권</li>
+				<li>- 옥션, G마켓: 중고장터, 실시간 여행, 항공권</li>
+				<li>- SSG: 도서/음반/문구/취미/여행/상품권/서비스 및 현금성 상품</li>
+				<li>- 이 외 쇼핑몰에 입점한 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리 제외</li>
+			 </ol>
+			
+			<strong>유의사항</strong>	
+			<ul class="txt_indent">
+				<li>부정 참여 시 적립이 취소될 수 있습니다.</li>
+				<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+			 </ul>
+		</div>
+		<p class="btn_close"><button type="button" onclick="onoff('btn_info01')">확인</button></p>
+	</div>
+</div>
+
+<!-- 오늘의 랭킹 -->
+<div class="layer_back over_ht" id="btn_info02" style="display:none;">
+	<div class="appLayer">
+		<h4>오늘의 랭킹 유의사항</h4>
+		<a href="javascript:///" class="close" onclick="onoff('btn_info02')">창닫기</a>
+		<div class="txt">
+			<strong>구매금액 반영 기준</strong>
+			<ul class="txt_indent">
+				<li><b>적립대상 쇼핑몰: G마켓, 옥션, 11번가, 인터파크, 티몬, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스)</b></li>
+				<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 상품 결제금액만 반영</li>
+				<li>이벤트 참여자의 10월 구매내역 중 11월 30일까지의 구매확정(배송완료) 내역 기준으로 당첨자 선정</li>
+				<li>결제 이후 취소/환불/교환/반품한 경우에는 구매 확정 금액에서 제외됩니다.</li>
+				<li>대상쇼핑몰 결제금액 및 구매확정 데이터 업데이트 기간 </li>
+			</ul>
+
+			<div class="tb01" style="width:100%;margin:10px auto 0;">
+				<table>
+					<thead>
+						<tr>
+							<th rowspan="2">대상쇼핑몰</th>
+							<th colspan="2">이벤트 구매금액 업데이트 기간</th>
+						</tr>
+						<tr>
+							<th>결제금액</th>
+							<th>구매확정 금액</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>옥션</td>
+							<td rowspan="2">매주 목요일</td>
+							<td rowspan="8">
+								결제일로부터 10일 후<br />(교환/반품/취소는 제외)
+							</td>
+						</tr>
+						<tr>
+							<td>SSG</td>
+						</tr>
+						<tr>
+							<td>G마켓</td>
+							<td rowspan="6">결제 다음 날<br />(주말/공휴일 제외)</td>
+						</tr>
+						<tr>
+							<td>11번가</td>
+						</tr>
+						<tr>
+							<td>인터파크</td>
+						</tr>
+						<tr>
+							<td>티몬</td>
+						</tr>
+						<tr>
+							<td>GS SHOP</td>
+						</tr>
+						<tr>
+							<td>CJmall</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- * 주말/공휴일에는 업데이트 되지 않음 -->
+			</div>
+
+			<strong>오늘의 랭킹 순위 기준</strong>
+			<ul class="txt_indent">
+				<li>평일 오후 1시에 전일 결제금액으로 반영 됨 (단, 옥션, SSG는 위 업데이트 기간 참조)</li>
+				<li>이벤트 참여한 (구매왕 도전하기 버튼 클릭) 회원 중 나의 순위만 노출</li>
+			</ul>
+
+			<strong>아래의 경우에는 구매 확인 및 적립이 불가합니다.</strong>
+			<ul class="txt_indent">
+				<li>에누리 앱이 아닌 다른 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리앱으로 결제만 한 경우<br />(에누리 앱을 통해 쇼핑몰로 이동 후 장바구니/관심상품 등록 후 구매 시에는 가능)</li>
+				<li>에누리 앱 미 로그인 후 구매한 경우 또는 에누리 PC, 모바일 웹에서 구매한 경우</li>
+				<li><b>적립대상쇼핑몰 중 e머니 적립 제외 카테고리/서비스</b></li>
+			</ul>
+
+			<ol class="inner" style="margin-top:0px">
+				<li>- 에누리 앱에서 검색되지 않는 상품</li>
+				<li>- 인터파크 : 모바일쿠폰/상품권, 라이프 서비스(쇼핑/도서 외 티켓, 투어, 아이마켓 등)</li>
+				<li>- 11번가 : 여행/숙박/항공, e쿠폰/상품권</li>
+				<li>- 옥션, G마켓 : 중고장터, 실시간 여행, 항공권</li>
+				<li>- SSG: 도서/음반/문구/취미/여행/상품권/서비스 및 현금성 상품</li>
+				<li>- 이 외 쇼핑몰에 입점한 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리 제외</li>
+			</ol>
+			
+			<strong>유의사항</strong>
+			<ul class="txt_indent">
+				<li>부정 참여 시 적립이 취소될 수 있습니다.</li>
+				<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+			</ul>
+		</div>
+		<p class="btn_close"><button type="button" onclick="onoff('btn_info02')">확인</button></p>
+	</div>
+</div>
+
+<!-- 무조건천원 -->
+<div class="layer_back over_ht" id="btn_info04" style="display:none;">
+	<div class="appLayer">
+		<h4>무조건 1,000점 유의사항</h4>
+		<a href="javascript:///" class="close" onclick="onoff('btn_info04')">창닫기</a>
+		<div class="txt">
+			<strong>이벤트 기간</strong>
+			<ul class="txt_indent">
+				<li>2016년 11월 1일 ~ 11월 30일</li>
+				<li>기간 내 ID당 1회 응모가능합니다</li>
+			</ul>
+
+			<strong>당첨자 혜택</strong>
+			<ul class="txt_indent">
+				<li><b>총 1,000명</b>(매주 250명)에게 e머니 1,000점 지급</li>
+				<li>당첨자 발표 및 적립일: 2017년 1월 6일</li>
+				<li>e머니 유효기간 : 적립일로부터 30일</li>
+				<li>적립된 e머니는 에누리 앱 설치 후 해당 경품 외에도 다양한 e쿠폰으로 교환 가능합니다.</li>
+			</ul>
+
+			<strong>참여 방법 & 구매 유의사항</strong>
+			<ul class="txt_indent">
+				<li><span style="color:red">에누리 앱 로그인</span> &#8594 적립대상 쇼핑몰 이동 &#8594 1만원 이상 구매 &#8594 무조건 1,000점 응모하기</li>
+				<li><b>적립대상 쇼핑몰</b>: G마켓, 옥션, 11번가, 인터파크, 티몬, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스)</li>
+				<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 상품 결제금액만 반영됩니다.</li>
+			</ul>
+
+			 <strong>아래의 경우에는 구매 확인 및 적립이 불가합니다.</strong>
+			 <ul class="txt_indent">
+				<li>에누리 앱이 아닌 다른 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리앱으로 결제만 한 경우<br />(에누리 앱을 통해 쇼핑몰로 이동 후 장바구니/관심상품 등록 후 구매 시에는 가능)</li>
+				<li>에누리 앱 미 로그인 후 구매한 경우 또는 에누리 PC, 모바일 웹에서 구매한 경우</li>
+				<li><b>적립대상쇼핑몰 중 e머니 적립 제외 카테고리/서비스</b></li>
+			 </ul>
+			 
+			 <ol class="inner" style="margin-top:0px">
+				<li>- 에누리 앱에서 검색되지 않는 상품</li>
+				<li>- 인터파크 : 모바일쿠폰/상품권, 라이프 서비스(쇼핑/도서 외 티켓, 투어, 아이마켓 등)</li>
+				<li>- 11번가 : 여행/숙박/항공, e쿠폰/상품권</li>
+				<li>- 옥션, G마켓: 중고장터, 실시간 여행, 항공권</li>
+				<li>- SSG: 도서/음반/문구/취미/여행/상품권/서비스 및 현금성 상품</li>
+				<li>- 이 외 쇼핑몰에 입점한 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리 제외</li>
+			 </ol>
+			
+			<strong>유의사항</strong>	
+			<ul class="txt_indent">
+				<li>부정 참여 시 적립이 취소될 수 있습니다.</li>
+				<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+			 </ul>
+		</div>
+		<p class="btn_close"><button type="button" onclick="onoff('btn_info04')">확인</button></p>
+	</div>
+</div>
+
+<!-- 1% 자동적립 -->
+<div class="layer_back over_ht" id="btn_info03" style="display:none;">
+	<div class="appLayer">
+		<h4>1% 자동적립 유의사항</h4>
+		<a href="javascript:///" class="close" onclick="onoff('btn_info03')">창닫기</a>
+		<div class="txt">
+			<strong>지급 기준 및 구매 유의사항</strong>
+			<ul class="txt_indent">
+				<li>에누리 앱 로그인 &#8594 적립대상 쇼핑몰 이동 &#8594 구매하기 &#8594 구매확정(배송완료) 금액이 1,000원 이상 시 구매금액1% e머니 적립</li>
+				<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 상품 결제금액만 반영</li>
+				<li>대상쇼핑몰에서 장바구니로 여러 상품을 한번에 통합 결제 시 구매건수는 1건이며, 구매금액은 통합 결제한 금액의 1% e머니 적립</li>
+				<li>결제일로부터 10일간 취소/반품여부 확인 후 적립</li>
+				<li>e머니는 최소 10점부터 적립됩니다 (구매금액 1,000원 이상)</li>
+				<li>1원 단위 e머니는 적립되지 않습니다 (예: 1,200원 결제 시 e머니 10점 적립)</li>
+			</ul>
+
+			<strong>아래의 경우에는 구매 확인 및 적립이 불가합니다.</strong>
+			<ul class="txt_indent">
+				<li>에누리 앱이 아닌 다른 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리앱으로 결제만 한 경우<br />(에누리 앱을 통해 쇼핑몰로 이동 후 장바구니/관심상품 등록 후 구매 시에는 가능)</li>
+				<li>에누리 앱 미 로그인 후 구매한 경우 또는 에누리 PC, 모바일 웹에서 구매한 경우</li>
+				<li><b>적립대상쇼핑몰 중 e머니 적립 제외 카테고리/서비스</b></li>
+			</ul>
+			<ol class="inner" style="margin-top:0px">
+				<li>- 에누리 앱에서 검색되지 않는 상품</li>
+				<li>- 인터파크 : 모바일쿠폰/상품권, 라이프 서비스(쇼핑/도서 외 티켓, 투어, 아이마켓 등)</li>
+				<li>- 11번가 : 여행/숙박/항공, e쿠폰/상품권</li>
+				<li>- 옥션, G마켓 : 중고장터, 실시간 여행, 항공권</li>
+				<li>- SSG: 도서/음반/문구/취미/여행/상품권/서비스 및 현금성 상품</li>
+				<li>- 이 외 쇼핑몰에 입점한 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리 제외</li>
+			</ol>
+
+			<strong>e머니 유의사항</strong>
+			<ul class="txt_indent">
+				<li>e머니 유효기간: 적립일로부터 60일</li>
+				<li>적립된 e머니는 앱에서 다양한 e쿠폰 상품으로 교환 가능합니다.</li>
+			</ul>
+
+			<strong>적립확인</strong>
+			<ul class="txt_indent">
+				<li>에누리 앱 로그인 후 마이 페이지에서 확인</li>
+			</ul>
+
+			<strong>적립대상 쇼핑몰</strong>
+			<ul class="txt_indent">
+				<li>G마켓, 옥션, 11번가, 인터파크, 티몬, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스) ※ SSG는 2016년 8월1일부터 적용</li>
+			</ul>
+
+			<strong>유의사항</strong>
+			<ul class="txt_indent">
+				<li>부정 참여 시 적립이 취소될 수 있습니다.</li>
+				<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+			</ul>
+			
+		</div>
+		<p class="btn_close"><button type="button" onclick="onoff('btn_info03')">확인</button></p>
+	</div>
+</div>
+
+<!--// layer--> 
+
+
+
+<div id="eventWrap">
+	<div class="myarea">
+		<p class="name">홍길동 님<span onclick="onoff('app_only')">14,005,005점</span></p>
+		<!--p class="name">나의 e머니는 얼마일까?<button type="button" class="btn_login">로그인</button></p-->
+	</div>
+
+	<!-- 상단비주얼 -->
+	<div class="evtop01">
+		<ul class="sns">
+			<li><a href="javascript:///">카카오톡</a></li>
+			<li><a href="javascript:///">페이스북</a></li>
+		</ul>
+		<div class="top_visual">
+			<div class="img_box">
+				<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/nov/buy_main.png" alt="매일 누리는 출석체크 100%당첨">
+			</div>
+		</div>
+		<a href="#" class="win_close">창닫기</a>
+
+		<!-- tab_area -->
+		<div id="topFix" class="tab_area" style="position: absolute;">
+			<div class="inner">
+				<ul class="tabmenu">
+					<li class="tab1 on"><a class="btn" href="#con1">혜택01<strong>도전! 구매왕</strong></a></li><!-- 활성화 li class="on" 추가 -->
+					<li class="tab2"><a class="btn" href="#con2">혜택02<strong>1,000점 쏜다!</strong></a></li>
+					<li class="tab3"><a class="btn" href="#con3">혜택03<strong>1% 자동적립</strong></a></li>
+				</ul>
+			</div>
+			<a href="#" class="win_close">창닫기</a>
+		</div>
+		<!-- //tab_area -->
+	</div>
+	<!--// 상단비주얼 -->
+
+	<div class="contents">
+
+		<!-- 앱01 -->
+		<div class="con01 target" id="con1">
+			<div class="inner">
+				<a href="javascript:///" class="btn_buy" onclick="onoff('buy_layer')">구매왕 도전하기</a>
+			</div>
+		</div>
+
+		<div class="con01_1">
+			<div class="inner">
+				<div class="txt_box">
+					<ul>
+						<li>구매 기간 : 2016년 11월1일~11월30일</li>
+						<li>당첨자 발표 및 적립일 : 2017년 1월 6일</li>
+						<li>참여 방법:<br />
+						에누리 앱 로그인 &#8594 적립대상 쇼핑몰 이동 &#8594 구매 후 이벤트 응모<br />
+						(한번만 응모해도 이벤트 기간 구매금액 자동 누적됩니다.)</li>
+					</ul>
+					<em class="red">상품권, 이용권 등 유효기간 내 취소 가능한 상품은 구매왕 선정시 누적금액에서 제외됩니다.</em>
+				</div>
+				<a href="#" class="btn_check" onclick="onoff('btn_info01')">꼭! 확인하세요.</a><!-- 2016-06-28 -->
+			</div>
+		</div>
+
+		<div class="con02">
+			<div class="inner">
+				<p class="deco">오늘의 랭킹</p>			
+				<strong class="info">두근두근, 오늘은 몇 위?</strong>
+				<a href="javascript:///" class="btn_ranking" onclick="onoff('ranking_layer')">오늘 나의 순위 확인</a>
+				<div class="txt_box">
+					<ul>
+						<li>매일 오후 1시, 전일 구매금액 반영해, 순위 업데이트<br />(주말/공휴일 제외)</li>
+						<li>전일까지 체결된 금액 기준으로 반영되며,<br />확정 구매 후 순위 다를 수 있음</li>
+						<li>자세한 오늘의 랭킹 및 당첨 기준은 아래 <em>유의사항에서 꼭 확인해주세요</em></li>
+					</ul>
+				</div>
+				<a href="#" class="btn_check" onclick="onoff('btn_info02')">꼭! 확인하세요.</a><!-- 2016-06-28_s -->
+			</div>
+		</div>
+		<!--// 앱01 -->
+
+		<!-- 앱02 -->
+		<div class="con01 type2 target" id="con2">
+			<div class="inner">
+				<a href="javascript:///" class="btn_buy" onclick="onoff('app_only')">이벤트 참여하기</a>
+				<!-- <a href="javascript:///" class="btn_buy" onclick="onoff('event1000')">이벤트 참여하기</a> --><!-- 앱일때 -->
+			</div>
+		</div>
+
+		<div class="con01_1">
+			<div class="inner">
+				<div class="txt_box">
+					<ul>
+						<li>이벤트 참여 및 구매 기간 : 2016년 11월1일~11월30일</li>
+						<li>당첨자 발표 및 적립일 : 2017년 1월 6일</li>
+						<li>참여 방법:<br />
+						에누리 앱 로그인 &#8594 적립대상 쇼핑몰 이동 &#8594 1만원 이상 구매 후 응모!</li>
+					</ul>
+				</div>
+				<a href="#" class="btn_check" onclick="onoff('btn_info04')">꼭! 확인하세요.</a>
+			</div>
+		</div>
+
+		<div class="con03">
+			<div class="inner">
+				<div class="tit">앱에서 구매하러 가기!</div>
+				<div class="site_link">
+					<!-- 2016-07-28_s -->
+					<strong>적용대상 쇼핑몰 보기</strong><!-- 링크이동 기능없음 -->
+					<!-- <strong>적용대상 쇼핑몰 바로가기</strong> --><!-- 앱일때 텍스트변경 및 링크이동 -->
+					<div class="box">
+						<p class="txt">꼭! 에누리ID 로그인 후 쇼핑몰 이동하세요!</p>
+						<div class="site_ico"> <!-- //앱이 아닐땐 아래 a태그 감춰주세요 -->
+							<a href="#" class="link1">11번가</a>
+							<a href="#" class="link2">G마켓</a>
+							<a href="#" class="link3">옥션</a>
+							<a href="#" class="link4">gsshop</a>
+							<a href="#" class="link5">cjmall</a>
+							<a href="#" class="link6">인터파크</a>
+							<a href="#" class="link7">티몬</a>
+							<a href="#" class="link8">신세계몰</a>
+							<a href="#" class="link9">이마트몰</a>
+						</div>
+						<!-- 2016-07-28_e -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--// 앱02 -->
+		<script>
+			$( ".site_link strong" ).click(function() {
+			  $(".site_link").toggleClass( "on" );
+			});
+		</script>
+
+		<!-- 앱03 -->
+		<div class="con04 target"  id="con3">
+			<div class="inner">
+				<a href="javascript:///" class="btn_mypoint" onclick="onoff('app_only')">나의 적립내역 보기</a>
+				<a href="#" class="btn_check" onclick="onoff('btn_info03')">꼭! 확인하세요.</a><!-- 2016-06-28_s -->
+			</div>
+		</div>
+		<!-- 앱03 -->
+		
+
+
+
+		<!-- layer--> 
+		<div class="layer_back" id="benefit_layer" style="display:none;">
+			<div class="appLayer">
+				<h4>모바일 앱 전용 쇼핑 혜택</h4>
+				<a href="javascript:///" class="close" onclick="onoff('benefit_layer')">창닫기</a>
+				<p class="txt">에누리 앱(APP) 설치 후<br />e머니 적립내역 확인 및<br />다양한 e쿠폰 상품으로 교환할 수 있습니다.</p>
+				<p class="btn_close"><button type="button">설치하기</button></p>
+			</div>
+		</div>
+
+		<!-- 에누리딜 -->
+		<script>
+			$(document).ready(function(){
+				$('.deal_goods').slick({
+				dots: false,
+				infinite: true,
+				speed: 300,
+				slidesToShow: 1,
+				adaptiveHeight: true,
+				autoplay: true,
+				autoplaySpeed: 3000
+				});
+			});
+		</script>
+		<div class="enuri_deal">
+			<ul class="deal_goods">
+				<li><a href="javascript:///" onclick="onoff('appLayer')">
+					<div id="zoom_img"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/@deal_img.jpg" alt="" class="thum" /></div>
+					<strong>당도가 꿀이야! 산지직송 함안 하우스 수박</strong>
+					<div class="price">
+						<span class="sale"><b>38</b>%</span>
+						<span class="prc"><b>10,320</b>원</span>
+						<del><b>15,900</b>원</del>
+					</div>
+					<button type="button" class="btn_buy">앱에서 구매하기</button>
+				</a></li>
+				<li><a href="javascript:///">
+					<span class="soon">06/07 오전10시</span>
+					<div id="zoom_img"><img src="http://image.enuri.gscdn.com/webimage2/2288300000/2288330000/2288333300.jpg" alt="" class="thum" /></div>
+					<strong>당도가 꿀이야! 산지직송 함안 하우스 수박</strong>
+					<div class="price">
+						<span class="sale"><b>38</b>%</span>
+						<span class="prc"><b>10,320</b>원</span>
+						<del><b>15,900</b>원</del>
+					</div>
+					<button type="button" class="btn_buy">앱에서 구매하기</button>
+				</a></li>
+				<li><a href="javascript:///">
+					<span class="soldout">SOLD OUT</span>
+					<div id="zoom_img"><img src="http://image.enuri.gscdn.com/webimage2/1533700000/1533790000/1533794886.jpg" alt="" class="thum" /></div>
+					<strong>당도가 꿀이야! 산지직송 함안 하우스 수박</strong>
+					<div class="price">
+						<span class="sale"><b>38</b>%</span>
+						<span class="prc"><b>10,320</b>원</span>
+						<del><b>15,900</b>원</del>
+					</div>
+					<button type="button" class="btn_buy">앱에서 구매하기</button>
+				</a></li>
+				<li><a href="javascript:///">
+					<span class="soon">COMING SOON</span>
+					<div id="zoom_img"><img src="http://photo3.enuri.com/data/images/service/big/12702000/12702487.jpg" alt="" class="thum" /></div>
+					<strong>당도가 꿀이야! 산지직송 함안 하우스 수박</strong>
+					<div class="price">
+						<span class="sale"><b>38</b>%</span>
+						<span class="prc"><b>10,320</b>원</span>
+						<del><b>15,900</b>원</del>
+					</div>
+					<button type="button" class="btn_buy">앱에서 구매하기</button>
+				</a></li>
+				<li><a href="javascript:///">
+					<span class="soon">COMING SOON</span>
+					<div id="zoom_img"><img src="http://photo3.enuri.com/data/images/service/small/665000/665834.gif" alt="" class="thum" /></div>
+					<strong>당도가 꿀이야! 산지직송 함안 하우스 수박</strong>
+					<div class="price">
+						<span class="sale"><b>38</b>%</span>
+						<span class="prc"><b>10,320</b>원</span>
+						<del><b>15,900</b>원</del>
+					</div>
+					<button type="button" class="btn_buy">앱에서 구매하기</button>
+				</a></li>
+			</ul>
+		</div>
+		<!--// 에누리딜 -->
+
+		<div class="benefit">
+			<h2>e머니로 누리는 생활혜택</h2>
+			<ul>
+				<li>
+					<a href="javascript:///" onclick="onoff('benefit_layer')">
+						<img src="http://image.enuri.gscdn.com/webimage2/2288300000/2288330000/2288333300.jpg" alt="">
+						<em class="ellipsis">C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 </em><!-- 2016-06-29_s -->
+						<span>900</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:///" onclick="onoff('benefit_layer')">
+						<img src="http://photo3.enuri.com/data/images/service/big/10398000/10398992.jpg" alt="">
+						<em class="ellipsis">C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 C&U 농심 짜왕 </em><!-- 2016-06-29_s -->
+						<span>900</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:///" onclick="onoff('benefit_layer')">
+						<img src="http://photo3.enuri.com/data/images/service/small/12281000/12281546.gif" alt="">
+						<em class="ellipsis">C&U 농심</em><!-- 2016-06-29_s -->
+						<span>900</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--// 생활혜택 -->
+
+		<!-- 인기 키워드 기획전 -->
+		<div class="keyword">
+			<h2>e머니로 누리는 생활혜택</h2>
+			<div class="innder_scroll">
+				<ul class="swiper-wrapper thumb">
+					<li><a href="#" target="_new"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_attend9/11.jpg" alt=""></a></li>
+					<li><a href="#" target="_new"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_attend9/11.jpg" alt=""></a></li>
+					<li><a href="#" target="_new"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_attend9/11.jpg" alt=""></a></li>
+				</ul>
+			</div>
+		</div>
+		<!--// 인기 키워드 기획전 -->
+
+
+	</div>
+	<span class="go_top"><a href="#">TOP</a></span>
+
+
+</body>
+</html>

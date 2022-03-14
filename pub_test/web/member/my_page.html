@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://imgenuri.enuri.gscdn.com/common/css/eb/default_main.css">
+<link rel="stylesheet" type="text/css" href="http://imgenuri.enuri.gscdn.com/common/css/eb/common_main.css">
+<!-- <link rel="stylesheet" href="http://dev.enuri.com/css/default.css" type="text/css"> -->
+<link rel="stylesheet" href="/css/member.css" type="text/css"> <!-- [D] 작업 CSS -->
+<!--[if lte IE 8]>
+	<link rel="stylesheet" href="/css/member_ie.css" type="text/css">
+<![endif]-->
+</head>
+<body ID="Member">
+<div class="member_wrap">
+	<div class="mb_event_area">
+		<a href="#"><img src="/images/member/page/event_banner.jpg" alt="" /></a>
+	</div>
+	<!-- Member Header -->
+	<div class="mb_header">
+		<div class="container mg_top"><!-- 회원정보관리 일 때 class="mg_top" 추가 -->
+			<h1 class="page_title mag">
+				<a class="logo" href="http://enuri.com/"><img src="/images/member/page/enuri_logo.gif" alt="ENURI 로고" /></a>
+				<span class="userid"><strong class="id">enuri2017</strong> 님의 회원정보 관리</span>
+			</h1>
+			<a href="#" class="btn btn_out" onclick="$('.dim-layer').show();">회원탈퇴</a>
+		</div>
+	</div>
+
+	<!-- Member Content -->
+	<div class="mb_content">
+		<div class="container mg_con"><!-- 회원 관리일 때 class="mg_con" 추가 -->
+			<form id="manageForm" method="post" action="">
+				<fieldset>
+					<legend>회원정보 확인 및 변경</legend>
+					<!--
+						[수정내용]
+						상세정보입력란의 닉네임이 상단 기본정보로 넘어옴
+						본인인증완료시 전화번호 옆에 문구만 추가
+						본인인증 전후 등록,변경등 버튼텍스트만 변경됨.
+					-->
+					<div class="section">
+						<div class="title">기본 정보</div>
+						<div class="info_zone">
+							<!-- row section -->
+							<div class="row_group">
+								<div class="row">
+									<div class="jr_box two_col">
+										<label for="SAME_ID" class="th">이름</label>
+										<div class="ipt_area td">
+											<p>에누리누리</p>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box two_col">
+										<label for="SAME_ID" class="th">아이디</label>
+										<div class="ipt_area td">
+											<p>enuri2017</p>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box three_col">
+										<label for="SAME_ID" class="th">닉네임</label>
+										<div class="ipt_area td">
+											<input type="text" id="SAME_ID" class="ipt" value="" maxlength="20" placeholder="에누리누리" style="width:218px; "/>
+											<span class="err_msgs">동일한 닉네임이 있습니다.</span>
+											<!-- 리얼에 작업되어있는내용 그대로 복사 / 개선이 필요해 보이는...
+											<font id="fontNickName" color="red" style="color: blue; display: none;">
+												<span id="spanChkNickName" style="width: 260px;">사용할 수 있는 닉네임입니다.</span>
+											</font> 
+											-->
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box three_col">
+										<label for="SAME_ID" class="th">비밀번호</label>
+										<div class="ipt_area td">
+											<p>**********</p>
+										</div>
+										<div class="btn_group td">
+											<a href="#" class="btn btn_nm" onclick="return false;">변경</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box three_col">
+										<label for="SAME_ID" class="th">이메일</label>
+										<div class="ipt_area td">
+											<p>option1@naver.com</p>
+											<p class="tip">에누리 주요 공지사항/소식지 등이 발송됩니다.</p>
+										</div>
+										<div class="btn_group td">
+											<a href="#" class="btn btn_nm" onclick="return false;">변경</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box three_col">
+										<label for="SAME_ID" class="th">휴대폰 번호</label>
+										<div class="ipt_area td">
+											<!-- 
+												본인인증 완료시 <span>(본인인증 완료)</span>추가
+											-->
+											<p>010-1234-5678 <span>(본인인증 완료)</span></p>
+										</div>
+										<div class="btn_group td ">
+											<!-- 
+												본인인증완료시 : 변경
+												미완료시 : 인증하기
+											-->
+											<a href="#" class="btn btn_nm b1" onclick="return false;">변경</a>
+											<a href="#" class="btn btn_nm b1" onclick="return false;">인증하기</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- 
+						상세 정보 영역 삭제 220125 : 복구시 이전로그확인
+						상세정보입력란은 제거됨_ PASS인증을통해 나머지정보를 받음. 
+					-->
+
+					<div class="section">
+						<div class="title">개인정보 수집 및 이용안내 (선택)</div>
+						<div class="info_zone">
+							<div class="row_group">
+								<div class="row">
+									<div class="jr_box agree">
+										<div class="th">
+											<span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="" name="" value="N">전체 동의</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box agree">
+										<div class="td">
+											<span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="" name="" value="N">개인정보 수집 및 이용 동의 (선택)</span> <span class="btn_all_view" onclick="$(this).next('.view_agree_cnt').show();">전체보기</span>
+											<div class="view_agree_cnt">
+												<p>동의를 거부하실 수 있으며, 동의를 거부하시는 경우에도 서비스는 이용이 가능합니다.</p>
+												<div class="tip_box">
+													<div class="inner">
+														<p>수집하는 개인정보 선택 항목 : 닉네임, 성별, 생년월일, 주소</p>
+														<p>수집ㆍ이용 목적</p>
+														<ul> 
+															<li>- 신규 서비스 개발과 마케팅 및 광고에 활용</li>
+															<li>- 본인식별 절차에 이용, 성인컨텐츠 이용시 성인인증, 부정사용 방지</li>
+														</ul>
+														<p>보유 및 이용기간 :  수집한 선택항목은 동의 철회 또는 회원탈퇴 즉시 파기합니다.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="td">
+											<span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="" name="" value="N">이메일 수신 동의 (선택) </span><span class="txt_agree_date">2019.10.22 동의</span>
+										</div>
+										<div class="td">
+											<span class="unchk" onclick="agreechk(this);"><input type="checkbox" id="" name="" value="N">SMS/MMS 수신 동의 (선택)</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="jr_box agree">
+										<ul class="agree_noti">
+											<li>* SMS / 이메일 수신동의를 하시면 상품 및 이벤트 정보를 받으실 수 있습니다.</li>
+											<li>* 중요 공지사항 및 개인정보이용내역은 마케팅 수신 동의여부와 관계없이 발송됩니다.</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</form>	
+			
+			<div class="btn_group">
+				<a href="#" class="btn cancle">취소</a><a href="#" class="btn btn_lg active">저장</a>
+			</div>
+		</div>		
+	</div>
+</div>
+
+<!-- Member Footer 
+	[D] 기존  footer와 소스 동일하며, <div class="mb_footer_all"> 로 한 번 감싸주면 됩니다.
+-->
+<div class="mb_footer_all">
+	<div class="footer" id="tblFooter">
+		<ul class="footer_menu">
+			<li><span onclick="insertLog(1059);"><a href="/etc/enuri_intro/Enuriintro.jsp" target="_top">회사소개</a></span></li>
+			<li><span onclick="insertLog(1060);"><a href="/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3" target="_top">광고안내</a></span></li>
+			<li><span onclick="insertLog(1061);"><a href="/sdul/mallregister/SellerMain.jsp?sm=1&amp;lg=1" target="_top">판매자가이드</a></span></li>
+			<li><span onclick="insertLog(1062);GotoSDUL_Login();"><a href="#" onclick="this.blur();return false;">판매자SDU(L)&nbsp;</a></span></li>
+			<!-- <li><span><a href='/etc/provision.jsp' target="_top">이용약관</a></span></li>  -->
+			<li><span onclick="insertLog(4555);"><a href="/etc/Secure.jsp" target="_top"><strong>개인정보취급방침</strong></a></span></li>
+			<li><span onclick="insertLog(1064);"><a href="/etc/Duty.jsp" target="_top">법적고지</a></span></li>
+			<li><span onclick="insertLog(1065);"><a href="/view/mallsearch/Listmall.jsp" target="_top">쇼핑몰검색</a></span></li>
+			<li><span><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></span></li>
+			<li><span onclick="insertLog(1067);Cmd_Sitemap_All_Bottom();"><a href="#" onclick="this.blur();return false;">전체메뉴</a></span></li>
+			<li><span onclick="insertLog(1068);"><a href="/etc/Site_map.jsp" target="_top">사이트맵</a></span></li>
+		</ul>
+
+		<div class="adr">
+			<span>서울시 중구 퇴계로 18(남대문로5가) 9층, 에누리닷컴(주)</span>
+			<span>대표이사 : 최문석</span>
+			<span>사업자등록번호 : 206-81-18164</span>
+			<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+			<span>전화 : 02-6354-3601</span>
+			<span>팩스 : 02-6354-3600</span>
+			문의 : master@enuri.com
+			<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+		</div>
+
+		<ul class="award_list">
+			<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+			<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+			<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			<li>2016 모바일브랜드 대상 가격비교서비스 대상</li>
+			<li>한국온라인쇼핑협회 정회원사</li>
+		</ul>
+
+		<p class="copyright"><strong>에누리닷컴(주)는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</strong>Copyright ⓒ eNuri.com Co., Ltd All rights reserved.</p>
+	</div>
+</div>
+<!-- //Member Footer -->
+
+<div class="dim-layer" style="display: block;">
+
+	<div class="dimBg"></div>
+	<div id="layer2" class="pop-layer" style="padding: 15px; margin-top: -267.5px; margin-left: -310px;">
+		<table id="mainTable" width="580" border="0" cellspacing="0" cellpadding="0">
+			<tbody><tr>
+				<td height="20" align="right">
+					<table width="570" border="0" align="center" cellpadding="0" cellspacing="0">
+						<tbody><tr>
+							<td width="540" align="left" colspan="2" style="font-size: 20px;"><span class="style11">jibro</span> <img src="http://img.enuri.info/images/member/join2009/mypage_tit_2015.gif"></td>
+							<td width="20" align="center"><img onclick="$(this).closest('.dim-layer').hide();" style="cursor: pointer;" src="http://img.enuri.info/images/member/join2009/x_btn_2015.gif"></td>
+						</tr>
+						<tr>
+							<td colspan="3" background="http://img.enuri.info/images/member/join2009/line.gif" height="2"></td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table width="560" border="0" align="center" cellpadding="0" cellspacing="0">
+						<tbody><tr>
+							<td>
+								<table width="550" border="0" align="center" cellpadding="0" cellspacing="0">
+									<tbody><tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td height="25"><img src="http://img.enuri.info/images/member/join2009/mypage_tx_tit_01_2015.gif"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="540" border="0" align="right" cellpadding="0" cellspacing="0">
+												<tbody><tr>
+													<td>1. 회원탈퇴 시 ID를 제외한 모든 개인정보는 탈퇴 즉시 삭제됩니다.<br> 2. 탈퇴한 ID는 재사용 및 복구가 불가능합니다.<br> 3. 탈퇴 후에도 작성한 게시물은 삭제되지 않습니다.(상품평,게시판,댓글 등)<br> - 게시글 삭제를 원하시는 경우 탈퇴 전에 게시물을 직접 삭제해주시기 바랍니다.
+													</td>
+												</tr>
+											</tbody></table>
+										</td>
+									</tr>
+								</tbody></table>
+							</td>
+						</tr>
+						<tr>
+							<td align="right">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<form name="MySecedeFrm" style="margin: 0 0 0 0;" action="/member/info/secede_proc.jsp" method="post">
+									<table width="550" border="0" align="center" cellpadding="0" cellspacing="0">
+										<tbody><tr>
+											<td height="25"><img src="http://img.enuri.info/images/member/join2009/mypage_tx_tit_02_2015.gif"></td>
+										</tr>
+										<tr>
+											<td>
+												<table width="540" border="0" align="right" cellpadding="0" cellspacing="0">
+													<tbody><tr>
+														<td>이용중 느끼신 불편사항을 적어주시면 즉시 도와드리겠습니다.</td>
+													</tr>
+												</tbody></table>
+											</td>
+										</tr>
+										<tr>
+											<td align="center"><textarea name="why1" onfocus="focusAction(this, '불편사항이 있으실 경우 기입해주세요.');" onblur="blurAction(this, '불편사항이 있으실 경우 기입해주세요.');" cols="85" style="height: 80px;">불편사항이 있으실 경우 기입해주세요.</textarea></td>
+										</tr>
+									</tbody></table>
+							</form></td>
+						</tr>
+						<tr>
+							<td align="right">&nbsp;</td>
+						</tr>
+						<tr>
+							<td>
+								<table width="550" border="0" align="center" cellpadding="0" cellspacing="0">
+									<tbody><tr>
+										<td height="25"><img src="http://img.enuri.info/images/member/join2009/mypage_tx_tit_03_2015.gif"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="540" border="0" align="right" cellpadding="0" cellspacing="0">
+												<tbody><tr>
+													<td>보다 나은 서비스를 위해 탈퇴 사유를 간단히 적어주세요.</td>
+												</tr>
+											</tbody></table>
+										</td>
+									</tr>
+									<tr>
+										<td align="center"><textarea name="why2" onfocus="focusAction(this, '쓰지 않으셔도 됩니다.');" onblur="blurAction(this, '쓰지 않으셔도 됩니다.');" cols="85" style="height: 80px;">쓰지 않으셔도 됩니다.</textarea></td>
+									</tr>
+									<tr>
+										<td height="50" align="center"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img onclick="MySecedeFrm_send('jibro');" src="http://img.enuri.info/images/member/join2009/btn_backout_2015.gif" border="0" style="cursor: pointer;">&nbsp;&nbsp; <img onclick="hideSecede();" src="http://img.enuri.info/images/member/join2009/btn_cancle_2015.gif" border="0" style="cursor: pointer;"></td>
+									</tr>
+								</tbody></table>
+								
+							</td>
+						</tr>
+					</tbody></table>
+				</td>
+			</tr>
+		</tbody></table>
+
+	</div>
+
+</div>
+
+<!-- [D] 추가 -->
+<script type="text/javascript" src="/common/js/lib/jquery.placeholder.min.js"></script>
+<script>
+	/*checkbox*/
+	function agreechk(obj){
+		if (obj.className== 'unchk') {
+			obj.className = 'chk';
+		} else {
+			obj.className = 'unchk';
+		}
+	}
+
+	$(function(){
+		// IE 8,9 placeholder 
+		$("input, textarea").placeholder();
+	});
+
+	// 성별 남/여 라디오 버튼 checked 
+		var radios = $(".gender input[type='radio']");
+		$(radios).click(function(e){
+			var attr = $(this).attr("name");
+
+			if(typeof attr !== typeof undefined && attr !== false){
+				$(".gender input:radio[name="+attr+"]").removeAttr("checked");
+				$(this).attr("checked","checked");
+			}
+		});
+</script>
+</body>
+</html>

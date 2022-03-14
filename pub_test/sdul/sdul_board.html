@@ -1,0 +1,953 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://img.enuri.info/images/mobilefirst/images/logo_enuri.png">
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+    <link rel="stylesheet" href="/css/sdul/common.css" type="text/css">
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+    <div id="wrap">
+        
+        <!-- 공통 : 판매자센터 헤더 -->
+	    <div class="header">
+	        <div class="header_wrap">
+	            <div class="inner">
+	                <h1><span class="obj_bi" onclick="top.location.href='/'">ENURI</span> 판매자 광고센터</h1>
+	                <div class="menu_list">
+                        <!-- <div class="menu_item">
+                            <a href="#">로그인</a>
+                        </div> -->
+                        <div class="menu_item">
+                            <span class="menu_item_inner"><em>향봉이다</em>님 <span class="ico__arr_down home__sprite"></span></span>
+                            <div class="com_lay_login com_lay_box">
+                                <div class="lay_inner">
+                                    <ul>
+                                        <li class="js-myenuri"><a href="javascript:goMyPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+                                        <li><a href="javascript:showPopup('lay_myinfo');">SDUL회원 정보수정</a></li>
+                                        <li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+                                        <li><a href="javascript:logout();">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu_item">
+                            <span class="menu_item_inner">SDUL(대기중) <em>0</em>건</span>
+                        </div>
+                        <div class="menu_item">
+                            <span class="menu_item_inner">상위입찰 <em>4</em>건</span>
+                        </div>
+                        <div class="menu_item">
+                            <span class="menu_item_inner">유상잔액 <em>-10</em>원</span>
+                        </div>
+                        <div class="menu_item">
+                            <div class="menu_item_inner">무상잔액 
+                                <div class="lay_tool_tip">
+                                    <span class="global__sprite ico_tool_tip" onclick="$(this).next('.layer_box').toggle();">?</span>
+                                    <div class="layer_box" style="display:none">
+                                        <div class="lay_cnt">
+                                            <ul>
+                                                <li>무상잔액이 있는 경우에는 유상잔액(현금/카드) 보다 먼저 사용됩니다.</li>
+                                                <li>무상잔액은 지급 이후 3개월이 지나면 자동 소멸합니다.</li>
+                                                <li>무상잔액은 현금, 쿠폰등으로 환불할 수 없습니다.</li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn_close global__sprite" onclick="$(this).closest('.layer_box').hide();">닫기</button>
+                                    </div>
+                                    <em>40,300</em>원
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu_item">
+                            <button class="btn_blue btn_charge" onclick="showPopup('lay_charge');return false;">충전하기</button>
+                        </div>
+                    </div>
+	            </div>
+	        </div>
+	    </div>
+        <!-- // 판매자 센터 헤더 -->            
+        
+        <!-- 공통 : GNB -->
+        <div class="gnb">
+            <div class="inner">
+                <ul>
+                    <!-- 선택된 탭은 .selected 클래스 붙여주세요 -->
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="sdul_register.html">상품등록</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">상품등록</div>
+                                <div class="lay_cnt">
+                                    G마켓, 옥션, 11번가 등의 오픈마켓 판매자들의 판매상품 중 <br/>
+                                    아직 에누리에 등록되지 않은 상품을 판매자 여러분들이 <br/>
+                                    직접 신속히 등록할 수 있습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_bidding.html">상위노출입찰</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">동일 최저가 상위노출 입찰</div>
+                                <div class="lay_cnt">
+                                    에누리 가격비교에 동일한 가격의 최저가 존재시,<br/>
+                                    자신의 가격을 최상위에 노출시키도록 입찰 할 수 있습니다.<br/>
+                                    (동일 최저가 시 최상위 가격의 클릭율은 75% 이상입니다.)
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_adcopy.html">판매자 광고문구</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">판매자 광고문구</div>
+                                <div class="lay_cnt">
+                                    신규회원가입 혜택, 적립금 안내등 다양한 이벤트 및 홍보문구를<br/>
+                                    노출하여 동일가 판매 업체 대비 고객의 시선을 확보하여<br/>
+                                    매출 상승을 기대할 수 있습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="sdul_supertop.html">슈퍼탑 광고</a>
+                    </li>
+                    <li>
+                        <a href="sdul_pricetop.html">프라이스탑 광고</a>
+                    </li>
+                    <li><a href="sdul_catalog.html">카탈로그</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">카탈로그 퍼가기</div>
+                                <div class="lay_cnt">
+                                    오픈마켓 판매자 및 전문몰을 대상으로 에누리의 상품정보를<br/>
+                                    무료로 제공합니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="sdul_guide.html">판매자가이드</a></li>
+                    <li><a href="sdul_entering.html">입점안내</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">입점안내</div>
+                                <div class="lay_cnt">
+                                    에누리 방문자 = 최고 충성도 고객<br/>
+                                    에누리 입점을 통해 매출을 올려보세요!
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="selected"><a href="sdul_board.html">FAQ/게시판</a>
+                        <div class="com_lay_box">
+                            <div class="lay_inner">
+                                <div class="lay_head">FAQ/게시판</div>
+                                <div class="lay_cnt">
+                                    판매자들이 자주 궁금해하시는 질문에 대한 답변모음과<br/>
+                                    질문,제안을 할 수 있는 게시판을 보실 수 있습니다.
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- // -->
+
+        <div class="container">
+
+            <div class="sub_conts">
+
+                <div class="sub_head">
+                    <h2>FAQ/게시판</h2>
+                    <span class="tx_sub tx_manager">문의 : 고객센터 02-6354-3601(내선:1 번) </span>
+                    <!-- <a href="#" class="btn_grey btn_guide"><span>판매자 가이드</span></a> -->
+                </div>
+
+                <div class="sub_contents">
+
+                    <div class="sub_tab">
+                        <ul>
+                            <!-- 선택된 페이지의 대메뉴/소메뉴 모두 .selected 클래스 붙여주세요 -->
+                            <li class="selected">
+                                <a href="#">자주묻는 질문</a>
+                                <div class="sub_item">
+                                    <a href="#" class="selected">상품등록</a>
+                                    <a href="#" class="">광고관련</a>
+                                    <a href="#" class="">상위입찰</a>
+                                    <a href="#" class="">기타문의</a>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">질문과 답변</a>
+                                <div class="sub_item">
+                                    <a href="#" class="">일반문의</a>
+                                    <a href="#" class="">광고관련</a>
+                                    <a href="#" class="">상위입찰</a>
+                                    <a href="#" class="">SDUL상품문의</a>
+                                    <a href="#" class="">기타문의</a>
+                                </div>
+                            </li>
+                            <li><a href="#">공지사항</a></li>
+                            <li><a href="http://www.enuri.com/faq/customer_seller_write.jsp?faq_type=4&kind=0&faq_seq=0" target="_blank">신상품 등록요청</a></li>
+                            <!-- 200612 : SR#40180 : 슈퍼탑 신청 신규개발 > 슈퍼탑 중지 프로세스 > 메뉴 신설-->
+                            <li>
+                                <a href="#">슈퍼탑 광고</a>
+                                <div class="sub_item">
+                                    <a href="sdul_supertop.html" class="" target="_top">신청</a>
+                                    <a href="sdul_supertop_stop.html" class="">중지</a>
+                                </div>
+                            </li>
+                            <!-- // -->
+                        </ul>
+                    </div>
+
+                    <!-- 자주 묻는 질문 FAQ  -->
+                    <div class="sub_inner borad_faq">
+                        <div class="sub_head">
+                            <h3>자주 묻는 질문 <span class="tx_loc">상품등록</span></h3>
+                        </div>
+
+                        <div class="board board_faq_list">
+                            <table class="tb_board">
+                                <thead>
+                                    <tr>
+                                        <th class="col_faq_tit">제목</th>
+                                        <th class="col_faq_count">조회수</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- FAQ 질문 -->
+                                    <!-- 질문 레코드를 클릭하면 tr.row_q에 on클래스 toggle -->
+                                    <tr class="row_q">
+                                        <!-- 제목 -->
+                                        <td class="col_faq_tit">
+                                            <i class="ico_board ico_q">Q</i>
+                                            상품등록 요청시 추가비용이 있나요?
+                                        </td>
+                                        <!-- 조회수 -->
+                                        <td class="col_faq_count">
+                                            <em>150</em>
+                                            <span class="ico_arr ico_board"></span>
+                                        </td>
+                                    </tr>
+                                    <!-- // -->
+                                    <!-- FAQ 답변 -->
+                                    <tr class="row_a">
+                                        <!-- 답변 -->
+                                        <td class="col_faq_answer" colspan="2">
+                                            <div class="tx_faq_answer">
+                                                <i class="ico_board ico_a">A</i>
+                                                <!-- 내용을 넣어주세요 -->
+                                                요청 승인 건당 10원이 부과됩니다.
+                                            </div>
+
+                                            <!-- 버튼 : 1:1문의 -->
+                                            <button class="btn_clean btn_cs">1:1 문의</button>
+                                        </td>
+                                    </tr>
+                                    <!-- // -->
+
+                                    <tr class="row_q">
+                                        <td class="col_faq_tit">
+                                            <i class="ico_board ico_q">Q</i>
+                                            에누리에 서비스가 안되고 있습니다. 등록하려면 어떻게 해야 하나요?
+                                        </td>
+                                        <td class="col_faq_count">
+                                            <em>2299</em>
+                                            <span class="ico_arr ico_board"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="row_a">
+                                        <td class="col_faq_answer" colspan="2">
+                                            <div class="tx_faq_answer">
+                                                <i class="ico_board ico_a">A</i>
+                                                에누리에서는 데이터의 양이 워낙 방대하다보니 등록이 지연될 수 있습니다.<br/>
+                                                이러한 경우를 보완하기 위하여 'Speed 상품등록(SDUL)' 서비스를 시행하고 있습니다.<br/>
+                                                오픈마켓에 올리신 상품이 에누리에 서비스가 되지 않았을 경우, SDUL 서비스를 이용하여,<br/>
+                                                에누리에 다이렉트로 상품 등록요청을 하실 수 있습니다.<br/>
+                                                ※이용 가능한 오픈마켓: G마켓, 11번가, 옥션, 인터파크
+                                            </div>
+                                            <!-- 버튼 : 1:1문의 -->
+                                            <button class="btn_clean btn_cs">1:1 문의</button>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="row_q">
+                                        <td class="col_faq_tit">
+                                            <i class="ico_board ico_q">Q</i>
+                                            상품등록 요청을 하였습니다. 언제 서비스가 시작되나요?
+                                        </td>
+                                        <td class="col_faq_count">
+                                            <em>4451</em>
+                                            <span class="ico_arr ico_board"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="row_a">
+                                        <td class="col_faq_answer" colspan="2">
+                                            <div class="tx_faq_answer">
+                                                <i class="ico_board ico_a">A</i>
+                                                ▶요청시간대에 따른 처리시간<br/>
+                                                -. 오후 6시 이전: 당일 처리<br/>
+                                                -. 오후 6시 이후: 익일(근무일 기준) 오전내 처리<br/>
+                                                <em class="tx_red">※내부사정으로 좀 더 늦어질수 있으나, 최대 익일에 처리가 완료됩니다.</em>
+                                            </div>
+                                            <!-- 버튼 : 1:1문의 -->
+                                            <button class="btn_clean btn_cs">1:1 문의</button>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="row_q">
+                                        <td class="col_faq_tit">
+                                            <i class="ico_board ico_q">Q</i>
+                                            오픈마켓에서 정상 판매중인데 에누리 서비스가 중단 되었습니다. 이유가 뭔가요?
+                                        </td>
+                                        <td class="col_faq_count">
+                                            <em>4451</em>
+                                            <span class="ico_arr ico_board"></span>
+                                        </td>
+                                    </tr>
+                                    <tr class="row_a">
+                                        <td class="col_faq_answer" colspan="2">
+                                            <div class="tx_faq_answer">
+                                                <i class="ico_board ico_a">A</i>
+                                                에누리에서는 오픈마켓 전상품이 아닌 오픈마켓에서 제공받은 '가격정보페이지'에 있는 상품만 서비스가 가능합니다.<br/>
+                                                정상 판매중인 상품임에도 에누리에서 서비스가 중단되면, 해당 오픈마켓에 에누리에 제공하는 '가격정보페이지'에 해당 상품 정보가 누락된 이유를 문의하시면 됩니다.
+                                            </div>
+                                            <!-- 버튼 : 1:1문의 -->
+                                            <button class="btn_clean btn_cs">1:1 문의</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <script>
+                                $(function(){ // 퍼블테스트
+                                    var $board = $(".board_faq_list");
+                                    $board.find(".row_q").click(function(){
+                                        $(this).toggleClass("on");
+                                    })
+                                })
+                            </script>
+                        </div>
+
+                        <ul class="paging">
+                            <li><a href="#" class="btn prev">이전</a></li>
+                            <li><a href="#" class="selected">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a href="#" class="btn next">다음</a></li>
+                        </ul>
+
+                    </div>
+                    <!-- // -->
+
+                    <!-- 질문과 답변 : 리스트 -->
+                    <div class="sub_inner borad_qna">
+                        <div class="sub_head">
+                            <h3>질문과답변 <span class="tx_loc">전체</span></h3>
+                        </div>
+
+                        <div class="board board_qna_list">
+                            <!-- 작성자 검색 -->
+                            <div class="view_sr_sort">                                
+                                <div class="box_sr_sort view_search">
+                                    <input class="inp_search" type="text" placeholder="아이디 검색">                                
+                                    <button class="btn_search"><i class="global__sprite ico_search"></i></button>
+                                </div>     
+                            </div>
+                            
+                            <table class="tb_board">
+                                <thead>
+                                    <tr>
+                                        <th class="col_qna_idx">번호</th>
+                                        <th class="col_qna_group">종류</th>
+                                        <th class="col_qna_tit">제목</th>
+                                        <th class="col_qna_author">적성자</th>
+                                        <th class="col_qna_date">작성일</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- 번호 -->
+                                        <td class="col_qna_idx">998</td>
+                                        <!-- 문의 구분 -->
+                                        <td class="col_qna_group">일반문의</td>
+                                        <!-- 처리상태 / 제목 -->
+                                        <td class="col_qna_tit">
+                                            <span class="tag_qna_status">답변완료</span>
+                                            <a class="tx_qna_tit">입점 관련입점 관련입점</a>
+                                        </td>
+                                        <!-- 작성자 -->
+                                        <td class="col_qna_author"><span class="tx_author">9af53014bde</span></td>
+                                        <!-- 작성일 -->
+                                        <td class="col_qna_date">2020-03-30</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col_qna_idx">998</td>
+                                        <td class="col_qna_group">일반문의</td>
+                                        <td class="col_qna_tit">
+                                            <span class="tag_qna_status">답변대기</span>
+                                            <a class="tx_qna_tit">가격비교 매칭 이동 요청</a>
+                                        </td>
+                                        <td class="col_qna_author"><span class="tx_author">9af53014bde</span></td>
+                                        <td class="col_qna_date">2020-03-30</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col_qna_idx">998</td>
+                                        <td class="col_qna_group">일반문의</td>
+                                        <td class="col_qna_tit">
+                                            <span class="tag_qna_status">답변대기</span>
+                                            <a class="tx_qna_tit">가격비교 매칭 이동 요청</a>
+                                        </td>
+                                        <td class="col_qna_author"><span class="tx_author">9af53014bde</span></td>
+                                        <td class="col_qna_date">2020-03-30</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col_qna_idx">998</td>
+                                        <td class="col_qna_group">일반문의</td>
+                                        <td class="col_qna_tit">
+                                            <span class="tag_qna_status">답변대기</span>
+                                            <a class="tx_qna_tit">가격비교 매칭 이동 요청</a>
+                                        </td>
+                                        <td class="col_qna_author"><span class="tx_author">9af53014bde</span></td>
+                                        <td class="col_qna_date">2020-03-30</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <ul class="paging">
+                            <li><a href="#" class="btn prev">이전</a></li>
+                            <li><a href="#" class="selected">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a href="#" class="btn next">다음</a></li>
+                        </ul>
+
+                        <!-- 버튼 : 글쓰기 -->
+                        <div class="button_area">
+                            <button class="btn_blue btn_qna_write">질문하기</button>
+                        </div>
+                        <!-- // -->
+
+                    </div>
+                    <!-- // -->
+
+                    <!-- 질문과 답변 : 보기 -->
+                    <div class="sub_inner borad_view">
+                        <div class="sub_head">
+                            <h3>질문과답변 <span class="tx_loc">전체</span></h3>
+                        </div>
+
+                        <div class="board board_list">
+                            <table class="tb_board">
+                                <thead>
+                                    <tr>
+                                        <th class="col_qna_tit">제목</th>
+                                        <th class="col_qna_author">작성자</th>
+                                        <th class="col_qna_date">작성일</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
+                                    <!-- 질문 -->
+                                    <tr>
+                                        <td class="col_qna_tit">
+                                            <span class="tx_view_tit">
+                                                <i class="ico_board ico_q">Q</i>
+                                                상품등록 요청시 추가비용이 있나요?
+                                            </span>
+                                        </td>
+                                        <td class="col_qna_author">
+                                            <span class="tx_author">9af53014bde</span>
+                                        </td>
+                                        <td class="col_qna_date">2020-03-30</td>
+                                    </tr>
+                                    <!-- 답변 -->
+                                    <tr class="row_a">
+                                        <td class="col_qna_answer" colspan="3">
+                                            <div class="tx_faq_answer">
+                                                <i class="ico_board ico_a">A</i>
+                                                <!-- 답변 컨텐츠는 여기에 -->
+안녕하세요.  <br/>
+해당문의 사항은 담당CM에게 전달 드렸습니다.<br/>
+<br/>
+기타문의는 아래 연락처로 주시기 바랍니다.  <br/>
+문의: 이영진[ (02)6354-3601(내선:1)<br/>
+<br/>
+2020-04-01 09:55:29.0 에 <em>운영자</em>에서 답변해드렸습니다.
+
+
+                                            </div>
+
+                                            <!-- 수정하기 -->
+                                            <textarea class="tx_noti_modify" name="#" id="" cols="30" rows="10" style="display:none">
+안녕하세요.  
+해당문의 사항은 담당CM에게 전달 드렸습니다.
+
+기타문의는 아래 연락처로 주시기 바랍니다.  
+문의: 이영진[ (02)6354-3601(내선:1)
+                                            </textarea>
+                                            <!-- // -->
+
+                                            <div class="button_area">
+                                                <!-- 버튼 : 수정 -->
+                                                <button class="btn_grey btn_modify">수정</button>                                                
+                                                <!-- 버튼 : 삭제 -->
+                                                <button class="btn_grey btn_delete">삭제</button>
+                                                <!-- 버튼 : 수정 > 저장 -->
+                                                <button class="btn_blue btn_modify_ok" style="display:none">저장</button>
+                                                <!-- 버튼 : 삭제 > 취소 -->
+                                                <button class="btn_grey btn_modify_cancel" style="display:none">취소</button>
+                                                <!-- 버튼 : 1:1문의 -->
+                                                <button class="btn_clean btn_cs">1:1 문의</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 답변달기 -->
+                            <div class="write_answer">
+                                <!-- 작성자명 -->
+                                <span class="tx_author">운영자</span>
+                                <!-- 답변 -->
+                                <textarea name="" id="" cols="30" rows="10" placeholder="9af53014bde님의 질문에 답변달기"></textarea>
+                                <div class="button_area">
+                                    <!-- 버튼 : 확인 -->
+                                    <button class="btn_grey btn_mod_confirm">확인</button>
+                                    <!-- 버튼 : 취소 -->
+                                    <button class="btn_grey btn_mod_cancel">취소</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 버튼 : 목록보기 -->
+                        <div class="button_area">
+                            <button class="btn_blue btn_qna_list">목록보기</button>
+                        </div>
+                        <!-- // -->
+
+                    </div>
+                    <!-- // -->
+
+                    <!-- 질문과 답변 : 질문하기 -->
+                    <div class="sub_inner borad_qna_write">
+                        <div class="sub_head">
+                            <h3>질문과답변 <span class="tx_loc">질문하기</span></h3>
+                        </div>
+
+                        <div class="board board_qna_write">                           
+                            <table class="tb_board tb_board_write">
+                                <tbody>
+                                    <tr>
+                                        <th>작성자</th>
+                                        <td>에누리</td>
+                                    </tr>
+                                    <tr>
+                                        <th>종류</th>
+                                        <td>
+                                            <div class="box_sr_sort select_type">
+                                                <span class="tx_value">일반문의</span>
+                                                <!-- 레이어 : 옵션 : hover시에만 활성화 -->
+                                                <ul class="lay_option">
+                                                    <li class="selected">일반문의</li>
+                                                    <li>광고관련</li>
+                                                    <li>상위입찰</li>
+                                                    <li>기타문의</li>
+                                                </ul>
+                                                <!-- // -->
+                                            </div>
+                                            <script>
+                                                $(function(){ // 퍼블테스트 (selectbox)
+                                                    var $opt = $(".lay_option");
+                                                    $opt.closest('.box_sr_sort').hover(function(){
+                                                        $opt.removeAttr("style");
+                                                    })
+                                                    $opt.find("li").click(function(){
+                                                        var _txt = $(this).text();
+                                                        $(this).addClass('selected').siblings().removeClass("selected");
+                                                        $opt.prev('.tx_value').html( _txt );
+                                                        $opt.hide();
+                                                    })
+                                                })
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>제목</th>
+                                        <td>
+                                            <input type="text" class="tb_inp_board" placeholder="제목을 입력하세요"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>내용</th>
+                                        <td>
+                                            <textarea class="tb_txarea_board" name="" id="" cols="30" rows="10" ></textarea>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- 버튼 : 글쓰기 -->
+                        <div class="button_area">
+                            <button class="btn_blue btn_qna_write">등록</button>
+                            <button class="btn_grey btn_qna_reset">취소</button>
+                        </div>
+                        <!-- // -->
+                    </div>
+                    <!-- // -->
+
+                    <!-- 공지사항 -->
+                    <div class="sub_inner borad_noti">
+                        <div class="sub_head">
+                            <h3>공지사항</h3>
+                        </div>
+
+                        <div class="board board_noti_list">
+                            <table class="tb_board">
+                                <thead>
+                                    <tr>
+                                        <th class="col_noti_tit">제목</th>
+                                        <th class="col_noti_date">작성일</th>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <!-- 제목 -->
+                                        <td class="col_noti_tit">
+                                            <a href="#" class="tx_noti_tit">상위입찰 문자알림 서비스 오류관련 안내</a>
+                                        </td>
+                                        <!-- 작성일 -->
+                                        <td class="col_noti_date">2020-12-12</td>   
+                                    </tr>
+                                    <tr>
+                                        <td class="col_noti_tit">
+                                            <a href="#" class="tx_noti_tit">SDUL 서비스 오류관련 안내</a>
+                                        </td>
+                                        <td class="col_noti_date">2020-12-12</td>   
+                                    </tr>
+                                    <tr>
+                                        <td class="col_noti_tit">
+                                            <a href="#" class="tx_noti_tit">SDUL 서비스 일시중지 (4월 15일)</a>
+                                        </td>
+                                        <td class="col_noti_date">2020-12-12</td>   
+                                    </tr>
+                                    <tr>
+                                        <td class="col_noti_tit">
+                                            <a href="#" class="tx_noti_tit">상위노출 입찰 서비스 일시중지 (4월 15일)</a>
+                                        </td>
+                                        <td class="col_noti_date">2020-12-12</td>   
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <ul class="paging">
+                            <li><a href="#" class="btn prev">이전</a></li>
+                            <li><a href="#" class="selected">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li><a href="#">7</a></li>
+                            <li><a href="#">8</a></li>
+                            <li><a href="#">9</a></li>
+                            <li><a href="#">10</a></li>
+                            <li><a href="#" class="btn next">다음</a></li>
+                        </ul>
+
+                    </div>
+                    <!-- // -->
+
+                    <!-- 공지사항 : 보기 -->
+                    <div class="sub_inner borad_view">
+                        <div class="sub_head">
+                            <h3>공지사항</h3>
+                        </div>
+
+                        <div class="board board_list">
+                            <table class="tb_board">
+                                <thead>
+                                    <tr>
+                                        <th class="col_noti_tit">제목</th>
+                                        <th class="col_qna_date">작성일</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
+                                    <!-- 제목 -->
+                                    <tr>
+                                        <td class="col_noti_tit">
+                                            <span class="tx_view_tit">
+                                                상위입찰 문자알림 서비스 오류관련 안내
+                                            </span>
+                                        </td>
+                                        <td class="col_noti_date">2020-03-30</td>
+                                    </tr>
+                                    <!-- 내용 -->
+                                    <tr>
+                                        <td class="col_noti_view" colspan="2">
+                                            <div class="tx_noti_view">
+                                                
+                                                <!-- 내용 -->
+
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+                                                내용내용내용<br/>
+
+                                                <!-- // -->
+
+                                            </div>
+                                            
+                                            <!-- 수정하기 -->
+                                            <textarea class="tx_noti_modify" name="#" id="" cols="30" rows="10" style="display:none">
+내용내용내용
+내용내용내용
+내용내용내용
+내용내용내용
+내용내용내용
+내용내용내용
+내용내용내용
+내용내용내용
+                                            </textarea>
+                                            <!-- // -->                                            
+
+                                            <div class="button_area">
+                                                <!-- 버튼 : 수정 -->
+                                                <button class="btn_grey btn_modify">수정</button>                                                
+                                                <!-- 버튼 : 삭제 -->
+                                                <button class="btn_grey btn_delete">삭제</button>
+                                                
+                                                <!-- 버튼 : 수정 > 확인 -->
+                                                <button class="btn_blue btn_modify_ok" style="display:none">저장</button>
+                                                <!-- 버튼 : 삭제 > 취소 -->
+                                                <button class="btn_grey btn_modify_cancel" style="display:none">취소</button>
+                                            </div>
+                                            <script>
+                                                $(function(){// 테스트
+                                                    $(".btn_modify").click(function(){
+                                                        var $parent = $(this).closest('tr');
+                                                        $parent.find(".btn_modify").hide();
+                                                        $parent.find(".btn_delete").hide();
+                                                        $parent.find(".btn_modify_ok").show();
+                                                        $parent.find(".btn_modify_cancel").show();
+                                                        $parent.find(".tx_noti_view").hide();
+                                                        $parent.find(".tx_faq_answer").hide();
+                                                        $parent.find(".tx_noti_modify").show();                                                        
+                                                    })
+
+                                                    $(".btn_modify_ok, .btn_modify_cancel").click(function(){
+                                                        var $parent = $(this).closest('tr');
+                                                        $parent.find(".btn_modify").show();
+                                                        $parent.find(".btn_delete").show();
+                                                        $parent.find(".btn_modify_ok").hide();
+                                                        $parent.find(".btn_modify_cancel").hide();
+                                                        $parent.find(".tx_noti_view").show();
+                                                        $parent.find(".tx_faq_answer").show();
+                                                        $parent.find(".tx_noti_modify").hide();      
+                                                    })
+                                                })
+                                            </script>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 댓글보기 -->
+                            <div class="reply_area">
+                                <div class="reply_head">
+                                    댓글 <span class="tx_count">(10)</span>
+                                </div>
+
+                                <!-- 댓글달기 -->
+                                <div class="write_answer write_reply">
+                                    <!-- 작성자명 -->
+                                    <span class="tx_author">운영자</span>
+                                    <!-- 답변 -->
+                                    <textarea name="" id="" cols="30" rows="10" placeholder="운영자님의 공지사항에 댓글달기"></textarea>
+                                    <div class="button_area">
+                                        <!-- 버튼 : 확인 -->
+                                        <button class="btn_grey btn--md btn_mod_confirm">확인</button>
+                                        <!-- 버튼 : 취소 -->
+                                        <button class="btn_grey btn--md btn_mod_cancel">취소</button>
+                                    </div>
+                                </div>
+
+                                <!-- 댓글보기 -->
+                                <div class="view_reply">
+                                    <ul class="list">
+                                        <li>
+                                            <div class="c_comment_area">
+												<div class="c_info_box">
+													<span class="c_info_nickname">후니</span>
+													<span class="c_info_date">2019-07-12 10:10</span>
+													<div class="c_info_tool">
+														<a href="#" class="btn__reply_report">신고</a>
+														<a href="#" class="btn__reply_delete">삭제</a>
+														<a href="#" class="btn__reply_modify">수정</a>
+													</div>
+												</div>
+												<div class="c_contents_box">
+													주장이란 무게가 그의 어깨를 짓누른 때가 있었다. 사기 진작을 위해 조금은 과한 퍼포먼스로 팀원들에 메시지를 전하기도 했다. 상대팀 팬들에겐 비난을 받기도 했지만 팀을 위한 행동이었기에 감수할 수 있었다. 그리고 박민우는 주장으로서 다시 한 번 팀을 하나로 모으고자 한다.
+												</div>
+											</div>
+                                        </li>
+                                        <li>
+                                            <div class="c_comment_area">
+												<div class="c_info_box">
+													<span class="c_info_nickname">후니</span>
+													<span class="c_info_date">2019-07-12 10:10</span>
+													<div class="c_info_tool">
+														<a href="#" class="btn__reply_report">신고</a>
+														<a href="#" class="btn__reply_delete">삭제</a>
+														<a href="#" class="btn__reply_modify">수정</a>
+													</div>
+												</div>
+												<div class="c_contents_box">
+													주장이란 무게가 그의 어깨를 짓누른 때가 있었다. 사기 진작을 위해 조금은 과한 퍼포먼스로 팀원들에 메시지를 전하기도 했다. 상대팀 팬들에겐 비난을 받기도 했지만 팀을 위한 행동이었기에 감수할 수 있었다. 그리고 박민우는 주장으로서 다시 한 번 팀을 하나로 모으고자 한다.
+												</div>
+											</div>
+                                        </li>
+                                        <li>
+                                            <div class="c_comment_area">
+												<div class="c_info_box">
+													<span class="c_info_nickname">후니</span>
+													<span class="c_info_date">2019-07-12 10:10</span>
+													<div class="c_info_tool">
+														<a href="#" class="btn__reply_report">신고</a>
+														<a href="#" class="btn__reply_delete">삭제</a>
+														<a href="#" class="btn__reply_modify">수정</a>
+													</div>
+												</div>
+												<div class="c_contents_box">
+													주장이란 무게가 그의 어깨를 짓누른 때가 있었다. 사기 진작을 위해 조금은 과한 퍼포먼스로 팀원들에 메시지를 전하기도 했다. 상대팀 팬들에겐 비난을 받기도 했지만 팀을 위한 행동이었기에 감수할 수 있었다. 그리고 박민우는 주장으로서 다시 한 번 팀을 하나로 모으고자 한다.
+												</div>
+											</div>
+                                        </li>
+                                    </ul>
+
+                                    <ul class="paging">
+                                        <li><a href="#" class="btn prev">이전</a></li>
+                                        <li><a href="#" class="selected">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">6</a></li>
+                                        <li><a href="#">7</a></li>
+                                        <li><a href="#">8</a></li>
+                                        <li><a href="#">9</a></li>
+                                        <li><a href="#">10</a></li>
+                                        <li><a href="#" class="btn next">다음</a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                            <!-- // -->
+
+
+                        </div>
+
+                        <!-- 버튼 : 목록보기 -->
+                        <div class="button_area">
+                            <button class="btn_blue btn_qna_list">목록보기</button>
+                        </div>
+                        <!-- // -->
+
+                    </div>
+                    <!-- // -->
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 200903 : SR#42125 : [PC] SDUL 푸터 정보 변경 요청 -->
+        <div id="footer" class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick scr_mode">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li>
+                        <li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li>
+                        <!-- <li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li> -->
+                        <!-- <li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li> -->
+                        <!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <!-- <li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li> -->
+                        <!-- <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li> -->
+                        <!-- <li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li> -->
+                        <!-- <li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->
+    </div>
+
+    <script>
+        //퍼블테스트용 : 레이어 열기
+        function showPopup(name){
+            window.open("layer.html?view="+name, "sdulPopWin", "width=520, height=700, toolbar=no, menubar=no, scrollbars=1, resizable=no" );
+        }
+    </script>
+</body>
+</html>

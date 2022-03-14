@@ -1,0 +1,449 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<!-- 200219 CSS 교체 -->
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common_ssl.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/myenuri_ssl.css"/>
+	<!-- // -->
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div id="wrap">
+	
+    <!-- 헤더 SUB -->
+    <header id="header" class="m_header m_header_sub">
+		<div class="header_wrap">
+			<h1 class="m_txt">시세 관리</h1>
+            <button class="btn_hd_back comm__sprite">뒤로</button>
+			<button class="btn_hd_close comm__sprite">닫기</button>
+		</div>	
+    </header>
+    <!-- // 헤더 SUB -->
+
+	<section id="container" class="m_sub_cont">
+        
+		<div class="my__cont">
+
+        <!-- 210618 : SR#47297 : 시세 및 내차팔기 서비스 추가 -->
+            <div class="my__car_quote">
+                <div class="my_quoteinfo">
+                    <!-- 내차 목록 -->
+                    <div class="my_quotelist">
+                        <div class="item_head">
+                            <h3 class="tx_tit">내차 시세관리 <span class="tx_num">(3)</span></h3>
+                        </div>
+                        <div class="item_body">
+                            <div class="tabs_scroll">
+                                <ul class="mytabs">
+                                    <li class="tab__item is-on" data-tabname="#tab1">
+                                        <div class="tab__item_wrap">
+                                            <div class="thumb">
+                                                <!-- 모델이미지 -->
+                                                <img src="/images/newcar/img_car.png" alt="">
+                                            </div>
+                                            <!-- 모델명 -->
+                                            <span class="tx_model">123누 2345</span>
+                                        </div>
+                                    </li>
+                                    <li class="tab__item" data-tabname="#tab2">
+                                        <div class="tab__item_wrap">
+                                            <div class="thumb">
+                                                <img src="/images/newcar/img_car.png" alt="">
+                                            </div>
+                                            <span class="tx_model">123누 2345</span>
+                                        </div>
+                                    </li>
+                                    <li class="tab__item add_quote">
+                                        <a href="/pub_test/newcar/m/mycar_quote.html">
+                                            <i class="my__sprite ico_plus"></i>추가하기
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <script>
+                                $(function(){
+                                    var mytab = $(".mytabs .tab__item");
+
+                                    mytab.on("click", function(){
+                                        var _this = $(this),
+                                            _thisContent = _this.data("tabname");
+
+                                        _this.addClass("is-on").siblings("li").removeClass("is-on");
+                                        $(_thisContent).show().siblings().hide();
+                                    }); 
+                                })
+                            </script>
+                        </div>
+                    </div>
+                    <!-- // -->
+
+                    <div class="tabs_container">
+                        <div id="tab1" class="tab_cont">
+                            <div class="cont_inner">
+                                <!-- 내차 삭제 -->
+                                <button type="button" class="my__sprite tab_del"  onclick="$('.lay_alert').fadeIn();">내차 삭제</button>
+
+                                <!-- 내차 정보 -->
+                                <div class="my_quoteitem">
+                                    <button type=""></button>
+                                    <div class="item_body">
+                                        <div class="item_thumb">
+                                            <!-- 브랜드 로고 -->
+                                            <span class="logo"><img src="/images/newcar/img_brand.png" alt=""></span>
+                                            <!-- 모델 이미지 -->
+                                            <span class="thumb"><img src="/images/newcar/img_car.png" alt=""></span>
+                                        </div>
+                                        <div class="item_info">
+                                            <!-- 모델명 -->
+                                            <span class="tx_model">벤츠 AMG GT 4door Coupe(X290)</span>
+                                            <!-- 라인업 -->
+                                            <span class="tx_lineup">벤츠 AMG GT 4door Coupe(X290)</span>
+                                        </div>
+                                    </div>
+                                    <div class="item_foot">
+                                        <!-- 내차 상세 -->
+                                        <ul class="mqd_detail">
+                                            <li><dl><dt>차량번호</dt><dd>123누4567</dd></dl></li>
+                                            <li><dl><dt>최초등록일</dt><dd>2018.01.01</dd></dl></li>
+                                            <li><dl><dt>주행거리(km)</dt><dd>140,000</dd></dl></li>
+                                        </ul>
+                                        <!-- // -->
+                                    </div>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 모델 시세 - 현재 -->
+                                <div class="my_quote">
+                                    <div class="item_head">
+                                        <h3 class="tx_tit">현재 시세</h3>
+                                        <p class="tx_unit">( 단위 : 만원 )</p>
+                                    </div>
+
+                                    <div class="item_body">
+                                        <div class="quote_wrap">
+                                            <div id="quote_bar" class="quote_bar">
+                                                <div class="bar_pips">
+                                                    <span class="min_value">2900</span>
+                                                    <span class="half_value">3240</span>
+                                                    <span class="max_value">3600</span>
+                                                </div>
+                                                <!-- data-lowvalue="시세 최소값" data-highvalue="시세 최대값"-->
+                                                <div class="value_bar" data-originvalue="32400000">
+                                                    <span class="dot low_dot">
+                                                        <span class="value_tooltip">
+                                                            <span class="prefix">최저가</span>
+                                                            <span class="barvalue"></span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="dot high_dot">
+                                                        <span class="value_tooltip">
+                                                            <span class="prefix">최고가</span>
+                                                            <span class="barvalue"></span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="release_bar">
+                                                <div class="bar_pips">
+                                                    <div class="txt">신차가<span>5,000</span></div>
+                                                </div>
+                                            </div>
+
+
+                                            <script type="text/javascript">
+                                                (function($) {
+                                                    $(function() {
+                                                        function changeType(value){
+                                                            return value * (1/10000);
+                                                        }
+                                                        var valueBar = $(".value_bar"),
+                                                            origin_value = changeType(valueBar.data('originvalue')),
+                                                            /* 
+                                                                레인지 범위
+                                                                최저가 : 평균가 - 300 
+                                                                최고가 : 평균가 + 300 
+                                                            */
+                                                            low_value = origin_value-300,
+                                                            high_value = origin_value+300,
+                                                            min_value = Math.floor(low_value/100) * 100,
+                                                            max_value = Math.ceil(high_value/100) * 100;
+
+                                                        $(".min_value").text(min_value);
+                                                        $(".half_value").text(origin_value);
+                                                        $(".max_value").text(max_value);
+                                                        $(".value_bar .low_dot .barvalue").text(low_value);
+                                                        $(".value_bar .high_dot .barvalue").text(high_value);
+                                                    });
+                                                })(jQuery);
+                                            </script>
+                                        </div>
+
+                                        <div class="request_box">
+                                            <a href="http://www.ajsellcar.co.kr/alliance/enuri.do" target="_blank" class="btn__request btn__quote"><em>내차 팔기</em></a>
+                                            <p class="tx_alert">실제 차량가는 차량 상태에 따라 적을 수도 있으며, 정확한 금액을 시세제공업체의 내차팔기 서비스를 통해 확인하실 수 있습니다.</p>
+                                            <p class="tx_alert">신차가는 기본 옵션만 들어간 차량의 출고가입니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 모델 시세 - 미래 -->
+                                <div class="future_quote">
+                                    <div class="item_head">
+                                        <h3 class="tx_tit">미래 시세</h3>
+                                    </div>
+
+                                    <div class="item_body">
+                                        <div class="chart_wrap">
+                                            <div class="chart_box">
+                                                <!-- 하이차트 영역 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab_cont">
+                            <div class="cont_inner">
+                                <!-- 내차 삭제 -->
+                                <button type="button" class="my__sprite tab_del"  onclick="$('.lay_alert').fadeIn();">내차 삭제</button>
+
+                                <!-- 내차 정보 -->
+                                <div class="my_quoteitem">
+                                    <button type=""></button>
+                                    <div class="item_body">
+                                        <div class="item_thumb">
+                                            <!-- 브랜드 로고 -->
+                                            <span class="logo"><img src="/images/newcar/img_brand.png" alt=""></span>
+                                            <!-- 모델 이미지 -->
+                                            <span class="thumb"><img src="/images/newcar/img_car.png" alt=""></span>
+                                        </div>
+                                        <div class="item_info">
+                                            <!-- 모델명 -->
+                                            <span class="tx_model">올 뉴 소나타</span>
+                                            <!-- 라인업 -->
+                                            <span class="tx_lineup">2020년형 가솔린 1.6 인스퍼레이션 A/T</span>
+                                        </div>
+                                    </div>
+                                    <div class="item_foot">
+                                        <!-- 내차 상세 -->
+                                        <ul class="mqd_detail">
+                                            <li><dl><dt>차량번호</dt><dd>123누4567</dd></dl></li>
+                                            <li><dl><dt>최초등록일</dt><dd>2018.01.01</dd></dl></li>
+                                            <li><dl><dt>주행거리(km)</dt><dd>140,000</dd></dl></li>
+                                        </ul>
+                                        <!-- // -->
+                                    </div>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 모델 시세 - 현재 -->
+                                <div class="my_quote">
+                                    <div class="item_head">
+                                        <h3 class="tx_tit">현재 시세</h3>
+                                        <p class="tx_unit">( 단위 : 만원 )</p>
+                                    </div>
+
+                                    <div class="item_body">
+                                        <div class="quote_wrap">
+                                            <div id="quote_bar" class="quote_bar">
+                                                <div class="bar_pips">
+                                                    <span class="min_value">2900</span>
+                                                    <span class="half_value">3240</span>
+                                                    <span class="max_value">3600</span>
+                                                </div>
+                                                <!-- data-lowvalue="시세 최소값" data-highvalue="시세 최대값"-->
+                                                <div class="value_bar" data-originvalue="32400000">
+                                                    <span class="dot low_dot">
+                                                        <span class="value_tooltip">
+                                                            <span class="prefix">최저가</span>
+                                                            <span class="barvalue"></span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="dot high_dot">
+                                                        <span class="value_tooltip">
+                                                            <span class="prefix">최고가</span>
+                                                            <span class="barvalue"></span>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div class="release_bar">
+                                                <div class="bar_pips">
+                                                    <div class="txt">출고가<span>5,000</span></div>
+                                                </div>
+                                            </div>
+
+
+                                            <script type="text/javascript">
+                                                (function($) {
+                                                    $(function() {
+                                                        function changeType(value){
+                                                            return value * (1/10000);
+                                                        }
+                                                        var valueBar = $(".value_bar"),
+                                                            origin_value = changeType(valueBar.data('originvalue')),
+                                                            /* 
+                                                                레인지 범위
+                                                                최저가 : 평균가 - 300 
+                                                                최고가 : 평균가 + 300 
+                                                            */
+                                                            low_value = origin_value-300,
+                                                            high_value = origin_value+300,
+                                                            min_value = Math.floor(low_value/100) * 100,
+                                                            max_value = Math.ceil(high_value/100) * 100;
+
+                                                        $(".min_value").text(min_value);
+                                                        $(".half_value").text(origin_value);
+                                                        $(".max_value").text(max_value);
+                                                        $(".value_bar .low_dot .barvalue").text(low_value);
+                                                        $(".value_bar .high_dot .barvalue").text(high_value);
+                                                    });
+                                                })(jQuery);
+                                            </script>
+                                        </div>
+
+                                        <div class="request_box">
+                                            <a href="http://www.ajsellcar.co.kr/alliance/enuri.do" target="_blank" class="btn__request btn__quote"><em>내차 팔기</em></a>
+                                            <p class="tx_alert">실제 차량가는 차량 상태에 따라 적을 수도 있으며, 정확한 금액을 시세제공업체의 내차팔기 서비스를 통해 확인하실 수 있습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- // -->
+
+                                <!-- 모델 시세 - 미래 -->
+                                <div class="future_quote">
+                                    <div class="item_head">
+                                        <h3 class="tx_tit">미래 시세</h3>
+                                    </div>
+
+                                    <div class="item_body">
+                                        <div class="chart_wrap">
+                                            <div class="chart_box">
+                                                <!-- 하이차트 영역 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- 결과 없음 -->
+                    <div class="no_result">
+                        <span class="ico_no"></span>
+                        <span class="tx_tit">조회 내역이 없습니다.</span>
+                        <span class="tx_sub">차량번호로 내 차 시세를 알아보세요</span>
+                        <a href="#" class="btn__quote">내차 시세 알아보기</a>
+                    </div>
+                    <!-- // -->
+                </div>
+            </div>            
+            <!-- // -->    
+            
+            <!-- 내차 목록 삭제 레이어 -->
+            <div class="my_lay_box lay_alert" style="display:block">
+                <div class="lay_inner">
+                    <div class="tx_comm">
+                        해당 차량의 모든 정보가 삭제되어 복구가 불가합니다.<br>
+                        삭제하시겠습니까?
+                    </div>
+                    <!-- 버튼 : 확인 -->
+                    <div class="group__layin_btn">
+                        <button class="btn__layin_list" onclick="$(this).closest('.my_lay_box').fadeOut(100);">확인</button>
+                        <button class="btn__layin_esti" onclick="$(this).closest('.my_lay_box').fadeOut(100);">취소</button>
+                    </div>
+                </div>
+                <div class="dimmed"></div>
+            </div>
+            <!-- //내차 목록 삭제 레이어 -->
+
+		</div>
+        <!-- // 210618 : SR#47297 : 시세 및 내차팔기 서비스 추가 -->
+
+		<!-- 앱 다운로드 -->
+		<ul class="another_app_list">
+			<li class="btn_app_smart">
+				<a href="#">스마트 택배 다운받기</a>
+			</li>
+			<li class="btn_app_social">
+				<a href="#">소셜가격비교 다운받기</a>
+			</li>
+		</ul>
+        <!-- // -->
+        
+	</section>
+
+
+        <!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+        <footer class="footer footer--com">
+            <!-- Footer : 탑버튼 -->
+            <div class="newquick">
+                <p class="TBtn" onclick="goFooterTop();">TOP</p>
+            </div>
+            <!-- // -->
+            <!-- Footer : 회사정보 -->
+            <div class="footer__info">
+                <!-- 클릭시 .unfold 클래스 toggle -->
+                <button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+                <!-- // -->
+                <div class="footer__info_com">
+                    <dl>
+                        <dt>대표이사</dt>
+                        <dd>김기범</dd>
+                        <dt>사업자등록번호</dt>
+                        <dd>206-81-18164</dd>
+                        <dt>통신판매신고</dt>
+                        <!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+                        <dd>2020-서울금천-1949호</dd>
+                        <!-- // -->
+                        <dt>주소</dt>
+                        <!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+                        <dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+                        <!-- // -->
+                        <dt>문의</dt>
+                        <dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+                    </dl>
+                </div>
+            </div>
+            <!-- Footer : 푸터메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__menu_top">
+                    <a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+                </div>
+                <div class="footer__menu_bot">
+                    <a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+                </div>
+            </div>
+            <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+        </footer>
+        <!-- // -->
+
+</div>
+
+<script>	
+
+	// 최상단 GNB 고정
+	$(function(){
+		var $mhead = $(".m_header"); // 헤더
+		var $topBnr = $(".header_top_bnr"); // 최상단 배너
+		var topBnrH = ( $topBnr.length && $topBnr.is(':visible') ) ? topBnrH = $topBnr.outerHeight() : topBnr = 0; // 최상단 배너의 visible 여부 판단 + 높이 계산
+		var rePos = function(){
+			var nowPos = $(window).scrollTop();
+			( nowPos > topBnrH ) ? $mhead.addClass("fixed_top").css("top",0) : $mhead.removeClass("fixed_top").css("top",topBnrH);
+		}
+		$(window).load(rePos).scroll(rePos);
+	});
+
+</script>
+</body>
+</html>

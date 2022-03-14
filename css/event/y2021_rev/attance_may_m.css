@@ -1,0 +1,477 @@
+@charset "utf-8";
+
+.event_wrap {position:relative;width:100%; }
+.contents {position:relative;width:320px; margin:0 auto;  }
+.imgs {max-width:100%;height:auto;}
+.stripe {display:block;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/event/2018/attendance/feb/m_stripe.png) no-repeat;background-size:100px;}
+
+/* 커스텀 : 닫기버튼 */
+.win_close{top:75px;}
+.win_close:before, .win_close:after{background-color: #000;}
+.f-nav .win_close {top:55px;}
+.f-nav .win_close:before, .f-nav .win_close:after{background-color:#000}
+
+.btn__evt_notice,
+.btn__evt_notice span { color: #111; border-bottom-color: #000;}
+.btn__evt_notice.btn__white,
+.btn__evt_notice.btn__white span { color: #fff; border-bottom-color: rgba(255,255,255,.6);}
+
+/* 상단 VISUAL */
+.visual {overflow:hidden;position:relative;height:321px;background-color:#ddddf3;text-align:center}
+.visual .inner{width:320px;padding-top:50px;height:275px;margin:0 auto;position: relative;z-index:10}
+.visual .inner .txt_01{position:relative;margin:0 auto 0 23px;display:block;height:20px;background:url(//img.enuri.info/images/event/2021/attance/visual/top_tit_sub.png) no-repeat 0 0 ;text-indent:-9999em;background-size:96px}
+.visual .inner h1{width:276px;height:40px;margin:11px auto 0 26px;position: relative;text-indent:-9999em;background:url(//img.enuri.info/images/event/2021/attance/visual/top_tit.png) no-repeat 0 0;background-size:276px}
+.visual .inner h1:after{content:"";position:absolute;top:-1px;left:-5px;width:82px;height:41px;background:url(//img.enuri.info/images/event/2021/attance/visual/top_tit_cover.png) no-repeat 0 0;background-size:82px}
+.visual .inner .txt_02{height:14px;display:block;margin:16px auto 0 23px;background:url(//img.enuri.info/images/event/2021/attance/visual/m_top_txt_sub.png) no-repeat 0 0;text-indent:-9999em;background-size:189px}
+.visual .inner .coin_wrap{overflow:hidden;position:absolute;left:50%;bottom:-22px;width:263px;height:131px;margin-left:-131.5px;background:url(//img.enuri.info/images/event/2021/attance/visual/m_obj_imgbox.png) no-repeat 50% 0;background-size:263px}
+
+.obj_coin_01,
+.obj_coin_02{position:absolute;top:0;left:50%;height:321px;overflow:hidden;}
+.obj_coin_01{z-index:1;width:423px;margin-left:-234px;}
+.obj_coin_02{z-index:0;width:503px;margin-left:-262px;}
+.obj_coin_01 .bg_coin{position:absolute;left:0;width:100%;height:100%;background:url(http://img.enuri.info/images/event/2021/attance/visual/m_bg_coin_01.png) no-repeat 50% 0;background-size:423px}
+.obj_coin_02 .bg_coin{position:absolute;left:0;width:100%;height:100%;background:url(http://img.enuri.info/images/event/2021/attance/visual/m_bg_coin_02.png) no-repeat 50% 0;background-size:503px}
+.coin_obj_01{top:0}
+.coin_obj_02{top:-100%}
+
+/* 모션 */
+.visual .inner .txt_01{-webkit-transition:.5s all ease-in-out;-o-transition:.5s all ease-in-out;transition:.5s all ease-in-out;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);opacity:0}
+.visual .inner .txt_02{-webkit-transition:.5s all ease-in-out;-o-transition:.5s all ease-in-out;transition:.5s all ease-in-out;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);opacity:0}
+.visual .inner h1{-webkit-transition:.8s all ease-in-out;-o-transition:.8s all ease-in-out;transition:.8s all ease-in-out;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);opacity:0}
+.visual .inner h1:after{-webkit-transition:.3s all ease-in;-o-transition:.3s all ease-in;transition:.3s all ease-in;-webkit-transform:translateX(6px);-ms-transform:translateX(6px);transform:translateX(6px);opacity:0}
+.obj_coin_01,
+.obj_coin_02{-webkit-transition:2s all ease-in-out;-o-transition:2s all ease-in-out;transition:2s all ease-in-out;opacity:0}
+.visual .inner .coin_wrap {transition:.5s all ease-in-out;transition-delay:2.1s;opacity:0;}
+
+.visual.intro .inner .coin_wrap{opacity:1;animation:coin_mv 1s linear;animation-delay:2.1s;animation-fill-mode: forwards;}
+@keyframes coin_mv { 
+    0% {bottom:-45px}
+    100% {bottom:-22px}
+} 
+
+.visual.intro .inner .txt_01{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.intro .inner .txt_02{-webkit-transition-delay:1.2s;-o-transition-delay:1.2s;transition-delay:1.2s;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.intro .inner h1 {-webkit-transition-delay:.5s;-o-transition-delay:.5s;transition-delay:.5s;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.intro .inner h1:after{-webkit-transition-delay:1.6s;-o-transition-delay:1.6s;transition-delay:1.6s;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.end .obj_coin_01{opacity:1}
+.visual.end .obj_coin_02{opacity:.5}
+.visual.end .obj_coin_01 .bg_coin{-webkit-transition:1s all linear;-o-transition:1s all linear;transition:1s all linear;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);-webkit-animation:moneyShower 12s linear infinite;animation:moneyShower 12s linear infinite;}
+.visual.end .obj_coin_02 .bg_coin{-webkit-transition:1s all linear;-o-transition:1s all linear;transition:1s all linear;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);-webkit-animation:moneyShower 50s linear infinite;animation:moneyShower 50s linear infinite;}
+@-webkit-keyframes moneyShower { 
+    0% {-webkit-transform:translateY(0%);transform:translateY(0%)}
+    100% {-webkit-transform:translateY(100%);transform:translateY(100%)}    
+}
+@keyframes moneyShower { 
+    0% {-webkit-transform:translateY(0%);transform:translateY(0%)}
+    100% {-webkit-transform:translateY(100%);transform:translateY(100%)}    
+} 
+.visual.intro .loader-box{opacity:0}
+.loader-box{display:inline-block;position: relative;-webkit-transition: all .2s ease;-o-transition: all .2s ease;transition: all .2s ease;-webkit-transform:translateY(-160px);-ms-transform:translateY(-160px);transform:translateY(-160px)}
+.visual-loader:before{content: "";position: absolute;top: 0px;left: -25px;height: 12px;width: 12px;border-radius: 12px;-webkit-animation: loader10g 3s ease-in-out infinite;		animation: loader10g 3s ease-in-out infinite;}
+.visual-loader{position: relative;width: 12px;height: 12px;border-radius: 12px;-webkit-animation: loader10m 3s ease-in-out infinite;		animation: loader10m 3s ease-in-out infinite;}
+.visual-loader:after{content: "";position: absolute;top: 0px;left: 25px;height: 10px;width: 10px;border-radius: 10px;-webkit-animation: loader10d 3s ease-in-out infinite;		animation: loader10d 3s ease-in-out infinite;}
+@-webkit-keyframes loader10g{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,1);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10g{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,1);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+@-webkit-keyframes loader10m{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,1);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10m{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,1);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+@-webkit-keyframes loader10d{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,1);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10d{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,1);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+/* 플로팅 탭 */
+.floattab { width:100%; height:55px;}
+.floattab__list {width:100%;height:55px;background-color:#000;}
+.floattab__list.is-fixed {position:fixed;top:0;left:0%;width:100%;z-index:1000;-webkit-box-shadow:0 0 6px rgba(0,0,0,.5);box-shadow:0 0 6px rgba(0,0,0,.5)}
+.floattab__list ul{width:100%;max-width:320px;margin:0 auto;height:55px;overflow:hidden}
+.floattab__list li {float:left;height:100%;}
+.floattab__list li .floattab__item {display:block;overflow:hidden;width:100%;height:55px;font-size:0;text-indent:-9999px;background-size:160px;background:url(http://img.enuri.info/images/event/2021/attance/visual/m_nav.png) no-repeat;background-size:320px;}
+.floattab__list li .floattab__item--01 {width:107px;background-position:0 0}
+.floattab__list li .floattab__item--02 {width:107px;background-position:-107px 0}
+.floattab__list li .floattab__item--03 {width:106px;background-position:-214px 0}
+.floattab__list li .floattab__item--01.is-on {background-position:0 100%}
+.floattab__list li .floattab__item--02.is-on {background-position:-107px 100%}
+.floattab__list li .floattab__item--03.is-on {background-position:-214px 100%}
+
+/* 꼭 확인하세요 버튼 위치 */
+.com__evt_notice {margin:10px auto;text-align:center;}
+.evttoday .com__evt_notice {margin:0 auto 10px;text-align:center;}
+
+/* 이벤트 안내 */
+.evtnotice {overflow:hidden;position:relative;}
+.evtnotice__tit {display:block;width:195px;height:51px;margin:40px auto 22px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_evtnotice__tit.png) no-repeat;background-size:195px;}
+.evtnotice__list {display:block;}
+.evtnotice__list:after {content:"";display:table;clear:both;}
+.evtnotice__item {float:left;position:relative;width:145px;height:275px;margin-bottom:10px;margin-right:10px;font-size:0;text-indent:-9999px;}
+.evtnotice__item:nth-child(even) {margin-right:0;}
+.evtnotice__item:nth-child(n+3) {margin-bottom:0;}
+.evtnotice__item.item1 {background:url(//img.enuri.info/images/event/2021/attance/m_evtnotice__list1.png) no-repeat;background-size:145px}
+.evtnotice__item.item2 {background:url(//img.enuri.info/images/event/2021/attance/apr/m_evtnotice__list2.png) no-repeat;background-size:145px}
+.evtnotice__item.item3 {background:url(//img.enuri.info/images/event/2021/attance/m_evtnotice__list3.png) no-repeat;background-size:145px}
+.evtnotice__item.item4 {background:url(//img.enuri.info/images/event/2021/attance/m_evtnotice__list4.png) no-repeat;background-size:145px}
+.evtnotice__item .btn {position:absolute;bottom:20px;left:50%;width:90px;height:26px;margin-left:-45px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_sprite__btn.png) no-repeat;background-size:90px}
+.evtnotice__item .btn--goattend {background-position:0 0}
+.evtnotice__item .btn--join {background-position:0 -30px}
+.evtnotice__item .btn--complete {background-position:0 -60px}
+.evtnotice__item .btn--disabled {background-position:0 -90px}
+.evtnotice__item .btn--active {background-position:0 -120px;-webkit-animation:blinkbtn 1s infinite;animation:blinkbtn 1s infinite;}
+.evtnotice__item .btn--attend-complete {background-position:0 -150px}
+@-webkit-keyframes blinkbtn{
+	0%,100%{opacity:1}
+	50%{opacity:.4}    
+}
+@keyframes blinkbtn{
+	0%,100%{opacity:1}
+	50%{opacity:.4}     
+}
+
+/* 출석체크 영역 */
+.evtattend {overflow:hidden;position:relative;background-color:#f9f9f9;}
+.evtattend__tit {display:block;width:215px;height:27px;margin:40px auto 10px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_evtattend__tit.png) no-repeat;background-size:215px}
+
+.my-check {display:block;margin:0 auto;padding:0 10px;font-weight:bold;font-size:14px;color:#3b3b3b;line-height:38px;text-align:left;letter-spacing:-0.5px;}
+.my-check strong {font-weight:bold;font-family:tahoma;font-size:17px;vertical-align:0;color:#ff5c5c;}
+
+.calendar {overflow:hidden;position:relative;width:300px;margin:0 auto 25px;}
+.cal {overflow:hidden;width:100%;}
+.cal li {float:left;position:relative;z-index:10;width:14.285%;height:42px;border:1px solid #ebebeb;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font:bold 9px/17px tahoma;background:#fff;}
+.cal.day {background-color:#e5e5f5}
+.cal.day li {overflow:hidden;height:21px;font:bold 10px/20px "Roboto", "돋움", Dotum, sans-serif;color:#424242;vertical-align:middle;text-align:center;background-color:#ededed;}
+.cal.day li:first-child {color:#f2675e;}
+.cal.day li:last-child {color:#398ecb;}
+.cal li span {display:block;padding:0 0 0 4px;color:#555}
+.cal li:nth-child(7n+1) span {color:#f2675e;}
+.cal li:nth-child(7n+7) span {color:#398ecb;}
+
+.cal li.pass span {color:#dbdbdb;}
+.cal li.holiday span {color:#f2675e !important}
+/* .cal li.today span {position:absolute;top:-1px; left:-1px; z-index:100;  width:100%; height:40px;text-indent:-9999em; font-size:0;} */
+
+.cal li > strong {position:absolute;right:-1px;bottom:-1px;z-index:110;width:42px;height:42px;text-indent:-9999px;font-size:0;}
+.cal li.today .check.before {background:url(//img.enuri.info/images/event/2021/attance/m_attend_chk.png) -42px 0 no-repeat;background-size:84px;}
+.cal li > strong.check.after,
+.cal li > strong.check {background:url(//img.enuri.info/images/event/2021/attance/m_attend_chk.png) 0 0 no-repeat;background-size:84px;}
+
+/* 이벤트 목록 */
+.hotevent {padding:0;}
+.hotevent__head {position:relative;padding:0 10px;margin-bottom:12px;}
+.hotevent__tit {display:inline-block;width:111px;height:14px;font-size:0;text-indent:-9999px;vertical-align:top;background:url(http://img.enuri.info/images/event/2021/attance/m_hotevent__tit.png) 0 0 no-repeat;background-size:111px}
+.hotevent__more {position:absolute;top:4px;right:10px;width:40px;height:10px;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/event/2021/attance/m_hotevent__more.png) 0 0 no-repeat;background-size:40px}
+
+.hotevent__cont {position:relative;margin-bottom:30px;}
+.hotevent__slide {width:320px;}
+.hotevent__slide .swiper-slide {width:100%;}
+.hotevent__slide .swiper-slide img {width:100%;height:auto;}
+.hotevent__cont .btn_prev {margin-top:-35px;left:0;width:34px;height:45px;background:url(http://img.enuri.info/images/event/2021/attance/m_sprite_arr.png) 0 0 no-repeat;background-size:68px}
+.hotevent__cont .btn_next {margin-top:-35px;right:0;width:34px;height:45px;background:url(http://img.enuri.info/images/event/2021/attance/m_sprite_arr.png) -34px 0 no-repeat;background-size:68px}
+.hotevent__cont .btn_prev:before {content:"";position:absolute;top:0;left:0;right:0;bottom:0;border-top-right-radius:4px;border-bottom-right-radius:4px;background-color:rgba(0,0,0,.22)} 
+.hotevent__cont .btn_next:before {content:"";position:absolute;top:0;left:0;right:0;bottom:0;border-top-left-radius:4px;border-bottom-left-radius:4px;background-color:rgba(0,0,0,.22)} 
+.hotevent__cont .swiper-pagination {margin-top:5px;text-align:center}
+.hotevent__cont .swiper-pagination .swiper-pagination-bullet {width:4px;height:4px;margin:0 4.5px;border:1px solid #000;background-color:#000;opacity:1}
+.hotevent__cont .swiper-pagination .swiper-pagination-bullet-active {background-color:transparent}
+
+/* 룰렛 */
+.evtroulette {overflow:hidden;position:relative;}
+.evtroulette__tit {display:block;width:220px;height:51px;margin:40px auto 25px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_evtroullete__tit.png) no-repeat;background-size:220px}
+
+.evtroulette .roulette_episode{width:266px;margin:20px auto 20px}
+.evtroulette .roulette_episode li{width:266px;height:36px;margin-top:7px;text-indent:-9999em;background:url(http://img.enuri.info/images/event/2021/attance/m_roullete_time.png) no-repeat 0 0;background-size:270px;overflow:hidden;border-radius:18px 18px;}
+.evtroulette .roulette_episode li.on{-webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);box-shadow: 0 0 10px rgba(0,0,0,.3);-webkit-transition:.2s transform ease-in-out;-o-transition:.2s transform ease-in-out;transition:.2s transform ease-in-out;-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-animation: onScaleRepeat .7s infinite;animation: onScaleRepeat .7s infinite}
+.evtroulette .roulette_episode li.ep1{background-position:0 -40px}
+.evtroulette .roulette_episode li.ep2{background-position:0 -120px}
+.evtroulette .roulette_episode li.ep1.on{background-position:0 0}
+.evtroulette .roulette_episode li.ep2.on{background-position:0 -80px}
+@-webkit-keyframes onScaleRepeat {
+    0%,100% {-webkit-transform:scale(1,1);transform:scale(1,1)}
+    50% {-webkit-transform:scale(1.02,1.02);transform:scale(1.02,1.02)}
+}
+@keyframes onScaleRepeat {
+    0%,100% {-webkit-transform:scale(1,1);transform:scale(1,1)}
+    50% {-webkit-transform:scale(1.02,1.02);transform:scale(1.02,1.02)}
+}
+
+.evtroulette .roulette_con {position:relative;width:266.5px;height:266.5px;margin:0 auto 7px;}
+.evtroulette .roulette_con > div {position:absolute;top:0;z-index:1;width:100%;}
+.evtroulette .roulette_con > div.r-stage {z-index:1;width:266.5px;height:266.5px;background:url(http://img.enuri.info/images/event/2021/attance/m_roullete__circle.png) no-repeat 50% 50%;background-size:266.5px;-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-transition:none;-o-transition:none;transition:none}
+.evtroulette .roulette_con > div.r-stage.rotate{-webkit-transition:4s -webkit-transform ease-out;transition:4s -webkit-transform ease-out;-o-transition:4s transform ease-out;transition:4s transform ease-out;transition:4s transform ease-out, 4s -webkit-transform ease-out}
+.evtroulette .roulette_con > div.r-start {z-index:3;width:266.5px;height:266.5px;background:url(http://img.enuri.info/images/event/2021/attance/m_roullete__btn.png) no-repeat 50% 50%;background-size:266.5px;}
+.evtroulette .roulette_con > div.r-start > span{display:block;width:100%;height:100%;}
+.evtroulette .roulette_con > div.r-arrow {z-index:2;width:24px;height:56px;background:url(http://img.enuri.info/images/event/2021/attance/m_roullete__arr.png) no-repeat 50% 50%;background-size:24px;top:-22px;left:50%;margin-left:-12px;}
+.evtroulette .roulette_con > div.r-bg {z-index:0;width:266.5px;height:266.5px;background:url(http://img.enuri.info/images/event/2021/attance/m_roullete__bg.png) no-repeat 50% 1px;background-size:266.5px}
+.evtroulette .roulette_con .bg-coin {position:absolute;top:auto;bottom:7px;left:-15px;width:301px;height:164px;background:url(//img.enuri.info/images/event/2021/attance/m_roullete__coin.png) no-repeat 0 0;background-size:301px;text-indent:-9999em;}
+
+/* 게시판 */
+.evttoday {overflow:hidden;position:relative;background-color:#f8f7fd;}
+.evttoday__tit {display:block;width:221px;height:51px;margin:40px auto 20px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_evttoday__tit.png) no-repeat;background-size:221px}
+.evttoday__gift {display:block;width:248px;height:261px;margin:0 auto 20px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_evttoday__gift.png) no-repeat;background-size:248px}
+
+.evt-todayword {clear:both;background-color:#f7f7f7;}
+.board-stripe {font-size:0; text-indent:-9999px; background:url(http://img.enuri.info/images/event/2018/template/mboard_ir_bg.png) no-repeat 0 0; background-size:320px;}
+.board__head {padding-top:165px;background:url(http://img.enuri.info/images/event/2019/attendance/sep/m_title_todayword.jpg) no-repeat 50% 0;background-size:320px;margin-bottom:12.5px;}
+
+.input_board {overflow:hidden; clear:both; }
+.input_board .write_area {overflow:hidden; position:relative; width:calc(100% - 20px); /*margin-bottom:33px;*/ padding:0 10px;}
+.input_board .write_area .input {position:relative; overflow:hidden; z-index:100;}
+.input_board .write_area .login_alert {position:absolute; top:0; left:0; z-index:200; width:100%; height:100%;}
+.input_board .write_area .login_alert.disNone {display:none;}
+.input_board .write_area .total_num {display:block; font-size:11px; color:#272727; text-align:left; line-height:24px; vertical-align:middle;}
+.input_board .write_area .total_num span {font-weight:bold;}
+.input_board .write_area .txt_area {display:inline; float:left; position:relative; z-index:100; width:calc(100% - 117px); height:22px; padding:5px 0 11px 5px; margin-left:50px; border-radius:0; border:1px solid #b3b3b3; font-size:11px; line-height:16px; color:#b8b8b8; letter-spacing:-1px; -webkit-appearance:none;-moz-appearance:none; -ms-appearance:none; appearance:none;}
+.input_board .write_area .txt_area:focus {color:#333;}
+.input_board .write_area .btn.regist {float:right; position:relative; z-index:150; width:60px; height:40px; border:0; outline:0; background-position:0 0;}
+.input_board .write_area .curr {display:none; position:absolute; bottom:10px; right:70px; font-family:"돋움", Dotum, sans-serif; font-size:11px; color:#989898; line-height:20px;}
+.input_board .write_area .curr span {color:#f23c3c;}
+
+.thumb_sm {position:absolute; top:0; left:0; width:100%; z-index:0;}
+.thumb_sm .inner {position:relative; z-index:90; }
+.thumb_sm .thumb_select {position:relative; z-index:120; width:49px; height:38px; border:1px solid #b3b3b3; background-color:#fff;}
+.thumb_sm .thumb_select .thumb {float:left; width:39px; height:100%; border-right:1px solid #b3b3b3; background-color:#fff;}
+.thumb_sm .thumb_select .thumb .imgs {display:block; width:32px; height:32px; margin:3px auto;}
+.thumb_sm .thumb_select .btn_thumb {display:block; float:left; width:9px; height:38px; background-position:-311px -1px;}
+.thumb_sm .thumb_select .user {display:none; font-weight:bold; font-size:13px; color:#272727; line-height:38px; vertical-align:middle;}
+.thumb_sm .thumb_sm_list {overflow:hidden; position:absolute; top:0; left:-100%; z-index:110; width:calc(100% - 112px); height:38px; border:1px solid #b3b3b3; background-color:#fff; transition:all .3s ease-out;}
+.thumb_sm .thumb_sm_list.showIcon {left:49px; transition:all .3s ease-out;}
+.thumb_sm .thumb_sm_list .inner_scroll {overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling:touch; width:100%; height:100%; margin:0 auto;}
+.thumb_sm .thumb_sm_list .swiper_wrapper {overflow: hidden; display:inline-flex; display:-webkit-inline-box; padding:0 0 0 5px; text-align:center;}
+.thumb_sm .thumb_sm_list .swiper_wrapper .thumb {float:left; position:relative; width:34px; height:38px;}
+.thumb_sm .thumb_sm_list .swiper_wrapper .thumb .imgs {display:block; width:28px; height:28px; margin:5px 2.5px;}
+
+.input_board .write_area .input.open {position:relative; overflow:hidden; border:1px solid #b3b3b3; background-color:#fff;}
+.input_board .write_area .input.open .thumb_sm {z-index:100 !important;}
+.input_board .write_area .input.open .total_num {display:block; font-size:11px; color:#272727; text-align:left; line-height:24px; vertical-align:middle;}
+.input_board .write_area .input.open .txt_area {float:left; width:calc(100% - 16px); height:103px; margin-left:0; padding:40px 7px 0; border:0; border-bottom:1px solid #b3b3b3;}
+.input_board .write_area .input.open .txt_area:focus {color:#333;}
+.input_board .write_area .input.open .btn.regist {float:right; width:60px; height:40px; border:0; outline:0; background-position:0 0;}
+.input_board .write_area .input.open .curr {display:block;}
+.input_board .write_area .input.open .thumb_sm {border:0; background-color:#fff;}
+.input_board .write_area .input.open .thumb_sm .thumb_select {width:100%; border:0;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .thumb {border-right:0;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .thumb .imgs {width:27px; height:27px; margin:7px auto 5px; transition:all .2s ease-out;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .btn_thumb {display:none;} 
+.input_board .write_area .input.open .thumb_sm .thumb_select .user {display:block;}
+.input_board .write_area .input.open .thumb_sm .thumb_sm_list {display:none !important;}
+
+.input_board .view_area {width:calc(100% - 20px); margin:0 10px 20px; padding:0;/* border-top:1px solid #e0d4bb;*/}
+.input_board .view_area ul {}
+.input_board .view_area ul li {padding:15px 5px; border-bottom:1px solid #e0d4bb;}
+.input_board .view_area ul li .thumb {float:left; width:60px;}
+.input_board .view_area ul li .thumb .imgs {display:block; width:50px; height:50px;}
+.input_board .view_area ul li .user {display:block; margin-bottom:5px; font-weight:bold; font-size:13px; color:#272727; line-height:20px;}
+.input_board .view_area ul li .date {font-weight:normal; font-size:11px; color:#999;}
+.input_board .view_area ul li .cont {display:block; padding-left:60px; font-size:12px; color:#272727; line-height:17px;}
+
+.input_board .paging {display:block; position:relative; width:100%; margin-bottom:10px; padding:0; text-align:center;}
+.input_board .paging .btn {display:inline-block; overflow:hidden; position:relative; width:29px; height:29px; padding-top:0; border:1px solid #c6cace; background:url(http://img.enuri.info/images/event/2017/workers/paging_arrow2.png) no-repeat; background-size:58px}
+.input_board .paging .btn.prev {background-position:-29px 0;}
+.input_board .paging .btn.next {background-position:0 -29px;}
+.input_board .paging .btn.first {background-position:0 0;}
+.input_board .paging .btn.last {background-position:-29px -29px;}
+.input_board .paging .list {display:inline-block; text-align:center; vertical-align:top;}
+.input_board .paging .list li {display:inline-block; margin:0 -1px;}
+.input_board .paging .list li a {display:inline-block; width:29px; height:29px; padding-top:0; font:bold 14px/29px Arial, sans-serif; color:#323232; vertical-align:middle; border:1px solid #ccc; background-color:#fcfcfc;}
+.input_board .paging .list li a:hover,
+.input_board .paging .list li a.selected {position:relative; border-color:#35a0d8; color:#35a0d8; background-color:#fff;}
+
+/* 한가위 배너 */
+.bnr_wrap {overflow:hidden;clear:both;position:relative;width:100%;max-width:100%;height:155px;;background:#eee;}
+.bnr_wrap a {display:block;position:relative;width:320px;height:100%;margin:0 auto;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/event/2020/attendance/nov/m_bnr_bottom.png) 0 0 no-repeat;background-size:320px;}
+.bnr_wrap.bnr_xmas {background-color:#dcedc8;}
+.bnr_wrap.bnr_xmas a {background:url(http://img.enuri.info/images/event/2020/xmas/m_bnr_bottom.png) 50% 0 no-repeat;background-size:320px;}
+
+/* 당첨 레이어 */
+.vote_box {position:absolute;left:50%;top:50%;z-index:10200;width:260px;height:auto;border:1px solid #181818;background-color:#fff;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.vote_box .inner {overflow:hidden;position:relative;width:100%;height:100%;}
+.vote_box .inner .user_msg {margin:25px auto 13px;font-weight:bold;font-size:17px;letter-spacing:-.5px;color:#000;text-align:center;line-height:1;letter-spacing:-1px;}
+.vote_box .inner .user_msg em {color:#ef4136;}
+
+.vote_box .inner .confirm {display:block; position:absolute; bottom:0; left:50%; width:297px; height:59px; margin-left:-148px; background-position:-280px -90px;}
+.vote_box .inner .adbanner {display:block;position:absolute;bottom:0;left:0;right:0;width:260px;height:60px;}
+.vote_box .inner .adbanner img {width:100%;height:auto}
+.vote_box .layclose {position:absolute;right:5px;top:-39px;width:29px;height:30px;font-size:0;text-indent:-9999em;background:url(//img.enuri.info/images/event/2021/attance/m_btn__close.png) no-repeat 50% 50%;background-size:29px;}
+
+/* 오늘의 한마디 레이어 */
+.vote_box.todaysay {height:auto;}
+.vote_box.todaysay .inner {padding-bottom:60px;}
+.vote_box.todaysay .cont {width:100%;text-align:center;}
+.vote_box.todaysay .f_wrap {position:relative;width:102px;height:83px;margin:0 auto 13px}
+.vote_box.todaysay .f_wrap .boximg {display:block;overflow:hidden;width:100%;height:100%;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_lay_giftbox.png);background-size:102px}
+.vote_box.todaysay .f_wrap .ico {position:absolute;top:30px;left:-21px;width:65px;height:60px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/event/2021/attance/m_lay_emoney.png) no-repeat;background-size:260px}
+.vote_box.todaysay .f_wrap .ico.e5  {background-position:0 0;}
+.vote_box.todaysay .f_wrap .ico.e10 {background-position:-65px 0;}
+.vote_box.todaysay .f_wrap .ico.e100 {background-position:-130px 0;}
+.vote_box.todaysay .f_wrap .ico.e500 {background-position:-195px 0;}
+.vote_box.todaysay .f_txt {margin-bottom:20px;text-align:center;}
+.vote_box.todaysay .f_txt .txt {padding:0 20px;font-weight:500;font-size:12px;text-indent:0;line-height:18px;letter-spacing:-1px;color:#333;word-break:keep-all;}
+.vote_box.todaysay .f_txt .uid {font-size:12px;color:#888;letter-spacing:-1px;}
+.vote_box.todaysay .f_txt .uid strong {font-weight:normal;color:#ef4136}
+
+
+/*딤레이어 공통 */
+.pop-layer  {display:none; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:100000;}
+/*기존*/
+.popupLayer {position:absolute; left:0; top:0; width:100%; height:100%;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popupLayer .dim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000; z-index:10100;}
+/*new*/
+.backdim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popup_box {position:absolute; left:50%; top:50%; overflow:hidden; z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top; margin:0; padding:0;}
+.popup_box h4 {height:69px; text-align:center; font-size:22px; font-weight:normal; line-height:66px;  color:#fff;letter-spacing:-0.75px; background-color:#0182ea;}
+.popup_box .layclose {position:absolute; right:25px; top:25px; width:19px; height:19px; background-image:url(//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+
+/* 딤레이어 : 다운로드 SMS 보내기 */
+.sendsms {width:408px;  height:237px; margin-left:-204px; margin-top:-118px; border:1px solid #0182ea; border-top:0; background:#fff;}
+.sendsms .inner {width:377px; padding:40px 16px 0; line-height:1.5;  font-size:15px;color:#444;}
+.sendsms .input_area input {width:213px; padding:0 20px; text-align:left; font-family:Malgun Gothic; font-size:18px; color:#bfbfbf;  letter-spacing:-0.75px;height:38px; line-height:35px; background:0; border:1px solid #0182ea; border-right:0;}
+.sendsms .watchout {margin-top:15px;}
+.sendsms .watchout li {font-size:15px; color:#7f7f7f; letter-spacing:-0.5px; margin-left:7px; padding-left:10px; background:url(//img.enuri.info/images/event/2016/template/bul_sq_grays.gif) no-repeat 0 9px;}
+.sendsms .laysend {position:absolute; right:0; top:-1px; width:123px; height:42px; background-image:url(//img.enuri.info/images/event/2016/template/btn_lay_send.gif);}
+
+/* 딤레이어 : 모바일 앱 전용 쇼핑 혜택 */
+.onlyapp {width:410px;  height:283px; margin-left:-205px; margin-top:-142px; border:1px solid #0182ea; border-top:0; background:#fff;}
+.onlyapp .inner {width:377px; padding:22px 16px 0; line-height:1.5;  font-size:15px;color:#444;}
+.onlyapp .inner .exp {text-align:center; line-height:1.2; padding-bottom:25px; font-size:18px; color:#393939; letter-spacing:-0.5px;}
+.onlyapp .inner .tit {font-weight:bold; font-size:14px; color:#2366aa;  letter-spacing:-0.5px; margin:0 0 5px 1px; padding-left:10px; background:url(//img.enuri.info/images/event/2016/template/bul_circle_blue.gif) no-repeat 0 9px}
+.onlyapp .input_area input {width:213px; padding:0 20px; text-align:left; font-family:Malgun Gothic; font-size:16px; color:#bfbfbf;  letter-spacing:-0.5px;height:40px; line-height:36px; background:0; border:1px solid #0182ea; border-right:0;}
+.onlyapp .watchout {margin-top:13px;}
+.onlyapp .watchout li {font-size:14px; color:#7f7f7f; letter-spacing:-0.5px; margin-left:2px; padding-left:6px; background:url(//img.enuri.info/images/event/2016/template/bul_sq_grays.gif) no-repeat 0 9px;}
+.onlyapp .laysend {position:absolute; right:0; top:1px; width:123px; height:42px; background-image:url(//img.enuri.info/images/event/2016/template/btn_lay_send2.gif);}
+
+/* 딤레이어 : 참가상 뽑기 당첨 */
+.awardLayer{position:absolute;left:50%;top:50%;width:260px;height:320px;border:1px solid #191919;background-color:#fff;z-index:10000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.awardLayer .lay__inner {overflow:hidden;position:relative;width:100%;height:100%;}
+.awardLayer .tit {margin:45px auto 0;font-weight:bold;font-size:23px;line-height:23px;color:#000;text-align:center;}
+.awardLayer .tit strong {font-size:15px;color:#ef4136;}
+.awardLayer .tit.win {font-size:23px;color:#ef4136;}
+.awardLayer .tit.win strong {font-size:15px;color:#000;}
+.awardLayer .prize {position:absolute;top:50%;left:50%;font-size:0;text-indent:-9999em;transform:translate(-50%,-45%)}
+.awardLayer .prize.pr1 {width:149px;height:90px;background:url(//img.enuri.info/images/event/2021/attance/m_lay_e500.png) no-repeat 50% 0;background-size:149px}
+.awardLayer .prize.pr2 {width:167px;height:112px;background:url(//img.enuri.info/images/event/2021/attance/m_lay_bomb.png) no-repeat 50% 0;background-size:167px;}
+.awardLayer .close{position:absolute;right:5px;top:-39px;width:29px;height:29px;font-size:0;text-indent:-9999em;background:url(//img.enuri.info/images/event/2021/attance/m_btn__close.png) no-repeat 50% 50%;background-size:29px}
+.awardLayer .btn_confirm {position:absolute;bottom:30px;left:50%;width:96px;height:32px;margin-left:-48px;border:none;font-size:18px;color:#fff;line-height:32px;text-align:center;background:#bfbfbf;}
+
+/* 딤레이어 : 룰렛 당첨 */
+.prizeLayer{position:absolute;left:50%;top:50%;width:260px;height:320px;border:1px solid #191919;background-color:#fff;z-index:10000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.prizeLayer .lay__inner {overflow:hidden;position:relative;width:100%;height:100%;}
+.prizeLayer .tit {display:none;margin:30px auto 0;font-weight:bold;font-size:15px;line-height:28px;color:#000;text-align:center;letter-spacing:-1px;}
+.prizeLayer .tit .line1 {display:block;font-size:23px;}
+.prizeLayer .tit .line2 {font-size:15px;}
+.prizeLayer .tit.bomb_ep1 .line1,
+.prizeLayer .tit.bomb_ep2 .line1 {font-size:18px;line-height:23px;}
+.prizeLayer .tit strong {color:#ef4136;}
+.prizeLayer.ep1 .tit.ep1,
+.prizeLayer.ep2 .tit.ep2,
+.prizeLayer.bomb.ep1 .tit.bomb_ep1,
+.prizeLayer.bomb.ep2 .tit.bomb_ep2 {display:block;}
+.prizeLayer.bomb.ep1 .tit.ep1,
+.prizeLayer.bomb.ep2 .tit.ep2 {display:none}
+.prizeLayer .prize {position:absolute;top:50%;left:50%;font-size:0;text-indent:-9999em;transform:translate(-50%,-45%)}
+.prizeLayer .prize.pr1 {width:187px;height:141px;background:url(//img.enuri.info/images/event/2021/attance/m_prize1.png) no-repeat 50% 0;background-size:187px}
+.prizeLayer .prize.pr2 {width:188px;height:138px;background:url(//img.enuri.info/images/event/2021/attance/m_prize2.png) no-repeat 50% 0;background-size:188px}
+.prizeLayer .prize.pr3 {width:115px;height:127px;background:url(//img.enuri.info/images/event/2021/attance/m_prize3.png) no-repeat 50% 0;background-size:115px}
+.prizeLayer .prize.pr4 {width:100px;height:100px;background:url(//img.enuri.info/images/event/2021/attance/m_prize4.png) no-repeat 50% 0;background-size:100px}
+.prizeLayer .prize.pr5 {width:100px;height:100px;background:url(//img.enuri.info/images/event/2021/attance/m_prize5.png) no-repeat 50% 0;background-size:100px}
+.prizeLayer .prize.pr6 {width:167px;height:112px;background:url(//img.enuri.info/images/event/2021/attance/m_prize6.png) no-repeat 50% 0;background-size:167px}
+.prizeLayer .close{position:absolute;right:-4px;top:-32px;width:30px;height:30px;font-size:0;text-indent:-9999em;background:url(//img.enuri.info/images/event/2021/attance/w_btn__close.png) no-repeat 50% 50%;}
+.prizeLayer .btn_confirm {position:absolute;bottom:30px;left:50%;width:96px;height:32px;margin-left:-48px;border:none;font-size:18px;color:#fff;line-height:32px;text-align:center;background:#bfbfbf;}
+
+/*딤레이어 공통 */
+.pop-layer  {display:none; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:100000;}
+/*기존*/
+.popupLayer {position:absolute; left:0; top:0; width:100%; height:100%;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popupLayer .dim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000; z-index:10100;}
+/*new*/
+.backdim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popup_box {position:absolute; left:50%; top:50%; overflow:hidden; z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top; margin:0; padding:0;}
+.popup_box h4 {height:69px; text-align:center; font-size:22px; font-weight:normal; line-height:66px;  color:#fff;letter-spacing:-0.75px; background-color:#0182ea;}
+.popup_box .layclose {position:absolute; right:25px; top:25px; width:19px; height:19px; background-image:url(//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+
+
+/*유의사항*/
+.dim{width: 100%; height:100%; position:fixed; left: 0; top: 0; background: rgba(0,0,0,0.7); z-index:10002}
+.btn_close{text-align:center; }
+.btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:32px; border:none; text-align:center; font-weight:bold; font-size:12px;}
+
+/* 공통 */
+.go_top {width: 39px; height: 39px; position: fixed; bottom: 10px; right: 10px; z-index: 9999;}
+.go_top a {background: url(http://img.enuri.info/images/m_deal/common.png) -73px -211px no-repeat; background-size: 125px 250px; display: block; width: 39px; height: 39px; text-indent: -9999em;}
+
+/*레이어*/
+.layer_back{width: 100%; height:100%; position:fixed; left: 0; top: 0; z-index:10000; background:url(http://img.enuri.info/images/mobilenew/images/layer_back.png); z-index:100005;}
+.layer_back.appinfo__layer {display:none; position:absolute; top:200px; margin-top:0;}
+.layer_back.appinfo__layer .btn_close {padding-bottom:30px;}
+.btn_close{text-align:center; }
+.appLayer{width:300px;padding-bottom:15px; background:#ffffff; border:1px solid #0182ea; left:50%; top:50%; position:absolute; z-index:1000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.appLayer h4{background:#0182ea; line-height:36px; color:#ffffff; font-size:16px; text-align:center; letter-spacing:-1px; }
+.appLayer .close{position:absolute; right:10px; top:10px; width:16px; height:16px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 0 0 no-repeat; background-size:50px; text-indent:-9999em; }
+.appLayer .btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:50px; border:none; text-align:center; font-weight:bold; font-size:18px;}
+.appLayer .txt{text-align:center; padding:15px 0; color:#333333;  font-size:16px; letter-spacing:-1.3px;}
+.appLayer .txt strong{color:#ff2424; display:block; }
+.appLayer .txt em{font-weight:bold; }
+
+
+/*생활혜택*/
+.goos_zone {padding:26px 0 22px; background:#fff;}
+.goos_zone h3{height:17px; background: url("http://img.enuri.info/images/event/2017/template/edeal_t4.gif") center top no-repeat; background-size:130px 17px; text-indent:-9999em;}
+
+.bef_goos {overflow:hidden; width:100%; max-width:320px; margin:0 auto; padding-top:17px; background:#fff;}
+.bef_goos:after{content:"";clear:both;display:block; }
+.bef_goos li{float:left; width:33.3%;}
+.bef_goos li:first-child{float:left; width:33.4%}
+.bef_goos li a{position:relative; text-align:center; color:#171717; font-size:11px; display:block; }
+.bef_goos li a:before {content:""; position:absolute; top:5px; left:0;width:1px; height:60px; background: url(http://img.enuri.info/images/event/2017/template/m_bul_dotline.gif) left center no-repeat;}
+.bef_goos li:first-child a:before {display:none}
+.bef_goos li img{width:74px; height:74px; }
+
+/*인기기획전*/
+.keyword h2{height:119px; background: url("http://img.enuri.info/images/event/2016/nov/edeal_t3.gif") center 30px no-repeat; background-size:152px 53px; text-indent:-9999em;}
+.keyword{position: relative;overflow: hidden; overflow-x: auto; padding:0px 0px 20px 0px; background:#f4f4f4;}
+.keyword a{display:block; }
+.keyword .innder_scroll{overflow-x: auto;overflow-y: hidden; -webkit-overflow-scrolling:touch; width: 100%; max-width:800px; margin:0 auto;}
+.keyword .swiper-wrapper{overflow: hidden; display: inline-flex; display: -webkit-inline-box;  text-align:center;width:auto}
+.keyword .swiper-wrapper li{position: relative; float: left; }
+.keyword .swiper-wrapper li a{margin-left:10px;}
+.keyword .swiper-wrapper li:first-child a{margin-left:0}
+.keyword .slick-arrow{display:none !important;}
+.keyword img{width:255px;}
+
+#topBanner{width:100%; height:406px; }

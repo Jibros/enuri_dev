@@ -1,0 +1,305 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp.css"/>
+	<!-- // -->
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+
+	<style>
+		body {background-color:#242f3f}
+		#m_frame{position:relative;box-sizing: border-box;top:0;bottom:0;left:50%;height:100vh;width:400px;padding:40px 40px 40px 0;z-index: 100;transform: translateX(-50%);transition: transform .4s ease-in-out;transition-delay: .2s}
+		#m_frame .inner{position:absolute;top:40px;left:0;bottom:40px;right:40px;border-radius:0 0 35px 35px;background-color:#fff;overflow:hidden}
+		#m_frame .inner .head{position:absolute;top:0;left:0;width:100%;height:90px;border-bottom:1px solid #eaeaea;background:url(http://img.enuri.info/images/mobile_v2/iframe_header.png) no-repeat 0 0;z-index: 1;}
+		#m_frame .inner .txt_url{position:absolute;width:306px;height:32px;line-height:32px;font-size:14px;text-align:center;overflow:hidden;text-overflow: ellipsis;color:#000;top:48px;left:16px}
+		#m_frame .inner .iframe{position:absolute;top:90px;bottom:40px;left:0;right:0;width:calc(100% + 17px);height:calc(100vh - 170px);overflow:hidden;overflow-y:scroll;}
+	</style>
+</head>
+<body>
+
+<!-- 공통 : 로더 -->
+<div id="loadingDiv" class="comm__loader">
+	<div class="loader_inner">로딩중</div>
+</div>
+<!-- // 로더 -->
+<script>
+	$(function(){ 
+		setTimeout(function(){
+			$("#loadingDiv").fadeOut(100);
+		},100);
+	})
+</script>
+<!-- // -->
+	<!-- 패션,의류 > 스마트파인더 전용 css -->
+	<link rel="stylesheet" type="text/css" href="/pub_test/mockup/finder/node_modules/nouislider/distribute/lp_fashion1.css"/>
+	<link href="/pub_test/mockup/finder/node_modules/nouislider/distribute/nouislider.css" rel="stylesheet">
+	<script src="/pub_test/mockup/finder/node_modules/nouislider/distribute/nouislider.js"></script>
+	<link href="/pub_test/mockup/finder/node_modules/nouislider/distribute/spinners.css" rel="stylesheet">
+
+	<div class="mockup_wrap">
+		<div class="mockup_head">
+			<span class="txt_url">상품 파인더</span>
+		</div>
+		<div class="mockup_cont">
+			<div id="wrap">
+				
+				<!-- 헤더 LP - 타입A -->
+				<header id="header" class="m_header head__type_a">
+					<div class="header_wrap">
+						<h1 class="m_txt">냉장고</h1>	
+						<!-- <button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>	 -->	
+						<button class="btn_hd_cate comm__sprite">카테고리</button>
+						<button class="btn_hd_sr comm__sprite">검색</button>
+						<button class="btn_hd_my comm__sprite">나의정보</button>
+					</div>	
+
+					<div class="lay-cate">
+						<button type="button" class="is-fold"></button>
+						<img src="http://img.enuri.info/images/mobile_v2/finder/test/lay__cate.png" alt="" />
+					</div>
+
+					<script>
+						var $hd_cate = $(".btn_hd_cate"),
+							$lay_cate = $(".lay-cate"),
+							$btn_fold = $lay_cate.find(".is-fold");
+
+						$hd_cate.on("click", function(){
+							$lay_cate.addClass("is-unfold")
+						})
+						$btn_fold.on("click", function(){
+							$lay_cate.removeClass("is-unfold")
+						})
+					</script>
+				</header>
+				<!-- // 헤더 -->
+
+				<section id="container" class="m_lp_cont">
+
+					<div class="lp__head">
+						<div class="lp__navi scroller">
+							<ul class="scroll-cont">
+								<li class="navi__cate"><span class="txt__cate">가전/TV</span></li>
+								<li class="navi__cate"><span class="txt__cate" onclick="return false;">냉장고</span></li>
+								<li class="navi__cate on"><span class="txt__cate" onclick="return false;">전체보기</span></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="lp__detail_sr detail_sr">
+						<!-- 상세검색 -->
+						<div class="box_inner">
+							<div class="lp__detail_sr_tab detail_sr_tab scroller">
+								<ul class="scroll-cont">
+									<li data-id="tab_01" class="on"><em>전체보기</em></li>
+									<li data-id="tab_02"><em>4도어,3도어 냉장고</em></li>
+									<li data-id="tab_03"><em>양문형 냉장고</em></li>
+									<li data-id="tab_04"><em>일반형 냉장고</em></li>
+									<li data-id="tab_05"><em>디자인 냉장고</em></li>
+									<li data-id="tab_05"><em>김치 냉장고</em></li>
+								</ul>
+							</div>
+						</div>
+						<!-- // 상세검색 -->
+					</div>		
+					
+					<!-- 리스트형일때 .lp__cont / 그리드형일때 .lp__cont.grid  -->
+					<div class="lp__cont lp__cont--fashion">
+						<!-- LP Header -->
+						<div class="lp__cont_head fashion__head">
+							<div class="fashion__source">
+								<!-- 옵션 버튼 -->
+								<div class="opt__btn scroller">
+									<ul class="scroll-cont">
+										<li><button type="button" class="btn">도어</button></li>
+										<li><button type="button" class="btn">브랜드</button></li>
+										<li><button type="button" class="btn">색상</button></li>
+										<li><button type="button" class="btn">총용량</button></li>
+										<li><button type="button" class="btn">홈바</button></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- // LP Header -->
+
+						<div class="type_container">
+							<!-- 도어 컨텐츠 1 -->
+							<div class="type_cont type_door">
+								<div class="tp_prdc_list scroller">
+									<ul class="ico_list scroll-cont">
+										<li><button type="button" class="btn" data-num="1" data-name="일반형"><i class="ico1"></i>일반형</button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="양문형"><i class="ico2"></i>양문형</button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="3도어"><i class="ico3"></i>3도어</button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="4도어"><i class="ico4"></i>4도어</button></li>
+										<li><button type="button" class="btn" data-num="3" data-name="디자인"><i class="ico5"></i>디자인</button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="김치냉장고"><i class="ico6"></i>김치냉장고</button></li>
+									</ul>
+								</div>
+							</div>
+							<!-- // -->
+							<!-- 브랜드 컨텐츠 2 -->
+							<div class="type_cont type_brand">
+								<div class="tp_prdc_list scroller">
+									<ul class="brand_list scroll-cont">
+										<li><button type="button" class="btn" data-num="3" data-name="삼성 비스포크"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img1.png" alt="" /></i>삼성 비스포크</button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="삼성 세프컬렉션"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img2.png" alt="" /></i>삼성 세프컬렉션</button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="엘지 오브제"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img3.png" alt="" /></i>엘지 오브제</button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="엘지 디오스"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img4.png" alt="" /></i>엘지 디오스</button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="위니아"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img5.png" alt="" /></i>위니아</button></li>
+										<li><button type="button" class="btn" data-num="3" data-name="삼성 세프컬렉션"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img1.png" alt="" /></i>삼성 세프컬렉션</button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="엘지 오브제"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img2.png" alt="" /></i>엘지 오브제</button></li>
+										<li><button type="button" class="btn" data-num="3" data-name="엘지 디오스"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img3.png" alt="" /></i>엘지 디오스</button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="위니아"><i><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/brand_img3.png" alt="" /></i>위니아</button></li>
+									</ul>
+								</div>
+							</div>
+							<!-- // -->
+							<!-- 색상 컨텐츠 3 -->
+							<div class="type_cont type_color">
+								<div class="tp_color">
+									<p class="tx_tit">색상 <strong>(코타그리너리 + 코타화이트)</strong></p>
+								</div>
+								<div class="tp_prdc_list scroller">
+									<ul class="color_list scroll-cont">
+										<li><button type="button" class="btn" data-num="3" data-name="코타그리너리 + 코타화이트"><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img1.png" alt="" /></button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="글램 피치_글램 화이트"><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img2.png" alt="" /></button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="글램 그리너리_글램 썬옐로우"><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img3.png" alt="" /></button></li>
+										<li><button type="button" class="btn" data-num="2" data-name="새틴 그레이 + 글램 화이트"><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img4.png" alt="" /></button></li>
+										<li><button type="button" class="btn" data-num="1" data-name="새틴 마린 + 글램 화이트"><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img5.png" alt="" /></button></li>
+										<li><button type="button" class="btn" data-num="3" data-name="새틴 토프 + 글램 화이트"><img src="/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img6.png" alt="" /></button></li>
+									</ul>
+								</div>
+							</div>
+							<!-- // -->
+							<!-- 총용량 컨텐츠 4 -->
+							<div class="type_cont type_">
+								<div class="tp_prdc_list scroller">
+									<ul class="scroll-cont">
+									</ul>
+								</div>
+							</div>
+							<!-- // -->
+						</div>
+
+						
+						<div class="select_tag">
+							<!-- 옵션 버튼 -->
+							<div class="tp_tag_list scroller"><ul class="scroll-cont"><!-- <li><button type="button" class="tag">도어</button></li> --></ul></div>
+							<!-- 보기옵션 + 필터 -->
+							<div class="opt__side"><button class="btn__reset"></button></div>
+						</div>
+
+						<div class="mockup__prdlist">
+							<img src="http://img.enuri.info/images/mobile_v2/finder/test/plist_img1.png" id="pimg" alt="" />
+						</div>
+					</div>
+				</section>
+
+				<script>
+					$(function(){
+						var stepBtn = $(".opt__btn > ul > li"),	// 스텝 버튼
+							stepCont = $(".type_container .type_cont"), // 타입 컨텐츠
+							typeList = $(".tp_prdc_list"), // 상품 타입 목록
+							typeBtn = typeList.find("li"), // 상품 버튼
+							colorList = $(".color_list"), // 상품 타입 목록
+							tabIdx = 0, 					// 열린 속성 INDEX							
+							tagList = $(".select_tag"), //  태그 목록 Append
+							tagItem = tagList.find(".tag"); // 태그 아이템
+
+
+							stepBtn.on("click", function(){
+								var _this = $(this),
+									_idx = _this.index(),
+									tabState = false; // 탭 활성화 속성
+									
+									tabIdx = _idx;
+
+								if(!_this.hasClass("is--on")){
+									_this.addClass("is--on").siblings("li").removeClass("is--on");
+									stepCont.removeClass("is-shown").eq(_idx).addClass("is-shown");
+								}else{
+									_this.removeClass("is--on");
+									stepCont.removeClass("is-shown");
+									typeBtn.removeClass("is--on");							
+								}
+							})
+
+							typeBtn.on("click", function(){
+								var _this = $(this),
+									_idx = _this.index(),
+									_thisTxt = _this.find(".btn").data("name"),
+									_thisNumb = _this.find(".btn").data("num"),
+									typeBtnIdx = tabIdx;
+									tagHtml = "";
+
+									console.log(typeBtnIdx, tabIdx, _thisTxt)
+									if(!_this.hasClass("is--on")){
+										_this.addClass("is--on").siblings("li").removeClass("is--on");
+										stepBtn.eq(tabIdx).find(".btn").closest("li").addClass("is-selected");
+
+										// 상품 Reload
+										prdcChange(_thisNumb);
+									}
+
+									
+
+
+									// 태그 추가
+									var selectTag = tagList.find("li");
+									if(selectTag.hasClass("tag-"+tabIdx+"")){
+										tagList.find("li.tag-"+tabIdx).remove(); // 동일한 속성 태그 삭제
+									}
+									
+									if(typeBtnIdx == 2){
+										tagList.addClass("is--on")
+										tagList.find(".tp_tag_list ul").append("<li class=\"tag-"+tabIdx+"\" data-sec=\""+tabIdx+"\"><button type=\"button\" class=\"tag\"><i class='ico_color'><img src='/pub_test/mockup/finder/node_modules/nouislider/distribute/imgs/col_img"+(_idx+1)+".png' alt='' /></i>"+ _thisTxt +"</button></li>")
+									}else{
+										tagList.addClass("is--on")
+										tagList.find(".tp_tag_list ul").append("<li class=\"tag-"+tabIdx+"\" data-sec=\""+tabIdx+"\"><button type=\"button\" class=\"tag\">"+ _thisTxt +"</button></li>")
+									}
+									
+									
+									
+
+									$(".tag").on("click", function(){
+										var thisLi = $(this).closest("li"),
+											thisSector = thisLi.data("sec");
+											
+										$(this).closest("li").remove();
+										stepBtn.eq(thisSector).removeClass("is--on").removeClass("is-selected");
+										typeBtn.removeClass("is--on");
+										prdcChange(_thisNumb);
+									})		
+							})				
+
+							// 태그 리셋
+							$(".btn__reset").on("click", function(){
+								stepBtn.removeClass("is--on").removeClass("is-selected");
+								typeBtn.removeClass("is--on");
+								tagList.find("li").remove()
+
+								prdcChange(1);
+							})
+
+							var prdcChange = function(num){
+								var dataNum = num;
+								$("#loadingDiv").fadeIn(100);
+								setTimeout(function(){
+									$("#loadingDiv").fadeOut(100);
+									$("#pimg").attr("src", "http://img.enuri.info/images/mobile_v2/finder/test/plist_img"+ dataNum +".png");
+								},500);
+							}
+
+					})
+				</script>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

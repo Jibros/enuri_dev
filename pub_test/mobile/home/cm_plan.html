@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교"> 
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/home/default.css" />
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/home/plan.css">
+	<script async="" src="//www.google-analytics.com/analytics.js"></script>
+	<script type="text/javascript" src="http://dev.enuri.com//mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+</head>
+
+
+<body>
+
+<!-- 연관기획전 레이어 -->
+<div class="planlist_view" id="layer_planlist">
+	<h3>연관기획전<a href="javascript:///" onclick="$('#layer_planlist').hide();" class="close ico_m">창닫기</a></h3>
+	<ul>
+		<li><img src="http://img.enuri.gscdn.com/images/mobilefirst/planlist/B_20160824130403/B_20160824130403_main.png" alt="" ></li>
+		<li><img src="http://img.enuri.gscdn.com/images/mobilefirst/planlist/B_20160818172500/B_20160818172500_main.png" alt=""></li>
+		<li><img src="http://img.enuri.gscdn.com/images/mobilefirst/planlist/B_20160817175410/B_20160817175410_main.png" alt=""></li>
+		<li><img src="http://img.enuri.gscdn.com/images/mobilefirst/planlist/B_20160824130403/B_20160824130403_main.png" alt="" ></li>
+	</ul>
+	<div class="dim"></div>
+</div>
+
+<!--// 연관기획전 레이어 -->
+
+	<div id="main">
+		
+		<div id="topBanner">
+			<div class="appArea" id="appDownBanner" style="">
+				<a href="javascript:///" class="app_close" onclick="gnbEvtTopOnOff()">닫기</a>
+				<div class="app_down">가격비교를 더 빠르고 쉽게!<a href="javascript:topBannerDown()" class="app_go">앱다운로드</a></div>
+			</div>
+		</div>
+		
+		<header>
+			<div class="mainTop">
+				<a href="#" class="btn_side"><span class="cate_m ico_m">주요 서비스 메뉴 펼치기</span></a>
+				<h1 class="logo ico_m">에누리 가격비교</h1>
+				<div class="searchbox"><p class="search_in"><input type="text" id="searchtxt" name="searchtxt"></p><button class="srp"><span class="ico_m">검색</span></button></div>
+				<button class="mybtn"><span class="ico_m">마이메뉴</span></button>
+			</div>
+		</header>
+
+		<!-- 서브 -->
+		<!-- 20190510 모바일 기획전 Title 영역 디자인 변경  -->
+		<!-- .type_w 클래스 붙여주세요 -->
+		<nav class="m_top_sub type_w">
+			<h2 class="plan_tit"><a href="#" class="back">뒤로가기</a>에누리 특별 기획전
+				<!-- 160829 sns 공유 -->
+				<a href="javascript:///" class="sns_share ico_m" onclick="$('#snsPop').show();">공유하기</a>
+			</h2>
+			 
+			
+			<div class="layerPop_sns" id="snsPop" >
+				<div class="layerPopInner">
+					<div class="layerPopCont">
+						<h1 id="layerPopCont_txt">SNS 공유</h1>
+						<button class="btnClose" onclick="$('#snsPop').hide();">SNS 공유 창 닫기</button>
+						<div class="contents">
+							<div class="linkList">
+								<ul>
+									<li><a href="javascript:///" class="kakao" id="kakao-link-btn">카카오톡</a></li>
+									<li><a href="javascript:///" class="facebook">페이스북</a></li>
+									<li><a href="javascript:///" class="url" onclick="$('#layer_geturl').show();">URL</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="layerPop_sns" id="layer_geturl">
+				<div class="layerPopInner">
+					<div class="layerPopCont">
+						<h1>URL 복사</h1>
+						<button class="btnClose" type="button" onclick="$('#layer_geturl').hide();">창 닫기</button>
+						<div class="contents">
+							<p class="url_txt">
+								<span id="url_text">아래의 URL을 두번 누르면 복사할 수 있습니다.</span>
+								<span class="input_copy"><input type="text" class="urlCopy" id="txt_getUrl" value=""></span>
+							</p>
+						</div>
+						<div class="layerBtn"><button class="btnTxt" type="button" id="btt_close" onclick="$('#layer_geturl').hide();">닫기</button></div>
+					</div>
+				</div>
+				<div class="dim"></div>
+			</div>
+			<!--// 160822 sns 공유 -->
+
+		</nav>
+		<!--// 서브 -->
+
+	<!-- 20150618 기획전 공통 레이아웃  시작 -->
+	<section id="container">
+
+		<div class="top_visual">
+			<span class="more" onclick="$('#layer_planlist').show();">+ 연관기획전(00)</span>
+			<img src="http://img.enuri.gscdn.com/images/mobileevent/swim/visual.png" alt="[HOT한 상품들로 COOL하게 떠나자!] 올 여름을 책임질 물놀이용품!!" />
+		</div>
+		
+		<!-- 160829 -->
+		<script>
+		 $(document).ready(function() {
+			var nav = $('.plan_tit');
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 80) {
+					nav.addClass("f-nav");
+				} else {
+					nav.removeClass("f-nav");
+				}
+			});
+		});
+
+		 $(document).ready(function() {
+			var nav = $('.special_event_tab');
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 250) {
+					nav.addClass("f-nav");
+				} else {
+					nav.removeClass("f-nav");
+				}
+			});
+		});
+		</script>
+		
+		<div class="special_event_tab"> 
+			<select class="plan_list" title="기획전 전체상품 보기">
+				<option value="" selected>전체상품보기</option>
+				<option value="">모기장 (12)</option>
+				<option value="">모기약 (8)</option>
+				<option value="">모기채,살충기 (11)</option>
+				<option value="">모기접근방지 용품 (22)</option>
+			</select>
+		</div>
+		
+		<p id="title_1"class="tab_cons">
+			<strong>모기장</strong>모기 빈틈없이 촘촘하게 막아준다!
+		</p>
+		<!--// 160829 -->
+
+		<div class="goods" id="11016642">
+			<div class="inner">	
+				<div class="thumb" style="">
+					<img src="http://photo3.enuri.com/data/images/service/middle/10606000/10606969.jpg" onerror="this.src='" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">나이키</p> 
+					<p class="product">에어 맥스 디파이 런<br />(599343-003)에어 맥스 디파이 런에어 맥스 디파이 런</p>
+					<p class="description">맥스 에어로 쿠션감이 향상! 맥스 에어로 쿠션감이 향상! 맥스 에어로 쿠션감이 향상!</p>
+					<p class="priceinfo">
+						<!-- 191230 통합최저가 규칙 추가2 - 현금아이콘 추가 -->
+						<span class="ico--cash">현금</span><span class="lowest">최저가</span><span class="price">112,750</span><span class="won">원</span>
+						<!-- // -->
+					</p>
+				</div>
+			</div>
+		</div> 
+			
+		<p id="title_2"class="tab_cons">
+			<strong>모기장</strong>모기 빈틈없이 촘촘하게 막아준다!
+		</p>
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="description">고급스러움에 품격을 더하다!</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div> 
+
+		<p id="title_3"class="tab_cons">
+			<strong>모기장</strong>모기 빈틈없이 촘촘하게 막아준다!
+		</p>
+		
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<p id="title_4"class="tab_cons">
+			<strong>모기장</strong>모기 빈틈없이 촘촘하게 막아준다!
+		</p>
+		
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<p id="title_5"class="tab_cons">
+			<strong>모기장</strong>모기 빈틈없이 촘촘하게 막아준다!
+		</p>
+		
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="goods" id="11016642">
+			<div class="inner">
+				<div class="thumb" style="">
+					<img src="http://image.11st.co.kr/t/300/t/1/4/7/8/2/8/592147828_B.jpg" onerror="this.src='http://photo3.enuri.com/data/images/service/small/11016000/11016642.gif'" alt="" />
+				</div>
+				<div class="infobox"> 
+					<p class="company">상품상세설명 참조</p> 
+					<p class="product">[시즌특가전]A [한립토이스] 에디슨 과학블럭원목놀이/원목블럭/블록</p>
+					<p class="priceinfo">
+						<span class="lowest">최저가</span><span class="price">67,330</span><span class="won">원</span>
+					</p>
+				</div>
+			</div>
+		</div>
+			
+		
+	</section>
+	<!-- //20150618 기획전 공통 레이아웃  시작 -->
+		
+<script>
+function gotop(){
+	scrollTo(0,0);
+}
+</script>
+
+	<!-- 푸터 -->
+	<footer>
+		<nav class="new_footer">
+			<ul>
+				<li class="com_info"><a href="#n">사업자 정보</a></li>
+				<li><a href="javascript:goPcEnuri();insertLog('11004')" target="_blank">PC버전</a></li>
+			</ul>
+		</nav>
+		
+		<div class="cominfo_txt" >
+			<section>
+			에누리닷컴㈜는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.
+			<p><strong>에누리닷컴㈜</strong>
+				대표이사 : 최문석<span>|</span>사업자등록번호 : 206-81-18164<br />
+				통신판매신고 : 종로통신 제 4406호<br />
+				서울시 종로구 청계천로 85 (관철동) 29층<br />
+				문의 : 02-6354-3601<span>|</span>master@enuri.com
+			</p>
+			</section>
+			<ul class="rule">
+				<li><a href="#" onclick="onoff('agree')">이용약관</a></li>
+				<li><a href="#" onclick="onoff('privacy')">개인정보취급방침</a></li>
+				<li><a href="#">법적고지</a></li>
+			</ul>
+		</div>
+	</footer>
+	<!-- //푸터 -->
+		
+		
+		
+ 
+</html>

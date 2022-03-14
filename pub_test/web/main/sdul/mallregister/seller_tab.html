@@ -1,0 +1,391 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+
+<link REL="stylesheet" HREF="/common/css/enuri.css" TYPE="text/css">
+<link REL="stylesheet" HREF="/common/css/listheader.css" TYPE="text/css">
+<link REL="stylesheet" HREF="/common/css/incfavoritelayer.css" TYPE="text/css">
+<script type="text/javascript" src="/common/js/lib/prototype.js"></script>
+<script type="text/javascript" src="/common/js/function.js"></script>
+<script type="text/javascript" src="/common/js/listheader.js"></script>
+<script type="text/javascript" src="/common/js/incfavoritelayer.js"></script>
+<script language="javascript">
+function syncHeightListFrame() {
+
+		var varAddHeight = 0;
+		if (BrowserDetect.browser == "Firefox"){
+			varAddHeight = 20;
+		}
+		//alert(top.document.body.offsetHeight);
+		if (BrowserDetect.browser == "Explorer" || BrowserDetect.browser == "Firefox"){		
+			if (document.body){
+			 	varAddHeight = varAddHeight + document.getElementById("enuriListFrame").contentWindow.document.body.scrollHeight;
+             }else if(document.documentElement){
+             	varAddHeight = varAddHeight + document.getElementById("enuriListFrame").contentWindow.document.documentElement.scrollHeight;
+             } else {
+             	varAddHeight;
+             }			
+		}else{
+			if(document.getElementById("enuriListFrame").contentWindow.document.documentElement.scrollHeight){
+				varAddHeight = varAddHeight + document.getElementById("enuriListFrame").contentWindow.document.documentElement.scrollHeight;
+			}else{
+				varAddHeight = varAddHeight + document.getElementById("enuriListFrame").contentWindow.document.body.scrollHeight;
+			}
+		}
+		
+		/*var oFrame = document.getElementById("enuriListFrame");
+		if(oFrame.contentWindow){
+			if(oFrame.contentWindow.document.getElementById("faqMian")){
+				varAddHeight = oFrame.contentWindow.document.getElementById("faqMian").offsetHeight;
+			}else{
+			}
+		}else{
+		}*/
+		document.getElementById("enuriListFrame").height = varAddHeight+"px";
+	    //document.getElementById("enuriListFrame").height = document.getElementById("enuriListFrame").contentWindow.document.body.scrollHeight + varAddHeight +"px";
+	    top.syncHeightMenuFrame();
+	    closeLoading1();
+
+}
+function seller_3frame() {
+	try{
+		var varAddHeight = 0;
+		if (BrowserDetect.browser == "Firefox"){
+			varAddHeight = 20;
+		}
+		//alert(top.document.body.offsetHeight);
+			if (BrowserDetect.browser == "Explorer" || BrowserDetect.browser == "Firefox"){		
+				varAddHeight = varAddHeight + document.getElementById("enuriListFrame").contentWindow.document.getElementById("Hframe").scrollHeight; 
+			}else{
+				varAddHeight = varAddHeight + document.getElementById("enuriListFrame").contentWindow.document.documentElement.scrollHeight ? document.getElementById("enuriListFrame").contentWindow.document.documentElement.scrollHeight : document.getElementById("enuriListFrame").contentWindow.document.body.scrollHeight;
+			}		
+			document.getElementById("enuriListFrame").height = varAddHeight+"px";
+	    //document.getElementById("enuriListFrame").height = document.getElementById("enuriListFrame").contentWindow.document.body.scrollHeight + varAddHeight +"px";
+	    top.syncHeightMenuFrame();
+	    closeLoading1();
+   	}catch(e){
+	}
+}
+var infoTitle_1 = "오픈마켓 판매자용 스피드 상품등록(SDUL)";
+var infoTitle_2 = "동일 최저가 상위노출 입찰";
+var infoTitle_3 = "카탈로그 퍼가기";
+var infoTitle_4 = "광고, 입점안내";
+var infoTitle_5 = "FAQ/게시판";
+
+var infoDetail_1 = "G마켓, 옥션, 11번가 등의 오픈마켓 판매자들의 판매상품 중<br />";
+infoDetail_1 += "아직 에누리에 등록되지 않은 상품을 판매자 여러분들이<br />";
+infoDetail_1 += "직접 신속히 등록할 수 있습니다.";
+var infoDetail_2 = "에누리 가격비교에 동일한 가격의 최저가 존재시,<br />";
+infoDetail_2 += "자신의 가격을 최상위에 노출시키도록 입찰 할 수 있습니다.<br />";
+infoDetail_2 += "(동일 최저가 시 최상위 가격의 클릭율은 75% 이상입니다.)";
+var infoDetail_3 = "오픈마켓 판매자 및 전문몰을 대상으로 에누리의 상품정보를<br />";
+infoDetail_3 += " 무료로 제공합니다.<br />&nbsp;";
+var infoDetail_4 = "에누리 방문자 = 최고 충성도 고객<br />";
+infoDetail_4 += "에누리 입점 및 광고를 통해 매출을 올려보세요!<br />&nbsp;";
+var infoDetail_5 = "판매자들이 자주 궁금해하시는 질문에 대한 답변모음과<br />";
+infoDetail_5 += "질문, 제안을 할 수 있는 게시판을 보실 수 있습니다.<br />&nbsp;";
+
+var infoTitle = "";
+var infoDetail = "";
+
+infoTitle = infoTitle_1;
+infoDetail = infoDetail_1;
+
+function initInfo(){
+	//alert("init_total");
+	insertLog(7173);
+	document.getElementById("infoTitle").innerHTML = infoTitle;
+	document.getElementById("infoDetail").innerHTML = infoDetail;
+	document.getElementById("divMenuInfo").style.display = "inline";
+	parent.document.body.scrollTop = "0";
+	
+}
+function Win_header( sURL, sName, scrollbars,left,top){ 
+    var win;
+    win = window.open(sURL, sName, "status=no,toolbar=no,resizable=no,scrollbars="+scrollbars+",menubar=no, left="+left+", top="+top); 
+    win.opener.self;
+}
+function sellerMenuOver(idx){
+	if(idx == "1"){
+		//document.getElementById("sm_1").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_sdul_ov.gif";
+		document.getElementById("infoTitle").innerHTML = infoTitle_1;
+		document.getElementById("infoDetail").innerHTML = infoDetail_1;
+	}else if(idx == "2"){
+		//document.getElementById("sm_2").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_top_ov.gif";
+		document.getElementById("infoTitle").innerHTML = infoTitle_2;
+		document.getElementById("infoDetail").innerHTML = infoDetail_2;
+	}else if(idx == "3"){
+		//document.getElementById("sm_3").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_catalog_ov.gif";
+		document.getElementById("infoTitle").innerHTML = infoTitle_3;
+		document.getElementById("infoDetail").innerHTML = infoDetail_3;
+	}else if(idx == "4"){
+		//document.getElementById("sm_4").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/board/new/tab_guide_ov.gif";
+		document.getElementById("infoTitle").innerHTML = infoTitle_4;
+		document.getElementById("infoDetail").innerHTML = infoDetail_4;
+	}else if(idx == "5"){
+		//document.getElementById("sm_5").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/board/new/tab_faq_ov.gif";
+		document.getElementById("infoTitle").innerHTML = infoTitle_5;
+		document.getElementById("infoDetail").innerHTML = infoDetail_5;
+	}
+	
+	
+}
+function sellerMenuOut(idx){
+	if(idx == "1"){
+		//document.getElementById("sm_1").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_sdul.gif";
+	}else if(idx == "2"){
+		//document.getElementById("sm_2").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_top.gif";
+	}else if(idx == "3"){
+		//document.getElementById("sm_3").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_catalog.gif";
+	}else if(idx == "4"){
+		//document.getElementById("sm_4").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/board/new/tab_guide.gif";
+	}else if(idx == "5"){
+		//document.getElementById("sm_5").src = "http://imgenuri.enuri.gscdn.com/images/sellerguide/board/new/tab_faq.gif";
+	}
+	
+	document.getElementById("infoTitle").innerHTML = infoTitle;
+	document.getElementById("infoDetail").innerHTML = infoDetail;
+}
+function sdulLoginChk(idx){
+	var url = "/include/ajax/AjaxSduLoginCheck.jsp";
+	var param = "";
+		
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param,onComplete:checkSdulLoginMenu
+		}
+	);
+	
+	function checkSdulLoginMenu(originalRequest){
+		var varReturn = originalRequest.responseText.trim();
+		if(varReturn=="1"){
+			//top.Cmd_Login('sdu');
+			if(idx == "1"){
+				location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=1&lg=1";
+				infoTitle = infoTitle_1;
+				infoDetail = infoDetail_1;
+			}else if(idx == "2"){
+				location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=2&lg=1";
+				infoTitle = infoTitle_2;
+				infoDetail = infoDetail_2
+			}else if(idx == "3"){
+				location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=3&lg=1";
+				infoTitle = infoTitle_3;
+				infoDetail = infoDetail_3;
+			}
+		}else{
+			if(varReturn=="2"){
+				if(idx == "1"){
+					location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=1";
+					infoTitle = infoTitle_1;
+					infoDetail = infoDetail_1;
+				}else if(idx == "2"){
+					location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=2";
+					infoTitle = infoTitle_1;
+					infoDetail = infoDetail_1;
+				}else if(idx == "3"){
+					location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=3&lg=1";
+					infoTitle = infoTitle_1;
+					infoDetail = infoDetail_1;
+				}
+			}else{
+				if(varReturn=="24"){ //sdu, sdul 중복 회원
+					if(idx == "1"){
+						location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=1";
+						infoTitle = infoTitle_1;
+						infoDetail = infoDetail_1;
+					}else if(idx == "2"){
+						location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=2";
+						infoTitle = infoTitle_1;
+						infoDetail = infoDetail_1;
+					}else if(idx == "3"){
+						location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=3&lg=1";
+						infoTitle = infoTitle_1;
+						infoDetail = infoDetail_1;
+					}
+					//top.Cmd_Login('choicesdu');
+				}else{
+					if(varReturn=="3") {
+						/*
+						if(confirm("판매자 회원이 아닙니다. 판매자 회원으로 가입하시겠습니까?")){
+							//location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=4&guide=1";
+							Win_header('/sdul/mallregister/join/Sdul_Join_Step1.jsp','membermodify','yes',100,100 );
+							//infoTitle = infoTitle_4;
+							//infoDetail = infoDetail_4;
+						}else{
+							window.opener.focus();
+						}
+						*/
+						if(idx == "1"){
+							location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=1&lg=1";
+							infoTitle = infoTitle_1;
+							infoDetail = infoDetail_1;
+						}else if(idx == "2"){
+							location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=2&lg=1";
+							infoTitle = infoTitle_2;
+							infoDetail = infoDetail_2
+						}else if(idx == "3"){
+							location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=3&lg=1";
+							infoTitle = infoTitle_3;
+							infoDetail = infoDetail_3;
+						}
+					}else{
+						sdulLoginAfterDivShow();
+					}
+				}
+			}
+		}
+	}
+}
+function cmdClickSellerMenu(idx){
+	if(idx == "1"){
+		sdulLoginChk(idx);
+	}else if(idx == "2"){
+		sdulLoginChk(idx);
+	}else if(idx == "3"){
+		sdulLoginChk(idx);
+	}else if(idx == "4"){
+		location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=4";
+		infoTitle = infoTitle_4;
+		infoDetail = infoDetail_4;
+	}else if(idx == "5"){
+		location.href="/sdul/mallregister/new/IncSellerHeader.jsp?sm=5";
+		infoTitle = infoTitle_5;
+		infoDetail = infoDetail_5;
+	}
+}
+function setLogintopCmdtype(flag){
+	alert(flag);
+}
+function viewLoading1(){
+	top.document.getElementById("loadingListBg").style.display = "";
+	top.document.getElementById("img_loading").style.display = "";
+}
+function closeLoading1(){
+	top.document.getElementById("loadingListBg").style.display = "none";
+	top.document.getElementById("img_loading").style.display = "none";
+}
+function bonus_layerClose(){
+	if(document.getElementById("divFreeInfo")){
+		document.getElementById("divFreeInfo").style.display = "none";
+	}
+}
+
+</script>
+<style type="text/css">
+<!--
+.seller_style1 {
+	font-family: "돋움";
+	font-size: 12px;
+	color: #000000;
+}
+.seller_style2 {
+	color: #0084c7;
+	font-weight: bold;
+}
+.seller_style3 {
+	font-family: "돋움";
+	font-size: 11px;
+	color: #000000;
+	line-height: 1.2;
+}
+.menu_layer_info {
+	position:absolute;
+	left:398px;
+	top:5px;
+	width:328px;
+	height:82px;
+	z-index:1;
+	display: none;
+}
+-->
+</style>
+</head>
+<body onload="initInfo();" onresize="" >
+<div id="wrap">
+	<div id="divFreeInfo" style="display:none;left: 474px;top: 58px;position:absolute;z-index: 100;">
+		<img src="http://imgenuri.enuri.gscdn.com/images/view/bonus_layer.png" usemap="#sdulMap2">
+		<map name="sdulMap2" id="sdulMap2">
+			<area shape="rect" coords="342,2,360,17" href="JavaScript:bonus_layerClose();"/>
+		</map>
+	</div>
+	<div id="divMenuInfo" class="menu_layer_info">
+		<table width="328" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/layer_01.gif" width="328" height="5" /></td>
+			</tr>
+			<tr>
+				<td height="72" align="center" background="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/layer_02.gif">
+					<table width="310" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td height="20" align="left"><strong class="seller_style1" id="infoTitle">오픈마켓 판매자용 스피드 상품등록(SDUL)</strong></td>
+						</tr>
+						<tr>
+							<td id="infoDetail" height="40" align="left" class="seller_style3">
+								G마켓, 옥션, 11번가 등의 오픈마켓 판매자들의 판매상품 중<br />
+								아직 에누리에 등록되지 않은 상품을 판매자 여러분들이<br />
+								직접 신속히 등록할 수 있습니다.
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td><img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/layer_03.gif" width="328" height="5" /></td>
+			</tr>
+		</table>
+	</div>
+	<div id="header" style="margin-left:0px;margin-right: 0px;">
+		<table width="990" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="157" height="50" align="left" valign="top">
+					<img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/home_on.gif" onclick="top.location.href='/sdul/mallregister/SellerMain.jsp';" width="142" height="22" style="margin-left: 14px;margin-top: 14px;cursor: pointer;" />
+				</td>
+				<td width="605">&nbsp;</td>
+				<td width="228" align="center">
+					<iframe name="bidCashInfoFrame" id="bidCashInfoFrame" src="/sdul/bid/include/Inc_Bid_Cash_Info_2011.jsp" width="250" height="92" frameborder="0"  scrolling="no" marginheight="0" scrolltop="0" scrollleft="0" marginwidth="0"></iframe>
+				</td>
+			</tr>
+			<tr>
+				<td height="45" colspan="3" align="center" >
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td width="8"></td>
+							<td height="45" colspan="3" align="center" background="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_bg.gif">
+								<table width="950" border="0" cellpadding="0" cellspacing="0">
+									<tr>
+										<td width="115" height="45"><img id="sm_1" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_sdul.gif" width="115" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('1');" onmouseover="sellerMenuOver('1')" alt="SDUL (오픈마켓) 스피드 상품등록" /></td>
+										<td width="114"><img id="sm_2" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_top.gif" width="114" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('2');" onmouseover="sellerMenuOver('2')" onmouseout="sellerMenuOut('2');" alt="상위노출 입찰" /></td>
+										<!-- 20150125 tab 추가 -->
+										<td width="105"><img id="sm_2" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_sellerad_ov.gif" width="105" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('5');" onmouseover="sellerMenuOver('5')" onmouseout="sellerMenuOut('5');" alt="판매자 광고문구" /></td>
+										<td width="105"><img id="sm_2" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_powerseller.gif" width="105" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('6');" onmouseover="sellerMenuOver('6')" onmouseout="sellerMenuOut('6');" alt="파워셀러 홍보" /></td>
+										<!-- //20150125 tab 추가 -->
+										<td width="105"><img id="sm_3" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/tab_catalog.gif" width="105" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('3');" onmouseover="sellerMenuOver('3')" onmouseout="sellerMenuOut('3');" alt="카달로그 퍼가기" /></td>
+										<td>&nbsp;</td>
+										<td width="105"><img id="sm_4" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/board/new/tab_guide.gif" width="105" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('4');" onmouseover="sellerMenuOver('4')" onmouseout="sellerMenuOut('4');" alt="광고/입점안내" /></td>
+										<td width="105" height="34"><img id="sm_5" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/board/new/tab_faq.gif" width="105" height="45" style="cursor: pointer;" onclick="cmdClickSellerMenu('5');" onmouseover="sellerMenuOver('5')" onmouseout="sellerMenuOut('5');" alt="FAQ/게시판" /></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<script language="javascript">
+	viewLoading1();
+</script>
+	<!--<iframe name="enuriListFrame" id="enuriListFrame" src="/sdul/mallregister/new/SellerGuide1.jsp" width="100%" height="770" frameborder="0"  scrolling="no" marginheight="0" scrolltop="0" scrollleft="0" marginwidth="0" onLoad="syncHeightListFrame()"></iframe>-->
+<iframe name="enuriListFrame" id="enuriListFrame" src="seller_ad.html" width="100%" height="770" frameborder="0"  scrolling="no" marginheight="0" scrolltop="0" scrollleft="0" marginwidth="0" onLoad="syncHeightListFrame()"></iframe>
+<iframe style="display:none;" name="enuriListFrame" id="enuriListFrame" src="power_seller.html" width="100%" height="770" frameborder="0"  scrolling="no" marginheight="0" scrolltop="0" scrollleft="0" marginwidth="0" onLoad="syncHeightListFrame()"></iframe>
+
+
+</body>
+</html>

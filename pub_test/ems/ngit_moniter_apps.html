@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>ngit 모니터링 mall</title>
+<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="./assets/css/ngit_dashboard.css" />
+<!-- fontawesome all.min.css -->
+<link rel="stylesheet" type="text/css" href="./assets/css/all.min.css" />
+<script type="text/javascript" src="http://m.enuri.com/mobilenew/js/lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+<!--[if lt ie 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<!-- 로딩중 -->
+<div id="loading">
+	<div class="dimm"></div>
+	<div class="loader">
+		<div class="dot dot1"><i></i></div>
+		<div class="dot dot2"><i></i></div>
+		<div class="dot dot3"><i></i></div>
+		<div class="dot dot4"><i></i></div>
+		<div class="dot dot5"><i></i></div>
+		<div class="dot dot6"><i></i></div>
+		<div class="dot dot7"><i></i></div>
+		<div class="dot dot8"><i></i></div>
+		<div class="dot dot9"><i></i></div>
+	</div>
+</div>
+
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">NGIT 모니터링 수집</a>
+	<!-- <input class="form-control form-control-dark w-100" type="text" placeholder="search" aria-label="search">
+	<ul class="navbar-nav px-3">
+		<li class="nav-item text-nowrap">
+			<a class="nav-link" href="#">sign out</a>
+		</li>
+	</ul> -->
+</nav>
+
+<div class="container-fluid">
+	<div class="row">
+		<nav class="col-md-1 d-none d-md-block sidebar">
+			<div class="sidebar-sticky bg-light">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link" href="./ngit_moniter_mall.html">NGIT Collection</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./ngit_moniter_eslp.html">NGIT ESLP</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" href="./ngit_moniter_apps.html">NGIT 응용프로듀서</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="./ngit_moniter_platform.html">NGIT 플랫폼</a>
+					</li>
+				</ul>
+
+				<h2 class="sidebar-heading px-3 mt-4 mb-1 text-muted">
+					<span>비상연락망</span>
+				</h2>
+				<ul class="nav flex-column mb-2 emergency">
+					<li class="nav-item">
+						<a class="nav-link" href="tel:010-3581-5834">
+							<span class="author text-muted">홍성배 이사</span>
+							<span class="tel-numb"><i class="fas fa-mobile"></i> 010-6309-7099<br /><i class="fas fa-fax"></i> 385(내선)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="tel:010-3581-5834">
+							<span class="author text-muted">송성현 책임(LGCNS)</span>
+							<span class="tel-numb"><i class="fas fa-mobile"></i> -<br /><i class="fas fa-fax"></i> -</span>
+						</a>
+					</li>
+				</ul>
+
+				<h2 class="sidebar-heading px-2 mt-4 mb-1 text-danger">경고 표시 조건</h2>
+				<div class="btn-group ml-2">
+					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ngitCollectionModal">Collection</button>
+					<button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#ngitESLPModal">ESLP</button>
+				</div>
+			</div>
+		</nav>
+
+        <main role="main" class="col-md-11 ml-sm-auto col-lg-11 pt-3 px-4">          
+			<h2 class="mb-3">NGIT 응용프로듀서</h2>
+			
+			<div class="row">
+				<div class="col-lg-12 mb-5">
+					<div class="quewrap que">
+						<h3 class="que__tit"><i class="fas fa-database"></i> 집계(통계) 데이터 동기화 이력</h3>
+						
+						<div class="que__box exp__box">
+							<!-- 경고 class="exp danger" -->
+							<div class="exp danger">
+								<div class="exp__data">
+									<p class="num"><span class="caption">Max Data</span> MMDD-HH:MM</p> 
+									<p class="num"><span class="caption">Get Data</span> MMDD-HH:MM</p>
+								</div>
+								<div class="exp__total">
+									<p class="min"><span>15</span>분</p>
+									<span class="sub-txt">&gt; 10분</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="quewrap">
+						<h3 class="que__tit"><i class="fas fa-database"></i> 모델 변경 반영 이력 <span class="sub-txt">(10분마다 Refresh)</span></h3>
+						
+						<table class="table table-hover table-sm table-bordered text-center table-eslp mb-5">
+							<colgroup>
+								<col width="8%" />
+								<col width="38%" />
+								<col width="18%" />
+								<col width="18%" />
+								<col width="18%" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>시간</th>
+									<th>변경건수</th>
+									<th>대기건수</th>
+									<th>처리완료건수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>2018.08.14 01:28</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr class="state-danger">
+									<td>2</td>
+									<td>2018.08.14 01:28</td>
+									<td>111,000,000,000</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>2018.08.14 01:28</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="quewrap">
+						<h3 class="que__tit"><i class="fas fa-database"></i> 상품 변경 반영 이력 <span class="sub-txt">(10분마다 Refresh)</span></h3>
+						
+						<table class="table table-hover table-sm table-bordered text-center table-eslp mb-5">
+							<colgroup>
+								<col width="8%" />
+								<col width="38%" />
+								<col width="18%" />
+								<col width="18%" />
+								<col width="18%" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>시간</th>
+									<th>변경건수</th>
+									<th>대기건수</th>
+									<th>처리완료건수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>2018.08.14 01:28</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>2018.08.14 01:28</td>
+									<td>111,000,000,000</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>2018.08.14 01:28</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
+				<div class="col-md-4">
+					<div class="quewrap">
+						<h3 class="que__tit"><i class="fas fa-database"></i> 추가 카테 변경 반영 이력 <span class="sub-txt">(10분마다 Refresh)</span></h3>
+						
+						<table class="table table-hover table-sm table-bordered text-center table-eslp mb-5">
+							<colgroup>
+								<col width="8%" />
+								<col width="38%" />
+								<col width="18%" />
+								<col width="18%" />
+								<col width="18%" />
+							</colgroup>
+							<thead>
+								<tr>
+									<th>번호</th>
+									<th>시간</th>
+									<th>변경건수</th>
+									<th>대기건수</th>
+									<th>처리완료건수</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>2018.08.14 01:28</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>2018.08.14 01:28</td>
+									<td>111,000,000,000</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>2018.08.14 01:28</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</div>
+
+<!-- NGIT Collection Modal -->
+<div class="modal fade" id="ngitCollectionModal" tabindex="-1" role="dialog" aria-labelledby="NGIT Collection 푸시 발송 및 경고 표시 조건" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ngitCollectionModaltitle">NGIT Collection</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-custom-inner">
+					<p>푸시 발송 및 경고 표시 조건</p> 
+					<ol>
+						<li>기준 시작 시간보다 시작 시간이 30분 이상 차이가 날 경우 경고</li>
+						<li>시작 시간과 종료 시간이 3시간 이상 차이 날 경우 경고</li>
+					</ol>
+				</div>		
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- NGIT ESLP Modal -->
+<div class="modal fade" id="ngitESLPModal" tabindex="-1" role="dialog" aria-labelledby="NGIT ESLP 푸시 발송 및 경고 표시 조건" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="ngitESLPModaltitle">NGIT ESLP</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-custom-inner">
+					<p>푸시 발송 및 경고 표시 조건</p> 
+					<ol>
+						<li>상품 변경 기록 개수,ESLP 개수 차이가 서로 10배 차이</li>
+						<li>상품 변경 기록 개수 백만건 이상일 때</li>
+						<li>ESLP 개수 백만건 이상일 때</li>
+						<li>마리너 DB 개수 2백만건 이상일 때</li>
+						<li>ES 개수 시작시간 최근 기록이 30분 이상 없을 때</li>
+					</ol>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

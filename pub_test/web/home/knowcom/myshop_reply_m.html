@@ -1,0 +1,370 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="description" content="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다." /> 
+<meta name="keyword" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가" />
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="/css/knowcom/common.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/default.css" type="text/css">
+<link rel="stylesheet" href="/css/knowcom/write_m.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/classChange.js"></script>
+</head>
+<body class="mobile">
+
+<div id="WriteWrap_M">
+	<!-- container -->
+	<div class="container">
+		<!-- 헤더영역 -->
+		<header id="header" class="w_header">
+			<h1 class="tit">MY쇼핑지식</h1>
+
+			<a href="#" class="btn_back stripe_m" onclick="onoff('registConfirm'); return false;">뒤로</a>
+			<a href="#" class="btn_logout"  onclick="return false;">로그아웃</a>
+		</header>
+		<!--// 헤더영역 -->
+		
+		<section class="m_content">
+			<!-- My등급 박스 -->
+			<div class="cont_box mygrade_area">
+				<div class="my_grade_img">
+					<p class="customer">고객아이디명고객아이디명</p>
+					<!-- 200225 : #SR38536 : 쇼핑지식 등급제 개편  -->
+					<!-- 								
+						등급 아이콘
+						누리VIP - ico_grade_vip.png
+						누리패밀리 - ico_grade_family.png
+						누리그린 - ico_grade_green.png
+					 -->
+					<!-- <div class="bg"><img src="http://img.enuri.info/images/knowcom/ico_grade_vip.png" alt="누리VIP" class="imgs"/></div> -->
+					<!-- <div class="bg"><img src="http://img.enuri.info/images/knowcom/ico_grade_family.png" alt="누리패밀리" class="imgs"/></div> -->
+					<!-- <div class="bg"><img src="http://img.enuri.info/images/knowcom/ico_grade_green.png" alt="누리그린" class="imgs"/></div> -->
+					<div class="bg"><img src="http://img.enuri.info/images/knowcom/ico_grade_vip.png" alt="누리VIP" class="imgs"/></div>
+					<p class="gradename">누리VIP</p>
+					<!-- // -->
+				</div>
+				
+				<div class="my_grade_info">
+					<p class="blind">나의 쇼핑 활동 정보</p>
+					<ul>
+						<li>
+							<p class="tit">활동점수 <span class="stripe_m ico_q" onclick="onoff('myPointInfo1');">?</span></p>
+							<div class="number"><strong class="action">11,234</strong>점</div>
+						</li>
+						<li>
+							<p class="tit">활동랭킹</p>
+							<div class="number"><strong class="action">23</strong>위</div>
+							<!--<div class="number norank">순위없음</div>-->
+						</li>
+					</ul>
+					<!-- 200304 : SR#38613 : 활동점수 e머니 자동적립 요청의 건 > 버튼 추가 -->
+					<a href="#" class="btn_go_emoney"><span class="txt_btn">e머니 적립내역</span></a>
+					<!-- // -->
+				</div>
+			</div>
+			<!-- //My등급 박스 -->
+			
+			<!-- 목록 영역 -->
+			<div class="cont_box w_output_area">
+				<!-- 
+				SR#42340 디자인 개선으로 기존 마크업 삭제 예정.
+				<div class="v_category_list">
+					<! -- cate_tab - ->
+					<div class="cate_tab cate_mb">
+						<ul class="tabarea">
+							<li><a href="#">내가 쓴 글</a></li>
+							<li class="on"><a href="#">작성한 댓글</a></li>
+							<li><a href="#">최근 본 글</a></li>
+							<li><a href="#">추천글</a></li>
+						</ul>	
+					</div>
+					<! -- //cate_tab - ->
+				</div>
+				-->
+
+				<!-- SR#42340 카테고리탭 추가 -->
+				<!-- 가변 tab, flex 속성 사용 : ie9 이하 polyfill 적용 "flexibility.js" -->
+				<script type="text/javascript" src="/js/flexibility.js"></script><!-- 신규 JS -->
+				<script type="text/javascript">
+				$(function(){
+					// 탭메뉴 IE9 대응 함수 실행, 필수 추가
+					flexibility(document.documentElement);
+				});
+				</script>
+				<div class="board_menu">
+					<div class="m_scroll">
+						<!--  data-style="display:flex" 필수 추가 -->
+						<ul class="board_tabs" data-style="display:flex">
+							<li><a href="#goods_tab01">작성한 글</a></li>
+							<li><a href="#goods_tab02">작성한 댓글</a></li>
+							<li><a href="#goods_tab03">최근 본 글</a></li>
+							<li class="on"><a href="#goods_tab04">추천 글</a></li>
+						</ul>	
+
+						<script>
+							$(function(){
+								var $btab = $(".board_tabs li.on"),
+									tabpos = $btab.offset().left;
+
+								$btab.closest(".m_scroll").scrollLeft(tabpos - 30);
+							})
+						</script>
+					</div>
+				</div>
+				<!-- // -->
+
+				<!--- 모바일 : MY쇼핑지식 게시판 -->
+				<div class="myshop_board">
+					<ul class="list">
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin"><!-- 20190617 누리머니 아이콘 추가 --><span class="nurimoney__ico nurimoney__ico--sm">누리머니</span><!-- // -->이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<!-- 신고누적 블라인드처리 .blind_report -->
+						<li class="blind_report">
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<div class="no_result">
+								검색결과가 없습니다.
+								<!-- or 등록된 의견이 없습니다. -->
+							</div>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#" onclick="">
+								<p class="reply">
+									<span class="origin">이건 원본글이 노출되는 영역입니다. 최대 1줄 노출</span>
+									<span class="my">이게 내가 쓴 댓글이 노출되는 영역입니다. 최대 1줄 노출</span>
+								</p>
+								<div class="u_info">
+									<p class="board">누리게시판</p>
+									<p class="uid">에누리아이디</p>
+									<p class="wdate">2016.07.23</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+
+					<!-- 모바일용 페이징 -->
+					<div class="pagingmb_area">
+						<button type="button" class="arrow"><em class="prev">이전</em></button>
+						<span id="nwpage" class="pagenum">	
+							<span class="num select">1</span> / <span class="num">20</span>	</span>
+						<button type="button" class="arrow"><em class="next">다음</em></button>
+					</div>
+					<!-- //모바일용 페이징 -->
+				</div>
+				<!--- //모바일 : MY쇼핑지식 게시판 -->
+			</div>
+			<!-- //목록 영역 -->
+		</section>
+	</div>
+	<!-- //container -->
+</div>
+
+
+<!-- LAYER 등록취소 -->
+<div class="layer_back fixed" id="registConfirm" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box regist_confirm">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">등록 취소</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('registConfirm'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="txt_q">등록을 취소하겠습니까?<br />작성된 내용은 저장되지 않습니다.</p>
+
+				<div class="btn_group">
+					<a href="#" class="btn" onclick="onoff('registConfirm'); return false;">확인</a>
+					<a href="#" class="btn" onclick="onoff('registConfirm'); return false;">취소</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 등록취소 -->
+
+<!-- LAYER 활동점수안내 -->
+<div class="layer_back fixed" id="myPointInfo1" style="display:none;">
+	<div class="dimm"></div>
+	<div class="layer_box mypoint_layer">
+		<div class="inner">
+			<div class="head">
+				<h3 class="tit">활동점수 안내</h3>
+				<a href="#" class="stripe_m close" onclick="onoff('myPointInfo1'); return false;">닫기</a>
+			</div>
+			<div class="content">
+				<p class="mp_tit">활동점수란?</p>
+				<p class="mp_txt">게시글 및 댓글작성, 추천받기 등을 통해 획득한 누적 활동점수입니다. <br />활동점수와 활동랭킹은 매일 새벽에 업데이트 됩니다. </p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //LAYER 활동점수안내 -->
+
+<!-- LAYER 단순 DIMM 영역 -->
+<div class="layer_back fixed" id="justDimmArea" style="display:none;"><div class="dimm"></div></div>
+
+<script>
+/*레이어*/
+function onoff(id) {
+	var layer = id;
+	$("#" + layer).toggle();
+}
+</script>
+</body>
+</html>

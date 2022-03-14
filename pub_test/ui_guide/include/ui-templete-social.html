@@ -1,0 +1,604 @@
+<!-- PAGE WRAPPER -->
+<article id="pageWrap">
+	
+	<!-- Sector -->
+	<div class="docs-sector" id="ui-introduce">
+
+		<!-- Heading h1 ~ h4 -->
+		<h3 class="page-header">UI템플릿</h3>
+
+		<!-- Tab Wrap -->
+		<div class="tab_wrap">
+			<!-- Nav tabs -->
+			<!--
+			Tab 스타일별 클래스 : nav-pills, nav-tabs, nav-justified, nav-stacked 
+			<ul class="nav nav-pills" role="tablist">
+			<ul class="nav nav-tabs" role="tablist">
+			<ul class="nav nav-pills nav-justified" role="tablist">
+			<ul class="nav nav-tabs nav-justified" role="tablist">-->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="pill">GNB/검색창/전체메뉴</a></li>
+				<li role="presentation"><a href="#tab2" role="tab" data-toggle="pill">footer</a></li>
+				<li role="presentation"><a href="#tab3" role="tab" data-toggle="pill">페이징</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- GNB -->
+				<div role="tabpanel" class="tab-pane fade in active" id="tab1">
+
+					<h4 class="page-header">반응형 - GNB/검색창/전체메뉴</h4>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="bs-callout" style="width:640px; overflow-x:auto;">
+								<p>GNB MOBILE</p>
+								<iframe name="frmPreview" src="./snippet/social_gnb.html" width="600" height="300" frameborder="0"></iframe>
+							</div>
+							<div class="bs-callout" style="width:1100px; overflow-x:auto;">
+								<p>GNB WEB</p>
+								<iframe name="frmPreview" src="./snippet/social_gnb.html" width="1024" height="230" frameborder="0"></iframe>							
+							</div>
+						</div>
+
+						<div class="col-sm-12">
+							<p class="lead">HTML</p>
+							<figure class="highlight">
+								<pre class="brush: html;">
+<!-- TOP AREA -->
+<div class="top_wrap">
+	<!-- PC TOP ASIDE -->
+	<aside id="topAside">
+		<div class="container">
+			<div class="e_search">
+				<h1 class="imgall"><a href="http://www.enuri.com/">enuri</a></h1>
+				<form method="GET" name="frmEnuri" target="_blank" action="/search/Searchlist.jsp" onsubmit="return fnSearchEnuri();">
+				<fieldset>
+					<legend>가격비교 검색</legend>
+					<input type="hidden" name="keyword">
+					<input name="enuriKeyword" id="enuriKeyword" type="text">
+					<button name="search">가격비교</button>
+				</fieldset>
+				</form>
+			</div>
+			<ul class="e_category">
+				<li><a href="/department/index.jsp" target="_blank">백화점비교</a></li>
+				<li><a href="/knowbox/List.jsp" target="_blank">쇼핑지식</a></li>
+				<li><a href="/knowbox2/qna/index.jsp" target="_blank">쇼핑Q&amp;A</a></li>
+				<li><a href="/tour2012/Tour_Index.jsp" target="_blank">여행</a></li>
+				<li><a href="/car/Index.jsp?stp=4" target="_blank">신차비교</a></li>
+				<li><a href="JavaScript:;" onclick="$('#ly_more').toggle();">더보기</a></li>
+			</ul>
+		</div>
+	</aside>
+
+	<header id="header">
+		<div class="topper">
+			<div class="container">
+				<a href="#" class="str_ btn back"><i></i>뒤로 가기</a>
+				<a href="javascript:///" id="btnNavMobile" class="btn_side hidden-pc"><span class="cate_m str_"><i></i>주요 서비스 메뉴 펼치기(모바일)</span></a>
+				<h1 class="logo" onclick="goHome()">소셜 가격비교</h1>
+
+				<figure class="searchbox">
+					<label for="searchtxt" class="search_in"><input type="text" id="searchtxt" name="searchtxt" placeholder="검색어 입력"></label>
+					<button class="str_ srch"><i></i><span>검색</span></button>
+				</figure>
+				<button class="str_ mybtn"><i></i>마이페이지</button>
+
+				<!-- 모바일 노출 검색 -->
+				<div id="mSrchWrap" class="m_srch_wrap has_foot">
+					<div class="inner">
+						<!-- 검색 영역 -->
+						<div class="ms_head">
+							<a href="#" class="str_ btn back" onclick="$('#mSrchWrap').hide(); return false;"><i></i>뒤로 가기</a>
+							<form action="">
+								<legend>검색</legend>
+								<figure>
+									<label for="keyword"></label>
+									<input type="search" id="keyword" name="keyword" class="inp_srch" maxlength="" placeholder="검색어 입력" />
+									<button type="button" id="" class="srch_clear str_"><i></i>검색어 삭제</button>
+									<button type="submit" id="" class="srch_m str_"><i></i>검색</button>
+								</figure>
+							</form>
+						</div>
+						<!-- // 검색 영역 -->
+
+						<!-- 검색 컨텐츠 영역 -->							
+						<div class="sector ms_body">
+							<!-- 최근&인기 검색어 -->
+							<ul class="nav_tab">
+								<li class="on"><a href="#tab1">최근 검색어</a></li>
+								<li><a href="#tab2">인기 검색어</a></li>
+							</ul>
+
+							<div id="msScrollArea" class="ms_scroll_area">
+								<div class="scroller">
+
+									<div class="tabs_conts">
+										<div id="tab1">
+											<div class="t_body">
+												<ul class="recent_l">
+													<li><a href="#" class="abs del_ str_"><i></i>삭제</a> <a href="#" class="word key">브라운 유아물티슈</a> <span class="word date">09.03</span> <a href="#" class="abs srch_ str_"><i></i>검색</a></li>
+													<li><a href="#" class="abs del_ str_"><i></i>삭제</a> <a href="#" class="word key">폭스데이</a> <span class="word date">09.03</span> <a href="#" class="abs srch_ str_"><i></i>검색</a></li>
+													<li><a href="#" class="abs del_ str_"><i></i>삭제</a> <a href="#" class="word key">책상</a> <span class="word date">09.03</span> <a href="#" class="abs srch_ str_"><i></i>검색</a></li>
+													<li><a href="#" class="abs del_ str_"><i></i>삭제</a> <a href="#" class="word key">후드집업</a> <span class="word date">09.03</span> <a href="#" class="abs srch_ str_"><i></i>검색</a></li>
+													<li><a href="#" class="abs del_ str_"><i></i>삭제</a> <a href="#" class="word key">후드티셔츠</a> <span class="word date">09.03</span> <a href="#" class="abs srch_ str_"><i></i>검색</a></li>
+													<li><a href="#" class="abs del_ str_"><i></i>삭제</a> <a href="#" class="word key">반팔 후드 티셔츠</a> <span class="word date">09.03</span> <a href="#" class="abs srch_ str_"><i></i>검색</a></li>
+													<!-- 최근 검색기록이 없을 때 nosrch -->
+													<li class="nosrch">
+														<div class="p_wrap">
+															<span class="str_"><i></i><!-- 느낌표 --></span>
+															<p class="txt">최근 검색한 기록이 없습니다.</p>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+										<div id="tab2" style="display:none;">										
+											<div class="t_body">
+												<ul class="best_l">
+													<li><i>1</i><a href="#" class="word">체리트레일 윈도우10</a></li>
+													<li><i>2</i><a href="#" class="word">폭스데이</a></li>
+													<li><i>3</i><a href="#" class="word">책상</a></li>
+													<li><i>4</i><a href="#" class="word">후드집업</a></li>
+													<li><i>5</i><a href="#" class="word">후드티셔츠</a></li>
+													<li><i>6</i><a href="#" class="word">반팔 후드 티셔츠</a></li>
+													<li><i>7</i><a href="#" class="word">폭스데이</a></li>
+													<li><i>8</i><a href="#" class="word">책상</a></li>
+													<li><i>9</i><a href="#" class="word">후드집업</a></li>
+													<li><i>10</i><a href="#" class="word">후드티셔츠</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								
+									<!-- 검색 결과가 없습니다. -->
+									<div class="sector no_srch">
+										<h3 class="non"><strong>가나다라마바</strong>에 대한<br />검색결과가 없습니다.</h3>
+
+										<ul class="alert">
+											<li>- 단어의 철자를 확인해 주세요.</li>
+											<li>- 다른 검색어를 입력해 주세요.</li>
+										</ul>
+									</div>
+
+									<div class="bestProdWrap">
+										<div class="head">
+											<h3 class="tit">인기상품</h3>
+										</div>
+
+										<!-- 스크롤 영역 -->
+										<div class="horiScrollWrap">
+											<!-- 0개일 때 display:none -->
+											<div class="scrollList">
+												<ul class="bestProdList">
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_wemape.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>20%</em> 523,500원</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_timon.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>최저가</em> 523,500원</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_wemape.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>최저가</em> 523,500원</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_timon.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>20%</em> 523,500원</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_wemape.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>20%</em> 523,500원</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_wemape.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>20%</em> 523,500원</span>
+														</a>
+													</li>
+													<li>
+														<a href="#">
+															<img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/prod_img_imsi.gif" alt="" class="thumb" />
+															<span class="comp"><img src="http://imgenuri.enuri.gscdn.com/images/dealnew/ico_sm_wemape.gif" alt="위메프" /></span>
+															<span class="p_name">SKT 아이폰 6S/번호이동</span>
+															<span class="price"><em>20%</em> 523,500원</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- //스크롤 영역 -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- // 검색 컨텐츠 영역 -->
+
+						<!-- 최근 검색어 탭일 때만 노출 -->
+						<div class="ms_foot">
+							<div class="inner">
+								<ul>
+									<li><a href="#">전체삭제</a></li>
+									<li><a href="#">검색어저장 끄기</a></li>
+								</ul>
+
+								<a href="#" class="cls_srch" onclick="$('#mSrchWrap').hide(); return false;">닫기</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- // 모바일 노출 검색 -->
+					
+				<!-- 모바일 노출 카테고리 -->
+				<nav id="m-nav" class="m_nav_wrap">
+					<div class="mn_head">
+						<h2 class="tit">서비스 전체보기</h2>
+						<button class="m_nav_close str_"><i></i>닫기</button>
+					</div>
+					
+					<div id="mNavScrollArea" class="mn_body">
+						<div id="mNavScroll">
+							<div class="sector first">
+								<h3 class="cate_tit"><span class="ct_ ico1 str_"><i></i></span>쇼핑</h3>
+
+								<ul class="list_nav include_icon">
+									<!--
+										.n1 = 쇼핑전체, .n2 = 의류, .n3 = 패션/잡화, .n4 = 뷰티, .n5 = 출산/유아동, .n6 = 식품/건강, 
+										.n7 = 생활/주방, .n8 = 스포츠/레저, .n9 = 홈데코, .n10 = 디지털, .n11 = 문구/도서 .n12 = 온라인/기타
+									-->
+									<li><a href="#"><span class="ico n1"></span>쇼핑전체</a></li>
+									<li><a href="#"><span class="ico n2"></span>의류</a></li>
+									<li><a href="#"><span class="ico n3"></span>패션/잡화</a></li>
+									<li><a href="#"><span class="ico n8"></span>스포츠/레저</a></li>
+									<li><a href="#"><span class="ico n4"></span>뷰티</a></li>
+									<li><a href="#"><span class="ico n6"></span>식품/건강</a></li>
+									<li><a href="#"><span class="ico n7"></span>생활/주방</a></li>
+									<li><a href="#"><span class="ico n5"></span>출산/유아동</a></li>
+									<li><a href="#"><span class="ico n9"></span>홈데코</a></li>
+									<li><a href="#"><span class="ico n10"></span>디지털</a></li>
+									<li><a href="#"><span class="ico n12"></span>온라인/기타</a></li>
+									<li><a href="#"><span class="ico n11"></span>문구/도서</a></li>
+								</ul>
+							</div>
+
+							<div class="sector">
+								<h3 class="cate_tit"><span class="ct_ ico2 str_"><i></i></span>지역</h3>
+
+								<ul class="list_nav">
+									<li><a href="#">전체</a></li>
+									<li><a href="#">맛집/카페</a></li>
+									<li><a href="#">뷰티/헬스</a></li>
+									<li><a href="#">생활/기타</a></li>
+								</ul>
+							</div>
+
+							<div class="sector">
+								<h3 class="cate_tit"><span class="ct_ ico3 str_"><i></i></span>여행/레져</h3>
+
+								<ul class="list_nav">
+									<li><a href="#">전체</a></li>
+									<li><a href="#">해외여행</a></li>
+									<li><a href="#">국내여행</a></li>
+									<li><a href="#">제주여행</a></li>
+									<li><a href="#">호텔/리조트</a></li>
+									<li><a href="#">펜션/캠핑/글램핑</a></li>
+									<li><a href="#">레저/입장권</a></li>
+								</ul>
+							</div>
+
+							<div class="sector">
+								<h3 class="cate_tit"><span class="ct_ ico4 str_"><i></i></span>지역</h3>
+
+								<ul class="list_nav">
+									<li><a href="#">전체</a></li>
+									<li><a href="#">키즈/가족</a></li>
+									<li><a href="#">뮤지컬/연극</a></li>
+									<li><a href="#">콘서트/클래식</a></li>
+									<li><a href="#">전시/체험/영화</a></li>
+								</ul>
+							</div>
+
+							<div class="sector related">
+								<ul class="list_nav">
+									<li><a href="#"><span class="comp ico1 str_"><i></i></span>에누리</a></li>
+									<li><a href="#"><span class="comp ico2 str_"><i></i></span>스마트택배</a></li>
+									<li><a href="#"><span class="comp ico3 str_"><i></i></span>홈쇼핑 가격비교</a></li>
+									<li><a href="#"><span class="comp ico4 str_"><i></i></span>해외직구</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<!-- // 모바일 노출 카테고리 -->
+
+				<!-- PC 아이콘 -->
+				<div class="my_icon_list hidden-m">
+					<ul>
+						<li><a href="recent.html"><span class="ico recent str_pc"><i></i></span>최근 본 상품</a></li>
+						<li><a href="recent.html"><span class="ico zzim str_pc"><i></i></span>찜상품</a></li>
+						<li><a href="#"><span class="ico log str_pc"><i></i></span>로그인</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<nav class="main_nav">
+			<div class="container">
+				<ul class="nav">
+					<!-- 해당 탭 class="active" -->
+					<li><a href="main.html">홈</a></li>
+					<li><a href="main_todayrecomm.html">오늘의추천</a></li>
+					<li><a href="main_hotdeal.html">핫딜베스트</a></li>
+					<li><a href="main_livedeal.html">실시간핫딜</a></li>
+				</ul>
+
+				<!-- PC 노출 -->
+				<a href="javascript:///" class="btn_side hidden-m" onclick="$('.pc_category').toggle();"><span class="cate_m str_"><i></i>주요 서비스 메뉴 펼치기(PC 카테고리)</span></a>
+				<div class="pc_category hidden-m" style="display:none;">
+					<div class="menu_wrap">
+						<div class="menu_box two-col">
+							<dl>
+								<dt><h2><a href="#"><span class="ico t1 str_pc"><i></i></span> 쇼핑</a></h2></dt>
+								<dd><a href="">의류</a></dd>
+								<dd><a href="">스포츠/레저</a></dd>
+								<dd><a href="">잡화</a></dd>
+								<dd><a href="">홈데코</a></dd>
+								<dd><a href="">뷰티</a></dd>
+								<dd><a href="">디지털/가전</a></dd>
+								<dd><a href="">출산/유아동</a></dd>
+								<dd><a href="">문구/도서</a></dd>
+								<dd><a href="">식품/건강</a></dd>
+								<dd><a href="">온라인/기타</a></dd>
+								<dd><a href="">생활/주방</a></dd>
+							</dl>
+						</div>					
+						<div class="menu_box">
+							<dl>
+								<dt><h2><a href="#"><span class="ico t2 str_pc"><i></i></span> 지역</a></h2></dt>
+								<dd><a href="">맛집/카페</a></dd>
+								<dd><a href="">뷰티/헬스</a></dd>
+								<dd><a href="">생활/기타</a></dd>
+							</dl>
+						</div>					
+						<div class="menu_box">
+							<dl>
+								<dt><h2><a href="#"><span class="ico t3 str_pc"><i></i></span> 여행/레져</a></h2></dt>
+								<dd><a href="">해외여행</a></dd>
+								<dd><a href="">국내여행</a></dd>
+								<dd><a href="">제주여행</a></dd>
+								<dd><a href="">호텔/리조트</a></dd>
+								<dd><a href="">펜션/캠핑/글램핑</a></dd>
+								<dd><a href="">레저/입장권</a></dd>
+							</dl>
+						</div>					
+						<div class="menu_box">
+							<dl>
+								<dt><h2><a href="#"><span class="ico t4 str_pc"><i></i></span> 공연/문화</a></h2></dt>
+								<dd><a href="">키즈/가족</a></dd>
+								<dd><a href="">뮤지컬/연극</a></dd>
+								<dd><a href="">콘서트/클래식</a></dd>
+								<dd><a href="">전시/체험/영화</a></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<!-- // PC 노출 -->
+			</div>
+		</nav>
+	</header>
+</div>
+<!-- // TOP AREA -->
+								</pre>
+							</figure>
+						</div>
+					</div>
+				</div>
+				<!-- //GNB -->
+
+										
+				<!-- FOOTER -->
+				<div role="tabpanel" class="tab-pane fade" id="tab2">
+
+					<h4 class="page-header">반응형 - FOOTER</h4>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="bs-callout" style="width:640px; overflow-x:auto;">
+								<p>FOOTER MOBILE</p>
+								<iframe name="frmPreview" src="./snippet/social_footer.html" width="600" height="185" frameborder="0"></iframe>
+							</div>
+							<div class="bs-callout" style="width:1100px; overflow-x:auto;">
+								<p>FOOTER WEB</p>
+								<iframe name="frmPreview" src="./snippet/social_footer.html" width="1024" height="210" frameborder="0"></iframe>							
+							</div>
+						</div>
+
+						<div class="col-sm-12">
+							<p class="lead">HTML</p>
+							<figure class="highlight">
+								<pre class="brush: html;">
+<!-- FOOTER -->
+<footer id="footer">
+	<div class="container">
+		<div class="newquick">
+			<p class="TBtn" style="display: block;" onclick="javascript:goFooterTop()">TOP</p>
+		</div>
+
+		<!-- MOBILE FOOTER -->
+		<div class="m_footer hidden-pc">
+			<div class="mf_info">
+				(주)써머스플랫폼은 통신판매  정보제공자로서 에누리가격비교의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.
+				<p><strong onclick="goTest()">(주)써머스플랫폼</strong>
+					대표이사 : 최문석<span>|</span>사업자등록번호 : 206-81-18164<br>
+					통신판매신고 : 2015-서울중구-1046호<br>
+					서울시 중구 퇴계로 18(남대문로5가) 9 층 <br>
+					문의 : 02-6354-3601<span>|</span>master@enuri.com
+				</p>
+			</div>
+			<ul class="mf_menu">
+				<li><a href="javascript:openTermsWrap()" id="agree">이용약관</a></li>
+				<li><a href="javascript:openPrivacyWrap()">개인정보취급방침</a></li>
+				<li><a href="javascript:openRuleWrap()">법적고지</a></li>
+			</ul>
+		</div>
+
+		<!-- PC FOOTER -->
+		<div class="pc_footer hidden-m">
+			<div class="footer" id="tblFooter">
+				<ul class="footer_menu">
+					<li><span onclick="insertLog(1059);"><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top">회사소개</a></span></li>
+					<li><span onclick="insertLog(1060);"><a href='/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3' target="_top">광고안내</a></span></li>
+					<li><span onclick="insertLog(4555);"><a href="/etc/Secure.jsp" target="_top"><strong>개인정보취급방침</strong></a></span></li>
+					<li><span onclick="insertLog(1064);"><a href="/etc/Duty.jsp" target="_top">법적고지</a></span></li>
+					<li><span onclick="insertLog(1065);"><a href="/view/mallsearch/Listmall.jsp" target="_top">쇼핑몰검색</a></span></li>
+					<li><span><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></span></li>
+				</ul>
+
+				<div class="adr">
+					<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+					<span>대표이사 : 최문석</span>
+					<span>사업자등록번호 : 206-81-18164</span>
+					<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+					<span>전화 : 02-6354-3601</span>
+					<span>팩스 : 02-6354-3600</span>
+					문의 : master@enuri.com
+					<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onClick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a>
+				</div>
+
+				<ul class="award_list">
+					<li>2015, 2017 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+					<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+					<li>2015~2017 모바일어워드 코리아 가격비교서비스 3년연속 대상</li>
+					<li>2016 모바일브랜드 대상 가격비교서비스 대상</li>
+					<li>2015 소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				</ul>
+
+				<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 에누리가격비교의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p><p>
+			 </p>
+		</div>
+	</div>
+</footer>
+<!-- //FOOTER -->
+								</pre>
+							</figure>
+						</div>
+					</div>
+				</div>
+				<!-- //FOOTER -->
+
+
+				<!-- PAGING -->
+				<div role="tabpanel" class="tab-pane fade" id="tab3">
+
+					<h4 class="page-header">반응형 - PAGING</h4>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="bs-callout" style="width:640px; overflow-x:auto;">
+								<p>FOOTER MOBILE</p>
+								<iframe name="frmPreview" src="./snippet/social_paging.html" width="600" height="47" frameborder="0"></iframe>
+							</div>
+							<div class="bs-callout" style="width:1100px; overflow-x:auto;">
+								<p>FOOTER WEB</p>
+								<iframe name="frmPreview" src="./snippet/social_paging.html" width="1024" height="100" frameborder="0"></iframe>							
+							</div>
+						</div>
+
+						<div class="col-sm-12">
+							<p class="lead">HTML</p>
+							<figure class="highlight">
+								<pre class="brush: html;">
+<section class="sector">
+	<!-- paging -->
+	<div class="paging-wrap">
+		<ul class="paging" id="gbPaging">
+			<li><a href="javascript:;" class="str_ btn prev"><i></i>이전</a></li>
+			<li><a href="javascript:;" class="selected">1</a></li>
+			<li><a href="javascript:;">2</a></li>
+			<li><a href="javascript:;">3</a></li>
+			<li><a href="javascript:;">4</a></li>
+			<li><a href="javascript:;">5</a></li>
+			<li><a href="javascript:;">6</a></li>
+			<li><a href="javascript:;">7</a></li>
+			<li><a href="javascript:;">8</a></li>
+			<li><a href="javascript:;">9</a></li>
+			<li><a href="javascript:;">10</a></li>
+			<li><a href="javascript:;" class="str_ btn next"><i></i>다음</a></li>
+		</ul>
+	</div>
+	<!-- // paging -->
+</section>
+								</pre>
+							</figure>
+
+							<p class="lead">CSS</p>
+							<figure class="highlight">
+								<pre class="brush: html;">
+<style>
+	.paging-wrap {overflow:hidden; position:relative; margin-bottom:7px; padding:5px 38px; border-top:1px solid #cccbc9; background-color:#fff;}
+
+	.paging {display:table; width:100%;}
+	.paging li {display:table-cell; text-align:center; width:8.3333333%;}
+	.paging li a {display:block; font-size:14px; color:#999; line-height:28px; vertical-align:middle;}
+	.paging li a.btn {display:block; position:absolute; top:6px; width:28px; height:28px;}
+	.paging li a.btn.prev {left:10px;}
+	.paging li a.btn.prev i {background-position:-238px 8px;}
+	.paging li a.btn.prev.on i {background-position:-238px -16px;}
+	.paging li a.btn.next {right:10px;}
+	.paging li a.btn.next i {background-position:-263px 8px;}
+	.paging li a.btn.next.on i {background-position:-263px -16px;}
+	.paging li a.selected {font-weight:bold; font-weight:600; text-decoration:underline; color:#ff544c;}
+
+	@media (min-width:1024px) {
+		/*페이징*/
+		.paging-wrap {margin-bottom:0; padding:0; border-top:0;}
+		.paging {position:relative; margin:22px 0; border-top:0; text-align:center;}
+		.paging li {display:inline-block; width:auto; margin:0 1px; vertical-align:middle}
+		.paging li a {width:34px; height:34px; padding-top:2px; border:1px solid #e2e2e2; color:#999999; text-align:center; display:block; font-size:18px; font-family:tahoma;}
+		.paging li a.btn {position:relative; top:auto; width:78px; height:34px; padding-top:2px; font-size:16px; color:#181818; background:url(http://imgenuri.enuri.gscdn.com/images/home/bullet.gif) 0 0 no-repeat; }
+		.paging li a.btn:hover {border:1px solid #e2e2e2; color:#181818;}
+		.paging li a.btn i {display:none !important;}
+		.paging li a.btn.prev {left:auto; background-position:10px -247px; text-indent:7px;}
+		.paging li a.btn.next {right:auto; background-position:right -300px; text-indent:-7px;}
+		.paging li a.selected {cursor:default; background:#2d9fe8; border:1px solid #1f8fd7; text-decoration:none; color:#fff;}
+		.paging li a.selected:hover {border:1px solid #1f8fd7; color:#fff;}
+		.paging li a:hover {border:1px solid #787878; color:#343434;}
+	}
+</style>
+								</pre>
+							</figure>
+						</div>
+					</div>
+				</div>
+				<!-- //PAGING -->
+			</div>
+		</div>
+		<!-- // Tab Wrap -->
+	</div>
+	<!-- //Sector -->
+</article>
+<!-- //PAGE WRAPPER -->

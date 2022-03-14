@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>에누리(가격비교) eNuri.com</title>
+<!-- 191025 조립PC 페이지 전체 favicon 변경 -->
+<link rel="shortcut icon" href="http://img.enuri.info/images/layout/favicon_enuri_pc.ico">
+<!-- // -->
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="/css/enuripc/default.css" type="text/css" />
+<link rel="stylesheet" href="/css/enuripc/common.css" type="text/css" />
+<link rel="stylesheet" href="/css/enuripc/main.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/mobilefirst/css/lib/slick.css"/>
+<script type="text/javascript" src="/mobilefirst/js/lib/slick.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<!-- 200304 [PC] 조립PC 신규 DA지면 추가 - J1:조립PC – 메인(홈) 상단 배너 -->
+<div class="ad_banner_top ad_bnr_j1">
+	<!-- 배너 URL / 배경색은 inline style로 넣어주세요 -->
+	<a href="#" style="background:url(http://img.enuri.info/images/enuripc/@bnr_970x70.jpg) no-repeat 50% 0 #fff9e1;"><!--  메인 상단 배너  --></a>
+	<button class="btn_close" onclick="$(this).closest('.ad_banner_top').hide();">닫기</button>
+</div>
+<!-- // -->
+
+<!-- 상단메뉴영역 -->
+<div class="header">
+	<!-- 191025 공통 심플헤더 추가 -->
+	<link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+    <div class="com_simple_header">
+        <div class="com_head__inner">
+            <!-- 심플헤더 - 패밀리탭 -->
+            <ul class="com_head__tab_fam">
+                <!-- 노출되지 않는 list는 li태그에 display:none처리 꼭 해주세요 -->
+                <!-- 해당되는 탭은 on클래스로 활성화 해주세요 -->
+                <li><a href="/">에누리홈</a></li><!-- 에누리홈에서는 비노출 -->
+                <li><a href="/global/Index.jsp">해외직구</a></li>
+                <li class="on"><a href="/enuripc">조립PC</a></li>
+                <li><a href="/deal/newdeal/index.deal">소셜</a></li>
+                <li><a href="/tour2012/Tour_Index.jsp">여행</a></li>
+                <li><a href="/knowbox2/index.jsp">쇼핑지식</a></li>
+            </ul>
+            <!-- // -->
+            <!-- 심플헤더 - 배너영역 (에누리홈 only) -->
+            <ul class="com_head__list_ban" style="display:none">
+                <li><a href="#">혜택존<span class="ico_simple__sprite ico__sp_ben">쇼핑혜택</span></a></li>
+            </ul>
+            <!-- // -->
+            <!-- 심플헤더 - 우측메뉴 -->
+            <ul class="com_head__menu">
+                <!-- 노출되지 않는 메뉴 li태그에 display:none처리 꼭 해주세요 -->
+                <!-- 로그인 -->
+                <li style="display:none"><a href="#">로그인</a></li>
+                <!-- 회원가입 -->
+                <li style="display:none"><a href="#">회원가입</a></li>
+                <!-- 사용자 + 마이에누리 레이어 -->
+                <li>
+                    <a href="#"><em class="user_name">WangKooN</em>님<span class="ico__arr_down ico_simple__sprite"></span></a>
+                    <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                    <!-- 레이어 : 마이에누리 -->
+                    <div class="com_lay_login com_lay_box">
+                        <div class="lay_inner">
+                            <ul>
+                                <li><a href="javascript:goPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+                                <li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+                                <li><a href="">SDUL</a></li>
+                                <li><a href="">상위노출입찰</a></li>
+                                <li><a href="javascript:showZzim();">찜상품 <em>(n)</em></a></li>
+                                <li><a href="javascript:logout();">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- // -->
+                </li>
+                <!-- 로그아웃 -->
+                <li><a href="#">로그아웃</a></li>
+                <!-- 쇼핑Q&A -->
+                <li><a href="#">쇼핑Q&A</a></li>
+                <!-- 앱다운로드 + 레이어 -->
+                <li style="display:none">
+                    <a href="javascript:void(0);">앱다운로드<span class="ico__app_down ico_simple__sprite">받기</span></a>
+                    <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                    <!-- 레이어 : 앱다운로드 -->
+                    <div class="com_lay_app com_lay_box">
+                        <div class="spbox" id="simpleHeader">
+                            <ul class="sp_tab">
+                                <li><a href="javascript:void(0);" onclick="$('.sp_enuri').show().siblings('div').hide();">에누리 가격비교</a></li>
+                                <li><a href="javascript:void(0);" onclick="$('.sp_hotdeal').show().siblings('div').hide();">소셜비교</a></li>
+                            </ul>
+                            <!-- 에누리 -->
+                            <div class="sp_enuri" style="display:block;">
+                                <h2>에누리 가격비교 </h2>
+                                <p>모바일로 더욱 특별해진 가격비교!</p>
+                                <dl>
+                                    <dt>QR코드 스캔</dt>
+                                    <dd>QR코드</dd>
+                                    <dt>앱 다운로드</dt>
+                                    <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                    <dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                    <dt>다운로드 SMS 보내기</dt>
+                                    <dd>
+                                        <fieldset>
+                                            <legend>SMS보내기</legend>
+                                            <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_enuri" id="phonenum_enuri" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('enuri')"></button>
+                                        </fieldset>
+                                    </dd>
+                                    <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                    <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                </dl>
+                            </div>
+                            <!-- 소셜비교 -->
+                            <div class="sp_hotdeal" style="display:none;">
+                                <h2>소셜비교</h2>
+                                <p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+                                <dl>
+                                    <dt>QR코드 스캔</dt>
+                                    <dd>QR코드</dd>
+                                    <dt>앱 다운로드</dt>
+                                    <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                    <dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                    <dt>다운로드 SMS 보내기</dt>
+                                    <dd>
+                                        <fieldset>
+                                            <legend>SMS보내기</legend>
+                                            <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_hotdeal" id="phonenum_hotdeal" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('hotdeal')"></button>
+                                        </fieldset>
+                                    </dd>
+                                    <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                    <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //  -->
+                </li>
+                <!-- 더보기 + 레이어 -->
+                <li>
+                    <a href="javascript:void(0);">더보기<span class="ico__arr_down ico_simple__sprite"></span></a>
+                    <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                    <!-- 레이어 : 사이트맵 -->
+                    <div class="com_lay_sitemap com_lay_box">
+                        <dl>
+                            <dt>주요서비스</dt>
+                            <dd>
+                                <a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+                                <a href="/enuripc/" target="_new">PC 견적비교</a>
+                                <a href="/global/Index.jsp">해외직구</a>
+                            </dd>
+                            <dd>
+                                <a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+                                <a href="/view/move_mall.jsp" target="_new">이사견적</a>
+                                <a href="/view/Flower365.jsp" target="_new">꽃배달</a>
+                                <a href="/tour2012/Tour_Index.jsp" target="_new">여행비교</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>커뮤니티</dt>
+                            <dd>
+                                <a href="/knowbox2/index.jsp" target="_new">쇼핑지식</a>
+                                <a href="/knowcom/news.jsp" target="_new">뉴스</a>
+                                <a href="/knowcom/guide.jsp" target="_new">구매가이드</a>
+                                <a href="/knowcom/exp.jsp" target="_new">체험단</a>
+                                <a href="/knowcom/board.jsp?bbsname=review" target="_new">사용기</a>
+                                <a href="/knowcom/enuritv.jsp" target="_new">에누리TV</a>
+                                <a href="/knowcom/board.jsp?bbsname=nuri" target="_new">자유게시판</a>                            
+                            </dd>
+                            <dd>
+                                <a href="/knowcom/board.jsp?bbsname=sale" target="_new">특가게시판</a>
+                                <a href="/knowcom/qna.jsp" target="_new">쇼핑Q&amp;A</a>
+                                <a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition" target="_new">쇼핑기획전</a>
+                                <a href="/infoad_event/eventMain.jsp" target="_new">이벤트</a>
+                            </dd>
+                        </dl>
+                        <p class="all">
+                            <a href="/etc/Site_map.jsp" class="enuri_all" target="_new">에누리 서비스 전체보기</a>
+                        </p>
+                    </div>
+                    <!-- // -->
+                </li>
+            </ul>
+        </div>
+	</div>
+	<!-- // -->
+
+	<!-- 191025 제거 : 공통 심플헤더로 대체 -->
+	<!-- 탑메뉴 -->
+	<div class="top_menu" style="display:none">
+		<div class="comnbox">
+			<ul class="familysite">
+				<li><a href="/Index.jsp" target="_new">enuri</a></li>
+				<li><a href="/deal/newdeal/index.deal" target="_new">소셜비교</a></li>
+				<!-- <li><a href="/department/index.jsp" target="_new">백화점비교</a></li> -->
+			</ul>
+			<ul class="snb">
+				<li><a href="javascript:///">로그인</a></li>
+				<li><!-- <iframe id="frmMainLogin" name="frmMainLogin" src="/login/Loginstatus_2010.jsp?logintop_menu=top" frameborder="0" style="width: 100px; height: 20px; overflow: hidden; margin-top: 5px;" scrolling="no" onload="this.style.display=''"></iframe> --></li>
+				<li><a href="javascript:///">회원가입</a></li>
+				<li><a href="javascript:///">쇼핑Q&amp;A</a></li>
+				<li><a href="javascript:///">최근본상품</a></li>
+				<li><a href="javascript:///" onclick="onoff('morepop')">더보기</a>
+					<!-- 20190702 : 더보기 리스트 수정 /  #34631 보험 서비스 종료(제휴종료) 외 -->
+					<div class="sitemap" id="morepop" style="display:none">
+						<dl>
+							<dt>주요서비스</dt>
+							<dd>
+								<a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+								<a href="/enuripc/">PC 견적비교</a>
+							</dd>
+							<dd>
+								<a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+								<a href="/view/move_mall.jsp">이사견적</a>
+								<a href="/view/Flower365.jsp">꽃배달</a>
+								<a href="/tour2012/Tour_Index.jsp">여행비교</a>
+							</dd>
+						</dl>
+						<dl>
+							<dt>커뮤니티</dt>
+							<dd>
+								<a href="/knowbox2/index.jsp">쇼핑지식</a>
+								<a href="/knowbox2/news/index.jsp">뉴스</a>
+								<a href="/knowbox2/guide/index.jsp">구매가이드</a>
+								<a href="/knowbox2/exp/index.jsp">체험단</a>
+								<a href="/knowbox2/review/index.jsp">사용기</a>
+								<a href="/knowcom/enuritv.jsp">에누리TV</a>
+								<a href="/knowcom/board.jsp?bbsname=nuri">자유게시판</a>
+							</dd>
+							<dd>
+								<a href="/knowcom/board.jsp?bbsname=sale">특가게시판</a>
+								<a href="/knowbox2/qna/index.jsp">쇼핑Q&amp;A</a>
+								<a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition">쇼핑기획전</a>
+								<a href="/infoad_event/eventMain.jsp">이벤트</a>
+							</dd>
+						</dl>
+						<p class="all">
+							<a href="/etc/Site_map.jsp" class="enuri_all">에누리 서비스 전체보기</a>
+							<a href="javascript:///" class="layer_close" onclick="$('#morepop').hide();">닫기</a>
+						</p>
+					</div>
+					<!-- // 20190702 : 더보기 리스트 수정 -->
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--// 탑메뉴 -->
+	<!-- // -->
+
+	<!-- 검색영역 -->
+	<div class="top_search">
+		<h1><a href="javascript:///">에누리조립PC</a></h1>
+
+		<fieldset>
+			<legend>통합 검색</legend>
+			<div class="search_area">
+				<input type="text" />
+				<button class="searchbtn"><span>검색</span></button>
+				<!-- 210723 : #47976 : 검색창 키워드 삽입 -->
+				<div class="keyword__txt--ad">RTX3060Ti</div>
+			</div>
+			<script>
+				$('body').click(function(e) {
+					var target = $(e.target);
+					var area = '.keyword__txt--ad';
+					if(target.is(area)){
+						$(area).hide().siblings('input').focus();
+					}else{
+						if(!$(area).siblings('input').val()) {
+							$(area).show();
+						}
+					}
+					if(target.is('.search_area input')){
+						$(area).hide();
+					}
+				});
+			</script>
+		</fieldset>
+
+		<ul class="icobtn">
+			<li><span class="btn01"></span>견적상담</li>
+			<li><em class="msg">100</em><span class="btn02"></span>견적함</li>
+			<li><span class="btn03"></span>주문/배송</li>
+		</ul>
+		<script>
+			$(function(){
+				$(".icobtn > li").hover(function(e){
+					$(this).addClass("on")
+				},function(e){
+					$(this).removeClass("on")
+				})
+			})
+		</script>
+	</div>
+	<!--// 검색영역 -->
+
+	<!-- gnb -->
+	<div class="gnb">
+		<ul class="gnb_area">
+			<li class="home"><a href="javascript:///">홈</a></li><!-- 해당페이지 활성화 시 on 붙여주세요 -->
+			<li class="on"><a href="javascript:///">에누리PC</a>
+				<div class="sub">
+					<div class="comnbox">
+						<ul>
+							<li><span>용도별PC</span></li>
+							<li><span>가격대별PC</span></li>
+							<li><span>CPU별PC</span></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<!-- 
+			210903 : SR#48649 전문판매점 PC카테고리 비노출 
+			<li><a href="javascript:///">전문판매점 PC</a></li>
+			-->
+			<li><a href="javascript:///">게임조립PC</a></li>
+			<li><a href="javascript:///">부품/주변기기</a></li>
+			<li><a href="javascript:///">온라인 견적</a></li>
+			<li><a href="javascript:///">PC 견적상담</a>
+				<div class="sub">
+					<div class="comnbox">
+						<ul>
+							<li><span>견적문의 게시판</span></li>
+							<li><span>나의 견적보기</span></li>
+							<li><span>주문/배송조회</span></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li><a href="javascript:///">커뮤니티</a>
+				<div class="sub">
+					<div class="comnbox">
+						<ul>
+							<li><span>공지사항</span></li>
+							<li><span>PC관련 뉴스</span></li>
+							<li><span>구매가이드</span></li>
+							<li><span>구매후기</span></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--// gnb -->
+
+</div>
+<!-- //상단메뉴영역 -->
+
+<!-- MAIN CONTENT WRAP -->
+<!-- 이 부분이 메인 컨텐츠 영역입니다! -->
+<div class="main_container">
+	<!-- MAIN HEAD -->
+	<div class="main_head">
+		<div class="m_banner">
+			<!-- container -->
+				<!--<img src="http://img.enuri.info/images/enuripc/srp_img.jpg" alt="" class="imgs" />-->
+				<div class="gmain_slides">
+					<!-- 2018-02-13 에누리PC 서비스A/S 슬라이드 추가 -->
+					<div class="item" style="background-color: #74bae1;">
+						<div class="item__inner">
+							<img src="http://img.enuri.info/images/enuripc/main_slick_as.jpg" alt="" />
+							<a href="/enuripc/guide.jsp?guide_no=2" class="btn btn__asdetail">자세히알아보기</a>
+						</div>
+					</div>
+					<div class="item">
+						<!-- NO DATA 마크업 -->
+						<div class="nodata">
+							<p class="msg">이미지 준비중입니다.</p>
+							<div class="icon none"></div>
+						</div>
+						<!-- //NO DATA 마크업 -->
+					</div>
+					<div class="item" style="background-color: #2895E5;"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/enuripc/banner/mainTopBanner_open.png" alt="" class="imgs" /></div>
+					<div class="item" style="background-color: #34599F;"><a href="#" class="btn" target="_new"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/enuripc/banner/mainTopBanner_enuriPc_2017.png" alt="" class="imgs"></a></div>
+					<div class="item" style="background-color: #000;"><a href="#" class="btn"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/enuripc/banner/mainTopBanner_4.png" alt="" class="imgs"></a></div>
+					<div class="item" style="background-color: #EDE8E2;"><a href="#" class="btn"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/enuripc/banner/mainTopBanner_3.png" alt="" class="imgs"></a></div>
+					<div class="item" style="background-color: #BBC637;"><a href="#" class="btn"><img src="http://storage.enuri.gscdn.com/Web_Storage/pic_upload/enuripc/banner/mainTopBanner_2.png" alt="" class="imgs"></a></div>
+				</div>
+			<script>
+			$(document).ready(function(){
+				$('.gmain_slides').slick({
+					fade: true,
+					infinite: true,
+					dots: true,
+					adaptiveHeight: true
+				});
+			});
+			</script>
+			<!-- //container -->
+		</div>
+
+		<div class="m_standard">
+			<!-- container -->
+			<div class="container">
+				<!-- 20180420 견적상담, 판매중 PC 건 -->
+				<div class="wing_service_group">
+					<ul>
+						<li class="dark">
+							<a href="#" class="just">
+								<span class="tit">오늘의 견적상담</span>
+								<span class="info"><span class="icon today"></span><b class="numb">280</b>건</span>
+							</a>
+						</li>
+						<li class="dark">
+							<a href="#" class="just">
+								<span class="tit">판매중인 조립PC</span>
+								<span class="info"><span class="icon salepc"></span><b class="numb">189</b>건</span>
+							</a>
+						</li>
+						<li>
+							<div class="just">
+								<strong class="tit">Safe 구매 보장</strong>
+								<span class="info">안심인증판매점 <br />15곳 지정</span>
+							</div>
+						</li>
+						<li>
+							<div class="just">
+								<strong class="tit">에누리 A/S</strong>
+								<span class="info">판매점 폐점 후에도<br />A/S 지원</span>
+							</div>
+						</li>
+						<li>
+							<div class="just">
+								<strong class="tit">고객 콜센터<br />02)701-7751</strong>
+								<span class="info">판매점 분쟁시<br />즉각해결</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- //20180420 견적상담, 판매중 PC 건 -->
+				
+				<div class="ms_prod_wrap">
+					<h2 class="tit"><em>6월</em> 에누리 표준PC</h2>
+
+					<!--
+						default tab 3
+						2ea : ._two  ex)<ul class="ms_nav _two">
+						1ea : ._one  ex)<ul class="ms_nav _one">
+					-->
+					<ul class="ms_nav">
+						<li class="on"><a href="#mstab1" class="btn">첫 번째 에누리 표준 PC번째 에누리 표준 PC번째 에누리 표준 PC번째 에누리 표준 PC번째 에누리 표준 PC</a></li>
+						<li><a href="#mstab2" class="btn">두 번째 에누리 표준 PC</a></li>
+						<li><a href="#mstab3" class="btn">세 번째 에누리 표준 PC</a></li>
+					</ul>
+
+					<div class="ms_contents">
+						<div id="mstab1" class="ms_cont">
+							<!-- 20180913 -->
+							<!-- 배너 추가된 형식일 때, 클래스 추가(is-banner) = standardinner is-banner -->
+							<div class="standardinner is-banner">
+								<div class="standard-left">
+									<div class="standard-media">
+										<!-- <img src="http://img.enuri.info/images/enuripc/111.jpg" alt="468*268 이미지" /> -->
+										
+										<!-- 상품이 없을 때 노출 -->
+										<div class="nodata">
+											<p class="msg">이미지 준비중입니다.</p>
+											<div class="icon none"></div>
+										</div>
+									</div>
+								</div>
+								<div class="standard-right">
+									<div class="banner-detail">
+										<!-- 190128 -->
+										<div class="banner-head">
+											<span class="name">에누리PC PJ-39</span>
+											<span class="spec">[라이젠R5/16G/SSD250G/GTX1060/카비레이크 G450]</span>
+										</div>
+										<!-- <div class="banner-head">
+											<a href="#" class="thumb"><img src="http://img.enuri.info/images/enuripc/222.jpg" alt="128*74 이미지" /></a>
+											<a href="#" class="name">
+												<span class="tit"><i class="icon play">플레이 아이콘</i>성능 동영상</span>
+												<span class="txt">에누리PC PJ-39<br />[라이젠R5/16G/SSD250G/GTX1060]</span>
+											</a>
+										</div> -->
+										
+										<div class="banner-info">
+											<ul>
+												<!-- 홀수 li, odd 클래스 추가 -->
+												<li class="odd"><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+												<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+												<li class="odd"><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+												<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+												<li class="odd"><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+											</ul>
+										</div>
+										<div class="banner-price">
+											<!-- 2019.08.08 SR#35337 e머니 적립 표기-->
+											<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거-->
+											<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span>-->
+											<!-- // -->
+											<!-- 최대 자릿수 억단위 -->
+											<p class="price"><strong>111,692,500</strong>원</p>
+											<a href="#" class="btn btn_buy">구매하기</a>										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <div id="mstab1" class="ms_cont">
+							일반 레이아웃
+							<div class="standardinner">
+								<div class="standard-left">
+									<div class="standard-media">
+										<iframe width="100%" height="100%" src="https://www.youtube.com/embed/V_fU1Uca5Lc" frameborder="0" allowfullscreen=""></iframe>
+									</div>
+								</div>
+								<div class="standard-right">
+									<div class="standard-detail">
+										<h3 class="sdpc-name">승리의 커피가 함께 있으리!</h3>
+										
+										<div class="sdpc-info">
+											<ul>
+												<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+												<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+												<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+												<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+												<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+											</ul>
+										</div>
+										<div class="sdpc-price">
+											최대 자릿수 억단위
+											<p class="price"><strong>111,692,500</strong>원</p>
+											<a href="#" class="btn btn_buy">구매하기</a>										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> -->
+						<div id="mstab2" class="ms_cont" style="display:none;">
+							<!-- 품절 레이아웃, is-soldout 클래스 -->
+							<div class="standardinner is-soldout">
+								<div class="standard-left">
+									<div class="standard-media">
+										<img src="http://cdn.enuripc.com/copyimg/pimg/47118.jpg" alt="아버지 회사 경리 PC" class="imgs" />
+									</div>
+								</div>
+								<div class="standard-right">
+									<div class="standard-detail">
+										<h3 class="sdpc-name">승리의 커피가 함께 있으리!</h3>
+										
+										<div class="sdpc-info">
+											<ul>
+												<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+												<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+												<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+												<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+												<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+											</ul>
+										</div>
+										<div class="sdpc-price">
+											<!-- 최대 자릿수 억단위 -->
+											<p class="price"><strong>0</strong>원</p>
+											<a href="#" class="btn btn_buy soldout">품절</a>										
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- 20180125 이전 디자인 -->
+						<div id="mstab3" class="ms_cont" style="display:none;">
+							<div class="img_thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img31.png" alt="" class="imgs" />
+							</div>
+							
+							<!-- 이미지가 없을 경우 .disNone 클래스 추가 -->
+							<div class="img_thumb disNone">
+								<!-- 이미지 사이즈 : 205 * 308 (px) -->
+								<img src="http://img.enuri.info/images/enuripc/test_img31.png" alt="" class="imgs" />
+							</div>
+
+							<div class="part_wrap">
+								<div class="pctit">
+									<h3>게임용 표준PC 라이젠 1400</h3>
+									<p class="price"><strong>2,539,000</strong>원</p>
+									<!--<a href="#" class="btn btn_buy">구매하기</a>-->
+									<a class="btn btn_buy soldout">품절</a>
+								</div>
+								<ul class="part_list">
+									<li>
+										<a href="#">
+											<span class="badge">CPU</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part01.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">메모리</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part02.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">메인보드</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part03.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-77INTEL]코어7세대 i7-77INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">그래픽카드</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part04.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-77INTEL]코어7세대 i7-77INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">SSD</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part05.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대  i7-77INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">HDD</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part06.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-77INTEL]코어7세대 i7-77INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">케이스</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part07.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-77INTEL]i7-77INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+									<li>
+										<a href="#">
+											<span class="badge">파워</span>
+											<img src="http://img.enuri.info/images/enuripc/main_part08.png" alt="" class="imgs" />
+											<span class="pname"><span class="cutPara">[INTEL]코어7세대 i7-77INTEL]코어7세대 i7-77INTEL]코어7세대 i7-7700</span></span>
+										</a>
+									</li>
+								</ul>
+
+								<div class="media_area">
+									<p class="tit">성능 동영상</p>
+									<div class="media">
+										<iframe width="100%" height="100%" src="https://www.youtube.com/embed/7_sXqrZxH8I" frameborder="0" allowfullscreen></iframe>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //container -->
+		</div>
+	</div>
+	<!-- //MAIN HEAD -->
+
+
+	<!-- MAIN HEAD -->
+	<div class="main_contents">
+		<!-- container -->
+		<div class="container">
+			<!-- BOARD CONTENT -->
+			<div class="community_area">
+				<div class="row">
+					<div class="col1_1"></div>
+					<div class="col1_1"></div>
+					<div class="col1_1"></div>
+					<div class="col1_1"></div>
+					<div class="col1_2"></div>
+				</div>
+			</div>
+			<!-- //BOARD CONTENT -->
+
+			<!-- 200116 : SR#37901 - 개임별 추천 추가 -->
+			<div class="m_section recom_gamepc_prod">
+				<div class="m_s_head">
+					<h2 class="tit">게임별 추천</h2>
+				</div>
+				<ul class="list_gamepc_prod">
+					<li>
+						<a href="#">
+							<span class="gamepc_thumb"><img src="http://img.enuri.info/images/enuripc/recom_game_01.jpg" alt=""></span>
+							<span class="gamepc_info cutWord">콜옵 : 모던워페어</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="gamepc_thumb"><img src="http://img.enuri.info/images/enuripc/recom_game_01.jpg" alt=""></span>
+							<span class="gamepc_info cutWord">콜옵 : 모던워페어</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="gamepc_thumb"><img src="http://img.enuri.info/images/enuripc/recom_game_01.jpg" alt=""></span>
+							<span class="gamepc_info cutWord">콜옵 : 모던워페어</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="gamepc_thumb"><img src="http://img.enuri.info/images/enuripc/recom_game_01.jpg" alt=""></span>
+							<span class="gamepc_info cutWord">콜옵 : 모던워페어</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="gamepc_thumb"><img src="http://img.enuri.info/images/enuripc/recom_game_01.jpg" alt=""></span>
+							<span class="gamepc_info cutWord">콜옵 : 모던워페어</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- // -->
+
+			<!-- 추천상품 CONTENT -->
+			<div class="m_section recom_prod">
+				<div class="m_s_head">
+					<h2 class="tit">추천상품</h2>
+					
+					<!-- 툴팁레이어 공통 마크업 -->
+					<div class="has-helpwrap">
+						<p>에누리 PC란</p>
+						<div class="help_box">
+							<span class="icon help"></span>
+							<div class="layer_help" style="display:none;">
+								<p class="tit">에누리 PC란?</p>
+								<p class="txt">컴퓨터 시장에서 소비자들이 선호하고 유통이 원활한 상품들 위주로 PC를 구성하여 에누리PC 입점 업체들이 투명하게 가격을 공개하고  가격비교를 통해 최저가로 구매가 가능합니다. </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<!-- 이미지 사이즈 308*198px -->
+								<img src="http://storage.enuri.info/Web_Storage/pic_upload/enuripc/goods/goods_190513131611.png" alt="" class="imgs" />								
+								<p class="price soldout"><em>품절</em></p>
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<!-- <div class="icon badge _best">BEST</div> -->
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://storage.enuri.info/Web_Storage/pic_upload/enuripc/goods/goods_190513131611.png" alt="" class="imgs" />
+								<!-- 2019.08.08 SR#35337 e머니 적립 표기 -->
+								<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거-->
+								<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span>-->
+								<!-- // -->
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<!-- <div class="icon badge _recomm">추천</div> -->
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img34.png" alt="" class="imgs" />								
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _pop">인기</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img32.png" alt="" class="imgs" />
+								<p class="price"><em>1,878,000</em>원</p>
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _best">BEST</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img33.png" alt="" class="imgs" />
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _recomm">추천</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img34.png" alt="" class="imgs" />
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _pop">인기</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //추천상품 CONTENT -->
+			
+			<!-- 전문판매점 추천PC CONTENT -->
+			<div class="m_section recom_prod">
+				<div class="m_s_head">
+					<h2 class="tit">에누리 전문 판매점 추천PC</h2>
+					
+					<!-- 툴팁레이어 공통 마크업 -->
+					<div class="has-helpwrap">
+						<p>전문판매점PC란</p>
+						<div class="help_box">
+							<span class="icon help"></span>
+							<div class="layer_help" style="display:none;">
+								<p class="tit">전문판매점PC란?</p>
+								<p class="txt">판매업체에서 특정상품을 대량으로 매입하여 원가를 낮추고 좀더 저렴한 가격으로 판매하는 형태이며 가성비를 찾는다면 에누리 판매점 PC를 추천 드립니다. </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<!-- 이미지 사이즈 308*198px -->
+								<img src="http://img.enuri.info/images/enuripc/test_img32.png" alt="" class="imgs" />
+								<p class="price soldout"><em>품절</em></p>
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _best">BEST</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img33.png" alt="" class="imgs" />
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _recomm">추천</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img34.png" alt="" class="imgs" />
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _pop">인기</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img32.png" alt="" class="imgs" />
+								<p class="price"><em>1,878,000</em>원</p>
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _best">BEST</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img33.png" alt="" class="imgs" />
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _recomm">추천</div>
+							</a>
+						</div>
+					</div>
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="btn">
+								<img src="http://img.enuri.info/images/enuripc/test_img34.png" alt="" class="imgs" />
+								<p class="price"><em>878,000</em>원</p>
+
+								<!--
+									뱃지 BEST/추천/인기 = 클래스 ._best/._recomm/._pop
+								-->
+								<div class="icon badge _pop">인기</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //전문판매점 추천PC CONTENT -->
+
+			<!-- 이벤트/기획전 CONTENT -->
+			<div class="m_section event_promotion">
+				<div class="m_s_head">
+					<h2 class="tit">이벤트/기획전</h2>
+				</div>
+				<!-- 좌/우 슬라이드 slick -->
+				<div id="evtpromSlide" class="row">
+					<!-- NO DATA 마크업
+					<div class="col_box">
+						<div class="nodata">
+							<p class="msg">이미지 준비중입니다.</p>
+							<div class="icon none"></div>
+						</div>
+					</div>
+					NO DATA 마크업 -->
+					<div class="col_box">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box col_box-3n">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box col_box-3n">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+					<div class="col_box col_box-3n">
+						<a href="#" class="btn"><img src="http://img.enuri.info/images/homemain/test_img@314x200.jpg" alt="" class="imgs" /></a>
+					</div>
+				</div>
+
+				<div class="evtprom_arrows">
+					<p><span class="curr"></span>/<span class="total"></span></p>
+				</div>
+			</div>
+			<!-- //이벤트/기획전 CONTENT -->
+
+			<!-- 커뮤니티 CONTENT -->
+			<div class="m_section community_wrap">
+				<div class="row">
+					<!-- box -->
+					<div class="col_box two_col">
+						<div class="inner">
+							<div class="cw_head">
+								<h3 class="tit">실시간 견적문의</h3>
+								<a href="#" class="more"><span class="icon plus"></span>더 보기</a>
+							</div>
+
+							<div class="cw_cont">
+								<ul class="cw_board _real">
+									<li>
+										<p class="cell usage sty1">그래픽작업용</p>
+										<p class="cell price">150~200만</p>
+										<a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a>
+									</li>
+									<li>
+										<p class="cell usage sty3">인터넷용</p>
+										<p class="cell price">150~200만</p>
+										<a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a>
+									</li>
+									<li>
+										<p class="cell usage sty4">기타</p>
+										<p class="cell price">150~200만</p>
+										<a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a>
+									</li>
+									<li>
+										<p class="cell usage sty1">그래픽작업용</p>
+										<p class="cell price">150~200만</p>
+										<a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a>
+									</li>
+									<li>
+										<p class="cell usage sty4">기타</p>
+										<p class="cell price">150~200만</p>
+										<a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a>
+									</li>
+									<li>
+										<p class="cell usage sty2">게임용</p>
+										<p class="cell price">150~200만</p>
+										<a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a>
+									</li>
+								</ul>
+
+								<a href="#" class="btn makepc"><img src="http://img.enuri.info/images/enuripc/btn_makepc.jpg" alt="" class="imgs" /></a>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+
+					<!-- box -->
+					<div class="col_box">
+						<div class="inner">
+							<div class="cw_head">
+								<h3 class="tit">공지사항</h3>
+								<a href="#" class="more"><span class="icon plus"></span>더 보기</a>
+							</div>
+
+							<div class="cw_cont">
+								<ul class="cw_board _notice">
+									<li><a href="#" class="cutWord">중앙전파관리소, 용산전자상가, 불법조립PC불법조립PC불법조립PC</a></li>
+									<li><a href="#" class="cutWord">조립PC 불법유통 급증, 정부 용산상가 계도용산상가 계도용산상가 계도</a></li>
+									<li><a href="#" class="cutWord">카카오게임즈, 글로벌 퍼블리셔로 두각</a></li>
+									<li><a href="#" class="cutWord">팜스카이 모바일MMORPG 불량인 12일 베</a></li>
+									<li><a href="#" class="cutWord">레볼루션 토너먼트 2017, 18일부터 본선본선본선본선본선</a></li>
+									<li><a href="#" class="cutWord">여섯 번째 뉴스입니다. 여섯 번째 뉴스라고</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+				</div>
+
+				<div class="row">
+					<!-- box -->
+					<div class="col_box two_col">
+						<div class="inner">
+							<div class="cw_head">
+								<h3 class="tit">뉴스/구매가이드</h3>
+								<a href="#" class="more"><span class="icon plus"></span>더 보기</a>
+							</div>
+
+							<div class="cw_cont">
+								<ul class="cw_board _guidediv _news">
+									<li class="inimg">
+										<a href="#">
+											<img src="http://img.enuri.info/images/enuripc/test_img29.gif" alt="" class="imgs" />
+											<span class="txt cutPara">중앙전파관리소, 용산전자상가, 불법조립PC...조립PC 불법유통 급증불법유통 급증불법유통 급증</span>
+										</a>
+									</li>
+									<li><a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a></li>
+									<li><a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a></li>
+									<li><a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a></li>
+								</ul>
+
+								<ul class="cw_board _guidediv _buy">
+									<li class="inimg">
+										<a href="#">
+											<img src="http://img.enuri.info/images/enuripc/test_img30.gif" alt="" class="imgs" />
+											<span class="txt cutPara">중앙전파관리소, 용산전자상가, 불법조립PC...조립PC 불법유통 급증</span>
+										</a>
+									</li>
+									<li><a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a></li>
+									<li><a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a></li>
+									<li><a href="#" class="cell tit cutWord">그래픽 작엽용 (3D,캐드 등등) 견적 한번 봐주세요~~~</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+
+					<!-- box -->
+					<div class="col_box">
+						<div class="inner">
+							<div class="cw_head">
+								<h3 class="tit">구매후기</h3>
+								<a href="#" class="more"><span class="icon plus"></span>더 보기</a>
+							</div>
+
+							<div class="cw_cont">
+								<ul class="cw_board _review">
+									<!--
+									<li>
+										<span class="star_rate"><span class="star_fill" style="width:90.0%;">별점 : 90.0%</span></span>
+										<a href="#" class="cutWord">중앙전파관리소, 용산전자상가, 불법조립PC불법조립PC불법조립PC</a>
+									</li>
+									<li>
+										<span class="star_rate"><span class="star_fill" style="width:16.7%;">별점 : 16.7%</span></span>
+										<a href="#" class="cutWord">조립PC 불법유통 급증, 정부 용산상가 계도용산상가 계도용산상가 계도</a>
+									</li>
+									<li>
+										<span class="star_rate"><span class="star_fill" style="width:57.0%;">별점 : 57.0%</span></span>
+										<a href="#" class="cutWord">카카오게임즈, 글로벌 퍼블리셔로 두각</a>
+									</li>
+									<li>
+										<span class="star_rate"><span class="star_fill" style="width:89.3%;">별점 : 89.3%</span></span>
+										<a href="#" class="cutWord">팜스카이 모바일MMORPG 불량인 12일 베</a>
+									</li>
+									<li>
+										<span class="star_rate"><span class="star_fill" style="width:23.6%;">별점 : 23.6%</span></span>
+										<a href="#" class="cutWord">레볼루션 토너먼트 2017, 18일부터 본선본선본선본선본선</a>
+									</li>
+									<li>
+										<span class="star_rate"><span class="star_fill" style="width:47.2%;">별점 : 47.2%</span></span>
+										<a href="#" class="cutWord">여섯 번째 뉴스입니다. 여섯 번째 뉴스라고</a>
+									</li>
+									-->
+
+									<!-- NO DATA 마크업 -->
+									<li class="none">
+										<div class="nodata">
+											<p class="msg">등록된 상품이 없습니다.</p>
+											<div class="icon none"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+				</div>
+			</div>
+			<!-- //커뮤니티 CONTENT -->
+
+			<!-- 인기/추천 조립PC CONTENT -->
+			<div class="m_section app_recompc">
+				<div class="m_s_head">
+					<h2 class="tit">인기/추천 조립PC</h2>
+
+					<ul class="tabs">
+						<!-- 클릭 시, .on 클래스 추가 -->
+						<li><a href="#" class="btn on"><span class="icon"></span> 홈&오피스용</a></li>
+						<li><a href="#" class="btn"><span class="icon"></span> 멀티미디어용</a></li>
+						<li><a href="#" class="btn"><span class="icon"></span> 게이밍용</a></li>
+					</ul>
+				</div>
+				<div class="row">
+					<!-- box -->
+					<!-- 마지막열을 제외한 col_box 에 .b_border 클래스(하단 라인) 추가해 주세요. -->
+					<div class="col_box b_border">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://image.enuripc.enuri.info/copyimg/pimg/59280.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC에누리PC에누리PC GA-01GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TBHDD1TBHDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2019.08.08 SR#35337 e머니 적립 표기 -->
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+									<!-- 2019.08.08 SR#35337 구매하기 버튼 제거 -->
+									<!-- <a href="#" class="btn btn_buy">구매하기</a> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="col_box b_border">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="col_box b_border">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>									
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="col_box b_border">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box --><!-- box -->
+					<div class="col_box b_border">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="col_box b_border">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+					<!-- box -->
+					<div class="col_box">
+						<div class="inner">
+							<a href="#" class="thumb">
+								<img src="http://img.enuri.info/images/enuripc/test_img22.jpg" alt="" class="imgs" />
+								<ul class="badge">
+									<li class="icon bdg1">안전배송</li>
+									<li class="icon bdg2">무료배송</li>
+									<li class="icon bdg3">VIP배송</li>
+								</ul>
+							</a>
+							<div class="txtwrap">
+								<a href="#" class="pname">
+									<span class="txt cutWord">에누리PC GA-01 홈&amp;오피스용</span>
+									<span class="txt cutWord"> [인텔셀러론/4G/HDD1TB/내장그래픽]</span>
+								</a>
+								<div class="pinfo">
+									<ul>
+										<li><span class="th">CPU</span> <span class="td cutWord">인텔 코어i3-7세대 7100(카비레이크)</span></li>
+										<li><span class="th">보드</span> <span class="td cutWord">ASUS H110M-K iBORA</span></li>
+										<li><span class="th">메모리</span> <span class="td cutWord">GeIL DDR4 8G PC4-17000 CL15 PRIST...</span></li>
+										<li><span class="th">그래픽</span> <span class="td cutWord">Colorful 지포스 GTX1060 iCafe D5 3GB</span></li>
+										<li><span class="th">SSD</span> <span class="td cutWord">마이크론 Crucial MX300 아스크텍 이크론 Crucial MX300 아스크텍 (275GB)</span></li>
+									</ul>
+								</div>
+								<div class="pprice">
+									<!-- 2021.05.11 SR#46650 e머니 적립 표시 제거 -->
+									<!-- <span class="emoney extend"><span class="blind">e머니</span><em>1,000</em>점</span> -->
+									<p class="price"><strong>1,690,500</strong>원</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //box -->
+				</div>
+			</div>
+			<!-- //인기 조립PC CONTENT -->
+
+			<div class="paw_foot">
+				<h2 class="relate_tit">에누리 조립PC 협력업체</h2>
+				<ul class="relate_comp">
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo01.gif" alt="Needscom" class="imgs" /><span class="pname">Needscom</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo02.gif" alt="GHOST COMPUTER" class="imgs" /><span class="pname">GHOST COMPUTER</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo03.gif" alt="PILLS" class="imgs" /><span class="pname">PILLS</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo04.gif" alt="PARE PC" class="imgs" /><span class="pname">PARE PC</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo05.gif" alt="hiresys" class="imgs" /><span class="pname">hiresys</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo06.gif" alt="삼성IT몰" class="imgs" /><span class="pname">삼성IT몰</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo07.gif" alt="아이티큐브" class="imgs" /><span class="pname">아이티큐브</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo08.gif" alt="ITPLUS" class="imgs" /><span class="pname">ITPLUS</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo09.gif" alt="컴대문" class="imgs" /><span class="pname">컴대문</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo10.gif" alt="조립PC 살 땐 아이하이컴" class="imgs" /><span class="pname">아이하이컴</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo11.gif" alt="PCHOUSE" class="imgs" /><span class="pname">PCHOUSE</span></a></li>
+					<li><a href="#"><img src="http://img.enuri.info/images/enuripc/company_logo12.gif" alt="POLARIS COM" class="imgs" /><span class="pname">POLARIS COM</span></a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //container -->
+	</div>
+</div>
+<!-- //MAIN CONTENT WRAP -->
+
+
+<!-- 하단 공통 배너  -->
+<div class="ad_bottom_area">
+	<h3>에누리 조립PC라서 더욱 좋은 이유!</h3>
+	<ul>
+		<li>100% 정품/새 제품 - 리퍼제품, 중고제품 없는 믿을 수 있는 100% 정품</li>
+		<li>100% 현금영수증 세금계산서 발행 - 믿을 수 있는 100% 정품</li>
+		<li>전국 무상출장 - 조립 구매 시 전국 무상출장서비스로 전화 한 통화로 간단히 A/S(1년)</li>
+		<li>불량률0% 안전배송 - 꼼꼼한 조립과 사전 테스트로 불량률 0% 실현</li>
+		<li>신뢰있는 컴퓨터 전문 판매업체 엄선 - 믿을 수 있는 전문 업체만 엄선</li>
+		<li>단품 구매가능! 이중 가격 근절 - 편리한 단품 구매, 깨끗한 가격</li>
+	</ul>
+</div>
+<!--// 하단 공통 배너  -->
+
+<!-- 푸터 -->
+<div class="footer">
+	<div class="comnbox">
+		<p class="mnt">(주)써머스플랫폼은 통신판매 중개자로서 판매에 따른 의무와 책임은 주식회사 윈윈소프트에 있습니다.</p>
+		<ul class="site_info">
+			<li><a href="javascript:///" class="siteAccessTerms">이용약관</a></li>
+			<li><a href="javascript:///" class="privacy siteUserPrivacy">개인정보처리방침</a></li>
+			<li class="right"><a href="javascript:///" class="saleInfoLink1">공정거래 위원회 표준약관 사용</a></li>
+			<li><a href="javascript:///" class="saleInfoLink2">현금영수증 발행가맹점</a></li>
+			<li><a href="javascript:///" class="saleInfoLink3">전자거래 분쟁조정 위원회</a></li>
+		</ul>
+
+		<!--210625 : #SR47405-->
+		<address>
+			<span class="tit">ㆍ통신판매자</span>
+			상호명 : <strong>주식회사 윈윈소프트</strong> , 대표이사 : 노영렬<br>
+			사업자번호 : 106-87-07675 / 통신판매신고 : 2020-서울마포-4550호<br>
+			전화번호 : 02-701-7751 / 메일주소 : wwsoft@naver.com<br>
+			주소 : 서울특별시 마포구 양화로12길 8-7, 4층 (서교동)<br>
+			<small class="txt_copyright">Copyright ⓒ winwinsoft.,Ltd. All rights reserved.</small>
+		</address>
+
+		<address>
+			<span class="tit">ㆍ통신판매중개자</span>
+			상호명 : <strong>㈜써머스플랫폼</strong> , 대표이사 : 김기범<br>
+			사업자번호 : 206-81-18164 / 통신판매신고 : 2020-서울금천-1949호<br>
+			전화번호 : 02-6354-3601 / 메일주소 : master@enuri.com<br>
+			주소 : 서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층<br>
+			<small class="txt_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</small>
+		</address>
+
+		<p class="enuritxt">
+		<strong>고객센터 : 02)701-7751</strong>
+		평일 오전 10:00~18:30까지<br>
+		토,일 공휴일 휴무<br>
+		점심시간 12~13시까지
+		</p>
+	</div>
+</div>
+<!--// 푸터 -->
+<!-- 2017-12-11 수정 -->
+<div class="wing_group">
+	<!-- 날개배너 좌측 -->
+	<div class="wing_area _left">
+		<!-- 20180420 에누리 링크 -->
+		<div class="wing_enurilink">
+			<ul>
+				<li>
+					<a href="#" class="just">
+						<span class="icon elink1"></span>
+						<strong class="tit">에누리 표준PC</strong>
+						<span class="info">매달 새로운 추천상품</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="just">
+						<span class="icon elink2"></span>
+						<strong class="tit">인기 게임 전용 PC</strong>
+						<span class="info">게임에 맞는 최적의 PC</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="just">
+						<span class="icon elink3"></span>
+						<strong class="tit">온라인 견적</strong>
+						<span class="info">최저가 견적비교</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- //20180420 에누리 링크 -->
+		
+		<a href="http://enuripc.com/winwinseller/estimate/index.php" target="_blank"><img src="http://img.enuri.info/images/main/lt_banner02.jpg" alt="구 버전 에누리 PC 가기"  /></a>
+		<a href="#n" target="_blank"><img src="http://img.enuri.info/images/main/lt_banner03.jpg" alt="[검은사막] 바로가기"  /></a>
+	</div>
+
+	<!-- 날개배너 우측 -->
+	<div class="wing_area_nofix _right">
+		<div class="wing_guide_group">
+			<ul>
+				<li><a href="#" class="btn ico1">에누리PC소개</a></li>
+				<li><a href="#" class="btn ico2">에누리PC A/S절차</a></li>
+				<li><a href="#" class="btn ico3">주문방법</a></li>
+				<li><a href="#" class="btn ico4">부품별 구매가이드</a></li>
+			</ul>
+		</div>
+		<a href="#" class="go_top">TOP</a>
+	</div>
+	<div class="wing_area _right">
+		<a href="#n" target="_blank"><img src="http://img.enuri.info/images/main/eventSNMainRight20171211_120.jpg"  alt="[이벤트] 수능탈출 바로가기" class=""  /></a>
+		<a href="#n" target="_blank"><img src="http://img.enuri.info/images/main/edealMainLeft20171211_120.jpg"  alt="[e-deal] 바로가기" class=""  /></a>
+		<!-- 210607 : SR#47148 : 여러대 구매TIP 가이드 배너 추가 -->
+		<a href="#n" target="_blank"><img src="http://img.enuri.info/images/enuripc/bnr_buytip_120.jpg"  alt="꼭 알아둬야 하는 수량별 구매TIP" class=""  /></a>
+		<!-- // -->
+	</div>
+</div>
+<!-- //2017-12-11 수정 -->
+
+<script>
+$(function(){
+	// 상단 게임 카테고리 탭
+	$("#mstab1").show();
+	$(".ms_nav > li").on("click", function(e) {
+        var tabCont = $(this).find("a").attr('href');
+		$(".ms_nav > li").removeClass("on");
+        $(this).addClass("on");
+
+		$(".ms_contents > div").hide();
+		$(tabCont).show();
+
+        e.preventDefault();
+    });
+
+	// 이벤트/기획전 SLIDE
+	/*
+	var $evtslide = $('#evtpromSlide'),
+		$statcurr = $(".evtprom_arrows .curr"),
+		$stattotal = $(".evtprom_arrows .total");
+
+	$evtslide.on('init', function (event, slick, currentSlide, nextSlide) {
+        //currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+        var i = (currentSlide ? currentSlide : 0) + 1;
+        $statcurr.html(i);
+		$stattotal.html(Math.ceil(slick.slideCount/3))
+    });
+	// 슬라이드 바뀔 때,
+	$evtslide.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+		if(nextSlide === 0){
+			$statcurr.html('1');
+		}else if(0 < nextSlide){
+			$statcurr.html((nextSlide/3) + 1);
+		}
+	});
+	
+	$evtslide.slick({
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		swipe: false,
+		speed: 200,
+		infinite: false,
+		appendArrows: $('.evtprom_arrows')
+	});*/
+
+	//상단 우측 아이콘
+	$( ".icobtn li" ).click(function() {
+		$(this).addClass("on").siblings().removeClass("on");
+		return false;
+	});
+
+	//GNB
+	$(".gnb_area li").bind("mouseenter focusin", function() {
+		$(this).addClass("on").siblings().removeClass("on");
+	});
+	$(".gnb_area li").bind("mouseleave focusout", function() {
+		$(this).removeClass("on");
+	});
+
+	//탭top스크롤
+	var $nav = $('.wing_group > .wing_area'), // 2017-12-11 수정
+		$navTop = $nav.offset().top;
+
+	$(window).scroll(function () {
+		//console.log($navTop);
+		if ($(this).scrollTop() > $navTop) {
+			$nav.addClass("topnav");
+		} else {
+			$nav.removeClass("topnav");
+		}
+	});
+
+	var speed = 500; // 스크롤속도
+	$(".go_top").css("cursor", "pointer").click(function(){
+		$('body, html').animate({scrollTop:0}, speed);
+	});
+
+	// 공통) 도움말 레이어 
+	$(".icon.help").hover(function(){
+		$(this).siblings(".layer_help").toggle();
+	});
+});
+
+//레이어
+function onoff(id) {
+	var mid=document.getElementById(id);
+	if(mid.style.display=='') {
+	mid.style.display='none';
+}else{
+	mid.style.display='';
+	}
+}
+
+</script>
+
+</body>
+</html>

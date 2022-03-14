@@ -1,0 +1,1336 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta property="og:title" content="에누리 가격비교"/>
+	<meta property="og:description" content="에누리 모바일 가격비교"/>
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/logo_enuri.png"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/vip.css?v=20190424"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<div id="wrap">
+
+	<!-- 헤더 VIP -->
+    <header id="header" class="m_header m_top_sub">
+		<div class="header_wrap">
+			<h1 class="m_txt">상품정보</h1>	
+			<button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>		
+            <button class="btn_hd_cate comm__sprite">카테고리</button>
+            <button class="btn_hd_sr comm__sprite">검색</button>
+			<button class="btn_hd_my comm__sprite">나의정보</button>
+		</div>
+		<script>
+			//퍼블 테스트용
+			$(function(){
+				var $mainWrap = $("#wrap"); // 메인컨텐츠 wrapper
+				var $btnCate = $(".btn_hd_cate"); // 카테고리 버튼
+				var $btnClose = $(".btn_hd_close"); // 카테고리 닫기 버튼				
+				var $cateLayer = $(".com__cate_wrap"); // 카테고리 레이어
+				var $btnSR = $(".btn_hd_sr"); // 검색 버튼
+				var $srLayer = $(".com__sr_layer"); // 검색 레이어
+				var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
+				// 버튼 :: 카테고리 레이어
+				$btnCate.click(function(e){
+					$mainWrap.addClass("scroll_lock"); // 스크롤 잠그기
+					$cateLayer.show(); // 레이어를 활성화 한 후 슬라이딩 
+					setTimeout(function(){
+						$cateLayer.addClass("on");
+					},100)
+				})
+				// 버튼 :: 카테고리 닫기
+				$btnClose.click(function(e){
+					$mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
+					$("html,body").scrollTop(0);
+					$cateLayer.removeClass("on");
+					setTimeout(function(){
+						$cateLayer.hide();	
+					},700)
+				})
+				
+				// 버튼 :: 검색 레이어 열기
+				$btnSR.click(function(e){
+					var _taPos = $(".m_header").offset().top - 5;
+					// 검색창 열기전 위치값 저장
+					$(this).attr('data-scroll-val',$(window).scrollTop() );
+					// 스크롤 이동후 검색창 열기
+					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
+						$srLayer.show();
+						setTimeout(function(){
+							$srLayer.addClass("opened");
+							$mainWrap.addClass("scroll_lock");
+						},300)
+					})
+				})
+				// 버튼 :: 검색 레이어 닫기
+				$btnSRClose.click(function(e){
+					// 스크롤 잠금 해제
+					$mainWrap.removeClass("scroll_lock");
+					// 검색창 닫고 스크롤 이동
+					setTimeout(function(){
+						$(window).scrollTop( $btnSR.attr('data-scroll-val') );
+					},1);
+					$srLayer.hide().removeClass("opened");
+				})
+			})
+		</script>		
+    </header>
+    <!-- // 헤더 VIP -->
+
+	<section id="vip_wrap_id" class="vip_wrap">
+		<!-- 슬라이드 네비 -->
+		<div class="navTabs swiper-container">			 
+			<div class="swiper-wrapper">
+				<div class="swiper-slide on"><a href="#tab_summary">요약정보</a></div>
+				<div class="swiper-slide"><a href="#tab_price">가격비교</a></div>
+				<div class="swiper-slide"><a href="#tab_product">제품정보</a></div>
+				<div class="swiper-slide"><a href="#tab_review">상품후기</a></div>
+				<div class="swiper-slide"><a href="#tab_blog">블로그/동영상</a></div>
+				<div class="swiper-slide"><a href="#tab_qna">CM Q&A</a></div>
+				<div class="swiper-slide"><a href="#tab_recommend">추천상품</a></div>
+			</div>
+        </div>
+        
+        <!-- 190613 가격비교 : 상단 고정 바 영역 추가 -->        
+        <div class="vip_fixed swiper-container">
+            <div class="swiper-wrapper">
+                <!-- 슬라이드 개수는 연동된 vip_cnt 슬라이더의 탭수와 동일해야 합니다. -->
+                <div class="swiper-slide">
+                    <!-- 190613 플로팅 배너 위치 이동 (기존동일) -->
+                    <!---
+                        페이지 상단에 작성된 
+                        <style>
+		                    .vip_bnr { margin-top : 270px !important;}
+                        </style>
+                        는 지우셔도 됩니다.
+                    -->
+                    <div id="floating_banner">
+                        <div class="vip_bnr" id="vipbnr" style="background: url(&quot;http://adsvc.enuri.mcrony.com/enuri_M/m_vip/PW/vimp?adsid=470&amp;crid=652&amp;cate=0304&amp;ord=4423314&quot;) center 0px no-repeat;">
+                            <a href="javascript:///" class="evtgo" onclick="go_banner_link('http://adsvc.enuri.mcrony.com/enuri_M/m_vip/PW/click?adsid=470&amp;crid=652&amp;clickid=2671&amp;cate=0304&amp;ord=4423314&amp;freetoken=event','banner_pw_welcome');">banner_pw_welcome</a>
+                            <a href="javascript:///" onclick="new_close_floating('vipbnr');" class="btnclose">닫기</a>
+                        </div>
+                    </div>
+                    <!-- // -->
+                </div>
+                <div class="vip_fixed_slide swiper-slide">
+                    <!-- 190613 가격비교 상단 고정바 들어올 영역 -->
+                </div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+            </div>
+        </div>
+        <!-- // 끝 190613 가격비교 : 상단 고정 바 영역 추가-->
+
+        <div class="vip_cnt swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide tab_summary tab_cele"></div>
+
+                <!-- Tab#2 :: 가격비교 -->
+                <div class="swiper-slide tab_price tab_cele">
+                    <div class="price_info_wrap">
+                        <div class="box_inner">
+                            <div class="box_head">
+                                <div class="option_select">
+                                    <label for="__opt_select1">
+                                        <span class="txt_tit">옵션선택</span>
+                                        <span class="txt_selected">SSD 512G (교체)+하드 500G</span>
+                                    </label>
+                                    <select name="__opt_select1" id="" title="옵션선택">
+                                        <option value="" selected >SSD 512G (교체)+하드 500G</option>
+                                        <option value="">SSD 512G (교체)+하드 1T</option>
+                                        <option value="">SSD 1T (교체)+하드 500G</option>
+                                        <option value="">SSD 1T (교체)+하드 1T</option>
+                                        <option value="">SSD 1T (교체)+하드 3T</option>
+                                        <option value="">SSD 1T (교체)+하드 6T</option>
+                                    </select> 
+                                </div>
+                            </div>					
+                            <script>
+                                $(function(){
+                                    // 셀렉트박스 선택 값 Label에 출력
+                                    var $label = $(".price_info_wrap .box_head label");
+                                    var $select = $(".price_info_wrap .box_head select");
+                                    $select.on("change",function(){
+                                        var $this = $(this);
+                                        $label.find(".txt_selected").html(
+                                            $this.find(":selected").html()
+                                        );
+                                    })
+                                })
+                            </script>
+                            <div class="box_cont">							
+                                <div class="box_summary">
+                                    <span class="txt_mall">
+                                        쇼핑몰 <span>123,456</span>
+                                    </span>
+                                    <ul class="view_type">
+                                        <!-- 활성화(간략보기)는 on 클래스 붙여주세요. -->
+                                        <li class="view_overview" onclick="$(this).toggleClass('on');$('.tab_price .list_head').toggle();$('.tab_price .box_cnt').not('.type_cashmall').toggle();$('.type_cashmall').toggleClass('list_overview');$('html,body').animate({scrollTop:0},100)">
+                                            <span class="txt_listview">펼쳐보기</span>
+                                            <span class="txt_overview">요약보기</span>                                    
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 200529 : SR#40214 / 파워클릭 > PC/모바일 VIP 영역 수정 -->
+                            <div class="comm_ad ad_ebay_pc mobile">
+                                <div class="comm_ad_tit">
+                                    <em>파워클릭</em>
+                                    <a href="#" class="comm_btn_apply">신청하기</a>
+                                </div>
+                                <div class="comm_ad_list">
+                                    <div class="box_inner">
+                                        <table summary="이베이 파워클릭"" class="box_tb">
+                                            <caption>이베이 파워클릭</caption>
+                                            <!-- colgroup 제거 -->
+                                            <!-- <colgroup>
+                                                <col width="40%">
+                                                <col width="20%">
+                                                <col width="40%">
+                                            </colgroup> -->
+                                            <!-- // -->
+                                            <tbody>
+                                                <tr>
+                                                    <td class="txt_name"><span>G마켓</span></td>
+                                                    <td class="txt_delivery">2,500원</td>
+                                                    <td class="txt_price"><strong>2,520,000</strong>원</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="txt_name"><span>옥션</span></td>
+                                                    <td class="txt_delivery">2,500원</td>
+                                                    <td class="txt_price"><strong>2,520,000</strong>원</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // -->
+
+                            <!-- 20190613 수정 : 스크롤시 상단 고정 영역 수정 -->
+                            <div class="tab_price_head_wrap">
+                                <div id="tab_price_head_3ndline" class="fixed_cnt">
+                                    <div class="box_cont">
+                                        <!-- 가격비교 뷰타입 : 펼쳐보기용 메뉴 -->
+                                        <div class="list_head">
+                                            <select name="__opt_select2" id="" title="옵션선택">
+                                                <option value="" selected >최저가순</option>
+                                                <option value="">옵션1</option>
+                                                <option value="">옵션2</option>
+                                                <option value="">옵션3</option>
+                                            </select>
+                                            <ul class="select_menu">
+                                                <!-- <li>배송비</li> -->
+                                                <li class="on" onclick="$(this).toggleClass('on');$('html,body').animate({scrollTop:0},100)">카드할인가포함</li>
+                                            </ul>
+                                        </div>
+                                        <!-- // 가격비교 뷰타입 : 펼쳐보기용 메뉴 -->
+                                        <!-- 가격비교 뷰타입 : 간략보기 메뉴 -->
+                                        <div class="list_head" style="display:none">
+                                            <ul class="select_menu">
+                                                <li class="on" onclick="$(this).addClass('on').siblings().removeClass('on');$('html,body').animate({scrollTop:0},100)">판매가순</li>
+                                                <li onclick="$(this).addClass('on').siblings().removeClass('on');$('html,body').animate({scrollTop:0},100)">배송비 포함순</li>
+                                                <li onclick="$(this).addClass('on').siblings().removeClass('on');$('html,body').animate({scrollTop:0},100)">카드할인가순</li>
+                                            </ul>
+                                        </div>
+                                        <!-- // 가격비교 뷰타입 : 간략보기 메뉴 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // -->
+                            <!-- // box head -->
+
+                            <!-- PC최저가 케이스 / 노출 : invisible 제거-->
+                            <div class="box_cnt">
+                                <div class="result_pc_lowest">
+                                    <div class="txt_tit">
+                                        <strong>해당 상품은 판매 쇼핑몰 정책 상<br/>에누리 PC웹에서 &#39;최저가&#39;로 구매 가능합니다.</strong><br/>
+                                        &#39;찜하기&#39; 후 PC웹으로 접속해 주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- // -->
+
+                            <!-- 가격비교 뷰타입 리스트 : 펼쳐보기 -->
+                            <div class="box_cnt">
+                                <!-- 200130 : 앱일때 .isApp 붙여주세요 -->
+                                <ul class="product_list">
+                                    <!-- SR#43722 : 빠른 배송 타입 추가 -->
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <!-- SR#43722 : 빠른 배송 타입 추가 영역 -->
+                                            <span class="txt_mall">
+                                                쿠팡
+                                                <span class="tag_quick ico_qd_rocket">로켓배송</span>                                                
+                                            </span>
+                                            <!-- // -->
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                무료배송
+                                            </span>
+                                        </span>
+
+                                        <span class="txt_price">
+                                            <strong>56,789</strong><span class="txt_won">원</span>									
+                                        </span>                                        
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <!-- 태그 없을때 invisible 클래스 추가 -->
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_emoney_save"><strong>12</strong>점 적립<em class="mw-only">(앱전용)</em></span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <!-- SR#43722 : 빠른 배송 타입 추가 영역 -->
+                                            <span class="txt_mall">
+                                                이마트몰
+                                                <span class="tag_quick ico_qd_ssg">쓱배송</span>
+                                            </span>
+                                            <!-- // -->
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                무료배송
+                                            </span>
+                                        </span>
+
+                                        <span class="txt_price">
+                                            <strong>56,789</strong><span class="txt_won">원</span>									
+                                        </span>                                        
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <!-- 태그 없을때 invisible 클래스 추가 -->
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_emoney_save"><strong>12</strong>점 적립<em class="mw-only">(앱전용)</em></span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <!-- SR#43722 : 빠른 배송 타입 추가 영역 -->
+                                            <span class="txt_mall">
+                                                인터파크
+                                                <span class="tag_quick ico_qd_normal">빠른배송</span>
+                                                <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                <!-- 쇼핑몰 별 툴팁 -->
+                                                <span class="box_tip" onclick="$(this).toggle();">											
+                                                    <span class="txt_detail">
+                                                        일정 시간 안에 주문한 건에 한하여 당일 발송하는 빠른 배송 상품입니다.
+                                                    </span>
+                                                    <span class="txt_detail">
+                                                        주문 시간에 따른 정확한 발송일은 해당 쇼핑몰 상품 상세페이지에서 꼭 확인해주세요 !
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <!-- // -->
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                무료배송
+                                            </span>
+                                        </span>
+
+                                        <span class="txt_price">
+                                            <strong>56,789</strong><span class="txt_won">원</span>									
+                                        </span>                                        
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <!-- 태그 없을때 invisible 클래스 추가 -->
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_emoney_save"><strong>12</strong>점 적립<em class="mw-only">(앱전용)</em></span></li>
+                                        </ul>
+                                    </li>
+                                    <!-- // -->
+                                    <!-- 20190417 반복 상품 리스트 1단 마크업 수정 -->
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">
+                                                11번가 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                <!-- 쇼핑몰 별 툴팁 -->
+                                                <span class="box_tip" onclick="$(this).toggle();">											
+                                                    <span class="txt_detail">
+                                                        본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                        해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                무료배송
+                                            </span>
+                                        </span>
+
+                                        <!-- 20190530 가격비교 - 펼쳐보기 영역 개선 -->
+                                        <!-- .txt_price > .txt_card_price (카드 할인가) -> .txt_add_info 로 이동 -->
+                                        <!-- .txt_price > .txt_coupon_price (쿠폰 할인가) -> .txt_add_info 로 이동 -->
+                                        <!-- .txt_summary > .txt_comm_ad (광고문구) -> .txt_add_info 로 이동 -->
+                                        <!-- .txt_summary > .txt_comm_promo (프로모션문구) -> .txt_add_info 로 이동 -->
+                                        <span class="txt_price">
+                                            <!-- 최저가 케이스 strong 태그에 lowest_sell_price 클래스 붙여주세요 -->
+                                            <span class="txt_lowest">최저가</span><strong class="lowest_sell_price">1,123,456,789</strong><span class="txt_won">원</span>									
+                                        </span>
+                                        <!-- 아래 할인가 / 문구없을때 invisible 클래스 추가 -->
+                                        <span class="txt_add_info">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad invisible">카카오페이결제 시 인터파크 1% 적립! </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <!-- 태그 없을때 invisible 클래스 추가 -->
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                            <!-- 에누리할인 -->
+                                            <li><span class="tag_enuri">10% 할인</span></li>
+                                            <!-- 티몬-당일배송 -->
+                                            <li><span class="tag_tmond">당일배송</span></li>
+                                            <!-- 200107 이머니 적립 추가 -->
+                                            <li><span class="tag_emoney_save"><strong>999,999</strong>점 적립<em class="mw-only">(앱전용)</em></span></li>
+                                        </ul>
+                                        <!-- // 20190530 가격비교 - 펼쳐보기 영역 개선  끝 -->
+                                    </li>
+                                    <!-- // 반복 상품 리스트 1단 -->
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">
+                                                G마켓 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                <!-- 쇼핑몰 별 툴팁 -->
+                                                <span class="box_tip" onclick="$(this).toggle();">											
+                                                    <span class="txt_detail">
+                                                        본 상품은 <span class="txt_mall_top">G마켓으</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                        해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">무료배송</span>
+                                        </span>	
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>									
+                                        </span>
+                                        <span class="txt_add_info">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad invisible">카카오페이결제 시 인터파크 1% 적립! </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                            <!-- 에누리할인 -->
+                                            <li><span class="tag_enuri">10% 할인</span></li>
+                                            <!-- 쿠팡-로켓배송 -->
+                                            <li><span class="tag_rocketd">로켓배송</span></li>
+                                        </ul>
+                                    </li>
+                                    
+                                    <!-- 191108 현금몰/해외직구 추가 - 해외직구 타입 -->
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">Orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">240,000원 별도</span>
+                                        </span>	
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <span class="ico--global">직구</span><strong>1,123,456,789</strong><span class="txt_won">원</span>									
+                                        </span>
+                                        <span class="txt_add_info">
+                                            <span class="txt_comm_global">구매 전 상품 가격 및 배송비를 꼭 확인하세요!</span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            Wallet Vintage Slim Magnetic Leather Flip Wallet Vintage Slim Magnetic Leather Flip
+                                        </span>
+                                        <ul class="tag_list">
+                                            <li><span class="tag_normal">해외직구</span></li>
+                                            <!-- 200107 이머니 적립 추가 (해외직구) -->
+                                            <li><span class="tag_global_emoney_save">적립</span></li>
+                                            <!-- // -->
+                                        </ul>
+                                    </li>
+                                    <!-- // -->
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 191202 NPAY 타입 추가 -->
+                                            <!-- type_npay 클래스 붙여주세요 -->
+                                            <span class="txt_mall type_npay">엔페이몰</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">20,000원 별도</span>
+                                        </span>	
+                                        <span class="txt_price">
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>									
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                            <!-- 에누리할인 -->
+                                            <li><span class="tag_enuri">10% 할인</span></li>
+                                            <!-- 나우배송 -->
+                                            <li><span class="tag_nowd">나우배송</span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">
+                                                11번가 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                <!-- 쇼핑몰 별 툴팁 -->
+                                                <span class="box_tip" onclick="$(this).toggle();">											
+                                                    <span class="txt_detail">
+                                                        본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                        해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">20,000원 별도</span>
+                                        </span>	
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>									
+                                        </span>
+                                        <span class="txt_add_info">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad">카카오페이결제 시 인터파크 1% 적립! </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                            <!-- 에누리할인 -->
+                                            <li><span class="tag_enuri">10% 할인</span></li>
+                                            <!-- 나우배송 -->
+                                            <li><span class="tag_nowd">나우배송</span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">
+                                                인터파크 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                <!-- 쇼핑몰 별 툴팁 -->
+                                                <span class="box_tip" onclick="$(this).toggle();">											
+                                                    <span class="txt_detail">
+                                                        본 상품은 <span class="txt_mall_top">인터파크</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                        해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">무료배송</span>
+                                        </span>	
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>								
+                                        </span>
+                                        <span class="txt_add_info">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad invisible">카카오페이결제 시 인터파크 1% 적립! </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list invisible">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                        </ul>
+                                    </li>
+                                    <li class="ad_sponsor">
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">
+                                                11번가 <span class="txt_sponsor">/스폰서</span>
+                                            </span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">무료배송</span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>								
+                                        </span>
+                                        <span class="txt_add_info invisible">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad invisible">카카오페이결제 시 인터파크 1% 적립! </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list invisible">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">공식판매처</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                            <!-- 에누리할인 -->
+                                            <li><span class="tag_enuri">10% 할인</span></li>
+                                            <!-- 티몬-당일배송 -->
+                                            <li><span class="tag_tmond">당일배송</span></li>
+                                            <!-- 쿠팡-로켓배송 -->
+                                            <li><span class="tag_rocketd">로켓배송</span></li>
+                                            <!-- 나우배송 -->
+                                            <li><span class="tag_nowd">나우배송</span></li>
+                                        </ul>
+                                    </li>
+                                    <!-- 파워클릭 AD -->
+                                    <li class="ad_pwrclk">
+                                        <!-- 파워클릭 AD 타이틀 -->
+                                        <span class="txt_ad_tit">파워클릭 AD</span>
+                                        <!-- // -->
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">
+                                                <!-- G마켓(shopbid_536) + 스폰서 케이스 -->
+                                                <span class="brand shopbid shopbid_536">G마켓</span>									
+                                                <!-- 옥션(shopbid_4027)-->
+                                                <!-- <span class="brand shopbid shopbid_4027">옥션</span> -->
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                    </li>
+                                    <!-- // -->
+                                    <li shopcode="6641">
+                                        <span class="txt_head">
+                                            <span class="txt_mall">티몬</span>
+                                            <span class="txt_delivery">2,500원</span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>							
+                                        </span>
+                                        <span class="txt_add_info invisible">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad">3,0000원 중복할인쿠폰 적용상품 </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                            <li><span class="tag_emoney_save"><strong>999,999</strong>점 적립<em class="mw-only">(앱전용)</em></span></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <span class="txt_mall">G마켓</span>
+                                            <span class="txt_delivery">2,500원</span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <!-- 일반가격 케이스 lowest_sell_price 클래스 떼주세요 -->
+                                            <strong>1,123,456,789</strong><span class="txt_won">원</span>							
+                                        </span>
+                                        <span class="txt_add_info invisible">
+                                            <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                            <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                            <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                            <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            <!-- 광고 문구 // 활성 : invisible 제거-->
+                                            <span class="txt_comm_ad">3,0000원 중복할인쿠폰 적용상품 </span>
+                                            <!-- 프로모션 문구 // 활성 : invisible 제거 -->
+                                            <span class="txt_comm_promo invisible">30,000원 중복할인쿠폰 적용상품 <span href="#" class="btn_get_coupon">쿠폰받기</span></span>
+                                        </span>
+                                        <span class="txt_summary">
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>
+                                        <ul class="tag_list">
+                                            <!-- 기본태그들 -->
+                                            <li><span class="tag_normal">무이자</span></li>
+                                            <li><span class="tag_normal">카드할인</span></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- 가격비교 더보기 -->
+                                <a href="#" class="btn_more_type1">
+                                    <span class="txt_more">가격 비교 더보기</span>
+                                </a>
+                            </div>
+                            <!-- // 가격비교 뷰타입 : 펼쳐보기 -->
+
+                            <!-- - 가격비교 뷰타입 리스트 : 간략보기 -->
+                            <div class="box_cnt list_overview" style="display:none">
+                                <div class="product_group">
+                                    <p class="group_tit">무료배송</p>
+                                    <ul class="product_list">
+                                        <!-- 20190417 반복 상품 리스트 1단 마크업 수정 -->
+                                        <li class="card_sponsor">
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    G마켓 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">G마켓</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>									
+                                            <span class="txt_price">
+                                                <!-- 케이스 - 일반가격  -->
+                                                <span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price">(신한카드 1,178,000원)</span>
+                                            </span>
+                                        </li>
+                                        <!-- // 반복 상품 리스트 1단 -->
+                                        <li>
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    11번가 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <!-- 케이스 - 순수 최저가격 / 판매자 상위입찰 광고  storng 태그에 lowest_sell_price 붙여주세요.-->
+                                                <span class="txt_lowest">최저가</span><strong class="lowest_sell_price">1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_coupon_price">(11번가 중복쿠폰할인가 1,178,000원)</span>
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    인터파크 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">인터파크</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <!-- 케이스 - 쇼핑몰상위입찰 최저가격 광고 strong 태그에 lowest_mall_price 붙여주세요. -->
+                                                <span class="txt_lowest">최저가</span><strong class="lowest_mall_price">1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price">(신한카드 1,178,000원)</span>
+                                                <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                                <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>									
+                                            </span>
+                                        </li>
+                                        <li>
+                                            <span class="txt_head">
+                                                <!-- 191202 그리드 타입 npay추가 -->
+                                                <!-- type_npay 클래스 붙여주세요 -->
+                                                <span class="txt_mall type_npay">엔페이몰</span>
+                                                <!-- // -->
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <!-- 케이스 - 쇼핑몰상위입찰 최저가격 광고 strong 태그에 lowest_mall_price 붙여주세요. -->
+                                                <span class="txt_lowest">최저가</span><strong class="lowest_mall_price">1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price">(신한카드 1,178,000원)</span>
+                                                <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                                <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>									
+                                            </span>
+                                        </li>
+                                        
+                                        <!-- 결과 없을때 -->
+                                        <li>
+                                            <span class="txt_comm">
+                                                해당 쇼핑몰이 없습니다.
+                                            </span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="product_group">
+                                    <p class="group_tit">배송비 유/무료</p>
+                                    <ul class="product_list">
+                                        <!-- 20190417 반복 상품 리스트 1단 마크업 수정-->
+                                        <li>
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    11번가 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">11번가</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <!-- 특정 카드 할인가의 경우 .txt_cardnm -->
+                                                <span class="txt_cardnm">현대카드</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                                <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                                <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>									
+                                            </span>
+                                        </li>
+                                        <!-- // 반복 상품 리스트 1단 -->
+
+                                        <!-- 191108 현금몰/해외직구 추가 - 해외직구 요약 타입 -->
+                                        <li class="card_global">
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">Orbitz</span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">24,500원</span>										
+                                            </span>
+                                            <span class="txt_price">
+                                                <span class="ico--global">직구</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                            </span>
+                                        </li>
+                                        <!-- // -->
+                                        
+                                        <!-- 스폰서 : li 태그에 card_sponsor 붙여주세요 -->
+                                        <li class="card_sponsor">
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    G마켓 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">G마켓</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                                <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                                <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>									
+                                            </span>
+                                        </li>
+
+                                        <!-- 파워셀러 : li 태그에 card_powerseller 붙여주세요 -->
+                                        <li class="card_powerseller">
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    옥션 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">옥션</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                                <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                                <span class="txt_coupon_price invisible">(11번가 중복쿠폰할인가 1,178,000원)</span>									
+                                            </span>
+                                        </li>
+
+                                        <!-- 스폰서 + 파워셀러일때는 li 태그에 card_sponsor / card_powerseller 둘다 붙여주세요. -->
+                                        <li class="card_sponsor card_powerseller">
+                                            <span class="txt_head">
+                                                <!-- 쇼핑몰명  -->
+                                                <span class="txt_mall">
+                                                    G마켓 <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                                    <!-- 쇼핑몰 별 툴팁 -->
+                                                    <span class="box_tip" onclick="$(this).toggle();">											
+                                                        <span class="txt_detail">
+                                                            본 상품은 <span class="txt_mall_top">G마켓</span>로 이동되거나, 가격이 다를 수 있습니다.</br>
+                                                            해당 쇼핑몰에서 정확한 정보를 확인 후 구매해주세요!
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <!-- 배송료 -->
+                                                <span class="txt_delivery">2,500원</span>										
+                                            </span>	
+                                            <span class="txt_price">
+                                                <strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                                <!-- 카드 할인가 // 활성 : invisible 제거 -->
+                                                <span class="txt_card_price invisible">(신한카드 1,178,000원)</span>
+                                                <!-- 쿠폰 할인가 // 활성 : invisible 제거-->
+                                                <span class="txt_coupon_price invisible">(중복쿠폰할인가 1,178,000원)</span>									
+                                            </span>
+                                        </li>
+
+                                        <!-- 결과 없을때 -->
+                                        <li>
+                                            <span class="txt_comm">
+                                                해당 쇼핑몰이 없습니다.
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- 가격비교 더보기 -->
+                                <a href="#" class="btn_more_type1">
+                                    <span class="txt_more">가격 비교 더보기</span>
+                                </a>
+                            </div>
+
+                            <!-- 191108 현금몰/해외직구 추가 - 현금몰 노출 -->
+                            <!-- 요약보기시 list_overview 클래스 붙여주세요. -->
+                            <div class="box_cnt type_cashmall">
+                                <div class="box_head">
+                                    <p class="title">일반전문몰 
+                                        <a href="#" class="btn_noti" onclick="$(this).next('.box_tip').toggle();return false;">!</a>
+                                        <span class="box_tip" onclick="$(this).toggle();">
+                                            <span class="txt_detail">본 상품은 무통장 입금을 이용한 현금 결제 쇼핑몰입니다.<br/>구매하기 전 재고 및 가격 확인을 꼭 해주세요</span>
+                                        </span>
+                                    </p>
+                                </div>
+                                <ul class="product_list">
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                    <li>
+                                        <span class="txt_head">
+                                            <!-- 쇼핑몰 -->
+                                            <span class="txt_mall">orbitz</span>
+                                            <!-- 배송료 -->
+                                            <span class="txt_delivery">
+                                                24,000원 별도
+                                            </span>
+                                        </span>
+                                        <span class="txt_price">
+                                            <span class="ico--cash">현금</span><span class="txt_lowest invisible">최저가</span><strong>1,123,456,789</strong><span class="txt_won">원</span>
+                                        </span>
+                                        <span class="txt_summary">									
+                                            <!-- 상품 간략 설명 -->
+                                            [농협카드 최대 10% 청구할인[일 한도 10만원]맥북프로 APPLE 맥북프로 2018년형  MR932KH/A (SSD 512G (교체)+하드 500G)	년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)년형  MR932KH/A (SSD 512G (교체)+하드 500G)									
+                                        </span>                                        
+                                    </li>
+                                </ul>
+                                <!-- 가격비교 더보기 -->
+                                <a href="#" class="btn_more_type1">
+                                    <span class="txt_more">더보기</span>
+                                </a>
+                            </div>
+                            <!-- // -->
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- // Tab#2 :: 가격비교 끝 -->
+                
+                <div class="swiper-slide tab_product tab_cele"></div>
+                <div class="swiper-slide tab_review tab_cele"></div>
+                <div class="swiper-slide tab_blog tab_cele"></div>
+                <div class="swiper-slide tab_qna tab_cele"></div>
+                <div class="swiper-slide tab_recommend tab_cele"></div>
+            </div>
+        </div>
+	</section>
+
+	<!-- 푸터 -->
+	<footer class="footer">
+		<div class="newquick">
+        	<p class="TBtn" onclick="javascript:goFooterTop()">TOP</p>
+    	</div>
+		<p class="legal_notices">
+			<span class="txt_tit">법적고지</span>
+			㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.
+		</p>
+		<p class="company_info">
+			<span class="txt_company_name">(주)써머스 플랫폼</span>
+			대표이사 : 김기범 / 사업자등록번호 : 206-81-18164 <br/>
+			통신판매신고 : 2015-서울중구-1046호<br/>
+			서울특별시 중구 퇴계로 18(남대문로5가) 9층<br/>
+			문의 : 02-6354-3601 / master@enuri.com<br/>
+		</p>
+		<p class="footer_menu">
+			<a href="#">이용약관</a>
+			<a href="#">개인정보처리방침</a>
+			<a href="#">법적고지</a>
+			<a href="#">PC버전</a>
+		</p>
+	</footer>
+</div>
+
+<script>	
+
+    // 20190617 추가
+    // IOS 계열 브라우저에서 fixed 속성 내 컨포넌트 Focus시 Top 강제 이동 차단    
+    var UserAgent = navigator.platform; //하드웨어 플랫폼
+    if (UserAgent.match(/i(Phone|Pod)/i) != null ){
+        $('input, select, textarea').on('focus',function() {
+            var curScroll = $(window).scrollTop();
+            $('html, body').animate({scrollTop:curScroll},1);
+        });
+    }
+
+	$(document).ready(function() {
+		// 상단 메뉴 생성
+		$(function(){
+			var navElem = ".vip_wrap .navTabs";
+			// 네비 스와이퍼 생성
+			var navSwiper = new Swiper(navElem, {
+				loop : false,
+				slidesPerView : 'auto',
+				watchActiveIndex: true,					
+				spceBeetween : 10
+            });            
+            
+            var nav = $('.navTabs'); 
+            var tmpTabObj = $(navElem).find("a");
+
+            // 20190613 스크립트 수정 (1)
+            var posHeader = function(){
+                var $fixed = $(".tab_price_head_wrap"),
+                $fixedCnt =  $fixed.find(".box_cont"),
+                $vipFixed = $(".vip_fixed"),
+                $vipFixedSlide = $(".vip_fixed_slide"),
+                $gnb = $(".m_top_sub"),
+                $myScroll = $(this).scrollTop(),
+                gnbH = ( $gnb.outerHeight() != null && $gnb.outerHeight() != undefined ) ? $gnb.outerHeight()-1 : 0;
+
+                if ( $myScroll > gnbH ) nav.addClass("fixed_top").parents("#vip_wrap_id").css("margin-top","46px");
+                else nav.removeClass("fixed_top").parents("#vip_wrap_id").css("margin-top","0");
+                                
+                // 가격비교탭 활성화시 
+                var $tabPrice = $(".tab_price");
+                if ( $tabPrice.is(".swiper-slide-active") ){
+                    $fixed.css("height",$fixedCnt.outerHeight());
+                    if ( $myScroll > $fixed.offset().top - nav.outerHeight()-1 && $myScroll < $tabPrice.outerHeight() ){                                                                        
+                        $vipFixedSlide.append( $("#tab_price_head_3ndline") );
+                    }else{
+                        $fixed.append( $("#tab_price_head_3ndline") );
+                    }
+                }
+
+                // CM&QNA 활성화시
+                var $tabPrice = $(".tab_qna"),
+                    $insideTabBtn = $(".tab_qna .btn_write_wrap"),
+                    $outsideTabBtn = $(".btn_write_wrap.btn_fixed_bot");                
+                if ( $tabPrice.is(".swiper-slide-active") ){
+                    if ( $(window).scrollTop() < $insideTabBtn.offset().top - window.innerHeight ){
+                        $outsideTabBtn.append ( $(".btn_write_area") );
+                        $outsideTabBtn.addClass("rising");
+                    }else{
+                        $insideTabBtn.append ( $(".btn_write_area") );
+                        $outsideTabBtn.removeClass("rising");
+                    }
+                }else{
+                    $outsideTabBtn.removeClass("rising");
+                }
+            };   
+            // 끝 : 스크립트 수정 (1)
+            
+            $(window).load(posHeader).scroll(posHeader);
+            
+            var cntSwiper = new Swiper(".vip_cnt",{
+                watchActiveIndex: true,
+                autoHeight : true,
+                spaceBeetween : 0,
+                noSwipingClass : 'noswipe',
+                onTransitionEnd  : function(e){
+                    var _idx = e.realIndex;
+                    $(navElem).find(".swiper-slide").eq(_idx).addClass("on").siblings().removeClass("on");
+                    $("html,body").stop(true,false).animate({"scrollTop":"0px"},0);
+                    navSwiper.slideTo(_idx-1);
+                    // getTabData(_idx);
+                }
+            });
+            cntSwiper.slideTo(1);
+
+            $(tmpTabObj).click(function(i){
+                $("html,body").stop(true,false).animate({"scrollTop":"0px"},0); 
+                i.preventDefault();
+                var tabParent = $(this).parent();
+                var tabParentIndex = tabParent.index();
+                if(!tabParent.hasClass("on")){
+                    tabParent.addClass("on").siblings().removeClass("on");
+                    cntSwiper.slideTo(tabParentIndex);
+                    // $(".tab_cele").addClass("invisible");
+                    $(tabParent).fadeIn(100);
+                    // getTabData(tabParentIndex);
+                    // renewURL = renewURL.replace(/\&tab=([0-9]+)/ig,'');
+                    // if(tabParentIndex != 0 ){
+                        // renewURL += '&tab='+tabParentIndex;	
+                    // }
+                    // history.pushState(null, null, renewURL);
+                }
+            });
+
+            // 20190613 스크립트 추가 (2)
+            var fixedSwiper = new Swiper(".vip_fixed",{
+                watchActiveIndex: true,
+                autoHeight : true,
+                spaceBeetween : 0,
+                noSwipingClass : 'noswipe',
+                onTransitionEnd  : function(e){
+                    posHeader();
+                }
+            });
+
+            cntSwiper.params.control = fixedSwiper;
+            fixedSwiper.params.control = cntSwiper;
+            // 끝 : 20190613 스크립트 수정 (2)
+		})		
+	});
+</script>
+</body>
+</html>

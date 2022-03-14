@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<title>xgolf관리자 개편</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="css/dtree.css">
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/dtree.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(document).on('click', '.cont_tab_area ul li a.btn_tab_page', function(){
+				var i = $('.cont_tab_area ul li a.btn_tab_page').index(this);
+				$('.cont_tab_area ul li').removeClass('on').eq(i).addClass('on');
+				$('.frame_area div').hide();
+				$('.frame_area div').eq(i).show();
+			});
+		});
+
+		function Pgm_Call(f_code, i_href, i_pgm_name){	
+			var tab_count = $('.admin_subtab_title_'+ f_code).length;
+			if(parseInt(tab_count) > 0  )
+			{
+				$('.cont_tab_area ul li').removeClass('on');
+				$(".admin_subtab_title_"+f_code ).addClass('on');
+				$('.frame_area div').hide();
+				$("#admin_subtab_iframe_"+f_code ).show();
+			}
+			else
+			{
+				var createTab;
+				createTab = '<li class="last on admin_subtab_title_'+ f_code +'">';
+				createTab = createTab + '<a href="javascript:;" class="btn_tab_page">' + i_pgm_name +'</a>';
+				createTab = createTab + '<a href="javascript:;" class="btn_tab_close" style="display:inline-block; margin-left:7px; position:relative; top:2px;" onclick="fnv_admin_sub_tab_close('+ f_code +')"><img src="images/btn_tab_close_off.gif" alt="" /></a>';
+				createTab = createTab +	'</li>';
+			
+				//아이프레임 생성, 저장
+				var createFrame;
+				createFrame = '<div id="admin_subtab_iframe_'+ f_code +'">';
+				createFrame = createFrame + '<iframe src="'+ i_href +'" frameborder="0" width="955" height="1300" marginwidth="0" marginheight="0" scrolling="no">';
+				createFrame = createFrame + '</div>';
+
+				//이미 열려있는 창인지 체크
+				if($(this).hasClass('open')){
+					//이미 열려있다면 해당 탭으로 이동
+					var e = $('.cont_tab_area ul li a.btn_tab_page').index(this);
+					$('.cont_tab_area ul li').removeClass('on').eq(e).addClass('on');
+					$('.frame_area div').hide();
+					$('.frame_area div').eq(e).show();
+				}else{
+					//열려있지 않다면 새로 생성
+					//해당 탭이 열렸는지 확인하기 위해 클래스 부여
+				
+					//탭메뉴 생성
+					$('.cont_tab_area ul').children('li').removeClass('last').removeClass('on').parent('ul').append(createTab);
+					//아이프레임 생성(기존 아이프레임 숨김)
+					$('.frame_area div').hide();
+					$('.frame_area').append(createFrame);					
+				}
+			}
+		}
+
+		function fnv_admin_sub_tab_close(f_code){
+			$('.cont_tab_area ul li').removeClass('on');
+			$('.cont_tab_area ul li').last().addClass('last');
+			$(".admin_subtab_title_"+f_code).prev().addClass('on').next().remove();
+			$("#admin_subtab_iframe_"+f_code).prev().show().next().remove().next().hide();
+			var restList = $('.cont_tab_area ul li').length;
+			if(restList==0){
+				$('.cont_tab_area ul li').addClass('last');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="container">
+			<div id="left_nav">
+				<h3>시스템관리</h3>
+				<div class="dtree"id="tree">
+					<p><a href="javascript:d.openAll();">open all</a> | <a href="javascript: d.closeAll();">close all</a></p>
+					<script type="text/javascript">
+						<!--
+						// 코드, 상위 코드, 이름, 페이지명, 타겟명
+						d = new dTree('d');
+
+						d.add(0,-1,'BOOKING ADMIN');
+						d.add(1,0,'예약관리','','main');
+						d.add(2,0,'선결제','','main');
+						d.add(3,0,'골프행사','','main');
+						d.add(4,0,'타임세일/HotSale/선결제','','main');
+
+						d.add(101,1,'기본페이지','javascript:pgm_Call(\'101\',\'test2.html\', \'기본페이지\')','main');
+						d.add(102,1,'#0.스타일가이드(통합)','javascript:Pgm_Call(\'102\',\'style_guide.html\', \'#0.스타일가이드(통합)\')','main');
+						d.add(103,1,'#1.나의메뉴설정','javascript:Pgm_Call(\'103\',\'menu_setup.html\', \'#1.나의메뉴설정\')','main');		
+						d.add(104,1,'#2.목록가이드','javascript:Pgm_Call(\'104\',\'list_guide.html\', \'#2.목록가이드\')','main');
+						d.add(105,1,'#3.보기가이드','javascript:Pgm_Call(\'105\',\'view_guide.html\', \'#3.보기가이드\')','main');
+						d.add(106,1,'#4.쓰기,수정가이드','javascript:Pgm_Call(\'106\',\'write_guide.html\', \'#4.쓰기,수정가이드\')','main');
+
+						document.write(d);
+						//-->
+					</script>
+				</div>
+			</div>
+			<div id="content">
+				<div class="cont_tab_area">
+					<ul>
+						<li class="admin_subtab_title_101 on">
+							<a href="javascript:;" class="btn_tab_page admin_subtab_title_101">기본페이지</a>
+						</li>
+					</ul>
+				</div>
+
+				<div class="frame_area">
+					<div id="admin_subtab_iframe_101">
+						<iframe src="style_guide.html" frameborder="0" width="955" height="1300" marginwidth="0" marginheight="0" scrolling="no" id="admin_subtab_iframe_101">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

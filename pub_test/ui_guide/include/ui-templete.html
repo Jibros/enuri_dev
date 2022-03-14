@@ -1,0 +1,302 @@
+<!-- PAGE WRAPPER -->
+<article id="pageWrap">
+	<!-- Heading-->
+	<div class="docs-heading">
+		<h2>UI 템플릿</h2>
+	</div>
+	<!-- Heading-->
+	
+	<!-- Sector -->
+	<div class="docs-sector" id="ui-guideHtml">
+		<!-- Heading h1 ~ h4 -->
+		<h3 class="page-header">모바일</h3>
+		
+		<!-- Tab Wrap -->
+		<div class="tab_wrap">
+			<!-- Nav tabs -->
+			<!--
+			Tab 스타일별 클래스 : nav-pills, nav-tabs, nav-justified, nav-stacked 
+			<ul class="nav nav-pills" role="tablist">
+			<ul class="nav nav-tabs" role="tablist">
+			<ul class="nav nav-pills nav-justified" role="tablist">
+			<ul class="nav nav-tabs nav-justified" role="tablist">-->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="pill">GNB/검색창</a></li>
+				<li role="presentation"><a href="#tab2" role="tab" data-toggle="pill">footer</a></li>
+				<li role="presentation"><a href="#tab3" role="tab" data-toggle="pill">페이징</a></li>
+				<li role="presentation"><a href="#tab4" role="tab" data-toggle="pill">카테고리 아이콘</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+					
+				<!-- 1 -->
+				<div role="tabpanel" class="tab-pane fade in active" id="tab1">
+					<h4 class="page-header">기본형 - GNB/검색창</h4>
+					<p class="bs-callout"  style="width:640px"><iframe name="frmPreview" src="snippet/gnb.html" width="100%" height="140" frameborder="0" ></iframe></p>
+
+					<p class="lead">HTML</p>
+					<figure class="highlight">
+					<pre class="brush:html">
+						&lt;header&gt;
+							&lt;!-- 상단 띠배너 --&gt;
+							&lt;div class="topbnr" id="topbnr" style="background:#114ea5"&gt;
+								&lt;a href="javascript:///" class="close"&gt;닫기&lt;/a&gt;
+								&lt;a href="javascript:///"&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/event/2016/attend_july/top_bnr_new.jpg" alt="" /&gt;&lt;/a&gt;
+							&lt;/div&gt;
+
+							&lt;div class="mainTop"&gt;
+								&lt;a href="#" class="btn_side"&gt;&lt;span class="cate_m ico_m"&gt;주요 서비스 메뉴 펼치기&lt;/span&gt;&lt;/a&gt;
+								&lt;h1 class="logo ico_m"&gt;에누리 가격비교&lt;/h1&gt;
+								&lt;div class="searchbox"&gt;&lt;p class="search_in"&gt;&lt;input type="text" id="searchtxt" name="searchtxt"&gt;&lt;/p&gt;&lt;button class="srp"&gt;&lt;span class="ico_m"&gt;검색&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;
+								&lt;button class="mybtn"&gt;&lt;span class="ico_m"&gt;마이메뉴&lt;/span&gt;&lt;/button&gt;
+							&lt;/div&gt;
+						&lt;/header&gt;
+						
+						&lt;nav class="m_top"&gt;
+							&lt;div class="grd_next"&gt;&lt;/div&gt;
+							&lt;div class="gnbarea"&gt;
+								&lt;ul class="newgnb"&gt;
+									&lt;li&gt;&lt;a href="#" class="on"&gt;홈&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;베스트&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;마트핫픽#&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;이벤트/혜택존&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;구매가이드&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;트렌드픽업&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;베스트100&lt;/a&gt;&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/nav&gt;
+					</pre>
+					</figure>
+
+					<p class="lead">CSS</p>
+			<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nb">@charset "utf-8";
+
+/*header*/
+header{width:100%; z-index:100; background:#ffffff; }
+header.sub{width:100%; padding-top:47px;}
+
+.mainTop{position:relative; }
+.mainTop .btn_side{position:absolute; left:0; top:0; width:37px; height:44px; z-index:10}
+.mainTop .btn_side .cate_m{position:absolute; left:10px; top:15px; display:block; width:19px; height:16px; background-position: 0 0;}
+.mainTop .btn_side .home{position:absolute; left:10px; top:13px; display:block; width:20px; height:20px; background-position: -109px -316px;}
+.mainTop .logo{position:absolute; left:38px; top:13px; width:58px; height:19px; background-position: -26px 0; z-index:10}
+.mainTop .searchbox{margin:0px 38px 0 105px; position:relative; height:37px; color:#54748c; padding-top:6px; }
+.mainTop .searchbox .search_in{width:100%; overflow:hidden; height:31px; padding:7px 40px 0 20px; border:1px solid #2d9fe8; font-size:12px; color:#54748c; border-radius:20px;  -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.mainTop .searchbox .search_in input{background-color:transparent; border:none; width:100%;}
+.mainTop button.srp{width:37px; height:31px; position:absolute; right:-3px; top:6px; background:#2d9fe8; border-radius:0 20px 20px 0}
+.mainTop button.srp span{background-position:-94px 0; width:15px; height:15px; display:inline-block; text-align:center; }
+.mainTop button.mybtn{width:40px; height:44px; position:absolute; right:0; top:0; }
+.mainTop button.mybtn span{background-position:-120px 0; width:24px; height:24px; display:block; margin:0px 0 0 9px;}
+
+nav.m_top{margin-bottom:5px; width:100%; position:relative; height:37px; overflow:hidden; background:#ffffff; border-bottom:1px solid #7f8a97; }
+nav.m_top .gnbarea{width: 100%;  max-width: 1280px;overflow-x: scroll; position:relative; text-align:center; height:60px; border-top:1px solid #edf1f5; }
+nav .newgnb{display:table; position:relative; width:100%; }
+nav .newgnb li{ display: table-cell; padding:0 13px; position:relative;     text-align: center; white-space: nowrap;}
+nav .newgnb li a{color:#535353; letter-spacing:-1px; text-align:center; display:block; padding-top:10px; height:25px; font-weight:bold;}
+nav .newgnb li a.on{color:#0072bc; height:26px;}
+nav .newgnb li a.on:after{position:absolute; left:0; bottom:0; width:100%; height:3px; background:#0071bc; content:""}
+nav .grd_next, nav .grd_prev{top:1px; height: 35px; z-index: 1; position: absolute;  }
+nav .grd_next {right: 0px;width:18px;background: -webkit-gradient(linear,left top,right top,color-stop(0,rgba(255,255,255,0)),color-stop(60%,#fff));}
+</span></code></pre></figure>
+				</div>
+
+				
+
+				<!-- 2 -->
+				<div role="tabpanel" class="tab-pane fade in" id="tab2">
+					<h4 class="page-header">공통 하단 푸터</h4>
+					<p class="bs-callout" style="width:640px"><iframe name="frmPreview" src="snippet/footer.html" width="100%" height="225" frameborder="0" ></iframe></p>
+
+					<p class="lead">HTML</p>
+					<figure class="highlight">
+					<pre class="brush:html">
+						&lt;footer&gt;
+							&lt;nav class="new_footer"&gt;
+								&lt;ul&gt;
+									&lt;li class="com_info"&gt;&lt;a href="#n"&gt;사업자 정보&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="javascript:goPcEnuri();insertLog('11004')" target="_blank"&gt;PC버전&lt;/a&gt;&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/nav&gt;
+							
+							&lt;div class="cominfo_txt"&gt;
+								&lt;section&gt;
+								에누리닷컴㈜는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.
+								&lt;p&gt;&lt;strong&gt;에누리닷컴㈜&lt;/strong&gt;
+									대표이사 : 최문석&lt;span&gt;|&lt;/span&gt;사업자등록번호 : 206-81-18164&lt;br&gt;
+									통신판매신고 : 2015-서울중구-1046호&lt;br&gt;
+									서울특별시 중구 퇴계로 18 대우재단빌딩 9층&lt;br&gt;
+									문의 : 02-6354-3601&lt;span&gt;|&lt;/span&gt;master@enuri.com
+								&lt;/p&gt;
+								&lt;/section&gt;
+								&lt;ul class="rule"&gt;
+									&lt;li&gt;&lt;a href="#" &gt;이용약관&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#" &gt;개인정보취급방침&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;법적고지&lt;/a&gt;&lt;/li&gt;
+									&lt;li&gt;&lt;a href="#"&gt;PC버전&lt;/a&gt;&lt;/li&gt;
+								&lt;/ul&gt;
+							&lt;/div&gt;
+						&lt;/footer&gt;
+					</pre>
+					</figure>
+
+					<p class="lead">CSS</p>
+					<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nb">@charset "utf-8";
+
+footer{float:left; width:100%; }
+footer, footer p{color:#77787b !important; font-size:12px; } 
+footer .new_footer{border-top:2px solid #c8c9c9; padding-bottom:5px; background:#d3d4d5; }
+footer .new_footer ul:after{content:"";display:block;clear:both;}
+footer .new_footer ul{border-bottom:1px solid #959596; background:#dddee1;  box-shadow: 0px 1px 3px #b5b6b7; }
+footer .new_footer li {float:left;width:50%;}
+footer .new_footer li a {color:#77787b; position:relative;display:block;line-height:31px;text-align:center;font-size:13px;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+footer .new_footer li a:after {content:"";position:absolute;top:11px;left:0;display:block;width:1px;height:10px;background:#acadb0;}
+footer .new_footer li:first-child a:after {display:none;}
+footer .new_footer li.com_info{text-align:center; }
+footer .new_footer li.com_info a.allview_close span{padding-right:16px; background:url(http://imgenuri.enuri.gscdn.com/images/mobilenew/images/bullet_footer.gif) right 4px no-repeat;background-size:11px 25px;}
+footer .cominfo_txt{font-family:malgun gothic; background:#d3d4d5;}
+footer .cominfo_txt section{padding:10px 15px 10px 15px; font-size:12px; color:#6b6b6b; line-height:16px}
+footer .cominfo_txt section p{font-size:12px; }
+footer .cominfo_txt section strong{font-weight:normal; padding:15px 0 6px 0; display:block; }
+footer .cominfo_txt section p span{color:#abacae; padding:0 5px}
+footer .cominfo_txt .rule:after {content:"";display:block;clear:both;}
+footer .cominfo_txt .rule li{float:left; text-align:center; height:30px; width:22%; } 
+footer .cominfo_txt .rule li a{display:block; text-align:center; color:#6b6b6b; height:20px; padding-top:5px; position:relative;}
+footer .cominfo_txt .rule li:nth-child(2){font-weight:bold; width:34%;}
+footer .cominfo_txt .rule li a:after {content:"";position:absolute;top:6px;left:0px;display:block;width:1px;height:10px;background:#acadb0;}
+footer .cominfo_txt .rule li:first-child a:after{background:none; }
+footer .agreeWrap{background:#ffffff; z-index:10;}
+footer .agreeWrap .container .agreebox{height:100%; }
+footer .footNav2 {position: fixed; left: -1px; bottom: 0; display: block; width: 100%; z-index: 4;}
+footer .topBtn {position: fixed; bottom: 3px; right: 9px; }
+</span></code></pre></figure>
+				</div>
+
+				<!-- 3 -->
+				<div role="tabpanel" class="tab-pane fade in" id="tab3">
+					<h4 class="page-header">기본형 - 페이징</h4>
+					<p class="bs-callout"  style="width:640px"><iframe name="frmPreview" src="snippet/paging.html" width="100%" height="40" frameborder="0" ></iframe></p>
+
+					<p class="lead">HTML</p>
+					<figure class="highlight">
+					<pre class="brush:html">
+					&lt;ul class="paging" id="paging"&gt;
+								&lt;li&gt;&lt;a data-page="1" href="#1" class="btn prev"&gt;&lt;/a&gt;
+								&lt;/li&gt;&lt;li id="page_1"&gt;&lt;a data-page="1" href="#1"&gt;1&lt;/a&gt;&lt;/li&gt;
+								&lt;li id="page_2"&gt;&lt;a data-page="2" href="#" class="selected"&gt;2&lt;/a&gt;&lt;/li&gt;
+								&lt;li id="page_3"&gt;&lt;a data-page="3" href="#3"&gt;3&lt;/a&gt;&lt;/li&gt;
+								&lt;li id="page_4"&gt;&lt;a data-page="4" href="#4"&gt;4&lt;/a&gt;&lt;/li&gt;
+								&lt;li id="page_5"&gt;&lt;a data-page="5" href="#5"&gt;5&lt;/a&gt;&lt;/li&gt;
+								&lt;li&gt;&lt;a data-page="3" href="#3" class="btn next"&gt;&lt;/a&gt;&lt;/li&gt;
+							&lt;/ul&gt;
+					</pre>
+					</figure>
+
+					<p class="lead">CSS</p>
+					<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nb">@charset "utf-8";
+
+/* paging */
+.paging{text-align:center; background:#ffffff; padding:5px 0}
+.paging.second{margin-top:8px}
+.paging li{display:inline-block; margin:0 2px; position:relative; width:30px }
+.paging li a{width:30px; height:30px; line-height:30px; color:#999999; text-align:center; display:block; font-size:15px; font-family:tahoma;}
+.paging li a.btn{position:absolute; text-indent:-9999em; background: url(http://imgenuri.enuri.gscdn.com/images/mobilefirst/ico_paging.png) 0 0 no-repeat; background-size:38px; }
+.paging li a.btn.prev{background-position:-20px 10px; left:-12px; top:-21px;}
+.paging li a.btn.prev.none{background-position:12px 10px; }
+.paging li a.btn.next{background-position:-20px -17px; right:-12px; top:-21px;}
+.paging li a.btn.next.none{background-position:12px -17px; }
+.paging li a.selected{cursor:default; color:#7bbbee; text-decoration:underline;  font-weight:bold;}
+</span></code></pre></figure>
+				</div>
+
+
+				<!-- 4 -->
+				<div role="tabpanel" class="tab-pane fade in" id="tab4">
+					<h4 class="page-header">홈메인 아이콘</h4>
+					<p class="bs-callout"  style="width:640px"><iframe name="frmPreview" src="snippet/menu.html" width="100%" height="250" frameborder="0" ></iframe></p>
+					
+					<p class="lead">HTML</p>
+					<figure class="highlight">
+					<pre class="brush:html">
+						&lt;div class="Maincontent"&gt;
+					&lt;ul class="m_depth"&gt;
+						&lt;li&gt;&lt;span&gt;디지털/가전&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;컴퓨터&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;스포츠/자동차&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;유아/식품&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;가구/생활/건강&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;패션/잡화&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;도서/여행/취미&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;소셜비교&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;백화점비교&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;span&gt;전체카테고리&lt;/span&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+
+					&lt;ul class="evt_cate"&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico01.gif" alt="출석체크"&gt;&lt;span&gt;출석체크&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico02.gif" alt="웰컴혜택"&gt;&lt;span&gt;웰컴혜택&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico03.gif" alt="구매스탬프"&gt;&lt;span&gt;구매스탬프&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico04.gif" alt="스토어"&gt;&lt;span&gt;스토어&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/home_ico05.gif" alt="더보기"&gt;&lt;span&gt;더보기&lt;/span&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;ul class="mall_cate"&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_gmarket.gif" alt="Gmarket"&gt;&lt;span&gt;지마켓&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_auction.gif" alt="Auction"&gt;&lt;span&gt;옥션&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_11st.gif" alt="11번가"&gt;&lt;span&gt;11번가&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_interpark.gif" alt="INTERPARK"&gt;&lt;span&gt;인터파크&lt;/span&gt;&lt;/li&gt;
+						&lt;li&gt;&lt;img src="http://imgenuri.enuri.gscdn.com/images/m_home/logo_tmon.gif" alt="TMON"&gt;&lt;span&gt;티몬&lt;/span&gt;&lt;/li&gt;
+					&lt;/ul&gt;
+					&lt;/div&gt;
+					</pre>
+					</figure>
+
+					<p class="lead">CSS</p>
+			<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nb">@charset "utf-8";
+
+/* 카테고리 아이콘 */
+.Maincontent .m_depth{border-bottom:1px solid #ced2d7; background:#fafbfc; margin-bottom:5px;}
+.Maincontent .m_depth:after{content: ""; display: block; clear: both; width: 0px; height: 0px; }
+.Maincontent .m_depth li{text-align:center; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; height:53px; width:20%; float:left; border-left:1px solid #edf1f5; border-top:1px solid #edf1f5; position:relative;}
+.Maincontent .m_depth li span{font-size:10px; text-align:center; color:#54748c; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:5px; width:100%; }
+.Maincontent .m_depth li:nth-child(1), .Maincontent .m_depth li:nth-child(6){border-left:none;}
+
+.Maincontent .m_depth li:before{content:""; display:block; width:28px; height:28px; margin:3px auto 0; }
+.Maincontent .m_depth li:nth-child(1):before{background-position:2px -35px; }
+.Maincontent .m_depth li:nth-child(2):before{background-position:-40px -35px; }
+.Maincontent .m_depth li:nth-child(3):before{background-position:-81px -34px; }
+.Maincontent .m_depth li:nth-child(4):before{background-position:-127px -35px; }
+.Maincontent .m_depth li:nth-child(5):before{background-position:-170px -35px; }
+.Maincontent .m_depth li:nth-child(6):before{background-position:1px -68px; }
+.Maincontent .m_depth li:nth-child(7):before{background-position:-40px -68px; }
+.Maincontent .m_depth li:nth-child(8):before{background-position:-82px -68px; }
+.Maincontent .m_depth li:nth-child(9):before{background-position:-126px -68px; }
+.Maincontent .m_depth li:nth-child(10):before{background-position:-168px -66px; }
+
+/*프로모션 카테고리*/
+.evt_cate{background:#ffffff; height:65px; border-bottom:1px solid #edf1f5;}
+.evt_cate:after{clear:both; content:""; display:block; }
+.evt_cate li{float:left; width:20%; text-align:center; padding-top:5px; height:65px;  cursor:pointer; position:relative;  border-left:1px solid #edf1f5; box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box;}
+.evt_cate li:first-child{border-left:none;}
+.evt_cate.four li{width:25%; }
+.evt_cate li img{width:39px; height:39px;}
+.evt_cate li span{font-size:10px; text-align:center; color:#54748c; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:5px; width:100%; }
+
+/*주요 쇼핑 5사 노출 */
+.mall_cate{background:#ffffff; height:65px; border-bottom:1px solid #ced2d7; }
+.mall_cate:after{clear:both; content:""; display:block; }
+.mall_cate li{float:left; width:20%; text-align:center; padding-top:16px; height:65px;  cursor:pointer; position:relative; border-left:1px solid #edf1f5; box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box;}
+.mall_cate li:first-child{border-left:none;}
+.mall_cate.four li{width:25%; }
+.mall_cate li img{width:43px; height:12px;}
+.mall_cate li span{font-size:10px; text-align:center; color:#54748c; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:15px; width:100%; }
+</span></code></pre></figure>
+				</div>
+
+		</div>
+		<!-- // Tab Wrap -->
+
+
+	</div>
+</article>
+<!-- //PAGE WRAPPER -->

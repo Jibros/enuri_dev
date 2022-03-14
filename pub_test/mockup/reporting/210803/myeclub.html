@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" href="/css/rev/common.css" type="text/css">
+<link rel="stylesheet" href="/pub_test/mockup/reporting/apps/css/common.css" type="text/css">
+<!-- Lib/Plugin -->
+<script type="text/javascript" src="/wide/util/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+<!-- 모바일 목업 -->
+
+<div class="eclub_wrap">
+    <div class="eclub">
+        <div class="eclub_main">
+            <div class="cont-bg"><img src="http://img.enuri.info/images/homemain/210803/m-myeclub-main.jpg" alt="" /></div>
+
+            <!-- <div class="cont-1">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-swiper1.png" alt="" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-swiper2.png" alt="" />
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-swiper3.png" alt="" />
+                        </div>
+                    </div>
+
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div> -->
+
+            <div class="cont-2">
+                <!-- <button type="button" data-id="shopList" data-class="nav-1" class="btn btn-1" title="쇼핑매니저-쇼핑리포트"></button> -->
+                <button type="button" data-id="shopReport" data-class="nav-2" class="btn btn-2" title="쇼핑매니저-쇼핑목록"></button>
+            </div>
+        </div>
+
+        <div class="fixed_nav">
+            <div class="fnav nav-1">
+                <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-main3.jpg">
+                <button type="button" class="btn btn-back">뒤로</button>
+                <button type="button" class="btn btn-close">닫기</button>
+
+                <button type="button" data-tab="nav-1" class="btn btn-tab1">쇼핑 리포트</button>
+                <button type="button" data-tab="nav-2" class="btn btn-tab2">쇼핑 목록</button>
+            </div>
+            <div class="fnav nav-2">
+                <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-main1.jpg">
+                <button type="button" class="btn btn-back">뒤로</button>
+                <button type="button" class="btn btn-close">닫기</button>
+
+                <button type="button" data-tab="nav-1" class="btn btn-tab1">쇼핑 리포트</button>
+                <button type="button" data-tab="nav-2" class="btn btn-tab2">쇼핑 목록</button>
+
+                <button type="button" class="btn btn-card btn-card-1">상품 카드</button>
+                <button type="button" data-tab="nav-3" class="btn btn-deli btn-delivery-1">배송조회</button>
+            </div>
+
+            
+            <div class="fnav nav-3">
+                <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-main2.jpg">
+                <button type="button" class="btn btn-back">뒤로</button>
+                <button type="button" class="btn btn-close">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom_sheet">
+        <div class="dimmed"></div>
+        <div class="bottom">
+            <img src="http://img.enuri.info/images/homemain/210803/m-myeclub-bottom.jpg" alt="" />
+            <button type="button" class="btn btn-close">닫기</button>
+        </div>
+    </div>
+
+    <div class="tabbar">
+        <img src="http://img.enuri.info/images/homemain/210803/bottomsheet.png" alt="" />
+    </div>
+</div>
+
+<script>
+    // 공통 :  하단 컨텐츠로 바로 진입시 포지션 보정을 위한 스크립트 처리
+    $(function(){
+        $(".cont-2 .btn").on("click", function(){
+            var showBlock = $(this).data("id"),
+                showNav = $(this).data("class");
+
+            $(".fixed_nav .fnav").removeClass("is-shown");
+            $(".fixed_nav").addClass("is-expand");
+            $("." + showNav).addClass("is-shown");
+
+            $("body, html").animate({scrollTop: 0}, 300)
+        })
+
+        $(".nav-1 .btn-back, .nav-1 .btn-close, .nav-2 .btn-back, .nav-2 .btn-close, .nav-3 .btn-close").on("click", function(){
+            $(this).closest(".fixed_nav").removeClass("is-expand")
+        })
+        $(".nav-3 .btn-back").on("click", function(){
+            $(".fnav").removeClass("is-shown");  
+            $(".nav-2").addClass("is-shown");
+        })
+
+        $(".btn-tab1, .btn-tab2, .btn-deli").on("click",function(){
+            var showTab = $(this).data("tab");
+
+            $(".fnav").removeClass("is-shown");   
+            $("."+showTab).addClass("is-shown");
+
+            $("body, html").animate({scrollTop: 0}, 300);
+        });
+
+        $(".btn-card").on("click", function(){
+            $(".bottom_sheet").addClass("is-shown");
+            setTimeout(function(){
+                $(".bottom_sheet .bottom").addClass("is-expand");
+            },200);
+        });
+
+        $(".bottom_sheet .dimmed, .bottom_sheet .btn-close").on("click", function(){
+            $(".bottom_sheet .bottom").removeClass("is-expand");
+            setTimeout(function(){
+                $(".bottom_sheet").removeClass("is-shown");
+            },300);
+        })
+
+        // 레이어 : 작은 썸네일 스와이퍼 생성                                    
+        var layThumSwipe_sm = new Swiper(".cont-1 .swiper-container", {
+            loop : false,
+            slidesPerView : 1,
+            initialSlide: 0,
+            spaceBetween : 0,
+            centeredSlides: true,
+            pagination : '.cont-1 .swiper-pagination',
+            paginationClickable : false,
+            slideToClickedSlide:true
+        });
+    })
+</script>
+<!-- //모바일 목업 -->
+</body>
+</html>

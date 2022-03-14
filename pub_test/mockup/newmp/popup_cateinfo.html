@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEW MP - 대량정제</title>
+
+<!-- JQUERY CDN -->
+<script src="/wide/util/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+<!-- DHTMLX lib -->
+<script type="text/javascript" src="/pub_test/mockup/newmp/lib/dhtmlx/codebase/suite.js?v=7.1.4"></script>
+<link rel="stylesheet" href="/pub_test/mockup/newmp/lib/dhtmlx/codebase/suite.css?v=7.1.4">
+
+<!-- BOOTSTRAP lib -->
+<link rel="stylesheet" href="/pub_test/mockup/newmp/lib/bootstrap/dist/css/bootstrap.min.css?v=4.0.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<script type="text/javascript" src="/pub_test/mockup/newmp/lib/bootstrap/dist/js/bootstrap.bundle.min.js?v=4.0.0"></script>
+
+<!-- CUSTOM CSS -->
+<link rel="stylesheet" href="/pub_test/mockup/newmp/apps/css/layout.css?v=7.1.224">
+<link rel="stylesheet" href="/pub_test/mockup/newmp/apps/css/style.css">
+</head>
+<body>
+<div class="popup_wrap lightMode">
+    <div class="popup_inner">
+        <!-- 검색 폼 -->
+        <div class="popup_head">
+            <div class="head_left">
+                <h1 class="tx_tit">[카테고리 정보]</h1>
+                
+                <div class="form-chk form-inline">
+                    <input type="checkbox" id="tempHidden" class="input--checkbox-item"><label for="tempHidden">TEMP 숨기기</label>
+                </div>
+            </div>
+            <div class="head_right">
+
+                <div class="ipt-util">
+                    <div class="cate_rdo">
+                        <div class="form-chk form-inline">
+                            <!-- id, for 동일하게 -->
+                            <input type="radio" id="cateName" name="cate_radio" class="input--radio-item"><label for="cateName">카테명</label>
+                        </div>
+                        <div class="form-chk form-inline">
+                            <input type="radio" id="cateCode" name="cate_radio" class="input--radio-item"><label for="cateCode">카테코드</label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group cate_srch">
+                        <input type="text" class="form-control ipt-txt" placeholder="">
+                        <button type="button" class="btn btn-srch">검색</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup_body">
+            <!-- 그리드 영역 -->
+            <div id="categoryGrid" class="grid_content grid_cateinfo" style="height: 730px; width: 100%"></div>
+        </div>
+    </div>
+
+    <script>
+        $(function(){
+            // 가짜 데이터
+            var categoryDataList = [
+                {
+                    "cate_id": 9125260161, // 카테고리 ID
+                    "cate_1": "영상,디카", // 대카테
+                    "cate_2": "TV", // 중카테
+                    "cate_3": "해외직구", // 소카테
+                    "cate_4": "55인치이하" // 미카테
+                },
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "해외직구", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "43인치 이하", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+                {"cate_id": 9125260161, "cate_1": "영상,디카", "cate_2": "TV", "cate_3": "46~55인치", "cate_4": "55인치이하"},
+            ];
+
+            // 그리드 생성 
+            // 각 셀 width/ 그리드 height 동일하게 유지해주세요 
+            var categoryGrid = new dhx.Grid("categoryGrid", {
+                columns: [
+                    { id: "cate_id", width: 100, header: [{ text: "ID", align: "center" }], align:"center", gravity: 1.5, },
+                    { id: "cate_1", header: [{ text: "대카테고리", align: "center" }] },
+                    { id: "cate_2", header: [{ text: "중카테고리", align: "center" }] },
+                    { id: "cate_3", header: [{ text: "소카테고리", align: "center" }] },
+                    { id: "cate_4", header: [{ text: "미카테고리", align: "center" }] },
+                ],
+                headerRowHeight: 32,
+                rowHeight: 32,
+                autoWidth: true,
+                data: categoryDataList,
+                selection: "row",
+                multiselection:true,
+                keyNavigation: true
+            });
+        });
+    </script>
+</div>
+</body>
+</html>

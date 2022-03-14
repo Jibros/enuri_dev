@@ -1,0 +1,438 @@
+
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilenew/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/home/gnb.css"/>
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/home/default.css"/>
+	<link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/event/m_chuseok.css"/>
+	<!-- <link rel="stylesheet" type="text/css" href="m_chuseok.css"/> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://dev.enuri.com/mobilefirst/css/event/css_animate.css"/> -->
+	<link rel="stylesheet" type="text/css" href="http://m.enuri.com/mobilefirst/css/event/filck.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://m.enuri.com/mobilefirst/css/footer.css"> -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/flick.event.js"></script>
+	<!-- <script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/iscroll.js"></script> -->
+	<script src="http://dev.enuri.com/pub_test/mobile/event/m_chuseok/jquery.refineslide.js"></script> 
+	<script type="text/javascript">
+			//레이어
+			function onoff(id) {
+				var mid=document.getElementById(id);
+				if(mid.style.display=='') {
+				mid.style.display='none';
+			}else{
+				mid.style.display='';
+				}; 
+			}
+
+			//탭top스크롤
+			/*
+			$(document).ready(function() {
+			var nav = $('.nav'); 
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > $(".top_visual").height()) {
+					nav.addClass("topnav");
+				} else {
+					nav.removeClass("topnav");
+				}
+				});
+			});
+			*/
+
+	</script> 
+	<script type="text/javascript">
+	$(function(){
+		$('#images1,#images2').refineSlide({
+			transition : 'cubeV',
+			keyNav : false,
+			perspective : 100,
+			useThumbs : false,
+			autoPlay : true,
+			thumbMargin : 0,
+			delay : 1000
+		});
+	})	
+	</script>
+
+	<script type="text/javascript">
+	$(function(){
+		//2016-06-29_s
+		function topmotion(){
+			function bg01(){
+				//$(".evtop01").animate({backgroundPositionX:"46%"}, 2000, "swing");
+				$(".txt_area .moving").animate({"bottom":"-90px"},2000,"swing")
+			}
+			var bg01 = setTimeout(bg01, 1000);
+		}
+		topmotion();
+	})
+	</script>
+	
+<script type="text/javascript">
+$(function(){
+/*
+$(window).scroll(function(){
+	$(".TBtn").show();
+	if ( $(window).scrollTop() < 50 ){
+		$(".TBtn").hide();
+	}
+});
+*/
+$(window,"body").on("touchmove scroll",function(){
+	var head = $(".nav").outerHeight();
+	var visual = $(".top_visual").outerHeight() + $("header").outerHeight();
+	var con01 = $(".con01").offset().top - head;
+	var top = $(this).scrollTop();
+	if(top < visual || top >= con01){
+		$(".nav").removeClass("topnav");
+		$(".contents").css("padding-top",0)
+		//$(".nav li").removeClass("on");
+		//$(".nav li:eq(0)").addClass("on");
+		//$("#eventWrap .win_close").show();
+	};
+
+	if(top >= visual){
+		//$("#eventWrap .win_close").hide();
+		$(".nav").addClass("topnav");
+		$(".contents").css("padding-top",head );
+	};
+});
+$("body").on('click', '.TBtn', function(event) {
+	scrollTo(0,0);    
+	$("#app_miniPop_F").hide();
+});
+
+
+
+})
+</script>
+</head>
+
+
+<body>
+
+
+<!-- 개인화영역 -->
+<!-- layer--> 
+<div class="layer_back" id="app_only" style="display:none;">
+	<div class="appLayer">
+		<h4>모바일 앱 전용 이벤트</h4>
+		<a href="javascript:///" class="close" onclick="onoff('app_only')">창닫기</a>
+		<p class="txt"><strong>가격비교 최초!</strong><em>현금 같은 혜택</em>을 제공하는<br />에누리앱을 설치합니다.</p>
+		<p class="btn_close"><button type="button">설치하기</button></p>
+	</div>
+</div>
+
+<header>
+	<!-- 상단 띠배너 -->
+	<div class="topbnr" id="topbnr" style="background:#114ea5">
+		<a href="javascript:///" class="close">닫기</a>
+		<a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/attend_july/top_bnr_new.jpg" alt=""></a>
+	</div>
+
+	<div class="mainTop">
+		<a href="#" class="btn_side"><span class="cate_m ico_m">주요 서비스 메뉴 펼치기</span></a>
+		<h1 class="logo ico_m">에누리 가격비교</h1>
+		<div class="searchbox"><p class="search_in">모기와의 전쟁? 백전백승!<input type="text" id="searchtxt" name="searchtxt"></p><button class="srp"><span class="ico_m">검색</span></button></div>
+		<button class="mybtn"><span class="ico_m">마이메뉴</span></button>
+	</div>
+</header>
+
+<div id="eventWrap">
+	<div class="evtop01">
+		<div class="top_visual">
+			<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_top.jpg" alt="bg">
+			<ul id="images1" class="rs-slider">
+				<li class="group"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/a1.png" alt=""/> </li>
+				<li class="group"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/a2.png" alt=""/> </li>
+				<li class="group"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/a3.png" alt=""/> </li>
+			</ul>
+		</div>
+	</div>
+	<a href="#" class="win_close">창닫기</a>
+</div>
+
+<!-- tab -->
+<div class="nav">
+	<div class="trd_scroll" id="trd_scroll">
+			<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/tab.jpg" alt="" style="width:100%;"/>
+				<ul>
+					<li class="on"><a href="#"><div><span>All</span>추석</div></a></li>
+					<li><a href="#"><div><span>추석</span>상차림</div></a></li>
+					<li><a href="#"><div><span>추석</span>선물</div></a></li>
+					<li><a href="#"><div><span>쇼핑하면</span>최대5만점</div></a></li>
+				</ul>
+		</div>
+		<a href="#" class="win_close">창닫기</a>
+</div>
+<!--// tab -->
+
+<div class="contents">
+	<div class="con01">
+		<div class="inner">
+			<!-- 2016-08-25_s -->
+			<!-- <img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_emoney.jpg" alt="" />
+			<ul class="link">
+				<li><a href="#">첫구매</a></li>
+				<li><a href="#">출석</a></li>
+				<li><a href="#">구매왕</a></li>
+				<li><a href="#">추석</a></li>
+			</ul> -->
+			<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_new1.jpg" alt="" /></a>
+			<!-- 2016-08-25_e -->
+		</div>
+	</div>
+	<div class="con02">
+		<div class="inner">
+			<section>
+				<div class="tit"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/tit01.jpg" alt="명절음식부터 제사용품까지" /></div>
+				<ul>
+					<li>
+						<a href="#">
+							<div class="img_box">
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_pm01.jpg" alt="1" />
+							</div>
+							<div class="txt_box">
+								<p class="logo"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/logo.png" alt="11번가" /></p>
+								<strong class="pro_name">동양매직</strong>
+								<p class="pro_txt">중3 다이아몬드코팅 와이드 전기 그릴팬 HPT900W</p>
+								<p class="priceinfo">
+									<span class="price">9,900</span><span class="won">원</span>
+								</p>
+							</div>
+						</a>
+					</li>
+					<li class="right">
+						<a href="#">
+							<div class="img_box">
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_pm02.jpg" alt="1" />
+							</div>
+							<div class="txt_box">
+								<p class="logo"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/logo.png" alt="11번가" /></p>
+								<strong class="pro_name">동양매직</strong>
+								<p class="pro_txt">중3 다이아몬드코팅 와이드 전기 그릴팬 HPT900W</p>
+								<p class="priceinfo">
+									<span class="price">9,900</span><span class="won">원</span>
+								</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<div class="tit"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/tit02.jpg" alt="소중한 분들에게 마음가득" /></div>
+				<ul>
+					<li>
+						<a href="#">
+							<div class="img_box">
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_pm03.jpg" alt="1" />
+							</div>
+							<div class="txt_box">
+								<p class="logo"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/logo.png" alt="11번가" /></p>
+								<strong class="pro_name">동양매직</strong>
+								<p class="pro_txt">중3 다이아몬드코팅 와이드 전기 그릴팬 HPT900W</p>
+								<p class="priceinfo">
+									<span class="price">9,900</span><span class="won">원</span>
+								</p>
+							</div>
+						</a>
+					</li>
+					<li class="right">
+						<a href="#">
+							<div class="img_box">
+								<img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_pm04.jpg" alt="1" />
+							</div>
+							<div class="txt_box">
+								<p class="logo"><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/logo.png" alt="11번가" /></p>
+								<strong class="pro_name">동양매직</strong>
+								<p class="pro_txt">중3 다이아몬드코팅 와이드 전기 그릴팬 HPT900W</p>
+								<p class="priceinfo">
+									<span class="price">9,900</span><span class="won">원</span>
+								</p>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</section>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="news_list">
+	<div class="innder_scroll">
+		<ul class="swiper-wrapper thumb">
+			<li class="news"><a href="#" ><strong class="tit">추석 뉴스</strong><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+			<li><a href="#" ><div class="txt_box"><p>G마켓</p><span>한가위 선물세트</span></div><img src="http://imgenuri.enuri.gscdn.com/images/event/2016/m_chuseok/img_news.jpg" alt=""></a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="con03">
+	<section>
+		<div class="tit">명절음식부터 제사용품까지 <strong>추석상차림</strong></div>
+		<div class="goods">
+			<div class="inner">
+			<div class="thumb" style="">
+			<img data-original="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" src="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" alt="" id="Img_14123940" style="display: inline;">
+			<input type="hidden" name="errImg" id="errImg_14123940" value="http://photo3.enuri.com/data/images/service/small/14123000/14123940.gif">
+			</div>  
+			<div class="infobox">     
+				<p class="company">&nbsp;</p> 
+				<p class="product">오뚜기  볶음 진짬뽕 125g[8개]</p>
+				<p class="description"></p> 
+				<p class="priceinfo">
+					<span class="lowest">최저가</span><span class="price">9,900</span><span class="won">원</span>
+				</p>
+			</div>  
+			</div>  
+		</div>
+		<div class="goods">
+			<div class="inner">
+			<div class="thumb" style="">
+			<img data-original="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" src="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" alt="" id="Img_14123940" style="display: inline;">
+			<input type="hidden" name="errImg" id="errImg_14123940" value="http://photo3.enuri.com/data/images/service/small/14123000/14123940.gif">
+			</div>  
+			<div class="infobox">     
+				<p class="company">&nbsp;</p> 
+				<p class="product">오뚜기  볶음 진짬뽕 125g[8개]</p>
+				<p class="description"></p> 
+				<p class="priceinfo">
+					<span class="lowest">최저가</span><span class="price">9,900</span><span class="won">원</span>
+				</p>
+			</div>  
+			</div>  
+		</div>
+		<div class="goods">
+			<div class="inner">
+			<div class="thumb" style="">
+			<img data-original="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" src="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" alt="" id="Img_14123940" style="display: inline;">
+			<input type="hidden" name="errImg" id="errImg_14123940" value="http://photo3.enuri.com/data/images/service/small/14123000/14123940.gif">
+			</div>  
+			<div class="infobox">     
+				<p class="company">&nbsp;</p> 
+				<p class="product">오뚜기  볶음 진짬뽕 125g[8개]</p>
+				<p class="description">저는 라면입니다. 저는 라면입니다. </p> 
+				<p class="priceinfo">
+					<span class="lowest">최저가</span><span class="price">9,900</span><span class="won">원</span>
+				</p>
+			</div>  
+			</div>  
+		</div>
+		<a href="#" class="btn_more">풍성한 추석상차림 상품 <strong>더 보기</strong></a>
+	</section>
+
+	<section>
+		<div class="tit">소중한 분들에게 마음 가득 <strong>추석선물</strong></div>
+		<div class="goods">
+			<div class="inner">
+			<div class="thumb" style="">
+			<img data-original="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" src="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" alt="" id="Img_14123940" style="display: inline;">
+			<input type="hidden" name="errImg" id="errImg_14123940" value="http://photo3.enuri.com/data/images/service/small/14123000/14123940.gif">
+			</div>  
+			<div class="infobox">     
+				<p class="company">&nbsp;</p> 
+				<p class="product">오뚜기  볶음 진짬뽕 125g[8개]</p>
+				<p class="description">저는 라면입니다. 저는 라면입니다. </p>
+				<p class="priceinfo">
+					<span class="lowest">최저가</span><span class="price">9,900</span><span class="won">원</span>
+				</p>
+			</div>  
+			</div>  
+		</div>
+		<div class="goods">
+			<div class="inner">
+			<div class="thumb" style="">
+			<img data-original="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" src="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" alt="" id="Img_14123940" style="display: inline;">
+			<input type="hidden" name="errImg" id="errImg_14123940" value="http://photo3.enuri.com/data/images/service/small/14123000/14123940.gif">
+			</div>  
+			<div class="infobox">     
+				<p class="company">&nbsp;</p> 
+				<p class="product">오뚜기  볶음 진짬뽕 125g[8개]</p>
+				<p class="description">저는 라면입니다. 저는 라면입니다. </p> 
+				<p class="priceinfo">
+					<span class="lowest">최저가</span><span class="price">9,900</span><span class="won">원</span>
+				</p>
+			</div>  
+			</div>  
+		</div>
+		<div class="goods">
+			<div class="inner">
+			<div class="thumb" style="">
+			<img data-original="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" src="http://photo3.enuri.com/data/images/service/middle/14123000/14123940.jpg" alt="" id="Img_14123940" style="display: inline;">
+			<input type="hidden" name="errImg" id="errImg_14123940" value="http://photo3.enuri.com/data/images/service/small/14123000/14123940.gif">
+			</div>  
+			<div class="infobox">     
+				<p class="company">&nbsp;</p> 
+				<p class="product">오뚜기  볶음 진짬뽕 125g[8개]</p>
+				<p class="description">저는 라면입니다. 저는 라면입니다. </p>
+				<p class="priceinfo">
+					<span class="lowest">최저가</span><span class="price">9,900</span><span class="won">원</span>
+				</p>
+			</div>  
+			</div>  
+		</div>
+		<a href="#" class="btn_more">괜찮은 추석선물 상품 <strong>더 보기</strong></a>
+	</section>
+</div>
+
+<!-- <div class="justgo">
+	에누리 설치
+	<div class="install">web일 때만 보임
+		<ul>
+			<li><a href="javascript:goLinkInstall();"><em>WEB</em><span>바로가기 설치</span></a></li>
+			<li><a href="javascript:goAppInstall();"><em>APP</em><span>에누리앱설치</span></a></li>
+		</ul>
+	</div>
+	//에누리 설치
+
+	애누리 패밀리 앱
+	<div class="familyapp">
+		<h3 class="maintit">에누리 패밀리 앱</h3>
+		<ul>
+			<li><a href="javascript:goSmartInstall();">스마트택배</a></li>
+			<li><a href="javascript:goHomeShoppingInstall();">홈쇼핑가격비교</a></li>
+			<li><a href="javascript:goHotDealInstall();">소셜가격비교</a></li>
+			<li><a href="javascript:golfInstall();">골프예약</a></li>
+			<li><a href="javascript:directBuyInstall();">해외직구</a></li>
+		</ul>
+	</div>
+	//애누리 패밀리 앱
+	
+	<section class="evtbanner_btm"><a href="javascript:///"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/main/footer/footerBanner.jpg" alt=""></a></section>
+	
+</div> -->
+<!-- 푸터 -->
+<span class="go_top"><a href="#">TOP</a></span>
+
+<!-- 푸터 -->
+<footer>
+	<div class="footer">
+		<p class="alert">에누리닷컴<span style="font-size:8px">(주)</span>는 통신판매 정보제공자이며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰에 있습니다.</p>
+		<p class="cop">에누리닷컴<span style="font-size:8px">(주)</span></p>
+		<p class="info">대표이사 : 최문석<em>|</em>사업자등록번호 : 206-81-18164<br>통신판매신고 : 종로통신 제 4406호<br />
+		서울특별시 중구 퇴계로 18 대우재단빌딩 9층<br />
+		문의 : 02-6354-3601<em>|</em>master@enuri.com
+		</p>
+	</div>
+</footer>
+<!--// 푸터 -->
+
+</body>
+</html>

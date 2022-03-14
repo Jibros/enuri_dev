@@ -1,0 +1,649 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>:: ID/비밀번호 찾기 ::</title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<script src="/common/js/function.js" type="text/javascript"></script>
+<script src="/common/js/lib/prototype.js" type="text/javascript"></script>
+<link type="text/css" rel="stylesheet" href="http://imgenuri.enuri.gscdn.com/common/css/mee.css">
+<style type="text/css">
+&lt;!--
+html {overflow:hidden;}
+*,td {font-family:'맑은 고딕';font-size:12px;margin:0;padding:0;}
+li {list-style:none;border:0px solid red;}
+.inputStyle {
+	height:15px;
+	font-family:"돋움","돋움체";line-height:16px;
+	font-size:8pt;color:#7d7d7d;
+	text-decoration:none;
+	border:1px solid #cdcdcd;
+}
+.regtype {font-family:'맑은 고딕';font-size:12px;font-weight:bold;color:#00003a;}
+#box_regtype_3 ul {width:320px;height:60px;margin-left:60px;}
+.tel_title {clear:both;float:left;width:70px;height:35px;text-align:left;}
+.tel_input {float:left;width:110px;height:35px;text-align:left;}
+.tel_input input {width:100px;height:20px;font-family: "돋움", "돋움체";line-height: 16px;font-size:8pt;color:#000000;text-decoration: none;border:1px solid #cdcdcd;}
+.tel_msg {float:left;width:120px;height:35px;}
+#box_regtype_pwd_3 ul {width:320px;height:95px;margin-left:60px;}
+#box_regtype_pwd_3 .tel_title {float:left;width:70px;height:30px;text-align:left;}
+#box_regtype_pwd_3 .tel_input {float:left;width:110px;height:30px;text-align:left;}
+#box_regtype_pwd_3 .tel_input input {width:100px;height:20px;font-family: "돋움", "돋움체";line-height: 16px;font-size:8pt;color:#000000;text-decoration: none;border:1px solid #cdcdcd;}
+#box_regtype_pwd_3 .tel_msg {float:left;width:120px;height:30px;}
+#txtCsTel {color:#bd0f0e;font-size:11px;}
+#txtCsTelPwd {color:#bd0f0e;font-size:11px;}
+#txtCsTelSms {color:#bd0f0e;font-size:11px;}
+#txtCsTelSmsPwd {color:#bd0f0e;font-size:11px;}
+#findid_name {font-family:'맑은 고딕';color:#0370cd;}
+#findpwd_name {font-family:'맑은 고딕';color:#0370cd;}
+#findid_id {font-family:'맑은 고딕';color:#0370cd;}
+#findpwd_id {font-family:'맑은 고딕';color:#0370cd;}
+.cls_smsno {width:50px;height:20px;font-family: "돋움", "돋움체";line-height: 16px;font-size:8pt;color:#000000;text-decoration: none;border:1px solid #cdcdcd;}
+--&gt;
+</style>
+<script language="javascript">
+&lt;!--
+function insertLog(logNum){
+	var url = "/view/Loginsert.jsp";
+	var param = "kind="+logNum;
+	var getRec = new Ajax.Request(
+		url,
+		{
+			method:'get',parameters:param
+		}
+	);			
+}		
+function resize(){
+	if ($("tbl_main")){
+		var wW = $("tbl_main").getWidth();
+		var wH = $("tbl_main").getHeight();
+		var h=0;
+	    if(navigator.userAgent.indexOf("MSIE")&gt;0 || navigator.userAgent.toLowerCase().indexOf("trident")&gt;0) {
+	    	//ie
+	    	if(navigator.userAgent.indexOf("MSIE 10")&gt;0 &amp;&amp; navigator.userAgent.toLowerCase().indexOf("trident/6")&gt;0) {
+	    		h=66;
+	    	}else if(navigator.userAgent.indexOf("MSIE 9")&gt;0 || navigator.userAgent.toLowerCase().indexOf("trident")&gt;0) {
+	    		h=88;
+	      	}else{
+	        	h=72;
+	      	}
+	      	wW += 10;
+	    }else if(navigator.userAgent.indexOf("Gecko")&gt;0 &amp;&amp; navigator.userAgent.indexOf("Firefox")&lt;0 &amp;&amp; navigator.userAgent.indexOf("Chrome")&lt;0){
+	    	//safari
+	    	h=53;
+	    }else if(navigator.userAgent.indexOf("Firefox") &gt; 0){
+	    	//firefox
+	    	h=66; 
+		}else if(navigator.userAgent.toLowerCase().indexOf("nt 6.") &gt; 0) {
+			wW += 8;
+	  		h=66;
+	    }else{
+			h=66;
+		}
+		self.resizeTo(wW+10,wH+h+5);
+	}
+	insertLog(10564);
+}
+function cmdClose(){
+	window.close();
+}
+function overImg(obj){
+	if(obj.src.indexOf("_ov.gif")&lt;0){
+		obj.src = obj.src.replace(".gif", "_ov.gif");
+	}
+}
+function outImg(obj){
+	if(obj.src.indexOf("_ov.gif")&gt;0){
+		obj.src = obj.src.replace("_ov.gif", ".gif");
+	}
+}
+var reg_type = "3";
+var block_ConfSelf = 0;
+var block_ConfSelf2 = 0;
+function changeRegType(v){
+	if(reg_type==v) return;
+	document.getElementById("box_findid_result").style.display = "none";
+	document.getElementById("box_regtype_"+reg_type).style.display = "none";
+	document.getElementById("box_regtype_3_1").style.display = "none";
+	document.getElementById("box_regtype_"+v).style.display = "block";
+	reg_type = v;
+	block_ConfSelf = 0;
+	block_ConfSelf2 = 0;
+}
+function cmdCheckPlus(){
+
+	window.open('/common/jsp/Common_Pop_Submit.jsp?after=cmdCheckPlusReal', 'popupChk', 'width=500, height=461, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+
+}
+function cmdCheckPlusReal(){
+	document.form_chk.action = "https://check.namecheck.co.kr/checkplus_new_model4/checkplus.cb";
+	document.form_chk.target = "popupChk";
+	document.form_chk.submit();
+}
+function cmdCheckPlusResult(v1,v2,v3){
+	if(v1==0){
+		document.getElementById("box_regtype_1").style.display = "none";
+		document.getElementById("box_regtype_2").style.display = "none";
+		document.getElementById("box_regtype_3").style.display = "none";
+		document.getElementById("box_regtype_3_1").style.display = "none";
+		document.getElementById("box_findid_result").style.display = "block";
+		document.getElementById("findid_name").innerHTML = v2;
+		document.getElementById("findid_id").innerHTML = v3;
+
+ 	    var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&amp;ctg_code=1&amp;sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+	    
+	    if(adWin)
+	    	   adWin.focus();
+	}
+}
+function cmdPopIpin(){
+
+	window.open('', 'popupIPIN2', 'width=450, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+	document.form_ipin.target = "popupIPIN2";
+	document.form_ipin.action = "https://cert.vno.co.kr/ipin.cb";
+	document.form_ipin.submit();
+
+}
+function cmdIpinResult(v1,v2,v3){
+	if(v1==1){
+		document.getElementById("box_regtype_1").style.display = "none";
+		document.getElementById("box_regtype_2").style.display = "none";
+		document.getElementById("box_regtype_3").style.display = "none";
+		document.getElementById("box_regtype_3_1").style.display = "none";
+		document.getElementById("box_findid_result").style.display = "block";
+		document.getElementById("findid_name").innerHTML = v2;
+		document.getElementById("findid_id").innerHTML = v3;
+
+	    var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&amp;ctg_code=1&amp;sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+	    adWin.focus();		
+	}
+}
+function onlyNumTel(obj){
+	if(event.keyCode==8 || event.keyCode==9){ //백스페이스,탭
+	
+	}else if(event.keyCode==13){
+		cmdConfSelf();
+	}else if((event.keyCode&lt;48)||(event.keyCode&gt;57 &amp;&amp; event.keyCode&lt;96)||event.keyCode&gt;105){
+		//alert(event.keyCode);
+		document.getElementById("txtCsTel").innerHTML = "숫자만 입력하세요.";
+		event.returnValue = false;
+	}else{
+		if(chkNumChar(obj.value)) document.getElementById("txtCsTel").innerHTML = "";
+	}
+}
+function onlyNumSms(obj){
+	if(event.keyCode==8 || event.keyCode==9){ //백스페이스,탭
+	
+	}else if(event.keyCode==13){
+		cmdConfSelf2();
+	}else if((event.keyCode&lt;48)||(event.keyCode&gt;57 &amp;&amp; event.keyCode&lt;96)||event.keyCode&gt;105){
+		document.getElementById("txtCsTelSms").innerHTML = "숫자만 입력하세요.";
+		event.returnValue = false;
+	}else{
+		if(chkNumChar(obj.value)) document.getElementById("txtCsTelSms").innerHTML = "";
+	}
+}
+function chkNumChar(str) {
+	var validStr = "0123456789";
+	var isValid = true;
+	for(var i=0; i&lt;str.length; i++) {
+		if(validStr.indexOf(str.charAt(i)) == -1){
+			isValid = false;
+		}
+	}
+	return isValid;
+}
+
+var reg_type_pwd = "3";
+var block_ConfSelf_pwd = 0;
+var block_ConfSelf2_pwd = 0;
+
+function cmdConfSelf(){
+	if(block_ConfSelf==1){
+		alert("본인확인 과정이 진행중입니다.\n잠시만 기다려 주세요.");
+		return;
+	}
+	if(document.getElementById("find_name").value.trim()==""){
+		alert("성명을 입력하세요.");
+		document.getElementById("find_name").select();
+		return;
+	}
+	if(document.getElementById("cs_tel").value.trim()==""){
+		alert("휴대폰 번호를 입력하세요.");
+		document.getElementById("cs_tel").select();
+		return;
+	}
+	if(!chkNumChar(document.getElementById("cs_tel").value)){
+		alert("숫자만 입력하세요.");
+		document.getElementById("cs_tel").select();
+		return;
+	}
+	document.frmFindId.find_name2.value = escape(document.frmFindId.find_name.value);
+	document.frmFindId.target = "frmHidden";
+	document.frmFindId.action = "https://www.enuri.com/join/find_id_pass/Find_Id_ConfSelf_step1.jsp";
+	document.frmFindId.submit();
+	document.getElementById("cs_tel").value = "";
+	document.getElementById("find_name").value = "";
+	block_ConfSelf = 1;
+}
+function cmdConfSelf2(){
+	if(block_ConfSelf2==1){
+		alert("본인확인 과정이 진행중입니다.\n잠시만 기다려 주세요.");
+		return;
+	}
+	if(document.getElementById("sms_no").value.trim()==""){
+		alert("인증 번호를 입력하세요.");
+		document.getElementById("sms_no").select();
+		return;
+	}
+	if(!chkNumChar(document.getElementById("sms_no").value)){
+		alert("숫자만 입력하세요.");
+		document.getElementById("sms_no").select();
+		return;
+	}
+	if(document.getElementById("sms_no").value.length!=5){
+		alert("인증 번호가 올바르지 않습니다.");
+		document.getElementById("sms_no").select();
+		return;
+	}
+	document.frmFindId2.target = "frmHidden";
+	document.frmFindId2.action = "https://www.enuri.com/join/find_id_pass/Find_Id_ConfSelf_step4.jsp";
+	document.frmFindId2.submit();
+	document.getElementById("sms_no").value = "";
+	block_ConfSelf2 = 1;
+}
+function cmdConfSelfSmsnoView(v){
+	document.getElementById("box_regtype_1").style.display = "none";
+	document.getElementById("box_regtype_2").style.display = "none";
+	document.getElementById("box_regtype_3").style.display = "none";
+	document.getElementById("box_findid_result").style.display = "none";
+	document.getElementById("box_regtype_3_1").style.display = "block";
+	document.getElementById("cs_tel2").value = v;
+	block_ConfSelf = 0;
+}
+function cmdConfSelfResult(v1,v2){
+	document.getElementById("box_regtype_1").style.display = "none";
+	document.getElementById("box_regtype_2").style.display = "none";
+	document.getElementById("box_regtype_3").style.display = "none";
+	document.getElementById("box_regtype_3_1").style.display = "none";
+	document.getElementById("box_findid_result").style.display = "block";
+	document.getElementById("findid_name").innerHTML = v1;
+	document.getElementById("findid_id").innerHTML = v2;
+	block_ConfSelf = 0;
+
+	var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&amp;ctg_code=1&amp;sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+	adWin.focus();
+}
+function changeRegTypePwd(v){
+	if(reg_type_pwd==v) return;
+	document.getElementById("box_regtype_pwd_"+reg_type_pwd).style.display = "none";
+	document.getElementById("box_regtype_pwd_3_1").style.display = "none";
+	document.getElementById("box_regtype_pwd_"+v).style.display = "block";
+	reg_type_pwd = v;
+	block_ConfSelf_pwd = 0;
+	block_ConfSelf2_pwd = 0;
+}
+function cmdCheckPlusPwd(){
+
+	window.open('/common/jsp/Common_Pop_Submit.jsp?after=cmdCheckPlusPwdReal', 'popupChk', 'width=500, height=461, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+
+}
+function cmdCheckPlusPwdReal(){
+	document.form_chk_pwd.action = "https://check.namecheck.co.kr/checkplus_new_model4/checkplus.cb";
+	document.form_chk_pwd.target = "popupChk";
+	document.form_chk_pwd.submit();
+}
+function cmdCheckPlusResultPwd(v1,v2){
+	if(v1==0){
+		var obj = document.frmFindPwdResult;
+		obj.find_type.value = "CHECKPLUS";
+		obj.find_id.value = v2;
+		obj.action = "https://www.enuri.com/join/find_id_pass/Find_Pass_Reset.jsp";
+		obj.submit();
+
+	    var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&amp;ctg_code=1&amp;sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+	    adWin.focus();		
+	}
+}
+function cmdPopIpinPwd(){
+
+	window.open('', 'popupIPIN2', 'width=450, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+	document.form_ipin_pwd.target = "popupIPIN2";
+	document.form_ipin_pwd.action = "https://cert.vno.co.kr/ipin.cb";
+	document.form_ipin_pwd.submit();
+
+}
+function cmdIpinResultPwd(v1,v2){
+	if(v1==1){
+		var obj = document.frmFindPwdResult;
+		obj.find_type.value = "IPIN";
+		obj.find_id.value = v2;
+		obj.action = "https://www.enuri.com/join/find_id_pass/Find_Pass_Reset.jsp";
+		obj.submit();
+
+	    var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&amp;ctg_code=1&amp;sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+	    adWin.focus();		
+	}
+}
+function onlyNumTelPwd(obj){
+	if(event.keyCode==8 || event.keyCode==9){ //백스페이스,탭
+	
+	}else if(event.keyCode==13){
+		cmdConfSelfPwd();
+	}else if((event.keyCode&lt;48)||(event.keyCode&gt;57 &amp;&amp; event.keyCode&lt;96)||event.keyCode&gt;105){
+		document.getElementById("txtCsTelPwd").innerHTML = "숫자만 입력하세요.";
+	}else{
+		if(chkNumChar(obj.value)) document.getElementById("txtCsTelPwd").innerHTML = "";
+	}
+}
+function onlyNumSmsPwd(obj){
+	if(event.keyCode==8 || event.keyCode==9){ //백스페이스,탭
+	
+	}else if(event.keyCode==13){
+		cmdConfSelf2Pwd();
+	}else if((event.keyCode&lt;48)||(event.keyCode&gt;57 &amp;&amp; event.keyCode&lt;96)||event.keyCode&gt;105){
+		document.getElementById("txtCsTelSmsPwd").innerHTML = "숫자만 입력하세요.";
+	}else{
+		if(chkNumChar(obj.value)) document.getElementById("txtCsTelSmsPwd").innerHTML = "";
+	}
+}
+var _find_id_pwd;
+var _find_name_pwd;
+function cmdConfSelfPwd(){
+	if(block_ConfSelf_pwd==1){
+		alert("본인확인 과정이 진행중입니다.\n잠시만 기다려 주세요.");
+		return;
+	}
+	if(document.getElementById("find_id_pwd").value.trim()==""){
+		alert("ID를 입력하세요.");
+		document.getElementById("find_id_pwd").select();
+		return;
+	}
+	if(document.getElementById("find_name_pwd").value.trim()==""){
+		alert("성명을 입력하세요.");
+		document.getElementById("find_name_pwd").select();
+		return;
+	}
+	if(document.getElementById("cs_tel_pwd").value.trim()==""){
+		alert("휴대폰 번호를 입력하세요.");
+		document.getElementById("cs_tel_pwd").select();
+		return;
+	}
+	if(!chkNumChar(document.getElementById("cs_tel_pwd").value)){
+		alert("숫자만 입력하세요.");
+		document.getElementById("cs_tel_pwd").select();
+		return;
+	}
+	document.frmFindPwd.find_name2_pwd.value = escape(document.frmFindPwd.find_name_pwd.value);
+	document.frmFindPwd.target = "frmHidden";
+	document.frmFindPwd.action = "https://www.enuri.com/join/find_id_pass/Find_Pass_ConfSelf_step1.jsp";
+	document.frmFindPwd.submit();
+	_find_id_pwd = document.getElementById("find_id_pwd").value;
+	_find_name_pwd = document.getElementById("find_name_pwd").value;
+	document.getElementById("find_id_pwd").value = "";
+	document.getElementById("find_name_pwd").value = "";
+	document.getElementById("cs_tel_pwd").value = "";
+	block_ConfSelf_pwd = 1;
+}
+function cmdConfSelf2Pwd(){
+	if(block_ConfSelf2_pwd==1){
+		alert("본인확인 과정이 진행중입니다.\n잠시만 기다려 주세요.");
+		return;
+	}
+	if(document.getElementById("sms_no_pwd").value.trim()==""){
+		alert("인증 번호를 입력하세요.");
+		document.getElementById("sms_no_pwd").select();
+		return;
+	}
+	if(!chkNumChar(document.getElementById("sms_no_pwd").value)){
+		alert("숫자만 입력하세요.");
+		document.getElementById("sms_no_pwd").select();
+		return;
+	}
+	if(document.getElementById("sms_no_pwd").value.length!=5){
+		alert("인증 번호가 올바르지 않습니다.");
+		document.getElementById("sms_no_pwd").select();
+		return;
+	}
+	document.frmFindPwd2.target = "frmHidden";
+	document.frmFindPwd2.action = "https://www.enuri.com/join/find_id_pass/Find_Pass_ConfSelf_step4.jsp";
+	document.frmFindPwd2.submit();
+	document.getElementById("sms_no_pwd").value = "";
+	block_ConfSelf2_pwd = 1;
+}
+function cmdConfSelfSmsnoViewPwd(v){
+	document.getElementById("box_regtype_pwd_1").style.display = "none";
+	document.getElementById("box_regtype_pwd_2").style.display = "none";
+	document.getElementById("box_regtype_pwd_3").style.display = "none";
+	document.getElementById("box_regtype_pwd_3_1").style.display = "block";
+	document.getElementById("cs_tel2_pwd").value = v;
+	block_ConfSelf2_pwd = 0;
+}
+function cmdConfSelfResultPwd(v1,v2){
+	var obj = document.frmFindPwdResult;
+	if(v1=="" || v2=="" || _find_id_pwd!=v1 || _find_name_pwd!=v2){
+		alert("입력하신 정보와 일치하는 ID가 없습니다.");
+		return;
+	}else{
+		obj.find_type.value = "SMS";
+		obj.find_id.value = v1;
+		obj.action = "https://www.enuri.com/join/find_id_pass/Find_Pass_Reset.jsp";
+		obj.submit();
+	
+	    var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&amp;ctg_code=1&amp;sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+	    adWin.focus();
+	}
+}
+//--&gt;
+</script>
+</head>
+<body text="#000000" marginwidth="0" marginheight="0" bgcolor="#f5f5f5" onload="resize();" topmargin="0" leftmargin="0" oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<table width="380" cellspacing="0" cellpadding="0" border="0" bgcolor="#FFFFFF" id="tbl_main">
+  <tbody><tr> 
+	<td><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/title_01.gif"></td>
+  </tr>
+  <tr>
+    <td align="center">
+		<table width="350" cellspacing="0" cellpadding="0" border="0" align="center">
+			<tbody><tr> 
+			  <td height="60" align="left">가입당시 이용한 사용자 확인방법 중 하나를 선택해주세요.</td>
+			</tr>
+			<tr> 
+			  <td align="center"> 
+			    <table cellspacing="0" cellpadding="0" border="0">
+			      <tbody><tr> 
+			        <td width="20" height="23"><input type="radio" onclick="changeRegType(this.value);this.blur()" value="1" name="reg_type"></td>
+			        <td width="100" height="23" align="left" class="regtype">주민등록번호</td>
+			        <td width="20" height="23"><input type="radio" onclick="changeRegType(this.value);this.blur()" value="2" name="reg_type"></td>
+			        <td width="80" height="23" align="left" class="regtype">아이핀</td>
+			        <td width="20" height="23"><input type="radio" onclick="changeRegType(this.value);this.blur()" checked="" value="3" name="reg_type"></td>
+			        <td width="80" height="23" align="left" class="regtype">휴대폰</td>
+			      </tr>
+			    </tbody></table>
+			  </td>
+			</tr>
+		</tbody></table>
+	  	<div style="height:10px;"></div>
+	  	<div style="display:none;height:135px;" id="box_regtype_1">
+	  		<div style="height:10px;"></div>
+	  		<div style="margin:0 auto;height:33px;text-align:center;"></div>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdCheckPlus()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_phone.gif"></div>
+	  		<div style="width:340px;height:30px;text-align:right;"><!-- <img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/arr_12.gif"/> 휴대폰, 신용카드, 공인인증서 --></div>
+			<form method="post" name="form_chk">
+			<input type="hidden" value="checkplusSerivce" name="m"><!-- 필수 데이타로, 누락하시면 안됩니다. -->
+			<input type="hidden" value="AgAFRzI4OTIlMjYs8UCG7ufTEo1woXLr057CZ54IhXcSgb6toJiSBORt7EsAceVqo7LAJX/V+Mhc9hi+9x8i+y77z5Q2CcA4X4lXRwgHCjjBqqvnFVHoZxovmvahRgUuFzqqmju3mxEszZQRYiB+j9aIWJZWdRfOJ31qip0JQK5TrtTN5F/KCQ8N5u4YpvP6+lioK1A2UY7vXrszWHgLuwJoC2BWCiyAHn2v96X4Kqrj7RQJ8x2UuD4zHNlo7aYV7XVVRVWq7jbdNtlrHMvsiL4uoarLXSbjzkdDiEyuhs/D0AUQx/WU9F9UWQkeBKSaCaAwkkWljDUl/AGnnu1N0GHXxDz1XkEAdAKlAIIGPer0IDvLq6ITP3cQ6/ZWvKhzZbiuDSzVnfAR50dR3mZnN0goVoKT/1N+uBSOaDhMu2smyxr+AlV8hWkBXeUnOc89LTkysZRrXJVn2njpM0xaQvX+a6QbYSw2+xFGj/SfOkyeW79KuAMJoA==" name="EncodeData"><!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+		    <!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
+		    	 해당 파라미터는 추가하실 수 없습니다. -->
+			<input type="hidden" value="G2892_2015081217334005486" name="param_r1">
+			<input type="hidden" value="" name="param_r2">
+			<input type="hidden" value="" name="param_r3">
+			</form>
+	  	</div>
+	  	<div style="display:none;height:135px;" id="box_regtype_2">
+	  		<div style="height:10px;"></div>
+	  		<div style="margin:0 auto;height:33px;text-align:center;"></div>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdPopIpin()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_ipin.gif"></div>
+			<form method="post" name="form_ipin">
+			<input type="hidden" value="pubmain" name="m">						<!-- 필수 데이타로, 누락하시면 안됩니다. -->
+			<input type="hidden" value="AgEEQTM5OCoiJ1TlaKWp8IG6roAg/LwTAIZRpuD7ErTxckYDm0VShTVymfa34PZgfVjhE0OmH+PIUnof6UKAC2hb5wY8jN8L3nMyfObZgU4VX6ZYIHwxX4FgxzwH2EUiBoGqMOI5/IYjCiAflUyv5dS+HbGzvfkVhAqKI8GSq1K5pR093Im7zqqy2smltJreuSbRT8ZEYFhAqSbzKT3k/XrOhcAc12dU1HbJyzq/V8hcG79g8hvJZUxnwSYyH6azKv1LpSDkEqs5NW91lkNR4p0x3wad1r1VORHatZZzyQTIGvvPCoYe0J+V0CuuusILG7xlkbDyiQ==" name="enc_data">		<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+			<!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
+				 해당 파라미터는 추가하실 수 없습니다. -->
+			<input type="hidden" value="IPIN_A3982015081217334005535" name="param_r1">
+			<input type="hidden" value="" name="param_r2">
+			<input type="hidden" value="" name="param_r3">
+			</form>
+	  	</div>
+	  	<div style="display:;height:135px;" id="box_regtype_3">
+	  		<div style="margin:0 auto;height:30px;text-align:center;"></div>
+	  		<form autocomplete="off" method="post" name="frmFindId">
+	  		<input type="hidden" id="find_name2" name="find_name2">
+	  		<ul>
+	  			<li class="tel_title">성명</li>
+	  			<li class="tel_input"><input type="text" style="ime-mode:active;" maxlength="5" id="find_name" name="find_name"></li>
+	  			<li class="tel_msg">&nbsp;</li>
+	  			<li class="tel_title">전화번호</li>
+	  			<li class="tel_input"><input type="text" maxlength="11" onkeydown="onlyNumTel(this);" onkeypress="onlyNumTel(this);" id="cs_tel" name="cs_tel"></li>
+	  			<li class="tel_msg">&nbsp;<span id="txtCsTel"></span></li>
+	  		</ul>
+	  		</form>
+	  		<div style="height:10px;"></div>
+	  		<div style="clear:both;margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdConfSelf()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_92ok.gif"></div>
+	  	</div>
+	  	<div style="display:none;height:135px;" id="box_regtype_3_1">
+	  		<div style="margin:0 auto;height:30px;text-align:center;">입력하신 휴대폰으로 인증번호가 발송되었습니다.</div>
+	  		<form autocomplete="off" method="post" name="frmFindId2">
+	  		<input type="hidden" id="cs_tel2" name="cs_tel">
+			<table width="350" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td width="160" height="40" align="right">인증번호&nbsp;&nbsp;</td>
+					<td width="70"><input type="text" maxlength="5" onkeydown="onlyNumSms(this);" onkeypress="onlyNumSms(this);" class="cls_smsno" id="sms_no" name="sms_no"></td>
+					<td width="120">&nbsp;&nbsp;<span id="txtCsTelSms"></span></td>
+				</tr>
+			</tbody></table>
+	  		</form>
+	  		<div style="height:10px;"></div>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdConfSelf2()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_92ok.gif"></div>
+	  	</div>
+	  	<div style="display:none;height:135px;" id="box_findid_result">
+	  		<div style="height:30px;"></div>
+	  		<div style="margin:0 auto;text-align:center;font-weight:bold;">
+	  			<img align="absmiddle" src="http://imgenuri.enuri.gscdn.com/images/member/join2009/bu_04.gif">&nbsp;&nbsp;
+	  			<span id="findid_name"></span>님의 아이디는 <span id="findid_id"></span>&nbsp;입니다.
+	  		</div>
+	  		<div style="height:40px;"></div>
+	  		<div style="margin:0 auto;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdClose()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_92ok.gif"></div>
+	  	</div>
+    </td>
+  </tr>
+  <tr> 
+  	<td height="20">&nbsp;</td>
+  </tr>
+  <tr> 
+  	<td><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/title_05.gif"></td>
+  </tr>
+  <tr>
+    <td align="center">
+		<table width="350" cellspacing="0" cellpadding="0" border="0" align="center">
+			<tbody><tr> 
+			  <td height="20">&nbsp;</td>
+			</tr>
+			<tr> 
+			  <td align="center"> 
+			    <table cellspacing="0" cellpadding="0" border="0">
+			      <tbody><tr> 
+			        <td width="20" height="23"><input type="radio" onclick="changeRegTypePwd(this.value);this.blur()" value="1" name="reg_type_pwd"></td>
+			        <td width="100" height="23" align="left" class="regtype">주민등록번호</td>
+			        <td width="20" height="23"><input type="radio" onclick="changeRegTypePwd(this.value);this.blur()" value="2" name="reg_type_pwd"></td>
+			        <td width="80" height="23" align="left" class="regtype">아이핀</td>
+			        <td width="20" height="23"><input type="radio" onclick="changeRegTypePwd(this.value);this.blur()" checked="" value="3" name="reg_type_pwd"></td>
+			        <td width="80" height="23" align="left" class="regtype">휴대폰</td>
+			      </tr>
+			    </tbody></table>
+			  </td>
+			</tr>
+		</tbody></table>
+	  	<div style="height:10px;"></div>
+	  	<div style="display:none;height:150px;" id="box_regtype_pwd_1">
+	  		<div style="height:10px;"></div>
+	  		<div style="margin:0 auto;height:33px;text-align:center;"></div>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdCheckPlusPwd()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_phone.gif"></div>
+	  		<div style="width:340px;height:30px;text-align:right;"><!-- <img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/arr_12.gif"/> 휴대폰, 신용카드, 공인인증서 --></div>
+			<form method="post" name="form_chk_pwd">
+			<input type="hidden" value="checkplusSerivce" name="m"><!-- 필수 데이타로, 누락하시면 안됩니다. -->
+			<input type="hidden" value="AgAFRzI4OTL6NFN/1PyioV8yC50Y6R3zfOXHLcWf4rpJMng355xf9+Rt7EsAceVqo7LAJX/V+Mhc9hi+9x8i+y77z5Q2CcA4X4lXRwgHCjjBqqvnFVHoZxovmvahRgUuFzqqmju3mxEszZQRYiB+j9aIWJZWdRfOJ31qip0JQK5TrtTN5F/KCQ8N5u4YpvP6+lioK1A2UY7vXrszWHgLuwJoC2BWCiyAHn2v96X4Kqrj7RQJ8x2UuD4zHNlo7aYV7XVVRVWq7jbdNtlrHMvsiL4uoarLXSbjY/M2QAEM00cDsca75GY6HnCd+LM++eg9KnqAyt4q4DOChTbRmIpLuR+Rt6FwOw5X+TDXWFZdolLYLmXW2IsjzWJqyHrq6LtRBqV59sUzn3dph8wtZoJaRCHpUt5xCGobdu+RsCzxHImSvILzwmcggt4LgU8jvKrI6/NXfdpJmPlXhneuMgMbfiDRpVkI11HBfwSYWCokWA4AXuiSE2LQYs8vMAuNj6nwxlWHBo6s+ZU=" name="EncodeData"><!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+		    <!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
+		    	 해당 파라미터는 추가하실 수 없습니다. -->
+			<input type="hidden" value="G2892_2015081217334005486" name="param_r1">
+			<input type="hidden" value="" name="param_r2">
+			<input type="hidden" value="" name="param_r3">
+			</form>
+	  	</div>
+	  	<div style="display:none;height:150px;" id="box_regtype_pwd_2">
+	  		<div style="height:10px;"></div>
+	  		<div style="margin:0 auto;height:33px;text-align:center;"></div>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdPopIpinPwd()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_ipin.gif"></div>
+			<form method="post" name="form_ipin_pwd">
+			<input type="hidden" value="pubmain" name="m">						<!-- 필수 데이타로, 누락하시면 안됩니다. -->
+			<input type="hidden" value="AgEEQTM5OHGRMDai3Z7BPEbDKQQkRtHfVBEEx0mNoU9UIufQRQsghTVymfa34PZgfVjhE0OmH+PIUnof6UKAC2hb5wY8jN8L3nMyfObZgU4VX6ZYIHwxX4FgxzwH2EUiBoGqMOI5/IYjCiAflUyv5dS+HbGzvfkVhAqKI8GSq1K5pR093Im7zqqy2smltJreuSbRT8ZEYFhAqSbzKT3k/XrOhcAc12dU1HbJyzq/V8hcG79g8hvJZUxnwSYyH6azKv1LpSDkEqs5NW91lkNR4p0x3wad1r01ybGaThNNxgGWhED7zmjOOX5fFk1AO0nmipHkwGR3Kw==" name="enc_data">		<!-- 위에서 업체정보를 암호화 한 데이타입니다. -->
+			<!-- 업체에서 응답받기 원하는 데이타를 설정하기 위해 사용할 수 있으며, 인증결과 응답시 해당 값을 그대로 송신합니다.
+				 해당 파라미터는 추가하실 수 없습니다. -->
+			<input type="hidden" value="IPIN_A3982015081217334005535" name="param_r1">
+			<input type="hidden" value="" name="param_r2">
+			<input type="hidden" value="" name="param_r3">
+			</form>
+	  	</div>
+	  	<div style="display:;height:150px;" id="box_regtype_pwd_3">
+	  		<div style="margin:0 auto;height:30px;text-align:center;"></div>
+	  		<form autocomplete="off" method="post" name="frmFindPwd">
+	  		<input type="hidden" id="find_name2_pwd" name="find_name2">
+	  		<ul>
+	  			<li class="tel_title">ID</li>
+	  			<li class="tel_input"><input type="text" style="ime-mode:inactive;" maxlength="16" id="find_id_pwd" name="find_id"></li>
+	  			<li class="tel_msg">&nbsp;</li>
+	  			<li class="tel_title">성명</li>
+	  			<li class="tel_input"><input type="text" style="ime-mode:active;" maxlength="5" id="find_name_pwd" name="find_name"></li>
+	  			<li class="tel_msg">&nbsp;</li>
+	  			<li class="tel_title">전화번호</li>
+	  			<li class="tel_input"><input type="text" maxlength="11" onkeydown="onlyNumTelPwd(this);" onkeypress="onlyNumTelPwd(this);" id="cs_tel_pwd" name="cs_tel"></li>
+	  			<li class="tel_msg">&nbsp;<span id="txtCsTelPwd"></span></li>
+	  		</ul>
+	  		</form>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdConfSelfPwd()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_92ok.gif"></div>
+	  	</div>
+	  	<div style="display:none;height:150px;" id="box_regtype_pwd_3_1">
+	  		<div style="margin:0 auto;height:30px;text-align:center;">입력하신 휴대폰으로 인증번호가 발송되었습니다.</div>
+	  		<form autocomplete="off" method="post" name="frmFindPwd2">
+	  		<input type="hidden" id="cs_tel2_pwd" name="cs_tel">
+			<table width="350" cellspacing="0" cellpadding="0" border="0">
+				<tbody><tr>
+					<td width="160" height="40" align="right">인증번호&nbsp;&nbsp;</td>
+					<td width="70"><input type="text" maxlength="5" onkeydown="onlyNumSmsPwd(this);" onkeypress="onlyNumSmsPwd(this);" class="cls_smsno" id="sms_no_pwd" name="sms_no"></td>
+					<td width="120">&nbsp;&nbsp;<span id="txtCsTelSmsPwd"></span></td>
+				</tr>
+			</tbody></table>
+	  		</form>
+	  		<div style="height:10px;"></div>
+	  		<div style="margin:0 auto;height:30px;text-align:center;"><img style="cursor:pointer" onmouseout="outImg(this)" onmouseover="overImg(this)" onclick="cmdConfSelf2Pwd()" src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_92ok.gif"></div>
+	  	</div>
+	  	<form method="post" name="frmFindPwdResult">
+	  	<input type="hidden" name="find_type">
+	  	<input type="hidden" name="find_id">
+	  	</form>
+    </td>
+  </tr>
+  <tr> 
+  	<td>&nbsp;</td>
+  </tr>
+  <tr> 
+  	<td height="30" align="right" style="font-size:11px;font-weight:bold;">에누리 가격비교&nbsp;&nbsp;</td>
+  </tr>
+
+	<!-- 20150812 휴면 계정 -->
+	 <tr> 
+		<td height="30" align="right" style="padding-left:14px;text-align:left;height:30px;line-height:30px;font-family:dotum;font-size:11px;color:#636363;letter-spacing:-0.025em;background:#eee;"><span style="font-size:12px;">※</span> 휴면 회원은 ID/비밀번호 찾기가 제한되오니, 재가입을 권장 드립니다.</td>
+	</tr>
+	<!-- //20150812 휴면 계정 -->
+
+</tbody></table>
+<iframe frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0" style="width:0;height:0" src="" name="frmHidden" id="frmHidden"></iframe>
+
+
+</body></html>

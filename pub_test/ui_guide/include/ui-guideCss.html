@@ -1,0 +1,237 @@
+<!-- PAGE WRAPPER -->
+<article id="pageWrap">
+	<!-- Heading-->
+	<div class="docs-heading">
+		<h2>CSS 가이드</h2>
+	</div>
+	<!-- Heading-->
+
+	<!-- Sector -->
+	<div class="docs-sector" id="ui-guideCss">
+		<!-- Heading h1 ~ h4 -->
+		<h3 class="page-header">기본 설정</h3>
+
+		<!-- Caption -->
+		<p class="lead">에디터 설정</p>
+
+		<!-- 
+			code pre 작성 
+			/ui_guide/skin/default/css/common.css  :37 line
+			code color 참고
+		-->
+
+		<!-- Content -->
+		<p>CSS 파일 최상단에 언어셋을 지정한다. (신규 페이지 인코딩 선언은 <strong>utf-8</strong>를 원칙으로 한다.</p>
+		<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;</span><span class="na">@charset</span><span class="s">"utf-8"</span><span class="nt">&gt;</span></code></pre></figure>
+		
+		<p>외부 스타일시트(<code>&lt;link /&gt;</code>)를 사용한다. (@import는 일부 브라우저에서 HTML 문서 로딩 후에야 로드되므로 사용하지 않는다)</p>
+		<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">type=</span><span class="s">"text/css"</span><span class="nt">&gt;</span> <span class="na">href=</span><span class="s">"../css/default.css"</span> <span class="na">media=</span><span class="s">"all"</span><span class="nt">&gt;</span></code></pre></figure>
+		<p>소프트 탭 설정은 공백 문자 4개로 합니다.</p>
+		<p>파일의 맨 마지막은 줄바꿈으로 끝나게 합니다.</p>
+		
+		<hr />
+
+		<p class="lead">공통 스타일시트</p>
+		<p>default.css</p>
+		<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nb">@charset "utf-8";
+
+* {-webkit-text-size-adjust:none;}
+* {-webkit-tap-highlight-color:rgba(0,0,0,0);}
+* {margin:0;padding:0;}
+
+body,input,textarea,select,table,button{font-size:14px;font-family:'Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Helvetica','AppleGothic','Sans-serif','Dotum','Verdana','Helvetica',sans-serif;}
+h1,h2,h3,h4,h5 {font-size:100%;}
+a:link, a:hover, a:active, a:visited, a:focus {color:#4c5363;text-decoration:none;outline:none;-webkit-tap-highlight-color:transparent;}
+ul, ol, li {list-style:none;}
+table {width:100%;border-collapse:collapse; word-break: break-all;}
+colgroup {background:none;}
+input, select, textarea, label, button {vertical-align:middle;font-size:14px; font: 'malgun gothic',Helvetica,sans-serif;}
+button{border: 0 none; background-color: transparent; cursor: pointer;}
+fieldset, img {border:0;}
+img {vertical-align:top;}
+td img {vertical-align:middle;}
+legend, caption {visibility:hidden;width:0;font-size:0;line-height:0;text-indent:-5000px;}
+address, em {font-style:normal;}
+hr {display:none;}
+.hide {visibility:hidden;position:absolute;font-size:0;line-height:0;}
+input, textarea, button{outline-style:none;}
+select, input[type="text"], input[type="password"], input[type="number"], input[type="radio"], input[type="checkbox"] {-webkit-appearance:none;-moz-appearance:none;border-radius:0;}
+button::-moz-focus-inner {border:0;padding:0; }
+body, #main {background: #dde1e6;}
+.blind {display:block;position:absolute;overflow:hidden;left:-9999px;width:1px;height:1px;font-size:0;line-height:0;text-indent:-9999px} /* hide */</span></code></pre></figure>
+
+
+		<hr />
+
+		<h3 class="page-header">스타일 규칙</h3>
+
+		<p class="lead">클래스 네이밍</p>
+		<p>첫 시작에 숫자, 대문자, 특수문자는 사용하지 않는다.</p>
+		<p>두 단어의 조합은 언더바(_)를 사용한다.</p>
+		<p>시각적 표현보다는 요소의 구조, 목적이 표현되도록 한다. <mark>형태_의미_상태</mark>로 조합하며 3단계를 넘어가지 않도록 작명한다.</p>
+		<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.2line</span> <span class="p">{</span>}</span> <span class="c1">(X)</span>
+<span class="nc">.line2</span> <span class="p">{}</span> <span class="c1">(O)</span>
+<span class="nc">.btn_new_on</span> <span class="p">{}</span> <span class="c1">(O)</span>
+</code></pre></figure>
+
+		
+		<p class="lead">기본 문법</p>
+		<p>스타일은 한 줄에 작성하며, 줄바꿈 시 빈 줄이 생기지 않게 한다. 스타일 속성 간 개행하지 않는다. </p>
+		<p>클래스명을 선언한 뒤 한 칸의 공백을 두고, 세부 속성간에는 한 칸의 공백을 준다. 속성과 값 사이는 띄어쓰지 않는다. <mark>선택자 {속성:값; 속성:값;}</mark></p>
+		<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.contents</span><span class="p">{</span>
+<span class="nl">float</span><span class="p">:</span> <span class="nb">left</span><span class="p">;</span>
+<span class="nl">overflow:</span><span class="p">:</span> <span class="nb">hidden</span><span class="p">;</span>
+<span class="nl">width</span><span class="p">:</span> <span class="nb">950px</span><span class="p">;</span>
+<span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.contents</span><span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span><span class="nl">overflow:</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span><span class="nl">width</span><span class="p">:</span><span class="nb">950px</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.contents</span> <span class="p">{</span><span class="nl">float</span><span class="p">:</span><span class="nb">left</span><span class="p">;</span> <span class="nl">overflow:</span><span class="p">:</span><span class="nb">hidden</span><span class="p">;</span> <span class="nl">width</span><span class="p">:</span><span class="nb">950px</span><span class="p">;</span><span class="p">}</span> <span class="c1">(O)</span></code></pre></figure>
+
+
+		<p>CSS 선택자는 class로 핸들링되며, 태그네임으로 핸들링하지 않는다. (단 사용빈도가 높은 li, td, th는 예외) 또한, 태그네임과 class는 중복사용하지 않는다.</p>
+			<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">h3</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span> <span class="nb">15px</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="nb">#343434</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">h3.title</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="nb">15px</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="nb">#343434</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.title</span><span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="nb">15px</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="nb">#343434</span><span class="p">;</span><span class="p">}</span> <span class="c1">(O)</span>
+</code></pre></figure>
+
+
+		<p>속성 선언에 따옴표는 사용하지 않는다. (단, 한글폰트 선언&공백표현 등 사용이 필요한 경우는 예외이며, 사용 시에는 홑따옴표로 통일한다.)</p>
+		<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.icon_new</span> <span class="p">{</span></span><span class="nl">background</span><span class="p">:</span><span class="nb">url("/image/icon_new.gif") no-repeat</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.icon_new</span> <span class="p">{</span></span><span class="nl">background</span><span class="p">:</span><span class="nb">url('/image/icon_new.gif') no-repeat</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.icon_new</span> <span class="p">{</span></span><span class="nl">background</span><span class="p">:</span><span class="nb">url(/image/icon_new.gif) no-repeat</span><span class="p">;</span><span class="p">}</span> <span class="c1">(O)</span>
+</code></pre></figure>
+	
+	<p>background-position 속성값은 숫자로 선언한다.</p>
+		<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.bg_visual</span> <span class="p">{</span></span><span class="nl">background-position</span><span class="p">:</span><span class="nb">left top</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.bg_visual</span> <span class="p">{</span></span><span class="nl">background-position</span><span class="p">:</span><span class="nb">0 0</span><span class="p">;</span><span class="p">}</span> <span class="c1">(O)</span>
+<span class="nc">.bg_visual</span> <span class="p">{</span></span><span class="nl">background-position</span><span class="p">:</span><span class="nb">100% 50%</span><span class="p">;</span><span class="p">}</span> <span class="c1">(O)</span>
+</code></pre></figure>
+	
+	<p>컬러값은 축약형을 사용한다.</p>
+	<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.news</span> <span class="p">{</span></span><span class="nl">color</span><span class="p">:</span><span class="nb">#333333</span><span class="p">;</span><span class="p">}</span> <span class="c1">(X)</span>
+<span class="nc">.news</span> <span class="p">{</span></span><span class="nl">color</span><span class="p">:</span><span class="nb">333</span><span class="p">;</span><span class="p">}</span> <span class="c1">(O)</span>
+</code></pre></figure>
+
+	<p>z-index 수치 간격은 10단위로 적용한다.</p>
+
+
+	<hr />
+
+	<p class="lead">속성 선언 순서</p>
+	<p><mark>표시 - 배치 - 사이즈 - 폰트 - 기타 - 배경 - 상태</mark> 순서로 기술한다.</p>
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-striped">
+			<colgroup>
+				<col>
+				<col>
+				<col>
+				<col>
+			</colgroup>
+			<thead>
+				<tr class="text-center">
+					<th>순서</th>
+					<th>속성</th>
+					<th>의미</th>
+					<th>비고</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>1</th>
+					<td>display</td>
+					<td>표시</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>2</th>
+					<td>float</td>
+					<td>흐름</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>3</th>
+					<td>position</td>
+					<td>위치</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>4</th>
+					<td>width & height</td>
+					<td>크기</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>5</th>
+					<td>margin & padding</td>
+					<td>간격</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>6</th>
+					<td>border</td>
+					<td>외곽선</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>7</th>
+					<td>font</td>
+					<td>글꼴</td>
+					<td style="white-space:normal;">축약형은 쓰지않으며, color, font-weight, font-size, line-height, font-family 순으로 기입</td>
+				</tr>
+				<tr>
+					<th>8</th>
+					<td>etc</td>
+					<td>기타</td>
+					<td style="white-space:normal;">text-align, vertical-align, text-indent, white-space, text-decoration 등</td>
+				</tr>
+				<tr>
+					<th>9</th>
+					<td>background</td>
+					<td>배경</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>10</th>
+					<td>overflow</td>
+					<td>넘침</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th>11</th>
+					<td>z-index</td>
+					<td>정렬</td>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+	<hr />
+
+	<h3 class="page-header">기타 규칙</h3>
+
+	<p class="lead">주석</p>
+	<p>주석 기호( /*, */ )와 내용 사이에는 반드시 공백 한 칸이 있어야 한다.</p>
+	<p>추가 및 수정이 되어 주석을 기입하는 경우 해당 수정날짜로 시작하고 두 줄이상일 경우 범위로 표시하며, 한 줄일 경우 해당 선언 마지막 뒤에 표시한다.</p>
+		<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="p">/*.content*/</span> <span class="c1">(X)</span>
+<span class="p">/* .content */</span> <span class="c1">(O)</span>
+<span class="nc">.title</span> <span class="p">{</span><span class="nl">font-size</span><span class="p">:</span><span class="nb">15px</span><span class="p">;</span> <span class="nl">color</span><span class="p">:</span><span class="nb">#343434</span><span class="p">;</span><span class="p">}</span> <span class="c1">/* 170324 타이틀 수정*/</span> <span class="c1">(O)</span>
+</code></pre></figure>
+
+	<p class="lead">미디어 쿼리</p>
+	<p>관련 규칙이 있는 자리에 적용한다.</p>
+	
+	<p class="lead">폴더 위치</p>
+	<p>[PC] /new/css/*</p>
+	<p>[Mobile] /mobilefirst/css/*</p>
+
+
+
+
+
+
+	</div>
+	<!-- //Sector -->
+</article>
+<!-- //PAGE WRAPPER -->

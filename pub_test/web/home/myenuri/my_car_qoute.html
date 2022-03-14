@@ -1,0 +1,567 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>마이 에누리</title>
+    <link rel="shortcut icon" href="/images/member/page/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+    <link rel="stylesheet" type="text/css" href="/common/css/jquery-ui.css">
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/pc_v2/common_ssl.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/pc_v2/emoney_ssl.css"/>
+    <!-- // -->
+
+    <!-- 200914 : SR#42033 : 자동차 견적관리 CSS 추가 -->
+    <link rel="stylesheet" type="text/css" href="/css/pc_v2/newcar_ssl.css"/>
+    <!-- // -->
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/common/js/lib/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery.ui.datepicker-ko.js"></script>
+</head>
+<body>
+
+    <div id="wrap">
+
+        <!-- 공통 : 헤더 -->
+        <div id="header" class="header header-mypage">
+            <!-- 심플헤더 -->
+            <div class="header_simple_bar">
+                <div class="inner">
+                    <ul class="tab_family">
+                        <li><a href="#">소셜비교</a></li>
+                        <li><a href="#">쇼핑지식</a></li>
+                        <li><a href="#">조립PC</a></li>
+                        <li><a href="#">해외직구</a></li>
+                    </ul>
+                    <ul class="menu_user">
+                        <li><em>wangsub</em>님</li>
+                        <li><a href="#">My에누리</a></li>
+                        <li><a href="#">로그아웃</a></li>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">M캐시전환</a></li>
+                        <li><a href="#" class="btn_sitemap" onclick="$('.sitemap').toggle();return false;">더보기<span class="ico_sitemap my_sprite"></span></a>
+                            <!-- 더보기 레이어 -->
+                            <div class="sitemap" id="morepop" style="display:none">
+                                <dl>
+                                    <dt>주요서비스</dt>
+                                    <dd>
+                                        <a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+                                        <a href="/enuripc/">PC 견적비교</a>
+                                        <a href="/">해외직구</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+                                        <a href="/view/move_mall.jsp">이사견적</a>
+                                        <a href="/view/Flower365.jsp">꽃배달</a>
+                                        <a href="/tour2012/Tour_Index.jsp">여행비교</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>커뮤니티</dt>
+                                    <dd>
+                                        <a href="/knowbox2/index.jsp">쇼핑지식</a>
+                                        <a href="/knowbox2/news/index.jsp">뉴스</a>
+                                        <a href="/knowbox2/guide/index.jsp">구매가이드</a>
+                                        <a href="/knowbox2/exp/index.jsp">체험단</a>
+                                        <a href="/knowbox2/review/index.jsp">사용기</a>
+                                        <a href="/knowcom/enuritv.jsp">에누리TV</a>
+                                        <a href="/knowcom/board.jsp?bbsname=nuri">자유게시판</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/knowcom/board.jsp?bbsname=sale">특가게시판</a>
+                                        <a href="/knowbox2/qna/index.jsp">쇼핑Q&amp;A</a>
+                                        <a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition">쇼핑기획전</a>
+                                        <a href="/infoad_event/eventMain.jsp">이벤트</a>
+                                    </dd>
+                                </dl>
+                                <p class="all">
+                                    <a href="/etc/Site_map.jsp" class="enuri_all">에누리 서비스 전체보기</a>
+                                    <a href="javascript:///" class="layer_close" onclick="$('#morepop').hide();">닫기</a>
+                                </p>
+                            </div>
+                            <!-- // 더보기 레이어 -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // 심플헤더 -->
+
+            <!-- 메인헤더 + GNB + Search 영역 -->
+            <div class="header_wrap">
+                <div class="inner">
+                    <h1><a href="/" title="에누리닷컴">에누리닷컴</a></h1>
+                    <!-- GNB -->
+                    <ul class="nav_menu">
+                        <!-- 211105 : SR#49658 : 마이e클럽 개편일정 지연되어, 자동차 서비스 메뉴만 삭제하여 진행함. -->
+                        <!-- <li class="item_nav"><a href="#">My 에누리</a></li>
+                        <li class="item_nav"><a href="#">e머니</a></li>
+                        <li class="item_nav"><a href="#">e쿠폰 스토어</a></li>
+                        <li class="item_nav"><a href="#">관심 상품</a></li> -->
+                        <!-- 210618 : SR#47272 : 내차 시세관리 추가 -->
+                        <li class="item_nav on"><a href="#">내차 시세 관리</a></li>
+                        <!-- // -->
+                        <!-- 200914 : SR#42033 : 자동차 견적관리 추가 -->
+                        <li class="item_nav"><a href="#">자동차 견적관리</a></li>
+                        <!-- // -->
+                        <!-- 20190918 메뉴 변경 : 찜 쇼핑몰 -> 회원정보 수정 -->
+                        <!-- <li class="item_nav"><a href="#">회원정보수정</a></li> -->
+                        <!-- // -->
+                    </ul>
+                    <!-- //GNB -->
+                </div>
+            </div>
+            <!-- // 메인헤더 + GNB + Search 영역 -->
+        </div>
+        <!-- // 공통 : 헤더 -->
+
+        <div id="container" class="container">
+            <div class="my_top">
+                <div class="inner">
+                    <!-- 좌측 요약 -->
+                    <div class="summary">
+                        <!-- 마이에누리 -->
+                        <div class="my_info">
+                            <div class="my_info_area">
+                                <!-- 20190918 회원아이디 표기 영역 수정 -->
+                                <em>에누우리이다아아앗컴</em>님
+                                <!-- // -->
+                            </div>
+                        </div>
+                        <!-- // -->
+                        <!-- 이머니 -->
+                        <div class="my_emoney">
+                            <span class="ico my_sprite"></span>
+                            <!-- 본인인증 완료시 -->
+                            <em class="is-cert">957,778,928</em>점
+                            <!-- 본인인증 안했을때  -->
+                            <!-- <em class="no-cert">0</em>점 -->
+                        </div>
+                        <!-- // -->
+                        <!-- 안내문구 -->
+                        <div class="my_noti">
+                            <!-- 에누리 회원 및 SNS 인증회원일 때 -->
+                            <span class="is-cert">2019. 9. 1 이후 <em>123,456</em> 적립예정</span>
+                            <!-- 20190918 문구 수정 -->
+                            <!-- SNS 인증회원 아닐때 -->
+                            <!-- <span class="no-cert">본인인증 후 적립 받을 수 있습니다.<br/>e머니 모으고 혜택받으세요!</span> -->
+                            <!-- // -->
+                        </div>
+                        <!-- // -->
+                    </div>
+                    <!-- //  -->
+
+                    <div class="view">
+                        <!-- 에누리 회원 및 SNS 인증회원일 때 : 우측 간편 보기 -->
+                        <ul class="view_simple">
+                            <li>
+                                <div class="inner">
+                                    <span class="txt_tit">e머니</span>
+                                    <span class="ico_view_01 my_sprite"></span>
+                                    <!-- 190919 버튼 영역 수정 + 바로가기제거 -->
+                                    <button class="btn_move">
+                                        <em class="txt_count">123,456</em>
+                                    </button>
+                                    <!-- // -->
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <span class="txt_tit">적립예정</span>
+                                    <span class="ico_view_02 my_sprite"></span>
+                                    <!-- 190919 버튼 영역 수정 + 바로가기제거 -->
+                                    <button class="btn_move">
+                                        <em class="txt_count">0</em>
+                                    </button>
+                                    <!-- // -->
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <span class="txt_tit">미사용e쿠폰</span>
+                                    <span class="ico_view_03 my_sprite"></span>
+                                    <!-- 190919 버튼 영역 수정 + 바로가기제거 -->
+                                    <button class="btn_move">
+                                        <em class="txt_count">0</em>
+                                    </button>
+                                    <!-- // -->
+                                </div>
+                            </li>
+                            <li>
+                                <div class="inner">
+                                    <span class="txt_tit">혜택안내</span>
+                                    <span class="ico_view_04 my_sprite"></span>
+                                    <!-- 190919 버튼 영역 수정 + 바로가기제거 -->
+                                    <button class="btn_move">
+                                        <em class="txt_move">바로가기</em>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <!-- // 에누리 회원 및 SNS  인증회원일 때 : 우측 간편 보기-->
+
+                        <!-- 20190918 수정 -->
+                        <!-- SNS 인증회원 아닐때 -->
+                        <div class="view_simple no-cert" style="display:none">
+                            <div class="view_inner">
+                                <span class="txt_comm"><em>SNS 계정으로 로그인하셨네요<br/>본인인증 하고 더 많은 혜택을 누리세요!</em></span>
+                                <a href="#" class="btn_go_cert">본인인증하러 가기</a>
+                            </div>
+                        </div>
+                        <!-- // SNS 인증회원 아닐때 -->
+                        <!-- // -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="my_cont">
+                <!-- 공통 : 좌측메뉴 -->
+                <div class="menu">
+                    <h2>MY 에누리</h2>
+                    <ul class="list">
+                        <!-- 211105 : SR#49658 : 마이e클럽 개편일정 지연되어, 자동차 서비스 메뉴만 삭제하여 진행함. -->
+                        <!-- <li class="item">
+                            <a href="#" class="item_tit">e머니</a>
+                            <ul class="item_cnt">
+                                <!- - 활성화는 li태그에 on 붙여주세요 - ->
+                                <li><a href="#">전체내역</a></li>
+                                <li><a href="#">적립내역</a></li>
+                                <li><a href="#">사용내역</a></li>
+                                <li><a href="#">환불내역</a></li>
+                            </ul>
+                        </li>
+                        <li class="item"><a href="#" class="item_tit">e쿠폰 스토어</a></li>
+                        <li class="item">
+                            <a href="#" class="item_tit">관심상품</a>
+                            <ul class="item_cnt">
+                                <li><a href="#">최근본상품</a></li>
+                                <li><a href="#">찜 상품</a></li>
+                            </ul>
+                        </li> -->
+                        <li class="item"><a href="#" class="item_tit">내차 시세 관리</a></li>
+                        <!-- 200914 : SR#42033 : 자동차 견적관리 추가 -->
+                        <li class="item"><a href="#" class="item_tit">자동차 견적관리</a></li>
+                        <!-- // -->
+                    </ul>
+                </div>
+                <!-- // 공통 : 좌측메뉴 -->
+
+                <!-- 200914 : SR#42033 : 자동차 견적관리 컨텐츠 -->
+                <div class="cont_inner borderbox">
+                    <!-- 활성화 견적 리스트 -->
+                    <div class="vaild_estimate">
+                        <div class="box_tit">
+                            <i class="newcar_sprite ico_estimate"></i>
+                            내차정보 <em class="tx_count">(2)</em>
+                        </div>
+                        <div class="box_list">
+                            <div class="mytabs">
+                                <ul class="clear">
+                                    <li class="tab__item is-on" data-tabname="#tab1">
+                                        <div class="tab__item_wrap">
+                                            <div class="thumb">
+                                                <!-- 읽지 않은 딜러 메시지 수신시 -->
+                                                <i class="newcar_sprite ico_unread"></i>
+                                                <!-- 모델이미지 -->
+                                                <img src="http://img.enuri.info/images/home/myenuri/newcar/sample_car@96x48.png" alt="">
+                                            </div>
+                                            <!-- 모델명 -->
+                                            <span class="tx_model">123누 2345</span>
+                                            <!-- 견적접수일자 -->
+                                            <span class="tx_date">올 뉴 아반떼</span>
+                                        </div>
+                                        <div class="tab__delete newcar_sprite"></div>
+                                    </li>
+                                    <li class="tab__item" data-tabname="#tab2">
+                                        <div class="tab__item_wrap">
+                                            <div class="thumb">
+                                                <i class="newcar_sprite ico_unread"></i>
+                                                <img src="http://img.enuri.info/images/home/myenuri/newcar/sample_car@96x48.png" alt="">
+                                            </div>
+                                            <span class="tx_model">123누 2345</span>
+                                            <span class="tx_date">올 뉴 아반떼</span>
+                                        </div>
+                                        <div class="tab__delete newcar_sprite"></div>
+                                    </li>
+                                    <!-- 조회 내역이 없는경우 (탭)-->
+                                    <li class="tab__item add_quote">
+                                        <a href="/pub_test/newcar/mycar_quote.html">
+                                            <i class="newcar_sprite ico_plus"></i>추가하기
+                                        </a>
+                                    </li>
+                                    <!-- // -->
+                                </ul>
+                            </div>
+                            <script>
+                                $(function(){
+                                    var mytab = $(".mytabs .tab__item"),
+                                        mytab_delete_btn = $('.tab__delete', mytab);
+
+                                    mytab.on("click", function(){
+                                        var _this = $(this),
+                                            _thisContent = _this.data('tabname');
+
+                                        console.log( $(_thisContent).siblings());
+                                        _this.addClass("is-on").siblings("li").removeClass("is-on");
+                                        $(_thisContent).show().siblings().hide();
+                                    });
+
+                                    mytab_delete_btn.on("click", function(){
+                                        var _this = $(this).parent(),
+                                            _thisContent = _this.data('tabname');
+                                        _this.remove();
+                                        $(_thisContent).remove();
+                                    });
+                                })
+                            </script>
+                        </div>
+                    </div>
+                    <!-- // -->
+
+                    <!-- 조회 내역이 없는경우 (내용)-->
+                    <div class="box_inner mycar_no_result">
+                        <div class="box_head"><em>내차 시세</em></div>
+                        <div class="box_cnt">
+                            <h3>조회 내역이 없습니다.</h3>
+                            <div class="nodata_summary">차량번호로 내 차 시세를 알아보세요.</div>
+                            <a href="/pub_test/newcar/mycar_quote.html" >내 차 시세 알아보기</a>
+                        </div>
+                    </div>
+                    <!-- // -->
+
+                    <div class="mytabs__container">
+                        <div id="tab1" class="tabs__cont" >
+                            <!-- 내차시세 -->
+                            <div class="box_inner mycar_quote">
+                                <div class="box_head"><em>내차 시세</em></div>
+                                <div class="box_cnt clear">
+                                    <div class="info_left">
+                                        <div class="mycar_name">현대 올 뉴 아반떼</div>
+                                        <div class="mycar_info">2020년형 가솔린 1.6 인스퍼레이션 A/T</div>
+                                        <div class="mycar_thumbnail">
+                                            <div class="brand_logo"><img src="http://img.enuri.info/images/home/myenuri/newcar/sample_logo@62x40.png"></div>
+                                            <!-- 이미지사이즈 들어오는거 봐서 재처리가능성있습니다. -->
+                                            <div class="thumbnail_img" style="background-image:url('http://img.enuri.info/images/home/myenuri/newcar/sample_car@240x140.png');"></div>
+                                        </div>
+                                    </div>
+                                    <div class="info_right">
+                                        <div class="detailinfo clear">
+                                            <div class="d_info_mycarNo">123누4567</div>
+                                            <div class="d_info_mycarRelease">2018.01.01</div>
+                                            <div class="d_info_mycarDistance">40,000</div>
+                                        </div>
+                                        <div class="quote_wrap clear">
+                                            <div id="quote_bar1" class="quote_bar">
+                                                <div class="value_bar" data-originvalue="32400000">
+                                            <span class="dot low_dot">
+                                                <span class='value_tooltip'>최저가</span>
+                                                <span class="value_price low_value unit_default"></span>
+                                            </span>
+                                                    <span class="dot high_dot">
+                                                <span class='value_tooltip'>최고가</span>
+                                                <span class="value_price high_value unit_default"></span>
+                                            </span>
+                                                </div>
+                                            </div>
+                                            <div class="release_value">
+                                                <div class="txt">신차가</div>
+                                                <div class="releaseprice">
+                                                    <span class="unit_billion">1</span>
+                                                    <span class="unit_default">5000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="http://www.ajsellcar.co.kr/alliance/enuri.do" target="_blank" class="btn_sell_mycar">내차 팔기</a>
+                                    </div>
+                                </div>
+                                <div class="qoute_caution">* 실제 차량가는 차량 상태에 따라 적을 수도 있으며, 정확한 금액을 시세제공업체의 내차팔기 서비스를 통해 확인하실 수 있습니다.
+                                    <!-- 210705 : SR#47630 텍스트추가 -->
+                                    <br>* 신차가는 기본 옵션만 들어간 차량의 출고가입니다.</div>
+                            </div>
+
+                            <!-- 미레 시세 -->
+                            <div class="box_inner">
+                                <div class="box_head"><em>미래 시세</em></div>
+                                <div class="box_cnt box_cnt_chart">
+                                    <div style="padding:160px 0; text-align: center; font-size: 20px; color:#000;  ">chart_area</div>
+                                </div>
+                            </div>
+                            <!-- // -->
+                        </div>
+                        <div id="tab2" class="tabs__cont">
+                            <div class="box_inner mycar_quote">
+                                <div class="box_head"><em>내차 시세</em></div>
+                                <div class="box_cnt clear">
+                                    <div class="info_left">
+                                        <div class="mycar_name">카니발 4세대(KA4)</div>
+                                        <div class="mycar_info">2020년형 가솔린 1.6 인스퍼레이션 A/T</div>
+                                        <div class="mycar_thumbnail">
+                                            <div class="brand_logo"><img src="http://img.enuri.info/images/home/myenuri/newcar/sample_logo@62x40.png"></div>
+                                            <!-- 이미지사이즈 들어오는거 봐서 재처리가능성있습니다. -->
+                                            <div class="thumbnail_img" style="background-image:url('http://img.enuri.info/images/home/myenuri/newcar/sample_car@240x140.png');"></div>
+                                        </div>
+                                    </div>
+                                    <div class="info_right">
+                                        <div class="detailinfo clear">
+                                            <div class="d_info_mycarNo">123누4567</div>
+                                            <div class="d_info_mycarRelease">2018.01.01</div>
+                                            <div class="d_info_mycarDistance">40,000</div>
+                                        </div>
+                                        <div class="quote_wrap clear">
+                                            <div id="quote_bar2" class="quote_bar">
+                                                <div class="value_bar" data-originvalue="32400000">
+                                            <span class="dot low_dot">
+                                                <span class='value_tooltip'>최저가</span>
+                                                <span class="value_price low_value unit_default"></span>
+                                            </span>
+                                                    <span class="dot high_dot">
+                                                <span class='value_tooltip'>최고가</span>
+                                                <span class="value_price high_value unit_default"></span>
+                                            </span>
+                                                </div>
+                                            </div>
+                                            <div class="release_value">
+                                                <div class="txt">출고가</div>
+                                                <div class="releaseprice">
+                                                    <span class="unit_billion">1</span>
+                                                    <span class="unit_default">5000</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="http://www.ajsellcar.co.kr/alliance/enuri.do" target="_blank" class="btn_sell_mycar">내차 팔기</a>
+                                    </div>
+                                </div>
+                                <div class="qoute_caution">* 실제 차량가는 차량 상태에 따라 적을 수도 있으며, 정확한 금액을 시세제공업체의 내차팔기 서비스를 통해 확인하실 수 있습니다.</div>
+                            </div>
+
+                            <!-- 미레 시세 -->
+                            <div class="box_inner">
+                                <div class="box_head"><em>미래 시세</em></div>
+                                <div class="box_cnt box_cnt_chart">
+                                    <div style="padding:160px 0; text-align: center; font-size: 20px; color:#000;  ">chart_area</div>
+                                </div>
+                            </div>
+                            <!-- // -->
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        (function($) {
+                            $(function() {
+                                function changeType(value){
+                                    return value * (1/10000);
+                                }
+                                function qouteBar(target) {
+                                    var id = $('#'+target),
+                                        valueBar = $(".value_bar", id),
+                                        origin_value = changeType(valueBar.data('originvalue')),
+                                        low_value = origin_value-300,
+                                        high_value = origin_value+300;
+
+                                    $(".low_value", id).text(low_value);
+                                    $(".high_value", id).text(high_value);
+                                }
+                                $(window).load(function(){
+                                    qouteBar('quote_bar1');
+                                    qouteBar('quote_bar2');
+                                    qouteBar('quote_bar3');
+                                });
+                            });
+                        })(jQuery);
+                    </script>
+                </div>
+                <!-- // -->
+            </div>
+        </div>
+
+        <!-- 공통 : 푸터 -->       
+        <!-- 200605 : 리뉴얼 푸터 -->
+        <!-- 가로 1280px  -> .footer--com.wide -->
+        <div id="footer" class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2015-서울중구-1046호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->    
+        <!-- // 공통 : 푸터 -->
+    </div>
+    <!-- alert message : 차량번호확인-->
+    <div class="my_lay_box lay_alert" id="lay_alert">
+        <div class="lay_inner">
+            <div class="tx_comm">
+                <div class="tx_comm--tit">삭제하시겠습니까?</div>
+                <span class="tx_sub">해당 차량의 모든 정보가 삭제되어 복구가 불가합니다.</span>
+            </div>
+            <!-- 버튼 : 확인 -->
+            <div class="group__layin_btn">
+                <button class="btn__layin_sell" onclick="$(this).closest('.my_lay_box').fadeOut(100);">취소</button>
+                <button class="btn__layin_esti">확인</button>
+            </div>
+        </div>
+        <div class="dimmed"></div>
+    </div>
+    <!-- // -->
+
+    <script>
+        $(function(){
+            var position = $(window).scrollTop(); 
+            var el = {
+                wrap : $("#wrap"), // 메인래퍼
+                cont : $("#container .my_cont"), // 메인컨텐츠
+                menu : $("#container .menu"), // 메뉴
+                btnQuick : $(".footer .box_quick") // 탑버튼
+            }
+            var stickyMenu = function(){
+				var $myScroll = $(window).scrollTop();
+                if ( $myScroll > el.cont.offset().top - 20){
+					el.menu.addClass("sticky");
+					el.btnQuick.addClass("scr_mode");
+                    // 업다운 스크롤 체크
+					if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+					else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+				}else{
+					el.menu.removeClass("sticky");
+					el.btnQuick.removeClass("scr_mode");
+					el.wrap.removeClass("scr_down scr_up");
+				}
+				position = $myScroll;
+            };
+			$(window).load(stickyMenu).scroll(stickyMenu);
+        })
+    </script>
+</body>
+</html>

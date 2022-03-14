@@ -1,0 +1,2528 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SDUL 가입하기</title>
+<META HTTP-equiv='Content-Type' content='text/html; charset=utf-8'>
+<!--<META HTTP-equiv='Content-Type' content='text/html; charset=euc-kr'>-->
+<META NAME='description' CONTENT='가격비교 에누리닷컴'>
+<META NAME='keyword' CONTENT='가격,가격 검색,가격 사이트,가격검색 사이트,가격비교,가격 비교가격비교 사이트,가격정보'>
+<META NAME='Robots' CONTENT='INDEX, FOLLOW'>
+<LINK REL='SHORTCUT ICON' HREF='/favicon.ico'>
+<style type="text/css">
+<!--
+html {overflow:hidden;}
+td {font-family: "맑은 고딕";font-size: 13px;color: #505050;line-height: 16px;text-decoration: none;}
+textarea {font-family: "돋움", "돋움체";line-height: 16px;font-size:11px; color:#7d7d7d;text-decoration: none;border:1px solid #cdcdcd;}
+select {height:18px;font-family: "돋움", "돋움체";line-height: 16px;font-size:13px; color:#7d7d7d;text-decoration: none;border:1px solid #cdcdcd;}
+.inputStyle {height:15px;font-family: "돋움", "돋움체";line-height: 16px;font-size:13px; color:#7d7d7d;text-decoration: none;border:1px solid #cdcdcd;}
+.inputCheckRadioStyle {font-family: "돋움", "돋움체";font-size:13px; color:#7d7d7d;text-decoration: none;}
+
+.bgJoinLayerBox1 {width:630px;height:15px;background-image:url(http://imgenuri.enuri.gscdn.com/images/member/join2009/join_layer_top_2013.png);}
+.bgJoinLayerBox2 {width:630px;background-image:url(http://imgenuri.enuri.gscdn.com/images/member/join2009/join_layer_bg_2013.png);}
+.bgJoinLayerBox3 {width:630px;height:15px;background-image:url(http://imgenuri.enuri.gscdn.com/images/member/join2009/join_layer_bot_2013.png);}
+.JoinLayerClose {display:none;font-size:11px;padding-bottom:4px;cursor:pointer;color:#ffffff;font-family:verdana,tahoma;background-color:#000;text-align:center000;}
+.JoinLayerCaption {display:none;font-size:13px;padding-bottom:4px;cursor:pointer;color:#ffffff;font-family:verdana,tahoma;background-color:#000000;}
+
+.thead {font-family:"맑은 고딕";font-size:12px;color:#333333;}
+.tbody {font-family:"맑은 고딕";font-size:11px;color:#000000;}
+.join_secinfo {width:530px;height:70px;overflow:auto;border:1px solid #b8beca;text-align:left;}
+.join_secinfo td {font-family:"돋움","돋움체";line-height:16px;font-size:11px;color:#7d7d7d;text-decoration:none;}
+.s {font-size: 11px;color: #828282;font-family:"맑은 고딕";}
+#spanChkName {font-family:"맑은 고딕";font-size:11px;color:#bd0f0e;}
+#spanChkId {font-family:"맑은 고딕";font-size:11px;}
+.cls_title {font-family:'맑은 고딕';font-size:19px;font-weight:bold;color:#000000;}
+.cls_subtitle {font-size:12px;font-weight:bold;}
+.cls_uline {text-decoration:underline;cursor:pointer;}
+
+#di_idchk {width:293px;position:absolute;top:300px;left:150px;display:none;}
+.idchk_title {font-weight:bold;font-size:13px;height:30px;margin:0 0 0 20px;text-align:left;color:#000000;}
+.idchk_info {margin-left:20px;height:40px;color:#000000;text-align:left;}
+.text1 {color:#0059bd;font-weight:bold;}
+.text2 {color:#FF5675;font-weight:bold;}
+.text3 {margin-top:10px;height:13px;color:#000000;}
+.text4 {margin-top:10px;height:28px;color:#000000;}
+#search {margin:10px;padding:0;text-align:center;}
+#action {margin:10px;padding:0;text-align:center;}
+#result {display:none;margin:10px;width:210px;height:95px;border:solid 1px; #cdcdcd;background-color:#dce6f1;text-align:center;}
+
+.bgLoginLayerBox6 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top2.png);}
+.bgLoginLayerBox7 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg2.png);}
+.bgLoginLayerBox8 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom2.png);}
+td.btn_apply {padding:30px 0 20px; text-align:center;}
+-->
+</style>
+<script src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="/common/js/function.js"></script>
+
+<!-- <script type="text/javascript" src="/common/js/lib/prototype.js"></script> -->
+
+<script language="javaScript">
+/** 
+	* bool String::bytes(void)
+	* 해당스트링의 바이트단위 길이를 리턴합니다. (기존의 length 속성은 2바이트 문자를 한글자로 간주합니다)
+*/
+String.prototype.bytes = function() {
+	var str = this;
+	var l = 0;
+	for(var i=0; i<str.length; i++) l += (str.charCodeAt(i) > 128) ? 2 : 1;
+	return l;
+}
+var borwserName = getBrowserName();
+function getIEVersion(){
+    g = navigator;
+    a = g.userAgent;
+    p = g.appVersion;
+    m = p.indexOf("MSIE");
+
+    if(m!=-1 && a.indexOf("Win") != -1){
+        return parseFloat(p.substring(m+4));
+    }else{
+    	return -1;
+    }
+}
+if(getIEVersion()>0 && getIEVersion()<7){
+	document.write("<style type='text/css'>");
+	//ie6 버그.. 맨처음 스타일은 동작 안함
+	document.write(".bgJoinLayerBoxxxxxxxx {}");
+	document.write(".bgJoinLayerBox1 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/member/join2009/join_layer_top_2013.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgJoinLayerBox2 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/member/join2009/join_layer_bg_2013.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgJoinLayerBox3 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/member/join2009/join_layer_bot_2013.png',sizingMethod='scale');");
+	document.write("}	");
+	document.write(".bgLoginLayerBox6 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top2.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox7 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg2.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox8 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom2.png',sizingMethod='scale');");
+	document.write("}"); 
+	document.write("</style>");
+}
+function resize(){
+	if (document.getElementById("tbl_main")){
+		var wW = document.body.offsetWidth;
+		var wH = document.body.offsetHeight;
+		var h=0;
+	    if(navigator.userAgent.indexOf("MSIE")>0) {
+	    	if(navigator.userAgent.indexOf("MSIE 9")>0){
+	    		h=88;
+	    	}else if(navigator.userAgent.indexOf("6.0")>0) {
+	        	h=40;
+	      	}else{
+	        	h=72;
+	      	}
+	    }else if(navigator.userAgent.indexOf("Gecko")>0 && navigator.userAgent.indexOf("Firefox") < 0 && navigator.userAgent.indexOf("Netscape") < 0 ){
+	    	h=60;
+	    }else if(navigator.userAgent.indexOf("Firefox") >0 ){
+	    	h=50; 
+		}else if(navigator.userAgent.indexOf("Netscape") >0 ){
+			h=-2; 
+		}else if(navigator.userAgent.indexOf("nt 6.") > 0) {
+	  		h=75; 
+	  	}else {
+			h=4;
+		}
+		self.resizeTo(wW+15,wH+h+20);
+	}
+}
+function goRealCheck(){
+	OpenWindowDetail('/login/Real_Check.jsp?where=2','real_check','430','260','no','no','yes','no','no','100','100');
+	hideLoginLayer();
+}
+function afterRealCheck(encdata){
+	document.frmWMember.isChecked.value = "true";
+	document.frmWMember.enc_data.value = encdata;
+}
+var libType = function(){
+    var rtn = "";
+    if (typeof(Prototype) != "undefined" ){
+        rtn = "PR"
+    }else if(typeof(jQuery) != "undefined"){
+        rtn = "JQ"
+    }
+    return rtn;
+}
+
+function commonAjaxRequest(url,param,callback){
+    if (libType() == "PR"){
+        var getInstProd = new Ajax.Request(       
+            url,      
+            {  
+                method:'post',parameters:param,onComplete:callback
+            }
+        );      
+    }else if(libType() == "JQ"){
+        $.ajax({
+            type: "POST",  
+            url: url, 
+            data: param,     
+            success: function(result){
+                callback(result);
+            }   
+        });     
+    }
+}
+//아이디 중복 chk Ajax
+//신청자 지역 불러옴
+function checkID() {
+	var inputId = document.frmWMember.user_id.value;
+	document.getElementById("spanChkId").innerHTML = "";
+	if(inputId.length > 3) {
+		var url_chkId = "/join/Join_Id_Chk_Ajax_2010.jsp";
+		var param_chkId = "id="+inputId;
+		/*var getHitProd = new Ajax.Request (
+			url_chkId,
+			{
+				method:'post', parameters:param_chkId,onComplete:showChkStr
+			}
+		);*/
+		commonAjaxRequest(url_chkId,param_chkId,showChkStr);  
+	} else {
+		setTimeout(
+			function(){
+				if(inputId.length == 0) {
+					document.getElementById("fontChkId").color = "#FF0000";
+					document.getElementById("spanChkId").innerHTML = "ID를 입력해주세요";
+					document.getElementById("spanid2").innerHTML = "";
+				}else{
+					document.getElementById("fontChkId").color = "#FF0000";
+					document.getElementById("spanChkId").innerHTML = "4~12자의 영문자, 숫자만 입력하세요.";
+					document.getElementById("spanid2").innerHTML = "";
+				}
+			},
+			500
+		);	
+	}	
+}
+function showChkStr(originalRequest) {
+	if (libType() == "PR"){
+   	 	var rtnData = originalRequest.responseText;
+	}else{
+   		var rtnData = originalRequest;
+	}
+	eval("arrModel= " + rtnData);
+	var chkId = arrModel.chkId;
+	setTimeout(
+		function(){
+			if(chkId == "0") {
+				document.getElementById("fontChkId").color = "#0000FF";
+				document.getElementById("spanChkId").innerHTML = "사용할 수 있는 아이디 입니다.";
+				document.getElementById("spanid2").innerHTML = chkId;
+			}else if(chkId == "-1") {
+				document.getElementById("fontChkId").color = "#FF0000";
+				document.getElementById("spanChkId").innerHTML = "금칙어 입니다. 다시입력 해주세요.";
+				document.getElementById("spanid2").innerHTML = "1";
+			}else if(chkId == "3") {
+				document.getElementById("fontChkId").color = "#FF0000";
+				document.getElementById("spanChkId").innerHTML = "첫글자는 반드시 영문이어야 합니다.";
+				document.getElementById("spanid2").innerHTML = "3";
+			}else{
+				document.getElementById("fontChkId").color = "#FF0000";
+				document.getElementById("spanChkId").innerHTML = "이미 등록된 ID 입니다.";
+				document.getElementById("spanid2").innerHTML = "2";
+			}
+		},
+		500
+	);
+}
+function isNumber(form) {
+	if(event.keyCode==8 || event.keyCode==9){ //백스페이스,탭
+	
+	}else if(event.keyCode != 13) {
+		if((event.keyCode<48)||(event.keyCode>57)) {
+			event.returnValue = false;
+		}
+	}
+}
+function inputNumberOnly(obj, val) {
+	new_val = "";
+	obj.value = "";
+
+	for(var i=0; i<val.length; i++) {
+		char1 = val.substring(i,i+1);
+		if(char1 >= '0' && char1 <= '9') {
+			new_val = new_val + char1;
+		}
+	}
+	obj.value = new_val;
+}
+//한글입력확인
+function koreanCheck() {
+	var i;
+	var ch;
+	var str = document.frmWMember.name.value;
+	for(i=0;i<str.length;i++) {
+		//ISO-Latin-1 문자셋으로 변경
+
+		ch = escape(str.charAt(i));
+
+		//한글이 아닐 경우
+		if (strCharByte(ch) == 2) {
+			document.getElementById("spanChkName").innerHTML = "";
+		}
+	}
+}
+function strCharByte(chStr) {
+	if(chStr.substring(0, 2) == '%u') {
+		if(chStr.substring(2,4) == '00')
+			return 1;
+		else
+			return 2; //한글
+	} else if(chStr.substring(0,1) == '%') {
+		if(parseInt(chStr.substring(1,3), 16) > 127)
+			return 2; //한글
+		else
+			return 1;
+	} else {
+			return 1;
+	}
+}
+//한글입력 확인
+function CmdKeyPressNSQ(obj) {
+	var temp=0;
+	obj.focus();
+	if(event.keyCode!=13) {
+		if(event.keyCode <= 255) {
+			document.getElementById("spanChkName").innerHTML = "한글모드가 아닙니다.";
+			event.returnValue = false;
+		}
+	}
+}
+//영문자, 숫자  입력 chk
+function CmdKeyPress() {
+	if(event.keyCode!=13) {
+		if( !((event.keyCode >= 48 && event.keyCode <=57) || (event.keyCode >= 65 && event.keyCode <=90) || (event.keyCode >= 97 && event.keyCode <=122) )) {
+			event.returnValue = false;
+		}
+	}
+}
+function chkPassChar(strPass) {
+	var validPass = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+	if(strPass.length < 8 || strPass.length > 15) return false;
+	for(var i=0; i<strPass.length; i++) {
+		if(validPass.indexOf(strPass.charAt(i)) == -1) return false;
+	}
+	return true;
+}
+function cmdInputEmail(param1, param2){
+	if(param1==""){
+		return;
+	}else if(param1=="direct"){
+		document.getElementById(param2).value = "";
+		document.getElementById(param2).select();
+		document.getElementById(param2).focus();
+	}else{
+		document.getElementById(param2).value = param1;
+	}
+}
+//등록 처리 전 입력값 체크
+function chkFrmValue(){
+	
+		if(islogin()){
+			alert("로그인상태입니다. \n가입과정을 다시 진행해주세요");
+			location.reload();
+			return false;
+		}
+	
+		var form = document.frmWMember;
+	
+		if (form.isChecked.value != "true" || form.enc_data.value=="" || form.match_key.value=="" || form.check_type.value=="") {
+			alert("실명인증이 필요합니다.");
+			return false;
+		}
+	
+		if (form.isLogin.value == "0" ) { //로그인 안한상태
+			if(form.user_id.value == "") {
+				alert("아이디를 입력해 주십시오.");
+				form.user_id.focus();
+				return false;
+			}
+			if(document.getElementById("spanid2").innerHTML == "") {
+				alert("아이디를 입력해 주십시오.");
+				form.user_id.focus();
+				return false;
+			}
+			if(document.getElementById("spanid2").innerHTML == "1") {
+				alert("금칙어  입니다.\n다른 아이디를 입력해 주십시오.");
+				form.user_id.focus();
+				return false;
+			}
+			if(document.getElementById("spanid2").innerHTML == "2") {
+				alert("이미 등록된 ID 입니다.\n다른 아이디를 입력해 주십시오.");
+				form.user_id.focus();
+				return false;
+			}
+			if(document.getElementById("spanid2").innerHTML == "3") {
+				alert("첫글자는 반드시 영문이어야 합니다.");
+				form.user_id.focus();
+				return false;
+			}
+			if(form.pass1.value == "") {
+				alert("비밀번호를 입력해 주십시오.");
+				form.pass1.focus();
+				return false;
+			}
+			if (form.pass2.value == "") {
+				alert("비밀번호 확인을 입력해 주십시오.");
+				form.pass2.focus();
+				return false;
+			}
+			if(form.pass1.value != form.pass2.value) {
+				alert("비밀번호가 비밀번호 확인과 서로 다릅니다.");
+				form.pass1.select();
+				return false;
+			}
+			if(!chkPassChar(form.pass1.value)) {
+				alert("8~15자의 영문,숫자가 조합된 비밀번호로\n입력해 주세요.");
+				form.pass1.select();
+				return false;
+			}
+		}
+		if( sdul_check() ){
+			form.submit();
+		}
+	
+}
+function sdul_check(){ //판매자 정보 입력 체크
+	var form;
+	form = document.frmWMember;
+	if(form.phone_no1.value == "" || form.phone_no3.value == "" || form.phone_no3.value == "" ){
+		alert("전화번호를 입력해 주십시오.");
+		form.phone_no1.focus();
+		return false;
+	}
+	if(form.email2.value=="직접입력") {
+		form.email2.value = "";
+	}
+	if(form.email1.value=="" || form.email2.value==""){
+		alert("이메일 주소 입력해 주십시오.");
+		return false;
+	}
+	if(form.email1.value.trim().length > 0 ){
+		var semail = form.email1.value + "@" + form.email2.value;
+		if (!semail.isemail()){
+			alert("올바른 이메일 주소를 입력해 주십시오.");
+			return false;
+		}
+	}
+	
+	if(document.getElementById("gmarket_id").value == ""
+			&& document.getElementById("eleven_id").value == ""
+			&& document.getElementById("auction_id").value == ""
+			&& document.getElementById("interpark_id").value == ""
+	){
+		alert("최소한 하나의 판매자 닉네임을 입력 하셔야 합니다.");
+		form.gmarket_id.focus();
+		return false;
+	}
+	if(form.gmarket_master_page.value == ""
+			&& form.eleven_master_page.value == ""
+			&& form.auction_master_page.value == ""
+			&& form.interpark_master_page.value == ""
+	){
+		alert("최소한 하나의 미니샵 주소를 입력 하셔야 합니다.");
+		return false;
+	}
+	if(document.getElementById("gmarket_id").value != "" && document.getElementById("gmarket_master_page").value == ""){
+		alert("입력되지 않은  미니샵 주소가 있습니다.\n주소를 입력해주세요.");
+		form.gmarket_master_page.focus();
+		return false;
+	}
+	if(document.getElementById("eleven_id").value != "" && document.getElementById("eleven_master_page").value == ""){
+		alert("입력되지 않은  미니샵 주소가 있습니다.\n주소를 입력해주세요.");
+		form.gmarket_master_page.focus();
+		return false;
+	}
+	if(document.getElementById("auction_id").value != "" && document.getElementById("auction_master_page").value == ""){
+		alert("입력되지 않은  미니샵 주소가 있습니다.\n주소를 입력해주세요.");
+		form.gmarket_master_page.focus();
+		return false;
+	}
+	if(document.getElementById("interpark_id").value != "" && document.getElementById("interpark_master_page").value == ""){
+		alert("입력되지 않은  미니샵 주소가 있습니다.\n주소를 입력해주세요.");
+		form.gmarket_master_page.focus();
+		return false;
+	}
+	if((document.all.gmarket_id.value == "" || form.gmarket_master_page.value == "")
+			&& (document.all.eleven_id.value == "" || form.eleven_master_page.value == "")
+			&& (document.all.auction_id.value == "" || form.auction_master_page.value == "")
+			&& (document.all.interpark_id.value == "" || form.interpark_master_page.value == "")
+	){
+		alert("최소한 하나의 판매자 닉네임과 미니샵 주소를 입력 하셔야 합니다.");
+		return false;
+	}
+	if(document.getElementById("interpark_id").value != "" && form.interpark_master_page.value != ""){
+		if(form.interpark_master_page.value.indexOf("www.interpark.com/display/SellerGoods.do?_method=") == -1 && form.interpark_master_page.value.indexOf("www.interpark.com/display/sellerAllProduct.do?_method=") == -1){
+			alert("미니샵 주소가 올바르지 않습니다.\n미니샵 등록안내를 확인후 정확히 등록해주세요.\n문의: 6354-3601(206)");
+			form.interpark_master_page.value = "";
+			form.interpark_master_page.focus();
+			return false;
+		}
+	}
+	if(document.getElementById("auction_id").value != "" && form.auction_master_page.value != ""){
+		if(form.auction_master_page.value.indexOf("stores.auction.co.kr/") == -1 && form.auction_master_page.value.indexOf("storesearch.auction.co.kr/") == -1 && form.auction_master_page.value.indexOf("search.auction.co.kr/search/listid.aspx?frm=itempage&seller=") == -1){
+			alert("미니샵 주소가 올바르지 않습니다.\n미니샵 등록안내를 확인후 정확히 등록해주세요.\n문의: 6354-3601(206)");
+			form.auction_master_page.value = "";
+			form.auction_master_page.focus();
+			return false;
+		}
+	}
+	if(document.getElementById("gmarket_id").value != "" && form.gmarket_master_page.value != ""){
+		if(form.gmarket_master_page.value.indexOf("shop.gmarket.co.kr/") == -1){
+			alert("미니샵 주소가 올바르지 않습니다.\n미니샵 등록안내를 확인후 정확히 등록해주세요.\n문의: 6354-3601(206)");
+			form.gmarket_master_page.value = "";
+			form.gmarket_master_page.focus();
+			return false;
+		}
+	}
+	if(document.getElementById("eleven_id").value != "" && form.eleven_master_page.value != ""){
+		if(form.eleven_master_page.value.indexOf("shop.11st.co.kr/sellershop/") == -1 && form.eleven_master_page.value.indexOf("www.11st.co.kr/marketing/") == -1 && form.eleven_master_page.value.indexOf("search.11st.co.kr/SearchPrdAction.tmall?method=") == -1 && form.eleven_master_page.value.indexOf("shop.11st.co.kr/") == -1){
+			alert("미니샵 주소가 올바르지 않습니다.\n미니샵 등록안내를 확인후 정확히 등록해주세요.\n문의: 6354-3601(206)");
+			form.eleven_master_page.value = "";
+			form.eleven_master_page.focus();
+			return false;
+		}
+	}
+	
+	return true;
+}
+function click_shop(param){
+	if(param==1){
+		document.getElementById("di_idchk").style.display = "block";
+		document.getElementById("shop_name_text1").innerHTML="\"인터파크\"";
+		document.frm_searchdiv.shopname.value = "interpark";
+		document.frm_searchdiv.shopid.focus();
+	}else if(param==2){
+		document.getElementById("di_idchk").style.display = "block";
+		document.getElementById("shop_name_text1").innerHTML="\"옥션\"";
+		document.frm_searchdiv.shopname.value = "auction";
+		document.frm_searchdiv.shopid.focus();
+	}else if(param==3){
+		document.getElementById("di_idchk").style.display = "block";
+		document.getElementById("shop_name_text1").innerHTML="\"G마켓\"";
+		document.frm_searchdiv.shopname.value = "gmarket";
+		document.frm_searchdiv.shopid.focus();
+	}else if(param==4){
+		document.getElementById("di_idchk").style.display = "block";
+		document.getElementById("shop_name_text1").innerHTML="\"11번가\"";
+		document.frm_searchdiv.shopname.value = "eleven";
+		document.frm_searchdiv.shopid.focus();
+	}
+}
+function close_layer(){
+	document.frm_searchdiv.shopid.value = "";
+	document.getElementById("result").style.display = "none";
+	document.getElementById("di_idchk").style.display = "none";
+}
+function chk_search_id(){
+	if(document.frm_searchdiv.shopid.value==""){
+		alert("검색하실 ID를 입력해 주십시오.");
+		document.frm_searchdiv.shopid.focus();
+		return false;
+	}
+}
+function use_id(){
+	document.getElementById("result").style.display = "none";
+	document.getElementById("di_idchk").style.display = "none";
+	if(frm_searchdiv.shopname.value=="interpark"){
+		document.getElementById("interpark_id").value = frm_searchdiv.shopid.value;
+	}else if(frm_searchdiv.shopname.value=="auction"){
+		document.getElementById("auction_id").value = frm_searchdiv.shopid.value;
+	}else if(frm_searchdiv.shopname.value=="gmarket"){
+		document.getElementById("gmarket_id").value = frm_searchdiv.shopid.value;
+	}else if(frm_searchdiv.shopname.value=="eleven"){
+		document.getElementById("eleven_id").value = frm_searchdiv.shopid.value;
+	}
+	frm_searchdiv.shopid.value = "";
+	document.getElementById("result").style.display = "none";
+}
+function resize_popup_info_1(){ //닉네임 안내팝업
+	var w = 800;
+	var h = 3850;
+	var img_src = "http://imgenuri.enuri.gscdn.com/images/sdul/shopname_info_all_3.png";
+	w_dummy = w + 20; //스크롤바를 위해서 팝업창의 가로길이를 20픽셀 추가한다.
+	with( window.open("","madi_image_1",'height='+h+',width='+w_dummy+',scrollbars=yes,resizable=yes') )
+	{
+		document.write("<head><title>닉네임 안내</title></head><body topmargin=0 rightmargin=0 bottommargin=0 leftmargin=0>","<a href='#' alt='클릭하시면 창이 닫힙니다.'><img src='"+img_src+"' hspace=0 vspace=0 border=0 onclick='window.close();'></a>","</body>");
+		focus();
+	}
+}
+function resize_popup_info_2(){ //미니샵주소 안내 팝업
+	var w = 800;
+	var h = 1710;
+	var img_src = "http://imgenuri.enuri.gscdn.com/images/sdul/minishop_info_1.png";
+	w_dummy = w + 20; //스크롤바를 위해서 팝업창의 가로길이를 20픽셀 추가한다.
+	with( window.open("","madi_image_2",'height='+h+',width='+w_dummy+',scrollbars=yes,resizable=yes') )
+	{
+		document.write("<head><title>미니샵 주소 안내</title></head><body topmargin=0 rightmargin=0 bottommargin=0 leftmargin=0>","<a href='#' alt='클릭하시면 창이 닫힙니다.'><img src='"+img_src+"' hspace=0 vspace=0 border=0 onclick='window.close();'></a>","</body>");
+		focus();
+	}
+}
+function overImg(obj){
+	if(obj.src.indexOf("_ov.gif")<0){
+		obj.src = obj.src.replace(".gif", "_ov.gif");
+	}
+}
+function outImg(obj){
+	if(obj.src.indexOf("_ov.gif")>0){
+		obj.src = obj.src.replace("_ov.gif", ".gif");
+	}
+}
+</script>
+</head>
+<body onload="resize()" bgColor="#f5f5f5" style="margin:0 0 0 0;">
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+.bgLoginLayerBox1 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top.png);}
+.bgLoginLayerBox11 {background-image:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_01.png);}
+.bgLoginLayerBox2 {background-image:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_02_right.png);}
+.bgLoginLayerBox3 {background-image:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_03.png);}
+.bgLoginLayerBox4 {background-image:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_ly_03.png);}
+.bgLoginLayerBox5 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom.png);}
+.bgLoginLayerBoxBot {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom_2015.png);}
+
+.bgLoginLayerSduBox1 {background-image:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_mall.gif);}
+.bgLoginLayerSdulBox1 {background-image:url(http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_sdul.gif);}
+.bgLoginLayerBoxBody {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg.png);}
+.bgLoginLayerBoxBody2015 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg_2015.png);}
+
+
+.autoLoginLayerStyle1 {font-family:돋움;color:#ce4300;font-size:11px;}
+.autoLoginLayerStyle2 {font-family:돋움;color:#42638f;font-size:11px;font-weight:bold;line-height:13px;}
+.autoLoginLayerStyle3 {font-family:돋움;color:#42638f;font-size:11px;line-height:normal;}
+
+.bgLoginLayerBox6 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top2.png);}
+.bgLoginLayerBox7 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg2.png);}
+.bgLoginLayerBox8 {background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom2.png);}
+
+
+</style>
+<script language="javascript">
+function getIEVersion(){
+    g = navigator;
+    a = g.userAgent;
+    p = g.appVersion;
+    m = p.indexOf("MSIE");
+
+    if(m!=-1 && a.indexOf("Win") != -1){
+        return parseFloat(p.substring(m+4));
+    }else{
+    	return -1;
+    }
+}
+if(getIEVersion()>0 && getIEVersion()<7){
+	document.write("<style type='text/css'>");
+	document.write(".bgLoginLayerBox1 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox11 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_01.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox2 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_02_right.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox3 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_03.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox4 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/login_ly_03.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox5 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBoxBot {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom_2015.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBoxBody {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBoxBody2015 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg_2015.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox6 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top2.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox7 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bg2.png',sizingMethod='scale');");
+	document.write("}");
+	document.write(".bgLoginLayerBox8 {");
+	document.write("	background-image:none;");
+	document.write("	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_bottom2.png',sizingMethod='scale');");
+	document.write("}");
+	document.write("</style>");
+}
+//쿠키 Get
+function fnGetCookie( name )
+{
+   var nameOfCookie = name + "=";
+   var x = 0;
+   while ( x <= document.cookie.length )
+   {
+           var y = (x+nameOfCookie.length);
+           if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+                   if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+                           endOfCookie = document.cookie.length;
+                   return unescape( document.cookie.substring( y, endOfCookie ) );
+           }
+           x = document.cookie.indexOf( " ", x ) + 1;
+           if ( x == 0 )
+                   break;
+   }
+   return "";
+}
+
+var logintop_menu = ""; //현재페이지 구분
+var logintop_url = top.location.pathname;
+var logintop_cmdtype = ""; //로그인호출 유형
+var logintop_afterurl = ""; //로그인후 페이지이동
+var logintop_mygoods = 0; //0:최근본상품보기, 1:찜상품보기
+
+var logintop_modelno = ""; //찜상품 등록시, 지식통창에서 동영상글일때 모델글인지 여부 알기위해
+var logintop_temppwd = ""; //임시비번상태
+var logintop_kbmovie = ""; //지식통창에서 동영상이 있는글
+
+if (logintop_url=="/" || logintop_url.length==InStr(logintop_url,"/") || logintop_url=="/Index.jsp" || logintop_url=="/Index_2010.jsp" || logintop_url=="/Index2014.jsp" || logintop_url=="/etc/planevent/PlanEvent.jsp" || logintop_url=="/etc/planevent/PlanTravel.jsp"){
+	logintop_menu = "index";
+}else if ((logintop_url.indexOf("car/")<0 && logintop_url.indexOf("knowbox/")>0) || logintop_url.indexOf("/Listfungoods_New.jsp")>0 || logintop_url.indexOf("/Listhomeshopgoods_New.jsp")>0
+	|| logintop_url.indexOf("/Listnewgoods_New.jsp")>0 || logintop_url.indexOf("/sdul/mallregister/SellerMain.jsp")>-1 || logintop_url.indexOf("/Listpopulargoods_New.jsp")>0 || logintop_url.indexOf("/view/Sslist.jsp")>=0 ){
+	logintop_menu = "knowbox";
+}else if(logintop_url.indexOf("view/List")>0){
+	logintop_menu = "list2010";
+}else if (logintop_url.indexOf("view/Comparemulti.jsp")>0){
+	logintop_menu = "comparemulti";
+}else if (logintop_url.indexOf("view/Viewbigimg")>0){
+	logintop_menu = "viewbigimg";
+}else if (logintop_url.indexOf("view/Detailmulti.jsp")>0 || logintop_url.indexOf("/p/")>=0){
+	logintop_menu = "detailmulti";
+}else if (logintop_url.indexOf("view/EnuriQuick.jsp")>0){
+	logintop_menu = "enuriquick";
+}else if (logintop_url.indexOf("faq/Faq_List.jsp")>0){
+	logintop_menu = "faq";
+}else if (logintop_url.indexOf("purchaseguide/")>0){
+	logintop_menu = "guide";
+}else if (logintop_url.indexOf("car/")>0){
+	logintop_menu = "auto";
+}else if (logintop_url.indexOf("board/")>0){
+	logintop_menu = "board";
+}else if (logintop_url.indexOf("view/Paxinsu.jsp")>0){
+	logintop_menu = "outframe";
+}else if (logintop_url.indexOf("view/Insurance_Insvalley.jsp")>0 || logintop_url.indexOf("view/Tour_Tourjockey.jsp")>0 || logintop_url.indexOf("tour2012/Tour_Hotel.jsp")>0 || logintop_url.indexOf("view/Flower365.jsp")>0 || logintop_url.indexOf("view/move_mall.jsp")>0){
+	logintop_menu = "event";
+}else if (logintop_url.indexOf("view/resentzzim/resentzzimList")>0){
+	logintop_menu = "resentzzimpop";
+}else if (logintop_url.indexOf("event/")>0){
+	logintop_menu = "event";
+}
+
+function InStr(strSearch, charSearchFor){
+	var inCnt = 0;
+	for (i=0; i < strSearch.length; i++){
+		if (charSearchFor == strSearch.substring(i,i+1)){
+			inCnt++;
+		}
+	}
+	return inCnt;
+}
+function setLogintopCmdtype(param){
+	logintop_cmdtype = param;
+}
+function setLogintopAfterurl(param){
+	logintop_afterurl = param;
+}
+function setLogintopMygoods(param){
+	logintop_mygoods = param;
+}
+function setLogintopModelno(param){
+	logintop_modelno = param;
+}
+function setLogintopTempPwd(param){
+	logintop_temppwd = param;
+}
+function setLogintopKbMovie(param){
+	logintop_kbmovie = param;
+}
+function oldCmdLoginPop(){
+	var surl = "";
+	if (logintop_cmdtype=="sdu" || logintop_cmdtype=="sduplan"){ //쇼핑몰로그인
+		surl = "/sdu/login/Login.jsp";
+	}
+	if (logintop_cmdtype=="sdul"){ //sdul로그인
+		surl = "/login/Loginpop_2010.jsp?cmd=sdul_list";
+	}
+	var k = window.open(surl,'WinSDULogin','width=700 height=400');
+	k.focus();
+}
+//로그인처리후 호출됨
+//function showMyAllList_1(type) {
+//        if(type=="today") {
+//
+//            resentZzimOpen(1);
+//        }
+//        if(type=="save") {
+//            resentZzimOpen(2);
+//        }
+//    }
+
+function afterLoginLayer(uid,unick,sdflag){
+	if(logintop_url.indexOf("/faq/customer") >= 0){
+		if (logintop_cmdtype!="customer_qna"){ //고객센터
+			top.location.reload();
+		}
+	}
+	logintop_temppwd = "";
+
+	if(typeof(sdflag)=="undefined"){
+		sdflag = "";
+	}
+
+//	if(logintop_cmdtype=="list2010"){
+//		showMyAllList_1('save');
+//	}
+
+ 	if(logintop_cmdtype!="sdul" && sdflag.indexOf("/sdul/")==-1){
+		var adWin = window.open("http://ipns.kr/pns/service_info?site_code=S035&ctg_code=1&sub_code=1","","resizable=no,toolbar=no,directories=no,status=no,menubar=no,location=no");
+
+		if(adWin)
+	        adWin.focus();
+	}
+
+	cmdMyAreaReload();
+
+	try{ //목록 간략보기
+		document.getElementById("frmSimpleView").contentWindow.setBBSlist(1);
+	}catch(e){}
+
+	try{ //공개토킹 로그인영역처리
+		getLogin(uid,unick);
+		roommakeLoginSet();
+	}catch(e){}
+
+	try{ //2011개편 지식통목록 마이메뉴 처리
+		if(logintop_cmdtype=="review_event"){
+			top.cmdAfterLoginKbTop('REVIEW_APP');
+			logintop_cmdtype = "";
+
+			return;
+		}else{
+			top.cmdAfterLoginKbTop();
+		}
+	}catch(e){}
+
+	if (logintop_cmdtype=="redirect" && logintop_menu!="index" && logintop_mygoods != 1 ){
+		top.location.href = logintop_afterurl;
+		return;
+	}
+
+	hideLoginLayer();
+	hideLoginAutoAlert();
+
+
+	// sdul로 로그인했을 경우 팝업 띄움
+	if(logintop_cmdtype!="sdul" && sdflag.indexOf("/sdul/")>=0) {
+			/*	var varWindowWidth = window.screen.width;
+		if (fnGetCookie("ErrorNotice") == ""){
+			var SDULPopup = window.open("/sdul/list/Sdul_Error_Popup_Cookie.jsp","SDULPopup","width=400,height=400,top=0,left=0,toolbar=no,location=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,personalbar=no");
+			if (SDULPopup != null){
+				SDULPopup.focus();
+			}
+		}
+		if (fnGetCookie("powerseller_pop") == ""){
+			var powerseller_pop = window.open("/sdul/list/powerseller_pop.jsp","powerseller_pop","width=550,height=520,top=50,left=50,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no");
+			if (powerseller_pop != null){
+				powerseller_pop.focus();
+			}
+		}*/
+		//bid_layerShow();
+		//Bid_EventShow();
+		//alert(fnGetCookie("sdul_Error_popShow"));
+		//if (fnGetCookie("sdul_Error_popShow") == "") {
+		//	if(logintop_url.indexOf("/mallregister/SellerMain.jsp")>=0) {
+			//	document.getElementById("sdul_Error_pop").style.display = "none";
+			//}else{
+			//sdul_Error_popShow();
+		//}
+	}
+
+	if (logintop_cmdtype=="knowboxreply" || logintop_cmdtype=="review_event"){
+		top.location.reload();
+		return;
+	}
+	if (logintop_cmdtype=="knowboxuseful"){ //지식통창 유익평가
+		var nw = window.open(logintop_afterurl,"KBREADPOP","width=372 height=230 resizable=yes")
+		nw.focus();
+		top.location.reload();
+		return;
+	}
+	if (logintop_cmdtype=="guideuseful"){ //구매가이드창 유익평가
+		var nw = window.open(logintop_afterurl,"KBREADPOP","width=372 height=230 resizable=yes")
+		nw.focus();
+		parent.location.reload();
+		return;
+	}
+	if (logintop_cmdtype=="shopbbs"){ //쇼핑몰 신고 게시판
+		top.location.reload();
+		return;
+	}
+
+	if (logintop_cmdtype=="sdul_reg"){ //sdul 가입 팝업
+		if(opener){
+			opener.top.afterLoginLayer(uid,unick,sdflag);
+		}
+		top.location.reload();
+		return;
+	}
+	if (logintop_cmdtype=="customer"){ //고객센터
+		top.location.href = "/faq/customer_qna.jsp?faq_type="+locFaq_type+"&kind="+locKind;
+		return;
+	}
+	if (logintop_cmdtype=="customer_seller"){ //고객센터
+		top.location.href = "/faq/customer_seller_write.jsp?faq_type="+locFaq_type+"&kind="+locKind+"&faq_seq="+locFaq_seq;
+		return;
+	}
+	if (logintop_cmdtype=="customer_qna"){ //고객센터
+		top.location.href = "/faq/customer_qna_write.jsp?faq_type="+locFaq_type+"&kind="+locKind+"&faq_seq="+locFaq_seq;
+		return;
+	}
+
+	if (logintop_cmdtype=="sdu"){ //쇼핑몰로그인
+		if (sdflag.indexOf("/sdu/")>=0){
+			top.location.href = "/sdu/Index.jsp";
+		}else if(sdflag.indexOf("/sdul/")>=0){ //sdu로그인 선택이지만 sdul회원인경우
+			cmdSduLoginAlertLayer('sdul');
+		}else{
+			top.location.href = "/sdul/mallregister/SellerMain.jsp";
+			/* top.location.href = "/mallregister/new/SellerGuide2.jsp"; */
+		}
+		return;
+	}
+
+	if (logintop_cmdtype=="sduplan"){ //sdu기획전 등록
+		setplan_application();
+	}
+
+	if (logintop_cmdtype=="sdul"){ //sdul로그인
+		if (sdflag.indexOf("/sdul/")>=0){
+			top.location.href = "/sdul/mallregister/SellerMain.jsp";
+		}else if (sdflag.indexOf("/sdu/")>=0){ //sdul로그인 선택이지만 sdu회원인경우
+			cmdSduLoginAlertLayer('sdu');
+		}else{
+			//top.location.href = "/mallregister/new/SellerGuide1.jsp";
+			top.location.href = "/sdul/mallregister/SellerMain.jsp?sm=1&lg=1";
+		}
+		return;
+	}
+
+	if (logintop_cmdtype=="sellerboard"){ //sdu,sdul메뉴 문의게시판
+
+		if (logintop_url.indexOf("?") >= 0 ){
+			logintop_url = logintop_url.substring(0,logintop_url.indexOf("?"));
+		}
+		this.location.href = logintop_url + "?islogin=Y";
+	}
+	if (logintop_cmdtype=="autocompare"){ //자동차 비교목록 게시판레이어
+		document.getElementById("ifm_Main").contentWindow.afterLoginLayer();
+		return;
+	}
+	if (logintop_cmdtype=="autospec"){ //자동차 새창 게시판레이어
+		afterLoginLayer_spec();
+		return;
+	}
+	if(logintop_cmdtype == "savegoods"){//최근본 상품에서 찜상품 저장
+		insertZzimProcNew();
+		return;
+	}
+	if ( logintop_cmdtype == "gosavegoods"){ //최근본 상품에서 찜상품으로 이동
+		goSaveGoods();
+	}
+	if ( logintop_cmdtype == "knowbox_zzim"){ //지식통에서 찜상품 탭 눌렀을때
+		fnReguideReload('2','');
+	}
+	if ( logintop_cmdtype == "showzzim"){ //사이트 맵에서 찜한 상품 눌렀을때
+		top.document.getElementById('frmSaveGoods').src = '/view/SaveGoodsList_2010.jsp?tbln=save';
+	}
+	if (logintop_cmdtype=="showzzim2010" || logintop_cmdtype=="knowbox") { // 지식통에서 일반 로그인
+		document.getElementById("loginDiv1").style.display = "none";
+		document.getElementById("loginDiv2").style.display = "";
+	}
+	if (logintop_cmdtype=="showzzim2010") { // zzim2010호출
+		top.document.getElementById('frmSaveGoods').src = '/view/SaveGoodsList_2010.jsp?tbln=save';
+	}
+	if(logintop_cmdtype=="resell"){ //개봉상품 주문내역 바로가기
+		top.location.href = "/event/Resell_Order_List.jsp";
+	}
+    if(logintop_cmdtype=="openGoods" || logintop_cmdtype=="openGoodsDetail"){ //개봉상품 주문내역 바로가기
+        top.location.reload();
+    }
+    if(logintop_cmdtype=="stampEvent"){
+    	fnMoveEntryPage();	// 스템프 이벤트에 있음 2014.11.27
+    }
+    if(logintop_cmdtype=="eventNewServices1"){
+    	fnGetUserStatus();
+    	fnIsWritePostScript();
+    }else if(logintop_cmdtype=="eventNewServices2"){
+
+        fnGetUserStatus();
+    	fnExperiencePage();
+    }else if(logintop_cmdtype=="eventNewServices3"){
+    	top.CmdJoin(3);
+    }
+    if(logintop_cmdtype=="eventDiscount2"){
+    	fnGetStampCnt2();
+    	fnGetStampCnt();
+    	fnIsWinner();
+    }
+    if(logintop_cmdtype=="toyGoods"){ // 손오공 완구 특가전
+    	window.open('/toygoods/Toy_Goods_Mypage.jsp'); // 2014.12.17 추가
+    }
+	if(logintop_cmdtype=="detailbbs"){ //상품창 게시판
+		document.getElementById("goodsBBSFrm").contentWindow.location.reload();
+	}
+
+	Cmd_Login(logintop_cmdtype);
+
+	if (logintop_cmdtype=="inputzzim"){ //찜상품 저장으로
+		if (logintop_modelno!=""){
+			insertZzimProcNew(logintop_modelno);
+		}
+	}else if (logintop_cmdtype=="inputzzim2010"){ //리스트에서 찜상품 저장 신규
+		if (logintop_modelno!=""){
+			insertZzimProcNew(logintop_modelno);
+		}
+		try {
+			//acc_loginReSet();
+			setTimeout(function(){getGuide_Resent_Zzim(3,1);},500);
+		} catch(e) {}
+	}else if (logintop_cmdtype=="detailinputzzim"){ //상세창에서 찜상품 저장으로
+		try{
+			if(document.getElementById("goodsBBSFrm").src && document.getElementById("goodsBBSFrm").style.height>0){
+				document.getElementById("goodsBBSFrm").contentWindow.location.reload();
+			}
+		}catch(e){
+		}
+		if (logintop_modelno!=""){
+			insertZzimProcNew(logintop_modelno);
+		}else{
+			insertZzimProcNew();
+		}
+		return;
+	}else if (logintop_cmdtype=="compareinputzzim"){ //비교창에서 찜상품 저장으로
+		if (logintop_modelno!=""){
+			CmdMyFavoriteInsertProc(logintop_modelno);
+		}
+		return;
+	}else if (logintop_cmdtype=="viewbigimginputzzim"){ //큰사진보기창에서 찜상품 저장으로
+		openMyFavoriteInfoLayer();
+		return;
+	}else if (logintop_cmdtype=="modifymem"){ //회원정보수정으로
+		CmdJoin(3);
+	}else if (logintop_cmdtype=="faq"){ //고객센터
+		document.getElementById("detail_list").contentWindow.location.reload();
+	}else if (logintop_cmdtype=="popup_open"){ //고객센터
+		try {
+			if(document.getElementById("detail_list")){
+				document.getElementById("detail_list").contentWindow.faq_one_qna();
+			}else{
+				faq_one_qna();
+			}
+		} catch(e) {}
+	}else if (logintop_cmdtype=="faqwrite"){ //고객센터 질문과답변 글쓰기로
+		document.getElementById("detail_list").contentWindow.go_write();
+	}else if (logintop_cmdtype=="faqsellwrite"){ //고객센터 신상품등록요청게시판 글쓰기로
+
+		document.getElementById("detail_list").contentWindow.go_write();
+	}else if (logintop_cmdtype=="chatroom"){ //채팅에서
+		getLogin(uid, unick);
+		roommakeLoginSet();
+		try {
+			top.hideLoginLayer();
+			top.hideLoginAutoAlert();
+		} catch(e) {}
+	}else if (logintop_cmdtype=="favorite_event" || logintop_cmdtype=="batang_event" || logintop_cmdtype=="batang_event_winner"){//즐겨찾기 이벤트
+		//subscriptionCheck();
+		image_change_favorite_evnet();
+	}else if (logintop_cmdtype=="favorite_memo"){//즐겨찾기 이벤트
+		favoriteEventMemo_CheckLogin();
+	}else if (logintop_cmdtype=="event_userorder"){//구매지원 이벤트
+		try {
+			cmdAppEvent();
+		} catch(e) {}
+	}else if (logintop_cmdtype=="resell_userorder"){//개봉상품
+		try {
+			cmdOpenModelReload();
+		} catch(e) {}
+	}else if (logintop_cmdtype=="list2010" || (logintop_cmdtype=="" && logintop_menu=="list2010")) { //목록
+		try {
+			if (document.getElementById("enuriMenuFrame")){
+				document.getElementById("enuriMenuFrame").contentWindow.document.getElementById("enuriListFrame").contentWindow.location.reload();
+			}
+			if (document.getElementById("searchListFrame")){
+				document.getElementById("searchListFrame").contentWindow.location.reload();
+			}
+			if (document.getElementById("catalogListDiv")){
+				document.getElementById("catalogListDiv").style.display = "";
+			}
+			//찜상품 보기
+			if(logintop_mygoods==3) {
+				try{
+					getGuide_Resent_ZzimCate(3,1,"");
+				} catch(e) {}
+			}
+			setTimeout("acc_loginReSet()", 100);
+		} catch(e) {}
+	}else if(logintop_cmdtype=="top"){
+		try{
+			getGuide_Resent_ZzimCate(4,1,"");
+		} catch(e) {}
+	}else if(logintop_cmdtype=="resentzzimList") { // 20130822 신규 최근본, 찜로그인
+		// 최근본 리스트에서 찜버튼을 눌렀을때
+		insertZzimProcNew(checkedModelList);
+	}else if(logintop_cmdtype=="resentzzim") { // 20130822 신규 최근본, 찜로그인
+		document.location.href = "/view/resentzzim/resentzzimList.jsp?listType=2";
+	}else{
+		// 신규메인의 찜상품 보기
+		if(logintop_mygoods==3) {
+			try{
+				getGuide_Resent_ZzimCate(3,1,"");
+			} catch(e) {}
+		// 신규메인에서 로그인 했을때 찜 데이터 보여줌
+		} else if(logintop_mygoods==4) {
+			try{
+				//getGuide_Resent_ZzimCate(3,1,"detailmulti");
+			} catch(e) {}
+		} else if (logintop_mygoods==1){ //찜상품 보기로
+			if(document.getElementById("IFrameMyFavoriteList")) document.getElementById("IFrameMyFavoriteList").src = "/include/Incmyfavoritelistmain_2010.jsp?selwhichlist=myfavoritelist";
+		}else{ //최근본상품 보기로
+			if(document.getElementById("IFrameMyFavoriteList")) document.getElementById("IFrameMyFavoriteList").src = "/include/Incmytodayviewlistmain_2010.jsp";
+		}
+	}
+	try {
+		if (document.getElementById("searchListFrame")){
+			document.getElementById("searchListFrame").contentWindow.location.reload();
+		}
+	} catch(e) {}
+	try{
+		getGuide_Resent_ZzimCate(4,1,"");
+	} catch(e) {}
+	/** 판매자 안내 레이어
+
+	if(sdflag=="Y"){
+		if(logintop_menu=="index"){
+			var tmpLayerLeft = getCumulativeOffset(document.getElementById("LayerLoginMain"))[0];
+			document.getElementById("div_sdLoginTopLayer_0906").style.left = tmpLayerLeft;
+		}
+		document.getElementById("div_sdLoginTopLayer_0906").style.display = "block";
+		document.getElementById("div_sdLoginTopLayer_0906").scrollIntoView(true);
+	}
+	*/
+}
+
+// 이벤트 관련 레이어를 호출하는 함수
+// 임시사용
+function eventAddrInfo(giftType) {
+	document.getElementById("imgEventAddr").src = "http://imgenuri.enuri.gscdn.com/images/ShoppingTalk/event/good_layer_0"+giftType+".gif";
+	document.getElementById("imgEventAddr").useMap = "#MapEventAddr"+giftType;
+	document.getElementById("divEventAddr").style.display = "inline";
+
+	document.getElementById("divEventAddr").style.top = document.getElementById("divLoginLayer").offsetTop + "px";
+	document.getElementById("divEventAddr").style.left = document.getElementById("divLoginLayer").offsetLeft + "px";
+//	document.getElementById("divEventAddr").style.top = document.body.clientHeight / 2 - document.getElementById("divEventAddr").offsetHeight / 2;
+//	document.getElementById("divEventAddr").style.left = document.body.clientWidth / 2 - document.getElementById("divEventAddr").offsetWidth / 2;
+}
+
+//재로그인후 회원정보수정
+function afterReconfirm(){
+	hideLoginLayer();
+	hideLoginAutoAlert();
+	document.getElementById("nonbanking_site1").style.display = "none";
+	CmdJoin(3);
+}
+
+function faq_one_qna(){
+		var faq_one_qna = window.open("/faq/Faq_One_Qna.jsp","faq_one_qna","toolbar=no,menubar=no,statusbar=no,location=no,scrollbars=yes,resizable=no,width=460,height=528 top=25,left=465");
+		faq_one_qna.focus();
+}
+
+function Cmd_Login(cmdtype){
+	var eObjId = '';
+    try{
+    	var eObj = event.target ? event.target : event.srcElement;
+    	eObjId = eObj.id;
+    }catch(e){
+    }
+	cmdHideLoginLayers();
+	top.cmdHideLoginLayers();
+
+	if(document.getElementById("ifBodyRead")){
+		try{
+			document.getElementById("ifBodyRead").contentWindow.cmdHideLoginLayers();
+		}catch(e){}
+	}
+	
+	if(typeof(cmdtype)=="undefined"){
+		logintop_cmdtype = "";
+	}else{
+		logintop_cmdtype = cmdtype;
+	}
+	//alert(logintop_menu+","+logintop_cmdtype);
+	var leftscr    = 0;
+	var topscr     = 0;
+	var loginLeft  = 272;
+	var loginTop   = 0;
+
+	if (document.getElementById("FSETMAIN")){
+		topscr = document.getElementById("FSETMAIN").offsetHeight/2 - 100 + document.getElementById("FSETMAIN").scrollTop;
+	}else{
+		topscr = getBodyScrollTop() + getBodyClientHeight()/2 - 100;
+	}
+
+	if(islogin()){
+		if(logintop_menu=="index" || logintop_menu=="knowbox"){
+			if(document.getElementById("img_main_login"))	document.getElementById("img_main_login").style.display="none";
+			if(document.getElementById("list_login_btn")) 	document.getElementById("list_login_btn").style.display = "none";
+			if(document.getElementById("loginDiv2")) 		document.getElementById("loginDiv2").style.display = "";
+
+			if(cmdtype == "top"){
+				if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+			}else{
+				if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+logintop_menu;
+			}
+			if(document.getElementById("LayerLoginMain"))	document.getElementById("LayerLoginMain").style.display = "";
+		}else{
+			if(document.getElementById("list_login_btn")) 	document.getElementById("list_login_btn").style.display = "none";
+			if(document.getElementById("loginDiv2")) 		document.getElementById("loginDiv2").style.display = "";
+			if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+			if(document.getElementById("LayerLoginMain"))	document.getElementById("LayerLoginMain").style.display = "";
+		}
+
+		if(logintop_cmdtype=="choicesdu"){ //sdu,sdul중복회원인 경우 이동하려는 메뉴 선택 : 푸터에서 호출
+			setLogintopCmdtype("choicesdu");
+			if(logintop_menu=="index"){
+				loginLeft += getCumulativeOffset(document.getElementById("tblMain"))[0];
+				loginTop = document.body.scrollHeight - 400;
+				// main_body 만큼을 빼줌
+				if(document.getElementById("main_body")) {
+					loginLeft = loginLeft - document.getElementById("main_body").offsetLeft;
+				}
+				cmdLoginLayer(loginLeft,loginTop);
+			}else{
+				loginLeft = 380;
+				loginTop = document.body.scrollHeight - 400;
+				cmdLoginLayer(loginLeft, loginTop);
+			}
+		}else if(logintop_cmdtype=="sdul_reg"){ //sdu,sdul 회원가입 팝업
+			top.location.reload();
+		}
+		return;
+	}else{
+		if(logintop_cmdtype=="review_event"){ //지식통에서 체험단 신청하기
+	         if(eObj){
+	                loginLeft = jQuery(eObj).offset().left-13-166;
+	                loginTop = jQuery(eObj).offset().top+35;
+
+	                cmdLoginLayer(loginLeft,loginTop);
+	            } else {
+	                try{
+	                    var eObj = document.getElementById("ifBodyRead").contentWindow.event.target ? document.getElementById("ifBodyRead").contentWindow.event.target : document.getElementById("ifBodyRead").contentWindow.event.srcElement;
+	                }catch(e){
+	                }
+
+                    loginLeft = jQuery(document.getElementById("ifBodyRead")).offset().left + jQuery(eObj).offset().left;
+                    loginTop  = jQuery(document.getElementById("ifBodyRead")).offset().top + jQuery(eObj).offset().top+35;
+
+                    cmdLoginLayer(loginLeft,loginTop);
+		       }
+		}else if(logintop_cmdtype=="sdul" || logintop_cmdtype=="sdu"){
+            topscr = document.body.scrollHeight - 450;
+            cmdLoginLayer(312,topscr);
+        }else if(logintop_cmdtype=="sduplan"){
+            try{
+                var eObj = document.getElementById("ifBodyRead").contentWindow.event.target ? document.getElementById("ifBodyRead").contentWindow.event.target : document.getElementById("ifBodyRead").contentWindow.event.srcElement;
+            }catch(e){
+            }
+            cmdLoginLayer(jQuery(document.body).width()/2-180,jQuery(eObj).offset().top-350);
+        }else if(logintop_cmdtype=="mainZzim"){
+			jQuery("#divLoginLayer").css({"position":"fixed"});
+			if(document.getElementById("resentNzzimDiv").style.display=="none" && jQuery("#guide_recent_zzim")){
+				loginLeft = jQuery("#guide_recent_zzim").offset().left-243-4;
+		        loginTop  = jQuery("#guide_recent_zzim").offset().top-157-getBodyScrollTop()+jQuery("#guide_recent_zzim").height();
+			}else{
+				loginLeft = jQuery("#resentNzzimDiv").offset().left-243-4;
+		        loginTop  = jQuery("#resentNzzimDiv").offset().top-157-getBodyScrollTop()+jQuery("#resentNzzimDiv").height();
+			}
+            cmdLoginLayer(loginLeft,loginTop);
+		}else if(eObjId == 'zzimDiv'){
+			cmdLoginLayer(jQuery(document.body).width()/2-180,jQuery(eObj).offset().top-125);
+		}else if(logintop_cmdtype=="inputzzim2010"){
+			loginLeft = $(".enuriBi").width()/2;
+			if (typeof(Cmd_Login._rbbtn) == "undefined" || Cmd_Login._rbbtn == false){
+				if (document.getElementById("enuriMenuFrame")){
+					if (document.getElementById("enuriMenuFrame").contentWindow.document.getElementById("enuriListFrame")){
+						var listFrameObj = document.getElementById("enuriMenuFrame").contentWindow.document.getElementById("enuriListFrame");
+						loginTop += $("#enuriMenuFrame").position().top;
+						loginTop += document.getElementById("enuriMenuFrame").contentWindow.getCumulativeOffset(listFrameObj)[1];
+						var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+						if (compareObj){
+							if (compareObj.offsetTop > 0){
+
+								loginTop += compareObj.offsetTop;
+							}else{
+								loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+							}
+						}else{
+							loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+						}
+						loginTop -= 50;
+					}else{
+						var listFrameObj = document.getElementById("enuriMenuFrame");
+						loginTop += getCumulativeOffset(document.getElementById("enuriMenuFrame"))[1];
+						var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+						if (compareObj){
+							if (compareObj.offsetTop > 0){
+								loginTop += compareObj.offsetTop;
+							}else{
+								loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+							}
+						}
+						loginTop -= 50;
+					}
+				}else if(document.getElementById("searchListFrame")){
+					var listFrameObj = document.getElementById("searchListFrame");
+					loginTop += getCumulativeOffset(listFrameObj)[1];
+					var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+					if (compareObj){
+						if (compareObj.offsetTop > 0){
+							loginTop += compareObj.offsetTop;
+						}else{
+							loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+						}
+					}
+					loginTop -= 50;
+				}else if(document.getElementById("enuriListFrame")){
+					var listFrameObj = document.getElementById("enuriListFrame")
+					loginTop += getCumulativeOffset(listFrameObj)[1];
+					var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+					if (compareObj){
+						if (compareObj.offsetTop > 0){
+							loginTop += compareObj.offsetTop;
+						}else{
+							loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+						}
+					}
+					loginTop -= 50;
+				}else{
+					var compareObj = document.getElementById("comparenzzim");
+					if (compareObj){
+						if (compareObj.offsetTop > 0){
+							loginTop += compareObj.offsetTop;
+						}else{
+							loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+						}
+					}
+					loginTop -= 50;
+				}
+			}else{
+				loginTop += (getBodyClientHeight()+getBodyScrollTop() - 150);
+			}
+			cmdLoginLayer(loginLeft, loginTop);
+			Cmd_Login._rbbtn = false;
+		}else if(logintop_cmdtype=="inputzzim"){
+			if (typeof(eObj) != "undefined"){
+				cmdLoginLayer(jQuery(eObj).offset().left/2-150,jQuery(eObj).offset().top-125);
+			}else{
+            	topscr = document.body.scrollHeight - 450;
+            	cmdLoginLayer(312,topscr);
+			}
+        }else if(logintop_cmdtype=="openGoods"){
+            if(eObj){
+                loginLeft = jQuery(eObj).offset().left+107;
+                loginTop = jQuery(eObj).offset().top+455;
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype=="openGoodsDetail"){
+            if(eObj){
+                loginLeft = jQuery(eObj).offset().left-75;
+                loginTop = jQuery(eObj).offset().top+120;
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+         //고객센터
+        }else if(logintop_cmdtype=="customer"){
+            if(eObj){
+                loginLeft = document.body.scrollWidth/2 - jQuery("#divLoginLayer").width()/2;
+                loginTop = jQuery(eObj).offset().top - 280 - jQuery("#divLoginLayer").height();
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype=="customer_seller"){
+            if(eObj){
+                loginLeft = document.body.scrollWidth/2 - jQuery("#divLoginLayer").width()/2;
+                loginTop = jQuery(eObj).offset().top - 280 - jQuery("#divLoginLayer").height();
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype=="customer_qna"){
+            if(eObj){
+                loginLeft = document.body.scrollWidth/2 - jQuery("#divLoginLayer").width()/2;
+                loginTop = jQuery(eObj).offset().top - 280 - jQuery("#divLoginLayer").height();
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype=="stampEvent"){
+            if(eObj){
+                loginLeft = document.body.scrollWidth/2 - jQuery("#divLoginLayer").width()/2;
+                loginTop = jQuery(eObj).offset().top+jQuery(eObj).height()/2+40;
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype=="eventDiscount2"){
+            if(eObj){
+                loginLeft = document.body.scrollWidth/2 - jQuery("#divLoginLayer").width()/2;
+                loginTop = jQuery(eObj).offset().top+jQuery(eObj).height()/2+40;
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype.indexOf("eventNewServices")>-1){
+            if(eObj){
+                loginLeft = jQuery(eObj).offset().left-10;
+                loginTop = jQuery(eObj).offset().top+jQuery(eObj).height()+5;
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        }else if(logintop_cmdtype=="toyGoods"){
+            if(eObj){
+                loginLeft = jQuery(eObj).offset().left-135;
+                loginTop = jQuery(eObj).offset().top+183;
+
+                cmdLoginLayer(loginLeft,loginTop);
+            }
+        } else if (logintop_cmdtype=="toyEvent1") {	//손오공 이벤트 로그인 레이어 이벤트 종료 후 삭제 요망 745
+			if(eObj){
+				if ($(window).width() < 1600) {
+					loginLeft = jQuery(eObj).offset().left+10;
+			        loginTop = jQuery(eObj).offset().top+90;
+				} else {
+					loginLeft = jQuery(eObj).offset().left-100;
+		        	loginTop = jQuery(eObj).offset().top+90;
+				}
+	            cmdLoginLayer(loginLeft,loginTop);
+	        }
+	    } else if (logintop_cmdtype=="toyEvent2") {
+			if(eObj){
+				loginLeft = jQuery(eObj).offset().left-65;
+		        loginTop = jQuery(eObj).offset().top+48;
+
+	            cmdLoginLayer(loginLeft,loginTop);
+	        }
+	    } else if (logintop_cmdtype=="toyEvent3") {
+			if(eObj){
+				loginLeft = jQuery(eObj).offset().left+68;
+		        loginTop = jQuery(eObj).offset().top+68;
+
+	            cmdLoginLayer(loginLeft,loginTop);
+	        }
+		} else if (logintop_menu=="resentzzimpop") {
+			if(eObj){
+		        loginLeft = jQuery(eObj).offset().left-13-196;
+		        loginTop = jQuery(eObj).offset().top+4;
+
+	            cmdLoginLayer(loginLeft,loginTop);
+	        }
+		}else {
+			if(!eObj) eObj = $("#utilMenuLogin");
+			if(eObj){
+		        loginLeft = jQuery(eObj).offset().left-13-166;
+		        loginTop = jQuery(eObj).offset().top+4;
+
+		        // main_body 만큼을 빼줌
+		        if(document.getElementById("main_body")) {
+		            loginLeft = loginLeft - document.getElementById("main_body").offsetLeft;
+		        }
+		        cmdLoginLayer(loginLeft,loginTop);
+		    }
+        }
+        return;
+        <!------------------------------- E              N                 D ----------------------->
+
+		if(logintop_cmdtype=="resentzzimList") {// 20130822 신규 최근본, 찜로그임
+			// resentzzimList.jsp에서 사용하며 ressentzzim.js에 선언 되어있음
+			zzimListClickLoginLayer();
+			return;
+		}else if(logintop_cmdtype=="resentzzim") {// 20130822 신규 최근본, 찜로그임
+			cmdLoginLayer(200,100);//최근본 상품에서 찜상품으로 이동
+			return;
+		}else if(logintop_cmdtype == "savegoods"){ // 쇼핑수첩 추가
+			cmdLoginLayer(saveGoods._f_loginLeft,saveGoods._f_loginTop);//최근본 상품에서 찜상품으로 이동
+			return;
+		}else if ( logintop_cmdtype == "gosavegoods"){
+			cmdLoginLayer(goSaveGoods._f_loginLeft,goSaveGoods._f_loginTop);
+			return;
+		}else if(logintop_cmdtype == "top"){
+			loginLeft = getCumulativeOffset(document.getElementById("list_login_btn"))[0] - 179;
+			loginTop = getCumulativeOffset(document.getElementById("list_login_btn"))[1] - 7;
+			cmdLoginLayer(loginLeft, loginTop);
+			return;
+		}else if(logintop_cmdtype=="sdul_reg"){ //sdu,sdul 회원가입 팝업
+			loginLeft = getCumulativeOffset(document.getElementById("login_btn"))[0] - 70;
+			loginTop = getCumulativeOffset(document.getElementById("login_btn"))[1] + 10;
+			cmdLoginLayer(loginLeft, loginTop);
+			return;
+		}
+		if(logintop_menu=="index"){
+			if(logintop_cmdtype!="sdu" && logintop_cmdtype!="sdul"){
+				cmdScrollTop();
+				setLogintopAfterurl("/");
+				if(logintop_cmdtype!="sdu" && logintop_cmdtype!="sdul"){
+					setLogintopCmdtype("redirect");
+				}
+
+				if(logintop_mygoods==3) {
+					loginLeft = document.getElementById("main_body").offsetWidth / 2 - 100;
+					loginTop = getBodyScrollTop() + document.body.clientHeight - 173;
+				} else {
+					loginLeft = $(eObj).offset().left-13-166;
+					loginTop = $(eObj).offset().top+4;
+					// main_body 만큼을 빼줌
+					if(document.getElementById("main_body")) {
+						loginLeft = loginLeft - document.getElementById("main_body").offsetLeft;
+					}
+
+					if (loginLeft < 0){
+						loginLeft = cumulativeOffset(document.getElementById("LayerLoginMain"))[0]-13-110;
+						if(document.getElementById("main_body")) {
+							loginLeft = loginLeft - document.getElementById("main_body").offsetLeft;
+						}
+						loginTop = cumulativeOffset(document.getElementById("LayerLoginMain"))[1]-4;
+					}
+				}
+
+				cmdLoginLayer(loginLeft,loginTop);
+			}else{
+				loginLeft += cumulativeOffset(document.getElementById("tblMain"))[0];
+				loginTop = document.body.scrollHeight - 400;
+
+				// main_body 만큼을 빼줌
+				if(document.getElementById("main_body")) {
+					loginLeft = loginLeft - document.getElementById("main_body").offsetLeft;
+				}
+				cmdLoginLayer(loginLeft,loginTop);
+			}
+		}else if(logintop_menu=="knowbox" || logintop_menu=="guide"){
+			if(logintop_cmdtype=="knowboxreply" || logintop_cmdtype=="knowboxwrite" || logintop_cmdtype=="pollwrite"){ //지식통 글쓰기
+				loginLeft = getCumulativeOffset(document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype=="guidereply"){ //구매가이드창 댓글쓰기
+				loginLeft = getCumulativeOffset(document.getElementById("ifBodyRead"))[0] + getCumulativeOffset(document.getElementById("ifBodyRead").contentWindow.document.getElementById("ifReply"))[0] + getCumulativeOffset(document.getElementById("ifBodyRead").contentWindow.document.getElementById("ifReply").contentWindow.document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("ifBodyRead"))[1] + getCumulativeOffset(document.getElementById("ifBodyRead").contentWindow.document.getElementById("ifReply"))[1] + getCumulativeOffset(document.getElementById("ifBodyRead").contentWindow.document.getElementById("ifReply").contentWindow.document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype=="pollreply"){ //찬반토론방 댓글쓰기
+				loginLeft = getCumulativeOffset(document.getElementById("planFrame"))[0] + getCumulativeOffset(document.getElementById("planFrame").contentWindow.document.getElementById("IfmReplyList"))[0] + getCumulativeOffset(document.getElementById("planFrame").contentWindow.document.getElementById("IfmReplyList").contentWindow.document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("planFrame"))[1] + getCumulativeOffset(document.getElementById("planFrame").contentWindow.document.getElementById("IfmReplyList"))[1] + getCumulativeOffset(document.getElementById("planFrame").contentWindow.document.getElementById("IfmReplyList").contentWindow.document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype=="knowbox_zzim"){
+				cmdLoginLayer(500,150);
+			}else if(logintop_cmdtype=="review_event"){ //지식통에서 체험단 신청하기
+				if(document.getElementById("ifBodyRead").contentWindow.document.getElementById("btn_appevent")){
+					loginLeft = getCumulativeOffset(document.getElementById("ifBodyRead"))[0] + getCumulativeOffset(document.getElementById("ifBodyRead").contentWindow.document.getElementById("btn_appevent"))[0] - 110;
+					loginTop = getCumulativeOffset(document.getElementById("ifBodyRead"))[1] + getCumulativeOffset(document.getElementById("ifBodyRead").contentWindow.document.getElementById("btn_appevent"))[1] - 150;
+					cmdLoginLayer(loginLeft,loginTop);
+				}else{
+					cmdLoginLayer(312,topscr+60);
+				}
+			}else{
+				if(logintop_kbmovie=="Y"){
+					if(logintop_modelno=="" || logintop_modelno==0){ //전반적인글
+						cmdLoginLayer(395,7);
+					}else{ //모델글
+						cmdLoginLayer(395,90);
+					}
+				}else{
+					if(logintop_cmdtype=="sdul" || logintop_cmdtype=="sdu"){
+						topscr = document.body.scrollHeight - 450;
+						cmdLoginLayer(312,topscr);
+					}else{
+						if(logintop_afterurl.indexOf("List_read.jsp")>=0){
+							loginLeft = 250;
+							topscr = getBodyScrollTop();
+						}else{
+							loginLeft = 513;
+							topscr = getBodyScrollTop() + 60;
+						}
+						cmdLoginLayer(loginLeft,topscr);
+					}
+				}
+			}
+		}else if(logintop_menu=="comparemulti"){
+			var leftoff = document.body.offsetWidth;
+			if (document.getElementById("FSETMAIN")){
+				leftscr = document.getElementById("FSETMAIN").scrollLeft;
+			}else{
+				leftscr = document.body.scrollLeft;
+			}
+			cmdLoginLayer((leftoff/2)+leftscr-139,118);
+		}else if(logintop_menu=="viewbigimg"){
+			cmdLoginLayer(100,50);
+		}else if(logintop_menu=="detailmulti" || logintop_menu=="enuriquick"){
+			if(logintop_cmdtype=="detailbbs"){ //상품창 게시판
+				loginLeft = getCumulativeOffset(document.getElementById("goodsBBSFrm"))[0] + getCumulativeOffset(document.getElementById("goodsBBSFrm").contentWindow.document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("goodsBBSFrm"))[1] + getCumulativeOffset(document.getElementById("goodsBBSFrm").contentWindow.document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype=="review_event"){ //상품창게시판 체험단 신청
+				loginLeft = getCumulativeOffset(document.getElementById("goodsBBSFrm"))[0] + getCumulativeOffset(document.getElementById("goodsBBSFrm").contentWindow.document.getElementById("loginid_bbs"))[0] + 200;
+				loginTop = getCumulativeOffset(document.getElementById("goodsBBSFrm"))[1] + getCumulativeOffset(document.getElementById("goodsBBSFrm").contentWindow.document.getElementById("loginid_bbs"))[1] - 100;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype == "event_userorder"){
+				loginTop = topscr;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else{
+				loginLeft = getCumulativeOffset(document.getElementById("btn_zzim"))[0]-1;
+				loginTop = getCumulativeOffset(document.getElementById("btn_zzim"))[1]+17;
+				cmdLoginLayer(loginLeft,loginTop);
+			}
+		}else if(logintop_menu=="faq" && logintop_cmdtype!="sdu" && logintop_cmdtype!="sduplan" && logintop_cmdtype!="sdul"){
+			if(document.getElementById("detail_list") && document.getElementById("detail_list").contentWindow.document.getElementById("loginid")){
+				loginLeft = getCumulativeOffset(document.getElementById("detail_list"))[0] + getCumulativeOffset(document.getElementById("detail_list").contentWindow.document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("detail_list"))[1] + getCumulativeOffset(document.getElementById("detail_list").contentWindow.document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else{
+				cmdLoginLayer(loginLeft,12+topscr);
+			}
+		}else if(logintop_menu=="auto" && logintop_cmdtype!="sdu" && logintop_cmdtype!="sduplan" && logintop_cmdtype!="sdul" && logintop_cmdtype!="autocompare" && logintop_cmdtype!="autospec"){
+			if(logintop_cmdtype=="autoknowbox"){ //메인에 iframe으로 들어가는 게시판/구매가이드
+				loginLeft = getCumulativeOffset(document.getElementById("ifm_Main"))[0] + getCumulativeOffset(document.getElementById("ifm_Main").contentWindow.document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("ifm_Main"))[1] + getCumulativeOffset(document.getElementById("ifm_Main").contentWindow.document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype=="autopoponly"){ //게시판 단독 팝업창
+
+				loginLeft = getCumulativeOffset(document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype=="autopop"){ //제원팝업 게시판탭
+				loginLeft = getCumulativeOffset(document.getElementById("sight_change"))[0] + getCumulativeOffset(document.getElementById("sight_change").contentWindow.document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("sight_change"))[1] + getCumulativeOffset(document.getElementById("sight_change").contentWindow.document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}
+		}else if(logintop_menu=="auto" && (logintop_cmdtype=="sdu" || logintop_cmdtype=="sduplan" || logintop_cmdtype=="sdul")){
+				loginLeft = getCumulativeOffset(document.getElementById("ifm_Main"))[0] + 100;
+				loginTop = document.body.scrollHeight - 450;
+				cmdLoginLayer(loginLeft,loginTop);
+		}else if(logintop_menu=="board"){
+			if(logintop_cmdtype=="shopbbs"){ //쇼핑몰 신고 게시판(단독 팝업창)
+				loginLeft = getCumulativeOffset(document.getElementById("loginid"))[0] - 20;
+				loginTop = getCumulativeOffset(document.getElementById("loginid"))[1] + 20;
+				cmdLoginLayer(loginLeft,loginTop);
+			}
+		}else if(logintop_menu=="outframe"){
+			oldCmdLoginPop();
+		}else if(logintop_cmdtype=="list2010"){ // 리스트 개편 로그인
+			loginLeft = getCumulativeOffset(document.getElementById("account"))[0] - 500;
+			loginTop = getBodyScrollTop() + 60;
+			cmdLoginLayer(loginLeft, loginTop);
+		}else if(logintop_cmdtype=="inputzzim2010"){ // 리스트 개편 찜 로그인
+			loginLeft = getCumulativeOffset(document.getElementById("account"))[0] - 600;
+			//loginTop = getBodyScrollTop() + 160;
+			if (typeof(Cmd_Login._rbbtn) == "undefined" || Cmd_Login._rbbtn == false){
+				if (document.getElementById("enuriMenuFrame")){
+					if (document.getElementById("enuriMenuFrame").contentWindow.document.getElementById("enuriListFrame")){
+						var listFrameObj = document.getElementById("enuriMenuFrame").contentWindow.document.getElementById("enuriListFrame");
+						loginTop += getCumulativeOffset(document.getElementById("enuriMenuFrame"))[1];
+						loginTop += document.getElementById("enuriMenuFrame").contentWindow.getCumulativeOffset(listFrameObj)[1];
+						var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+						if (compareObj){
+							if (compareObj.offsetTop > 0){
+
+								loginTop += compareObj.offsetTop;
+							}else{
+								loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+							}
+						}else{
+							loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+						}
+						loginTop -= 50;
+					}else{
+						var listFrameObj = document.getElementById("enuriMenuFrame");
+						loginTop += getCumulativeOffset(document.getElementById("enuriMenuFrame"))[1];
+						var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+						if (compareObj){
+							if (compareObj.offsetTop > 0){
+								loginTop += compareObj.offsetTop;
+							}else{
+								loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+							}
+						}
+						loginTop -= 50;
+					}
+				}else if(document.getElementById("searchListFrame")){
+					var listFrameObj = document.getElementById("searchListFrame");
+					loginTop += getCumulativeOffset(listFrameObj)[1];
+					var compareObj = listFrameObj.contentWindow.document.getElementById("comparenzzim");
+					if (compareObj){
+						if (compareObj.offsetTop > 0){
+							loginTop += compareObj.offsetTop;
+						}else{
+							loginTop = (getBodyClientHeight()+getBodyScrollTop() - 120);
+						}
+					}
+					loginTop -= 50;
+				}
+			}else{
+				loginTop += (getBodyClientHeight()+getBodyScrollTop() - 150);
+			}
+			cmdLoginLayer(loginLeft, loginTop);
+			Cmd_Login._rbbtn = false;
+        }else if(logintop_cmdtype=="inputzzim"){ // 리스트 개편 찜 로그인
+            if($('enuriListFrame').contentWindow.event){
+                var e = jQuery('enuriListFrame').contentWindow.event.target ? jQuery('enuriListFrame').contentWindow.event.target : jQuery('enuriListFrame').contentWindow.event.srcElement;
+
+                loginTop  = getCumulativeOffset(jQuery('enuriListFrame'))[1] + getCumulativeOffset(e)[1]-50-(navigator.userAgent.indexOf('Firefox') >= 0 ? 4 : 0);
+                loginLeft = getCumulativeOffset(jQuery('enuriListFrame'))[0] + parseInt($('enuriListFrame').width)/2 -120;
+            }else {
+                loginLeft =  300;
+                loginTop = getBodyScrollTop() + 600;
+            }
+
+            cmdLoginLayer(loginLeft, loginTop);
+
+            Cmd_Login._rbbtn = false;
+
+		}else{
+			if(logintop_cmdtype == "autospec"){
+				cmdLoginLayer(loginLeft,12+topscr);
+			}else if(logintop_cmdtype == "favorite_event"){
+				loginLeft = getCumulativeOffset(document.getElementById("img_favorite_btn"))[0] - 75;
+				loginTop = getCumulativeOffset(document.getElementById("img_favorite_btn"))[1] - 150;
+				cmdLoginLayer(loginLeft,loginTop);
+			}else if(logintop_cmdtype == "favorite_eventwinner"){
+				loginLeft = getCumulativeOffset(document.getElementById("img_favorite_btn"))[0] - 250;
+				loginTop = getCumulativeOffset(document.getElementById("img_favorite_btn"))[1] + 30;
+				cmdLoginLayer(loginLeft,loginTop);
+			// 리스트 개편sdu, sdul일 경우
+			}else if((logintop_cmdtype=="sdu" || logintop_cmdtype=="sduplan" || logintop_cmdtype=="sdul") && document.getElementById("account")) {
+				if (document.URL.indexOf("/view/Sslist_2013.jsp") >= 0){
+					loginLeft = getCumulativeOffset(document.getElementById("account"))[0] + 400;
+					loginTop = getBodyScrollTop() + 300;
+				}else{
+					loginLeft = getCumulativeOffset(document.getElementById("account"))[0] - 500;
+					loginTop = document.body.scrollHeight - 450;
+				}
+				cmdLoginLayer(loginLeft, loginTop);
+			}else{
+				loginLeft =  300;
+				loginTop = getBodyScrollTop() + 600;
+				//alert(loginLeft+","+loginTop);
+				cmdLoginLayer(loginLeft, loginTop);
+			}
+		}
+	}
+}
+function cmdLoginLayer(leftpx, toppx){
+	var obj = document.getElementById("divLoginLayer");
+	var html = "";
+	var isrc = "/login/LoginLayer_2010.jsp?";
+	if(typeof(leftpx)=="undefined") leftpx = 0;
+	if(typeof(toppx)=="undefined") toppx = 0;
+	leftpx = parseInt(leftpx,10);
+	toppx = parseInt(toppx,10);
+	obj.style.left = leftpx + "px";
+	obj.style.top = toppx + "px";
+	if(logintop_temppwd!=""){
+		isrc = "/login/LoginLayer_TempPwd_2010.jsp?tempuser="+logintop_temppwd;
+	}
+	if(logintop_cmdtype=="sdu" || logintop_cmdtype=="sduplan" || logintop_cmdtype=="sdul" || logintop_cmdtype=="sitemap_sdu"){ //sdu,sdul 로그인
+		remove_LoginLayer(obj);
+		html = "<table width=293 border=0 cellspacing=0 cellpadding=0>";
+		html += "<tr>";
+		html += "	<td width=293 height=17 class=bgLoginLayerBox6><div id=\"loginCliseXDiv\" style='width:10px;height:10px;position:absolute;right:-37px;top:5px;cursor:pointer;' onclick='parent.hideLoginLayer()'></div><div style='width:279px;height:7px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "<tr class=bgLoginLayerBox7>";
+		html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='"+isrc+"&cmd="+logintop_cmdtype+"' style='width:260px;height:133px' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td width=293 height=16 class=bgLoginLayerBox8><div style='width:279px;height:7px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "</table>";
+	}else if(logintop_cmdtype=="memo" || logintop_cmdtype=="savegoods" || logintop_cmdtype=="gosavegoods" || logintop_cmdtype=="sdul_reg"){ //쇼핑수첩에서 메모 작성시
+		html = "<table width=243 border=0 cellspacing=0 cellpadding=0>";
+		html += "<tr>";
+		html += "	<td width=243 height=26 class=bgLoginLayerBox1><div style='width:243px;height:31px;overflow:hidden;'><div style='width:55px;height:20px;float:right;margin-right:15px;cursor:pointer;' onclick='hideLoginLayer();'></div></div></td>";
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td class=bgLoginLayerBoxBody><iframe id='frmLoginLayer' name='frmLoginLayer' src='"+isrc+"&cmd="+logintop_cmdtype+"' style='width:208px;height:100px;margin-left:15px;' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td width=243 height=16 class=bgLoginLayerBox5><div style='width:243px;height:16px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "</table>";
+	}else if(logintop_cmdtype=="choicesdu"){ //sdu,sdul중복회원인 경우 이동하려는 메뉴 선택 : 푸터에서 호출
+		remove_LoginLayer(obj);
+		html = "<table width=293 border=0 cellspacing=0 cellpadding=0>";
+		html += "<tr>";
+		html += "	<td width=293 height=17 class=bgLoginLayerBox6><div style='width:10px;height:10px;position:absolute;right:-37px;top:5px;cursor:pointer;' onclick='parent.hideLoginLayer()'></div><div style='width:279px;height:7px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "<tr class=bgLoginLayerBox7>";
+		html += "	<td align='center'><iframe id=\"frmLoginLayer\" name=\"frmLoginLayer\" src=\""+isrc+"&cmd="+logintop_cmdtype+"\" style=\"width:260px;height:163px;\" marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td width=293 height=16 class=bgLoginLayerBox8><div style='width:279px;height:7px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "</table>";
+	}else{
+		html = "<table width=243 border=0 cellspacing=0 cellpadding=0>";
+		html += "<tr>";
+		html += "	<td width=243 height=31><div style='width:243px;height:31px;overflow:hidden;background-image:url(http://imgenuri.enuri.gscdn.com/images/topmenu/login_layer_top_2015.png);'><div style='width:22px;height:22px;float:right;margin-right:5px;cursor:pointer;' onclick='hideLoginLayer();'></div></div></td>";
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td class=bgLoginLayerBoxBody2015><iframe id='frmLoginLayer' name='frmLoginLayer' src='"+isrc+"&menu="+logintop_menu+"' style='width:208px;height:100px;margin-left:15px;' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td width=243 height=16 class=bgLoginLayerBoxBot><div style='width:243px;height:16px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "</table>";
+	}
+	obj.innerHTML = html;
+}
+function Cmd_Reconfirm(){
+	cmdHideLoginLayers();
+	if (document.getElementById("FSETMAIN")){
+		var topscr = 0; //document.getElementById("FSETMAIN").offsetHeight/2 - 100 + document.getElementById("FSETMAIN").scrollTop;
+	}else{
+		var topscr = 0; //document.body.offsetHeight/2 - 100 + document.body.scrollTop;
+	}
+	if(islogin()){
+		if(logintop_menu=="index"){
+			var statusLeft = (getCumulativeOffset(document.getElementById("nonbanking_site1"))[0] + 135) + "px";
+			var statusTop = (getCumulativeOffset(document.getElementById("nonbanking_site1"))[1] + 20) + "px";
+			statusLeft = 300;
+			cmdReconfirmLayer(statusLeft,statusTop);
+		}else{
+			//cmdReconfirmLayer(272,12+getBodyScrollTop());
+			cmdReconfirmLayer(350,12+getBodyScrollTop());
+		}
+	}
+}
+function cmdReconfirmLayer(leftpx, toppx){
+	var obj = document.getElementById("divLoginLayer");
+	var html = "";
+	if(logintop_cmdtype=="detailbbs"){ //상품창 게시판
+		leftpx = getCumulativeOffset(document.getElementById("goodsBBSFrm"))[0] + getCumulativeOffset(document.getElementById("goodsBBSFrm").contentWindow.document.getElementById("div_my_menu"))[0]-1;
+		toppx = getCumulativeOffset(document.getElementById("goodsBBSFrm"))[1] + getCumulativeOffset(document.getElementById("goodsBBSFrm").contentWindow.document.getElementById("div_my_menu"))[1]+2;
+	}
+	if(typeof(leftpx)=="undefined") leftpx = 0;
+	if(typeof(toppx)=="undefined") toppx = 0;
+	leftpx = parseInt(leftpx,10);
+	toppx = parseInt(toppx,10);
+	obj.style.left = leftpx + "px";
+	obj.style.top = toppx + "px";
+
+	if(logintop_cmdtype=="memo" || logintop_cmdtype=="savegoods" || logintop_cmdtype=="gosavegoods" || logintop_cmdtype=="sdul_reg"){ //쇼핑수첩에서 메모 작성시
+		html = "<table width=293 border=0 cellspacing=0 cellpadding=0>";
+		html += "<tr>";
+		html += "	<td width=293 height=17 class=bgLoginLayerBox6><div style='float:right;width:10px;height:10px;cursor:pointer;margin:0px 12px 0px 0px;' onclick='parent.hideLoginLayer()'></div></td>";
+		html += "</tr>";
+		html += "<tr class=bgLoginLayerBox7>";
+		if(logintop_menu=="index"){
+			if (logintop_cmdtype == "memo"){//쇼핑수첩 추가
+				html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='/login/LoginLayer_Reconfirm_2010.jsp?menu="+logintop_menu+"&cmd="+logintop_cmdtype+"' style='width:250px;height:80px' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+			}else{
+				html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='/login/LoginLayer_Reconfirm_2010.jsp?menu="+logintop_menu+"' style='width:250px;height:80px' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+			}
+		}else{
+			html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='/login/LoginLayer_Reconfirm_2010.jsp?menu="+logintop_menu+"&cmd="+logintop_cmdtype+"' style='width:250px;height:80px' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+		}
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td width=293 height=16 colspan=3 class=bgLoginLayerBox8><div style='width:279px;height:7px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "</table>";
+	}else{
+		if(logintop_menu=="index"){
+			html = "<table width=293 border=0 cellspacing=0 cellpadding=0>";
+			html += "<tr>";
+			html += "	<td width=293 height=17 class=bgLoginLayerBox6><div style='float:right;width:10px;height:10px;cursor:pointer;margin:0px 12px 0px 0px;' onclick='parent.hideLoginLayer()'></div></td>";
+			html += "</tr>";
+			html += "<tr class=bgLoginLayerBox7>";
+			if (logintop_cmdtype == "memo"){//쇼핑수첩 추가
+				html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='/login/LoginLayer_Reconfirm_2010.jsp?menu="+logintop_menu+"&cmd="+logintop_cmdtype+"' style='width:250px;height:8px' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+			}else{
+				html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='/login/LoginLayer_Reconfirm_2010.jsp?menu="+logintop_menu+"' style='width:250px;height:80px' marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+			}
+		}else{
+			html = "<table width=293 border=0 cellspacing=0 cellpadding=0>";
+			html += "<tr>";
+			html += "	<td width=293 height=17 class=bgLoginLayerBox6><div style='float:right;width:10px;height:10px;cursor:pointer;margin:0px 12px 0px 0px;' onclick='parent.hideLoginLayer()'></div></td>";
+			html += "</tr>";
+			html += "<tr class=bgLoginLayerBox7>";
+			html += "	<td align='center'><iframe id='frmLoginLayer' name='frmLoginLayer' src='/login/LoginLayer_Reconfirm_2010.jsp?menu="+logintop_menu+"&cmd="+logintop_cmdtype+"' style=\"width:260px;height:163px;\" marginwidth=0 marginheight=0 frameborder=0 vspace=0 hspace=0 scrolling=no/></iframe></td>";
+		}
+		html += "</tr>";
+		html += "<tr>";
+		html += "	<td width=293 height=16 colspan=3 class=bgLoginLayerBox8><div style='width:279px;height:7px;overflow:hidden'></div></td>";
+		html += "</tr>";
+		html += "</table>";
+	}
+	obj.innerHTML = html;
+}
+function cmdSduLoginAlertLayer(param){
+	hideLoginLayer();
+	hideLoginAutoAlert();
+	var obj = document.getElementById("divLoginLayer");
+	var html = "";
+	if(param=="sdu"){
+		html = "<img src='http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/layer_sdu.gif' usemap='#Map_Sdu_LoginAlert'>";
+		html += "<map name='Map_Sdu_LoginAlert' id='Map_Sdu_LoginAlert'>";
+		html += "<area shape='rect' coords='325,3,347,25' href='/sdul/mallregister/SellerMain.jsp' />";
+		html += "<area shape='rect' coords='93,91,166,117' href='/sdul/mallregister/SellerMain.jsp' />";
+		html += "<area shape='rect' coords='182,92,254,118' href='/sdul/mallregister/SellerMain.jsp?sm=4&guide=1' />";
+		html += "</map>";
+	}else{
+		html = "<img src='http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/layer_sdul_120809.png' usemap='#Map_Sdul_LoginAlert' border=0>";
+		html += "<map name='Map_Sdul_LoginAlert' id='Map_Sdul_LoginAlert'>";
+		html += "<area shape='rect' coords='93,91,162,116' href='/sdul/mallregister/SellerMain.jsp' />";
+		html += "<area shape='rect' coords='181,92,250,116' href='/sdul/mallregister/SellerMain.jsp?sm=4&guide=2' />";
+		html += "</map>";
+	}
+	obj.innerHTML = html;
+	viewLoginLayer();
+	obj.style.left = (parseInt(obj.style.left,10)-35) + "px";
+}
+function resizeLoginLayer(param){
+	var obj = document.getElementById("divLoginLayer");
+	var obj_if = document.getElementById("frmLoginLayer");
+	if(param=="login"){
+		obj.style.width = 243 + "px";
+		if(logintop_cmdtype=="sdu" || logintop_cmdtype=="sduplan" || logintop_cmdtype=="sdul" || logintop_cmdtype=="sitemap_sdu"){
+			obj.style.height = 236 + "px";
+			obj_if.style.height = 178 + "px";
+		}else if(logintop_cmdtype=="choicesdu"){
+			obj.style.height = 210 + "px";
+			obj_if.style.height = 180 + "px";
+		}else if(logintop_cmdtype=="memo"){
+			obj.style.height = 184 + "px";
+			obj_if.style.height = 145 + "px";
+		}else{
+			obj.style.height = 157 + "px";
+			obj_if.style.height = 106 + "px";
+		}
+	}else if(param=="resetfail"){
+		obj.style.width = 280 + "px";
+		obj.style.height = 108 + "px";
+		obj_if.style.height = 102 + "px";
+	}else if(param=="reconfirm"){
+		obj.style.width = 280 + "px";
+		obj.style.height = 147 + "px";
+		obj_if.style.height = 120 + "px";
+	}else if(param=="temppwd"){
+		obj.style.width = 280 + "px";
+		if(logintop_menu=="index"){
+			obj.style.height = 166 + "px";
+		}else{
+			obj.style.height = 147 + "px";
+		}
+		obj_if.style.height = 133 + "px";
+	}
+}
+function viewLoginLayer(){
+	var obj = document.getElementById("divLoginLayer");
+	obj.style.display = "";
+}
+function hideLoginLayer(){
+	var obj = document.getElementById("divLoginLayer");
+	obj.style.display = "none";
+	hideLoginAutoAlert();
+}
+function viewLoginAutoAlert(){
+	var byLeft = document.getElementById("frmLoginLayer").contentWindow.getPositionLeftAutoAlert();
+	var byTop = document.getElementById("frmLoginLayer").contentWindow.getPositionTopAutoAlert();
+	var varLeft = getCumulativeOffset(document.getElementById("frmLoginLayer"))[0];
+	var varTop = getCumulativeOffset(document.getElementById("frmLoginLayer"))[1];
+	var obj = document.getElementById("divLoginAutoAlert");
+	if(obj.style.display!="none"){
+		hideLoginAutoAlert();
+	}else{
+		
+		obj.style.left = (byLeft+varLeft+86) + "px";
+		
+		obj.style.top = (byTop+varTop) + 10 + "px";
+		obj.style.display = "";
+	}
+}
+function hideLoginAutoAlert(){
+	var obj = document.getElementById("divLoginAutoAlert");
+	obj.style.display = "none";
+}
+function cmdHideLoginLayers(){
+	hideLoginLayer();
+	hideLoginAutoAlert();
+}
+function cmdScrollTop(){
+	if(top.document.getElementById("FSETMAIN")){
+		top.document.getElementById("FSETMAIN").scrollTop = 0;
+	}else{
+		top.window.scrollTop = 0;
+	}
+}
+function cmdMyAreaReload(){
+	/*
+	if(top.document.getElementById("IFrameMyFavoriteList")){
+		top.document.getElementById("IFrameMyFavoriteList").contentWindow.location.reload();
+	}
+	*/
+
+	if(islogin()){
+		if(logintop_menu=="Index" || logintop_menu=="knowbox"){
+			//if(document.getElementById("img_main_login"))	document.getElementById("img_main_login").style.display="none";
+			if(document.getElementById('utilMenuLogin'))    document.getElementById('utilMenuLogin').style.display = "none";
+			if(document.getElementById('loginDiv2'))        document.getElementById('loginDiv2').style.display = "";
+			if(document.getElementById('utilMenuLogout'))   document.getElementById('utilMenuLogout').style.display = "";
+			if(document.getElementById('utilMenuJoin'))     document.getElementById('utilMenuJoin').style.display = "none";
+			if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+logintop_menu;
+			if(document.getElementById("LayerLoginMain"))	document.getElementById("LayerLoginMain").style.display = "";
+		}else{
+	        if(document.getElementById('utilMenuLogin'))    document.getElementById('utilMenuLogin').style.display = "none";
+            if(document.getElementById('loginDiv2'))        document.getElementById('loginDiv2').style.display = "";
+            if(document.getElementById('utilMenuLogout'))   document.getElementById('utilMenuLogout').style.display = "";
+            if(document.getElementById('utilMenuJoin'))     document.getElementById('utilMenuJoin').style.display = "none";
+			if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+			if(document.getElementById("LayerLoginMain"))	document.getElementById("LayerLoginMain").style.display = "";
+			try{showLoginStatus();}catch(e){};
+		}
+	}else{
+		if(logintop_menu=="Index" || logintop_menu=="knowbox"){
+            if(document.getElementById('utilMenuLogin'))    document.getElementById('utilMenuLogin').style.display = "";
+            if(document.getElementById('loginDiv2'))    document.getElementById('loginDiv2').style.display = "none";
+            if(document.getElementById('utilMenuLogout'))    document.getElementById('utilMenuLogout').style.display = "none"
+			//if(document.getElementById("img_main_login"))	document.getElementById("img_main_login").style.display="";
+            	if(document.getElementById('utilMenuJoin'))   document.getElementById('utilMenuJoin').style.display = "";
+			if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+logintop_menu;
+			if(document.getElementById("LayerLoginMain"))	document.getElementById("LayerLoginMain").style.display = "none";
+		}else{
+            if(document.getElementById('utilMenuLogin'))    document.getElementById('utilMenuLogin').style.display = "";
+            if(document.getElementById('loginDiv2'))    document.getElementById('loginDiv2').style.display = "none";
+            if(document.getElementById('utilMenuLogout'))    document.getElementById('utilMenuLogout').style.display = "none"
+            	if(document.getElementById('utilMenuJoin'))   document.getElementById('utilMenuJoin').style.display = "";
+			if(document.getElementById("frmMainLogin"))		document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+			if(document.getElementById("LayerLoginMain"))	document.getElementById("LayerLoginMain").style.display = "none";
+		}
+	}
+	try{
+		var op = top.opener;
+		if(op){
+			var opnpath = op.top.location.pathname;
+			if(islogin()){
+				if (opnpath=="/" || opnpath.length==InStr(opnpath,"/") || opnpath=="/Index.jsp" || opnpath=="/Index_2010.jsp" || opnpath=="/knowbox/List.jsp"){
+					if(op.top.document.getElementById("img_main_login"))	op.top.document.getElementById("img_main_login").style.display="none";
+//					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+tempLoginTopMenu;
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu=main";
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "";
+				}else{
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "";
+				}
+			}else{
+				if (opnpath=="/" || opnpath.length==InStr(opnpath,"/") || opnpath=="/Index.jsp" || opnpath=="/Index_2010.jsp" || opnpath=="/knowbox/List.jsp"){
+					if(op.top.document.getElementById("img_main_login"))	op.top.document.getElementById("img_main_login").style.display="";
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+logintop_menu;
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "none";
+				}else{
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "none";
+				}
+			}
+		}
+	}catch(e){}
+	try{
+		op = top.opener.top.opener;
+		if(op){
+			var opnpath = op.top.location.pathname;
+			if(islogin()){
+				if (opnpath=="/" || opnpath.length==InStr(opnpath,"/") || opnpath=="/Index.jsp" || opnpath=="/Index_2010.jsp" || opnpath=="/knowbox/List.jsp"){
+					if(op.top.document.getElementById("img_main_login"))	op.top.document.getElementById("img_main_login").style.display="none";
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu=main";
+//					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+logintop_menu;
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "";
+				}else{
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "";
+				}
+			}else{
+				if (opnpath=="/" || opnpath.length==InStr(opnpath,"/") || opnpath=="/Index.jsp" || opnpath=="/Index_2010.jsp" || opnpath=="/knowbox/List.jsp"){
+					if(op.top.document.getElementById("img_main_login"))	op.top.document.getElementById("img_main_login").style.display="";
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp?main=Y&logintop_menu="+logintop_menu;
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "none";
+				}else{
+					if(op.top.document.getElementById("frmMainLogin"))		op.top.document.getElementById("frmMainLogin").src = "/login/Loginstatus_2010.jsp";
+					if(op.top.document.getElementById("LayerLoginMain"))	op.top.document.getElementById("LayerLoginMain").style.display = "none";
+				}
+			}
+		}
+	}catch(e){}
+}
+
+function showZzim(favCnt){
+	var openUrl = "/view/resentzzim/resentzzimList.jsp?listType=2";
+	var resentZzimWin = window.open(openUrl,"resentZzimWin","width=804,height="+window.screen.height+",left=0,top=0,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=yes,menubar=no");
+	resentZzimWin.focus();
+	return false;
+}
+
+</script>
+<!-- 로그인레이어 -->
+<div id="divLoginLayer" style="display:none;position:absolute;z-index:99997;"></div>
+<!-- 자동로그인 경고레이어 -->
+<div id="divLoginAutoAlert" style="display:none;position:absolute;width:306px;height:155px;overflow:hidden;z-index:99998;">
+	<img src="http://imgenuri.enuri.gscdn.com/images/topmenu/login_info.png" id="divLoginAutoAlertImg" width="306" height="155" border="0" usemap="#divLoginAutoAlert" />
+	<map name="divLoginAutoAlert" id="divLoginAutoAlert"><area shape="rect" coords="289,18,301,31" onclick="hideLoginAutoAlert()" onmouseover="document.getElementById('divLoginAutoAlertImg').style.cursor='pointer'" onmouseout="document.getElementById('divLoginAutoAlertImg').style.cursor='default'" /></map>
+<!--
+<table width="270" align="right" valign="top" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="15" align="right" valign="bottom"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/btn_close_s.gif" width="7" height="6" border="0" onclick="hideLoginAutoAlert()" style="cursor:pointer;"/>&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+	  <table width="250" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="10" align="left">&nbsp;</td>
+            <td width="225" height="20" align="left" valign="top"><span class="autoLoginLayerStyle1">에누리 접속시 자동으로 로그인됩니다.</span></td>
+          </tr>
+          <tr>
+            <td align="center"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/dot_im.gif" width="4" height="4" /></td>
+            <td align="left"><span class="autoLoginLayerStyle2">주의하세요</span></td>
+          </tr>
+          <tr>
+            <td align="left">&nbsp;</td>
+            <td height="35" align="left" valign="top" class="autoLoginLayerStyle3">PC방 등 공용 PC에서는 보안상 위험하오니<br/>자리를 떠날 때 해제하세요.</td>
+          </tr>
+          <tr>
+            <td align="center"><img src="http://imgenuri.enuri.gscdn.com/images/knowbox/login/popLogin/dot_im.gif" width="4" height="4" /></td>
+            <td align="left"><span class="autoLoginLayerStyle2">안심하세요</span></td>
+          </tr>
+          <tr>
+            <td align="left">&nbsp;</td>
+            <td align="left"><span class="autoLoginLayerStyle3">자동로그인 중이라도 개인정보 보호가 필요한<br/>경우(개인정보 관리 등) 비번 입력필요!</span></td>
+          </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+-->
+</div>
+<!-- 판매자 설명회 레이어 -->
+<!--
+<div id="div_sdLoginTopLayer_0906" style="display:none;position:absolute;top:0;left:100;z-index:100;">
+<img src="http://imgenuri.enuri.gscdn.com/images/login/layer_sdu.gif" width="544" height="614" usemap="#sdLoginTopLayer_0906" border="0" style="margin-top:100"/>
+<map name="sdLoginTopLayer_0906">
+	<area shape="rect" coords="517,4,540,23" href="javascript://" onclick="document.getElementById('div_sdLoginTopLayer_0906').style.display='none'"/>
+</map>
+</div>
+ -->
+<!-- 이벤트 공지 레이어 곧 삭제 -->
+<div id="divEventAddr" style="display:none;position:absolute;z-index:99997;"><img id="imgEventAddr" border="0"></div>
+<map name="MapEventAddr1" id="MapEventAddr1">
+<area shape="rect" coords="92,192,163,205" href="/event/EventMain.jsp" target="_new" />
+<area shape="rect" coords="215,190,289,207" href="JavaScript:top.CmdJoin(3);" />
+<area shape="rect" coords="169,247,224,269" href="JavaScript:closeEventAddr();" />
+</map>
+<map name="MapEventAddr2" id="MapEventAddr2">
+<area shape="rect" coords="93,192,161,205" href="/event/EventMain.jsp" target="_new" />
+<area shape="rect" coords="214,190,290,206" href="JavaScript:top.CmdJoin(3);" />
+<area shape="rect" coords="168,247,225,268" href="JavaScript:closeEventAddr();" />
+</map>
+<map name="MapEventAddr3" id="MapEventAddr3">
+<area shape="rect" coords="91,190,161,205" href="/event/EventMain.jsp" target="_new" />
+<area shape="rect" coords="215,191,290,206" href="JavaScript:top.CmdJoin(3);" />
+<area shape="rect" coords="169,248,224,268" href="JavaScript:closeEventAddr();" />
+</map>
+<SCRIPT language="JavaScript">
+<!--
+function closeEventAddr() {
+	document.getElementById("divEventAddr").style.display = "none";
+}
+-->
+
+</SCRIPT>
+<!-- 상위노출 상품창 이미지 변경 레이어 시작 -->
+<div id="Bid_Event" style="display:none;position:absolute;z-index:80;top:140px;left:70px;;">
+<img src="http://imgenuri.enuri.gscdn.com/images/main/top_login_layer_130146(1).png" onclick="z_change()" usemap="#Bid_Map">
+<map name="Bid_Map" id="Bid_Map">
+<area shape="rect" coords="568,-2,594,24" href="JavaScript:Bid_EventClose();"/>
+<area shape="rect" coords="413,601,523,638" href="JavaScript:Top_View_Pop();" />
+</map>
+</div>
+
+<SCRIPT language="JavaScript">
+<!--
+function z_change(){
+document.getElementById("bid_layer").style.zIndex="50";
+document.getElementById("Bid_Event").style.zIndex="80";
+}
+
+function Bid_EventShow() {
+	if(document.getElementById("Bid_Event").style.display=="none") {
+		document.getElementById("Bid_Event").style.display = "";
+	} else {
+		Bid_EventClose();
+	}
+}
+
+function Bid_EventClose() {
+	document.getElementById("Bid_Event").style.display = "none";
+}
+
+function Top_View_Pop(){
+	top.location.href = "/sdul/mallregister/SellerMain.jsp?etc=20";
+}
+
+-->
+</SCRIPT>
+<!-- 상위노출 상품창 이미지 변경 레이어 끝 -->
+<!-- 상위노출 레이어 시작 -->
+<div id="bid_layer" style="display:none;position:absolute;top:79px;left:10px;z-index:50;">
+<img src="http://imgenuri.enuri.gscdn.com/images/main/top_login_layer_130401.png" onclick="z_change1()" usemap="#sdulMap2" border=0>
+<map name="sdulMap2" id="sdulMap2">
+<area shape="rect" coords="567,0,594,25" href="JavaScript:bid_layerClose();"/>
+<area shape="rect" coords="393,691,566,741" href="JavaScript:document.location.href='/sdul/mallregister/SellerMain.jsp?sm=2'" />
+</map>
+</div>
+<SCRIPT language="JavaScript">
+<!--
+function bid_layerShow() {
+	if(document.getElementById("bid_layer").style.display=="none") {
+		document.getElementById("bid_layer").style.display = "";
+	} else {
+		bid_layerClose();
+	}
+}
+
+function bid_layerClose() {
+	document.getElementById("bid_layer").style.display = "none";
+}
+
+function z_change1(){
+	document.getElementById("Bid_Event").style.zIndex="50";
+	document.getElementById("bid_layer").style.zIndex="80";
+}
+
+// 몇몇 외부 업체 및 sdu 로그인 페이지 로그인 위치 조절
+function remove_LoginLayer(obj){
+	var loginLeft = 0;
+	var loginTop = 0;
+	// 여행 > 호텔 페이지 SDU 로그인 위치 조절
+	if(logintop_url.indexOf("tour2012/Tour_Hotel.jsp")>0){
+		loginLeft = getCumulativeOffset(document.getElementById("div_tour_footer"))[0]+170;
+		loginTop = getCumulativeOffset(document.getElementById("div_tour_footer"))[1]-290;
+		loginLeft = parseInt(loginLeft,10);
+		loginTop = parseInt(loginTop,10);
+		obj.style.left = loginLeft + "px";
+		obj.style.top = loginTop + "px";
+	}
+	// flower365 > 꽃배달 페이지 SDU 로그인 위치 조절
+	if(logintop_url.indexOf("view/Flower365.jsp")>0){
+		loginLeft = getCumulativeOffset(document.getElementById("footer_menubar"))[0]+300;
+		loginTop = getCumulativeOffset(document.getElementById("footer_menubar"))[1]-290;
+		loginLeft = parseInt(loginLeft,10);
+		loginTop = parseInt(loginTop,10);
+		obj.style.left = loginLeft + "px";
+		obj.style.top = loginTop + "px";
+	}
+	// 여행 페인 페이지  SDU 로그인 위치 조절
+	if(logintop_url.indexOf("tour2012/Tour_Index.jsp")>0){
+		loginLeft = getCumulativeOffset(document.getElementById("bottom_menu"))[0]+200;
+		loginTop = getCumulativeOffset(document.getElementById("bottom_menu"))[1]-255;
+		loginLeft = parseInt(loginLeft,10);
+		loginTop = parseInt(loginTop,10);
+		obj.style.left = loginLeft + "px";
+		obj.style.top = loginTop + "px";
+	}
+	// 지식통 SDU 로그인 위치 조절
+	if(logintop_url.indexOf("knowbox/")>0){
+		loginLeft = getCumulativeOffset(document.getElementById("bottom_menu"))[0]+150;
+		loginTop = getCumulativeOffset(document.getElementById("bottom_menu"))[1]-255;
+		loginLeft = parseInt(loginLeft,10);
+		loginTop = parseInt(loginTop,10);
+		obj.style.left = loginLeft + "px";
+		obj.style.top = loginTop + "px";
+	}
+	// 지식통 SDU 로그인 위치 조절
+	if(logintop_url.indexOf("Site_map")>0){
+		loginLeft = getCumulativeOffset(document.getElementById("tblFooter"))[0]+580;
+		loginTop = getCumulativeOffset(document.getElementById("tblFooter"))[1]-550;
+		loginLeft = parseInt(loginLeft,10);
+		loginTop = parseInt(loginTop,10);
+		obj.style.left = loginLeft + "px";
+		obj.style.top = loginTop + "px";
+	}
+}
+-->
+</SCRIPT>
+<!-- 상위노출  신규 레이어 끝 -->
+
+<form name="frmWMember" action="https://www.enuri.com/sdul/mallregister/join/Sdul_Join_Proc.jsp" method="post" target="hiddenFrameIdchk">
+<input type="hidden" name="isChecked" value="">
+<input type="hidden" name="check_type" id="check_type" value="">
+<input type="hidden" name="enc_data">
+<input type="hidden" name="match_key" id="match_key">
+<input type="hidden" name="isLogin" value="0">
+<input type="hidden" name="pro_shop_code" value="">
+<input type="hidden" name="cmd_step" value="">
+<table id="tbl_main" width="650" align="center" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td>
+			<div style="height:10px;"></div>
+			<table align="center" width="630" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td height="15" class="bgJoinLayerBox1"><div style="width:20px;height:15px;overflow:hidden;"></div></td>
+				</tr>
+				<tr>
+					<td width="630" class="bgJoinLayerBox2" align="center">
+						<table id="mainTable" width="580" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td height="30" align="right">
+									<table width="110" align="right" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td align="right"><img onClick="window.close();" src="http://imgenuri.enuri.gscdn.com/images/member/join2009/x_btn.gif" hspace="10" border="0" style="cursor:pointer;" /></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td align="center">
+									<table width="560" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+										<tr>
+											<td height="30" valign="top" colspan="2" class="cls_title" align="left">개인 및 판매자 회원가입</td>
+										</tr>
+									
+										<tr>
+											<td height="30" colspan="2" align="left">
+												<img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/title_enurimember.gif" align="absmiddle"/>&nbsp;&nbsp;
+												<img id="login_btn" src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/btn_yes.gif" onClick="Cmd_Login('sdul_reg');" align="absmiddle" style="cursor:pointer"/>
+											</td>
+										</tr>
+										<tr>
+											<td height="30" colspan="2" align="left"><img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/title_joininfo.gif"/></td>
+										</tr>
+										<tr>
+											<td colspan="2" align="left">
+												<table width="520" border="0" cellpadding="0" cellspacing="1" bgcolor="#d9d9d9" style="table-layout:fixed;">
+													<tr>
+														<td width="140" height="25" bgcolor="f5f5f5" class="thead" style="padding-left:20px">성 명</td>
+														<td width="380" bgcolor="ffffff" style="padding-left:10px">
+															<span id="spanname2"></span>
+															<img id="joinNameConfirm1" src="http://imgenuri.enuri.gscdn.com/images/member/join2009/btn_realname.gif" onclick="goRealCheck()" border="0" align="absmiddle" onmouseover="overImg(this)" onmouseout="outImg(this)" style="cursor:pointer" />
+															<span id="spanChkName">실명인증 후 회원가입을 진행하세요!</span>
+														</td>
+													</tr>
+													<tr>
+														<td height="25" bgcolor="f5f5f5" class="thead" style="padding-left:20px">회원 아이디 </td>
+														<td bgcolor="ffffff" style="padding-left:10px">
+															<span id="spanid1">
+																<input type="text" name="user_id" id="user_id" maxlength="12" class="inputStyle" onkeypress="CmdKeyPress();" onKeyUp="checkID();" style="width:100px;ime-mode:disabled;">&nbsp;
+																<font id="fontChkId" color="red"> <span id="spanChkId"></span></font>
+															</span>
+															<span id="spanid2" style="visibility: hidden;"></span>
+														</td>
+													</tr>
+													<tr>
+														<td height="50" bgcolor="f5f5f5" class="thead" style="padding-left:20px" rowspan="2">비밀번호</td>
+														<td height="50" bgcolor="ffffff" class="tbody" style="padding-left:10px;">
+															<input class="inputStyle" type="password" name="pass1" size="20" maxlength="15" onkeypress="CmdKeyPress()" style="width:100px;ime-mode:disabled;" />&nbsp;&nbsp;
+															확인
+															<input class="inputStyle" type="password" name="pass2" size="20" maxlength="15" onkeypress="CmdKeyPress()" style="width:100px;ime-mode:disabled;" />
+															<div style="margin:5px 0 0 0;color:#808080">8~15자의 영문, 숫자가 조합된 비밀번호로 입력해주세요.</div>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									
+										<tr>
+											<td colspan="2">&nbsp;</td>
+										</tr>
+										<tr>
+											<td height="30" colspan="2" align="left"><img src="http://imgenuri.enuri.gscdn.com/images/sellerguide/new_img/title_sellerinfo.gif"/></td>
+										</tr>
+										<tr>
+											<td colspan="2" align="left">
+												<table width="520" border="0" cellpadding="0" cellspacing="1" bgcolor="#d9d9d9" style="table-layout:fixed;">
+													<tr>
+														<td width="140" height="25" bgcolor="f5f5f5" class="thead" style="padding-left:20px">전화번호</td>
+														<td width="380" class="tbody" bgcolor="#ffffff" style="padding-left:10px">
+															<input type="text" class="inputStyle" name="phone_no1" value="" size="4" maxlength="4" onkeypress="isNumber(this.form)" onBlur="inputNumberOnly(this, this.value);"  style="ime-mode:disabled;" /> -
+															<input type="text" class="inputStyle" name="phone_no2" value="" size="5" maxlength="4" onkeypress="isNumber(this.form)" onBlur="inputNumberOnly(this, this.value);"  style="ime-mode:disabled;" /> -
+															<input type="text" class="inputStyle" name="phone_no3" value="" size="5" maxlength="4" onkeypress="isNumber(this.form)" onBlur="inputNumberOnly(this, this.value);"  style="ime-mode:disabled;" />
+														</td>
+													</tr>
+													<tr>
+														<td height="25" bgcolor="f5f5f5" class="thead" style="padding-left:20px">이메일</td>
+														<td class="tbody" bgcolor="#ffffff" style="padding-left:10px">
+												
+															<input type="text" name="email1" value="" class="inputStyle" size="15" style="ime-mode:disabled;"> @ <input class="inputStyle" name="email2" id="email2" type="text" onFocus="if(this.value==this.defaultValue){this.value='';}" style="color:#949494;ime-mode:disabled;" value="직접입력" size="15" />
+															<select name="fixEmail" onChange="cmdInputEmail(this.value,'email2')">
+																<option value="">선택하세요</option>
+																<option value="direct">직접입력</option>
+																<option value="naver.com">naver.com</option>
+																<option value="daum.net">daum.net</option>
+																<option value="nate.com">nate.com</option>
+																<option value="hotmail.com">hotmail.com</option>
+																<option value="hanmail.net">hanmail.net</option>
+																<option value="gmail.com">gmail.com</option>
+															</select>
+														</td>
+													</tr>
+												
+													<tr>
+														<td bgcolor="f5f5f5" class="thead" valign="top" style="padding-left:20px"><div style="height:7px;"></div>판매자 닉네임,<br/>미니샵 주소등록</td>
+														<td width="380" align="center" class="tbody" bgcolor="#ffffff">
+															<table width="375" border="0" cellpadding="0" cellspacing="0" style="table-layout:fixed;">
+																<tr>
+																	<td width="140" height="25" align="left" class="thead"><img src="http://imgenuri.enuri.gscdn.com/images/member/join2009/bu_04.gif" width="4" height="7" /> G마켓 판매자 닉네임</td>
+																	<td width="235" align="left" class="tbody">
+																		<input type="text" name="gmarket_id" id="gmarket_id" maxlength="20" class="inputStyle" value="" onclick="click_shop(3);" onfocus="click_shop(3);" readonly style="width:100px;">
+																	</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead">&nbsp;&nbsp;G마켓 미니샵 주소</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="gmarket_master_page" id="gmarket_master_page" class="inputStyle" value="" style="width:230px;ime-mode:disabled;">
+																	</td>
+																</tr>
+																<tr>
+																	<td colspan="2">&nbsp;</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead"><img src="http://imgenuri.enuri.gscdn.com/images/member/join2009/bu_04.gif" width="4" height="7" /> 11번가 판매자 닉네임</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="eleven_id" id="eleven_id" maxlength="20" class="inputStyle" value="" onclick="click_shop(4);" onfocus="click_shop(4);" readonly style="width:100px;">
+																	</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead">&nbsp;&nbsp;11번가 미니샵 주소</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="eleven_master_page" id="eleven_master_page" class="inputStyle" value="" style="width:230px;ime-mode:disabled;">
+																	</td>
+																</tr>
+																<tr>
+																	<td colspan="2">&nbsp;</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead"><img src="http://imgenuri.enuri.gscdn.com/images/member/join2009/bu_04.gif" width="4" height="7" /> 옥션 판매자 닉네임</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="auction_id" id="auction_id" maxlength="20" class="inputStyle" value="" onclick="click_shop(2);" onfocus="click_shop(2);" readonly style="width:100px;">
+																	</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead">&nbsp;&nbsp;옥션 미니샵 주소</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="auction_master_page" id="auction_master_page" class="inputStyle" value="" style="width:230px;ime-mode:disabled;">
+																	</td>
+																</tr>
+																<tr>
+																	<td colspan="2">&nbsp;</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead"><img src="http://imgenuri.enuri.gscdn.com/images/member/join2009/bu_04.gif" width="4" height="7" /> 인터파크 판매자 닉네임</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="interpark_id" id="interpark_id" maxlength="20" class="inputStyle" value="" onclick="click_shop(1);" onfocus="click_shop(1);" readonly style="width:100px;">
+																	</td>
+																</tr>
+																<tr>
+																	<td height="25" align="left" class="thead">&nbsp;&nbsp;인터파크 미니샵 주소</td>
+																	<td class="tbody" align="left">
+																		<input type="text" name="interpark_master_page" id="interpark_master_page" class="inputStyle" value="" style="width:230px;ime-mode:disabled;">
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+										<tr>
+											<td height="30" colspan="2" align="left" class="thead">※ 오픈마켓 판매자 <span class="cls_uline" onclick="resize_popup_info_1();">닉네임</span>과 <span class="cls_uline" onclick="resize_popup_info_2();">미니샵 주소</span>를 정확하게 입력해주세요.</td>
+										</tr>
+										<tr>
+									<td class="btn_apply" colspan="2"><input type='image' src='http://imgenuri.enuri.gscdn.com/images/etcPage/etc_new/btn_member_join.gif' alt="회원가입" /></td>
+								</tr>
+										<!--<tr>
+											<td height="80" colspan="2" align="center"><img src="http://imgenuri.enuri.gscdn.com/images/member/join2009/join_btn_2013.gif" onClick="chkFrmValue();" onmouseover="overImg(this)" onmouseout="outImg(this)" style="cursor:pointer" border="0" /></td>
+										</tr>-->
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td height="15" class="bgJoinLayerBox3"><div style="width:20px;height:15px;overflow:hidden;"></div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</form>
+<div id="di_idchk">
+	<table width=293 border=0 cellspacing=0 cellpadding=0>
+		<tr>
+			<td width=293 height=17 class="bgLoginLayerBox6"><div style='width:10px;height:10px;position:absolute;right:14px;top:5px;cursor:pointer;' onclick="close_layer();"></div><div style='width:279px;height:7px;overflow:hidden'></div></td>
+		</tr>
+		<tr class="bgLoginLayerBox7">
+			<td align="center">
+				<div class="idchk_title">판매자 닉네임 중복확인</div>
+				<div class="idchk_info"><span class="text1" id="shop_name_text1"></span>의 판매자 닉네임을<br/>&nbsp;대소문자를 구분하여 입력하세요.</div>
+				<div id="search">
+					<form name="frm_searchdiv" target="hiddenFrameIdchk" method="post" action="/sdul/mallregister/join/Sdul_Register_Idchk.jsp" onsubmit="return chk_search_id()">
+					<input type="hidden" name="shopname" value=""/>
+					<input type="text" name="shopid" class="inputStyle" style="width:130px;"/>&nbsp;
+					<input type="image" src="http://imgenuri.enuri.gscdn.com/images/member/btn_search.gif" onmouseover="overImg(this)" onmouseout="outImg(this)" style="cursor:pointer" align="absmiddle" border="0" onclick="this.blur()"/>
+					</form>
+				</div>
+				<div id="result">
+					<div class="text3"><span id="real_id" class="text1"></span> 은(는)</div>
+					<div class="text4">사용하실 수 있습니다</div>
+					<input type="image" src="http://imgenuri.enuri.gscdn.com/images/member/btn_apply.gif" onmouseover="overImg(this)" onmouseout="outImg(this)" style="cursor:pointer" align="absmiddle" border="0" onclick="use_id();" />
+				</div>
+				<div style="height:10px;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td width=293 height=16 class="bgLoginLayerBox8"><div style='width:279px;height:7px;overflow:hidden'></div></td>
+		</tr>
+	</table>
+</div>
+<iframe id="hiddenFrameIdchk" name="hiddenFrameIdchk" width="0" height="0" border="0"></iframe>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> 
+<html>
+<head>
+<title>신규제품 등록 - eNuri.com</title>
+<meta http-equiv='content-type' content='text/html; charset=euc-kr'>
+<meta name='description' content='가격비교 에누리닷컴'>
+<meta name='keyword' content='가격,가격 검색,가격 사이트,가격검색 사이트,가격비교,가격 비교가격비교 사이트,가격정보'>
+<meta name='robots' content='index, follow'>
+<link rel='shortcut icon' href='/favicon.ico'>
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/enuribase.css" type="text/css">
+<!-- SDU COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=20190104" type="text/css">
+<script language="javascript">
+<!--
+function MR_IdChk(para1,para2)
+{
+	//var tmp_id = param;
+	//tmp_id = MallRegFrm.srr_id.value;
+	window.open("https://www.enuri.com/mallregister/Mallregisteridmodify.jsp?id="+para1+"&no="+para2,"id_chk","width=379,height=244,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no");
+}
+function InputValue(theForm)
+{
+	//MallRegFrmAdmin
+	//alert(theForm.sdub_level.value);
+	theForm.srr_sdugrade.value = theForm.sdub_level.value;
+}
+function cafe24_return(theForm){
+	if(theForm.srr_flag.value == "8" || theForm.srr_flag.value == "9"){
+		document.getElementById("return_txt").style.display="";
+	}else{
+		document.getElementById("return_txt").style.display="none";
+	}
+}
+
+function pager3(url, total, scale, pgScale, page, qryStr)
+{
+	var pgStr = "";
+	var forvar = 0;
+	var totalPg = 0;
+	var pgClus = 0;
+
+	var i=0;
+	var next=0;
+
+	if(total > scale) {
+		forvar = Math.ceil(total / scale);
+		totalPg = forvar;
+
+		if(forvar > pgScale) {
+			forvar=pgScale;
+		};
+
+		pgClus = pgScale * Math.floor((page - 1) / pgScale);
+
+		if ((page - pgScale) > 0)
+		{
+			pgStr +="<a href='"+ url +"&pg="+ (page - pgScale) +"'> "+ firstImg +"</a>&nbsp;&nbsp;"
+		}
+
+		if(page > 1) {
+			pgStr += "<a href='";
+			pgStr += url+"&pg=" + (page-1) + qryStr;
+			pgStr += "'>" + prevImg + "</a>&nbsp;&nbsp;";
+		}
+
+		pgStr+="&nbsp;";
+		for(i = 1 + pgClus; i <= forvar + pgClus ; i++) {
+			if(i <= totalPg) {
+				if(i==page) {
+					pgStr += "<b><font color='#ff0000'>"+i+"</font></b> ";
+				} else {
+					pgStr += "<a href='";
+					pgStr += url+"&pg=" + i + qryStr;
+					pgStr += "'>" + i + "</a> ";
+				};
+				if(i < (forvar + pgClus)) {
+					pgStr += "&nbsp;";
+				};
+			};
+		};
+		pgStr += "&nbsp;";
+
+		if(totalPg > page) {
+			next = page + 1;
+			pgStr += "&nbsp;<a href='";
+			pgStr += url + "&pg=" + next + qryStr;
+			pgStr += "'>" + nextImg + "</a>";
+		}
+		if (totalPg-page > pgScale)
+		{
+			pgStr += "&nbsp;&nbsp;<a href='"+ url +"&pg="+ (page + pgScale) +"'> "+ endImg +"</a>"
+		};
+	} else if(total > 0 && total <= scale) {
+		pgStr += "<b><font size=2>1</font></b>";
+	};
+
+	document.getElementById("Pager").innerHTML=pgStr;
+};
+//-->
+</script>
+</head>
+<body>
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">SDU</h2>
+	</div>
+	
+	<center>
+	<a href=Mallregisteradmin.jsp>일반 신규몰 등록</a> |
+	<a href=Escrowregister.jsp>안심구매 신규몰 등록</a> |
+	<a href=Websearchregister.jsp>웹검색 신규몰 등록</a>
+	</center>
+
+
+	<table align=center border=0 width=98% height=100% cellpadding=0 cellspacing=0 bgcolor="#f0efef">
+		<tr align=center valign=top>
+
+		<td width='50%' align=center>
+
+		<table border=0 cellpadding=1 cellspacing=0>
+		<form name='menulisttop_frm' action='Mallregisteradmin.jsp' method=post>
+		<tr>
+		<td>
+		<select name='listcnt'>
+			<option selected value=20 selected>목록수 상위 20개만</option>
+			<option  value=50>목록수 상위 50개만</option>
+			<option  value=1000>목록수 전체</option>
+		</select>
+		</td>
+		<td>
+		<select name='menu_id'>
+			<option selected value='0' selected>등록 신청 리스트</option>
+			<option  value='1'>입금 확인 신청 리스트</option>
+			<option  value='2'>입금 확인 리스트</option>
+			<option  value='3'>ID 발급(준회원)</option>
+			<option  value='4'>상품등록중 리스트</option>
+			<option  value='5'>서비스 시작 리스트</option>
+			<option  value='6'>취소 리스트</option>
+			<option  value='7'>Cafe24 입점승인</option>
+			<option  value='8'>Cafe24 입점반려</option>
+			<option  value='9'>Cafe24 입점대기</option>
+               <option  value='a'>스토어팜 입점승인</option>
+               <option  value='c'>스토어팜 입점반려</option>
+               <option  value='b'>스토어팜 입점대기</option>
+		</select>
+		</td>
+		<td align=right>
+		<input type=submit name='cmd1' value='불러오기' style='cursor:hand;border:1px solid;width:150px;height:20px;font-size:9pt;font-weight:bold;'>
+		</td>
+		</tr>
+		<tr height=30>
+		<td colspan=3 align=center>
+		<input type=text name='keyword' maxlength=50 style='border:1px solid;width:150px;height:20px;font-size:9pt;' onFocus=this.style.backgroundColor='lemonchiffon' onBlur=this.style.backgroundColor='white' value='' >
+		<input type=submit name='cmd1' value='검색' style='cursor:hand;border:1px solid;width:60px;height:20px;font-size:9pt;font-weight:bold;'>
+		<br>(ID,회사명,사업자번호,쇼핑몰명,홈URL,담당전화)</td>
+		<input type=hidden name=cmd value='list'>
+		</form>
+		</table>
+
+		<br><center><b>20</b> 건 검색됨</center>
+		<table border=1 width=98% cellpadding=1 cellspacing=0 borderColorLight=#808080 borderColorDark=WHITE>
+		<tr align=center BGCOLOR=#D1D1D1 height=20>
+		<th>순서</th>
+		<th>ID</th>
+		<th>회사명</th>
+		<th>쇼핑몰명</th>
+		<th>홈페이지</th>
+		<th>담당전화</th>
+		<th>플래그</th>
+		<th>주요취급상품</th>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>1</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=steppingup&srr_flag=0' target='AdminRightiFrame'>
+		steppingup
+		</a>
+		</td>
+		<td>스테핑업주식회사</td>
+		<td>투유투디</td>
+		<td align=center><a href='https://www.2u2d.co.kr/' target='_blank' title='https://www.2u2d.co.kr/'>go</a></td>
+		<td>01092584978</td>
+		<td>
+		등록신청
+		</td>
+		<td>다이어트제품</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>2</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=freshgangwon&srr_flag=0' target='AdminRightiFrame'>
+		freshgangwon
+		</a>
+		</td>
+		<td>수목농원 농업법인 주식회사</td>
+		<td>프레쉬강원</td>
+		<td align=center><a href='https://smartstore.naver.com/freshgangwon' target='_blank' title='https://smartstore.naver.com/freshgangwon'>go</a></td>
+		<td>01034495428</td>
+		<td>
+		등록신청
+		</td>
+		<td></td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>3</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=sldkfjgh93&srr_flag=0' target='AdminRightiFrame'>
+		sldkfjgh93
+		</a>
+		</td>
+		<td>멍때리개</td>
+		<td>제이제이 샵</td>
+		<td align=center><a href='https://smartstore.naver.com/mungpunchdog' target='_blank' title='https://smartstore.naver.com/mungpunchdog'>go</a></td>
+		<td>010-4366-1163</td>
+		<td>
+		등록신청
+		</td>
+		<td></td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>4</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=cngkq&srr_flag=0' target='AdminRightiFrame'>
+		cngkq
+		</a>
+		</td>
+		<td>(주)건설인이 인정받는 사회</td>
+		<td>현장멋쟁이</td>
+		<td align=center><a href='https://smartstore.naver.com/f-tong' target='_blank' title='https://smartstore.naver.com/f-tong'>go</a></td>
+		<td>01022429114</td>
+		<td>
+		등록신청
+		</td>
+		<td>작업복,작업화,현장작업관련상품</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>5</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=bu_tto&srr_flag=0' target='AdminRightiFrame'>
+		bu_tto
+		</a>
+		</td>
+		<td>부또</td>
+		<td>부또</td>
+		<td align=center><a href='https://smartstore.naver.com/bu_tto' target='_blank' title='https://smartstore.naver.com/bu_tto'>go</a></td>
+		<td>010-7144-9216</td>
+		<td>
+		등록신청
+		</td>
+		<td>패션잡화</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>6</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=mijisoo_&srr_flag=0' target='AdminRightiFrame'>
+		mijisoo_
+		</a>
+		</td>
+		<td>미지수</td>
+		<td>미지수</td>
+		<td align=center><a href='https://smartstore.naver.com/mijisoo' target='_blank' title='https://smartstore.naver.com/mijisoo'>go</a></td>
+		<td>01050990217</td>
+		<td>
+		등록신청
+		</td>
+		<td>잠옷</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>7</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=sexybaek&srr_flag=0' target='AdminRightiFrame'>
+		sexybaek
+		</a>
+		</td>
+		<td>마그넥스페이</td>
+		<td>넥스페이샵</td>
+		<td align=center><a href='http://smartstore.naver.com/nexpay' target='_blank' title='http://smartstore.naver.com/nexpay'>go</a></td>
+		<td>01045486264</td>
+		<td>
+		등록신청
+		</td>
+		<td>음식물분쇄기</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>8</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=rellafit94&srr_flag=0' target='AdminRightiFrame'>
+		rellafit94
+		</a>
+		</td>
+		<td>렐라핏</td>
+		<td>렐라핏</td>
+		<td align=center><a href='https://smartstore.naver.com/rellafit' target='_blank' title='https://smartstore.naver.com/rellafit'>go</a></td>
+		<td>01035861134</td>
+		<td>
+		등록신청
+		</td>
+		<td></td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>9</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=experd&srr_flag=0' target='AdminRightiFrame'>
+		experd
+		</a>
+		</td>
+		<td>엑스퍼캠프</td>
+		<td>엑스퍼캠프</td>
+		<td align=center><a href='www.expertcamp.co.kr' target='_blank' title='www.expertcamp.co.kr'>go</a></td>
+		<td>010-8443-1217</td>
+		<td>
+		등록신청
+		</td>
+		<td>컴퓨터 및 주변기기</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>10</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=combia&srr_flag=0' target='AdminRightiFrame'>
+		combia
+		</a>
+		</td>
+		<td>(주)컴비아</td>
+		<td>컴비아</td>
+		<td align=center><a href='www.comvia.co.kr' target='_blank' title='www.comvia.co.kr'>go</a></td>
+		<td>010-4709-8688</td>
+		<td>
+		등록신청
+		</td>
+		<td>컴퓨터및주변기기</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>11</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=dltkdskfk1&srr_flag=0' target='AdminRightiFrame'>
+		dltkdskfk1
+		</a>
+		</td>
+		<td>대륙의실수</td>
+		<td>대륙의실수</td>
+		<td align=center><a href='https://smartstore.naver.com/sale114' target='_blank' title='https://smartstore.naver.com/sale114'>go</a></td>
+		<td>01057794790</td>
+		<td>
+		등록신청
+		</td>
+		<td></td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>12</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=kee221&srr_flag=0' target='AdminRightiFrame'>
+		kee221
+		</a>
+		</td>
+		<td>한마음의료기</td>
+		<td>스토어팜</td>
+		<td align=center><a href='https://smartstore.naver.com/hmk' target='_blank' title='https://smartstore.naver.com/hmk'>go</a></td>
+		<td>010-8539-8140</td>
+		<td>
+		등록신청
+		</td>
+		<td>휠체어, 의료기기</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>13</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=csj213000&srr_flag=0' target='AdminRightiFrame'>
+		csj213000
+		</a>
+		</td>
+		<td>테스트</td>
+		<td>테스트</td>
+		<td align=center><a href='http://test.com' target='_blank' title='http://test.com'>go</a></td>
+		<td>010-1111-1111</td>
+		<td>
+		등록신청
+		</td>
+		<td></td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>14</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=ysangelhot&srr_flag=0' target='AdminRightiFrame'>
+		ysangelhot
+		</a>
+		</td>
+		<td>소블리</td>
+		<td>아이엠썬</td>
+		<td align=center><a href='https://smartstore.naver.com/im-sun' target='_blank' title='https://smartstore.naver.com/im-sun'>go</a></td>
+		<td>01079410611</td>
+		<td>
+		등록신청
+		</td>
+		<td></td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>15</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=anwodyd&srr_flag=0' target='AdminRightiFrame'>
+		anwodyd
+		</a>
+		</td>
+		<td>무역JY</td>
+		<td>대륙아이템</td>
+		<td align=center><a href='https://smartstore.naver.com/0427' target='_blank' title='https://smartstore.naver.com/0427'>go</a></td>
+		<td>010-3751-5669</td>
+		<td>
+		등록신청
+		</td>
+		<td>휴대폰악세사리 블루투스이어폰 기타가전</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>16</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=tjqn321&srr_flag=0' target='AdminRightiFrame'>
+		tjqn321
+		</a>
+		</td>
+		<td>제이커</td>
+		<td>제이커</td>
+		<td align=center><a href='https://smartstore.naver.com/jaker' target='_blank' title='https://smartstore.naver.com/jaker'>go</a></td>
+		<td>01051623158</td>
+		<td>
+		등록신청
+		</td>
+		<td>남성의류</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>17</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=mlhy3596&srr_flag=0' target='AdminRightiFrame'>
+		mlhy3596
+		</a>
+		</td>
+		<td>(주)한양엠에스엘</td>
+		<td>모터스라인</td>
+		<td align=center><a href='https://smartstore.naver.com/mlhy' target='_blank' title='https://smartstore.naver.com/mlhy'>go</a></td>
+		<td>02-835-3590</td>
+		<td>
+		등록신청
+		</td>
+		<td>자동차용품</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>18</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=misobike1&srr_flag=0' target='AdminRightiFrame'>
+		misobike1
+		</a>
+		</td>
+		<td>미소바이크</td>
+		<td>미소바이크</td>
+		<td align=center><a href='www.misobike.com' target='_blank' title='www.misobike.com'>go</a></td>
+		<td>010-6710-5363</td>
+		<td>
+		등록신청
+		</td>
+		<td>자전거</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>19</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=dctenter&srr_flag=0' target='AdminRightiFrame'>
+		dctenter
+		</a>
+		</td>
+		<td>(주)디씨티기업</td>
+		<td>기타드림</td>
+		<td align=center><a href='https://smartstore.naver.com/guitardream' target='_blank' title='https://smartstore.naver.com/guitardream'>go</a></td>
+		<td>010-6590-4567</td>
+		<td>
+		등록신청
+		</td>
+		<td>악기</td>
+		</tr>
+		<tr height=20 bgcolor=#FFFFFF>
+		<td align=center>20</td>
+		<td>
+		<a href='Mallregisteradmin.jsp?cmd=mallregfrm&srr_id=gmastar_jl&srr_flag=0' target='AdminRightiFrame'>
+		gmastar_jl
+		</a>
+		</td>
+		<td>정림전자(주)</td>
+		<td>정림전자 온라인샵</td>
+		<td align=center><a href='www.junglimshop.com' target='_blank' title='www.junglimshop.com'>go</a></td>
+		<td>010-4776-9507</td>
+		<td>
+		등록신청
+		</td>
+		<td>모니터,전자제품</td>
+		</tr>
+		</table>
+	
+		
+		<table align="center" border="0" width="100%" cellpadding="0" cellspacing="0">
+			<tr><td height="20"></td></tr>
+			<tr>
+				<td align=center height="25" width="100%" id="Pager">
+				</td>
+				<td width="20%">
+				</td>
+				
+	                <script language="JavaScript">
+		   				firstImg = "";
+		       	        endImg = "";
+		           	    prevImg = "◀◀";
+		               	nextImg = "▶▶";
+		               	pager3('/mallregister/Mallregisteradmin.jsp?listcnt=20&menu_id=0&keyword=', 1750, 20, 10, 1,'');
+	                </script>
+			 </tr>
+			 <tr><td height="20"></td></tr>
+		</table>
+		
+		</td>
+		<td width=50% align=center><iframe name="AdminRightiFrame" id="AdminRightiFrame" width="100%" height="98%" frameborder="0" src='http://img.enuri.gscdn.com/html/etc/Blank.htm'></iframe></TD>
+	
+		</tr>
+	</table>
+	
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<!-- <ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul> -->
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+</body>
+</html>
+

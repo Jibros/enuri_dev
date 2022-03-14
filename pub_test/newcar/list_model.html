@@ -1,0 +1,974 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <title>에누리 신차견적</title>
+    <link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+	<meta name="format-detection" content="telephone=no"/>
+    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
+    <!-- Common -->
+    <link rel="stylesheet" type="text/css" href="/css/newcar/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/newcar/template.css"/>
+	<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/js/swiper.min.js"></script>
+    <!-- 완료후제거 -->
+    <link rel="stylesheet" href="/css/default.css?v=1" type="text/css">
+</head>
+<body>
+
+    <div id="wrap">
+
+        <div id="header" class="header">
+            
+            <!-- 심플헤더 -->
+            <link rel="stylesheet" href="/css/com.simple.header.css" type="text/css">
+            <div class="com_simple_header ty_wide">
+                <div class="com_head__inner">
+                    <!-- 심플헤더 - 패밀리탭 -->
+                    <ul class="com_head__tab_fam">
+                        <!-- 노출되지 않는 list는 li태그에 display:none처리 꼭 해주세요 -->
+                        <!-- 해당되는 탭은 on클래스로 활성화 해주세요 -->
+                        <li><a href="/">에누리홈</a></li><!-- 에누리홈에서는 비노출 -->
+                        <li><a href="/global/Index.jsp">해외직구</a></li>
+                        <li><a href="/enuripc">조립PC</a></li>
+                        <li><a href="/deal/newdeal/index.deal">소셜</a></li>
+                        <li><a href="/tour2012/Tour_Index.jsp">여행</a></li>
+                        <li class="on"><a href="#">자동차</a></li>
+                        <li><a href="/knowbox2/index.jsp">쇼핑지식</a></li>
+                    </ul>
+                    <!-- // -->
+                    <!-- 심플헤더 - 배너영역 (에누리홈 only) -->
+                    <ul class="com_head__list_ban" style="display:none">
+                        <li><a href="#">혜택존<span class="ico_simple__sprite ico__sp_ben">쇼핑혜택</span></a></li>
+                    </ul>
+                    <!-- // -->
+                    <!-- 심플헤더 - 우측메뉴 -->
+                    <ul class="com_head__menu">
+                        <!-- 노출되지 않는 메뉴 li태그에 display:none처리 꼭 해주세요 -->
+                        <!-- 로그인 -->
+                        <li style="display:none"><a href="#">로그인</a></li>
+                        <!-- 회원가입 -->
+                        <li style="display:none"><a href="#">회원가입</a></li>
+                        <!-- 사용자 + 마이에누리 레이어 -->
+                        <li>
+                            <a href="#"><em class="user_name">WangKooN</em>님<span class="ico__arr_down ico_simple__sprite"></span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 마이에누리 -->
+                            <div class="com_lay_login com_lay_box">
+                                <div class="lay_inner">
+                                    <ul>
+                                        <li><a href="javascript:goPage('https://dev.enuri.com/my/my_enuri.jsp');">My에누리</a></li>
+                                        <li><a href="javascript:CmdJoin(3);">개인정보관리</a></li>
+                                        <li><a href="">SDUL</a></li>
+                                        <li><a href="">상위노출입찰</a></li>
+                                        <li><a href="javascript:showZzim();">찜상품 <em>(n)</em></a></li>
+                                        <li><a href="javascript:logout();">로그아웃</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- // -->
+                        </li>
+                        <!-- 로그아웃 -->
+                        <li><a href="#">로그아웃</a></li>
+                        <!-- 쇼핑Q&A -->
+                        <li style="display:none"><a href="#">쇼핑Q&A</a></li>
+                        <!-- 앱다운로드 + 레이어 -->
+                        <li style="display:none">
+                            <a href="javascript:void(0);">앱다운로드<span class="ico__app_down ico_simple__sprite">받기</span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 앱다운로드 -->
+                            <div class="com_lay_app com_lay_box">
+                                <div class="spbox" id="simpleHeader">
+                                    <ul class="sp_tab">
+                                        <li><a href="javascript:void(0);" onclick="$('.sp_enuri').show().siblings('div').hide();">에누리 가격비교</a></li>
+                                        <li><a href="javascript:void(0);" onclick="$('.sp_hotdeal').show().siblings('div').hide();">소셜비교</a></li>
+                                    </ul>
+                                    <!-- 에누리 -->
+                                    <div class="sp_enuri" style="display:block;">
+                                        <h2>에누리 가격비교 </h2>
+                                        <p>모바일로 더욱 특별해진 가격비교!</p>
+                                        <dl>
+                                            <dt>QR코드 스캔</dt>
+                                            <dd>QR코드</dd>
+                                            <dt>앱 다운로드</dt>
+                                            <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.android" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                            <dd><a href="https://itunes.apple.com/kr/app/enuli-gagyeogbigyo/id476264124?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                            <dt>다운로드 SMS 보내기</dt>
+                                            <dd>
+                                                <fieldset>
+                                                    <legend>SMS보내기</legend>
+                                                    <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_enuri" id="phonenum_enuri" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('enuri')"></button>
+                                                </fieldset>
+                                            </dd>
+                                            <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                            <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                        </dl>
+                                    </div>
+                                    <!-- 소셜비교 -->
+                                    <div class="sp_hotdeal" style="display:none;">
+                                        <h2>소셜비교</h2>
+                                        <p>소셜커머스는 물론 오픈마켓, 종합몰의 핫딜 상품을 한곳에!</p>
+                                        <dl>
+                                            <dt>QR코드 스캔</dt>
+                                            <dd>QR코드</dd>
+                                            <dt>앱 다운로드</dt>
+                                            <dd><a href="https://play.google.com/store/apps/details?id=com.enuri.deal" class="goole" target="_new">구글 PLAY스토어</a></dd>
+                                            <dd><a href="https://itunes.apple.com/kr/app/seumateuhasdil-sosyeolkeomeoseu/id944887654?mt=8" class="apple" target="_new">애플 스토어</a></dd>
+                                            <dt>다운로드 SMS 보내기</dt>
+                                            <dd>
+                                                <fieldset>
+                                                    <legend>SMS보내기</legend>
+                                                    <input type="text" onfocus="this.className='focus'" title="휴대폰 번호 입력" class="mobile" name="phonenum_hotdeal" id="phonenum_hotdeal" onkeypress="checkForNumber();" style="ime-mode:disabled;"><button type="button" class="send" onclick="clickSendSms('hotdeal')"></button>
+                                                </fieldset>
+                                            </dd>
+                                            <dd>앱 설치페이지 주소를 무료문자로 발송해 드립니다.</dd>
+                                            <dd>입력하신 번호는 저장되지 않습니다.</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //  -->
+                        </li>
+                        <!-- 더보기 + 레이어 -->
+                        <li>
+                            <a href="javascript:void(0);">더보기<span class="ico__arr_down ico_simple__sprite"></span></a>
+                            <!-- 각 레이어는 부모 li태그가 hover될때 visible 됩니다. -->
+                            <!-- 레이어 : 사이트맵 -->
+                            <div class="com_lay_sitemap com_lay_box">
+                                <dl>
+                                    <dt>주요서비스</dt>
+                                    <dd>
+                                        <a href="/deal/newdeal/index.deal" target="_new">소셜비교</a>
+                                        <a href="/enuripc/" target="_new">PC 견적비교</a>
+                                        <a href="/global/Index.jsp">해외직구</a>
+                                    </dd>
+                                    <dd>
+                                        <a href="/view/shopBest.jsp" target="_new">쇼핑 BEST</a>
+                                        <a href="/view/move_mall.jsp" target="_new">이사견적</a>
+                                        <a href="/view/Flower365.jsp" target="_new">꽃배달</a>
+                                        <a href="/tour2012/Tour_Index.jsp" target="_new">여행비교</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt>커뮤니티</dt>
+                                    <dd>
+                                        <a href="/knowbox2/index.jsp" target="_new">쇼핑지식</a>
+                                        <a href="/knowcom/news.jsp" target="_new">뉴스</a>
+                                        <a href="/knowcom/guide.jsp" target="_new">구매가이드</a>
+                                        <a href="/knowcom/exp.jsp" target="_new">체험단</a>
+                                        <a href="/knowcom/board.jsp?bbsname=review" target="_new">사용기</a>
+                                        <a href="/knowcom/enuritv.jsp" target="_new">에누리TV</a>
+                                        <a href="/knowcom/board.jsp?bbsname=nuri" target="_new">자유게시판</a>                            
+                                    </dd>
+                                    <dd>
+                                        <a href="/knowcom/board.jsp?bbsname=sale" target="_new">특가게시판</a>
+                                        <a href="/knowcom/qna.jsp" target="_new">쇼핑Q&amp;A</a>
+                                        <a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=exhibition" target="_new">쇼핑기획전</a>
+                                        <a href="/infoad_event/eventMain.jsp" target="_new">이벤트</a>
+                                    </dd>
+                                </dl>
+                                <p class="all">
+                                    <a href="/etc/Site_map.jsp" class="enuri_all" target="_new">에누리 서비스 전체보기</a>
+                                </p>
+                            </div>
+                            <!-- // -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+
+            <!-- 메인헤더 + GNB + Search 영역 -->
+            <div class="header_wrap">
+                <div class="inner">
+                    <h1><a href="./" class="comm_sprite" title="에누리 자동차">에누리 자동차</a></h1>
+                    <ul class="nav_global">
+                        <li class="item_nav on"><a href="index.html">신차견적</a></li>
+                        <li class="item_nav"><a href="list_immediate.html">즉시출고</a></li>
+                        <li class="item_nav"><a href="comp_finance.html">금융비교</a></li>
+                        <li class="item_nav"><a href="/enuricar/list.jsp">중고차</a></li>
+                        <!-- 201217 : SR#44117 : 신규탭 추가 -->
+                        <li class="item_nav"><a href="#">내차관리</a></li>
+                        <!-- // -->
+                    </ul>
+                    <ul class="header_bnr">
+                        <li><a href="#"><img src="http://img.enuri.info/images/newcar/@header_bnr.png" alt="8월 판매조건 확인하기"></a></li>
+                    </ul>
+                    <!-- <ul class="shortcuts">
+                        <li><a href="#" class="btn__estimate"><i class="comm_sprite"></i>빠른견적</a></li>
+                        <li><a href="#" class="btn__pricenoti"><i class="comm_sprite"></i>가격알림</a></li>
+                    </ul> -->
+                </div>
+            </div>
+            <!-- // 메인헤더 + GNB + Search 영역 -->
+        </div>
+
+        <div id="container" class="container">
+
+            <!-- 상단 배너 -->
+            <div class="section bnr__lg bnr_top_model">
+                <h2 class="blind">안전하고 편리한 생활을 위한 다양한 차량을 에누리에서 찾아보세요.</h2>
+            </div>
+            <!-- // -->
+
+            <!-- 상세검색 -->
+            <div class="section box_inner sr_detail">
+                <div class="box_head">
+                    <span class="tx_tit">상세검색</span>
+                    <span class="tx_sub">옵션을 설정하여 쉽고 빠르게 상품을 찾아보세요.</span>
+                </div>
+                <div class="box_body">
+                    <div class="detail_box">
+                        <!-- 상세검색 : 제조사 -->
+                        <div class="detail_row">
+                            <div class="detail_row__head">
+                                <p class="tx_tit">제조사</p>
+                                <button class="btn__extend" onclick="$(this).closest('.detail_row').toggleClass('extend');"></button>
+                            </div>
+                            <div class="detail_row__body">
+                                <!-- 제조사 로고 : 비확장 -->
+                                <!-- 최대 26개 까지 노출 -->
+                                <ul class="select_brand">
+                                    <li><input type="checkbox" id="chkBrand01"><label for="chkBrand01"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">현대</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand02"><label for="chkBrand02"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">제네시스</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand03"><label for="chkBrand03"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">기아</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand04"><label for="chkBrand04"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">쉐보레</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand05"><label for="chkBrand05"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">쌍용</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand06"><label for="chkBrand06"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">르노삼성</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand07"><label for="chkBrand07"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">벤츠</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand08"><label for="chkBrand08"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">BMW</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand09"><label for="chkBrand09"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">아우디</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand10"><label for="chkBrand10"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">폭스바겐</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand11"><label for="chkBrand11"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">미니</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand12"><label for="chkBrand12"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">볼보</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand13"><label for="chkBrand13"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">재규어</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand14"><label for="chkBrand14"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">랜드로버</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand15"><label for="chkBrand15"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">포르쉐</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand16"><label for="chkBrand16"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">페라리</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand17"><label for="chkBrand17"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">람브로기니</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand18"><label for="chkBrand18"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">마세라티</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand19"><label for="chkBrand19"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">푸조</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand20"><label for="chkBrand20"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">시트로엥</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand21"><label for="chkBrand21"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">DS</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand22"><label for="chkBrand22"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">스마트</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand23"><label for="chkBrand23"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">벤틀리</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand24"><label for="chkBrand24"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">롤스로이스</span></label></li>
+                                </ul>
+                                <!-- 제조사 로고 확장시 노출 -->
+                                <ul class="select_brand ty_extend">
+                                    <li><input type="checkbox" id="chkBrand01"><label for="chkBrand01"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">현대</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand02"><label for="chkBrand02"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">제네시스</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand03"><label for="chkBrand03"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">기아</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand04"><label for="chkBrand04"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">쉐보레</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand05"><label for="chkBrand05"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">쌍용</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand06"><label for="chkBrand06"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">르노삼성</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand07"><label for="chkBrand07"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">벤츠</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand08"><label for="chkBrand08"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">BMW</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand09"><label for="chkBrand09"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">아우디</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand10"><label for="chkBrand10"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">폭스바겐</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand11"><label for="chkBrand11"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">미니</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand12"><label for="chkBrand12"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">볼보</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand13"><label for="chkBrand13"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">재규어</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand14"><label for="chkBrand14"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">랜드로버</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand15"><label for="chkBrand15"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">포르쉐</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand16"><label for="chkBrand16"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">페라리</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand17"><label for="chkBrand17"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">람브로기니</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand18"><label for="chkBrand18"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">마세라티</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand19"><label for="chkBrand19"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">푸조</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand20"><label for="chkBrand20"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">시트로엥</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand21"><label for="chkBrand21"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">DS</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand22"><label for="chkBrand22"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">스마트</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand23"><label for="chkBrand23"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">벤틀리</span></label></li>
+                                    <li><input type="checkbox" id="chkBrand24"><label for="chkBrand24"><span class="thumb_brand"><img src="http://img.enuri.info/images/newcar/1001.png" alt=""></span><span class="tx_brand">롤스로이스</span></label></li>
+                                </ul>
+                                <!-- // -->
+                            </div>
+                        </div>
+                        <!-- 상세검색 : 차종 -->
+                        <div class="detail_row">
+                            <div class="detail_row__head">
+                                <p class="tx_tit">차종</p>
+                                <!-- <button class="btn__extend" onclick="$(this).closest('.detail_row').toggleClass('extend');"></button> -->
+                            </div>
+                            <div class="detail_row__body">
+                                <!-- 12개 리스트 아이템 고정 -->
+                                <!-- 복수 선택 가능 -->
+                                <ul class="select_option chkbox_basic">
+                                    <li><input type="checkbox" id="chkModel01"><label for="chkModel01">경차</label></li>
+                                    <li><input type="checkbox" id="chkModel02"><label for="chkModel02">소형 승용</label></li>
+                                    <li><input type="checkbox" id="chkModel03"><label for="chkModel03">준중형 승용</label></li>
+                                    <li><input type="checkbox" id="chkModel04"><label for="chkModel04">중형 승용</label></li>
+                                    <li><input type="checkbox" id="chkModel05"><label for="chkModel05">준대형 승용</label></li>
+                                    <li><input type="checkbox" id="chkModel06"><label for="chkModel06">대형 승용</label></li>
+                                    <li><input type="checkbox" id="chkModel07"><label for="chkModel07">스포츠카</label></li>
+                                    <li><input type="checkbox" id="chkModel08"><label for="chkModel08">소형 SUV</label></li>
+                                    <li><input type="checkbox" id="chkModel09"><label for="chkModel09">중형 SUV</label></li>
+                                    <li><input type="checkbox" id="chkModel10"><label for="chkModel10">대형 SUV</label></li>
+                                    <li><input type="checkbox" id="chkModel11"><label for="chkModel11">RV/MPV</label></li>
+                                    <li><input type="checkbox" id="chkModel12"><label for="chkModel12">상용</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 상세검색 : 연료 -->
+                        <div class="detail_row">
+                            <div class="detail_row__head">
+                                <p class="tx_tit">연료</p>
+                                <!-- <button class="btn__extend" onclick="$(this).closest('.detail_row').toggleClass('extend');"></button> -->
+                            </div>
+                            <div class="detail_row__body">
+                                <!-- 5개 리스트 아이템 고정 -->
+                                <!-- 추후 차량 유형 변화에 따라 변동 가능 -->
+                                <!-- 복수 선택 가능 -->
+                                <ul class="select_option chkbox_basic">
+                                    <li><input type="checkbox" id="chkFuel01"><label for="chkFuel01">휘발유(가솔린)</label></li>
+                                    <li><input type="checkbox" id="chkFuel02"><label for="chkFuel02">경유(디젤)</label></li>
+                                    <li><input type="checkbox" id="chkFuel03"><label for="chkFuel03">LPG</label></li>
+                                    <li><input type="checkbox" id="chkFuel04"><label for="chkFuel04">전기</label></li>
+                                    <li><input type="checkbox" id="chkFuel05"><label for="chkFuel05">하이브리드</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // -->
+
+            <!-- 상품리스트 -->
+            <div class="section box_inner sr_model">
+
+                <div class="list_head">
+                    <!-- 차량 선택 탭 -->
+                    <ul class="list_tab">
+                        <!-- 탭 활성화시 .is-active 클래스 붙여주세요 -->
+                        <li class="is-active">일반 견적 차량 <span class="tx_count">30</span></li>
+                        <li>리스/렌트 차량 <span class="tx_count">12</span></li>
+                        <li>출시 예정 차량 <span class="tx_count">18</span></li>
+                        <li>단종 차량 <span class="tx_count">0</span></li>
+                    </ul>
+
+                    <!-- 결과내검색 -->
+                    <div class="re_search">
+                        <input type="text" placeholder="결과 내 검색">
+                        <button class="btn__research"><i class="comm_sprite ico_search">검색</i></button>
+                    </div>
+
+                    <!-- 정렬 그룹 -->
+                    <div class="list_sort">
+                        <!-- 정렬 메뉴 -->
+                        <ul class="select_sort">
+                            <!-- 정렬 선택시 .is-active 클래스 붙여주세요 -->
+                            <li class="is-active"><a href="#" onclick="return false;"><i class="comm_sprite ico_sort_check"></i>종합 인기순</a></li>
+                            <!-- <li><a href="#" onclick="return false;"><i class="comm_sprite ico_sort_check"></i>신차 인기순</a></li> -->
+                            <!-- <li><a href="#" onclick="return false;"><i class="comm_sprite ico_sort_check"></i>중고차 인기순</a></li> -->
+                            <li><a href="#" onclick="return false;"><i class="comm_sprite ico_sort_check"></i>가격순</a></li>
+                            <!-- <li><a href="#" onclick="return false;"><i class="comm_sprite ico_sort_check"></i>연비순</a></li> -->
+                            <li><a href="#" onclick="return false;"><i class="comm_sprite ico_sort_check"></i>출시순</a></li>
+                        </ul>
+                        <!-- 정렬 우측 그룹 -->
+                        <div class="select_cond">
+                            <!-- <select name="" id="" class="select_basic">
+                                <option value="" selected>30개씩 보기</option>
+                                <option value="">60개씩 보기</option>
+                            </select> -->
+                            <!-- 리스트 아이템 조절 영역 -->
+                            <div class="select_basic select_size">
+                                <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                    <span class="tx_select">30개씩 보기</span>
+                                    <i class="comm_sprite ico_size_arr"></i>
+                                </a>
+                                <ul class="box_size">
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">30개씩 보기</span></a></li>
+                                    <li><a href="#" onclick="return false;"><span class="tx_select">60개씩 보기</span></a></li>
+                                </ul>
+                            </div>
+                            <!-- 일반견적 : 맞춤 추천 -->
+                            <button class="btn__recomm_cond" onclick="$('.lay_selcondi').show();">
+                                <i class="comm_sprite ico_setting"></i>
+                                <!-- 맞춤 설정 전 -->
+                                <!-- <span class="tx_cond">지역/연령/성별 <em>추천조건 설정</em></span> -->
+                                <!-- 맞춤 설정 후 -->
+                                <span class="tx_cond selected">서울시 강서구/30대/여성 <em>설정</em></span>
+                            </button>
+                            <!-- 리스렌트탭 전용 : 리스렌트 조건 변경 -->
+                            <button class="btn__rental_cond"  onclick="$('.lay_rentcondi').show();" style="display:none">
+                                <i class="comm_sprite ico_rental"></i>
+                                <!-- 조건 베리에이션 -->
+                                <span class="tx_cond selected"><em>36개월 / 보증선납 0%</em> 조건</span>
+                                <!-- <span class="tx_cond selected"><em>48개월 / 보증금 30%</em> 조건</span> -->
+                                <!-- <span class="tx_cond selected"><em>60개월 / 선납금 30%</em> 조건</span> -->
+                            </button>
+                            <!-- // -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 상품 리스트 -->
+                <div class="list_body">
+                    <ul class="list_model">
+                        <!-- 200923 추가 : 결과 없을때 -->
+                        <li class="no_result">
+                            <i class="ico_caution_b">!</i>
+                            <span class="tx_main">검색결과가 없습니다.</span>
+                            <span class="tx_sub">다른 검색어를 입력 하시거나, 옵션을 다시 설정해 보시기 바랍니다.</span>
+                        </li>
+                        <!-- // -->
+                        <!-- 반복 : 상품 -->
+                        <li class="item_model">
+                            <!-- 모델 메인 로고/썸네일 -->
+                            <div class="md_logo">
+                                <img src="http://img.enuri.info/images/newcar/1001.png" alt="">
+                            </div>
+                            <div class="md_thumb">
+                                <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                            </div>
+                            <div class="md_info">
+                                <div class="md_name" onclick="window.location.href='view_model.html';">
+                                    <!-- 제조사+모델명 -->
+                                    <span class="tx_name">현대 더 뉴 그랜저</span>
+                                    <!-- Badge : 재고한정 -->
+                                    <!-- <span class="ico_tag tag_limit">재고한정</span> -->
+                                    <!-- Badge : 출시예정 -->
+                                    <!-- <span class="ico_tag tag_coming">출시예정</span> -->
+                                    <!-- Badge : 단종차량 -->
+                                    <!-- <span class="ico_tag tag_disctn">단종차량</span> -->
+                                </div>
+                                <!-- 모델 소개글 -->
+                                <div class="md_sub">#대용량16KG #블랙케비어 #하이브리드 #마법의 60℃ #도어방향선택</div>
+                                <!-- 대표제원 표시 -->
+                                <div class="md_spec">
+                                    <ul class="tx_spec">
+                                        <li>중형 승용</li>
+                                        <li>휘발유,경유</li>
+                                        <li>1,995~2,998cc</li>
+                                        <li>복합연비 9.9~14.3km/l</li>
+                                        <li>AppleCarPlay</li>
+                                    </ul>
+                                </div>
+                                <!-- 추가제원 표시 -->
+                                <div class="md_spec md_spec_add">
+                                    <ul class="tx_spec">
+                                        <li>버튼+다이얼식,리모컨</li>
+                                        <li>불투명도어</li>
+                                        <li>도어방향선택</li>
+                                        <li>색상:블랙케비어</li>
+                                    </ul>
+                                </div>
+                                <div class="md_bottom">
+                                    <ul>
+                                        <!-- 모델 출시일 -->
+                                        <li>2019.04 출시</li>
+                                        <!-- 차량 출고 카운트 -->
+                                        <li>최근 한 달 신차등록 <em>199</em></li>
+                                        <li>중고차 이전 등록 <em>199</em></li>
+                                        <!-- 에누리 적립표기 -->
+                                        <li><i class="comm_sprite ico_emoney">e머니</i>적립</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 케이스 : 일반 견적 차량 -->
+                            <div class="md_price">
+                                <!-- 모델출고가격 -->
+                                <span class="tx_model_price"><em>6,067 ~ 7,049</em>만원</span>
+                                <!-- 인기계약 트림 가격 -->
+                                <span class="tx_bestsell_price">인기계약 <em>6,130</em>만원</span>
+                                <!-- 신차견적내기 -->
+                                <button class="btn__estimate" onclick="window.location.href='estimate.html'">신차 견적내기</button>
+                            </div>
+                            <!-- // -->
+                        </li>
+                        <!-- // -->
+                        <li class="item_model">
+                            <!-- 모델 메인 로고/썸네일 -->
+                            <div class="md_logo">
+                                <img src="http://img.enuri.info/images/newcar/nologo.png" alt="">
+                                <!-- <img src="http://img.enuri.info/images/newcar/1001.png" alt=""> -->
+                            </div>
+                            <div class="md_thumb">
+                                <img src="http://img.enuri.info/images/newcar/noimg.png" alt="">
+                                <!-- <img src="http://img.enuri.info/images/newcar/1600.png" alt=""> -->
+                            </div>
+                            <div class="md_info">
+                                <div class="md_name" onclick="window.location.href='view_model.html';">
+                                    <!-- 제조사+모델명 -->
+                                    <span class="tx_name">현대 GV80</span>
+                                    <!-- Badge : 재고한정 -->
+                                    <span class="ico_tag tag_limit">재고한정</span>
+                                    <!-- Badge : 출시예정 -->
+                                    <!-- <span class="ico_tag tag_coming">출시예정</span> -->
+                                    <!-- Badge : 단종차량 -->
+                                    <!-- <span class="ico_tag tag_disctn">단종차량</span> -->
+                                </div>
+                                <!-- 모델 소개글 -->
+                                <div class="md_sub">#대용량16KG #블랙케비어 #하이브리드 #마법의 60℃ #도어방향선택</div>
+                                <!-- 대표제원 표시 -->
+                                <div class="md_spec">
+                                    <ul class="tx_spec">
+                                        <li>중형 승용</li>
+                                        <li>휘발유,경유</li>
+                                        <li>1,995~2,998cc</li>
+                                        <li>복합연비 9.9~14.3km/l</li>
+                                        <li>AppleCarPlay</li>
+                                    </ul>
+                                </div>
+                                <!-- 추가제원 표시 -->
+                                <div class="md_spec md_spec_add">
+                                    <ul class="tx_spec">
+                                        <li>버튼+다이얼식,리모컨</li>
+                                        <li>불투명도어</li>
+                                        <li>도어방향선택</li>
+                                        <li>색상:블랙케비어</li>
+                                    </ul>
+                                </div>
+                                <div class="md_bottom">
+                                    <ul>
+                                        <!-- 모델 출시일 -->
+                                        <li>2019.04 출시</li>
+                                        <!-- 차량 출고 카운트 -->
+                                        <li>최근 한 달 신차등록 <em>199</em></li>
+                                        <li>중고차 이전 등록 <em>199</em></li>
+                                        <!-- 에누리 적립표기 -->
+                                        <li><i class="comm_sprite ico_emoney">e머니</i>적립</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 케이스 : 일반 견적 차량 - 출고 정보 없음 -->
+                            <div class="md_price">
+                                <!-- 모델출고가격 -->
+                                <span class="tx_model_price"><em>6,067 ~ 7,049</em>만원</span>
+                                <!-- 인기계약 트림 가격 -->
+                                <span class="tx_bestsell_price">출고 정보가 없습니다.</span>
+                                <!-- 신차견적내기 -->
+                                <button class="btn__estimate" onclick="window.location.href='estimate.html'">신차 견적내기</button>
+                            </div>
+                            <!-- // -->                            
+                        </li>
+                        <li class="item_model">
+                            <!-- 모델 메인 로고/썸네일 -->
+                            <div class="md_logo">
+                                <img src="http://img.enuri.info/images/newcar/1001.png" alt="">
+                            </div>
+                            <div class="md_thumb">
+                                <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                            </div>
+                            <div class="md_info">
+                                <div class="md_name" onclick="window.location.href='view_model.html';">
+                                    <!-- 제조사+모델명 -->
+                                    <span class="tx_name">벤츠 신형 E-Class</span>
+                                    <!-- Badge : 재고한정 -->
+                                    <!-- <span class="ico_tag tag_limit">재고한정</span> -->
+                                    <!-- Badge : 출시예정 -->
+                                    <!-- <span class="ico_tag tag_coming">출시예정</span> -->
+                                    <!-- Badge : 단종차량 -->
+                                    <!-- <span class="ico_tag tag_disctn">단종차량</span> -->
+                                </div>
+                                <!-- 모델 소개글 -->
+                                <div class="md_sub">#대용량16KG #블랙케비어 #하이브리드 #마법의 60℃ #도어방향선택</div>
+                                <!-- 대표제원 표시 -->
+                                <div class="md_spec">
+                                    <ul class="tx_spec">
+                                        <li>중형 승용</li>
+                                        <li>휘발유,경유</li>
+                                        <li>1,995~2,998cc</li>
+                                        <li>복합연비 9.9~14.3km/l</li>
+                                        <li>AppleCarPlay</li>
+                                    </ul>
+                                </div>
+                                <!-- 추가제원 표시 -->
+                                <div class="md_spec md_spec_add">
+                                    <ul class="tx_spec">
+                                        <li>버튼+다이얼식,리모컨</li>
+                                        <li>불투명도어</li>
+                                        <li>도어방향선택</li>
+                                        <li>색상:블랙케비어</li>
+                                    </ul>
+                                </div>
+                                <div class="md_bottom">
+                                    <ul>
+                                        <!-- 모델 출시일 -->
+                                        <li>2019.04 출시</li>
+                                        <!-- 차량 출고 카운트 -->
+                                        <li>최근 한 달 신차등록 <em>199</em></li>
+                                        <li>중고차 이전 등록 <em>199</em></li>
+                                        <!-- 에누리 적립표기 -->
+                                        <li><i class="comm_sprite ico_emoney">e머니</i>적립</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 케이스 : 리스/렌트 차량 -->
+                            <div class="md_price">
+                                <!-- 리스가 -->
+                                <span class="tx_lease_price">리스 월 <em>282,130</em>원</span>
+                                <!-- 렌탈가 -->
+                                <span class="tx_rental_price">렌트 월 <em>315,720</em>원</span>
+                                <!-- 신차견적내기 -->
+                                <button class="btn__estimate" onclick="window.location.href='estimate.html'">리스/렌트 견적내기</button>
+                            </div>
+                            <!-- // -->
+                        </li>
+                        <!-- 리스트 배너 노출 영역 -->
+                        <!-- 리스트 아이템 3개 이후 노출 / 필수 배너 1개 항시 노출 -->
+                        <li class="item_bnr">
+                            <a href="#"><img src="http://img.enuri.info/images/newcar/@bnr_model_list.png" alt=""></a>
+                        </li>
+                        <!-- // -->
+                        <li class="item_model">
+                            <!-- 모델 메인 로고/썸네일 -->
+                            <div class="md_logo">
+                                <img src="http://img.enuri.info/images/newcar/1001.png" alt="">
+                            </div>
+                            <div class="md_thumb">
+                                <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                            </div>
+                            <div class="md_info">
+                                <div class="md_name" onclick="window.location.href='view_model.html';">
+                                    <!-- 제조사+모델명 -->
+                                    <span class="tx_name">벤츠 신형 E-Class</span>
+                                    <!-- Badge : 재고한정 -->
+                                    <!-- <span class="ico_tag tag_limit">재고한정</span> -->
+                                    <!-- Badge : 출시예정 -->
+                                    <span class="ico_tag tag_coming">출시예정</span>
+                                    <!-- Badge : 단종차량 -->
+                                    <!-- <span class="ico_tag tag_disctn">단종차량</span> -->
+                                </div>
+                                <!-- 모델 소개글 -->
+                                <div class="md_sub">#대용량16KG #블랙케비어 #하이브리드 #마법의 60℃ #도어방향선택</div>
+                                <!-- 대표제원 표시 -->
+                                <div class="md_spec">
+                                    <ul class="tx_spec">
+                                        <li>제원정보 미등록</li>
+                                    </ul>
+                                </div>
+                                <!-- 추가제원 표시 -->
+                                <div class="md_spec md_spec_add">
+                                    <ul class="tx_spec">
+                                        <li>등록정보 미등록</li>
+                                    </ul>
+                                </div>
+                                <div class="md_bottom">
+                                    <ul>
+                                        <!-- 모델 출시일 -->
+                                        <li>출시 예정</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 케이스 : 출시예정 -->
+                            <div class="md_price">
+                                <!-- 출시예정 -->
+                                <span class="tx_coming_soon">가격 미정</span>
+                                <button class="btn__coming_soon" onclick="alert('출시 예정 입니다.');">출시예정</button>
+                            </div>
+                            <!-- // -->
+                        </li>
+                        <li class="item_model">
+                            <!-- 모델 메인 로고/썸네일 -->
+                            <div class="md_logo">
+                                <img src="http://img.enuri.info/images/newcar/1001.png" alt="">
+                            </div>
+                            <div class="md_thumb">
+                                <img src="http://img.enuri.info/images/newcar/1600.png" alt="">
+                            </div>
+                            <div class="md_info">
+                                <div class="md_name" onclick="window.location.href='view_model.html';">
+                                    <!-- 제조사+모델명 -->
+                                    <span class="tx_name">벤츠 신형 E-Class</span>
+                                    <!-- Badge : 재고한정 -->
+                                    <!-- <span class="ico_tag tag_limit">재고한정</span> -->
+                                    <!-- Badge : 출시예정 -->
+                                    <!-- <span class="ico_tag tag_coming">출시예정</span> -->
+                                    <!-- Badge : 단종차량 -->
+                                    <span class="ico_tag tag_disctn">단종차량</span>
+                                </div>
+                                <!-- 모델 소개글 -->
+                                <div class="md_sub">#대용량16KG #블랙케비어 #하이브리드 #마법의 60℃ #도어방향선택</div>
+                                <!-- 대표제원 표시 -->
+                                <div class="md_spec">
+                                    <ul class="tx_spec">
+                                        <li>중형 승용</li>
+                                        <li>휘발유,경유</li>
+                                        <li>1,995~2,998cc</li>
+                                        <li>복합연비 9.9~14.3km/l</li>
+                                        <li>AppleCarPlay</li>
+                                    </ul>
+                                </div>
+                                <!-- 추가제원 표시 -->
+                                <div class="md_spec md_spec_add">
+                                    <ul class="tx_spec">
+                                        <li>버튼+다이얼식,리모컨</li>
+                                        <li>불투명도어</li>
+                                        <li>도어방향선택</li>
+                                        <li>색상:블랙케비어</li>
+                                    </ul>
+                                </div>
+                                <div class="md_bottom">
+                                    <ul>
+                                        <!-- 모델 출시일 -->
+                                        <li>2019.04 출시</li>
+                                        <!-- 차량 출고 카운트 -->
+                                        <li>최근 한 달 신차등록 <em>199</em></li>
+                                        <li>중고차 이전 등록 <em>199</em></li>
+                                        <!-- 에누리 적립표기 -->
+                                        <li><i class="comm_sprite ico_emoney">e머니</i>적립</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- 케이스 : 단종 차량 -->
+                            <div class="md_price">
+                                <!-- 단종차량 -->
+                                <span class="tx_discontinue">단종 차량</span>
+                            </div>
+                            <!-- // -->
+                        </li>
+                    </ul>
+
+                    <div class="list_paging">
+                        <div class="paging_wrap">
+                            <button class="btn__prev"><i class="comm_sprite ico_page_prev"></i>이전</button>
+                            <a href="#" class="on">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+                            <a href="#">6</a>
+                            <a href="#">7</a>
+                            <a href="#">8</a>
+                            <a href="#">9</a>
+                            <a href="#">10</a>
+                            <button class="btn__next"><i class="comm_sprite ico_page_next"></i>다음</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script> 
+                    $(function(){ // 퍼블테스트
+                        var $tab = $(".list_tab li");
+                        $tab.click(function(){
+                            var _idx = $(this).index();
+                            $(this).addClass("is-active").siblings().removeClass("is-active");
+                            if ( _idx != 1 ){
+                                $(".btn__recomm_cond").show();
+                                $(".btn__rental_cond").hide();
+                            }else{
+                                $(".btn__recomm_cond").hide();
+                                $(".btn__rental_cond").show();
+                            }
+                        })
+                    })
+                </script>
+            </div>
+            <!-- // -->
+
+            <!-- 레이어 마크업은 layer.html 확인해주세요 -->
+            <!-- 레이어 : 맞춤 추천 선택 -->
+            <div class="lay_box lay_selcondi" style="display:none">
+                <div class="lay_inner">
+                    <div class="lay_head">맞춤 추천 선택</div>
+                    <div class="lay_body">
+                        <!-- 지역선택 -->
+                        <div class="select_region">
+                            <div class="select_city">
+                                <p class="tx_tit">시/도선택</p>
+                                <div class="select_basic">
+                                    <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                        <span class="tx_select">지역 전체</span>
+                                        <i class="comm_sprite ico_size_arr"></i>
+                                    </a>
+                                    <ul class="select_list">
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">서울</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">부산</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">인천</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">대구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">대전</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">울산</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- <div class="select_dist">
+                                <p class="tx_tit">시/군/구 선택</p>
+                                <div class="select_basic">
+                                    <a href="#" onclick="$(this).parent().toggleClass('is-unfold');return false;">
+                                        <span class="tx_select">지역 전체</span>
+                                        <i class="comm_sprite ico_size_arr"></i>
+                                    </a>
+                                    <ul class="select_list">
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">지역 전체</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강남구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강동구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강북구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">강서구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">광진구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">구로구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">금천구</span></a></li>
+                                        <li><a href="#" onclick="return false;"><span class="tx_select">노원구</span></a></li>
+                                    </ul>
+                                </div>
+                            </div> -->
+                        </div>
+                        <!-- 성별선택 -->
+                        <div class="select_gender">
+                            <p class="tx_tit">성별 선택</p>
+                            <ul class="radio_basic">
+                                <li><input type="radio" id="tyGenderRadio01" name="tyGenderRadio" checked=""><label for="tyGenderRadio01">성별 무관</label></li>
+                                <li><input type="radio" id="tyGenderRadio02" name="tyGenderRadio"><label for="tyGenderRadio02">남성</label></li>
+                                <li><input type="radio" id="tyGenderRadio03" name="tyGenderRadio"><label for="tyGenderRadio03">여성</label></li>
+                            </ul>
+                        </div>
+                        <!-- 나이선택 -->
+                        <div class="select_age">
+                            <p class="tx_tit">연령 선택</p>
+                            <ul class="radio_basic">
+                                <li><input type="radio" id="tyAgeRadio01" name="tyAgeRadio" checked=""><label for="tyAgeRadio01">연령 무관</label></li>
+                                <li><input type="radio" id="tyAgeRadio02" name="tyAgeRadio"><label for="tyAgeRadio02">10대</label></li>
+                                <li><input type="radio" id="tyAgeRadio03" name="tyAgeRadio"><label for="tyAgeRadio03">20대</label></li>
+                                <li><input type="radio" id="tyAgeRadio04" name="tyAgeRadio"><label for="tyAgeRadio04">30대</label></li>
+                                <li><input type="radio" id="tyAgeRadio05" name="tyAgeRadio"><label for="tyAgeRadio05">40대</label></li>
+                                <li><input type="radio" id="tyAgeRadio06" name="tyAgeRadio"><label for="tyAgeRadio06">50대</label></li>
+                                <li><input type="radio" id="tyAgeRadio07" name="tyAgeRadio"><label for="tyAgeRadio07">60대</label></li>
+                                <li><input type="radio" id="tyAgeRadio08" name="tyAgeRadio"><label for="tyAgeRadio08">70대</label></li>
+                                <li><input type="radio" id="tyAgeRadio09" name="tyAgeRadio"><label for="tyAgeRadio09">80대</label></li>
+                                <li><input type="radio" id="tyAgeRadio10" name="tyAgeRadio"><label for="tyAgeRadio10">90대</label></li>
+                            </ul>
+                        </div>
+                        <span class="tx_lay_box">판매량 부족 등 통계 데이터 확인이 불가한 경우에는 추천 정보가 없을 수도 있습니다.</span>
+                        <!-- 버튼 : 조건검색 -->
+                        <button class="btn__lay_search">조건 검색</button>
+                        <!-- // -->
+                    </div>
+                    <!-- 버튼 : 레이어 닫기 -->
+                    <button class="btn__layin_close comm_sprite" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+                    <!-- // -->
+                </div>
+                <div class="dimmed"></div>
+            </div>
+            <!-- // 레이어 : 맞춤 추천 선택 -->
+
+            <!-- 레이어 : 리스 렌트 조건변경 -->
+            <div class="lay_box lay_rentcondi" style="display:none">
+                <div class="lay_inner">
+                    <div class="lay_head">리스 렌트 조건변경</div>
+                    <div class="lay_body">
+                        <!-- 이용기간 -->
+                        <div class="select_period">
+                            <p class="tx_tit">이용기간</p>
+                            <ul class="radio_basic">
+                                <li><input type="radio" id="tyPeriodRadio01" name="tyPeriodRadio" checked=""><label for="tyPeriodRadio01">36개월</label></li>
+                                <li><input type="radio" id="tyPeriodRadio02" name="tyPeriodRadio"><label for="tyPeriodRadio02">48개월</label></li>
+                                <li><input type="radio" id="tyPeriodRadio03" name="tyPeriodRadio"><label for="tyPeriodRadio03">60개월</label></li>
+                            </ul>
+                        </div>
+                        <!-- 보증/선납 -->
+                        <div class="select_deposit">
+                            <p class="tx_tit">보증/선납</p>
+                            <ul class="radio_basic">
+                                <li><input type="radio" id="tyDepositRadio01" name="tyDepositRadio" checked=""><label for="tyDepositRadio01">보증금 30%</label></li>
+                                <li><input type="radio" id="tyDepositRadio02" name="tyDepositRadio"><label for="tyDepositRadio02">선납금 30%</label></li>
+                                <li><input type="radio" id="tyDepositRadio03" name="tyDepositRadio"><label for="tyDepositRadio03">없음 0%</label></li>
+                            </ul>
+                        </div>
+                        <span class="tx_lay_box">
+                            <dl>
+                                <dt>보증금 : </dt>
+                                <dd>이용기간 계약 만료시 환급받을 수 있는 금액입니다.</dd>
+                            </dl>
+                            <dl>
+                                <dt>선납금 : </dt>
+                                <dd>계약 금액을 일정 부분 미리 납부하여 계약 만료시 소진되는 금액입니다.</dd>
+                            </dl>
+                            <dl>
+                                <dt>없음 : </dt>
+                                <dd>보증 또는 선납이 없는 형태로 초기 비용이 낮아지지만 월 이용 금액이 상승됩니다.</dd>
+                            </dl>
+                        </span>
+                        <!-- 버튼 : 조건적용 -->
+                        <button class="btn__lay_search">조건 적용</button>
+                        <!-- // -->
+                    </div>
+                    <!-- 버튼 : 레이어 닫기 -->
+                    <button class="btn__layin_close comm_sprite" onclick="$(this).parents('.lay_box').fadeOut(100);">닫기</button>
+                    <!-- // -->
+                </div>
+                <div class="dimmed"></div>
+            </div>
+            <!-- // 레이어 : 리스 렌트 조건변경 -->
+
+        </div>
+
+        <!-- 공통 : 푸터 -->
+        <div class="footer footer--com wide">
+            <!-- 탑 버튼 -->
+            <div class="box_quick">
+                <ul>
+                    <li><a href="#" class="btn_top--quick comm_sprite" onclick="$(window).scrollTop(0);return false;">TOP</a></li>
+                </ul>                
+            </div>
+            <!-- // -->            
+            <!-- 푸터 메뉴 -->
+            <div class="footer__menu">
+                <div class="footer__inner">
+                    <ul class="footer__menu_list">
+                        <li><a href='/etc/enuri_intro/Enuriintro.jsp' target="_top" onclick="insertLog(1059);">회사소개</a></li>
+                        <li><a href='/ad' target="_new" onclick="insertLog(1060);">광고안내</a></li>
+                        <li><a href="https://seller.enuri.com/sdul/Sdu_Guide.jsp" target="_blank">입점안내</a></li>
+                        <li><a href='https://seller.enuri.com' target="_blank" onclick="insertLog(1061);"><strong>판매자 광고센터</strong></a></li>
+                        <!-- <li><a href="#" id="sdulogin" onclick="this.blur();insertLog(1062);GotoSDUL_Login();return false;">판매자SDU(L)</a></li> -->
+                        <li><a href='/etc/provision.jsp' target="_top">이용약관</a></li>
+                        <li><a href="/etc/Secure.jsp" target="_top" onclick="insertLog(4555);"><strong>개인정보처리방침</strong></a></li>
+                        <li><a href="/etc/Duty.jsp" target="_top" onclick="insertLog(1064);">법적고지</a></li>
+                        <li><a href="/view/mallsearch/Listmall.jsp" target="_top" onclick="insertLog(1065);">쇼핑몰검색</a></li>
+                        <li><a href="/faq/Faq_List.jsp" target="_top">고객센터</a></li>
+                        <!-- <li><a href="#" onclick="this.blur();insertLog(1067);Cmd_Sitemap_All_Bottom();return false;" >전체메뉴</a></li> -->
+                        <li><a href="/etc/Site_map.jsp" target="_top" onclick="insertLog(1068);">사이트맵</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- // -->
+            <!-- 푸터 : 회사정보 -->
+            <div class="footer__info footer__inner">
+                <span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+                <div class="footer__info_com">
+                    <span class="footer__tx_tit">써머스플랫폼</span>
+                    <addr class="footer__tx_adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층, ㈜써머스플랫폼</addr>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
+                    <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
+                    <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
+                    <span class="footer__tx_fax"><b>팩스 :</b> <span class="tx_num">02-6354-3600</span></span>
+                    <span class="footer__tx_mail"><b>문의 :</b> <a href="mailto:master@enuri.com">master@enuri.com</a></span>
+                </div>
+                <span class="footer__tx_copyright">Copyright ⓒ SummercePlatform Inc. All rights reserved.</span>
+            </div>
+            <!-- // -->
+        </div>
+        <!-- // -->
+
+    </div>
+
+    <script>
+        // 공통 : 업/다운 스크롤체크
+        $(function(){
+            var position = $(window).scrollTop();
+            var el = {
+                wrap : $("#wrap"), // 메인래퍼
+                cont : $("#container"), // 메인컨텐츠
+                btnQuick : $(".footer .box_quick") // 탑버튼
+            }
+            var stickyGnb = function(){
+                var $myScroll = $(window).scrollTop();
+                if ( $myScroll > el.cont.offset().top ){
+                    el.btnQuick.addClass("scr_mode");                    
+                    // 업다운 스크롤 체크
+                    if($myScroll > position)  el.wrap.addClass("scr_down").removeClass("scr_reset scr_up");
+                    else el.wrap.removeClass("scr_down scr_reset").addClass("scr_up");
+                }else{
+                    el.btnQuick.removeClass("scr_mode");
+                    el.wrap.removeClass("scr_down scr_up");
+                }
+                position = $myScroll;
+            };
+			$(window).load(stickyGnb).scroll(stickyGnb);
+        })
+    </script>
+</body>
+</html>

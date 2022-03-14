@@ -1,0 +1,325 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<!-- <script type="text/javascript" src="http://eventimg.auction.co.kr/md/auction/04D25F0304/jquery.easing-1.3.min.js"></script> -->
+<link rel="stylesheet" href="/css/default.css" type="text/css">
+<link rel="stylesheet" href="/css/wing.css" type="text/css">
+<link rel="stylesheet" href="/css/lp.css" type="text/css">
+</head>
+<body>
+
+
+<div id="LP_AREA">
+
+
+	<!-- 상품리스트 영역 -->
+	<div class="goods_list">
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				//Default Action
+				$(".cont_area").hide(); 
+				$(".goods_list .tabarea li:first").addClass("on").show(); 
+				$(".cont_area:first").show();
+				 
+				//On Click Event
+				$(".goods_list .tabarea li").click(function() {
+					$(".goods_list .tabarea li").removeClass("on"); 
+					$(this).addClass("on"); 
+					$(".cont_area").hide(); 
+					var activeTab = $(this).find("a").attr("href");
+					$(activeTab).show();
+					return false;
+				});
+			});
+		</script>
+		<br/><br/><br/>
+		<!-- tab -->
+		<div class="goods_tab">
+			<div class="tab_search">
+				<ul class="tabarea">
+					<li class="on"><a href="#goods_tab01">전체<span>456,789,012</span></a></li>
+					<li><a href="#goods_tab02">가격비교<span>89,012</span></a></li>
+					<li><a href="#goods_tab03">일반상품<span>5,012</span></a></li>
+					<!-- 191104 현금몰/직구 추가 - 해외직구 탭 추가-->
+					<li><a href="#">해외직구<span>5,012</span></a></li>
+					<!-- // -->
+					<li><a href="#goods_tab04" class="etc">소셜상품</a></li>
+					<!-- 200303 : [PC] 마스크 LP탭 추가 건 -->
+					<li><a href="#" class="lately"><span class="tag">품절임박</span>최근 등록상품</a></li>
+					<!-- // -->
+				</ul>	
+				<!-- 결과 내 검색 -->
+				<fieldset class="search_chk">
+					<legend>결과내 검색</legend>
+					<input type="text" class="txtbox" /><button type="button" class="result">결과내검색</button>
+				</fieldset>
+
+				<!-- 170801 레이어 -->
+				<div class="assistboxstc tably" style="display:none;">
+					<h5>유의사항<a class="btnclose" href="javascript:///" onclick="laypop('G9moveLayer'); return false;">닫기</a></h5>
+					<div class="inner">탭 이동시 선택한 조건이<br><em>초기화</em> 됩니다.</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="listview_area">
+
+			<!-- 전체상품 -->
+			<div class="cont_area" id="goods_tab01">
+
+				<!-- 정렬 -->
+				<div class="aline_info">
+					<ul class="align_list">
+						<li class="on"><a href="#">인기순<span class="tip01">TIP : “인기순”은 최근 1주일 동안의 가격비교창과 주문버튼 클릭수, 판매량을 집계하여 합리적인 비례계산 시스템에 의해 만들어진 순위 ※클릭수 조작 및 광고등을 통한 인위적인 조작 불가능함</span></a></li>
+						<li><a href="#">최저가순<span class="tip06">TIP : “최저가순”은 가격비교/가격비교외상품 각각 조회됩니다.클릭 시 가격비교탭으로 이동합니다.</span></a></li>
+						<li><a href="#">최고가순<span class="tip07">TIP : “최고가순”은 가격비교/가격비교외상품 각각 조회됩니다.클릭 시 가격비교탭으로 이동합니다.</span></a></li>
+						<li><a href="#">신제품순<span class="tip02">TIP : “신제품순”은 가격비교상품에서만 조회됩니다. 클릭시 가격비교 탭으로 이동합니다.</span></a></li>
+						<li><a href="#">판매량순<span class="tip03">TIP : “판매량순”은 가격비교상품에서만 조회됩니다. 클릭시 가격비교 탭으로 이동합니다.</span></a></li>
+						<li><a href="#">상품평 많은순<span class="tip09">TIP : “상품평 많은순”은 가격비교상품에서만 조회됩니다. 클릭시 가격비교 탭으로 이동합니다.</span></a></li><!-- 171101 상품평 많은 순 추가 -->
+						<li class="etc_box"><a href="#">출시예정<span class="tip04">TIP : “출시예정”은 가격비교상품에서만 조회됩니다. 클릭시 가격비교 탭으로 이동합니다.</span></a></li>
+					</ul>
+					
+					<!-- 161116 -->
+					<div class="view_choice">
+						<span class="unchk" onclick="toggle(this);"><input type="checkbox">중고/렌탈 제외<span class="tip08">TIP : “중고/렌탈 제외”는 가격비교 상품에서 중고/렌탈/할부/샘플/사업자 전용/옵션필수/리퍼 등에 해당하는 조건들이 제외 됩니다.</span></span>
+						<span class="unchk" onclick="toggle(this);"><input type="checkbox" />배송비포함<span class="tip05">TIP : “배송비포함 최저가”는 PC 가격기준 가격비교상품의 배송비가 포함된 금액이 표시됩니다. 해외직구 상품은 배송비가 포함되지 않습니다.</span></span>
+						<div class="select">
+							<a href="javascript:///">30개씩 보기</a>
+							<ul class="sub_dp">
+								<li><a href="javascript:///">30개씩 보기</a></li>
+								<li><a href="javascript:///">60개씩 보기</a></li>
+								<li><a href="javascript:///">90개씩 보기</a></li>
+							</ul>
+						</div>
+						<ul class="list_type">
+							<li class="type01">상품 목록형식 보기</li>
+							<li class="type02 on">심플목록 보기</li>
+							<li class="type03">상품 바둑판식 보기</li>
+						</ul>
+					</div>
+					<!--// 161116 -->
+				</div>
+				<!--// 정렬 -->
+					
+				<!-- 심플리스트형 -->
+				<ul class="goodList simple_type">
+
+					<!-- 200814 : SR#41716 : 슈퍼탑 광고영역 (심플리스트) -->
+					<!-- ** 수정내용 : 리스트 최상단에 뿌려주던 슈퍼탑 광고를 supertop 으로 감싸 그 내부에 넣어주세요. -->
+					<li class="prodItem supertop">
+						<h4 class="ad_tit">슈퍼탑
+							<a href="https://seller.enuri.com/sdul/supertop/sdul_supertop.jsp" target="_blank" class="btn_ad_apply">신청하기</a>
+						</h4>
+						<ul>
+							<!-- *** 아래 내용은 기존 노출되던 마크업 그대로 넣어주세요 -->
+                            <li class="prodItem wide ad" id="modelno_46063474" ingimodelno="46063474" cate="04054221" data-factory="마이크로닉스"><span class="bg_ad"></span><div class="sp_title"><strong class="tit">		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">마이크로닉스  마이뷰 G27Q144 Pivot 게이밍</a></strong></div><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"><div class="tag_list pos_tr tag_blk"><span>VA패널</span></div><div class="blue"><div class="tag_list pos_br tag_blu"><span>68.6cm(27인치)</span></div></div></div></div><img class="listShowImg " src="http://photo3.enuri.info/data/images/service/img_300/46063000/46063474.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">	</a><span class="thum_btn"><a href="JavaScript:" class="event_link" style="display:none;">관련이벤트</a><a href="JavaScript:" class="recd_link" style="display:none;">추천상품</a></span></div><div class="info_area">	<div class="case_price">	<dl class="option">		<dt><b>20년1월</b> 등록</dt><dd class="groupModelItem" id="modelnoGroup_46063474" longminprice="289740" lngdeliveryprice="289740">	<span class="groupTitle size groupModelLink  " kbno="0" image="">일반</span>	<span class="don groupModelLink"><b>289,740</b>원</span>	<span class="chk_zzim"><a href="JavaScript:" title="업체수" class="groupModelLink">62</a><span class="oldCompZzimChk unchk"><input type="checkbox"></span></span></dd>	</dl>	</div>	<div class="info_detail">	<dl class="prodtip">		<dt>TIP</dt>		<dd class="keyword2">144Hz 고주사율로 끊김없이 부드럽게 본다!</dd>	</dl>	<div class="summary">모니터<em>|</em><a href="JavaScript:" class="dicLink att_txt_211128_10">68.6cm(27인치)</a><em>|</em>해상도:<a href="JavaScript:" class="dicLink att_txt_93787_12">1920x1080(Full-HD)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93947_2">16대9</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93937_30">AH-VA패널(광시야각)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_211850_0">픽셀피치</a>:0.311mm<em>|</em><a href="JavaScript:" class="dicLink att_txt_93945_0">밝기</a>:250cd<em>|</em><a href="JavaScript:" class="dicLink att_txt_93780_2">명암비 1000:1</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93776_2">동적명암비 1000만:1</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93887_0">응답속도</a>:1ms<em>|</em><a href="JavaScript:" class="dicLink att_txt_197228_0">주사율</a>:144Hz<em>|</em>시력보호:<a href="JavaScript:" class="dicLink att_txt_93832_1">로우블루라이트</a>,<a href="JavaScript:" class="dicLink att_txt_93832_3">플리커프리</a><em>|</em>게임특화:게임모드,<a href="JavaScript:" class="dicLink att_txt_93814_9">FreeSync</a><em>|</em>단자:<a href="JavaScript:" class="dicLink att_txt_93771_28">HDMI</a>,<a href="JavaScript:" class="dicLink att_txt_93771_20">DisplayPort</a>	</div>	<dl class="news"><dt class="knowBoxData1" style="display:none;">뉴스</dt><dd class="knowBoxData1" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData2" style="display:none;">가이드</dt><dd class="knowBoxData2" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData3" style="display:none;">사용기</dt><dd class="knowBoxData3" style="display:none;"><a href="javascript:"></a></dd>	</dl>	<span class="etc_txt">		<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em class="kbnum">6</em><span class="star_graph"><span style="width:93.4%">별점</span></span></a><span class="bar"></span><a href="javascript:void(0);" class="com reSearch" code="1">마이크로닉스</a><span class="bar"></span><a class="shareDivShow" href="javascript:">공유</a>	<a href="JavaScript:" class="eMoneyLink save_per">적립</a>	</span></div></div></li>
+                            <li class="prodItem wide ad" id="modelno_50066567" ingimodelno="50066567" cate="03633300" data-factory="파인디지털"><span class="bg_ad"></span><div class="sp_title"><strong class="tit">		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">파인디지털 파인뷰 X3000 UP (2채널)</a></strong></div><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"></div></div><img class="listShowImg " src="http://photo3.enuri.info/data/images/service/img_300/50066000/50066567.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">	</a><span class="thum_btn"><a href="JavaScript:" class="event_link" style="display:none;">관련이벤트</a><a href="JavaScript:" class="recd_link" style="display:none;">추천상품</a></span></div><div class="info_area">	<div class="case_price">	<dl class="option">		<dt><b>20년4월</b> 등록</dt><dd class="groupModelItem" id="modelnoGroup_50066567" longminprice="299000" lngdeliveryprice="299000">	<span class="groupTitle size groupModelLink  " kbno="0" image="">무상장착,32G</span>	<span class="don groupModelLink">	<em>1위</em><b>299,000</b>원</span>	<span class="chk_zzim"><a href="JavaScript:" title="업체수" class="groupModelLink">20</a><span class="oldCompZzimChk unchk"><input type="checkbox"></span></span></dd><dd class="groupModelItem" id="modelnoGroup_50066568" longminprice="349000" lngdeliveryprice="349000">	<span class="groupTitle size groupModelLink  " kbno="0" image="">무상장착,64G</span>	<span class="don groupModelLink"><b>349,000</b>원</span>	<span class="chk_zzim"><a href="JavaScript:" title="업체수" class="groupModelLink">17</a><span class="oldCompZzimChk unchk"><input type="checkbox"></span></span></dd><dd class="groupModelItem" id="modelnoGroup_50066571" longminprice="369000" lngdeliveryprice="369000">	<span class="groupTitle size groupModelLink  " kbno="0" image="">무상장착,128G</span>	<span class="don groupModelLink"><b>369,000</b>원</span>	<span class="chk_zzim"><a href="JavaScript:" title="업체수" class="groupModelLink">16</a><span class="oldCompZzimChk unchk"><input type="checkbox"></span></span></dd>	</dl>	</div>	<div class="info_detail">	<dl class="prodtip">		<dt>TIP</dt>		<dd class="keyword2">고성능 듀얼 코어 CPU 탑재로 더욱 빠르게!</dd>	</dl>	<div class="summary"><a href="JavaScript:" class="dicLink att_txt_105945_6">블랙박스(2채널,분리형)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_105736_0">모니터</a>:<a href="JavaScript:" class="dicLink att_txt_105736_17">3.5인치(터치)</a><em>|</em>GPS:<a href="JavaScript:" class="dicLink att_txt_105981_5">외장형(별매)</a>	</div>	<div class="summary"><b>[전방]</b><em>|</em>QHD(2560x1440)<em>|</em><a href="JavaScript:" class="dicLink att_txt_105900_12">30프레임</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_105896_0">시야각</a>:130도<em>|</em><br><b>[후방]</b><em>|</em>QHD(2560x1440)<em>|</em><a href="JavaScript:" class="dicLink att_txt_105969_9">30프레임</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_105966_0">시야각</a>:130도<em>|</em><br><b>[녹화기능]</b><em>|</em><a href="JavaScript:" class="dicLink att_txt_197372_4">충격감지(주행,주차)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197372_5">동작감지</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197372_7">수동녹화</a><em>|</em><br><b>[부가기능]</b><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_105">안전운전도우미</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_104">오토나이트비전</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_45">차선이탈경보(LDWS)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_38">고온보호(자동종료형)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_71">앞차출발알림(FVSA)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_79">시크릿모드</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_197385_112">세이프티스크린</a><em>|</em>번호판확대<em>|</em>저장:<a href="JavaScript:" class="dicLink att_txt_105878_29">microSD카드(최대128G)</a>,<a href="JavaScript:" class="dicLink att_txt_105878_11">포맷불필요</a><em>|</em>전원:12~24V,<a href="JavaScript:" class="dicLink att_txt_105907_11">배터리내장(커패시터)</a>,<a href="JavaScript:" class="dicLink att_txt_105907_12">방전방지</a>	</div>	<dl class="news"><dt class="knowBoxData1" style="display:none;">뉴스</dt><dd class="knowBoxData1" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData2" style="display:none;">가이드</dt><dd class="knowBoxData2" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData3" style="display:none;">사용기</dt><dd class="knowBoxData3" style="display:none;"><a href="javascript:"></a></dd>	</dl>	<span class="etc_txt">		<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em class="kbnum">226</em><span class="star_graph"><span style="width:96.99999999999999%">별점</span></span></a><span class="bar"></span><a href="javascript:void(0);" class="com reSearch" code="1">파인디지털</a><span class="bar"></span><a class="shareDivShow" href="javascript:">공유</a>	<a href="JavaScript:" class="eMoneyLink save_per">적립</a>	</span></div></div><div class="ad_area">
+						    	    <ul class="prod_ad">
+								<!-- 동영상형 광고 -->
+								<li class="ad_type_mov">
+									<span class="prod_ad_cnt">
+										<span class="prod_ad_thumb">
+											<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+										</span>
+										<span class="prod_ad_txt">
+											<span class="prod_ad_tit">에누리 리뷰영상</span>
+											<span class="prod_ad_txt-name">요이치 리프레쉬 차량용 공기청정기 YA-AP500 사용후기</span>
+										</span>
+									</span>
+								</li>
+								<!-- 일반형 광고 -->
+								<li class="ad_type_com">
+									<span class="prod_ad_cnt">
+										<span class="prod_ad_thumb">
+											<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+										</span>
+										<span class="prod_ad_txt">
+											<span class="prod_ad_tit">쇼핑지식 사용기</span>
+											<span class="prod_ad_txt-name">피나클릿지 AMD 라이젠 2세대 2600의 모든것!</span>
+										</span>
+									</span>
+								</li>
+								<!-- 배너형 광고 -->
+								<li class="ad_type_bnr"><img src="http://img.enuri.info/images/home/@prod_ad_bnr_01.jpg" alt=""></li>
+						    	    </ul>
+                                </div>
+                            </li>
+                            <li class="sponsor-b ad" id="spon_b_541">
+								<span class="bg_ad"></span>
+								<div class="sp_title">
+									<strong class="tit">
+										<em class="e_ico_sponsor">스폰서</em>
+										<a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=7');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">3D게임/그래픽용/AMD G4</a>
+									</strong>
+									<span class="sponsor_info"><i></i>쇼핑몰에서 가격을 확인하세요</span>
+								</div>
+								<!--  20181015 LP 리스팅 개선, 썸네일영역 확대/비교/찜 레이어 추가 -->
+								<div class="thum_area">
+									<a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=6');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">
+										<img src="http://storage.enuri.gscdn.com/mcrony_img/spon/20200630/1593505613_super.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">
+									</a>
+								</div>
+								<!-- 상품설명 -->
+								<div class="info_area">
+									<div class="info_detail">
+										<!-- 20181015 LP 리스팅 개선 - TIP 클래스 추가 -->
+										<dl class="prodtip">
+											<dt>TIP</dt>
+											<dd></dd>
+										</dl>
+										<div class="summary">데스크탑 | AMD | 라이젠5 | 라이젠3500 | 8GB RAM | 라데온 RX570 | 240GB SSD | 500W</div>
+										<!-- [프로모션 문구] -->
+										<p class="lp_etv_txt">
+											<b><span style="font-size:9pt;color:black;text-decoration:underline;cursor:pointer;" onclick="knowboxLinkByUri('')"></span></b>
+										</p>
+									</div>
+								</div>
+								<!-- 가격 -->
+								<div class="price_area">
+									<!-- 200921 : 휠클릭 이슈 : strong -> A태그로 변경 -->
+									<a href="#" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=8');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">478,210</a>원
+									<!-- <span class="sponsor_info"><i></i>쇼핑몰에서 가격을 확인하세요.</span> -->
+								</div>
+							</li>
+						</ul>
+                    </li>
+                    
+                    <li class="prodItem supertop">
+						<h4 class="ad_tit">슈퍼탑 라이트
+							<a href="https://seller.enuri.com/sdul/supertop/sdul_supertop.jsp" target="_blank" class="btn_ad_apply">신청하기</a>
+						</h4>
+						<ul>
+							<!-- ***  아래 내용은 기존 노출되던 마크업 그대로 넣어주세요 -->
+                            <li class="prodItem wide ad" id="modelno_46063474" ingimodelno="46063474" cate="04054221" data-factory="마이크로닉스"><span class="bg_ad"></span><div class="sp_title"><strong class="tit">		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">마이크로닉스  마이뷰 G27Q144 Pivot 게이밍</a></strong></div><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"><div class="tag_list pos_tr tag_blk"><span>VA패널</span></div><div class="blue"><div class="tag_list pos_br tag_blu"><span>68.6cm(27인치)</span></div></div></div></div><img class="listShowImg " src="http://photo3.enuri.info/data/images/service/img_300/46063000/46063474.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">	</a><span class="thum_btn"><a href="JavaScript:" class="event_link" style="display:none;">관련이벤트</a><a href="JavaScript:" class="recd_link" style="display:none;">추천상품</a></span></div><div class="info_area">	<div class="case_price">	<dl class="option">		<dt><b>20년1월</b> 등록</dt><dd class="groupModelItem" id="modelnoGroup_46063474" longminprice="289740" lngdeliveryprice="289740">	<span class="groupTitle size groupModelLink  " kbno="0" image="">일반</span>	<span class="don groupModelLink"><b>289,740</b>원</span>	<span class="chk_zzim"><a href="JavaScript:" title="업체수" class="groupModelLink">62</a><span class="oldCompZzimChk unchk"><input type="checkbox"></span></span></dd>	</dl>	</div>	<div class="info_detail">	<dl class="prodtip">		<dt>TIP</dt>		<dd class="keyword2">144Hz 고주사율로 끊김없이 부드럽게 본다!</dd>	</dl>	<div class="summary">모니터<em>|</em><a href="JavaScript:" class="dicLink att_txt_211128_10">68.6cm(27인치)</a><em>|</em>해상도:<a href="JavaScript:" class="dicLink att_txt_93787_12">1920x1080(Full-HD)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93947_2">16대9</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93937_30">AH-VA패널(광시야각)</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_211850_0">픽셀피치</a>:0.311mm<em>|</em><a href="JavaScript:" class="dicLink att_txt_93945_0">밝기</a>:250cd<em>|</em><a href="JavaScript:" class="dicLink att_txt_93780_2">명암비 1000:1</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93776_2">동적명암비 1000만:1</a><em>|</em><a href="JavaScript:" class="dicLink att_txt_93887_0">응답속도</a>:1ms<em>|</em><a href="JavaScript:" class="dicLink att_txt_197228_0">주사율</a>:144Hz<em>|</em>시력보호:<a href="JavaScript:" class="dicLink att_txt_93832_1">로우블루라이트</a>,<a href="JavaScript:" class="dicLink att_txt_93832_3">플리커프리</a><em>|</em>게임특화:게임모드,<a href="JavaScript:" class="dicLink att_txt_93814_9">FreeSync</a><em>|</em>단자:<a href="JavaScript:" class="dicLink att_txt_93771_28">HDMI</a>,<a href="JavaScript:" class="dicLink att_txt_93771_20">DisplayPort</a>	</div>	<dl class="news"><dt class="knowBoxData1" style="display:none;">뉴스</dt><dd class="knowBoxData1" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData2" style="display:none;">가이드</dt><dd class="knowBoxData2" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData3" style="display:none;">사용기</dt><dd class="knowBoxData3" style="display:none;"><a href="javascript:"></a></dd>	</dl>	<span class="etc_txt">		<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em class="kbnum">6</em><span class="star_graph"><span style="width:93.4%">별점</span></span></a><span class="bar"></span><a href="javascript:void(0);" class="com reSearch" code="1">마이크로닉스</a><span class="bar"></span><a class="shareDivShow" href="javascript:">공유</a>	<a href="JavaScript:" class="eMoneyLink save_per">적립</a>	</span></div></div></li>
+						</ul>
+					</li>
+					<!-- // -->
+					
+				</ul>
+				<!--// 심플리스트형 -->
+
+
+				<!-- 리스트형 -->
+				<ul class="goodList">
+
+					<!-- 200814 : SR#41716 : 슈퍼탑 광고영역 (리스트) -->
+					<!-- ** 수정내용 : 리스트 최상단에 뿌려주던 슈퍼탑 광고를 supertop 으로 감싸 그 내부에 넣어주세요. -->
+					<li class="prodItem supertop">
+						<h4 class="ad_tit">슈퍼탑
+							<a href="https://seller.enuri.com/sdul/supertop/sdul_supertop.jsp" target="_blank" class="btn_ad_apply">신청하기</a>
+						</h4>
+						<ul>
+							<!-- *** 아래 내용은 기존 노출되던 마크업 그대로 넣어주세요 -->
+                            <li class="prodItem  ad" id="modelno_46063474" ingimodelno="46063474" cate="04054221" data-factory="마이크로닉스"><span class="bg_ad"></span><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"><div class="tag_list pos_tr tag_blk"><span>VA패널</span></div><div class="blue"><div class="tag_list pos_br tag_blu"><span>68.6cm(27인치)</span></div></div></div></div><img class="listShowImg " src="http://photo3.enuri.info/data/images/service/img_300/46063000/46063474.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">	</a><span class="thum_btn"><a href="JavaScript:" class="event_link" style="display:none;">관련이벤트</a><a href="JavaScript:" class="recd_link" style="display:none;">추천상품</a></span></div><div class="info_area"><div class="list_title">	<strong>		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">마이크로닉스  마이뷰 G27Q144 Pivot 게이밍</a></strong></div>	<dl class="prodtip">		<dt>TIP</dt>		<dd class="keyword2">144Hz 고주사율로 끊김없이 부드럽게 본다!</dd>	</dl>	<div class="tagarea"><span class="tx">모니터</span><span class="tag">#<em class="specLink" code="468">68.6cm(27인치)</em></span><span class="tag">#해상도:<em class="specLink" code="3519">1920x1080(Full-HD)</em></span><span class="tag">#<em class="specLink" code="3312">16대9</em></span><span class="tag">#<em class="specLink" code="3288">AH-VA패널(광시야각)</em></span><span class="tag">#픽셀피치:<em class="specLink" code="12641">0.311mm</em></span><span class="tag">#밝기:<em class="specLink" code="495">250cd</em></span><span class="tag">#<em class="specLink" code="3318">명암비 1000:1</em></span><span class="tag">#<em class="specLink" code="3980">동적명암비 1000만:1</em></span><span class="tag">#응답속도:<em class="specLink" code="2913">1ms</em></span><span class="tag">#주사율:<em class="specLink" code="8062">144Hz</em></span><span class="tag">#시력보호:<em class="specLink" code="12078">로우블루라이트</em>,<em class="specLink" code="12080">플리커프리</em></span><span class="tag">#게임특화:<em class="specLink" code="12056">게임모드</em>,<em class="specLink" code="18903">FreeSync</em></span><span class="tag">#단자:<em class="specLink" code="2013">HDMI</em>,<em class="specLink" code="3326">DisplayPort</em></span>	</div>	<dl class="news"><dt class="knowBoxData1" style="display:none;">뉴스</dt><dd class="knowBoxData1" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData2" style="display:none;">가이드</dt><dd class="knowBoxData2" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData3" style="display:none;">사용기</dt><dd class="knowBoxData3" style="display:none;"><a href="javascript:"></a></dd>	</dl>	<span class="etc_txt">		<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em class="kbnum">6</em><span class="star_graph"><span style="width:93.4%">별점</span></span></a><span class="bar"></span>등록일:20년1월<span class="bar"></span><a href="javascript:" class="com reSearch" code="1">마이크로닉스</a><span class="bar"></span><a class="shareDivShow" href="javascript:">공유</a><span class="bar"></span><a class="singoDivShow" href="javascript:">신고</a>	<a href="JavaScript:" class="eMoneyLink save_per">적립</a>	</span></div><div class="price_area">최저가<span class="priceClickLink"><strong class="detailMultiLink">289,740</strong>원</span><span class="won_b detailMultiLink"><a href="JavaScript:">가격비교<em>62</em></a></span></div></li>
+                            <li class="prodItem  ad" id="modelno_51078437" ingimodelno="51078437" cate="03633300" data-factory="파인디지털"><span class="bg_ad"></span><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"></div> <span class="badge_hitbrand">히트브랜드</span></div><img class="listShowImg " src="http://photo3.enuri.info/data/images/service/img_300/51078000/51078437.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">	</a><span class="thum_btn"><a href="JavaScript:" class="event_link" style="display:none;">관련이벤트</a><a href="JavaScript:" class="recd_link" style="display:none;">추천상품</a></span></div><div class="info_area"><div class="list_title">	<strong>		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">파인디지털 파인뷰 X700 (2채널)</a></strong></div>	<dl class="prodtip">		<dt>TIP</dt>		<dd class="keyword2">듀얼코어 CPU로 빠르고 안정적인 블랙박스</dd>	</dl>	<div class="tagarea"><span class="tag">#<em class="specLink" code="4289">블랙박스(2채널,분리형)</em></span><span class="tag">#모니터:<em class="specLink" code="4313">3.5인치(터치)</em></span><span class="tag">#GPS:<em class="specLink" code="4335">외장형(별매)</em></span>	</div><dl class="biginfo"><dt><b>전방</b></dt><dd>Full-HD(1920x1080)</dd><dd>30프레임</dd><dd>시야각:155도</dd></dl><dl class="biginfo"><dt><b>후방</b></dt><dd>Full-HD(1920x1080)</dd><dd>30프레임</dd><dd>시야각:155도</dd></dl><dl class="biginfo"><dt><b>녹화기능</b></dt><dd>충격감지(주행,주차)</dd><dd>동작감지</dd><dd>수동녹화</dd></dl><dl class="biginfo"><dt><b>부가기능</b></dt><dd>안전운전도우미</dd><dd>오토나이트비전</dd><dd>타임랩스</dd><dd>차선이탈경보(LDWS)</dd><dd>고온보호(자동종료형)</dd><dd>앞차출발알림(FVSA)</dd><dd>시크릿모드</dd><dd>세이프티스크린</dd><dd>번호판확대</dd><dd>저장:microSD카드(최대128G),포맷불필요</dd><dd>전원:12~24V,배터리내장(커패시터),방전방지</dd></dl>	<dl class="news"><dt class="knowBoxData1" style="display:none;">뉴스</dt><dd class="knowBoxData1" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData2" style="display:none;">가이드</dt><dd class="knowBoxData2" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData3" style="display:none;">사용기</dt><dd class="knowBoxData3" style="display:none;"><a href="javascript:"></a></dd>	</dl>	<span class="etc_txt">		<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em class="kbnum">1,426</em><span class="star_graph"><span style="width:96.8%">별점</span></span></a><span class="bar"></span>등록일:20년5월<span class="bar"></span><a href="javascript:" class="com reSearch" code="1">파인디지털</a><span class="bar"></span><a class="shareDivShow" href="javascript:">공유</a><span class="bar"></span><a class="singoDivShow" href="javascript:">신고</a>	<a href="JavaScript:" class="eMoneyLink save_per">적립</a>	</span></div><div class="price_area">최저가<span class="priceClickLink"><strong class="detailMultiLink">209,000</strong>원</span><span class="won_b detailMultiLink"><a href="JavaScript:">가격비교<em>54</em></a></span></div>
+                                <div class="ad_area">
+                                    <ul class="prod_ad">
+                                        <!-- 동영상형 광고 -->
+                                        <li class="ad_type_mov">
+											<!-- 200921 : 휠클릭 이슈 : a태그로 감싸주세요 -->
+											<a href="#">
+												<span class="prod_ad_cnt">
+													<span class="prod_ad_thumb">
+														<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+													</span>
+													<span class="prod_ad_txt">
+														<span class="prod_ad_tit">에누리 리뷰영상</span>
+														<span class="prod_ad_txt-name">요이치 리프레쉬 차량용 공기청정기 YA-AP500 사용후기</span>
+													</span>
+												</span>
+											</a>
+											<!-- // -->
+                                        </li>
+                                        <!-- 일반형 광고 -->
+                                        <li class="ad_type_com">
+											<a href="#">
+												<span class="prod_ad_cnt">
+													<span class="prod_ad_thumb">
+														<img src="http://img.enuri.info/images/home/@prd_info_thumb.jpg" alt="">
+													</span>
+													<span class="prod_ad_txt">
+														<span class="prod_ad_tit">쇼핑지식 사용기</span>
+														<span class="prod_ad_txt-name">피나클릿지 AMD 라이젠 2세대 2600의 모든것!</span>
+													</span>
+												</span>
+											</a>
+                                        </li>
+                                        <!-- 배너형 광고 -->
+                                        <li class="ad_type_bnr">
+											<a href="#">
+												<img src="http://img.enuri.info/images/home/@prod_ad_bnr_01.jpg" alt="">
+											</a>
+										</li>
+                                    </ul>
+                                </div>
+                                <div class="option_area"><ul class="option_list"><li id="modelnoGroup_51078437" longminprice="209000" lngdeliveryprice="209000"><span class="zzimSpan zzimSpan_G51078437 zzim">찜</span><span class="groupItemCheck unchk"><input type="checkbox"></span><em class="groupTitle tit groupModelLink" image="">무상장착,32G</em><div class="detail"><span class="op_price groupModelLink">209,000<em>원</em></span><span class="unit groupModelLink"><em class="r groupModelLink"><em></em><span title="업체수">30</span></em></span></div></li><li id="modelnoGroup_51230697" longminprice="253820" lngdeliveryprice="253820"><span class="zzimSpan zzimSpan_G51230697 zzim">찜</span><span class="groupItemCheck unchk"><input type="checkbox"></span><em class="groupTitle tit groupModelLink" image="">무상장착,128G</em><div class="detail"><span class="op_price groupModelLink">253,820<em>원</em></span><span class="unit groupModelLink"><em class="r groupModelLink"><em></em><span title="업체수">24</span></em></span></div></li></ul></div>
+                            </li>
+                            <li class="sponsor-b ad" id="spon_b_541">	<span class="bg_ad"></span>	<div style="position:absolute; top:0; left:-50px; width:40px; height:40px; background-color:red;"></div>	<div class="thum_area">		<a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=6');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');"><img src="http://storage.enuri.gscdn.com/mcrony_img/spon/20200630/1593505613_super.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">		</a>	</div>	<div class="info_area">		<div class="list_title">			<strong>				<em class="e_ico_sponsor">스폰서</em><a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=7');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">3D게임/그래픽용/AMD G4</a>			</strong>		</div>		<dl class="prodtip">			<dt>TIP</dt>			<dd></dd>		</dl>		<div class="summary">데스크탑 | AMD | 라이젠5 | 라이젠3500 | 8GB RAM | 라데온 RX570 | 240GB SSD | 500W 		</div>		<p class="lp_etv_txt"><b><span style="font-size:9pt;color:black;text-decoration:underline;cursor:pointer;" onclick="knowboxLinkByUri('')"></span></b></p>	</div>	<div class="price_area">		<strong onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=8');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">478,210</strong>원		<span class="sponsor_info"><i></i>쇼핑몰에서 가격을 확인하세요</span>	</div></li>
+						</ul>
+                    </li>
+                    
+                    <li class="prodItem supertop">
+						<h4 class="ad_tit">슈퍼탑 라이트
+							<a href="https://seller.enuri.com/sdul/supertop/sdul_supertop.jsp" target="_blank" class="btn_ad_apply">신청하기</a>
+						</h4>
+						<ul>
+							<!-- *** 아래 내용은 기존 노출되던 마크업 그대로 넣어주세요 -->
+                            <li class="prodItem  ad" id="modelno_46063474" ingimodelno="46063474" cate="04054221" data-factory="마이크로닉스"><span class="bg_ad"></span><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"><div class="tag_list pos_tr tag_blk"><span>VA패널</span></div><div class="blue"><div class="tag_list pos_br tag_blu"><span>68.6cm(27인치)</span></div></div></div></div><img class="listShowImg " src="http://photo3.enuri.info/data/images/service/img_300/46063000/46063474.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">	</a><span class="thum_btn"><a href="JavaScript:" class="event_link" style="display:none;">관련이벤트</a><a href="JavaScript:" class="recd_link" style="display:none;">추천상품</a></span></div><div class="info_area"><div class="list_title">	<strong>		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">마이크로닉스  마이뷰 G27Q144 Pivot 게이밍</a></strong></div>	<dl class="prodtip">		<dt>TIP</dt>		<dd class="keyword2">144Hz 고주사율로 끊김없이 부드럽게 본다!</dd>	</dl>	<div class="tagarea"><span class="tx">모니터</span><span class="tag">#<em class="specLink" code="468">68.6cm(27인치)</em></span><span class="tag">#해상도:<em class="specLink" code="3519">1920x1080(Full-HD)</em></span><span class="tag">#<em class="specLink" code="3312">16대9</em></span><span class="tag">#<em class="specLink" code="3288">AH-VA패널(광시야각)</em></span><span class="tag">#픽셀피치:<em class="specLink" code="12641">0.311mm</em></span><span class="tag">#밝기:<em class="specLink" code="495">250cd</em></span><span class="tag">#<em class="specLink" code="3318">명암비 1000:1</em></span><span class="tag">#<em class="specLink" code="3980">동적명암비 1000만:1</em></span><span class="tag">#응답속도:<em class="specLink" code="2913">1ms</em></span><span class="tag">#주사율:<em class="specLink" code="8062">144Hz</em></span><span class="tag">#시력보호:<em class="specLink" code="12078">로우블루라이트</em>,<em class="specLink" code="12080">플리커프리</em></span><span class="tag">#게임특화:<em class="specLink" code="12056">게임모드</em>,<em class="specLink" code="18903">FreeSync</em></span><span class="tag">#단자:<em class="specLink" code="2013">HDMI</em>,<em class="specLink" code="3326">DisplayPort</em></span>	</div>	<dl class="news"><dt class="knowBoxData1" style="display:none;">뉴스</dt><dd class="knowBoxData1" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData2" style="display:none;">가이드</dt><dd class="knowBoxData2" style="display:none;"><a href="javascript:"></a></dd><dt class="knowBoxData3" style="display:none;">사용기</dt><dd class="knowBoxData3" style="display:none;"><a href="javascript:"></a></dd>	</dl>	<span class="etc_txt">		<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em class="kbnum">6</em><span class="star_graph"><span style="width:93.4%">별점</span></span></a><span class="bar"></span>등록일:20년1월<span class="bar"></span><a href="javascript:" class="com reSearch" code="1">마이크로닉스</a><span class="bar"></span><a class="shareDivShow" href="javascript:">공유</a><span class="bar"></span><a class="singoDivShow" href="javascript:">신고</a>	<a href="JavaScript:" class="eMoneyLink save_per">적립</a>	</span></div><div class="price_area">최저가<span class="priceClickLink"><strong class="detailMultiLink">289,740</strong>원</span><span class="won_b detailMultiLink"><a href="JavaScript:">가격비교<em>62</em></a></span></div></li>
+						</ul>
+					</li>
+					<!-- // -->
+					
+				</ul>
+                <!--// 리스트형 -->
+                
+                <!-- 그리드형 -->
+                <ul class="goodList gridtype">
+
+                    <!-- 200814 : SR#41716 : 슈퍼탑 광고영역 (그리드) -->
+                    <!-- *** 수정사항 없이 기존 그대로 노출 -->
+                    <li class="prodItem  ad" id="modelno_46063474" ingimodelno="46063474" cate="04054221" data-factory="마이크로닉스"><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"><div class="tag_list pos_tr tag_blk"><span>VA패널</span></div><div class="blue"><div class="tag_list pos_br tag_blu"><span>68.6cm(27인치)</span></div></div></div></div><img class="listShowImg lazy" data-original="http://photo3.enuri.info/data/images/service/img_300/46063000/46063474.jpg" src="http://photo3.enuri.info/data/images/service/img_300/46063000/46063474.jpg" style="display: inline;">	</a></div><div class="info_area"><strong>		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">마이크로닉스  마이뷰 G27Q144 Pivot 게이밍</a></strong></div><div class="price_area">최저가<span class="priceClickLink"><strong class="detailMultiLink">289,740</strong>원</span>	<span class="etc_txt">	<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em>6</em>	<span class="star_graph"><span style="width:93.4%">별점</span></span>	</a>	</span>	<span class="won_b circleShopLink detailMultiLink"><a href="JavaScript:">가격비교<em>62</em></a></span></div></li>
+                    <li class="prodItem  ad" id="modelno_51078437" ingimodelno="51078437" cate="03633300" data-factory="파인디지털"><div class="thum_area">	<a href="javascript:" class="detailMultiLink">		<div class="thumb_layer"><button type="button" onclick="onoff('zoom')" class="thumb_zoom" title="확대보기">확대</button><button type="button" onclick="onoff('combox')" class="thumb_compare" title="상품비교">비교</button><button type="button" class="thumb_zzim" title="찜">찜</button>		</div><div class="img_tag_v2"><div class="tag_group tag_type_a"></div> <span class="badge_hitbrand">히트브랜드</span></div><img class="listShowImg lazy" data-original="http://photo3.enuri.info/data/images/service/img_300/51078000/51078437.jpg" src="http://photo3.enuri.info/data/images/service/img_300/51078000/51078437.jpg" style="display: inline;">	</a></div><div class="info_area"><strong>		<em class="e_ico_sponsor">스폰서</em> <a href="JavaScript:" class="detailMultiLink prodName">파인디지털 파인뷰 X700 (2채널)</a></strong></div><div class="price_area">최저가<span class="priceClickLink"><strong class="detailMultiLink">209,000</strong>원</span>	<span class="etc_txt">	<a href="javascript:" class="detailMultiLinkBBSOpen">상품평<em>1,426</em>	<span class="star_graph"><span style="width:96.8%">별점</span></span>	</a>	</span>	<span class="won_b circleShopLink detailMultiLink"><a href="JavaScript:">가격비교<em>54</em></a></span></div></li>
+                    <li class="sponsor-b ad" id="spon_b_541">	<span class="bg_ad"></span>	<div class="thum_area">		<a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=6');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');"><img src="http://storage.enuri.gscdn.com/mcrony_img/spon/20200630/1593505613_super.jpg" onerror="this.src='http://img.enuri.info/images/home/thum_none.jpg'">		</a>	</div>	<div class="info_area"><strong><em class="e_ico_sponsor">스폰서</em><a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=7');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">3D게임/그래픽용/AMD G4</a></strong></div>	<div class="price_area">		<strong onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=8');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">478,210</strong>원		<span class="won_b"><a href="javascript:void(0);" onclick="infoadLogExe('http://contentsad-dp.enuri.com/enuri_source_server/sponad_click.do?cate=0401&amp;slotid=2&amp;adsid=541&amp;dty=1&amp;gif=1&amp;clickid=8');goLocatonNewWindow('https://www.assacom.com/shop/product/ex.htm?seq=833&amp;ctime=1593501116&amp;utm_source=DA&amp;utm_medium=enuri&amp;utm_campaign=supertop');">구매하기</a></span>	</div></li>
+                </ul>
+                <!-- // -->
+
+				<div class="next_page">
+					<span class="number">2page <em>/ 500</em></span>
+					<span>다음페이지</span>
+				</div>
+				<p class="mnt">※ 각 제조사명(판매사명) 및 로고, 브랜드명 및 로고는 각 제조사(판매사)의 상표 또는 등록상표 입니다. <법적고지><p>
+
+				<ul class="paging">
+					<li><a href="#" class="btn prev">이전</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#" class="selected">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">7</a></li>
+					<li><a href="#">8</a></li>
+					<li><a href="#">9</a></li>
+					<li><a href="#">10</a></li>
+					<li><a href="#" class="btn next">다음</a></li>
+				</ul>
+
+			</div>
+			<!--// 전체상품 -->
+			
+		</div>
+
+	</div>
+	<!-- //상품리스트 영역 -->
+
+</div><!--// #LP_AREA -->
+
+</body>
+</html>

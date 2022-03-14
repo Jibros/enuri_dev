@@ -1,0 +1,405 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v3/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v3/plan.css"/>
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+</head>
+<body>
+
+<!-- 기획전 : 연관기획전 전체보기 리스트 -->
+<!-- 활성화 시에 #wrap .scroll_lock으로 잠궈 주세요. -->
+<div class="m_related_layer dim">	
+	<div class="lay_tit">
+		연관기획전
+		<button href="#" class="btn_close comm__sprite" onclick="$('.m_related_layer').fadeOut(100).removeClass('active');$('#wrap').removeClass('scroll_lock');">닫기</button>
+	</div>
+	<ul>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+		<li><a href="#" onclick="return false;"><img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt=""></a></li>
+	</ul>
+	<div class="btn_close_dim" onclick="$(this).parent().find('.btn_close').click()"></div>
+</div>
+<!-- //기획전 : 연관기획전 전체보기 리스트 -->
+
+<!-- 공통 : 찜레이어 -->
+<span class="zzimly">찜 되었습니다</span>
+<!-- // 찜레이어 -->
+
+<!-- 공통 : SNS공유하기 -->
+<div class="com__share_wrap dim" id="laySNS" style="z-index:999;display:none">
+	<div class="com__layer share_layer">
+		<div class="lay_head">공유하기</div>
+		<a href="#close" class="lay_close" onclick="$(this).closest('.dim').fadeOut(200);return false;">닫기</a>
+		<div class="lay_inner">
+			<ul>
+				<li class="share_fb">페이스북 공유하기</li>
+				<li class="share_kakao">카카오톡 공유하기</li>				
+				<li class="share_tw">트위터 공유하기</li>
+				<li class="share_line">라인 공유하기</li>
+				<!-- 메일아이콘 클릭시 활성화(.on) -->
+				<li class="share_mail" onclick="$(this).toggleClass('on');$(this).parents('.share_layer').find('.btn_wrap').toggleClass('mail_on');">메일로 공유하기</li>
+				<li class="share_story">카카오스토리 공유하기</li>
+				<li class="share_band">밴드 공유하기</li>
+			</ul>
+			<!-- 메인보내기 버튼클릭시 .mail_on 추가해 주세요 -->
+			<div class="btn_wrap">
+				<div class="btn_group">
+					<!-- 주소 복사 -->
+					<div class="btn_item">
+						<span id="txtURL" class="txt__share_url">http://www.enuri.com/event/chuseok.jsp</span>
+						<button class="btn__share_copy" data-clipboard-target="#txtURL">복사</button>
+					</div>
+					<!-- 이메일 주소 입력 -->
+					<div class="btn_item">
+						<input type="text" class="txt__share_mail" placeholder="이메일 주소 입력해 주세요">
+						<button class="btn__share_mail">보내기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/js/clipboard.min.js"></script>
+	<script>
+		$(function(){
+			var clipboard = new ClipboardJS('.com__share_wrap .btn__share_copy');
+			clipboard.on('success', function(e) {
+				alert('주소가 복사되었습니다');
+			});
+			clipboard.on('error', function(e) {
+				console.log(e);
+			});
+		});
+	</script>
+</div>
+<!-- // -->
+
+<div id="wrap">
+	<!-- 헤더 -->
+    <header id="header" class="header_top">
+		<div class="wrap">
+			<button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+			<button type="button" class="btn_close_page"><i class="icon_header_close comm__sprite2">닫기</i></button>
+			<div class="header_top_page_name">기획전</div>
+		</div>
+    </header>
+    <!-- // 헤더 -->
+
+    <!-- 헤더 B타입 -->
+    <!-- <header id="header" class="m_header head__type_b">
+        <div class="header_wrap">
+            <h1 class="m_txt">기획전</h1>            
+            <button class="btn_hd_back comm__sprite">뒤로</button>
+            <button class="btn_hd_close comm__sprite">닫기</button>
+		</div>	
+    </header> -->
+    <!-- // 헤더 -->
+
+	<section id="container" class="m_plan_cont">
+        
+        <!-- 기획전 헤더 -->
+        <div class="plan_header">
+            <div class="header_wrap">
+                <!-- 기획전 제목을 넣어주세요 -->
+                <h2 class="m_txt">여름시즌 빙수, 음료</h2>	
+                <!-- // -->
+                <button class="btn_phd_back comm__sprite">뒤로</button>
+                <button class="btn_phd_share comm__sprite" onclick="$('#laySNS').show();">공유하기</button>
+            </div>
+        </div>
+        <!-- // -->
+
+        <!-- 기획전 컨텐츠 -->
+        <div class="m_event__view">
+            
+            <!-- 상단 이미지 -->
+            <div class="m_event__top">
+                <img src="http://img.enuri.info/images/mobilefirst/planlist/B_20190830112847/B_20190830112847_top.png" alt="">
+                <!-- 버튼 : 연관기획전 -->
+                <span class="more" onclick="$('.m_related_layer').fadeIn(200).addClass('active');$('#wrap').addClass('scroll_lock');">+ 연관기획전(00)</span>
+                <!-- // -->
+            </div>
+            <!-- // -->
+
+            <!-- 그룹 선택 -->
+            <div class="m_event__select">
+                <select class="plan_list" title="기획전 전체상품 보기">
+                <option value="all" selected="">전체상품보기</option>
+                <option value="title_1">사은품증정</option>
+                <option value="title_2">프라엘플러스</option>
+                <option value="title_3">프라엘</option>
+                <option value="title_4">프라엘컴팩트</option>
+                </select>
+            </div>
+            <!-- // -->
+
+            <!-- 상품 그룹 -->
+            <div class="m_event__group">
+                
+                <!-- 반복 : 상품 그룹 -->
+                <div id="title_1" class="group_wrap">
+                    <h3 class="txt_tit"><strong>사은품증정</strong>구매하고 제품정보를 등록하면 OK!</h3>
+                    <ul class="goods">
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- // 반복 : 상품 그룹 -->
+
+                <div id="title_2" class="group_wrap">
+                    <h3 class="txt_tit"><strong>프라엘플러스</strong>구매하고 제품정보를 등록하면 OK!</h3>
+                    <ul class="goods">
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item">
+                            <div class="inner">
+                                <div class="thumb">
+                                    <img src="http://image.enuri.info/webimage2/4811300000/4811330000/4811336137" alt="">
+                                </div>
+                                <div class="info_wrap">
+                                    <div class="info_cnt">
+                                        <span class="txt_company">나이키</span>
+                                        <span class="txt_prdname">LG전자 프라엘플러스 풀패키지 PRAL 5종 세트[화이트골드(PRALUS1P)]</span>
+                                        <span class="txt_desc">피부 탄력과 리프팅을 동시에 완성하는 동안피부</span>
+                                        <span class="txt_price">
+                                            <span class="lowest">최저가</span><span class="price">1,941,200</span><span class="won">원</span>
+                                        </span>
+                                    </div>
+                                    <!-- 찜버튼 -->
+									<button class="btn__zzim">찜버튼</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- // -->
+
+        </div>
+
+	</section>
+
+	<!-- 앱 다운로드 -->
+	<ul class="another_app_list">
+		<li class="btn_app_smart">
+			<a href="#">스마트 택배 다운받기</a>
+		</li>
+		<li class="btn_app_social">
+			<a href="#">소셜가격비교 다운받기</a>
+		</li>
+	</ul>
+	<!-- // -->
+
+	<!-- 푸터 -->
+	<footer class="footer">
+		<div class="newquick">
+        	<p class="TBtn" onclick="javascript:goFooterTop()">TOP</p>
+    	</div>
+		<p class="legal_notices">
+			<span class="txt_tit">법적고지</span>
+			㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.
+		</p>
+		<p class="company_info">
+			<span class="txt_company_name">(주)써머스 플랫폼</span>
+			대표이사 : 김기범 / 사업자등록번호 : 206-81-18164 <br/>
+			통신판매신고 : 2015-서울중구-1046호<br/>
+			서울특별시 중구 퇴계로 18(남대문로5가) 9층<br/>
+			문의 : 02-6354-3601 / master@enuri.com<br/>
+		</p>
+		<p class="footer_menu">
+			<a href="#">이용약관</a>
+			<a href="#">개인정보처리방침</a>
+			<a href="#">법적고지</a>
+			<a href="#">PC버전</a>
+		</p>
+	</footer>
+</div>
+
+<script>
+    // 기획전 페이지는 최상단 고정 X  / TOP 버튼만 반응
+    $(function(){
+        var position = $(window).scrollTop(); 
+        var $mainwrap = $("#wrap");
+		var $btnQuick = $(".footer .newquick"); // Top 버튼
+		var rePos = function(){
+            var nowPos = $(window).scrollTop();
+			// TOP버튼 등장 
+			if(nowPos > position){
+				$mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+				$btnQuick.addClass("scr_mode");
+			}else{
+				$mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+			}
+			position = nowPos;
+		}
+		$(window).load(rePos).scroll(rePos);   
+
+        // 공통 : 찜버튼
+		var $btnZzim = $(".btn__zzim");
+		var $layZzim = $(".zzimly");
+		$btnZzim.on('click',function(){				
+			if ( !$(this).hasClass('on') ){
+				$layZzim.show();
+				setTimeout(function(){
+					$layZzim.fadeOut(300);
+				},500)
+				$(this).addClass('on anim');
+			}else{
+				$(this).removeClass('on anim');
+			}
+		})
+    })
+
+    
+
+    function goFooterTop(){
+		$('html,body').scrollTop(0);
+	}	
+</script>
+
+</body>
+</html>

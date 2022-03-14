@@ -1,0 +1,342 @@
+<!doctype html>
+<meta charset="utf-8">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다."> 
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="/css/knowcom/default.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<style>
+/* 체크박스 - 네모 타입2( PC 글쓰기) */
+.unchkb{background:url(http://imgenuri.enuri.gscdn.com/images/home/ico.png) left -170px no-repeat; padding-left:17px; height:14px; line-height:12px; display:inline-block; cursor:pointer; padding-top:1px;}
+.unchkb input, .chkb input{-webkit-appearance:none; border:0; height:1px; width:1px; position:absolute; margin:-9999em;}
+.chkb {background:url(http://imgenuri.enuri.gscdn.com/images/home/ico.png) left -204px no-repeat; font-weight:bold; padding-left:17px; height:14px; line-height:12px; display:inline-block; cursor:pointer; padding-top:1px;}
+
+/* 공통 레이어팝업 */
+.morebox {position:relative; border-radius:2px; border:1px solid #707070; background:#ffffff; z-index:200; filter:progid:DXImageTransform.Microsoft.DropShadow(Color=#ebebeb,Positive=1,OffX=2,OffY=2); box-shadow:2px 2px 2px #ebebeb }
+.morebox h5{height:27px; background:#575c67; color:#ffffff; font-size:12px; font-weight:normal; letter-spacing:-0.5px; padding:0 0 0 10px; line-height:21px;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {.morebox h5 {line-height:23px;}}
+.morebox h5 em {color:#e2e2e2; margin-left:8px;}
+.morebox h5 .btnclose{position:absolute; right:5px; top:2px; width:12px; height:11px; background:url(http://imgenuri.enuri.gscdn.com/images/home/btn_pop_close.png) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+.morebox .scr{overflow-y:scroll !important; overflow-x:hidden;}
+.morebox .inner_wrapper{position: relative;  z-index:1000;}
+
+/* 레이어-리뷰 작성하기 */
+.morebox.lay_writereview {z-index:1001;}
+.lay_writereview {width:719px;}
+.lay_writereview .inner_wrapper {padding:25px 20px; }
+.lay_writereview .inner_wrapper .head_area {margin-bottom:9px; padding-bottom:4px; border-bottom:1px solid #eee;}
+.lay_writereview .inner_wrapper .title {margin-bottom:12px; font-size:21px; font-weight:bold;}
+.lay_writereview .search_box {position:relative; width:402px; margin:0 auto;}
+
+/* 로컬네비게이션 */
+.search_box:after {content:""; display:block; clear:both}
+.search_box .local_navi{float:left; width:100px;}
+.search_box .local_navi a{letter-spacing:-1px; overflow:hidden; color:#343434; display:block; height:30px; width:59px; line-height:27px; border:1px solid #d2d2d2; border-radius:2px; padding:0 24px 0 14px; margin-right:6px; text-decoration:none; background:url(http://imgenuri.enuri.gscdn.com/images/home/bullet.gif) 90% -33px no-repeat;}
+.search_box .local_navi .sub_dp{max-height:140px; overflow:auto; border-bottom:2px solid #dbdbdb; border-radius:2px; width:72px; position:absolute; left:0; top:0px; display:none; border:1px solid #1f91db; padding:0 18px 0 7px; background:url(http://imgenuri.enuri.gscdn.com/images/home/ico_sub_dp.gif) 87% 11px no-repeat #ffffff; z-index:10;}
+.search_box .local_navi .sub_dp li{background:none; padding:0; width:100%}
+.search_box .local_navi .sub_dp li a{border:none; background:none; display:block; width:55px; padding:0 5px; margin:0; overflow:hidden; }
+.search_box .local_navi .sub_dp li a:hover{background:#2d9fe8; color:#ffffff; }
+.search_box .local_navi .dp4{background:#2d9fe8; color:#ffffff; border:1px solid #1689d3; border-radius:2px; font-weight:bold; display:inline-block; padding:0 12px; height:22px;}
+.lay_writereview .search_box .write {float:left; width:190px; height:30px; margin-left:5px;padding:0 9px; border:1px solid #e2e2e2; border-radius:2px; background-color:#fff;}
+.lay_writereview .search_box .write input {width:170px; height:30px; line-height:27px; font-size:12px; color:#999999; letter-spacing:-0.5px; border:0; }
+.lay_writereview .search_box .btn_magglass {position:absolute; right:0; top:0; width:53px; text-indent:0; display:inline-block; font-size:14px; color:#fff; padding:0 13px; height:30px; line-height:28px; border:1px solid #1689d3; border-radius:3px; background:#2d9fe8;}
+.lay_writereview .search_box .btn_magglass strong {padding-right:25px;background:url(http://imgenuri.enuri.gscdn.com/images/home/knowbox/icon_magglass.png) right 4px no-repeat;}
+.lay_writereview .inner_content {}
+.lay_writereview .inner_content:after{content:""; clear:both; display:block; }
+.lay_writereview .fleft {float:left;width:294px;}
+.lay_writereview .fright {float:right;width:294px; }
+.lay_writereview .topch {position:relative; height:30px; line-height:27px; padding-left:8px; border:1px solid #e2e2e2;  background:#f5f5f5;}
+.lay_writereview .topch .btn_sort {position:absolute; right:6px; top:5px; height: 17px; line-height:13px; padding:0 6px; background:#fff; border:1px solid #e2e2e2;}
+.lay_writereview .topch .btn_sort span {font-weight:bold; font-size:12px; color:#666666; color:#343434; padding-right:13px; background:url(http://imgenuri.enuri.gscdn.com/images/home/knowbox/bul_arrow_down.gif) right 9px no-repeat;}
+.morebox.lay_writereview .scr {overflow-y:auto !important;}
+.lay_writereview .option_box {position:relative; height:392px; overflow:hidden}
+.lay_writereview .option_box .list li {border:1px solid #e2e2e2; border-top:1px solid #fff;}
+.lay_writereview .option_box .list li:hover {border:1px solid #787878; z-index:100;}
+.lay_writereview .modelinfo {position:relative; height:78px; overflow:hidden; padding:9px 6px;}
+.lay_writereview .modelinfo .unchkb, .lay_writereview .modelinfo .chkb {margin-top: 30px;}
+.lay_writereview .modelinfo .chkb {font-weight:normal;}
+.lay_writereview .modelinfo .tray {position:absolute; top:9px; left:25px; height:80px; overflow:hidden;}
+.lay_writereview .modelinfo .tray span {display:block;}
+.lay_writereview .modelinfo .thumb {float:left;  width:78px; height:78px; text-align:center; line-height:76px; border:1px solid #e2e2e2}
+.lay_writereview .modelinfo .thumb img {vertical-align:middle; }
+.lay_writereview .modelinfo .etcinfo {float:left; width:160px; padding:6px 0 0 8px; }
+.lay_writereview .modelinfo .proname {height:30px; line-height:1.2; overflow:hidden; color:#666; letter-spacing:-0.5px; }
+.lay_writereview .modelinfo .mall {margin-top:8px; font-size:11px; color:#999;}
+.lay_writereview .modelinfo .price {margin-top:5px; color:#0073be;}
+.lay_writereview .modelinfo .price strong {font-size:20px; vertical-align:-2px;}
+.lay_writereview .research .modelinfo {position:absolute; top:-1px; left:-1px; width:227px; height:77px;  letter-spacing:-0.5px; text-align:center; background-color:#fffff4; border:1px solid #575c67; border:1px solid #000;}
+.lay_writereview .research .keyword {padding-top:1px; font-size:15px; color:#171717; font-weight:bold; height:24px; overflow:hidden;}
+.lay_writereview .research .keyword strong {display:inline-block; width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:-6px}
+.lay_writereview .research .result {padding-bottom: 5px; font-size:11px; color:#999999; }
+.lay_writereview .research .btn_sq2 {height:22px; line-height:20px;}
+.lay_writereview .research .option_box {margin-top:78px;}
+.lay_writereview .btn_adjust {position:absolute; left:330px; width:60px; display:inline-block; font-size:0; line-height:0; text-indent:-9999em;  background:url(http://imgenuri.enuri.gscdn.com/images/home/knowbox/btn_addexcp.gif) 0 0 no-repeat;}
+.lay_writereview .btn_adjust.add {top:269px; height:63px;}
+.lay_writereview .btn_adjust.except {top:339px; height:60px; background-position:0 -70px;}
+.lay_writereview .bt_btns {text-align:center; margin-top:20px;}
+.lay_writereview .bt_btns .confirm {margin-left:3px;}
+.lay_writereview.swview {width:316px;}
+.lay_writereview.swview .fleft {float:none;width:280px;}
+.lay_writereview.swview .search_box {width:280px;}
+.lay_writereview.swview .search_box .write {width:172px;}
+.lay_writereview.swview .tray {position:static;}
+.lay_writereview.swview .modelinfo .mall {margin-top:3px;}
+.lay_writereview.swview .modelinfo .price {margin-top:-5px;}
+
+/* 글쓰기 - 공통 버튼 */
+.lay_writereview .btn_bu {display:inline-block; width:auto; height:22px; line-height:20px; padding:0 10px; font-size:12px; font-weight:bold; letter-spacing:-0.5px; color:#fff; text-align:center; background-color:#2d9fe8; border:1px solid #1689d3;}
+.lay_writereview .btn_wh {display:inline-block; width:auto;  height:22px; line-height:20px; padding:0 10px; font-size:12px; letter-spacing:-0.5px; color:#343434; text-align:center; background-color:#fff; border:1px solid #e2e2e2;}
+
+/* 공통 작은레이어팝업 */
+.smallbox {display:none;  border-radius:2px; border:1px solid #707070; position:absolute; background:#ffffff; z-index:100; filter:progid:DXImageTransform.Microsoft.DropShadow(Color=#ebebeb,Positive=1,OffX=2,OffY=2); box-shadow:2px 2px 2px #ebebeb }
+.smallbox h5{height:27px; background:#575c67; color:#ffffff; font-size:12px; font-weight:normal; letter-spacing:-0.5px; padding:0 0 0 10px; line-height:27px;}
+.smallbox h5 em {color:#e2e2e2; margin-left:8px;}
+.smallbox h5 i {margin-left:8px; font-style:normal; font-size:11px; letter-spacing:-0.5px;}
+.smallbox h5 .btnclose{position:absolute; right:5px; top:2px; width:12px; height:11px; background:url(http://imgenuri.enuri.gscdn.com/images/home/btn_pop_close.png) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+.smallbox .scr{overflow-y:scroll !important; overflow-x:hidden;}
+.smallbox .inner {padding:17px 20px 30px;}
+
+/* 레이어-가격추세 선택 */
+.smallbox.menuchoice {top:0; right:0; width:98px; height:58px;}
+.smallbox.menuchoice .list {width:80px;}
+.smallbox.menuchoice .list li a {display:block; padding-left:8px; height:18px; line-height:19px; font-size:13px; color:#343434;}
+.smallbox.menuchoice .list li a:hover {font-weight:bold; background-color:#f9f9f9}
+.smallbox.menuchoice .btnclose{position:absolute; right:0; top:1px; width:12px; height:11px; background:url(http://imgenuri.enuri.gscdn.com/images/home/btn_arrow_up.gif) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+</style>
+</head>
+
+<body>
+
+	<div class="morebox lay_writereview">
+		<h5>
+			관련상품 추가
+			<a href="javascript:///" class="btnclose" onclick="laypop('WriteReviewLayer'); return false;">닫기</a>
+		</h5>
+		
+		<div class="inner_wrapper">
+			
+			<div class="head_area">
+				<p class="title">관련 모델 찾기</p>
+				<div class="search_box">
+					<!-- 로컬 네비게이션 -->
+					<div class="local_navi">
+						<div class="select">
+							<a href="#">모델명</a>
+							<ul class="sub_dp">
+								<li><a href="#">모델명</a></li>
+								<li><a href="#">모델번호</a></li>
+							</ul>
+						</div>
+					</div>
+					<!--// 로컬 네비게이션 -->
+					<p class="write">
+						<input type="text" id="" name="" onfocus="this.value='';"  value="찾으실 모델을 검색해주세요"  />
+					</p>
+					<a class="btn_magglass" href="#"><strong>검색</strong></a>
+				</div>
+			</div>
+				
+			<!-- inner_content -->
+			<div class="inner_content ">
+				
+				<!-- fleft -->
+				<div class="fleft">
+					
+					<div class="topch">검색결과
+						<a class="btn_sort" href="javascript:///" onclick="laypop('menuchoiceLayer'); return false;" title="클릭 시 레이어팝업"><span>인기순</span></a>
+						
+						<!--  메뉴 선택 레이어 -->
+						<div id="menuchoiceLayer" class="smallbox menuchoice">
+							<a href="javascript:///" class="btnclose" onclick="laypop('menuchoiceLayer'); return false;">닫기</a>
+							<ul class="list">
+								<li><a href="#">인기순</a></li>
+								<li><a href="#">낮은가격 순</a></li>
+								<li><a href="#">높은가격 순</a></li>
+							</ul>
+						</div>
+						<!-- // 메뉴 선택 레이어 -->
+					</div>
+					
+					<div class="option_box scr"><!-- 리스트 넘어가면 class="scr" 추가 -->
+						
+						<ul class="list">
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //fleft -->
+
+				<a class="btn_adjust add" href="#">추가</a>
+				<a class="btn_adjust except" href="#">제외</a>
+
+				<!-- fright -->
+				<div class="fright">
+					
+					<div class="topch">관련상품</div>
+					<div class="option_box scr"><!-- 리스트 넘어가면 class="scr" 추가 -->
+						
+						<ul class="list">
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="modelinfo">
+									<div onclick="toggle2(this);" class="unchkb"><input type="checkbox">
+										<div class="tray">
+											<span class="thumb">
+												<img src="http://imgenuri.enuri.gscdn.com/images/home/@thumb_mac.jpg" alt="썸네일" />
+											</span>
+											<div class="etcinfo">
+												<span class="proname">애플 맥북프로 15인치 레티나 리프레시 2015년형 (MJLQ2KH/A)</span>
+												<span class="mall">11번가</span>
+												<span class="price"><strong>560,000</strong>원</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //fright -->
+
+			</div>
+			<!-- //inner_content -->
+			<p class="bt_btns">
+				<a class="btn_wh cancle" href="#">취소</a>
+				<a class="btn_bu confirm" href="#">확인</a>
+			</p>
+		</div>
+	</div>
+
+	<script>
+	/* CHECKBOX*/
+	function toggle2(obj)
+		{
+			if (obj.className== 'unchkb') {
+			obj.className = 'chkb';
+			} else {
+			obj.className = 'unchkb';
+			}
+		}
+
+	/*로컬네비*/
+		$("div.select > a").click(function() {
+			$(this).next("ul").toggle();
+			return false;
+		});
+		$("div.select > ul > li").click(function() {
+			$(this).parent().hide().parent("div.select").children("a").text($(this).text());
+			$(this).prependTo($(this).parent());
+		});
+
+		//레이어
+		function laypop(name){
+		var objid=document.getElementById(name);
+		if(objid.style.display=="block")
+				{
+				objid.style.display="none";
+				}
+		else{
+				objid.style.display="block";
+			}
+		}
+	</script>
+<body>
+</html>

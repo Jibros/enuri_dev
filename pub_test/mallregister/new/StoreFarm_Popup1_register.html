@@ -1,0 +1,578 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title> 스마트스토어 등록 신청</title>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta name="description" content="가격비교 에누리닷컴">
+<meta name="keyword" content="가격,가격 검색,가격 사이트,가격검색 사이트,가격비교,가격 비교가격비교 사이트,가격정보">
+<meta name="Robots" content="INDEX, FOLLOW">
+<link rel="SHORTCUT ICON" href="/favicon.ico">
+<link rel="stylesheet" href="http://img.enuri.info/common/css/enuribase.css" type="text/css">
+<style type="text/css">
+
+.font_style3 {font-family:굴림;font-size:12px;line-height:20px;color:#4C4C4C}
+form{margin:0px;}
+table tr td img {vertical-align:middle;}
+table tr td {text-align:left;}
+td.btn_apply {padding:30px 0 20px; text-align:center;}
+
+</style>
+<script type="text/javascript" src="http://img.enuri.info/common/js/lib/jquery-1.9.1.min.js"></script>
+<script language="javascript" src="/common/js/function.js"></script><script language="javascript" src="http://log1.makeshop.co.kr/js/msfunc.js"></script>
+
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+function CmdIDKeyPress(){
+    if ( !((event.keyCode >= 48 && event.keyCode <=57) || (event.keyCode >= 65 && event.keyCode <=90) || (event.keyCode >= 97 && event.keyCode <=122) )){
+        event.returnValue =false;
+    }
+}
+ function resize(){
+    if (document.all){
+        cW=document.getElementById("tbl_main").clientWidth
+        cH=document.body.offsetHeight
+        window.resizeTo(564,500)
+        barsW=564-document.body.offsetWidth
+        barsH=500-document.body.offsetHeight
+        wW=barsW+cW
+        wH=barsH+cH
+        window.resizeTo(wW,wH)
+        var varHeight = document.body.scrollHeight;
+        var varWidth = document.body.scrollWidth;
+        var h=0;
+
+        if (navigator.userAgent.indexOf("SV1") > 0){  h=4; }
+        else if(navigator.userAgent.indexOf("MSIE")>0) { h=4;}
+        else if(navigator.userAgent.indexOf("Gecko")>0 && navigator.userAgent.indexOf("Firefox") <= 0 && navigator.userAgent.indexOf("Netscape") <= 0 ){ h=22; }
+        else if(navigator.userAgent.indexOf("Firefox") >0 ){  h=18; }
+        else if(navigator.userAgent.indexOf("Netscape") >0 ){ h=-2; }
+        else { h=4;}
+        window.resizeTo(varWidth+barsW,varHeight+barsH+h);
+        var varLWidth = document.body.scrollWidth - document.body.clientWidth;
+        window.resizeTo(varWidth+barsW+varLWidth,varHeight+barsH+h);
+    }else{
+        wW=window.outerWidth
+        wH=window.outerHeight
+        window.resizeTo(wW,wH);
+    }
+}
+
+ function resize2(){
+	    var nWidth = 0;
+	    var nHeight = 0;
+
+	    if(undefined != window.opener) {    //window.open
+	         var nMenuWidth = 0;
+	         var nMenuHeight = 0;
+
+	         if(window.outerHeight) {
+	             nMenuWidth = window.outerWidth - window.innerWidth;
+	             nMenuHeight = window.outerHeight - window.innerHeight + 1;
+	         } else {
+	             // ie8 이하
+	             var nDocWidth = $(document).outerWidth();
+	             var nDocHeight = $(document).outerHeight();
+
+	             window.resizeTo ( nDocWidth, nDocHeight );
+
+	             nMenuWidth = nDocWidth - $(window).width();
+	             nMenuHeight = nDocHeight - $(window).height();
+	         }
+
+	         nWidth = $("#tbl_main").outerWidth() + nMenuWidth;
+	         nHeight = $("#tbl_main").outerHeight() + nMenuHeight;
+
+	         self.resizeTo(nWidth, nHeight);
+	    }
+	}
+
+function CmdKindRdoChk(n){
+    document.StoreRegFrm.srr_goodsregcnt.length = 0;
+    document.StoreRegFrm.srr_goodsregcnt.selectedIndex = null;
+    if(n=="1"){
+        document.StoreRegFrm.srr_goodsregcnt.options[0] = new Option("500개 이하","500");
+        document.StoreRegFrm.srr_goodsregcnt.options[1] = new Option("~ 1,000개","1000");
+        document.StoreRegFrm.srr_goodsregcnt.options[2] = new Option("~ 3,000개","3000");
+        document.StoreRegFrm.srr_goodsregcnt.options[3] = new Option("3,000개 초과","300000");
+
+    }else{
+        document.StoreRegFrm.srr_goodsregcnt.options[0] = new Option("제한 없음","300000");
+        document.StoreRegFrm.srr_goodsregcnt.options[1] = new Option("1,000개 이하","1000");
+        document.StoreRegFrm.srr_goodsregcnt.options[2] = new Option("~ 4,000개","4000");
+        document.StoreRegFrm.srr_goodsregcnt.options[3] = new Option("~ 20,000개","20000");
+        document.StoreRegFrm.srr_goodsregcnt.options[4] = new Option("20,000개 이상","299999");
+    }
+}
+
+var sudIdCheck = false;
+function MR_IdChk(){
+    var tmp_id;
+    tmp_id = StoreRegFrm.srr_id.value;
+	if(tmp_id.length < 4 || tmp_id.length > 12){
+		alert("4~12자의 ID를 입력하세요~~");
+		StoreRegFrm.srr_id.focus();
+		return;
+	}
+
+	if(tmp_id.length > 3) {
+
+		$.ajax({
+			method: "POST",
+			url: "/mallregister/new/Sdu_Id_Chk_Ajax.jsp",
+			data: "id="+tmp_id,
+			dataType: "json",
+
+			success:function(result){
+				var chkId = result.chkId;
+				
+				if(chkId == "0") {
+					alert("사용할 수 있는 아이디 입니다.");
+					sudIdCheck = true;
+				}else if(chkId == "-1") {
+					alert("금칙어 입니다. 다시입력 해주세요.");
+					StoreRegFrm.srr_id.value = "";
+				}else if(chkId == "3") {
+					alert("첫글자는 반드시 영문이어야 합니다.");
+					StoreRegFrm.srr_id.value = "";
+				}else if(chkId == "99") {
+					alert("이미 신청된 아이디 입니다.");
+					StoreRegFrm.srr_id.value = "";
+				}else{
+					alert("탈퇴한 ID 이거나, 이미 등록된 ID 입니다.");
+					StoreRegFrm.srr_id.value = "";
+				}
+			}
+		});
+
+	} else {
+		setTimeout(
+			function(){
+				if(tmp_id.length == 0) {
+					alert("ID를 입력해주세요.");
+				}else{
+					alert("4~12자의 영문자, 숫자만 입력하세요.");
+				}
+			},
+			500
+		);
+	}
+}
+
+function checkID(){
+	sudIdCheck = false;
+}
+
+var img_check = false;
+function frmChk(){
+    try{
+        if(StoreRegFrm.srr_stfarm_id.value.length < 1 || StoreRegFrm.srr_stfarm_id.value.length > 20){
+            alert("스마트스토어 ID를 20자 이내로 입력하세요~~");
+            StoreRegFrm.srr_stfarm_id.focus();
+            return false;
+        }else if(StoreRegFrm.srr_id.value.length < 4 || StoreRegFrm.srr_id.value.length > 12){
+            alert("4자 이상의 ID를 입력하세요~~");
+            StoreRegFrm.srr_id.focus();
+            return false;
+        }else if(StoreRegFrm.srr_id.value.isid()==false){
+            alert("ID는 4~12의 영문이나 숫자만 가능합니다.");
+            StoreRegFrm.srr_id.focus();
+            return false;
+        }else if(StoreRegFrm.srr_id.value.charAt(0).isalpha()==false){
+            alert("ID의 첫글자는 영문만 가능합니다.");
+            StoreRegFrm.srr_id.focus();
+            return false;
+		}else if(!sudIdCheck) {
+			alert("아이디 중복확인을 다시 확인해주세요.");
+			StoreRegFrm.srr_id.focus();
+			return false;
+		}else if(!chkPassChar(StoreRegFrm.srr_pswd.value)) {
+			alert("8~15자의 영문,숫자가 조합된 비밀번호로\n입력해 주세요.");
+			StoreRegFrm.srr_pswd.select();
+			return false;
+        }else if(StoreRegFrm.srr_pswd.value != StoreRegFrm.tmp_srr_pswd.value){
+            alert("확인 암호와 일치 하지 않습니다.");
+            StoreRegFrm.srr_pswd.focus();
+            StoreRegFrm.srr_pswd.value = "";
+            StoreRegFrm.tmp_srr_pswd.value = "";
+            return false;
+        }else if(StoreRegFrm.srr_companynm.value.length < 1 || StoreRegFrm.srr_companynm.value.length > 30){
+            alert("회사명을 30자 이내로 입력하세요~~");
+            StoreRegFrm.srr_companynm.focus();
+            return false;
+        }else if(StoreRegFrm.srr_companyno.value.length < 5 || StoreRegFrm.srr_companyno.value.length > 15){
+            alert("사업자 등록 번호를 올바르게 입력하세요~~");
+            StoreRegFrm.srr_companyno.focus();
+            return false;
+        }else if(StoreRegFrm.srr_tong_no.value.length < 5 || StoreRegFrm.srr_tong_no.value.length > 50){
+            alert("통신 판매업 신고 번호를 올바르게 입력하세요~~");
+            StoreRegFrm.srr_tong_no.focus();
+            return false;
+        }else if(StoreRegFrm.srr_mallnm.value.length < 2){
+            alert("쇼핑몰명을 입력하세요~~");
+            StoreRegFrm.srr_mallnm.focus();
+            return false;
+        }else if(StoreRegFrm.srr_mallnm.value.length > 12){
+            alert("쇼핑몰명을 줄여 주세요~~");
+            StoreRegFrm.srr_mallnm.focus();
+            return false;
+        }else if(StoreRegFrm.srr_homeurl.value.length < 3){
+            alert("홈페이지 URL을 입력하세요~~");
+            StoreRegFrm.srr_homeurl.focus();
+            return false;
+        }else if(StoreRegFrm.srr_homeurl.value.length > 250){
+            alert("홈페이지 URL이 너무 깁니다.");
+            StoreRegFrm.srr_homeurl.focus();
+            return false;
+        }else if(StoreRegFrm.srr_managernm.value.length < 3 || StoreRegFrm.srr_managernm.value.length > 30){
+            alert("담당자명을 올바르게 입력하세요~~");
+            StoreRegFrm.srr_managernm.focus();
+            return false;
+        }else if(StoreRegFrm.srr_managertel.value.length < 3 || StoreRegFrm.srr_managertel.value.length > 30){
+            alert("담당자 전화번호를 올바르게 입력하세요~~");
+            StoreRegFrm.srr_managertel.focus();
+            return false;
+        }else if(StoreRegFrm.srr_manageremail.value.length < 3 || StoreRegFrm.srr_manageremail.value.length > 50){
+            alert("담당자 이메일을 올바르게 입력하세요~~");
+            StoreRegFrm.srr_manageremail.focus();
+            return false;
+        }else if(StoreRegFrm.srr_maingoods.value.length > 20){
+            alert("취급상품은 20자 이내로 입력하세요~~");
+            StoreRegFrm.srr_maingoods.focus();
+            return false;
+        }else if(StoreRegFrm.srr_accountnm.value.length < 1 || StoreRegFrm.srr_accountnm.value.length > 20){
+            alert("입금자명을 올바르게 입력하세요~~");
+            StoreRegFrm.srr_accountnm.focus();
+            return false;
+    	}else if(!img_check){
+	        alert("첨부파일 사이즈는 5MB 이내로 등록 가능합니다.");
+	        return false;
+        }
+        return true;
+    }catch(e){
+        alert(e);
+        return false;
+    }
+}
+
+function fileCheck( file )
+{
+	img_check = true;
+     // 사이즈체크
+     var maxSize  = 5 * 1024 * 1024    //5MB
+     var fileSize = 0;
+
+	// 브라우저 확인
+	var browser=navigator.appName;
+
+	// 익스플로러일 경우
+	if (browser=="Microsoft Internet Explorer")
+	{
+		//var oas = new ActiveXObject("Scripting.FileSystemObject");
+		fileSize = file.files.item(0).fileSize
+	}
+	// 익스플로러가 아닐경우
+	else
+	{
+		fileSize = file.files[0].size;
+	}
+
+	//alert("파일사이즈 : "+ fileSize +", 최대파일사이즈 : 5MB");
+
+    if(fileSize > maxSize)
+    {
+        alert("첨부파일 사이즈는 5MB 이내로 등록 가능합니다.    ");
+        img_check = false;
+        return;
+    }
+
+}
+
+function chkPassChar(strPass) {
+	var validPass = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+	if(strPass.length < 8 || strPass.length > 15) return false;
+	for(var i=0; i<strPass.length; i++) {
+		if(validPass.indexOf(strPass.charAt(i)) == -1) return false;
+	}
+	return true;
+}
+
+function fnChkAgree(obj){
+    obj = $(obj);
+
+    if(obj.attr("id") != 'agreeAll'){
+        if(obj.is(".on"))
+            obj.removeClass("on");
+        else
+            obj.addClass("on");
+    } else {
+        if(obj.is(".on")){
+            $("#agreeAll,.txt_clause").removeClass("on");
+        } else {
+            $("#agreeAll,.txt_clause").addClass("on");
+
+        }
+    }
+}
+
+function fnGoNextLevel(){
+    if($("#agree1").is(".on") && $("#agree2").is(".on")){
+        document.frmAgree.agree.value = "true";
+        document.frmAgree.submit();
+    } else {
+        alert("쇼핑몰 이용약관과\n개인정보 수집 및 이용에 모두 동의하셔야\n가입이 가능합니다");
+    }
+}
+
+$(document).ready(function(){
+	setTimeout("resize2();",500);
+});
+</script>
+</head>
+<body style="margin:0;padding:0">
+
+	<form name="StoreRegFrm" autocomplete="off" action="StoreFarm_Popup1_proc.jsp" method="post" onsubmit="return frmChk(this.form);" !target="HiddeniFrame" style="margin:0;padding:0" enctype="multipart/form-data">
+	<input type="hidden" name="srr_stfarm_no" value="6">
+	<table width="580" border="0" cellspacing="0" cellpadding="0" id="tbl_main">
+        <tbody><tr>
+            <td colspan="2" align="center">
+                <table width="580" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td style="padding-left:15px">
+                            <table cellpadding="0" cellspacing="0" width="549" border="0">
+                                <tbody><tr>
+                                    <td><img src="http://img.enuri.info/images/sellerguide/storeFarm_popup_tit03.gif" alt="스마트스토어 등록관리 페이지"></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-bottom:5px"><img src="http://img.enuri.info/images/etcPage/ad_new/advert_consult_txt03n.gif" alt="회원 정보를 입력해주세요. 항목은 모두 입력하셔야 가입이 가능합니다."></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table width="549" cellspacing="1" cellpadding="5" border="0" bgcolor="#cecece">
+                                            <tbody><tr bgcolor="#EAEAEA">
+                                <td width="120" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 스마트스토어ID</td>
+                                <td>
+                                    <input type="text" name="srr_stfarm_id" onkeypress="CmdIDKeyPress()" maxlength="20" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="120" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 에누리ID</td>
+                                    <td>
+                                        <input type="text" name="srr_id" onkeypress="CmdIDKeyPress();checkID();" maxlength="12" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'" value="">
+                                        <img src="http://img.enuri.info/images/sellerguide/new_img/mjoin_page3_05.gif" align="absmiddle" onclick="MR_IdChk();" style="cursor:pointer;border:0px solid;width:59px;height:19px;font-size:9pt;font-weight:bold;"><br>(4~12자 이상의 영문이나 숫자만 가능합니다.)
+                                    </td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 패스워드</td>
+                                    <td><input type="password" name="srr_pswd" onkeypress="CmdIDKeyPress()" maxlength="15" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"><br>(8~15자의 영문자, 숫자만 입력하세요.)</td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 패스워드확인</td>
+                                    <td><input type="password" name="tmp_srr_pswd" onkeypress="CmdIDKeyPress()" maxlength="15" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 회사명</td>
+                                    <td><input type="text" name="srr_companynm" maxlength="30" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 사업자등록번호</td>
+                                    <td><input type="text" name="srr_companyno" maxlength="15" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 대표자명</td>
+                                    <td><input type="text" name="srr_companynm" maxlength="30" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 사업자등록증 첨부</td>
+                                    <td><input style="width:300px" id="srr_company_attach" name="srr_company_attach" type="file" value="" onchange="fileCheck( this.form.srr_company_attach )">
+                                    <br>* 첨부파일 용량 제한 : 5MB
+                                    </td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 통신판매업신고번호</td>
+                                    <td><input type="text" name="srr_tong_no" maxlength="15" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'">
+                                    </td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 통신판매업증 첨부</td>
+                                    <td><input style="width:300px" id="srr_tong_attach" name="srr_tong_attach" type="file" value="" onchange="fileCheck( this.form.srr_tong_attach )">
+                                    <br>* 첨부파일 용량 제한 : 5MB
+                                    </td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 쇼핑몰명</td>
+                                    <td><input type="text" name="srr_mallnm" maxlength="12" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 스마트스토어 URL</td>
+                                    <td>http://smartstore.naver.com/ <input type="text" name="srr_homeurl" maxlength="250" style="font-size:9pt; height:20px;width:100px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+
+                                <!-- 191205 주요취급상품 추가 -->
+                                <style>
+                                    .cate_list{list-style:none;padding:0;overflow:hidden;margin:0}
+                                    .cate_list li{line-height:14px;width:25%;float:left;position: relative;padding:6px 0}
+                                    .cate_list li input{-webkit-appearance: none;-moz-appearance: none;-ms-appearance: none;appearance: none;border: 0;height: 1px;width: 1px;position: absolute;margin: -9999em;}
+                                    .cate_list li input + label .ico_check{position: absolute;top:0px;left:0;width:12px;height:12px;border:1px solid #215581;background: url(http://www.enuri.com/images/member/page/ico.png) -1px -172px no-repeat;}
+                                    .cate_list li input:checked + label .ico_check{background-position:-1px -205px}
+                                    .cate_list li label{position:relative;display:block;padding-left:20px;cursor:pointer;vertical-align:middle;-webkit-touch-callout: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+                                </style>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px;padding-top:10px;vertical-align:top;">
+                                        <img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 주요취급상품<br/>
+                                        <img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif" style="visibility:hidden;"> (중복선택가능)
+                                    </td>
+                                    <td style="padding:5px">
+                                        <ul class="cate_list">
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_01" name="chk_cate_01">
+                                                <label for="chk_cate_01"><span class="ico_check"></span> 가구</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_02" name="chk_cate_02">
+                                                <label for="chk_cate_02"><span class="ico_check"></span> 계절가전</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_03" name="chk_cate_03">
+                                                <label for="chk_cate_03"><span class="ico_check"></span> 디지털</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_04" name="chk_cate_04">
+                                                <label for="chk_cate_04"><span class="ico_check"></span> 문구,사무</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_05" name="chk_cate_05">
+                                                <label for="chk_cate_05"><span class="ico_check"></span> 부품(PC)</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_06" name="chk_cate_06">
+                                                <label for="chk_cate_06"><span class="ico_check"></span> 생활,취미</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_07" name="chk_cate_07">
+                                                <label for="chk_cate_07"><span class="ico_check"></span> 생활가전</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_08" name="chk_cate_08">
+                                                <label for="chk_cate_08"><span class="ico_check"></span> 스포츠</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_09" name="chk_cate_09">
+                                                <label for="chk_cate_09"><span class="ico_check"></span> 식품</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_10" name="chk_cate_10">
+                                                <label for="chk_cate_10"><span class="ico_check"></span> 액세서리</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_11" name="chk_cate_11">
+                                                <label for="chk_cate_11"><span class="ico_check"></span> 영상,디카</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_12" name="chk_cate_12">
+                                                <label for="chk_cate_12"><span class="ico_check"></span> 유아,완구</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_13" name="chk_cate_13">
+                                                <label for="chk_cate_13"><span class="ico_check"></span> 자동차용품</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_14" name="chk_cate_14">
+                                                <label for="chk_cate_14"><span class="ico_check"></span> 주방가전</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_15" name="chk_cate_15">
+                                                <label for="chk_cate_15"><span class="ico_check"></span> 컴퓨터</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_16" name="chk_cate_16">
+                                                <label for="chk_cate_16"><span class="ico_check"></span> 패션,잡화</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_17" name="chk_cate_17">
+                                                <label for="chk_cate_17"><span class="ico_check"></span> 화장품</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="chk_cate_18" name="chk_cate_18">
+                                                <label for="chk_cate_18"><span class="ico_check"></span> 기타</label>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <!-- // 주요취급상품 -->
+
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 담당자명</td>
+                                    <td><input type="text" name="srr_managernm" maxlength="30" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+
+                                <!-- 200318 : 인증번호 전송 / 확인 버튼 추가 -->
+                                <!-- * input에 placeholer 추가 (input에 placeholder 속성 / class명 확인 해주세요)-->
+                                <!-- * 인증번호 전송 / 확인 버튼 추가 -->
+                                <style>
+                                    /* placeholder를 위한 css처리 */                                    
+                                    input.inp_phone::placeholder {color:#aaa}
+                                    input.inp_phone::-webkit-input-placeholder {color:#aaa}
+                                    input.inp_phone:-ms-input-placeholder {color:#aaa}      
+                                    input.inp_cert_code::placeholder {color:red}
+                                    input.inp_cert_code::-webkit-input-placeholder {color:red}
+                                    input.inp_cert_code:-ms-input-placeholder {color:red}                                 
+                                </style>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 담당자 휴대폰 번호</td>
+                                    <td>
+                                        <input type="text" class="inp_phone" name="srr_managertel" maxlength="30" style="float:left;font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'" placeholder="- 제외하고 숫자만 입력">
+                                        <!-- 버튼 :인증번호 전송 -->
+                                        <button style="margin-left:4px;border:0;padding:0;outline:none;height:20px;border:1px solid #215581;width:80px;text-align:center;letter-spacing:-1px;font-size:9pt;">인증번호 전송</button>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 인증번호</td>
+                                    <td><input type="text" class="inp_cert_code" name="" maxlength="30" style="float:left;font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'" placeholder="인증번호를 입력하세요">
+                                        <!-- 버튼 : 확인 -->
+                                        <button style="margin-left:4px;border:0;padding:0;outline:none;height:20px;border:1px solid #215581;background-color:#215581;color:#fff;width:80px;text-align:center;letter-spacing:-1px;font-size:9pt;">확인</button>
+                                        <!-- // -->
+                                    </td>
+                                </tr>
+                                <!-- // -->
+
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 담당자 이메일</td>
+                                    <td><input type="text" name="srr_manageremail" maxlength="50" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 주요취급상품</td>
+                                    <td><input type="text" name="srr_maingoods" maxlength="20" style="font-size:9pt; height:20px;width:250px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'">
+                                    </td>
+                                </tr>
+
+                                <tr bgcolor="#EAEAEA">
+                                    <td width="150" style="padding-left:20px"><img src="http://img.enuri.info/images/MallRegister/dot_khaki.gif"> 입금자명</td>
+                                    <td><input type="text" name="srr_accountnm" maxlength="30" style="font-size:9pt; height:20px;width:150px;border:1px solid #215581; background-color:#ffffff" onblur="this.style.backgroundColor='white'"></td>
+                                </tr>
+
+                                        </tbody></table>
+                                    </td>
+                                </tr>
+                                <!-- 200514 : 연동안내FAQ / 연동가입 버튼 추가 -->
+                                <!-- <tr>
+                                    <td class="btn_apply"><input type="image" src="http://img.enuri.info/images/etcPage/etc_new/btn_member_join.gif" alt="회원가입"></td>
+                                </tr> -->
+                                <tr>
+                                    <td class="btn_apply">
+                                        <input type="image" src="http://img.enuri.info/images/etcPage/etc_new/btn_perist_faq.gif" alt="연동안내 FAQ">
+                                        <input type="image" src="http://img.enuri.info/images/etcPage/etc_new/btn_perist_join.gif" alt="연동가입 &gt;">
+                                    </td>
+                                </tr>
+                                <!--//-->
+                            </tbody></table>
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
+	</form>
+
+
+</body></html>

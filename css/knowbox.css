@@ -1,0 +1,1144 @@
+@charset "utf-8";
+
+
+/*=======================
+20160819 지식통 개편
+========================*/
+
+* {margin:0;padding:0;}
+html,body{width:100%;height:100%;margin:0;padding:0;font-family:malgun gothic, "맑은고딕", verdana, sans-serif;font-size:12px;line-height:1.5}
+ul, ol, li{list-style:none}
+hr{display:none}
+em{font-style:normal}
+fieldset, img{border:none;}
+legend, caption{display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height: 0;}
+h1,h2,h3,h4,h5,h6{font-weight:normal; margin:0; padding:0;}
+
+/* table { border-collapse: collapse;} */
+
+.hide {display:none}  /* none */
+.blind {display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height: 0;} /* hide */
+.png24 {tmp:expression(setPng24(this));}
+
+/* Link Css */
+a {cursor:pointer; color:#343434}
+a:link,  a:visited,  a:active {text-decoration:none}
+a:hover{text-decoration:none; }
+/*a:focus, button:focus {outline:1px solid #a5c7fe}*/
+
+/* form */
+textarea, input, select, label{font-family:Malgun Gothic, "맑은고딕", verdana, sans-serif;font-size:12px;outline:none}
+button {border:0 none;cursor:pointer;vertical-align:middle}
+
+
+
+/* 레이아웃 */
+.knowbox_wrap {position:relative; width:970px; min-height:550px;margin:55px auto 0; }
+.knowbox_wrap .section {overflow:hidden;  font-family:Malgun Gothic;"맑은 고딕"; letter-spacing:-0.5px;}
+
+/* 공통 사용 */
+.algcen {text-align:center;}
+
+.unchkb{background:url(http://img.enuri.info/images/home/ico.png) left -170px no-repeat; padding-left:17px; height:14px; line-height:12px; display:inline-block; cursor:pointer; padding-top:1px;}
+.unchkb input, .chkb input{-webkit-appearance:none; border:0; height:1px; width:1px; position:absolute; margin:-9999em;}
+.chkb {background:url(http://img.enuri.info/images/home/ico.png) left -204px no-repeat; font-weight:bold; padding-left:17px; height:14px; line-height:12px; display:inline-block; cursor:pointer; padding-top:1px;}
+
+.unchk{background:url(http://img.enuri.info/images/home/chk_radio.png) 0 0 no-repeat; padding-left:17px; height:12px; line-height:10px; display:inline-block; cursor:pointer; padding-top:1px;}
+.unchk input, .chk input{-webkit-appearance:none; border:0; height:1px; width:1px; position:absolute; margin:-9999em;}
+.chk {background:url(http://img.enuri.info/images/home/chk_radio.png) 0 -30px no-repeat; font-weight:bold; padding-left:17px; height:12px; line-height:10px; display:inline-block; cursor:pointer; padding-top:1px;}
+
+/* 공통 버튼 (파란버튼,흰텍스트) */
+.btn_bu {display:inline-block; height:22px; line-height:20px; padding:0 10px; font-size:12px; font-weight:bold; letter-spacing:-0.5px; color:#fff; text-align:center; background-color:#2d9fe8; border:1px solid #1689d3;}
+.btn_bu:hover, .btn_bu:focus, .btn_bu:active {color:#fff;} /* 161204 추가 */
+.btn_wh {display:inline-block; height:22px; line-height:20px; padding:0 10px; font-size:12px; letter-spacing:-0.5px; color:#343434; text-align:center; background-color:#fff; border:1px solid #e2e2e2;}
+.btn_wh1 {display:inline-block; height:30px; line-height:28px; padding:0 18px; font-size:15px; color:#343434; text-align:center; border:1px solid #d2d2d2}
+.btn_wh2 {display:inline-block; height:30px; line-height:28px; padding:0 22px; font-size:14px; color:#343434; text-align:center; border:1px solid #d2d2d2;}
+.btn_whbu {display:inline-block; height:26px; line-height:24px; padding:0 18px; font-size:14px; font-weight:bold; color:#1689d3; text-align:center; border:1px solid #d2d2d2}
+.btn_wh3 {display:inline-block; height:26px; line-height:25px; padding:0 18px; font-size:15px; color:#343434; text-align:center; border:1px solid #d2d2d2} /* 161208 추가 */
+
+
+
+/* 공통 딱지 */
+.tagrd {display:inline-block; height:14px; line-height:10px; padding:0 2px; color:#fff; text-align:center; border:1px solid #ff2222; background:#ff4a4a;}
+.taggn {display:inline-block; height:14px; line-height:10px; padding:0 2px; color:#fff; text-align:center; border:1px solid #40c7af; background:#40c7af;}
+.taggy {display:inline-block; height:14px; line-height:10px; padding:0 2px; color:#fff; text-align:center; border:1px solid #999999; background:#999999;}
+.tagsnw {display:inline-block; height:16px; line-height:12px; padding:0 5px; color:#fff; text-align:center; letter-spacing:-1px; border-radius:3px; background:#339db2;} /* 쇼핑전문가 답변 */
+
+
+
+/* lnb */
+.knowbox_wrap .lnb_wrap {float:left; width:120px; }
+.knowbox_wrap  h2 {line-height:1; font-weight:600; font-size:15px; color:#242b32; }
+.knowbox_wrap .lnb {padding:10px 0 20px; background:url(http://img.enuri.info/images/home/knowbox/lnb_bottom.gif) center bottom no-repeat;}
+.knowbox_wrap .lnb li {padding:10px 0 10px 10px; line-height: 1;}
+.knowbox_wrap .lnb li a {display:block; font-size:16px; color:#666666;}
+.knowbox_wrap .lnb li a.on {font-weight:bold; color:#2d9fe8; text-decoration:underline;}
+.knowbox_wrap .lnb li a:hover {font-weight:bold; color:#171717;}
+.knowbox_wrap .lnb li .new{background:url(http://img.enuri.info/images/main/icon_set.gif) 0 3px; display:inline-block; text-indent:-9999em; width:14px; margin-left:3px;}
+/* 컨텐츠 */
+.knowbox_wrap .contents {float:right; width:810px;}
+.knowbox_wrap h3, .knowbox_wrap h4 {font-weight:bold; color:#343434; }
+.knowbox_wrap .contents h3.title {position:relative; padding-top:8px; font-size:15px; }
+.knowbox_wrap .contents h3.titleb {font-size:24px; font-weight:normal; line-height:1; padding:0 0 12px; border-bottom:2px solid #787878;}
+.knowbox_wrap .contents h3.titleb2 {position:relative; font-size:15px; line-height:1; padding:11px 0 9px; border-bottom:2px solid #464e5b;}
+.knowbox_wrap .contents h4 {position:relative; margin-bottom:5px; line-height:1; font-size:14px;}
+.knowbox_wrap .contents h4.titleb {margin-bottom:16px; padding-bottom:10px;  line-height:1; font-size:14px; border-bottom:1px solid #e2e2e2;}
+.knowbox_wrap .contents h4.titleb2  {font-weight:normal; margin:25px 0 16px; padding-bottom:10px;  line-height:1; font-size:14px; border-bottom:1px solid #e2e2e2;}
+
+
+/* 메뉴-뉴스 */
+.news_area {margin:5px 0 30px; padding:19px; border:1px solid #e2e2e2; background-color:#f9f9f9;}
+.news_area:after {content:""; display:block; clear:both;}
+.news_area .majornews {float:left; width:279px; height:180px; display:block; padding:16px 20px; border:1px solid #d2d2d2; background-color:#fff;  -webkit-box-shadow: 0 32px 0 #e6e6e6; -moz-box-shadow: 0 3px 0 #e6e6e6; box-shadow: 0 3px 0 #e6e6e6; }
+.news_area .majornews:hover {border:1px solid #343434;}
+.news_area .majornews .title {height:58px; overflow:hidden; font-size:22px; color:#343434; font-weight:bold; letter-spacing:-1px; line-height:1.2; margin-bottom:15px; }
+.news_area .article {height:76px; overflow:hidden; padding-top:10px; font-size:13px; color:#848484; border-top:2px solid #666666;}
+.news_area .headlines {float:right; width:420px;}
+.news_area .headlines li {width:414px; height:19px; line-height:18px; overflow:hidden; padding-top:15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-left:12px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray.gif) 0 23px no-repeat; }
+.news_area .headlines li a {font-size:15px; color:#343434; }
+.news_area .headlines li a:hover {font-weight:bold; text-decoration:underline;}
+
+.tabs {margin-top:4px; border-top:1px solid #e2e2e2; border-right:1px solid #e2e2e2; border-bottom:2px solid #464e5b;}
+.tabs:after {content:""; display:block; clear:both;} 
+.tabs.icon {margin-top:8px;}
+.tabs li {float:left; width:161px; height:43px; line-height:40px; text-align:center; border-left:1px solid #e2e2e2; background-color:#f9f9f9;}
+.tabs li.tab5 {width:160px;}
+.tabs li a {display:block; height:100%; font-size:15px; color:#666; letter-spacing:-0.5px;}
+.tabs li a:hover {color:#171717; background-color:#fff;}
+.tabs li a.on {height:44px; font-weight:bold; border:0; margin-top:-1px; margin-left:-1px;}
+.tabs li a.on {color:#fff; background-color:#464e5b;}
+.tabs li a span {padding:2px 0; background:url(http://img.enuri.info/images/home/knowbox/icon_tabs2.png) 0 0 no-repeat;}
+.tabs li.tab1 a span {background-position:-30px -126px; padding-left:24px; }
+.tabs li.tab2 a span {background-position:-200px -124px; padding-left:28px;}
+.tabs li.tab3 a span {background-position:-377px -124px; padding-left:33px;}
+.tabs li.tab4 a span {background-position:-513px -125px; padding-left:36px;}
+.tabs li.tab5 a span {background-position:-692px -125px; padding-left:16px;}
+.tabs li.tab1 a:hover span {background-position:-30px -26px;}
+.tabs li.tab2 a:hover span {background-position:-200px -24px;}
+.tabs li.tab3 a:hover span {background-position:-377px -24px;}
+.tabs li.tab4 a:hover span {background-position:-513px -25px;}
+.tabs li.tab5 a:hover span {background-position:-692px -25px;}
+.tabs li.tab1 a.on span {background-position:-30px -224px;}
+.tabs li.tab2 a.on span {background-position:-200px -224px;}
+.tabs li.tab3 a.on span {background-position:-377px -223px;}
+.tabs li.tab4 a.on span {background-position:-513px -226px;}
+.tabs li.tab5 a.on span {background-position:-692px -226px;}
+
+/* 탭 6개 - 패션 탭 추가시
+.tabs li {float:left; width:134px; height:43px; line-height:40px; text-align:center; border-left:1px solid #e2e2e2; background-color:#f9f9f9;}
+.tabs li.tab6 {width:133px;}
+.tabs li a span {padding:2px 0; background:url(http://img.enuri.info/images/home/knowbox/icon_tabs3.png) 0 0 no-repeat;}
+.tabs li.tab1 a span {background-position:-30px -126px; padding-left:24px; }
+.tabs li.tab2 a span {background-position:-200px -124px; padding-left:28px;}
+.tabs li.tab3 a span {background-position:-377px -124px; padding-left:33px;}
+.tabs li.tab4 a span {background-position:-513px -125px; padding-left:33px;}
+.tabs li.tab5 a span {background-position:-692px -125px; padding-left:16px;}
+.tabs li.tab6 a span {background-position:-843px -124px; padding-left:28px;}
+.tabs li.tab1 a:hover span {background-position:-30px -26px;}
+.tabs li.tab2 a:hover span {background-position:-200px -24px;}
+.tabs li.tab3 a:hover span {background-position:-377px -24px;}
+.tabs li.tab4 a:hover span {background-position:-513px -25px;}
+.tabs li.tab5 a:hover span {background-position:-692px -25px;}
+.tabs li.tab6 a:hover span {background-position:-843px -24px;}
+.tabs li.tab1 a.on span {background-position:-30px -224px;}
+.tabs li.tab2 a.on span {background-position:-200px -224px;}
+.tabs li.tab3 a.on span {background-position:-377px -223px;}
+.tabs li.tab4 a.on span {background-position:-513px -226px;}
+.tabs li.tab5 a.on span {background-position:-692px -226px;}
+.tabs li.tab6 a.on span {background-position:-843px -225px;}
+*/
+
+.tab_conts .storylist li {margin-top:20px; padding-bottom:20px; border-bottom:1px solid #eee;}
+.tab_conts .storylist li:first-child {margin-top:30px;}
+.tab_conts .storylist li .topover {width:810px; height:26px; line-height:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.tab_conts .storylist li .topover .title {font-size:18px;font-weight:bold; color: #343434; }
+.tab_conts .storylist li .topover .title:hover { text-decoration:underline;}
+.tab_conts .storylist li .topover .title em {color:#1b96ad}
+.tab_conts .storylist li .topover .classify {display:inline-block; margin-right:6px;  height:20px; line-height:17px; vertical-align:1px; padding:0 5px; font-size:14px; color:#999999; border:1px solid #d2d2d2;}
+
+.tab_conts .result_area {height:28px; overflow:hidden; margin-top:25px; }
+.tab_conts .result_area span {height:28px; display:inline-block; font-size:20px; color:#343434; line-height:1.2; padding:0 23px 0 2px; background:url(http://img.enuri.info/images/home/knowbox/bul_arrow_yw.gif) #fffbdd right 0 no-repeat;}
+.tab_conts .result_area em {font-weight:bold; color:#1b96ad}
+
+.tab_conts .storylist li .detail {overflow:hidden; margin-top:16px;}
+.tab_conts .storylist li .detail .thumb {float:left; width:160px; height:110px;}
+.tab_conts .storylist li .detail .article {float:right; width:630px;}
+.tab_conts .storylist li .detail .article .report {display:block; height:86px; margin-top:-6px; overflow:hidden; line-height:21px; font-size:13px; color:#343434;}
+.tab_conts .storylist li .detail .article .report:hover {text-decoration:underline;}
+.tab_conts .storylist li .detail .article .btinfo {margin-top:11px; height:19px; line-height:18px; }
+.tab_conts .storylist li .detail .article .btinfo .press{vertical-align:-4px;}
+.tab_conts .storylist li .detail .article .btinfo .date {font-size:12px; color:#666;  margin-left:7px;}
+.tab_conts .storylist li .detail .article .btinfo .comment {display:inline-block; margin-left:3px; height:15px; line-height:15px; padding:0 2px; border:1px solid #e2e2e2; }
+.tab_conts .storylist li .detail .article .btinfo .comment .reply {padding-left:12px; font-size:11px; vertical-align: 2px; background:url(http://img.enuri.info/images/home/knowbox/ico_reply.gif) 0 5px no-repeat;}
+.tab_conts .storylist li .detail .article .btinfo .comment strong {margin-left:4px; font-size:14px; color:#339db2;}
+.tab_conts .storylist li.nothumb .detail .article {float:none; width:810px;}
+
+.search_area .search_chk{width:396px; height:40px; margin:0 auto; background:url(http://img.enuri.info/images/home/knowbox/input_search.gif) 0 0 no-repeat; }
+.search_area .search_chk .txtbox {background:transparent; border:0; width:291px; height:37px; line-height:36px; margin-left:1px; padding:0 12px; font-size:14px; color:#555555; vertical-align:-3px;}
+.search_area .search_chk .txtbox:focus {background-color:#fffff4}
+.search_area .search_chk .result {text-indent:-9999em; background:transparent; width:80px; height:40px; }
+
+.tab_conts .no_result {padding:100px 0; text-align:center; font-size: 20px;}
+.tab_conts .no_result em {color:#1b96ad; font-weight:bold}
+
+/*페이징*/
+.paging_area {position:relative; width:100%;}
+.paging_area .btn_bu.rwrite {position:absolute; top:0; right:0; height:34px; font-size:14px; line-height:32px;}
+.paging{text-align:center; margin:40px 0; position:relative;}
+.paging li{display:inline-block; margin:0 1px; vertical-align:middle; background:#fff;}
+.paging li a{width:34px; height:30px; padding-top:4px; border:1px solid #e2e2e2; color:#999999; text-align:center; display:block; font-size:18px; font-family:tahoma;}
+.paging li a.btn{background: url(http://img.enuri.info/images/home/bullet.gif) 0 0 no-repeat; color:#181818; width:78px; height:30px; padding-top:4px; font-family:malgun gothic; font-size:16px; }
+.paging li a.btn:hover{border:1px solid #e2e2e2; color:#181818;}
+.paging li a.btn.prev{background-position:10px -247px; text-indent:7px;}
+.paging li a.btn.next{background-position:right -300px; text-indent:-7px;}
+.paging li a.selected{cursor:default; background:#2d9fe8; border:1px solid #1f8fd7; color:#ffffff}
+.paging li a.selected:hover{border:1px solid #1f8fd7; color:#ffffff}
+.paging li a:hover{border:1px solid #787878; color:#343434}
+
+/* 파워링크 */
+.powerlink_link {width:970px; margin:40px 0 30px;}
+.powerlink_link a {font-family:Malgun Gothic; text-decoration:none;}
+.powerlink_link h3 {position:relative; height:22px; text-align:left; margin:0;}
+.powerlink_link h3 .title {font-size:14px; font-weight:bold; color:#181818;}
+.powerlink_link h3 em {display:inline-block; margin-left:2px; width:17px; height:11px; text-indent:-9999em; font-size:0; vertical-align:11px; background-image:url(http://img.enuri.info//images/home/ico_ad.gif)}
+.powerlink_link h3 .applyad {position:absolute; right:4px; top:0; font-size:12px; color:#666666; padding-right:9px; background:url(http://img.enuri.info//images/home/bul_right_gray.gif) 100% 7px no-repeat;}
+.powerlink_link .link_list {width:100%; margin:0; padding:0; *margin-left:-2px; border-bottom:1px solid #d2d2d2;}
+.powerlink_link .link_list:after {content:""; display:block; clear:both; }
+.powerlink_link .link_list li {float:left; width:50%; height:58px; padding:16px 0 16px; list-style:none; border-top:1px solid #d2d2d2; }
+.powerlink_link .link_list li p {padding-left:10px; }
+.powerlink_link .link_list li .line2 {margin-top:1px; width:460px; height:18px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.powerlink_link .link_list li a .tit {margin-right:10px; font-size:14px; color:#2680ef;}
+.powerlink_link .link_list li .sub {font-size:12px; color:#343434;}
+.powerlink_link .link_list li .url {font-size:12px; color:#917e72;}
+
+
+/* 뉴스보기 */
+.viewtop {text-align:center;}
+.viewtop .location {color:#343434;}
+.viewtop .location .now {font-weight:bold; text-decoration:underline}
+.viewtop h3.news_title {height:86px; overflow:hidden; padding-top:15px; font-size:36px; line-height:1.2;}
+.viewtop .btinfo {margin:22px auto 0; overflow:hidden;  padding-top:8px; color:#666; border-top:2px solid #787878}
+.viewtop .btinfo .press {float:left;}
+.viewtop .btinfo .etc {float:right; margin-top:-1px;}
+.viewtop .btinfo .etc span {margin-left:6px;}
+
+.btns_manage {margin-top:22px; text-align:center; }
+.btns_manage a:first-child {margin-right:6px;}
+.article_detail {margin-top:22px; font-size:14px; color:#171717;}
+/*.article_detail  p {line-height: 22px; padding-top:35px;}
+.article_detail  p:first-child {padding-top:0;}*/
+.article_detail .picture {padding:15px 0;}
+.article_detail .m_div_write > img {max-width:100%; height:auto;}
+
+
+.related {margin-top:56px;}
+.related h4 .btn_whbu.add {position:absolute; left:120px; bottom:3px;}
+.related .rel_list {margin-left:10px; }
+.related .rel_list li {padding-top:1px; height:20px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.related .rel_list li:first-child {padding-top:0;}
+.related .rel_list li em {width:44px; height:15px; line-height:13px; vertical-align:1px; margin-right:4px; display:inline-block; text-align:center; font-size:11px; color:#fff;  border-radius:3px; background-color:#dbdbdb;}
+.related .rel_list li a {font-size:13px; color:#787878; }
+.related .rel_list li a:hover {text-decoration:underline;}
+.related .pro_list {margin-left:-15px;}
+.related .pro_list:after {content:""; display:block; clear:both; }
+.related .pro_list li {float:left;width:260px; margin:10px 0 0 15px;}
+.procell {display:block; width:248px;  overflow:hidden; padding:9px 5px 7px; border:1px solid #e2e2e2;}
+.procell:hover {border:1px solid #787878;}
+.procell .thumb {display:inline-block; width:78px; height:78px; border:1px solid #e2e2e2; overflow:hidden}
+.procell .data {float:right; width:160px;}
+.procell .data span {display:block;}
+.procell .data .tit {height:36px; overflow:hidden; font-size:12px; color:#666; line-height:1.4; padding-top:2px;}
+.procell .data .shop {padding-top:1px;font-size:11px; color:#999;}
+.procell .data .price {font-size:12px; color:#0073be; line-height:1;}
+.procell .data .price strong {font-size:20px; vertical-align:-2px;}
+.procell .data .soldout {font-size:12px; color:#0073be;}
+.related .no_result {padding:100px 0 60px; font-size:20px; color:#666; text-align:center;}
+
+.comment_write {margin-top:50px; }
+.comment_write .top_write {position:relative; padding:19px; border:1px solid #e2e2e2;}
+.comment_write .top_write h4.titleb {border-bottom:0;}
+.contact {position:absolute; top:13px; right:19px;}
+.contact span {color:#666; vertical-align:1px;}
+.contact .email {width:178px; height:22px; line-height:22px; margin-left:2px; padding:0 10px; font-size:12px; color:#999999; border:1px solid #e2e2e2;}
+.comment_write h4 {line-height:1; font-size:14px;}
+.comment_write .writing {margin-top:12px;}
+.comment_write .writing:after {content:""; display:block; clear:both; }
+.comment_write textarea {float:left; width:673px; height:66px; padding:6px 8px; font-size:12px; color:#999; resize:none; overflow-x:hidden; overflow-y:auto; border:1px solid #e2e2e2; border-right:0; background:#fff;}
+.comment_write .btn_register {float:right; display:inline-block; width:80px; height:80px; line-height:78px; text-align:center;  font-size:16px; font-weight:bold; color:#fff; background:#787878;}
+.comment_write .comlist_box {padding:40px 20px;  border:1px solid #e2e2e2; border-top:0; background-color:#f5f5f5;}
+.comment_write .comlist_box .no_result {color:#666666; font-size:20px; padding:60px 0; text-align:center;}
+
+.comlist_box .list li {margin-top:20px; }
+.comlist_box .list li:first-child {margin-top:0;}
+.comlist_box .list li .opinion {padding:18px 18px 20px; border:1px solid #f1f1f1; background:#fff; }
+.comlist_box .list li .ments {font-size:14px; color:#171717; word-break: break-all;}
+.comlist_box .list li .datewriter {padding-top:12px; color:#bbb;}
+.comlist_box .list li .datewriter strong, .comlist_box .list li .datewriter span, .comlist_box .list li .datewriter a {margin:0 10px; color:#666; vertical-align:-1px;}
+.comlist_box .list li .datewriter strong {margin-left:0;}
+.comlist_box .paging {margin-bottom:0;}
+
+
+/* 공통 레이어팝업 */
+.morebox {display:none; position:absolute;  border-radius:2px; border:1px solid #707070; background:#ffffff; z-index:200; filter:progid:DXImageTransform.Microsoft.DropShadow(Color=#ebebeb,Positive=1,OffX=2,OffY=2); box-shadow:2px 2px 2px #ebebeb }
+.morebox h5{height:27px; background:#575c67; color:#ffffff; font-size:12px; font-weight:normal; letter-spacing:-0.5px; padding:0 0 0 10px; line-height:21px;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {.morebox h5 {line-height:23px;}}
+.morebox h5 em {color:#e2e2e2; margin-left:8px;}
+.morebox h5 .btnclose{position:absolute; right:5px; top:2px; width:12px; height:11px; background:url(http://img.enuri.info/images/home/btn_pop_close.png) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+.morebox .scr{overflow-y:scroll !important; overflow-x:hidden;}
+.morebox .inner_wrapper{position: relative;  z-index:1000;}
+
+/* 공통 중간 레이어팝업 */
+.assistbox {display:none; position:absolute; top:28px; border-radius:2px; border:1px solid #707070; background:#ffffff; z-index:100; filter:progid:DXImageTransform.Microsoft.DropShadow(Color=#ebebeb,Positive=1,OffX=2,OffY=2); box-shadow:2px 2px 2px #ebebeb }
+.assistbox h5{height:27px; background:#575c67; color:#ffffff; font-size:12px; text-align:left; font-weight:normal; letter-spacing:-0.5px; padding:0 0 0 10px; line-height:21px;}
+.assistbox h5 em {color:#e2e2e2; margin-left:8px;}
+.assistbox h5 i {margin-left:8px; font-style:normal; font-size:11px; letter-spacing:-0.5px;}
+.assistbox h5 .btnclose{position:absolute; right:5px; top:2px; width:12px; height:11px; background:url(http://img.enuri.info/images/home/btn_pop_close.png) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+.assistbox .inner {padding:20px 18px; text-align:left; line-height:1.3; font-size:12px; color:#666666; letter-spacing:-0.25px}
+.assistbox .inner p {margin:0;}
+.assistbox .stress {font-weight:bold; font-size:13px; color:#343434; letter-spacing:0;}
+
+/* 공통 작은레이어팝업 */
+.smallbox {display:none;  border-radius:2px; border:1px solid #707070; position:absolute; background:#ffffff; z-index:100; filter:progid:DXImageTransform.Microsoft.DropShadow(Color=#ebebeb,Positive=1,OffX=2,OffY=2); box-shadow:2px 2px 2px #ebebeb }
+.smallbox h5{height:27px; background:#575c67; color:#ffffff; font-size:12px; font-weight:normal; letter-spacing:-0.5px; padding:0 0 0 10px; line-height:21px;}
+.smallbox h5 em {color:#e2e2e2; margin-left:8px;}
+.smallbox h5 i {margin-left:8px; font-style:normal; font-size:11px; letter-spacing:-0.5px;}
+.smallbox h5 .btnclose{position:absolute; right:5px; top:2px; width:12px; height:11px; background:url(http://img.enuri.info/images/home/btn_pop_close.png) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+.smallbox .scr{overflow-y:scroll !important; overflow-x:hidden;}
+.smallbox .inner {padding:17px 20px 30px;}
+
+/* 레이어 공통 닫기 버튼 */
+.btn_dis {display:inline-block; text-align:center; padding:2px 30px 4px; color:#343434; letter-spacing:-0.5px; border:1px solid #e2e2e2; background:#fff;}
+
+/* 레이어-게시글 삭제 */
+.smallbox.boarddel {width:280px; /*height:140px*/}
+.smallbox.boarddel .inner .pw {line-height:1; margin-bottom:20px; font-size:15px; color:#343434; font-weight:bold;}
+.smallbox.boarddel .inner .pw.ag {color:#ff2222;}
+.smallbox.boarddel .inner  input {width:158px; height:22px;line-height:20px; padding:0 10px; margin-right:5px;  border:1px solid #e2e2e2;}
+
+/* 레이어-글쓰기 주의사항 */
+.assistbox.writecaution {position:absolute; right:0; top:38px; width:300px;}
+.assistbox .list {margin-top:26px;}
+.assistbox .list li {padding-bottom:13px; padding-left:7px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray.gif) 0 6px no-repeat; }
+
+
+/* 레이어-리뷰 작성하기 */
+.morebox.lay_writereview {z-index:1001;}
+.lay_writereview {width:719px;}
+.lay_writereview .inner_wrapper {padding:25px 20px; }
+.lay_writereview .inner_wrapper .head_area {margin-bottom:9px; padding-bottom:4px; border-bottom:1px solid #eee;}
+.lay_writereview .inner_wrapper .title {margin-bottom:12px; font-size:21px; font-weight:bold;}
+.lay_writereview .search_box {position:relative; width:296px; margin:0 auto;}
+.lay_writereview .search_box .write {width:190px; height:30px;  padding:0 9px; border:1px solid #e2e2e2; border-radius:2px; background-color:#fff;}
+.lay_writereview .search_box .write input {width:170px; height:30px; line-height:28px; font-size:12px; color:#999999; letter-spacing:-0.5px; border:0; }
+.lay_writereview .search_box .btn_magglass {position:absolute; right:0; top:0; width:53px; text-indent:0; display:inline-block; font-size:14px; color:#fff; padding:0 13px; height:30px; line-height:28px; border:1px solid #1689d3; border-radius:3px; background:#2d9fe8;}
+.lay_writereview .search_box .btn_magglass strong {padding-right:26px;background:url(http://img.enuri.info/images/home/knowbox/icon_magglass.png) right 4px no-repeat;}
+.lay_writereview .inner_content {}
+.lay_writereview .inner_content:after{content:""; clear:both; display:block; }
+.lay_writereview .fleft {float:left;width:294px;}
+.lay_writereview .fright {float:right;width:294px; }
+.lay_writereview .topch {position:relative; height:30px; line-height:27px; padding-left:8px; border:1px solid #e2e2e2;  background:#f5f5f5;}
+.lay_writereview .topch .btn_sort {position:absolute; right:6px; top:5px; height: 17px; line-height:13px; padding:0 6px; background:#fff; border:1px solid #e2e2e2;}
+.lay_writereview .topch .btn_sort span {font-weight:bold; font-size:12px; color:#666666; color:#343434; padding-right:13px; background:url(http://img.enuri.info/images/home/knowbox/bul_arrow_down.gif) right 9px no-repeat;}
+.morebox.lay_writereview .scr {overflow-y:auto !important;}
+.lay_writereview .option_box {position:relative; height:392px; overflow:hidden}
+.lay_writereview .option_box .list li {border:1px solid #e2e2e2; border-top:1px solid #fff;}
+.lay_writereview .option_box .list li:hover {border:1px solid #787878; z-index:100;}
+.lay_writereview .modelinfo {position:relative; height:78px; overflow:hidden; padding:9px 6px;}
+.lay_writereview .modelinfo .unchkb, .lay_writereview .modelinfo .chkb {margin-top: 30px;}
+.lay_writereview .modelinfo .chkb {font-weight:normal;}
+.lay_writereview .modelinfo .tray {position:absolute; top:9px; left:25px; height:80px; overflow:hidden;}
+.lay_writereview .modelinfo .tray span {display:block;}
+.lay_writereview .modelinfo .thumb {float:left;  width:78px; height:78px; text-align:center; line-height:76px; border:1px solid #e2e2e2}
+.lay_writereview .modelinfo .thumb img {vertical-align:middle; }
+.lay_writereview .modelinfo .etcinfo {float:left; width:160px; padding:6px 0 0 8px; }
+.lay_writereview .modelinfo .proname {height:30px; line-height:1.2; overflow:hidden; color:#666; letter-spacing:-0.5px; }
+.lay_writereview .modelinfo .mall {margin-top:8px; font-size:11px; color:#999;}
+.lay_writereview .modelinfo .price {margin-top:5px; color:#0073be;}
+.lay_writereview .modelinfo .price strong {font-size:20px; vertical-align:-2px;}
+.lay_writereview .research .modelinfo {position:absolute; top:-1px; left:-1px; width:227px; height:77px;  letter-spacing:-0.5px; text-align:center; background-color:#fffff4; border:1px solid #575c67; border:1px solid #000;}
+.lay_writereview .research .keyword {padding-top:1px; font-size:15px; color:#171717; font-weight:bold; height:24px; overflow:hidden;}
+.lay_writereview .research .keyword strong {display:inline-block; width:200px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:-6px}
+.lay_writereview .research .result {padding-bottom: 5px; font-size:11px; color:#999999; }
+.lay_writereview .research .btn_sq2 {height:22px; line-height:20px;}
+.lay_writereview .research .option_box {margin-top:78px;}
+.lay_writereview .btn_adjust {position:absolute; left:330px; width:60px; display:inline-block; font-size:0; line-height:0; text-indent:-9999em;  background:url(http://img.enuri.info/images/home/knowbox/btn_addexcp.gif) 0 0 no-repeat;}
+.lay_writereview .btn_adjust.add {top:269px; height:63px;}
+.lay_writereview .btn_adjust.except {top:339px; height:60px; background-position:0 -70px;}
+.lay_writereview .bt_btns {text-align:center; margin-top:20px;}
+.lay_writereview .bt_btns .confirm {margin-left:3px;}
+
+.lay_writereview.swview {width:316px;}
+.lay_writereview.swview .fleft {float:none;width:280px;}
+.lay_writereview.swview .search_box {width:280px;}
+.lay_writereview.swview .search_box .write {width:172px;}
+.lay_writereview.swview .tray {position:static;}
+.lay_writereview.swview .modelinfo .mall {margin-top:3px;}
+.lay_writereview.swview .modelinfo .price {margin-top:-5px;}
+
+/* 레이어-체험단신청 */
+.lay_expapply {}
+.lay_expapply .inner_wrapper {padding:15px 19px 27px; background:#f9f9f9;}
+.lay_expapply .inner_wrapper .heading {margin-bottom:3px; font-size:15px; font-weight:bold}
+.lay_expapply .apply_form {width:460px; height:380px; padding:15px 19px 0; border:1px solid #eeeeee; background:#fff;}
+.lay_expapply .apply_form table th {vertical-align:top; text-align:left;}
+.lay_expapply .apply_form table td {line-height:1.4}
+.lay_expapply .apply_form table th, .apply_form table td {padding:5px 0;}
+.lay_expapply .apply_form textarea {width:387px; height:88px; color:#999999; padding:5px 6px; border:1px solid #e2e2e2;}
+.lay_expapply .apply_form table td .cautip {padding-top:3px; color:#999999; text-align:right}
+.lay_expapply .apply_form table td .cautip strong {color:#2d9fe8; text-decoration:underline}
+.lay_expapply .apply_form table td input {width:386px; height:22px; line-height:20px; padding:0 6px; color:#999; border:1px solid #e2e2e2;}
+.lay_expapply .apply_form table td .essentip {margin-top:6px; color:#999; text-align:center}
+.lay_expapply .apply_form table td.address input {width:182px;}
+.lay_expapply .apply_form table td.phone input {width:40px;}
+.lay_expapply .clause {width:498px; margin:15px 0 8px;}
+.lay_expapply .clause .clatit {padding-bottom:5px; color:#999;}
+.lay_expapply .clause .cla_list {margin-left:10px;}
+.lay_expapply .clause .cla_list li {font-size:11px; color:#999; line-height:17px;}
+.lay_expapply .clause .cla_list li span {margin-left:-10px;}
+.lay_expapply .agree {text-align:center; color:3666; margin-top:16px;}
+.lay_expapply .bt_btns {text-align:center;}
+.lay_expapply .bt_btns a {width:98px; height:30px; padding:0;font-size:14px; line-height:30px;}
+.lay_expapply .bt_btns .btn_bu.regi {margin-left:6px;}
+
+.comlist_box .list li.modify .opinion {position:relative; border:1px solid #787878;}
+.comlist_box .list li.modify .opinion textarea {float:none; width:620px; font-size:14px; border:0;}
+.comlist_box li.modify .opinion .btn_wh2 {position:absolute; right:9px; bottom:9px;}
+.comlist_box .reply {margin:10px 0 0 20px; padding-left:20px; background:url(http://img.enuri.info/images/home/knowbox/bul_reply.png) 0 15px no-repeat;}
+.comlist_box .reply .case {padding:16px 18px 14px; background-color:#fcfcfc;}
+.comlist_box .reply.input .case {position:relative; padding:12px 18px 9px; overflow:hidden; border:1px solid #787878; background:#fff;}
+.comlist_box .reply.input textarea {width:512px; font-size:14px; padding:0; border:0;}
+.comlist_box .reply.input .case .btn_wh2 {position:absolute; bottom:9px;}
+.comlist_box .reply.input .case .btn_wh2.register {right:9px;}
+.comlist_box .reply.input .case .btn_wh2.cancle {right:120px;}
+
+
+
+/* 테이블 공통 */
+.tbtray table {width:810px;}
+.tbtray table th, .tbtray table td {text-align:left; padding:15px 0 5px; font-size:14px; border-bottom:1px solid #f5f5f5;}
+.tbtray table td {color:#999;}
+.tbtray table td input {font-size:14px; color:#999; height:26px; line-height:26px; padding:0 18px; border:1px solid #d2d2d2;}
+.tbtray table td input.title {width:654px !important;}
+.tbtray table td .btn_whbu.search {margin-right:10px;}
+.tbtray table td.textual {border-bottom:0;}
+.tbtray table td.textual div {/*height:510px;*/ border:1px solid #d2d2d2;}
+.tbtray table td.textual textarea {width:778px; padding:15px; height:510px; text-align:left; font-size:14px; color:#999999;  resize:none; border:1px solid #d2d2d2;}
+
+.tbtray.tbrg2 h4 {margin:25px 0 20px; font-size:18px; font-weight:normal}
+.tbtray.tbrg2 table th, .tbtray.tbrg2 table td {padding:5px 0;}
+.tbtray.tbrg2 table td.textual {padding-top:15px;}
+.tbtray.tbrg2 table td strong {color:#343434;}
+.tbtray.tbrg2 table td .unchk, .tbtray.expboard table td .chk {font-size:12px;}
+/*.tbtray.tbrg2 table td em.tip {font-size:12px; color:#999; margin-left:16px;}*/
+.tbtray.tbrg2 table td input  {width:262px}
+
+.tbtray table td em.tip {font-size:12px; color:#999; margin-left:16px;}
+
+.tbtray table td .file_search input.file_input_text {float:left; width:183px;}
+.tbtray table td .file_search .file_input_area {floaT:left; position:relative; width:79px; height:28px; overflow:hidden;}
+.tbtray table td .file_search .file_input_hidden {position:absolute; right:0px; top:0px; opacity:0; filter: alpha(opacity=0); -ms-filter: alpha(opacity=0); cursor:pointer;}
+.tbtray table td .file_search em {float:left; display:inline-block}
+
+/* 170412 리뷰게시판 > 썸네일 등록/노출 :  공통 사용 위해 위의 것으로 변경.*/
+.tbtray.tbrg2 table td.fileadd {border-bottom:0; overflow:hidden}
+.tbtray.tbrg2 table td .file_search {float:left;}
+/*.tbtray.tbrg2 table td .file_search input.file_input_text {float:left; width:183px;}
+.tbtray.tbrg2 table td .file_search .file_input_area {floaT:left; position:relative; width:79px; height:28px; overflow:hidden;}
+.tbtray.tbrg2 table td .file_search .file_input_hidden {position:absolute; right:0px; top:0px; opacity:0; filter: alpha(opacity=0); -ms-filter: alpha(opacity=0); cursor:pointer;}
+.tbtray.tbrg2 table td .file_search em {float:left; display:inline-block}
+*/
+
+.tbtray.tblist {position:relative;}
+.tbtray.tblist table {padding-top:64px; border-collapse: separate; } /* 170427  border-collapse 추가 */
+.tbtray.tblist table thead th {height:29px; line-height:27px; text-align:center; padding:0; font-size:13px; border-top:1px solid #e2e2e2; border-bottom:1px solid #e2e2e2;}
+.tbtray.tblist table tbody td {padding:10px 0 9px; line-height:1.2; text-align:center; color:#343434; font-size:12px; }
+.tbtray.tblist table tbody td.title {text-align:left; padding-left:20px; padding-right:10px;}
+.tbtray.tblist table tbody td.title .tit{max-width:430px !important; height:18px; display:inline-block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; vertical-align:middle;}
+.tbtray.tblist table tbody td.title em.re{color:#2d9fe8; padding-left:3px; }
+.tbtray.tblist table tbody td.title em.done {display:inline-block; width:58px; height:15px; line-height:13px;margin-left:4px;  font-size:11px; color:#787878; text-align:center; vertical-align:5px; border:1px solid #e2e2e2}
+.tbtray.tblist table tbody td.type {color:#2d9fe8;}
+.tbtray.tblist .bt_btns {position:absolute; right:0; top:20px;}
+.tbtray.tblist .bt_btns a {width:88px; font-size:14px; padding:0;}
+
+
+/* 메뉴-리뷰 */
+.toptit_area {position:relative;}
+.toptit_area .contact {position:absolute; left:118px; top:6px; width:285px;}
+.toptit_area .caution {position:absolute; right:0; bottom:10px; text-decoration:underline;}
+.lastbt_btns {padding-top:58px; margin:40px 0; text-align:center; border-top:2px solid #787878;}
+.lastbt_btns .cancle {width:54px;}
+.lastbt_btns .register {width:54px; font-weight:bold; margin-left:7px;}
+
+/* 레이어-가격추세 선택 */
+.smallbox.menuchoice {top:0; right:0; width:98px; height:58px;}
+.smallbox.menuchoice .list {width:80px;}
+.smallbox.menuchoice .list li a {display:block; padding-left:8px; height:18px; line-height:19px; font-size:13px; color:#343434;}
+.smallbox.menuchoice .list li a:hover {font-weight:bold; background-color:#f9f9f9}
+.smallbox.menuchoice .btnclose{position:absolute; right:0; top:1px; width:12px; height:11px; background:url(http://img.enuri.info/images/home/btn_arrow_up.gif) 5px 5px no-repeat; text-indent:-9999em; padding:5px; }
+
+
+/* 메뉴-트렌드픽업 */
+.pick_case {padding-bottom:10px;}
+.pick_case .numbering {position:absolute; right:0; top:8px; display:inline-block; color:#343434; font-size:15px;}
+.pick_case .article_list:after{display:block; clear:both; content:""}
+.pick_case .article_list ul {float:left; width:204px; height:170px; padding:18px 20px 0; overflow:hidden; border-left:1px solid #e2e2e2;}
+.pick_case .article_list ul:first-child {border-left:0;}
+.pick_case .article_list li {height:21px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-bottom:6px; padding-left:10px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray.gif) 0 9px no-repeat; }
+.pick_case .article_list li a {font-size:14px; color:#666; }
+.pick_case .article_list li a:hover {font-weight:bold; color:#171717; text-decoration:underline;}
+
+.trend_slider {margin-top:5px; padding-top:30px; border-top:1px solid #e2e2e2;}
+.trend_slider .owl-carousel .owl-wrapper-outer {width:730px; margin:0 auto;}
+.trend_slider .owl-controls .owl-buttons > div{position:absolute;top:51px; z-index:10; display:block !important; width:31px !important; height:60px !important; background:url(http://img.enuri.info/images/home/knowbox/arrowtip.png) no-repeat;}
+.trend_slider .owl-controls .owl-buttons > div:hover {opacity:1 !important;}
+.trend_slider .owl-controls .owl-prev{left:0 !important; background-position:left top !important;}
+.trend_slider .owl-controls .owl-prev:hover {background-position:left -60px !important;}
+.trend_slider .owl-controls .owl-next{right:0 !important; background-position:right top !important;}
+.trend_slider .owl-controls .owl-next:hover {background-position:right -60px !important;}
+.trend_slider .owl-controls .owl-buttons div{font-size: 0 !important; text-indent:-9999em}
+
+.recom_package {position:relative; margin-top:30px; padding:18px 29px 36px;border:1px solid #e2e2e2; border-radius:10px;}
+.recom_package .theme {margin-bottom:7px;}
+.recom_package .theme strong {font-size:15px; text-decoration:underline;}
+.recom_package .total_tit {font-size:36px; line-height:1.2}
+.recom_package .category_ctab {overflow:hidden; width:748px; height:19px; margin-left:1px;}
+.recom_package .category_ctab li {float:left; line-height: 1.4;}
+.recom_package .category_ctab li a {display:block; height:15px; line-height:12px; padding:0 5px; border:1px solid #fff; color:#343434; font-size:13px;}
+.recom_package .category_ctab li a:hover {display:block; border:1px solid #fff; color:#848484; text-decoration:underline;}
+.recom_package .category_ctab li.selected a {border:1px solid #eeeeee; background:#f5f5f5; color:#2d9fe8; font-size:12px; font-weight:bold;text-decoration:none;cursor:default;}
+.recom_package .category_cont {position:relative; overflow:visible; width:750px; margin:5px auto 0 auto;}
+.recom_package .category_cont ul {overflow:hidden; width:100%; height:268px;}
+.recom_package .category_cont ul li {float:left; width:100px; margin-left:9px; overflow:hidden;position:relative; }
+.recom_package .category_cont ul li > strong {display:block; width:98px; height:98px;border:1px solid #e2e2e2;}
+/* 품절 soldout*/
+.recom_package .category_cont ul li > strong .soldout_cover {position:absolute; top:1px; left:1px; text-indent:-9999em; z-index:10; }
+.recom_package .category_cont ul li > strong .soldout_cover.s {width:98px; height:98px; background:url(http://img.enuri.info/2015/main/images/soldout_trend_s.png); }
+.recom_package .category_cont ul li.bigitem > strong .soldout_cover.b {width:386px; height:206px; background:url(http://img.enuri.info/2015/main/images/soldout_trend_b.png); }
+
+.recom_package .category_cont ul li > strong img {width:98px; height:98px;}
+.recom_package .category_cont ul li p {position:relative; font-size:11px;}
+.recom_package .category_cont ul li p .btn_prepare {position:absolute; top:1px; right:2px; display:block; width:90px; height:37px; padding-top:6px; background:#4dacfe; font-weight:bold; font-size:15px; color:#fff; text-align:center; line-height:15px;}
+.recom_package .category_cont ul li p > a{.top:16px}
+.recom_package .category_cont ul li p > a em {display:block; font-size:12px;}
+.recom_package .category_cont ul li p .proname {display:block; height:34px;  line-height:15px; font-size:13px; color:#666;margin-top:4px; font-weight:normal;overflow:hidden;}
+.recom_package .category_cont ul li p .proname:hover {text-decoration:underline;}
+.recom_package .category_cont ul li p > em {display:block; margin-top:-2px; line-height:16px; font-size:13px; color:#0073be; font-weight:bold; overflow: hidden;}
+.recom_package .category_cont ul li.bigitem {float:left; width:392px; padding-right:18px; margin:0 12px 0 0; border-right:1px solid #f5f5f5;}
+.recom_package .category_cont ul li.bigitem > strong {width:386px; height:206px;}
+.recom_package .category_cont ul li.bigitem > strong img {width:386px; height:206px;}
+.recom_package .category_cont ul li.bigitem p {font-size:12px; line-height:1;}
+.recom_package .category_cont ul li.bigitem p .proname {display:block; width:288px; height:19px; line-height:16px; margin-top:10px; font-size:15px; color:#343434;}
+.recom_package .category_cont ul li.bigitem p > em {display:block; width:288px;  line-height: 25px;margin-top:1px; font-size:15px; font-weight:normal; text-align:left; color:#666666;}
+.recom_package .category_cont ul li.bigitem p > em strong {font-size:28px; color:#0073be;}
+.recom_package .category_cont ul li.bigitem p > em strong .won {font-size:18px;}
+.recom_package .category_cont .buytip {overflow:visible; position:absolute; bottom:3px; right:0; width:318px; color:#636363;  }
+.recom_package .category_cont .buytip .tipArea{background:#fcfcfc; overflow:hidden; height:65px; padding:5px 14px 8px; font-size:11px; margin-left:3px; border:1px solid #f5f5f5; border-radius:5px;}
+.recom_package .category_cont .buytip strong {display:block; line-height:15px; height:17px; overflow:hidden;}
+.recom_package .category_cont .buytip strong img {margin-right:5px; vertical-align:top;}
+.recom_package .category_cont .buytip strong a {color:#2d9fe8; text-decoration:underline}
+.recom_package .category_cont .buytip strong a.nolink {cursor:default; text-decoration:none;}
+.recom_package .category_cont .buytip p {margin-top:2px; color:#666; line-height:15px;height:46px; overflow:hidden;}
+.recom_package .category_cont .buytip > em {position:absolute; top:-20px; left:3px; width:48px; height:14px; line-height:11px; border:1px solid #eee; background:#f5f5f5; color:#2d9fe8; font-weight:bold; text-align:center;}
+.recom_package .category_cont .buytip > a {position:absolute; bottom:85px; right:0; padding-right:6px; color:#343434; font-size:11px; background:url(http://img.enuri.info/images/home/knowbox/bul_arrow_black.gif) no-repeat right 7px;}
+.bullet_set{display:none; }
+.recom_package:hover .bullet_set{display:block; }
+.Nprev{z-index:1000; height:150px; width:26px; position:absolute; left:0; top:132px; text-indent:-9999em;  display:block; background:url(http://img.enuri.info/2014/main/images/bul_prev.png) no-repeat center 65px;}
+.Nprev:hover{background:url(http://img.enuri.info/2014/main/images/bul_prev_over.png) no-repeat center 65px;}
+.Nnext{z-index:1000; height:150px; width:26px; position:absolute; right:0; top:132px; text-indent:-9999em;  display:block; background:url(http://img.enuri.info/2014/main/images/bul_next.png) no-repeat center 65px;}
+.Nnext:hover{background:url(http://img.enuri.info/2014/main/images/bul_next_over.png) no-repeat center 65px;}
+.mtrendpickup .paging {margin-top:80px;}
+
+
+/* 메뉴-체험단 */
+.exptop_package {padding-bottom:20px; margin-bottom:20px; border-bottom:2px solid #464e5b;}
+.exptop_inner {margin-top:20px; border:1px solid #e2e2e2;}
+.exptop_inner:after{display:block; clear:both; content:""}
+.exp_banner {position:relative; float:left; width:538px; height:338px;}
+.exp_banner .owl-wrapper-outer {width:538px;height:338px;}
+.exp_banner .owl-wrapper-outer .item > a {display:block;}
+.exp_banner .owl-theme .owl-controls {position:absolute; left:0; bottom:4px; width:100%; }
+.exp_banner .owl-carousel .owl-pagination {display:inline-block; height:16px; line-height:14px; padding:0 10px; background:#f3f3f2; border-radius:15px;}
+.exp_banner .owl-carousel .owl-pagination .owl-page {margin:3px 2px; width:8px; height:8px; background:url(http://img.enuri.info/images/home/knowbox/bul_pg_off.png) 0 0 no-repeat; }
+.exp_banner .owl-carousel .owl-pagination .owl-page.active {width:14px; height:8px; background:url(http://img.enuri.info/images/home/knowbox/bul_pg_on.png) 0 0 no-repeat; }
+.exp_banner .owl-theme .owl-controls .owl-page span {width:100%; height:100%;}
+.exp_banner .owl-controls .owl-buttons div{font-size: 0 !important; text-indent:-9999em}
+
+.detail_info {position:absolute; left:20px; bottom:27px; width:500px; height:110px; overflow:hidden; z-index:50; background:url(http://img.enuri.info/images/home/knowbox/dim_cover.png) repeat 0 0;}
+.detail_info .inner {height:80px; padding:15px 10px;}
+.detail_info .fleft {float:left; width:280px; font-weight:bold; overflow:hidden}
+.detail_info .fleft .subname {font-size:18px; color:#fff8d1; line-height:1;}
+.detail_info .fleft .titname {margin-top: 2px; font-size:28px; color:#fff; line-height:31px;}
+.detail_info .fright {float:right; width:184px;}
+.detail_info .fright ul li {color:#fff; line-height:16px;}
+.detail_info .fright .bt_btns {margin-top:6px;}
+.detail_info .fright .bt_btns a {width:88px; height:24px; padding:0; font-size:14px; text-align:center;}
+
+.article_case {float:right; width:269px; border-left:1px solid #e2e2e2;}
+.article_case .article_list {padding-left:25px;}
+.article_case .article_list.list1 {padding-bottom:20px;border-bottom:1px solid #e2e2e2;}
+.article_case .article_list h4 {margin:25px 0 10px;}
+.article_case .article_list ul {width:225px; }
+.article_case .article_list li {width:208px; height:19px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-bottom:3px; padding-left:10px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray.gif) 0 8px no-repeat; }
+.article_case .article_list li a {font-size:13px; color:#666;}
+.article_case .article_list li a:hover {font-weight:bold; color:#171717; text-decoration:underline; }
+
+.total_case {overflow:hidden;}
+.total_case .totallist {margin-left:-20px;}
+.total_case .totallist:after{display:block; clear:both; content:""}
+.total_case .totallist li {float:left; width:393px; margin:20px 0 0 20px; border:1px solid #e2e2e2;}
+.total_case .totallist li .proitem {background:#fff; cursor:pointer}
+.total_case .totallist li .head {position:relative; padding:6px 6px; line-height:1; background:#f9f9f9; border-bottom:1px solid #e2e2e2;}
+
+.total_case .totallist li .head .tagrd {margin-right:1px;}
+.total_case .totallist li .head .applicant {position:absolute; top:6px; right:10px;}
+.total_case .totallist li .proinfo {padding:15px; }
+.total_case .totallist li .proinfo:after{display:block; clear:both; content:""}
+.total_case .totallist li .proinfo .thumb {float:left; width:78px; height:78px; border:1px solid #e2e2e2;}
+.total_case .totallist li .proinfo .thumb img {width:78px; height:78px; }
+.total_case .totallist li .proinfo .respect {float:right; width:269px;}
+.total_case .totallist li .proinfo .modelname {height:40px; overflow:hidden; line-height: 20px; padding-top: 2px;}
+.total_case .totallist li .proinfo .modelname .tit {font-weight:bold; font-size:19px;}
+.total_case .totallist li .proinfo .respect .bt_btns {margin-top:8px;}
+.total_case .totallist li .proinfo .respect .bt_btns a {width:92px; height:24px; padding:0; font-size:14px; text-align:center;}
+.total_case .totallist li .proinfo .respect .bt_btns a.apply {margin-left:2px;}
+
+.model_report {margin-top:20px; height:152px; padding-bottom:17px; border-bottom:2px solid #464e5b}
+.model_report:after{display:block; clear:both; content:""}
+.model_report .thumb {float:left; width:148px; height:148px; border:1px solid #e2e2e2;}
+.model_report .thumb img {width:148px; height:148px; }
+.model_report .info_area {float:right; width:651px;}
+.model_report .info_area .pro_name {height:42px; font-size:28px; font-weight:bold; overflow:hidden}
+.model_report .info_area .applicant {margin:0 15px;}
+.exp_step {margin-top:40px; }
+.exp_step:after{display:block; clear:both; content:""}
+.exp_step li {position:relative; float:left; width:200px; height:47px; margin-right:10px; color:#999; background:url(http://img.enuri.info/images/home/knowbox/exp_step.gif) repeat 0 0;}
+.exp_step li.on {background-position:0 -47px;}
+.exp_step li p {position:absolute; left:42px; top:3px;  color:#999;}
+.exp_step li strong {margin-left:8px; display:inline-block; font-size:36px; line-height: 40px;}
+.exp_step li.on p {color:#171717;}
+.exp_step li.on strong {color:#2d9fe8;}
+
+.exp_detail {margin:40px 0 20px; overflow:hidden}
+.exp_detail .mission {margin:12px 0 20px; padding:20px; background:#f5f5f5;}
+.exp_detail .mission .ms_list {}
+.exp_detail .mission .tit {font-size:15px; font-weight:bold;margin-bottom:10px; line-height: 1;}
+.exp_detail .mission ol {margin-left:10px;}
+.exp_detail .mission ol > li {margin-bottom:20px;}
+.exp_detail .mission ol > li em {margin-left:-10px;}
+.exp_detail .mission ol > li .stress {background-color:#fcff00;}
+
+.challenge {padding:18px 20px 20px; background:#fff;}
+.challenge .tit {font-size:15px}
+.challenge ul:after{display:block; clear:both; content:""}
+.challenge ul li {float:left; width:340px; height:19px; font-size:13px; color:#666; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding-bottom:3px; padding-left:10px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray.gif) 0 8px no-repeat;}
+.challenge .bt_btns {margin-top:20px;}
+.challenge .bt_btns a {width:98px; height:30px; line-height: 28px; padding:0; font-size:14px; text-align:center;}
+.challenge .bt_btns a.apply {margin-left:2px;}
+
+.comment_write.exp {margin-top:40px;}
+.comment_write.exp .top_write {margin-bottom:30px;}
+.comment_write.exp .comlist_box {border-top:1px solid #e2e2e2}
+.comment_write.exp .top_write .writer {color:#666;}
+.comment_write.exp .top_write .writer strong {color:#343434}
+.comment_write.exp .datewriter {position:relative;}
+.comment_write.exp .datewriter .btn_blog {position:absolute; top:15px; right:0; display:inline-block; width:88px; height:18px; line-height:15px; margin:0; text-align:center; color:#000; border:1px solid #e2e2e2}
+
+.total_case.reg {padding-bottom:20px; border-bottom:2px solid #464e5b;}
+.total_case .totallist.ty2 {padding-left:20px; }
+.total_case .totallist.ty2 li {width:373px; margin:10px 0 0 20px;}
+.total_case .totallist.ty2 li:hover {border:1px solid #787878;}
+.total_case .totallist.ty2 li .proitem {padding:15px 15px 24px;}
+.total_case .totallist.ty2 li .proitem .modelname {height:37px; line-height:18px; font-size:15px; font-weight:bold; overflow:hidden;}
+.total_case .totallist.ty2 li .proitem .side {margin-top:4px; height:17px; overflow:hidden;}
+.total_case .totallist.ty2 li .proitem .side .writer {float:left; width:60%; overflow:hidden;}
+.total_case .totallist.ty2 li .proitem .side .date {float:right; width:40%; text-align:right; overflow:hidden;}
+.bt_btns.detail {margin-top:8px;}
+.bt_btns.detail .btn_wh {width:88px; height:22px; font-size:14px; color:#000; padding:0; }
+
+.end_package {padding-bottom:20px; border-bottom:2px solid #464e5b;}
+.end_package > li {margin-top:20px; border:1px solid #e2e2e2; border-radius:15px; }
+.end_package > li .model_report {margin-left:20px; margin-right:20px; padding-top:10px; border-bottom:0}
+.end_package > li .model_report .info_area {width:610px;}
+.end_package > li .total_case {padding:10px 0 20px; border-top:1px solid #e2e2e2; border-radius:0 0 15px 15px;  background:#f5f5f5;}
+
+h3.guidetit {position:relative; margin:40px 0 30px; font-size:32px; line-height:1.2; font-weight:normal}
+h3.guidetit em {color:#2d9fe8;}
+.inquiry {padding-bottom:34px; border-bottom:1px solid #eeeeee}
+.inquiry h3 .btn_bu.ask {margin-left:15px; height:42px; padding:0 26px; line-height: 18px; font-size:14px; color:#fff; vertical-align:-5px;}
+.inquiry h3 .btn_bu.ask span {display:inline-block; font-weight:normal;}
+.inquiry h3 .btn_bu.ask strong {display:inline-block; font-size:18px; color:#fff;}
+.inquiry .offer_list {padding-top:20px;}
+.inquiry .offer_list:after{display:block; clear:both; content:""}
+.inquiry .offer_list li {float:left; width:235px; margin:0 17px; text-align:center; letter-spacing:-1px}
+.inquiry .offer_list li img {display:inline-block;}
+.inquiry .offer_list li .tit {padding-top:15px; font-size:18px; font-weight:bold; line-height:1;}
+.inquiry .offer_list li .txt {padding-top:10px; color:#2d9fe8; line-height: 15px;}
+
+/* 진행 프로세스 */
+.process {padding-bottom:34px; border-bottom:1px solid #eeeeee}
+.process .order_list {margin:0 0 0 20px;}
+.process .order_list:after{display:block; clear:both; content:""}
+.process .order_list > li {float:left; margin-right:10px;padding:14px 20px 20px; width:143px; height:229px; border:1px solid #eeeeee;}
+.process .order_list > li span {display:block;}
+.process .order_list > li .num {width:40px; height:34px; line-height:1; font-size:36px; font-weight:bold; color:#666666; padding-bottom:4px; background:url(http://img.enuri.info/images/home/knowbox/bar_num.gif) no-repeat center bottom;}
+.process .order_list > li .tit {height:38px; font-size:15px; margin-top:13px; line-height:17px;}
+.process .order_list > li .tit  em {font-size:12px; color:#2d9fe8}
+.process .order_list > li ul.txt li {font-size:12px; color:#787878; margin-top:7px; line-height:14px; padding-left:9px; line-height:16px; background:url(http://img.enuri.info/images/home/knowbox/bul_clamp.gif) no-repeat 0 5px;}
+
+/* 진행 마케팅 신청 및 문의*/
+.marketing { }
+.marketing h3.guidetit .director {position:absolute; top:5px; right:22px; text-align:right; color:#343434; font-size:13px; }
+.marketing .apply_ask {width:780px; margin:0 auto;}
+.marketing .apply_ask .apply {width:780px;}
+.marketing .apply_ask .apply td {width:390px; padding-bottom:10px;  text-align:center}
+.marketing .apply_ask .apply td input {width:342px; font-size:14px; color:#999; height:38px; line-height:37px; padding:0 18px; border:1px solid #d2d2d2;}
+.marketing .apply_ask .apply td textarea {width:746px; height:178px; font-size:14px; color:#999; padding:10px; border:1px solid #d2d2d2; resize:none}
+.marketing .apply_ask .agree_area .agree {font-size:12px; color:#666; margin:5px 0 10px 5px} 
+.marketing .apply_ask .agree_area table {width:780px; border:1px solid #e2e2e2   }
+.marketing .apply_ask .agree_area table th {height:28px; line-height:28px; color:#787878; font-size:12px; text-align:center; background:#f2f2f2;  border-left:1px solid #e2e2e2   }
+.marketing .apply_ask .agree_area table th:first-child {border-left:0;}
+.marketing .apply_ask .agree_area table td {height:39px; line-height:39px; color:#555; font-size:13px; text-align:center;  border-top:1px solid #e2e2e2; border-left:1px solid #e2e2e2}
+.marketing .apply_ask .agree_area table td:first-child {border-left:0;}
+.marketing .apply_ask .btn_expapply {display:block; width:780px;  height:58px; line-height:52px; margin-top:26px; text-align:center; color:#fff; font-size:24px; font-weight:bold; border:1px solid #0073be; background:#2d9fe8;}
+
+h3.title .btn_bu.rwrite {position:absolute; right:0; bottom:-5px; font-size:14px; line-height:18px;}
+h4.titleb2.rw .mytext  {position:absolute; right:0; bottom:4px; width:auto; height:18px; text-align:right;}
+h4.titleb2.rw .mytext .unchkb,  h4.titleb2.rw .mytext .chkb {font-size:12px; color:#666;}
+h4.titleb2.rw .btn_bu.rwrite {position:absolute; right:0; bottom:28px; height:34px; font-size:14px; line-height:32px;}
+.new_comm {padding-bottom:45px;}
+.new_comm .pro_list {margin-left:-15px;}
+.new_comm .pro_list:after{display:block; clear:both; content:""}
+.new_comm .pro_list li {float:left; width:260px; margin-left:15px;}
+.new_comm ul li a {padding-bottom:10px; border:1px solid #e2e2e2;}
+.new_comm .value {margin-top:8px; border-top:1px solid #f5f5f5;}
+.new_comm .value .comm {height:34px; overflow:hidden; color:#666; line-height: 16px;}
+.star_area {padding-top:3px;}
+.star_comm .img_star {background:url(http://img.enuri.info/images/home/starmark2.png) 0 0 no-repeat}
+.star_comm {float:left; overflow:hidden;  line-height:1.2;}
+.star_comm .star_rate {float:left; width:64px;height:11px; margin:4px 5px 0 0;background-position:0 0}
+.star_comm .inner_star {display:block;width:100%;height:100%;font-size:0;line-height:0;background-position:0 -20px;text-indent:-9999px}
+.star_comm {float:none; width:64px; margin:0 auto;}
+.star_comm .num_rate {float:left; color:#999; font-size:11px; letter-spacing:-1px; }
+.star_comm .num_rate strong {color:#333;}
+
+
+
+/* q&a */
+.qa_type {position:relative; margin-top:5px; padding:3px 0; border:1px solid #e2e2e2; background:#f9f9f9;}
+.qa_type .tit {margin-left:52px;  font-size:24px; display:inline-block; text-align:center; padding-left:38px; background:url(http://img.enuri.info/images/home/knowbox/icon_balloon.png) 0 5px no-repeat}
+.qa_type .tit em {color:#2d9fe8; }
+.qa_type .btn_bu.ask {position:absolute; right:-1px; top:-1px; margin-left:15px; height:42px; line-height:40px; padding:0 43px;font-size:18px; color:#fff;}
+h4.titleb2.qa {margin-bottom:0 !important;}
+.titleb2.qa .question_type {position:absolute; right:0; bottom:6px; }
+.question_type:after{display:block; clear:both; content:""}
+.question_type li {float:left; line-height:20px; line-height:20px; margin-left:10px; padding-left:10px; background:url(http://img.enuri.info/images/home/knowbox/bul_faqtype.gif) 0 7px no-repeat}
+.question_type li:first-child {margin-left:0; padding-left:0; background:0;}
+.question_type li a {display:block; font-size:12px; color:#bbbbbb;}
+.question_type li a span {display:inline-block; vertical-align:-2px; background:url(http://img.enuri.info/images/home/knowbox/icon_faq2.png) 0 0 no-repeat}
+.question_type li a.on {color:#343434;}
+.question_type li.tab1 a span {padding-left:21px; background-position:0 -2px}
+.question_type li.tab1 a.on span {background-position:0 -25px}
+.question_type li.tab2 a span {padding-left:24px; background-position:-101px -2px}
+.question_type li.tab2 a.on span {background-position:-101px -25px}
+.question_type li.tab3 a span {padding-left:26px; background-position:-178px -2px}
+.question_type li.tab3 a.on span {background-position:-178px -25px}
+.question_type li.tab4 a span {padding-left:12px; background-position:-297px -2px}
+.question_type li.tab4 a.on span {background-position:-297px -25px}
+.question_type li.tab5 a span {padding-left:20px; background-position:-389px -2px}
+.question_type li.tab5 a.on span {background-position:-391px -25px}
+.question_type li.all a span {padding-left:16px; background-position:-480px 0px}
+.question_type li.all a.on span {background-position:-480px -24px}
+
+.filter_area {text-align:right; margin-top:25px; color:#666666;}
+.faq_list {margin-bottom:40px; border-bottom:1px solid #d2d2d2;}
+.faq_list table {width:810px;}
+.faq_list table tr:first-child th, .faq_list table tr:first-child td {border-top:0;}
+.faq_list table th, .faq_list table td {padding:6px 0; font-size:13px; border-top:1px solid #f5f5f5;}
+.faq_list table th {font-weight:normal; color:#2d9fe8;}
+.faq_list table td .icon_qus { vertical-align:12px;}
+
+.icon_qus {width:16px; height:16px; display:inline-block; margin:0 10px 0 9px; font-size:0; text-indent:-9999em; line-height:0;  background:url(http://img.enuri.info/images/home/knowbox/icon_qa.png) 0 0 no-repeat}
+.icon_anw {width:16px; height:16px; display:inline-block; margin:0 10px 0 9px; font-size:0; text-indent:-9999em; line-height:0;  background:url(http://img.enuri.info/images/home/knowbox/icon_qa.png) 0 -20px no-repeat}
+
+.tab_conts .result_area.qna {margin-top:3px;}
+
+.tab_conts .qa_list li {margin-top:20px; padding:0 12px 20px 12px; border-bottom:1px solid #eee;}
+.tab_conts .qa_list li .question .topover {width:786px; height: 26px; }
+.tab_conts .qa_list li .question .topover:after{display:block; clear:both; content:""} 
+.tab_conts .qa_list li .icon_qus, .tab_conts .qa_list li .icon_anw {float:left; margin:6px 7px 0 0;}
+.tab_conts .qa_list li .question .title {float:left; font-size:18px;font-weight:bold; color: #343434; max-width:760px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.tab_conts .qa_list li .question .title:hover {text-decoration:underline}
+.tab_conts .qa_list li .question .article {margin-top:7px;}
+.tab_conts .qa_list li .answer {margin-top:18px; }
+.tab_conts .qa_list li .article:after{display:block; clear:both; content:""} 
+.tab_conts .qa_list li .report {float:left; display:inline-block; width:754px; line-height:22px; font-size:14px; color:#343434;}
+.tab_conts .qa_list li .report:hover {text-decoration:underline}
+.tab_conts .qa_list li .question .report {padding-left:26px; }
+
+
+.qa_list li .qa_btinfo {margin-top:11px; }
+.qa_btinfo {height:19px; line-height:18px; color:#bbb;}
+.qa_btinfo * {vertical-align:middle;}
+.qa_btinfo span  {color:#666;}
+.qa_btinfo span:first-child {margin-left:0;}
+.qa_btinfo .classify {display:inline-block; margin-right:6px;  height:15px; line-height:14px; padding:0 7px; font-size:11px; color:#787878; border:1px solid #e2e2e2;}
+.qa_btinfo .sort {font-size:11px; margin-right:10px; letter-spacing:0;}
+.qa_btinfo .writer {font-weight:bold; margin:0 9px 0 8px; letter-spacing:0; }
+.qa_btinfo .date {margin:0 9px 0 8px; letter-spacing:0;}
+.qa_btinfo .comment {display:inline-block; height:15px; line-height:13px; padding:0 2px; border:1px solid #e2e2e2; }
+.qa_btinfo .comment .reply {padding-left:12px; font-size:11px; vertical-align: 2px; background:url(http://img.enuri.info/images/home/knowbox/ico_reply.gif) 0 5px no-repeat;}
+.qa_btinfo .comment strong {margin-left:4px; font-size:14px; color:#339db2; vertical-align:top;}
+.qa_btinfo a {display:inline-block; color: #666; margin: 0 10px;  vertical-align:-1px;}
+
+.tbtray table td .unchkb.shopping { font-size:12px; color:#666666;}
+.tbtray table td.sort {position:relative;}
+.tbtray table td.sort .unchkb.shopping { font-size:12px; color:#666666;}
+.tbtray table td.sort .btn_whbu.modelsel {position:absolute; right:0; bottom:3px;}
+
+
+
+/* 로컬네비게이션 */
+.knowbox_wrap .local_navi{padding:7px 0 0 0}
+.knowbox_wrap .local_navi:after{content:""; display:block; clear:both; }
+.knowbox_wrap .local_navi li.home{background:none; padding-left:0; }
+.knowbox_wrap .local_navi li.home a{width:20px; padding:0; margin-right:6px; border:1px solid #ffffff; background:none; font-weight:bold;}
+.knowbox_wrap .local_navi li.home a:hover{text-decoration:underline;}
+.knowbox_wrap .local_navi li{float:left; padding-left:0; background:none; position:relative; font-size:14px; }
+.knowbox_wrap .local_navi li a{letter-spacing:-1px; overflow:hidden; color:#343434; display:block; height:22px; width:134px; border:1px solid #e2e2e2; border-radius:2px; padding:0 24px 0 12px; margin-right:15px; text-decoration:none; background:url(http://img.enuri.info/images/home/bullet.gif) 97% -38px no-repeat;}
+.knowbox_wrap .local_navi li .sub_dp{max-height:220px; overflow:auto; border-bottom:2px solid #dbdbdb; border-radius:2px; width:145px; position:absolute; left:0; top:0px; display:none; border:1px solid #1f91db; padding:0 18px 0 7px; background:url(http://img.enuri.info/images/home/ico_sub_dp.gif) 87% 7px no-repeat #ffffff; z-index:10;}
+.knowbox_wrap .local_navi li .sub_dp li{background:none; padding:0; width:100%}
+.knowbox_wrap .local_navi li .sub_dp li a{border:none; background:none; display:block; width:112px; padding:0 5px; margin:0; overflow:hidden; }
+.knowbox_wrap .local_navi li .sub_dp li a:hover{background:#2d9fe8; color:#ffffff; }
+.knowbox_wrap .local_navi li .dp4{background:#2d9fe8; color:#ffffff; border:1px solid #1689d3; border-radius:2px; font-weight:bold; display:inline-block; padding:0 12px; height:22px;}
+
+.tbtray table td.related {padding-top:6px; border-bottom:0;}
+
+h3.title .btn_listview {position:absolute; right:0; bottom:-1px; font-weight:normal; font-size:12px;}
+
+.qa_detail {margin:25px 0 0 12px;}
+.ask_area {padding-bottom:20px; border-bottom:1px solid #f5f5f5;}
+.ask_area .navi {position:relative; line-height:1; overflow:hidden;}
+.ask_area .navi .icon_qus {float:left; margin-left:0;}
+.ask_area .navi .cate {float:left;}
+.ask_area .navi .wrnum {position:absolute; right:0; bottom:1px; color:#666666;}
+.ask_area .question_tit {height:72px; margin-top:20px; font-size:28px; font-weight:bold;  line-height:36px; overflow:hidden}
+.qa_detail .essay {padding-top: 25px; font-size:14px; color:#171717; line-height:24px;}
+.ask_area .qa_btinfo {margin-top:30px; }
+.answer_area {padding-bottom:20px; }
+.answer_area .answer_tit {padding-top:25px;}
+.qa_detail .manage {padding-top:50px; font-size:32px; text-align:center}
+.qa_detail .manage em {color:#2d9fe8;}
+.qa_detail .manage .btn_bu.ask {margin-left:15px; height:42px; padding:0 46px; line-height: 18px; font-size:14px; color:#fff; vertical-align:-5px;}
+.qa_detail .manage .btn_bu.ask span {display:inline-block; font-weight:normal;}
+.qa_detail .manage .btn_bu.ask strong {display:inline-block; font-size:18px; color:#fff;}
+
+.tbtray table td.textual.answer {padding-top:30px;}
+
+
+/* 메인 */
+.main_newpack.cmguide {margin:40px 0;}
+.main_newpack .question_type {margin:20px 0 13px;}
+.case_con {height:190px;}
+.case_con:after{content:""; display:block; clear:both; }
+.thumb_view {float:left; width:415px; }
+.thumb_view ul {overflow:hidden; margin-left:-15px;}
+.thumb_view ul li {float:left; width:200px; margin-left:15px;}
+.thumb_view ul li img {display:block; width:198px; height:148px; border:1px solid #e2e2e2; border-bottom:0;}
+.thumb_view ul li span {display:block; width:192px; height:41px; font-size:14px; color:#fff; padding:0 4px; line-height:18px; background:#666666;}
+.most_view {float:right; width:387px; height:188px; border:1px solid #e2e2e2; }
+.most_view .most_inner {padding:13px 14px 0 18px;}
+.most_view  h4 {font-size:14px; font-weight:normal; padding-bottom:7px; border-bottom:1px solid #cccccc;}
+h3.titleb2 .btn_moreview {position:absolute; right:0; bottom:8px; font-weight:normal; font-size:12px;}
+.most_view ol {padding-left:5px;}
+.most_view ol li {width:350px; height:18px; overflow:hidden; padding-top:10px; line-height:16px; text-overflow: ellipsis; white-space: nowrap;}
+.most_view ol li:first-child {padding-top:5px;}
+.most_view ol li a {font-size:13px; color:#666666; }
+.most_view ol li a:hover {font-weight :bold; text-decoration:underline;}
+.most_view ol li strong {font-size:14px; color:#339db2; font-style:italic; padding-right:8px;}
+
+.lately_list {margin-top:9px;}
+.lately_list ul:after{content:""; display:block; clear:both; }
+.lately_list ul li {overflow:hidden; padding:15px 0; border-bottom:1px solid #e2e2e2;}
+.lately_list ul li:last-child {border-bottom:0;}
+.lately_list ul li .cell {float:left; width:390px; display:block; margin-left:30px; }
+.lately_list ul li .cell:first-child {margin-left:0;}
+.lately_list ul li .cell:hover .detail .title,  .lately_list ul li .cell:hover .detail .article {font-weight :bold; text-decoration:underline}
+.lately_list ul li .cell.nothumb .detail {font:none; width:390px;}
+.lately_list ul li .thumb {float:left; width:88px; border:1px solid #e2e2e2;}
+.lately_list ul li .thumb img {width:88px; height:65px;}
+.lately_list ul li .detail {float:right; width:292px;}
+.lately_list ul li .detail .title {height:23px; font-size:15px; font-weight:bold; overflow:hidden; text-overflow: ellipsis; white-space: nowrap;}
+.lately_list ul li .detail .article {height:38px; overflow:hidden; padding-top:8px; font-size:13px; color:#666666; line-height:19px;}
+
+.total_case.main .totallist {margin-top:10px;}
+
+.total_case .totallist.ty3 li {width:auto; padding: 5px 0 15px; margin:0; border:0; border-bottom: 1px solid #e2e2e2;}
+.total_case .totallist.ty3 li:last-child {border-bottom:0;}
+.total_case .totallist.ty3 li .proitem {float:left; width:395px; margin:10px 0 0 20px; overflow:hidden;}
+.total_case .totallist.ty3 li .thumb {float:left; width:78px; height:78px; border:1px solid #e2e2e2;}
+.total_case .totallist.ty3 li .thumb img {width:78px; height:78px; }
+.total_case .totallist.ty3 li .proitem .respect {float:right; width:310px;}
+.total_case .totallist.ty3 li .proitem .modelname {height:37px; line-height:18px; font-size:15px; font-weight:bold; padding-top:5px; overflow:hidden;}
+.total_case .totallist.ty3 li .proitem .side {margin-top:4px; height:17px; overflow:hidden;}
+.total_case .totallist.ty3 li .proitem .side .writer {float:left; width:60%; overflow:hidden;}
+.total_case .totallist.ty3 li .proitem .side .date {float:right; width:40%; text-align:right; overflow:hidden;}
+
+.main_newpack.proreview {margin:30px 0 50px;}
+.proview_list {border-top: 1px solid #e2e2e2;}
+.proview_list li {padding:10px 0; border-bottom: 1px solid #e2e2e2;}
+.proview_list li:after{content:""; display:block; clear:both; }
+.proview_list li .thumb {float:left; width:78px; height:78px; border:1px solid #e2e2e2;}
+.proview_list li .thumb img {width:78px; height:78px;}
+.proview_list li .data {position:relative; float:right; width:711px; margin-right:10px; }
+.proview_list li .data .tit {display:block; width:480px; height:23px; overflow:hidden; text-overflow: ellipsis; white-space: nowrap; font-weight:bold; font-size:15px; letter-spacing:0;}
+.proview_list li .data .comm {display:block; height:50px; overflow:hidden; margin-top:3px; color:#666666; line-height:16px; letter-spacing:0;}
+.proview_list li .data .value {position:absolute; right:0; top:0; text-align:right; color:#e2e2e2;}
+.proview_list li .data .value .shop {display:inline-block; margin-right:9px; font-size:11px; color:#999999;} 
+.proview_list li .data .value .star_area {display:inline-block; margin-left:5px;}
+.proview_list li .data .value .star_area .num_rate {font-size:11px; color:#999999; letter-spacing:0;}
+.proview_list li .data .value .star_area .num_rate strong {font-weight:normal; color:#333333;}
+.proview_list li .data a:hover {font-weight:bold; text-decoration:underline}
+
+
+/* 우측 윙배너 */
+.Rightwing {position:fixed; top:55px; right: 50%; margin-right: -630px; z-index:1000; }
+
+/* lnb 하단 배너*/
+.bnr_lnb {display:block; margin-top:20px;}
+
+
+/* 161205 커뮤니티 게시판 추가 */
+
+/* 누리 게시판 */
+/*.smtab:after{content:""; display:block; clear:both; }
+.smtab li {float:left; }*/
+
+.smtab {height:19px; line-height:18px; color:#bbb;}
+.smtab a {color:#666; margin: 0 9px 0 8px; font-size:15px;}
+.smtab a:first-child {margin-left:0;}
+.smtab a.on {font-weight:bold;}
+
+/* 리스트 영역 2줄 노출 */
+.tab_conts .storylist li .detail .article .report.line2 {height:42px;}
+
+/* 테이블 내 라디오박스 */
+td.radio_sel {}
+td.radio_sel span {margin-left:15px;}
+td.radio_sel span:first-child {margin-left:0;}
+
+/* 특가 게시판 보기*/
+.url_address {margin:0 0 35px 34px;}
+.url_address .icurl {display:inline-block; width:30px; line-height: 20px; margin:0 5px 0 -34px; text-align:center; vertical-align:-2px; color:#fff; background : #2d9fe8}
+.url_address a {text-decoration:underline}
+
+/* 체험단 상세페이지 라인, 게시정보 추가 */
+.exp_area .question_tit {max-height:72px;margin-top:20px; font-size:28px; font-weight:bold;  line-height:36px; overflow:hidden}
+.exp_area .btinfo {margin:22px auto 0; overflow:hidden;  padding-top:8px; color:#666; border-top:2px solid #787878}
+.exp_area .btinfo .press {float:left;}
+.exp_area .btinfo .etc {float:right; margin-top:-1px;}
+.exp_area .btinfo .etc span {margin-left:6px;}
+
+/* 특가 게시판 글 작성 버튼 추가 */
+.urladd_area th {vertical-align:top;}
+.urladd_list li {margin-top:5px;}
+.urladd_list li:first-child {margin-top:0;}
+.urladd_list li input {width:400px;}
+.urladd_list .btn_wh3 {margin-left:8px;}
+
+/* 사용자 리뷰 타이틀 수정 (리뷰작성 영역) */
+.knowbox_wrap .contents .qa_type {margin-bottom:35px;}
+
+/* 170109 누리게시판 추가 */
+.box_board{padding-top: 0 !important; border-top:none !important; margin-top:-16px}
+.box_board tr.notice .type, .box_board tr.notice .title a{color:#343434 !important; font-weight:bold; }
+.box_board th{border-top:none !important;}
+.box_board .tit{max-width:450px !important;}
+.knowbox_wrap .contents h3 .notice_wr{position:absolute; right:0; top:10px; display:block; width: 88px; font-size: 14px; padding: 0; height:22px; line-height:20px; padding:0 10px; font-size:12px; letter-spacing:-0.5px; color:#343434; text-align:center; background-color:#fff; border:1px solid #e2e2e2;}
+
+/* 20170220 본문 게시글 내 목록 노출 */
+.knowbox_wrap h4.titleano {margin-top:50px; padding-top:50px; border-top:1px solid #e2e2e2; line-height:auto; }
+.knowbox_wrap h4.titleano em {color:#2d9fe8;}
+.tbtray.anolist .box_board {margin-top:0; border:1px solid #e2e2e2 !important;}
+.tbtray.anolist table thead th {border-bottom:1px solid #d2d2d2; background:#f5f5f5;}
+.tbtray.anolist table tbody td {padding-top:4px; padding-bottom:3px; border-bottom:0; background:#fcfcfc;}
+.tbtray.anolist table tbody tr:first-child td {padding-top:12px;}
+.tbtray.anolist table tbody tr:last-child td {padding-bottom:14px;}
+.tbtray.anolist table tbody td a {padding-left:13px; background:url(http://img.enuri.info/images/home/knowbox/bul_arrow_gray.gif) no-repeat 0 7px;}
+.tbtray.anolist table tbody td a:hover {font-weight:bold;}
+
+/* 170224 문구 추가 */
+.tbtray table td.textual {padding:0;}
+.write_tip {width:775px; margin: 0 auto; padding-right:15px; text-align:right; color:#000; font-size:12px;}
+
+/* 170323 리뷰게시판 공지글 제목 폰트컬러 변경 */
+.tab_conts .storylist li .topover .title.notice {color:#1689d3;}
+
+/* 170330 누리게시판 목록 상단 배너 영역 추가 */
+.ban_nuritop {width:810px; height:100px; margin-bottom:10px; overflow:hidden}
+.ban_nuritop a {display:block;}
+.ban_nuritop a img {width:810px; height:100px; }
+
+/* 170410 뉴스 본문 하단 배너 영역 추가 */
+.ban_newsbot {width:810px; height:70px; margin:25px 0 -25px; overflow:hidden}
+.ban_newsbot a {display:block;}
+.ban_newsbot a img {width:810px; height:70px; }
+
+/* 170413 체험단 모집글 개선 */
+.expguide {margin:0 auto; }
+.expguide a:hover {text-decoration:underline}
+.expguide.exptop {width:720px; background:#fff;}
+.exptop .title {padding:17px 0 24px; text-align:center; background:#56b6e6;}
+.exptop .con {margin:40px 12px 34px 30px;} 
+.exptop .con .list li {font-size:16px; color:#333333; letter-spacing:-0.6px; padding:5px 0 0 17px; background:url(http://img.enuri.info/images/home/knowbox/bul_cir_blue.gif) 0 15px no-repeat;}
+.exptop .con .list li:after {content:""; display:block; clear:both;}
+.exptop .con .list li em {float:left; width:120px; margin-right:15px; color:#278eed;}
+.exptop .con .list li span {float:left; width:526px;}
+.exptop .con .list li span a {font-size:15px;}
+.exptop .con .list li.caution span {width:100%; padding-top: 3px;}
+.expguide.expbot {width:688px; background:#f0f0f0;}
+.expbot .con {padding:25px 16px 20px 15px; letter-spacing:-0.5px;} 
+.expbot .con .tit {font-size:16px;  font-weight:bold; padding-bottom:10px; line-height: 18px;}
+.expbot .con .tit.t1 {color:#4494de;}
+.expbot .con .tit.t2 {color:#555; padding-top:15px; border-top:1px solid #dedede;}
+.expbot .con .list li {font-size:14px; color:#666666; letter-spacing:-0.5px; padding:5px 0 0 7px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray2.gif) 0 15px no-repeat;}
+.expbot .con .list li:after {content:""; display:block; clear:both;}
+.expbot .con .list > li:first-child em {float:left; width:112px; margin-right:5px;}
+.expbot .con .list > li:first-child span {float:left; width:532px}
+.expbot .con .list li span a {color:#444;}
+.expbot .con .list li strong {color:#444; text-decoration:underline;}
+.expbot .con .list li strong.stress {color:#399cce;}
+.expbot .con .list li ol {margin-left: 14px;}
+.expbot .con .list li ol li em {margin-left:-14px;}
+.expbot .con .list li ol li {padding-left:0;background:none}
+.expbot .con .list li ol li .tip {color:#aeaeae;}
+.expbot .con .list li ol li .process {padding:30px 0 30px 20px; font-size:0; text-indent:-9999em;}
+.expbot .con .list.ls2 li {padding-top:3px;font-size:12px; letter-spacing:-0.6px; background-position:0 12px;}
+
+/* 170601 체험단 하단 배너 영역 추가 */
+.ban_expbtm {width:810px; height:100px; overflow:hidden}
+.ban_expbtm a {display:block;}
+.ban_expbtm a img {width:810px; height:100px; }
+
+/* 170622 URL 입력 변경 */
+.tbtray td.url .line1 {position:relative;}
+.tbtray td.url .line1:after {content:""; display:block; clear:both;}
+.tbtray td.url .local_navi {float:left; width:194px; padding-top:3px;}
+.tbtray td.url .coderg {float:left;}
+.tbtray td.url .coderg input[type="text"] {width:100px; color:#999;}
+.tbtray td.url .coderg em.tip {margin-left:6px;}
+.tbtray td.url .line1 .btn_wh3 {margin-left:8px;}
+.tbtray td.url .line1 .codeway {position:absolute; right:0; bottom:10px;  text-decoration: underline; font-size:12px; color:#2893ed;}
+.tbtray td.url .line2 {margin-top:10px;}
+.tbtray td.url .line2:after {content:""; display:block; clear:both;}
+.tbtray td.url .line2 .btn_wh3 {float:left; width:65px;}
+.tbtray td.url .line2 .addr {float:left; width:580px; color:#26B0EB; margin-left:8px;}
+
+/* 레이어-상품코드 보는 방법 */
+.assistbox.procodeway {position:absolute; right:0; width:600px;}
+.assistbox .list {margin-top:26px;}
+.assistbox .list li {padding-bottom:13px; padding-left:7px; background:url(http://img.enuri.info/images/home/knowbox/bul_sq_gray.gif) 0 6px no-repeat; }
+.assistbox .sample {margin-top:10px;}
+.assistbox .sample strong {color:#2d9fe8;}
+.procode_list {margin-top:15px; border-top:1px solid #d2d2d2; border-bottom:1px solid #d2d2d2;}
+.procode_list table {width:564px;}
+.procode_list table tr:first-child th, .faq_list table tr:first-child td {border-top:0;}
+.procode_list table th, .procode_list table td {padding:6px 8px; font-size:13px; border-top:1px solid #f5f5f5;}
+.procode_list table th {font-weight:normal; vertical-align: middle; background:#fafafa;}
+.procode_list table td em { color:#ff4444;}
+
+/* 170803 리뷰게시판 상단, 동영상 영역 추가 */
+.video_area {height:286px; margin-bottom:50px;}
+.video_area .zone {height:300px;  }
+.video_area .zone h3.title {margin-bottom:6px;}
+.video_area .zone h3.title .more{cursor:pointer; font-weight:normal; position:absolute;right:4px; top:12px; font-size:12px; color:#666666; padding-right:9px; background:url(http://img.enuri.info//images/home/bul_right_gray.gif) 100% 7px no-repeat; }
+.video_area .box {height:262px; background:#f9f9f9; border:1px solid #e2e2e2;}
+.video_area .live_video {float:left; width:277px;}
+.video_area .hot_review {float:right; width:515px;}
+.video_area .live_video .inside {width:225px; height:230px; overflow:hidden; margin:20px auto 0;}
+.video_area .live_video a {position:relative; display:block;}
+.video_area .live_video .mv img {width:225px; height:168px;}
+.video_area .live_video .mv .mark {position:absolute; display:inline-block; width:58px; height:41px; top:50%; left:50%; margin-top:-20px; margin-left:-29px; text-indent:-9999em; font-size:0; background:url(http://img.enuri.info/2017/main/images/btn_videomark.png) no-repeat 0 0;}
+.video_area .live_video .bot_area {position:relative; width:225px; height:50px; padding-top:8px;}
+.video_area .live_video .bot_area .txt {height:50px; }
+.video_area .live_video .bot_area .iconmd {display:inline-block; width:50px; height:50px;}
+.video_area .live_video .bot_area .iconmd  img {width:50px; height:50px;}
+.video_area .live_video .bot_area .textarea {position:absolute; top:3px; left:55px; height:40px; letter-spacing:-0.5px;} 
+.video_area .live_video .bot_area .textarea .title {width:168px;height:19px; overflow:hidden;  text-overflow:ellipsis; white-space:nowrap; font-size:13px; color:#2d9fe8;font-weight:bold; }
+.video_area .live_video .bot_area .textarea .con {width:168px; margin-top:1px; height:16px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#808080; line-height:16px;}
+
+.hotrev_slide {width:467px; height:220px;margin:0 auto; padding-top:9px;}
+.hotrev_slide:after {content:""; display:block; clear:both}
+.hotrev_slide .items {position:relative; float:left; width:235px; height:238px; }
+.hotrev_slide .items .icon_monrw {position:absolute; top:0; left:0; width:59px; height:74px;  text-indent:-9999em; font-size:0; z-index:50; background:url(http://img.enuri.info/images/home/knowbox/icon_reviewer.png) no-repeat 0 0;}
+.hotrev_slide .items a {display:block; }
+.hotrev_slide .items a.thumb {width:225px; height:168px; margin:11px 4px 0;}
+.hotrev_slide .items .infox {position:relative; width:216px; height:40px; margin:12px auto 0; overflow:hidden}
+.hotrev_slide .items .infox .tit {font-size:13px; font-weight:bold; color:#444; letter-spacing:-0.5px; line-height:19px;}
+.hotrev_slide .items .infox .nick {position:absolute; right:0; bottom:0; color:#2d9fe8;}
+
+.video_area .zone .box button {display:none !important;}
+.video_area .zone .box:hover button {display:block !important;}
+.slick-prev{z-index:1000; outline:0; height:216px; width:26px; position:absolute; left:-23px; top:0; text-indent:-9999em;  background:url(http://img.enuri.info/2014/main/images/bul_prev.png) no-repeat center 91px;}
+.slick-prev:hover{background:url(http://img.enuri.info/2014/main/images/bul_prev_over.png) no-repeat center 91px;}
+.slick-next{z-index:1000; outline:0; height:216px; width:26px; position:absolute; right:-23px; top:0; text-indent:-9999em;  background:url(http://img.enuri.info/2014/main/images/bul_next.png) no-repeat center 91px;}
+.slick-next:hover{background:url(http://img.enuri.info/2014/main/images/bul_next_over.png) no-repeat center 91px;}
+
+.live_video .slick-prev {left: -1px;}
+.live_video .slick-next {right: -1px;}
+
+/* 170816 에누리티비 */
+.knowbox_wrap .contents h3.titleb2.enuritv{font-size:18px}
+.knowbox_wrap .contents h3.titleb2.enuritv a.write_go{display:block; position:absolute; right:0; top:0; text-indent:44px; width:140px; line-height:26px; height:30px; border-bottom:3px solid #e0e0e0; color:#ffffff; background:url(http://img.enuri.info/images/home/knowbox/ico_enuritv.png) 12px 5px no-repeat #ff4444; font-size:15px; }
+.tv_hit{padding:10px 0 35px;}
+.tv_hit:after{display:block; clear:both; content:""}
+.tv_hit li{float:left; margin-left:15px; width:260px;}
+.tv_hit li:first-child{margin-left:0;}
+.tv_hit li .vod_img{width:260px; height:146px; overflow:hidden; position:relative; margin:10px 0; cursor:pointer; }
+.tv_hit li .vod_img img{position:absolute; left:0; top:-25px; width:260px; height:196px;}
+.tv_hit li .vod_info{position:relative; padding-left:60px;}
+.tv_hit li .vod_info .thum{width:48px; height:48px; border-radius:50%; position:absolute; left:0; top:0;}
+.tv_hit li .vod_info strong{display:block; font-size:13px; color:#0072bc; padding-bottom:2px; overflow:hidden; white-space: nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; -ms-text-overflow:ellipsis; -moz-text-overflow:ellipsis; }
+.tv_hit li .vod_info strong a{color:#0072bc;}
+.tv_hit li .vod_info .txt{line-height:16px; display:block; height:32px; overflow:hidden; }
+
+.tv_channel{padding-top:5px}
+.tv_channel ul:after{display:block; clear:both; content:""}
+.tv_channel ul{border-top:1px solid #e2e2e2; border-bottom:1px solid #e2e2e2; background:#f9f9f9; padding:10px}
+.tv_channel ul li{display:inline-block; margin:3px;}
+.tv_channel ul li a{line-height:28px; height:30px; padding:0 16px; display:block; font-size:14px; border:1px solid #f9f9f9;}
+.tv_channel ul li a:hover{background:#ffffff; border-radius:30px; border:1px solid #e7e7e7; color:#2495dd; font-weight:bold;}
+.tv_channel ul li.on a{background:#2d9fe8; border-radius:30px; border:1px solid #2495dd; color:#ffffff; font-weight:bold;}
+.tv_channel ul li:first-child a{border:1px solid #f9f9f9; background:url(http://img.enuri.info/images/home/knowbox/ico_enuritv.png) 12px -77px no-repeat; padding-left:33px;}
+.tv_channel ul li:first-child a:hover{background:url(http://img.enuri.info/images/home/knowbox/ico_enuritv.png) 12px -116px no-repeat #ffffff; border:1px solid #e7e7e7;}
+.tv_channel ul li.on:first-child a{border:1px solid #2a98de; background:url(http://img.enuri.info/images/home/knowbox/ico_enuritv.png) 12px -34px no-repeat #2d9fe8; color:#ffffff; font-weight:bold; border-radius:30px; padding-left:33px;}
+
+.tv_hit_list{width:100%;}
+.tv_hit_list ul{width: 824px}
+.tv_hit_list ul:after{display:block; clear:both; content:""}
+.tv_hit_list li{float:left; padding:20px 14px 14px 0; width:192px; border-bottom:1px solid #e2e2e2}
+.tv_hit_list li img{width:192px; height:108px;}
+.tv_hit_list li .tit{display:block; overflow:hidden; white-space: nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; -ms-text-overflow:ellipsis; -moz-text-overflow:ellipsis; }
+.tv_hit_list li .tit a{color:#1689d3}
+.tv_hit_list li strong{height:34px; overflow:hidden; display:block; font-weight:normal; line-height:16px}
+.tv_hit_list li strong a{color:#555555}
+.tv_hit_list li em{color:#787878; font-size:11px;}
+.tv_hit_list li em.re{color: #1689d3; font-size:12px;}
+.related .tv_hit_list li{border-bottom:none;}
+
+.knowbox_wrap .contents h4.vod_tit{border-bottom: 1px solid #e2e2e2; padding:10px 0;}
+.knowbox_wrap .contents h4.vod_tit em{color:#2d9fe8;}
+
+/* 170901 모델비교표 */
+.model_list .md{border-collapse:collapse; word-break:break-all; }
+.model_list .md th{background: #f3f4f7; border: 1px solid #e2e2e2; font-size:13px; width:80px; }
+.model_list .md th img{height:1px; width:80px;}
+.model_list .md td{text-align:center; border: 1px solid #e2e2e2; padding:20px 10px; font-size:13px;}
+.model_list .md img{width:150px; height:150px;}
+.model_list{width:810px; overflow-y:auto; overflow:auto;}
+
+/* 171011 최저가 버튼 추가 */
+.model_list .btn_prbox {display:inline-block; font-family:Malgun Gothic; font-size:11px; letter-spacing:-0.25px; height:42px; line-height:17px; padding:0 7px; color:#0073be; border:1px solid #d1d1d1; background:#fff;}
+.model_list .btn_prbox .tit_low {display: inline-block; font-weight:bold;}
+.model_list .btn_prbox b {margin-left:4px; font-size:14px; letter-spacing:-0.5px; vertical-align:-1px; }
+.model_list .btn_prbox .tit_low {color:#ff2222;}
+.model_list .btn_prbox .nor {margin-top:11px; display:inline-block; color:#000; }

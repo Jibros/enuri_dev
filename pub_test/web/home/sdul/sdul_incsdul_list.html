@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<META HTTP-equiv='Content-Type' content='text/html; charset=euc-kr'>
+<META NAME='description' CONTENT='가격비교 에누리닷컴'>
+<META NAME='keyword' CONTENT='가격,가격 검색,가격 사이트,가격검색 사이트,가격비교,가격 비교가격비교 사이트,가격정보'>
+<META NAME='Robots' CONTENT='INDEX, FOLLOW'>
+<LINK REL='SHORTCUT ICON' HREF='/favicon.ico'>
+<link rel="stylesheet" href="http://www.enuri.com/common/css/enuri.css" type="text/css">
+<link rel="stylesheet" href="http://www.enuri.com/common/css/enuribase1.css" type="text/css">
+<link REL="stylesheet" HREF="http://www.enuri.com/common/css/fusion.css" TYPE="text/css">
+<!-- SDU/SDUL COMMON CSS(20190102 신규생성) -->
+<link rel="stylesheet" href="http://img.enuri.gscdn.com/common/css/sdu_common.css?v=201901022" type="text/css">
+<style type="text/css">
+.style3 {
+	position:absolute;
+	font-family: "돋움";
+	font-size: 11px;
+	color: #000000;
+	margin-left: 10px;
+	margin-top: 10px;
+	text-decoration: underline;
+}
+.footer {
+	margin-left:0 !important;
+}
+</style>
+<!--[if ie 9]>
+<style type="text/css">
+table.input_form_table
+{
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    FONT-SIZE: 9pt;
+    PADDING-BOTTOM: 0px;
+    MARGIN: 0px;
+    COLOR: #00004d;
+    PADDING-TOP: 0px;
+    FONT-FAMILY: 돋움, 굴림체
+    border-collapse:collapse;
+	border:1px solid #FFFFFF; // 추가
+}
+table.input_form_table td
+{
+    FONT-SIZE: 9pt;
+    COLOR: #000000;
+    PADDING-RIGHT: 0px;
+    PADDING-LEFT: 0px;
+    border-color:#92ADC7;
+    FONT-FAMILY: 돋움, 굴림, 굴림체
+}
+</style>
+<![endif]-->
+<script language="javaScript" src="/common/js/lib/prototype.js" type="text/javascript"></script>
+<script type="text/javascript" src="/common/js/function.js"></script>
+<script LANGUAGE="JavaScript">
+function CmdServiceLy(div){
+	//alert(div)
+	if ( div == "1"){
+		//alert(div+"=="+document.getElementById("sDiv").style.display)
+		if(document.getElementById("sDiv").style.display == "none"){
+			document.getElementById("sDiv").style.display = "inline";
+		}
+	}else if( div == "2"){
+		//alert(div+"=="+document.getElementById("sDiv").style.display)
+		if(document.getElementById("sDiv").style.display == "inline"){
+			document.getElementById("sDiv").style.display = "none";
+		}
+	}
+}
+
+function Main_OpenWindow(OpenFile,name,nWidth,nHeight,ScrollYesNo,ResizeYesNo,TPosition,LPosition)
+{
+	var newWin = window.open(OpenFile,name,"width="+nWidth+",height="+nHeight+",toolbar=no,directories=no,status=no,scrollbars="+ ScrollYesNo +",resizable="+ ResizeYesNo +",menubar=no,Top="+ TPosition +",left="+ LPosition);
+	newWin.focus();
+}
+
+//페이징
+function goPage(pageNo){
+	var obj = document.FrmList;
+	obj.page.value = pageNo;
+	obj.cmd.value = "img";
+		FrmList.submit();
+	}
+
+//삭제
+	function CmdDelete(){
+		if ( CmdCheckedProc() == 0 ){
+			alert("삭제할 상품을 선택하세요.");
+			return;
+		}else{
+			if( confirm( "현재 목록에서만 삭제되며,\n에누리에 반영된 정보는 삭제되지 않습니다.\n삭제처리하시겠습니까?" )){
+			FrmDelete.target = "_self";
+			FrmDelete.action = "/sdul/mallregister/new/IncSdul_List_Delete.jsp";
+			FrmDelete.submit();
+			}
+		}
+	}
+
+	//삭제 시 해당 index의 값을 hidden으로 그려준다.
+	function CmdCheckedProc()
+	{
+		var varTot = document.FrmList.totalChkCnt.value;
+
+		var i = 0;
+		if(varTot > 0){
+			if( document.FrmList.chk_Selected.checked){
+				var InsertHTML = "<input type=hidden name=deleteVal0 value="+document.FrmList.chk_Selected.value+">";
+				DeleteDiv.insertAdjacentHTML("afterEnd", InsertHTML);
+				i = 1;
+
+				document.FrmDelete.totalCnt.value = i;
+
+			}else{
+				for ( j = 0 ; j < document.FrmList.chk_Selected.length ; j++){
+					//해당 index가 체크되있을 경우 hidden html을 그린다.
+					if ( document.FrmList.chk_Selected[j].checked ){
+						var InsertHTML = "<input type=hidden name=deleteVal" + i + " value=" + document.FrmList.chk_Selected[j].value + ">";
+						DeleteDiv.insertAdjacentHTML("afterEnd", InsertHTML);
+						i ++;
+					}
+
+					document.FrmDelete.totalCnt.value = i;
+				}
+			}
+		}
+
+		return i ;
+	}
+
+//검색
+	function goSearch(strflag){
+		if(strflag==1){
+			if( document.FrmList.SearchText.value == ""){
+				alert("검색어를 입력하세요.");
+				return;
+			}
+		}
+		document.FrmList.cmd.value = "search";
+		document.FrmList.page.value = 1;
+		FrmList.submit();
+	}
+
+	function Win( sURL, sName, scrollbars,left,top){
+        var win;
+        win = window.open(sURL, sName, "status=no,toolbar=no,resizable=no,scrollbars="+scrollbars+",menubar=no, left="+left+", top="+top);
+        win.opener.self;
+	}
+
+	function WinPop(url , name , opt){
+		var win;
+        win = window.open(url, name, opt);
+        win.opener.self;
+	}
+	function fnGetCookie( name ){
+	    var nameOfCookie = name + "=";
+	    var x = 0;
+	    while ( x <= document.cookie.length )
+	    {
+	            var y = (x+nameOfCookie.length);
+	            if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+	                    if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+	                            endOfCookie = document.cookie.length;
+	                    return unescape( document.cookie.substring( y, endOfCookie ) );
+	            }
+	            x = document.cookie.indexOf( " ", x ) + 1;
+	            if ( x == 0 )
+	                    break;
+	    }
+	    return "";
+	}
+	function init(){
+		//if (fnGetCookie("ErrorNotice") == ""){
+			//Main_OpenWindow('http://img.enuri.gscdn.com/html/view/popupMemberError_20081127.htm',"",400,400,"NO","NO",100,100);
+			//var SDULPopup = window.open("/sdul/list/Sdul_Error_Popup_Cookie.jsp","SDULPopup","width=400,height=400,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,top=100,left=100");
+			//SDULPopup.focus();
+			/**
+			$("div_sdLayer_0906").style.left = 100+488;
+			$("div_sdLayer_0906").style.top = -92;
+			$("div_sdLayer_0906").style.display = "block";
+			*/
+		//}
+		$("div_sdLayer_0906").style.left = 120;
+		var selfH = screen.availHeight;
+		if(selfH>768){
+			$("div_sdLayer_0906").style.top = -8;
+		}else{
+			$("div_sdLayer_0906").style.top = -92;
+		}
+		//$("div_sdLayer_0906").style.display = "block";
+		//if (fnGetCookie("powerseller_pop") == ""){
+			//var powerseller = window.open("/sdul/list/powerseller_pop.jsp","powerseller_pop","width=517,height=504,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,top=150,left=150");
+			//powerseller.focus();
+		//}
+		//bid_layerShow();
+		//alert(fnGetCookie("sdul_Error_popShow"));
+		//if (fnGetCookie("sdul_Error_popShow") == ""){
+			//sdul_Error_popShow();
+		//}
+	}
+	function UpdatePrice(){
+		insertLog(2196);
+	    var sdulWin = window.open("/sdul/sell/Sdul_Update_Price.jsp","updateprice","width=462,height=378,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,top=100,left=100");
+    	sdulWin.focus();
+	}
+	function insertLog(logNum){
+		var url = "/view/Loginsert.jsp";
+		var param = "kind="+logNum;
+		var getRec = new Ajax.Request(
+			url,
+			{
+				method:'get',parameters:param
+			}
+		);
+	}
+
+	function go_winopen(tb_no){
+		var sdulWin = window.open("/sdul/list/Sdul_Board_Info.jsp?tb_no="+tb_no,"","width=350,height=120,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=no,menubar=no,top=100,left=100");
+    	sdulWin.focus();
+	}
+function CmdChangeSort2(param){
+	viewLoading();
+	if(param == "0"){
+		location.href="/sdul/mallregister/new/IncSdul_List.jsp";
+	}else{
+		document.FrmList.pageSort.value = param;
+		document.FrmList.page.value=1;
+		FrmList.submit();
+	}
+}
+function CmdChangeSort(param){
+	document.FrmList.SearchText.value = "";
+	document.FrmList.page.value=1;
+	FrmList.submit();
+}
+function checkAll(varAll){
+	var varTotalcnt = '2';
+	if(varTotalcnt == 0){
+		alert("선택할 목록이 없습니다.");
+		return;
+	}else{
+		//if(document.FrmList.chk_Selected.checked){
+			if( varAll.checked ){
+				for(var q = 0 ; q < document.FrmList.chk_Selected.length ; q ++){
+					document.FrmList.chk_Selected[q].checked = true;
+				}
+			}else {
+				for(var q = 0 ; q < document.FrmList.chk_Selected.length ; q ++){
+					document.FrmList.chk_Selected[q].checked = false;
+				}
+			}
+		//}
+	}
+}
+function initbody(){
+	//alert("Sdul_Count");//7174
+	closeLoading();
+	insertLog(7174);
+}
+function UpdatePrice(){
+	insertLog(2196);
+    var sdulWin = window.open("/sdul/sell/Sdul_Update_Price.jsp","updateprice","width=462,height=378,toolbar=no,directories=no,status=no,scrollbars=no,resizable=no,menubar=no,top=100,left=100");
+	sdulWin.focus();
+}
+function goBid(goodscode){
+	top.location.href = "/sdul/mallregister/SellerMain.jsp?sm=2&goodscode="+goodscode+"&page_chk=0";
+}
+function showPaging() {
+	if (document.getElementById("select_paging_group").style.display != "none") {
+		document.getElementById("select_paging_group").style.display = "none";
+		// cmdAllLayerClose();
+	} else {
+		// cmdAllLayerClose();
+		var posLeftTop = Position.cumulativeOffset($("paging_group_list"));
+		document.getElementById("select_paging_group").style.left = posLeftTop[0]+2
+				+ "px";
+		document.getElementById("select_paging_group").style.top = posLeftTop[1]
+				+ 16 + "px";
+		document.getElementById("select_paging_group").style.display = "";
+		document.getElementById("img_paging_btn").src = var_img_enuri_com
+				+ "/2010/images/view/newdown_close.gif";
+	}
+}
+function hidePaging() {
+	if (document.getElementById("select_paging_group")) {
+		document.getElementById("select_paging_group").style.display = "none";
+	}
+}
+function over_view_mode(obj) {
+	obj.className = "over";
+}
+function out_view_mode(obj) {
+	obj.className = "out";
+}
+
+function CmdChangeboard(){
+	top.location.href = "/sdul/mallregister/SellerMain.jsp?sm=5&faq_type=2&part=9";
+}
+function viewLoading(){
+	top.document.getElementById("img_loading_1").style.display = "";
+}
+function closeLoading(){
+	top.document.getElementById("img_loading_1").style.display = "none";
+}
+</script>
+</head>
+<body onload="initbody();">
+<!-- SDU 헤더/푸터 추가 
+	.sduwrap
+		-- .tit
+		-- .footer  
+-->
+<div class="sduwrap">
+	<div class="sduheader">
+		<h1 class="tit"><a href="/enuripc/admin/main.jsp">세상의 모든 최저가 에누리 가격비교</a></h1>
+		<h2 class="subtit">SDUL</h2>
+	</div>
+	
+	<!-- SDUL 공통 contents -->
+	<div class="sducontent"> 
+		<form name="FrmList" method="get" onsubmit="goSearch(0)">
+		<input type="hidden" name="myenuri" value="true">
+		<input type="hidden" name="cmd" value="img">
+		<input type="hidden" name="page" value="1">
+		<input type="hidden" name="sort" value="">
+		<input type="hidden" name="pageSort" value="">
+		<input type="hidden" name="totalChkCnt" value="">
+		<!-- 레이어 -->
+			<div id="auctionlayer" style="display:none;position:absolute;z-index:250;width:903px;height:468px; top:0px;left:10px;">
+			<img src="http://img.enuri.gscdn.com/images/event/banner/ebay_layer_0828.png" usemap="#auctionlayerMap">
+			<map name="auctionlayerMap" id="auctionlayerMap">
+			<area shape="rect" coords="781,3,809,25" href="JavaScript:auctionlayerClose()" />
+			<area shape="rect" coords="610,439,769,472" href="JavaScript:gotoauctionlayer()" />
+			<area shape="rect" coords="42,501,166,518" href="JavaScript:hideToday()" />
+			<area shape="rect" coords="740,498,789,518" href="JavaScript:auctionlayerClose()" />
+			</map>
+			</div>
+		<SCRIPT language="JavaScript">
+			<!--
+		
+			function auctionlayerShow() {
+				//if($("auctionlayer").style.display=="none") {
+				//	$("auctionlayer").style.display = "";
+				//} else {
+				//	auctionlayerClose();
+				//}
+			}
+		
+			function auctionlayerClose() {
+				$("auctionlayer").style.display = "none";
+			}
+		
+			function gotoauctionlayer(){
+				var GotoSpon = window.open("http://www.esmplus.com/Member/Popup/NoticeDetailView?NoticeSeq=2895","GotoSpon","");
+				GotoSpon.focus();
+			}
+			function hideToday(){
+				fnSetCookie2010('ebayNotice','Y',1);
+				//document.getElementById('auctionlayer').style.display='none';
+			}
+			if (fnGetCookie2010("ebayNotice") != "Y"){
+				//document.getElementById("auctionlayer").style.display = "";
+			}
+			-->
+			</SCRIPT>
+		<div id="faqMian">
+			<table bgcolor="#FFFFFF" align="left" width="990" height="600" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td width="990" align="left" valign="top">
+						<table bgcolor="#FFFFFF" align="left" width="990" border="0" bordercolor="green" cellpadding="0" cellspacing="0">
+							<tr>
+								<td align="center" valign="top" height="50">
+									<table width="990" border="0" bordercolor="red" cellspacing="0" cellpadding="0" id="ifm_Main" style="margin-top:10px;">
+										<!-- 메뉴 -->
+										<tr>
+											<td width="14">&nbsp;</td>
+											<td style="border:0px solid blue;">
+												<table width="975" border="0" cellpadding="0" cellspacing="0">
+													<tr>
+														<td width="975" height="50" valign="top">
+															<table width="975" border="0" cellpadding="0" cellspacing="0">
+																<tr>
+																	<td height="50" colspan="4" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/sdul_title.gif" width="385" height="22" />
+																		<a href="/sdul/mallregister/SellerMain.jsp?sm=1&guide=1" target="_new" style="cursor:hand"><img src="http://img.enuri.gscdn.com/images/sdul/bid/list/top_info_btn02.gif" width="55" height="19" /></a>
+																	</td>
+																	<td height="50" align="right"><img src="http://img.enuri.gscdn.com/images/sdul/user_minishop.gif" width="117" height="19" style="cursor: pointer;" onclick="Win('/sdul/list/Sdul_Member_Modify.jsp','membermodify','yes',100,100 );" /></td>
+																</tr>
+																<tr>
+																	<td width="150" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/all_btn_on.gif" width="134" height="25" style="cursor:pointer;" onclick="CmdChangeSort2('0');" /></td>
+																	<td width="150" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/up_btn.gif" width="134" height="25" style="cursor:pointer;" onclick="CmdChangeSort2('2');" /></td>
+																	<td width="150" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/wait_btn.gif" width="134" height="25" style="cursor:pointer;" onclick="CmdChangeSort2('1');" /></td>
+																	<td width="150" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/cancel_btn.gif" width="134" height="25" style="cursor:pointer;" onclick="CmdChangeSort2('4');" /></td>
+																	<td width="150" align="left"><img src="http://img.enuri.gscdn.com/images/sellerguide/new_img/board_btn.gif" width="134" height="25" style="cursor:pointer;" onclick="CmdChangeboard();" /></td>
+																	<td align="left">&nbsp;</td>
+																</tr>
+																<tr>
+																	<td colspan="5">&nbsp;</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+		
+												</table>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<table width="976" border="0" cellspacing="2" cellpadding="2" style="margin-left: 14px;">
+									    <tr align="right">
+									      <td align="left" width="705">
+									      <img src="http://img.enuri.gscdn.com/images/sdul/button_delete.gif" border="0" style="cursor:hand;" onClick="javascript:CmdDelete();" align="absmiddle">
+									      <img src="http://img.enuri.gscdn.com/images/sdul/button_update.gif" border="0" style="cursor:hand;" onClick="javascript:UpdatePrice();" align="absmiddle">
+									      <select name="orderby"  onchange="CmdChangeSort(this.value);">
+											    <option value ="1" selected >등록일별</option>
+											    <option value ="2" >쇼핑몰별</option>
+											    <option value ="3" >판매가별</option>
+										  </select>
+										  </td>
+										  <td width="91" height="19">
+											  <select name="shopCode" 	onchange="CmdChangeSort(this.value);">
+											    <option value ="" selected >쇼핑몰 전체</option>
+											    
+											    <option value ="536" >G마켓</option>
+											    
+											    
+											    
+											    <option value="4027" >옥션</option>
+											    
+											    
+											    
+											  </select>
+										  </td>
+										  <td width="178" align="right">
+					           				<Input Type="text" Name="SearchText" Size="20" style="border: 1px solid #4682B4; height=18" value="" >
+					           				<input type="image" src="http://img.enuri.gscdn.com/images/board/esc_boardbt_search.gif" style="cursor:hand; border:0" border="0" onClick="javascript:goSearch(1);" align="absmiddle">
+					           			  </td>
+									    </tr>
+									  </table>
+								</td>
+							</tr>
+							<tr>
+								<td height=5></td>
+							</tr>
+							<tr>
+								<td valign="top">
+									<table width="976" border="1"  cellspacing="0" bordercolordark="#FFFFFF" bordercolorlight="#92ADC7" cellpadding="3" align="center" style="margin-left: 14px;" class='input_form_table'>
+										<tr bgcolor="#D3E2F2" height="30" align="center">
+											<td width="30" rowspan=2><strong><font color="#123F6B">선택</font></strong><br><input type=checkbox onfocus='this.blur();' onclick="javascript:checkAll(this)"></td>
+											<td width="70" rowspan=2><strong><font color="#123F6B">날짜/번호</font></strong></td>
+											<td width="366" colspan=2><strong><font color="#123F6B">에누리 정보</font></strong></td>
+											<td width="390" colspan=3><strong><font color="#123F6B">쇼핑몰 정보</font></strong></td>
+											<td width="120" rowspan=2 onmouseover="javascript:CmdServiceLy('1')" onmouseout="javascript:CmdServiceLy('2')" ><strong><font color="#123F6B">서비스 상태</font></strong><img src="http://img.enuri.gscdn.com/images/view/bt_handphone_condi_dn.gif" align="asmiddle" style="cursor:hand" ></td>
+										</tr>
+										<tr bgcolor="#C0D3E7" height="20" align="center">
+											<td width="266"><strong><font color="#123F6B">모델명(제조사)</font></strong></td>
+											<td width="100"><strong><font color="#123F6B">최저가</font></strong></td>
+											<td width="100"><strong><font color="#123F6B">쇼핑몰</font></strong></td>
+											<td width="195"><strong><font color="#123F6B">판매가</font></strong></td>
+											<td width="95"><strong><font color="#123F6B">상품코드</font></strong></td>
+										</tr>
+				
+								  <tr bgcolor="#ffffff" align="center">
+								  	<td width="30" rowspan=2><input type=checkbox name="chk_Selected" value="4122314,enuri007" onfocus='this.blur();'></td>
+									<td width="70"><font color="#666666">0106(19:06)</font></td>
+									<td width="280" rowspan=2 class="table4" style="cursor:hand" align="left" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'" onclick="Main_OpenWindow('/view/Detailmulti.jsp?modelno=15312241&cate=&fb=1','list','780','600','YES','YES',0,0)">15ZD970-GX50K<span class="p1">(LG)</span></td>
+									<td width="100" rowspan=2 style="cursor:hand" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'" onclick="Main_OpenWindow('/view/Detailmulti.jsp?modelno=15312241&cate=&fb=1','list','780','600','YES','YES',0,0)"><font color="#0000ff"><strong>1,338,090원</strong></font></td>
+									<td width="100" class="table1" style="cursor:hand" align="center" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">옥션</a></td>
+									
+										<td width="195" class="table1" style="cursor:hand;font style=color:red;font-weight:bolder" align="left" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">27,790원</a>&nbsp;&nbsp;
+									
+										</td>
+									
+									<td width="95" class="table2" style="cursor:hand;" align="center" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">B360797380</a></td>
+									
+									<td width="120" rowspan=2><font style='color:blue;font-weight:bolder'>작업취소</font>&nbsp;<a href="/sdul/mallregister/new/IncSdulFaqList_Write.jsp?modelNo=15312241&idx=4122314" target="_self"><font style="font:8pt;color:#666666;text-decoration:underline">(문의)</font></a>
+									
+									<BR><a href="javascript:go_winopen(256539)"><font style="font:8pt;text-decoration:underline;color:red">취소사유</font></A>
+									
+									</td>
+								  </tr>
+								  <tr bgcolor="#ffffff" align="center">
+								  	<td width="60"><font color="#666666">4122314</font></td>
+									<td width="390" class="table3" colspan=3 align="left" style="cursor:hand" align="left" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><font color="#666666">
+									<a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">[아디다스]아디다스adidasMensRunning리스판스부스트M_M18776(갤러리아)</a></font>&nbsp;</td>
+								  </tr>
+		
+					
+								  <tr bgcolor="#ffffff" align="center">
+								  	<td width="30" rowspan=2><input type=checkbox name="chk_Selected" value="4122312,enuri007" onfocus='this.blur();'></td>
+									<td width="70"><font color="#666666">0106(19:04)</font></td>
+									<td width="280" rowspan=2 class="table4" style="cursor:hand" align="left" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'" onclick="Main_OpenWindow('/view/Detailmulti.jsp?modelno=15312241&cate=&fb=1','list','780','600','YES','YES',0,0)">15ZD970-GX50K<span class="p1">(LG)</span></td>
+									<td width="100" rowspan=2 style="cursor:hand" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'" onclick="Main_OpenWindow('/view/Detailmulti.jsp?modelno=15312241&cate=&fb=1','list','780','600','YES','YES',0,0)"><font color="#0000ff"><strong>1,338,090원</strong></font></td>
+									<td width="100" class="table1" style="cursor:hand" align="center" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">옥션</a></td>
+									
+										<td width="195" class="table1" style="cursor:hand;font style=color:red;font-weight:bolder" align="left" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">27,790원</a>&nbsp;&nbsp;
+									
+										</td>
+									
+									<td width="95" class="table2" style="cursor:hand;" align="center" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">B360797380</a></td>
+									
+									<td width="120" rowspan=2><font style='color:blue;font-weight:bolder'>작업취소</font>&nbsp;<a href="/sdul/mallregister/new/IncSdulFaqList_Write.jsp?modelNo=15312241&idx=4122312" target="_self"><font style="font:8pt;color:#666666;text-decoration:underline">(문의)</font></a>
+									
+									</td>
+								  </tr>
+								  <tr bgcolor="#ffffff" align="center">
+								  	<td width="60"><font color="#666666">4122312</font></td>
+									<td width="390" class="table3" colspan=3 align="left" style="cursor:hand" align="left" onmouseover="this.style.backgroundColor='EBFBFF'" onmouseout="this.style.backgroundColor='#ffffff'"><font color="#666666">
+									<a href="http://pd.auction.co.kr/pd_redirect.asp?itemno=B360797380&pc=589" target="_new" style="cursor:hand">[아디다스]아디다스adidasMensRunning리스판스부스트M_M18776(갤러리아)</a></font>&nbsp;</td>
+								  </tr>								
+								</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</form>
+		<div id="sDiv" style="display:none;position:absolute;left:280;top:253;z-index:4">
+		<img src="http://img.enuri.gscdn.com/images/sdul/all3.gif" alt="" align="asmiddle">
+		</div>
+		<form name="FrmDelete" method="get">
+		<input type="hidden" name="totalCnt" value="0">
+		<div id="DeleteDiv"></div>
+		</form>
+	</div>
+	<!-- //SDU 공통 contents -->
+	
+	<!-- SDU 공통 footer -->
+	<div class="footer" id="tblFooter">
+		<div class="inner">
+			<p class="infotxt">※ 기타 문의 사항은 관리자 : <a href="mailto:member@enuri.com">member@enuri.com</a>(회원관리자) 또는 <a href="/faq/customer_qna_write.jsp?faq_type=2&kind=0&faq_seq=0">회원게시판</a>을 이용하시기 바랍니다.</p>
+			<ul class="footer_menu">
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/enuri_intro/Enuriintro.jsp');insertLog(1059);">회사소개</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=4&amp;guide=3');insertLog(1060);">광고안내</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1&lg=1');insertLog(1058);">판매자가이드</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdu/Sduadmin.jsp');insertLog(1058);">판매자SDU</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/sdul/mallregister/SellerMain.jsp?sm=1');insertLog(1058);">판매자SDUL</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/provision.jsp');insertLog(1058);">이용약관</a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Secure.jsp');insertLog(1063);"><b>개인정보처리방침</b></a></span></li>
+				<li><span><a href="javascript:///" onclick="JavaScript:CmdLink('/etc/Duty.jsp');insertLog(1064);">법적고지</a></span></li>
+				<li><span><a href="/faq/Faq_List.jsp">고객센터</a></span></li>
+			</ul>
+			
+			<div class="adr" id="nfooter">
+				<span>서울시 중구 퇴계로 18(남대문로5가) 9층, ㈜써머스플랫폼</span>
+				<span>대표이사 : 최문석</span>
+				<span>사업자등록번호 : 206-81-18164</span>
+				<span>통신판매신고 : 2015-서울중구-1046호</span><br>
+				<span>전화 : 02-6354-3601</span>
+				<span>팩스 : 02-6354-3600</span>
+				문의 : master@enuri.com
+				<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onclick="window.open('http://www.enuri.com/faq/Faq_List.jsp');"></a> <a href="JavaScript:;" onclick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부"></a>
+			</div>
+		
+			<ul class="award_list">
+				<li>2015 소비자가 뽑은 가장 신뢰하는 브랜드 대상</li>
+				<li>소비자가 뽑은 한국 소비자 만족지수 1위</li>
+				<li>2014 공정거래 위원회 상품정보 일치율 1위</li>
+				<li>2015, 2016 모바일어워드 코리아 가격비교서비스 2년연속 대상</li>
+			</ul>
+		
+			<p class="copyright"><strong>㈜써머스플랫폼은 통신판매 정보제공자로서 통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한 의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</strong>Copyright ⓒ SummercePlatform Inc. All rights reserved.</p>
+		</div>
+	</div>
+	<!-- //SDU 공통 footer -->
+</div>
+</body>
+</html>
