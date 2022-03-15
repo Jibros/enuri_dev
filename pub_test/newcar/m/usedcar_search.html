@@ -20,9 +20,9 @@
 
 <body>
 <!-- 페이지 로더 -->
-<!-- <div id="loadingDiv" class="comm__loader">
+<div id="loadingDiv" class="comm__loader">
     <div class="loader_inner">로딩중</div>
-</div> -->
+</div>
 <script>
     // 퍼블테스트
     $(function(){
@@ -135,7 +135,7 @@
                     <!-- //행 : 제조사 -->
 
                     <!-- 행 : 모델 -->
-                    <li class="model_search_item is-disabled"><!-- 위 사항 선택 전 비활성화 : is-disabled -->
+                    <li class="model_search_item"><!-- 위 사항 선택 전 비활성화 : is-disabled -->
                         <!-- 행 : HEAD -->
                         <div class="msi_head">
                             <button type="button" class="btn__tab">모델</button>
@@ -174,7 +174,7 @@
                     <!-- //행 : 모델 -->
 
                     <!-- 행 : 세부모델 -->
-                    <li class="model_search_item is-disabled"><!-- 위 사항 선택 전 비활성화 : is-disabled -->
+                    <li class="model_search_item"><!-- 위 사항 선택 전 비활성화 : is-disabled -->
                         <!-- 행 : HEAD -->
                         <div class="msi_head">
                             <button type="button" class="btn__tab">세부모델</button>
@@ -311,21 +311,7 @@
                                         <div class="tx_radio">
                                             <input type="radio" class="ipt-radio" id="rdoTrimSel1_05" name="rdoTrimSel1">
                                             <label for="rdoTrimSel1_05">더 뉴 그랜저<em>(16년 ~ 현재)</em></label>
-                                        </div><!-- 
-                                        <ul class="sub_depth">
-                                            <li>
-                                                <div class="chk-item">
-                                                    <input type="checkbox" class="ipt-chkbox" id="chkModel05_01">
-                                                    <label for="chkModel05_01">2.5 프리미엄</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="chk-item">
-                                                    <input type="checkbox" class="ipt-chkbox" id="chkModel05_02">
-                                                    <label for="chkModel05_02">2.5 프리미엄 초이스</label>
-                                                </div>
-                                            </li>
-                                        </ul> -->
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -489,9 +475,7 @@
                             <button type="button" class="btn__tab">연식</button>
 
                             <div class="sel_group">
-                                <button type="button" class="btn btn__sel js-sheetOpen js-minYear" data-obj="year">선택하세요</button><!-- 파인더 오픈 클래스 : js-sheetOpen -->
-                                <span class="tx">~</span>
-                                <button type="button" class="btn btn__sel js-sheetOpen js-maxYear" data-obj="year">선택하세요</button><!-- 파인더 오픈 클래스 : js-sheetOpen -->
+                                <button type="button" class="btn btn__sel js-openYear" data-obj="year">선택하세요</button><!-- 연식 오픈 클래스 : js-openYear -->
                             </div>
                         </div>
                         <!-- //행 : HEAD -->
@@ -505,9 +489,7 @@
                             <button type="button" class="btn__tab">가격</button>
 
                             <div class="sel_group">
-                                <button type="button" class="btn btn__sel js-sheetOpen js-minPrice" data-obj="price">선택하세요</button><!-- 파인더 오픈 클래스 : js-sheetOpen -->
-                                <span class="tx">~</span>
-                                <button type="button" class="btn btn__sel js-sheetOpen js-maxPrice" data-obj="price">선택하세요</button><!-- 파인더 오픈 클래스 : js-sheetOpen -->
+                                <button type="button" class="btn btn__sel js-openPrice" data-obj="price">선택하세요</button><!-- 가격 오픈 클래스 : js-openPrice -->
                             </div>
                         </div>
                         <!-- //행 : HEAD -->
@@ -521,9 +503,7 @@
                             <button type="button" class="btn__tab">주행거리</button>
 
                             <div class="sel_group">
-                                <button type="button" class="btn btn__sel js-sheetOpen js-minDistance" data-obj="distance">선택하세요</button><!-- 파인더 오픈 클래스 : js-sheetOpen -->
-                                <span class="tx">~</span>
-                                <button type="button" class="btn btn__sel js-sheetOpen js-maxDistance" data-obj="distance">선택하세요</button><!-- 파인더 오픈 클래스 : js-sheetOpen -->
+                                <button type="button" class="btn btn__sel js-openDistance" data-obj="distance">선택하세요</button><!-- 파인더 오픈 클래스 : js-openDistance -->
                             </div>
                         </div>
                         <!-- //행 : HEAD -->
@@ -537,239 +517,6 @@
                 <button type="button" class="btn btn__reset">초기화</button>
                 <a href="usedcar_compare_list.html" class="btn btn__search">검색</a>
             </div>
-
-            <script>
-                $(function(){
-
-                    var searchCarFunc = {
-                        el : {
-                            msItem : $(".model_search_item"), // 상위 아이템
-                            btnReset : $(".btn__reset"), // 초기화 버튼
-                            mdList : $(".model_search_list"), // 모델 목록
-                            mdHead : $(".model_search_item .msi_head"), // 옵션 HEAD
-                            mdBody : $(".model_search_item .msi_body"), // 옵션 BODY
-                            mdSelItem : $(".model_search_item .msi_head .tx_sel"), // 선택된 텍스트
-                            mdSelInput : $(".model_search_item .msi_body .chk-item .ipt-chkbox"), // 선택한 체크박스
-                            mdSelRadio : $(".model_search_item .msi_body .radio__list li"), // 선택한 라디오박스
-                            mdRadioBox : $(".model_search_item .msi_body .tx_radio .ipt-radio"), // 선택한 라디오박스
-                            manufactTab : $(".manufacturer__tab .btn__tab"), // 제조사 탭
-                            manufactCont : $(".manufacturer__tabcont .tab_cont"), // 제조사 탭별 목록
-                        },
-                        init: function(){                            
-							_self = this;
-
-                            // 진입 초기 제조사 탭만 활성화
-                            $.each(_self.el.msItem, function(idx, item){                                
-                                if(idx===0){ 
-                                    $(item).removeClass("is-disabled").addClass("is-expand");
-                                    $(item).find(".msi_body").slideDown(); 
-                                }
-                            });
-
-                            this.scroll(this.el.msItem.eq(0)); // 진입시, 상단으로 스크롤
-                            this.selectOption(); // 옵션 선택
-                        },
-                        selectOption: function(){
-                            _self = this;
-
-                            /***************************
-                            // 제조사 탭 전환
-                            ***************************/
-                            _self.el.manufactTab.on("click", function(){
-                                $(this).addClass("is-on").siblings().removeClass("is-on");
-                                _self.el.manufactCont.eq($(this).index()).addClass("is-on").siblings().removeClass("is-on");
-                            })
-
-                            // 제조사 선택
-                            $(".msi_manufacturer .radio__list .btn").on("click", function(){
-                                var obj = $(this);
-                                var tabCont = $(".manufacturer__tabcont");
-                                var setTxt = obj.text();
-                                
-                                obj.closest("li").siblings().removeClass("is-on");
-                                tabCont.find(".radio__list li").removeClass("is-on");
-                                obj.closest("li").addClass("is-on");
-                                obj.closest(".model_search_item").find(".tx_sel").text(setTxt);
-
-                                // 다음 행 확장
-                                _self.expandItem(obj, true)
-
-                                // 제조사에 따라 하위 옵션 갱신
-                                //
-                            })
-
-                            /***************************
-                            // 모델 선택
-                            ***************************/
-                            $(".msi_carmodel .radio__list .btn").on("click", function(){
-                                var obj = $(this);
-                                var setTxt = obj.text();
-                                
-                                obj.closest("li").siblings().removeClass("is-on");
-                                obj.closest("li").addClass("is-on");
-                                obj.closest(".model_search_item").find(".tx_sel").text(setTxt);
-
-                                // 다음 행 확장
-                                _self.expandItem(obj, true)
-
-                                // 모델에 따라 하위 옵션 갱신
-                                // 
-                            })
-
-                            /***************************
-                            // 세부모델 선택
-                            ***************************/
-                            var car_detailItem = $(".cardetail__list > li"); // 세부모델 아이템
-                            var car_detailRadio = car_detailItem.find(".tx_radio>.ipt-radio"); // 상위 트림 전체(단일선택)
-                            var car_detailCheck = car_detailItem.find(".chk-item>.ipt-chkbox"); // 하위 트림 전체(중복선택)
-                            var selItemArr = new Array; // 선택값
-
-                            // 세부모델 > 1뎁스 클릭
-                            car_detailRadio.on("click", function(){
-                                var obj = $(this);
-                                var thisParent = $(this).closest("li");
-                                var car_detailSub = thisParent.find(".sub_depth");
-                                
-                                // 열려 있는 트림 
-                                car_detailItem.removeClass("is-on");
-                                if(!thisParent.find(".sub_depth").is(":visible")){
-                                    console.log("slide")
-                                    car_detailItem.find(".sub_depth").slideUp();
-                                    car_detailCheck.prop("checked", false)
-                                }else{
-                                    setTimeout(function(){
-                                        carDetailCheck.prop("checked", false);
-                                    }, 400)
-                                }
-                                
-                                // 해당 세부모델 활성화 및 하위 노출
-                                thisParent.addClass("is-on");
-                                car_detailSub.slideDown();
-                                
-                                var setTxt_1depth = $(this).siblings("label").text();
-                                selItemArr[0] = setTxt_1depth;
-                                $(this).closest(".model_search_item").find(".tx_sel").text(selItemArr[0]);                                                                
-                                
-                                // 세부모델 > 2뎁스 클릭
-                                var carDetailCheck = $(this).closest("li").find(".chk-item>.ipt-chkbox"); // 엔진 트림 전체
-                                carDetailCheck.on("click", function(){
-                                    var setTxt_2depth = $(this).siblings("label").text();
-                                    
-                                    selItemArr[1] = setTxt_2depth;
-                                })                           
-                            })
-
-                            /***************************
-                            // 차종 선택
-                            ***************************/
-                            // 체크박스 선택 시, 하위 토글
-                            var car_sizeItem = $(".msi_carsize");
-                            var car_sizeCheck = car_sizeItem.find(".chk-item>.ipt-chkbox"); // 체크박스
-                            var sizeVal = new Array;
-                            car_sizeCheck.on("click", function(){
-                                var obj = $(this);
-                                sizeVal.push(obj.siblings("label").text());
-
-                                if(sizeVal.length>=1){
-                                    obj.closest(".model_search_item").find(".tx_sel").text(sizeVal[0]);    
-                                }
-                            })
-
-                            /***************************
-                            // 연료 선택
-                            ***************************/
-                            // 체크박스 선택 시, 하위 토글
-                            var car_fuelItem = $(".msi_carfuel");
-                            var car_fuelheck = car_fuelItem.find(".chk-item>.ipt-chkbox"); // 체크박스
-                            var fuelVal = new Array;
-                            car_fuelheck.on("click", function(){
-                                var obj = $(this);
-                                fuelVal.push(obj.siblings("label").text());
-
-                                if(fuelVal.length>=1){
-                                    obj.closest(".model_search_item").find(".tx_sel").text(fuelVal[0]);    
-                                }
-                            })
-
-                        },
-                        // 펼치기,접기                        
-                        expandItem: function(item, selComplete){
-                            _self = this;
-                            var target = item;
-                            var selComplete = selComplete; // 하위 선택 후
-                            var targetParent = target.closest(".model_search_item"); // 탭 상위 아이템
-
-                            if(!selComplete){ // 행 직접 선택시,
-                                if(!targetParent.hasClass("is-disabled") && !targetParent.hasClass("js-nonclick")){   // 비활성화 또는 클릭안되는 영역이 아닐때만 하위 노출
-                                    if(!targetParent.hasClass("is-expand")){ // 닫혀 있으면
-                                        targetParent.addClass('is-expand').siblings().removeClass("is-expand");
-                                        targetParent.siblings().find(".msi_body").stop().slideUp(); // 기존 선택 아이템 닫음
-                                    }else{ // 열려 있으면
-                                        targetParent.removeClass('is-expand');    
-                                    }
-                                    
-                                    target.closest(".msi_head").next().stop().slideToggle();// 새로 선택아이템 토글
-                                }
-                            }else{ // 하위 선택 후 다음 행 노출
-                                targetParent.removeClass('is-expand').next().removeClass("is-disabled").addClass("is-expand");
-                                targetParent.find(".msi_body").stop().slideUp(); // 기존 선택 아이템 닫음
-                                targetParent.next().find(".msi_body").stop().slideDown();
-                            }   
-
-                                                  
-                        },
-                        reset : function(){
-                            _self = this;                    
-                            
-                            _self.el.mdSelItem.text(""); // 선택한 텍스트 삭제
-                            _self.el.mdSelInput.prop("checked", false); // 체크 해제
-                            _self.el.mdSelRadio.removeClass("is-on"); // 라디오 해제
-                            _self.el.mdRadioBox.prop("checked", false); // 라디오 해제
-                            _self.el.mdRadioBox.closest(".tx_radio").closest("li").removeClass("is-on");
-    
-                            // 열린 영역 닫고 첫 탭으로 이동
-                            if(!$(".model_search_item:first-child").hasClass("is-expand")){
-                                _self.el.msItem.removeClass("is-expand"); // 전체 폴딩
-                                _self.el.msItem.find(".msi_head").next().slideUp(); // 전체 폴딩
-                                _self.el.msItem.eq(0).addClass("is-expand").find(".msi_head").next().slideDown(); // 첫 탭 확장
-                            }
-
-                            // 제조사 첫번째 탭 클릭
-                            _self.el.manufactTab.eq(0).trigger("click")
-    
-                            this.scroll();
-                        },
-                        scroll: function(obj){ // 상단 이동
-                            var target = obj;
-                            var posTop = 0;                            
-                            
-                            setTimeout(function(){
-                                if(target != undefined) posTop = target.offset().top; // 위치값 측정
-
-                                $('body,html').stop().animate({scrollTop : posTop});
-                            }, 400)    // .4s 이하 X (슬라이드 후 위치 측정)
-                        }
-                    }
-
-                    searchCarFunc.init();
-
-                    // 속성 타이틀 탭 
-                    var srchItemTab = $(".model_search_item .msi_head .btn__tab");
-                    var resetBtn = $(".btn__reset");
-                            
-                    // 제조사/모델/세부모델/차종/연료 아이템 클릭
-                    srchItemTab.on("click", function(){
-                        var obj = $(this);
-
-                        searchCarFunc.expandItem(obj, false);
-                    });
-
-                    // 초기화 클릭
-                    resetBtn.on("click", function(){
-                        searchCarFunc.reset();
-                    });
-                })
-            </script>
             <!-- //차량 검색 영역 -->
         </section>
         <!-- // -->
@@ -817,316 +564,526 @@
     <!-- //FOOTER -->
 </div>
 
-<!-- Bottom Sheet -->
-<!-- 
-	타겟에 따라 컨텐츠 노출 변경 
-	타겟 : bs-year, bs-price, bs-distance
-
-    [D] 개별적 바텀시트를 열어야 하면 말씀해주세요. 현재는 호출시 타겟에 따라 sheet_cont 하위 내용 노출 변경됩니다.
--->
-<div class="bottomsheet_wrap" style="z-index:-1"><!-- is-shown, bs-year, bs-price, bs-distance -->
-	<!-- js-sheetClose : 클릭 시 바텀시트 숨김 -->
-	<div class="dimmed js-sheetClose"></div> 
-	
-	<div class="bottom_sheet">
-		<div class="sheet_inner">
-			<div class="sheet_head">
-				<p class="sheet_tit"><em class="tit"><!-- 타겟에 따라 타이틀 노출 --></em> 선택</p>
-				<button type="button" class="btn btn-cls js-sheetClose">바텀시트 닫기</button><!-- js-sheetClose : 클릭 시 바텀시트 숨김 -->
-			</div>
-
-			<div class="sheet_cont">
-				<!------------------------------------ bs-year : 연식 컨텐츠 ------------------------------------>
-				<div class="sheet_row bs-year_row">
-					<div class="sheet_col js-ltcol">
-                        <div class="tx_tit">최소년도</div>
-                        <ul class="sel_list is-scroller-ver">
-							<!-- <li class="is-on"><button type="button" class="btn"><em>2021</em>년</button></li>
-							<li><button type="button" class="btn"><em>2020</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2019</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2018</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2017</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2016</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2015</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2014</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2013</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2012</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2011</em>년</button></li> -->
-						</ul>
-					</div>
-                    <div class="sheet_col js-rtcol">
-                        <div class="tx_tit">최대년도</div>
-                        <ul class="sel_list is-scroller-ver">
-							<!-- <li class="is-on"><button type="button" class="btn"><em>2021</em>년</button></li>
-							<li><button type="button" class="btn"><em>2020</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2019</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2018</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2017</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2016</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2015</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2014</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2013</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2012</em>년</button></li>
-                            <li><button type="button" class="btn"><em>2011</em>년</button></li> -->
-						</ul>
-					</div>
-				</div>
-				<!------------------------------------ //연식 컨텐츠 ------------------------------------>
-				
-				<!------------------------------------ bs-price : 가격 컨텐츠 --------------------------->
-				<div class="sheet_row bs-price_row">
-					<div class="sheet_col">
-                        <div class="tx_tit">최소가격</div>
-                        <ul class="sel_list is-scroller-ver">
-                            <!-- <li><button type="button" class="btn"><em>4,000</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,100</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,200</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,300</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,400</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,500</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,600</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,700</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,800</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,900</em>만원</button></li>
-							<li class="is-on"><button type="button" class="btn"><em>5,000</em>만원</button></li> -->
-						</ul>
-					</div>
-                    <div class="sheet_col">
-                        <div class="tx_tit">최대가격</div>
-                        <ul class="sel_list is-scroller-ver">
-							<!-- <li><button type="button" class="btn"><em>4,000</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,100</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,200</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,300</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,400</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,500</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,600</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,700</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,800</em>만원</button></li>
-                            <li><button type="button" class="btn"><em>4,900</em>만원</button></li>
-							<li class="is-on"><button type="button" class="btn"><em>5,000</em>만원</button></li> -->
-						</ul>
-					</div>
-				</div>
-				<!------------------------------------ //가격 컨텐츠 ------------------------------------>
-				
-				<!------------------------------------ bs-folder : 주행거리 컨텐츠 ---------------------->
-				<div class="sheet_row bs-distance_row">
-					<div class="sheet_col">
-                        <div class="tx_tit">최소 주행거리</div>
-                        <ul class="sel_list is-scroller-ver">
-							<!-- <li class="is-on"><button type="button" class="btn"><em>0</em>km</button></li>
-							<li><button type="button" class="btn"><em>10,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>20,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>30,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>40,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>50,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>60,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>70,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>80,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>90,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>100,000</em>km</button></li> -->
-						</ul>
-					</div>
-                    <div class="sheet_col">
-                        <div class="tx_tit">최대 주행거리</div>
-                        <ul class="sel_list is-scroller-ver">
-							<!-- <li class="is-on"><button type="button" class="btn"><em>0</em>km</button></li>
-							<li><button type="button" class="btn"><em>10,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>20,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>30,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>40,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>50,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>60,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>70,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>80,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>90,000</em>km</button></li>
-                            <li><button type="button" class="btn"><em>100,000</em>km</button></li> -->
-						</ul>
-					</div>
-				</div>
-				<!------------------------------------ //주행거리 컨텐츠 --------------------------------->
-			</div>
-		</div>
-	</div>
-</div>
-<!-- //Bottom Sheet -->
-
-<link rel="stylesheet" href="./lib/mobileSelect/mobileSelect.css">
-<script src="./lib/mobileSelect/mobileSelect.js"></script>
+<script src="/js/mobileSelect.js"></script>
 <script>
 $(function(){
-    var yearSelect = function(){
+    // 모션 및 플로우 참고용
+    var searchCarFunc = {
+        el : {
+            wrapper : $(".userdcar-section"), // 차량검색 WRAPPER 
+            msItem : $(".model_search_item", this.wrapper), // 상위 아이템
+            btnReset : $(".btn__reset", this.wrapper), // 초기화 버튼
+            mdList : $(".model_search_list", this.wrapper), // 모델 목록
+            mdHead : $(".msi_head", this.msItem), // 옵션 HEAD
+            mdBody : $(".msi_body", this.msItem), // 옵션 BODY
+            mdSelItem : $(".msi_head .tx_sel", this.msItem), // 선택된 텍스트
+            mdSelInput : $(".msi_body .chk-item .ipt-chkbox", this.msItem), // 선택한 체크박스
+            mdSelRadio : $(".msi_body .radio__list li", this.msItem), // 선택한 라디오박스
+            mdRadioBox : $(".msi_body .tx_radio .ipt-radio", this.msItem), // 선택한 라디오박스
+            manufacturer : $(".msi_manufacturer"), // 제조사 탭 컨테이너
+            manufactTab : $(".manufacturer__tab .btn__tab", this.manufacturer), // 제조사 탭
+            manufactCont : $(".manufacturer__tabcont .tab_cont", this.manufacturer), // 제조사 탭별 목록
+            btnSelectOpt : $(".btn__sel", this.msItem), // 연식, 가격, 주행거리 탭
+            srchItemTab : $(".msi_head .btn__tab", this.msItem), // 속성 타이틀 탭 
+        },
+        init: function(){                            
+            _self = this;
 
+            // 진입 초기 제조사 탭만 활성화
+            $.each(_self.el.msItem, function(idx, item){                                
+                if(idx===0){ 
+                    $(item).removeClass("is-disabled").addClass("is-expand");
+                    $(item).find(".msi_body").slideDown(); 
+                }
+                if(idx===1||idx===2){ // 모델, 세부모델 비활성화 (제조사 선택 후 활성화)
+                    $(item).addClass("is-disabled");
+                }
+            });
+
+            this.scroll(this.el.msItem.eq(0)); // 진입시, 상단으로 스크롤
+            this.selectOption(); // 옵션 선택
+        },
+        selectOption: function(){
+            _self = this;
+
+            /***************************
+            // 제조사 국산차,수입차 탭 전환
+            ***************************/
+            _self.el.manufactTab.on("click", function(){
+                $(this).addClass("is-on").siblings().removeClass("is-on");
+                _self.el.manufactCont.eq($(this).index()).addClass("is-on").siblings().removeClass("is-on");
+            })
+
+            // 제조사 선택
+            $(".radio__list .btn", _self.el.manufacturer).on("click", function(){
+                var obj = $(this);
+                var tabCont = $(".manufacturer__tabcont");
+                var setTxt = obj.text();
+                
+                obj.closest("li").siblings().removeClass("is-on");
+                tabCont.find(".radio__list li").removeClass("is-on");
+                obj.closest("li").addClass("is-on");
+                obj.closest(".model_search_item").find(".tx_sel").text(setTxt);
+                
+                // 선택된 제조사에 따라 하위 옵션 갱신 후 다음행 확장
+                // => 모델/세부모델 갱신
+                _self.expandItem(obj, true);                
+            })
+
+            /***************************
+            // 모델 선택
+            ***************************/
+            $(".msi_carmodel .radio__list .btn").on("click", function(){
+                var obj = $(this);
+                var setTxt = obj.text();
+                
+                obj.closest("li").siblings().removeClass("is-on");
+                obj.closest("li").addClass("is-on");
+                obj.closest(".model_search_item").find(".tx_sel").text(setTxt);
+
+                // 선택된 모델에 따라 하위 옵션 갱신 후 다음행 확장
+                // => 모델/세부모델 갱신
+                _self.expandItem(obj, true)
+            })
+
+            /***************************
+            // 세부모델 선택
+            ***************************/
+            var car_detailItem = $(".cardetail__list > li"); // 세부모델 아이템
+            var car_detailRadio = car_detailItem.find(".tx_radio>.ipt-radio"); // 상위 트림 전체(단일선택)
+            var car_detailCheck = car_detailItem.find(".chk-item>.ipt-chkbox"); // 하위 트림 전체(중복선택)
+            var selItemArr = new Array; // 선택값
+
+            // 세부모델 > 1뎁스 클릭
+            car_detailRadio.on("click", function(){
+                var obj = $(this);
+                var thisParent = $(this).closest("li");
+                var car_detailSub = thisParent.find(".sub_depth");
+                
+                // 열려 있는 트림 
+                car_detailItem.removeClass("is-on");
+                if(!thisParent.find(".sub_depth").is(":visible")){
+                    car_detailItem.find(".sub_depth").slideUp();
+                    car_detailCheck.prop("checked", false)
+                }else{
+                    setTimeout(function(){
+                        carDetailCheck.prop("checked", false);
+                    }, 400)
+                }
+                
+                // 해당 세부모델 활성화 및 하위 노출
+                thisParent.addClass("is-on");
+                car_detailSub.slideDown();
+                
+                var setTxt_1depth = $(this).siblings("label").text();
+                selItemArr[0] = setTxt_1depth;
+                $(this).closest(".model_search_item").find(".tx_sel").text(selItemArr[0]);                                                                
+                
+                // 세부모델 > 2뎁스 클릭
+                var carDetailCheck = $(this).closest("li").find(".chk-item>.ipt-chkbox"); // 엔진 트림 전체
+                carDetailCheck.on("click", function(){
+                    var setTxt_2depth = $(this).siblings("label").text();
+                    
+                    selItemArr[1] = setTxt_2depth;
+                })                           
+            })
+
+            /***************************
+            // 차종 선택
+            ***************************/
+            // 체크박스 선택 시, 하위 토글
+            var car_sizeItem = $(".msi_carsize");
+            var car_sizeCheck = car_sizeItem.find(".chk-item>.ipt-chkbox"); // 체크박스
+            var sizeVal = new Array;
+            car_sizeCheck.on("click", function(){
+                var obj = $(this);
+                sizeVal.push(obj.siblings("label").text());
+
+                if(sizeVal.length>=1){
+                    obj.closest(".model_search_item").find(".tx_sel").text(sizeVal[0]);    
+                }
+            })
+
+            /***************************
+            // 연료 선택
+            ***************************/
+            // 체크박스 선택 시, 하위 토글
+            var car_fuelItem = $(".msi_carfuel");
+            var car_fuelheck = car_fuelItem.find(".chk-item>.ipt-chkbox"); // 체크박스
+            var fuelVal = new Array;
+            car_fuelheck.on("click", function(){
+                var obj = $(this);
+                fuelVal.push(obj.siblings("label").text());
+
+                if(fuelVal.length>=1){
+                    obj.closest(".model_search_item").find(".tx_sel").text(fuelVal[0]);    
+                }
+            })
+        },
+        // 펼치기,접기                        
+        expandItem: function(item, selComplete){
+            _self = this;
+            var target = item;
+            var selComplete = selComplete; // 하위 선택 후
+            var targetParent = target.closest(".model_search_item"); // 탭 상위 아이템
+
+            if(!selComplete){ // 행 직접 선택시,
+                if(!targetParent.hasClass("is-disabled") && !targetParent.hasClass("js-nonclick")){   // 비활성화 또는 클릭안되는 영역이 아닐때만 하위 노출
+                    if(!targetParent.hasClass("is-expand")){ // 닫혀 있으면
+                        targetParent.addClass('is-expand').siblings().removeClass("is-expand");
+                        targetParent.siblings().find(".msi_body").stop().slideUp(); // 기존 선택 아이템 닫음
+                    }else{ // 열려 있으면
+                        targetParent.removeClass('is-expand');    
+                    }
+                    
+                    target.closest(".msi_head").next().stop().slideToggle();// 새로 선택아이템 토글
+                }
+            }else{ // 하위 선택 후 다음 행 노출
+                targetParent.removeClass('is-expand').next().removeClass("is-disabled").addClass("is-expand");
+                targetParent.find(".msi_body").stop().slideUp(); // 기존 선택 아이템 닫음
+                targetParent.next().find(".msi_body").stop().slideDown();
+            }            
+        },
+        reset : function(){
+            _self = this;                    
+            
+            _self.el.mdSelItem.text(""); // 선택한 텍스트 삭제
+            _self.el.mdSelInput.prop("checked", false); // 체크 해제
+            _self.el.mdSelRadio.removeClass("is-on"); // 라디오 해제
+            _self.el.mdRadioBox.prop("checked", false); // 라디오 해제
+            _self.el.mdRadioBox.closest(".tx_radio").siblings(".sub_depth").hide(); // 세부모델 서브뎁스 숨김
+            
+            // 열린 영역 닫고 첫 탭으로 이동
+            if(!$(".model_search_item:first-child").hasClass("is-expand")){
+                _self.el.msItem.removeClass("is-expand"); // 전체 폴딩
+                _self.el.msItem.find(".msi_head").next().slideUp(); // 전체 폴딩
+                _self.el.msItem.eq(0).addClass("is-expand").find(".msi_head").next().slideDown(); // 첫 탭 확장
+            }
+
+            // 제조사 첫번째 탭 클릭
+            _self.el.manufactTab.eq(0).trigger("click");
+            _self.el.msItem.eq(1).addClass("is-disabled"); // 모델 비활성화
+            _self.el.msItem.eq(2).addClass("is-disabled"); // 세부모델 비활성화
+
+            this.scroll();
+        },
+        scroll: function(obj){ // 상단 이동
+            var target = obj;
+            var posTop = 0;                            
+            
+            setTimeout(function(){
+                if(target != undefined) posTop = target.offset().top; // 위치값 측정
+
+                $('body,html').stop().animate({scrollTop : posTop});
+            }, 400)    // .4s 이하 X (슬라이드 후 위치 측정)
+        }
     }
-    var minYear = ["최소","2008","2009","2010","2011","2012","2013","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998",];
-    var maxYear = ["최대","2023","2022","2021","2020","2019","2018","2017","2016","2015","2014","2013","2012","2011","2010","2009","2008","2007","2006","2005","2004","2003","2002","2001","2000","1999","1998",];
 
-    var mobileSelect2 = new MobileSelect({
-        trigger: ".js-sheetOpen.js-minYear",
-        title: "연식선택",
-        wheels: [{ data: minYear }, { data: maxYear }],
-        position: [1, 2],
-        transitionEnd: function (indexArr, data) {
-          //console.log(data[0],data[1]);
-        },
-        callback: function (indexArr, data) {
-            $(".js-minYear").text(data[0]);
-            $(".js-maxYear").text(data[1]);
-          console.log(data[0],data[1]);
-        },
+    // 모바일 셀렉트 변수 선언
+    var yaerSelect, priceSelect, distanceSelect;
+
+    /***************************
+    // 연식 선택
+    ***************************/
+    var yearFunction = function(){
+        var min, max;
+        var indexOf = function(arr, id) {
+            for (var i in arr) {
+                if (String(arr[i].id) == String(id)) return Number(i);
+            }
+        };
+
+        min = [{id:'', value:'최소'}];
+        max = [{id:'', value:'최대'}];
+        for (var start = new Date().getFullYear() + 1, end = 1980; start >= end; start -= 1) {
+            min.push({id: start, value: start + '년'});
+            max.push({id: start, value: start + '년'});
+        }
+
+        yaerSelect = new MobileSelect({
+            trigger: ".js-openYear",
+            title: "연식 선택",
+            wheels: [{ data: min }, { data: max }],
+            position: [0, 0],
+            transitionEnd: function (indexArr, data) {
+                var minidx = indexOf(min, data[0].id);
+                var maxidx = indexOf(max, data[1].id);
+                var curmin = null;
+                var curmax = null;
+
+                if (minidx > 0) {
+                    yaerSelect.updateWheel(1, (curmax = max.slice(0, minidx+1)));
+                } else {
+                    yaerSelect.updateWheel(1, (curmax = max.slice(0)));
+                }
+
+                if (maxidx > 0) {
+                    var arr = min.slice(0);
+                    arr.splice(1, maxidx-1);
+                    yaerSelect.updateWheel(0, (curmin = arr));
+                } else {
+                    yaerSelect.updateWheel(0, (curmin = min.slice(0)));
+                }
+
+                yaerSelect.locatePosition(0, indexOf(curmin, data[0].id));
+                yaerSelect.locatePosition(1, indexOf(curmax, data[1].id));
+            },
+            callback: function (indexArr, data) {
+                var minval = data[0].id; // 최소값
+                var maxval = data[1].id; // 최대값
+                var ms_btn = this.trigger; // 연식 버튼
+
+                if(minval == '' && maxval == ''){
+                    text = "선택하세요"
+                }else{
+                    if (minval !== '' && maxval !== '') {
+                        text = minval + '년 ~ ' + maxval + '년';
+                    } else if (minval !== '') {
+                        text = minval + '년 이상';
+                    } else {
+                        text = maxval + '년 이하';
+                    }
+                }
+                $(ms_btn).text(text);
+            },
+        });
+    }
+
+    /***************************
+    // 가격 선택
+    ***************************/
+    var priceFunction = function(){
+        var min, max;
+        var indexOf = function(arr, id) {
+            for (var i in arr) {
+                if (String(arr[i].id) == String(id)) return Number(i);
+            }
+        };
+
+        min = [{id:'', value:'최소'},
+            {id:0, value:'0만원'},
+            {id:100, value:'100만원'}, 
+            {id:200, value:'200만원'}, 
+            {id:300, value:'300만원'}, 
+            {id:400, value:'400만원'}, 
+            {id:500, value:'500만원'}, 
+            {id:600, value:'600만원'}, 
+            {id:700, value:'700만원'}, 
+            {id:800, value:'800만원'}, 
+            {id:900, value:'900만원'}, 
+            {id:1000, value:'1,000만원'}, 
+            {id:1100, value:'1,100만원'}, 
+            {id:1200, value:'1,200만원'}, 
+            {id:1300, value:'1,300만원'}, 
+            {id:1400, value:'1,400만원'}, 
+            {id:1500, value:'1,500만원'}, 
+            {id:1600, value:'1,600만원'}, 
+            {id:1700, value:'1,700만원'}, 
+            {id:1800, value:'1,800만원'}, 
+            {id:1900, value:'1,900만원'},
+            {id:2000, value:'2,000만원'}, 
+            {id:2500, value:'2,500만원'}, 
+            {id:3000, value:'3,000만원'}, 
+            {id:3500, value:'3,500만원'}, 
+            {id:4000, value:'4,000만원'}, 
+            {id:4500, value:'4,500만원'}, 
+            {id:5000, value:'5,000만원'}, 
+            {id:6000, value:'6,000만원'}, 
+            {id:7000, value:'7,000만원'}, 
+            {id:8000, value:'8,000만원'}, 
+            {id:9000, value:'9,000만원'}, 
+            {id:10000, value:'1억원'}];
+        max = [{id:'', value:'최대'},
+            {id:100, value:'100만원'}, 
+            {id:200, value:'200만원'}, 
+            {id:300, value:'300만원'}, 
+            {id:400, value:'400만원'}, 
+            {id:500, value:'500만원'}, 
+            {id:600, value:'600만원'}, 
+            {id:700, value:'700만원'}, 
+            {id:800, value:'800만원'}, 
+            {id:900, value:'900만원'}, 
+            {id:1000, value:'1,000만원'}, 
+            {id:1100, value:'1,100만원'}, 
+            {id:1200, value:'1,200만원'}, 
+            {id:1300, value:'1,300만원'}, 
+            {id:1400, value:'1,400만원'}, 
+            {id:1500, value:'1,500만원'}, 
+            {id:1600, value:'1,600만원'}, 
+            {id:1700, value:'1,700만원'}, 
+            {id:1800, value:'1,800만원'}, 
+            {id:1900, value:'1,900만원'},
+            {id:2000, value:'2,000만원'}, 
+            {id:2500, value:'2,500만원'}, 
+            {id:3000, value:'3,000만원'}, 
+            {id:3500, value:'3,500만원'}, 
+            {id:4000, value:'4,000만원'}, 
+            {id:4500, value:'4,500만원'}, 
+            {id:5000, value:'5,000만원'}, 
+            {id:6000, value:'6,000만원'}, 
+            {id:7000, value:'7,000만원'}, 
+            {id:8000, value:'8,000만원'}, 
+            {id:9000, value:'9,000만원'}, 
+            {id:10000, value:'1억원'},
+            {id:99999, value:'1억원 초과'}];
+
+        priceSelect = new MobileSelect({
+            trigger: ".js-openPrice",
+            title: "가격",
+            wheels: [{ data: min }, { data: max }],
+            position: [0, 0],
+            transitionEnd: function (indexArr, data) {
+                var minidx = indexOf(min, data[0].id);
+                var maxidx = indexOf(max, data[1].id);
+                var curmin = null;
+                var curmax = null;
+
+                if (minidx > 0) {
+                    var arr = max.slice(0);
+                    arr.splice(1, minidx-1);
+                    priceSelect.updateWheel(1, (curmax = arr));
+                } else {
+                    priceSelect.updateWheel(1, (curmax = max.slice(0)));
+                }
+
+                if (maxidx > 0) {
+                    priceSelect.updateWheel(0, (curmin = min.slice(0, maxidx+1)));
+                } else {
+                    priceSelect.updateWheel(0, (curmin = min.slice(0)));
+                }
+
+                priceSelect.locatePosition(0, indexOf(curmin, data[0].id));
+                priceSelect.locatePosition(1, indexOf(curmax, data[1].id));
+            },
+            callback: function (indexArr, data) {
+                var minval = data[0].id; // 최소값
+                var maxval = data[1].id; // 최대값
+                var ms_btn = this.trigger; // 연식 버튼
+
+                var text = null;
+                if(minval == '' && maxval == ''){
+                    text = "선택하세요"
+                }else{
+                    if (minval !== '' && maxval !== '') {
+                        text = minval == '10000' ? '1억원' : (numberFormat(minval) + '만원');
+                        text += ' ~ ';
+                        text += maxval == '10000' ? '1억원' : (maxval == '99999' ? '1억원 초과' : numberFormat(maxval) + '만원');
+                    } else if (minval !== '') {
+                        text = minval == '10000' ? '1억원 이상' : (numberFormat(minval) + '만원 이상');
+                    } else {
+                        text = maxval == '10000' ? '1억원 이하' : (maxval == '99999' ? '1억원 초과' : numberFormat(maxval) + '만원 이하');
+                    }
+                }
+                $(ms_btn).text(text);
+
+            },
+        });
+    }
+
+    /***************************
+    // 주행거리 선택
+    ***************************/
+    var distanceFunction = function(){
+        var min, max;
+        var indexOf = function(arr, id) {
+            for (var i in arr) {
+                if (String(arr[i].id) == String(id)) return Number(i);
+            }
+        };
+        
+        min = [{id:'', value:'최소'}];
+        max = [{id:'', value:'최대'}];
+        for (var i = 0, end = 190000; i <= end; i += 10000) {
+            min.push({id: i, value: numberFormat(i) + 'km'});
+        }
+        for (var i = 10000, end = 200000; i <= end; i += 10000) {
+            max.push({id: i, value: numberFormat(i) + 'km'});
+        }
+
+        distanceSelect = new MobileSelect({
+            trigger: ".js-openDistance",
+            title: "주행거리",
+            wheels: [{ data: min }, { data: max }],
+            position: [0, 0],
+            transitionEnd: function (indexArr, data) {
+                var minidx = indexOf(min, data[0].id);
+                var maxidx = indexOf(max, data[1].id);
+                var curmin = null;
+                var curmax = null;
+
+                if (minidx > 0) {
+                    var arr = max.slice(0);
+                        arr.splice(1, minidx-1);
+                        distanceSelect.updateWheel(1, (curmax = arr));
+                } else {
+                    distanceSelect.updateWheel(1, (curmax = max.slice(0)));
+                }
+
+                if (maxidx > 0) {
+                    distanceSelect.updateWheel(0, (curmin = min.slice(0, maxidx+1)));
+                } else {
+                    distanceSelect.updateWheel(0, (curmin = min.slice(0)));
+                }
+
+                distanceSelect.locatePosition(0, indexOf(curmin, data[0].id));
+                distanceSelect.locatePosition(1, indexOf(curmax, data[1].id));
+            },
+            callback: function (indexArr, data) {
+                var minval = data[0].id; // 최소값
+                var maxval = data[1].id; // 최대값
+                var ms_btn = this.trigger; // 연식 버튼
+
+                var text = null;
+                if(minval == '' && maxval == ''){
+                    text = "선택하세요"
+                }else{
+                    if (minval !== '' && maxval !== '') {
+                        text = numberFormat(minval) + 'km ~ ' + numberFormat(maxval) + 'km';
+                    } else if (minval !== '') {
+                        text = numberFormat(minval) + 'km 이상';
+                    } else {
+                        text = numberFormat(maxval) + 'km 이하';
+                    }
+                }
+                $(ms_btn).text(text);
+            },
+        });
+    }
+    // 1000단위 컴마
+    var numberFormat = function(value) {
+        var regexp = /\B(?=(\d{3})+(?!\d))/g;
+        return value == null ? '' : String(value).replace(regexp, ',');
+    }
+            
+    // 제조사/모델/세부모델/차종/연료 아이템 클릭시 확장 (비활성화 탭은 확장하지 않음)
+    searchCarFunc.el.srchItemTab.on("click", function(){
+        var obj = $(this);
+
+        searchCarFunc.expandItem(obj, false);
     });
-    /*                         / **************************************** 
-                             * BOTTOMSHEET ON/OFF 
-                            **************************************** /
-                            var usedBottomSheet = $(".bottomsheet_wrap"), // 바텀시트 WRAPPER
-                                usedOpenBtn = $(".js-sheetOpen"), // 버튼 : 바텀시트 열기
-                                usedCloseBtn = $(".js-sheetClose"), // 버튼 : 바텀시트 닫기
-                                sheetTarget = ""; // 바텀시트 노출될 타겟 컨텐츠
-                            
-                            // OPEN BOTTOMSHEET
-                            usedOpenBtn.on("click", function(){
-                                var obj = $(this).data("obj"); // 바텀시트 내 타겟 (연식, 가격, 주행거리 : year, price, distance)
 
-                                sheetTarget = obj; // 타겟 삽입
-                                usedBottomSheet_open(sheetTarget); // 타겟 호출
-                            })
-                            // CLOSE BOTTOMSHEET
-                            usedCloseBtn.on("click", function(){
-                                usedBottomSheet_close();
-                            })
+    // 초기화 클릭
+    searchCarFunc.el.btnReset.on("click", function(){
+        searchCarFunc.reset();
 
-                            // OPEN BOTTOMSHEET 함수 
-                            var usedBottomSheet_open = function(obj){
-                                if(sheetTarget != null){ // 타겟이 있으면 해당 타겟 컨텐츠 노출시킴.
-                                    usedBottomSheet.addClass("bs-"+sheetTarget); // 타겟에 따라 상단 제목, 컨텐츠 노출
+        // 연식, 가격, 주행거리 리셋
+        $(".js-openYear, .js-openPrice, .js-openDistance").text("선택하세요");
+        yaerSelect.locatePosition(0,0);
+        yaerSelect.locatePosition(1,0);
+        priceSelect.locatePosition(0,0);
+        priceSelect.locatePosition(1,0);
+        distanceSelect.locatePosition(0,0);
+        distanceSelect.locatePosition(1,0);
+    });
 
-                                    usedBottomSheet.css("z-index", "10000");
-                                    $("body").css({"overflow":"hidden"});
 
-                                    $('.sheet_cont').stop(0).animate({scrollTop: '0'}, 300);
+    // INIT
+    searchCarFunc.init();
+    yearFunction();
+    priceFunction();
+    distanceFunction();
 
-                                    setTimeout(function(){
-                                        usedBottomSheet.addClass("is-shown");
-                                    }, 100);
-
-                                    // 연식
-                                    if(sheetTarget === "year"){
-                                        yearListFunc(2008, 2023)
-                                    }
-                                    // 가격
-                                    if(sheetTarget === "price"){
-                                        
-                                    }
-                                }
-                            };
-
-                            // 연식 컨텐츠
-                            var yearListFunc = function(min, max, minSelect){
-                                var yMin = min; 
-                                var yMax = max; 
-                                var selMin = new Number;
-                                var selMax = new Number;
-
-                                console.log(min, max, minSelect)
-                                if(!minSelect){ // 최초실행
-                                    for(var i=yMin; i<=yMax; i++){
-                                        $(".bs-year_row .js-ltcol .sel_list").append("<li><button type='button' class='btn' data-year='"+i+"'><em>"+i+"</em>년</button></li>");
-                                        $(".bs-year_row .js-rtcol .sel_list").prepend("<li><button type='button' class='btn' data-year='"+i+"'><em>"+i+"</em>년</button></li>")
-                                    }
-                                    
-                                    // Init
-                                    $(".bs-year_row .js-ltcol .sel_list>li").eq(0).addClass("is-on");
-
-                                    $(".bs-year_row .js-ltcol .sel_list>li .btn").on("click", function(){
-                                        var obj = $(this);
-                                        selMin = obj.data("year");
-                                        $(".bs-year_row .js-ltcol .sel_list>li").removeClass("is-on");
-                                        obj.closest("li").addClass("is-on");
-
-                                        / * var scrTop = obj.closest("li").position().top;
-                                        var outerH = $(".bs-year_row .js-ltcol").outerHeight() - 38;
-                                        var posT = ((outerH/2)+(scrTop/2)/2); * /
-                                        var posT = obj.closest("li").outerHeight() * obj.closest("li").index()+1;
-
-                                        console.log(obj.closest("li").outerHeight(), obj.closest("li").index()+1)
-
-                                        $(".bs-year_row .js-ltcol .sel_list").animate({transform: "translate3d"})
-                                        yearListFunc(selMin, 2023, true);
-                                    })
-                                }else{ // 최대년도 세팅
-                                    console.log("최대년도 세팅")
-                                    $(".bs-year_row .js-rtcol .sel_list li").remove();
-                                    for(var i=yMin; i<=yMax; i++){
-                                        $(".bs-year_row .js-rtcol .sel_list").prepend("<li><button type='button' class='btn' data-year='"+i+"'><em>"+i+"</em>년</button></li>")
-                                    }
-
-                                    $(".bs-year_row .js-rtcol .sel_list>li .btn").on("click", function(){
-                                        var obj = $(this);
-                                        selMax = obj.data("year");
-                                        obj.closest("li").addClass("is-on");
-                                        usedBottomSheet_close();                
-                                    });
-
-                                    
-
-                                }
-                                
-                                
-                            }
-
-                            function priceList(){
-                                var html = "";
-                                var minprice = 100; // 최소값 100만원
-                                var maxprice = 10110; // 최대 1억원 
-                                var extprice = "1억원 초과"; // 1억원 초과
-
-                                console.log("가격")
-
-                                var price = new Number;
-                                for(var i=100;i<maxprice;i+=100){
-                                    
-
-                                    console.log("prev"+i)
-                                    if(2000<i) {
-                                        i = (i+=400); // 500씩 증가
-                                        console.log(i)
-                                    }else if(i>5000) {
-                                        console.log("next"+i)
-                                        i = (i+=900)
-                                        break;
-                                    }
-                                    / * else if(i<=5000) i = i+400
-                                    else i = i+900; // 500씩 증가 * /
-
-                                    
-                                        
-                                    if(9500<i){
-                                        html += "<li><button type='button' class='btn' data-price='"+i+"'><em>1</em>억원</button></li>";
-                                    }else{
-                                        html += "<li><button type='button' class='btn' data-price='"+i+"'><em>"+i+"</em>만원</button></li>";
-                                    }
-                                    
-                                }
-
-                                $(".bs-price_row .sel_list").append(html)
-                            }
-                            
-                            function addComma(data) {
-                                return data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                            }
-                            
-                            // CLOSE BOTTOMSHEET 함수 
-                            var usedBottomSheet_close = function(){
-                                usedBottomSheet.removeClass("is-shown");
-                                $("body").css({"overflow":"visible"});
-
-                                setTimeout(function(){
-                                    usedBottomSheet.css("z-index", "-1");
-                                    usedBottomSheet.removeClass("bs-"+sheetTarget); // 타겟 클래스 삭제
-                                }, 300);
-                            }; */
-});
+})
 </script>
 
 <script>
