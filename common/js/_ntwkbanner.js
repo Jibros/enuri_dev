@@ -1,0 +1,1 @@
+document.write("<a href='http://www.enuri.com/tour2012/Tour_Index.jsp' target='_top'><img src='http://img.enuri.info/2014/banner/970_0722.jpg' border='0'/></a>")

@@ -1,0 +1,125 @@
+<public:component>
+<public:attach event="ondocumentready" handler="init"/>
+<public:attach event="onchange" handler="calUpdate"/>
+
+<script language="javascript">
+var currDate, oDropBtn, ctrlLayer, objYear, objMonth, currCell;
+var objDateCells = new Array();
+
+//
+// Utility methods
+//
+
+function padZeros(num, size) {
+  var str = num.toString();
+  var numZeros = size - str.length;
+  for (var i=0; i<numZeros; i++) str="0"+str;
+  return str;
+}
+function getRealOffsetTop(o) { return o ? o.offsetTop + getRealOffsetTop(o.offsetParent) : 0; }
+function getRealOffsetLeft(o) { return o ? o.offsetLeft + getRealOffsetLeft(o.offsetParent) : 0; }
+
+//
+// internal methods
+//
+
+function calAdjust() {
+  var year = currDate.getFullYear(); var month = currDate.getMonth();
+  objYear.innerText = year; objMonth.innerText = month+1+"월";
+
+  var dateFirst = new Date(year, month, 1);   var startCellNum = dateFirst.getDay();
+  var dateLast = new Date(year, month+1, 0);  var endCellNum = startCellNum + dateLast.getDate() - 1;
+
+  for (var i=0; i<42; i++)
+    objDateCells[i].innerText = (i>=startCellNum && i<=endCellNum) ? i-startCellNum+1 : "";
+
+  if (currCell) { currCell.style.backgroundColor="white"; currCell.style.color="black"; }
+  currCell = objDateCells[currDate.getDate() + startCellNum - 1];
+  currCell.style.backgroundColor="black"; currCell.style.color="white";
+}
+
+function setNextMonth() { currDate.setMonth(currDate.getMonth() + 1); calAdjust(); }
+function setPrevMonth() { currDate.setMonth(currDate.getMonth() - 1); calAdjust(); }
+
+function dateCellOnClick() {
+  if (this.innerText=="") return;
+  if (currCell) { currCell.style.backgroundColor="white"; currCell.style.color="black"; }
+  currDate.setDate(parseInt(this.innerText));
+  currCell=this; currCell.style.backgroundColor="black"; currCell.style.color="white";
+}
+function dateCellOnDblClick() { this.click(); value=getDateStr(); calToggle(); }
+
+function getDateStr() {
+  return currDate.getFullYear()+"-"+padZeros(currDate.getMonth()+1,2)+"-"+padZeros(currDate.getDate(),2);
+}
+
+function calHide() { ctrlLayer.style.visibility="hidden"; }
+function calShow() { ctrlLayer.style.visibility="visible"; }
+function calToggle() {
+  switch (oDropBtn.value) {
+    case "▼": calShow(); oDropBtn.value="▲"; break;
+    case "▲": calHide(); oDropBtn.value="▼"; break;
+  }
+}
+
+function calUpdate() {
+  currDate = (this.value != "") ?
+    new Date(this.value.substr(0,4),this.value.substr(5,2)-1,this.value.substr(8,2)) : new Date();
+  if (isNaN(currDate)) { this.value=""; currDate=new Date(); }
+  calAdjust();
+}
+
+function init() {
+  currDate = (this.value != "") ?
+    new Date(this.value.substr(0,4),this.value.substr(5,2)-1,this.value.substr(8,2)) : new Date();
+  if (isNaN(currDate)) { this.value=""; currDate=new Date(); }
+
+  oDropBtn = document.createElement("<input type=button value='▼' style='font-size:9px;width:18px;height:20px'>");
+  oDropBtn.onfocus = oDropBtn.blur; oDropBtn.onclick = calToggle;
+  insertAdjacentElement("afterEnd",oDropBtn);
+
+  ctrlLayer = document.createElement("DIV");
+  with (ctrlLayer.style) {
+    width="120px"; border="1px solid black"; backgroundColor="white"; color="black";
+    textAlign="center"; fontSize="12px"; position="absolute"; zIndex="9"; visibility="hidden";
+    top=getRealOffsetTop(this)+20; left=getRealOffsetLeft(this);
+  }
+
+  var oTable = document.createElement("<table width='100%' cellspacing=0 cellpadding=2 style='font-size:12px;border-collapse:collapse'>");
+  ctrlLayer.appendChild(oTable);
+  var row, cell, span, nbsp;
+  var oTbody = document.createElement("TBODY"); oTable.appendChild(oTbody);
+
+  row = document.createElement("TR"); oTbody.appendChild(row);
+  cell = document.createElement("TH"); row.appendChild(cell);
+  span = document.createElement("<span style='cursor:hand'>"); span.innerText="◀"; cell.appendChild(span);
+  span.onmouseup = setPrevMonth; span.onselectstart = function(){return false;}
+  cell = document.createElement("<th colspan=5>"); row.appendChild(cell);
+  objYear = document.createElement("SPAN"); cell.appendChild(objYear);
+  nbsp = document.createTextNode(" "); cell.appendChild(nbsp);
+  objMonth = document.createElement("SPAN"); cell.appendChild(objMonth);
+  cell = document.createElement("TH"); row.appendChild(cell);
+  span = document.createElement("<span style='cursor:hand'>"); span.innerText="▶"; cell.appendChild(span);
+  span.onmouseup = setNextMonth; span.onselectstart = function(){return false;}
+
+  row = document.createElement("TR"); oTbody.appendChild(row);
+  var weekArray = ["일","월","화","수","목","금","토"];
+  for (var i=0; i<7; i++)
+    { cell=document.createElement("TH"); cell.innerText=weekArray[i]; row.appendChild(cell); }
+
+  insertAdjacentElement("afterEnd", ctrlLayer);
+
+  for (var i=0; i<6; i++) {
+    row = document.createElement("TR"); oTbody.appendChild(row);
+    for (var j=0; j<7; j++) {
+      objDateCells[i*7+j] = cell = document.createElement("<td align=center style='cursor:hand'>");
+      row.appendChild(cell); cell.onclick = dateCellOnClick; cell.ondblclick = dateCellOnDblClick;
+      cell.onselectstart = function(){return false;}
+    }
+  }
+
+  calAdjust();
+}
+</script>
+
+</public:component>
