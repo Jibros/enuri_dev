@@ -469,7 +469,7 @@
                     <!-- //행 : 연료 -->
 
                     <!-- 행 : 연식 -->
-                    <li class="model_search_item js-nonclick"><!-- 확장되지 않는 영역, js-nonclick 클래스 추가 -->
+                    <li class="model_search_item is-horizontal js-nonclick"><!-- 확장되지 않는 영역, js-nonclick 클래스 추가 -->
                         <!-- 행 : HEAD -->
                         <div class="msi_head non-fold"><!-- 접히지 않는 영역 : non-fold 추가 -->
                             <button type="button" class="btn__tab">연식</button>
@@ -483,7 +483,7 @@
                     <!-- //행 : 연식 -->
 
                     <!-- 행 : 가격 -->
-                    <li class="model_search_item js-nonclick">
+                    <li class="model_search_item is-horizontal js-nonclick">
                         <!-- 행 : HEAD -->
                         <div class="msi_head non-fold"><!-- 접히지 않는 영역 : non-fold 추가 -->
                             <button type="button" class="btn__tab">가격</button>
@@ -497,7 +497,7 @@
                     <!-- //행 : 가격 -->
 
                     <!-- 행 : 주행거리 -->
-                    <li class="model_search_item js-nonclick">
+                    <li class="model_search_item is-horizontal js-nonclick">
                         <!-- 행 : HEAD -->
                         <div class="msi_head non-fold"><!-- 접히지 않는 영역 : non-fold 추가 -->
                             <button type="button" class="btn__tab">주행거리</button>
@@ -796,8 +796,8 @@ $(function(){
         min = [{id:'', value:'최소'}];
         max = [{id:'', value:'최대'}];
         for (var start = new Date().getFullYear() + 1, end = 1980; start >= end; start -= 1) {
-            min.push({id: start, value: start + '년'});
-            max.push({id: start, value: start + '년'});
+            min.push({id: start, value: start + '<span>년</span>'});
+            max.push({id: start, value: start + '<span>년</span>'});
         }
 
         yaerSelect = new MobileSelect({
@@ -835,6 +835,7 @@ $(function(){
 
                 if(minval == '' && maxval == ''){
                     text = "선택하세요"
+                    $(ms_btn).removeClass("is-on");
                 }else{
                     if (minval !== '' && maxval !== '') {
                         text = minval + '년 ~ ' + maxval + '년';
@@ -843,8 +844,9 @@ $(function(){
                     } else {
                         text = maxval + '년 이하';
                     }
+                    $(ms_btn).addClass("is-on");
                 }
-                $(ms_btn).text(text);
+                $(ms_btn).text(text)
             },
         });
     }
@@ -929,7 +931,7 @@ $(function(){
 
         priceSelect = new MobileSelect({
             trigger: ".js-openPrice",
-            title: "가격",
+            title: "가격 선택",
             wheels: [{ data: min }, { data: max }],
             position: [0, 0],
             transitionEnd: function (indexArr, data) {
@@ -963,6 +965,7 @@ $(function(){
                 var text = null;
                 if(minval == '' && maxval == ''){
                     text = "선택하세요"
+                    $(ms_btn).removeClass("is-on");
                 }else{
                     if (minval !== '' && maxval !== '') {
                         text = minval == '10000' ? '1억원' : (numberFormat(minval) + '만원');
@@ -973,6 +976,7 @@ $(function(){
                     } else {
                         text = maxval == '10000' ? '1억원 이하' : (maxval == '99999' ? '1억원 초과' : numberFormat(maxval) + '만원 이하');
                     }
+                    $(ms_btn).addClass("is-on");
                 }
                 $(ms_btn).text(text);
 
@@ -1002,7 +1006,7 @@ $(function(){
 
         distanceSelect = new MobileSelect({
             trigger: ".js-openDistance",
-            title: "주행거리",
+            title: "주행거리 선택",
             wheels: [{ data: min }, { data: max }],
             position: [0, 0],
             transitionEnd: function (indexArr, data) {
@@ -1036,6 +1040,7 @@ $(function(){
                 var text = null;
                 if(minval == '' && maxval == ''){
                     text = "선택하세요"
+                    $(ms_btn).removeClass("is-on");
                 }else{
                     if (minval !== '' && maxval !== '') {
                         text = numberFormat(minval) + 'km ~ ' + numberFormat(maxval) + 'km';
@@ -1044,6 +1049,7 @@ $(function(){
                     } else {
                         text = numberFormat(maxval) + 'km 이하';
                     }
+                    $(ms_btn).addClass("is-on");
                 }
                 $(ms_btn).text(text);
             },
