@@ -1,0 +1,640 @@
+@charset "utf-8";
+
+
+#wrap iframe{position:absolute;}
+
+/*페이드효과*/
+@-webkit-keyframes fade-out {
+0% { opacity: 1; -webkit-transform: scale(1);}
+50% {opacity: 0.5; -webkit-transform: scale(1);}
+100% {-webkit-transform: scale(1); opacity: 0;}
+}
+
+@-webkit-keyframes animationfade {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+.fade-out {
+    -webkit-animation: fade-out .5s ease-in;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-iteration-count: 1;
+	-webkit-animation-delay: 1s;
+    opacity: 1;
+}
+
+
+.fadein {-webkit-keyframes: animationfade 2s;}
+
+
+.today_goods h3:after, 
+.today_goods .myset:after, 
+.info_btn .go_store em:after, 
+.m_top_sub .subm li:before,
+.con_box h3 .more:after,
+.Maincontent .mart_cate li:before,
+.Maincontent .m_depth li:before,
+.mainbnr .slick-arrow,
+.mainbnr .swbtn,
+.zzimly:after,
+.enuri_deal .swbtn,
+.enuri_deal .myset:after,
+.family_app li a:after{background:url(http://img.enuri.info/images/m_home/icon_pack.png) 0 0 no-repeat ; background-size: 250px 400px;}
+
+/* 카테고리 아이콘 - 180112 CPP 아이콘 변경(dev컨펌 후 삭제예정:JSH)
+.Maincontent .m_depth{border-bottom:1px solid #ced2d7; background:#fafbfc; margin-bottom:5px;}
+.Maincontent .m_depth:after{content: ""; display: block; clear: both; width: 0px; height: 0px; }
+.Maincontent .m_depth li{text-align:center; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; height:53px; width:20%; float:left; border-left:1px solid #edf1f5; border-top:1px solid #edf1f5; position:relative;}
+.Maincontent .m_depth li span{font-size:10px; text-align:center; color:#54748c; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:5px; width:100%; }
+.Maincontent .m_depth li:nth-child(1), .Maincontent .m_depth li:nth-child(6){border-left:none;}
+
+.Maincontent .m_depth li:before{content:""; display:block; width:28px; height:28px; margin:3px auto 0; }
+.Maincontent .m_depth li:nth-child(1):before{background-position:2px -35px; }
+.Maincontent .m_depth li:nth-child(2):before{background-position:-40px -35px; }
+.Maincontent .m_depth li:nth-child(3):before{background-position:-81px -34px; }
+.Maincontent .m_depth li:nth-child(4):before{background-position:-127px -35px; }
+.Maincontent .m_depth li:nth-child(5):before{background-position:-170px -35px; }
+.Maincontent .m_depth li:nth-child(6):before{background-position:1px -68px; }
+.Maincontent .m_depth li:nth-child(7):before{background-position:-40px -68px; }
+.Maincontent .m_depth li:nth-child(8):before{background-position:-82px -68px; }
+.Maincontent .m_depth li:nth-child(9):before{background-position:-126px -68px; }
+.Maincontent .m_depth li:nth-child(10):before{background-position:-168px -66px; }
+*/
+/* 카테고리 아이콘 */
+.Maincontent .m_depth{border-bottom:1px solid #ced2d7; background:#fff; margin-bottom:5px;}
+.Maincontent .m_depth:after{content: ""; display: block; clear: both; width: 0px; height: 0px; }
+.Maincontent .m_depth li{float:left; position:relative; width:20%; height:61px; border-left:1px solid #edf1f5; border-top:1px solid #edf1f5; text-align:center; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; }
+.Maincontent .m_depth li span{display:block; position:absolute; left:0; bottom:6px; width:100%; font-size:11px; text-align:center; color:#666; letter-spacing:-1px;}
+.Maincontent .m_depth li:nth-child(1), .Maincontent .m_depth li:nth-child(6){border-left:none;}
+
+.Maincontent .m_depth li:before{content:""; display:block; width:28px; height:28px; margin:8.5px auto 0; background:url(http://img.enuri.info/images/m_home/icon_pack_maincpp_v2.png) 0 0 no-repeat; background-size:300px;}
+.Maincontent .m_depth li:nth-child(1):before{background-position:0 0; } /* 가전/해외직구 */
+.Maincontent .m_depth li:nth-child(2):before{background-position:-140px 0; } /* TV/영상/디카 */
+.Maincontent .m_depth li:nth-child(3):before{background-position:-168px 0; } /* 컴퓨터/노트북 */
+.Maincontent .m_depth li:nth-child(4):before{background-position:-196px 0; } /* 태블릿/모바일 */
+.Maincontent .m_depth li:nth-child(5):before{background-position:-56px 0; } /* 스포츠/자동차 */
+.Maincontent .m_depth li:nth-child(6):before{background-position:-84px 0; } /* 유아/식품 */
+.Maincontent .m_depth li:nth-child(7):before{background-position:-112px 0; } /* 가구/생활 */
+.Maincontent .m_depth li:nth-child(8):before{background-position:0 -28px; } /* 패션/화장품 */
+/* .Maincontent .m_depth li:nth-child(9):before{background-position:-56px -28px; } */ /* 소셜비교 */
+.Maincontent .m_depth li:nth-child(9):before{background-position:-168px -28px; } /* 찾아줘마스크! */
+.Maincontent .m_depth li:nth-child(10):before{background-position:-112px -28px; } /* 쇼핑지식 */
+/*.Maincontent .m_depth li:nth-child(10):before{background-position:-140px -28px; } 쇼핑지식 뉴 아이콘 */
+
+/* 프로모션 배너*/
+.mainbnr{position:relative; z-index:10;}
+.mainbnr .evtbnr img{width:100%}
+.mainbnr .slick-dots{position: absolute; bottom:5px; width: 100%; text-align:center;}
+.mainbnr .slick-dots:after {content:"";display:block;clear:both;}
+.mainbnr .slick-dots li{display: inline-block; width:8px; height:9px; background: rgba(0, 0, 0, 0.5); padding:3px; }
+.mainbnr .slick-dots li:first-child{border-radius:50% 0 0 50%; padding-left:6px; }
+.mainbnr .slick-dots li:last-child{border-radius:0 50% 50% 0; padding-right:6px; }
+.mainbnr .slick-dots li button{display: block;background:#ffffff; opacity:0.9; width:8px; height:8px; border-radius:50%; text-indent:-9999em}
+.mainbnr .slick-dots li.slick-active button{display: block; background:#ff4a57; }
+.mainbnr .slick-arrow{border:none; display: inline-block; text-indent: -9999em; position: absolute; z-index:1; width: 20px; height: 30px; top: 43%}
+.mainbnr button.slick-prev{position:absolute; left:10px; background-position:-154px -214px; }
+.mainbnr button.slick-next{position:absolute; right:10px; background-position:-178px -214px; }
+
+/*프로모션 카테고리*/
+.evt_cate{background:#ffffff; height:65px; border-bottom:1px solid #edf1f5;}
+.evt_cate:after{clear:both; content:""; display:block; }
+.evt_cate li{float:left; width:20%; text-align:center; padding-top:5px; height:65px;  cursor:pointer; position:relative;  border-left:1px solid #edf1f5; box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box;}
+.evt_cate li:first-child{border-left:none;}
+.evt_cate.four li{width:25%; }
+.evt_cate li img{width:39px; height:39px;}
+.evt_cate li span{font-size:10px; text-align:center; color:#666; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:5px; width:100%; }
+
+/*주요 쇼핑 5사 노출 170209 추가*/
+.mall_cate{background:#ffffff; height:65px; border-bottom:1px solid #ced2d7; }
+.mall_cate:after{clear:both; content:""; display:block; }
+.mall_cate li{float:left; width:20%; text-align:center; padding-top:16px; height:65px;  cursor:pointer; position:relative; border-left:1px solid #edf1f5; box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box;}
+.mall_cate li:first-child{border-left:none;}
+.mall_cate.four li{width:25%; }
+.mall_cate li img{width:43px; height:12px;}
+.mall_cate li span{font-size:10px; text-align:center; color:#666; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:15px; width:100%; }
+
+
+
+
+/*에누리딜*/
+.enuri_deal .slick-slider{position:static !important}
+.enuri_deal{background:#e7ebee; position:relative; margin:8px 0;}
+.enuri_deal h3{height:65px;position:relative; text-indent:-9999em; }
+.enuri_deal h3 em{display:block; color:#de4c1b; padding-top:16px; margin-bottom:-2px}
+.enuri_deal h3:before{content:""; position:absolute; left:7%; top:12px; width:124px; height:39px; background: url(http://img.enuri.info/images/m_home/tit_crazydeal.png) 0 0 no-repeat; background-size: 124px 39px;}
+.enuri_deal .myset{padding:0 16px 0 10px; color:#ffffff; background:#a4abb8; font-size:12px; position:absolute; right:16px; top:20px; border-radius:25px; line-height:23px; height:23px; letter-spacing:-0.5px}
+.enuri_deal .myset:after{content:""; position:absolute; right:7px; top:5px; width:6px; height:10px; background-position:-178px -313px}
+.enuri_deal .deal_goods{padding-bottom:12px; }
+.enuri_deal .deal_goods li.swiper-slide{position:relative; z-index:1; width:88%; padding:0 5px }
+.enuri_deal .deal_goods li .edeal_area{background:#ffffff; border-bottom:1px solid #e8ebf2; letter-spacing:-0.5px}
+#zoom_img{ border-bottom:1px solid #e8ebf2; text-align:center; margin-bottom:4px;}
+.enuri_deal .deal_goods .thum{width:100%; }
+.enuri_deal .deal_goods .mall{display:block; padding: 10px 10px 3px}
+.enuri_deal .deal_goods .mall img{width:40px; height:20px; }
+.enuri_deal .deal_goods strong{font-weight:normal; display: block; font-size:14px; color:#333333; overflow:hidden; line-height:18px; height:38px; width:100%; padding:0 90px 0 10px; box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; }
+
+.deal_goods li .soldout{font-family: arial;color:#ffffff; line-height:40px; font-size:20px; font-weight:bold; position:absolute; left:50%; top:30%; -webkit-transform: translateX(-50%); transform: translateX(-50%); background:rgba(253,51,51,0.5); width:175px; text-align:center; border-radius:7px;}
+.deal_goods li .soon{font-family: arial;letter-spacing:-1px; color:#ffffff; line-height:40px; font-size:20px; font-weight:bold; position:absolute;left:50%;  -webkit-transform: translateX(-50%); transform: translateX(-50%); top:30%; background:rgba(0,0,0,0.5); width:180px; text-align:center; border-radius:7px;}
+
+.enuri_deal .deal_goods li .edeal_area a {display:block; position:relative; min-height:80px;}
+.deal_goods .price{height:20px; color:#333;font-size:13px;line-height:20px; position:relative; padding:15px 10px 10px 10px}
+.deal_goods .sale{color:#ffffff;font-size:10px; position:absolute; bottom:7px; right:7px; display:block; border-radius:50%; background:#cd0b14; padding-top:8px; width:44px; height:44px; text-align:center; box-sizing:border-box; -webkit-box-sizing:border-box;}
+.deal_goods .sale em{display:block; color:#ffbabd; font-size:10px; margin-top:-9px}
+.deal_goods .sale b{font-size:18px}
+.deal_goods .sale.sp{font-size:12px;font-weight:bold;vertical-align:1px}
+.deal_goods .sale.evt{font-size:14px; padding-top:14px; height:44px; letter-spacing:-0.5px}
+.deal_goods .prc{margin-right:2px;color:#333;font-size:11px;}
+.deal_goods .prc b{font-size:20px;}
+.deal_goods .price del{color:#bbbbbb;font-size:10px;}
+.deal_goods .price del b{font-size:12px;font-weight:normal;}
+.deal_goods .market {display:inline-block; overflow:hidden; position:absolute; top:3px; right:7px; height:15px; text-indent: -9999px;background:url(http://img.enuri.info/images/event/2017/crazydeal/market.jpg) 0 0 no-repeat;background-size:77px;}
+.deal_goods .market.market1{width:73px;background-position:0 0;}
+.deal_goods .market.market2{width:55px;background-position:0 -20px;}
+.deal_goods .market.market3{width:60px;background-position:0 -40px;}
+.price .e_info{position:absolute; right:10px; top:5px;}
+.price .e_info li, .price .e_info em{float:left; border:1px solid #57c7da; color:#57c7da;font-size:11px; height:12px; line-height:12px; padding:2px 2px 0 3px; }
+.price .e_info em{margin:0 1px;}
+
+.deal_goods button{z-index:10; border:none; text-indent:-9999em;position:absolute; top:140px; width:19px; height:30px; background: url(http://img.enuri.info/images/mobilefirst/enurideal.png) no-repeat; background-size:250px}
+.deal_goods button.slick-prev{left:10px; background-position:-1px -57px;}
+.deal_goods button.slick-next{right:10px; background-position:-63px -57px; }
+
+.enuri_deal .deal_goods li a{display:block;}
+
+/* 해외직구 가격비교 */
+.global_section{position: relative;}
+.global_section .swiper-slide{}
+.global_bnrlist .swiper-slide ul{overflow:hidden}
+.global_bnrlist .swiper-slide ul li{box-sizing:border-box;width:33.3333%;float:left;height:98px;padding:12px 0 0 0;position: relative;border-top:1px solid #edf1f5;border-left:1px solid #edf1f5}
+.global_bnrlist .swiper-slide ul li:nth-child(3n+1){border-left:0}
+.global_bnrlist .swiper-slide ul li a{display:block;font-size:0;line-height:0}
+.global_bnrlist .mglobal__item_thumb{display:block;width:99px;height:50px;margin:0 auto}
+.global_bnrlist .mglobal__item_thumb img{width:100%;height:100%}
+.global_bnrlist .mglobal__item_txt{display:block;height:28px;line-height:28px;font-size:13px;color:#0073be;text-align:center;letter-spacing:-1px}
+.global_section .mglobal__ico_emoney{background-image: url(http://img.enuri.info/images/global/m_common_sprite.png);background-size: 180px;display: inline-block;height: 12px;width: 12px;background-position: -111px -30px;text-indent: -9999em;vertical-align: -8px;margin-right: 2px;}
+.global_section .swiper-button-prev,
+.global_section .swiper-button-next{background: url(http://img.enuri.info/images/m_home/icon_pack.png) 0 0 no-repeat;background-size: 250px 400px;display: inline-block;text-indent: -9999em;position: absolute;z-index: 1;width: 20px;height: 30px;top:50%;margin-top:-15px}
+.global_section .swiper-button-prev{background-position: -154px -214px;left:0}
+.global_section .swiper-button-next{background-position: -178px -214px;right:0}
+
+.global_goods .swiper-slide .list_inner{padding:0 16px 16px;position: relative;}
+.global_goods .swiper-slide .thumb{position:relative;display:block;width:125px;height:125px;background-image: url(http://img.enuri.info/images/global/global_noimg.gif);background-repeat: no-repeat;background-size: 60% 60%;background-position: 50% 50%;overflow: hidden;}
+.global_goods .swiper-slide .thumb:after{content:"";position: absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.02);z-index: 2;}
+.global_goods .swiper-slide .thumb .thumb_img{position:absolute;top:0;left:0;width:100%;height:100%;background-repeat:no-repeat;background-size:contain;background-position:50% 50%;z-index: 1;}
+.global_goods .swiper-slide .info{position: absolute;top:14px;left:0;right:16px;margin-left:155px;}
+.global_goods .swiper-slide.type_compare .info{top:20px}
+.global_goods .swiper-slide .info .txt_prd_nm{display:block;line-height:17px;height:34px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word;font-size:14px;color:#222;margin-bottom:8px}
+.global_goods .swiper-slide .info .ico_brand{height:25px;display:block;box-sizing:border-box;padding-top:7px}
+.global_goods .swiper-slide .info .ico_brand img{height:10px;vertical-align:top;}
+.global_goods .swiper-slide .info .area_price{display:block;font-size:12px;line-height:20px}
+.global_goods .swiper-slide .info .area_price .txt_lowest{color:#666;display:inline-block;margin-right:4px}
+.global_goods .swiper-slide .info .area_price .txt_price{color:#0073be}
+.global_goods .swiper-slide .info .area_price .txt_price strong{font-size:20px;font-weight:bold;display:inline-block;}
+.global_goods .swiper-slide .info .txt_earn{display:block;font-size:12px;height:12px;line-height:12px;position:relative;color:#0073be;}
+.global_goods .swiper-slide .info .txt_earn .mglobal__ico_emoney{vertical-align: middle;}
+.global_goods .swiper-slide .info .txt_sub{color:#aaaaaa}
+.global_goods .swiper-slide.type_compare .txt_earn{display:none}
+.global_goods .swiper-slide .info .prd_price{display:block;height:123px;letter-spacing: -.5px;position: relative;}
+.global_goods .swiper-slide .info .prd_price .txt_notice{position: absolute;bottom:0;left:0;width:100%;height:48px;border-top:1px solid #eeeeee;line-height:48px;font-size:13px;color:#888888}
+.global_goods .swiper-slide .btn_purchases{display:block;width:100%;height:37px;color:#fff;background-color:#274776;font-size:14px;text-align:center;line-height:37px;margin-top:16px}
+
+/* 프리미엄 중고차 */
+.reborn_section{position: relative;}
+.reborn_section.con_box{border-bottom:0;}
+.reborn_section .swiper-slide{width:320px;background-color:#fff}
+.reborn_section .swiper-button-prev,
+.reborn_section .swiper-button-next{background: url(http://img.enuri.info/images/m_home/icon_pack.png) 0 0 no-repeat;background-size: 250px 400px;display: inline-block;text-indent: -9999em;position: absolute;z-index: 1;width: 20px;height: 30px;top:50%;margin-top:-15px}
+.reborn_section .swiper-button-prev{background-position: -154px -214px;left:0}
+.reborn_section .swiper-button-next{background-position: -178px -214px;right:0}
+.reborn_goods{
+    background: rgb(221,225,230);
+    background: -moz-linear-gradient(0deg, rgba(221,225,230,1) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(221,225,230,1) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(0deg, rgba(221,225,230,1) 0%, rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dde1e6",endColorstr="#ffffff",GradientType=1);
+}
+.reborn_goods a{display:block;position: relative;}
+.reborn_goods .type_bnr a{padding-top:56.1%;height:96px;text-indent:-9999em;background-size:contain;background-position:50% 50%;background-repeat:no-repeat}
+.reborn_goods .thumb{position: relative;padding-top:56.1%;display:block;background-color:rgba(0,0,0,.015)}
+.reborn_goods .thumb img{position: absolute;top:0;left:0;width:100%;height:100%;}
+.reborn_goods .info{display:block;padding:8px 10px;line-height:17px;height:80px}
+.reborn_goods .info > span{display:block}
+.reborn_goods .info .txt_name{height:34px;font-size:14px;color:#222;overflow:hidden;font-weight:bold}
+.reborn_goods .info .txt_name > span{display:block;}
+.reborn_goods .info .txt_name .model{font-size:13px}
+.reborn_goods .info .txt_spec{font-size:12px;color:#999999;overflow:hidden;margin-top:6px}
+.reborn_goods .info .item{padding-left:12px;position: relative;}
+.reborn_goods .info .item:before{content:"";position: absolute;top:2px;height:10px;border-left:1px solid #aaaaaa;left:5px}
+.reborn_goods .info .txt_spec .item:first-of-type{margin-left:-12px}
+.reborn_goods .info .txt_price{display:block;text-align:right}
+.reborn_goods .info .txt_price .org_price{display:inline-block;color:#999999;font-size:12px;text-decoration: line-through;margin-right:4px}
+.reborn_goods .info .txt_price .sell_price{height:20px;line-height:20px;color:#333;display:inline-block;letter-spacing:-.5px}
+.reborn_goods .info .txt_price .sell_price .txt{color:#f62e3d;display:inline;font-size:12px}
+.reborn_goods .info .txt_price .sell_price em{margin-left:2px;font-weight:bold;font-size:18px;letter-spacing:0}
+
+/*오늘의 추천상품*/
+.today_goods{position:relative; }
+.today_goods h3{color:#54748c; padding-top:9px; height:26px;position:relative; text-indent:30px; background:#edf1f5}
+.today_goods h3:after{content:""; position:absolute; left:10px; top:8px; width:16px; height:18px; background-position:-150px 0;  }
+.today_goods .myset{padding:0 10px 0 22px; color:#ffffff; background:#a1bbcd; font-size:10px; position:absolute; right:5px; top:7px; border-radius:10px; height:16px; padding-top:5px}
+.today_goods .myset:after{content:""; position:absolute; left:9px; top:5px; width:10px; height:10px; background-position:-178px 0; }
+
+.today_list li{position:relative; z-index:10; margin-bottom:7px; }
+.today_list li a{display:block; background:#ffffff;}
+.today_list .thum{position:relative; padding:0px 0 7px 0; text-align:center; display:block; }
+.today_list .thum .lazy{display:inline-block !mportant; overflow:hidden; position:relative; font-size:0; line-height:0;}
+.today_list .thum .play{background-position:-193px -300px; width:50px; height:50px; position:absolute; left:50%; top:40%; -webkit-transform: translateX(-50%); transform: translateX(-50%); z-index:1}
+.today_list .thum .lazy:after{content:""; position:absolute; background: #fff url(http://img.enuri.info/images/mobilefirst/noimg_plan.png) 50% 50%; background-size:320px 140px; opacity:1;}
+.today_list .thum .lazy:after, .today_list .thum .lazy img{top:0; left:0; width:100%; height:100%; }
+
+.today_list .hotpic{position:absolute; left:10px; top:10px; width:43px; height:43px; background-position:0 -159px; }
+.today_list .depart{position:absolute; left:0px; top:13px; text-indent:-9999em; background:url(http://img.enuri.info/images/m_home/ico_depart.png) 0 0 no-repeat; width:90px; height:18px; background-size:100px 150px;}
+.today_list .depart.hyundai{background-position:0 0;}
+.today_list .depart.ak{background-position:0 -20px;}
+.today_list .depart.shinsegae{background-position:0 -40px;}
+.today_list .depart.lotte{background-position:0 -60px;}
+.today_list .depart.galleria{background-position:0 -81px;}
+.today_list .depart.daegu{background-position:0 -101px;}
+
+.today_list.sdeal .price del{font-size:12px; padding-left:5px; color:#999999; letter-spacing:-0.5px}
+.today_list .ment{position:absolute; left:0; top:100px; background:#666666; opacity:0.7; color:#ffffff; padding:2px 10px; font-size:16px; line-height:20px;}
+.today_list .ment em{opacity:1; font-weight:bold; }
+.today_list .thum img{width:100%; /*height:200px*/;}
+#mainlist .thum img{width:165px; height:165px; padding-top:5px;}
+.today_list .thum.sq img{padding-top:5px; width:165px;}
+.today_list .mall{padding:0 10px; color:#7d7d7d; font-size:11px; display:block; height:20px;}
+.today_list .mall.txt{padding-top:3px; height:17px; }
+.today_list .mall img{width:40px; height:20px; }
+.today_list .titarea{overflow:hidden; height:37px; }
+.today_list strong{padding:0 10px; display: table-cell; vertical-align: middle; font-weight:normal; font-size:16px; color:#333333; line-height:18px; height:37px; width:100%; box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; }
+
+.today_list .price{height:20px; color:#333;font-size:13px;line-height:20px; position:relative; padding:5px 10px 12px 10px; }
+.today_list .sale{color:#f62e3d;font-size:12px; }
+.today_list .sale b{font-size:18px}
+.today_list .sale b.kr{font-size:11px}
+.today_list .sale.sp{font-size:12px;font-weight:bold;vertical-align:1px}
+.today_list .prc{margin-right:2px;color:#333;font-size:11px;}
+.today_list .prc b{font-size:18px;}
+.today_list .price del{color:#999;font-size:10px;}
+.today_list .price del b{font-size:12px;font-weight:normal;}
+.today_list .price .buy{position:absolute; right:10px; top:4px; font-size:12px;  color: #999999;}
+
+.today_list .info_btn{border-top:1px solid #edf1f5; height:27px; color:#7d7d7d; background:#fafbfc; border-bottom:1px solid #ced2d7; }
+.today_list .info_btn .go_store, .today_list .info_btn .pr{text-align:center; width:50%; height:27px; padding:5px 0 0 0; float:left; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; display:block; }
+.today_list .info_btn span:last-child{border-left:1px solid #edf1f5}
+.today_list .info_btn .go_store em{padding-right:10px; position:relative; color:#7d7d7d;}
+.today_list .info_btn .go_store em:after{position:absolute; right:0; top:1px; content:""; background-position:-116px -162px; width:6px; height:11px; }
+.today_list .info_btn .pr em{color:#333333; padding-left:2px}
+.today_list .info_btn .comt{float:left; text-align:left; width:50%; height:27px; padding:5px 0 0 10px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.today_list .info_btn .comt .star_graph{display: inline-block; width: 53px; height: 9px; margin: 1px 0 0 3px; background-position:-55px -161px;}
+.today_list .info_btn .comt .star_graph span{display: block; overflow: hidden; width: 53px; height: 9px; background-position:-55px -171px; }
+.today_list .info_btn .comt  span:last-child{border-left:none;}
+.today_list .info_btn .go_store.onebtn{width:100%;}
+
+/*찜*/
+.zzimarea{z-index:1000;}
+.zzimarea .heart, .zzimarea .hearton{position:absolute; right:10px; bottom:105px; width:29px; height:29px; border-radius:50%; background: #eef2f5; text-indent:-9999em; }
+.zzimarea .heart:after{position:absolute; left:7px; top:8px; content:""; width:16px; height:14px; background:url(http://img.enuri.info/images/m_home/icon_pack.png) -96px -117px no-repeat ; background-size: 250px 400px;}
+.zzimarea .hearton:after{position:absolute; left:7px; top:8px; content:""; width:16px; height:14px; background:url(http://img.enuri.info/images/m_home/icon_pack.png) -121px -117px no-repeat ; background-size: 250px 400px;}
+
+.zzimly{z-index:100; letter-spacing:-0.5px;width:90px; height:42px; background: rgba(0,0,0,0.5); position:fixed; margin:-20px auto 0 -45px; left:50%; top:50%; border-radius:50%; color:#ffffff; text-align:center; font-size:11px; padding-top:48px; line-height:11px}
+.zzimly:after{background-position:-146px -117px; content:""; position:absolute; left:30px; top:15px; width:31px; height:27px; }
+
+.sdeal .zzimarea .heart, .sdeal .zzimarea .hearton{bottom:70px}
+.mart_list .heart, .mart_list .hearton{right:0px; bottom:7px}
+.mart_list .zzimarea .zzimly{margin:0px auto 0 -117px; top:20%}
+
+@media screen and (min-width: 640px){
+.today_list{padding:0 2px}
+.today_list:after{clear:both; content:""; display:block; }
+.today_list li{padding: 0 2px; width:50%; float:left; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; height:337px; overflow:hidden; }
+.today_list .thum{width:100%; text-align:Center; height:200px;}
+.today_list .thum img{width:100%;}
+.today_list .ment, .today_list .depart{left:2px}
+.guide{height:330px; overflow: hidden;}
+.zzimarea .heart{bottom:115px}
+.mart_list .heart{right:0px; bottom:7px}
+}
+
+h3.maintit{background:#ffffff; padding-top:10px; height:25px; border-bottom:1px solid #edf1f5; text-indent:10px}
+.newMallList {width:100%;border-width:1px 0 0 1px;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; overflow:hidden; }
+.newMallList:after {content:"";display:block;clear:both;}
+.newMallList li {background:#fff; float:left; width:25%; }
+.newMallList li a{display:block; border:1px solid #f2f2f2; margin:-1px; }
+.newMallList li img {width:100%;}
+.newMallList li:nth-child(17){border-radius:0 0 0 5px; }
+.newMallList li:nth-child(20){border-radius:0 0 5px 0; }
+
+/* 기획전 */
+.guide{border-bottom:1px solid #ced2d7; }
+.cam_tip{width:100%; position:relative;}
+.cam_tip:after{position:absolute; left:0; top:0; content:""; width:100%; height:100%; background: rgba(0,0,0,0.5);}
+.cam_tip.img:after{background:none;}
+.cam_tip img{width:100%; }
+.cam_tip .txtbox{position:absolute; left:0; top:0; text-align:center; z-index:10; width:100%; height:100%; display:block; }
+.cam_tip .txtbox span{border:2px solid #ffffff; color:#ffffff; font-size:20px; display:inline-block; padding:4px 8px; margin-top:12%; font-weight:bold; }
+.cam_tip .txtbox em{display:block; font-size:12px; line-height:14px; margin-top:5px; font-weight:normal; }
+@media screen and (min-width: 640px){
+.cam_tip img{height:166px;}
+.bnrarea{width:100% !important}
+}
+
+.buy_tip{padding:16px 0; background:#ffffff; }
+.buy_tip:after{content: ""; display: block; clear: both; width: 0px; height: 0px; }
+.buy_tip li{float:left; width:33.3%; padding:0 2px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; margin:0; }
+.buy_tip li:first-child{width:33.4%; }
+.buy_tip li a img{width:70px; height:70px; border-radius:50%; border:1px solid #edf1f5}
+.buy_tip li a{display:block; margin:0 auto; width:80px;padding-bottom:0; text-align:center; color:#333333}
+.buy_tip li a .tit{font-size:11px; line-height:13px; display: block; height: 26px; overflow: hidden; padding:5px 0 0 0px; }
+.buy_tip li a b{font-size:15px; }
+.buy_tip li a b em{font-size:11px;}
+
+.bnrarea{width:100%; height:100% !important}
+.bnrarea img{width:100%;  }
+
+
+
+/*CPP*/
+.m_top_sub .subm{background:#ffffff; margin-bottom:5px;}
+.m_top_sub .subm li{border-top:1px solid #edf1f5; text-indent:10px; color:#4c5363; line-height:40px; font-size:14px; position:relative; letter-spacing:-0.5px}
+.m_top_sub .subm li span{display:block;}
+.m_top_sub .subm li:before {content:""; position:absolute; right:10px; top:18px; width:9px; height:5px; background-position:-208px -193px; }
+.m_top_sub .subm li.sub_y:before {content:""; position:absolute; right:10px; top:15px; width:9px; height:5px; background-position:-208px -203px;}
+.m_top_sub .subm ul{display:none; }
+.m_top_sub .subm ul:after{content: ""; display: block; clear: both; }
+.m_top_sub .sub_y ul{display:block; background:#fafbfc; }
+.m_top_sub .sub_y ul li{border-top:1px solid #edf1f5; width:50%; float:left; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; line-height:34px; color:#7d7d7d; overflow:hidden; white-space: nowrap; text-overflow:ellipsis; padding:0 10px 0 0}
+.m_top_sub .sub_y ul li:nth-child(even){border-left:1px solid #edf1f5; }
+.m_top_sub .sub_y li:before{background:none;}
+.cpp_bnr{margin:8px 0}
+.cpp_bnr img{width:100%;}
+
+.m_top_sub .maincate {}
+.m_top_sub .maincate ul:after {content:""; display:block; clear:both;}
+.m_top_sub .maincate ul li {float:left; width:20%; text-align:center; padding-top:6px; height:56px; background:#f3f4f7;  box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-right:1px solid #e8ebf2}
+.m_top_sub .maincate ul li:last-child {border-right:0;}
+.m_top_sub .maincate ul li.on {background:#2d9fe8; color:#fff;}
+.m_top_sub .maincate ul li img {width:30px; height:30px;}
+.m_top_sub .maincate ul li span {color:#999999; font-size:10px; display:block;}
+.m_top_sub .maincate ul li.on span {color:#fff; margin-top:1px;}
+
+.m_top_sub .maincate ul li .spm {color:#666666; font-size:12px; margin-top:0} 
+.m_top_sub .maincate ul li .spm em {display:block; margin:0 4px; height:12px; line-height:14px; font-size:9px; color:#fff; border-radius:3px; overflow:hidden;}
+.m_top_sub .maincate ul li .spm em.sty1 {background:#ff4a57; }
+.m_top_sub .maincate ul li .spm em.sty2 {background:#57c7da; }
+.m_top_sub .maincate ul li .spm em.sty3 {background:#ff8830; }
+.m_top_sub .maincate ul li .spm strong {display:block; margin-top:3px; font-weight:normal; font-size:12px; color:#666666; line-height:14px;}
+
+.m_top_sub .sub_cata {border-top:1px solid #2d9fe8; border-bottom:1px solid #2d9fe8;}
+.m_top_sub .sub_cata ul:after {content:""; display:block; clear:both}
+.m_top_sub .sub_cata ul li{background:#ffffff; border-bottom:1px solid #eef2f5; width:50%; float:left;  text-indent:10px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; line-height:34px; color:#7d7d7d; overflow:hidden; white-space: nowrap; text-overflow:ellipsis; padding:0 10px 0 0}
+.m_top_sub .sub_cata ul li:nth-child(even){border-left:1px solid #eef2f5; }
+.m_top_sub .sub_cata ul li:before{background:none;}
+.m_top_sub .sub_cata .more_cata {text-align:center; font-size:12px; color:#999999; padding:9px 0 11px; background:#fff;}
+.m_top_sub .sub_cata a {display:block; }
+.m_top_sub .sub_cata span {padding:0 14px; position:relative}
+.m_top_sub .sub_cata span:before {content:"";position:absolute; right:0; top:6px; width:7px;height:6px;background:url(http://img.enuri.info/images/m_home/bul_arr_gray.png) no-repeat 0 0;background-size:7px 22px;}
+.m_top_sub .sub_cata span.on:before { width:7px;height:6px;background-position:right bottom; }
+
+
+/*
+.list-more {
+	display: block;
+    width: 62px;
+    height: 26px;
+    padding-left: 8px;
+    background: url(//static.melon.co.kr/resource/image/web/member/btn_view.png) no-repeat 0 0;
+    background-size: 62px 52px;
+    -webkit-background-size: 62px 52px;
+    font-size: 13px;
+    color: #999999;
+    line-height: 26px;
+    text-align: left;
+    outline: 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent; /* For some Androids *
+    -webkit-focus-ring-color: rgba(0, 0, 0, 0)!important;
+}
+.list_terms.on {
+	height: auto;
+}
+.list-more.close {
+	background-position: 0 -26px;
+}
+*/
+
+.cpp_bnr{margin:8px 0}
+.cpp_bnr img{width:100%;}
+
+/*쇼핑뉴스*/
+.con_box{background:#ffffff; margin:5px 0 8px 0; border-bottom:1px solid #ced2d7;}
+.con_box h3{color:#333333; font-weight:bold; line-height:35px; position:relative; text-indent:10px;}
+.con_box h3 .more{position:absolute; right:5px; top:0px; font-size:12px; color:#999999; padding-right:8px;}
+.con_box h3 .more:after{background-position:-226px -193px; width:5px; height:9px; position:absolute; right:0; top:12px; content:""}
+.top_news_box {overflow:hidden; }
+.top_news_box ul {overflow:hidden; }
+.top_news_box ul li {float:left; width:50%; margin-bottom:10px }
+.top_news_box ul li a {display:block; margin:0 10px}
+.top_news_box ul li .thumb{width:100%; min-height:91px; border:1px solid #ececec; } 
+.top_news_box ul li .tit {display:block; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;-webkit-box-orient: vertical;  word-wrap:break-word; line-height: 1.2em; height: 2.2em; width:152px;color:#7d7d7d; margin:0 auto; padding-top:5px}
+
+.news_list li{position:relative;  min-height:10px; padding:9px; border-top:1px solid #f5f5f5;}
+.news_list li a {display:block; white-space: nowrap; text-overflow: ellipsis; color:#7d7d7d; overflow:hidden; }
+
+
+.hit_scroll{position: relative;overflow: hidden; height:208px; background:#ffffff; }
+.hit_scroll .hit_List_area{overflow-x: auto;overflow-y: hidden; -webkit-overflow-scrolling:touch; width: 100%; }
+.hit_scroll .hit_product {overflow: hidden; display: inline-flex; display: -webkit-inline-box; padding-right:10px; height:220px;}
+.hit_List_area{padding:0 10px; position:relative; }
+.hit_product li{float:left; margin-right:20px; position:relative; height:174px;width:121px;}
+.hit_product li:last-child{margin-right:10px;}
+.hit_product li .thum{width:119px; height:119px; border:1px solid #eeeeee}
+.hit_product li strong{color:#333333; display:block; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;-webkit-box-orient: vertical;  word-wrap:break-word; line-height: 1.2em; height: 2.2em; width:100%; font-weight:normal; }
+.hit_product li .price{color:#333333; font-weight:bold; font-size:15px; }
+.hit_product li .price .per{color:#fd3333; margin-right:3px;}
+.hit_product li .price .per em{font-size:11px; vertical-align:0px;}
+.hit_product li .price b{font-size:11px; vertical-align:1px;}
+.hit_product li .price .sp{color:#fd3333; font-size:11px; margin-right:3px; vertical-align:2px}
+.hit_product li .mall{display:block; }
+.hit_product li .mall img{height:22px;}
+
+
+.brand_list:after{clear:both; display:block; content:""}
+.brand_list li{text-align:center; float:left; width:33.3%; border-right:1px solid #edf1f5; border-top:1px solid #edf1f5; background:#fafbfc; color:#858585; line-height:36px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; }
+.brand_list li img{width:95px; height:36px;}
+.brand_list li:first-child{width:33.4%}
+
+/* 마트 */
+.Maincontent .mart_cate{border-bottom:1px solid #edf1f5; }
+.Maincontent .mart_cate:after{content: ""; display: block; clear: both; width: 0px; height: 0px; }
+.Maincontent .mart_cate li{background:#ffffff; text-align:center; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; height:62px; width:33.3%; float:left; border-left:1px solid #edf1f5; border-top:1px solid #edf1f5; position:relative;}
+.Maincontent .mart_cate li.on{background:#e8faff}
+.Maincontent .mart_cate li span{font-size:12px; text-align:center; color:#333333; letter-spacing:-1px; display:block; position:absolute; left:0; bottom:5px; width:100%; }
+.Maincontent .mart_cate li:nth-child(1), .Maincontent .mart_cate li:nth-child(4), .Maincontent .mart_cate li:nth-child(7){width:33.4%; border-left:none;}
+.Maincontent .mart_cate li img{width:50px; height:45px}
+
+.mart_tit{font-size:12px; color:#333333; letter-spacing:-0.5px; line-height:35px; font-weight:normal; text-indent:10px;}
+.mart_tit strong{font-size:14px; margin-right:3px}
+.mart_list li{margin-bottom: 7px; position:relative;}
+.mart_list li a{display:block; height:134px; position:relative; padding:0 10px 0 145px; background:#ffffff}
+.mart_list li .thum{margin:9px; left:0; top:0; position:absolute;}
+.mart_list li .thum img{width:117px; height:117px; }
+.mart_list li .info{position:relative; height:134px;}
+.mart_list li strong{font-weight:normal; font-size:16px; color:#333333; display:block; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;-webkit-box-orient: vertical;  word-wrap:break-word; line-height: 1.2em; height: 2.4em; width:100%; }
+.mart_list li .price{color:#333333; font-size:15px; position:absolute; left:0; bottom:12px }
+.mart_list li .price .prc{display:inline-block; position:relative; font-size: 11px;}
+.mart_list li .price .prc b{font-size:18px;}
+.mart_list li .price .prc del{font-size:12px; color:#999999; font-weight:normal; position:absolute; left:0; top:-13px;}
+.mart_list li .price .sale{color:#fd3333; display:inline-block; font-size:12px; vertical-align: 1px;}
+.mart_list li .price .sale em{font-size:11px; vertical-align:0px;}
+.mart_list li .sale b{font-size: 18px; vertical-align: -1px;}
+.mart_list li .price .sp{color:#fd3333; font-size:11px; margin-right:3px; vertical-align:2px}
+.mart_list li .mall{display:block; padding-top:15px; color:#7d7d7d; font-size:11px;}
+.mart_list li .mall img{height:30px;}
+
+.option_area{color:#999999; font-size:12px;  }
+.option_area em{display:inline-block; border:1px solid #e0f1fc !important; color:#82bfef; font-size:11px; height:14px; padding:1px 3px 0px 3px; margin-left:3px;}
+.mart_list li .option_area, .sdeal li .option_area{position:absolute; right:10px; bottom:13px;}
+.mart_list li .price .txt{color: #f62e3d; font-size: 12px; vertical-align: 1px;}
+
+@media screen and (min-width: 640px){
+.mart_list{margin:0 8px;}
+.mart_list:after{content:'';display:block;clear:both;}
+.mart_list li{width:50%; float:left; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; }
+.mart_list li:nth-child(2n-1){padding-right:4px;}
+.mart_list li:nth-child(2n){padding-left:4px;}
+.mart_list li .option_area, .sdeal li .option_area{bottom:50px;}
+}
+
+/* 핫딜 */
+.tab_deal {height:34px; background: #ccd2d9; border: 1px solid #c0c5cc; margin:0 5px 5px;}
+.tab_deal  li{float:left; position:relative; z-index:1; width:17%}
+.tab_deal  li:last-child{width:15%}
+.tab_deal  li a {display:block; text-align:center; line-height:34px; color:#77818c; }
+.tab_deal  li.on a {color:#ffffff; font-weight:bold; z-index:1}
+.tab_deal li.on a:after {position:absolute; content:""; left:-1px; top:-1px; width:100%; height:34px; background:#57c7da; border: 1px solid #4abbce; z-index:-1}
+
+h4.hot_title{background:#ffffff; text-align:center; border-top:1px solid #edf1f5; border-bottom:1px solid #edf1f5}
+h4.hot_title img{width:116px; height:40px; }
+
+.app_install{text-indent:-9999em; width:261px; height:233px; margin: -116px auto 0 -130px; left: 50%; top: 50%; position: absolute; background:url(http://img.enuri.info/images/mobilefirst/app_install.png) 0 0 no-repeat; background-size:261px 233px; }
+.app_install .go_app{position:absolute; width:167px; height:42px; left:48px; bottom:20px;}
+.app_install .closebtn{position:absolute; width:36px; height:36px; right:5px; top:0px;}
+
+/*플리킹영역 아이콘*/
+.mainbnr .swbtn{display: inline-block; text-indent: -9999em; position: absolute; z-index:1; width: 20px; height:30px; }
+.mainbnr .swbtn.btn_prev{background-position:-154px -214px; }
+.mainbnr .swbtn.btn_next{background-position:-178px -214px; }
+
+.mainbnr .pagination{background: rgba(0, 0, 0, 0.5); border-radius:10px; left: 50% !important;  -webkit-transform: translateX(-50%); transform: translateX(-50%); padding:0 3px; height:16px}
+.mainbnr .pagination:after {content:"";display:block;clear:both;}
+.mainbnr .pagination span{display: inline-block; width:8px; background:#ffffff; opacity:0.9; margin:0; vertical-align:1px;}
+.mainbnr .pagination span.swiper-pagination-bullet-active{background:#ff4a57; }
+
+.enuri_deal .swbtn{display: inline-block; text-indent: -9999em; position: absolute; z-index:1; width: 20px; height:30px; }
+.enuri_deal .swbtn.btn_prev{background-position: -202px -215px;}
+.enuri_deal .swbtn.btn_next{background-position:-227px -215px;}
+
+.plan_area{padding:0 8px; }
+.plan_area img{border-radius:9px}
+.plan_area li{margin-right:8px; width:90%; margin-bottom:0;}
+.plan_area li:last-child{margin-right:0;}
+
+@media screen and (min-width: 640px){
+.enuri_deal .deal_goods li.swiper-slide{width:50%}
+}
+
+
+/* 171206 컴퓨터/노트북 CPP 신설 */
+.comcpptop {}
+.m_top_sub .comcppct ul li {width:25%; /*text-align:center; display:table; padding-top:0;*/}
+/*.m_top_sub .comcppct ul li span {display:table-cell; font-size:12px; vertical-align:middle}*/
+
+.comcppbox h3 {margin:0 10px; text-indent:0; border-bottom:1px solid #eef2f5}
+.comcppbox h3 .more {right:0;}
+.comcppbox .top_news_box {padding:0 0 10px}
+.comcppbox .top_news_box:after {content:""; display:block; clear:both}
+.comcppbox .top_news_box ul li {margin:10px 0 5px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;}
+.comcppbox .top_news_box ul li .thumb {height:100px;}
+.comcppbox .top_news_box ul li .tit {text-align:center; color:#525252}
+
+.comcppbox .hotnews {padding:10px;}
+.comcppbox .hotnews li {color:#999; font-size:12px; padding:7px 0; overflow:hidden; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; }
+.comcppbox .hotnews li .thum {width:118px; float:left;  }
+.comcppbox .hotnews li .thum img {width:107px; height:74px; border:1px solid #ededed}
+.comcppbox .hotnews li strong{font-weight:normal; margin:7px 0 12px; padding-top:2px; color:#525252; font-size:14px; display:block;overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; /* 라인수 */ -webkit-box-orient: vertical;  word-wrap:break-word; line-height: 1.2em; height: 2.3em;}
+.comcppbox .hit_product li .mall {margin:0 0 2px;}
+.comcppbox .hit_product li .mall img {height:15px;}
+
+.comcppbox.rowsr h3 {border-bottom:0}
+.comcppbox.rowsr .hit_scroll {height:auto;}
+.comcppbox.rowsr.rs1 .hit_scroll .hit_product {height:200px;}
+.comcppbox.rowsr.rs2 .hit_scroll .hit_product {height:220px;}
+.comcppbox .hit_product li .thum {margin-bottom:5px;}
+.comcppbox .hit_product li {position:relative;}
+.comcppbox .hit_product li .tag {position:absolute; left:0; top:0; display:table; width:30px; height:30px; text-align:center; box-shadow:0 2px 0 rgba(0, 0, 0, 0.1); }
+.comcppbox .hit_product li .tag.new {background:#fcbd13}
+.comcppbox .hit_product li .tag.soon {background:#58d1db}
+.comcppbox .hit_product li .tag b {font-size:11px; color:#fff; line-height:1; display:table-cell; vertical-align:middle}
+.comcppbox .hit_product li .price {letter-spacing:-0.5px;}
+.comcppbox .hit_product li .price .sp {vertical-align:1px;}
+
+.con_box.spbox li {position:relative; letter-spacing:-0.5px; text-align:center;}
+.con_box.spbox li img {width:150px; height:150px; padding-top:5px;}
+.con_box.spbox li .tag {position:absolute; left:0; top:0; display:table; width:66px; height:24px; text-align:center; box-shadow:0 2px 0 rgba(0, 0, 0, 0.1); }
+.con_box.spbox li .tag.date {background:#1689d3}
+.con_box.spbox li .tag b {font-size:11px; color:#fff; line-height:1; display:table-cell; vertical-align:middle}
+.con_box.spbox li .bt_info {text-align:left; padding:10px;}
+.con_box.spbox li strong {margin-bottom:3px; color:#333333; display:block; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;-webkit-box-orient: vertical;  word-wrap:break-word; line-height: 1.2em; height: 2.2em; width:100%; font-weight:normal; }
+.con_box.spbox li .price{color:#333333; font-weight:bold; font-size:15px; }
+.con_box.spbox li .price b{font-size:11px; vertical-align:1px;}
+.con_box.spbox li .price .sp{color:#fd3333; font-size:11px; margin-right:3px; vertical-align:1px}
+/*플리킹영역 아이콘*/
+.con_box.spbox .mainbnr .swbtn{display: inline-block; text-indent: -9999em; position: absolute; z-index:1; width:10px; height:19px; }
+.con_box.spbox .mainbnr .swbtn.btn_prev{background-position:-56px -113px; }
+.con_box.spbox .mainbnr .swbtn.btn_next{background-position:-78px -113px; }
+.bestbox .mdl_sort {width:100%; height:37px; overflow:hidden; border-top:1px solid #eef2f5; border-bottom:1px solid #eef2f5; background:#fff;}
+.bestbox .tip_scl {height:80px; overflow-x: scroll; -webkit-overflow-scrolling: touch; position:relative; text-align:center;  }
+.bestbox .cate_tip{display:table; width:100%; padding:0 22px; box-sizing:border-box;  -moz-box-sizing: border-box; -webkit-box-sizing: border-box;}
+.bestbox .cate_tip:after{content: ""; display: block; clear: both;}
+.bestbox .tip_scl .cate_tip li {font-size:14px; display: table-cell; text-align:center; white-space: nowrap; line-height:36px; padding:0 20px; color:#333; position:relative;}
+.bestbox .tip_scl .cate_tip li a {color:#333;}
+.bestbox .cate_tip li.on{color:#2d9fe8; font-weight:bold}
+.bestbox .cate_tip li.on:after{width:100%; height:2px; background:#2d9fe8; position:absolute; left:0; bottom:-1px; content:""; }
+.bestbox .cate_tip li.on a {color:#2d9fe8; }
+
+.pupr_list .hit_product li {float:left; width:50%; height:242px; margin:0;}
+.pupr_list .hit_product li a {position:relative; margin:10px 10px 15px;}
+.pupr_list .hit_product li .tag{position:absolute; left:0; top:0; display:inline-block; width:30px; height:26px; text-align:center; padding-top:4px; line-height:1; font-family:Verdana; font-size:13px; font-weight:bold; box-shadow:0 2px 0 rgba(0, 0, 0, 0.1); }
+.pupr_list .hit_product li .tag.best1 {color:#a9d3f2; background:#3681bf;}
+.pupr_list .hit_product li .tag.best2 {color:#fff; background:#a5b2ba;}
+.pupr_list .hit_product li .tag b {display:block; font-size:11px; color:#fff;  font-family:Malgun Gothic;}
+.pupr_list .hit_product li .thum {width:100%; height:100%; margin-bottom:5px; /*width:144px; height:144px;*/}
+.pupr_list .hit_product li .price .sp {vertical-align:1px;}
+
+.bestbox .more_cata {text-align:center; font-size:12px; color:#999999; margin:0 10px; padding:9px 0 11px; background:#fff; border-top:1px solid #eef2f5}
+.bestbox .more_cata a {display:block; }
+.bestbox .more_cata span {padding:0 14px; position:relative}
+.bestbox .more_cata span:before {content:"";position:absolute; right:0; top:6px; width:7px;height:6px;background:url(http://img.enuri.info/images/m_home/bul_arr_gray.png) no-repeat 0 0;background-size:7px 22px;}
+.bestbox .more_cata span.on:before { width:7px;height:6px;background-position:right bottom; }
+
+/* 200312 구홈 - 공유하기 추가 */
+.dimmed {position: fixed;width: 100%;height: 100%;top: 0 !important;left: 0;background: #000;z-index: 6 !important;opacity: 0.5;}
+.layerPop {display:none; position:fixed;top:0;left:0;width:100%;height:100%;z-index:1000;}
+.layerPopInner {position:absolute; top:50%; width:100%; padding:0 20px; box-sizing:border-box; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; z-index:1001; -webkit-transform:translateY(-50%); -ms-transform:translateY(-50%); transform:translateY(-50%);}
+.layerPopCont {position:relative;background:#fff;}
+.layerPopCont h1 {padding:11px 0 9px 10px;background:#81a9db !important;color:#fff;font-size:14px;}
+.layerPopCont .btnClose {z-index:10; position:absolute;top:10px;right:6px;width:16px;height:16px;border:0;background:url(http://img.enuri.info/images/mobilefirst/icon_pack_vip.png) no-repeat -65px -80px;background-size:250px;text-indent:-99999px;}
+.layerPopCont .layerBtn {padding:6px 0;background:#f3f4f5;border-top:1px solid #d5d5d5;text-align:center;}
+.layerPopCont .contents {padding:10px;}
+.linkList {;padding:10px 5px; text-align:center; background:#f3f3f3;border:1px solid #d2d2d2;}
+.linkList:after {content:"";display:block;clear:both;}
+.linkList ul {display:table;width:90%; margin:0 auto;}
+.linkList li {display:table-cell;width:36px;height:36px;text-align:center;vertical-align:middle;}
+.linkList li:first-child {padding-left:3px;}
+.linkList li a {display:block;width:36px;height:36px; margin-left:4px; overflow:hidden;background:url(http://img.enuri.info/images/mobilefirst/icon_pack_vip.png) no-repeat 0 -115px;background-size:250px;text-indent:-99999px;}
+.linkList li:first-child a {margin-left:0;}
+.linkList li a.facebook {background-position:-40px -115px;}
+.linkList li a.twiter {background-position:-80px -115px;}
+.linkList li a.line {background-position:-120px -115px;}
+.linkList li a.sns {background-position:-160px -115px;}
+.linkList li a.url {background-position:-200px -115px;}

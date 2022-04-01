@@ -578,7 +578,7 @@ function goScrollTop(){
 	</div>
 	<!-- //20141212 에누리정책 신규 -->
 	<style type="text/css">
-	.bnr_area {background:url(http://imgenuri.enuri.gscdn.com/images/main/bg_footer_bnr.gif) 0 0}
+	.bnr_area {background:url(http://img.enuri.info/images/main/bg_footer_bnr.gif) 0 0}
 	</style>
 	<jsp:include page="/include/IncListFooter_2010.jsp" flush="true"></jsp:include>
 </div>

@@ -1361,7 +1361,7 @@ function enuripcTemplate(json,cate){
 			if(v.modelImgPath.length>0){
 				jsonHtml += "		<img src=\'"+v.modelImgPath+"' alt=\"\">";
 			}else{
-				jsonHtml += "		<img src=\'http://imgenuri.enuri.gscdn.com/images/home/thum_none.gif' alt=\"\">";
+				jsonHtml += "		<img src=\'http://img.enuri.info/images/home/thum_none.gif' alt=\"\">";
 			}
 			jsonHtml += "		 </span>";
 			jsonHtml += "        <span class='tx_wrap'>";
@@ -1380,7 +1380,7 @@ function enuripcTemplate(json,cate){
 			if(v.home_img.length>0){
 				jsonHtml += "		<img src=\'"+STORAGE_ENURI_COM+v.home_img+"' alt=\"\">";
 			}else{
-				jsonHtml += "		<img src=\'http://imgenuri.enuri.gscdn.com/images/home/thum_none.gif' alt=\"\">";
+				jsonHtml += "		<img src=\'http://img.enuri.info/images/home/thum_none.gif' alt=\"\">";
 			}
 			jsonHtml += "</span>";
 	        

@@ -6,11 +6,11 @@
 <META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다.">
 <META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
 <meta name="format-detection" content="telephone=no">
-<link rel="shortcut icon" href="http://imgenuri.enuri.gscdn.com/2014/layout/favicon_enuri.ico">
+<link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
 <title>에누리(가격비교) eNuri.com</title>
 <script type="text/javascript" src="http://www.enuri.com/common/js/lib/jquery-1.9.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="http://imgenuri.enuri.gscdn.com/common/css/eb/default_main.css">
-<link rel="stylesheet" type="text/css" href="http://imgenuri.enuri.gscdn.com/common/css/eb/common_main.css">
+<link rel="stylesheet" type="text/css" href="http://img.enuri.info/common/css/eb/default_main.css">
+<link rel="stylesheet" type="text/css" href="http://img.enuri.info/common/css/eb/common_main.css">
 
 
 </head>
@@ -28,7 +28,7 @@
 <div id="divLoginLayer" style="display:none;position:absolute;z-index:99997;"></div>
 <!-- 자동로그인 경고레이어 -->
 <div id="divLoginAutoAlert" style="display:none;position:absolute;width:306px;height:155px;overflow:hidden;z-index:99998;">
-    <img src="http://imgenuri.enuri.gscdn.com/images/topmenu/login_info.png" id="divLoginAutoAlertImg" width="306" height="155" border="0" usemap="#divLoginAutoAlert" />
+    <img src="http://img.enuri.info/images/topmenu/login_info.png" id="divLoginAutoAlertImg" width="306" height="155" border="0" usemap="#divLoginAutoAlert" />
     <map name="divLoginAutoAlert" id="divLoginAutoAlert"><area shape="rect" coords="289,18,301,31" onclick="hideLoginAutoAlert()" onmouseover="document.getElementById('divLoginAutoAlertImg').style.cursor='pointer'" onmouseout="document.getElementById('divLoginAutoAlertImg').style.cursor='default'" /></map>
 </div>
 <div id="divEventAddr" style="display:none;position:absolute;z-index:99997;"><img id="imgEventAddr" border="0"></div>
@@ -48,14 +48,14 @@
 	<area shape="rect" coords="169,248,224,268" href="JavaScript:closeEventAddr();" />
 </map>
 <div id="Bid_Event" style="display:none;position:absolute;z-index:80;top:140px;left:70px;;">
-    <img src="http://imgenuri.enuri.gscdn.com/images/main/top_login_layer_130146(1).png" onclick="z_change()" usemap="#Bid_Map">
+    <img src="http://img.enuri.info/images/main/top_login_layer_130146(1).png" onclick="z_change()" usemap="#Bid_Map">
 	<map name="Bid_Map" id="Bid_Map">
 		<area shape="rect" coords="568,-2,594,24" href="JavaScript:Bid_EventClose();"/>
 		<area shape="rect" coords="413,601,523,638" href="JavaScript:Top_View_Pop();" />
 	</map>
 </div>
 <div id="bid_layer" style="display:none;position:absolute;top:79px;left:10px;z-index:50;">
-	<img src="http://imgenuri.enuri.gscdn.com/images/main/top_login_layer_130401.png" onclick="z_change1()" usemap="#sdulMap2" border=0>
+	<img src="http://img.enuri.info/images/main/top_login_layer_130401.png" onclick="z_change1()" usemap="#sdulMap2" border=0>
 	<map name="sdulMap2" id="sdulMap2">
 		<area shape="rect" coords="567,0,594,25" href="JavaScript:bid_layerClose();"/>
 		<area shape="rect" coords="393,691,566,741" href="JavaScript:document.location.href='/sdul/mallregister/SellerMain.jsp?sm=2'" />
@@ -95,7 +95,7 @@
                         <li><a href="/deal/main.deal"           target="_blank" onclick="insertLog(12160);">소셜비교</a></li>
                         <li><a href="/department/index.jsp"     target="_blank" onclick="insertLog(12160);">백화점비교</a></li>
                         <li><a href="javascript://" class="enuriApp" onclick="onoff('simpleHeader')">에누리 앱 다운로드</a></li>
-						<li><a class="benefit" href="/eventPlanZone/jsp/shoppingBenefit.jsp" onclick="insertLog(13426);"><img alt="[쇼핑 혜택존] 만원만 사도 5만원으로 돌려받는!" src="http://imgenuri.enuri.gscdn.com/images/main/ico_shop_benefit.gif"></a></li>
+						<li><a class="benefit" href="/eventPlanZone/jsp/shoppingBenefit.jsp" onclick="insertLog(13426);"><img alt="[쇼핑 혜택존] 만원만 사도 5만원으로 돌려받는!" src="http://img.enuri.info/images/main/ico_shop_benefit.gif"></a></li>
                     </ul>
                     <!-- 심플헤더 -->
                     <link rel="stylesheet" href="http://dev.enuri.com/common/css/simple_header.css" type="text/css">
@@ -334,7 +334,7 @@
                         <input type="hidden"    name="owd"              value="" id="owd" >
                         <input name="keyword"  id="keyword" type="text" autocomplete="off" tabIndex="1" class="txt">
                         <a href="#" class="keywordDel">최저가검색</a>
-                        <a href="#" class="toggleAuto" style="margin-left:-20px" ><img id="imgToggleAutoMake" src="http://imgenuri.enuri.gscdn.com/images/home/ico_arrow_down.gif"  /></a>
+                        <a href="#" class="toggleAuto" style="margin-left:-20px" ><img id="imgToggleAutoMake" src="http://img.enuri.info/images/home/ico_arrow_down.gif"  /></a>
                         
                         </form>
                     </span>
@@ -554,7 +554,7 @@
     <div id="app_dn_layer" style="display:none;position:absolute;z-index:1002;width:330px;top:235px;left:230px;">
         <table width="330" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td height="208" align="center" valign="bottom"><img src="http://imgenuri.enuri.gscdn.com/images/main/app_dn_layer.png" width="330" height="208" border="0" usemap="#app_dn_layer" /></td>
+                <td height="208" align="center" valign="bottom"><img src="http://img.enuri.info/images/main/app_dn_layer.png" width="330" height="208" border="0" usemap="#app_dn_layer" /></td>
             </tr>
         </table>
         <map name="app_dn_layer" id="app_dn_layer">
@@ -568,7 +568,7 @@
     <div id="app_dn_layer_car" style="display:none;position:absolute;z-index:1002;width:330px;top:235px;left:230px;">
         <table width="330" border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td height="208" align="center" valign="bottom"><img src="http://imgenuri.enuri.gscdn.com/images/main/app_dn_layer_car.png" width="330" height="208" border="0" usemap="#app_dn_layer_car" /></td>
+                <td height="208" align="center" valign="bottom"><img src="http://img.enuri.info/images/main/app_dn_layer_car.png" width="330" height="208" border="0" usemap="#app_dn_layer_car" /></td>
             </tr>
         </table>
         <map name="app_dn_layer_car" id="app_dn_layer_car">
@@ -771,8 +771,8 @@ function fnOpenTopBanner(){
 <script language="JavaScript">
     var varRanSearch        = 1;
     var menuType            = "5";
-    var IMG_ENURI_COM       = "http://imgenuri.enuri.gscdn.com";
-    var strRanSearchImage   = "http://imgenuri.enuri.gscdn.com/images/event/banner/search_tx_20150605_4.gif";
+    var IMG_ENURI_COM       = "http://img.enuri.info";
+    var strRanSearchImage   = "http://img.enuri.info/images/event/banner/search_tx_20150605_4.gif";
     var thisimg             = 1;
     var intRanSearch2       = 4;
     var intRanSearch3       = 10;
@@ -965,7 +965,7 @@ function sdulLoginAfterDivClose() {
 			<span>전화 : 02-6354-3601</span>
 			<span>팩스 : 02-6354-3600</span>
 			문의 : master@enuri.com
-			<a href="#"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onClick="window.open('http://imgenuri.enuri.gscdn.com/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://imgenuri.enuri.gscdn.com/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a>
+			<a href="#"><img src="http://img.enuri.info/images/layout/btn_faq.gif" alt="문의전클릭" style="cursor:pointer" onClick="insertLog(634);top.location.href='/faq/Faq_List.jsp'"></a> <a href="JavaScript:;" onClick="window.open('http://img.enuri.info/html/etc/Noemail_popup.htm','noEmail','width=379,height=245,left=300,top=300')"><img src="http://img.enuri.info/images/layout/btn_no_email.gif" alt="이메일주소 무단수집거부" /></a>
 		</div>
 
 		<ul class="award_list">
@@ -1070,7 +1070,7 @@ function GotoSDUL_Login(){
   ga('require', 'linkid', 'linkid.js');
   ga('send', 'pageview');
 </script>
-<script language=javascript src="http://imgenuri.enuri.gscdn.com/common/js/Log_Tail.js"></script>
+<script language=javascript src="http://img.enuri.info/common/js/Log_Tail.js"></script>
 
 <!-- 이하 GNB가 있는 페이지 전체에 삽입 -->
 <!-- Google 리마케팅 태그 코드 -->

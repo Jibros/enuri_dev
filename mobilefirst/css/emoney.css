@@ -1,0 +1,918 @@
+@charset "utf-8";
+
+/*common*/
+body{background:#f2f2f2 !important; }
+.fixed_top_empty {padding-top:50px;}
+.shop_contents{position:relative; z-index:1; padding:15px 8px;}
+.shop_contents h2{border-bottom:1px solid #eeeeee; color:#787878; padding-bottom:7px}
+.shop_contents h2.shop{color:#343434}
+.shop_contents h2.shop em{color:#0073be;}
+.shop_contents h2.shop.end{color:#787878; }
+.w_box {background:#ffffff; border-radius:5px; box-shadow: 0px 1px 0px 0px #dfdfdf; padding:10px;}
+.w_box + .w_box{margin-top:10px;}
+.a_c{text-align:center; padding-top:10px;}
+
+.top{background:#1288d5; box-shadow: inset 0px -3px 10px #0b76bb;}
+.top h1{text-align:center; color:#b8dcf2; font-size:13px; font-weight:normal; line-height:20px}
+.top h1 span{height:27px; margin-top:15px; display:inline-block; text-indent:-9999em; width:20px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) 2px 0px no-repeat; background-size:150px; }
+.my_e{text-align:center; }
+.my_e span{display:inline-block; padding:0 20px 0 64px; border-radius:40px; padding-top:5px; height:35px; box-shadow: inset 0px 3px 0px #0973b8; color:#fffc9c; font-family:arial; font-weight:bold; font-size:27px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) 25px -25px no-repeat  #0979c2; background-size:150px; }
+.my_e span em{font-family:malgun-gothic; font-size:13px; font-weight:normal; color:#ffffff; vertical-align:2px;padding-left:2px}
+nav .sgnb{padding:20px 8px 5px 8px;}
+nav .sgnb a{color:#ffffff;}
+nav .sgnb:after{content:""; clear:both; display:block; }
+nav .sgnb li{width:25%; display:inline-block; float:left; color:#ffffff; cursor:pointer; text-align:center; height:23px; position:relative;}
+nav .sgnb li.on:after{content:""; position:absolute; left:0; bottom:0; width:100%; background:#ffffff; height:2px; border-radius:2px;}
+nav .sgnb.five li{width:20%;}
+
+/*button*/
+.btn_chg{background: #ffffff; border: 1px solid #e2e2e2; box-shadow: 0px 1px 0px 0px #f5f5f5; text-align: center; line-height: 28px; color: #5d5d5d; font-size:12px; width:100%;}
+.btn_buy{background: #2d9be2; border: 1px solid #0073be; box-shadow: 0px 1px 0px 0px #f5f5f5; text-align: center; line-height: 32px; color: #ffffff; font-weight:bold; padding:0 20px;}
+.btn_default{background: #ffffff; border: 1px solid #e2e2e2; box-shadow: 0px 1px 0px 0px #e9e9e9; border-radius:4px; text-align: center; line-height: 32px; color: #343434; padding:0 20px;}
+.btn_apply{background: #ffffff; border: 1px solid #e2e2e2; box-shadow: 0px 1px 0px 0px #e9e9e9; border-radius:4px; text-align: center; line-height: 32px; color: #343434; padding:0 40px;}
+.btn_apply em{padding-left: 24px; background: url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -54px 0 no-repeat; background-size:150px; line-height:18px; display: inline-block;}
+.btn_view{font-size:13px; background: #ffffff; border: 1px solid #e2e2e2; border-radius:4px; text-align: center; line-height: 28px; color: #343434; padding:0 10px; margin-left:3px; vertical-align:1px;}
+.btn_close{font-size:12px; background: #ffffff; border: 1px solid #e2e2e2; border-radius:2px; text-align: center; line-height: 22px; color: #343434; padding:0 28px; box-shadow: 0px 1px 0px 0px #e9e9e9;}
+
+/*상점*/
+.shopList{padding-bottom:5px;}
+.shopList:after {content:"";display:block;clear:both;}
+.shopList li{float:left; display:inline-block; width:33.3%; cursor:pointer;padding-top:15px; text-align:center;}
+.shopList li:first-chlid{width:33.4%}
+.shopList li a{display:block; padding:0 8px;}
+.shopList li span.tit{display:block;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2;color:#787878; font-size:12px; padding-top:5px; width:100%; height:30px; line-height:15px;}
+.shop_contents h2.shop img{width:24px; vertical-align:middle; padding:0 3px}
+.shopList li strong{font-family:arial; display:block; color:#343434; margin:2px 0 3px 0}
+.shopList li strong em{font-family:malgun-gothic; font-size:10px; font-weight:normal; vertical-align:1px;}
+.shopList li img{width:100%;}
+.shopList.type02 li{width:25%;}
+
+@media only screen and (max-width : 320px) {
+.shopList li strong{font-size:12px;}
+}
+
+.goods{padding:15px 28px;}
+.goods .w_box{margin-top:0;}
+.prodbox li{position:relative;}
+.prodbox .info_img{text-align:center; display:block; }
+.prodbox .info_img img{width:100%; }
+.prodbox strong{font-weight:normal; padding:10px 0; display:block; border-top:1px solid #eeeeee; margin-top:10px}
+.prodbox .price{display:block; color:#343434; margin:-2px 0 3px 0; font-size:24px; font-family:arial; font-weight:bold}
+.prodbox .price em{font-family:malgun-gothic; font-size:14px; font-weight:normal; vertical-align:1px;}
+.prodbox button.btn_buy{position:absolute; right:0; bottom:-2px;}
+
+.whitebg{background:#ffffff; }
+.infotxt dt{color:#171717; padding-bottom:3px}
+.infotxt dd{font-size:12px; color:#787878; padding-bottom:10px}
+.infotxt dd .refund{display:block; margin-top:5px; }
+.infotxt dd .refund button{border:1px solid #e2e2e2; border-radius: 4px; background: #eeeeee; color:#333333; line-height:23px; padding:0 10px; font-size:12px;}
+
+/*적립내역*/
+.savingList li{background:#ffffff; border-radius:4px; margin-bottom:7px; position:relative; box-shadow: 0px 1px 0px 0px #e9e9e9; height:60px; padding:0 10px; line-height:15px !important;}
+.savingList li .date{font-size:11px; color:#bbbbbb;display:block; padding:7px 0 1px 0; text-align:left;}
+.savingList li strong{width:60%; display:block; color:#343434; font-weight:normal; height:30px; overflow:hidden; line-height:15px; text-align:left;}
+.savingList li strong .refund{color:#ff4a57; padding-right:2px}
+.savingList li .point{font-size:18px; color:#1288d5; position:absolute; right:10px; top:18px; font-weight:bold; font-family:arial; }
+.savingList li .point em{font-family:malgun-gothic; font-size:13px; font-weight:normal; vertical-align:1px;}
+.savingList li .point.minus{color:#bbbbbb; }
+.savingList button{border:1px solid #e2e2e2; border-radius:4px; background:#ffffff; padding:3px; top:15px !important; width:90px; text-align:right}
+
+.myinfo{font-size:13px; color:#787878; padding:7px 0 15px 0px; position:relative; }
+.myinfo ul:after {content:"";display:block;clear:both;}
+.myinfo button{position:absolute; right:0; top:7px;}
+.myinfo li{float:left; background:#ffffff; width:49px; border:1px solid #e2e2e2;border-width:1px 1px 1px 0px; height: 21px; padding-top:7px;}
+.myinfo li a{color:#bbbbbb; text-align:center; display:block; }
+.myinfo li.on{box-shadow: inset 0px 1px 0px #0973b8; background:#1288d5}
+.myinfo li.on a{color:#ffffff; }
+.myinfo li:first-child{border-radius:4px 0 0 4px; border-width:1px 1px 1px 1px;}
+.myinfo li:last-child{border-radius:0 4px 4px 0; border-left:none;}
+.paging{background:none;}
+.paging li a{color:#b5b5b5}
+
+.dim{width: 100%; height:100%; position:fixed; left: 0; top: 0; background:url(http://img.enuri.info/images/mobilenew/images/layer_back.png); z-index:10}
+.myarea{position:absolute; left:0; top:50%; width:100%; margin: -180px 0px auto 0px; }
+.myarea.refund{top:50%; width:100%; margin: -215px 0px auto 0px; }
+.my_info{padding:0 20px; z-index:11; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
+h4.lose{background:#0073be; color:#ffffff; text-align:center; line-height:30px; font-size:16px; font-weight:normal; }
+h4.lose em{display:inline-block; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -103px -73px no-repeat; background-size:150px; width:19px; text-indent:-9999em; }
+.lose_list{padding:15px 5px; background:#ffffff; }
+.lose_list ul{max-height:250px; overflow:auto;}
+.close{position:absolute; right:30px; top:13px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -126px -80px no-repeat; background-size:150px; width:16px; height:16px; text-indent:-9999em;}
+.my_info li{line-height:34px; border-bottom:1px solid #e2e2e2; color:#262626; }
+.my_info li .day{width:98px; display:inline-block; color:#c7c7c7; font-family:arial; font-weight:bold; text-indent:5px}
+.my_info li:last-child{border-bottom:none; }
+.my_info li:nth-child(1) .day, .my_info li:nth-child(2) .day, .my_info li:nth-child(3) .day{color:#ff4a57;}
+.my_info li em{color:#bbbbbb; font-size:13px;}
+
+.mall_list{margin:40px 20px 10px 20px; background:#ffffff; text-align:center; border-radius:4px;}
+.mall_list h4{font-size:12px; padding:5px 0; font-weight:normal;}
+.mall_list ul:after{content:"";display:block;clear:both;}
+.mall_list ul{padding:0 10px;}
+.mall_list li{float:left; width:33.3%; padding:0 10px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.mall_list li img{width:100%; }
+
+/*쿠폰함*/
+.couponList{padding-top:10px;}
+.couponList:after {content:"";display:block;clear:both;}
+.couponList li{float:left; display:inline-block; width:50%; cursor:pointer; text-align:center; padding:5px 5px 0; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; position:relative;}
+.couponList li a{display:block; padding:5px; border:1px solid #e2e2e2; }
+.couponList li span.tit{display:block;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2;text-align:left; color:#343434; font-size:12px;padding:5px 5px 0px; height:30px;line-height:15px;}
+.couponList li img{width:100%;}
+.couponList li .end{position:absolute; left:2px; top:5px; padding:6px 4px 4px; color:#ffffff; border:1px solid #787878; background:#787878; font-size:13px; width:30px; box-shadow:0px 3px 0px rgba(0, 0, 0, 0.1); display:block; line-height:14px}
+.couponList li .near{position:absolute; left:2px; top:5px; padding:6px 4px 4px; color:#ffffff; border:1px solid #ef1c2b; background:#ff2131; font-size:13px; width:30px; box-shadow:0px 3px 0px rgba(0, 0, 0, 0.1); display:block; line-height:14px}
+.couponList li .day{position:absolute; left:2px; top:5px; padding:12px 4px 4px; color:#ffffff; border:1px solid #787878; background:#787878; font-size:13px; width:30px; height:23px; box-shadow:0px 3px 0px rgba(0, 0, 0, 0.1); display:block;}
+.coupon_img{position:relative;}
+.coupon_img img{width:100%; }
+.coupon_img .end{text-align:center; z-index:10; position:absolute; left:-2px; top:-2px; padding:9px 0 7px 0; color:#ffffff; border:1px solid #787878; background:#787878; width:45px; box-shadow:0px 3px 0px rgba(0, 0, 0, 0.1); display:block; line-height:14px}
+.layer_back{position: absolute; top: 0;  left: 0; width: 100%; margin: 0 auto; height: 100%; opacity: .8; background: #ffffff; }
+
+/* 문의하기 탭 */
+.faq_tab{overflow:hidden;padding:0px 3.125%;margin-top:15px;}
+.faq_tab li{overflow:hidden;float:left;width:50%;border-radius:4px 4px 0 0;text-align:center;background:#e2e2e2;}
+.faq_tab li.on{background:#fff;}
+.faq_tab li a{display:block;line-height:35px;font-size:13px;color:#787878}
+.faq_tab li.on a{color:#333333;}
+
+.faq_con{width:100%;background:#fff;}
+.faq_con > li{display:none;}
+.faq_con > li.on{display:block;}
+.faq_con > li .empty{width:100%;height:67px;padding:38px 0px;background:url(http://img.enuri.info/images/event/2016/emoney/faq/faq_empty.png) no-repeat 50% 38px;background-size:215px 67px;text-indent:-9999em;}
+
+/*자주묻는질문*/
+.wrap h3{color:#171717; text-indent:9px ; font-weight:normal; padding:10px 0 0 0}
+.faq{background:#ffffff}
+.faq li{border-bottom:1px solid #e2e2e2; color:#787878; padding:10px 10px 10px 30px; position:relative; cursor:pointer}
+.faq li:after{content:""; position:absolute; left:7px; top:9px; width:18px; height:18px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) 0 -79px no-repeat; background-size:150px; }
+.faq li:first-child{border-top:none !important; }
+.faq.my_faq li{padding-left:57px;}
+.faq.my_faq li:after{top:11px;width:38px;height:14px;background:url(http://img.enuri.info/images/event/2016/emoney/faq/ico_my_faq1.gif) no-repeat 0 0;background-size:100%}
+.faq.my_faq li.on:after{background-position:0px -16px;}
+
+.faq_view dt{border-bottom:1px solid #0073be; color:#ffffff; padding:10px 10px 10px 30px; background:#3b9edf; position:relative;}
+.faq_view dt:after{content:""; position:absolute; left:7px; top:9px; width:18px; height:18px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -25px -79px no-repeat; background-size:150px; }
+.faq_view dd{border-bottom:1px solid #bbbbbb; padding:12px 30px; font-size:13px; color:#787878; background:#ffffff; position:relative;}
+.faq_view dd:after{content:""; position:absolute; left:7px; top:9px; width:18px; height:18px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -50px -79px no-repeat; background-size:150px; }
+.faq_view dd .mall{display:block; padding-left: 8px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 2px -42px no-repeat; background-size: 50px;}
+
+/* 1:1문의하기 */
+.inner_padding{padding:10px 10px 30px;}
+.ip_txt{width:100%;padding:0px 5px;border:1px solid #ced2d7;height:30px;box-sizing:border-box;-webkit-box-sizing:border-box;font-size:14px;}
+.ip_sel{width:100%;height:30px;padding:0px 0px 0px 5px;border:1px solid #ced2d7;background:#fff url(http://img.enuri.info/images/event/2016/emoney/faq/bg_select.gif) no-repeat 100% 0;background-size:29px 28px;}
+.ip_sel option{color:#787878;}
+.tit01{display:block;padding:9px 0px 9px 4px;color:#333333;}
+.tit01 span{padding-left:7px;font-size:12px;color:#1288d5}
+.white_box{margin-top:7px;padding:7px 7px 7px 11px;background:#fff;}
+.white_box .txt_blue{display:block;font-size:12px;color:#1288d5;}
+.white_box.off{display:none;}
+.my_view_box{overflow:hidden;border-radius:10px;padding:0px 5px;background:#fff;}
+.white_box dl{overflow:hidden;}
+.white_box dt,.white_box dd{float:left;margin-top:7px;}
+.white_box dt{width:28%;height:30px;line-height:30px;}
+.white_box dd{width:72%;}
+.white_box dt span{padding-left:6px;background:url(http://img.enuri.info/images/event/2016/emoney/faq/ico_dot.gif) no-repeat 0 50%;background-size:3px 3px;}
+.form_box{font-size:0;}
+.form_box .ip_sel{margin-left:2%;}
+.form_box .ip_sel:first-child{margin-left:0px;}
+.textarea{overflow:auto;width:100%;height:145px;border:1px solid #ced2d7;padding:10px;box-sizing:border-box;-webkit-box-sizing:border-box;resize:none;}
+.mt6{margin-top:6px;}
+
+.file_box {width:100%;position:relative;}
+.file_box .process01{}
+.file_box .process02{display:none;}
+.file_box .file_info{position:relative;width:100%;height:30px;padding-right:30px;border:1px solid #ced2d7;background:#edf1f5;box-sizing:border-box;-webkit-box-sizing:border-box;color:#333333;}
+.file_box .file_info input[type="text"]{width:100%;padding-left:10px;height:28px;line-height:28px;background:none;border:none;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.file_box .file_info .btn_file_close{position:absolute;display:block;padding:7px;top:0px;right:0px;width:15px;height:15px;background:url(http://img.enuri.info/images/event/2016/emoney/faq/ico_x.png) no-repeat 50% 50%;background-size:50%;text-indent:-9999em;}
+.file_box .file_text_box{overflow:hidden;padding-right:100px;}
+.file_box span.txt{position:absolute;width:100%;top:5px;left:346px;font-size:11px;}
+.file_text {float:left; width:100%;padding:0px 10px; height:30px; border:1px solid #ced2d7;box-sizing:border-box;-webkit-box-sizing:border-box;}
+.file_wrap {overflow:hidden;border-radius:4px;display:inline-block; width:95px; height:29px;line-height:26px; border:1px solid #ced2d7;background:#edf1f5;color:#54748c;position: absolute; top:0; right:0px;box-sizing:border-box;-webkit-box-sizing:border-box;text-align:center;box-shadow: 0px 1px 0px 0px #e9e9e9;-webkit-box-shadow: 0px 1px 0px 0px #e9e9e9; }
+.file_add {filter:alpha(opacity=0); opacity:0;position:absolute;top:0px;left:0px;width:100%; height:30px; cursor:pointer;}
+
+.my_que{font-size:15px;}
+.my_que .tit01{padding:15px 5px 10px;}
+.my_que table{table-layout:fixed;width:100%;border-collapse:collapse;border-bottom:1px solid #e2e2e2;font-size:13px;}
+.my_que table th,.my_que table td{border-top:1px solid #e2e2e2;color:#aaa;text-align:left;padding:11px 5px;}
+.my_que table td{color:#333;}
+.my_que dl{font-size:13px;color:#333;}
+.my_que dt{padding:15px 5px}
+.my_que dt .info{overflow:hidden;padding-top:23px;}
+.my_que dt .info .tel{display:inline-block;float:left;padding-top:10px;color:#aaa;}
+.my_que dt .info .btn_img_view{overflow:hidden;float:right;border-radius:4px;display:inline-block; width:95px; height:29px;line-height:27px; border:1px solid #ced2d7;background:#edf1f5;color:#54748c;box-sizing:border-box;-webkit-box-sizing:border-box;text-align:center;box-shadow: 0px 1px 0px 0px #e9e9e9;-webkit-box-shadow: 0px 1px 0px 0px #e9e9e9; }
+.my_que dd{border-top:1px dashed #959595; padding:12px 12px 12px 30px; font-size:13px; color:#333333; background:#ffffff; position:relative;}
+.my_que dd:after{content:""; position:absolute; left:7px; top:11px; width:18px; height:18px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -50px -79px no-repeat; background-size:150px; }
+
+.btn_area{margin-top:15px;font-size:0;}
+.btn_area.center{text-align:center;}
+.btn_area .btn_s{overflow:hidden;width:49%;height:35px;line-height:33px;border-radius:4px;border:1px solid #e2e2e2;background:#fff;box-sizing:border-box;-webkit-box-sizing:border-box;box-shadow:0px 1px 0px 0px #e9e9e9;-webkit-box-shadow:0px 1px 0px 0px #e9e9e9;}
+.btn_area .btn_blue{float:right;border-color:#0073be;background:#2d9be2;color:#fff;}
+
+.faq_view dd{border-bottom:1px solid #bbbbbb; padding:12px 30px; font-size:13px; color:#787878; background:#ffffff; position:relative;}
+.faq_view dd:after{content:""; position:absolute; left:7px; top:9px; width:18px; height:18px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -50px -79px no-repeat; background-size:150px; }
+.faq_view dd .mall{display:block; padding-left: 8px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 2px -42px no-repeat; background-size: 50px;}
+
+
+
+/*이용약관*/
+.agreement{width:100%; padding-top:10px;}
+.tab{width:100%;overflow:hidden; padding:0 12px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+.tab li{float:left; width:33.3%; }
+.tab li:after{width:33.4%}
+.tab li a {border-radius:4px 4px 0 0;font-size:13px; display:block; text-align:center; color:#787878; text-decoration:none; background:#e2e2e2; padding:10px 0;}          
+.tab li a:hover,
+.tab li.on a {color:#171717;background:#ffffff}        
+.cont_area{clear:both; padding:20px;background:#ffffff}
+
+@media only screen and (max-width : 320px) {
+.agreement .tab li a{font-size:12px; letter-spacing:-1px}
+}
+
+/*app 팝업*/
+.layerbg{background:#ffffff !important}
+.app_pop{background:url(http://img.enuri.info/images/mobilefirst/reward/bg_app.png) 0 0 repeat-x; background-size:16px 172px;}
+.mvisual{background:url(http://img.enuri.info/images/mobilefirst/reward/app_topimg.png) center top no-repeat; background-size:320px; height:290px; text-indent:-9999em;}
+.app_pop dl{width:290px; margin:0 auto; }
+.app_pop dt{color:#171717; font-size:16px; padding:10px 0 5px 0; }
+.app_pop dt button{width:82px; display:inline-block; margin-left:5px; line-height:22px; vertical-align:3px;}
+.app_pop dd{color:#787878; font-size:12px; position:relative; padding-left:7px;}
+.app_pop dd:after{position:absolute; left:0; top:0; content:"-";}
+.btnarea{text-align:center; padding:35px 0 20px 0; }
+.btnarea button{width:290px; padding:0;}
+.btnarea button:nth-child(2){display:none;}
+.btnclose{position:absolute; right:5px; top:5px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) -70px -74px no-repeat; background-size:150px; text-indent:-9999em; width:30px; height:30px;}
+.agree_list{padding:15px; background:#ffffff; }
+.scll{height:300px; overflow:auto; }
+
+/*혜택안내*/
+.benefit{background: #ffffff}
+.benefit img{width:100%;}
+.superimg{background:url(http://img.enuri.info/images/mobilefirst/reward/img_benefit.png) center top no-repeat; background-size:320px 800px; height:800px; text-indent:-9999em; }
+
+/*이머니 안내팝업*/
+.infopop{width:100%; }
+.infopop .cont_area{padding:15px}
+.infopop .tab{background:#f2f2f2}
+.infopop .tab li, .infopop .tab li:first-child{width:50%;}
+h5{color:#343434; font-size:16px; font-weight:normal; line-height:20px; padding:0 0 10px 15px; background:#f2f2f2}
+h5 em{height:17px; margin-top:15px; display:inline-block; text-indent:-9999em; width:16px; background:url(http://img.enuri.info/images/mobilefirst/reward/icoset.png) 0 -114px no-repeat; background-size:150px; }
+h5 span{display:block; font-size:13px; color:#0073be; }
+.ramen_txt li{font-size:12px; color:#787878; padding-left:8px; position:relative;}
+.ramen_txt li:after{content:"-"; position:absolute; left:0; top:0; }
+.ramen_txt li strong{color:#343434; }
+
+.howto{width:100%; margin:0 auto; }
+.howto:after{content:""; clear:both; display:block; }
+.howto li{width:50%; float:left; padding:20px 10px 0 10px; box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box; color:#171717; font-size:13px; }
+.howto li div{width:120px; margin:0 auto; }
+.howto li img{width:120px; height:180px; background:#ebebeb; }
+.howto li span{display:block; padding-bottom:5px; font-size:12px; }
+
+@media only screen and (max-width : 320px) {
+.howto li span{font-size:11px; }
+}
+
+.refresh{width:21px; height:21px; background:url(http://img.enuri.info/images/mobilefirst/reward/ico_refresh.png) 0 0 no-repeat; background-size:21px; border:none; text-indent:-9999em; margin-left:3px;}
+
+/*스토어 카테고리*/
+.cate{margin:15px auto 5px;}
+.cate:after{clear:both; content:""; display:block; }
+.cate li{float:left; width:20%; text-align:center; height:58px;}
+.cate li span{width:53px; padding-top:45px; display:block; margin:0 auto; color:#787878; font-size:11px; position:relative; }
+.cate li.on span{color:#1288d5}
+.cate li span:after {content:""; background:url(http://img.enuri.info/images/mobilefirst/reward/cate_icon.png) 0 0 no-repeat; background-size:214px; position:absolute; width:41px; height:41px; display:block; top:0; left:6px;}
+
+.cate li:nth-child(1) span:after{background-position: 0 0}
+.cate li:nth-child(2) span:after{background-position: -172px 0}
+.cate li:nth-child(3) span:after{background-position: -86px 0}
+.cate li:nth-child(4) span:after{background-position: -43px 0}
+.cate li:nth-child(5) span:after{background-position: -129px 0}
+
+.cate li.on:nth-child(1) span:after{background-position: 0 -44px; }
+.cate li.on:nth-child(2) span:after{background-position: -172px -44px; }
+.cate li.on:nth-child(3) span:after{background-position: -86px -44px; }
+.cate li.on:nth-child(4) span:after{background-position: -43px -44px; }
+.cate li.on:nth-child(5) span:after{background-position: -129px -44px; }
+
+.no_msg{display:none; text-align:center; padding:73px 0 24px 0; background:url(http://img.enuri.info/images/mobilefirst/reward/ico_close.png) center 25px no-repeat; background-size:41px; color:#bbbbbb; font-size:13px; }
+
+.benefit_guide{background:#fff;}
+.e_list li{width:100%; border-top: 1px dashed #595959; }
+
+
+/* footer */
+.footer{width:320px; margin:0 auto; }
+footer{color:#77787b; width:100%; background:#d3d4d5; }
+footer{content:"";display:block;clear:both;}
+footer p {font-size:11px; color:#707078;}
+footer .alert {padding:8px 12px;border-bottom:1px dashed #c1c1c2;}
+footer .cop {padding:8px 12px;}
+footer .info {padding:0 12px 8px 12px;} 
+footer .info span{padding-left:10px;}
+footer .footNav1 {background: #dddee1; border-top: 1px solid #c8c9c9; border-bottom: 1px solid #c8c9c9;}
+footer .footNav1 li {float: left; width: 25%;}
+footer .footNav1 li a {position: relative; display: block; height: 32px; padding: 7px 0 0; text-align: center; font-size: 13px; box-sizing: border-box;  -webkit-box-sizing: border-box; -moz-box-sizing: border-box;}
+footer em{color:#c0c1c3; padding:0 6px; display:inline-block; }
+footer .rule:after {content:"";display:block;clear:both;}
+footer .rule li{float:left; padding:0 15px; height:30px;}
+footer .rule li:first-child{padding:0 15px 0 12px}
+footer .rule li a{display:block; text-align:center; color:#6b6b6b; height:20px; padding-top:5px; position:relative; font-size:11px;}
+footer .rule li:nth-child(2){font-weight:bold; }
+footer .rule li a:after {content:"";position:absolute;top:9px;left:-15px;display:block;width:1px;height:10px;background:#acadb0;}
+footer .rule li:first-child a:after{background:none;}
+
+/*쿠폰발급전*/
+.goods .shop_info{font-size:13px; border-bottom:1px solid #eeeeee; padding-bottom:8px; margin-bottom:10px;}
+.goods .shop_info:after{clear:both; display:block; content:""}
+.goods .shop_info dt{width:40%; float:left;}
+.goods .shop_info dd{width:60%; float:left; text-align:right; color:#0073be}
+
+
+/* 2016-09-01 */
+.faq_img{padding:10px 0px;}
+	.faq_img img{width:100%;}
+	ul.indent li{padding-left:0.6em;text-indent:-0.6em;}
+	ul.faq5{overflow:hidden;}
+	ul.faq5 li{float:left;width:48%;margin-top:15px;}
+	ul.faq5 li:nth-child(even){float:right;}
+	ul.faq5 li img{width:100%;}
+	ul.faq5 li p{text-indent:-1.2em;padding-left:1.2em;letter-spacing:-0.05em;min-height:34px;padding-bottom:5px;}
+
+/* 환불상세 */
+.refund_box{background:#ffffff; border-radius:5px; box-shadow: 0px 1px 0px 0px #dfdfdf; margin:8px; padding:13px 10px 13px 120px; position:relative; min-height:100px;}
+.refund_box .thum{position:absolute; left:13px; top:13px;}
+.refund_box .thum img{width:100px; height:100px;}
+.refund_box strong{font-weight:normal; height:35px; overflow:hidden; display:block; margin-bottom:10px; display: table-cell; vertical-align: middle;}
+.refund_box .emo{font-size:12px; color:#bbbbbb; }
+.refund_box .emo em{color:#1288d5; }
+.refund_box .emo em b{font-size:24px; font-family:arial; letter-spacing:-1px; margin:0 1px 0 5px; vertical-align:-1px;}
+.refund_box .date{font-size:12px; color:#bbbbbb; margin-top:10px;}
+.refund_box .date em{color:#666666; padding-right:3px}
+.note{font-size:12px; color:#999999; position:relative; padding-left:12px; margin:0 8px;}
+.note:after{content:"※"; position:absolute; left:0; top:0; }
+.refund_area{background:#f2f2f2; padding-top:1px; max-height:400px; overflow: auto;}
+
+
+/*시스템 점검 레이어*/
+.checkLayer{z-index:100;width:252px; height:350px; margin: -175px 0px auto -126px; position:absolute; left:50%; top:50%; background:#373c40; position:absolute; }
+.checkLayer .txt{height:315px; background: url(http://img.enuri.info/images/m_home/system_chk.gif) center 23px no-repeat #ffffff; background-size:245px 285px; text-indent:-9999em; }
+.checkLayer ul{width:100%; }
+.checkLayer ul li img{width:300px; height:162px; }
+.checkLayer .frontbtn{color:#ffffff}
+.checkLayer span{box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; height:36px; display:inline-block; text-align:center; font-weight:normal; font-size:12px; position:relative; padding-top:10px}
+.checkLayer span a{background: url(http://img.enuri.info/images/m_home/front_close.gif) right 2px no-repeat; background-size:25px; background-size:11px; color:#ffffff; padding-right:15px}
+.checkLayer span:first-child{width:70%; border-right:1px solid #35373e;}
+.checkLayer span:last-child{width:30%;border-left:1px solid #626467;}
+
+
+/*아이디어*/
+.save_con{padding:20px 0}
+.save_con p{padding-bottom:5px;}
+.setting_head{border-radius:10px; background:#ffffff; border:1px solid #e3e3e3}
+.shop_contents .sm{font-size:12px; color:#888888; }
+.setting_head li{text-indent:10px; padding:5px 0; border-bottom:1px solid #e3e3e3; line-height:30px;}
+.setting_head li:last-child{border-bottom:none;}
+.setting_head input{width:15px; height:15px; }
+.setting_head input[type='radio']{background: url(http://img.enuri.info/images/home/chk_radio.png) left top no-repeat ;}
+.setting_head input[type='radio']:checked{background: url(http://img.enuri.info/images/home/chk_radio.png) left -30px no-repeat ;}
+.setting_head li select {margin-left:10px;border-radius:5px; vertical-align:-1px; line-height:25px; padding:0 25px 0 5px;background:url(http://img.enuri.info/images/mobilenew/images/bg_select2.png) no-repeat right 10px; background-size:18px;font-size:13px;color:#4c5363;}
+.shop_contents .all_end{box-sizing: border-box;  -webkit-box-sizing: border-box; -moz-box-sizing: border-box; width:100%; font-size:13px; background: #1288d5; border: none; border-radius:5px; text-align: center; line-height:27px; color:#ffffff; padding:3px 0; margin:7px 0}
+
+
+/*e머니 적립레이어*/
+.saveLayer{width:310px; padding-bottom:25px; margin-left: -155px; background:#e8ebf2; position:absolute; left:50%; top:50%; -webkit-transform: translateY(-50%); transform: translateY(-50%);}
+.saveLayer .txt{letter-spacing:-0.5px; font-size:12px; width:300px; margin:55px auto 20px; background:#ffffff; padding:18px 10px 10px; box-sizing: border-box;  -webkit-box-sizing: border-box; -moz-box-sizing: border-box; position:relative; }
+.saveLayer .txt h1{font-size:22px; color:#2d9fe8; letter-spacing:-2px; position:absolute; top:-40px; left:0; width:100%; text-indent:55px; }
+.saveLayer .txt h1:after{content:""; width:62px; height:62px; background: url(http://img.enuri.info/images/m_home/e_ico.png) 0 0 no-repeat; background-size:62px; position:absolute; left:-9px; top:-5px;}
+.saveLayer .txt h2{padding-top:10px}
+.saveLayer .txt .red{color:#ff3333; }
+.saveLayer .txt span{color:#999999; font-size:10px; padding-top:15px; display:block; }
+.saveLayer .txt dl{border-radius:5px; border:1px solid #e2e2e2; padding:0 5px 5px 5px; margin-top:5px; }
+.saveLayer .txt dt{color:#2d9fe8; padding-top:3px}
+.saveLayer .txt dd{padding-left:7px; position:relative;}
+.saveLayer .txt dd:after{content:"-"; position:absolute; left:0; top:0;}
+.saveLayer .box{border-radius:5px; border:1px solid #e2e2e2; padding:10px; margin:10px 0 5px; }
+.saveLayer .box li{line-height:20px; }
+
+.saveLayer .frontbtn{color:#ffffff; background: #373c40; position:absolute; left:0; bottom:-1px; width:100%; }
+.saveLayer .frontbtn span{box-sizing:border-box; -moz-box-sizing:border-box;  -webkit-box-sizing:border-box; height:36px; display:inline-block; text-align:center; font-weight:normal; font-size:12px; position:relative; padding-top:10px}
+.saveLayer .frontbtn span a{background: url(http://img.enuri.info/images/m_home/front_close.gif) right 3px no-repeat; background-size:11px; color:#ffffff; padding-right:15px}
+.saveLayer .frontbtn span:first-child{width:70%; border-right:1px solid #35373e;}
+.saveLayer .frontbtn span:last-child{width:30%;border-left:1px solid #626467;}
+.saveLayer .txt p{padding-top:5px}
+
+/*스토어아이콘*/
+.mark{background: url(http://img.enuri.info/images/mobilefirst/reward/ico_pcm.png) 0 0 no-repeat; background-size:53px; text-indent:-9999em; display:block; }
+.mark.ico_pc{position:absolute; right:2px; top:2px; background-position:-27px -29px; width:16px; height:16px;}
+.mark.ico_mobile{position:absolute; right:2px; top:2px; background-position:0 -28px; width:16px; height:16px;}
+
+.mark.ico_big_pc{position:absolute; top:10px; background-position:-27px 0; width:26px; height:26px;}
+.mark.ico_big_mobile{position:absolute; top:10px; background-position:0 0; width:26px; height:26px;}
+
+.refund_box .mark{left:10px; z-index:100}
+.couponList .mark{right:10px; z-index:100}
+
+.ico_txt{text-align:center; color:#333333; font-size:12px; padding:10px 0;}
+.ico_txt .mark{position:static; display:inline-block; vertical-align:middle; margin-right:2px;}
+
+
+/* 
+	e머니 적립 신청 단계 추가
+	날짜 : 2018-03-08
+	작업자 : 지승호 
+*/
+
+/* 폰트 */
+@font-face {
+    font-family: 'Noto Sans Korean';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Noto Sans Regular'), local('NotoSans-Regular'),
+    url(/common/fonts/NotoSansKR-Regular-Hestia.eot),
+    url(/common/fonts/NotoSansKR-Regular-Hestia.eot?#iefix) format('embedded-opentype'),
+    url(/common/fonts/NotoSansKR-Regular-Hestia.woff) format('woff'),
+    url(/common/fonts/NotoSansKR-Regular-Hestia.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto Sans Korean';
+    font-style: normal;
+    font-weight: 500;
+    src: local('Noto Sans Medium'), local('NotoSans-Medium'),
+    url(/common/fonts/eot/NotoSansKR-Medium-Hestia.eot),
+    url(/common/fonts/NotoSansKR-Medium-Hestia.eot?#iefix) format('embedded-opentype'),
+    url(/common/fonts/NotoSansKR-Medium-Hestia.woff) format('woff'),
+    url(/common/fonts/NotoSansKR-Medium-Hestia.otf) format('opentype');
+}
+
+.emoneywrap {
+	overflow:hidden;
+	background-color:#fff;
+}
+.emoneywrap * {
+	font-family:"Noto Sans Korean";
+}
+.emoneywrap .eico {	
+	display:inline-block; 
+	font-size:0; 
+	text-indent:-9999px; 
+	vertical-align:top;
+	background:url(http://img.enuri.info/images/mobilefirst/reward/ico_emoney.png) no-repeat; 
+	background-size:150px;
+}
+ 
+.ehead {
+	overflow:hidden;
+	width:100%;
+	background-color:#fff;
+}
+.ehead.is-fixed {
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1000;
+}
+.ehead__my {
+	position:relative;
+	width:100%;
+	height:21px;
+	margin:29px 0 13px;
+	text-align:center;
+}
+.ehead__my .eico.emoney {
+	width:47px; 
+	height:21px; 
+	margin-top:2px;
+	margin-right:2.5%;
+	background-position:0 0;
+}
+.ehead__my .emoney {
+	font-size:19px;
+	color:#222;
+	line-height:21px;
+}
+.ehead__my .emoney .numb {
+	font-size:24px;
+	color:#2d9fe8;
+	vertical-align:-1px;
+}
+.ehead__my .ebtn.expiring {
+	position:absolute;
+	top:-2.5px; 
+	right:10px;
+	padding:1px 8px;
+	border-radius:2px;
+	border:1px solid #ddd;
+	font-size:12px;
+	line-height:21px;
+	color:#666;
+	background-color:#fff;
+}
+
+.enav {
+}
+.enav__list {
+	overflow:hidden;
+	width:100%;
+	border-bottom:1px solid #ddd;
+}
+.enav__item {	
+	display:inline;
+	float:left;
+	width:25%;
+	height:30px;
+	border-bottom:2px solid #fff;
+}
+.enav__item.is-on {
+	
+	border-bottom:2px solid #2d9fe8;
+}	
+.enav__item > a {
+	display:block;
+	font-size:15px;
+	color:#666;
+	text-align:center;
+	line-height:30px;
+	vertical-align:middle;
+}
+.enav__item.is-on > a {
+	font-weight:500;
+	color:#2d9fe8;
+}
+
+.econts {
+	clear:both;
+	padding:5px;
+	background-color:#f2f2f2;
+}
+
+/* econts 내 각 성향에 맞는 div 클래스 생성 ex).ebox */
+.ebox {
+	width:100%;
+}
+
+/* 모두 적립 받기 */
+.ebox__saveall {
+	overflow:hidden;
+	clear:both;
+	padding:5px;
+	border-bottom:1px solid #ddd;
+	background-color:#fff;
+}
+.ebox__saveall .btn {
+	width:100%;
+	height:40px;
+	border-radius:3px;
+	border:1px solid #3d4270;
+	box-shadow:0 3px 2px 0 #eee;
+}
+.ebox__saveall .btn .eico.down {
+	display:inline-block;
+	width:20px;
+	height:18px;
+	margin:0 auto 0 5px;
+	background-position:0 -25px;
+}
+/* 적립내역 없을 때 */
+.ebox__nodata {
+	
+}
+.ebox__nodata .nodata {
+	text-align:center;
+	
+}
+.ebox__nodata .nodata .ico {
+	display:block;
+	width:70px;
+	height:70px;
+	margin:15px auto 10px;
+	line-height:70px;
+	vertical-align:middle;
+}
+.ebox__nodata .nodata .ico .eico.elogo {
+	display:block;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background-position:0 -75px;
+}
+.ebox__nodata .nodata .txt {
+	display:block;
+	margin-bottom:15px;
+	font-size:14px;
+	color:#999;
+	text-align:center;
+	line-height:1;
+	vertical-align:top;
+}
+
+/* e머니 적립 방법 안내 */
+.emoney__saveinfo {
+	display:block;
+	margin-bottom:30px;
+	padding:20px;
+	border-bottom:1px solid #ddd;
+	background-color:#fff;
+}
+.emoney__saveinfo .tit {
+	margin-bottom:10px;
+	font-weight:bold;
+	font-weight:500;
+	font-size:15px;
+	color:#222;
+	line-height:1;
+	vertical-align:top;
+}
+.saveinfo__list {
+	
+}
+.saveinfo__list li {
+	position:relative;
+	padding:10px 0 8px 18px;
+	border-bottom:1px solid #f4f4f4;
+	font-size:14px;
+	color:#777;
+	line-height:16px;
+	vertical-align:top;
+}
+.saveinfo__list li:last-child {
+	border-bottom:0;
+}
+.saveinfo__list li strong {
+	font-weight:normal;
+	font-weight:400;
+	color:#2d9fe8;
+}
+.saveinfo__list li .ico {
+	display:block;
+	position:absolute;
+	top:11px;
+	left:-2px;
+	width:15px;
+	height:15px;
+}
+.saveinfo__list li .ico .exclamation {
+	display:block;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background-position:-25px -25px;
+}
+
+.ebox__list {
+}
+.ebox__item {
+	clear:both;
+	margin-bottom:5px;
+	border-bottom:1px solid #ddd;
+	background-color:#fff;
+}
+.ebox__top {
+	position:relative;
+	height:20px;
+	padding:4px 10px;
+	border-bottom:1px solid #f8f8f8;
+}
+.ebox__top .date {
+	display:block;
+	font-size:11px;
+	color:#999;
+	line-height:20px;
+	vertical-align:middle;
+}
+.ebox__top .abstxt {	
+	display:block;
+	position:absolute;
+	top:4px;
+	right:10px;
+	font-size:11px;
+	color:#999;
+	line-height:20px;
+	vertical-align:middle;
+}
+.ebox__info {
+	position:relative;
+	padding:10px 10px 5px;
+}
+.ebox__info .name {
+	display:block;
+	display:-webkit-box;
+	overflow:hidden;  
+	height:38px;
+	padding:0 30% 0 0;
+	font-weight:500;
+	font-size:15px;
+	line-height:19px;
+	vertical-align:middle;	
+	text-overflow:ellipsis; 
+	white-space:normal; 
+	word-wrap:break-word; 
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2; 
+}
+.ebox__info .point {
+	font-size:12px;
+	color:#666;
+}
+.ebox__info .point em {
+	font-weight:500;	
+	font-size:20px;
+	color:#2d9fe8;
+}
+/* 사용완료 */
+.ebox__info .point.completed,
+.ebox__info .point.completed em {
+	color:#ccc;
+}
+.ebox__info .state {
+	display:block;
+	position:absolute;
+	right:10px;
+	top:50%;
+	width:60px;
+	height:60px;
+	margin-top:-30px;
+	border-radius:100%;
+	font-size:11px;
+	color:#aaa;
+	line-height:60px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#eee;
+}
+.ebox__info .state.state--after {
+	
+}
+.ebox__info .state.state--before {
+	color:#3d4270;
+	/*line-height:1;*/
+	background-color:#ecf8ff;
+}
+.ebox__info .state.state--before .eico.down {
+	display:block;
+	width:20px;
+	height:18px;
+	margin:10px auto 5px;
+	background-position:0 -25px;
+}
+.ebox__item.before {
+	border:1px solid #f7e8ba; 
+	background-color:#fffdeb;
+}
+
+/* 한번에 적립받기 */
+.onepoint {
+	position:fixed;
+	bottom:25px;
+	z-index:1000;
+	width:100%;
+}
+.onepoint__btn {
+	display:inline-block;
+	overflow:visible;
+	position:relative;
+	left:50%;
+	height:35px;
+	padding:5px 45px 5px 14px;
+	border-radius:17px;
+	border:0;
+	font-weight:bold;
+	font-weight:500;
+	font-size:12px;
+	color:#fff;
+	line-height:25px;
+	text-align:center;
+	vertical-align:middle;
+	background-color:#3d4270;
+	transform:translateX(-50%);
+	-webkit-transform:translateX(-50%);
+	-ms-transform:translateX(-50%);
+	-moz-transform:translateX(-50%);
+	cursor:pointer;
+	white-space:nowrap;
+}
+.onepoint__btn:before {
+	content:"";
+	display:block;
+	position:absolute;
+	top:0;
+	right:0;
+	width:100%;
+	height:100%;
+	border:0;
+	border-radius:17px;
+	outline:0;
+	box-shadow:0 2px 10px #080707;
+	-webkit-box-shadow:0 2px 10px #080707;
+	-moz-box-shadow:0 2px 10px #080707;
+	opacity:0.2;
+} 
+.onepoint__btn:after {
+	content:"";
+	display:block;
+	position:absolute;
+	top:8px;
+	right:12px;
+	width:20px;
+	height:18px;
+	font-size:0; 
+	text-indent:-9999px; 
+	vertical-align:top;
+	background:url(http://img.enuri.info/images/mobilefirst/reward/ico_emoney.png) 0 -50px no-repeat; 
+	background-size:150px;
+}
+
+/* 
+	쿠프마케팅 쿠폰 상세페이지
+	날짜 : 2019-12-28
+	작업자 : 한일환 
+*/
+.coupon { margin: 0 auto; width: 100%; height: 100%; background-repeat:no-repeat; background-size:contain;  background-position: top center;  }
+.coupon.t0000000076 { background-image:url(http://img.enuri.info/images/mobilefirst/emoney/coop/mms_2018_CJfoodville_bg.jpg); }
+.coupon.t0000000077 { background-image:url(http://img.enuri.info/images/mobilefirst/emoney/coop/mms_2018_gongcha_bg.jpg); }
+.coupon.t0000000078 { background-image:url(http://img.enuri.info/images/mobilefirst/emoney/coop/mms_2018_inumber_bg.jpg); }
+.coupon.t0000000079 { background-image:url(http://img.enuri.info/images/mobilefirst/emoney/coop/mms_2018_pays_bg.jpg); }
+.coupon.t0000000080 { background-image:url(http://img.enuri.info/images/mobilefirst/emoney/coop/mms_2018_spc_bg.jpg); }
+.coupon.t0000000081 { background-image:url(http://img.enuri.info/images/mobilefirst/emoney/coop/mms_2018_twosome_bg.jpg); }
+.coupon .brand_info .brand_tit .brand_bg { background-color:#c41832; }
+/* .coupon.gongcha .brand_info .brand_tit .brand_bg { background-color:#c20f2f; }
+.coupon.inumber .brand_info .brand_tit .brand_bg { background-color:#24a9e2; }
+.coupon.pays .brand_info .brand_tit .brand_bg { background-color:#c41832; }
+.coupon.spc .brand_info .brand_tit .brand_bg { background-color:#ccc; }
+.coupon.twosome .brand_info .brand_tit .brand_bg { background-color:#48474d; } */
+.coupon .container { padding: 2.27vw 6.81vw 11.80vw; }
+.coupon .thumb { max-width: 79.54vw; max-height:  79.54vw; width: 79.54vw; height:  79.54vw; margin: 0 auto;}
+.coupon .thumb img { width:100%; height:100%; }   
+.coupon .brand_info { font-weight: normal; letter-spacing: -0.075em; }
+.coupon .brand_info .brand_tit {display: inline-block; height: 7.95vw;}
+.coupon .brand_info .brand_tit em { font-size: 4.09vw; padding: 0 1.36vw; font-weight: bold; }
+.coupon .brand_info .brand_tit .brand_bg { margin-top: -2.2vw; height: 2.72vw;}
+.coupon .brand_info .product_name { height: 17.04vw; margin-right: 18.18vw; }
+.coupon .brand_info .product_name p { font-size:5.45vw; line-height: 1.4; text-decoration: underline; color:#000;
+	display:-webkit-box; 
+	height:15.7vw;
+	text-overflow:ellipsis; 
+	white-space:normal; 
+	word-wrap:break-word; 
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+	overflow: hidden;
+}  
+.coupon .brand_info p.exchange { width: 86.36vw; height: 4.54vw; white-space:nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 3.63vw; color:#404040; } 
+.coupon .brand_info p.date { width: 86.36vw; height: 4.54vw; white-space:nowrap; overflow: hidden; text-overflow: ellipsis;  font-size: 3.63vw; color:#404040; }   
+.coupon .brand_info p.date span { letter-spacing: -0.0em; }
+.coupon .barcode { margin:22.4vw auto 0px; width: 68.18vw; height: 13.63vw; background: #fff; overflow: hidden; }
+.coupon .barcode img { width: 100%; } 
+.promotionBN { width: 100%; height: 13.18vw; background: #000;} 
+.promotionBN img { width: 100%; height: 100%; } 
+.coupon .end{ position:absolute; left:10.22vw; top:2.27vw; padding:7px 4px 3px; font-size:4.09vw; width:10.63vw; line-height: 1.1; height:9.72vw; z-index: 300; box-shadow:0 0.68vw 0 rgba(0, 0, 0, 0.1); color:#ffffff; font-weight: bold;  text-align: center; border:1px solid #787878; background:#787878; }
+.coupon .day{ position:absolute; left:10.22vw; top:2.27vw; padding:7px 4px 3px; font-size:4.09vw; width:10.63vw; line-height: 1.1; height:9.72vw; z-index: 300; box-shadow:0 0.68vw 0 rgba(0, 0, 0, 0.1); color:#ffffff; font-weight: bold;  text-align: center; border:1px solid #ef1c2b; background:#ff2131; }
+.coupon .re_end{ position:absolute; left:10.22vw; top:2.27vw; padding:7px 4px 3px; font-size:4.09vw; width:10.63vw; line-height: 1.1; height:9.72vw; z-index: 300; box-shadow:0 0.68vw 0 rgba(0, 0, 0, 0.1); color:#ffffff; font-weight: bold;  text-align: center; border:1px solid #787878; background:#787878; }     
+.coupon .layer_back{position: absolute; top: 0;  left: 0; width: 100%; margin: 0 auto; height: 177.27vw; opacity: .8; background: #ffffff; } 
+
+/* new mobile 전체헤더 신규 */
+header.m_header{position:relative;background-image: -o-linear-gradient(left,#30a7f7 ,#2d83ed);background-image: -webkit-gradient(linear,left top, right top,from(#30a7f7) ,to(#2d83ed));background-image: linear-gradient(to right,#30a7f7 ,#2d83ed);padding:0 10px;-webkit-box-sizing: border-box;box-sizing: border-box;width:100%;}
+header.m_header.fixed_top{position:fixed;top:0;left:0;z-index: 100}
+header.m_header .header_wrap{position:relative;padding:13px 0}
+header.m_header .header_wrap button{margin:0;padding:0;border:0;outline:0;position: absolute;width:24px;height:24px;text-indent:-9999em}
+header.m_header .header_wrap h1.m_symbol{width:76px;height:24px;margin:0 auto;background-position:0 -26px;text-indent:-9999em}
+header.m_header .header_wrap h1.m_txt{text-align:center;/* padding-left:38px;padding-right:60px; */margin:0 60px;box-sizing: border-box;font-size:18px;height:24px;line-height:24px;letter-spacing: -1px;color:#fff;font-weight: normal;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;}
+header.m_header.head__type_c .header_wrap{text-align:center;font-size:0}
+header.m_header.head__type_c .header_wrap h1.m_txt{position:relative;display:inline-block;max-width:calc(100% - 60px);margin:0 auto;padding:0 30px 0}
+header.m_header.head__type_c .header_wrap h1.m_txt:after{content:"";position: absolute;top:0;right:0;width:24px;height:24px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-125px -185px}
+header.m_header .header_wrap h2{text-align:center;font-size:18px;color:#fff;line-height:24px;letter-spacing: -1px;font-weight: normal}
+header.m_header .header_wrap .btn_hd_home{width:24px;height:24px;background-position: -255px -400px;left:34px;top:13px}
+header.m_header .header_wrap .btn_hd_cate{background-position: 0 -185px;left:0;top:13px}
+header.m_header .header_wrap .btn_hd_my{background-position: -25px -185px;top:13px;right:0}
+header.m_header .header_wrap .btn_hd_back{background-position: -75px -185px;left:0;top:13px}
+header.m_header .header_wrap .btn_hd_myalarm{background-position:-313px -215px;top:13px;right:0}
+header.m_header .header_wrap .btn_hd_setting{background-position:-216px -305px;top:13px;right:0}
+header.m_header .header_wrap .btn_hd_close,
+header.m_header .header_wrap .btn_dt_close{background-position: -100px -185px;top:13px;right:0}
+header.m_header .header_wrap .btn_hd_sr{position: absolute;top:13px;right:34px;background-position: -50px -185px}
+header.m_header .search_wrap{padding:0 0 12px}
+header.m_header .header_wrap .ico_hd_ad{position: absolute;width:24px;height:12px;background-position:-115px -190px;top:50%;right:0px;margin-top:-6px;text-indent:-9999em}
+header.m_header .search_wrap .btn_lay_sr{position:relative;display:block;background-color:#fff;height:40px;border-radius:4px 4px;}
+header.m_header .search_wrap .btn_lay_sr:after{content:"";position: absolute;width:24px;height:24px;top:8px;right:10px;background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-125px -210px}
+header.m_header.m_header_sub{position:fixed;right:0;left:0;z-index:100}
+header.m_header.m_header_sub.shadow{-webkit-box-shadow: 0 3px 3px rgba(0,0,0,.05);box-shadow: 0 3px 3px rgba(0,0,0,.05)}
+header.m_header.m_header_sub h1.m_txt{margin:0 30px}
+.comm__sprite {background-image:url(http://img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-color:transparent}
+
+/* ----------------------------------------------------------- 
+                레이어 : 패스워드체크
+----------------------------------------------------------- */
+.lay_overlay {position: fixed;width: 100%;height: 100%;top: 0;left: 0;background: rgba(0,0,0,.4);z-index: 9999;}
+/* 교환레이어 */
+.lay-comm, .lay-comm * {-webkit-box-sizing:border-box; -ms-box-sizing:border-box; box-sizing: border-box;}
+.lay-comm {width:300px; height: auto; border:1px solid #aaa; border-radius: 6px; box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2); position: fixed; top: 50%; left: 50%; margin-left:-150px; z-index: 10000; transition: margin-top .4s; background-color: #fff;}
+.lay-comm .lay-comm--inner {padding:15px 10px; }
+.lay-comm .lay-comm--inner:after {content:"";display: block; clear:both;}
+.lay-comm .lay-comm__btn--close {position:absolute; top:10px; right:15px; width: 20px; height: 20px; background-position: -120px -235px; z-index: 10; text-indent: -9999px;}
+
+.lay-check-password .lay-comm__btn_close {} 
+.lay-check-password .lay-comm--header {background-color: #333; font-size: 15px; text-align: center; font-weight: bold; color:#fff; height:4px; line-height: 40px; border-radius: 6px 6px 0 0;} 
+.lay-check-password .lay-comm--body {padding:21px 0 0; text-align: center;}
+
+.lay-check-password .form_title {font-size: 14px; font-weight: bold; color:#222; margin-bottom:7px;}
+.lay-check-password .form_summary {font-size: 12px; color:#999; margin-bottom:13px;}
+.lay-check-password input[name=chk_password] {width:224px; height : 42px; border:1px solid #ddd; padding:0 10px;}
+.lay-check-password .lay-comm--body .btn_check_pass {display: block; width:100%; font-size: 13px; height:46px; line-height: 46px; color:#222;background-color: #f6f6f6; border:none; margin-top:25px; }
