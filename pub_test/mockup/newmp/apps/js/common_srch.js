@@ -1804,6 +1804,15 @@ var layout = new dhx.Layout("layout", config);
                 wrapKeywordSubmit();
             }
         })
+
+        // 추가된 키워드 클릭(활성/비활성 토글)
+        $(".keyword_list_all, .keyword_list").on("click", ".dhx_tabbar-tab", function(e){
+            if(!$(this).hasClass("is-disabled")){ // 비활성
+                $(this).addClass("is-disabled");
+            }else{ // 활성
+                $(this).removeClass("is-disabled");
+            }
+        })
     })
     wrapSrchControll.getItem("allKeywordSubmit").events.on("click", function(e) {
         wrapKeywordSubmit();

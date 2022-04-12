@@ -19,18 +19,32 @@ html,body{height: 100%;font-size:13px;font-family:/* "Noto Sans KR", */"맑은 �
 .wrapper {overflow:hidden;position:relative;width:100%;height:100%}
 .layout {min-width:1400px;height:100%}
 
-#header {position:relative;width:100%;height:40px;background-color:var(--color-enuriblue)}
+#header {position:relative;width:100%;height:40px;padding:0 10px;background-color:var(--color-enuriblue)}
 #header h1 {position:absolute;top:0;left:10px;margin-bottom:0;font-weight:500;font-size:16px;color:#fff;line-height:44px;}
 
-#header .admin_control {display:flex;justify-content:flex-end;width:100%;padding:0 10px 0 110px;font-size:0;line-height:50px;text-align:right}
+/* 대량정제 메인 헤더 */
+#header .admin_control {display:flex;justify-content:flex-end;width:100%;padding:0 0 0 110px;font-size:0;line-height:50px;text-align:right}
 #header .admin_control .exlink_list {flex:0 1 auto;margin:0;font-size:0;line-height:40px}
 #header .admin_control .exlink_list > li {display:inline-block;position:relative;}
 #header .admin_control .exlink_list > li+li {margin-left:10px;padding-left:11px;}
 #header .admin_control .exlink_list > li+li:before {content:"";position:absolute;top:50%;left:0;width:1px;height:10px;margin-top:-5px;background-color:#fff}
-#header .admin_control .exlink_list > li > a {display:block;font-size:11px;color:#fff;opacity:.8}
-#header .admin_control .exlink_list > li > a:hover {opacity:1}
+#header .admin_control .exlink_list > li > a,
+#header .admin_control .exlink_list > li > button {display:block;font-size:11px;color:#fff;opacity:.8}
+#header .admin_control .exlink_list > li > a:hover,
+#header .admin_control .exlink_list > li > button:hover {opacity:1;cursor:pointer;}
+#header .admin_control .exlink_list > li > button {background:transparent;outline:0;border:0;}
+#header .admin_control .exlink_list > li.has-sub .exlink_sub {display:none;position:absolute;top:80%;left:0;z-index:1000;}
+#header .admin_control .exlink_list > li.has-sub .exlink_sub ul {min-width:140px;max-height:300px;overflow-y:auto;box-shadow:0 2px 4px rgb(0 0 0 / 5%);padding:6px 0;border:1px solid #ddd;border-radius:2px;text-align:left;background-color:#fff;}
+#header .admin_control .exlink_list > li.has-sub .exlink_sub li {display:block;padding:4px 0;}
+#header .admin_control .exlink_list > li.has-sub .exlink_sub li a {display:block;padding:0 10px;font-size:11px;color:#555;line-height:13px;text-decoration:none;}
+#header .admin_control .exlink_list > li.has-sub .exlink_sub li:hover {background-color:#ECF5FF}
 #header .admin_control .user_log {margin:0;margin-left:30px;font-size:11px;color:#fff;line-height:40px}
 #header .admin_control .user_log > span {font-weight:300;opacity:.8}
+
+/* 연관상품 헤더 */
+#header.related_header h1 {line-height:40px;}
+#header.related_header h1 .tx_cate {font-size:14px;}
+#header.related_header .tx_time {display:inline-block;font-size:11px;color:#ECF5FF;}
 
 /* 사이드바 토글버튼 */
 .dhx_sidebar-button {position:absolute;top:18px;left:10px;z-index:100;width:20px;height:20px;padding:0;}
@@ -292,6 +306,7 @@ html,body{height: 100%;font-size:13px;font-family:/* "Noto Sans KR", */"맑은 �
 .keyword_list_all .dhx_tabbar-tab-button:hover:active {background:none}
 .keyword_list_all .dhx_tabbar-tab-button--active {}
 .keyword_list_all .dhx_tabbar-tab-button .dhx_button__text {opacity:1}
+.keyword_list_all .dhx_tabbar-tab.is-disabled .dhx_tabbar-tab-button {color:#999}
 .keyword_list_all .dhx_tabbar_scroll.arrow-left, 
 .keyword_list_all .dhx_tabbar_scroll.arrow-right {height:56px;}
 .keyword_list_all .dhx_tabbar-header-active {display:none !important}
@@ -305,6 +320,7 @@ html,body{height: 100%;font-size:13px;font-family:/* "Noto Sans KR", */"맑은 �
 .keyword_list .dhx_tabbar-tab-button:hover:active {background:none}
 .keyword_list .dhx_tabbar-tab-button--active {}
 .keyword_list .dhx_tabbar-tab-button .dhx_button__text {opacity:1}
+.keyword_list .dhx_tabbar-tab.is-disabled .dhx_tabbar-tab-button {color:#999}
 .keyword_list .dhx_tabbar-header-active {display:none !important}
 
 /* 원부 영역 */
@@ -440,6 +456,7 @@ html,body{height: 100%;font-size:13px;font-family:/* "Noto Sans KR", */"맑은 �
 
 .controller_all {display:block;position:relative;padding:1px 2px 0 8px !important;}
 .controller_ep {display:block;position:relative;padding:1px 2px 0 8px !important;}
+.controller_related {display:block;position:relative;padding:2px 8px !important;}
 .controller_paging {padding:0 10px !important;justify-content:center;}
 .controller_sort {display:block;padding:0 4.5px !important;}
 
@@ -447,18 +464,11 @@ html,body{height: 100%;font-size:13px;font-family:/* "Noto Sans KR", */"맑은 �
 .control-comm {display:inline-block;height:38px;margin:0;line-height:38px;vertical-align:middle;}
 
 .control-comm .dhx_form-group {margin-bottom:0}
-.control-comm .dhx_label {margin-right:4px}
+.control-comm .dhx_label {margin-top:10px;margin-right:4px;font-size:11px;}
 .control-comm .dhx_button {display:inline-block;position:relative;min-height:24px;padding:0 8px;border-radius:1px;font-size:12px;color:#000;white-space:nowrap;outline-width:inherit;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;border:1px solid #dadce0;background-color:#f1f1f1;}
 .control-comm .dhx_input  {display:inline-block;position:relative;min-height:24px;padding:0 4px;border-radius:1px;font-size:11px;color:#000;letter-spacing:-.4px;white-space:nowrap;outline-width:inherit;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;border:1px solid #ccc;background-color:#fff;}
 .control-comm .dhx_select {padding:0 26px 0 8px;}
-.control-comm .dhx_combobox-input-box, 
-.control-comm .dhx_combobox-input-box:focus, 
-.control-comm .dhx_input, 
-.control-comm .dhx_input:focus {box-shadow:none}
 
-.control-comm .dhx_input:focus, .control-comm .dhx_input:hover, .control-comm .dhx_input:active,
-.control-comm .dhx_select:focus, .control-comm .dhx_select:hover, .control-comm .dhx_select:active,
-.control-comm .dhx_button:focus, .control-comm .dhx_button:hover, .control-comm .dhx_button:active {border:1px solid #515b6d;background-color:#fff;outline:0}
 .control-comm .dhx_checkbox__visual-input {display:block;border:1px solid rgba(0,0,0,.5);min-width:16px;min-height:16px;max-width:16px;max-height:16px;background-color:#fff;border-radius:2px;cursor:pointer;}
 .control-comm .dhx_checkbox__visual-input + .dhx_text {font-size:12px;color:#000}
 .control-comm .dhx_radiobutton__visual-input {display:block;border:1px solid rgba(0,0,0,.5);min-width:14px;min-height:14px;max-width:14px;max-height:14px;background-color:#fff;border-radius:14px;cursor:pointer;}
@@ -487,6 +497,45 @@ html,body{height: 100%;font-size:13px;font-family:/* "Noto Sans KR", */"맑은 �
 .control-comm.btn-srch {display:inline-block;margin-left:2px;}
 .control-comm.btn-srch .dhx_button {top:1px;background-color:#fff}
 .control-comm.btn-copy .dhx_button {top:1px;}
+
+/****************************
+    * 폼 hover, active, focus
+****************************/
+.control-comm .dhx_combobox-input-box, 
+.control-comm .dhx_combobox-input-box:focus, 
+.control-comm .dhx_input, 
+.control-comm .dhx_input:focus {box-shadow:none}
+
+.control-comm .dhx_input:focus, .control-comm .dhx_input:hover, .control-comm .dhx_input:active,
+.control-comm .dhx_select:focus, .control-comm .dhx_select:hover, .control-comm .dhx_select:active,
+.control-comm .dhx_button:focus, .control-comm .dhx_button:hover, .control-comm .dhx_button:active {border:1px solid #515b6d;background-color:#fff;outline:0}
+
+/* 결과 건수 */
+.control-comm.tx_cnt {float:right;width:auto;height:24px;line-height:24px;margin-top:8px;text-align:right}
+.control-comm.tx_cnt .dhx_label {margin:0;font-size:11px;line-height:24px;cursor:default;opacity:1;}
+.control-comm.tx_cnt .dhx_input {min-width:10px;width:auto;max-width:80px;padding:0;border-color:transparent;text-align:right;}
+.control-comm.tx_cnt .dhx_input:hover,
+.control-comm.tx_cnt .dhx_input:focus,
+.control-comm.tx_cnt .dhx_input:active {border-color:transparent;}
+
+/* ▶▶▷▷ */ 
+.control-comm.tx_nonarr {margin-left:30px;margin-right:30px;}
+.control-comm.tx_nonarr .dhx_input {width:0;padding:0;border:0;}
+
+.controller_related .control-comm.ipt-srch {min-width:180px;}
+.controller_related.is-flex {display:flex;}
+.controller_related .btn-copy {margin-left:4px;}
+
+.tx_chkbox .dhx_checkbox {height:20px;margin:0 10px 0 4px;vertical-align:middle}
+.tx_chkbox .dhx_checkbox .dhx_text {margin-right:6px;font-size:12px;color:#000;align-self: auto;}
+
+/* 본품 하단 영역 */
+.originFoot {display:flex;}
+.originFoot .control-comm {flex-grow:1}
+.originFoot .control-comm.ipt-mdnum {flex-grow:1;flex-shrink:0;flex-basis:auto;width:150px}
+.originFoot .control-comm.ipt-mdname {flex-grow:1;flex-shrink:0;flex-basis:auto;width:400px;}
+.controller_related .control-comm.btn-addline {display:inline-block;margin-left:2px;width:90px;flex-grow:0;}
+.controller_related .control-comm.btn-addline .dhx_button {top:1px;width:100%;}
 
 /* 상담 통합검색 영역 별도 적용 */
 .controller_all .control-comm {height:34px;margin-top:9px;line-height:34px;}
@@ -518,6 +567,20 @@ div[aria-label="tab-content-orgEctKwd-bottom"] .control-comm .dhx_input {padding
 .control-comm.btn-cond.btn-all .dhx_button {background-color:#fff}
 .control-comm.btn-cond.btn-matching .dhx_button {font-weight:bold;color:#fff;border-color:var(--color-enuriblue);background-color:var(--color-enuriblue)}
 .control-comm.btn-cond.btn-matching .dhx_button:hover {border-color:#1159b8;background-color:#1159b8}
+
+/* 에누리업 */
+.control-comm.btn-enuriup {float:right;padding:8px 4.5px;line-height:24px;text-align:right;}
+.control-comm.btn-enuriup .dhx_button {border-color:#f81d1d;color:#fff;background-color:#FA3E3D}
+
+/* 연관상품 > 선택한 행 텍스트 표시 */
+.control-comm.sel_text {padding:8px 0;}
+.control-comm.sel_text .dhx_form-group--textarea {height:60px;}
+.control-comm.sel_text .dhx_input {height:60px;white-space:normal}
+
+/* 저장 버튼 */
+.btn_save_box {position:relative;width:100%;height:100%;align-items:center;justify-content:space-around;}
+.btn_save_box .btn-save {height:60px;}
+.btn_save_box .btn-save .dhx_button {height:60px;}
 
 /* 전체보기/매칭/미매칭 보기 */
 /* 체크박스그룹 */
@@ -772,7 +835,6 @@ div[aria-label="tab-content-orgEctKwd-bottom"] .control-comm .dhx_input {padding
 .viewtype_change .btn_type:hover {background-color:#ededed;transition:background-color .2s ease-out;}
 .viewtype_change .btn_type:after {content:"";position:absolute;top:6px;left:6px;width:20px;height:20px;background:url(http://img.enuri.info/images/newmp/sprite_ico.png) -80px 0 no-repeat;opacity:.4;transition:opacity .3s ease}
 .viewtype_change .btn_type-image:after {background-position:-60px 0;}
-.viewtype_change .btn_type-gridX:after {background-position:-100px 0;}
 .viewtype_change .btn_type.is-on:after {opacity:1}
 
 .type_img {display:block;width:100%;margin:0;padding:0;}

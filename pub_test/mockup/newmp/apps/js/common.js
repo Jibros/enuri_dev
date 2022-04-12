@@ -391,9 +391,26 @@ var headerComponent = "";
     headerComponent += "  <div class=\"admin_control\">";
     headerComponent += "      <ul class=\"exlink_list\">";
     headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"CM 주요 관리 지표\">CM 주요 관리 지표</a></li>";
-    headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"경쟁사 모니터링 페이지\">경쟁사 모니터링 페이지</a></li>";
-    headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"핵심 속성 입력/점검 페이지\">핵심 속성 입력/점검 페이지</a></li>";
-    headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"제조사[불명] 현황 페이지\">제조사[불명] 현황 페이지</a></li>";
+    headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"경쟁사 모니터링\">경쟁사 모니터링</a></li>";
+    headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"핵심 속성 입력/점검\">핵심 속성 입력/점검</a></li>";
+    headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"제조사[불명] 현황\">제조사[불명] 현황</a></li>";
+    // ************************* 220412 : SR#52034 : 연관상품 레이어 추가
+    headerComponent += "        <li class=\"has-sub\"><button title=\"연관상품(소모품)\">연관상품(소모품)</button>";
+    headerComponent += "            <div class=\"exlink_sub\">";
+    headerComponent += "                <ul>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">TV</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">홈시어터</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">프로젝터/스크린</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">홈시어터/HiFi</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">영상가전 액세서리</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">주방가전</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">생활가전</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">계절가전</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">건강가전</a></li>";
+    headerComponent += "                    <li><a href=\"./related_products.html\" target=\"_blank\">미용/욕실가전</a></li>";
+    headerComponent += "                </ul>";
+    headerComponent += "            </div>";
+    headerComponent += "        </li>";
     headerComponent += "      </ul>";
     headerComponent += "      <p class=\"user_log\">로그인정보 <span>2021.11.12 10:27:10</span></p>";
     headerComponent += "  </div>";
@@ -607,7 +624,6 @@ var matchingComponent = "";
     matchingComponent += "                                  <li><p class=\"tx_dt\">스칼프 케어 샴푸 1L 481개</p></li>";
     matchingComponent += "                                </ul>";
     matchingComponent += "                            </div>";
-    // ************************* 220211 : SR#51192 : 옵션 전체보기 추가
     matchingComponent += "                            <div class=\"model_option\">";
     matchingComponent += "                                <button type=\"button\" id=\"btnOptionAll\" class=\"btn_all\">전체보기</button>";
     matchingComponent += "                                <ul>";
@@ -649,7 +665,6 @@ var viewTypeChange = "";
     viewTypeChange += "     <button type=\"button\" class=\"btn_type btn_type-image\" data-viewtype=\"imageTypeList\">이미지타입</button>";
     viewTypeChange += "</div>"
 
-// ************************* 220211 : SR#51192 : 상단>레이아웃 변경 버튼 및 윈도우 위젯
 // 레이아웃 변경
 var changeViewBtn = "";
     changeViewBtn += "<div class=\"change_view\">";
@@ -807,7 +822,6 @@ grid4 = new dhx.Grid(null, {
                 return "<p class=\"tx_tit_one\">"+text+"</p>"; 
             }, 
         },
-        // 220117 : 조건 그리드 미매칭 width :60  추가
         { id: "gcol2", width: 60, header: [{ text: "개", align: "center" }], align:"right" },
         { id: "gcol3", width: 60, header: [{ text: "미매칭수", align: "center" }], align:"right" },
     ],
@@ -819,7 +833,6 @@ grid4 = new dhx.Grid(null, {
     multiselection:false,
     keyNavigation: true,
     resizable:true,
-    // 220117 : adjust 제거
     //adjust: true, 
     tooltip: false
 });
@@ -831,7 +844,6 @@ grid5 = new dhx.Grid(null, {
                 return "<p class=\"tx_tit_one\">"+text+"</p>"; 
             }, 
         },
-        // 220117 : 조건 그리드 미매칭 width :60  추가
         { id: "gcol2", width: 60, header: [{ text: "개", align: "center" }], align:"right" },
         { id: "gcol3", width: 60, header: [{ text: "미매칭수", align: "center" }], align:"right" },
     ],
@@ -843,7 +855,6 @@ grid5 = new dhx.Grid(null, {
     multiselection:false,
     keyNavigation: true,
     resizable:true,
-    // 220117 : adjust 제거
     //adjust: true,
     tooltip: false
 });
@@ -887,7 +898,6 @@ grid6 = new dhx.Grid(null, {
         { width: 80, id: "cond04", header: [{ text: "조건2", align: "center" }], align: "center" },
         { width: 80, id: "modelno", header: [{ text: "모델번호", align: "center" }], align: "center" },
         { hidden: true, width: 80, id: "matchYn", header: [{ text: "매칭여부", align: "center" }], align: "center" },
-        // 220303 : SR#51665 : 그룹매칭 색상 추가
         { hidden: true, width: 80, id: "groupMatchYn", header: [{ text: "그룹매칭여부", align: "center" }], align: "center" },
     ],
     rowCss: function(row){
@@ -898,13 +908,10 @@ grid6 = new dhx.Grid(null, {
     headerRowHeight: 32,
     rowHeight: 32,
     autoWidth:true,
-    //data: eslist,
     selection: "row",
-    //multiselection: "ctrlClick",
     multiselection:true,
     keyNavigation: true,
     resizable:true,
-    /* adjust:true, */
     tooltip: false
 });
 // EP상품 뷰타입(그리드/이미지) 탭바 생성
@@ -1175,7 +1182,6 @@ var matchSrchControll = new dhx.Form(null, {
     padding: 0,
     width: "100%",
     cols: [
-        // ************************* 220211 : SR#51192 : 셀렉트박스 추가
         {
             id: "prdcSelect",
             name: "prdcSelect",
@@ -1221,7 +1227,6 @@ var matchSrchControll = new dhx.Form(null, {
                 },
                 {
                     value: "1",
-                    // ************************* 220211 : SR#51192 : 셀렉트 값 추가
                     content: "카테고리내"
                 },,
                 {
@@ -1299,7 +1304,6 @@ var epGridSorting = new dhx.Form(null, {
     rows: [
         {
             id: "epSorting",
-            // ************************* 220211 : SR#51192 : 체크박스 영역 수정
             cols:[
                 {
                     //클릭시 그리드 정렬
@@ -1354,7 +1358,6 @@ var epGridSorting = new dhx.Form(null, {
     ]
 })
 
-// ************************* 220211 : SR#51192 : 매칭/가매칭 팝업 추가
 /* 가매칭 팝업 */
 var popMatching1 = new dhx.Popup({
     css: "pop_groupMatching"
@@ -1460,7 +1463,6 @@ function customField(item) {
 }
 /* // */
 
-// ************************* 220211 : SR#51192 : 상단 통합검색 영역 추가
 // 통합검색 FORM : 검색 영역
 var wrapSrchControll = new dhx.Form(null, {
     css: "controller_all",
@@ -1580,7 +1582,6 @@ var config = {
                     // 그리드 컨텐츠 
                     rows:[
                         {
-                            // ************************* 220211 : SR#51192 : 상단 통합검색 영역 추가
                             height: "56px",
                             cols:[
                                 {
@@ -1711,7 +1712,6 @@ var config = {
                                                         {
                                                             // 검색제외조건 추가
                                                             id: "orgEctKwd-top",
-                                                            // ************************* 220121 : SR#51071 : 높이 변경 48 -> 40
                                                             height:"40px"
                                                         },
                                                         {
@@ -1783,13 +1783,11 @@ var config = {
                                                 {
                                                     // EP 통합검색 : 검색 영역
                                                     id:"epSearch",
-                                                    // ************************* 220211 : SR#51192 : 너비 변경   340 -> 440
                                                     width:"440px",
                                                 },
                                                 {
                                                     // EP 통합검색 : 키워드 영역
                                                     id:"epSearchKeyword",
-                                                    // ************************* 220211 : SR#51192 : 너비 변경   340 -> 440
                                                     width:"calc(100% - 440px)",
                                                 }
                                             ]      
@@ -1966,6 +1964,15 @@ var layout = new dhx.Layout("layout", config);
                 keywordSubmit();
             }
         })
+
+        // 추가된 키워드 클릭(활성/비활성 토글)
+        $(".keyword_list").on("click", ".dhx_tabbar-tab", function(e){
+            if(!$(this).hasClass("is-disabled")){ // 비활성
+                $(this).addClass("is-disabled");
+            }else{ // 활성
+                $(this).removeClass("is-disabled");
+            }
+        })
     })
     matchSrchControll.getItem("keywordSubmit").events.on("click", function(e) {
         keywordSubmit();
@@ -2041,7 +2048,6 @@ $(function(){
         }, 300)
     })
 
-    // ************************* 220211 : SR#51192 : EP상품 옵션 전체보기 레이어 추가
     // EP상품 옵션 전체보기
     var btnOptionAll = $("#btnOptionAll");
     

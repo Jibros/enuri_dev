@@ -411,6 +411,7 @@ specGroup = new dhx.Grid(null, {
     selection: "row",
     multiselection:false,
     keyNavigation: true,
+    adjust: true,
     resizable:true,
 });
 // 스펙그룹상세 그리드 생성
