@@ -218,7 +218,7 @@
         </div>
 
         <div id="container" class="container border-box">
-            <div class="top_bnnr">
+            <div class="top_bnnr" style="background-color: #c3e2dc;">
                 <div class="container_comm">
                     <img src="//img.enuri.info/images/newcar/used/main_bnnr.jpg">
                 </div>
@@ -285,7 +285,7 @@
                                                                     </li>
                                                                 </ul>
                                                             </li>
-                                                            <li class="depth4"><div class="prop_name">아반떼</div></li>
+                                                            <li class="depth4"><div class="prop_name disabled">아반떼</div></li>
                                                             <li class="depth4"><div class="prop_name">소나타</div></li>
                                                             <li class="depth4"><div class="prop_name">싼타페</div></li>
                                                             <li class="depth4"><div class="prop_name">투싼</div></li>
@@ -297,7 +297,7 @@
                                                             <li class="depth4"><div class="prop_name">다이너스티</div></li>
                                                         </ul>
                                                     </li>
-                                                    <li class="depth3"><div class="prop_name">기아</div>
+                                                    <li class="depth3"><div class="prop_name disabled">기아</div>
                                                         <ul class="list_carNm acc_target">
                                                             <li class="depth4"><div class="prop_name">아반떼</div></li>
                                                             <li class="depth4"><div class="prop_name">소나타</div></li>
@@ -374,7 +374,8 @@
                                         <div class="prop_name">연료</div>
                                         <ul class="list_fueltype acc_target">
                                             <li class="depth2"><div class="prop_name"><input type="checkbox" name="fuelType" class="ctm_checkbox"><span class="input_nm">가솔린</span></div></li>
-                                            <li class="depth2"><div class="prop_name"><input type="checkbox" name="fuelType" class="ctm_checkbox"><span class="input_nm">디젤</span></div></li>
+                                            <!-- 220425 : 비활성화 "diabled" -->
+                                            <li class="depth2"><div class="prop_name"><input type="checkbox" name="fuelType" class="ctm_checkbox" disabled><span class="input_nm">디젤</span></div></li>
                                             <li class="depth2"><div class="prop_name"><input type="checkbox" name="fuelType" class="ctm_checkbox"><span class="input_nm">LPG</span></div></li>
                                             <li class="depth2"><div class="prop_name"><input type="checkbox" name="fuelType" class="ctm_checkbox"><span class="input_nm">수소</span></div></li>
                                             <li class="depth2"><div class="prop_name"><input type="checkbox" name="fuelType" class="ctm_checkbox"><span class="input_nm">전기</span></div></li>
@@ -517,6 +518,7 @@
                                     } else {
                                         return chkminvalue = true;
                                     }
+                                    console.log(chkminvalue);
                                 }
                                 // 연식_옵션리스트
                                 function yearList(maxvalue, totalcount, selectedvalue) {
@@ -537,29 +539,29 @@
                                             $('.prop_maxmin_year .select_list').append('<li class="s_option" data-value="'+ (maxvalue - i) +'">'+ (maxvalue - i)+'년</li>')
                                         }
                                     }
-                                    $('.prop_maxmin_year .select_list li').on('click', function(){
-                                        var selectvalue = $(this).data('value');
-                                        if($(this).parent().parent().hasClass('min_value')) {
-                                            $(this).parent().prev().text(selectvalue+'년').attr('data-svalue',selectvalue);
-                                            $('.prop_maxmin_year .max_value .select_list li').remove();
-                                            $('.prop_maxmin_year .max_value .selected').text('최대').attr('data-svalue','');
-
-                                            checkMinValue('.prop_maxmin_year');
-                                            yearList(2023, 64, selectvalue);
-                                        }
-                                        if($(this).parent().parent().hasClass('max_value')) {
-                                            checkMinValue('.prop_maxmin_year');
-                                            if(!chkminvalue) { 
-                                                alert('최소값을 우선 정해주세요');
-                                            }
-                                        }
-                                    })
                                 }
                                 yearList(2023, 64);
+                                $('.prop_maxmin_year .select_list li').on('click', function(){
+                                    var selectvalue = $(this).data('value');
+                                    if($(this).parent().parent().hasClass('min_value')) {
+                                        $(this).parent().prev().text(selectvalue+'년').attr('data-svalue',selectvalue);
+                                        $('.prop_maxmin_year .max_value .select_list li').remove();
+                                        $('.prop_maxmin_year .max_value .selected').text('최대').attr('data-svalue','');
+
+                                        checkMinValue('.prop_maxmin_year');
+                                        yearList(2023, 64, selectvalue);
+                                    }
+                                    if($(this).parent().parent().hasClass('max_value')) {
+                                        checkMinValue('.prop_maxmin_year');
+                                        if(!chkminvalue) { 
+                                            alert('최소값을 우선 정해주세요');
+                                        }
+                                    }
+                                })
                                 
                                 // 거리_옵션리스트
                                 function distanceList(defaultvalue, totalcount, selectedvalue) {
-                                    if(selectedvalue) {
+                                    if(selectedvalue || selectedvalue == 0) {
                                         var gapDistance = '';
                                         var gap_y = (((defaultvalue - selectedvalue) * -1) / defaultvalue) + 1; 
                                         for(var i=gap_y; i<totalcount; i++) {
@@ -580,29 +582,30 @@
                                             $('.prop_maxmin_distance .select_list').append('<li class="s_option" data-value="'+ gapDistance +'">'+ addComma(gapDistance)+'Km</li>')
                                         }
                                     }
-                                    $('.prop_maxmin_distance .select_list li').on('click', function(){
-                                        var selectvalue = $(this).data('value');
-                                        if($(this).parent().parent().hasClass('min_value')) {
-                                            $(this).parent().prev().text(addComma(selectvalue)+'Km').attr('data-svalue', selectvalue);
-                                            $('.prop_maxmin_distance .max_value .select_list li').remove();
-                                            $('.prop_maxmin_distance .max_value .selected').text('최대').attr('data-svalue','');
-
-                                            checkMinValue('.prop_maxmin_distance');
-                                            distanceList(5000, 51, selectvalue);
-                                        }
-                                        if($(this).parent().parent().hasClass('max_value')) {
-                                            checkMinValue('.prop_maxmin_distance');
-                                            if(!chkminvalue) { 
-                                                alert('최소값을 우선 정해주세요');
-                                            }
-                                        }
-                                    })
                                 }
                                 distanceList(5000, 51);
+                                $('.prop_maxmin_distance .select_list li').on('click', function(){
+                                    var selectvalue = $(this).data('value');
+                                    if($(this).parent().parent().hasClass('min_value')) {
+                                        $(this).parent().prev().text(addComma(selectvalue)+'Km').attr('data-svalue', selectvalue);
+                                        $('.prop_maxmin_distance .max_value .select_list li').remove();
+                                        $('.prop_maxmin_distance .max_value .selected').text('최대').attr('data-svalue','');
+
+                                        checkMinValue('.prop_maxmin_distance');
+                                        distanceList(5000, 51, selectvalue);
+                                    }
+                                    if($(this).parent().parent().hasClass('max_value')) {
+                                        checkMinValue('.prop_maxmin_distance');
+                                        if(!chkminvalue) { 
+                                            alert('최소값을 우선 정해주세요');
+                                        }
+                                    }
+                                })
                                 
+
                                 // 가격_옵션리스트
                                 function priceList(defaultvalue, totalcount, selectedvalue) {
-                                    if(selectedvalue) {
+                                    if(selectedvalue || selectedvalue == 0) {
                                         var gapPrice = '';
                                         var gap_y = (((defaultvalue - selectedvalue) * -1) / defaultvalue) + 1; 
                                         for(var i=gap_y; i<totalcount; i++) {
@@ -623,25 +626,26 @@
                                             $('.prop_maxmin_price .select_list').append('<li class="s_option" data-value="'+ gapPrice +'">'+ addComma(gapPrice)+'만원</li>')
                                         }
                                     }
-                                    $('.prop_maxmin_price .select_list li').on('click', function(){
-                                        var selectvalue = $(this).data('value');
-                                        if($(this).parent().parent().hasClass('min_value')) {
-                                            $(this).parent().prev().text(addComma(selectvalue)+'만원').attr('data-svalue', selectvalue);
-                                            $('.prop_maxmin_price .max_value .select_list li').remove();
-                                            $('.prop_maxmin_price .max_value .selected').text('최대').attr('data-svalue','');
-
-                                            checkMinValue('.prop_maxmin_price');
-                                            priceList(100, 101, selectvalue);
-                                        }
-                                        if($(this).parent().parent().hasClass('max_value')) {
-                                            checkMinValue('.prop_maxmin_price');
-                                            if(!chkminvalue) { 
-                                                alert('최소값을 우선 정해주세요');
-                                            }
-                                        }
-                                    })
                                 }
                                 priceList(100, 101);
+
+                                $('.prop_maxmin_price .select_list li').on('click', function(){
+                                    var selectvalue = $(this).data('value');
+                                    if($(this).parent().parent().hasClass('min_value')) {
+                                        $(this).parent().prev().text(addComma(selectvalue)+'만원').attr('data-svalue', selectvalue);
+                                        $('.prop_maxmin_price .max_value .select_list li').remove();
+                                        $('.prop_maxmin_price .max_value .selected').text('최대').attr('data-svalue','');
+
+                                        checkMinValue('.prop_maxmin_price');
+                                        priceList(100, 101, selectvalue);
+                                    }
+                                    if($(this).parent().parent().hasClass('max_value')) {
+                                        checkMinValue('.prop_maxmin_price');
+                                        if(!chkminvalue) { 
+                                            alert('최소값을 우선 정해주세요');
+                                        }
+                                    }
+                                })
                                 
                                 // 탭처리(전체/국산/수입)
                                 $('body').on('click','[data-sortnum]', function(){
@@ -868,7 +872,7 @@
                 <div class="footer__info_com">
                     <span class="footer__tx_tit">써머스플랫폼</span>
                     <addr class="footer__tx_adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층, ㈜써머스플랫폼</addr>
-                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer__tx_owner"><b>대표이사 :</b> 김기록</span>
                     <span class="footer__tx_num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>                        
                     <span class="footer__tx_num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
                     <span class="footer__tx_tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>
@@ -1208,9 +1212,9 @@
                     html += '       <div class="info">';
                     html += '           <div class="goods_name">기아 신형 쏘렌토 4세대  기아 신형 쏘렌토 4세대</div>';
                     html += '           <div class="goods_spec">';
-                    html += '               <span>2004년 6월 (04년식)</span>';
+                    html += '               <span>2004년 6월 (04년식) 테스트</span>';
                     html += '               <span>210,730km</span>';
-                    html += '               <span>가솔린</span>';
+                    html += '               <span>가솔린 테스트 연료 글자길이 </span>';
                     html += '           </div>';
                     html += '           <div class="goods_price">';
                     html += '               <div class="current_price"><em>1,440</em>만원</div>';

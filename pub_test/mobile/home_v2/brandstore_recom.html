@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/lp_finder.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/brandstore_lp.css"/><!-- 브랜드스토어(개별, 랭킹) CSS -->
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/spinners.css">
+	<link rel="stylesheet" type="text/css" href="/js/nouislider/distribute/nouislider.min.css">
+	<script src="/js/nouislider/distribute/nouislider.min.js"></script>
+	<script src="/js/highcharts.js"></script>
+</head>
+<body>
+
+<!-- 공통 : 로더 -->
+<div id="loadingDiv" class="comm__loader">
+	<div class="loader_inner">로딩중</div>
+</div>
+<!-- // 로더 -->
+
+<div id="wrap">
+	<header id="header" class="page_header nomargin">
+		<div class="header_top">
+			<div class="wrap">
+                <button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+                <div class="header_top_page_name">브랜드스토어</div>
+			</div>
+		</div>
+    </header>
+
+    <!-- 브랜드스토어 컨테이너 -->
+	<section id="container" class="m_brndstore_cont">
+        <!-- 브랜드스토어 헤더 -->
+		<div class="brndstore__cont">
+            <div class="brndstore__head">
+                <div class="brndstore__tit--recom">
+                    <h1 class="tx_tit">
+                        사람들이 가장 많이 찾는
+                        <p><em>브랜드스토어</em>는?</p>
+                    </h1>
+                    <p class="tx_date"><em>04.13</em>일 기준</p>
+                </div>
+            </div>
+            <!-- //브랜드스토어 헤더 -->
+
+            <!-- 브랜드스토어 바디 -->
+            <div class="brndstore__body">
+                <div class="brndstore__tabs">
+                    <!-- <ul class="tabs__list--scroll"><!- - 탭 n개 이상 : 스크롤 - ->
+                        <li class="is-on"><button type="button" class="tab-item">전체보기</button></li>
+                        <li><button type="button" class="tab-item">가방</button></li>
+                        <li><button type="button" class="tab-item">명품</button></li>
+                        <li><button type="button" class="tab-item">스포츠</button></li>
+                        <li><button type="button" class="tab-item">악세서리</button></li>
+                        <li><button type="button" class="tab-item">신발</button></li>
+                        <li><button type="button" class="tab-item">시계</button></li>
+                        <li><button type="button" class="tab-item">지갑</button></li>
+                        <li><button type="button" class="tab-item">티셔츠</button></li>
+                    </ul> -->
+                </div>
+
+                <div class="brndstore__recom">
+                    <div class="recom__list">
+                        <!-- 
+                                상품 목록 DOM 참고 
+                        <ul>
+                            <li class="recom__item">
+                                <div class="recom__head">
+                                    <a href="#">
+                                        <span class="img_logo">
+                                            <img src="//img.enuri.info/images/mobile_v2/test/@brndstore_logo2_48.png" alt="[브랜드명] + 로고">
+                                        </span>
+                                        <span class="txt_logo">박형아는 뜨개쟁이</span>
+
+                                        <span class="tx_info">
+                                            <span class="tx_brnd"><em class="badge_recom">1위</em>사뿐</span>
+                                            <span class="tx_sub">THE STYLE TAILOR</span>
+                                        </span>
+                                    </a>
+                                    <button type="button" class="btn__zzim--store">찜</button>
+                                </div>
+                                <div class="recom__body">
+                                    <ul class="recom__prdc_list">
+                                        <li>
+                                            <a href="#">
+                                                <span class="img_thumb">
+                                                    <img src="//img.enuri.info/images/mobile_v2/test/@brndstore1_468x468.jpg" alt="[카테고리명] + 상품 이미지" />
+                                                </span>
+            
+                                                <span class="tx_info">
+                                                    <span class="tx_name">이엑스코리아 프리미엄i5 GTX i5-9400F</span>
+                                                    <span class="tx_price"><em>39,900,000</em>원</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="img_thumb">
+                                                    <img src="//img.enuri.info/images/mobile_v2/test/@brndstore2_468x468.jpg" alt="가방 상품 이미지" />
+                                                </span>
+            
+                                                <span class="tx_info">
+                                                    <span class="tx_name">이엑스코리아 프리미엄i5 GTX i5-9400F</span>
+                                                    <span class="tx_price"><em>39,900,000</em>원</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="img_thumb">
+                                                    <img src="//img.enuri.info/images/mobile_v2/test/@brndstore1_468x468.jpg" alt="가방 상품 이미지" />
+                                                </span>
+            
+                                                <span class="tx_info">
+                                                    <span class="tx_name">이엑스코리아 프리미엄i5 GTX i5-9400F</span>
+                                                    <span class="tx_price"><em>39,900,000</em>원</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        -->
+
+                        <!-- 노데이터 DOM 참고 -->
+                        <!-- <div class="no-data">
+                            <span class="comm__sprite ico_caution">!</span>
+                            <span class="txt_result">선택조건에 해당하는 검색결과가 없습니다.</span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- //브랜드스토어 바디 -->
+
+            <script>
+                $(function(){
+                    // 가짜 카테고리 
+                    var caterecomArr = ["가방", "티셔츠", "스포츠", "악세서리", "신발", "지갑", "명품", "시계","가방", "티셔츠", "스포츠", "악세서리", "신발", "지갑", "명품", "시계"];
+                    var cateNone = []
+                    var loaderDom = $("#loadingDiv");
+                    var nodataDom = `
+                        <div class="no-data">
+                            <span class="comm__sprite ico_caution">!</span>
+                            <span class="txt_result">선택조건에 해당하는 검색결과가 없습니다.</span>
+                        </div>`;
+                    var pageHeadHeight = $(".page_header").outerHeight(); // 헤더 높이
+                    var brndBody = $(".brndstore__body"); // 브랜드스토어 바디 영역
+                    var listBox = $(".recom__list"); // 목록 영역
+                    
+                    // 카테고리 Init 함수
+                    var categoryInit = function(data){
+                        var tabs = $(".brndstore__tabs"),
+                            cateData = data;
+                        
+                        var tabsDom = ``;
+                            tabsDom += `<ul class="tabs__list--scroll">`;
+                            // 전체보기(기본 노출)
+                            tabsDom += `   <li class="is-on"><button type="button" class="tab-item">전체보기</button></li>`;
+
+                                // 카테고리 반복
+                            for( var i=0; i<cateData.length; i++ ){
+                                tabsDom += `   <li><button type="button" class="tab-item">${cateData[i]}</button></li>`;
+                            }
+                            tabsDom += `</ul>`;
+                            
+                            tabs.append(tabsDom);
+
+                        // 스크롤 영역 탭일 때 액션
+                        var liLeftPos = []; // LI 위치
+                        var scrTabItem = $(".tabs__list--scroll li"); // 스크롤 목록 탭
+                        $.each(scrTabItem, function(idx, item){
+                            liLeftPos[idx] = Math.floor($(item).offset().left); // LI 위치 추출
+                        })
+                        // 클릭 => 두번째 위치로 이동 후 상품 정렬
+                        $(scrTabItem).on("click", function(){
+                            var _idx = $(this).index();
+                            $(".tabs__list--scroll").animate({"scrollLeft": liLeftPos[_idx-1]}, 500);
+                        })
+
+                        // 기본 탭 아이템 클릭시 활성화
+                        $(tabs).find("li").on("click", function(){
+                            $(this).addClass("is-on").siblings().removeClass("is-on");
+
+                            // 로더 노출(로드될동안) 후 DOM 생성
+                            var data = $(this).index()+10; // 가상 데이터 
+                            
+                            if($(this).index() === 3){
+                                data = 0;
+                            }
+                            // DOM 출력
+                            loadDomPaint(data); // 인자로 탭 인덱스를 넘기는데 실제 데이터를 넘겨주세요.
+
+                            // DOM 출력 후 상단 이동
+                            $("body, html").animate({"scrollTop": 0}, 500);
+                        })
+                    }
+
+                    // DOM 출력 함수
+                    var loadDomPaint = function(data){
+                        var data = data; // 데이터 맵핑은 수석님이 해주세용 (지금은 가짜가 들어가 있어요.)
+
+                        // 상품 load 전 : 로더 노출    
+                        loaderDom.fadeIn();
+                        
+                        // 1.5초후 제거
+                        loaderTimer = setTimeout(function(){
+                            // 기존 상품 목록 dom 제거
+                            $(listBox).children("ul").remove();
+                            $(".no-data").remove();
+
+                            // 로더 제거 
+                            $(loaderDom).fadeOut(function(){ 
+                                $(this).hide();
+                            });
+
+                            // 상품 DOM 노출
+                            if(data != 0){
+                                // 카테고리 별 상품 노출
+                                $(listBox).prepend(brndListHtml(data));
+                            }else{
+                                // 상품 없을 때 노출
+                                $(listBox).prepend(nodataDom);
+                            }                       
+                        },300);
+                    }
+
+                    var brndListHtml = function(data){      
+                        // 브랜드 상품 DOM             
+                        var prdcLen = data; // 상품 노출 갯수
+                        var prdcItemHTML = "";
+                            prdcItemHTML += `<ul>`;
+
+                            for(var pi = 0; pi < prdcLen; pi++){
+                                prdcItemHTML += `                                                
+                                                <!-- [FULL CASE ]-->
+                                                <li class="recom__item">
+                                                    <div class="recom__head">
+                                                        <a href="#">`
+                                                            
+                                                            console.log(pi % 2==0)
+                                                        if(pi % 2==0){
+                                prdcItemHTML += `           
+                                                            <!-- 등록 로고 있을 때, 로고 노출 : .img_logo -->
+                                                            <span class="img_logo">
+                                                                <img src="//img.enuri.info/images/mobile_v2/test/@brndstore_logo${(prdcLen % 2==0) ? 1 : 2}_48.png" alt="SAPPUN 로고"><!-- alt 태그 : "[브랜드명] + 로고" 텍스트 넣어주세요. -->
+                                                            </span>
+                                                            <span class="tx_info">
+                                                                <span class="tx_brnd">사뿐</span>
+                                                                <span class="tx_sub">THE STYLE TAILOR</span>
+                                                            </span>`
+                                                        }else{
+                                prdcItemHTML += `           
+                                                            <span class="img_logo">
+                                                                <img src="//img.enuri.info/images/mobile_v2/brandstore/lp_brandstore_default_gray.png" alt="기본 이미지">
+                                                            </span>
+                                                            <span class="tx_info">
+                                                                <span class="tx_brnd">NAGUISA</span>
+                                                            </span>`
+                                                        }
+
+                                prdcItemHTML += `       </a>
+                                                        <button type="button" class="btn__zzim--store">찜</button>
+                                                    </div>
+                                                    <div class="recom__body">
+                                                        <ul class="recom__prdc_list">
+                                                            <li>
+                                                                <a href="#">
+                                                                    <span class="img_thumb">`
+                                                        if(pi != 1){
+                                        prdcItemHTML += `               <img src="//img.enuri.info/images/mobile_v2/test/@brndstore${(prdcLen % 2==0) ? 1 : 2}_468x468.jpg" alt="[카테고리명] + 상품 이미지" />`
+                                                        }else{
+                                                                        // 이미지 없을 때 대체 이미지
+                                        prdcItemHTML += `               <img src="//img.enuri.info/images/common/noimg@s500.jpg" alt="이미지가 없습니다." />`
+                                                        }
+                                        prdcItemHTML += `           </span>
+                                                                    <span class="tx_info">
+                                                                        <span class="tx_name">이엑스코리아 프리미엄i5 GTX i5-9400F</span>
+                                                                        <span class="tx_price"><em>39,900,000</em>원</span>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <span class="img_thumb">
+                                                                        <img src="//img.enuri.info/images/mobile_v2/test/@brndstore${(prdcLen % 2==0) ? 2 : 1}_468x468.jpg" alt="가방 상품 이미지" />
+                                                                    </span>
+                                
+                                                                    <span class="tx_info">
+                                                                        <span class="tx_name">이엑스코리아 프리미엄i5 GTX i5-9400F</span>
+                                                                        <span class="tx_price"><em>39,900,000</em>원</span>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    <span class="img_thumb">
+                                                                        <img src="//img.enuri.info/images/mobile_v2/test/@brndstore${(prdcLen % 2==0) ? 1 : 2}_468x468.jpg" alt="가방 상품 이미지" />
+                                                                    </span>
+                                
+                                                                    <span class="tx_info">
+                                                                        <span class="tx_name">이엑스코리아 프리미엄i5 GTX i5-9400F</span>
+                                                                        <span class="tx_price"><em>39,900,000</em>원</span>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                `;
+                            }
+                            prdcItemHTML += `</ul>`;
+
+                        return prdcItemHTML;
+                    }
+
+                    // Init
+                    setTimeout(categoryInit(caterecomArr), 0);
+                    setTimeout(function(){
+                        // DOM 출력
+                        loadDomPaint(12); // 퍼블페이지는 인자로 탭 인덱스를 넘기는데 실제 데이터를 넘겨주세요.
+                    }, 0);
+                })
+            </script>
+
+        </div>
+
+
+
+
+
+        
+
+	</section>
+
+	<!-- 모바일웹 하단 탭바_리뉴얼 -->
+	<section class="f_tabbar border-box">
+		<div class="f_tabbar__wrap">
+			<ul class="tabbar__menu">
+                <li><a href="javascript:void(0);" class="t_m_allmenu" data-starget="#sheet_left"><i class="comm__sprite2 icon_tabbar_allmenu"></i></a></li>
+                <li><a href="javascript:void(0);" class="t_m_home"><i class="comm__sprite2 icon_tabbar_home"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_search search_bg"><i class="comm__sprite2 icon_tabbar_search"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_mypage"><i class="comm__sprite2 icon_tabbar_mypage"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_zzim"><i class="comm__sprite2 icon_tabbar_zzim"></i></a></li>
+			</ul>
+		</div>
+        <div class="f_btn_page_contorler">
+			<button type="button" onclick="window.history.back();" class="btn_page_back"><i class="comm__sprite2 icon_tabbar_arrow_left_s24"></i></button>
+            <button type="button" onclick="totop();" class="btn_page_scrolltop"><i class="comm__sprite2 icon_tabbar_arrow_top_s24"></i></button>
+        </div>
+	</section>
+	<!-- // -->
+
+	<!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
+	<footer class="footer footer--com">
+		<!-- Footer : 탑버튼 -->
+		<div class="newquick">
+			<p class="TBtn" onclick="goFooterTop();">TOP</p>
+		</div>
+		<!-- // -->
+		<!-- Footer : 회사정보 -->
+		<div class="footer__info">
+			<!-- 클릭시 .unfold 클래스 toggle -->
+			<button class="footer__tx_com" onclick="$(this).toggleClass('unfold');">(주)써머스플랫폼 사업자 정보 <i class="ico_farr"></i></button>
+			<!-- // -->
+			<div class="footer__info_com">
+				<dl>
+					<dt>대표이사</dt>
+					<dd>김기록</dd>
+					<dt>사업자등록번호</dt>
+					<dd>206-81-18164</dd>
+					<dt>통신판매신고</dt>
+					<!-- 200901 : SR#42053 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>2020-서울금천-1949호</dd>
+					<!-- // -->
+					<dt>주소</dt>
+					<!-- 200825 : SR#41904 : [PC/M] 푸터 주소 정보 변경 -->
+					<dd>서울시 금천구 가산디지털1로 186,<br/>제이플라츠빌딩 13층</dd>
+					<!-- // -->
+					<dt>문의</dt>
+					<dd>02-6354-3601<br/><a href="mailto:master@enuri.com">master@enuri.com</a></dd>
+				</dl>
+			</div>
+		</div>
+		<!-- Footer : 푸터메뉴 -->
+		<div class="footer__menu">
+			<div class="footer__menu_top">
+				<a href="#">로그인</a><a href="#">고객센터</a><a href="#">PC버전</a>
+			</div>
+			<div class="footer__menu_bot">
+				<a href="#">이용약관</a><a href="#"><strong>개인정보처리방침</strong></a><a href="#">법적고지</a>
+			</div>
+		</div>
+		<span class="footer__tx_noti">㈜써머스플랫폼은 통신판매 정보제공자로서<br/>통신판매의 거래당사자가 아니며, 상품의 주문/배송/환불에 대한<br/>의무와 책임은 각 쇼핑몰(판매자)에게 있습니다.</span>
+	</footer>
+	<!-- // -->
+</div>
+
+<script>
+	// 브랜드스토어 : 최상단 GNB 고정
+    $(function(){
+        var position = $(window).scrollTop();
+        var $mainwrap = $("#wrap");
+        var $header = $("header"); // 헤더
+		var $headerHeight = $header.outerHeight();
+        var $contArea = $(".brndstore__cont"); // 컨텐츠
+        var $contTabs = $contArea.find(".brndstore__tabs"); // 컨텐츠 탭
+        var $contBody = $contArea.find(".brndstore__body"); // 컨텐츠 바디
+        var $footerTabbar = $(".f_tabbar"); // 하단 탭바        
+        var bottomPageControler = $(".f_btn_page_contorler");
+        var posHeader = function(){
+            var $myScroll = $(window).scrollTop();
+			var $mainCont = $(".m_brndstore_cont");
+            var headPos = $contBody.offset().top;
+            
+            if ( $myScroll > headPos ) {
+                $contTabs.addClass("fixed_top")
+            } else if( ($myScroll+$headerHeight) < headPos ){
+                $contTabs.removeClass("fixed_top");
+            }
+			
+            if ( $myScroll > $mainwrap.offset().top ){
+				$mainwrap.css('padding-top', $headerHeight);
+				$header.addClass("fixed_top");
+
+				if($myScroll > position){
+					$mainwrap.addClass("scr_down").removeClass("scr_up");
+					$footerTabbar.addClass("scr_down").removeClass("scr_up");
+                    bottomPageControler.removeClass('active');
+				}else{
+					$mainwrap.removeClass("scr_down").addClass("scr_up");
+					$footerTabbar.removeClass("scr_down").addClass("scr_up");
+                    bottomPageControler.addClass('active');
+				}
+
+			} else {
+				$mainwrap.removeClass('scr_down scr_up')
+				$header.removeClass("fixed_top");
+                $mainwrap.css('padding-top', 0);
+			}
+            position = $myScroll;
+        }
+        $(window).load(posHeader).scroll(posHeader);
+    });
+
+	function openDetailSearch(elem) {
+        var target = $(elem);
+        $(target).before('<div class="search_area_overlay"></div>')
+        $(target).addClass('active');
+
+        $('.close-all_prop_area', target).on('click', function () {
+            closeDetailSearch(elem);
+        });
+        $('.search_area_overlay').on('click', function () {
+            closeDetailSearch(elem);
+        });
+    }
+
+    function closeDetailSearch(elem) {
+        var target = $(elem),
+            target_overlay = $('.search_area_overlay');
+        target_overlay.fadeOut(400, function () {
+            $(this).remove();
+        });
+        target.removeClass('active');
+    }
+
+	// 상단이동
+    function totop() {
+        $('html, body').stop().animate({scrollTop: '0'}, 400);
+        return false;
+    }
+
+	// * 퍼블 참고용 
+	// * 공통 :  하단 컨텐츠로 바로 진입시 포지션 보정을 위한 스크립트 처리
+	$(function(){
+		if(window.location.hash) {
+			var $hash = $("#"+window.location.hash.substring(1));
+			if ( $hash.length ){
+				$("html,body").stop(true,false).animate({"scrollTop": $hash.offset().top - 100},"slow");
+			}
+		}
+	})
+    
+    /* 찜하기 */
+    $(document).on('click', ".btn__zzim--store", function(){ showLayZzim($(this), 'store') }); // 스토어찜
+    $(document).on('click', ".btn__zzim--goods", function(){ showLayZzim($(this), 'goods') }); // 상품찜
+    var zzimTimer;
+    function showLayZzim(btn, target){
+        // 찜타이머 클리어
+        clearTimeout(zzimTimer);
+        // 연속클릭시 기존레이어 있으면 제거
+        if($('.layer_zzim').length > 0) $('.layer_zzim').remove();
+        // 버튼 온/오프
+        btn.toggleClass('is--on anim');
+
+        var html = '';
+        html += '<div class="layer_zzim">';
+        html += '   <div class="layer_zzim__icon'+ (btn.hasClass('is--on') ? ' is--on' : '') +'"></div>';
+        if(btn.hasClass('is--on')) {
+            html += '   <div class="layer_zzim__tx--tit">'+ (target === 'goods' ? '상품' : '스토어') +'찜이<br>완료되었습니다.</div>';
+        } else {
+            html += '   <div class="layer_zzim__tx--tit tx--off">'+ (target === 'goods' ? '상품' : '스토어') +'찜이<br>해제되었습니다.</div>';
+        }
+        html += '</div>';
+
+        $('body').append(html);
+
+        // 1.5초후 제거
+        zzimTimer = setTimeout(function(){
+            $('.layer_zzim').fadeOut(function(){ $(this).remove() });
+        },1500);
+
+        return false;
+    }
+</script>
+
+</body>
+</html>

@@ -17,84 +17,32 @@
 <body>
 
 <div id="wrap">
-	
-	<!-- 200305 : 헤더 추가 :  A-Type : VIP -->
-    <header id="header" class="m_header head__type_a no_cate">
-		<div class="header_wrap">
-			<h1 class="m_txt">상품정보</h1>	
-			<button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>		
-            <!--<button class="btn_hd_sr comm__sprite">검색</button>-->
-			<!--<button class="btn_hd_my comm__sprite">나의정보</button>-->
-			<!--<button class="btn_hd_my comm__sprite" onclick="window.location.href='https://m.enuri.com/my/my_enuri_m.jsp'" >MY알림</button>-->
-			<button class="btn_hd_my comm__sprite" onclick="window.location.href='https://m.enuri.com/my/my_enuri_m.jsp'">MY메뉴</button>
+	<header id="header" class="page_header nomargin">
+        <div class="header_top header_top_short">
+			<div class="wrap">
+				<h1><a href="/" class="icon_header_logo logo_color_default comm__sprite2">Enuri Home</a></h1>
+				<button type="button" class="btn_myalarm"><i class="icon_header_alarm comm__sprite2">MY알림</i></button>
+				<div class="header_top_page_name">실생활용품<i class="icon_ex_circle_s24 comm__sprite2"></i></div>
+				<button type="button" class="btn_open_search_layer_icon"><i class="icon_header_search_black comm__sprite2"></i></button>
+			</div>
 		</div>
-		<script>
-			//퍼블 테스트용
-			$(function(){
-				var $mainWrap = $("#wrap"); // 메인컨텐츠 wrapper
-				var $btnCate = $(".btn_hd_cate"); // 카테고리 버튼
-				var $btnClose = $(".btn_hd_close"); // 카테고리 닫기 버튼				
-				var $cateLayer = $(".com__cate_wrap"); // 카테고리 레이어
-				var $btnSR = $(".btn_lay_sr"); // 검색 버튼
-				var $srLayer = $(".com__sr_layer"); // 검색 레이어
-				var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
-				// 버튼 :: 카테고리 레이어
-				$btnCate.click(function(e){
-					$mainWrap.addClass("scroll_lock"); // 스크롤 잠그기
-					$cateLayer.show(); // 레이어를 활성화 한 후 슬라이딩 
-					setTimeout(function(){
-						$cateLayer.addClass("on");
-					},100)
-				})
-				// 버튼 :: 카테고리 닫기
-				$btnClose.click(function(e){
-					$mainWrap.removeClass("scroll_lock"); // 스크롤 풀기
-					$("html,body").scrollTop(0);
-					$cateLayer.removeClass("on");
-					setTimeout(function(){
-						$cateLayer.hide();	
-					},700)
-				})
-				
-				// 버튼 :: 검색 레이어 열기
-				$btnSR.click(function(e){
-					var _taPos = $(".m_header_main .search_wrap").offset().top - 5;
-					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
-						$srLayer.show();
-						setTimeout(function(){
-							$srLayer.addClass("opened");
-							$mainWrap.addClass("scroll_lock");
-						},300)
-					})
-				})
-				// 버튼 :: 검색 레이어 닫기
-				$btnSRClose.click(function(e){
-					$mainWrap.removeClass("scroll_lock");
-					$srLayer.hide().removeClass("opened");
-				})
-			})
-		</script>		
     </header>
-    <!-- // 헤더 VIP -->
-
-	<!--// 헤더영역 -->
+	
+	
 	<section id="vip_wrap_id" class="vip_wrap">
-		<!-- 슬라이드 네비 -->
 		<div class="navTabs swiper-container">			 
 			<div class="swiper-wrapper">
 				<div class="swiper-slide on"><a href="#tab_summary">요약정보</a></div>
 				<div class="swiper-slide"><a href="#tab_price">가격비교</a></div>
 				<div class="swiper-slide"><a href="#tab_product">제품정보</a></div>
 				<div class="swiper-slide"><a href="#tab_review">상품후기</a></div>
-				<!-- 200903 : SR#42109 : VIP 스펙비교 탭추가 -->
-                <div class="swiper-slide"><a href="#tab_spec">스펙비교</a></div>
-                <!-- // -->
+				<div class="swiper-slide"><a href="#tab_spec">스펙비교</a></div>
 				<div class="swiper-slide"><a href="#tab_blog">블로그/동영상</a></div>
 				<div class="swiper-slide"><a href="#tab_qna">CM Q&A</a></div>
 				<div class="swiper-slide"><a href="#tab_recommend">추천상품</a></div>
 			</div>
 		</div>
-
+		
 		<!-- 190613 가격비교 : 상단 고정 바 영역 추가 -->        
         <div class="vip_fixed swiper-container">
             <div class="swiper-wrapper">
@@ -302,9 +250,24 @@
 									<li>신고하기</li>
 								</ul>
 							</div>
-
+							<div class="direct_price_type2">
+								<div class="dp_row ">
+									<div class="txt">쇼핑몰 직접 방문 가격</div>
+									<div class="dp_price"><em>1,152,570</em>원</div>
+								</div>
+								<div class="dp_row dp_row_discount">
+									<div class="txt">에누리 쿠폰할인</div>
+									<div class="dp_discount_price"><em>89,550</em>원</div>
+								</div>
+							</div>
 							<div class="prd_buy">
-								<a href="#" class="btn_buy_lowest"><span>최저가 구매하기</span></a>
+								<a href="#" class="btn_buy_lowest">
+									<!-- 직방가노출개선 할인율 없을때 -->
+									<!-- <span class="add_info eff_bounce">에누리 쿠폰 할인 적용중</span> -->
+									<!-- 직방가노출개선 할인율 있을때 -->
+									<span class="add_info eff_bounce">에누리 쿠폰 <strong>12%할인</strong> 적용중</span>
+									<span class="txt">최저가 <em>23,200</em>원 구매하기</span>
+								</a>
 							</div>
 
 							<!-- 혜택영역 -->
@@ -584,12 +547,6 @@
                                     <div class="box_inner">
                                         <table summary="이베이 파워클릭"" class="box_tb">
                                             <caption>이베이 파워클릭</caption>
-                                            <!-- colgroup 제거 -->
-                                            <!-- <colgroup>
-                                                <col width="40%">
-                                                <col width="20%">
-                                                <col width="40%">
-                                            </colgroup> -->
                                             <tbody>
                                                 <tr>
                                                     <td class="txt_name"><span>G마켓</span></td>
@@ -614,15 +571,8 @@
                                     <p class="title">
                                         가격비교 <span>(140)</span>
                                     </p>  
-									<!-- 
-									* 가격리스트 개선 : 마크업 삭제	
-									<ul class="select_menu">
-                                        <li>카드할인가 포함</li>
-                                        <li class="on">배송비 포함</li>
-                                    </ul> -->
                                 </div>
 
-								<!-- SR#50685 : 가격리스트 개선 -->
 								<div class="inter_sort">
 									<div class="sort_block">
 										<div class="sort_chk">
@@ -637,23 +587,64 @@
 										</div>
 									</div>
 								</div>
-								<!-- //SR#50685 -->
-
-                                <!-- 200318 : SR#38994 : [AOS] VIP > 카드최저가 및 현금최저가 위치 변경 -->
-                                <!-- 상단부에서 이동 / 마크업 일부 수정있습니다 -->
+                                
                                 <div class="diff_lowest">
+									<!-- 220405 : 현금몰/해외직구 최저가 표시 : 마크업 변경되었습니다. -->
+									<table summary="현금/카드 최저가 목록" class="box_tb-diff">
+										<caption>현금/카드 최저가 목록</caption>
+										<colgroup>
+											<col width="60%"/>
+											<col width="40%"/>
+										</colgroup>
+										<tbody>
+											<!-- 현금최저가 -->
+											<tr class="low_cash">
+												<td class="txt_name">
+													<strong class="tit">현금최저가</strong>
+													<span class="txt_mall">이노PC</span>
+												</td>
+												<td class="txt_price">
+													<strong>89,000</strong>
+												</td>
+											</tr>
+											<!-- 카드최저가 -->
+											<tr class="low_card">
+												<td class="txt_name">
+													<strong class="tit">카드최저가</strong>
+													<span class="txt_mall">인터파크</span>
+												</td>
+												<td class="txt_price">
+													<span class="txt_card">삼성카드</span>
+													<strong>123,560</strong>
+												</td>
+											</tr>
+											<!-- 20220401 : 스마트스토어 카드할인가 라인 추가 -->
+											<tr class="low_card">
+												<td class="txt_name">
+													<strong class="tit">카드최저가</strong>
+													<span class="txt_mall">LG전자총판점<em class="ico--npay">NPAY</em></span>
+												</td>
+												<td class="txt_price">
+													<span class="txt_card">삼성카드</span>
+													<strong>3,456,789</strong>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<!-- //220405 -->
+									
                                     <!-- 현금최저가 -->
-                                    <div class="low_cash type_lowest">
+                                    <!-- <div class="low_cash type_lowest">
                                         <div class="low_inner">
-                                            <strong class="tit">현금최저가</strong>
-                                            <span class="txt_mall">이노PC</span>                                            
-                                            <span class="low_price">
-                                                <strong>1,123,456,789</strong>원
-                                            </span>
+											<strong class="tit">현금최저가</strong>
+											<span class="txt_mall">이노PC</span>
+											<span class="low_price">
+												<strong>1,123,456,789</strong>원
+											</span>
                                         </div>
-                                    </div>         
+                                    </div>   -->       
                                     <!-- 카드최저가 -->
-                                    <div class="low_card type_lowest">
+                                    <!-- <div class="low_card type_lowest">
                                         <div class="low_inner">
                                             <strong class="tit">카드최저가</strong>
                                             <span class="txt_mall">인터파크</span>
@@ -662,7 +653,18 @@
                                                 <strong>1,123,456,789</strong>원
                                             </span>
                                         </div>
-                                    </div>
+                                    </div>   -->
+                                    <!-- <div class="low_card type_lowest">
+                                        <div class="low_inner">
+                                            <strong class="tit">카드최저가</strong>
+                                            <span class="txt_mall">LG전자총판점<em class="ico--npay">NPAY</em></span>
+                                            <span class="low_price">
+                                                <span class="txt_card">삼성카드</span>
+                                                <strong>1,123,456,789</strong>원
+                                            </span>
+                                        </div>
+                                    </div> -->
+									<!-- //20220401 -->
                                 </div>
                                 <!-- // -->
 
@@ -739,8 +741,18 @@
                                                     <span class="ico--global">직구</span><strong>2,520,000</strong>원
                                                 </td>
                                             </tr>
+											<!-- 20220401 : 스마트스토어 카드할인가 라인 추가 -->
                                             <tr>
-                                                <!-- 191202 npay 타입 추가 -->                                        
+                                                <td class="txt_name"><span>LG전자총판점<em class="ico--npay">NPAY</em></span></td>
+                                                <td class="txt_delivery">2,500원</td>
+                                                <td class="txt_price">
+                                                    <strong>2,520,000</strong>원
+                                                    <span class="txt_card_price">(하나카드 495,000원)</span>
+                                                </td>
+                                            </tr>
+											<!-- //20220401 -->
+                                            <tr>
+                                                <!-- npay 타입 -->                                        
                                                 <td class="txt_name"><span>제로투세븐<em class="ico--npay">NPAY</em></span></td>
                                                 <!-- // -->
                                                 <td class="txt_delivery">2,500원</td>
@@ -1428,7 +1440,14 @@
 				<!-- // Tab#1 :: 요약정보 끝 -->
 
 				<!-- Tab#2 :: 가격비교 -->
-				<div class="swiper-slide tab_price tab_cele">
+				<!--
+					220608 
+					현재 : 모든상품기본값은 요약보기(그리드타입)
+					수정 : 유사상품경우 펼쳐보기(리스트타입)를 기본값으로하며, 요약보기버튼은 미노출처리
+					유사상품의경우 특정클래스 추가 컨트롤하는게 낫겠음.
+					.tab_price 에 .similar_goods_type 추가 
+				-->
+				<div class="swiper-slide tab_price tab_cele similar_goods_type">
 					<div class="price_info_wrap">
 						<div class="box_inner">
 							<div class="box_head">
@@ -4244,7 +4263,7 @@
 		<!-- // 파워링크 AD 끝 -->
 
 		<!-- 빠른배송 안내 -->
-		<div class="quickd_noti" onclick="$(this).toggleClass('on');return false;">
+		<div class="quickd_noti" onclick="$(this).toggleClass('on'); return false;">
 			<a href="" class="btn_quickd_noti">빠른배송 안내</a>
 			<span class="noti_cnt">
 				각 쇼핑몰 마다 빠른배송에 대한 명칭은 상이하오니 참고바랍니다.<br/>
@@ -4252,17 +4271,6 @@
 				주문시간에 따라 당일 발송되는 상품으로 쇼핑몰마다 묶음배송 조건이나배송 대상 지역의 차이가 있을 수 있으므로 쇼핑몰 상세페이지를 꼭 확인하시기 바랍니다.
 			</span>
 		</div>
-		<!-- // -->
-
-		<!-- 앱 다운로드 -->
-		<ul class="another_app_list">
-			<li class="btn_app_smart">
-				<a href="#">스마트 택배 다운받기</a>
-			</li>
-			<li class="btn_app_social">
-				<a href="#">소셜가격비교 다운받기</a>
-			</li>
-		</ul>
 		<!-- // -->
 
 		<!-- 광고배너 -->
@@ -4277,7 +4285,7 @@
         <!-- 최저가 알림 -->
         <div class="box__noti_lowest">
             <!-- 최저가 알림 신청되어있을때 .on 클래스 붙어주세요 -->
-            <button class="btn__noti_lowest" onclick="$(this).toggleClass('on');">최저가 알림</button>
+            <button class="btn__noti_lowest">최저가 알림</button>
             <!-- 말풍선 -->
             <span class="tx_noti">최저가 알림하고 저렴하게 구매하세요.</span>
             <!-- // -->
@@ -4286,16 +4294,27 @@
         <!-- 구매하기 -->
         <button class="btn__buy_lowest">최저가 구매하기</button>
         <!-- // -->
+		
+		<div class="f_btn_page_contorler">
+			<button type="button" onclick="window.history.back();" class="btn_page_back"><i class="comm__sprite2 icon_tabbar_arrow_left_s24"></i></button> 
+            <button type="button" onclick="totop();" class="btn_page_scrolltop"><i class="comm__sprite2 icon_tabbar_arrow_top_s24"></i></button>
+        </div>
+
+		<script>
+			$('.btn__noti_lowest').on('click', function(){
+				$(this).toggleClass('on');
+				if( $(this).hasClass('on') ){
+					$(this).next().hide();
+				} else {
+					$(this).next().show();
+				}
+			});
+		</script>
     </section>
     <!-- // -->
 
     <!-- 200609 : SR#40404 : [MW] 푸터 개선건 -->
     <footer class="footer footer--com">
-        <!-- Footer : 탑버튼 -->
-        <div class="newquick">
-            <p class="TBtn" onclick="goFooterTop();">TOP</p>
-        </div>
-        <!-- // -->
         <!-- Footer : 회사정보 -->
         <div class="footer__info">
             <!-- 클릭시 .unfold 클래스 toggle -->
@@ -4304,7 +4323,7 @@
             <div class="footer__info_com">
                 <dl>
                     <dt>대표이사</dt>
-                    <dd>김기범</dd>
+                    <dd>김기록</dd>
                     <dt>사업자등록번호</dt>
                     <dd>206-81-18164</dd>
                     <dt>통신판매신고</dt>
@@ -4395,7 +4414,6 @@
 
 				<div class="privacyCheck">
 					<p class="chkAgree"><label><input class="chkbox"  id="" type="checkbox">개인 정보 수집 이용 동의</label></p>
-
 					<table summary="개인 정보 수집 목적, 항목, 보유기간 내용">
 						<colgroup>
 							<col />
@@ -4457,16 +4475,12 @@
 <!-- [쇼핑몰 선택] Bottom Sheet -->
 <div class="bottomsheet_wrap" style="z-index:-1"><!-- is-shown -->
 	<div class="dimmed"></div>
-
 	<div class="bottomsheet">
 		<div class="bs_inner">
 			<div class="bs_head">
 				<div class="bs_head_tit">쇼핑몰 선택</div>
 				<button type="button" class="bs_head_close">닫기</button>
 			</div>
-
-			
-			
 			<div class="mallbox_tab">
 				<button type="button" class="tab-item is-on">국내쇼핑몰(<em id="mallCountDomestic">21</em>)</button>
 				<button type="button" class="tab-item">해외쇼핑몰(<em id="mallCountOverseas">0</em>)</button>
@@ -4548,32 +4562,55 @@
 				spceBeetween : 10
             });
             
-            var nav = $('.navTabs'); 
             var tmpTabObj = $(navElem).find("a");
             
             // 200407 스크립트 추가 / 수정
             var position = $(window).scrollTop(); 
-            var $btnQuick = $(".footer .newquick"); // Top 버튼
+			var $mainwrap = $("#wrap");
+			var $header = $("header");
+			var $nav = $('.navTabs');
+			var $isHeader = $header.length; // 헤더존재 1 , 없으면 0
+			var $headerHeight = ($isHeader == 1 ? $header.outerHeight() : 0) + $nav.outerHeight();
+			var bottomPageControler = $('.f_btn_page_contorler')
             var posHeader = function(){
-                var nowPos = $(window).scrollTop();
-                var $mainwrap = $("#wrap");
-                var $fixed = $(".tab_price_head_wrap"),
-                $fixedCnt =  $fixed.find(".box_cont"),
-                $vipFixed = $(".vip_fixed"),
-                $vipFixedSlide = $(".vip_fixed_slide"),
-                $gnb = $(".m_header.head__type_a"), // 200305 클래스명 수정
-                $myScroll = $(this).scrollTop(),                
-                gnbH = ( $gnb.outerHeight() != null && $gnb.outerHeight() != undefined ) ? $gnb.outerHeight()-1 : 0;
+				var $myScroll = $(this).scrollTop();
+				var $vipCont = $(".vip_cnt");
+                var $fixed = $(".tab_price_head_wrap");
+                var $fixedCnt =  $fixed.find(".box_cont");
+                var $vipFixed = $(".vip_fixed");
+                var $vipFixedSlide = $(".vip_fixed_slide");
 
-                // 200302 : margin-top 수정 
-                if ( $myScroll > gnbH ) nav.addClass("fixed_top").parents("#vip_wrap_id").css("margin-top","50px");
-                else nav.removeClass("fixed_top").parents("#vip_wrap_id").css("margin-top","0");
-                                
+				if ( $myScroll > $vipCont.offset().top ){
+					$mainwrap.css('padding-top', $headerHeight);
+					bottomPageControler.addClass('active');
+					if($isHeader == 1) {
+						$header.addClass('fixed_top');
+						$nav.addClass("fixed_top");
+					} else {
+						$nav.addClass("app_fixed_top");
+					}
+					if($myScroll > position){
+						$mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+					}else{
+						$mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+					}
+				} else {
+					$mainwrap.removeClass('scr_down scr_up scr_reset')
+					$mainwrap.css('padding-top', 0);
+					bottomPageControler.removeClass('active');
+					if($isHeader == 1) {
+						$header.removeClass('fixed_top');
+						$nav.removeClass("fixed_top");
+					} else {
+						$nav.removeClass("app_fixed_top");
+					}
+				}         
+
                 // 가격비교탭 활성화시 
                 var $tabPrice = $(".tab_price");
                 if ( $tabPrice.is(".swiper-slide-active") ){
                     $fixed.css("height",$fixedCnt.outerHeight());
-                    if ( $myScroll > $fixed.offset().top - nav.outerHeight()-1 && $myScroll < $tabPrice.outerHeight() ){                                                                        
+                    if ( $myScroll > $fixed.offset().top - $nav.outerHeight()-1 && $myScroll < $tabPrice.outerHeight() ){                                                                        
                         $vipFixedSlide.append( $("#tab_price_head_3ndline") );
                     }else{
                         $fixed.append( $("#tab_price_head_3ndline") );
@@ -4581,10 +4618,10 @@
                 }
 
                 // CM&QNA 활성화시
-                var $tabPrice = $(".tab_qna"),
+                var $tabQna = $(".tab_qna"),
                     $insideTabBtn = $(".tab_qna .btn_write_wrap"),
                     $outsideTabBtn = $(".btn_write_wrap.btn_fixed_bot");                
-                if ( $tabPrice.is(".swiper-slide-active") ){
+                if ( $tabQna.is(".swiper-slide-active") ){
                     if ( $(window).scrollTop() < $insideTabBtn.offset().top - window.innerHeight ){
                         $outsideTabBtn.append ( $(".btn_write_area") );
                         $outsideTabBtn.addClass("rising");
@@ -4596,14 +4633,7 @@
                     $outsideTabBtn.removeClass("rising");
                 }
 
-                // TOP버튼 등장 
-                if(nowPos > position){
-                    $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
-                    $btnQuick.addClass("scr_mode");
-                }else{
-                    $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
-                }
-                position = nowPos;
+                position = $myScroll;
 
             };   
             // 끝 : 스크립트 수정

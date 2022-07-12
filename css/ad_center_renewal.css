@@ -1,0 +1,283 @@
+@charset "utf-8";
+@import url("/css/webfont.css");
+/* @import url("/css/webfont-local.css"); */
+/************************************************************************
+ * 파일명 : ad_center_renewal.css
+ * 설명 : 에누리 광고센터 CSS
+ * 작성자  : 박현원
+ * 수정일 : 22.06.22
+ * 내용 : 기존 css에서 딤레이어만 유지
+************************************************************************/
+* {margin:0; padding:0;}
+body {font-size:13px; font-family: 'Noto Sans KR', '맑은고딕', -apple-system, Roboto, sans-serif;}
+ul, ol {list-style: none;}
+a {color:#666; text-decoration: none;}
+.border-box,
+.border-box *,
+.border-box *:before,
+.border-box *:after {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+
+
+/* 공통_그리드 */
+.col_wrap {display: flex; flex-wrap: wrap;}
+.col_wrap > .col {flex:0 0 auto;}
+.col_wrap > .col_full {width:100%;}
+.col_wrap > .col_half {width:50%;}
+.col_wrap > .col_one_fourth {width:25%;}
+.col_wrap > .col_one_fifth {width:20%;}
+
+.col_gap16 {margin-left:-8px; margin-right:-8px;}
+.col_gap16 > div {padding-left:8px; padding-right:8px;}
+.col_gap20 {margin-left:-10px; margin-right:-10px;}
+.col_gap20 > div {padding-left:10px; padding-right:10px;}
+
+/* ----------------------------------------------------------------
+                            페이지공통
+---------------------------------------------------------------- */
+.ad_container { width:1280px; margin:0 auto;}
+.ad_section {position:relative;}
+/* ----------------------------------------------------------------
+                            헤더
+---------------------------------------------------------------- */
+.ad_header {}
+.ad_header_top {display: flex; justify-content: space-between; flex-wrap: wrap;}
+.ad_header_top > * {flex: 0 0 auto;}
+.ad_header_top h1 {font-size: 0;}
+.ad_header_top h1 a {display: block; font-size: 24px; color:#222; font-weight: 500; padding:18px 0; letter-spacing: -1px;}
+.ad_header_top h1 a img {margin-right:6px; vertical-align: -4px;}
+.ad_header_top .menu_list {font-size: 0; text-align: right;}
+.ad_header_top .menu_list li {display: inline-block;}
+.ad_header_top .menu_list li a {display:block; line-height: 72px; padding:0 30px; font-size: 18px; color:#333;}
+.ad_header_top .menu_list li:last-child a {padding-right:0;}
+.ad_header_top .menu_list li a:hover {color:#1a70dd;}
+
+/* ----------------------------------------------------------------
+                컨텐츠 > section_row_banner (최상단배너)
+---------------------------------------------------------------- */
+.section_row_banner {background-color: #4a77e1; height:320px; overflow: hidden;}
+.section_row_banner .ad_container {position: relative; z-index: 50;}
+.section_row_banner .banner_text {position:relative; margin-left:13%; color:#fff; letter-spacing: -.6px; line-height: 1; padding-top: 75px; z-index: 50;}
+.section_row_banner .banner_text .txt1 {font-size: 20px;}
+.section_row_banner .banner_text .txt2 {font-size: 54px; font-weight: 500; margin-top: 15px}
+.section_row_banner .banner_text .txt3 {font-size: 15px; font-weight: 300; opacity: .6; margin-top: 36px;}
+
+/* ----------------------------------------------------------------
+                컨텐츠 > section_row_banner (최상단배너) > bg effect (feat. 정신없음)
+---------------------------------------------------------------- */
+.banner_obj {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
+.banner_obj .obj_main {position:absolute; top:0; left:55%; width:496px; height: 100%; z-index: 10;}
+.banner_obj .obj_main > div {position:absolute; background-repeat: no-repeat; background-position: center; background-size: 100%;}
+.banner_obj .obj_main .obj_main_pc { top: 45px; left: 83px; width:304px; height:245px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_pc.png") ;}
+.banner_obj .obj_main .obj_main_heart { top:98px; left: 344px; width:88px; height:74px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_heart.png"); animation: bounce 2s .3s infinite;}
+.banner_obj .obj_main .obj_main_speakdeco { top: 27px; left: 162px; width:34px; height:39px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_speakdeco.png"); animation: bounce 2s infinite;}
+.banner_obj .obj_main .obj_main_paperplane { top: 132px; left: 122px; width:88px; height:70px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_paperplane.png"); offset: path('M534.500,169.500 C534.500,169.500 226.354,228.612 1.499,1.499') auto; animation: moveto 5s infinite; transform: rotate(136deg); opacity: 1;}
+.banner_obj .obj_main .obj_bg_bundle1 { top: 69px; left: 35px; width:363px; height:192px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_bg_bundle_1.png"); animation: bounce2 3s .2s infinite; }
+@keyframes bounce{
+    0% { transform: scale(1);}
+    30%,60%{ transform: scale(.9);}
+    20%,45%,65%{ transform: scale(1.1);}
+    100% { transform: scale(1);}
+}
+@keyframes bounce2{
+    0% { transform: scale(1);}
+    30%,60%{ transform: scale(.98);}
+    20%,45%,65%{ transform: scale(1.01);}
+    100% { transform: scale(1);}
+}
+@keyframes moveto{
+    0%{ offset-distance: 0%; opacity: 0;}
+    100%{ offset-distance: 100%; opacity: 1;}
+}
+
+.banner_obj .obj_bg {position:absolute; top:0; left:0; width:100%; height: 100%; z-index: 5;}
+.banner_obj .obj_bg > div {position:absolute; background-repeat: no-repeat; background-position: center; background-size: 100%;}
+.banner_obj .obj_bg .obj_bg_r1 {top:-140px; left:15%; width:374px; height:374px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_circle_dash_1.png"); animation: rotate 13s infinite;}
+.banner_obj .obj_bg .obj_bg_r2 {top:143px; left:9%; width:264px; height:264px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_circle_dash_2.png"); animation: rotate 8s infinite;}
+.banner_obj .obj_bg .obj_bg_r3 {top:38px; left:56.4%; width:198px; height:198px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_circle_dash_3.png"); animation: rotate 4s infinite;}
+.banner_obj .obj_bg .obj_bg_diagonal {bottom:-78px; left:51%; width:484px; height:312px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_bg_diagonal.png"); }
+.banner_obj .obj_bg .obj_bg_bundle2 {top:55px; left:42%; width:799px; height:197px; background-image: url("//img.enuri.info/images/home/adcenter/obj/obj_bg_bundle_2.png"); animation: fadeout 4s infinite; }
+
+@keyframes rotate{
+    0%{ transform: rotate(0);}
+    100%{ transform: rotate(360deg);}
+}
+@keyframes fadeout{
+    0%{ transform: scale(1.04); opacity: 0;}
+    20%{ transform: scale(1); opacity: 1;}
+    100%{ transform: scale(1.1); opacity: 0;}
+}
+
+/* ----------------------------------------------------------------
+                컨텐츠 > section_row_1 (에누리 어떤광고 구좌가 있나요?)
+---------------------------------------------------------------- */
+.section_row_1 {text-align: center; padding-top:96px; padding-bottom: 88px;}
+.section_row_1 h3 {font-size: 36px; color:#222; line-height: 1; letter-spacing: -1px;}
+.section_row_1 .h3_summary {font-size: 18px; color:#666; letter-spacing: -1px; margin-top:16px;}
+.ad_sector_intro_swiper_warp {position:relative; overflow: hidden; padding-bottom:10px; margin-top:41px;}
+.ad_sector_intro_swiper_warp:before {content:""; display: block; width:100px; height:100%; position:absolute; top:0; left:0; background: -webkit-linear-gradient(to left, transparent, rgba(255,255,255,1)); background: -moz-linear-gradient(to left, transparent, rgba(255,255,255,1)); background: -o-linear-gradient(to left, transparent, rgba(255,255,255,1)); background: linear-gradient(to left, transparent, rgba(255,255,255,1)); z-index: 50; pointer-events: none;}
+.ad_sector_intro_swiper_warp:after {content:""; display: block; width:100px; height:100%; position:absolute; top:0; right:0; background: -webkit-linear-gradient(to right, transparent, rgba(255,255,255,1)); background: -moz-linear-gradient(to right, transparent, rgba(255,255,255,1)); background: -o-linear-gradient(to right, transparent, rgba(255,255,255,1)); background: linear-gradient(to right, transparent, rgba(255,255,255,1)); z-index: 50; pointer-events: none;}
+.ad_sector_intro_swiper {width:848px; margin: 0 auto;}
+.ad_sector_intro_swiper .swiper-container {overflow: visible;}
+.ad_sector_intro_swiper .swiper-slide {display: flex; align-items: center; justify-content: center;}
+
+.slide_card { width:370px; height:578px; text-align: center; border-radius: 12px; border:1px solid #f3f8ff; background-color: #f3f8ff; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); padding-top:208px; letter-spacing: -.5px; transition: all 1.5s; cursor: pointer;}
+.slide_card .card_title {font-size: 30px; color:#3c69cb;}
+.slide_card .card_summary {font-size: 23px; color: #222; margin-top: 9px; font-weight: 300; line-height: 36px;}
+.slide_card .card_img {transform: scale(0); opacity: 0; margin-top: 17px;}
+
+.swiper-slide-active .slide_card {width:100%; padding-top: 48px; border-color:rgba(61, 99, 181, 0.3); background-image: url("//img.enuri.info/images/home/adcenter/slide_card_bg.png"); background-repeat: no-repeat; background-position: center;}
+.swiper-slide-active .slide_card br {display: none;}
+.swiper-slide-active .slide_card .card_title { font-size: 32px; color: #1d4cbc;}
+.swiper-slide-active .slide_card .card_summary {font-size: 16px; color:#1d4cbc; line-height: 16px; opacity: .7;}
+.swiper-slide-active .slide_card .card_img { transform: scale(1); opacity: 1; transition:all 1.5s;}
+
+/* ----------------------------------------------------------------
+                컨텐츠 > section_row_2 (첫 만남에-누리!)
+---------------------------------------------------------------- */
+.section_row_2 {text-align: center; padding-top:96px; padding-bottom: 98px; background-color:#ece4d9;}
+.section_row_2 h3 {font-size: 36px; color:#222; line-height: 1; letter-spacing: -1px;}
+.section_row_2 .h3_summary {font-size: 18px; color:#666; letter-spacing: -1px; margin-top:16px;}
+
+.section_row_2 .card_body {display:flex; flex-wrap: wrap; justify-content: center; align-items: center; border-radius: 12px; background-color: #fff; padding:24px 0;}
+.section_row_2 .card_body .card_left {margin-right:36px;}
+.section_row_2 .card_body .card_right {text-align: left;}
+.section_row_2 .card_body .c_title {font-size: 20px; font-weight: 500; color:#222;}
+.section_row_2 .card_body .c_summary {font-size: 16px; color: #666; margin-top: 4px; line-height: 1.4;}
+
+
+
+/* ----------------------------------------------------------------
+                컨텐츠 > section_row_3 (모든 것에-누리!)
+---------------------------------------------------------------- */
+.section_row_3 {text-align: center; padding-top:96px; padding-bottom: 40px;}
+.section_row_3 h3 {font-size: 36px; color:#222; line-height: 1; letter-spacing: -1px; margin-bottom:36px;}
+
+.section_row_3 .card_top_balloon {position:relative; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; height: 89px; font-size: 20px; color:#fff; text-align: center; background-color: #5f8ce9; border-radius: 12px; margin-bottom: 23px; font-weight: 300; letter-spacing: -.5px;}
+.section_row_3 .card_top_balloon:after {content: ""; display: block; border-top: 10px solid #5f8ce9; border-left: 7px solid #fff; border-right: 7px solid #fff; border-bottom: none; position: absolute; bottom: -10px; left: 50%; margin-left: -4px;}
+
+.section_row_3 .card_bottom { border-radius: 12px; border: 1px solid #ccc; min-height: 354px; line-height: 1.3; padding-top:39px;}
+.section_row_3 .card_bottom .c_icon {display: flex; align-items: center; justify-content: center; width:146px; height:146px; border-radius: 50%; background-color: #f8f9fd; margin:0 auto;}
+.section_row_3 .card_bottom .c_title {font-size: 20px; font-weight: 500; color:#222; margin-top:19px;}
+.section_row_3 .card_bottom .c_summary {font-size: 15px; color:#666; margin-top:11px; letter-spacing: -.5px;}
+
+/* ----------------------------------------------------------------
+                    최하단버튼
+---------------------------------------------------------------- */
+.btn_link {text-align: center; margin-top:56px;}
+.btn_link a {display: inline-block; width:386px; height:64px; line-height:64px; border-radius: 32px; background-color: #333; color:#fff; font-size: 20px; font-weight: bold; color:#fff;}
+.contact_mail {font-size: 14px; margin-top:17px; color:#999;}
+.contact_mail a { color:#666; text-decoration: underline;}
+
+/* ----------------------------------------------------------------
+                            딤레이어
+---------------------------------------------------------------- */
+.dimmed__layer{position:fixed;top:0;left:0;width:100%;height:100%;z-index: 11002;letter-spacing:-1px;}
+.dimmed__layer,
+.dimmed__layer *{font-family:Roboto,'Noto Sans KR',"맑은 고딕", Malgun Gothic, Dotum, "돋움", verdana, sans-serif;font-weight:500;}
+.dimmed__layer.scroll_type{position: absolute;}
+.dimmed__layer .dimmed{position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.75);}
+.dimmed__layer .dimmed.dim_op5{background:rgba(0,0,0,.5)}
+.lay__wrap{position:absolute;top:0px;left:50%;width:700px;background:#fff;margin-left:-350px;z-index: 1;}
+.lay__wrap .lay__tit{position:relative;line-height:36px;padding:20px 40px;background:#0a66f9;color:#fff;font-size:30px;letter-spacing:-2px}
+.lay__wrap .btn__close{position: absolute;top:50%;right:40px;margin-top:-14px;width:28px;height:28px;background:url(http://img.enuri.info/images/home/adcenter/img_sprite.png) no-repeat;background-position:-60px -340px;text-indent:-9999em;}
+.lay__wrap .btn__confirm{display:block;background:#333333;border:0;margin:20px auto 0;padding:0;width:132px;height:46px;border-radius: 2px 2px;line-height:46px;font-size:22px;text-align:center;color:#fff}
+.lay__wrap .lay__inner{padding:0 40px}
+
+/* 광고문의하기 */
+.lay__contact{position: relative;margin-top:100px;overflow:hidden}
+.lay__contact .lay__inner{padding-top:24px;padding-bottom:43px;text-align:left}
+.lay__contact .lay__txt{display:block;padding-bottom:12px;line-height:28px;font-size:18px;color:#333333;letter-spacing: -1px;border-bottom:1px solid #000}
+.lay__contact .lay__txt_contact{color:#0b65f9;font-size:16px;display:block;font-weight:400;margin-top:12px}
+.lay__contact .lay__txt_contact a{color:#0b65f9;font-weight:normal}
+.lay__contact .info_group{padding-top:30px}
+.lay__contact .info_group .info_row:first-of-type{margin-top:0}
+.lay__contact .info_group .info_row{margin-top:10px;font-size:18px;color:#666666}
+.lay__contact .info_group .info_row label{display:inline-block;line-height:46px;height:46px;width:90px;text-indent: 10px;font-size:inherit;font-weight: 400;vertical-align: top}
+.lay__contact .info_group .info_row input{width:198px;height:44px;border:1px solid #eeeeee;border-radius: 2px 2px;padding:0 15px;font-size:18px;color:#333333;font-weight: 400}
+.lay__contact .info_group .info_row input::-webkit-input-placeholder{color:#ccc;}
+.lay__contact .info_group .info_row input:-ms-input-placeholder{color:#ccc;}
+.lay__contact .info_group .info_row input::-ms-input-placeholder{color:#ccc;}
+.lay__contact .info_group .info_row input::placeholder{color:#ccc;}
+.lay__contact .info_group .info_row.val_error input{border-color:#0a66f9}
+.lay__contact .info_group .info_row textarea{width:488px;height:106px;border:1px solid #eeeeee;border-radius: 2px 2px;padding:15px;font-size:18px;color:#333333;font-weight: 400;resize:none}
+.lay__contact .info_group .info_row textarea::-webkit-input-placeholder{color:#ccc;}
+.lay__contact .info_group .info_row textarea:-ms-input-placeholder{color:#ccc;}
+.lay__contact .info_group .info_row textarea::-ms-input-placeholder{color:#ccc;}
+.lay__contact .info_group .info_row textarea::placeholder{color:#ccc;}
+.lay__contact .info_group .info_row .txt_error{display:inline-block;height:44px;line-height:44px;vertical-align: top;font-size:14px;color:#0a66f9;margin-left:10px;font-weight: 400}
+.lay__contact .info_agree{margin-top:20px;border-top:1px solid #dddddd;}
+.lay__contact .info_agree .chk_agree{border-bottom:1px solid #000000;height:30px;padding:15px 10px}
+.lay__contact .info_agree .chk_agree input{display:none}
+.lay__contact .info_agree .chk_agree input + label{display:inline-block;height:30px;line-height:30px;padding-left:40px;font-size:18px;color:#333;background:url(http://img.enuri.info/images/home/adcenter/img_sprite.png) no-repeat;background-position:0 -340px;cursor: pointer;} 
+.lay__contact .info_agree .chk_agree input:checked + label {background-position:0 -370px}
+.lay__contact .info_agree .tb_agree{margin-top:30px;border:1px solid #dddddd;border-radius: 2px 2px;width:100%;}
+.lay__contact .info_agree .tb_agree th,
+.lay__contact .info_agree .tb_agree td{height:78px;vertical-align: middle;border:1px solid #dddddd;font-weight: 400}
+.lay__contact .info_agree .tb_agree th{font-size:16px;color:#666666;text-align:center;background:#f4f4f4}
+.lay__contact .info_agree .tb_agree td{font-size:14px;line-height:22px;color:#999999;padding:0 20px;}
+.lay__contact .btn__apply{display:block;background:#333333;border:0;margin:30px auto 0;padding:0;width:260px;height:62px;border-radius: 2px 2px;line-height:62px;font-size:24px;text-align:center;color:#fff;box-shadow: 0 3px 0 rgba(0,0,0,.1)}
+.lay__contact .btn__apply > span{display:inline-block;padding-right:26px;position: relative;}
+.lay__contact .btn__apply > span:after{content:"";position: absolute;width:9px;height:15px;right:0;top:50%;margin-top:-7px;background:url(http://img.enuri.info/images/home/adcenter/img_sprite.png) no-repeat;background-position:-40px -340px;}
+
+.lay__notagree{width:480px;height:216px;top:50%;margin:-108px 0 0 -240px}
+.lay__notagree .lay__inner{padding:47px 50px 0;text-align:center}
+.lay__notagree .lay__txt{font-size:22px;line-height:30px;color:#555555;;font-weight:400}
+.lay__notagree .btn__close{top:20px;right:20px;margin:0;background-position:-60px -400px;}
+
+.lay__finsend{width:480px;height:296px;top:50%;margin:-148px 0 0 -240px}
+.lay__finsend .lay__inner{padding:35px 50px 0;text-align:center}
+.lay__finsend .lay__tit{background:transparent;padding:0;font-size:32px;line-height:56px;color:#0a66f9;font-weight:500}
+.lay__finsend .lay__txt{font-size:22px;line-height:30px;color:#555555;font-weight:400}
+.lay__finsend .btn__close{top:20px;right:20px;margin:0;background-position:-60px -400px;}
+
+.dimmed__layer .lay__contact{-webkit-transition: all .5s ease-in-out;-o-transition: all .5s ease-in-out;transition: all .5s ease-in-out;-webkit-transition-delay:.3s;-o-transition-delay:.3s;transition-delay:.3s;opacity:0;-webkit-transform:translateY(50px);-ms-transform:translateY(50px);transform:translateY(50px)}
+.dimmed__layer.fly .lay__contact{opacity:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0)}
+
+
+
+/* 애니메이션 */
+.animate {display: none; animation-duration: 2s; animation-fill-mode: both}
+.slideInLeft { display: block; animation-name: slideInLeft;}
+@keyframes slideInLeft {
+    0% {transform: translate3d(-100%, 0, 0);visibility: visible;opacity: 0;}
+    100% {transform: translate(0);opacity: 1;}
+}
+
+.slideInRight {display: block;animation-name: slideInRight;}
+@keyframes slideInRight {
+    0% {transform: translate3d(100%, 0, 0);visibility: visible;opacity: 0;}
+    100% {transform: translate(0);opacity: 1;}
+}
+
+.slideInUp {display: block;animation-name: slideInUp;}
+@keyframes slideInUp {
+    0% {transform: translate3d(0, 100%, 0);visibility: visible;opacity: 0;}
+    100% {transform: translate(0);opacity: 1;}
+}
+
+.slideInDown {display: block;animation-name: slideInDown;}
+@keyframes slideInDown {
+0% {
+    transform: translate3d(0, -100%, 0);visibility: visible;opacity: 0;}
+    100% {transform: translate(0);opacity: 1;}
+}
+.duration__1 { animation-duration: 1s; }
+.duration__2 { animation-duration: 2s; }
+.duration__3 { animation-duration: 3s; }
+.duration__4 { animation-duration: 4s; }
+.duration__5 { animation-duration: 5s; }
+.duration__6 { animation-duration: 6s; }
+.duration__7 { animation-duration: 7s; }
+.duration__8 { animation-duration: 8s; }
+.duration__9 { animation-duration: 9s; }
+
+.delay__1 { animation-delay: .1s; }
+.delay__2 { animation-delay: .2s; }
+.delay__3 { animation-delay: .3s; }
+.delay__4 { animation-delay: .4s; }
+.delay__5 { animation-delay: .5s; }
+.delay__6 { animation-delay: .6s; }
+.delay__7 { animation-delay: .7s; }
+.delay__8 { animation-delay: .8s; }
+.delay__9 { animation-delay: .9s; }
+.delay__10 { animation-delay: 1s; }

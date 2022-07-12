@@ -24,16 +24,184 @@
 <span class="zzimly" style="display:none">찜 되었습니다</span>
 <!-- // 찜레이어 -->
 
-<!-- SRP : 상세검색 레이어 (카테고리) -->
+<!-- 검색 레이어 -->
+<div class="com__sr_layer ">
+	<div class="sr_innner">
+		<div class="sr_layer_header border-box">			
+			<button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+			<div class="ar_lay_sr">
+				<input type="text" required="required" placeholder="검색어를 입력해주세요."/>
+				<button class="btn__delete" onclick="$(this).prev().val('');"><i class="comm__sprite2">삭제</i></button>
+				<button class="btn__search"><i class="icon_header_search comm__sprite2">검색</i></button>
+			</div>
+		</div>
+		<div class="search_cnt">
+			<!-- 자동완성 타입 -->
+			<ul class="sr__list type_autocomplete" style="display:none">
+				<!-- 카테고리 타입 .type_ac_cate -->
+				<li class="type_ac_cate">디지털 &gt; <em>블루투스</em>스마트워치</li>
+				<!-- 키워드(검색어) 타입 .type_ac_kwrd -->
+				<li class="type_ac_kwrd"><em>블루투스</em>이어폰</li>
+				<li class="type_ac_kwrd"><em>블루투스</em> 무선이어폰</li>
+				<li class="type_ac_kwrd">무선 <em>블루투스</em> 헤드셋</li>
+				<li class="type_ac_kwrd"><em>블루투스</em> 마우스</li>
+				<li class="type_ac_cate">디지털 &gt; 휴대용 <em>블루투스</em> 스피커</li>
+			</ul>
+			<!-- // 자동완성 타입-->
+
+			<!-- 최근검색어/인기검색어 -->
+			<div class="type_recent">
+				<!-- 탭 -->
+				<ul class="sr__tab">
+					<li class="btn__recent on">최근검색어</li>
+					<li class="btn__popular">인기검색어</li>
+				</ul>
+				<!-- 탭 : 최근검색어 -->
+				<ul class="sr__list tab__recent">
+					<!-- 반복 : 최근검색어 -->
+					<li>
+						<!-- 키워드 -->
+						<span class="txt__key" onclick="alert('이동');">고로고로 테이프 클리너</span>
+						<!-- 날짜 -->
+						<span class="txt__date">10.03</span>
+						<!-- 버튼 : 삭제 -->
+						<button class="btn__delete" onclick="alert('삭제');return false;">
+							<span class="comm__sprite">삭제</span>
+						</button>
+					</li>
+					<!-- // -->
+					<li>
+						<span class="txt__key" onclick="alert('이동');">고로고로 테이프 클리너</span>
+						<span class="txt__date">10.03</span>
+						<button class="btn__delete" onclick="alert('삭제');return false;">
+							<span class="comm__sprite">삭제</span>
+						</button>
+					</li>
+					<li>
+						<span class="txt__key">고로고로 테이프 클리너</span>
+						<span class="txt__date">10.03</span>
+						<button class="btn__delete" onclick="alert('삭제');return false;">
+							<span class="comm__sprite">삭제</span>
+						</button>
+					</li>
+					<li>
+						<span class="txt__key">고로고로 테이프 클리너</span>
+						<span class="txt__date">10.03</span>
+						<button class="btn__delete" onclick="alert('삭제');return false;">
+							<span class="comm__sprite">삭제</span>
+						</button>
+					</li>
+					<li>
+						<span class="txt__key">고로고로 테이프 클리너</span>
+						<span class="txt__date">10.03</span>
+						<button class="btn__delete" onclick="alert('삭제');return false;">
+							<span class="comm__sprite">삭제</span>
+						</button>
+					</li>										
+				</ul>	
+
+				<!-- 탭 : 인기검색어 -->
+				<ul class="sr__list tab__popular" style="display:none">
+					<!-- 반복 : 인기검색어 -->
+					<li>
+						<!-- 검색어 -->
+						<span class="txt__key">브라운 유아물티슈</span>
+						<!-- 랭킹 -->
+						<!-- 랭킹상승 -> .rank_rise -->
+						<!-- 랭킹하락 -> .rank_down -->
+						<span class="txt_rank rank_rise">10</span>
+					</li>
+					<!-- // -->
+					<li>
+						<span class="txt__key">폭스데이</span>
+						<span class="txt_rank rank_down">2</span>
+					</li>
+					<li>
+						<span class="txt__key">후드집업</span>
+						<span class="txt_rank rank_down">2</span>
+					</li>
+					<li>
+						<span class="txt__key">슬랙스</span>
+					</li>
+					<li>
+						<span class="txt__key">HP노트북</span>
+					</li>
+					<li>
+						<span class="txt__key">QCY T3</span>
+						<span class="txt_rank rank_rise">719</span>
+					</li>
+					<li>
+						<span class="txt__key">USB메모리</span>
+					</li>
+					<li>
+						<span class="txt__key">브레이크 패</span>
+						<span class="txt_rank rank_rise">120</span>
+					</li>
+					<li>
+						<span class="txt__key">D1007</span>
+						<span class="txt_rank rank_rise">720</span>
+					</li>
+					<li>
+						<span class="txt__key">에어팟</span>
+					</li>
+				</ul>
+
+				<!-- 탭 : 최근검색어 - 결과 없음 -->
+				<span class="no__result">
+					<span class="ico__caution comm__sprite">!</span>최근 검색어가 없습니다.
+				</span>				
+			</div>
+			<!-- // 최근검색어/인기검색어 -->
+		</div>
+		<div class="search_foot">
+			<button class="btn__sr_foot btn__sr_delete">전체삭제</button>
+			<button class="btn__sr_foot btn__sr_save_on">검색어 저장 켜기</button>
+			<!-- <button class="btn__sr_foot btn__sr_save_off" style="display:none">검색어 저장 끄기</button> -->
+			<!-- 닫기 -->
+			<button class="btn__sr_back">닫기</button>
+		</div>
+				
+		<script>
+			$(function(){				
+				// 퍼블 확인용				
+				var $inp = $(".ar_lay_sr input"); // 검색어 인풋박스
+				var $cnt = $(".search_cnt"); // 레이어 컨텐츠 영역
+				var $tabcnt = $(".type_recent > .sr__list"); // 최근,인기검색어 리스트
+				$inp.keydown(function(){
+					if ( $(this).val().length ){
+						$(".type_autocomplete").show();
+						$(".type_recent").hide();
+						$(".btn__sr_foot").hide();
+					}else{
+						$(".type_recent").show();
+						$(".type_autocomplete").hide();						
+					}
+				})
+				var $tab = $(".type_recent .sr__tab li");
+				$tab.click(function(e){
+					$cnt.scrollTop(0);
+					$(this).addClass("on").siblings().removeClass("on");					 
+					var _idx = $(this).index();
+					(_idx) ? $(".btn__sr_foot").hide() : $(".btn__sr_foot").show();
+					$tabcnt.hide();
+					$tabcnt.eq( _idx ).show()
+				})
+			})
+		</script>
+	</div>
+</div>
+<!-- // 검색 레이어 -->
+
+<!-- SRP : 상세검색 레이어 (카테고리)_ 우측시트입니다  -->
 <div class="com__sr_detail ty_cate">
 	<div class="sr_inner">
 		<!-- 상세검색 헤더 -->
-		<header id="sr_detail_header" class="m_header m_header_cate fixed_top">
+		<div id="sr_detail_header" class="m_header m_header_cate fixed_top">
 			<div class="header_wrap">
 				<h2>상세검색</h2>			
 				<button class="btn_dt_close comm__sprite">닫기</button>
 			</div>
-		</header>
+		</div>
 		<!-- // 상세검색 헤더 -->
 		
 		<!-- 선택한 항목이 보여질 영역 -->
@@ -217,19 +385,16 @@
 <!-- // 상세검색 레이어 -->
 
 <div id="wrap">
-	
-    <!-- 헤더 SRP - C타입-->
-	<!-- 211105 : SR#49656 : [MW] SRP 공통헤더 홈버튼 추가 / no_cate 삭제 -->
-	<!-- <header id="header" class="m_header head__type_c no_cate"> -->
-    <header id="header" class="m_header head__type_c">
-		<div class="header_wrap">
-			<h1 class="m_txt" onclick="alert('검색 레이어');">실생활용품</h1>		
-            <button class="btn_hd_back comm__sprite">뒤로</button>	
-			<button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>		
-            <button class="btn_hd_sr comm__sprite">나의정보</button>
-			<button class="btn_hd_myalarm comm__sprite">MY알림</button>
+    <header id="header" class="page_header nomargin">
+		<div class="header_top">
+			<div class="wrap">
+				<button href="#" class="btn__sr_back"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+				<button type="button" class="btn_myalarm"><i class="icon_header_alarm comm__sprite2">MY알림</i></button>
+				<button type="button" class="btn_open_search_layer">검색어출력 클릭시뜨는 검색레이어에서도 검색어 등록되어 뜨게 처리
+					<i class="icon_header_search comm__sprite2"></i>
+				</button>
+			</div>
 		</div>
-	<!-- //211105 : SR#49656 : [MW] SRP 공통헤더 홈버튼 추가 / no_cate 삭제 -->
 		<script>
 			//퍼블 테스트용
 			$(function(){
@@ -239,7 +404,7 @@
 				var $cateLayer = $(".cate_wrap"); // 카테고리 레이어
 				var $detailSRLayer = $(".com__sr_detail"); // 상세검색 레이어
 				var $btnCloseDetail = $(".btn_dt_close"); // 상세검색 레이어 닫기
-				var $btnSR = $(".btn_hd_sr"); // 검색 버튼
+				var $btnSR = $(".header_top_page_name, .btn_open_search_layer_icon, .tabbar__menu .t_m_search"); // 검색 버튼
 				var $srLayer = $(".com__sr_layer"); // 검색 레이어
 				var $btnSRClose = $(".com__sr_layer .btn__sr_back"); // 레이어 닫기
 				// 버튼 :: 카테고리 레이어
@@ -273,10 +438,10 @@
 					var _taPos = $(".m_header").offset().top - 5;
 					// 검색창 열기전 위치값 저장
 					$(this).attr('data-scroll-val',$(window).scrollTop() );
-					// 스크롤 이동후 검색창 열기
-					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){
-						$srLayer.show();
+			
+					$("html,body").stop(true,false).animate({"scrollTop":_taPos+"px"},100,function(){	
 						setTimeout(function(){
+							$srLayer.show();
 							$srLayer.addClass("opened");
 							$mainWrap.addClass("scroll_lock");
 						},300)
@@ -1043,48 +1208,89 @@
 		<!-- 200814 : SR#41743 : SRP > 검색결과 없을때 .lp__cont에 no_head클래스 붙여주세요 -->
 		<div class="lp__cont lp__cont_srp">
 			<!-- 211224 : SRP쪽 sort영역은 예전버전 적용 -->
-            <div class="lp__cont_head cont_head" >
-                <div class="lp__cont_sortable cont_sortable">
-                    <!-- 정렬옵션 -->
-                    <div class="opt__sort">
-                        <select name="sort_option" onchange="selectToLabel(this)" class="select_opt" id="" title="인기순">
-                            <option value="" selected="">인기순</option>
-                            <option value="">최저가순</option>
-                            <option value="">최고가순</option>
-                            <option value="">신규등록순</option>
-                            <option value="">판매량순</option>
-                            <option value="">출시예정상품</option>
-                            <option value="">상품평많은순</option>
-                        </select>
-                        <label for="sort_option">인기순</label>
-                        <script>
-                            // 선택된 옵션값을 라벨에 복사
-                            function selectToLabel(e){
-                                var $label = $(e).next("label");
-                                $label.html( e.options[e.selectedIndex].text );
-                            }
-                        </script>
+            <div class="lp__cont_head cont_head cont_head-sort">
+				<div class="list__util">
+					<div class="prod_total">
+						<p class="tx_cnt">총 <strong>50,478,299</strong>개 상품</p>
+					</div>
+
+					<div class="prod_list_type">
+						<!-- 보기옵션 -->
+						<div class="opt_viewtype">
+							<!-- default : grid type -->
+							<button class="btn btn_grid">그리드모드</button>
+							<button class="btn btn_list active">리스트모드</button>
+
+							<script>
+								$(".opt_viewtype .btn").on("click", function(){
+									var obj = $(this);
+									var _thisType = $(obj).data("type");
+									viewtypeChange(obj);
+								})
+								var viewtypeChange = function(obj){
+									var _obj = obj;
+
+									$(_obj).removeClass('active').siblings(".btn").addClass('active');
+									$('.lp__cont').toggleClass('grid');
+                                    
+                                    // 상단고정일경우에만 위치이동
+                                    if($('.cont_head').hasClass('fixed_top')) {
+                                        $('html,body').scrollTop($('.lp__cont').offset().top - 50);
+                                    }
+								}
+								
+							</script>
+							<!-- 상세검색사이드바 열기버튼 -->
+							<button type="button" class="btn btn_detail_search" onclick="openDetailSearch('#all_prop_area'); return false;">
+								상세검색사이드바
+								<span class="tx_cnt">99</span>
+							</button>
+							<!-- // -->
+
+							<!-- 상세검색사이드바 열기버튼 -->
+							<button type="button" class="btn btn_detail_search" onclick="finder_open(1); return false;">
+								상세검색사이드바
+								<span class="tx_cnt">99</span>
+							</button>
+							<!-- // -->
+						</div>
+					</div>
+				</div>
+				<div class="list__util">
+                    <div class="prod_sort">
+                        <div class="opt_sort">
+                            <label for="sort_option">인기순</label>
+                            <select name="sort_option" onchange="selectToLabel(this)" class="select_opt" id="" title="인기순">
+                                <option value="0" selected="selected">인기순</option>
+                                <option value="0">낮은가격순</option>
+                                <option value="0">높은가격순</option>
+                                <option value="0">최신순</option>
+                                <option value="0">판매량순</option>
+                                <option value="0">상품평많은순</option>
+                            </select>
+
+                            <script>
+                                // 선택된 옵션값을 라벨에 복사
+                                function selectToLabel(e){
+                                    var $label = $(e).prev("label");
+                                    $label.html( e.options[e.selectedIndex].text );
+                                }
+                            </script>
+                        </div>
                     </div>
-                    <!-- 보기옵션 + 필터 -->
-                    <div class="opt__side">
-                        <!-- 보기옵션 -->
-                        <button class="opt__view btn__view_grid" onclick="$('.lp__cont').toggleClass('grid');$('html,body').scrollTop($('.lp__cont').offset().top - 50);">그리드모드</button>
-                        <button class="opt__view btn__view_list" onclick="$('.lp__cont').toggleClass('grid');$('html,body').scrollTop($('.lp__cont').offset().top - 50);">리스트모드</button>
-                        <!-- 필터 -->
-                        <button class="btn__filter" onclick="$('.com__sr_detail').fadeIn(300).addClass('on');">필터</button>
+                    <div class="prod_sort_deliveryPrice nodraggable">
+                        <label>
+                            <input type="checkbox" class="">
+                            <span class="input_nm">중고/렌탈제외</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" class="">
+                            <span class="input_nm">배송비 포함</span>
+                        </label>
                     </div>
                 </div>
-            </div>
-            <!-- // LP Header -->
-
-			<!-- SRP 상품 갯수  -->
-			<div class="lp__cont_total">
-				<span class="txt_amount">
-					<!-- <em>123,456</em>개 상품 -->
-					<em>123,456</em>개 검색결과
-				</span>
 			</div>
-			<!-- // -->
+            <!-- // LP Header -->
 
 			<!-- 네이버 파워쇼핑 AD  -->
 			<div class="comm_ad ad_powershopping mobile">
@@ -3323,17 +3529,6 @@
 		</div>
 		<!-- // -->
 
-		<!-- 앱 다운로드 -->
-		<ul class="another_app_list">
-			<li class="btn_app_smart">
-				<a href="#">스마트 택배 다운받기</a>
-			</li>
-			<li class="btn_app_social">
-				<a href="#">소셜가격비교 다운받기</a>
-			</li>
-		</ul>
-		<!-- // -->
-
 		<!-- 공통 : 하단 배너 -->
 		<!-- 배경색은 inline-style로 넣어주세요 -->
 		<div class="aside_bnr" style="background-color:#fbe8e7">
@@ -3342,16 +3537,21 @@
 		<!-- // -->
 	</section>
 
-	<!-- 210825 : SR#48487 : 모바일웹 하단 탭바 -->
-	<section class="tabbar">
-		<div class="tabbar__inner">
-			<ul class="tabbar__list">
-				<li><a href="javascript:void(0);" class="tab tab-srch"><i class="ico"></i><span class="tx">검색</span></a></li>
-				<li><a href="javascript:void(0);" class="tab tab-cate"><i class="ico"></i><span class="tx">카테고리</span></a></li>
-				<li><a href="./myeclub/my_alarm.html" class="tab tab-eclub"><i class="ico"></i><span class="tx">마이에누리</span></a></li>
-				<li><a href="#tab3" class="tab tab-favor"><i class="ico"></i><span class="tx">관심상품</span></a></li>
+	<!-- 모바일웹 하단 탭바_리뉴얼 -->
+	<section class="f_tabbar border-box">
+		<div class="f_tabbar__wrap">
+			<ul class="tabbar__menu">
+                <li><a href="javascript:void(0);" class="t_m_allmenu" data-starget="#sheet_left"><i class="comm__sprite2 icon_tabbar_allmenu"></i></a></li>
+                <li><a href="javascript:void(0);" class="t_m_home"><i class="comm__sprite2 icon_tabbar_home"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_search search_bg"><i class="comm__sprite2 icon_tabbar_search"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_mypage"><i class="comm__sprite2 icon_tabbar_mypage"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_zzim"><i class="comm__sprite2 icon_tabbar_zzim"></i></a></li>
 			</ul>
 		</div>
+        <div class="f_btn_page_contorler">
+			<button type="button" onclick="window.history.back();" class="btn_page_back"><i class="comm__sprite2 icon_tabbar_arrow_left_s24"></i></button>
+            <button type="button" onclick="totop();" class="btn_page_scrolltop"><i class="comm__sprite2 icon_tabbar_arrow_top_s24"></i></button>
+        </div>
 	</section>
 	<!-- // -->
 
@@ -3370,7 +3570,7 @@
 			<div class="footer__info_com">
 				<dl>
 					<dt>대표이사</dt>
-					<dd>김기범</dd>
+					<dd>김기록</dd>
 					<dt>사업자등록번호</dt>
 					<dd>206-81-18164</dd>
 					<dt>통신판매신고</dt>
@@ -3432,9 +3632,9 @@
 </div>
 <script>
 	$(function(){
-		var alarmPopup = $(".pop_alarm"), // 팝업 : 알림함 (우측 하단)
-			bottomTabbar = $(".tabbar"); // 하단 탭바
-
+		var alarmPopup = $(".pop_alarm"); // 팝업 : 알림함 (우측 하단)
+		var bottomTabbar = $(".tabbar"); // 하단 탭바
+		var bottomPageControler = $(".f_btn_page_contorler");
 		// 알림함 팝업 펑션
 		var alarmFunction = function(){
 			// 페이지 로딩 후 알림함 노출 -> 20초 뒤 숨김
@@ -3444,9 +3644,18 @@
 			
 			alarmPopup.find(".btn-close").on("click", function(){
 				alarmPopup.hide().removeClass("is-visible");
+				bottomPageControler.addClass('active');
 			})
 			setTimeout(function(){ alarmPopup.removeClass("is-visible")},20000)
 		}
+		
+		// 앱링크 dim 제거 시, 알림함 노출
+		$("#mainLayer .btn_layer_close").on("click", function(){
+			$("#mainLayer").fadeOut(200);
+			return false;
+		})
+        alarmFunction(); // 페이지 로딩 시, 알림함 노출
+
 
 		// 스크롤 액션(알림함, 탭바)
 		var lastScrollY = 0;
@@ -3461,47 +3670,56 @@
 					bottomTabbar.removeClass("is-hidden");
 				}
 			}
+			if(alarmPopup.hasClass("is-visible") && alarmPopup.css('display') != 'none') {
+				bottomPageControler.removeClass('active');
+			} else {
+				bottomPageControler.addClass('active');
+			}
 			lastScrollY = window.scrollY;
 		}
-
 		$(window).on({
-			"scroll" : scrAlarmPop,
-			"load" : alarmFunction // 페이지 로딩 시, 알림함 노출
+			"scroll" : scrAlarmPop
 		})
-		
 	})
 </script>
 <!-- // -->
 
 <script>	
 	// LPSRP : 최상단 GNB 고정
-	$(function(){
+    $(function(){
         var position = $(window).scrollTop();
         var $mainwrap = $("#wrap");
-        var $mhead = $("#wrap .m_header"); // 헤더
+        var $header = $("header"); // 헤더
+		var $headerHeight = $header.outerHeight();
         var $contHeadArea = $(".lp__cont"); // 컨텐츠
+        var $footerTabbar = $(".f_tabbar"); // 컨텐츠
         var $contHead = $contHeadArea.find(".cont_head"); // 컨텐츠 헤더
-        var $btnQuick = $(".footer .newquick"); // Top 버튼
-        var $holdDistance = 30; //cont_head가 상단에 붙은후 미작동되는거리(임시적용, 추후변경될수있음)
-        var rePos = function(){
-            var nowPos = $(window).scrollTop();
+        var posHeader = function(){
+            var $myScroll = $(window).scrollTop();
+			var $mainCont = $(".m_lp_cont");
             var headPos = $contHeadArea.offset().top;
-            var gnbH = $mhead.outerHeight();
-            ( nowPos > headPos - gnbH ) ? $contHead.addClass("fixed_top") : $contHead.removeClass("fixed_top");
-            ( nowPos > 0 ) ? $mhead.addClass("fixed_top") : $mhead.removeClass("fixed_top");
-            // TOP버튼 등장
-            if((headPos + $holdDistance) < nowPos) {
-                if(nowPos > position){
-                    $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
-                    $btnQuick.addClass("scr_mode");
-                }else{
-                    $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
-                }
-            }
+            ( $myScroll > headPos ) ? $contHead.addClass("fixed_top") : $contHead.removeClass("fixed_top");
             
-            position = nowPos;
+			if ( $myScroll > $mainCont.offset().top ){
+				$mainwrap.css('padding-top', $headerHeight);
+				$header.addClass("fixed_top");
+
+				if($myScroll > position){
+					$mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+					$footerTabbar.addClass("scr_down").removeClass("scr_reset scr_up");
+				}else{
+					$mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+					$footerTabbar.removeClass("scr_down scr_reset").addClass("scr_up");
+				}
+
+			} else {
+				$mainwrap.removeClass('scr_down scr_up scr_reset')
+				$header.removeClass("fixed_top");
+                $mainwrap.css('padding-top', 0);
+			}
+            position = $myScroll;
         }
-        $(window).load(rePos).scroll(rePos);
+        $(window).load(posHeader).scroll(posHeader);
     });
 
 	// 공통 : 찜버튼
@@ -3519,6 +3737,11 @@
 		}
 	})
 
+	// 상단이동
+    function totop() {
+        $('html, body').stop().animate({scrollTop: '0'}, 400);
+        return false;
+    }
 </script>
 </body>
 </html>

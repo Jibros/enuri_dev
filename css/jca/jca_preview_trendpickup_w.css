@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* ---------------------------------------------------- 
+                        common
+---------------------------------------------------- */
+:root{
+    --url-comm-sprite : url("//img.enuri.info/images/rev/common_sprite.png");
+}
+*{margin:0;padding:0}
+html,body{width:100%;height:100%;margin:0;padding:0;font:13px/1.4 "맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;vertical-align:middle}
+html {background:#fff}
+dl,ul,ol,menu,li{list-style:none}
+*,
+*:before,
+*:after {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.clearfix:after {content:"";display:block;clear:both;*zoom:1;}
+img {vertical-align: top;}
+em { font-style:normal;}
+
+/* Link Css */
+a{cursor:pointer;color:#666666}
+a:link,a:visited,a:active{text-decoration:none}
+a:hover{text-decoration:underline}
+a:active{background-color:transparent}
+button{border:0 none;cursor:pointer}
+button:disabled {cursor:default}
+
+.arrows {position:absolute;top:0;right:-5px}
+.arrows .arr {width:20px;height:20px;font-size:0;text-indent:-9999px;background:url("//img.enuri.info/images/rev/main_sprite.png");opacity:.5;transition:all .1s ease-in-out}
+.arrows .arr-prev {margin-right:5px;background-position:0 0}
+.arrows .arr-next {background-position:-20px 0}
+.arrows .arr:hover {opacity:1}
+.arrows--wihte .arr-prev {background-position:-40px 0}
+.arrows--wihte .arr-next {background-position:-60px 0}
+/* 화살표 :위치 별도 적용 */
+.prodwrap .prodbox .arrows {top:23px;right:11px;z-index:5}
+.bnrbox .arrows {top:16px;right:-5px}
+.trendtabs .arrows {top: 10px; right: 14px; z-index: 11;}
+
+/* ---------------------------------------------------- 
+                        contents ( 트렌드픽업 )
+---------------------------------------------------- */
+.preview_trendpickup {width:631px; height:447px; margin:50px auto;}
+.trendpickup {position:relative; width:100%; height:100%;}
+.trendpickup__inner {position:relative;width:100%;height:100%;}
+
+.trendtabs {position:absolute;top:0;right:0;width:200px; height:100%;}
+.trendtabs__tit {position:relative; width:100%; font-size: 14px; font-weight: bold; height:42px; line-height:42px; border-left:0;background-color:#515b6d; color:#fff; letter-spacing:-.5px; padding-left:16px; z-index:10;}    
+.trendtabs__tit em {}
+
+/* 트렌드픽업 - pagination 추가 */
+.trendtabs .trendtabs__pagination {display: block; width: 32px; height: 16px; position: absolute; top: 14px; left: 93px; z-index: 12; border:1px solid #aaaaaa; text-align: center; line-height: 14px; font-size: 0; border-radius: 10px;}
+.trendtabs .trendtabs__pagination span {display: inline-block; vertical-align: middle; font-size: 11px; font-family: Roboto; color:#fff;}
+.trendtabs .trendtabs__pagination span.page_slash {opacity: .5; margin:0 1px}
+.trendtabs .trendtabs__pagination span.page_total {opacity: .5;}
+
+.trendtabs .arrows {top:10px; right:14px; z-index:11;}
+.trendtabs .arrows .arr-prev {right:8px;}
+
+.trendtabs__mask {overflow:hidden;position:relative;width:100%;height:calc(100% - 42px);}
+.trendtabs__mask:before {content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; border-left: 1px solid #aaa; border-right: 1px solid #aaa; border-bottom: 1px solid #aaa; border-top: 1px solid #ddd; pointer-events: none; z-index: 15;}
+.trendtabs__list {position:absolute;top:0;left:0; z-index:16; display: flex; flex-direction: column; justify-content: space-between; flex-wrap: wrap; width: 100%; height:100%;}
+.trendtab-item {flex: 1 1 auto; width:100%; z-index: 50;}
+.trendtab-item + .trendtab-item {margin-top:-1px;}
+.trendtab-item.is-on {z-index: 100;}
+.trendtab-item > button {display:block;overflow:hidden;position:relative;width:100%;height:100%;padding:0 17px;font-size:13px;color:#444;letter-spacing:0;text-align:left;background-color:#fff;text-overflow:ellipsis;white-space:nowrap}
+.trendtab-item > button:before {content:"";position:absolute;top:0;right:0;bottom:0;left:0;border-left:1px solid #aaa; border-right:1px solid #aaa; border-bottom:1px solid #ddd;border-top:1px solid #ddd; pointer-events:none;z-index:1;}
+.trendtab-item:last-child > button:before {border-bottom-color: #aaa; z-index: 2;}
+.trendtab-item > button:after {}
+.trendtab-item:hover > button {background-color:rgba(0,0,0,.02)}
+.trendtab-item.is-on > button {font-weight: bold; color: #1a70dd; background: #f1f8fe;}
+.trendtab-item.is-on > button:after {}
+.trendtab-item.is-on > button:before {border-color:#1a70dd; z-index:10}
+
+.trendpickup__container {position:absolute;top:0;left:0; width:calc(100% - 200px);height:100%; border-top:1px solid #aaa; border-left:1px solid #aaa; border-bottom:1px solid #aaa; overflow: hidden;}
+.trendtab-cont {position:relative;width:100%;height:100%;background-color:#fff;z-index:1}
+.trendtab-cont .prodwrap {position:relative;width:100%;height:100%}
+.trendtab-cont .prodwrap__inner {position:relative;width:100%;height:100%}
+
+.trendtab-cont .prodwrap__inner .badge--ad {position:absolute;bottom:0;right:0;z-index:15;width:24px;height:16px;font-size:0;text-indent:-9999px;background:var(--url-comm-sprite) -240px -40px no-repeat}
+
+/* 트렌드픽업 : 기본,타입1 - 배너 + 상품목록(4ea) */
+.prodwrap .bnr__box {position:relative;width:100%; height:218px;border-bottom:1px solid #ddd;}
+.prodwrap .bnr__box a {display: block; }
+.prodwrap .bnr__box a img {width: 100%; height:217px; object-fit: cover;}
+.prodwrap .prodbox {position:relative; padding:0 16px;}
+.prodwrap .prodbox__tit {padding:24px 0 16px; line-height: 20px; font-size: 0;}
+.prodwrap .prodbox__tit .tx {display:inline-block; vertical-align:middle; margin-right:8px;font-weight:bold;font-size:15px;color:#000;}
+.prodwrap .prodbox__tit sub {display:inline-block; vertical-align:middle; overflow:hidden;text-overflow:ellipsis;white-space:nowrap; max-width:280px;font-size:12px; color:#333;}
+
+.prodwrap .prod_cont {position:relative;}
+.prodwrap .prod__wrapper {width:100%;}
+.prodwrap .arr.swiper-button-disabled {opacity:.2}
+.prodwrap .prod__list {padding:0}
+.prodwrap .prod__list:after {content:"";display:table;clear:both}
+.prodwrap .prod__item {width:92px;}
+.prodwrap .prod__item a {display: block;}
+.prodwrap .prod__item .thum {display:block;position:relative;margin-bottom:8px; border:1px solid #eee;}
+.prodwrap .prod__item .thum > img {width:100%;height:90px; object-fit: cover;}
+.prodwrap .prod__item .tx_name {display:block;overflow:hidden;width:100%;margin-bottom:4px;font-family:"맑은 고딕", "Malgun Gothic", arial, sans-serif;font-size:12px;color:#333;line-height:16px;text-overflow:ellipsis;white-space:nowrap}
+.prodwrap .prod__item .tx_price {display: block; font-family:"맑은 고딕", "Malgun Gothic", arial, sans-serif;font-size:12px;color:#000; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.prodwrap .prod__item .tx_price > em {font-weight:bold;font-size:16px;color:#000;vertical-align:-1px;font-family:Roboto, "맑은 고딕", "Malgun Gothic", "Apple SD Gothic Neo",sans-serif;}
+
+/* 트렌드픽업 : 타입2 - 타입1(2ea) + 텍스트광고 영역 */
+.prodwrap-type2 .prod__wrapper {width:calc(50% - 5px); margin:0;}
+
+.prodwrap-type2 .bnrwrap {position:absolute;top:0;right:0;width:calc(50% - 5px);height:138px;background-color:#fff2f2} 
+.prodwrap-type2 .bnrwrap:after {content:"";position:absolute;top:0;right:0;bottom:0;left:0;border:1px solid rgba(0,0,0,0.05);pointer-events:none}
+.prodwrap-type2 .bnrwrap > a {display:block;padding:0 15px;text-align:center}
+.prodwrap-type2 .bnrwrap > a:hover {text-decoration:none}
+.prodwrap-type2 .bnrwrap > a .tx_name {display:block;overflow:hidden;width:100%;margin:20px 0 6px;font-weight:bold;font-size:14px;color:#1a70dd;line-height:20px;text-overflow:ellipsis;white-space:nowrap;}
+.prodwrap-type2 .bnrwrap > a .tx_info {display:block;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;white-space:normal;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2;height:36px;margin-bottom:12px;font-family:"맑은 고딕", "Malgun Gothic", arial, sans-serif;font-size:12px;color:#333;line-height:18px;letter-spacing:0}
+.prodwrap-type2 .bnrwrap > a .btn_go {display: inline-block; padding: 0 15px; border: 1px solid #666; font-size: 12px; color: #333; height: 24px; line-height: 22px;}
+
+/* 트렌드픽업 : 타입3 - 전체 광고영역 */
+.prodwrap-type3 .bnr__box {height:100%;border-bottom:0}
+.prodwrap-type3 .bnr__box a {height: 100%;}
+.prodwrap-type3 .bnr__box a img {width: 100%; height: 100%; object-fit: cover;}
+
+/* 트렌드픽업 : 타입4 - 동영상 광고영역 */
+.prodwrap-type4 .bnr__box {height:100%;border-bottom:0}
+.prodwrap-type4 .bnr__box a {height: 203px;}
+.prodwrap-type4 .bnr__box a img {width: 100%; height: auto; object-fit: fill;}
+.prodwrap-type4 .bnr__box .ad__vod {position:relative; width:100%; padding-top: 56.25%; z-index:10}
+.prodwrap-type4 .bnr__box .ad__vod iframe {position:absolute; top:0; left:0; width:100%; height: 100%;}
+
+/* 트렌드픽업 : 타입5 - 단순링크타입 */
+.prodwrap .link__box {padding:23px 16px 6px;}
+.prodwrap .link__box .col_wrap {display: flex; flex-wrap: wrap; margin:0 -7px}
+.prodwrap .link__box .col_wrap > .col {flex: 0 0 auto; padding:0 7px; margin:0; float:none;}
+.prodwrap .link__box .col_wrap > .col_half {width:50%; margin-bottom: 27px;}
+.prodwrap .link__box a {display: block;}
+.prodwrap .link__box a .thum {width: 100%;}
+.prodwrap .link__box a .thum img {width: 100%; height: 152px; object-fit: cover;}
+.prodwrap .link__box a .tx_name {font-size: 13px; font-weight: bold; text-align: center; color:#000; line-height: 17px; margin-top:12px; white-space: nowrap;}

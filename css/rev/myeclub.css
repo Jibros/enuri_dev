@@ -117,7 +117,7 @@ footer {padding-top: 0;}
 .global_wrap {position:relative; padding-left: 216px; min-height: 900px;}
 .global_wrap .global_left {position:absolute; top:0; left:0; width:200px; margin-right:16px; background-color: #f2f2f2;}
 .global_wrap .global_left.is--fixed {position:fixed; top:0; z-index: 1000;}
-.global_wrap .global_right {width:1064px;}
+.global_wrap .global_right {width:1064px; min-height:1010px;}
 
 /* ----------------------------------------------------------------
                         캘린더 수정
@@ -187,7 +187,7 @@ footer {padding-top: 0;}
 .mec__welcome .emoney em {font-size: 20px; vertical-align: -1px;}
 
 .mec__lnb {border-top:1px solid #58657d;}
-.mec__lnb .menu_name {position:relative; display: block; font-size: 16px; color:#fff; border-bottom:1px solid #58657d; padding:13px 16px; transition:all .4s;}
+.mec__lnb .menu_name {position:relative; display: block; font-size: 16px; color:#fff; border-bottom:1px solid #58657d; padding:13px 16px; transition:all .4s; cursor: pointer;}
 .mec__lnb .menu_name[data-dropdown]:after {content:"";display: block; width: 20px; height: 20px; background-image:url("//img.enuri.info/images/rev/myeclub_sprite.png"); background-repeat:no-repeat; background-position: -200px 0; position:absolute; top:50%; right:20px; margin-top:-10px;}
 .mec__lnb .menu_name.active {background-color: #198ff6;}
 .mec__lnb .menu_name.active[data-dropdown]:after {background-position: -220px 0; }
@@ -252,7 +252,7 @@ footer {padding-top: 0;}
 .swiper_goods .info {margin-top:12px; text-align: left;}
 .swiper_goods .info .nm {font-size: 14px; color:#333; line-height: 1.45; margin-bottom: 2px; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;overflow: hidden;}
 .swiper_goods .info .emoney {font-size: 14px; color:#000;}
-.swiper_goods .info .emoney .icon_emoney {display:inline-block; width: 14px; height: 14px; background-position: -4px -26px; margin-right: 2px; vertical-align: -1px;}
+.swiper_goods .info .emoney .icon_emoney {display:inline-block; width: 14px; height: 14px; background-position: -23px -103px; margin-right: 2px; vertical-align: -1px;}
 .swiper_goods .info .emoney em {font-size: 18px; font-weight: bold; margin-right:1px;}
 .swiper_goods .info .price {font-size: 14px; color:#000;}
 .swiper_goods .info .price em {font-size: 18px; font-weight: bold; margin-left:6px; margin-right:1px;}
@@ -287,8 +287,8 @@ footer {padding-top: 0;}
 
 
 /* 개인메세지 영역 */
-.message_info {display:block;clear:both;position:relative;margin-top:8px;padding:11px 20px;border-radius:8px;background-color:var(--color-enuri-blue)}
-.message_info:before {content:"";position:absolute;top:-4px;left:calc(33.3333% / 2.1);width:8px;height:8px;border-radius:2px;background-color:var(--color-enuri-blue);transform:rotate(45deg)}
+.message_info {display:block;clear:both;position:relative;margin-top:8px;padding:11px 20px;border-radius:8px;background-color:#296edf}
+.message_info:before {content:"";position:absolute;top:-4px;left:calc(33.3333% / 2.1);width:8px;height:8px;border-radius:2px;background-color:#296edf;transform:rotate(45deg)}
 .message_info .tx_info {display:block;position:relative;padding-left:26px;font-size:13px;line-height:18px;color:#fff;letter-spacing:-.3px}
 .message_info .tx_info:before {content:"";display:inline-block;position:absolute;top:0;left:0;width:20px;height:20px;margin-right:2px;background:url("//img.enuri.info/images/rev/myeclub_sprite.png") 0 -100px no-repeat;}
 .message_info .tx_info .tx_gift {color:#fff;text-decoration:underline}
@@ -594,7 +594,7 @@ position: fixed; top: 50%; left: 50%; margin-left:-220px; z-index: 10000; transi
 .page_control .f_left > div {float:left; position:relative; margin-right:4px;}
 .page_control .f_left .select_wrap:after {content:""; display:block; clear:both;}
 .page_control .f_left .select_wrap > div {float:left; position:relative; margin-right:4px;}
-.page_control .btn_shape {padding: 5px 12px;border-radius: 4px;border: 1px solid #aaa;background-color: #fff; font-size: 12px; color:#666; cursor: pointer;}
+.page_control .btn_shape {padding: 0 12px;border-radius: 4px; line-height: 26px; border: 1px solid #aaa;background-color: #fff; font-size: 12px; color:#666; cursor: pointer;}
 .page_control .btn_shape.disabled {color:#aaa; border-color:#ddd; background: #f8f8f8;}
 
 /* ----------------------------------------------------------- 
@@ -626,6 +626,7 @@ position: fixed; top: 50%; left: 50%; margin-left:-220px; z-index: 10000; transi
 .select_folder .btn_shape:after {display: block; width: 12px; height: 12px; margin-top:-6px; position:absolute; top:50%; right:12px; background-position: -252px 0;}
 .page_control .btn_shape .div_nm {margin-right:4px;}
 
+.select_category .selected_nm {width:200px;}
 /* ----------------------------------------------------------- 
         @관심상품 - 찜상품 - 상단버튼(좌)- 폴더 관리
 ----------------------------------------------------------- */
@@ -714,11 +715,16 @@ position: fixed; top: 50%; left: 50%; margin-left:-220px; z-index: 10000; transi
 .page_content .goods a .alarm_price .price em {font-size: 18px; margin-right:1px; vertical-align: -1px; line-height: 1;}
 .page_content .goods a .alarm_price .setting_price {margin-bottom: 1px;}
 .page_content .goods a .alarm_price .current_price {color:#1a70dd;}
+.page_content .goods a .alarm_price .current_price.sold_out {font-size: 18px;}
 
 .page_content .goods .btn_set_alarm {font-size: 13px; color:#666; text-align: center; border-top:1px solid #ddd; line-height: 45px; background-color: #fff; cursor: pointer;}
 .page_content .goods .btn_set_alarm .icon_alarm {display: inline-block; vertical-align: -5px; width: 21px; height: 21px; background-position: -63px 0;}
 .page_content .goods .btn_set_alarm.on .icon_alarm {background-position: -42px 0;}
 
+/* 알림영역 다른형태 _ 브랜드스토어 찜상품시 */
+.page_content .goods .goods_store_name {font-size: 14px; color:#333; text-align: center; border-top: 1px solid #ddd; background-color: #fff; line-height: 45px; padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-break: break-all;}
+
+/* 알림영역 다른형태 _ 로고삽입시 */
 .page_content .goods .goods_shop_logo {text-align: center; border-top:1px solid #ddd; padding:12px 0; background-color: #fff; cursor: pointer; height:46px;}
 .page_content .goods .goods_shop_logo img {height:20px;}
 
@@ -782,7 +788,35 @@ position: fixed; top: 50%; left: 50%; margin-left:-220px; z-index: 10000; transi
 #alarm_set .phon_setting .input_wrap input {width: 100%; border:1px solid #ddd; height:30px; line-height: 30px; padding:0 10px; font-size: 12px; background-color: #fff;}
 #alarm_set .phon_setting .input_wrap button {width:94px; height:30px; line-height: 28px; text-align: center; background-color: #1A70DD; color:#fff; position:absolute; top:0; right:0;}
 #alarm_set .phon_setting .set_tip {font-size: 12px; color:#999; line-height: 1.4; margin-top:10px;}
+/* ----------------------------------------------------------- 
+        @관심상품 - 찜한스토어 - 스토어
+----------------------------------------------------------- */
+.page_content .col_wrap > div {margin-bottom:16px;}
+.page_content .stores {position:relative; border: 1px solid #ddd; border-radius:6px; letter-spacing: -.5px; overflow: hidden;}
+.page_content .stores .input_wrap {position: absolute;top: 0;left: 0;margin-right: 0!important;z-index: 50;width: 100%;height: 100%;padding: 16px!important; cursor: pointer; }
+.page_content .stores .input_wrap input {pointer-events: none;}
+/* 체크시(선택시) */
+.page_content .stores.selected {border-color:#30a7f7;}
 
+.page_content .stores a {display: block; padding:32px 18px; background-color: #fff; text-align: center;}
+.page_content .stores a .store_logo {width:96px; height:96px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(0, 0, 0, 0.05); background-color: #fafafa; text-align: center; margin:0 auto;}
+/* 로고 없을떄 */
+.page_content .stores a .store_logo.noimg {display: flex; align-items: center; flex-wrap: wrap; justify-content: center;}
+.page_content .stores a .store_logo.noimg .noimg_txt {font-size: 13px; color: #222; display: -webkit-box; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: normal; word-wrap: break-word; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 17px; padding: 0 16px; max-height: 34px; width:100%;}
+
+.page_content .stores a .store_info {margin-top:16px;}
+.page_content .stores a .store_info .store_name {font-size: 15px; font-weight: bold; color:#222; line-height:20px;}
+.page_content .stores a .store_info .store_summary {font-size: 12px; color:#666; height:32px; line-height: 16px; display: -webkit-box; -o-text-overflow: ellipsis; text-overflow: ellipsis; word-wrap: break-word; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top:8px;}
+
+
+/* 알림영역 다른형태 _ 브랜드스토어 찜스토어 */
+.page_content .stores .store_breadcrumbs {}
+.page_content .stores .store_breadcrumbs {font-size: 12px; color:#333; text-align: center; border-top: 1px solid #ddd; background-color: #fff; line-height: 46px; padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-break: break-all;}
+.page_content .stores .store_breadcrumbs span {display: inline-block; vertical-align: middle; font-size: 12px; color: #666;}
+.page_content .stores .store_breadcrumbs span.icon_next_arrow:after {display: inline-block; vertical-align: -2px; width: 12px; height: 12px; background-position: -240px 0; margin: 0 4px;}
+
+
+.myeclub_sprite_after:after {content: ""; background-image: url('//img.enuri.info/images/rev/myeclub_sprite.png'); background-repeat: no-repeat;}
 /* ----------------------------------------------------------- 
         @관심상품 - 최근 본 상품 - 상단 전체갯수
 ----------------------------------------------------------- */

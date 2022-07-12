@@ -18,16 +18,15 @@
 <body>
 
 <div id="wrap">
-	
-	<!-- 190919 헤더 교체 : 헤더 SUB -->
-    <header id="header" class="m_header m_header_sub">
-		<div class="header_wrap">
-			<h1 class="m_txt">e머니 적립내역</h1>
-            <button class="btn_hd_back comm__sprite">뒤로</button>
-			<button class="btn_hd_close comm__sprite">닫기</button>
-		</div>	
+	<header id="header" class="page_header nomargin">
+		<div class="header_top">
+			<div class="wrap">
+				<button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+				<button type="button" class="btn_close_page"><i class="icon_header_close comm__sprite2">닫기</i></button>
+				<div class="header_top_page_name">e머니 적립내역</div>
+			</div>
+		</div>
     </header>
-    <!-- // 헤더 SUB -->
 	
 	<section class="my_wrap">
 		<div class="header_group">
@@ -498,7 +497,7 @@
                 <div class="footer__info_com">
                     <dl>
                         <dt>대표이사</dt>
-                        <dd>김기범</dd>
+                        <dd>김기록</dd>
                         <dt>사업자등록번호</dt>
                         <dd>206-81-18164</dd>
                         <dt>통신판매신고</dt>
@@ -537,33 +536,37 @@
 			$(window).scrollTop( 0 );
 		}
 
-		// 상단 Sticky Navi
-		// 200120 스크립트 교체 
-		// 재수정
-		$(function(){			
-			var $nav = $(".m_header");
-			var navH = 0;
-			if ( $nav.length ) navH = parseInt($nav.outerHeight(),10);
-			var $tab = $(".header_group");
-			var $lookup = $(".lookup_box");
-			var $wrap = $(".my_wrap");
-			var stickyNavi = function(){
-                $tab.css({"padding-top": navH });
-				if ( $(window).scrollTop() > 0 ){
-					$nav.addClass("m_fixed");
-					if ( $(window).scrollTop() > $tab.scrollTop() + $tab.outerHeight() - 58 - navH){
-						$lookup.addClass("m_fixed").css("top", navH );
-					}else{
-						$lookup.removeClass("m_fixed").css("top","auto");
-					}
-				}else{
-					$nav.removeClass("m_fixed");
-                    $wrap.css({"padding-top":0});
+		// 상단고정
+		var position = $(window).scrollTop(); 
+		var $mainwrap = $("#wrap");
+		var $header = $("header");
+		var $headerHeight = $header.outerHeight();
+		var $mySummary = $(".my_summary");
+		var $lookup = $(".lookup_box");
+		var posHeader = function(){
+			var $myScroll = $(window).scrollTop();
+			var $mainCont = $(".my_wrap"); // 작동위치
+			if ( $myScroll > $mainCont.offset().top ){
+				$mainwrap.css("padding-top", $headerHeight);
+				$header.addClass('fixed_top');
+				if($myScroll > position) {
+					$mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+				} else {
+					$mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
 				}
+			}else{
+				$mainwrap.removeClass('scr_down scr_up scr_reset')
+				$header.removeClass('fixed_top');
+				$mainwrap.css("padding-top", 0);
 			}
-			$(window).load(stickyNavi).scroll(stickyNavi);
-		})	
-		// 끝
+			if ( $myScroll > $mySummary.offset().top + $mySummary.height() ){
+				$lookup.addClass('fixed_top');
+			} else {
+				$lookup.removeClass('fixed_top');
+			}
+			position = $myScroll;
+		};
+		$(window).load(posHeader).scroll(posHeader);
 	</script>	
 </div>
 </body>

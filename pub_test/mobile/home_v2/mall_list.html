@@ -20,16 +20,15 @@
 <body>
 
 <div id="wrap">
-    
-    <!-- 헤더 B+D타입 -->
-    <header id="header" class="m_header head__type_b">
-        <div class="header_wrap">
-            <h1 class="m_txt">인기쇼핑몰</h1>            
-            <button class="btn_hd_back comm__sprite">뒤로</button>            
-            <button class="btn_hd_close comm__sprite">닫기</button>
-		</div>	
+    <header id="header" class="page_header">
+        <div class="header_top">
+            <div class="wrap">
+                <button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+                <button type="button" class="btn_close_page"><i class="icon_header_close comm__sprite2">닫기</i></button>
+                <div class="header_top_page_name">인기쇼핑몰</div>
+            </div>
+        </div>
     </header>
-    <!-- // 헤더 -->
 
 	<section id="container" class="m_mall_cont">
 
@@ -124,20 +123,29 @@
 </div>
 
 <script>
-    // 최상단 고정 
-    $(function(){
-        var nowPos;
-		var position = $(window).scrollTop(); 
-		var $wrap = $("#wrap");
-		var $mhead = $(".m_header"); // 헤더
-        // 헤더 상단 고정 및 존재여부 판단 후 스타일 재지정    
-        if ( $mhead.length ){ // 마크업이 존재하고
-            if ( $(".m_header:not([style*='display:none']):not([style*='display: none'])").length ){ // display:none 되어 있지 않음
-                $mhead.addClass("fixed_top");
-                $wrap.css({"padding-top": parseInt($mhead.outerHeight(),10) });
+    var position = $(window).scrollTop(); 
+    var $mainwrap = $("#wrap");
+    var $header = $("header");
+    var $headerHeight = $header.outerHeight() +10;
+    var posHeader = function(){
+        var $myScroll = $(window).scrollTop();
+        var $mainCont = $(".m_mall_cont"); // 작동위치
+        if ( $myScroll > $mainCont.offset().top ){
+            $mainwrap.css("padding-top", $headerHeight);
+            $header.addClass('fixed_top');
+            if($myScroll > position) {
+                $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+            } else {
+                $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
             }
+        }else{
+            $mainwrap.removeClass('scr_down scr_up scr_reset')
+            $header.removeClass('fixed_top');
+            $mainwrap.css("padding-top", 0);
         }
-	});
+        position = $myScroll;
+    };
+    $(window).load(posHeader).scroll(posHeader);
 </script>
 
 </body>

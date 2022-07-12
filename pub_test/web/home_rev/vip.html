@@ -2015,16 +2015,21 @@
                                                     </script>
                                                     <!-- //SR#46457 -->
     
-                                                    <a href="#" class="btn__purchase"><span class="txt">최저가 구매하기</span></a>
+                                                    <a href="#" class="btn__purchase">
+                                                        <!-- 직방가노출개선 할인율 없을때 -->
+                                                        <span class="btn__purchase_add_info eff_bounce">에누리 쿠폰 할인 적용중</span>
+                                                        <!-- 직방가노출개선 할인율 있을때 -->
+                                                        <!-- <span class="btn__purchase_add_info eff_bounce">에누리 쿠폰 <strong>12%할인</strong> 적용중</span> -->
+                                                        <span class="txt">최저가 구매하기</span>
+                                                    </a>
                                                 </div>
-                                            </div>     
-                                            
+                                            </div>
                                             <div class="mobile__buy">
                                                 <button type="button" class="btn" onclick="$(this).siblings('.lay-mobile-min').toggle()">
                                                     <span class="tx_logo"><img src="//img.enuri.info/images/home/malllogo/7861_m.jpg" alt="COUPANG 로고" /></span>
                                                     <span class="tx_msg">모바일에서 구매하면<span class="tx_price"><em>991,141,900</em>원</span></span>
                                                 </button>
-
+    
                                                 <!-- 레이어 : 모바일특가 -->
                                                 <div class="lay-mobile-min lay-comm">
                                                     <div class="lay-comm--head">
@@ -2064,63 +2069,97 @@
                                                     <button class="lay-comm__btn--close comm__sprite" onclick="$(this).parent().hide()">레이어 닫기</button>
                                                 </div>
                                             </div>
-
-                                            <!-- SR#51009 : 직방가 노출 -->
-                                            <div class="direct_price"><!-- 확장 : " is-expand" -->
-                                                <div class="direct_row">
-                                                    <div class="direct_summ">
-                                                        <button type="button" class="btn_tab">클릭 영역(투명)</button>
-                                                        <!-- 
-                                                            할인율타입 적용시 아래형태
-                                                            <p class="tx_price"><em>10%</em>(<em>1,233,570</em>원)</p> 
-                                                        -->
-                                                        <p class="tx_price"><em>1,233,570</em>원</p>
-                                                        <span class="tx_info">에누리혜택 적용중</span>
-                                                        <button type="button" class="btn_tip">
-                                                            <i class="icon_noti comm__sprite"></i>
-                                                            <div class="layer_noti">
-                                                                <div class="txt2"><em class="tx_date">12/12 03:00</em> 할인혜택 정보 입니다. <span class="tx_noti">(PC기준)</span></div>
-                                                            </div>
-                                                        </button>
-                                                    </div>
-                                                    <div class="direct_detail">
-                                                        <div class="tb row--min">
-                                                            <p class="tx_th">쇼핑몰최저가</p>
-                                                            <p class="tx_price"><em>1,152,570</em>원</p>
-                                                        </div>
-                                                        <div class="tb row--sale">
-                                                            <p class="tx_th">에누리 경유 할인가</p>
-                                                            <p class="tx_price"><em>-33,570</em>원</p>
-                                                        </div>
-                                                        <div class="tb row--total">
-                                                            <p class="tx_th">에누리최저가</p>
-                                                            <p class="tx_price"><em>111,111,119,000</em>원</p>
-                                                        </div>
-                                                        <p class="tx_noti">에누리를 통한 방문 구매시 경유할인혜택을 받으실 수 있습니다.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <script>
-                                                // 툴팁 노출
-                                                $("body").on("click", ".direct_price .btn_tip", function(){
-                                                    var _this = $(this); 
-                                                    _this.addClass("is-on");
-                                                    
-                                                    setTimeout(function(){ _this.removeClass("is-on") }, 2300);
-                                                });
-                                                // 직방가 확장 토글
-                                                $("body").on("click", ".direct_price .btn_tab", function(){
-                                                    $(this).closest(".direct_price").toggleClass("is-expand");
-                                                })
-                                            </script>
-                                            <!-- //SR#51009 -->
                                         </div>
                                         <!-- // -->
+                                        
                                     </div>
                                     <!-- // -->
 
                                     <!-- 상품 가격비교 하단 -->
                                     <div class="pricecomp__cont">
+                                        <!-- SR#51009 : 직방가 노출 : 220509 : 직방가노출 개선후 해당 내용 제거바람!!!  -->
+                                        <div class="direct_price"><!-- 확장 : " is-expand" -->
+                                            <div class="direct_row">
+                                                <div class="direct_summ">
+                                                    <button type="button" class="btn_tab">클릭 영역(투명)</button>
+                                                    <!-- 
+                                                        할인율타입 적용시 아래형태
+                                                        <p class="tx_price"><em>10%</em>(<em>1,233,570</em>원)</p> 
+                                                    -->
+                                                    <p class="tx_price"><em>1,233,570</em>원</p>
+                                                    <span class="tx_info">에누리혜택 적용중</span>
+                                                    <button type="button" class="btn_tip">
+                                                        <i class="icon_noti comm__sprite"></i>
+                                                        <div class="layer_noti">
+                                                            <div class="txt2"><em class="tx_date">12/12 03:00</em> 할인혜택 정보 입니다. <span class="tx_noti">(PC기준)</span></div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                                <div class="direct_detail">
+                                                    <div class="tb row--min">
+                                                        <p class="tx_th">쇼핑몰최저가</p>
+                                                        <p class="tx_price"><em>1,152,570</em>원</p>
+                                                    </div>
+                                                    <div class="tb row--sale">
+                                                        <p class="tx_th">에누리 경유 할인가</p>
+                                                        <p class="tx_price"><em>-33,570</em>원</p>
+                                                    </div>
+                                                    <div class="tb row--total">
+                                                        <p class="tx_th">에누리최저가</p>
+                                                        <p class="tx_price"><em>111,111,119,000</em>원</p>
+                                                    </div>
+                                                    <p class="tx_noti">에누리를 통한 방문 구매시 경유할인혜택을 받으실 수 있습니다.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            // 툴팁 노출
+                                            $("body").on("click", ".direct_price .btn_tip", function(){
+                                                var _this = $(this); 
+                                                _this.addClass("is-on");
+                                                
+                                                setTimeout(function(){ _this.removeClass("is-on") }, 2300);
+                                            });
+                                            // 직방가 확장 토글
+                                            $("body").on("click", ".direct_price .btn_tab", function(){
+                                                $(this).closest(".direct_price").toggleClass("is-expand");
+                                            })
+                                        </script>
+                                        <!-- //SR#51009 -->
+
+                                        <div class="direct_price_type2">
+                                            <div class="dp_wrap">
+                                                <div class="d_currentMallPrice">쇼핑몰 직접 방문가 <em>111,688,500</em>원</div>
+                                                <div class="d_icon_minus"><span></span></div>
+                                                <div class="d_discountPrice">에누리 쿠폰 할인 <em>88,000</em>원</div>
+                                                <div class="d_icon_equal"><span></span><span></span></div>
+                                                <div class="d_enuriMinPrice">에누리 최저가 <em>111,600,500</em>원
+                                                    <button type="button" class="btn_open_question" data-open-target=".dp_question_box"><i class="icon_question_s16"></i></button></div>
+                                            </div>
+                                            <!-- 처리시 기본값으로 display:none 처리해주세요-->
+                                            <div class="lay-tooltip lay-comm dp_question_box" style=""> <!-- display:none -->
+                                                <div class="lay-comm--head">
+                                                    <strong class="lay-comm__tit">에누리 쿠폰 할인 적용 상품</strong>
+                                                </div>
+                                                <div class="lay-comm--body">
+                                                    <div class="lay-comm__inner">
+                                                        <ul class="ins-list">
+                                                            <li>2022년 5월9일 22:10분 기준 할인 정보입니다.</li>
+                                                            <li>쇼핑몰 사정에 따라 쿠폰가격이 변동될 수 있습니다.</li>
+                                                            <li>구매시 반드시 쇼핑몰의 판매가격을 확인해 주세요.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <button class="lay-comm__btn--close comm__sprite" onclick="$(this).closest('.lay-comm').hide()">레이어 닫기</button>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $('.btn_open_question').on('click', function(){
+                                                var target = $(this).data('open-target');
+                                                $(target).toggle();
+                                            });
+                                        </script>
+
                                         <!-- 구매옵션, 프로모션/특별가 -->
                                         <div class="prodoption">
                                             <!-- 구매옵션 - 2개이하 -->
@@ -2171,7 +2210,7 @@
                                             <ul class="s_price__list">
                                                 <li class="is-promotion"><!--프로모션-->
                                                     <span class="col col-1">
-                                                        <a href="#" class="logo"><img src="//img.enuri.info/images/home/malllogo/536_m.jpg" alt="GMARKET" /></a>
+                                                        <a href="#" class="logo"><img src="//storage.enuri.info/logo/logo16/logo_16_6641.png" alt="TMON" /></a>
                                                     </span>
                                                     <span class="col col-2">
                                                         <a href="#" class="price">
@@ -2185,7 +2224,7 @@
                                                 </li>
                                                 <li><!--현금몰-->
                                                     <span class="col col-1">
-                                                        <a href="#" class="logo"><img src="//img.enuri.info/images/home/malllogo/536_m.jpg" alt="GMARKET" /></a>
+                                                        <a href="#" class="logo"><img src="//storage.enuri.info/logo/logo16/logo_16_49.png" alt="롯데ON" /></a>
                                                     </span>
                                                     <span class="col col-2">
                                                         <a href="#" class="price">
@@ -2199,7 +2238,7 @@
                                                 </li>
                                                 <li><!--카드최저가-->
                                                     <span class="col col-1">
-                                                        <a href="#" class="logo"><img src="//img.enuri.info/images/home/malllogo/55_m.jpg" alt="GMARKET" /></a>
+                                                        <a href="#" class="logo"><img src="//storage.enuri.info/logo/logo16/logo_16_55.png" alt="인터파크" /></a>
                                                     </span>
                                                     <span class="col col-2">
                                                         <a href="#" class="price">
@@ -2223,11 +2262,29 @@
                                                     <span class="col col-3">
                                                         <span class="delivery">무료배송</span>
                                                     </span>
-                                                </li>               
+                                                </li>       
+                                                <!-- 20220401 : 스마트스토어 카드할인가 라인 추가 -->
+                                                <li><!--스마트스토어 카드할인가-->
+                                                    <span class="col col-1">
+                                                        <a href="#" class="logo">LG전자총판점</a>
+                                                        <a href="#" class="badge badge--npay">네이버페이</a>
+                                                    </span>
+                                                    <span class="col col-2">
+                                                        <a href="#" class="price">
+                                                            <span class="tx_msg"><i class="ico ico--card"></i>하나카드 할인가</span>
+                                                            <span class="tx_price"><em>991,441,900</em>원</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="col col-3">
+                                                        <span class="delivery">무료배송</span>
+                                                    </span>
+                                                </li>      
+                                                <!-- //20220401 -->
+
                                                 <!-- #211020 : SR#49311 : [PC] VIP 프라이스 탑 신규영역 추가 -->
                                                 <li class="is-adline"><!--광고라인-->
                                                     <span class="col col-1">
-                                                        <a href="#" class="logo"><img src="http://storage.enuri.info/logo/logo16/logo_16_55.png" alt="인터파크" /><i class="ico ico--ad"><!--AD--></i></a>
+                                                        <a href="#" class="logo"><img src="//storage.enuri.info/logo/logo16/logo_16_55.png" alt="인터파크" /><i class="ico ico--ad"><!--AD--></i></a>
                                                         <span class="tx_sub">홍보문구 최대 노출 영역 표시 (너비 : 200)</span>
                                                     </span>
                                                     <span class="col col-2">
@@ -11102,7 +11159,7 @@
                 <div class="footer-info__com">
                     <span class="footer-info__tx-tit">써머스플랫폼</span>
                     <addr class="footer-info__tx-adder">서울시 금천구 가산디지털1로 186, 제이플라츠빌딩 13층</addr>
-                    <span class="footer-info__tx-owner"><b>대표이사 :</b> 김기범</span>
+                    <span class="footer-info__tx-owner"><b>대표이사 :</b> 김기록</span>
                     <span class="footer-info__tx-num"><b>사업자등록번호 :</b> <span class="tx_num">206-81-18164</span></span>        
                     <span class="footer-info__tx-num"><b>통신판매신고 :</b> <span class="tx_num">2020-서울금천-1949호</span></span><br/>
                     <span class="footer-info__tx-tel"><b>대표전화 :</b> <span class="tx_num">02-6354-3601</span></span>

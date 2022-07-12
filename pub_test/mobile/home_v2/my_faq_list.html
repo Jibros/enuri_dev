@@ -25,15 +25,14 @@
 <!-- 엡에서 모바일웹의 페이지 전환효과를 제거합니다. -->
 <div id="wrap">
     <!-- <div id="wrap" class="isApp"> -->
-	
-    <!-- 헤더 B타입 -->
-    <header id="header" class="m_header head__type_b">
-        <div class="header_wrap">
-            <h1 class="m_txt">자주 묻는 질문</h1>            
-            <button class="btn_hd_back comm__sprite">뒤로</button>            
-		</div>	
+    <header id="header" class="page_header">
+        <div class="header_top">
+            <div class="wrap">
+                <button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+                <div class="header_top_page_name">자주 묻는 질문</div>
+            </div>
+        </div>
     </header>
-    <!-- // 헤더 -->
 
 	<section id="container" class="m_faq_cont">
         	
@@ -191,17 +190,6 @@
                 })
 			</script>
 		</div>
-
-		<!-- 앱 다운로드 -->
-		<ul class="another_app_list">
-			<li class="btn_app_smart">
-				<a href="#">스마트 택배 다운받기</a>
-			</li>
-			<li class="btn_app_social">
-				<a href="#">소셜가격비교 다운받기</a>
-			</li>
-		</ul>
-		<!-- // -->
 	</section>
 
 	<!-- 푸터 -->
@@ -215,7 +203,7 @@
 		</p>
 		<p class="company_info">
 			<span class="txt_company_name">(주)써머스 플랫폼</span>
-			대표이사 : 김기범 / 사업자등록번호 : 206-81-18164 <br/>
+			대표이사 : 김기록 / 사업자등록번호 : 206-81-18164 <br/>
 			통신판매신고 : 2015-서울중구-1046호<br/>
 			서울특별시 중구 퇴계로 18(남대문로5가) 9층<br/>
 			문의 : 02-6354-3601 / master@enuri.com<br/>
@@ -244,35 +232,30 @@
     })    
 
     // 자주 묻는 질문 최상단 고정 
-    $(function(){
-        var nowPos;
-		var position = $(window).scrollTop(); 
-		var $wrap = $("#wrap");
-		var $mhead = $(".m_header"); // 헤더
-		var $subFixed = $(".event_won_view .view_head"); // 헤더 밑으로 고정될 아이    
-        // 헤더 상단 고정 및 존재여부 판단 후 스타일 재지정    
-        if ( $mhead.length ){ // 마크업이 존재하고
-            if ( $(".m_header:not([style*='display:none']):not([style*='display: none'])").length ){ // display:none 되어 있지 않음
-                $mhead.addClass("fixed_top");
-                $wrap.css({"padding-top": parseInt($mhead.outerHeight(),10) });
-                $subFixed.css("top","50px");
+    var position = $(window).scrollTop(); 
+    var $mainwrap = $("#wrap");
+    var $header = $("header");
+    var $headerHeight = $header.outerHeight() + 10;
+    var posHeader = function(){
+        var $myScroll = $(window).scrollTop();
+        var $mainCont = $(".m_faq_cont"); // 작동위치
+        if ( $myScroll > $mainCont.offset().top ){
+            $mainwrap.css("padding-top", $headerHeight);
+            $header.addClass('fixed_top');
+            if($myScroll > position) {
+                $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+            } else {
+                $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
             }
+        }else{
+            $mainwrap.removeClass('scr_down scr_up scr_reset')
+            $header.removeClass('fixed_top');
+            $mainwrap.css("padding-top", 0);
         }
-        // 스크롤 방향 체크
-        var $btnQuick = $(".footer .newquick"); // Top 버튼
-		var stickyHead = function(){			
-			// TOP버튼 등장 
-            nowPos = $(window).scrollTop(); 
-			if(nowPos > position){
-				$wrap.addClass("scr_down").removeClass("scr_reset scr_up");
-				$btnQuick.addClass("scr_mode");
-			}else{
-				$wrap.removeClass("scr_down scr_reset").addClass("scr_up");
-			}
-			position = nowPos;
-		}
-		$(window).load(stickyHead).scroll(stickyHead);
-	});
+        position = $myScroll;
+    };
+
+    $(window).load(posHeader).scroll(posHeader);
 
     function goFooterTop(){
 		$('html,body').scrollTop(0);

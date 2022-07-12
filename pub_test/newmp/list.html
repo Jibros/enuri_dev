@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEW MP - 대량정제</title>
+
+    <!-- WEBFONT -->
+    <link rel="stylesheet" href="/pub_test/mockup/newmp/apps/css/webfont.css">
+
+    <!-- JQUERY CDN -->
+    <script src="/wide/util/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+    <!-- DHTMLX lib -->
+    <script type="text/javascript" src="/pub_test/mockup/newmp/lib/dhtmlx/codebase/suite.js?v=7.1.4"></script>
+    <link rel="stylesheet" href="/pub_test/mockup/newmp/lib/dhtmlx/codebase/suite.css?v=7.1.4">
+
+    <!-- BOOTSTRAP lib -->
+    <link rel="stylesheet" href="/pub_test/mockup/newmp/lib/bootstrap/dist/css/bootstrap.min.css?v=4.0.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <script type="text/javascript" src="/pub_test/mockup/newmp/lib/bootstrap/dist/js/bootstrap.bundle.min.js?v=4.0.0">
+    </script>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="/pub_test/mockup/newmp/apps/css/layout.css?v=220121">
+    <link rel="stylesheet" href="/pub_test/mockup/newmp/apps/css/style.css?v=220121">
+
+    <style>
+        main>.container {
+            padding: 60px 15px 0;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">대량정제 NEW MP 퍼블 산출물</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form> -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="container">
+            <table class="table table-striped table-hover">
+                <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col">페이지명</th>
+                        <th scope="col">링크</th>
+                        <th scope="col">비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <th scope="row"></th>
+                        <td>대량정제 홈</td>
+                        <td><a href="#">/index.html</a> <i class="bi bi-box-arrow-up-right"></i></td>
+                        <td></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted"></span>
+        </div>
+    </footer>
+
+    <script src="/pub_test/mockup/newmp/apps/js/common.evt.js?v=220419"></script>
+    <script>
+        let rowNum = 1;
+        const tableTr = $(".table tbody")
+        $.each($(".table tbody tr th"), (idx, item) => {
+            $(item).text(rowNum++);
+        })
+
+        const dataUrl = "./apps/js/data/publistData.json"
+        fetch(dataUrl)
+            .then((response) => response.json())
+            .then((list) => {        
+                
+                $.each(list, (i, val) => {
+                    let linkTxt = list[i].link.split("/");
+                    let popSt = list[i].pop;
+                    
+                    if(!popSt){
+                        html = `
+                        <tr>
+                            <th scope="row" class="text-center">${i+1}</th>
+                            <td>${list[i].name}</td>
+                            <td><a href="${list[i].link}" target="_blank">/${linkTxt[linkTxt.length-1]}</a> <i class="bi bi-box-arrow-up-right"></i></td>
+                            <td></td>
+                        </tr>
+                        `
+                        tableTr.append(html)
+                    }else{ // 팝업 경로
+                        html = `
+                        <tr>
+                            <th scope="row" class="text-center">${i+1}</th>
+                            <td>${list[i].name}</td>
+                            <td><button class="btn btn-attrin" type="button" data-target="./${linkTxt[linkTxt.length-1]}" data-pname="${list[i].pname}" onclick="popupOpen($(this).data('target'), $(this).data('pname'), ${list[i].pwidth}, ${list[i].pheight})">/${linkTxt[linkTxt.length-1]}</button></td>
+                            <td>${list[i].note}</td>
+                        </tr>
+                        `
+                        tableTr.append(html)
+                    }
+                })
+                
+            }
+        )
+    </script>
+</body>
+
+</html>

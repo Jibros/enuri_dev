@@ -16,18 +16,18 @@
 <body>
 
 <div id="wrap">
-	
-	<!-- 헤더 : 마이e클럽 헤더 "mye_header" -->
-    <header id="header" class="m_header mye_header">
-		<div class="header_wrap">
-			<h1 class="m_txt">나의 관심 상품</h1>
-            <button class="btn_hd_back comm__sprite">뒤로</button>
-			
-			<!-- <button class="btn_hd_myalarm comm__sprite">MY알림</button>
-			<button class="btn_hd_setting comm__sprite">설정</button> -->
-		</div>	
+	<header id="header" class="page_header nomargin header_top_fixed">
+		<div class="header_top">
+			<div class="wrap">
+				<button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+				<div class="header_top_page_name">나의 관심 상품</div>
+				<!-- 
+					※설정버튼 헤더개편시 따로 작업되지않음
+					<button class="btn_hd_setting comm__sprite">설정</button>
+				-->
+			</div>
+		</div>
     </header>
-    <!-- // 헤더 -->
 
 	<!-- 컨테이너 : 마이e클럽 컨텐츠 "m_mye_cont"  -->
 	<section id="container" class="m_mye_cont">
@@ -38,6 +38,7 @@
 				<div class="mye_tabs">
 					<ul class="is-scroller">
 						<li class="is-on"><button type="button" class="tab">찜상품</button></li>
+						<li><button type="button" class="tab">찜한 브랜드스토어</button></li>
 						<li><button type="button" class="tab">최근 본 상품</button></li>
 						<li><button type="button" class="tab">최근 본 카테고리</button></li>
 						<li><button type="button" class="tab">최근 검색어</button></li>
@@ -67,7 +68,7 @@
 											<button type="button" class="btn btn_edit">편집</button><!-- 클릭시 편집모드 ON -->
 
 											<!-- 편집 시 노출 -->
-											<button type="button" class="btn btn_move">이동</button><!-- 클릭시 레이어 오픈 -->
+											<button type="button" class="btn btn_move is-disabled">이동</button><!-- 클릭시 레이어 오픈되나, 체크한 상품이 없을 때 클래스 추가 : is-disabled -->
 											<button type="button" class="btn btn_delete">삭제</button><!-- 클릭시 레이어 오픈 -->
 											<button type="button" class="btn btn_cancel">취소</button><!-- 클릭시 편집모드 OFF -->
 											<!-- // -->
@@ -81,6 +82,98 @@
 								<div class="rect_inner">
 									<!-- 상품 그룹 -->
 									<div class="goods_group">
+										<!-- 상품 번들 그룹 -->
+										<div class="goods_bundle">
+											<div class="goods_date">
+												<!-- 편집일 때만 노출 : "is-shown" -->
+												<div class="goods_edit">
+													<!-- js-bundlechk : 일별 체크 선택/해제 -->
+													<button type="button" class="btn_chk js-bundlechk"><i class="chk">선택</i></button>
+												</div>
+
+												<p class="tx_date">2022.04.26</p>
+											</div>
+
+											<!-- 
+												[D] 찜상품 마크업 동일합니다. 
+												메이크샵 상품 케이스(카테고리,몰명)만 추가되었습니다.
+											-->
+											<ul class="goods_list">
+												<!-- [LOOP] FULL CASE -->
+												<li>
+													<div class="goods_edit">
+														<button type="button" class="btn_chk"><i class="chk">선택</i></button>
+														<button type="button" class="btn_del">상품 삭제</button>
+													</div>
+													<a href="#" class="goods_link">
+														<span class="gd_thumb"><img src="//image.enuri.info/webimage_300/10531200000/10531250000/10531257632.jpg" alt="상품 이미지" /></span>
+
+														<span class="gd_info">
+															<span class="tx_nm">이엑스코리아 프리미엄게이밍i5 GTX</span>
+
+															<!-- 메이크샵 상품 케이스 -->
+															<span class="tx_cate"> <!-- 카테고리 -->
+																<span>가전/해외직구</span><span>주방가전</span>
+															</span>
+															<span class="tx_shop">사뿐</span> <!-- 몰명 -->
+															<!-- // -->
+
+															<span class="tx_price"><em>139,900,000</em>원</span>
+														</span>														
+													</a>
+												</li>
+												<!-- //[LOOP] -->
+												<li>
+													<div class="goods_edit">
+														<button type="button" class="btn_chk"><i class="chk">선택</i></button>
+														<button type="button" class="btn_del">상품 삭제</button>
+													</div>
+													<a href="#" class="goods_link">
+														<!-- 이미지 없을 때 대체 이미지 -->
+														<span class="gd_thumb"><img src="//img.enuri.info/images/mobile_v2/m_thumb_altimg.png" alt="이미지가 없습니다." /></span>
+
+														<span class="gd_info">
+															<span class="tx_nm">이엑스코리아 프리미엄게이밍i5 GTX</span>
+
+															<!-- 메이크샵 상품 케이스 -->
+															<span class="tx_cate"> <!-- 카테고리 -->
+																<span>가전/해외직구</span><span>주방가전</span>
+															</span>
+															<span class="tx_shop">사뿐</span> <!-- 몰명 -->
+															<!-- // -->
+
+															<!-- 단종/품절 : is-soldout -->
+															<span class="tx_price is-soldout">단종/품절</span>
+														</span>														
+													</a>
+												</li>
+												<li>
+													<div class="goods_edit">
+														<button type="button" class="btn_chk"><i class="chk">선택</i></button>
+														<button type="button" class="btn_del">상품 삭제</button>
+													</div>
+													<a href="#" class="goods_link">
+														<span class="gd_thumb"><img src="//image.enuri.info/webimage_300/10531200000/10531250000/10531257632.jpg" alt="상품 이미지" /></span>
+
+														<span class="gd_info">
+															<span class="tx_nm">이엑스코리아 프리미엄게이밍i5 GTX</span>
+
+															<!-- 메이크샵 상품 케이스 -->
+															<span class="tx_cate"> <!-- 카테고리 -->
+																<span>가전/해외직구</span><span>주방가전</span>
+															</span>
+															<span class="tx_shop">사뿐</span> <!-- 몰명 -->
+															<!-- // -->
+
+															<span class="tx_price"><em>139,900,000</em>원</span>
+														</span>														
+													</a>
+												</li>
+											</ul>
+											<!-- // -->
+										</div>
+										<!-- //상품 번들 그룹 -->
+
 										<!-- 상품 번들 그룹 -->
 										<div class="goods_bundle">
 											<div class="goods_date">
@@ -262,10 +355,18 @@
 					</div>
 					<!-- 탭 컨텐츠 : 찜상품 -->
 
+					<!-- 탭 컨텐츠 : 찜한 브랜드스토어 -->
+					<div class="mye_cont">
+						<div class="mye_box">
+							<!-- @my_brndstore.html -->
+						</div>
+					</div>
+					<!-- 탭 컨텐츠 : 찜한 브랜드스토어 -->
+
 					<!-- 탭 컨텐츠 : 최근 본 상품 -->
 					<div class="mye_cont">
 						<div class="mye_box">
-							
+							<!-- @my_recent_goods.html -->
 						</div>
 					</div>
 					<!-- 탭 컨텐츠 : 최근 본 상품 -->
@@ -273,7 +374,7 @@
 					<!-- 탭 컨텐츠 : 최근 본 카테고리 -->
 					<div class="mye_cont">
 						<div class="mye_box">
-							
+							<!-- @my_recent_category.html -->
 						</div>
 					</div>
 					<!-- 탭 컨텐츠 : 최근 본 카테고리 -->
@@ -281,7 +382,7 @@
 					<!-- 탭 컨텐츠 : 최근 검색어 -->
 					<div class="mye_cont">
 						<div class="mye_box">
-							
+							<!-- @my_recent_keyword.html -->
 						</div>
 					</div>
 					<!-- 탭 컨텐츠 : 최근 검색어 -->
@@ -352,21 +453,30 @@
 				lay_confirm.fadeIn();
 			});
 			btn_move.on("click", function(){
-				lay_floder.fadeIn();
+				if(!$(this).hasClass("is-disabled")){
+					lay_floder.fadeIn();
+				}else{
+					alert("이동할 상품을 선택해 주세요.")
+				}
 			})
 		})
 	</script>
 
-	<!-- 210825 : SR#48487 : 모바일웹 하단 탭바 -->
-	<section class="tabbar">
-		<div class="tabbar__inner">
-			<ul class="tabbar__list">
-				<li><a href="javascript:void(0);" class="tab tab-cate"><i class="ico"></i><span class="tx">카테고리</span></a></li>
-				<li><a href="javascript:void(0);" class="tab tab-srch"><i class="ico"></i><span class="tx">검색</span></a></li>
-				<li><a href="./myeclub/my_alarm.html" class="tab tab-eclub"><i class="ico"></i><span class="tx">마이e클럽</span></a></li>
-				<li><a href="#tab3" class="tab tab-favor"><i class="ico"></i><span class="tx">관심상품</span></a></li>
+	<!-- 모바일웹 하단 탭바_리뉴얼 -->
+	<section class="f_tabbar border-box">
+		<div class="f_tabbar__wrap">
+			<ul class="tabbar__menu">
+                <li><a href="javascript:void(0);" class="t_m_allmenu" data-starget="#sheet_left"><i class="comm__sprite2 icon_tabbar_allmenu"></i></a></li>
+                <li><a href="javascript:void(0);" class="t_m_home"><i class="comm__sprite2 icon_tabbar_home"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_search search_bg"><i class="comm__sprite2 icon_tabbar_search"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_mypage"><i class="comm__sprite2 icon_tabbar_mypage"></i></a></li>
+				<li><a href="javascript:void(0);" class="t_m_zzim"><i class="comm__sprite2 icon_tabbar_zzim"></i></a></li>
 			</ul>
 		</div>
+        <div class="f_btn_page_contorler active">
+            <button type="button" onclick="window.history.back();" class="btn_page_back"><i class="comm__sprite2 icon_tabbar_arrow_left_s24"></i></button> 
+            <button type="button" onclick="totop();" class="btn_page_scrolltop"><i class="comm__sprite2 icon_tabbar_arrow_top_s24"></i></button>
+        </div>
 	</section>
 	<!-- // -->
 
@@ -385,7 +495,7 @@
 			<div class="footer__info_com">
 				<dl>
 					<dt>대표이사</dt>
-					<dd>김기범</dd>
+					<dd>김기록</dd>
 					<dt>사업자등록번호</dt>
 					<dd>206-81-18164</dd>
 					<dt>통신판매신고</dt>
@@ -554,6 +664,5 @@
 	</div>
 </div>
 <!-- //Bottom Sheet -->
-
 </body>
 </html>

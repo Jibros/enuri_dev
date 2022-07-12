@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html lang="ko">
+<head>
+	<meta charset="utf-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />	
+	<meta property="og:title" content="에누리 가격비교">
+	<meta property="og:description" content="에누리 모바일 가격비교">
+	<meta property="og:image" content="http://imgenuri.enuri.gscdn.com/images/mobilefirst/images/logo_enuri.png">
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/default.css">
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/emoney.css">
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+ 
+<div class="wrap">
+	<header id="header" class="page_header nomargin header_top_fixed">
+		<div class="header_top">
+			<div class="wrap">
+				<button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+				<div class="header_top_page_name">상품 상세정보</div>
+			</div>
+		</div>
+    </header>
+	<div class="fixed_top_empty"></div>
+	<div class="goods">
+		<section class="w_box">
+			<ul class="prodbox">
+				<li>
+					<span class="info_img"><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/reward/@ico04.png" alt="탐앤탐스 베이글 세트" /></span>
+					<strong>[탐앤탐스] 전국지점 탐앤탐스 베이글 세트 모바일 교환권 6,800원</strong>
+					<span class="price"><i class="icon_emoney_s16 comm__sprite"></i>6,800<em>점</em></span>
+					<button type="button" class="btn_buy">교환하기</button>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<!--// 상품이미지 -->
+
+	<!-- 상세정보/유의사항 -->
+	<div class="goods whitebg">
+		<!-- 160628 -->
+		<dl class="shop_info">
+			<dt>사용처</dt>
+			<dd>롯데리아</dd>
+			<dt>유효기간</dt>
+			<dd>발급일로부터 30일</dd>
+		</dl>
+
+		</dl>
+		<dl class="infotxt">
+			<dt>이용방법</dt>
+			<dd>커피빈 매장 방문 후 이용 가능</dd>
+			<dt>유효기간 및 환불안내</dt>
+			<dd>커피민 매장 방문 후 이용 가능 커피민 매장 방문 후 이용 가능 커피민 매장 방문 후 이용 가능</dd>
+		</dl>
+		<p class="a_c"><button type="button" class="btn_default">FAQ / 문의하기</button> <button type="button" class="btn_default">목록으로</button></p><!-- 160628 -->
+	</div>
+	<!--// 상세정보/유의사항 -->
+</div>
+<!-- 레이어 : 패스워드체크 -->
+<div class="lay-check-password lay-comm" style="display: none;">
+	<div class="lay-comm--body">
+		<form name="" class="form-check-password">
+			<div class="form_title">비밀번호 확인</div>
+			<div class="form_summary">본인확인을 위하여 비밀번호를 입력해주세요.</div>
+			<input type="password" name="chk_password" placeholder="비밀번호 입력">
+			<button type="submit" class="btn_check_pass">확인</button>
+		</form>
+	</div>
+</div>
+
+<script>
+	// 임의스크립트
+	$('body').on('click','.btn_buy', function(){
+		exchangeCoupon();
+	});
+	$('body').on('submit', '.form-check-password', function(){
+		closeModalPopup('.lay-check-password');
+		var result = prompt("비밀번호 오류 : 1 \n비밀번호 확인 : 2")
+		switch(result){
+			case "1" : alert("비밀번호를 확인해 주세요.");break;
+			case "2" : alert("교환완료! [보유e쿠폰]에서 확인 가능합니다.\n※유효기간을 꼭 확인해주세요!");break;
+		}
+		return false;
+	});
+	function exchangeCoupon() {
+		var result = prompt("본인인증전 : 0 \n로그아웃 상태 : 1 \n로그인 상태 : 2\ne머니부족 : 3\n교환완료 : 4")
+		switch(result){
+			case "0" : var confirmYN = confirm("e쿠폰 교환하기는 본인인증 후 가능합니다.\n본인인증 화면으로 이동할까요?"); if(confirmYN) console.log('본인인증페이지로 이동'); break;
+			case "1" : alert("로그인 후 참여하실 수 있습니다!");break;
+			case "2" : var confirmYN = confirm('교환하시겠습니까?'); if(confirmYN) openModalPopup('.lay-check-password');break;
+			case "3" : alert("e머니가 부족합니다.");break;
+			case "4" : alert("교환완료! [보유e쿠폰]에서 확인 가능합니다.\n※유효기간을 꼭 확인해주세요!");break;
+		}
+	}
+	// 모달팝업 열기
+	function openModalPopup(elem) {
+		var target = $(elem);
+		var target_pos_width = target.width();
+		var target_pos_height = target.height();
+		target.before('<div class="lay_overlay"></div>')
+		target.css({
+			'margin-top': -(target_pos_height/2),
+			'margin-left': -(target_pos_width/2),
+		})
+		target.fadeIn();
+
+		target.prev().on('click', function(){
+			closeModalPopup(elem);
+		});
+		$('.btn_close', target).on('click', function(){
+			closeModalPopup(elem);
+		});
+	}
+	// 모달팝업 닫기
+	function closeModalPopup(elem) {
+		var target = $(elem),
+			target_overlay = $('.lay_overlay');
+		target_overlay.fadeOut(function(){$(this).remove();});
+		target.fadeOut();
+	}
+</script>
+</body>
+</html>

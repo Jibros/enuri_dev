@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>주소 검색</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="/css/default.css" type="text/css">
+    <link rel="stylesheet" href="/css/member.css" type="text/css"> <!-- [D] 작업 CSS -->
+    <style type="text/css">
+    html {overflow:hidden;}
+    *,td {font-family:'맑은 고딕';font-size:12px;}
+    </style>
+    
+    <script type="text/javascript" src="/common/js/function.js"></script>
+    <script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+    <script>
+    function resize(){
+        if ($("#AddressSearch")){
+            var wW = $("#AddressSearch").width();
+            var wH = $("#AddressSearch").height();
+            var h=0;
+            if(navigator.userAgent.indexOf("MSIE")>0 || navigator.userAgent.toLowerCase().indexOf("trident")>0) {
+                //ie
+                if(navigator.userAgent.indexOf("MSIE 9")>0 || navigator.userAgent.toLowerCase().indexOf("trident")>0) {
+                    h=88;
+                  }else{
+                    h=72;
+                  }
+            }else if(navigator.userAgent.indexOf("Gecko")>0 && navigator.userAgent.indexOf("Firefox")<0 && navigator.userAgent.indexOf("Chrome")<0){
+                //safari
+                h=53;
+            }else if(navigator.userAgent.indexOf("Firefox") > 0){
+                //firefox
+                h=66;
+            }else if(navigator.userAgent.toLowerCase().indexOf("nt 6.") > 0) {
+                wW += 8;
+                  h=66;
+            }else{
+                h=66;
+            }
+            self.resizeTo(wW+10,wH+h+5);
+        }
+    }
+    function setAddr(zip1, zip2, addr){
+        var addrNew = addr.replace(/·/g,',');
+        //addrNew = escape(addrNew);
+        addrNew = encodeURI(encodeURIComponent(addrNew));
+        document.location = "findAddrSub.jsp?newtype=Y&zip1="+zip1+"&zip2="+zip2+"&addr="+addrNew;
+    }
+    function chgNewType(val){
+        if(val=="Y"){ //도로명주소 선택
+            document.getElementById("exp_newtype_0").style.display = "none";
+            document.getElementById("exp_newtype_1").style.display = "block";
+        }else{
+            document.getElementById("exp_newtype_0").style.display = "block";
+            document.getElementById("exp_newtype_1").style.display = "none";
+        }
+    }
+    
+    // 1: 도로명 주소
+    // 2: 지번 주소
+    // 도로명 주소가 디폴트
+    var addrTabSel = "1";
+    function Start() {
+        resize();
+        $("#keyword").focus();
+    
+        // 탭 선택 이벤트 추가
+        var addrTabDivObj = $("#addrTabDiv");
+        addrTabDivObj.find("li a").click(function() {
+            var thisObj = $(this);
+            var addrType = thisObj.attr("addrType");
+            var addrTabsObj = addrTabDivObj.find("li a");
+            var addrTxtObj = $("#addrTypeTxtLi");
+    
+            if(addrTabSel!=addrType) {
+                for(var i=0; i<addrTabsObj.length; i++) {
+                    var tabItem = $(addrTabsObj[i]);
+                    if(tabItem.attr("addrType")==addrType) {
+                        tabItem.addClass("active");
+                    } else {
+                        tabItem.removeClass("active");
+                    }
+                }
+    
+                var addrHtml = "";
+                if(addrType=="1") {
+                    addrHtml = "찾고자 하는 주소의 도로명과 건물번호를 입력하세요.<p class=\"emp\">예) 대학로1길, 청계천로85</p>";
+                }
+                if(addrType=="2") {
+                    addrHtml = "찾고자 하는 주소의 동(읍,면,리)을 입력하세요.<p class=\"emp\">예) 서현동, 압구정, 양평읍</p>";
+                }
+                addrTxtObj.html(addrHtml);
+    
+                addrTabSel = addrType;
+    
+                // 리셋하기
+                var AddressSearchObj = $("#AddressSearch");
+                AddressSearchObj.removeClass("h660");
+                AddressSearchObj.addClass("h320");
+                AddressSearchObj.find(".zipcode").hide();
+                $("#keyword").val("");
+    
+                resize();
+            }
+        });
+    
+        var findBtnObj = $("#findBtn");
+        findBtnObj.click(function() {
+            findAction();
+        });
+    
+        $("#keyword").unbind();
+        $("#keyword").keydown(function(e) {
+            if(e.keyCode==13) {
+                findAction();
+            }
+        });
+    }
+    
+    function findAction() {
+        var keywordObj = $("#keyword");
+    
+        if(keywordObj.val()=="") {
+            if(addrTabSel=="1") {
+                alert("찾으시려는 도로명을 입력하세요.");
+            } else {
+                alert("찾으시려는 동을 입력하세요.");
+            }
+            keywordObj.focus();
+            return false;
+        }
+        keywordObj.attr("onKeyPress", "if(event.keyCode==13){ return false; }");
+    
+        document.location.href = "/knowcom/findAddrMain.jsp?keyword="+encodeURIComponent(keywordObj.val())+"&addrType="+addrTabSel;
+    }
+    </script>
+    </head>
+    <body onLoad="Start();">
+        <!-- 로그인 WRAP -->
+        <div class="member_wrap">
+            <!-- 주소검색 -->
+            <div id="AddressSearch" class="layer_pop p2 h320" style="position:static;margin:0px 0px 0px 0px;">
+                <!--
+                <a href="javascript:///" class="close" onclick="document.getElementById('layerbox4').style.display='none';" >창닫기</a>
+                 -->
+                <h4>주소 검색</h4>
+                <fieldset>
+                    <legend>주소검색</legend>
+                    <div id="addrTabDiv" class="tabs">
+                        <ul>
+                            <!-- 활성화 class="active" -->
+                            <li><a href="JavaScript:" id="addrTypeTab1" addrType="1" class="active">도로명 주소</a></li>
+                            <li><a href="JavaScript:" id="addrTypeTab2" addrType="2" >지번주소</a></li>
+                        </ul>
+                    </div>
+                    <ul class="cau_list2">
+                        <li id="addrTypeTxtLi">찾고자 하는 주소의 도로명과 건물번호를 입력하세요.<p class="emp">예) 대학로1길, 청계천로85</p></li>
+                        <li>주소 검색결과 중 선택한 주소로 자동입력됩니다.</li>
+                    </ul>
+    
+                    <div class="con_area">
+                        <div class="row_group">
+                            <div class="row">
+                                <div class="jr_box two_col">
+                                    <div class="ipt_area td" style="width:298px;">
+                                        <input type="text" id="keyword" class="ipt" value="" maxlength="100" style="border-right:0;"/>
+                                    </div>
+                                    <div class="btn_group td" style="width:100px;">
+                                        <a id="findBtn" href="JavaScript:" class="btn_gy">검색</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </fieldset>
+            </div>
+            <!--// 주소검색 -->
+    </div>
+    </body>
+    </html>
+    

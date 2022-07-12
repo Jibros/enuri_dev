@@ -423,23 +423,35 @@
 .prodminprice .btn__alarm + .lay-tooltip {display:none;position:absolute;top:62px;left:0;z-index:2}
 .prodminprice .btn__alarm:hover + .lay-tooltip {display:block !important}
 .prodminprice .btn__alarm + .lay-tooltip .lay__inner:after {left:16px}
-.prodminprice .btn__purchase {float:right;width:200px;height:54px;text-align:center;text-decoration:none;background-color:#1F77EA;transition:all .2s ease-in-out}
+.prodminprice .btn__purchase {position:relative; float:right;width:200px;height:54px;text-align:center;text-decoration:none;background-color:#1F77EA;transition:all .2s ease-in-out}
 .prodminprice .btn__purchase:hover {opacity:.92}
 .prodminprice .btn__purchase .txt {font-weight:bold;font-size:16px;line-height:52px;color:#fff;letter-spacing:-.4px;vertical-align:middle}
+.prodminprice .btn__purchase .btn__purchase_add_info {position:absolute; top:-18px; left:50%; min-width:132px; padding:0 9px; background-color: #ffe70a; color:#000; font-size: 12px; line-height: 28px; border-radius: 4px; letter-spacing: -.5px; white-space: nowrap;} 
+.prodminprice .btn__purchase .btn__purchase_add_info:after {content:""; display: block; border-top: 6px solid #ffe70a; border-left: 5px solid transparent; border-right: 5px solid transparent; position:absolute; bottom:-6px; right: 25%;} 
+.eff_bounce {animation: bounce ease-in-out 2s infinite alternate;} 
+@-webkit-keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translate(-50%, 0);transform: translate(-50%, 0);}
+	50%,70% {-webkit-transform: translate(-50%, -4px);transform: translate(-50%, -4px);}
+}
+@keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translate(-50%, 0);transform: translate(-50%, 0);}
+	50%,70% {-webkit-transform: translate(-50%, -4px);transform: translate(-50%, -4px);}
+}
+
 .prodminprice .mobile__buy {position:relative;line-height: 36px;}
-.prodminprice .mobile__buy .btn {position:relative;text-decoration:none;background:transparent}
+.prodminprice .mobile__buy .btn {position:relative; font-size: 0; text-decoration:none;background:transparent;}
 .prodminprice .mobile__buy .tx_logo {display: inline-block; vertical-align: middle; width:auto;margin-right:4px; line-height: 1;}
 .prodminprice .mobile__buy .tx_logo > img {width:auto; height:16px;}
 .prodminprice .mobile__buy .tx_msg {display: inline-block; vertical-align: middle; font-size:13px;color:#333;}
-.prodminprice .mobile__buy .tx_msg .tx_price {margin-left:12px;font-weight:bold;font-size:12px;vertical-align:1px;letter-spacing:-1px}
-.prodminprice .mobile__buy .tx_msg .tx_price em {font-family:Arial, Helvetica, sans-serif;letter-spacing:0; font-size: 14px; letter-spacing: -.5px;}
+.prodminprice .mobile__buy .tx_msg .tx_price {margin-left:8px;font-size:12px;vertical-align:1px;letter-spacing:-1px}
+.prodminprice .mobile__buy .tx_msg .tx_price em {font-weight:bold; font-family:Arial, Helvetica, sans-serif;letter-spacing:0; font-size: 14px; margin-right: 2px; letter-spacing: -.5px;}
 /* 모바일 최저가 레이어 */
 .prodminprice .mobile__buy .lay-mobile-min {display:none;position:absolute;top:25px;left:0;z-index:2}
 
 .area_noti_savemoney {position:relative; display:inline-block; vertical-align: middle; height:22px; font-size: 13px; color:#000; margin-bottom:0;}
 .area_noti_savemoney i.icon_emoney {display: inline-block; vertical-align: -5px; width:18px; height:18px; background-position: -280px -160px;}
 .area_noti_savemoney .btn_open_layer_noti_save {position:relative; display: inline-block; width:20px; height:20px; vertical-align: -5px;}
-.area_noti_savemoney .btn_open_layer_noti_save i.icon_noti {display: block; width:20px; height:20px; background-position: -300px -160px;}
+.area_noti_savemoney .btn_open_layer_noti_save i.icon_noti {display: block; width:20px; height:20px; margin-left:-2px; background-position: -300px -160px;}
 .layer_noti_save {position: absolute; display: none; width: 280px; height:84px; top: 50%; left: 100%; margin-top:-42px; z-index: 1; padding-left: 10px;}
 .layer_noti_save:before {content: ""; display: block; width: 10px; height: 10px; border-top: 1px solid #ddd; border-left: 1px solid #ddd; transform: rotate(-45deg); position: absolute; top: 50%; left: 5px; margin-top: -5px; background-color: #fff; z-index: 2;}
 .layer_noti_save .layer_wrap {width:100%; box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); border: solid 1px #ddd; background-color: #fff; padding: 13px; border-radius:5px;letter-spacing: -1.5px;}
@@ -464,7 +476,7 @@
 
 
 /* 직방가 노출 */
-.direct_price {clear:both; padding:0;background-color:#fff; border-top:1px solid #eee;}
+.direct_price {padding:0; background-color:#fff; border-top:1px solid #eee;}
 .direct_price .direct_row {position:relative;}
 .direct_price .direct_row .direct_summ {position:relative;width:100%; padding:11px 0;font-size:0}
 .direct_price .direct_row .direct_summ:after {content:"";position:absolute;top:14px;right:12px;width:16px;height:16px;background:url("//img.enuri.info/images/mobile_v2/common_sprite.png") 0 -430px no-repeat;background-size:360px;}
@@ -474,11 +486,11 @@
 .direct_price .direct_row .direct_summ .tx_price:before {content:"";position:absolute;top:2px;left:0;width:16px;height:16px;background:url("//img.enuri.info/images/mobile_v2/common_sprite.png") -20px -502px no-repeat;background-size:360px;}
 .direct_price .direct_row .direct_summ .tx_price>em {font-family:"Roboto", sans-serif;font-size:14px;letter-spacing:-.4px;color:#000;font-weight: normal;}
 .direct_price .direct_row .direct_summ .tx_info {display:inline-block;margin-left:4px;font-size:13px;color:#666;letter-spacing:-.4px;line-height:20px}
-.direct_price .direct_row .direct_summ .btn_tip {position:relative;display:inline-block;width:20px;height:20px;vertical-align:-6px;z-index:2; background-color: transparent;}
-.direct_price .direct_row .direct_summ .btn_tip .icon_noti {display:block;width:20px;height:20px;background-position:-300px -160px;}
+.direct_price .direct_row .direct_summ .btn_tip {position:relative;display:inline-block;width:20px;height:20px;vertical-align:-5px;z-index:2; background-color: transparent;}
+.direct_price .direct_row .direct_summ .btn_tip .icon_noti {display:block;width:20px;height:20px;margin-left:2px;background-position:-300px -160px;}
 .direct_price .direct_row .direct_summ .btn_tip:hover .layer_noti {display:block;}
 
-.direct_price .direct_row .layer_noti {top:50%;left:100%; margin-left:10px; width:240px;height:20px;padding:6px 8px;text-align:left;opacity:1; margin-top:-17px; border:1px solid #999; border-radius: 4px; background-color: #fff;}
+.direct_price .direct_row .layer_noti {top:50%;left:100%; margin-left:10px; width:275px;height:20px;padding:6px 8px;text-align:left;opacity:1; margin-top:-17px; border:1px solid #999; border-radius: 4px; background-color: #fff;}
 .direct_price .direct_row .layer_noti:before {border-color:#999; left:-5px; width: 8px; height: 8px;}
 .direct_price .direct_row .layer_noti .txt2 {line-height: 20px;}
 .direct_price .direct_row .layer_noti .arrow_shape {left:auto;right:14px;}
@@ -501,9 +513,27 @@
 .direct_price.is-expand .direct_row .direct_detail {display:block}
 
 
+/* 직방가 노출 _ TYPE2 */
+.direct_price_type2 {position:relative; margin-top:8px; }
+.direct_price_type2 .dp_wrap {display:flex; flex-wrap:wrap; justify-content: space-between; border:1px solid #1f77ea;}
+.direct_price_type2 .dp_wrap > div {flex:0 0 auto; height:16px; line-height: 16px; font-size: 12px; color:#000; letter-spacing: -.2px; overflow: hidden;}
+.direct_price_type2 .dp_wrap > div em {font-size: 13px; font-weight: bold;}
+.direct_price_type2 .dp_wrap {padding:14px 13px;}
+.direct_price_type2 .dp_wrap .d_currentMallPrice {}
+.direct_price_type2 .dp_wrap .d_discountPrice {color:#1a70dd;}
+.direct_price_type2 .dp_wrap .d_enuriMinPrice {position:relative; padding-right:20px;}
+.direct_price_type2 .dp_wrap .d_enuriMinPrice button {position:absolute; top:0; right:0; width:16px; height:16px; background-color: #fff;}
+.direct_price_type2 .dp_wrap .d_enuriMinPrice button i{display: block; width:100%; height:100%; background:url('//img.enuri.info/images/rev/vip_sprite.png') no-repeat -262px -162px;}
+.direct_price_type2 .dp_wrap .d_icon_minus, 
+.direct_price_type2 .dp_wrap .d_icon_equal {display: flex; width: 8px; height: 16px; flex-flow: column; justify-content: center;}
+.direct_price_type2 .dp_wrap .d_icon_minus span,
+.direct_price_type2 .dp_wrap .d_icon_equal span {display:block; width:8px; height:1px; margin:1px auto; background-color: #222;;}
+.direct_price_type2 .lay-comm {position: absolute; top: 39px; right: 0; z-index: 10; width: 320px;}
+
+
 /* [좌측] 구매옵션, 프로모션/특별가 */
-.prodoption {position:relative;z-index:2}
-.prodoption .buyoption {display:block;position:relative;min-height:26px;margin-bottom:0;padding:12px 16px;border:1px solid #ddd;background-color:#fbfbfb}
+.prodoption {position:relative;z-index:2; margin-top:8px;}
+.prodoption .buyoption {display:block;position:relative;min-height:26px;margin-bottom:0;padding:12px 16px;border:1px solid #ddd;background-color:#fff}
 .prodoption .buyoption .btn__toggle {position:absolute;top:16px;right:16px;width:24px;height:24px;font-size:0;text-indent:-9999px;background:url(//img.enuri.info/images/rev/vip_sprite.png) -140px -20px no-repeat;z-index:1}
 .prodoption .buyoption .buyopt__list {position:relative}
 .prodoption .buyoption .buyopt__list:after {content:"";display:table;clear:both}
@@ -520,16 +550,18 @@
 .prodoption .buyoption.is-unfold .btn__toggle {transform:rotate(180deg)}
 
 /* 구매옵션+프로모션특별가 동시 노출 시 상단 보더 제거 */
-.prodoption + .specialprice {margin-top:-1px}
+.prodoption + .specialprice {margin-top:8px}
 
-.specialprice {clear:both;position:relative}
+.specialprice {clear:both;position:relative;background-color:#f5fafc;}
 .specialprice .s_price__list {margin-bottom:20px;border-bottom:1px solid #eee;font-family:"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;}
 .specialprice .s_price__list > li {clear:both;height:36px;padding:0 8px;border-top:1px solid #eee}
-.specialprice .s_price__list > li.is-promotion {border-top-color:#ECF1F9;border-bottom-color:#ECF1F9;background-color:#FCFDFF}
-.specialprice .s_price__list > li .col {float:left;line-height:36px;letter-spacing:-.4px;vertical-align:middle}
+.specialprice .s_price__list > li .col {float:left;position:relative;line-height:36px;letter-spacing:-.4px;vertical-align:middle}
 .specialprice .s_price__list > li .col-1 {width:220px}
 .specialprice .s_price__list > li .col-1 .logo {display:inline-block;height:16px;font-weight:bold;font-size:13px;color:#333;line-height:16px;vertical-align:middle}
 .specialprice .s_price__list > li .col-1 .logo > img {width:auto;height:16px}
+.specialprice .s_price__list > li .col-1 .badge {display:inline-block;position:absolute;top:13px;width:66px;height:18px;margin-left:4px;font-size:0;text-indent:-9999px;vertical-align:middle;background:url(//img.enuri.info/images/rev/vip_sprite.png) no-repeat} 
+.specialprice .s_price__list > li .col-1 .badge--npay {width:32px;height:14px;background-position:-80px -300px}
+.specialprice .s_price__list > li .col-1 .badge--npay-plus {width:42px;height:14px;background-position:-120px -300px}
 .specialprice .s_price__list > li .col-2 {width:calc(100% - 352px);text-align:right}
 .specialprice .s_price__list > li .col-2 .price {text-decoration:none}
 .specialprice .s_price__list > li .col-2 .price .tx_msg {margin-right:4px;font-size:12px;color:#333}
@@ -542,7 +574,8 @@
 .specialprice .s_price__list > li .col-3 {width:132px;text-align:right}
 .specialprice .s_price__list > li .col-3 .btn--buy {display:inline-block;width:77px;height:20px;margin:8px 0;font-size:0;text-indent:-9999px;vertical-align:top;background:url(//img.enuri.info/images/rev/vip_sprite.png) -80px -160px no-repeat}
 .specialprice .s_price__list > li .col-3 .delivery {font-size:12px;color:#666;letter-spacing:0}
-.specialprice .s_price__list > li.is-adline .col-1 {width:320px}
+.specialprice .s_price__list > li.is-adline {background-color:#fff;}
+.specialprice .s_price__list > li.is-adline .col-1 {width:320px;}
 .specialprice .s_price__list > li.is-adline .col-2 {width:calc(100% - 452px)}
 .specialprice .s_price__list > li.is-adline .col-1 .logo .ico {display:inline-block;position:relative;width:20px;height:16px;margin-right:0;line-height:1;vertical-align:middle;background:url(//img.enuri.info/images/rev/vip_sprite.png) no-repeat}
 .specialprice .s_price__list > li.is-adline .col-1 .logo .ico--ad {top:-1px;width:24px;margin-left:4px;background-position:-80px -120px} /* AD */
@@ -1291,7 +1324,7 @@
 .sort_block .sort_mall .btn__sel.has-chk:before {opacity:1}
 
 .comparison__cont {position:relative;width:100%;margin-bottom:56px;border-top:1px solid #666;border-bottom:1px solid #ddd}
-.comparison__cont:before {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;height:100%;background-color:#ccc;z-index:1}
+.comparison__cont:before {content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;height:100%;background-color:#ddd;z-index:1}
 .comparison__cont:after {content:"";display:table;clear:both;}
 .comparison__lt,
 .comparison__rt{float:left;position:relative;width:50%;margin-bottom:-1px}

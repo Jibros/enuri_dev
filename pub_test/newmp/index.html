@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEW MP - 대량정제</title>
+
+<!-- WEBFONT -->
+<link rel="stylesheet" href="/pub_test/newmp/apps/css/webfont.css">
+
+<!-- JQUERY CDN -->
+<script src="/wide/util/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+
+<!-- DHTMLX lib -->
+<script type="text/javascript" src="/pub_test/newmp/lib/dhtmlx/codebase/suite.js?v=7.1.4"></script>
+<link rel="stylesheet" href="/pub_test/newmp/lib/dhtmlx/codebase/suite.css?v=7.1.4">
+
+<!-- BOOTSTRAP lib -->
+<link rel="stylesheet" href="/pub_test/newmp/lib/bootstrap/dist/css/bootstrap.min.css?v=4.0.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<script type="text/javascript" src="/pub_test/newmp/lib/bootstrap/dist/js/bootstrap.bundle.min.js?v=4.0.0"></script>
+
+<!-- CUSTOM CSS -->
+<link rel="stylesheet" href="/pub_test/newmp/apps/css/layout.css?v=220121">
+<link rel="stylesheet" href="/pub_test/newmp/apps/css/style.css?v=220121">
+
+</head>
+<!-- 타이틀 변경 필요 시, body data-title 추가 -->
+<body>
+    <div class="login__wrap" style="display:none">
+        <div class="login_form">
+            <!--  -->
+            <form id="loginForm" method="post" action="">
+                <input type="hidden" id="rtnUrl" name="rtnUrl" value="">
+                <input type="hidden" id="cmdType" name="cmdType" value="">
+                <fieldset>
+                    <legend>로그인</legend>
+
+                    <div class="login_cont">
+                        <div class="login_row">
+                            <label for="user_id">아이디</label>
+                            <input type="text" id="user_id" class="ipt" value="" maxlength="12">
+                        </div>
+                        <div class="login_row">
+                            <label for="user_pw">비밀번호</label>
+                            <input type="password" id="user_pw" class="ipt" value="" maxlength="15">
+                        </div>
+                    </div>
+
+                    <div class="btn_group">
+                        <div class="form-check-inline">
+                            <input type="checkbox" class="form-check-input" id="autoLogin">
+                            <label class="form-check-label" for="autoLogin">자동 로그인</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-sm btn_login" onclick="$(this).closest('.login__wrap').fadeOut()">로그인</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader_box">
+        <div class="loader">Loading...</div>
+    </div>
+    <!-- // -->
+
+    <!-- DHTMLX, 레이어 감싸는 영역 : .wrapper -->
+    <div class="wrapper">
+        <!-- DHTMLX 레이아웃 -->
+        <!-- 220121 : 레이아웃 클래스 추가 -->
+        <div id="layout" class="layout"></div>
+        <!-- // -->
+
+        <!-- 레이어 : 신규조건추가 관리자 -->
+        <div id="newPropertyAdd" class="lay-wrap">
+            <div class="dimmed" onclick="$(this).closest('.lay-wrap').fadeOut(200);"></div>
+            <div class="lay-comm">
+                <div class="lay-head">
+                    <div class="tx_tit">
+                        <p>매칭정보</p>
+                    </div>
+                    <button type="button" class="btn-cls" onclick="$(this).closest('.lay-wrap').fadeOut(200);">레이어 닫기</button>
+                </div>
+
+                <div class="lay-body">
+                    <div class="prdc__info">
+                        <div class="thumb" id="prdcThumb"><img src="http://image.enuri.info/webimage_300/6285200000/6285280000/6285280423.jpg" alt="" /></div>
+                        
+                        <div class="tx">
+                            <div class="tx_util">
+                                <div class="tx_unit">
+                                    <a href="#" class="tx_mnum">11577831</a>
+                                    <div class="tx_price">
+                                        <p class="tx_min">최저가 : <em>44,440</em></p>
+                                        <p class="tx_max">최고가 : <em>12,620</em></p>
+                                    </div>
+                                </div>
+                                <div class="tx_model">
+                                    <a href="#" class="tx_name" title="데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩">데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩데코앤소프트 30m (24롤)@3팩</a>
+
+                                    <p class="tx_msg">매칭하시겠습니까?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lay-foot">
+                    <div class="lay-btn">
+                        <button type="button" class="btn btn-blue">확인</button>
+                        <button type="button" class="btn btn-gray" onclick="$(this).closest('.lay-wrap').fadeOut(200);">취소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //레이어 -->
+
+        <!-- 레이어 : 신규조건추가 관리자 -->
+        <div id="" class="lay-wrap">
+            <div class="dimmed" onclick="$(this).closest('.lay-wrap').fadeOut(200);"></div>
+            <div class="lay-comm">
+                <div class="lay-head">
+                    <div class="tx_tit">
+                        <p>신규 조건 추가 관리자</p>
+                    </div>
+                    <button type="button" class="btn-cls" onclick="$(this).closest('.lay-wrap').fadeOut(200);">레이어 닫기</button>
+                </div>
+
+                <div class="lay-body">
+                    <div class="tb_box tb_box-new">
+                        <table class="tb">
+                            <colgroup>
+                                <col width="64" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>제조사</th>
+                                    <td><p class="tx_property">쌍용 C&amp;B</p></td>
+                                </tr>
+                                <tr>
+                                    <th>브랜드</th>
+                                    <td><p class="tx_property">코디</p></td>
+                                </tr>
+                                <tr>
+                                    <th>원부명</th>
+                                    <td><p class="tx_property">순부백</p></td>
+                                </tr>
+                                <tr>
+                                    <th>조건1</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="">
+                                        
+                                            <!-- <label class="ipt-rdo"><input type="radio" id="ID1" name="RADIONAME" /> <span class="tx_unit">m</span></label> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>조건2</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="">
+                                        
+                                            <!-- <label class="ipt-rdo"><input type="radio" id="ID2" name="RADIONAME" /> <span class="tx_unit">롤</span></label> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>조건3</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="">
+                                        
+                                            <!-- <label class="ipt-rdo"><input type="radio" id="ID3" name="RADIONAME" /> <span class="tx_unit">팩</span></label> -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="lay-foot">
+                    <div class="lay-btn">
+                        <button type="button" class="btn btn-blue">브랜드관리자</button>
+                        <button type="button" class="btn btn-gray" onclick="$(this).closest('.lay-wrap').fadeOut(200);">추가</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //레이어 -->
+
+        <!-- 레이어 : 원부 추가/변경 -->
+        <div id="originEdit" class="lay-wrap lay-wrap-origin">
+            <div class="dimmed" onclick="$(this).closest('.lay-wrap').fadeOut(200);"></div>
+            <div class="lay-comm">
+                <div class="lay-head">
+                    <div class="tx_tit">                    
+                        <p>원부 추가 / 원부 변경</p>
+                    </div>
+                    <button type="button" class="btn-cls" onclick="$(this).closest('.lay-wrap').fadeOut(200);">레이어 닫기</button>
+                </div>
+
+                <div class="lay-body">
+                    <div class="tb_box tb_box-origin">
+                        <table class="tb">
+                            <colgroup>
+                                <col width="100" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>카테고리</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="number" class="form-control ipt-txt" placeholder="카테고리 넘버 입력">
+                                            <button type="button" class="btn btn-find">카테고리명 확인</button>
+
+                                            <!-- 팝업오픈 -->
+                                            <button type="button" class="btn btn-popup" data-target="./popup_cateinfo.html" data-pname="categoryPop" onclick="popupOpen($(this).data('target'), $(this).data('pname'))">카테고리 정보</button>
+                                        </div>
+
+                                        <div class="catebox">
+                                            <ul class="cate_list">
+                                                <li>생활,취미</li>
+                                                <li>생활용품</li>
+                                                <li>샴푸/헤어케어</li>
+                                                <li>샴푸</li>
+                                            </ul>
+                                        </div>                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>제조사</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="제조사명 입력">
+                                            <button type="button" class="btn btn-srch">검색</button>
+
+                                            <select class="ipt-sel">
+                                                <option value="">제조사 선택</option>
+                                                <option value="1">아모레퍼시픽1</option>
+                                                <option value="2">아모레퍼시픽2</option>
+                                                <option value="3">...</option>
+                                                <option value="8">아모레퍼시픽8</option>
+                                            </select>
+
+                                            <button type="button" class="btn btn-popup" data-target="./popup_brand.html" data-pname="brandPop" onclick="popupOpen($(this).data('target'), $(this).data('pname'))">제조사/브랜드</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>브랜드</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="브랜드명 입력">
+                                            <button type="button" class="btn btn-srch">검색</button>
+
+                                            <select class="ipt-sel">
+                                                <option value="">제조사 선택</option>
+                                                <option value="1">미장센1</option>
+                                                <option value="2">미장센2</option>
+                                                <option value="3">...</option>
+                                                <option value="55">미장센55</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>원부명</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt ipt-txt--full" placeholder="원부명 입력">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="lay-foot">
+                    <div class="lay-btn">
+                        <button type="button" class="btn btn-blue" onclick="$(this).closest('.lay-wrap').fadeOut(200);">추가/저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //레이어 -->
+
+        <!-- 레이어 : 조건 추가/변경 -->
+        <div id="conditionEdit" class="lay-wrap lay-wrap-condition">
+            <div class="dimmed" onclick="$(this).closest('.lay-wrap').fadeOut(200);"></div>
+            <div class="lay-comm">
+                <div class="lay-head">
+                    <div class="tx_tit">                    
+                        <p>조건 추가 / 조건 변경</p>
+                    </div>
+                    <button type="button" class="btn-cls" onclick="$(this).closest('.lay-wrap').fadeOut(200);">레이어 닫기</button>
+                </div>
+
+                <div class="lay-body">
+                    <div class="tb_box tb_box-origin">
+                        <table class="tb">
+                            <colgroup>
+                                <col width="100" />
+                                <col width="*" />
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>카테고리</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="number" class="form-control ipt-txt" placeholder="카테고리 넘버 입력">
+                                            <button type="button" class="btn btn-find">카테고리명 확인</button>
+
+                                            <!-- 팝업오픈 -->
+                                            <button type="button" class="btn btn-popup" data-target="./popup_cateinfo.html" data-pname="categoryPop" onclick="popupOpen($(this).data('target'), $(this).data('pname'))">카테고리 정보</button>
+                                        </div>
+
+                                        <div class="catebox">
+                                            <ul class="cate_list">
+                                                <li>생활,취미</li>
+                                                <li>생활용품</li>
+                                                <li>샴푸/헤어케어</li>
+                                                <li>샴푸</li>
+                                            </ul>
+                                        </div>                                    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>제조사</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="제조사명 입력">
+                                            <button type="button" class="btn btn-srch">검색</button>
+
+                                            <select class="ipt-sel">
+                                                <option value="">제조사 선택</option>
+                                                <option value="1">아모레퍼시픽1</option>
+                                                <option value="2">아모레퍼시픽2</option>
+                                                <option value="3">...</option>
+                                                <option value="8">아모레퍼시픽8</option>
+                                            </select>
+
+                                            <!-- 팝업오픈 -->
+                                            <button type="button" class="btn btn-popup" data-target="./popup_brand.html" data-pname="brandPop" onclick="popupOpen($(this).data('target'), $(this).data('pname'))">제조사/브랜드</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>브랜드</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="브랜드명 입력">
+                                            <button type="button" class="btn btn-srch">검색</button>
+
+                                            <select class="ipt-sel">
+                                                <option value="">제조사 선택</option>
+                                                <option value="1">미장센1</option>
+                                                <option value="2">미장센2</option>
+                                                <option value="3">...</option>
+                                                <option value="55">미장센55</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>원부명</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt ipt-txt--full" placeholder="원부명 입력">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>조건1</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>조건2</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>조건3</th>
+                                    <td>
+                                        <div class="input-group ipt-box">
+                                            <input type="text" class="form-control ipt-txt" placeholder="">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="lay-foot">
+                    <div class="lay-btn">
+                        <button type="button" class="btn btn-blue" onclick="$(this).closest('.lay-wrap').fadeOut(200);">추가/저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //레이어 -->
+
+        <!-- 레이어 : 원부 삭제 -->
+        <div id="delOriginEdit" class="lay-wrap">
+            <div class="dimmed" onclick="$(this).closest('.lay-wrap').fadeOut(200);"></div>
+            <div class="lay-comm">
+                <div class="lay-head">
+                    <div class="tx_tit">
+                        <p>원부 삭제 관리자</p>
+                    </div>
+                    <button type="button" class="btn-cls" onclick="$(this).closest('.lay-wrap').fadeOut(200);">레이어 닫기</button>
+                </div>
+
+                <div class="lay-body">
+                    <!-- 원부 삭제 그리드 -->
+                    <div class="grid_origin--table" id="originDelGrid"></div>
+                </div>
+
+                <div class="lay-foot">
+                    <div class="lay-btn">
+                        <button type="button" class="btn btn-gray js-origin_del">선택 삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //레이어 -->
+
+    </div>
+
+    <!-- DHTML JS -->
+    <script type="module" src="/pub_test/newmp/apps/js/layout/layout_main.js"></script>
+    <script src="/pub_test/newmp/apps/js/common.evt.js?v=220419"></script>
+    <!-- // --> 
+
+    
+
+    <script>
+        var btnOriginDel = $("#btnOriginDel"); // 버튼 : 원부 삭제 
+        var layerOriginEdit = $("#delOriginEdit");; // 레이어 : 원부 삭제
+
+        var originDel = [ // 원부삭제 데이터
+            {"hidden_no": 0, "condi_1": "227m", "condi_2": "2g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩",},
+            {"hidden_no": 1, "condi_1": "17m", "condi_2": "23g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩", "condi_6": "1팩",},
+            {"hidden_no": 2, "condi_1": "27m", "condi_2": "23g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩", "condi_6": "1팩", "condi_7": "1팩", "condi_8": "1팩",},
+            {"hidden_no": 3, "condi_1": "227m", "condi_2": "2g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩", "condi_6": "1팩", "condi_7": "1팩",},
+            {"hidden_no": 4, "condi_1": "17m", "condi_2": "23g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩", "condi_6": "1팩",},
+            {"hidden_no": 5, "condi_1": "27m", "condi_2": "23g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩",},
+            {"hidden_no": 6, "condi_1": "227m", "condi_2": "2g", "condi_3": "1팩", "condi_4": "1팩",},
+            {"hidden_no": 7, "condi_1": "17m", "condi_2": "23g", "condi_3": "1팩", "condi_4": "1팩",},
+            {"hidden_no": 8, "condi_1": "27m", "condi_2": "23g", "condi_3": "1팩", "condi_4": "1팩", "condi_5": "1팩", "condi_6": "1팩", "condi_7": "1팩", "condi_8": "1팩",},
+        ];
+
+        // 원부삭제 그리드 생성 : 그리드 생성 시, 조건 컬럼 갯수에 맞춰 레이어 너비가 가변됩니다.
+        // 선택한 값의 조건 갯수 확인하여, 그리드 columns 그려주세요.
+        var originDelGrid = new dhx.Grid('#originDelGrid', {
+            columns: [
+                { hidden:true, id: "hidden_no", header: [{ text: "hidden_no" }], align:"center" },
+                { id: "chkbox", header: [{ text: "<input type=\"checkbox\" class=\"ipt-chk ipt-chk-all\">", align:"center" }], align:"center", htmlEnable: true, sortable: false, gravity: 1.5,
+                    template: function(text, row, col){ 
+                        return "<input type=\"checkbox\" class=\"ipt-chk ipt-chk-sub\">"; 
+                    }
+                },
+                { id: "condi_1", header: [{ text: "조건1", align: "center" }], align:"center" },
+                { id: "condi_2", header: [{ text: "조건2", align: "center" }], align:"center" },
+                { id: "condi_3", header: [{ text: "조건3", align: "center" }], align:"center" },
+                { id: "condi_4", header: [{ text: "조건4", align: "center" }], align:"center" },
+                { id: "condi_5", header: [{ text: "조건5", align: "center" }], align:"center" },
+                { id: "condi_6", header: [{ text: "조건6", align: "center" }], align:"center" },
+                { id: "condi_7", header: [{ text: "조건7", align: "center" }], align:"center" },
+                { id: "condi_8", header: [{ text: "조건8", align: "center" }], align:"center" },
+            ],
+            headerRowHeight: 32,
+            rowHeight: 32,
+            autoWidth:true,
+            data: originDel,
+            adjust: true,
+            selection: "row"
+        });
+
+        // 원부 삭제 클릭시 레이어 너비&좌우 위치 재지정
+        btnOriginDel.on("click", function(){
+            var resWidth = $("#originDelGrid .dhx_header-wrapper ").outerWidth() + 68; // 그리드 너비 + 좌우패딩
+            $("#delOriginEdit .lay-comm").css({"width":resWidth, "left":"calc(50% - "+(resWidth/2)+"px)"}).closest($("#delOriginEdit")).fadeIn();
+        });
+
+        function originDelChkbox(){
+            // 선택 : 전체 체크 
+            var chkboxAll = $(".ipt-chk-all"), // 전체체크 INPUT
+                chkboxItem = $(".ipt-chk-sub"); // 개별체크 INPUT
+
+            // 전체동의 함수
+            function checkAll(obj, target) {
+                if(obj.prop('checked')) {
+                    $(target).prop('checked', true);
+                } else {
+                    $(target).prop('checked', false);
+                }
+            }    
+            // 전체동의 클릭
+            chkboxAll.on('click', function(){
+                checkAll($(this), ".ipt-chk-sub");
+            });
+            // 개별체크 클릭
+            chkboxItem.on("click", function(){
+                if(chkboxItem.length === $('.ipt-chk-sub:checked').length) {
+                    chkboxAll.prop('checked', true);
+                } else {
+                    chkboxAll.prop('checked', false);
+                }
+            })
+
+            // 선택 삭제 클릭
+            $(".js-origin_del").on("click", function(){
+                if(!$('.ipt-chk-sub:checked').length){
+                    alert("삭제할 항목을 체크해주세요")
+                }else{
+                    var result = confirm("** 모델에 대해 삭제하시겠습니까?");
+                    if(result){
+                        alert("삭제되었습니다.");
+                        // 삭제
+                    }
+                }
+            })
+        }
+    </script>
+    
+</body>
+</html>

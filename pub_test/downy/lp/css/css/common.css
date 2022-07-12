@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+@import url("header.css?v=20211202"); /* Header */
+@import url("footer.css"); /* Footer */
+
+/************************************************************************
+ * 파일명 :common.css
+ * 설명 :에누리 가격비교 PC Rev / Reset CSS
+ * 작성자 : 지승호
+ * 작성일 : 2020.12.13
+************************************************************************/
+
+/* var */
+:root{
+    --color-enuri-blue : #0073be;  /* 에누리 블루 */
+    --color-enuri-sky : #30a7f7; /* 에누리 스카이 */
+    --url-comm-sprite : url(//img.enuri.info/images/rev/common_sprite.png); /* 공통 Sprite */
+}
+
+*{margin:0;padding:0}
+html,body{width:100%;height:100%;margin:0;padding:0;font:13px/1.4 "맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;vertical-align:middle}
+html {/* overflow-y:scroll; */background:#fff}
+dl,ul,ol,menu,li{list-style:none}
+address,caption,cite,code,dfn,em,var{ font-style:normal;}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,main { display:block}
+blockquote,q { quotes:none}
+blockquote:before,blockquote:after,q:before,q:after { content:'';content:none}
+hr{display:none}
+fieldset,img{border:none}
+legend,caption{display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height:0}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,textarea,p,blockquote,th,td,input,select,textarea,button {font-weight:normal;margin:0;padding:0}
+pre {font-family:"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;}
+table{border-collapse:collapse;word-break:break-all;font-size:12px;border-spacing:0;empty-cells:show}
+
+/* Input n Textarea */
+textarea{resize:none}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {color:#aaa;}
+input:-moz-placeholder,
+textarea:-moz-placeholder {color:#aaa;}
+input::-moz-placeholder,
+textarea::-moz-placeholder {color:#aaa;}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {color:#aaa;}
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {color:transparent;}
+input:focus:-moz-placeholder,
+textarea:focus:-moz-placeholder {color:transparent;}
+input:focus::-moz-placeholder,
+textarea:focus::-moz-placeholder {color:transparent;}
+input:focus:-ms-input-placeholder,
+textarea:focus:-ms-input-placeholder {color:transparent;}
+
+.hide{display:none}  /* none */
+.blind{display:block;overflow:hidden;position:absolute;text-indent:-9999px;top:-9999px;font-size:0;width:1px;height:1px;left:-9999px;line-height:0} /* hide */
+.png24{tmp:expression(setPng24(this))}
+.sub__font{font:12px/1.4 -apple-system,system-ui,BlinkMacSystemFont,"Apple SD Gothic Neo","맑은 고딕","Malgun Gothic",sans-serif;}
+.cont__inner{width:1280px;margin:0 auto;}
+
+/* Link Css */
+a{cursor:pointer;color:#666666}
+a:link,a:visited,a:active{text-decoration:none}
+a:hover{text-decoration:underline}
+a:active{background-color:transparent}
+
+/* form */
+input,select,textarea,button,label{ font:13px/1.4 -apple-system,system-ui,BlinkMacSystemFont,"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;vertical-align:middle;color:#666;outline:none}
+input::-ms-clear {display:none}
+button{border:0 none;cursor:pointer}
+button:disabled {cursor:default}
+
+/* overflow */
+.is-overflow {overflow:hidden}
+.is-visible {overflow:visible}
+
+/* border-box, clearfix */
+.border-box,
+.border-box *,
+.border-box *:before,
+.border-box *:After {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.clearfix:after {content:"";display:block;clear:both;*zoom:1;}
+
+#wrap{min-width:1300px;width:100%;overflow:hidden}
+
+/* Sprite */
+.comm__sprite{background-image:url(//img.enuri.info/images/rev/common_sprite.png);background-repeat:no-repeat}
+
+/* Loader */
+.comm-loader{position:fixed;top:50%;left:50%;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius: 50% 50%;-webkit-box-shadow: 0 0 30px rgba(0,0,0,0.25);box-shadow: 0 0 30px rgba(0,0,0,0.25);overflow:hidden;z-index:100000;text-align:left;background-color:#fff}
+.comm-loader .comm-loader__inner{text-indent:-9999em;width:70px;height:70px;background:url(//img.enuri.info/images/home/enuri_loader.gif) no-repeat 0  0 / 100%;}
+
+/* 컨텐츠 - 컨테이너 */
+.container{overflow:hidden;position:relative}
+.container.is--dim:before{content:"";position: absolute;top:0;left:0;right:0;bottom:0;z-index:800;background-color:rgba(255,255,255,.5)}
+
+/* Contents */
+.container > .contents{padding-top:32px}
+.container > .contents.no-pad {padding-top:0}
+
+/* Pub Legend */
+.pub-legend{position:fixed;top:0;left:0;bottom:0;width:212px;border-right:1px solid #666;background-color:rgba(255,255,255,.9);box-shadow: 0 0 10px rgba(0,0,0,.1);z-index:100000;transition:.3s all ease;transform:translateX(-100%);}
+.pub-legend.wide{width:292px;}
+.pub-legend ul{position: absolute;padding:16px;top:0;left:0;bottom:0;overflow-x:hidden;overflow-y:auto;width:calc(100% - 32px)}
+.pub-legend h1{font-size:13px;font-weight:bold;letter-spacing:-1px;padding-top:16px}
+.pub-legend.is--show{transform:translateX(0);}
+.pub-legend li{padding:4px 0}
+.pub-legend__btn--flip{position:absolute;width:40px;height:40px;background-color:rgba(0,0,0,.8);right:-40px;bottom:0}
+.pub-legend .ico-menu{display:block;margin:0 auto}
+.pub-legend .ico-cls--big{display:none}
+.pub-legend.is--show .ico-menu{display:none}
+.pub-legend.is--show .ico-cls--big{display:block}
+.pub-legend li > a{font-family:dotum,'돋움',"맑은 고딕","Malgun Gothic","Apple SD Gothic Neo",sans-serif;position:relative;letter-spacing:-1px;font-weight:bold;font-size:11px;color:#333}
+.pub-legend li > a:after{content:">";font-weight:normal}

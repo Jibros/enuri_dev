@@ -1,0 +1,435 @@
+@charset "utf-8";
+
+.event_wrap {position:relative;width:100%; }
+.contents {position:relative;width:320px; margin:0 auto;  }
+.imgs {max-width:100%;height:auto;}
+.stripe {display:block;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/event/2018/attendance/feb/m_stripe.png) no-repeat;background-size:100px;}
+
+/* 커스텀 : 닫기버튼 */
+.win_close{}
+.win_close:before, .win_close:after{background-color: #000;width: 4px;opacity: 1;}
+.f-nav .win_close {top:55px;}
+.f-nav .win_close:before, .f-nav .win_close:after{background-color:#000}
+
+.btn__evt_notice,
+.btn__evt_notice span { color: #111; border-bottom-color: #000;}
+.btn__evt_notice.btn__white,
+.btn__evt_notice.btn__white span { color: #fff; border-bottom-color: rgba(255,255,255,.6);}
+
+/* 상단 VISUAL */
+.visual {overflow:hidden;position:relative;height:321px;background-color:#abe3ff;text-align:center}
+.visual .inner{width:320px;padding-top:50px;height:275px;margin:0 auto;position: relative;z-index:10;}
+.visual .inner .txt_01{position:relative;margin:0 auto 0 23px;display:block;height:20px;background:url("//img.enuri.info/images/event/2022/attance/visual/top_tit_sub.png") no-repeat 0 0 ;text-indent:-9999em;background-size:96px}
+.visual .inner h1{width:276px;height:40px;margin:11px auto 0 26px;position: relative;text-indent:-9999em;background:url("//img.enuri.info/images/event/2022/attance/visual/top_tit_jun.png") no-repeat 0 0;background-size:275.5px}
+.visual .inner h1:after{content:"";position:absolute;top:-1px;left:-5px;width:82px;height:41px;background:url("//img.enuri.info/images/event/2022/attance/visual/top_tit2_cover_jun.png") no-repeat 0 0;background-size:81.5px}
+.visual .inner .txt_02{height:14px;display:block;margin:16px auto 0 23px;background:url("//img.enuri.info/images/event/2022/attance/visual/top_txt_sub.png") no-repeat 0 0;text-indent:-9999em;background-size:182px}
+.visual .inner .surfing_wrap{overflow: hidden; position: absolute; left: 16%; bottom:0px;width: 455px; height: 210px; margin-left: -144px;background:url("//img.enuri.info/images/event/2022/attance/visual/m__surfing_man.png") no-repeat; background-size: contain;}
+.left_grass {position: absolute;bottom: 0;left: 0;width: 170px;height: 250px;}
+.right_grass{position: absolute;top:-20px;right:-140px;width:300px;height:300px;overflow:hidden;}
+.water_drop{position: absolute;bottom: 0; left: 20%;width: 940px;height: 300px;z-index: 200;margin-left: -230px;}
+.left_grass .bg_leftgrass{position:absolute;right:0;top: 0;width: 100%;height: 100%;background:url("//img.enuri.info/images/event/2022/attance/visual/left_grass_m.png") no-repeat -20px 25px;background-size: contain; }
+.right_grass .bg_rightgrass{position:absolute;width:100%;height:100%;background:url("//img.enuri.info/images/event/2022/attance/visual/right_grass_m.png") no-repeat ; background-size: contain;}
+.water_drop .bg_waterdrop{position: absolute;left: -9%; bottom:0px;width: 100%;height: 100%; background:url("//img.enuri.info/images/event/2022/attance/visual/m__water__drop.png") no-repeat 0 0; background-size: contain;z-index: 1;} 
+
+/* 모션 */
+.visual .inner .txt_01{-webkit-transition:.5s all ease-in-out;-o-transition:.5s all ease-in-out;transition:.5s all ease-in-out;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);opacity:0}
+.visual .inner .txt_02{-webkit-transition:.5s all ease-in-out;-o-transition:.5s all ease-in-out;transition:.5s all ease-in-out;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);opacity:0}
+.visual .inner h1{-webkit-transition:.8s all ease-in-out;-o-transition:.8s all ease-in-out;transition:.8s all ease-in-out;-webkit-transform:translateX(20px);-ms-transform:translateX(20px);transform:translateX(20px);opacity:0}
+.visual .inner h1:after{-webkit-transition:.3s all ease-in;-o-transition:.3s all ease-in;transition:.3s all ease-in;-webkit-transform:translateX(6px);-ms-transform:translateX(6px);transform:translateX(6px);opacity:0}
+.left_grass,
+.right_grass{transition:1s all ease-in-out ;opacity:0;transition-delay:0.5s;}
+.visual .inner .surfing_wrap {transition:.5s all ease-in-out;transition-delay:2.1s;opacity:0;}
+.visual.intro .inner .water_drop{z-index: 1;}
+.visual.intro .inner .surfing_wrap{opacity:1;animation:surf_mv 1s linear;animation-delay:2.1s;animation-fill-mode: forwards;}
+@keyframes surf_mv { 
+    0% {bottom:-150px}
+    100% {bottom:-18px}
+} 
+.visual.intro .water_drop{opacity:0;animation:water_mv 0.2s linear;animation-delay:3.3s;animation-fill-mode: forwards;}
+@keyframes water_mv { 
+    0% {bottom:-100px}
+    100% {bottom:15px; opacity: 1;}
+} 
+.visual.intro .inner .txt_01{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.intro .inner .txt_02{-webkit-transition-delay:1.2s;-o-transition-delay:1.2s;transition-delay:1.2s;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.intro .inner h1 {-webkit-transition-delay:.5s;-o-transition-delay:.5s;transition-delay:.5s;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.intro .inner h1:after{-webkit-transition-delay:1.6s;-o-transition-delay:1.6s;transition-delay:1.6s;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);opacity:1}
+.visual.end .left_grass,
+.visual.end .right_grass{opacity:1}
+.visual.intro .loader-box{opacity:0}
+.loader-box{display:inline-block;position: relative;-webkit-transition: all .2s ease;-o-transition: all .2s ease;transition: all .2s ease;-webkit-transform:translateY(-160px);-ms-transform:translateY(-160px);transform:translateY(-160px)}
+.visual-loader:before{content: "";position: absolute;top: 0px;left: -25px;height: 12px;width: 12px;border-radius: 12px;-webkit-animation: loader10g 3s ease-in-out infinite;		animation: loader10g 3s ease-in-out infinite;}
+.visual-loader{position: relative;width: 12px;height: 12px;border-radius: 12px;-webkit-animation: loader10m 3s ease-in-out infinite;		animation: loader10m 3s ease-in-out infinite;}
+.visual-loader:after{content: "";position: absolute;top: 0px;left: 25px;height: 10px;width: 10px;border-radius: 10px;-webkit-animation: loader10d 3s ease-in-out infinite;		animation: loader10d 3s ease-in-out infinite;}
+@-webkit-keyframes loader10g{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,1);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10g{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,1);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+@-webkit-keyframes loader10m{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,1);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10m{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,1);}
+	75%{background-color: rgba(0,0,0,.2);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+@-webkit-keyframes loader10d{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,1);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+@keyframes loader10d{
+	0%{background-color: rgba(0,0,0,.2);}
+	25%{background-color: rgba(0,0,0,.2);}
+	50%{background-color: rgba(0,0,0,.2);}
+	75%{background-color: rgba(0,0,0,1);}
+	100%{background-color: rgba(0,0,0,.2);}
+}
+
+/* 비쥬얼 활성화 */
+@media screen and (max-width: 639px) {
+	.visual.end .left_grass, .visual.end .right_grass {display: none;}
+	
+}
+
+/* 플로팅 탭 */
+.floattab { width:100%; height:55px;}
+.floattab__list {width:100%;height:55px;background-color:#000;}
+.floattab__list.is-fixed {position:fixed;top:0;left:0%;width:100%;z-index:1000;-webkit-box-shadow:0 0 6px rgba(0,0,0,.5);box-shadow:0 0 6px rgba(0,0,0,.5)}
+.floattab__list ul{width:100%;max-width:320px;margin:0 auto;height:55px;overflow:hidden}
+.floattab__list li {float:left;height:100%;}
+.floattab__list li .floattab__item {display:block;overflow:hidden;width:100%;height:55px;font-size:0;text-indent:-9999px;background-size:160px;background:url(http://img.enuri.info/images/event/2021/attance/visual/m_nav.png) no-repeat;background-size:320px;}
+.floattab__list li .floattab__item--01 {width:107px;background-position:0 0}
+.floattab__list li .floattab__item--02 {width:107px;background-position:-107px 0}
+.floattab__list li .floattab__item--03 {width:106px;background-position:-214px 0}
+.floattab__list li .floattab__item--01.is-on {background-position:0 100%}
+.floattab__list li .floattab__item--02.is-on {background-position:-107px 100%}
+.floattab__list li .floattab__item--03.is-on {background-position:-214px 100%}
+
+/* 꼭 확인하세요 버튼 위치 */
+.com__evt_notice {margin:10px auto;text-align:center;}
+.evttoday .com__evt_notice {margin:0 auto 0px;text-align:center;}
+
+/* 이벤트 안내 */
+.evtnotice {overflow:hidden;position:relative;}
+.evtnotice__tit {margin:40px auto 22px;}
+.evtnotice__list {display:block; width: 300px; margin: auto;}
+.evtnotice__list:after {content:"";display:table;clear:both;}
+.evtnotice__item {float:left;position:relative;width:145px;height:264px;margin-bottom:10px;margin-right:10px;font-size:0;text-indent:-9999px;}
+.evtnotice__item:nth-child(even) {margin-right:0;}
+
+.evtnotice__item.item1 {background:url("//img.enuri.info/images/event/2022/attance/m_evtnotice__list1.png") no-repeat;background-size:145px}
+.evtnotice__item.item2 {background:url("//img.enuri.info/images/event/2022/attance/m_evtnotice__list2.png") no-repeat;background-size:145px}
+.evtnotice__item.item3 {background:url("//img.enuri.info/images/event/2022/attance/m_evtnotice__list3.png") no-repeat;background-size:145px}
+.evtnotice__item.item4 {background:url("//img.enuri.info/images/event/2022/attance/m_evtnotice__list4.png") no-repeat;background-size:145px}
+.evtnotice__item .btn {position:absolute;bottom:20px;left:50%;width:90px;height:26px;margin-left:-45px;font-size:0;text-indent:-9999px;background:url("//img.enuri.info/images/event/2022/attance/m_sprite__btn_jun.png") no-repeat;background-size:90px}
+.evtnotice__item .btn--goattend {background-position:0 0}
+.evtnotice__item .btn--join {background-position:0 -30px}
+.evtnotice__item .btn--complete {background-position:0 -60px}
+.evtnotice__item .btn--disabled {background-position:0 -90px}
+.evtnotice__item .btn--active {background-position:0 -120px;-webkit-animation:blinkbtn 1s infinite;animation:blinkbtn 1s infinite;}
+.evtnotice__item .btn--attend-complete {background-position:0 -150px}
+@-webkit-keyframes blinkbtn{
+	0%,100%{opacity:1}
+	50%{opacity:.4}    
+}
+@keyframes blinkbtn{
+	0%,100%{opacity:1}
+	50%{opacity:.4}     
+}
+
+/* 출석체크 영역 */
+.evtattend {overflow:hidden;position:relative;background-color:#f6faff;}
+.evtattend__tit {padding:40px 0 10px; text-align: center;}
+.evtattend__tit .month {font-size: 34px; font-weight: bold; font-family: 'Roboto'; line-height: 1; display: inline-block; vertical-align: middle; color:#000;}
+.evtattend__tit img {width: 137px; vertical-align: middle;}
+
+
+.my-check {display:block;margin:0 auto;padding:0 10px;font-weight:bold;font-size:14px;color:#3b3b3b;line-height:38px;text-align:left;letter-spacing:-0.5px;}
+.my-check strong {font-weight:bold;font-family:tahoma;font-size:17px;vertical-align:0;color:#ff5c5c;}
+
+.calendar {overflow:hidden;position:relative;width:300px;margin:0 auto 10px;}
+.cal {overflow:hidden;width:100%;}
+.cal li {float:left;position:relative;z-index:10;width:14.285%;height:42px;border:1px solid #ebebeb;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box;box-sizing:border-box;font:bold 9px/17px tahoma;background:#fff;}
+.cal.day {background-color:#e5e5f5}
+.cal.day li {overflow:hidden;height:21px;font:bold 10px/20px "Roboto", "돋움", Dotum, sans-serif;color:#424242;vertical-align:middle;text-align:center;background-color:#e7edf4;}
+.cal.day li:first-child {color:#f2675e;}
+.cal.day li:last-child {color:#398ecb;}
+.cal li span {display:block;padding:0 0 0 4px;color:#555}
+.cal li:nth-child(7n+1) span {color:#f2675e;}
+.cal li:nth-child(7n+7) span {color:#398ecb;}
+
+.cal li.pass span {color:#dbdbdb;}
+.cal li.holiday span {color:#f2675e !important}
+/* .cal li.today span {position:absolute;top:-1px; left:-1px; z-index:100;  width:100%; height:40px;text-indent:-9999em; font-size:0;} */
+
+.cal li > strong {position:absolute;right:-1px;bottom:-1px;z-index:110;width:42px;height:42px;text-indent:-9999px;font-size:0;}
+.cal li.today .check.before {background:url(//img.enuri.info/images/event/2021/attance/m_attend_chk.png) -42px 0 no-repeat;background-size:84px;}
+.cal li > strong.check.after,
+.cal li > strong.check {background:url(//img.enuri.info/images/event/2021/attance/m_attend_chk.png) 0 0 no-repeat;background-size:84px;}
+
+
+/* 룰렛 */
+.evtroulette {overflow:hidden;position:relative;}
+.evtroulette__tit {padding:40px 0 25px; text-align: center;}
+
+.evtroulette .roulette_episode {margin:50px auto 0; text-align: center;}
+.evtroulette .roulette_episode > div {display: none;}
+.evtroulette .roulette_episode > div.on{display: block;}
+
+.evtroulette .roulette_con {position:relative;width:266.5px;height:266.5px;margin:0 auto 7px;}
+.evtroulette .roulette_con > div {position:absolute;top:0;z-index:1;width:100%;}
+.evtroulette .roulette_con > div.r-stage {z-index:1;width:266.5px;height:266.5px;background:url("//img.enuri.info/images/event/2022/attance/m_roullete__circle.png") no-repeat 50% 50%;background-size:266.5px;-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;-webkit-transition:none;-o-transition:none;transition:none}
+.evtroulette .roulette_con > div.r-stage.rotate{-webkit-transition:4s -webkit-transform ease-out;transition:4s -webkit-transform ease-out;-o-transition:4s transform ease-out;transition:4s transform ease-out;transition:4s transform ease-out, 4s -webkit-transform ease-out}
+.evtroulette .roulette_con > div.r-start {z-index:3;width:266.5px;height:266.5px;background:url("//img.enuri.info/images/event/2022/attance/m_roullete__btn.png") no-repeat 50% 50%;background-size:266.5px;}
+.evtroulette .roulette_con > div.r-start > span{display:block;width:100%;height:100%;}
+.evtroulette .roulette_con > div.r-arrow {z-index:2;width:24px;height:56px;background:url("//img.enuri.info/images/event/2022/attance/m_roullete__arr.png") no-repeat 50% 50%;background-size:24px;top:-22px;left:50%;margin-left:-12px;}
+.evtroulette .roulette_con > div.r-bg {z-index:0;width:266.5px;height:266.5px;background:url("//img.enuri.info/images/event/2022/attance/m_roullete__bg.png") no-repeat 50% 1px;background-size:266.5px}
+.evtroulette .roulette_con .bg-coin {position:absolute;top:auto;bottom:7px;left:-15px;width:301px;height:164px;background:url("//img.enuri.info/images/event/2022/attance/m_roullete__coin.png") no-repeat 0 0;background-size:301px;text-indent:-9999em;}
+
+/* 룰렛종료 */
+.evtroulette .roulette_con > div.r-start.endgame {background-image:url("//img.enuri.info/images/event/2022/attance/m_roullete__btn_end.png");}
+
+/* 게시판 */
+.evttoday {position:relative;background-color:#f6faff;}
+.evttoday__tit {padding:40px 0 20px;}
+.evttoday__topic {position:relative; margin-bottom:20px;}
+.evttoday__topic > button.btn__evt_topic {position:absolute; bottom:20px; left:50%; transform: translateX(-50%);}
+
+#layPop_topic_txt {display: none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.25); z-index: 105;}
+#layPop_topic_txt .evt_notice--inner {position:absolute; top:50%; left:10%; width:80%; margin-top:-56px; background-color:#fff; z-index: 105;}
+#layPop_topic_txt .btn__evt_close {position:absolute; top:10px; right:10px; text-indent: -9999px; width: 19px; height:19px; background-image:url("//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png");}
+
+
+.evt-todayword {clear:both;background-color:#f7f7f7;}
+.board-stripe {font-size:0; text-indent:-9999px; background:url(//img.enuri.info/images/event/2018/template/mboard_ir_bg.png) no-repeat 0 0; background-size:320px;}
+.board__head {padding-top:165px;background:url(//img.enuri.info/images/event/2019/attendance/sep/m_title_todayword.jpg) no-repeat 50% 0;background-size:320px;margin-bottom:12.5px;}
+
+.input_board { clear:both; }
+.input_board .write_area {position:relative; padding:0 10px; margin-bottom:20px;}
+.input_board .write_area .input {position:relative; z-index:100;}
+.input_board .write_area .input:after{content:""; display: block; clear:both;}
+.input_board .write_area .login_alert {position:absolute; top:0; left:0; z-index:200; width:100%; height:100%;}
+.input_board .write_area .login_alert.disNone {display:none;}
+.input_board .write_area .total_num {display:block; font-size:11px; color:#272727; text-align:left; line-height:24px; vertical-align:middle;}
+.input_board .write_area .total_num span {font-weight:bold;}
+.input_board .write_area .txt_area {display:inline; position:relative; z-index:100; width:calc(100% - 130px); height:32px; padding:8px 0 8px 5px; margin-left:63px; border-radius:0; border:1px solid #b3b3b3; font-size:11px; line-height:16px; color:#b8b8b8; letter-spacing:-1px; -webkit-appearance:none;-moz-appearance:none; -ms-appearance:none; appearance:none; vertical-align: top;}
+.input_board .write_area .txt_area:focus {color:#333;}
+.input_board .write_area .btn.regist {float:right; position:relative; z-index:150; width:60px; height:50px; border:0; outline:0; background-position:0 5px; background-color: #000;}
+.input_board .write_area .curr {display:none; position:absolute; bottom:10px; right:70px; font-family:"돋움", Dotum, sans-serif; font-size:11px; color:#989898; line-height:20px;}
+.input_board .write_area .curr span {color:#f23c3c;}
+
+.thumb_sm {position:absolute; top:0; left:0; border:1px solid #b3b3b3;}
+.thumb_sm .inner {position:relative;}
+.thumb_sm .thumb_select {position: relative; width: 62px; height: 40px; background: #fff; padding: 4px 0;}
+.thumb_sm .thumb_select .thumb {}
+.thumb_sm .thumb_select .thumb .imgs {width:40px; height:40px; margin:0 5px;}
+.thumb_sm .thumb_select .btn_thumb {position:absolute; top:0; right:0; display:block; width:12px; height:100%; border-left: 1px solid #b3b3b3;}
+.thumb_sm .thumb_select .btn_thumb:after {content:""; display: block; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid #707070; border-radius: 2px; position: absolute; top: 50%; left: 50%; margin-top: -3px; margin-left: -5px;}
+.thumb_sm .thumb_select .btn_thumb.active:after {border-bottom: 6px solid #707070; border-top:none;}
+
+.thumb_sm .thumb_sm_list {display:none;position:absolute; top:100%; left:-1px; width:50px; border-left:1px solid #b3b3b3; border-top:1px solid #b3b3b3; background-color:#fff; z-index: 504;}
+.thumb_sm .thumb_sm_list .thumb {display:block; width: 41px; height: 41px; border: 1px solid #b3b3b3; border-top: 0; border-left: 0; padding:4px;}
+.thumb_sm .thumb_sm_list .thumb .imgs {display: block; width: 40px; height: 40px;}
+
+.input_board .write_area .input .thumb_sm .thumb_select .author {display: none; position: absolute; top: 50%; left: 100%; width: 200px; margin-top: -9px; font-size: 13px; font-weight: bold; margin-left: 4px;}
+.input_board .write_area .input.open {position:relative; border:1px solid #b3b3b3; background-color:#fff;}
+.input_board .write_area .input.open .thumb_sm {z-index:100 !important;}
+.input_board .write_area .input.open .total_num {display:block; font-size:11px; color:#272727; text-align:left; line-height:24px; vertical-align:middle;}
+.input_board .write_area .input.open .txt_area {width:calc(100% - 14px); height:103px; margin-left:0; padding:60px 7px 0; border-left:none; border-top:none; border-right:none; border-bottom:1px solid #b3b3b3;}
+.input_board .write_area .input.open .txt_area:focus {color:#333;}
+.input_board .write_area .input.open .btn.regist {height:40px; background-position:  0 0;}
+.input_board .write_area .input.open .curr {display:block;}
+.input_board .write_area .input.open .thumb_sm {border:0; background-color:#fff;}
+.input_board .write_area .input.open .thumb_sm .thumb_select {padding: 0 4px; width: 40px; height: auto;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .thumb {border-right:0;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .thumb .imgs {width:40px; height:40px; margin:7px auto 5px; transition:all .2s ease-out;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .btn_thumb {display:none;} 
+.input_board .write_area .input.open .thumb_sm .thumb_select .user {display:block;}
+.input_board .write_area .input.open .thumb_sm .thumb_sm_list {display:none !important;}
+.input_board .write_area .input.open .thumb_sm .thumb_select .author {display: block;}
+.input_board .write_area .input.open .total_num {line-height: 49px; background-color: #fff;}
+
+.input_board .view_area {width:calc(100% - 20px); margin:0 10px 20px; padding:0;/* border-top:1px solid #e0d4bb;*/}
+.input_board .view_area ul {}
+.input_board .view_area ul li {padding:15px 5px; border-bottom:1px solid #e0d4bb;}
+.input_board .view_area ul li .thumb {float:left; width:60px;}
+.input_board .view_area ul li .thumb .imgs {display:block; width:50px; height:50px;}
+.input_board .view_area ul li .user {display:block; margin-bottom:5px; font-weight:bold; font-size:13px; color:#272727; line-height:20px;}
+.input_board .view_area ul li .date {font-weight:normal; font-size:11px; color:#999;}
+.input_board .view_area ul li .cont {display:block; padding-left:60px; font-size:12px; color:#272727; line-height:17px;}
+
+.input_board .paging {display:block; position:relative; width:100%; margin-bottom:10px; padding:0; text-align:center;}
+.input_board .paging .btn {display:inline-block; overflow:hidden; position:relative; width:29px; height:29px; padding-top:0; border:1px solid #c6cace; background:url(http://img.enuri.info/images/event/2017/workers/paging_arrow2.png) no-repeat; background-size:58px}
+.input_board .paging .btn.prev {background-position:-29px 0;}
+.input_board .paging .btn.next {background-position:0 -29px;}
+.input_board .paging .btn.first {background-position:0 0;}
+.input_board .paging .btn.last {background-position:-29px -29px;}
+.input_board .paging .list {display:inline-block; text-align:center; vertical-align:top;}
+.input_board .paging .list li {display:inline-block; margin:0 -1px;}
+.input_board .paging .list li a {display:inline-block; width:29px; height:29px; padding-top:0; font:bold 14px/29px Arial, sans-serif; color:#323232; vertical-align:middle; border:1px solid #ccc; background-color:#fcfcfc;}
+.input_board .paging .list li a:hover,
+.input_board .paging .list li a.selected {position:relative; border-color:#35a0d8; color:#35a0d8; background-color:#fff;}
+
+/* 한가위 배너 */
+.bnr_wrap {overflow:hidden;clear:both;position:relative;width:100%;max-width:100%;height:155px;;background:#eee;}
+.bnr_wrap a {display:block;position:relative;width:320px;height:100%;margin:0 auto;font-size:0;text-indent:-9999px;background:url(http://img.enuri.info/images/event/2020/attendance/nov/m_bnr_bottom.png) 0 0 no-repeat;background-size:320px;}
+.bnr_wrap.bnr_xmas {background-color:#dcedc8;}
+.bnr_wrap.bnr_xmas a {background:url(http://img.enuri.info/images/event/2020/xmas/m_bnr_bottom.png) 50% 0 no-repeat;background-size:320px;}
+
+/* 당첨 레이어 */
+.vote_box {position:absolute;left:50%;top:50%;z-index:10200;width:260px;height:auto;border:1px solid #181818;background-color:#fff;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.vote_box .inner {overflow:hidden;position:relative;width:100%;height:100%;}
+.vote_box .inner .user_msg {margin:25px auto 13px;font-weight:bold;font-size:17px;letter-spacing:-.5px;color:#000;text-align:center;line-height:1;letter-spacing:-1px;}
+.vote_box .inner .user_msg em {color:#ef4136;}
+
+.vote_box .inner .confirm {display:block; position:absolute; bottom:0; left:50%; width:297px; height:59px; margin-left:-148px; background-position:-280px -90px;}
+.vote_box .inner .adbanner {display:block;position:absolute;bottom:0;left:0;right:0;width:260px;height:60px;}
+.vote_box .inner .adbanner img {width:100%;height:auto}
+.vote_box .layclose {position:absolute;right:5px;top:-39px;width:29px;height:30px;font-size:0;text-indent:-9999em;background:url(//img.enuri.info/images/event/2021/attance/m_btn__close.png) no-repeat 50% 50%;background-size:29px;}
+
+/* 오늘의 한마디 레이어 */
+.vote_box.todaysay {height:auto;}
+.vote_box.todaysay .inner {padding-bottom:60px;}
+.vote_box.todaysay .cont {width:100%;text-align:center;}
+.vote_box.todaysay .f_wrap {position:relative;margin:0 auto 15px}
+.vote_box.todaysay .f_wrap .p_img {width: 182.5px; height: 70px; margin: 0 auto; text-indent: -9999px; background-size: 100%; background-repeat: no-repeat;}
+.vote_box.todaysay .f_wrap .p_img.e5 {background-image:url("//img.enuri.info/images/event/2022/attance/w_lay_emoney_5.png");}
+.vote_box.todaysay .f_wrap .p_img.e10 {background-image:url("//img.enuri.info/images/event/2022/attance/w_lay_emoney_10.png");}
+.vote_box.todaysay .f_wrap .p_img.e100 {background-image:url("//img.enuri.info/images/event/2022/attance/w_lay_emoney_100.png");}
+.vote_box.todaysay .f_wrap .p_img.e500 {background-image:url("//img.enuri.info/images/event/2022/attance/w_lay_emoney_500.png");}
+.vote_box.todaysay .f_txt {margin-bottom:15px;}
+.vote_box.todaysay .f_txt .txt {padding:0 20px; font-weight:bold; font-size:12px;text-indent:0;line-height:18px;letter-spacing:-1px;color:#333;text-overflow:ellipsis; white-space:normal; word-wrap:break-word; -webkit-box-orient:vertical; -webkit-line-clamp:3; display: -webkit-box; overflow: hidden;}
+.vote_box.todaysay .f_txt .uid {font-size:12px;color:#888;letter-spacing:-1px;}
+.vote_box.todaysay .f_txt .uid strong {font-weight:normal;color:#ef4136}
+
+
+/*딤레이어 공통 */
+.pop-layer  {display:none; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:100000;}
+/*기존*/
+.popupLayer {position:absolute; left:0; top:0; width:100%; height:100%;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popupLayer .dim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000; z-index:10100;}
+/*new*/
+.backdim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popup_box {position:absolute; left:50%; top:50%; overflow:hidden; z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top; margin:0; padding:0;}
+.popup_box h4 {height:69px; text-align:center; font-size:22px; font-weight:normal; line-height:66px;  color:#fff;letter-spacing:-0.75px; background-color:#0182ea;}
+.popup_box .layclose {position:absolute; right:25px; top:25px; width:19px; height:19px; background-image:url(//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+
+/* 딤레이어 : 다운로드 SMS 보내기 */
+.sendsms {width:408px;  height:237px; margin-left:-204px; margin-top:-118px; border:1px solid #0182ea; border-top:0; background:#fff;}
+.sendsms .inner {width:377px; padding:40px 16px 0; line-height:1.5;  font-size:15px;color:#444;}
+.sendsms .input_area input {width:213px; padding:0 20px; text-align:left; font-family:Malgun Gothic; font-size:18px; color:#bfbfbf;  letter-spacing:-0.75px;height:38px; line-height:35px; background:0; border:1px solid #0182ea; border-right:0;}
+.sendsms .watchout {margin-top:15px;}
+.sendsms .watchout li {font-size:15px; color:#7f7f7f; letter-spacing:-0.5px; margin-left:7px; padding-left:10px; background:url(//img.enuri.info/images/event/2016/template/bul_sq_grays.gif) no-repeat 0 9px;}
+.sendsms .laysend {position:absolute; right:0; top:-1px; width:123px; height:42px; background-image:url(//img.enuri.info/images/event/2016/template/btn_lay_send.gif);}
+
+/* 딤레이어 : 모바일 앱 전용 쇼핑 혜택 */
+.onlyapp {width:410px;  height:283px; margin-left:-205px; margin-top:-142px; border:1px solid #0182ea; border-top:0; background:#fff;}
+.onlyapp .inner {width:377px; padding:22px 16px 0; line-height:1.5;  font-size:15px;color:#444;}
+.onlyapp .inner .exp {text-align:center; line-height:1.2; padding-bottom:25px; font-size:18px; color:#393939; letter-spacing:-0.5px;}
+.onlyapp .inner .tit {font-weight:bold; font-size:14px; color:#2366aa;  letter-spacing:-0.5px; margin:0 0 5px 1px; padding-left:10px; background:url(//img.enuri.info/images/event/2016/template/bul_circle_blue.gif) no-repeat 0 9px}
+.onlyapp .input_area input {width:213px; padding:0 20px; text-align:left; font-family:Malgun Gothic; font-size:16px; color:#bfbfbf;  letter-spacing:-0.5px;height:40px; line-height:36px; background:0; border:1px solid #0182ea; border-right:0;}
+.onlyapp .watchout {margin-top:13px;}
+.onlyapp .watchout li {font-size:14px; color:#7f7f7f; letter-spacing:-0.5px; margin-left:2px; padding-left:6px; background:url(//img.enuri.info/images/event/2016/template/bul_sq_grays.gif) no-repeat 0 9px;}
+.onlyapp .laysend {position:absolute; right:0; top:1px; width:123px; height:42px; background-image:url(//img.enuri.info/images/event/2016/template/btn_lay_send2.gif);}
+
+/* 딤레이어 : 참가상 뽑기 당첨 */
+.awardLayer{position:absolute;left:50%;top:50%;width:260px;height:320px;border:1px solid #191919;background-color:#fff;z-index:10000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.awardLayer .lay__inner {overflow:hidden;position:relative;width:100%;height:100%;}
+.awardLayer .tit {margin:45px auto 0;font-weight:bold;font-size:23px;line-height:23px;color:#000;text-align:center;}
+.awardLayer .tit strong {font-size:15px;color:#ef4136;}
+.awardLayer .tit.win {font-size:23px;color:#ef4136;}
+.awardLayer .tit.win strong {font-size:15px;color:#000;}
+.awardLayer .prize {position:absolute;top:50%;left:50%;font-size:0;text-indent:-9999em;transform:translate(-50%,-45%)}
+.awardLayer .prize.pr1 {width:149px;height:90px;background:url("//img.enuri.info/images/event/2022/attance/m_lay_e1000.png") no-repeat 50% 0;background-size:149px}
+.awardLayer .prize.pr2 {width:167px;height:112px;background:url("//img.enuri.info/images/event/2022/attance/m_lay_bomb.png") no-repeat 50% 0;background-size:167px;}
+.awardLayer .close{position:absolute;right:5px;top:-39px;width:29px;height:29px;font-size:0;text-indent:-9999em;background:url("//img.enuri.info/images/event/2022/attance/m_btn__close.png") no-repeat 50% 50%;background-size:29px}
+.awardLayer .btn_confirm {position:absolute;bottom:30px;left:50%;width:96px;height:32px;margin-left:-48px;border:none;font-size:18px;color:#fff;line-height:32px;text-align:center;background:#bfbfbf;}
+
+/* 딤레이어 : 룰렛 당첨 */
+.prizeLayer{position:absolute;left:50%;top:50%;width:260px;height:320px;border:1px solid #191919;background-color:#fff;z-index:10000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.prizeLayer .lay__inner {overflow:hidden;position:relative;width:100%;height:100%;}
+.prizeLayer .tit {display:none;margin:30px auto 0;font-weight:bold;font-size:15px;line-height:28px;color:#000;text-align:center;letter-spacing:-1px;}
+.prizeLayer .tit .line1 {display:block;font-size:23px;}
+.prizeLayer .tit .line2 {font-size:15px;}
+.prizeLayer .tit.bomb_ep1 .line1,
+.prizeLayer .tit.bomb_ep2 .line1 {font-size:18px;line-height:23px;}
+.prizeLayer .tit strong {color:#ef4136;}
+.prizeLayer.ep1 .tit.ep1,
+.prizeLayer.ep2 .tit.ep2,
+.prizeLayer.bomb.ep1 .tit.bomb_ep1,
+.prizeLayer.bomb.ep2 .tit.bomb_ep2 {display:block;}
+.prizeLayer.bomb.ep1 .tit.ep1,
+.prizeLayer.bomb.ep2 .tit.ep2 {display:none}
+.prizeLayer .prize {position:absolute;top:50%;left:50%;font-size:0;text-indent:-9999em;transform:translate(-50%,-45%); width:207px; height:159px; background-size:207px; background-repeat: no-repeat; background-position: center;}
+.prizeLayer .prize.pr1 {background-image:url("//img.enuri.info/images/event/2022/attance/m_prize1.png");}
+.prizeLayer .prize.pr2 {background-image:url("//img.enuri.info/images/event/2022/attance/m_prize2.png");}
+.prizeLayer .prize.pr3 {background-image:url("//img.enuri.info/images/event/2022/attance/m_prize3.png");}
+.prizeLayer .prize.pr4 {background-image:url("//img.enuri.info/images/event/2022/attance/m_prize4.png");}
+.prizeLayer .prize.pr5 {background-image:url("//img.enuri.info/images/event/2022/attance/m_prize5.png");}
+.prizeLayer .prize.pr6 {background-image:url("//img.enuri.info/images/event/2022/attance/m_prize6.png");}
+.prizeLayer .close{position:absolute;right:-4px;top:-32px;width:30px;height:30px;font-size:0;text-indent:-9999em;background:url("//img.enuri.info/images/event/2021/attance/w_btn__close.png") no-repeat 50% 50%;}
+.prizeLayer .btn_confirm {position:absolute;bottom:30px;left:50%;width:96px;height:32px;margin-left:-48px;border:none;font-size:18px;color:#fff;line-height:32px;text-align:center;background:#bfbfbf;}
+
+/*딤레이어 공통 */
+.pop-layer  {display:none; position:fixed; _position:absolute; top:0; left:0; width:100%; height:100%; z-index:100000;}
+/*기존*/
+.popupLayer {position:absolute; left:0; top:0; width:100%; height:100%;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popupLayer .dim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000; z-index:10100;}
+/*new*/
+.backdim {position:absolute; left:0; top:0; width:100%; height:100%; background:#000;  z-index:10000; -ms-filter: alpha(opacity=60); filter: alpha(opacity=60); opacity:0.6; -moz-opacity:0.6;}
+.popup_box {position:absolute; left:50%; top:50%; overflow:hidden; z-index:10200;}
+.popup_box .input_area  {position:relative;}
+.popup_box h2, .popup_box .txt, .popup_box .btn em {overflow:hidden;position:absolute;left:-1000%;top:0;width:0;height:0;font-size:0;line-height:0;}
+.popup_box img {vertical-align:top; margin:0; padding:0;}
+.popup_box h4 {height:69px; text-align:center; font-size:22px; font-weight:normal; line-height:66px;  color:#fff;letter-spacing:-0.75px; background-color:#0182ea;}
+.popup_box .layclose {position:absolute; right:25px; top:25px; width:19px; height:19px; background-image:url(//img.enuri.info/images/event/2016/shopping_benefits/btn_lay_close.png);}
+
+
+/*유의사항*/
+.dim{width: 100%; height:100%; position:fixed; left: 0; top: 0; background: rgba(0,0,0,0.7); z-index:10002}
+.btn_close{text-align:center; }
+.btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:32px; border:none; text-align:center; font-weight:bold; font-size:12px;}
+
+/* 공통 */
+.go_top {width: 39px; height: 39px; position: fixed; bottom: 10px; right: 10px; z-index: 9999;}
+.go_top a {background: url(http://img.enuri.info/images/m_deal/common.png) -73px -211px no-repeat; background-size: 125px 250px; display: block; width: 39px; height: 39px; text-indent: -9999em;}
+
+/*레이어*/
+.layer_back{width: 100%; height:100%; position:fixed; left: 0; top: 0; z-index:10000; background:url(http://img.enuri.info/images/mobilenew/images/layer_back.png); z-index:100005;}
+.layer_back.appinfo__layer {display:none; position:absolute; top:200px; margin-top:0;}
+.layer_back.appinfo__layer .btn_close {padding-bottom:30px;}
+.btn_close{text-align:center; }
+.appLayer{width:300px;padding-bottom:15px; background:#ffffff; border:1px solid #0182ea; left:50%; top:50%; position:absolute; z-index:1000;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+.appLayer h4{background:#0182ea; line-height:36px; color:#ffffff; font-size:16px; text-align:center; letter-spacing:-1px; }
+.appLayer .close{position:absolute; right:10px; top:10px; width:16px; height:16px; background: url(http://img.enuri.info/images/event/2016/buy/ico.png) 0 0 no-repeat; background-size:50px; text-indent:-9999em; }
+.appLayer .btn_close button{background:#22211e; color:#ffffff; width:100px; line-height:50px; border:none; text-align:center; font-weight:bold; font-size:18px;}
+.appLayer .txt{text-align:center; padding:15px 0; color:#333333;  font-size:16px; letter-spacing:-1.3px;}
+.appLayer .txt strong{color:#ff2424; display:block; }
+.appLayer .txt em{font-weight:bold; }
+
+
+#topBanner{width:100%; height:406px; }

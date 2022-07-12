@@ -394,7 +394,6 @@ var headerComponent = "";
     headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"경쟁사 모니터링\">경쟁사 모니터링</a></li>";
     headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"핵심 속성 입력/점검\">핵심 속성 입력/점검</a></li>";
     headerComponent += "        <li><a href=\"#\" target=\"_blank\" title=\"제조사[불명] 현황\">제조사[불명] 현황</a></li>";
-    // ************************* 220412 : SR#52034 : 연관상품 레이어 추가
     headerComponent += "        <li class=\"has-sub\"><button title=\"연관상품(소모품)\">연관상품(소모품)</button>";
     headerComponent += "            <div class=\"exlink_sub\">";
     headerComponent += "                <ul>";

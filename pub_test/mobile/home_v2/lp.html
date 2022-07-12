@@ -58,6 +58,11 @@
             <div class="search__prop_area type_radio">
                 <div class="prop_name">카테고리<div class="selected_prop_text_area"><span class="selected_prop_name"></span></div></div>
                 <div class="prop_list_wrap nopadding">
+					<!--
+						220512 통합카테고리
+						대카테/묶음대카테에서 시작되던 카테고리가 대대카테고리로 변경됨 (depth0부터)
+						대대카테고리 노출되면서 하위카테고리로 묶음대카테/대카테명이 출력되는 케이스가 필요해짐(하위카테고리포함)
+					-->
                     <div class="prop_category_bread scroller">
                         <ul class="scroll-cont">
                             <li><span class="txt__cate">식품</span></li>
@@ -73,13 +78,35 @@
                             라디오형태 : item_type_radio
                             li에 형태별 클래스 추가해서 사용.
                             arrow 경우 단순 이동이기에 활성화가 필요없을듯하나.. 일단 active시 색변화되게 처리됨
+
+							220512 통합카테고리
+							대/묶음대카테명이 출력되는 케이스추가
+							CPP처럼 대/묶음대카테가 접히는형태는 데이터뿌려지고난 뒤 확인후 처리
+							대/묶음대카테가 여러개일경우 더보기버튼 처리 수정할수도 있어보임.
                         -->
-                        <!-- 화살표 형태 -->
+						<!-- 선택카테고리가 대대카테(depth0)일때 -->
+						<li class="item_category caseDepth1">
+							<p class="depth1_name">TV/영상가전</p>
+							<ul>
+								<li class="item_category item_type_arrow"><a href="#">프로젝터/스크린</a></li>
+								<li class="item_category item_type_arrow"><a href="#">홈시어터/HIFI</a></li>
+								<li class="item_category item_type_arrow"><a href="#">마이크/반주기</a></li>
+							</ul>
+						</li>
+						<li class="item_category caseDepth1">
+							<p class="depth1_name">가전</p>
+							<ul>
+								<li class="item_category item_type_arrow"><a href="#">주방가전</a></li>
+								<li class="item_category item_type_arrow"><a href="#">생활가전</a></li>
+								<li class="item_category item_type_arrow"><a href="#">계절가전</a></li>
+							</ul>
+						</li>
+                        <!-- 일반케이스 : 화살표 형태 -->
                         <li class="item_category item_type_arrow"><a href="#">오메가-3</a></li>
                         <li class="item_category item_type_arrow"><a href="#" class="active">크릴오일</a></li>
                         <li class="item_category item_type_arrow"><a href="#">루테인,눈영양제</a></li>
                         <!-- // -->
-                        <!-- 레디오버튼 형태 -->
+                        <!-- 일반케이스 : 레디오버튼 형태 -->
                         <li class="item_category item_type_radio"><a href="#">오메가-3</a></li>
                         <li class="item_category item_type_radio"><a href="#" class="active">유산균</a></li>
                         <li class="item_category item_type_radio"><a href="#">크릴오일</a></li>
@@ -393,15 +420,18 @@
 <!-- // 상세검색 레이어 -->
 
 <div id="wrap">
-	<header id="header" class="m_header lp_header">
-        <div class="header_wrap">
-            <button class="btn_hd_home comm__sprite" onclick="window.location='index.html'">에누리홈</button>
-            <a href="" class="input_hd_sr">
-                검색어를 입력해 주세요.
-                <i class="ico_search comm__sprite"></i>
-            </a>
-			<button class="btn_hd_myalarm comm__sprite">MY알림</button>
-        </div>
+	<header id="header" class="page_header nomargin">
+		<div class="header_top">
+			<div class="wrap">
+				<h1><a href="/" class="icon_header_logo logo_color_default comm__sprite2">Enuri Home</a></h1>
+				<button type="button" class="btn_myalarm">
+					<i class="icon_header_alarm comm__sprite2">MY알림</i>
+				</button>
+				<button type="button" class="btn_open_search_layer">에누리가 최저가를 찾아드려요!
+					<i class="icon_header_search comm__sprite2"></i>
+				</button>
+			</div>
+		</div>
     </header>
 
 	<section id="container" class="m_lp_cont m_lp_cont-finder">
@@ -412,7 +442,28 @@
 		</div>
 		<!-- // -->
 
-		<!-- [AD] 이달의 브랜드 광고 영역(상단) -->
+		<div class="lp__head">
+            <div class="lp__navi scroller">
+                <ul class="scroll-cont">
+                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">식품</span></li><!--대카테고리에서는 카테고리이동기능 적용 x -->
+                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">홍삼,건강식품</span></li>
+                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">건강보조식품</span></li>
+                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">유산균</span></li>
+                </ul>
+            </div>
+        </div>
+		<div class="lp__head">
+            <div class="lp__navi scroller">
+                <ul class="scroll-cont">
+                    <li class="navi__cate"><span onclick="finder_open(1);return false">식품</span></li><!--대카테고리에서는 카테고리이동기능 적용 x -->
+                    <li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">홍삼,건강식품</span></li>
+                    <li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">건강보조식품</span></li>
+                    <li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">유산균</span></li>
+                </ul>
+            </div>
+        </div>
+
+				<!-- [AD] 이달의 브랜드 광고 영역(상단) -->
 		<!-- 통합검색 결과/연관검색어 밑에 위치하고, 그 외에는 Header밑에 위치함 -->
 		<div class="tbrand-box">
 			<div class="tbrand-box--head">
@@ -671,32 +722,24 @@
 			</script>
 		</div>
 		<!-- // [AD] 이달의 브랜드 광고 영역 -->
-		
-		<div class="lp__head">
-            <div class="lp__navi scroller">
-                <ul class="scroll-cont">
-                    <li class="navi__cate"><span onclick="openDetailSearch('#all_prop_area');">식품</span></li><!--대카테고리에서는 카테고리이동기능 적용 x -->
-                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">홍삼,건강식품</span></li>
-                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">건강보조식품</span></li>
-                    <li class="navi__cate"><span class="txt__cate" onclick="openDetailSearch('#all_prop_area');">유산균</span></li>
-                </ul>
-            </div>
-        </div>
-		<div class="lp__head">
-            <div class="lp__navi scroller">
-                <ul class="scroll-cont">
-                    <li class="navi__cate"><span onclick="finder_open(1);return false">식품</span></li><!--대카테고리에서는 카테고리이동기능 적용 x -->
-                    <li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">홍삼,건강식품</span></li>
-                    <li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">건강보조식품</span></li>
-                    <li class="navi__cate"><span class="txt__cate" onclick="finder_open(1);return false">유산균</span></li>
-                </ul>
-            </div>
-        </div>
+
 		<div class="lp__detail_sr detail_sr">
 			<!-- 카테고리 -->
 			<div class="box_inner">
 				<div class="lp__detail_sr_tab detail_sr_tab scroller">
 					<ul class="scroll-cont">
+						<li data-id="tab_01" class="on"><a href="#">전체보기</a></li>
+						<li data-id="tab_02"><a href="#">유산균</a></li>
+						<li data-id="tab_03"><a href="#">크릴오일</a></li>
+						<li data-id="tab_04"><a href="#">루테인, 눈영양제</a></li>
+						<li data-id="tab_05"><a href="#">쏘팔매토</a></li>
+						<li data-id="tab_06"><a href="#">간장약</a></li>
+						<li data-id="tab_07"><a href="#">철분</a></li>
+						<li data-id="tab_08"><a href="#">비타민</a></li>
+					</ul>
+				</div>
+				<div class="lp__detail_sr_tab_expand">
+					<ul>
 						<li data-id="tab_01" class="on"><a href="#">오메가-3</a></li>
 						<li data-id="tab_02"><a href="#">유산균</a></li>
 						<li data-id="tab_03"><a href="#">크릴오일</a></li>
@@ -707,7 +750,16 @@
 						<li data-id="tab_08"><a href="#">비타민</a></li>
 					</ul>
 				</div>
+                <button type="button" class="btn_tab_expand"><i class="comm__sprite2 icon_arrow_box_s32 down"></i></button>
 			</div>
+			<script>
+                $('body').on('click','.btn_tab_expand', function(){
+                    $(this).find('i').toggleClass('down up');
+					$('.lp__detail_sr_tab').toggleClass('open');
+					$('.lp__detail_sr_tab ul li').not('.on').toggle();
+                    $('.lp__detail_sr_tab_expand').toggle();
+                });
+            </script>
 			<!-- // 카테고리 -->
 
             <!-- 210729 : 스마트파인더  -->
@@ -974,14 +1026,12 @@
 					<div class="prod_total">
 						<p class="tx_cnt">총 <strong>50,478,299</strong>개 상품</p>
 					</div>
-
 					<div class="prod_list_type">
 						<!-- 보기옵션 -->
 						<div class="opt_viewtype">
 							<!-- default : grid type -->
 							<button class="btn btn_grid">그리드모드</button>
 							<button class="btn btn_list active">리스트모드</button>
-
 							<script>
 								$(".opt_viewtype .btn").on("click", function(){
 									var obj = $(this);
@@ -990,7 +1040,6 @@
 								})
 								var viewtypeChange = function(obj){
 									var _obj = obj;
-
 									$(_obj).removeClass('active').siblings(".btn").addClass('active');
 									$('.lp__cont').toggleClass('grid');
                                     
@@ -999,7 +1048,6 @@
                                         $('html,body').scrollTop($('.lp__cont').offset().top - 50);
                                     }
 								}
-								
 							</script>
 							<!-- 상세검색사이드바 열기버튼 -->
 							<button type="button" class="btn btn_detail_search" onclick="openDetailSearch('#all_prop_area'); return false;">
@@ -1007,7 +1055,6 @@
 								<span class="tx_cnt">99</span>
 							</button>
 							<!-- // -->
-
 							<!-- 상세검색사이드바 열기버튼 -->
 							<button type="button" class="btn btn_detail_search" onclick="finder_open(1);return false">
 								상세검색사이드바
@@ -1023,11 +1070,10 @@
                             <label for="sort_option">인기순</label>
                             <select name="sort_option" onchange="selectToLabel(this)" class="select_opt" id="" title="인기순">
                                 <option value="0" selected="selected">인기순</option>
-                                <option value="0">최저가순</option>
-                                <option value="0">최고가순</option>
-                                <option value="0">신규등록순</option>
+                                <option value="0">낮은가격순</option>
+                                <option value="0">높은가격순</option>
+                                <option value="0">최신순</option>
                                 <option value="0">판매량순</option>
-                                <option value="0">출시예정상품</option>
                                 <option value="0">상품평많은순</option>
                             </select>
 
@@ -1055,113 +1101,100 @@
 			<!-- // LP Header -->
 
 			<!-- 네이버 파워쇼핑 AD  -->
-			<div class="comm_ad ad_powershopping mobile" style="display:none">
-				<div class="comm_ad_tit">
-					<em>파워쇼핑</em>
-					<a href="#" class="comm_btn_apply">신청하기</a>
+			<div class="ad__naver_powershopping border-box">
+				<div class="ad__tit noborder">
+					파워쇼핑
+					<a href="#" class="ad__btn_apply">신청하기</a>
 				</div>
-				<div class="comm_ad_list ad_goods swiper-container">
-					<ul class="swiper-wrapper">
-						<!-- 광고 상품 1개  x 6 반복 -->
-						<li class="swiper-slide">
-							<a href="#">
-								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
-								<span class="ad_info">
-									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
-									<span class="ad_info_price">
-										<em>179,000</em>원
-									</span>
-									<span class="ad_info_shop">
-										<!-- 200528 : SR#40192 : 네이버페이 플러스 케이스 추가 -->
-										<em class="ad_type_npay_plus">마이크로소프트코리아</em>
-										<!-- // -->
-									</span>
-								</span>
-							</a>
-						</li>
-						<!-- // -->
-						<li class="swiper-slide">
-							<a href="#">
-								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
-								<span class="ad_info">
-									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
-									<span class="ad_info_price">
-										<em>179,000</em>원
-									</span>
-									<span class="ad_info_shop">
-										<em class="ad_type_npay">마이크로소프트코리아</em>
-									</span>
-								</span>
-							</a>
-						</li>
-						<li class="swiper-slide">
-							<a href="#">
-								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
-								<span class="ad_info">
-									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
-									<span class="ad_info_price">
-										<em>179,000</em>원
-									</span>
-									<span class="ad_info_shop">
-										<em class="ad_type_npay">마이크로소프트코리아</em>
-									</span>
-								</span>
-							</a>
-						</li>
-						<li class="swiper-slide">
-							<a href="#">
-								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
-								<span class="ad_info">
-									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
-									<span class="ad_info_price">
-										<em>179,000</em>원
-									</span>
-									<span class="ad_info_shop">
-										<em class="ad_type_npay">마이크로소프트코리아</em>
-									</span>
-								</span>
-							</a>
-						</li>
-						<li class="swiper-slide">
-							<a href="#">
-								<span class="ad_thumb"><img src="http://simage.auction.co.kr/itemimage/19/88/68/1988686282.jpg" alt=""></span>
-								<span class="ad_info">
-									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
-									<span class="ad_info_price">
-										<em>179,000</em>원
-									</span>
-									<span class="ad_info_shop">
-										<em class="ad_type_npay">마이크로소프트코리아</em>
-									</span>
-								</span>
-							</a>
-						</li>
-						<li class="swiper-slide">
-							<a href="#">
-								<span class="ad_thumb"><img src="http://img.enuri.info/images/home/thum_none.gif" alt=""></span>
-								<span class="ad_info">
-									<span class="ad_info_nm">숏 푸파 패딩 지오다노 079923</span>
-									<span class="ad_info_price">
-										<em>179,000</em>원
-									</span>
-									<span class="ad_info_shop">
-										<em class="ad_type_npay">마이크로소프트코리아</em>
-									</span>
-								</span>
-							</a>
-						</li>
-					</ul>
-					<div class="swiper-scrollbar"></div>
+				<div class="ad__goods">
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<a href="#">
+									<div class="ad__thumb">
+										<img src="//img.enuri.info/images/sample/sample_img@130.jpg" alt="">
+									</div>
+									<div class="ad__info">
+										<div class="ad__nm">유한양행 닥터버들 프리미엄치약/칫솔6개 유한양행 닥터버들 프리미엄치약/칫솔6개</div>
+										<div class="ad__price"><em>179,000</em>원</div>
+										<div class="ad__shop">마이크로소프트코리아<i class="ad__label ad__label_npayplus"></i></div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<div class="ad__thumb">
+										<img src="//img.enuri.info/images/sample/sample_img@130.jpg" alt="">
+									</div>
+									<div class="ad__info">
+										<div class="ad__nm">숏 푸파 패딩 지오다노 079923 숏 푸파 패딩 지오다노 079923</div>
+										<div class="ad__price"><em>179,000</em>원</div>
+										<div class="ad__shop">마이크로소프트코리아<i class="ad__label ad__label_npay"></i></div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<div class="ad__thumb">
+										<img src="//img.enuri.info/images/sample/sample_img@130.jpg" alt="">
+									</div>
+									<div class="ad__info">
+										<div class="ad__nm">숏 푸파 패딩 지오다노 079923</div>
+										<div class="ad__price"><em>179,000</em>원</div>
+										<div class="ad__shop">마이크로소프트코리아<i class="ad__label ad__label_npayplus"></i></div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<div class="ad__thumb">
+										<img src="//img.enuri.info/images/sample/sample_img@130.jpg" alt="">
+									</div>
+									<div class="ad__info">
+										<div class="ad__nm">숏 푸파 패딩 지오다노 079923</div>
+										<div class="ad__price"><em>179,000</em>원</div>
+										<div class="ad__shop">마이크로소프트코리아<i class="ad__label ad__label_npay"></i></div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<div class="ad__thumb">
+										<img src="//img.enuri.info/images/sample/sample_img@130.jpg" alt="">
+									</div>
+									<div class="ad__info">
+										<div class="ad__nm">숏 푸파 패딩 지오다노 079923</div>
+										<div class="ad__price"><em>179,000</em>원</div>
+										<div class="ad__shop">마이크로소프트코리아<i class="ad__label ad__label_npayplus"></i></div>
+									</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="#">
+									<div class="ad__thumb">
+										<img src="//img.enuri.info/images/sample/sample_img@130.jpg" alt="">
+									</div>
+									<div class="ad__info">
+										<div class="ad__nm">숏 푸파 패딩 지오다노 079923</div>
+										<div class="ad__price"><em>179,000</em>원</div>
+										<div class="ad__shop">마이크로소프트코리아<i class="ad__label ad__label_npay"></i></div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="swiper-scrollbar"></div>
+					</div>
 				</div>
 				<script>
 					$(function(){
-						var swiper = new Swiper('.ad_powershopping .swiper-container', {
-							scrollbar: '.ad_powershopping .swiper-scrollbar',
+						var nPowerShoppingSwiper = new Swiper('.ad__naver_powershopping .swiper-container', {
+							scrollbar: '.ad__naver_powershopping .swiper-scrollbar',
 							scrollbarHide: false,
 							slidesPerView: 'auto',
 							centeredSlides: false,
-							spaceBetween: 10,
-							grabCursor: true
+							spaceBetween: 12,
+							grabCursor: true,
+							variableWidth :true
 						});
 					})
 				</script>
@@ -1547,6 +1580,80 @@
 						</span>
 					</li>
 					<!-- // LP 리스트 + Grid 형 상품 + 구매옵션 2단 구성 -->
+
+					<!-- 행 : 메이크샵 브랜드스토어 -->
+					<!-- 위치 : 상품1,2위 아래, 파워링크 상단 사이 -->
+					<li class="brndstore">
+						<div class="brndstore__wrap">
+							<div class="brndstore__head">
+								<p class="tx_tit"><em>브랜드</em>스토어</p>
+
+								<a href="#" class="link_more" target="_blank">더보기</a>
+							</div>
+
+							<div class="brndstore__body">
+								<div class="brndstore__list swiper-container">
+									<div class="swiper-wrapper">
+										<!-- 반복 : 슬라이드 샘플 -->
+										<div class="swiper-slide">
+											<a href="" class="brndstore__list--logo" target="_blank">
+												<!-- 등록 로고 있을 때, 로고 노출 : .img_logo -->
+												<span class="img_logo">
+													<img src="//img.enuri.info/images/mobile_v2/test/@brndstore_logo1_48.png" alt="DEBB 로고"><!-- alt = "브랜드+ 로고" -->
+												</span>
+												<span class="tx_nm">DEBB</span>
+											</a>
+										</div>
+										<!-- // -->
+										<div class="swiper-slide">
+											<a href="" class="brndstore__list--logo" target="_blank">
+												<!-- 등록 로고 없을 때, 기본 이미지 노출 : .txt_logo -->
+												<!-- <span class="txt_logo"><p>박형아는 뜨개쟁이</p></span> -->
+												<span class="img_logo">
+													<img src="//img.enuri.info/images/mobile_v2/brandstore/lp_brandstore_default.png" alt="기본 이미지">
+												</span>
+												<span class="tx_nm">박형아는 뜨개쟁이</span>
+											</a>
+										</div>
+										<div class="swiper-slide"><a href="" class="brndstore__list--logo" target="_blank"><span class="img_logo"><img src="//img.enuri.info/images/mobile_v2/test/@brndstore_logo3_48.png" alt="NAGUISA 로고"></span><span class="tx_nm">NAGUISA</span></a></div>
+									</div>
+									<!-- 페이징 -->
+									<div class="swiper-pagination"></div>
+								</div>
+							</div>
+							<script>
+								$(function(){
+									var brndSwiperInit = function(){
+										var brndStoreList = $(".brndstore__list");
+										var brndStoreCnt = brndStoreList.find(".swiper-slide").length; // 브랜드스토어 몰 갯수
+										
+										if(brndStoreCnt > 3){
+											(brndStoreList.hasClass("is-flex")) ? brndStoreList.removeClass("is-flex") : "";
+											
+											// 3개 이상일 때 스와이퍼 생성
+											var brndStoreSwiper = new Swiper(brndStoreList, {
+												pagination: '.swiper-pagination',
+												paginationType: 'progress',
+												freemode: true,
+												spaceBetween: 12,
+												slidesPerView: 'auto'
+											});
+										}else{
+											// 3개 이하일 때 중앙 정렬
+											brndStoreList.addClass("is-flex");
+										}
+										
+										// 2개 이하일 때 영역 미노출
+										if(brndStoreCnt <= 2){
+											$(".brndstore").detach();
+										}
+									}
+									setTimeout(brndSwiperInit(), 0);
+								})
+							</script>
+						</div>
+					</li>
+					<!-- //행 : 메이크샵 브랜드스토어 -->
 
 					<!-- 리스트 내 파워링크 -->
 					<!-- 200522 SR#40036 파워링크 수정 -->
@@ -3506,21 +3613,19 @@
 		</div>
 		<!-- // 연관가이드 / 뉴스 / 리뷰 -->
 
-		<!-- 구글 광고 -->
-		<div class="ad__google">
-			구글광고광고광고
+		<!-- 쿠팡 광고 -->
+		<div class="ad__coupang_lp_bottom border-box">
+			<a href="">
+				<div class="ad_goods_thumbnail"><img src="//img.enuri.info/images/sample/sample_img@s800.jpg"></div>
+				<div class="ad_goods_name">트렉스타 어코드 3단 등산스틱6 [2개+파우치] 650-7781</div>
+				<div class="ad_goods_price"><em>1,282,000</em>원</div>
+				<div class="ad_goods_logo">
+					<img src="//img.enuri.info/images/sample/sample_logo_coupang@h24.png">
+					<img src="//img.enuri.info/images/sample/sample_logo_coupang_rocket@h24.png">
+				</div>
+				<div class="ad__label"><img src="//img.enuri.info/images/mobile_v2/label_ad@32x22.png"></div>
+			</a>
 		</div>
-		<!-- // -->
-
-		<!-- 앱 다운로드 -->
-		<ul class="another_app_list">
-			<li class="btn_app_smart">
-				<a href="#">스마트 택배 다운받기</a>
-			</li>
-			<li class="btn_app_social">
-				<a href="#">소셜가격비교 다운받기</a>
-			</li>
-		</ul>
 		<!-- // -->
 
 		<!-- 공통 : 하단 배너 -->
@@ -3564,7 +3669,7 @@
 			<div class="footer__info_com">
 				<dl>
 					<dt>대표이사</dt>
-					<dd>김기범</dd>
+					<dd>김기록</dd>
 					<dt>사업자등록번호</dt>
 					<dd>206-81-18164</dd>
 					<dt>통신판매신고</dt>
@@ -3595,7 +3700,7 @@
 </div>
 
 <!-- 210824 : SR#48387 : MY알림 추가 - 알림함 팝업 -->
-<div class="pop_alarm" style="display:none">
+<div class="pop_alarm">
 	<div class="alarm__inner">
 		<div class="alarm__head">
 			<p class="tx_tit">알림함</p>
@@ -3626,9 +3731,9 @@
 </div>
 <script>
 	$(function(){
-		var alarmPopup = $(".pop_alarm"), // 팝업 : 알림함 (우측 하단)
-			bottomTabbar = $(".tabbar"); // 하단 탭바
-
+		var alarmPopup = $(".pop_alarm"); // 팝업 : 알림함 (우측 하단)
+		var bottomTabbar = $(".tabbar"); // 하단 탭바
+		var bottomPageControler = $(".f_btn_page_contorler");
 		// 알림함 팝업 펑션
 		var alarmFunction = function(){
 			// 페이지 로딩 후 알림함 노출 -> 20초 뒤 숨김
@@ -3638,9 +3743,18 @@
 			
 			alarmPopup.find(".btn-close").on("click", function(){
 				alarmPopup.hide().removeClass("is-visible");
+				bottomPageControler.addClass('active');
 			})
 			setTimeout(function(){ alarmPopup.removeClass("is-visible")},20000)
 		}
+		
+		// 앱링크 dim 제거 시, 알림함 노출
+		$("#mainLayer .btn_layer_close").on("click", function(){
+			$("#mainLayer").fadeOut(200);
+			return false;
+		})
+        alarmFunction(); // 페이지 로딩 시, 알림함 노출
+
 
 		// 스크롤 액션(알림함, 탭바)
 		var lastScrollY = 0;
@@ -3655,14 +3769,16 @@
 					bottomTabbar.removeClass("is-hidden");
 				}
 			}
+			if(alarmPopup.hasClass("is-visible") && alarmPopup.css('display') != 'none') {
+				bottomPageControler.removeClass('active');
+			} else {
+				bottomPageControler.addClass('active');
+			}
 			lastScrollY = window.scrollY;
 		}
-
 		$(window).on({
-			"scroll" : scrAlarmPop,
-			"load" : alarmFunction // 페이지 로딩 시, 알림함 노출
+			"scroll" : scrAlarmPop
 		})
-		
 	})
 </script>
 <!-- // -->
@@ -4335,30 +4451,37 @@
     $(function(){
         var position = $(window).scrollTop();
         var $mainwrap = $("#wrap");
-        var $mhead = $("#wrap .m_header"); // 헤더
+        var $header = $("header"); // 헤더
+		var $headerHeight = $header.outerHeight();
         var $contHeadArea = $(".lp__cont"); // 컨텐츠
+        var $footerTabbar = $(".f_tabbar"); // 컨텐츠
         var $contHead = $contHeadArea.find(".cont_head"); // 컨텐츠 헤더
-        var $btnQuick = $(".footer .newquick"); // Top 버튼
-        var $holdDistance = 30; //cont_head가 상단에 붙은후 미작동되는거리(임시적용, 추후변경될수있음)
-        var rePos = function(){
-            var nowPos = $(window).scrollTop();
+        var posHeader = function(){
+            var $myScroll = $(window).scrollTop();
+			var $mainCont = $(".m_lp_cont");
             var headPos = $contHeadArea.offset().top;
-            var gnbH = $mhead.outerHeight();
-            ( nowPos > headPos - gnbH ) ? $contHead.addClass("fixed_top") : $contHead.removeClass("fixed_top");
-            ( nowPos > 0 ) ? $mhead.addClass("fixed_top") : $mhead.removeClass("fixed_top");
-            // TOP버튼 등장
-            if((headPos + $holdDistance) < nowPos) {
-                if(nowPos > position){
-                    $mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
-                    $btnQuick.addClass("scr_mode");
-                }else{
-                    $mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
-                }
-            }
+            ( $myScroll > headPos ) ? $contHead.addClass("fixed_top") : $contHead.removeClass("fixed_top");
             
-            position = nowPos;
+			if ( $myScroll > $mainCont.offset().top ){
+				$mainwrap.css('padding-top', $headerHeight);
+				$header.addClass("fixed_top");
+
+				if($myScroll > position){
+					$mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+					$footerTabbar.addClass("scr_down").removeClass("scr_reset scr_up");
+				}else{
+					$mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+					$footerTabbar.removeClass("scr_down scr_reset").addClass("scr_up");
+				}
+
+			} else {
+				$mainwrap.removeClass('scr_down scr_up scr_reset')
+				$header.removeClass("fixed_top");
+                $mainwrap.css('padding-top', 0);
+			}
+            position = $myScroll;
         }
-        $(window).load(rePos).scroll(rePos);
+        $(window).load(posHeader).scroll(posHeader);
     });
 
 	// 공통 : 찜버튼

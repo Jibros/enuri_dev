@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>에누리 가격비교 - 최저가 쇼핑은 에누리 가격비교 사이트</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta property="og:title" content="에누리 가격비교" />
+	<meta property="og:description" content="에누리 모바일 가격비교" />
+	<meta property="og:image" content="http://img.enuri.info/images/mobilenew/images/logo_enuri.png" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/> 
+	<link rel="stylesheet" type="text/css" href="/mobilefirst/css/lib/slick.css"/>
+	<!-- 프로모션 공통 CSS (Mobile) -->
+	<link rel="stylesheet" href="/css/event/com.enuri.event.m.css" type="text/css" />
+	<!-- 프로모션별 커스텀 CSS  -->
+	<link rel="stylesheet" href="/css/event/y2022/buy_stamp_july_m.css" type="text/css" />
+	<!-- // -->
+	<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+	<script type="text/javascript" src="/mobilefirst/js/lib/slick.min.js"></script>
+</head>
+<body>
+<!-- 200826 : SR#41911 : [MO] SNS 공유 딥링크 연결 팝업  -->
+<div class="lay_only_mw">
+	<div class="lay_inner">
+		<div class="lay_head">
+			앱에서는 득템의 기회 <em>타임특가</em>에 참여할 수 있어요!
+		</div>
+		<!-- 버튼 : 에누리앱으로 보기 -->
+		<button class="btn_go_app" onclick="alert('APP으로 보기');">에누리앱으로 보기</button>
+		<!-- 버튼 : 모바일웹으로 보기 -->
+		<a href="javascript:void(0);" class="btn_keep_mw" onclick="$('.lay_only_mw').fadeOut(100);">괜찮아요. 모바일 웹으로 볼래요</a>
+	</div>
+</div>
+<!-- // -->
+<div id="eventWrap" class="border-box">
+	<div class="myarea">
+		<p class="name">홍길동 님<span onclick="onoff('app_only')">14,005,005점</span></p>
+		<p class="name" style="display:none;">더 많은 혜택을 누리고 싶다면? 로그인 후 확인하세요.<button type="button" class="btn_login">로그인</button></p>
+		<a href="#" class="win_close">창닫기</a>
+	</div>
+	<!-- 상단비주얼 -->
+	<div class="evt_visual visual">		
+		<!-- 공통 : 공유하기 버튼  -->
+		<button class="com__btn_share" onclick="$('.com__share_wrap').show();">공유하기</button>
+		<div class="inner">
+			<span class="txt_01">구매 혜택</span>
+			<h2>쇼핑에-누리다</h2>
+			<span class="txt_02">최저가는 기본! 스탬프 찍고 추가 적립까지!</span>
+			<span class="box_wrap"><!--상자--></span>
+		</div>
+		<div class="obj_flow_01"> <!-- 파랑색 flow object -->
+			<div class="bg_flow flow_obj_01"></div>
+			<div class="bg_flow flow_obj_02"></div>
+		</div>
+		<div class="obj_flow_02"> <!-- 분홍색 flow object -->
+			<div class="bg_flow flow_obj_01"></div>
+			<div class="bg_flow flow_obj_02"></div>
+		</div>
+		<div class="obj_flow_03"> <!-- 흰색 flow object -->
+			<div class="bg_flow flow_obj_01"></div>
+			<div class="bg_flow flow_obj_02"></div>
+		</div>
+		<div class="loader-box">
+			<div class="visual-loader"></div>
+		</div>
+		<script>
+			// 상단 타이들 등장 모션
+			$(window).load(function(){
+				var $visual = $(".evt_visual.visual");
+				$visual.addClass("intro");
+				setTimeout(function(){
+					$visual.addClass("end");
+				},2600)
+			})
+		</script>
+	</div>
+	<!-- // -->
+	<div class="evt_content contents">
+		<!-- 플로팅탭 -->
+		<div class="section floattab">
+			<div class="floattab__list">
+				<ul>
+					<li><a href="#tab1" class="floattab__item floattab__item--01">구매 스탬프</a></li>
+					<li><a href="#tab2" class="floattab__item floattab__item--02">추가적립</a></li>
+					<li><a href="#tab3" class="floattab__item floattab__item--03">VIP적립</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- //플로팅탭 -->
+		<!-- 누리팡! 스탬프 -->
+		<div id="tab1" class="buying_stamp">
+			<div class="inner">
+				<div class="stamp_tit"><img src="//img.enuri.info/images/event/2022/buy_stamp/july/m_buying_stamp_tit.png" alt="구매 스탬프, 구매했다면 스탬프 찍고, 1등 산에 오르세요!"></div>
+				<div class="stamp_climb">
+					<ul class="stamp_list">
+						<li class="prize prize1 status_complete">
+							<div class="prize_img"><img src=""></div>
+							<button type="button" class="btn_stamp"></button>
+						</li>
+						<li class="prize prize2 status_on">
+							<div class="prize_img"></div>
+							<button type="button" class="btn_stamp" onclick="onoff('stampComplete');return false;"></button>
+						</li>
+						<li class="prize prize3 status_off">
+							<div class="prize_img"></div>
+							<button type="button" class="btn_stamp"></button>
+						</li>
+						<li class="prize prize4 status_off">
+							<div class="prize_img"></div>
+							<button type="button" class="btn_stamp"></button>
+						</li>
+					</ul>
+				</div>
+
+				<div class="stamp_prize_info_list">
+					<div class="stamp_prize_list_img">
+						<img src="//img.enuri.info/images/event/2022/buy_stamp/july/m_stamp_prize_detail.png" alt="800명추첨: [이마트24] 맥카페 롯데 스크류바, 1000점 / 350명추첨:[CU] 모바일 금액권, 2000점 / 100명:[스타벅스] 콜드 브루T, 4900점 / 3명추첨:[S-OIL] 모바일 주유권, 20000점" />
+					</div>
+					</div>
+				</div>
+				<div class="view_cont">
+					<ul class="event_info">
+						<li><span>· 이벤트 기간 :</span> <span class="evt_period"></span></li>
+						<li><span>· 혜택 지급일 :</span> <span class="evt_date"></span></li>
+					</ul>
+				</div>
+				<!-- 버튼 : 꼭 확인하세요 -->
+				<div class="com__evt_notice">
+					<div class="evt_notice--btn_area"><button class="btn__evt_notice" data-laypop-id="slidePop1"><span>꼭! 확인하세요</span></button></div> <!-- 열기 : 유의사항 열기 -->
+				</div>
+				<div id="slidePop1" class="evt_notice--slide">
+					<div class="evt_notice--inner"> <!-- .wide - 넓은 케이스 -->
+						<div class="evt_notice--head">유의사항</div>
+						<div class="evt_notice--cont">
+							<div class="evt_notice--continner">
+								<dl>
+									<dt>이벤트 대상 및 혜택</dt>
+									<dd>						
+										<ul>
+											<li>이벤트 대상 : 이벤트 기간 내 1,000원 이상 구매 후 구매 스탬프 이벤트 참여 고객</li>										
+											<li>이벤트 기간 : <span class="evt_period"></span></li>
+											<li>이벤트 혜택 :
+												<ul class="sub">
+													<li>- 1회 : [이마트24] 롯데)스크류바 (e1,000) - 800명 추첨</li>
+													<li>- 2회 : [CU] 모바일 금액권 2천원권 (e2,000) - 350명 추첨</li>
+													<li>- 3회 : [스타벅스] 콜드 브루 T (e4,900) - 100명 추첨 </li>
+													<li>- 4회 : [S-OIL] S-OIL 모바일 주유권 (e20,000) - 3명 추첨</li>
+												</ul>
+											</li>
+											<li>혜택 지급일 : <span class="evt_date"></span><br>
+												- 당첨자분들께 e머니 적립 후 Push 메시지로 당첨 알려 드립니다. (Push 알림 미동의자 제외)
+											</li>
+											<li>
+												<span class="stress">e머니 유효기간 : 적립일로부터 15일 (유효기간 만료 후 재적립 불가)</span><br/>
+												<span class="noti">※ 적립된 e머니는 1,000여가지 인기 e쿠폰으로 교환 가능합니다.<br>(제휴처 사정에 따라 해당 쿠폰 품절, 단종, 가격 변동이 있을 수 있습니다.) 
+												</span>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+								<dl>
+									<dt>이벤트 참여방법 및 유의사항</dt>
+									<dd>
+										<ul>
+											<li>참여방법 : 에누리 가격비교 모바일 앱 로그인 &rarr; 적립대상 쇼핑몰 이동 &rarr; <span class="stress">1,000원 이상 구매</span> &rarr; 구매 스탬프 이벤트 참여<br/>
+												<span class="noti">※ 이벤트 참여의 경우 PC 및 모바일 앱/웹에서 로그인 후에도 가능합니다.</span>
+											</li>
+											<li>적립대상 쇼핑몰 : G마켓, 옥션, 11번가, 인터파크, 티몬, 위메프, 쿠팡, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스), SK스토아, 홈플러스<br/>
+												<span class="stress">※ 구매 유의사항 및 구매적립 제외 카테고리는 이벤트 페이지 하단 'e머니 구매혜택' 유의사항을 꼭 확인하세요.</span>
+											</li>
+											<li>적립대상 쇼핑몰에서 장바구니에 여러 상품을 담아 한 번에 결제하는 경우, 구매건수는 1건으로 1개의 스탬프만 생성됩니다.</li>
+											<li><span class="stress">이미 찍은 스탬프의 경우 상품의 취소/환불 시에도 없어지지는 않으며, 스탬프 참여건수와 취소/환불건 제외 후 1천원 이상 구매건수에 따라 혜택이 지급됩니다. (※ 이벤트 대상 제외 확인)</span></li>
+											<li>본 이벤트는 본인인증 ID당 1회만 참여 가능합니다. (※ 본인인증 필수)</li>
+											<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 금액만 반영됩니다.</li>
+											<li>이벤트 기간 내 구매 건 중 <span class="evt_adj_date"></span>까지의 구매확정(배송완료)건 기준으로 이벤트 대상자 선정됩니다.</li>
+											<li>
+												<span class="stress">이벤트 대상 제외 :</span> 아래의 경우에는 이벤트 대상 및 혜택 지급에서 제외됩니다. <br/>
+												<ul class="sub">
+													<li>- 구매 스탬프 이벤트 참여하지 않은 경우 </li>
+													<li>- 실제 구매금액이 1천원 미만의 구매일 경우</li>
+													<li>- 구매적립 제외 카테고리 구매일 경우 </li>
+													<li>- 이벤트 참여 후 취소/환불/교환/반품한 경우</li>
+													<li>- 동일한 본인인증으로 가입한 다수의 ID로 중복 참여한 경우</li>
+													<li>- 해외직구 상품 구매일 경우</li>
+													
+												</ul>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+								<dl>
+									<dt>공통 이벤트 유의사항</dt>
+									<dd>
+										<ul>
+											<li>부정 참여 시 본 이벤트 대상 제외 및 혜택 지급이 취소될 수 있습니다. </li>
+											<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="evt_notice--foot">						
+							<button class="btn__evt_confirm">확인</button> <!-- 닫기 : 유의사항 닫기 -->
+						</div>
+					</div>
+				</div>
+            </div>
+			
+			<!-- // -->
+            
+		</div>
+		<!-- //누리팡! 스탬프 -->
+		
+		<!-- 스탬프 참여완료 레이어 -->
+		<div class="notice stamplayer" id="stampComplete" style="display:none;">
+			<div class="dim"></div>
+			<div class="notice_layer stamp_layer_open">
+				<h4>구매 스탬프 참여 완료!</h4>
+				<div class="cont">
+					<p class="txt">
+						※ 이벤트 대상 구매 건에 따라 혜택이 지급됩니다.<br>
+						자세한 내용은 유의사항을 꼭 확인하세요!
+					</p>
+					<a href="javascript:void(0);" class="btn btn_layclose" onclick="onoff('stampComplete');return false">확인</a>
+				</div>
+				<a class="btn layclose2" href="javascript:void(0);" onclick="onoff('stampComplete');return false"><em>팝업 닫기</em></a>
+			</div>
+		</div>
+		
+		<!-- 추가적립 이벤트 -->
+		<!-- 211012 : SR#49161 : [PC/M] 21년 11월 이벤트수정  -->
+		<div id="tab2" class="addsaving">
+			<!-- INNER -->
+			<div class="inner">
+				<div class="addsaving_tit"><img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_addsaving_tit.png" alt="받고 또 받고 추가적립, 구매할수록 커진다! 기본 적립 받고 추가적립 또 받고!"></div>
+
+				<div class="addsaving_top">
+					<div class="addsaving_top_slide swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_addsaving_top_img1.png" alt="기본적립0.3%+추가적립0.5%">
+							</div>
+							<div class="swiper-slide">
+								<img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_addsaving_top_img2.png" alt="기본적립1%+추가적립0.5%">
+							</div>
+							<div class="swiper-slide">
+								<img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_addsaving_top_img3.png" alt="기본적립1%+추가적립0.5%">
+							</div>
+						</div>
+					</div>
+				</div>
+				<script>
+					var swiper = new Swiper(".addsaving_top_slide", {
+						loop : true,
+						effect: "fade",
+						speed : 1500,
+						spaceBetween: 30,
+						loopAdditionalSlides : 1, 
+						centeredSlides: true,
+						autoplay: 2500,
+					});
+				</script>
+
+				<div class="addsaving_speech_balloon">
+					<img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_addsaving_speech_balloon.png" alt="남 : 필요한 카메라를 에누리에서 최저가에 구매했더니 기본적립 58,900점, 카테고리 추가적립까지 50,000점 받아서 총 적립금 108,900점을 받았어요. / 여 : 혼수로 필요한 식기세척기 구매후 추가적립까지 총 e머니 31,940점을 받고, 침대 구매 후에는 총 51,190점을 적립받았어요. 최종 적립금 83,130점이 적립됐어요!">
+				</div>
+				<div class="addsaving_noti">※ 위 사례 및 설명은 이해를 돕기 위한 예시로,<br>자세한 사항은 구매 및 이벤트 유의사항을 꼭 확인하세요!</div>
+				<div class="addsaving_step_img">
+					<img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_addsaving_step_img.png" alt="1.대상카테고리 확인하기 > 2.쇼핑몰 이동 후 구매하기 > 3.이벤트 신청하기 > 4.추가적립 받기!">
+				</div>
+				<div class="addsaving_btn_area">
+					<span class="btn btn_cate" onclick="onoff('categoryLayer2');">대상 카테고리</span>
+					<span class="btn btn_join" onclick="onoff('app_only'); return false;">신청하기</span>
+				</div>
+
+				<div class="info_list">
+					<ul>
+						<li><span>· 이벤트 기간 :</span> <span class="evt_period"></span></li>
+						<li><span>· 혜택 지급일 :</span> <span class="evt_date"></span></li>
+					</ul>
+				</div> 
+				<!-- 추가적립 카테고리 레이어 -->
+				<div class="notice catelayer" id="categoryLayer2" style="display:none;">
+					<div class="dim"></div>
+					<div class="notice_layer cate_layer_open">
+						<h4>추가적립 카테고리</h4>
+						<div class="cont">
+							<ul>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>마이크, 노래반주기</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+								<li><a href="#"><span>타이어, 스노우체인</span></a></li>
+								<li><a href="#"><span>휴대용, 블루투스스피커</span></a></li>
+								<li><a href="#"><span>욕실, 세면, 구강용품</span></a></li>
+							</ul>
+						</div>
+						<a class="btn layclose2" href="javascript:void(0);" onclick="onoff('categoryLayer2');return false"><em>팝업 닫기</em></a>
+					</div>
+				</div>
+			</div>			
+			<!-- //INNER -->
+			
+			<!-- 버튼 : 꼭 확인하세요 -->
+			<div class="com__evt_notice">
+				<div class="evt_notice--btn_area"><button class="btn__evt_notice" data-laypop-id="slidePop2"><span>꼭! 확인하세요</span></button></div> <!-- 열기 : 유의사항 열기 -->
+			</div>
+			<div id="slidePop2" class="evt_notice--slide">
+				<div class="evt_notice--inner"> <!-- .wide - 넓은 케이스 -->
+					<div class="evt_notice--head">유의사항</div>
+					<div class="evt_notice--cont">
+						<div class="evt_notice--continner">
+							<dl>								
+								<dt>이벤트 대상 및 혜택</dt>
+								<dd>
+									<ul>
+										<li>이벤트 대상 : 이벤트 기간 내 1만원 이상 대상 카테고리 상품 구매 후 받고 또 받고 추가적립 이벤트 신청 고객 (※ 대상 카테고리 확인)</li>
+										<li>이벤트 기간 : <span class="evt_period"></span></li>
+										<li>이벤트 혜택 : 카테고리별 최대 1% 추가 적립 (건당 최대 e머니 50,000점)
+										</li>
+										<li>혜택 지급일 : <span class="evt_date"></span><br/>
+											- 당첨자분들께 e머니 적립 후 Push 메시지로 당첨 알려 드립니다. (Push 알림 미동의자 제외)
+										</li>
+										<li>
+											<span class="stress">e머니 유효기간 : 적립일로부터 15일 (유효기간 만료 후 재적립 불가)</span><br/>
+											※ 적립된 e머니는 1,000여가지 인기 e쿠폰으로 교환 가능합니다.
+										</li>
+										<li>
+											대상 카테고리별 추가 적립률 및 최대 적립액<br/>
+											<table class="evt_noti_tb" style="width:630px;">
+												<colgroup>
+													<col width="40%"><col width="20%"><col width="20%"><col width="20%">
+												</colgroup>
+												<tbody>
+													<tr>
+														<th>카테고리명</th>
+														<th>기본<br>적립률</th>
+														<th>추가<br>적립률</th>
+														<th>추가적립 한도</th>
+													</tr>
+													<!-- 22년 7월 -->
+													<tr><td>세탁기</td><td>0.3%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>그래픽카드</td><td>0.8%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>미러리스</td><td>0.3%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>렌즈/필터</td><td>0.3%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>프로젝터/ 스크린</td><td>0.3%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>태블릿PC/전자책</td><td>0.3%</td><td>1.0%</td><td>50,000</td></tr>
+														<tr><td>TV</td><td>0.3%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>데스크탑,미니PC</td><td>0.8%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>노트북</td><td>0.8%</td><td>0.5%</td><td>50,000</td></tr>
+														<tr><td>에어컨/냉난방기</td><td>0.3%</td><td>0.5%</td><td>30,000</td></tr>
+														<tr><td>휴대폰/스마트폰</td><td>0.3%</td><td>1.0%</td><td>30,000</td></tr>
+														<tr><td>식기세척,살균기</td><td>0.3%</td><td>0.5%</td><td>30,000</td></tr>
+														<tr><td>스쿠터/오토바이</td><td>1.0%</td><td>0.5%</td><td>30,000</td></tr>
+														<tr><td>청소기</td><td>0.3%</td><td>0.5%</td><td>20,000</td></tr>
+														<tr><td>인덕션,가스레인지</td><td>0.3%</td><td>0.5%</td><td>20,000</td></tr>
+														<tr><td>골프클럽</td><td>1.0%</td><td>0.5%</td><td>20,000</td></tr>
+														<tr><td>헤어기기/두피관리기</td><td>0.3%</td><td>0.5%</td><td>10,000</td></tr>
+														<tr><td>CPU</td><td>0.8%</td><td>0.5%</td><td>10,000</td></tr>
+														<tr><td>게임기,게임SW</td><td>0.8%</td><td>0.5%</td><td>10,000</td></tr>
+														<tr><td>전기밥솥</td><td>0.3%</td><td>0.5%</td><td>10,000</td></tr>
+														<tr><td>안마/찜질용품</td><td>0.2%</td><td>0.5%</td><td>10,000</td></tr>
+														<tr><td>에어,오븐,전자레인지</td><td>0.3%</td><td>0.5%</td><td>5,000</td></tr>
+														<tr><td>램</td><td>0.8%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>선풍기/써큘레이터</td><td>0.3%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>공구/전동드릴</td><td>1.0%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>타이어</td><td>1.0%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>복합기</td><td>0.8%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>신발</td><td>0.3%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>캠핑</td><td>1.0%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>수영/물놀이용품</td><td>1.0%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>학생/사무용가구</td><td>0.3%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>건강측정/물리치료</td><td>0.2%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>복사용지/사무용지</td><td>0.8%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>홍삼/건강식품</td><td>1.0%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>분유/기저귀/물티슈</td><td>1.5%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>완구/블록/매트</td><td>1.5%</td><td>0.5%</td><td>3,000</td></tr>
+														<tr><td>바디케어</td><td>1.0%</td><td>0.5%</td><td>1,000</td></tr>
+														<tr><td>메이크업</td><td>1.0%</td><td>0.5%</td><td>1,000</td></tr>
+														<tr><td>시계/쥬얼리/잡화</td><td>0.3%</td><td>0.5%</td><td>1,000</td></tr>
+														<tr><td>생수/음료</td><td>1.0%</td><td>0.5%</td><td>1,000</td></tr>
+												</tbody>
+											</table>
+										</li>
+									</ul>
+								</dd>
+							</dl>
+							<dl>
+								<dt>이벤트 참여방법 및 유의사항</dt>
+								<dd>
+									<ul>
+										<li>참여방법 : 에누리 가격비교 모바일 앱 로그인 &rarr; 적립대상 쇼핑몰 이동 &rarr; <span class="stress">1만원 이상 대상 카테고리 구매</span> &rarr; 받고 또 받고 추가적립 이벤트 신청<br/>
+											<span class="noti">※ 이벤트 신청의 경우 PC 및 모바일 앱/웹에서 로그인 후에도 가능합니다. </span>
+										</li>
+										<li>적립대상 쇼핑몰 : G마켓, 옥션, 11번가, 인터파크, 티몬, 위메프, 쿠팡, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스), SK스토아, 홈플러스<br/>
+											<span class="stress">※ 구매 유의사항 및 구매적립 제외 카테고리는 이벤트 페이지 하단 'e머니 구매혜택' 유의사항을 꼭 확인하세요.</span>
+										</li>
+										<li>대상 카테고리는 에누리 가격비교 카테고리 기준 입니다.</li>
+										<li>추가 적립금이 100원 미만의 경우 혜택 지급되지 않습니다.</li>
+										<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 금액만 반영됩니다.</li>
+										<li>적립 대상 쇼핑몰에서 장바구니에 여러 상품을 담아 한 번에 결제하는 경우 구매건수는 1건이며 구매금액은 통합된 금액으로 이벤트 혜택 지급됩니다.</li>
+										<li>이벤트 기간 내 구매 건 중 <span class="evt_adj_date"></span>까지의 구매확정(배송완료)건 기준으로 이벤트 대상자 선정됩니다.</li>
+										<li>
+											<span class="stress">이벤트 대상 제외 :</span> 아래의 경우에는 이벤트 대상 및 혜택 지급에서 제외됩니다. <br/>
+											<ul class="sub">
+												<li>- 받고 또 받고 추가적립 이벤트 신청하지 않은 경우</li>
+												<li>- 실제 구매금액이 1만원 미만의 구매일 경우</li>
+												<li>- 구매적립 제외 카테고리 구매일 경우 </li>
+												<li>- 구매 후 취소/환불/교환/반품한 경우</li>
+												<li>- 동일한 본인인증으로 가입한 다수의 ID로 중복 참여한 경우</li>
+												<li>- 해외직구 상품 구매일 경우</li>
+												<li class="stress">- 동일한 이벤트 기간의 VIP맞춤적립 이벤트 혜택받은 경우 (중복 지급 불가)</li>
+											</ul>
+										</li>
+									</ul>
+								</dd>
+							</dl>
+							<dl>
+								<dt>공통 이벤트 유의사항</dt>
+								<dd>
+									<ul>
+										<li>부정 참여 시 본 이벤트 대상 제외 및 혜택 지급이 취소될 수 있습니다.</li>
+										<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+									</ul>
+								</dd>
+							</dl>
+						</div>
+					</div>
+					<div class="evt_notice--foot">						
+						<button class="btn__evt_confirm">확인</button> <!-- 닫기 : 유의사항 닫기 -->
+					</div>
+					
+				</div>
+			</div>
+			<!-- // -->
+		</div>
+		<!-- // 211012 : SR#49161 : [PC/M] 21년 11월 이벤트수정  -->
+		
+
+		<div id="tab3" class="section vipsave">
+			<div class="inner">
+				<div class="vipsave_tit"><img src="//img.enuri.info/images/event/2022/buy_stamp/mar/m_vipsave_tit.png" alt="vip맞춤적립, 고객의 행복을 늘 생각합니다. 더 많은 e머니 혜택으로 최대 100만점 추가적립"></div>
+
+				<div class="vipsave_detail">
+					<ul class="sector">
+						<li class="card-lt">디지털/가전 0.3% 적립</li>
+						<li class="card-rt">일반상품(모바일쿠폰,상품권 제외) 0.4% 적립</li>
+					</ul>
+
+					<div class="txtinfo">
+						<h3 class="tit"><strong>VIP 맞춤 적립</strong>이란?</h3>
+						<p class="txt">
+							<span>오직 VIP 고객님께만 제공하는 1:1 맞춤 적립 혜택!</span>
+							
+							<span>1천만원 이상 구매하신 상품을 카테고리별로 분류하여<br />
+							적립 혜택 비교 후 더 많은 e머니 혜택으로<br />
+							<em>최대 100만점 추가적립</em> 됩니다!</span>
+						</p>
+					</div>
+
+					<button type="button" class="btn_join">신청하기 - 신청 전 유의사항을 꼭 확인하세요!</button>
+				</div>
+			</div>
+			<div class="vipsave_notice"> 
+				<div class="info_list">
+					<ul>
+						<li><span>· 이벤트 기간 :</span> <span class="evt_period"></span></li>
+						<li><span>· 혜택 지급일 :</span> <span class="evt_date"></span></li>
+						<li class="color_red">※ 카테고리별 적립률 및 적립기준은 유의사항을 확인하세요.</li>
+					</ul>
+				</div>
+
+				<!-- 버튼 : 꼭 확인하세요  -->
+				<div class="com__evt_notice">
+					<div class="evt_notice--btn_area"><button class="btn__evt_notice" data-laypop-id="slidePop3"><span>꼭! 확인하세요</span></button></div> <!-- 열기 : 레이어 열기 -->
+				</div>
+				<div id="slidePop3" class="evt_notice--slide">
+					<div class="evt_notice--inner wide"> <!-- .wide - 넓은 케이스 -->
+						<div class="evt_notice--head">유의사항</div>
+						<div class="evt_notice--cont">
+							<div class="evt_notice--continner">
+								<dl>
+									<dt>이벤트 대상 및 혜택</dt>
+									<dd>						
+										<ul>
+											<li>이벤트 대상 : 이벤트 기간 내 1천만원 이상 구매 후 VIP맞춤적립 이벤트 신청한 고객</li>										
+											<li>이벤트 기간 : <span class="evt_period"></span></li>
+											<li>이벤트 혜택 : 카테고리별 차등 추가 적립 (최대 e머니 100만점)</li>
+											<li>혜택 지급일 : <span class="evt_date"></span><br>
+												- 당첨자분들께 e머니 적립 후 Push 메시지로 당첨 알려 드립니다. (Push 알림 미동의자 제외)
+											</li>
+											<li>
+												<span class="stress">e머니 유효기간 : 적립일로부터 15일 (유효기간 만료 후 재적립 불가)</span><br/>
+												<span class="noti">※ 적립된 e머니는 1,000여가지 인기 e쿠폰으로 교환 가능합니다.</span>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+								<dl>
+									<dt>이벤트 혜택 상세</dt>
+									<dd>						
+										<ul>
+											<li>[디지털/가전]<br>
+												대상 카테고리 : 컴퓨터, 부품, 영상/디카, 디지털, 주방가전, 생활가전, 계절가전<br>
+												추가 적립률 및 최대 적립액: 0.3%, 최대 e머니 100만점
+											</li>
+											<li>
+												[일반상품]<br>
+												대상 카테고리 : 위의 [디지털/가전] 대상 카테고리 외 모든 카테고리(<span class="stress">※ 모바일쿠폰, 상품권 카테고리 제외</span>)<br>
+												추가 적립률 및 최대 적립액: 0.4%, 최대 e머니 100만점
+											</li>
+											<li>1천만원 이상 구매하신 상품을 [디지털/가전], [일반상품] 카테고리별로 분류하여, 적립 혜택 비교 후 더 많은 e머니 혜택으로 무제한 추가적립 됩니다.</li>
+											<li>각 [디지털/가전], [일반상품] 분류별 카테고리 구매금액이 1천만원 미만일 경우(합산 금액이 1천만원 이상인 경우), 카테고리별 추가 적립률 차등 적용하여 적립해드립니다. </li>
+										</ul>
+									</dd>
+								</dl>
+								<dl>
+									<dt>이벤트 참여방법 및 유의사항</dt>
+									<dd>
+										<ul>
+											<li>참여방법 : 에누리 가격비교 모바일 앱 로그인 &rarr; 적립대상 쇼핑몰 이동 &rarr; <span class="stress">대상 카테고리 1천만원 이상 구매</span> &rarr; VIP맞춤적립 이벤트 신청<br>
+												※ 이벤트 신청의 경우 PC 및 모바일 앱/웹에서 로그인 후에도 가능합니다. 
+											</li>
+											<li>적립대상 쇼핑몰 : G마켓, 옥션, 11번가, 인터파크, 티몬, 위메프, 쿠팡, GS SHOP, CJmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스), SK스토아, 홈플러스<br>
+												<span class="stress">※ 구매 유의사항 및 구매적립 제외 카테고리는 이벤트 페이지 하단 'e머니 구매혜택' 유의사항을 꼭 확인하세요.</span></li>
+											<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 금액만 반영됩니다.</li>
+											<li>이벤트 기간 내 구매 건 중 <span class="evt_adj_date"></span>까지의 구매확정(배송완료)건 기준으로 이벤트 대상자 선정됩니다.</li>
+											<li>구매 후 취소하였으나 적립된 e머니가 있을 경우 해당 적립액은 혜택 지급 제외됩니다.</li>
+											<li>
+												<span class="stress">이벤트 대상 제외 :</span> 아래의 경우에는 이벤트 대상 및 혜택 지급에서 제외됩니다. <br/>
+												<ul class="sub">
+													<li>- VIP맞춤적립 이벤트 신청하지 않은 경우</li>
+													<li>- 실제 구매금액이 1천원 미만의 구매일 경우</li>
+													<li>- 구매적립 제외 카테고리 구매일 경우 </li>
+													<li>- 구매 후 취소/환불/교환/반품한 경우</li>
+													<li>- 동일한 본인인증으로 가입한 다수의 ID로 중복 참여한 경우</li>
+													<li>- 해외직구 상품 구매일 경우</li>
+												</ul>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+								<dl>
+									<dt>공통 이벤트 유의사항</dt>
+									<dd>
+										<ul>
+											<li>부정 참여 시 본 이벤트 대상 제외 및 혜택 지급이 취소될 수 있습니다. </li>
+											<li>본 이벤트는 당사 사정에 따라 사전고지 없이 변경 또는 종료될 수 있습니다.</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<!-- //210412 -->
+						</div>
+						<div class="evt_notice--foot">						
+							<button class="btn__evt_confirm">확인</button> <!-- 닫기 : 레이어 닫기 -->
+						</div>
+					</div>
+				</div>
+				<!-- // -->
+			</div>
+		</div>
+		<!-- 배너 -->
+		<div class="banner">
+			<a href="http://www.enuri.com/m/event2022/shoppingmanager1.jsp?freetoken=event#evt1
+			" title="클릭시 새창이 열립니다." target="blank">
+				<div class="banner-inner">
+					<span>다양한 쇼핑몰에 연결할수록 확률 UP!</span>
+					<p>쇼핑몰 연결하고 쇼핑하면 아이패드가 공짜!</p>
+				</div>
+			</a>
+		</div>
+		<!-- 더 강력해진 e머니 구매혜택 (최하단) -->
+		<div class="comm_e_benefit">
+			<div class="cont__inner clear">
+				<h3><img src="//img.enuri.info/images/event/2022/m_benefit_step_title.png" alt="더 강력해진 e머니 구매혜택, 현금같은 e머니 적립 받으세요"></h3>
+				<div class="e_benefit__cont">
+					<!-- 혜택 스와이퍼 -->
+					<div class="e_benefit_swiper">
+						<!-- 스와이프 컨테이너 -->
+						<div class="swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<img src="//img.enuri.info/images/event/2022/m_benefit_step1.png" alt="에누리 앱에서 로그인 후 적립대상 쇼핑몰 상품 구매하기 구매금액 최대 e머니 1.5% 적립 / ※ 본인인증 필수 ※ 적립대상 쇼핑몰, 적립 제외 카테고리 및 서비스는 유의사항을 꼭 확인하세요.">
+								</div>
+								<div class="swiper-slide">
+									<img src="//img.enuri.info/images/event/2022/m_benefit_step2.png" alt="상품 구매 했다면, 이벤트 참여하고 또 적립 받기 연간 누적 e머니 20억 적립! ※ 각 이벤트 페이지 유의사항을 꼭 확인하세요">
+								</div>
+								<div class="swiper-slide">
+									<img src="//img.enuri.info/images/event/2022/m_benefit_step3.png" alt="적립된 e머니는 인기 e쿠폰으로 교환하기 / 1,000여가지 실용적인 e쿠폰! ※ e머니 1,000점부터 교환가능! e클럽에서 확인하세요.">
+								</div>
+							</div>
+						</div>
+						<div class="swiper-pagination"></div>
+						<button type="button" class="arr arr-prev">이전</button>
+						<button type="button" class="arr arr-next">다음</button>
+						<!-- // -->
+					</div>
+					<!-- //브랜드 스와이퍼 -->
+				</div>
+				<!-- 유의사항 버튼 -->
+				<a href="#caution_benefit" class="btn_com_benefit_noti btn__evt_notice" data-laypop-id="caution_benefit">유의사항</a>	
+				<!-- // -->
+			</div>
+			<script> 
+				$(function(){
+					// e클럽 하단 > e머니 혜택 스와이퍼 생성                                  
+					var ebenefitSwiper = new Swiper(".e_benefit_swiper .swiper-container", {
+						loop : true,
+						slidesPerView : 1,
+						initialSlide: 0,
+						spaceBetween : 0,
+						nextButton : '.e_benefit_swiper .arr-next',
+						prevButton : '.e_benefit_swiper .arr-prev',
+						pagination : '.e_benefit_swiper .swiper-pagination',
+						paginationClickable:true
+					});
+				})
+			</script>
+		</div>
+		<div id="caution_benefit" class="evt_notice--slide">
+			<div class="evt_notice--inner">
+				<div class="evt_notice--head">유의사항</div>
+				<div class="evt_notice--cont">
+					<div class="evt_notice--continner">
+						<dl>
+							<dt>쇼핑 적립 기준 및 유의사항</dt>
+							<dd>
+								<ul>
+									<li>적립 방법 : 에누리 가격비교 모바일 앱 로그인 → 적립 대상 쇼핑몰 이동 → <span class="stress">1천 원 이상 구매</span> → 구매확정(배송 완료) 시 e머니 적립</li>
+									<li>적립 대상 쇼핑몰: G마켓, 옥션, 11번가, 인터파크, 티몬, 위메프, 쿠팡, GS SHOP, Cjmall, SSG (신세계몰, 신세계백화점, 이마트몰, 트레이더스), 에누리 해외직구관, SK스토아, 홈플러스<br>
+										<span class="stress">※ 티몬 및 에누리 해외직구관의 경우 PC 및 모바일 앱/웹에서 로그인 후 구매 시에도 적립 가능합니다.</span></li>
+									<li>쇼핑 적립 e머니는 구매일로부터 10 ~ 30일간 취소/환불/교환/반품 여부 확인 후 적립됩니다.</li>
+									<li><span class="stress">쇼핑 적립 e머니 유효기간 : 적립일로부터 60일 (유효기간 만료 후 재 적립 불가)</span><br>
+											※ 적립된 e머니는 1,000여가지 인기 e쿠폰으로 교환 가능합니다.</li>
+									<li>쇼핑 적립 e머니는 최소 10점(구매금액 1천 원 이상)부터 적립되며, 1원 단위 e머니는 적립되지 않습니다.</li>
+									<li>쇼핑 적립 e머니는 구매확정(구매일로부터 최대 30일) 시점부터 MY 에누리 적립내역 페이지에서 확인 가능합니다.</li>
+									<li>구매금액은 배송비, 설치비, 할인, 쇼핑몰 포인트 등 제외한 금액만 반영됩니다. </li>
+									<li>적립 대상 쇼핑몰에서 장바구니에 여러 상품을 담아 한 번에 결제하는 경우 구매건수는 1건이며 구매금액은 통합된 금액으로 e머니 적립됩니다.</li>
+								</ul>
+							</dd>
+
+							<dt>※ 카테고리별 구매적립률 상세</dt>
+							<dd>
+								<table class="evt_noti_tb" style="width:630px;">
+									<colgroup>
+										<col width="50%">
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>카테고리</th>
+											<th>적립률</th>
+										</tr>
+										<tr>
+											<td>유아,완구</td>
+											<td>1.5%</td>
+										</tr>
+										<tr>
+											<td>식품/스포츠,레저/자동차/화장품</td>
+											<td>1.0%</td>
+										</tr>
+										<tr>
+											<td>컴퓨터/도서/문구,사무/PC부품</td>
+											<td>0.8%</td>
+										</tr>
+										<tr>
+											<td>디지털/영상,디카</td>
+											<td rowspan="4">0.3%</td>
+										</tr>
+										<tr>
+											<td>가전(생활,주방,계절)</td>
+										</tr>
+										<tr>
+											<td>패션/잡화</td>
+										</tr>
+										<tr>
+											<td>가구,인테리어</td>
+										</tr>
+										<tr>
+											<td>생활,취미</td>
+											<td rowspan="2">0.2%</td>
+										</tr>
+										<tr>
+											<td>모바일쿠폰,상품권<br/>
+												<p class="stress">*특정 상품에 한하여 적립되오니<br/>적립가능 상품은 하단에서 확인해주세요.</p>
+											</td>													
+										</tr>
+									</tbody>
+								</table>
+							</dd>
+						</dl>
+						<dl>
+							<dt class="stress">[모바일쿠폰,상품권 ] 쇼핑적립 기준</dt>
+							<dd>									
+								<ul>
+									<!-- 201106 : 내용 수정 -->
+									<li>적립가능 쇼핑몰 : G마켓, 옥션, 인터파크</li>
+									<!-- // -->	
+									<li>적립가능 상품 (0.2% 적립) : 문화상품권(해피머니, 컬쳐랜드), 도서상품권, 백화점상품권, 영화예매권, 국민관광 상품권</li>
+									<li>백화점상품권 기준 상세
+										<ul class="sub">
+											<li>1) 상품명에 '백화점 상품권' 명시된 상품 또는 백화점에서만 사용할 수 있는 상품권만 적립가능</li>
+											<li>2) 복합상품권 적립불가 (삼성 상품권, 신세계 기프트카드, 롯데카드 상품권, 이랜드 상품권, AK플라자 상품권, 통합 상품권 등)<br />
+												- 복합 상품권의 경우 사용처에 백화점이 기재되어 있는 경우에도 적립불가
+											</li>
+											<li>3) 백화점 상품권으로 전환 가능한 포인트 구매 시 적립불가</li>
+										</ul>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>적립대상 쇼핑몰 중 구매적립 제외 카테고리 및 서비스</dt>
+							<dd>
+								<ul>
+									<li>에누리 가격비교에서 검색되지 않는 상품</li>
+									<li>모바일쿠폰,상품권 : 상품권, 지역쿠폰, e교환권, e쿠폰 등</li>
+									<li>쇼핑몰 제휴 서비스(배달, 티켓, 해외직구 등) 및 일부 카테고리</li>
+								</ul>
+								<ul class="sub">
+									<li>- G마켓 : 중고장터, 실시간 여행, 항공권, 도서/음반, 모바일쿠폰/상품권(일부 적립가능)</li>
+									<li>- 옥션 : 중고장터, 실시간 여행, 항공권, 모바일쿠폰/상품권(일부 적립가능)</li>
+									<li>- 11번가 : 여행/숙박/항공, 모바일쿠폰/상품권</li>
+									<li>- 인터파크 : 라이프 서비스(티켓, 투어, 아이마켓 등), 모바일쿠폰/상품권(일부 적립가능)</li>
+									<li>- 티몬 : 특가 판매 상품(슈퍼꿀딜, 슈퍼마트 등), 모바일쿠폰/상품권</li>
+									<li>- 위메프 : 모바일쿠폰/상품권</li>
+									<li>- GS SHOP, CJmall : 모바일쿠폰/상품권</li>
+									<li>- SSG : 도서/음반/문구/취미/여행, 모바일쿠폰/상품권</li>
+								</ul>
+							</dd>
+						</dl>
+						<dl>
+							<dt>공통 구매 유의사항</dt>
+							<dd>
+								<ul>
+									<li>아래의 경우에는 구매 확인 및 구매적립이 불가합니다.
+										<ul class="sub">
+											<li>- 에누리 가격비교 모바일 앱이 아닌 다른 모바일 앱을 통해서 장바구니 또는 관심상품 등록 후 에누리 가격비교 모바일 앱으로 결제만 한 경우</li>
+											<li>- 에누리 가격비교 미 로그인 후 구매한 경우</li>
+											<li>- 에누리 가격비교 PC 및 모바일 웹에서 구매한 경우 (※ 티몬 및 에누리 해외직구관은 PC 및 모바일 앱/웹 구매 시에도 가능)</li>
+										</ul>
+									</li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- // -->
+				<div class="evt_notice--foot">						
+					<button class="btn__evt_confirm">확인</button> <!-- 닫기 : 유의사항 닫기 -->
+				</div>
+			</div>
+		</div>
+		<!-- // 더 강력해진 e머니 구매혜택 (최하단)-->
+
+		<div class="benefit">
+			<!-- e머니 스페셜 적립 이벤트 -삭제함- 1월달 내용확인 -->
+
+			<!--스토어 인기브랜드-->
+			<div class="goos_zone">
+				<h3>스토어 인기브랜드</h3>
+				<ul class="bef_goos">
+					<li>
+						<a href="javascript:///" onclick="onoff('app_only2')"><img src="//img.enuri.info/images/event/2017/template/m_stbrand1.jpg" alt="" /></a>
+					</li>
+					<li>
+						<a href="javascript:///"><img src="//img.enuri.info/images/event/2017/template/m_stbrand2.jpg" alt="" /></a>
+					</li>
+					<li>
+						<a href="javascript:///"><img src="//img.enuri.info/images/event/2017/template/m_stbrand3.jpg" alt="" /></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--// 생활혜택 -->
+	</div>
+	
+	<span class="go_top"><a href="#">TOP</a></span>
+
+</div>
+
+<!-- layer-->
+<div class="layer_back" id="app_only" style="display:none;">
+	<div class="appLayer">
+		<h4>모바일 앱 전용 이벤트</h4>
+		<a href="javascript:///" class="close" onclick="onoff('app_only')">창닫기</a>
+		<p class="txt"><strong>가격비교 최초!</strong><em>현금 같은 혜택</em>을 제공하는<br />에누리앱을 설치합니다.</p>
+		<p class="btn_close"><button type="button">설치하기</button></p>
+	</div>
+</div>
+
+<!-- layer-->
+<div class="layer_back" id="app_only2" style="display:none;">
+	<div class="appLayer">
+		<h4>모바일 앱 전용 쇼핑혜택</h4>
+		<a href="javascript:///" class="close" onclick="onoff('app_only2')">창닫기</a>
+		<p class="txt">에누리앱(APP) 설치 후<br />e머니 적립내역 확인 및<br />다양한 e쿠폰 상품으로 교환할 수 있습니다.</p>
+		<p class="btn_close"><button type="button">설치하기</button></p>
+	</div>
+</div>
+
+<script>
+	// 유의사항 열기/닫기
+	$(function(){
+		var el = {
+			btnSlide: $(".btn__evt_notice"), // 열기 버튼
+			btnSlideClose : $(".btn__evt_confirm") // 닫기 버튼
+		}
+		el.btnSlide.click(function(){ // 슬라이드 유의사항 열기
+			$(this).toggleClass('on');
+			$("#"+$(this).attr("data-laypop-id")).slideToggle();
+		})
+		el.btnSlideClose.click(function(){ // 슬라이드 유의사항 닫기
+			var thisClosest = $(this).closest('.evt_notice--slide')
+			$(thisClosest).slideToggle();
+			$('html,body').stop(0).animate({scrollTop:$(thisClosest).siblings(".com__evt_notice").offset().top - 50});
+		})
+	})
+</script>
+
+<script type="text/javascript">
+	$(document).on('click', '.floattab__list ul > li > a', function(e) {
+		var $anchor = Math.ceil($($(this).attr('href')).offset().top);
+		$('html, body').stop().animate({scrollTop: $anchor -40}, 500);
+		e.preventDefault();
+	});
+
+	$(window).on('load', function(){
+		var $nav = $(".floattab__list"), // scroll tabs
+			$navTop = $('.floattab').offset().top,
+			$ares1 = Math.floor($("#tab1").offset().top - 40),
+			$ares2 = Math.floor($("#tab2").offset().top - 40),
+			$ares3 = Math.floor($("#tab3").offset().top - 40);
+
+		// 상단 탭 position 변경 및 버튼 활성화
+		$(window).scroll(function(){
+			var $currY = $(this).scrollTop() // 현재 scroll
+
+			if ($currY > $navTop) {
+				$nav.addClass("is-fixed");
+				
+				if($ares1 <= $currY && $ares2 > $currY){
+					$nav.find("a").removeClass("is-on");
+					$(".floattab__item--01").addClass("is-on");
+				}else if($ares2 <= $currY && $ares3 > $currY){
+					$nav.find("a").removeClass("is-on");
+					$(".floattab__item--02").addClass("is-on");
+				}else if($ares3 <= $currY){
+					$nav.find("a").removeClass("is-on");
+					$(".floattab__item--03").addClass("is-on");
+				}
+			} else {
+				$nav.removeClass("is-fixed");
+				$(".floattab__item").removeClass("is-on");
+			}
+		});
+	});
+
+	//레이어
+	function onoff(id) {
+		var mid=document.getElementById(id);
+		if(mid.style.display=='') {
+		mid.style.display='none';
+	}else{
+		mid.style.display='';
+		}
+	}
+	// 날짜 일괄적용
+	var evtPeriod = '2022년 7월 1일 ~ 2022년 7월 31일';  // 이벤트 기간
+	var evtDate = '2022년 9월 15일'// 지급일
+	var evtAdjDate = '2022년 8월 31일' // 구매마감
+	$('.evt_period').text(evtPeriod);
+	$('.evt_date').text(evtDate);
+	$('.evt_adj_date').text(evtAdjDate);
+</script>
+</body>
+</html>

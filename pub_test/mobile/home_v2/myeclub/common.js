@@ -55,9 +55,13 @@ $(function(){
         $(this).addClass("is-on").siblings().removeClass("is-on");
 
         $(".mye_cont").eq(_idx).show().siblings().hide();
-
-        var offsetLeft = parseInt($(".mye_tabs > ul > li.is-on").offset().left);
-        $(".mye_tabs > ul").stop().animate({scrollLeft:offsetLeft}) // 활성화 탭 위치로 이동
+        
+        // 탭 클릭 위치 이동
+        var liLeftPos = []; // LI 위치
+        $.each(myeTabsItem, function(idx, item){
+            liLeftPos[idx] = Math.floor($(item).offset().left); // LI 위치 추출
+        })
+        $(".mye_tabs > ul").stop().animate({scrollLeft: liLeftPos[_idx-1]}) // 활성화 탭 위치로 이동
 
         return false;
     })
@@ -148,4 +152,41 @@ $(function(){
             $(this).removeClass("is-chk").closest(".goods_bundle").find(".btn_chk").removeClass("is-chk");
         }
     })
+
+    /**************************************** 
+     * 페이지공통 하단탭바 작동 / 스크롤업다운체크 (현원추가)
+     * 각페이지별 알람여부알수없어 알람존재여부조건추가 _확인후 없으면 해당내용 제거
+    ****************************************/ 
+    var position = $(window).scrollTop(); 
+	var $mainwrap = $("#wrap");
+	var $footerTabbar = $(".f_tabbar"); 
+	var $footerTabbarController = $(".f_btn_page_contorler"); 
+	var posHeader = function(){
+		var $myScroll = $(window).scrollTop();
+		if ( $myScroll > 0 ){
+            if($('.pop_alarm').length < 1) {
+                $footerTabbarController.addClass('active');
+            }
+			if($myScroll > position) {
+				$mainwrap.addClass("scr_down").removeClass("scr_reset scr_up");
+				$footerTabbar.addClass("scr_down").removeClass("scr_reset scr_up");
+			} else {
+				$mainwrap.removeClass("scr_down scr_reset").addClass("scr_up");
+				$footerTabbar.removeClass("scr_down scr_reset").addClass("scr_up");
+			}
+		}else{
+			$mainwrap.removeClass('scr_down scr_up scr_reset')
+            if($('.pop_alarm').length < 1) {
+                $footerTabbarController.removeClass('active');
+            }
+		}
+		position = $myScroll;
+	};
+	$(window).load(posHeader).scroll(posHeader);
 })
+
+// 상단이동
+function totop() {
+    $('html, body').stop().animate({scrollTop: '0'}, 400);
+    return false;
+}

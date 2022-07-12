@@ -12,32 +12,6 @@
  * collapse 되지 않는 영역은 일부 HTML 컴퍼넌트, 위젯 혼용했습니다.
 *********************************/
 
-// 연관상품 가짜 데이터
-var gridData = [
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "액세서리", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)20W 정품 USB-C타입 고속 충전 아답터(MICRO)20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462},
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462},
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462}, 
-    {"mdNum": 55633173, "mdName": "20W 정품 USB-C타입 고속 충전 아답터(MICRO)", "mdViewName": "충전어댑터", "mdMake": "Apple", "cnt": 2462},
-]
-// 연관상품 넘버링(순서)
-var gridDataLength = gridData.length;
-for (var i = 0; i < gridDataLength; i++) {
-    var row = gridData[i];
-    row.num = i+1;
-}
 
 // 1000단위 컴마
 var numberFormat = function(value) {
@@ -86,19 +60,21 @@ var accGrid, registAccGrid, originGrid, registOriginGrid; // 각 그리드 변�
 // 액세서리 그리드 생성 (좌상단)
 accGrid = new dhx.Grid(null, {
     columns: [
-        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 100, },
-        {id: "mdName",      header: [{ text: "모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 500, 
+        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 70, },
+        {id: "mdName",      header: [{ text: "액세서리 모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 440, 
             template: function (text, row, col) { 
                 return "<p class=\"tx_tit_one\">"+text+"</p>"; 
             }, 
         },
-        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", },
+        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", width: 130, },
         {id: "mdMake",      header: [{ text: "제조사", align: "center" }], align: "left", editable: false, },
-        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, },
+        {id: "registDate",      header: [{ text: "등록일", align: "center" }], align: "left", editable: false, width:80 },
+        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, width:55, },
     ],
     headerRowHeight: 32,
     rowHeight: 32,
-    data: gridData,
+    //data: gridData,
+    //data: accData,
     editable: true,
     selection: "row",
     multiselection:true,
@@ -110,20 +86,21 @@ accGrid = new dhx.Grid(null, {
 // 등록액세서리 그리드 생성 (좌하단)
 registAccGrid = new dhx.Grid(null, {
     columns: [
-        {id: "num",         header: [{ text: "순서", align: "center" }], align: "center", width: 60, },
-        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 100, },
-        {id: "mdName",      header: [{ text: "모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 500, 
+        {id: "num",         header: [{ text: "순서", align: "center" }], align: "center", width: 40, },
+        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 70, },
+        {id: "mdName",      header: [{ text: "등록된 액세서리 모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 400, 
             template: function (text, row, col) { 
                 return "<p class=\"tx_tit_one\">"+text+"</p>"; 
             }, 
         },
-        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", editable: false, },
+        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", editable: false, width: 130,  },
         {id: "mdMake",      header: [{ text: "제조사", align: "center" }], align: "left", editable: false, },
-        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, },
+        {id: "registDate",      header: [{ text: "등록일", align: "center" }], align: "left", editable: false, width:80 },
+        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, width:55, },
     ],
     headerRowHeight: 32,
     rowHeight: 32,
-    data: gridData,
+    //data: gridData,
     editable: true,
     selection: "row",
     multiselection:false,
@@ -135,19 +112,20 @@ registAccGrid = new dhx.Grid(null, {
 // 본품 그리드 생성 (우상단)
 originGrid = new dhx.Grid(null, {
     columns: [
-        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 100, },
-        {id: "mdName",      header: [{ text: "모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 500, 
+        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 70, },
+        {id: "mdName",      header: [{ text: "본품 모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 440, 
             template: function (text, row, col) { 
                 return "<p class=\"tx_tit_one\">"+text+"</p>"; 
             }, 
         },
-        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", },
+        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", width: 130, },
         {id: "mdMake",      header: [{ text: "제조사", align: "center" }], align: "left", editable: false, },
-        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, },
+        {id: "registDate",      header: [{ text: "등록일", align: "center" }], align: "left", editable: false, width:80 },
+        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, width:55, },
     ],
     headerRowHeight: 32,
     rowHeight: 32,
-    data: gridData,
+    //data: gridData,
     editable: true,
     selection: "row",
     multiselection:false,
@@ -159,20 +137,21 @@ originGrid = new dhx.Grid(null, {
 // 등록본품 그리드 생성 (우하단)
 registOriginGrid = new dhx.Grid(null, {
     columns: [
-        {id: "num",         header: [{ text: "순서", align: "center" }], align: "center", width: 60, },
-        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 100, },
-        {id: "mdName",      header: [{ text: "모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 500, 
+        {id: "num",         header: [{ text: "순서", align: "center" }], align: "center", width: 40, },
+        {id: "mdNum",       header: [{ text: "모델번호", align: "center" }], align: "center", editable: false, width: 70, },
+        {id: "mdName",      header: [{ text: "등록된 본품 모델명", align: "center" }], align: "left", htmlEnable: true, editable: false, width: 400, 
             template: function (text, row, col) { 
                 return "<p class=\"tx_tit_one\">"+text+"</p>"; 
             }, 
         },
-        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", editable: false, },
+        {id: "mdViewName",  header: [{ text: "전시모델명", align: "center" }], align: "left", editable: false, width: 130, },
         {id: "mdMake",      header: [{ text: "제조사", align: "center" }], align: "left", editable: false, },
-        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, },
+        {id: "registDate",      header: [{ text: "등록일", align: "center" }], align: "left", editable: false, width:80 },
+        {id: "cnt",         header: [{ text: "CNT", align: "center" }], align: "right", editable: false, width:55, },
     ],
     headerRowHeight: 32,
     rowHeight: 32,
-    data: gridData,
+    //data: gridData,
     editable: true,
     selection: "row",
     multiselection:false,
@@ -180,6 +159,31 @@ registOriginGrid = new dhx.Grid(null, {
     resizable:true,
     tooltip: false,
 });
+
+// 가짜 데이터 호출
+const dataUrl = "./apps/js/data/relatedPrdcData.json"
+fetch(dataUrl)
+    .then((response) => response.json())
+    .then((gridData) => {        
+        accGrid.data.parse(gridData.accessory);
+        originGrid.data.parse(gridData.origin);  
+        registAccGrid.data.parse(gridData.registAcc);
+        registOriginGrid.data.parse(gridData.registOrigin);
+
+        numbering(gridData.registAcc);
+        numbering(gridData.registOrigin);
+    }
+)
+
+// 그리드 순서 매김
+var numbering = function(data){
+    var len = data.length;
+
+    for (var i = 0; i < len; i++) {
+        var row = data[i];
+        row.num = i+1;
+    }
+}
 
 /*********************************
  * 각 COL 헤더, 풋터 FORM 생성하여 attach 합니다.
@@ -207,15 +211,15 @@ var accHeader = new dhx.Form(null, {
                 },
                 {
                     value: "1",
-                    content: "분류1"
+                    content: "카테고리내"
                 },,
                 {
                     value: "2",
-                    content: "분류2"
+                    content: "키워드 포함"
                 },
                 {
                     value: "3",
-                    content: "분류3"
+                    content: "키워드 제외"
                 }
             ],
             css: "control-comm sel-sort"
@@ -248,11 +252,17 @@ var accHeader = new dhx.Form(null, {
             id: "accResult",
             width: true,
             type: "text",
-            label: "액세서리 검색결과 : ",
+            label: "검색결과 : ",
             width: "content",
             labelPosition: "left",
             value: resultCnt+ "건", // 건수 넣어주세요
             css: "control-comm tx_cnt"
+        },
+        {
+            id: "btnSave",
+            type: "button",
+            text:"전시모델명 저장",
+            css: "control-comm btn-related--save"
         }
     ]
 })
@@ -273,7 +283,6 @@ var accFooter = new dhx.Form(null, {
         }
     ]
 })
-
 // 등록된 액세서리 상단
 var registAccHeader = new dhx.Form(null, {
     css: "controller_related",
@@ -284,15 +293,20 @@ var registAccHeader = new dhx.Form(null, {
             id: "registAccResult",
             width: true,
             type: "text",
-            label: "등록된 액세서리 리스트 : ",
+            label: "등록된 액세서리 : ",
             width: "content",
             labelPosition: "left",
             value: resultCnt+ "건", // 건수 넣어주세요
             css: "control-comm tx_cnt"
+        },
+        {
+            id: "btnSave",
+            type: "button",
+            text:"순서 저장",
+            css: "control-comm btn-related--save"
         }
     ]
 })
-
 // 본품 상단부
 var originHeader = new dhx.Form(null, {
     css: "controller_related",
@@ -315,15 +329,15 @@ var originHeader = new dhx.Form(null, {
                 },
                 {
                     value: "1",
-                    content: "분류1"
+                    content: "카테고리내"
                 },,
                 {
                     value: "2",
-                    content: "분류2"
+                    content: "키워드 포함"
                 },
                 {
                     value: "3",
-                    content: "분류3"
+                    content: "키워드 제외"
                 }
             ],
             css: "control-comm sel-sort"
@@ -364,11 +378,17 @@ var originHeader = new dhx.Form(null, {
             id: "accResult",
             width: true,
             type: "text",
-            label: "본품 검색결과 : ",
+            label: "검색결과 : ",
             width: "content",
             labelPosition: "left",
             value: resultCnt+ "건", // 건수 넣어주세요
             css: "control-comm tx_cnt"
+        },
+        {
+            id: "btnSave",
+            type: "button",
+            text:"전시모델명 저장",
+            css: "control-comm btn-related--save"
         }
     ]
 })
@@ -387,7 +407,8 @@ var originFooter = new dhx.Form(null, {
                     label: "액세서리 :",
                     labelPosition: "left",
                     labelWidth: "60px",
-                    required: true,
+                    //required: true,
+                    disabled: true,
                     placeholder: "모델번호",
                     css: "control-comm ipt-mdnum"
                 },
@@ -397,7 +418,8 @@ var originFooter = new dhx.Form(null, {
                     type: "input",
                     labelPosition: "left",
                     labelWidth:0,
-                    required: true,
+                    //required: true,
+                    disabled: true,
                     placeholder: "모델명",
                     css: "control-comm ipt-mdname"
                 },
@@ -424,7 +446,8 @@ var originFooter = new dhx.Form(null, {
                     label: "본품 :",
                     labelPosition: "left",
                     labelWidth: "60px",
-                    required: true,
+                    //required: true,
+                    disabled: true,
                     placeholder: "모델번호",
                     css: "control-comm ipt-mdnum"
                 },
@@ -434,7 +457,8 @@ var originFooter = new dhx.Form(null, {
                     type: "input",
                     labelPosition: "left",
                     labelWidth:0,
-                    required: true,
+                    //required: true,
+                    disabled: true,
                     placeholder: "모델명",
                     css: "control-comm ipt-mdname"
                 },
@@ -465,11 +489,17 @@ var registOriginHeader = new dhx.Form(null, {
             id: "registOriginResult",
             width: true,
             type: "text",
-            label: "등록된 본품 리스트 : ",
+            label: "등록된 본품 : ",
             width: "content",
             labelPosition: "left",
             value: resultCnt+ "건", // 건수 넣어주세요
             css: "control-comm tx_cnt"
+        },
+        {
+            id: "btnSave",
+            type: "button",
+            text:"순서 저장",
+            css: "control-comm btn-related--save"
         }
     ]
 })
@@ -490,7 +520,7 @@ var relatedFooter = new dhx.Form(null, {
                     labelPosition: "left",
                     labelWidth: "content",
                     required: true,
-                    placeholder: "카탈로그 번호 입력",
+                    placeholder: "본품 모델번호 입력",
                     css: "control-comm ipt-srch"
                 },
                 {
@@ -516,7 +546,6 @@ var relatedFooter = new dhx.Form(null, {
                     id: "groupModelCopyNum",
                     name: "groupModelCopyNum",
                     type: "input",
-                    disabled: true,
                     label: "",
                     labelPosition: "left",
                     labelWidth: "content",
@@ -564,27 +593,35 @@ var topSaveBtn = new dhx.Form(null, {
     padding: 0,
     width: "100%",
     rows: [
-        {
+        /* {
             id: "saveAcc",
             type: "button",
-            text:"◀◀ 저장",
+            text:"◀전시모델명 저장",
             css: "control-comm btn-save"
         },
         {
             id: "saveOrigin",
             type: "button",
-            text:"▷▷ 저장",
+            text:"전시모델명 저장▷",
             css: "control-comm btn-save"
-        },
+        }, */
+        {
+            // X 교차 이미지 
+            id: "a",
+            type: "text",
+            value:"X",
+            width: "100%",
+            css: "img_cross"
+        }
     ]
-})
+})/* 
 topSaveBtn.getItem("saveAcc").events.on("click", function(evt){
     alert("액세서리 저장")
 })
 topSaveBtn.getItem("saveOrigin").events.on("click", function(evt){
     alert("본품 저장")
-})
-
+}) */
+/* 
 var bottomSaveBtn = new dhx.Form(null, {
     css: "btn_save_box",
     padding: 0,
@@ -593,13 +630,13 @@ var bottomSaveBtn = new dhx.Form(null, {
         {
             id: "saveRegistAcc",
             type: "button",
-            text:"◀◀ 저장",
+            text:"◀순서 저장",
             css: "control-comm btn-save"
         },
         {
             id: "saveRegistOrigin",
             type: "button",
-            text:"▷▷ 저장",
+            text:"순서 저장▷",
             css: "control-comm btn-save"
         },
     ]
@@ -609,7 +646,7 @@ bottomSaveBtn.getItem("saveRegistAcc").events.on("click", function(evt){
 })
 bottomSaveBtn.getItem("saveRegistOrigin").events.on("click", function(evt){
     alert("등록된 본품 저장")
-})
+}) */
 
 /*********************************
  * 전체 레이아웃 생성
@@ -650,9 +687,14 @@ var config = {
                                     height: "44px"
                                 },
                                 {
+                                    // 액세서리 : 키워드 영역
+                                    id:"accKeyword",
+                                    height: "44px"
+                                },
+                                {
                                     // 액세서리 GRID
                                     id: "accGrid",
-                                    height:"calc(100% - 124px)"
+                                    height:"calc(100% - 168px)"
                                 },
                                 {
                                     // 선택한 모델 텍스트
@@ -690,12 +732,12 @@ var config = {
                     rows:[
                         {
                             id: "topSaveBtn",
-                            height:"55%",
-                        },
+                            height:"100%",
+                        }/* ,
                         {
                             id: "bottomSaveBtn",
                             height:"45%",
-                        }
+                        } */
                     ]
                 },
                 {
@@ -717,9 +759,14 @@ var config = {
                                     height: "44px"
                                 },
                                 {
+                                    // 본품 : 키워드 영역
+                                    id:"originKeyword",
+                                    height: "44px"
+                                },
+                                {
                                     // 본품 GRID
                                     id: "originGrid",
-                                    height:"calc(100% - 124px)"
+                                    height:"calc(100% - 168px)"
                                 },
                                 {
                                     // 선택한 모델&추가,삭제
@@ -766,6 +813,34 @@ var config = {
     ]
 };
 
+/************************************************************************************************** 2022.06.15 액세서리,본품 상단 검색 키워드 추가 */
+/**************************************************************************************************  레이아웃 생성 전 위젯 생성해 주세요. */
+// 액세서리 검색 키워드 추가 TABBAR
+var accKeyword = new dhx.Tabbar(null, {
+    css: "dhx_widget--bordered",
+    mode: "top",
+    tabAutoWidth: false,
+    closable: true,
+    noContent: true,
+    /* views: [
+        { tab: "-제외키워드", id:"keyword-1" },
+    ], */
+    css: "keyword_list"
+});
+// 본품 검색 키워드 추가 TABBAR
+var originKeyword = new dhx.Tabbar(null, {
+    css: "dhx_widget--bordered",
+    mode: "top",
+    tabAutoWidth: false,
+    closable: true,
+    noContent: true,
+    /* views: [
+        { tab: "-제외키워드", id:"keyword-1" },
+    ], */
+    css: "keyword_list"
+});
+
+
 
 /*********************************
  * 생성된 레이아웃에 ID별로 attach합니다.
@@ -779,14 +854,111 @@ var layout = new dhx.Layout("relatedPrdcLayout", config);
 
     layout.getCell("accHeader").attach(accHeader); // 액세서리 상단
     layout.getCell("accFooter").attach(accFooter); // 액세서리 하단
+    layout.getCell("accKeyword").attach(accKeyword); // 액세서리 키워드 히스토리
     layout.getCell("registAccHeader").attach(registAccHeader); // 등록된 액세서리 상단
     layout.getCell("originHeader").attach(originHeader); // 본품 상단
     layout.getCell("originFooter").attach(originFooter); // 본품 하단
+    layout.getCell("originKeyword").attach(originKeyword); // 본품 키워드 히스토리
     layout.getCell("registOriginHeader").attach(registOriginHeader); // 등록된 본품 상단
 
-    layout.getCell("relatedFooter").attach(relatedFooter); // 연관상품 페이지 하단
-
-    layout.getCell("topSaveBtn").attach(topSaveBtn); // 가운데 저장 버튼 상단
-    layout.getCell("bottomSaveBtn").attach(bottomSaveBtn); // 가운데 저장 버튼 하단
+    layout.getCell("relatedFooter").attach(relatedFooter); // 연관상품 페이지 하단    
     
-   
+    layout.getCell("topSaveBtn").attach(topSaveBtn); // 가운데 저장 버튼 상단
+    /*layout.getCell("bottomSaveBtn").attach(bottomSaveBtn); // 가운데 저장 버튼 하단
+    */
+
+
+/************************************************************************************************** 2022.06.15 액세서리,본품 상단 검색 키워드 추가 */
+/************************************************************************************************** 레이아웃 생성 후 아래 액션 추가해 주세요.  */
+/********************************* 
+ * 참고 : 액세서리/본품 검색 키워드 추가 기능입니다.
+ * 폼 위젯 이벤트 : 참고(https://docs.dhtmlx.com/suite/form/api/input/input_change_event/)
+*********************************/
+
+/************* 액세서리 키워드 추가 *************/
+var accKeywordVal = 0; // 셀렉트 초기값
+accHeader.getItem("accSelect").events.on("change", function(val){
+    accKeywordVal = val; // 셀렉트 선택한 값 
+})
+accHeader.getItem("accSubmit").events.on("click", function(e) {
+    accSubmit();
+})
+function accSubmit(){ // 검색 키워드 서브밋
+    var srchVal = accHeader.getItem("accInput").getValue();
+    if(srchVal != ""){
+        if(accKeywordVal == 2){
+            addAccKeyword("+"+srchVal); // 키워드 포함
+        }else if(accKeywordVal == 3){
+            addAccKeyword("-"+srchVal); // 키워드 제외
+        }else{ 
+            addAccKeyword(srchVal); // 전체선택
+        }
+    }else{
+        accHeader.getItem("accInput").focus(); // 포커싱
+    }
+    accHeader.getItem("accInput").clear(); // 검색 후 초기화
+}
+// EP상품 키워드 추가
+function addAccKeyword(keyword) { 
+    accKeyword.addTab({ tab: keyword }, -1); // 뒤로 추가(-1), 앞으로 추가(0)
+
+    accHeader.getItem("accInput").focus(); // 포커싱
+};
+/* // */
+
+/************* 본품 키워드 추가 *************/
+var originKeywordVal = 0; // 셀렉트 초기값
+originHeader.getItem("originSelect").events.on("change", function(val){
+    originKeywordVal = val; // 셀렉트 선택한 값 
+})
+originHeader.getItem("originSubmit").events.on("click", function(e) {
+    originSubmit();
+})
+function originSubmit(){ // 검색 키워드 서브밋
+    var srchVal = originHeader.getItem("originInput").getValue();
+    if(srchVal != ""){
+        if(originKeywordVal == 2){
+            addOriginKeyword("+"+srchVal); // 키워드 포함
+        }else if(originKeywordVal == 3){
+            addOriginKeyword("-"+srchVal); // 키워드 제외
+        }else{ 
+            addOriginKeyword(srchVal); // 전체선택
+        }
+    }else{
+        originHeader.getItem("originInput").focus(); // 포커싱
+    }
+    originHeader.getItem("originInput").clear(); // 검색 후 초기화
+}
+// EP상품 키워드 추가
+function addOriginKeyword(keyword) { 
+    originKeyword.addTab({ tab: keyword }, -1); // 뒤로 추가(-1), 앞으로 추가(0)
+
+    originHeader.getItem("originInput").focus(); // 포커싱
+};
+/* // */
+
+
+$(function(){    
+    // 액세서리 인풋 검색어 입력 후
+    $("#accInput").keyup(function(e){
+        if(e.key === 'Enter' || e.keyCode === 13){
+            accSubmit();
+        }
+    })
+
+    // 본품 인풋 검색어 입력 후
+    $("#originInput").keyup(function(e){
+        if(e.key === 'Enter' || e.keyCode === 13){
+            originSubmit();
+        }
+    })
+
+    // 추가된 키워드 클릭(활성/비활성 토글)
+    $(".keyword_list").on("click", ".dhx_tabbar-tab", function(e){
+        if(!$(this).hasClass("is-disabled")){ // 비활성
+            $(this).addClass("is-disabled");
+        }else{ // 활성
+            $(this).removeClass("is-disabled");
+        }
+    })
+})
