@@ -1,3 +1,5 @@
+var logInit_DICLAYER_AD = false; // 광고 로그셋팅
+
 function loadThumNail(modelno,idx) {
     var thumNailPromise = new Promise(function(resolve,reject){
         $.ajax({
@@ -480,12 +482,8 @@ function drawlistTermdic(json){
             html += "             </div>";
             html += "          </div>";
             html += "     </div>";
-            html += "     <div class=\"lay-dic__ad\">";
-            html += "         <div class=\"lay-dic__ad--inner\">";
-            html += "            <script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\" ></script>";
-            html += "            <ins class=\"adsbygoogle\" style=\"display:inline-block;width:698px;height:86px\" data-ad-client=\"pub-6805902076937187\" data-ad-slot=\"1731444605\"></ins>";
-            html += "         </div>";
-            html += "     </div>";
+            // 			  <!-- Coupang AD -->
+            html += "     <div class=\"lay-dic__ad\"></div>";
             html += "</div>";
             html += "<button class=\"lay-comm__btn--close comm__sprite\" onclick=\"$(this).parent().hide()\">레이어 닫기</button>";
         }
@@ -495,9 +493,89 @@ function drawlistTermdic(json){
         if(diclistObj.find(".dic-list__item.is--on").length > 0){
             diclistObj.scrollTop(diclistObj.find(".dic-list__item.is--on").offset().top-diclistObj.offset().top);
         }
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        
+        // 쿠팡 광고 호출
+        call_DICLAYER_AD();
     }
 }
+
+// 쿠팡 광고 불러오기
+function call_DICLAYER_AD() {
+	var adListType = "";
+	if(listType=="list") {
+		adListType = "lp";
+	} else if(listType=="search") {
+		adListType = "srp";
+	} else if(listType=="vip") {
+		adListType = "vip";
+	}
+	
+	var paramString = "type="+adListType;
+	if(adListType=="lp") {
+		paramString += "&cate="+param_cate;
+	} else if(adListType=="srp") {
+		paramString += "&keyword="+encodeURIComponent(param_keyword);
+	} else if(adListType=="vip") {
+		if(typeof gModelData != "undefined") {
+			paramString += "&cate="+gModelData.gCate4;
+		}
+	}
+	paramString += "&size=15";
+	
+	var adObj = $.ajax({
+		type:"GET",
+		url: "/wide/api/ad/cpcCoupang.jsp",
+		data: paramString,
+		dataType: "JSON"
+	});
+	
+	// 광고 그리기
+	adObj.then(draw_DICLAYER_AD);
+	// 광고 이벤트리스너
+	adObj.then(eventListner_DICLAYER_AD);
+}
+
+// 광고 그리기
+function draw_DICLAYER_AD(dataObj) {
+	var Obj = $(document).find("#TERMDICLAYER .lay-dic__ad");
+	if(Obj.length>0 && dataObj && dataObj.success && dataObj.data.length>0) {
+		
+		var adHtml = [];
+		var adIdx = 0;
+		
+		var item = dataObj.data[0];
+		var vIsRocket = typeof item.isRocket == "undefined" ? false : item.isRocket;
+		
+		adHtml[adIdx++] = "<div class=\"ad__coupang_dic\">";
+		adHtml[adIdx++] = "	<a href=\""+item.landingUrl+"\" target=\"_blank\" rel=\"noopener noreferrer\" data-type=\"adDic\">";
+		adHtml[adIdx++] = "		<div class=\"ad_goods_thumbnail\"><img src=\""+item.productImage+"\" alt=\""+item.productName+"\" width=\"78\" height=\"78\"></div>";
+		adHtml[adIdx++] = "		<div class=\"ad_goods_name\">"+item.productName+"</div>";
+		adHtml[adIdx++] = "		<div class=\"ad_goods_price\"><em>"+item.productPrice.format()+"</em>원</div>";
+		adHtml[adIdx++] = "		<div class=\"ad_goods_logo\">";
+		adHtml[adIdx++] = "			<img src=\"//img.enuri.info/images/sample/sample_logo_coupang@h32.png\" width=\"56\" height=\"16\">";
+		if(vIsRocket) {
+			adHtml[adIdx++] = "		<img src=\"//img.enuri.info/images/sample/sample_logo_coupang_rocket@h32.png\" width=\"64\" height=\"16\">";
+		}
+		adHtml[adIdx++] = "		</div>";
+		adHtml[adIdx++] = "	</a>";
+		adHtml[adIdx++] = "	<div class=\"ad__label\">";
+		adHtml[adIdx++] = "		<img src=\"//img.enuri.info/images/rev/label_ad@32x22.png\" width=\"16\" height=\"11\">";
+		adHtml[adIdx++] = "	</div>";
+		adHtml[adIdx++] = "</div>";
+		Obj.html(adHtml.join(""));
+	}
+}
+
+// 광고 이벤트리스너
+function eventListner_DICLAYER_AD() {
+	if(!logInit_DICLAYER_AD) {
+		$(document).on("click", "a[data-type=adDic]", function() {
+			insertLogLSV(27132);
+		});
+		logInit_DICLAYER_AD = true;
+	}
+}
+
 function drawTermdic(json){
     var html = [];
     if(json.success && json.total > 0){

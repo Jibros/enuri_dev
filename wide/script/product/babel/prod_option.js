@@ -332,7 +332,7 @@
                 $("#prod_option").addClass("inc-unitprice");
             }
             if (optionViewType == "1") {
-                html += "<p class=\"toggle__chk " + (param.delivery != "" ? "is-on" : "is-off") + " \">\n                        <span class=\"switch\"><span class=\"btn\"><em>on/off</em></span><strong>\uBC30\uC1A1\uBE44 \uD3EC\uD568 \uCD5C\uC800\uAC00</strong></span>\n                    </p>\n                    <div class=\"lay-tooltip\">\n                        <div class=\"lay__inner\">\n                            <p class=\"tx_msg\"><em>TIP</em><strong>\uBC30\uC1A1\uBE44\uD3EC\uD568\uCD5C\uC800\uAC00</strong>\uB85C <strong>\uB2E8\uC704\uB2F9 \uAC00\uACA9\uC744 \uBE44\uAD50</strong>\uD574 \uBCFC \uC218 \uC788\uC2B5\uB2C8\uB2E4.</p>\n                        </div>\n                    </div>\n                    <ul class=\"pricecomp__list is-sort\">\n                        <li>\n                            <span class=\"col col-1\"><strong>\uAD6C\uB9E4\uC635\uC158</strong></span>";
+                html += "<p class=\"toggle__chk " + (param.delivery === "Y" ? "is-on" : "is-off") + " \">\n                        <span class=\"switch\"><span class=\"btn\"><em>on/off</em></span><strong>\uBC30\uC1A1\uBE44 \uD3EC\uD568 \uCD5C\uC800\uAC00</strong></span>\n                    </p>\n                    <div class=\"lay-tooltip\">\n                        <div class=\"lay__inner\">\n                            <p class=\"tx_msg\"><em>TIP</em><strong>\uBC30\uC1A1\uBE44\uD3EC\uD568\uCD5C\uC800\uAC00</strong>\uB85C <strong>\uB2E8\uC704\uB2F9 \uAC00\uACA9\uC744 \uBE44\uAD50</strong>\uD574 \uBCFC \uC218 \uC788\uC2B5\uB2C8\uB2E4.</p>\n                        </div>\n                    </div>\n                    <ul class=\"pricecomp__list is-sort\">\n                        <li>\n                            <span class=\"col col-1\"><strong>\uAD6C\uB9E4\uC635\uC158</strong></span>";
                 if (optionUnitType) {
                     html += "<span class=\"col col-2\" data-sort=\"asc\"><button type=\"button\" class=\"btn btn--sort\">\uBC30\uC1A1\uBE44</button></span>\n                            <span class=\"col col-3\" data-sort=\"asc\"><button type=\"button\" class=\"btn btn--sort\">" + optionUnit + "\uB2F9 \uAC00\uACA9</button></span>";
                 } else {
@@ -381,7 +381,7 @@
                 });
                 html += "</ul>  \n            " + (optionCnt > 5 ? "<button class=\"adv-search__btn--more\">\uB354\uBCF4\uAE30<i class=\"ico-adv-arr-down lp__sprite\"></i></button>\n                        <button class=\"adv-search__btn--close\">\uB2EB\uAE30<i class=\"ico-adv-arr-up lp__sprite\"></i></button>\n                " : "");
             } else {
-                html += "<div class=\"pricecomp__head\">\n                        <ul class=\"pricecomp__sort\">\n                            <li data-sort=\"price\" " + (param.unit == "" ? "class= is-on" : "") + "><button type=\"button\" class=\"btn\">\uCD5C\uC800\uAC00\uC21C</button></li>\n                            " + (optionUnitType ? "<li data-sort=\"unit\" " + (param.unit != "" ? "class= is-on" : "") + "><button type=\"button\" class=\"btn\">\uB2E8\uC704\uB2F9 \uD658\uC0B0\uAC00\uC21C</button></li>" : "") + "\n                        </ul>\n                        <p class=\"toggle__chk " + (param.delivery != "" ? "is-on" : "is-off") + "\">\n                            <span class=\"switch\">\n                                <span class=\"btn\"><em>on/off</em></span>\n                                <strong>\uBC30\uC1A1\uBE44 \uD3EC\uD568</strong>\n                            </span>\n                        </p>\n                    </div>";
+                html += "<div class=\"pricecomp__head\">\n                        <div class=\"sort_block\">\n                            <div class=\"sort_first\">\n                                <label class=\"tx_tit\">\n                                    <input type=\"radio\" name=\"pricecomp_sort_list_type1\" data-sort=\"price\" " + (param.unit !== "Y" ? "checked" : "") + ">\n                                    <span class=\"sort_name\">\uCD5C\uC800\uAC00\uC21C</span>\n                                </label>\n                                " + (optionUnitType ? "<label class=\"tx_tit\">\n                                    <input type=\"radio\" name=\"pricecomp_sort_list_type1\" data-sort=\"unit\" " + (param.unit === "Y" ? "checked" : "") + ">\n                                    <span class=\"sort_name\">\uB2E8\uC704\uB2F9 \uD658\uC0B0\uAC00\uC21C</span>\n                                </label>" : "") + "\n                            </div>\n                            <div class=\"sort_chk\">\n                                <div>\n                                    <input type=\"checkbox\" id=\"deliveryInc\" class=\"input--checkbox-item\" data-sort=\"delivery\" " + (param.delivery === "Y" ? "checked" : "") + ">\n                                    <label for=\"deliveryInc\">\uBC30\uC1A1\uBE44 \uD3EC\uD568</label>\n                                </div>\n                            </div>                                           \n                        </div>\n                    </div>";
                 html += "<ul class=\"compare_price__list border-box\">";
                 $.each(optionList, function (index, listData) {
                     var unit_per_price = listData.unit_per_price;
@@ -528,39 +528,33 @@
             $(".pricecomp .adv-search__btn--close").on("click", function () {
                 $(this).closest(".pricecomp").removeClass("is-unfold");
             });
-            $("#prod_option").find(".toggle__chk").on("click", function () {
-                insertLog(14492);
+            $("#prod_option").find("input").on("click", function () {
+                var chkDelivery = "";
+                var chkUnit = "";
                 paramHandler.set("callcnt", 1);
-                if ($(this).hasClass("is-off")) {
-                    $(this).removeClass("is-off").addClass("is-on");
+                if ($(this).data("sort") === "delivery") {
+                    //1단토글insertLog(14492);
+                    insertLogLSV(26899, "" + gModelData.gCategory, "" + gModelData.gModelno);
 
-                    paramHandler.set("delivery", "Y");
-                    prodPriceComp.paramHandler.set("sort", "delivery");
-                    prodShopPrice.paramHandler.set("delivery", "Y");
-                } else if ($(this).hasClass("is-disabled")) {
-                    return false;
+                    if ($(this).prop("checked")) {
+                        chkDelivery = "Y";
+                    } else {
+                        chkDelivery = "N";
+                    }
+
+                    paramHandler.set("delivery", chkDelivery);
+                    prodPriceComp.paramHandler.set("delivery", chkDelivery);
+                    prodShopPrice.paramHandler.set("delivery", chkDelivery);
                 } else {
-                    $(this).removeClass("is-on").addClass("is-off");
-                    paramHandler.set("delivery", "");
-                    prodPriceComp.paramHandler.set("sort", "price");
-                    prodShopPrice.paramHandler.set("delivery", "");
-                }
-            });
-
-            $("#prod_option").find(".pricecomp__head .pricecomp__sort li").off().on("click", function () {
-
-                if ($(this).hasClass("is-on")) {
-                    return false;
-                } else {
-                    if ($(this).data("sort") == "unit") {
+                    if ($(this).data("sort") === "unit") {
                         insertLogLSV(26278, "" + gModelData.gCategory, "" + gModelData.gModelno);
-                        paramHandler.set("unit", "Y");
+                        chkUnit = "Y";
                     } else {
                         insertLogLSV(26277, "" + gModelData.gCategory, "" + gModelData.gModelno);
-                        paramHandler.set("unit", "");
+                        chkUnit = "N";
                     }
-                    $(this).siblings().removeClass("is-on");
-                    $(this).addClass("is-on");
+
+                    paramHandler.set("unit", chkUnit);
                 }
             });
             $("#prod_option").find(".pricecomp__list li, .compare_price__list li").unbind().click(function (e) {

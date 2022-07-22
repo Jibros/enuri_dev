@@ -110,13 +110,12 @@ var config = {
  * 생성된 레이아웃에 ID별로 attach합니다.
 *********************************/
 var layout = new dhx.Layout("layout", config);
+    
+    layout.getCell("sidebar").attach(sidebar)
 
     layout.getCell("wrapSearch").attach(header.wrapSrchControll); // 상단 통합검색
     layout.getCell("wrapSearchKeyword").attach(header.wrapKeywordAdd); // 상단 통합검색 : 키워드 영역 */
 
-    layout.getCell("sidebar").attach(sidebar)
     layout.getCell("contents").attach(contentLayout)
 
-// 페이지 명 => 카테고리 분기 
-var pageName = 'mainSrch';
-export { layout, pageName } // 사이드바 콜랩스를 위한 layout 내보내기
+export { layout } // 사이드바 콜랩스를 위한 layout 내보내기

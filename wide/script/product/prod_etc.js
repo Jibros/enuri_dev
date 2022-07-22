@@ -60,12 +60,12 @@ $(".hit_stamp > a").click(function(e){
 					var myStamp = result.result;  //스탬프갯수 가져오기
 					var cf = confirm("HIT 스탬프 획득 완료!\n현재스탬프 : "+myStamp+"개\n히트브랜드 페이지로 이동하시겠습니까?");
 					// 확인 클릭시 히트브랜드 프로모션으로 이동
-					if ( cf ) location.href = "/eventPlanZone/jsp/HitBrand_202112.jsp";
+					if ( cf ) location.href = "/eventPlanZone/jsp/HitBrand_202206.jsp";
 					// 스탬프 가리기
-					$('.hit_stamp').fadeOut(100);	
+					$('.hit_stamp').fadeOut(100);
 				}
 			}
-		});	
+		});
 	}
 })
 

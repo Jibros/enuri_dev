@@ -31,6 +31,10 @@
 <%@ page import="com.enuri.bean.logdata.Model_log_Proc"%>
 <%@ page import="com.enuri.bean.wide.Search_Comparator"%>
 <%@ page import="com.enuri.bean.wide.Lp_Header_Proc"%>
+<%@ page import="com.enuri.bean.mobile.PDManager_PD_Data"%>
+<%@ page import="com.enuri.bean.mobile.PDManager_Proc"%>
+<%@ page import="com.enuri.bean.mobile.PDManager_T1_Data"%>
+<%@ page import="com.enuri.bean.member.Login_Proc"%>
 <jsp:useBean id="Know_termdic_title_Proc" class="com.enuri.bean.knowbox.Know_termdic_title_Proc" scope="page" />
 <jsp:useBean id="Wide_List_Proc" class="com.enuri.bean.wide.Wide_List_Proc" scope="page" />
 <jsp:useBean id="Pricelist_Proc" class="com.enuri.bean.main.Pricelist_Proc" scope="page" />
@@ -40,6 +44,7 @@
 <jsp:useBean id="Coupon_Layer_Proc" class="com.enuri.bean.lsv2016.Coupon_Layer_Proc" scope="page" />
 <jsp:useBean id="Model_log_Proc" class="com.enuri.bean.logdata.Model_log_Proc" scope="page" />
 <jsp:useBean id="Lp_Header_Proc" class="com.enuri.bean.wide.Lp_Header_Proc" scope="page" />
+<jsp:useBean id="Login_Proc" class="com.enuri.bean.member.Login_Proc" scope="page" />
 <%
 
 	/**
@@ -85,7 +90,12 @@
 	// 탭(리스트유형) ( 0:전체 / 1:모델리스트 / 2:일반상품리스트 / 3:해외직구)
 	int intTab = ChkNull.chkInt(request.getParameter("tab"), 0);
 	// 모바일 전문몰 일반상품 탭 고정
-	if(!strDevice.equals("pc") && strFrom.equals("list") && (strCate4.equals("1487") || strCate4.equals("1488"))) {
+	/*
+		1259 오늘의집
+		1487 오케이몰
+		1488 무신사스토어
+	*/
+	if(!strDevice.equals("pc") && strFrom.equals("list") && (strCate4.equals("1487") || strCate4.equals("1488") || strCate4.equals("1259"))) {
 		intTab = 2;
 	}
 	
@@ -116,10 +126,6 @@
 	*/
 	int intSort = ChkNull.chkInt(request.getParameter("sort"), 1);
 	
-	// 인기도 정렬 변경
-	if(intSort==1) {
-	//	intSort = 9;
-	}
 	
 	String strSort = "";
 	switch(intSort) {
@@ -178,6 +184,18 @@
 	String strDiscount = ChkNull.chkStr(request.getParameter("discount"), "");
 	// 평점
 	String strBbsScore = ChkNull.chkStr(request.getParameter("bbsscore"), "");
+	
+	// 앱 T1
+	String strAppT1 = ChkNull.chkStr(request.getParameter("t1"), "");
+	// 앱 PD
+	String strAppPD = ChkNull.chkStr(request.getParameter("pd"), "");
+	
+	PDManager_PD_Data pdData = new PDManager_PD_Data();
+	if((strDevice.equals("aos") || strDevice.equals("ios")) && strAppT1.length()>0 && strAppPD.length()>0) {
+		PDManager_Proc pdmanager = new PDManager_Proc();
+		PDManager_T1_Data t1Data = pdmanager.getT1(request);
+		pdData = pdmanager.chkT1PD(request,t1Data);
+	}
 	/** // Parameter Sets */
 	
 	/** Parameter Validation Check */
@@ -622,6 +640,26 @@
 	Set<Integer> zzimModelSet = new HashSet<Integer>();
 	// 찜목록 - PriceList
 	Set<Long> zzimPLSet = new HashSet<Long>();
+	// 찜목록 - 메이크샵
+	Set<String> zzimMKSet = new HashSet<String>();
+	// 사용자 ID
+	String strUserId = "";
+	String strUserUct = "";
+	if(strDevice.equals("pc") || strDevice.equals("mw")) {
+		if(cb.GetCookie("MEM_INFO","USER_ID")!=null) {
+			strUserId = cb.GetCookie("MEM_INFO", "USER_ID");
+			
+		}
+	} else if(strDevice.equals("aos") || strDevice.equals("ios")) {
+		if(pdData!=null){
+			strUserId = pdData.getEnuri_id();
+		}
+	}
+	if(strUserId != null && !strUserId.equals("")) {
+		strUserUct = Login_Proc.getUsrMtcEnc(strUserId);
+	}
+	
+	
 
 	// 카테고리별 설정정보
 	Category_Set_Proc category_set_proc = new Category_Set_Proc();
@@ -631,165 +669,174 @@
 	Map<Integer, HashMap<String, String>> promotionMap = new HashMap<Integer, HashMap<String, String>>();
 	
 	/** 상품이 있을 경우에 추가적으로 필요한 부가정보 추가 */
-	if(goodsOrderList.size()>0 && (goods_data_map.size()>0 || pricelist_data_map.size()>0)) {
+	if(goodsOrderList.size()>0) {
 		
-		/**일반상품에만 필요한 부가 세팅 정보 */
-		if(intTab==2) {
+		if(goods_data_map.size()>0 || pricelist_data_map.size()>0) {
 		
-		/**전체, 가격비교에만 필요한 부가 세팅 정보*/
-		} else {
+			/**일반상품에만 필요한 부가 세팅 정보 */
+			if(intTab==2) {
 			
-			// 용어사전
-			if(strFrom.equals("search")) {
-				String[] astrMcates = null;
-				astrMcates = strMcates.split(",");
-				if(astrMcates!=null && astrMcates.length>0) {
-					for(int i=0; i<astrMcates.length; i++) {
-						cateListHashSet.add(astrMcates[i]);
-					}
-				}
+			/**전체, 가격비교에만 필요한 부가 세팅 정보*/
+			} else {
 				
-				if(cateListHashSet.size()>0) {
+				// 용어사전
+				if(strFrom.equals("search")) {
+					String[] astrMcates = null;
+					astrMcates = strMcates.split(",");
+					if(astrMcates!=null && astrMcates.length>0) {
+						for(int i=0; i<astrMcates.length; i++) {
+							cateListHashSet.add(astrMcates[i]);
+						}
+					}
+					
+					if(cateListHashSet.size()>0) {
+						tHashMap = Know_termdic_title_Proc.getCondiNameToDicSrp(cateListHashSet);
+					}
+				}else{
+					cateListHashSet.add(strCate4);
 					tHashMap = Know_termdic_title_Proc.getCondiNameToDicSrp(cateListHashSet);
 				}
-			}else{
-				cateListHashSet.add(strCate4);
-				tHashMap = Know_termdic_title_Proc.getCondiNameToDicSrp(cateListHashSet);
-			}
-			
-			// 히트브랜드 상품 조회
-			hitBrandMap = wide_list_proc.getHitBrandItem();
-			
-			// 화장품
-			if(strFrom.equals("list") && ( strCate2.equals("08") || strCate2.equals("14"))) {
-				cosmeticMap = wide_list_proc.getCptSkinGoodness_mobile_getAllmodel(strModelNo_Group, strCate4);
-			}
-			
-			// 가구
-			if(strFrom.equals("list") && ( strCate4.equals("1202") || strCate4.equals("1201")) ) {
-				furnitureMap = wide_list_proc.getGoodsAttrGraph(strModelNo_Group, "123660,211331,133553,205023");
-			}
-			
-			// 비디오 여부
-			modelVideoSet = wide_list_proc.getVideoModelSet(strModelNo_Group);
-			
-			// 프로모션
-			promotionMap = wide_list_proc.getPromotionMap(strModelNo_Group, strFrom);
-			
-			// 속성 정보
-			// 모델번호와 그룹모델번호 모든 정보가 있어야함
-			Goods_Change_Data[] goods_change_data = null;
-			if(queryModelList.size()>0) {
-				// 오라클 where in 천개 이상 처리 불가, 나눠서 쿼리 호출 한후 합침.
-				if(queryModelList.size()>1000) {
-					ArrayList<Goods_Change_Data> sumChangeData = new ArrayList<Goods_Change_Data>();
-					Goods_Change_Data[] tmpChangeData = null;
-					int model_param_length = queryModelList.size();
-					int roopCount = (model_param_length / 1000) + 1;
-					int m = 0;
-					for(int i=0;i<roopCount;i++) {
-						int calcLength = (model_param_length>1000) ? 1000 : model_param_length;
-						List<String> tmpModelsParamAry = new ArrayList<String>();
-						for(int j=(m*1000);j<((m*1000)+calcLength);j++) {
-							tmpModelsParamAry.add(queryModelList.get(j));
-						}
-						tmpChangeData = wide_list_proc.getGoods_Bind_Change(tmpModelsParamAry);
-						for(int l=0;l<tmpChangeData.length;l++) {
-							sumChangeData.add(tmpChangeData[l]);
-						}
-						
-						model_param_length = model_param_length - calcLength;
-						m++;
-					}
-					
-					if(sumChangeData.size()>0) {
-						goods_change_data = (Goods_Change_Data[]) sumChangeData.toArray(new Goods_Change_Data[0]);
-					}
-					
-				} else {
-					goods_change_data = wide_list_proc.getGoods_Bind_Change(queryModelList);
+				
+				// 히트브랜드 상품 조회
+				hitBrandMap = wide_list_proc.getHitBrandItem();
+				
+				// 화장품
+				if(strFrom.equals("list") && ( strCate2.equals("08") || strCate2.equals("14"))) {
+					cosmeticMap = wide_list_proc.getCptSkinGoodness_mobile_getAllmodel(strModelNo_Group, strCate4);
 				}
 				
-				if(goods_change_data!=null && goods_change_data.length>0) {
-					for(int i=0; i<goods_change_data.length; i++) {
-						groupModelnosInfoHash.put(goods_change_data[i].getModelno(), goods_change_data[i]);
+				// 가구
+				if(strFrom.equals("list") && ( strCate4.equals("1202") || strCate4.equals("1201")) ) {
+					furnitureMap = wide_list_proc.getGoodsAttrGraph(strModelNo_Group, "123660,211331,133553,205023");
+				}
+				
+				// 비디오 여부
+				modelVideoSet = wide_list_proc.getVideoModelSet(strModelNo_Group);
+				
+				// 프로모션
+				promotionMap = wide_list_proc.getPromotionMap(strModelNo_Group, strFrom);
+				
+				// 속성 정보
+				// 모델번호와 그룹모델번호 모든 정보가 있어야함
+				Goods_Change_Data[] goods_change_data = null;
+				if(queryModelList.size()>0) {
+					// 오라클 where in 천개 이상 처리 불가, 나눠서 쿼리 호출 한후 합침.
+					if(queryModelList.size()>1000) {
+						ArrayList<Goods_Change_Data> sumChangeData = new ArrayList<Goods_Change_Data>();
+						Goods_Change_Data[] tmpChangeData = null;
+						int model_param_length = queryModelList.size();
+						int roopCount = (model_param_length / 1000) + 1;
+						int m = 0;
+						for(int i=0;i<roopCount;i++) {
+							int calcLength = (model_param_length>1000) ? 1000 : model_param_length;
+							List<String> tmpModelsParamAry = new ArrayList<String>();
+							for(int j=(m*1000);j<((m*1000)+calcLength);j++) {
+								tmpModelsParamAry.add(queryModelList.get(j));
+							}
+							tmpChangeData = wide_list_proc.getGoods_Bind_Change(tmpModelsParamAry);
+							for(int l=0;l<tmpChangeData.length;l++) {
+								sumChangeData.add(tmpChangeData[l]);
+							}
+							
+							model_param_length = model_param_length - calcLength;
+							m++;
+						}
+						
+						if(sumChangeData.size()>0) {
+							goods_change_data = (Goods_Change_Data[]) sumChangeData.toArray(new Goods_Change_Data[0]);
+						}
+						
+					} else {
+						goods_change_data = wide_list_proc.getGoods_Bind_Change(queryModelList);
+					}
+					
+					if(goods_change_data!=null && goods_change_data.length>0) {
+						for(int i=0; i<goods_change_data.length; i++) {
+							groupModelnosInfoHash.put(goods_change_data[i].getModelno(), goods_change_data[i]);
+						}
 					}
 				}
 			}
-		}
+			
+			/**공통 세팅 정보*/
+			
+			// 성인 인증
+			if(cb.GetCookie("MEM_INFO","ADULT")!=null) {
+				strAdultCookie = cb.GetCookie("MEM_INFO","ADULT");
+				// 성인인증 됨 
+				if(strAdultCookie.equals("1")) IsAdultFlag = true;
+			}
 		
-		/**공통 세팅 정보*/
-		
-		// 성인 인증
-		if(cb.GetCookie("MEM_INFO","ADULT")!=null) {
-			strAdultCookie = cb.GetCookie("MEM_INFO","ADULT");
-			// 성인인증 됨 
-			if(strAdultCookie.equals("1")) IsAdultFlag = true;
-		}
-		
-		// 성인키워드
+			// 성인키워드
 %>
 <%@ include file="/include/IncAdultKeywordCheck_2010.jsp" %>
 <%
 				
-		//모바일 뷰타입 옵션
-		String strMViewFlag = "1";
-		if(strFrom.equals("list")) {
-			Goods_Search_Lsv_Data viewTypeOptionInfo = Goods_Search_Lsv_Proc.getSearchOptionSet(strCate4);
-			if(viewTypeOptionInfo.getViewtype_m_flag()!=null && viewTypeOptionInfo.getViewtype_m_flag().length()>0) {
-				strMViewFlag = viewTypeOptionInfo.getViewtype_m_flag();
-			}
-		}
-		retMap.put("mViewFlag", "\""+strMViewFlag+"\"");
-		
-		// 재검색 옵션 ( 돋보기 )
-		// LP 는 어드민 세팅 기준, SRP 는 제조사 고정 
-		// 0 없음 1 제조사 2 브랜드
-		String list_search_flag = "1";
-		if(strFrom.equals("list")) {
-			Goods_Search_Lsv_Data optionInfo = Goods_Search_Lsv_Proc.getSearchOptionSet(strCate);
-			list_search_flag = optionInfo.getList_serch_flag();
-			if(list_search_flag.length()==0) {
-				String strServerNm = request.getServerName();
-				boolean blDevFlag = false;
-				if (strServerNm.indexOf("dev.enuri.com") > -1) {
-					blDevFlag = true;
-				}
-				
-				JSONObject sfViewYNObj = new JSONObject();
-				sfViewYNObj =  Lp_Header_Proc.getFactoryBrandViewYN(strCate, blDevFlag);
-				
-				String sf_factory_viewYN = sfViewYNObj.get("factoryViewYN") != null ?  sfViewYNObj.get("factoryViewYN").toString() : "";
-				String sf_brand_viewYN = sfViewYNObj.get("brandViewYN") != null ?  sfViewYNObj.get("brandViewYN").toString() : "";  
-				if(sf_factory_viewYN.equals("") || sf_factory_viewYN.equals("Y")) {
-					list_search_flag = "1";
-				} else if(sf_brand_viewYN.equals("") || sf_brand_viewYN.equals("Y")) {
-					list_search_flag = "2";
+			//모바일 뷰타입 옵션
+			String strMViewFlag = "1";
+			if(strFrom.equals("list")) {
+				Goods_Search_Lsv_Data viewTypeOptionInfo = Goods_Search_Lsv_Proc.getSearchOptionSet(strCate4);
+				if(viewTypeOptionInfo.getViewtype_m_flag()!=null && viewTypeOptionInfo.getViewtype_m_flag().length()>0) {
+					strMViewFlag = viewTypeOptionInfo.getViewtype_m_flag();
 				}
 			}
+			retMap.put("mViewFlag", "\""+strMViewFlag+"\"");
+			
+			// 재검색 옵션 ( 돋보기 )
+			// LP 는 어드민 세팅 기준, SRP 는 제조사 고정 
+			// 0 없음 1 제조사 2 브랜드
+			String list_search_flag = "1";
+			if(strFrom.equals("list")) {
+				Goods_Search_Lsv_Data optionInfo = Goods_Search_Lsv_Proc.getSearchOptionSet(strCate);
+				list_search_flag = optionInfo.getList_serch_flag();
+				if(list_search_flag.length()==0) {
+					String strServerNm = request.getServerName();
+					boolean blDevFlag = false;
+					if (strServerNm.indexOf("dev.enuri.com") > -1) {
+						blDevFlag = true;
+					}
+					
+					JSONObject sfViewYNObj = new JSONObject();
+					sfViewYNObj =  Lp_Header_Proc.getFactoryBrandViewYN(strCate, blDevFlag);
+					
+					String sf_factory_viewYN = sfViewYNObj.get("factoryViewYN") != null ?  sfViewYNObj.get("factoryViewYN").toString() : "";
+					String sf_brand_viewYN = sfViewYNObj.get("brandViewYN") != null ?  sfViewYNObj.get("brandViewYN").toString() : "";  
+					if(sf_factory_viewYN.equals("") || sf_factory_viewYN.equals("Y")) {
+						list_search_flag = "1";
+					} else if(sf_brand_viewYN.equals("") || sf_brand_viewYN.equals("Y")) {
+						list_search_flag = "2";
+					}
+				}
+			}
+			retMap.put("strReSearch", "\""+list_search_flag+"\"");
 		}
-		retMap.put("strReSearch", "\""+list_search_flag+"\"");
-		
+	
 		// 찜
-		if(cb.GetCookie("MEM_INFO","USER_ID")!=null) {
-			String strUserId = cb.GetCookie("MEM_INFO", "USER_ID");
-			Goods_Data[] goods_save_data = Goods_Search_Lsv_Proc.getSaveGoodList(strUserId);
+		if(strUserId.length()>0) {
+			Goods_Data[] goods_save_data = Goods_Search_Lsv_Proc.getSaveGoodList2022(strUserId);
 			
 			if(goods_save_data!=null && goods_save_data.length>0) {
 				
 				for(int i=0; i<goods_save_data.length; i++) {
 					int modelno = goods_save_data[i].getModelno();
 					long pl_no = goods_save_data[i].getP_pl_no();
+					String mk_no = goods_save_data[i].getMksp_model_no();
 					
 					if(modelno>0) {
 						zzimModelSet.add(modelno);
-					} else if(pl_no>0) {
+					}
+					if(pl_no>0) {
 						zzimPLSet.add(pl_no);
+					}
+					if(!mk_no.equals("0") && mk_no.length()>0) {
+						zzimMKSet.add(mk_no);
 					}
 				}
 			}
 		}
 	}
+	
+	JSONObject relProdBtnTextObj = getRelProdBtnTextObj(); //버튼 노출문구 텍스트
 				
 	/** goodsOrderList를 순회하면서 부가정보를 더한다 */
 	for(int g=0;g<goodsOrderList.size();g++) {
@@ -907,6 +954,12 @@
 							strMinPriceMobileTag = "Y";
 						}
 					}
+					
+					// 일반상품 중 price가 instance_price 보다 쌀 경우 price가 로 대체함
+					if(lngPrice<lngInstancePrice) {
+						intMinPrice = formatter.format(lngPrice);
+					}
+					
 					listItem.put("strMinPriceMobileTag", strMinPriceMobileTag);
 					listItem.put("strMinPrice", intMinPrice);
 					
@@ -1138,7 +1191,6 @@
 					
 					/*연관상품 V2*/
 					JSONObject relProdV2Obj = new JSONObject();
-					JSONObject relProdBtnTextObj = new JSONObject();
 					String strRelProdModelNo = "";
 					String strRelProdModelNm = ""; 
 					String strRelProdBtnText = "";
@@ -1159,8 +1211,6 @@
 								strRelProdModelNo += strTempRelArr[0] +(i == intRelProdCnt-1 ? "" : ",");
 								strRelProdModelNm += strTempRelArr[1] +(i == intRelProdCnt-1 ? "" : ",");
 							}
-							
-							relProdBtnTextObj = getRelProdBtnTextObj(); //버튼 노출문구 텍스트
 							
 							strRelCate = strCa_code;
 							if (strRelCate.length() >= 6) { 
@@ -1269,9 +1319,14 @@
 					String strMinPriceMobileTag = "N";
 					String intMinPrice = formatter.format(lngMinPrice3);
 					
+					// 일반상품 중 price가 instance_price 보다 쌀 경우 price가 로 대체함
+					if(intModelNo==0 && lngMinPrice<lngMinPrice3) {
+						intMinPrice = formatter.format(lngMinPrice);
+					}
+					
 					if(strIsDelivery.equals("Y")) {
 						intMinPrice = formatter.format(lngMinPrice2);
-						if(intModelNo==0 && goods_data.getDeliverytype2().equals("1") && goods_data.getDeliveryInfo2().length()>0) {
+						if(intModelNo==0 && goods_data.getDeliverytype2()!=null && goods_data.getDeliveryInfo2()!=null && goods_data.getDeliverytype2().equals("1") && goods_data.getDeliveryInfo2().length()>0) {
 							long lngCalcDeliveryPrice = lngMinPrice2 + Long.parseLong(goods_data.getDeliveryInfo2());
 							intMinPrice = formatter.format(lngCalcDeliveryPrice);
 						}
@@ -1777,10 +1832,10 @@
 									}
 								}
 								
-								if(minUnitPriceIdx>-1 && groupModelItem.size()>minUnitPriceIdx) {
+								if(minUnitPriceIdx>-1 && groupModelItem.size()>minUnitPriceIdx && groupModelOutputItem.contains(minUnitPriceIdx)) {
 									((JSONObject) groupModelOutputItem.get(minUnitPriceIdx)).put("strMinUnitPriceYN", "Y");
 								}
-								if(minPriceIdx>-1 && groupModelItem.size()>minPriceIdx) {
+								if(minPriceIdx>-1 && groupModelItem.size()>minPriceIdx && groupModelOutputItem.contains(minPriceIdx)) {
 									((JSONObject) groupModelOutputItem.get(minPriceIdx)).put("strMinPriceYN", "Y");
 								}
 								// 옵션 뷰 모드 ( model : 옵션정보, shop : 쇼핑몰최저가정보, '' : 비노출  )
@@ -1898,21 +1953,50 @@
 					String msMinPrice = tmpMakeShopMap.containsKey("minprice3") ? (String) tmpMakeShopMap.get("minprice3") : "0";
 					String msBbsNum = tmpMakeShopMap.containsKey("bbs_num") ? (String) tmpMakeShopMap.get("bbs_num") : "0";
 					String msUrl = tmpMakeShopMap.containsKey("url") ? (String) tmpMakeShopMap.get("url") : "";
-					if(msUrl.length()>0) {
-						if(strFrom.equals("list")) {
-							if(msUrl.indexOf("?")>-1) {
-								msUrl = msUrl + "&ref=enuri_LIST";
-							} else {
-								msUrl = msUrl + "?ref=enuri_LIST";
-							}
-						} else if(strFrom.equals("search")) {
-							if(msUrl.indexOf("?")>-1) {
-								msUrl = msUrl + "&ref=enuri_SEAR";
-							} else {
-								msUrl = msUrl + "?ref=enuri_SEAR";
-							}
-						}
+					String msUrl2 = tmpMakeShopMap.containsKey("url2") ? (String) tmpMakeShopMap.get("url2") : "";
+					
+					// struserid
+					
+					StringBuffer msSb = new StringBuffer();
+					String domain = "http://enuri.com";
+					if(!strDevice.equals("pc")) {
+						domain = "http://m.enuri.com";
 					}
+					if(devFlag) {
+						domain = "http://dev.enuri.com";
+					}
+					
+					msSb.append(domain + "/brandstore/move.jsp?"); // 도메인
+					if(strDevice.equals("pc")) {
+						msSb.append("url=" + URLEncoder.encode(msUrl, "utf-8"));
+					} else {
+						msSb.append("url=" + URLEncoder.encode(msUrl2, "utf-8"));
+					}
+					msSb.append("&makeshopno=" + msID);
+					if(strFrom.equals("list")) {
+						msSb.append("&pageType=list");
+					} else if(strFrom.equals("search")) {
+						msSb.append("&pageType=search");
+					}
+					msSb.append("&shopcode=" + msShopCode);
+					msSb.append("&cate=" + strCate);
+					msSb.append("&price=" + msMinPrice);
+					msSb.append("&keyword=" + URLEncoder.encode(strKeyword, "utf-8"));
+					if(strDevice.equals("all")) {
+						msSb.append("&device=pc");
+					} else {
+						msSb.append("&device=" + strDevice);
+					}
+					
+					if(strUserUct.length()>0){
+						msSb.append("&uct=" + strUserUct);
+					}
+					
+					if(strDevice.equals("aos") || strDevice.equals("ios")) {
+						msSb.append("&freetoken=outlink");
+					}
+
+					
 					String msEnuriCaCode = tmpMakeShopMap.containsKey("ca_code") ? (String) tmpMakeShopMap.get("ca_code") : "";
 					
 					ZonedDateTime uDate = ZonedDateTime.parse(msCdate);
@@ -1932,10 +2016,16 @@
 					listItem.put("strFactory", msFactory);
 					listItem.put("strMinPrice", formatter.format(Long.valueOf(msMinPrice)));
 					listItem.put("strBbsNum", msBbsNum);
-					listItem.put("strLandUrl", msUrl);
+					listItem.put("strLandUrl", msSb.toString());
 					listItem.put("strCate", msEnuriCaCode);
 					listItem.put("strTotRank", strTotRank);
 					
+					/* 찜 */
+					String strZzimYN = "N";
+					if(zzimMKSet.contains(msID)) {
+						strZzimYN = "Y";
+					}
+					listItem.put("strZzimYN", strZzimYN);
 					listJson.add(listItem);
 				}
 			}
@@ -1992,6 +2082,8 @@
 	// 모델상품갯수, 일반상품갯수
 	retMap.put("modelCnt", intEnuriCnt);
 	retMap.put("plCnt", intWebCnt);
+	
+	retMap.put("strMpnos", "\""+strMpnos+"\"");
 	
 	ret = new JsonResponse(true).setData(retMap).setTotal(intTotRsCnt);
 	

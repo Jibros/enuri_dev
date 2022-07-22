@@ -19,11 +19,12 @@ String strKeywordDetails = ""; // 키워드 조합 조건 (브랜드, 제조사,
 
 String serverName = request.getServerName() == null ? "" : request.getServerName();
 String referer = request.getHeader("Referer") == null ? "" : request.getHeader("Referer");
+String strSessionID = getSessionID(request);
 
 boolean blp = strFrom.equals("list"); // LP 여부
-boolean bDebug = (serverName.equals("localhost") ||serverName.equals("127.0.0.1") || serverName.indexOf("dev") > -1) && strIsTest.equals("Y"); // 디버그 여부
+boolean bDebug = (serverName.equals("localhost") || serverName.equals("127.0.0.1")) && strIsTest.equals("Y"); // 디버그 여부
 boolean bModelNo = strCate.equals("00000000"); // 모델번호 검색 여부
-boolean bLog = (referer.startsWith("http://www.enuri.com/search.jsp") || referer.startsWith("http://www.enuri.com/list.jsp")) && !bDebug && !bModelNo; // 검색 로깅 여부
+boolean bLog = (referer.startsWith("http://www.enuri.com/search.jsp") || referer.startsWith("http://www.enuri.com/list.jsp")) && strSessionID.length() > 0 && !bDebug && !bModelNo; // 검색 로깅 여부
 int nVersion = 2;
 
 int nOptionFlag = OPT_FLAG;
@@ -48,6 +49,7 @@ csearch.setStrUserIp(getUserAddr(request)); //사용자 주소
 csearch.setStrUserAgent(getUserAgent(request)); // 사용자 Agent
 csearch.addParameter("strUserId", getUserID(request)); // 사용자 ID
 csearch.addParameter("strUserDevice", strDevice); // 사용자 디바이스종류
+csearch.addParameter("esProfileName", strProfileName); // 검색 프로파일
 
 csearch.setRequestUrl(ChkNull.chkStr(request.getRequestURI()));
 csearch.setUriQuerystring(ChkNull.chkStr(getQueryString(request)));

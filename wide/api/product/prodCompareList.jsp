@@ -57,7 +57,7 @@
 						goods_data_one.setProduct_id2(strTodayGoodsOne);
 						goods_data_one.setCa_code(pricelist_data_info.getCa_code());
 						goods_data_one.setModelnm(pricelist_data_info.getGoodsnm());
-						goods_data_one.setMinprice(pricelist_data_info.getPrice());
+						goods_data_one.setMinprice(pricelist_data_info.getPrice_long());
 						goods_data_one.setMinprice3(pricelist_data_info.getInstance_price());
 						goods_data_one.setP_imgurl(pricelist_data_info.getImgurl());
 						goods_data_one.setGoods_info(pricelist_data_info.getDeliveryinfo());

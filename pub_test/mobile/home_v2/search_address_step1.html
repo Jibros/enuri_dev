@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<META NAME="description" CONTENT="최저가 에누리 - 가격비교 사이트 에누리닷컴입니다."> 
+<META NAME="keyword" CONTENT="휴대폰, 사무, 생활가전, 용품, 영상음향, 컴퓨터, 자동차, 명품, 잡화, 스포츠, 유아, 완구, 가구, 화장품, 식품, 가격비교, 쇼핑몰, 최저가">
+<link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" href="/css/mobile_v2/common.css" type="text/css">
+<link rel="stylesheet" href="/css/mobile_v2/address_search.css" type="text/css">
+<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+	<div class="address_wrap">
+		<header id="header" class="page_header nomargin">
+			<div class="header_top">
+				<div class="wrap">
+					<button href="#" class="btn__sr_back comm__sprite2" onclick="window.history.back();"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+					<div class="header_top_page_name">주소 검색</div>
+				</div>
+			</div>
+		</header>
+		<div class="container">
+			<div class="tabs">
+				<ul>
+					<li><a href="JavaScript:" id="addrTypeTab1" addrType="1" class="active">도로명 주소</a></li>
+					<li><a href="JavaScript:" id="addrTypeTab2" addrType="2">지번주소</a></li>
+				</ul>
+			</div>
+				<ul class="noti_area">
+					<li>찾고자 하는 주소의 도로명과 건물번호를 입력하세요.
+						<p class="emp">예) 대학로1길, 청계천로85</p>
+					</li>
+					<li>주소 검색결과 중 선택한 주소로 자동입력됩니다.</li>
+				</ul>
+			<div class="con_area">
+				<div class="row">
+					<div class="row_search">
+						<div class="ipt_area">
+							<input type="text" class="ipt" value="" maxlength="100"/>
+						</div>
+						<div class="btn_area">
+							<button type="button" class="btn_gy">검색</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="result-area">
+				<table class="table" summary="주소 검색 결과 목록">
+					<colgroup>
+						<col width="70px"/>
+						<col/>
+					</colgroup>
+					<thead>
+						<tr>
+							<th>우편번호</th>
+							<th>주소</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08494</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+						<tr>
+							<td>08594</td>
+							<td>서울 금천구 가산디지털1로 1 더루벤스밸리</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script>
+		// 탭 
+		$('.tabs ul li').click(function(){
+			$(this).find('a').addClass('active');
+			$(this).siblings().find('a').removeClass('active');
+		})
+
+		// 주소 검색결과
+		$('.result-area').hide();
+		$('.btn_gy').click(function(){
+			$('.result-area').show();
+		})
+		var list = $('form[name=form_search_address_list]');
+		$('button', list).on('click', function(){
+			var addressValue = $(this).text();
+			$('[name=address1]').val(addressValue);
+			list.submit();
+		})
+	</script>
+</body>
+</html>

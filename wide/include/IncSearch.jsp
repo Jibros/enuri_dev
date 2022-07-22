@@ -39,20 +39,20 @@
 	private final int OPT_FLAG_SUB_PRICE = 0x100; // 가격검색 시 sub_models로 필터링 처리
 	private final int OPT_FLAG_CORE_SPEC_ONLY = 0x200; // 속성 집계시 spect_type= 'c' 인것만 노출 
 	private final int OPT_FLAG_KEYWORD_DETAIL = 0x400; // 검색시 키워드 검색시 구분 검색 (브랜드, 제조사, 속성등)
-	private final int OPT_FLAG_PRICE_GROUP1 = 0x800; // 가격 집계 (전체)
-	private final int OPT_FLAG_PRICE_GROUP2 = 0x1000; // 가격 집계 (가격비교)
-	private final int OPT_FLAG_PRICE_GROUP3 = 0x2000; // 가격 집계 (일반상품)
+	private final int OPT_FLAG_PRICE_GROUP1 = 0x800; // 가격 집계 (가격비교)
+	private final int OPT_FLAG_PRICE_GROUP2 = 0x1000; // 가격 집계 (일반상품)
+	private final int OPT_FLAG_PRICE_GROUP3 = 0x2000; // 가격 집계  (전체)
 
 	private final int INNER_HIT_SORT_MINPRICE_ASC = 0;
 	private final int INNER_HIT_SORT_MINPRICE_DESC = 1;
 	private final int INNER_HIT_SORT_PC = 2;
 	private final int INNER_HIT_SORT_ETC = 3;
 	
-	private final int OPT_FLAG = OPT_FLAG_FACTORY_ID | OPT_FLAG_R_MODELNO | OPT_FLAG_SUB_PRICE | OPT_FLAG_CORE_SPEC_ONLY; // 옵션 flag
+	private final int OPT_FLAG = OPT_FLAG_FACTORY_ID | OPT_FLAG_R_MODELNO | OPT_FLAG_SUB_PRICE | OPT_FLAG_CORE_SPEC_ONLY | OPT_FLAG_PRICE_GROUP3; // 옵션 flag
 	
 	private final String[] HOST_IP = { "192.168.213.168:8080", "192.168.213.169:8080", "192.168.213.168:9080", "192.168.213.169:9080"  };
 	private final String[] ETC_HOST_IP = { "192.168.213.163", "192.168.213.164", "192.168.213.167" };
-
+	
 	public String getStrHostIp() {
 		Random rd = new Random();
 		int randInt = rd.nextInt(HOST_IP.length);
@@ -110,6 +110,18 @@
 		return id == null ? "" : id;
 	}	
 	
+	public String getSessionID(HttpServletRequest request){
+		Cookie[] a = request.getCookies();
+		if(a != null) {
+			for(Cookie c : a){
+				String name = c.getName();
+				if("JSESSIONID".equals(name)) 
+					return c.getValue();				
+			}	
+		}		
+		return "";
+	}
+	
 	public String getQueryString(HttpServletRequest request) throws Exception {
 		Enumeration<String> names = request.getParameterNames();
 		StringBuilder sb = new StringBuilder();
@@ -137,6 +149,7 @@
 	final String strGroupName = "main";
 	final String strEnuriOvsGroupName = "ovs";
 	final String strKbCollectionName = "KNOWBOX";
+	final String strProfileName = "";
 	final int intTimeOut = 13000;
 	final int intMinPool = 1;
 	final int intMaxPool = 10;

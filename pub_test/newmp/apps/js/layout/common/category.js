@@ -1,15 +1,13 @@
-let { layout, pageName } = import("../layout_main.js")
-
-console.log(pageName)
-/* import { layout, pageName } from "../layout_main.js"; 
-
-console.log(pageName) */
-/* import { layout } from "../layout_mainSrch"; 
-import { layout } from "../layout_relatedProducts"; 
-import { layout } from "../layout_attrAdmin"; 
-import { layout } from "../layout_specAdmin"; 
-import { layout } from "../layout_allIngredient"; 
-import { layout } from "../layout_groupCondition";  */
+/***********************************************************
+ * 페이지 레이아웃 분기 처리 필요합니다. 
+ * import { layout } from "../layout_main.js"; 
+ * import { layout } from "../layout_mainSrch.js"; 
+ * import { layout } from "../layout_relatedProducts.js"; 
+ * import { layout } from "../layout_attrAdmin.js"; 
+ * import { layout } from "../layout_specAdmin.js"; 
+ * import { layout } from "../layout_allIngredient.js"; 
+ * import { layout } from "../layout_groupCondition.js";
+***********************************************************/
 
 export var sidebar = new dhx.Sidebar(null, {
     css: "asidebox",

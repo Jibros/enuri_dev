@@ -51,7 +51,7 @@ String procType = ChkNull.chkStr(request.getParameter("procType"), "0");
 
 // 일반 시스템 변수들
 String IMG_ENURI_COM = ConfigManager.IMG_ENURI_COM;
-String PHOTO_ENURI_COM = ConfigManager.Photo_Image_Server(request);
+String PHOTO_ENURI_COM = ConfigManager.PHOTO_ENURI_COM;
 String STORAGE_ENURI_COM = ConfigManager.STORAGE_ENURI_COM;
 
 // dev인지 운영 인지 확인

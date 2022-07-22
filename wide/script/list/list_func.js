@@ -339,6 +339,8 @@ function setModelEvent() {
 									icn_tpname = "사용기";
 								}else if(icn_tp=="5"){
 									icn_tpname = "관련정보";
+								}else if(icn_tp=="6"){
+									icn_tpname = "브랜드관";
 								}
 
 								if(linkUrl!==undefined && linkUrl.length>0 && content!==undefined && content.length>0) {
@@ -444,7 +446,6 @@ function setReview() {
 // SRP 해당카테고리로
 function getModelCateListLinkTitle() {
 	var ingiModelnos = "";
-	var ingiPlnos = "";
 
 	if(modelNoSet && modelNoSet.size>0) {
 		modelNoSet.forEach(function(ingModelNo) {
@@ -457,88 +458,69 @@ function getModelCateListLinkTitle() {
 		});
 	}
 
-	if(plNoSet && plNoSet.size>0) {
-		plNoSet.forEach(function(ingiPlno) {
-			if(ingiPlno!==undefined) {
-				if(ingiPlnos.length>0) {
-					ingiPlnos += ",";
-				}
-				ingiPlnos += ingiPlno;
+	if(ingiModelnos.length>0) {
+		
+		// API 호출
+		var gnbDataPromise = $.ajax({
+			type: "POST",
+			url: "/wide/api/gnbNameListByCate.jsp",
+			dataType: "json",
+			data: {
+				"ingiModelnos" : ingiModelnos
 			}
 		});
-	}
-
-	if(ingiModelnos.length>0 || ingiPlnos.length>0) {
-		var param = {
-			"procType"	: 1,
-			"ingiModelnos" : ingiModelnos,
-			"ingiPlnos" : ingiPlnos
-		}
-		var ajaxObj = $.ajax({
-			type : "get",
-			url : "/lsv2016/ajax/getCateNameList_ajax.jsp",
-			async: true,
-			data : param,
-			dataType : "json",
-			success: function(json) {
-				var cateInfoAllList1Obj = json["cateInfoAllList1"];
-				var cateInfoAllList2Obj = json["cateInfoAllList2"];
-
-				if(cateInfoAllList1Obj) {
-					$.each(cateInfoAllList1Obj, function(indexI, listData) {
-						var modelno = listData["modelno"];
-						var cateCode = listData["cateCode"];
-						var cateNameListObj = listData["cateNameList"];
-
-						var html ="";
-						if($("div.goods-list li[data-id='model_"+modelno+"']").length>0) {
-							var modelRootObj = $("div.goods-list li[data-id='model_"+modelno+"']");
-							var appendObj = modelRootObj.find(".item__etc ul");
-
-							var cateTipTitle = "";
-							$.each(cateNameListObj, function(indexJ, listSubData) {
-								if(indexJ>0) {
-									var cateName = listSubData["cateName"];
-									if(cateName) {
-										if(cateTipTitle.length>0) cateTipTitle += " > ";
-										cateTipTitle += cateName;
-									}
-								}
-							});
-
-							html += "<li class=\"item__etc--cate\">";
-							html += "	<a href=\"/list.jsp?cate="+cateCode+"\" target=\"_blank\" class=\"btn--go-cate\" title=\""+cateTipTitle+" 카테고리로 이동\">";
-							html += "		해당 카테고리로<i class=\"ico-adv-rarr lp__sprite\"></i>";
-							html += "	</a>";
-							html += "</li>";
-
-							// 조립PC가 있을 경우 조립 PC 앞으로
-							if(appendObj.find(".item__etc--enuripc").length>0) {
-								appendObj.find(".item__etc--enuripc").before(html);
-							} else {
-								appendObj.append(html);
-							}
-						}
-					});
-				}
-
-				if(cateInfoAllList2Obj) {
-					$.each(cateInfoAllList2Obj, function(indexI, listData) {
-						var plno = listData["plno"];
-						var cateCode = listData["cateCode"];
-						var cateNameListObj = listData["cateNameList"];
-
-
-					});
-				}
-			},
-			error: function (xhr, ajaxOptions, thrownError) {
-				//alert(xhr.status);
-				//alert(thrownError);
-			}
-		});
+	
+		gnbDataPromise.then(drawModelCateList, failModelCateList);
 	}
 }
+
+function drawModelCateList(dataObj) {
+	
+	if (dataObj.success) {
+		if (dataObj.total > 0) {
+
+			$.each(dataObj.data, function(index, listData) {
+			
+				var modelno = listData.modelno;
+				var cateCode = listData.cateCode;
+				var cateNameListObj = listData.cateNameList;
+				
+				var html = "";
+				if($("div.goods-list li[data-id='model_"+modelno+"']").length>0) {
+					var modelRootObj = $("div.goods-list li[data-id='model_"+modelno+"']");
+					var appendObj = modelRootObj.find(".item__etc ul");
+					var cateTipTitle = "";
+					for(var i=cateNameListObj.length;i>0;i--) {
+						if(cateNameListObj[i-1].cate_nm !==  undefined && cateNameListObj[i-1].cate_nm.length>0) {
+							if(cateTipTitle.length>0) cateTipTitle += " > ";
+							cateTipTitle += cateNameListObj[i-1].cate_nm;
+						}
+					}
+					
+					html += "<li class=\"item__etc--cate\">";
+					html += "	<a href=\"/list.jsp?cate="+cateCode+"\" target=\"_blank\" class=\"btn--go-cate\" title=\""+cateTipTitle+" 카테고리로 이동\">";
+					html += "		해당 카테고리로<i class=\"ico-adv-rarr lp__sprite\"></i>";
+					html += "	</a>";
+					html += "</li>";
+			
+					// 조립PC가 있을 경우 조립 PC 앞으로
+					if(appendObj.find(".item__etc--enuripc").length>0) {
+						appendObj.find(".item__etc--enuripc").before(html);
+					} else {
+						appendObj.append(html);
+					}
+				}
+			});
+		}
+	}
+
+}
+
+// SRP 해당카테고리로 API 호출 실패시
+function failModelCateList(errorObj) {
+	console.log( "SRP gnbNameListByCate API Call Fail : " + errorObj.statusText);
+}
+
 
 var objListKRNameSelector = new Array;
 var objListENGNameSelector = new Array;
@@ -813,10 +795,7 @@ function drawKeywordAD(dataObj) {
 	}
 	
 	var blVideoAD = false;
-	var vHtml = [];
-	var vIdx = [];
 	
-	html[hIdx++] = "<div class=\"adPlayer\"></div>"; // 동영상 유형이 있을 경우 노출 하고 없으면 제거한다.
 	html[hIdx++] = "<div class=\"s_ad_tit\">";
 	html[hIdx++] = "	<div class=\"s_ad_tit_before\">이달의 브랜드</div>";
 	if(dataObj.length>1) {
@@ -875,7 +854,7 @@ function drawKeywordAD(dataObj) {
 				html[hIdx++] = "	<li class=\"item half\">";
 				html[hIdx++] = "		<a href=\""+sub_item.goodsUrl+"\" target=\"_blank\">";
 				html[hIdx++] = "			<div class=\"thumbs\">";
-				html[hIdx++] = "				<img src=\""+sub_item.strModelImage+"\" width=\"110\" height=\"76\">";
+				html[hIdx++] = "				<img src=\""+sub_item.strModelImage+"\" width=\"110\" height=\"76\" alt=\"이달의 브랜드 서브 이미지\">";
 				html[hIdx++] = "			</div>";
 				html[hIdx++] = "			<div class=\"goods_name\">"+sub_item.strModelDesc+"</div>";
 				html[hIdx++] = "		</a>";
@@ -894,6 +873,10 @@ function drawKeywordAD(dataObj) {
 	
 	html[hIdx++] = "	</div>";
 	html[hIdx++] = "</div>";
+	
+	if(blVideoAD) {
+		html[hIdx++] = "<div class=\"adPlayer\"></div>"; // 동영상 유형이 있을 경우 노출
+	}
 	
 	appendObj.html(html.join(""));
 	appendObj.show();
@@ -1041,6 +1024,7 @@ function showLayZzim_list(obj){
 		param_key =  "G:"+ param_origin;
 		prod_type = "model";
 	}else { // 상품 메인
+		// 메이크샵
 		var prod_type = prodObj.attr("data-type");
 		if(prod_type=="model") {
 			param_key = "G:" + prodObj.attr("data-id").replace("model_","");
@@ -1049,6 +1033,9 @@ function showLayZzim_list(obj){
 			param_key = "P:" + prodObj.attr("data-id").replace("pl_","");
 			param_type = "pl";
 			param_origin = prodObj.attr("data-id").replace("pl_","");
+		} else if (prod_type=="makeshop") {
+			param_key = "M:"+ prodObj.attr("data-id").replace("makeshop_","");
+			param_type="makeshop";
 		}
 	}
 
@@ -1065,9 +1052,7 @@ function showLayZzim_list(obj){
 			},
 			dataType : "json",
 			success : function(ajaxResult) {
-
 				if($(obj).closest("li").attr("data-type")=="option") {
-
 					setTimeout(function(){
 						$layZzim.removeClass("is--off").addClass("is--show").show();
 					},1);
@@ -1087,7 +1072,6 @@ function showLayZzim_list(obj){
 
 
 				} else if(param_type=="model") {
-
 					$("button[data-zzimno="+param_key.replace(":", "")+"]").addClass("is--on");
 					setTimeout(function(){
 						$layZzim.removeClass("is--off").addClass("is--show").show();
@@ -1101,8 +1085,13 @@ function showLayZzim_list(obj){
 						zzimLayerSet.add(param_origin);
 					}
 				} else {
-
-					$("button[data-zzimno="+param_key.replace(":", "")+"]").addClass("is--on");
+					
+					if (param_type == "makeshop") {
+						$("button[data-zzimno="+param_key.replace("M:", "")+"]").addClass("is--on");
+					} else {
+						$("button[data-zzimno="+param_key.replace(":", "")+"]").addClass("is--on");
+					}
+					
 					setTimeout(function(){
 						$layZzim.removeClass("is--off").addClass("is--show").show();
 					},1);
@@ -1126,18 +1115,27 @@ function showLayZzim_list(obj){
 			return;
 		}
 
+		var zzimDelUrl = "/lsv2016/ajax/deleteSaveGoodsProc.jsp";
+		if (param_type == "makeshop") {
+			zzimDelUrl = "/view/deleteSaveGoodsProc.jsp";
+		}
+		
 		// 찜해제
 		var ajaxObj = $.ajax({
 			type : "get",
-			url : "/lsv2016/ajax/deleteSaveGoodsProc.jsp",
+			url : zzimDelUrl,
 			data : {
 				"modelnos" : param_key,
 				"tbln" : "save"
 			},
 			dataType : "json",
 			success : function(ajaxResult) {
-
-				$("button[data-zzimno="+param_key.replace(":", "")+"]").removeClass("is--on");
+				if (param_type == "makeshop") {
+					$("button[data-zzimno="+param_key.replace("M:", "")+"]").removeClass("is--on");
+				} else {
+					$("button[data-zzimno="+param_key.replace(":", "")+"]").removeClass("is--on");
+				}
+				
 				setTimeout(function(){
 					$layZzim.addClass("is--off is--show").show();
 				},1);
@@ -1896,42 +1894,22 @@ function changeModelNumber2401(strModelNo,groupModelList) {
 	return retModelNo;
 }
 
-// 메이크샵 클릭 로그
-function makeshopClick(makeshopno,shopcode,enuricate){
-	
-	var logType = "L";
-	
-	if(listType=="search") {
-		logType = "S";
-	}
-	
-	var param = {
-		"makeshopno" : makeshopno,
-		"logtype" : logType, //list L , srp S
-		"shopcode" : shopcode,
-		"from": "PC",
-		"cate": enuricate,
-		"keyword": param_keyword
-	}
-	$.ajax({
-		type: "GET",
-		url : "/m/api/ajax_makeshop_click_log.jsp",
-		data: param,
-		dataType:"JSON",
-		success: function(result){}
-	});
-}
-
 //프린터 연관상품 레이어
 var relOrgModelNo ;
-function loadRelatedProd(modelno, relProdModelno, orgModelNo, relProdModelnm, relBtnText) {
+function loadRelatedProd(modelno, relProdModelno, orgModelNo, relProdModelnm, relBtnText, adProdYN) {
 	relOrgModelNo = orgModelNo;
 	if (modelno == undefined || relProdModelno == undefined) return;
 
 	var relatedProdPromise = $.ajax({
 		type: "GET",
 		url: "/wide/api/product/relatedProdV2.jsp",
-		data: { "modelno": modelno, "relmodelno": relProdModelno, "relmodelnm" : relProdModelnm, "reltext" : relBtnText},
+		data: { 
+			"modelno": modelno, 
+			"relmodelno": relProdModelno, 
+			"relmodelnm" : relProdModelnm, 
+			"reltext" : relBtnText,
+			"adProdYN" : (adProdYN===true) ? "Y" : "N"
+		},
 		dataType: "JSON",
 	});
 	relatedProdPromise.then(drawRelatedProd, failRelatedProd);
@@ -2000,7 +1978,16 @@ function drawRelatedProd(dataObj) {
 	vHtml += "	<div class=\"btn_close_layer\"><i class=\"lp__sprite icon_close_s16\"></i></div>";
 	vHtml += "</div>";
 
-	$("li.prodItem[data-model-origin="+relOrgModelNo+"] .item__info").append(vHtml); 
+	// 슈퍼탑 - 리스팅 상품 중복 예외 처리
+	if( $("li.prodItem[data-model-origin="+relOrgModelNo+"]").length == 2 ) {
+		if( dataObj.adYN == "Y" ) {
+			$("li.prodItem[data-model-origin="+relOrgModelNo+"].ad .item__info").append(vHtml); 
+		} else {
+			$("li.prodItem[data-model-origin="+relOrgModelNo+"]:not('.ad') .item__info").append(vHtml); 
+		}
+	} else {
+		$("li.prodItem[data-model-origin="+relOrgModelNo+"] .item__info").append(vHtml);
+	}
 	$(".item__relate_layer").toggle();
 	$('.btn_close_layer').on('click', function() {
 		$(".item__relate_layer").hide();
@@ -2010,6 +1997,495 @@ function drawRelatedProd(dataObj) {
 function failRelatedProd(errorObj) {
 	console.log("relatedProd API Call Fail : " + errorObj.statusText);
 }
+
+// 우측 컨텐츠박스 불러오기
+function getRightWingKnowboxContent(cate) {
+	if(cate.length==0) return;
+	
+	var rightContentPromise = $.ajax({
+		type:"GET",
+		url: "/wide/api/rightContent.jsp",
+		data: {
+			cate : cate,
+			listType : listType
+		},
+		dataType: "JSON"
+	});
+	
+	// 돔 그리기
+	rightContentPromise.then(function(obj) {
+		drawRightWingKnowboxContent(obj);
+	})
+	
+	// 돔 이벤트처리
+	rightContentPromise.then(function(obj) {
+		eventRightWingKnowboxContent(obj);
+	})
+}
+
+// 우측 컨텐츠박스 그리기
+function drawRightWingKnowboxContent(dataObj) {
+	if(!dataObj.success || dataObj.data===undefined) {
+		return;
+	}
+	
+	var $targetObj = $(".knowcom-box");
+	
+	var html = [];
+	var hIdx = 0;
+	
+	// 카테고리 이름
+	if((dataObj.data.exhibition!==undefined && dataObj.data.exhibition.length>0) ||
+		(dataObj.data.guide!==undefined && dataObj.data.guide.length>0) ||
+		(dataObj.data.review!==undefined && dataObj.data.review.length>0) ||
+		(dataObj.data.news!==undefined && dataObj.data.news.length>=3) 
+	) {
+		html[hIdx++] = "<div class=\"knowcom-box--head\">트렌드를 한번에";
+		html[hIdx++] = "	<span class=\"tx--cate\">"+dataObj.data.cateNm+"</span>";
+		html[hIdx++] = "</div>";
+	}
+	
+	// 기획전
+	if(dataObj.data.exhibition!==undefined && dataObj.data.exhibition.length>0) {
+		var exhibitionObj = dataObj.data.exhibition[0];
+		
+		html[hIdx++] = "<div class=\"knowcom-box--group group--bguide\" knowbox-type=\"1\">";
+		html[hIdx++] = "	<div class=\"knowcom-group--head\">기획전";
+		if(dataObj.data.exhibition.length>1) {
+			html[hIdx++] = "	<div class=\"knowcom-group__btn\" data-idx=\"0\" data-max=\""+dataObj.data.exhibition.length+"\" data-type=\"exhibition\">";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--prev\">이전</button>";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--next\">다음</button>";
+			html[hIdx++] = "	</div>";
+		}
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "	<div class=\"knowcom-group--body\">";
+		//						<!-- 기획전 > 컨텐츠 : 썸네일형 230x140 -->
+		html[hIdx++] = "		<a href=\"/cmexhibition/exhibition_view_E.jsp?adsNo="+exhibitionObj.ads_no+"\" class=\"knowcom-group__thum\" target=\"_blank\" title=\"새 창 열림\">";
+		html[hIdx++] = "			<span class=\"knowcom-group__thum--img\">";
+		html[hIdx++] = "				<img src=\""+exhibitionObj.img_url+"\" alt=\"기획전 썸네일 이미지\" width=\"230\" onerror=\"this.src='"+ noImageStr +"';\"/>";
+		html[hIdx++] = "			</span>";
+		html[hIdx++] = "		</a>";
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "</div>";
+	}
+	
+	// 구매가이드
+	if(dataObj.data.guide!==undefined && dataObj.data.guide.length>0) {
+		var guideObj = dataObj.data.guide[0];
+		
+		html[hIdx++] = "<div class=\"knowcom-box--group group--bguide\" knowbox-type=\"2\">";
+		html[hIdx++] = "	<div class=\"knowcom-group--head\">구매가이드";
+		if(dataObj.data.guide.length>1) {
+			html[hIdx++] = "	<div class=\"knowcom-group__btn\" data-idx=\"0\" data-max=\""+dataObj.data.guide.length+"\" data-type=\"guide\">";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--prev\">이전</button>";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--next\">다음</button>";
+			html[hIdx++] = "	</div>";
+		}
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "	<div class=\"knowcom-group--body\">";
+		//						<!-- 기획전 > 컨텐츠 : 썸네일형 230x140 -->
+		html[hIdx++] = "		<a href=\"/knowcom/detail.jsp?kbno="+guideObj.bbs_no+"\" class=\"knowcom-group__thum\" target=\"_blank\" title=\"새 창 열림\">";
+		html[hIdx++] = "			<span class=\"knowcom-group__thum--img\">";
+		html[hIdx++] = "				<img src=\""+guideObj.thumbnail_url+"\" alt=\"구매가이드 썸네일 이미지\" width=\"230\" onerror=\"this.src='"+ noImageStr +"';\"/>";
+		html[hIdx++] = "			</span>";
+		html[hIdx++] = "		</a>";
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "</div>";
+	}
+	
+	// 리뷰 ( 3개가 한묶음 )
+	if(dataObj.data.review!==undefined && dataObj.data.review.length>0) {
+	
+		var reviewTotalPage = Math.floor( dataObj.data.review.length / 3 );
+		if(reviewTotalPage<1) {
+			reviewTotalPage = 1;
+		}
+		html[hIdx++] = "<div class=\"knowcom-box--group group--review\" knowbox-type=\"3\">";
+		html[hIdx++] = "	<div class=\"knowcom-group--head\">리뷰";
+		if(reviewTotalPage>1) {
+			html[hIdx++] = "	<div class=\"knowcom-group__btn\" data-cur-page=\"0\" data-max-page=\"" + reviewTotalPage + "\" data-type=\"review\">";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--prev\">이전</button>";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--next\">다음</button>";
+			html[hIdx++] = "	</div>";
+		}
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "	<div class=\"knowcom-group--body\">";
+								//	<!-- 리뷰 > 컨텐츠 : 썸네일형 1개 고정-->
+		html[hIdx++] = "		<a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.review[0].kb_no +"\" class=\"knowcom-group__thum\" target=\"_blank\" title=\"새 창 열림\">";
+									//	<!-- 동영상 썸네일은 .type--movie 붙여주세요 -->
+		if(dataObj.data.review[0].kk_code=="20") {
+			html[hIdx++] = "		<span class=\"knowcom-group__thum--img type--movie\">";
+		} else {
+			html[hIdx++] = "		<span class=\"knowcom-group__thum--img\">";
+		}
+		html[hIdx++] = "				<img src=\"" + dataObj.data.review[0].showThumbImg + "\" alt=\"리뷰 썸네일 이미지\" width=\"230\" onerror=\"this.src='"+ noImageStr +"';\"/>";
+		html[hIdx++] = "			</span>";
+									//	<!-- 구매가이드 > 컨텐츠 > 썸네일형 텍스트 > 말줄임 없이 노출 -->
+		html[hIdx++] = "			<span class=\"tx--thumb\">" + reviewTitleEscape(dataObj.data.review[0].kb_title) + "</span>";
+		html[hIdx++] = "		</a>";
+								//	<!-- 구매가이드 > 컨텐츠 : 리스트형 2개 고정-->
+		if(dataObj.data.review.length>=2) {
+			html[hIdx++] = "	<ul class=\"knowcom-group__list\">";
+			html[hIdx++] = "		<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.review[1].kb_no +"\" target=\"_blank\">"+ reviewTitleEscape(dataObj.data.review[1].kb_title) + "</a></li>";
+			if(dataObj.data.review.length>=3) {
+				html[hIdx++] = "	<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.review[2].kb_no +"\" target=\"_blank\">"+ reviewTitleEscape(dataObj.data.review[2].kb_title) + "</a></li>";
+			}
+			html[hIdx++] = "	</ul>";
+		}
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "</div>";
+	}
+	
+	// 뉴스 ( 5개가 한묶음 )
+	if(dataObj.data.news!==undefined && dataObj.data.news.length>=3) {
+		
+		var newsTotalPage = Math.floor( dataObj.data.news.length / 5 );
+		if(newsTotalPage<1) {
+			newsTotalPage = 1;
+		}
+		
+		html[hIdx++] = "<div class=\"knowcom-box--group group--news\" knowbox-type=\"4\">";
+		html[hIdx++] = "	<div class=\"knowcom-group--head\">뉴스";
+		if(newsTotalPage>1) {
+			html[hIdx++] = "	<div class=\"knowcom-group__btn\" data-cur-page=\"0\" data-max-page=\"" + newsTotalPage + "\" data-type=\"news\">";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--prev\">이전</button>";
+			html[hIdx++] = "		<button class=\"knowcom-group__btn--next\">다음</button>";
+			html[hIdx++] = "	</div>";
+		}
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "	<div class=\"knowcom-group--body\">";
+								//	<!-- 뉴스 > 컨텐츠 : 리스트형 5개 고정-->
+		html[hIdx++] = "		<ul class=\"knowcom-group__list\">";
+		html[hIdx++] = "			<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.news[0].kb_no +"\" target=\"_blank\">" + dataObj.data.news[0].kb_title + "</a></li>";
+		if(dataObj.data.news.length>=2) {
+			html[hIdx++] = "		<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.news[1].kb_no +"\" target=\"_blank\">" + dataObj.data.news[1].kb_title + "</a></li>";
+		}
+		if(dataObj.data.news.length>=3) {
+			html[hIdx++] = "		<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.news[2].kb_no +"\" target=\"_blank\">" + dataObj.data.news[2].kb_title + "</a></li>";
+		}
+		if(dataObj.data.news.length>=4) {
+			html[hIdx++] = "		<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.news[3].kb_no +"\" target=\"_blank\">" + dataObj.data.news[3].kb_title + "</a></li>";
+		}
+		if(dataObj.data.news.length>=5) {
+			html[hIdx++] = "		<li><a href=\"/knowcom/detail.jsp?kbno="+ dataObj.data.news[4].kb_no +"\" target=\"_blank\">" + dataObj.data.news[4].kb_title + "</a></li>";
+		}
+		html[hIdx++] = "		</ul>";
+		html[hIdx++] = "	</div>";
+		html[hIdx++] = "</div>";
+	}
+	
+	$targetObj.html(html.join(""));
+	
+	$targetObj.show();
+}
+
+// 우측 컨텐츠박스 이벤트리스너
+function eventRightWingKnowboxContent(dataObj) {
+	
+	// 우측 컨텐츠 fixed 관련 스크립트
+	var $body = $(".list-body");
+	var $side = $(".list-body-side .side__inner");
+	var fixSidePos = function(){
+		var scroll = $(window).scrollTop(),
+		bodyH = $body.outerHeight(), // 컨테이너 높이
+		bodyT = $body.offset().top, // 컨테이너 Position Top
+		sideH = $side.outerHeight(), // 우측컨텐츠 높이
+		winH = $(window).height(), // 스크린 Y 크기
+		distT = 70; // 상단과 FIXED 될 거리
+
+		if ( bodyH > sideH ){ // 우측 컨텐츠 보다 상품리스트가 크고
+			if ( sideH < winH - distT ){ // 우측 컨텐츠가 스크린H 보다 작을때
+				if ( scroll > bodyT - distT ){ // 상단에 고정
+					if ( scroll > bodyT + bodyH - sideH - distT){ // 스크롤이 컨텐츠 하단으로 벗어날때
+						$side.addClass("is--fixBotOv").removeClass("is--fixBot is--fixTop");
+					}else{ // 스크롤이 컨텐츠 내에 존재할때
+						$side.addClass("is--fixTop").removeClass("is--fixBot is--fixBotOv");
+					}
+				}else{
+					$side.removeClass("is--fixTop is--fixBot is--fixBotOv");
+				}
+			}else{ // 우측 컨텐츠가 스크린H 보다 클때
+				if ( scroll > bodyT + (sideH-winH) ){ // 하단에 고정
+					if ( scroll > bodyT + bodyH - winH ){ // 스크롤이 컨텐츠 하단으로 벗어날때
+						$side.addClass("is--fixBotOv").removeClass("is--fixBot is--fixTop");
+					}else{ // 스크롤이 컨텐츠 내에 존재할때
+						$side.addClass("is--fixBot").removeClass("is--fixTop is--fixBotOv");
+					}
+				}else{
+					$side.removeClass("is--fixTop is--fixBot is--fixBotOv");
+				}
+			}
+		}else{ // 우측 컨텐츠가 상품리스트 보다 길때는 실행 안함
+			$side.removeClass("is--fixTop is--fixBot is--fixBotOv")
+		}
+	}
+
+	$(window).on({
+		"load" : fixSidePos,
+		"scroll" : fixSidePos,
+		"resize" : fixSidePos
+	});
+	var $wingPH = $(".knowcom-group__placecholder");
+	$(window).on('load', function() {
+		setTimeout(function(){ // 퍼블테스트
+			$wingPH.fadeOut(300);
+		},1000)
+	});
+	
+	// 좌/우 클릭 이벤트
+	$(document).on("click", ".knowcom-group__btn--prev, .knowcom-group__btn--next", function() {
+		var actionObj = $(this).closest(".knowcom-group__btn");
+		var actionType = actionObj.attr("data-type");
+		var changeObj = $(this).closest(".knowcom-box--group").find(".knowcom-group--body");
+
+		// 좌
+		if( $(this).hasClass("knowcom-group__btn--prev") ) {
+		
+			switch(actionType) {
+				case "exhibition" : 
+					var idx = actionObj.attr("data-idx");
+					var max = actionObj.attr("data-max");
+					var nextIdx = 0;
+					if(idx==0) {
+						nextIdx = Number(parseInt(max)-parseInt(1));
+					} else {
+						nextIdx = Number(parseInt(idx)-parseInt(1));
+					}
+					changeObj.find(".knowcom-group__thum").attr("href", "/cmexhibition/exhibition_view_E.jsp?adsNo="+dataObj.data.exhibition[nextIdx].ads_no);
+					changeObj.find("img").attr("src", dataObj.data.exhibition[nextIdx].img_url);
+					actionObj.attr("data-idx", nextIdx);
+					break;
+				case "guide" :
+					var idx = actionObj.attr("data-idx");
+					var max = actionObj.attr("data-max");
+					var nextIdx = 0;
+					if(idx==0) {
+						nextIdx = Number(parseInt(max)-parseInt(1));
+					} else {
+						nextIdx = Number(parseInt(idx)-parseInt(1));
+					}
+					changeObj.find(".knowcom-group__thum").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.guide[nextIdx].bbs_no);
+					changeObj.find("img").attr("src", dataObj.data.guide[nextIdx].thumbnail_url);
+					actionObj.attr("data-idx", nextIdx);
+					break;
+				case "review" : 
+					var idx = actionObj.attr("data-cur-page");
+					var max = actionObj.attr("data-max-page");
+					var nextIdx = 0;
+					if(idx==0) {
+						nextIdx = Number(parseInt(max)-parseInt(1));
+					} else {
+						nextIdx = Number(parseInt(idx)-parseInt(1));
+					}
+					var nextPageStart = nextIdx * 3; // 3개가 한묶음
+					var nextPageStart_1 = Number(parseInt(nextPageStart)+parseInt(1));
+					var nextPageStart_2 = Number(parseInt(nextPageStart)+parseInt(2));
+					changeObj.find(".knowcom-group__thum").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart].kb_no);
+					changeObj.find(".knowcom-group__thum--img img").attr("src", dataObj.data.review[nextPageStart].showThumbImg);
+					changeObj.find(".tx--thumb").text(reviewTitleEscape(dataObj.data.review[nextPageStart].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(0) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_1].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(0) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_1].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(1) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_2].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(1) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_2].kb_title));
+					actionObj.attr("data-cur-page", nextIdx);
+					break;
+				case "news" : 
+					var idx = actionObj.attr("data-cur-page");
+					var max = actionObj.attr("data-max-page");
+					var nextIdx = 0;
+					if(idx==0) {
+						nextIdx = Number(parseInt(max)-parseInt(1));
+					} else {
+						nextIdx = Number(parseInt(idx)-parseInt(1));
+					}
+					var nextPageStart = nextIdx * 5; // 5개가 한묶음
+					var nextPageStart_1 = Number(parseInt(nextPageStart)+parseInt(1));
+					var nextPageStart_2 = Number(parseInt(nextPageStart)+parseInt(2));
+					var nextPageStart_3 = Number(parseInt(nextPageStart)+parseInt(3));
+					var nextPageStart_4 = Number(parseInt(nextPageStart)+parseInt(4));
+					changeObj.find(".knowcom-group__list li:eq(0) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(0) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(1) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_1].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(1) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_1].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(2) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_2].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(2) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_2].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(3) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_3].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(3) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_3].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(4) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_4].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(4) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_4].kb_title));
+					actionObj.attr("data-cur-page", nextIdx);
+					break;
+			}
+		
+		// 우
+		} else if( $(this).hasClass("knowcom-group__btn--next") ) {
+		
+			switch(actionType) {
+				case "exhibition" : 
+					var idx = actionObj.attr("data-idx");
+					var max = actionObj.attr("data-max");
+					var nextIdx = 0;
+					if(Number(parseInt(idx)+parseInt(1))==Number(max)) {
+						nextIdx = 0;
+					} else {
+						nextIdx = Number(parseInt(idx)+parseInt(1));
+					}
+					changeObj.find(".knowcom-group__thum").attr("href", "/cmexhibition/exhibition_view_E.jsp?adsNo="+dataObj.data.exhibition[nextIdx].ads_no);
+					changeObj.find("img").attr("src", dataObj.data.exhibition[nextIdx].img_url);
+					actionObj.attr("data-idx", nextIdx);
+					break;
+				case "guide" :
+					var idx = actionObj.attr("data-idx");
+					var max = actionObj.attr("data-max");
+					var nextIdx = 0;
+					if(Number(parseInt(idx)+parseInt(1))==Number(max)) {
+						nextIdx = 0;
+					} else {
+						nextIdx = Number(parseInt(idx)+parseInt(1));
+					}
+					changeObj.find(".knowcom-group__thum").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.guide[nextIdx].bbs_no);
+					changeObj.find("img").attr("src", dataObj.data.guide[nextIdx].thumbnail_url);
+					actionObj.attr("data-idx", nextIdx);
+					break;
+				case "review" : 
+					var idx = actionObj.attr("data-cur-page");
+					var max = actionObj.attr("data-max-page");
+					var nextIdx = 0;
+					if(Number(parseInt(idx)+parseInt(1))==Number(max)) {
+						nextIdx = 0;
+					} else {
+						nextIdx = Number(parseInt(idx)+parseInt(1));
+					}
+					var nextPageStart = nextIdx * 3; // 3개가 한묶음
+					var nextPageStart_1 = Number(parseInt(nextPageStart)+parseInt(1));
+					var nextPageStart_2 = Number(parseInt(nextPageStart)+parseInt(2));
+					changeObj.find(".knowcom-group__thum").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart].kb_no);
+					changeObj.find(".knowcom-group__thum--img img").attr("src", dataObj.data.review[nextPageStart].showThumbImg);
+					changeObj.find(".tx--thumb").text(reviewTitleEscape(dataObj.data.review[nextPageStart].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(0) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_1].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(0) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_1].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(1) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_2].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(1) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_2].kb_title));
+					actionObj.attr("data-cur-page", nextIdx);
+					break;
+				case "news" : 
+					var idx = actionObj.attr("data-cur-page");
+					var max = actionObj.attr("data-max-page");
+					var nextIdx = 0;
+					if(Number(parseInt(idx)+parseInt(1))==Number(max)) {
+						nextIdx = 0;
+					} else {
+						nextIdx = Number(parseInt(idx)+parseInt(1));
+					}
+					var nextPageStart = nextIdx * 5; // 5개가 한묶음
+					var nextPageStart_1 = Number(parseInt(nextPageStart)+parseInt(1));
+					var nextPageStart_2 = Number(parseInt(nextPageStart)+parseInt(2));
+					var nextPageStart_3 = Number(parseInt(nextPageStart)+parseInt(3));
+					var nextPageStart_4 = Number(parseInt(nextPageStart)+parseInt(4));
+					changeObj.find(".knowcom-group__list li:eq(0) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(0) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(1) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_1].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(1) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_1].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(2) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_2].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(2) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_2].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(3) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_3].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(3) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_3].kb_title));
+					changeObj.find(".knowcom-group__list li:eq(4) a").attr("href", "/knowcom/detail.jsp?kbno="+dataObj.data.review[nextPageStart_4].kb_no);
+					changeObj.find(".knowcom-group__list li:eq(4) a").text(reviewTitleEscape(dataObj.data.review[nextPageStart_4].kb_title));
+					actionObj.attr("data-cur-page", nextIdx);
+					break;
+			}
+		
+		}
+	});
+}
+
+// 리뷰 컨텐츠 문구 예외처리
+function reviewTitleEscape(reviewTitle) {
+	var title = reviewTitle;
+	title = title.split("&#39;").join("'");
+	if(title.length>32) {
+		title = title.substring(0, 32) + "···";
+	}
+	return title;
+}
+
+//orderBy=1 : 중복제거한 인기 검색어
+//orderBy=2 : 중복제거한 급상승 검색어
+function setSearchIngiKeywrd(orderBy) {
+
+	var param = {
+		"procType" : 1,
+		"orderBy" : orderBy
+	}
+
+	var ajaxObj = $.ajax({
+		type : "get",
+		url : "/lsv2016/ajax/getSearch_Keyword_Rank_ajax.jsp",
+		async: true,
+		data : param,
+		dataType : "json",
+		success: function(json) {
+			var searchIngiKeywrdDivObj = $("#searchIngiKeywrdDiv");
+			var html = "";
+
+			var keywordListObj = json["keywordList"];
+			var keywordCnt = json["keywordCnt"];
+
+			if(keywordListObj) {
+				searchIngiKeywrdDivObj.show();
+				$.each(keywordListObj, function(Index, listData) {
+					var keyword = listData["keyword"];
+					var rank_1 = listData["rank_1"];
+					var rank_2 = listData["rank_2"];
+					var new_rank_1 = listData["new_rank_1"];
+					var new_rank_2 = listData["new_rank_2"];
+					var hotRankClass = " red";
+					if(Index>2) hotRankClass = "";
+
+					html += "<li>";
+					html += "	<em class=\"tx--rank\">"+(Index+1)+"</em>";
+					html += "	<a href=\"search.jsp?keyword="+keyword+"&from="+listType + "\">";
+					html += keyword;
+					html += "	</a>";
+					html += "</li>";
+				});
+			}
+			var listobj = $(".hot-keyword__list--hit");
+			if(orderBy=="1") listobj = $(".hot-keyword__list--pop");
+			else if (orderBy=="2") listobj = $(".hot-keyword__list--hit");
+			listobj.html(html);
+
+			searchIngiKeywrdDivObj.show();
+
+			listobj.find("li a").unbind();
+			listobj.find("li a").click(function() {
+				var thisObj = $(this);
+				var keyword = thisObj.text().trim();
+				keyword = encodeURIComponent(keyword);
+
+				if(orderBy=="1") {
+					insertLogLSV(14861);
+				} else if(orderBy=="2") {
+					insertLogLSV(14859);
+				}
+			});
+
+			var $tab = $(".hot-keyword__tab");
+			$tab.click(function(e){
+				e.preventDefault();
+				var $pa = $(this).parent();
+				$pa.addClass("is--on").siblings().removeClass("is--on");
+			})
+		},
+		error: function (xhr, ajaxOptions, thrownError) {
+			//alert(xhr.status);
+			//alert(thrownError);
+			//console.log("thrownError="+thrownError);
+		}
+	});
+}
+
 ///////////////////////////////////////////////////////////////// 검색결과가 없을때 최근본 상품 연관상품 시작 /////////////////////////////////////////////////////////////////
 
 var suggestJSON;

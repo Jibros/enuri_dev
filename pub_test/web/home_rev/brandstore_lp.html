@@ -73,7 +73,7 @@
                             <a href="./brandstore_recom.html" class="btn_recom_store">추천 브랜드스토어</a>
                         </div>
                     </div>
-                    <form name="form_search_goods" method="get" action="/shop/shopbrand.html" class="form_search_engine_finder">
+                    <form name="form_search_goods" method="get" action="/shop/shopbrand.html" class="form_search_engine_finder fold">
                         <table class="table_default">
                             <caption>검색 목록</caption>
                             <colgroup>
@@ -342,6 +342,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <button type="button" class="search_option_all_view"><em>N</em>개 옵션 <span>더보기</span><i class="icon_arrow down"></i></button>
                     </form>
                     <script>
                         // 로드시 컬러리스트적용
@@ -411,6 +412,10 @@
                                 checkSelectArea();
                             }
                         });
+                        // 첫번째 옵션, 선택한조건 tr 이외 히든
+                        $('.search_option_all_view').on('click', function(){
+                            form.toggleClass('fold');
+                        });
                         // 전체초기화
                         $('.btn_selected_option_reset').on('click', function(){
                             $('form[name=form_search_goods]')[0].reset();
@@ -440,18 +445,17 @@
                 <div class="cont__inner">
                     <div class="list_controller">
                         <div class="section_left">
-                            <ul class="sort_option">
-                                <li data-sortby="sortByPop" class="active">인기순</li>
-                                <li data-sortby="sortByNew">신제품순</li>
-                                <li data-sortby="sortByLowprice">낮은가격순</li>
-                                <li data-sortby="sortByHighprice">높은가격순</li>
-                                <!-- 
-                                    220504 수정요청 _ 주석처리만함.
-                                    <li data-sortby="sortBySell">판매량순</li>
-                                -->
-                            </ul>
+                            <div class="total_cnt"><strong>총 <em>248,302</em>개</strong> 상품</div>
                         </div>
                         <div class="section_right">
+                            <div class="sort_option_wrap">
+                                <ul class="sort_option">
+                                    <li data-sortby="sortByPop" class="active">인기순</li>
+                                    <li data-sortby="sortByNew">신제품순</li>
+                                    <li data-sortby="sortByLowprice">낮은가격순</li>
+                                    <li data-sortby="sortByHighprice">높은가격순</li>
+                                </ul>
+                            </div>
                             <form name="form_search_within_category">
                                 <input type="text" placeholder="카테고리내 검색" />
                                 <button type="button" class="btn_search_within_category"><i class="icon_search"></i></button>
@@ -515,6 +519,9 @@
                                 listHtml += '<div class="col col_one_fifth">';
                                 listHtml += '    <div class="goods">';
                                 listHtml += '        <div class="goods_thumbs noimg">';
+                                    if(i < 4) {
+                                        listHtml += '            <div class="flag_rank">' + i + '</div>';
+                                    }
                                 listHtml += '            <a href="#">';
                                 listHtml += '                <img src="//img.enuri.info/images/common/noimg@s500.jpg" alt="noimg" />';
                                 listHtml += '            </a>';
@@ -531,6 +538,9 @@
                                 listHtml += '<div class="col col_one_fifth">';
                                 listHtml += '    <div class="goods">';
                                 listHtml += '        <div class="goods_thumbs">';
+                                    if(i < 4) {
+                                        listHtml += '            <div class="flag_rank">' + i + '</div>';
+                                    }
                                 listHtml += '            <a href="#">';
                                 listHtml += '                <img src="//img.enuri.info/images/sample/sample_thumbs'+ (i%2 == 0?'2':'') +'@s244.png" alt="젠리 천연가죽 털안감 어그부츠" />';
                                 listHtml += '            </a>';

@@ -13,8 +13,9 @@ let param = {
     leftmore : 0,
     rightmore : 0,
     sort :"price",
+    card :"N",
+    delivery :"N",
     selshop : "",
-    mix : "N",
     prono : promo,
     showcnt : ""
 };
@@ -34,6 +35,10 @@ export const paramHandler = {
                 param["sort"] = "price";
                 param["more"] = "N";
                 param["mix"] = "N";
+                param["leftmore"] = 0;
+                param["rightmore"] = 0;
+            }else if(prop=="card" || prop=="delivery"){
+                param["sort"] = "price";
                 param["leftmore"] = 0;
                 param["rightmore"] = 0;
             }
@@ -94,49 +99,33 @@ export const prodPriceCompView = (json) => {
         //디폴트 설정
         //카드할인가 포함 버튼 초기화
         $("#prod_pricecomp").find(".comparison__head").show();
-        $("#prod_pricecomp").find(".comparison__sort li").removeClass("is-on");
-        $("#prod_pricecomp").find(".comparison__sort li[data-sort='"+paramHandler.get("sort")+"']").addClass("is-on");
-        if(paramHandler.get("mix")=="N"){
-            $("#prod_pricecomp").find(".comparison__cont .head__opt .toggle__chk").removeClass("is-on");
-        }
+        $('#prod_pricecomp .input--checkbox-item').prop('checked',false);
+        if(paramHandler.get("delivery") === 'Y') $("#deliveryInc-3").prop('checked', true);
+        if(paramHandler.get("card") === 'Y') $("#cardsaleInc-3").prop('checked', true);
 
         //카드 할인가 없을때 제거
-        if(!cardfilterCheck){
-            $("#prod_pricecomp").find(".comparison__head .comparison__sort li[data-sort='card']").hide();
-            $("#prod_pricecomp").find(".comparison__cont .head__opt").hide();
-        }else{
-            $("#prod_pricecomp").find(".comparison__head .comparison__sort li[data-sort='card']").show();
-            $("#prod_pricecomp").find(".comparison__cont .head__opt").show();
-
-            //카드할인가가 있지만 판매가순 아닐땐 수고링
-            if(paramHandler.get("sort") != "price"){
-                $("#prod_pricecomp").find(".comparison__cont .head__opt").hide();
-            }else{
-                $("#prod_pricecomp").find(".comparison__cont  .head__opt").show();
-            }
-        }
+        (!cardfilterCheck)
+        ? $("#cardsaleInc-3").parent().hide()
+        : $("#cardsaleInc-3").parent().show();
 
         $("#prod_pricecomp").find(".comparison__cont > div").data("all",false);
-        $("#prod_pricecomp").find(".comparison__head .comparison__sort li").unbind("click");
-        $("#prod_pricecomp").find(".comparison__head .comparison__sort li").click(function(){
-            $(this).siblings().removeClass("is-on");
-            $(this).addClass("is-on");
-            let sort = $(this).attr("data-sort");
+        /*$("#prod_pricecomp .sort_block .sort_chk input").unbind('click').click(function(){
+            ($(this).is(':checked') === true)
+            ? paramHandler.set(`${$(this).data('sort')}`, 'Y')
+            : paramHandler.set(`${$(this).data('sort')}`, 'N');
 
-            if(sort == "price"){
-                insertLogLSV(14503,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-                ga('send','event','vip','comparison_sort','price');
-            }else if(sort == "delivery"){
-                insertLogLSV(14502,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-                ga('send','event','vip','comparison_sort','shipping');
-            }else if(sort == "card"){
-                insertLogLSV(14504,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-                ga('send','event','vip','comparison_sort','creditpromotion');
-            }
-            paramHandler.set("sort", sort);
+            /*로그 정리되면 수정
+            // if(sort === "delivery"){
+            //     insertLogLSV(14502,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+            //     ga('send','event','vip','comparison_sort','shipping');
+            // }else if(sort == "card"){
+            //     insertLogLSV(14504,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+            //     ga('send','event','vip','comparison_sort','creditpromotion');
+            //     ga('send','event','vip','comparison_sort','Inclusion promotion');
+            //     insertLogLSV(17519,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+            // }
+        });*/
 
-
-        });
         //쇼핑몰 선택 layer
         prodPriceCompShopListView(selectShopObj);
 
@@ -156,26 +145,12 @@ export const prodPriceCompView = (json) => {
         if(authImage !=""){
             authInsertLog(1);
         }
-        $("#prod_pricecomp").find(".comparison__cont .head__opt .toggle__chk").unbind().click(function(){
-            let toggleObj = $("#prod_pricecomp").find(".comparison__cont .head__opt .toggle__chk");
-            ga('send','event','vip','comparison_sort','Inclusion promotion');
-            insertLogLSV(17519,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-
-            if($(this).hasClass("is-on")){
-                toggleObj.removeClass("is-on").addClass("is-off");
-                paramHandler.set("mix","N");
-            }else{
-                toggleObj.removeClass("is-off").addClass("is-on");
-                paramHandler.set("mix","Y");
-            }
-        });
         $("#prod_pricecomp .similar__cont").find("li.similar__item").on("click",function(){
             ga('send','event','vip','comparison_clickout','pricecomparison');
         });
         $("#prod_pricecomp .comparison__cont").find("li.comprod__item").on("click",function(){
             ga('send','event','vip','comparison_clickout','pricecomparison');
         });
-        
         $("#prod_pricecomp .cashmall__cont").find("li.cashmall__item").on("click",function(){
             ga('send','event','vip','comparison_clickout','cashmall');
         })
@@ -232,6 +207,7 @@ const prodPriceCompTierView = (json,tier) => {
             let cardevnt_text = listData.cardevnt_text;
             let cardname = listData.cardname;
             let cardprice = listData.cardprice;
+            let cardprice2 = listData.cardprice2;
             let delivery_price = listData.delivery_price;
             let delivery_text = listData.delivery_text;
             let emoney_reward = listData.emoney_reward;
@@ -269,6 +245,7 @@ const prodPriceCompTierView = (json,tier) => {
             let promotion_cpnRate = listData.promotion_cpnRate;
             let promotion_cpnViewDcd = listData.promotion_cpnViewDcd;
             let promotion_cpnViewText = listData.promotion_cpnViewText;
+            let deliveryCod_check = listData.deliveryCod_check;
 
 
             let bridgeUrl =prodCommon.bridgeUrl('move_link',`${shopcode}`,`${gModelData.gModelno}`,`${gModelData.gFactory}`,`${plno}`,`${coupon}`,`${price}`,1)
@@ -282,27 +259,35 @@ const prodPriceCompTierView = (json,tier) => {
                 setSellerAdLog(plno);
             }
             if($.isNumeric(delivery_text)){
-                if(param.sort =="delivery"){
-                    delivery_textView = numComma(delivery_text) + "원(배송제외 "+ numComma(price) +"원)";
+                if(param.card =="Y" && param.delivery =="Y"){
+                    delivery_textView = numComma(delivery_text) + "원 (배송제외 "+ (cardname !="" ? numComma(cardprice) : numComma(price) )  +"원)";
+                }else if(param.delivery =="Y"){
+                    delivery_textView = numComma(delivery_text) + "원 (배송제외 "+ numComma(price)  +"원)";
+                }else if (param.card =="Y") {
+                    delivery_textView = numComma(delivery_text) + "원 (배송포함 "+ (cardname !="" ? numComma(cardprice2) : numComma(price2))  +"원)";
                 }else{
-                    delivery_textView = numComma(delivery_text) + "원(배송포함 "+ numComma(price2) +"원)";
+                    delivery_textView = numComma(delivery_text) + "원 (배송포함 "+ numComma(price2) +"원)";
                 }
             }else{
-                delivery_textView = "("+delivery_text+")";
+                if(!deliveryCod_check) delivery_textView = "("+delivery_text+")";
             }
 
             if(param.sort=="price"){
-                if(param.mix=="Y" && cardname !=""){
-                    priceView = cardprice;
+                if(param.delivery=="Y" && param.card=="Y"){
+                    if(cardname !=""){
+                        priceView = cardprice2;
+                    }else {
+                        priceView = price2;
+                    }
+                }else if(param.delivery=="Y"){
+                    priceView = price2;
+                }else if(param.card=="Y"){
+                    if(cardname !=""){
+                        priceView = cardprice;
+                    }else {
+                        priceView = price;
+                    }
                 }else{
-                    priceView = price;
-                }
-            }else if(param.sort=="delivery"){
-                priceView = price2;
-            }else if(param.sort=="card"){
-                if(cardname !=""){
-                    priceView = cardprice;
-                }else {
                     priceView = price;
                 }
             }
@@ -401,13 +386,28 @@ const prodPriceCompTierView = (json,tier) => {
                                                             <!-- 버튼 : 레이어 닫기 -->
                                                             <button class="lay-comm__btn--close comm__sprite" onclick="$(this).parent().hide()">레이어 닫기</button>
                                                         </div>` : ``}
-                                    ${cardname !="" && (param.mix=="Y" || param.sort=="card") ? `<i class="badge badge--card">${cardname}</i>`: ``}
+                                    ${cardname !="" && (param.card=="Y") ? `<i class="badge badge--card">${cardname}</i>`: ``}
                                     ${oversea_check ? `<i class="badge badge--direct">직구</i>` : ``}
                                     ${ad_check && param.sort=="price" ? `<i class="badge badge--ad">AD</i>` :``}
+                                    ${deliveryCod_check === true ? `<div class="delicash">
+                                                                    <span class="delivery--cash">착불</span>
+                                                                    <div class="lay-tooltip lay-comm lay-comm--sm" onmouseleave="$(this).fadeOut(300);" style="display: none;">
+                                                                        <div class="lay-comm--head">
+                                                                            <strong class="lay-comm__tit">착불/유무료</strong>
+                                                                        </div>
+                                                                        <div class="lay-comm--body">
+                                                                            <div class="lay-comm__inner">
+                                                                                <p class="tx_tit tx_stress">총 상품금액에 배송비가 포함되어 있지 않습니다.</p>
+                                                                                <p class="tx_sub">쇼핑몰 이동 후 반드시 상품정보 및 가격을 다시 한번 확인하세요.</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>` :``}
                                     ${cardname !="" ? ` <div class="tx_cardprice">
                                                             <a href="${bridgeUrl}" target="_blank"  class="tx_price" onclick="insertLogLSV(14515,'${gModelData.gCategory}','${gModelData.gModelno}');">
-                                                                <em>${(param.mix=="Y"||param.sort=="card") ? numComma(price) : numComma(cardprice)}</em>원
-                                                                ${!(param.mix=="Y" || param.sort=="card") ? `<span class="tx_card">${cardname}</span>` : ``}
+                                                                <em>${(param.card=="Y" && param.delivery=="Y") ? numComma(price2) : 
+                                                                        (param.card=="Y") ? numComma(price) : numComma(cardprice) }</em>원
+                                                                ${!(param.card=="Y") ? `<span class="tx_card">${cardname}</span>` : ``}
                                                             </a>
                                                         </div>`: ``}
                                 </div>
@@ -708,6 +708,7 @@ const prodPriceSimModelTierView = (json) =>{
             let cardevnt_text = listData.cardevnt_text;
             let cardname = listData.cardname;
             let cardprice = listData.cardprice;
+            let cardprice2 = listData.cardprice2;
             let delivery_price = listData.delivery_price;
             let delivery_text = listData.delivery_text;
             let emoney_reward = listData.emoney_reward;
@@ -753,29 +754,36 @@ const prodPriceSimModelTierView = (json) =>{
             let freeinterestView = "";
             let priceView = 0;
 
-
             if($.isNumeric(delivery_text)){
-                if(param.sort =="delivery"){
-                    delivery_textView = numComma(delivery_text) + "원(배송제외 "+ numComma(price) +"원)";
+                if(param.card =="Y" && param.delivery =="Y"){
+                    delivery_textView = numComma(delivery_text) + "원 (배송제외 "+ (cardname !="" ? numComma(cardprice) : numComma(price) )  +"원)";
+                }else if(param.delivery =="Y"){
+                    delivery_textView = numComma(delivery_text) + "원 (배송제외 "+ numComma(price)  +"원)";
+                }else if (param.card =="Y") {
+                    delivery_textView = numComma(delivery_text) + "원 (배송포함 "+ (cardname !="" ? numComma(cardprice2) : numComma(price2))  +"원)";
                 }else{
-                    delivery_textView = numComma(delivery_text) + "원(배송포함 "+ numComma(price2) +"원)";
+                    delivery_textView = numComma(delivery_text) + "원 (배송포함 "+ numComma(price2) +"원)";
                 }
             }else{
                 delivery_textView = "("+delivery_text+")";
             }
 
             if(param.sort=="price"){
-                if(param.mix=="Y" && cardname !=""){
-                    priceView = cardprice;
+                if(param.delivery=="Y" && param.card=="Y"){
+                    if(cardname !=""){
+                        priceView = cardprice2;
+                    }else {
+                        priceView = price2;
+                    }
+                }else if(param.delivery=="Y"){
+                    priceView = price2;
+                }else if(param.card=="Y"){
+                    if(cardname !=""){
+                        priceView = cardprice;
+                    }else {
+                        priceView = price;
+                    }
                 }else{
-                    priceView = price;
-                }
-            }else if(param.sort=="delivery"){
-                priceView = price2;
-            }else if(param.sort=="card"){
-                if(cardname !=""){
-                    priceView = cardprice;
-                }else {
                     priceView = price;
                 }
             }
@@ -803,7 +811,7 @@ const prodPriceSimModelTierView = (json) =>{
                         <div class="col col-2">
                             <div class="badge__group">
                                     ${mobileprice_check ? `<i class="badge badge--mspecial">모바일특가</i>` : ``}
-                                    ${cardname !="" && (param.sort=="card") ? `<i class="badge badge--card">${cardname}</i>`: ``}
+                                    ${cardname !="" && (param.card=="Y") ? `<i class="badge badge--card">${cardname}</i>`: ``}
                                     ${ad_check && param.sort=="price" ? `<i class="badge badge--ad">AD</i>` :``}
                                     ${coupon_contents != "" ? `<i class="badge badge--coupon">쿠폰</i>` : ``}
                             </div>
@@ -1021,74 +1029,159 @@ const prodPriceSimModelTierView = (json) =>{
     $("#prod_pricecomp").find(".similar__cont").show();
 }
 const prodPriceCompShopListView = (json) => {
-    let krhtml = ``;
+    let mallHtml = '';
     let krShopList = json.krShopList;
-    let ovshtml = ``;
     let ovsShopList = json.ovsShopList;
-    if(krShopList.length > 0){
-        krhtml += `<li><input type="checkbox" id="chkDOMESTIC" class="input--checkbox-item" value="all"><label for="chkDOMESTIC">전체</label></li>`
-        $.each(krShopList, (index,listData) => {
-            krhtml += `<li><input type="checkbox" id="chkDOMESTIC_${index}" class="input--checkbox-item" value="${listData.shopcode}"><label for="chkDOMESTIC_${index}">${listData.shopname}</label></li>`
-        });
-    }else{
-        krhtml += ` <li class="no-data">
-                    <p class="tx_msg">선택할 쇼핑몰이 없습니다.</p>
-                </li>`;
+    const selShopArray = paramHandler.get("selshop").split(",");
+    
+    function cntChecked(){
+        const domesticListCnt = $('#mall_layer input[id^=\'chkDOMESTIC\']').not('#chkDOMESTIC').length;
+        const overseasListCnt = $('#mall_layer input[id^=\'chkOVERSEAS\']').not('#chkOVERSEAS').length;
+        const domesticCheckedCnt = $('#mall_layer input[id^=\'chkDOMESTIC\']:checked').not('#chkDOMESTIC').length;
+        const overseasCheckedCnt = $('#mall_layer input[id^=\'chkOVERSEAS\']:checked').not('#chkOVERSEAS').length;
+        const shopChecked =  $('#mall_layer .lay-mall__list > li > input:checked').not('#chkDOMESTIC,#chkOVERSEAS');
+        
+        (domesticListCnt === domesticCheckedCnt)
+        ? $('#chkDOMESTIC').prop('checked',true)
+        : $('#chkDOMESTIC').prop('checked',false);
+
+        (overseasListCnt === overseasCheckedCnt)
+        ? $('#chkOVERSEAS').prop('checked',true)
+        : $('#chkOVERSEAS').prop('checked',false);
+        
+        $('#mall-layer-apply em').text(shopChecked.length);
     }
-    if(ovsShopList.length > 0){
-        ovshtml += `<li><input type="checkbox" id="chkOVERSEA" class="input--checkbox-item" value="all"><label for="chkOVERSEA">전체</label></li>`
-        $.each(ovsShopList, (index,listData) => {
-            ovshtml += `<li><input type="checkbox" id="chkOVERSEA_${index}" class="input--checkbox-item" value="${listData.shopcode}"><label for="chkOVERSEA_${index}">${listData.shopname}</label></li>`
+    
+    function shopListChkAll($this){
+        const $parent = $this.parent();
+        let isChecked = false;
+
+        ($this.prop('checked'))
+        ? isChecked = true
+        : isChecked = false;
+        
+        $parent.siblings(`[data-mall="${$parent.data('mall')}"]`).each(function(i,v){
+            $(v).find('input').prop('checked', isChecked);
         });
-        $("#ovs_shoplist").find(".lay_tooltip").show();
-    }else{
-        ovshtml += `<li class="no-data">
-                     <p class="tx_msg">선택할 쇼핑몰이 없습니다.</p>
+
+        cntChecked();
+    }
+    
+    function applyShop(){
+        const shopChecked = $('#mall_layer .lay-mall__list > li > input:checked').not('#chkDOMESTIC,#chkOVERSEAS');
+        let selShopComma = '';
+
+        $.each(shopChecked, (i,v) => {
+            if(i>0) selShopComma += ",";
+            selShopComma += v.value;
+        });
+
+        paramHandler.set("selshop",selShopComma);
+        
+        (shopChecked.length > 0)
+        ? $(".btnMallSort").addClass("has-chk")
+        : $(".btnMallSort").removeClass("has-chk");
+    }
+    if(krShopList.length === 0 && krShopList.length === 0){
+        //$('#mall_layer .lay-mall__list li.no-data').show();
+        mallHtml += `<li class="no-data">
+                        <p class="tx_msg">본 상품에는 선택할 쇼핑몰이 없습니다.</p>
                     </li>`;
-        $("#ovs_shoplist").find(".lay_tooltip").hide();
-    }
-    $("#kr_shoplist").find(".lay-mallsel .lay-mall__list").html(krhtml);
-    $("#ovs_shoplist").find(".lay-mallsel .lay-mall__list").html(ovshtml);
+        $('#mall-layer-confirm').show();
+    }else{
+        function makeHtml(mallType, shopList){
+            let isChked = '';
+            let $id = '';
+            let domText = '';
+            let displayValue = '';
 
-    $("#kr_shoplist .btn__sel, #ovs_shoplist .btn__sel").unbind().click(function(){
-        let vThisParentId = $(this).parents("li").attr("id");
-        if(vThisParentId == "kr_shoplist") {
-            insertLogLSV(26222,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-            ga('send','event','vip','comparison_sort','domestic');
-        }else if(vThisParentId == "ovs_shoplist"){
-            insertLogLSV(26223,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-            ga('send','event','vip','comparison_sort','overseas');
-        }
-        $(this).parent().siblings(".lay-mallsel").toggle();
-        $("#ovs_shoplist").find(".lay_tooltip").hide();
-    })
-    $("#prod_pricecomp .comparison__select > li").each(function(index,obj){
-        let selShopArray = paramHandler.get("selshop").split(",");
-        $.each(selShopArray, (index) => {
-            $(this).find(".lay-mallsel .lay-mall__list input:checkbox[value='"+selShopArray[index]+"']").prop("checked",true);
-        });
-
-        $(this).find(".lay-mallsel .lay-mall__list input:checkbox[value='all']").unbind().click(() => {
-            if($(this).find("input:checkbox[value='all']").is(":checked")){
-                $(this).find("input:checkbox[value!='all']").prop("checked",true);
-            }else{
-                $(this).find("input:checkbox[value!='all']").prop("checked",false);
+            if(mallType === 'domestic'){
+                displayValue = 'block';
+                $id = 'chkDOMESTIC';
+                $('#mallCountDomestic').text(shopList.length);
+            }else if(mallType === 'overseas'){
+                displayValue = 'none';
+                $id = 'chkOVERSEAS';
+                $('#mallCountOverseas').text(shopList.length);
             }
-        });
-        $(this).find(".lay-mallsel .lay-mall__list input:checkbox[value!='all']").unbind().click(() => {
-            $(this).find("input:checkbox[value='all']").prop("checked",false);
-        });
-        $(this).find(".lay-mallsel .btn__group .btn__apply").unbind().click(() =>{
-            let ShopCheck =  $(this).find("input:checkbox[value!='all']:checked");
-            let selShopComma = "";
-            $.each(ShopCheck, (i,v) => {
-                if(i>0) selShopComma += ",";
-                selShopComma += v.value;
+
+            if(shopList.length > 1) domText += `<li data-mall="${mallType}" style="display:${displayValue}"><input type="checkbox" id="${$id}" class="input--checkbox-item" value="all"><label for="${$id}">전체</label></li>`
+            else domText = `<li class="no-data"><p class="tx_msg">본 상품에는 선택할 쇼핑몰이 없습니다.</p></li>`;
+
+            $.each(shopList, (index,listData) => {
+                (selShopArray.indexOf(listData.shopcode.toString()) > -1)
+                ? isChked = 'checked'
+                : isChked = '';
+    
+                domText += `<li data-mall="${mallType}" style="display:${displayValue}"><input type="checkbox" id="${$id}_${index}" class="input--checkbox-item" value="${listData.shopcode}" ${isChked}><label for="${$id}_${index}">${listData.shopname}</label></li>`
             });
 
-            paramHandler.set("selshop",selShopComma);
+            return domText;
+        };
+
+        /* if(krShopList.length > 0) mallHtml += makeHtml('domestic', krShopList);
+        if(ovsShopList.length > 0) mallHtml += makeHtml('overseas', ovsShopList); */
+        mallHtml += makeHtml('domestic', krShopList);
+        mallHtml += makeHtml('overseas', ovsShopList);
+
+        $('#mall_layer .lay-tab__mall button').unbind().click(function(){
+            let logNo
+            const selectedMall = $(`#mall_layer .lay-mall__list li[data-mall="${$(this).data('mall')}"]`);
+
+            ($(this).data('mall') === 'domestic')
+            ? logNo = 26222
+            : logNo = 26223;
+
+            insertLogLSV(logNo,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+
+            $(this).siblings().removeClass('is-on');
+            $(this).addClass('is-on');
+            $('#mall_layer .lay-mall__list li').hide();
+
+            (selectedMall.length > 0)
+            ? selectedMall.show()
+            : $('#mall_layer .lay-mall__list li.no-data').show();
         });
 
+        
+        $('#mall_layer .btn__group .btn__cancel').unbind().click(function(){
+            insertLogLSV(26901,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+        });
+
+        $('#mall_layer .btn__group .btn__cancel, #mall-layer-apply').show();
+    }
+    //if($('#mall_layer .lay-mall__list li').not('.no-data').length === 0) $('#mall_layer .lay-mall__list').append(mallHtml);
+    $('#mall_layer .lay-mall__list').html(mallHtml);
+    $('#mall_layer .lay-mall__list > li > input').not('#chkDOMESTIC,#chkOVERSEAS').unbind().click(function(){cntChecked()});
+    $('#mall_layer .lay-mall__list > li > input[value="all"]').unbind().click(function(){shopListChkAll($(this))});
+    $('#mall_layer .lay-tab__mall button').removeClass('is-on');
+    $('#mall_layer .lay-tab__mall button').eq(0).addClass('is-on');
+    $('#mall_layer .lay-mall__list li').hide();
+    $('#mall_layer .lay-mall__list li[data-mall="domestic"]').show();
+    cntChecked();
+    
+    $('#mall-layer-apply').unbind().click(()=>{
+        insertLogLSV(26902,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+        applyShop();
+    });
+    $(".btnMallSort").unbind().click(function(){
+        insertLogLSV(26900,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+        const _top = Math.floor($(this).offset().top - 140);
+        const _left = Math.floor($(this).offset().left);
+        let shopCnt = 0;
+
+        $(`#mall_layer .lay-mall__list input`).prop('checked', false);
+
+        selShopArray.forEach(v =>{
+            if(v !== ''){
+                $(`#mall_layer .lay-mall__list input[value=${v}]`).prop('checked', true);
+                shopCnt++;
+            }
+        });
+
+        $('#mall-layer-apply em').text(shopCnt);
+
+        $("#mall_layer").css({top:_top, left:_left}).show();
     });
 }
 
@@ -1115,21 +1208,23 @@ const prodCashPriceComShopListView = (json) => {
             let bridgeUrl  = prodCommon.bridgeUrl('move_link',`${shopcode}`,`${gModelData.gModelno}`,`${gModelData.gFactory}`,`${plno}`,`${coupon}`,`${price}`,1);
 
             if($.isNumeric(delivery_text)){
-                if(param.sort =="delivery"){
-                    delivery_textView = numComma(delivery_text) + "원(배송제외 "+ numComma(price) +"원)";
+                if(param.delivery =="Y"){
+                    delivery_textView = numComma(delivery_text) + "원 (배송제외 "+ numComma(price) +"원)";
                 }else{
-                    delivery_textView = numComma(delivery_text) + "원(배송포함 "+ numComma(price2) +"원)";
+                    delivery_textView = numComma(delivery_text) + "원 (배송포함 "+ numComma(price2) +"원)";
                 }
             }else{
                 delivery_textView = "("+delivery_text+")";
             }
 
             if(param.sort=="price"){
-                priceView = price;
-            }else if(param.sort=="delivery"){
-                priceView = price2;
-            }else if(param.sort=="card"){
-                priceView = price;
+                if(param.delivery=="Y"){
+                    priceView = price2;
+                }else if(param.card=="Y"){
+                    priceView = price;
+                }else{
+                    priceView = price;
+                }
             }
             html +=`<li class="cashmall__item">
                         <div class="col col--lt">
@@ -1372,9 +1467,7 @@ const prodOptInfoView = (json) => {
                                 ${shoplogo_check ? `<img src="${storageUrl}/logo/logo20/logo_20_${shopcode}.png" alt="${shopname}" onerror="$(this).replaceWith('${shopname}')">` : `${shopname}`}
                                 </a>
                             </div>
-                            <div class="col col-2">
-                                <button type="button" class="btn btn--opt">옵션보기</button>
-                            </div>
+                            <div class="col col-2"></div>
                             <div class="col col-3">
                                 <a href="${bridgeUrl}" target="_blank"  class="tx_price" onclick="insertLogLSV(14510,${gModelData.gCategory},${gModelData.gModelno});"><em>${v.price.format()}</em>원</a>
                                 <span class="tx_sub">+ 추가금 발생</span>

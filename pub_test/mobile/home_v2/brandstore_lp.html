@@ -334,7 +334,23 @@
 
                 <div class="brndstore__prdc">
                     <div class="prdc__wrap">
-                        <div class="prdc__util">                    
+                        <div class="prdc__util">
+                            <!-- 상품 갯수 -->
+                            <div class="prdc_count">
+                                <p class="tx_cnt"><em>총 <span>478,299</span>개</em> 상품</p>
+                            </div>
+
+                            <div class="prod_list_type">
+                                <!-- 보기옵션 -->
+                                <div class="opt_viewtype">
+                                    <!-- 상세검색사이드바 열기버튼 -->
+                                    <button type="button" class="btn btn_detail_search" onclick="openDetailSearch('#all_prop_area');">
+                                        상세검색사이드바
+                                        <span class="tx_cnt">99</span>
+                                    </button>
+                                    <!-- // -->
+                                </div>
+                            </div>
                             <div class="prdc_sort">
                                 <div class="opt_sort">
                                     <label for="sort_option">인기순</label>
@@ -354,17 +370,6 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="prod_list_type">
-                                <!-- 보기옵션 -->
-                                <div class="opt_viewtype">
-                                    <!-- 상세검색사이드바 열기버튼 -->
-                                    <button type="button" class="btn btn_detail_search" onclick="openDetailSearch('#all_prop_area');">
-                                        상세검색사이드바
-                                        <span class="tx_cnt">99</span>
-                                    </button>
-                                    <!-- // -->
-                                </div>
-                            </div>
                         </div>
 
                         <div class="prdc__list">
@@ -374,6 +379,7 @@
                                 <li class="prdc__item">
                                     <a href="#">
                                         <span class="img_thumb">
+                                            <i class="tx_rank">1</i>
                                             <img src="//img.enuri.info/images/mobile_v2/test/@brndstore1_468x468.jpg" alt="신발 상품 이미지" /><! -- alt 태그 : [카테고리명] + 상품 이미지 텍스트 넣어주세요. - ->
                                         </span>
 
@@ -533,6 +539,10 @@
                                                 <li class="prdc__item">
                                                     <a href="#">
                                                         <span class="img_thumb">`
+                                                        if(pi < 3){
+                                                            // 1~3위 랭킹 노출
+                                prdcItemHTML += `           <i class="tx_rank">${pi+1}</i>`
+                                                        }
                                                         if(pi != 3){
                                 prdcItemHTML += `           <img src="//img.enuri.info/images/mobile_v2/test/@brndstore${(prdcLen % 2==0) ? 1 : 2}_468x468.jpg" alt="[카테고리명] + 상품 이미지" />`
                                                         }else{

@@ -4,148 +4,132 @@
 <%@ page import="org.json.simple.*"%>
 <%
 	/** Parameter Sets */
-	// 카테고리
-	String strCate = ConfigManager.RequestStr(request, "category", "");
-	int intSeqNo = ChkNull.chkInt(request.getParameter("seqno"), 0);
-	String strSeqFlag = ChkNull.chkStr(request.getParameter("seqflag"), ""); //depth1Sel, detph2Sel, ""
- 	
-	/** // Parameter Sets */
+	String strParamCate = ConfigManager.RequestStr(request, "category", "");
+	String strDevice = ConfigManager.RequestStr(request, "device", "pc"); //m
+ 	String strServer = ConfigManager.RequestStr(request, "server", "real");
+ 	String strMoveYN = ConfigManager.RequestStr(request, "moveYN", "N");
+ 	String strType = ConfigManager.RequestStr(request, "type", "lp");
+ 	int intGnbNo = ChkNull.chkInt(request.getParameter("gnbno"));
+ 	int intParamLevel = ChkNull.chkInt(request.getParameter("level"));
+	/* Parameter Sets */
 	
 	/** Parameter Validation Check */
-	boolean blParam = true;
 	JsonResponse ret = null;
-	if(strCate.length()==0 && intSeqNo == 0 ) {
-		blParam = false;
-	}
-	if(!blParam) {
+	if(strParamCate.length()==0 && strMoveYN.equals("N")) {
 		ret = new JsonResponse(false).setCode(10).setParam(request);
 		out.print(ret);
 		return;
 	}
 	/** // Parameter Validation Check */
 	
-	JSONObject depth1Obj = new JSONObject();
-	JSONObject depth2Obj = new JSONObject();
-	JSONObject depth3Obj = new JSONObject();
-	JSONObject depth4Obj = new JSONObject();
-	String depth3CateNm = new String();
-	String depth4CateNm = new String();
-	String depth5CateNm = new String();
-	JSONObject totalObj = new JSONObject();
-	
 	Lp_Header_Proc lp_header_proc = new Lp_Header_Proc();
+	JSONObject resultObj = new JSONObject();
+	boolean blDevFlag = strServer.equals("real") ? false : true;
+	int intViewDcd = strDevice.equals("pc") ? 1 : 2;
+	int intLevel = 0;
 	
-	boolean blGNBCheck = false;
-	int intGNBLevel = 0;
-	int intParent  = 0;
+	try{
+
+		JSONArray gnbListArray = new JSONArray();
+		if (strMoveYN.equals("N")) {
+			JSONArray cateArr = new JSONArray();
+			JSONObject cateObj = new JSONObject();
+			if (strParamCate.length() > 4 && strType.equals("vip")) {
+				if(strParamCate.length() > 6) {
+					cateArr.add(strParamCate);
+					cateArr.add(strParamCate.substring(0, 6));
+					cateArr.add(strParamCate.substring(0, 4));
+				} else if (strParamCate.length() > 4) { 
+					cateArr.add(strParamCate);
+					cateArr.add(strParamCate.substring(0, 4));
+				}
+				cateObj = lp_header_proc.getVipItgGnbLevel(cateArr, blDevFlag, intViewDcd);
+				intLevel = (int)cateObj.get("level");
+				strParamCate = (String)cateObj.get("cate_cd");
+			} else {
+				intLevel = lp_header_proc.getItgGnbLevel(strParamCate, blDevFlag, intViewDcd);
+			}
+			
+			gnbListArray = lp_header_proc.getItgCateNavList(strParamCate, blDevFlag, intLevel, intViewDcd);
+		} else {
+			if (intParamLevel == 0) gnbListArray = lp_header_proc.getItgMoveNavList_lv0(intGnbNo, blDevFlag, intViewDcd);
+			else gnbListArray = lp_header_proc.getItgCateNavMove(intGnbNo, blDevFlag, intParamLevel, intViewDcd);
+		}	
+
+		//화면에서 depth 1씩 빼야함
+		JSONObject depth0Obj = new JSONObject();
+		JSONObject depth1Obj = new JSONObject();
+		JSONObject depth2Obj = new JSONObject();
+		JSONObject depth3Obj = new JSONObject();
+		JSONObject depth4Obj = new JSONObject();
+		
+		JSONArray depth0List = new JSONArray();
+		JSONArray depth1List = new JSONArray();
+		JSONArray depth2List = new JSONArray();
+		JSONArray depth3List = new JSONArray();
+		JSONArray depth4List = new JSONArray();
+		
+		String strSelCateNm0 = "";
+		String strSelCateNm1 = "";
+		String strSelCateNm2 = "";
+		String strSelCateNm3 = "";
+		String strSelCateNm4 = "";
+		
+		for (int i = 0 ; i  < gnbListArray.size(); i ++) {
+			JSONObject parseObj = (JSONObject)gnbListArray.get(i);
+			int intArrLevel = (Integer)parseObj.get("g_level");
+			String strArrCateCd = (String)parseObj.get("g_cate");
+			String strArrCateNm = (String)parseObj.get("g_name");
+			String strCateYN = (String)parseObj.get("cateYN");
+			
+			if (intArrLevel == 0) {
+				if (strCateYN.equals("Y")) {
+					strSelCateNm0 = strArrCateNm;
+				}
+				depth0List.add(parseObj);
+			}else if (intArrLevel == 1){
+				if (strCateYN.equals("Y")) {
+					strSelCateNm1 = strArrCateNm;
+				}
+				depth1List.add(parseObj);
+			} else if (intArrLevel == 2) {
+				if (strCateYN.equals("Y")) {
+					strSelCateNm2 = strArrCateNm;
+				}
+				depth2List.add(parseObj);
+			} else if (intArrLevel == 3) {
+				if (strCateYN.equals("Y")) {
+					strSelCateNm3 = strArrCateNm;
+				}
+				depth3List.add(parseObj);
+			} else if (intArrLevel == 4) {
+				if (strCateYN.equals("Y")) {
+					strSelCateNm4 = strArrCateNm;
+				}
+				depth4List.add(parseObj);
+			}
+		}
+		
+		depth0Obj.put("list", depth0List);
+		depth1Obj.put("list", depth1List);
+		depth2Obj.put("list", depth2List);
+		depth3Obj.put("list", depth3List);
+		depth4Obj.put("list", depth4List);
+		
+		depth0Obj.put("selCateNm", strSelCateNm0);
+		depth1Obj.put("selCateNm", strSelCateNm1);
+		depth2Obj.put("selCateNm", strSelCateNm2);
+		depth3Obj.put("selCateNm", strSelCateNm3);
+		depth4Obj.put("selCateNm", strSelCateNm4);
+
+		resultObj.put("depth0", depth0Obj);
+		resultObj.put("depth1", depth1Obj);
+		resultObj.put("depth2", depth2Obj);
+		resultObj.put("depth3", depth3Obj);
+		resultObj.put("depth4", depth4Obj);
+
+	}catch(Exception e){}
 	
-	if(strCate.length() > 0){ //카테이동시
-		blGNBCheck = lp_header_proc.gnbCateChk(strCate);
-		if(blGNBCheck){
-			intGNBLevel = lp_header_proc.getGNBLevel(strCate, true);
-			intSeqNo = lp_header_proc.getGNBSeq(strCate, true);
-		}else{
-			intGNBLevel = lp_header_proc.getGNBLevel("/list.jsp?cate="+strCate, false);
-			intSeqNo = lp_header_proc.getGNBSeq("/list.jsp?cate="+strCate, false);
-		}
-		if(intSeqNo > 0){ //GNB 카테
-			if(intGNBLevel == 2){
-				depth3Obj = lp_header_proc.getGNBCateList(intSeqNo, "depth2Sel");
-				depth2Obj =  lp_header_proc.getGNBCateList(intSeqNo, strSeqFlag);
-				intParent = lp_header_proc.getGNBParent(intSeqNo);
-				depth1Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-			}else if(intGNBLevel == 3){
-				depth3Obj = lp_header_proc.getGNBCateList(intSeqNo, strSeqFlag);
-				intParent = lp_header_proc.getGNBParent(intSeqNo);
-				depth2Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-				intParent = lp_header_proc.getGNBParent(intParent);
-				depth1Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-			}else if(intGNBLevel == 4){
-				depth4CateNm = lp_header_proc.getGNBDepth4CateNm(strCate, true);
-				intParent = lp_header_proc.getGNBParent(intSeqNo);
-				depth3Obj = lp_header_proc.getGNBCateList( intParent, strSeqFlag);
-				intParent = lp_header_proc.getGNBParent(intParent);
-				depth2Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-				intParent = lp_header_proc.getGNBParent(intParent);
-				depth1Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-			}
-			totalObj.put("depth1", depth1Obj);
-			totalObj.put("depth2", depth2Obj);
-			totalObj.put("depth3", depth3Obj);
-			totalObj.put("depth4CateNm", depth4CateNm);
-		}else{ //원카테
-			String strTempCate = "";
-			if(strCate.length() > 4){
-				strTempCate = strCate.substring(0,4);
-				blGNBCheck = lp_header_proc.gnbCateChk(strTempCate);
-				if(blGNBCheck){
-					intGNBLevel = lp_header_proc.getGNBLevel(strTempCate, true);
-					intSeqNo = lp_header_proc.getGNBSeq(strTempCate, true);
-				}else{
-					intGNBLevel = lp_header_proc.getGNBLevel("/list.jsp?cate="+strTempCate, false);
-					intSeqNo = lp_header_proc.getGNBSeq("/list.jsp?cate="+strTempCate, false);
-				}
-			}
-			if(intSeqNo > 0){ //4자리로 잘랐을 때 GNB카테가 있을 경우
-				if(intGNBLevel == 2){
-					if(strCate.length() >= 8) depth4CateNm = lp_header_proc.getOrgCateNm(strCate.substring(0,8));
-					if(strCate.length() >= 6) depth3CateNm = lp_header_proc.getOrgCateNm(strCate.substring(0,6));
-					depth2Obj =  lp_header_proc.getGNBCateList(intSeqNo, strSeqFlag);
-					intParent = lp_header_proc.getGNBParent(intSeqNo);
-					depth1Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-					totalObj.put("depth1", depth1Obj);
-					totalObj.put("depth2", depth2Obj);
-					totalObj.put("depth3CateNm", depth3CateNm);
-					totalObj.put("depth4CateNm", depth4CateNm);
-				}else if(intGNBLevel == 3){
-					String strTempCateLength6 = "";
-					int intTempCateLength6SeqNo = 0;
-					if(strCate.length() > 6){
-						strTempCateLength6 = strCate.substring(0,6);
-						blGNBCheck = lp_header_proc.gnbCateChk(strTempCateLength6);
-						if(blGNBCheck){ //6자리가 GNB카테일 때
-							intTempCateLength6SeqNo = lp_header_proc.getGNBSeq(strTempCateLength6, true);
-							depth5CateNm = lp_header_proc.getOrgCateNm(strCate);
-							depth4Obj = lp_header_proc.getGNBCateList(intTempCateLength6SeqNo, strSeqFlag);
-						}else{
-							depth5CateNm = lp_header_proc.getOrgCateNm(strCate);
-							depth4Obj = lp_header_proc.getOrgCateList(strCate);
-						}
-					}else if(strCate.length() == 6){
-						depth4Obj = lp_header_proc.getOrgCateList(strCate);
-					}
-					depth3Obj = lp_header_proc.getGNBCateList(intSeqNo, strSeqFlag);
-					intParent = lp_header_proc.getGNBParent(intSeqNo);
-					depth2Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-					intParent = lp_header_proc.getGNBParent(intParent);
-					depth1Obj = lp_header_proc.getGNBCateList(intParent, strSeqFlag);
-					totalObj.put("depth1", depth1Obj);
-					totalObj.put("depth2", depth2Obj);
-					totalObj.put("depth3", depth3Obj);
-					totalObj.put("depth4", depth4Obj);
-					totalObj.put("depth5CateNm", depth5CateNm);
-				} else if (intGNBLevel == 4){
-					totalObj = lp_header_proc.getNavCateList(strCate); //원카테
-				}
-			}else{
-				totalObj = lp_header_proc.getNavCateList(strCate); //원카테
-			}
-		}
-	}else{ //단순 nav 이동
-		if(strSeqFlag.equals("depth2Sel")){
-			depth3Obj = lp_header_proc.getGNBCateList(intSeqNo, strSeqFlag);
-			depth2Obj = lp_header_proc.getGNBCateList( intSeqNo, "");
-			intParent = lp_header_proc.getGNBParent(intSeqNo);
-			depth1Obj = lp_header_proc.getGNBCateList(intParent, "");
-		}else if(strSeqFlag.equals("depth1Sel")){
-			depth2Obj = lp_header_proc.getGNBCateList(intSeqNo, strSeqFlag);
-			depth1Obj = lp_header_proc.getGNBCateList(intSeqNo, "");
-		}
-		totalObj.put("depth1", depth1Obj);
-		totalObj.put("depth2", depth2Obj);
-		totalObj.put("depth3", depth3Obj);
-		//totalObj.put("depth4CateNm", depth4CateNm);
-	}
-	ret = new JsonResponse(true).setData(totalObj);
+	ret = new JsonResponse(true).setData(resultObj);
 	out.print ( ret );
 %>

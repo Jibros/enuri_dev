@@ -1,0 +1,47 @@
+<%@ page pageEncoding="utf-8"%>
+<meta name="format-detection" content="telephone=no">
+<title>에누리(가격비교) eNuri.com</title>
+<link rel="stylesheet" type="text/css" href="/mobilefirst/css/default.css">
+<link rel="stylesheet" type="text/css" href="/mobilefirst/css/gnb.css"/>
+<link rel="stylesheet" type="text/css" href="/mobilefirst/css/common.css"/>
+<!--최근검색어 템플릿-->
+<script id="history_template" type="x-tmpl-mustache">
+	<ul>
+		{{#history}}
+		<li>
+			<a href="javascipt:///">{{{keyword}}}</a>
+			<button type="button" class="del" onclick="javascript:deleteRec_one('{{{history_keyword}}}');" title="검색어 삭제"/>
+		</li>
+		{{/history}}
+		{{#auto}}<li><a href="#">{{{keyword}}}</a></li>	{{/auto}}
+	</ul>
+</script>
+<!--최근검색어 템플릿-->
+<script id="history_empty_template" type="x-tmpl-mustache">
+	<p class="noneTxt">&nbsp;</p>
+</script>
+<!--최근 본 상품 템플릿-->
+<script id="history_goods_template" type="x-tmpl-mustache">
+	<ul class="latestProd">
+		{{#goodsList}}
+		<li>
+			<a onclick="search_resent_go({{{modelno}}},{{{p_pl_no}}})"><img src="{{{smallImageUrl}}}" alt="" /></a>
+			<button type="button" class="del" onclick="resentXLint({{{modelno}}},{{{p_pl_no}}})">상품 삭제</button>
+		</li>
+		{{/goodsList}}
+	</ul>
+</script>
+<script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/lib/mustache.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/resentzzimStorage.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/utils.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/gnb.js"></script>
+<script type="text/javascript" src="/mobilefirst/js/gnbSearch.js"></script><!-- gnb search js -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+//런칭할때 UA-52658695-3 으로 변경
+ga('create', 'UA-52658695-3', 'auto');
+</script>

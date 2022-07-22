@@ -26,7 +26,7 @@ var alarmObject = {
          * n_no: 1
          * n_title: "e머니"
          * toast_cnt : 0
-         * 
+         *
          */
         var html = "";
         var total_new = 0;
@@ -139,24 +139,28 @@ var alarmObject = {
         if(toastbool){
             $("#pop_alarm").find(".alarm__head .msg_line .tx_msg .tx_num").html(json[0].beforecnt+"건");
            // $("#pop_alarm").find(".alarm__head .msg_line .tx_all .tx_num").html(json[0].allcnt+"건");
-    
+
             $("#pop_alarm").find(".alarm__body .recent_unit .tx_cate").html(json[0].m_title);
             //$("#pop_alarm").find(".alarm__body .recent_unit .tx_time").html(alarmObject.alarmToDate(json[0].frw_dt));
-            
+
             $("#pop_alarm").find(".alarm__body .recent_msg .btn-msg").attr("title", json[0].m_contents.replace(/\r\n/g,"<br>"));
            // $("#pop_alarm").find(".alarm__body .recent_msg .btn-msg .tx_title").html(json[0].m_title);
             $("#pop_alarm").find(".alarm__body .recent_msg .btn-msg .tx_desc").html(json[0].m_contents.replace(/\r\n/g,"<br>"));
-            
+
             $("#pop_alarm").find(".alarm__body .recent_msg .btn-msg").click(function(){
-                ga('send','event','alarmbox','toast','message'); 
+                ga('send','event','alarmbox','toast','message');
                 insertLog(25392);
                 alarmObject.promise(4,0,json[0].m_no,json[0].r_no);
-                if(json[0].pc_url.indexOf("zzim") > 0){
-                    resentZzimOpen(2);
-                }else{
-                    window.open(json[0].pc_url);
-                }
-              
+                if(json[0].n_no === 4){
+					alert(json[0].pc_url);
+				}else{
+	                if(json[0].pc_url.indexOf("zzim") > 0){
+	                    resentZzimOpen(2);
+	                }else{
+	                    window.open(json[0].pc_url);
+	                }
+				}
+
             });
             $("#pop_alarm").show();
             setTimeout(function(){
@@ -167,7 +171,7 @@ var alarmObject = {
             var lastScrollY = 0;
             var scrAlarmPop = function(){
                 var standard = 30;
-                if(window.scrollY > standard){ 
+                if(window.scrollY > standard){
                     if(lastScrollY < window.scrollY){
                         $("#pop_alarm").removeClass("is-visible")    // 스크롤 아래로
                     }else{
@@ -194,7 +198,7 @@ var alarmObject = {
             var now_dt_fm = parseInt(alarmObject.dateFormatter(now_dt,1));
             var frw_dt_time = frw_dt.getTime();
             var now_dt_time = now_dt.getTime();
-            var timeDiffer = (now_dt_time-frw_dt_time)/1000/60/60; //시간으로 체크 
+            var timeDiffer = (now_dt_time-frw_dt_time)/1000/60/60; //시간으로 체크
 
             if(now_dt_fm === frw_dt_fm){
                 if (timeDiffer > 12){
@@ -212,7 +216,7 @@ var alarmObject = {
         }else{
             return "";
         }
-        
+
     },
     dateFormatter : function(date,type){
         var year = date.getFullYear();
@@ -220,12 +224,12 @@ var alarmObject = {
         var day = date.getDate();
         var hours = date.getHours();
         var minutes = date.getMinutes();
-    
+
         month = month >= 10 ? month : '0' + month;
         day = day >= 10 ? day : '0' + day;
         hours = hours >= 10 ? hours : '0' + hours;
         minutes = minutes >= 10 ? minutes : '0' + minutes;
-    
+
         if(type === 1){
             return year + month + day;
         }else if(type === 2){
@@ -233,36 +237,36 @@ var alarmObject = {
         }else if(type === 3){
             return hours + ":" +minutes;
         }
-     
+
     }
 }
 $(function(){
-   
+
     if(islogin()){
         alarmObject.promise(3).then(alarmObject.alarmToastView);
     }
     // 알림함 열기
-    $("#utilMenuAlarm ").off().on("click", function(){ 
-        ga('send','event','common','core_header','alarmbox'); 
+    $("#utilMenuAlarm ").off().on("click", function(){
+        ga('send','event','common','core_header','alarmbox');
         insertLog(25391);
         if(islogin()){
             alarmBoxOpen();
         }else{
             Cmd_Login('');
         }
-        return false; 
+        return false;
     });
 
     var alarmBoxOpen = function(){
-        
+
         var alarmTabSwiper;
         var alarmSheet = $("#alarmsheet"); // RIGHTSHEET 알림 목록
         var alarmSheetInner = $("#alarmsheet .alarmsheet__inner"); // RIGHTSHEET INNER
-        
-        
+
+
         $("body").addClass("is-overflow");
         $("#pop_alarm").removeClass("is-visible");
-        
+
         alarmSheet.animate({
             "opacity":1
         }, 300, function(){
@@ -284,29 +288,28 @@ $(function(){
                     freeMode: true,
                 });
 
-                alarmTabSwiper.on("click", function(swiper, index){
-                    var selItem = swiper.clickedSlide; 
-                    var selItemNo = $(selItem).data("n_no");
+                $(".alarmtabs .swiper-slide").off().on("click", function(){
+                    var selItemNo = $(this).data("n_no");
                     if(selItemNo == 0){
-                        ga('send','event','alarmbox','tab','tab_all'); 
+                        ga('send','event','alarmbox','tab','tab_all');
                         insertLog(25393);
                     }else if(selItemNo == 1) {
-                        ga('send','event','alarmbox','tab','tab_emoney'); 
+                        ga('send','event','alarmbox','tab','tab_emoney');
                         insertLog(25394);
                     }else if(selItemNo == 2) {
-                        ga('send','event','alarmbox','tab','tab_minprice'); 
+                        ga('send','event','alarmbox','tab','tab_minprice');
                         insertLog(25395);
                     }
                     else if(selItemNo == 3) {
-                        ga('send','event','alarmbox','tab','tab_shopping'); 
+                        ga('send','event','alarmbox','tab','tab_shopping');
                         insertLog(25396);
                     }
                     alarmObject.promise(2,selItemNo).then(alarmObject.alarmListView).finally(function(){
-                        setTimeout(cardShowMotion, 200);   
+                        setTimeout(cardShowMotion, 200);
                     });
 
-                    $(selItem).addClass("is--on").siblings().removeClass("is--on"); 
-                    alarmTabSwiper.slideTo(swiper.clickedIndex);                        
+                    $(this).addClass("is--on").siblings().removeClass("is--on");
+                    alarmTabSwiper.slideTo($(this).index());
                     alarmSheetInner.find(".card_item").removeClass("is-shown");
                 });
             });
@@ -321,9 +324,9 @@ $(function(){
                         alarmSheet.css("pointer-events","none");
                         alarmObject.promise(3).then(alarmObject.alarmToastView);
                         alarmSheetInner.find(".card_item").removeClass("is-shown");
-                        alarmTabSwiper.slideTo(0); 
+                        alarmTabSwiper.slideTo(0);
                     })
-                }, 300)                        
+                }, 300)
             });
         });
     }
@@ -331,36 +334,36 @@ $(function(){
     var cardShowMotion = function(){
         var alarmSheetBody = $("#alarmsheet .alarmsheet__inner .alarmsheet__body"); // RIGHTSHEET INNER BODY
         var len =  $(".alarmsheet__inner").find(".card_item").length;
-        var _idx = 0;         
+        var _idx = 0;
 
         alarmSheetBody.animate({scrollTop:0},300);
-          
+
         // 카드 순차 노출
         var cardVisible = setInterval(function(){
             if(_idx < len) {
                 $(".alarmsheet__inner").find(".card_item").eq(_idx).addClass("is-shown");
                 _idx++
-            }   
+            }
             if( _idx === len) {
                 clearInterval(cardVisible);
             }
         }, 100);
         alarmSheetBody.find(".card_item").off().on("click",function(){
-            
+
             var vThis = $(this);
             var vThis_n_no = $("#alarmsheet .alarmsheet__head .alarmtabs").find(".swiper-slide.is--on").data("n_no");
 
             if(vThis_n_no == 0){
-                ga('send','event','alarmbox','all','message'); 
+                ga('send','event','alarmbox','all','message');
                 insertLog(25397);
             } else if(vThis_n_no == 1) {
-                ga('send','event','alarmbox','emoney','message'); 
+                ga('send','event','alarmbox','emoney','message');
                 insertLog(25398);
             }else if(vThis_n_no == 2) {
                 ga('send','event','alarmbox','minprice','message');
                 insertLog(25399);
             }else if(vThis_n_no == 3) {
-                ga('send','event','alarmbox','shopping','message'); 
+                ga('send','event','alarmbox','shopping','message');
                 insertLog(25400);
             }
 

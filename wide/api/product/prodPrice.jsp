@@ -314,14 +314,16 @@
         for(Pricelist_Data pricelistData : arrayPricelist){
             //카드가 여부 확인
             if(!blCardSaleCheck){
-                if(!(getCardName(cardNameHash,pricelistData.getShop_code(),pricelistData.getGoodsnm(),pricelistData.getPrice(),pricelistData.getPrice_card(),newCardShopList).equals(""))){
+                if(!(getCardName(cardNameHash,pricelistData.getShop_code(),pricelistData.getGoodsnm(),pricelistData.getPrice(),pricelistData.getPrice_card(),newCardShopList,pricelistData.getShop_type()).equals(""))){
                     blCardSaleCheck =true;
                 }
             }
             //옵션 필수 상품 처리
-            if(strSort.equals("price") && pricelistData.getOption_flag2().equals("1") && optionEssentialList.size() < optionEssentialCnt ){
-                if( pricelistData.getPrice() <= lnMinPrice){
-                    optionEssentialList.add(pricelistData);
+            if(strSort.equals("price") && pricelistData.getOption_flag2().equals("1") ){
+                if(optionEssentialList.size() < optionEssentialCnt){
+                    if( pricelistData.getPrice() <= lnMinPrice){
+                        optionEssentialList.add(pricelistData);
+                    }
                 }
                continue;
             }else{
@@ -366,7 +368,7 @@
                         pricelistData.setRightnleft("2");
                     }
                 }else if(strGoodsCompareTier.equals("cardTier")){
-                    if(getCardName(cardNameHash,pricelistData.getShop_code(),pricelistData.getGoodsnm(),pricelistData.getPrice(),pricelistData.getPrice_card(),newCardShopList).equals("")){
+                    if(getCardName(cardNameHash,pricelistData.getShop_code(),pricelistData.getGoodsnm(),pricelistData.getPrice(),pricelistData.getPrice_card(),newCardShopList,pricelistData.getShop_type()).equals("")){
                         pricelistData.setRightnleft("1");
                     }else{
                         pricelistData.setRightnleft("2");
@@ -389,7 +391,7 @@
                     }else{
                         pricelistData.setRightnleft("2");
                     }
-                } else if(strGoodsCompareTier.equals("selectShopTier")){
+                }else if(strGoodsCompareTier.equals("selectShopTier")){
                     if(blSimiliarModelCheck){
                     	if(selectShopList.contains("9999")){
 	                        if((!selectShopCodeList.contains(pricelistData.getShop_code()) && !aryOvsShopList.contains(pricelistData.getShop_code())) || selectShopList.contains(pricelistData.getShop_code()+"")){
@@ -420,24 +422,24 @@
                     	}
                     }
                 }
-            }
-            JSONObject tmpShopObject = new JSONObject();
+                JSONObject tmpShopObject = new JSONObject();
 
-            if(selectShopCodeList.indexOf(pricelistData.getShop_code()) > -1){
-                tmpShopObject.put("shopcode", pricelistData.getShop_code());
-                tmpShopObject.put("shopname", pricelistData.getShop_name());
-            } else{
-                tmpShopObject.put("shopcode", 9999);
-                tmpShopObject.put("shopname", "기타");
-                etcShopFlag = true;
-            }
-           // shopListHash.put(pricelistData.getShop_code(),tmpShopObject);
-            shopListHash.put(tmpShopObject.getInt("shopcode"),tmpShopObject);
+                if(selectShopCodeList.indexOf(pricelistData.getShop_code()) > -1){
+                    tmpShopObject.put("shopcode", pricelistData.getShop_code());
+                    tmpShopObject.put("shopname", pricelistData.getShop_name());
+                } else{
+                    tmpShopObject.put("shopcode", 9999);
+                    tmpShopObject.put("shopname", "기타");
+                    etcShopFlag = true;
+                }
+            // shopListHash.put(pricelistData.getShop_code(),tmpShopObject);
+                shopListHash.put(tmpShopObject.getInt("shopcode"),tmpShopObject);
 
-            if(pricelistData.getRightnleft().equals("1")){
-                leftList.add(pricelistData);
-            }else{
-                rightList.add(pricelistData);
+                if(pricelistData.getRightnleft().equals("1")){
+                    leftList.add(pricelistData);
+                }else{
+                    rightList.add(pricelistData);
+                }
             }
         }
         Iterator<Integer> shopCodekeys = shopListHash.keySet().iterator();
@@ -490,6 +492,7 @@
     long lnPrice2 = 0;       //배송비 포함가
 
     long lnCardPrice = 0;           //카드가
+    long lnCardPrice2 = 0;           //카드가+배송비포함
     String strCardName = "";        //카드명
 	String strCardEventText = "";	//카드특가문구
     String strFreeInterest = "";    //무이자할부
@@ -498,6 +501,7 @@
     long lnInstancePrice = 0;       //모바일가
     long lnGoodsMinPrice = 9999999999l;
     long lnMixPrice = 0;
+    long lnMixPrice2 = 0;
 
     String strGoodsName = "";       //상품명
     String strGoodsCode = "";       //상품코드
@@ -588,9 +592,13 @@
 			//}
             Pricelist_Data pricelistData = tmpList.get(j);
             lnPlno = pricelistData.getPl_no();
-            lnPrice = strCard.equals("Y") ? pricelistData.getMinprice() :  Long.valueOf(pricelistData.getPrice());
-            lnPrice2 = lnPrice;
-            lnMixPrice = pricelistData.getMinprice();
+            lnPrice = Long.valueOf(pricelistData.getPrice());
+            lnPrice2 = lnPrice;//strCard.equals("Y") ? pricelistData.getMinprice() : Long.valueOf(pricelistData.getPrice());
+            lnMixPrice = pricelistData.getMinprice(); // cardprice 와 price중 싼가격
+            lnMixPrice2 = lnMixPrice;
+            //카드가설정
+            lnCardPrice = Long.valueOf(pricelistData.getPrice_card());
+            lnCardPrice2 = lnCardPrice;
 
             lnInstancePrice = pricelistData.getInstance_price();
 
@@ -659,7 +667,7 @@
 
             //카드가설정
             lnCardPrice = Long.valueOf(pricelistData.getPrice_card());
-            strCardName = getCardName(cardNameHash,intShopCode,strGoodsName,lnPrice,lnCardPrice,newCardShopList);
+            strCardName = getCardName(cardNameHash,intShopCode,strGoodsName,lnPrice,lnCardPrice,newCardShopList,strShopType);
             strCardEventText = getCardEventText(intShopCode,strGoodsName,lnCardPrice,strCardName,strCardName.split(","));
             strFreeInterest = getForceFreeInterest2(intShopCode,strCategory,pricelistData.getFreeinterest(),lnPrice,cardFreeAry);
 
@@ -719,10 +727,14 @@
     				} else {
     					strDeliveryPriceText = String.valueOf(intDeliveryInfo2);
                         lnPrice2 += intDeliveryInfo2;
+                        lnCardPrice2 += intDeliveryInfo2;
+                        lnMixPrice2 += intDeliveryInfo2;
     				}
                 }else if(intDeliveryType2==1){
                         strDeliveryPriceText = String.valueOf(intDeliveryInfo2);
                         lnPrice2 += intDeliveryInfo2;
+                        lnCardPrice2 += intDeliveryInfo2;
+                        lnMixPrice2 += intDeliveryInfo2;
                 }
             }
 
@@ -738,8 +750,14 @@
                 }
             }*/
 
-
-            intEmoneyReward = (int)(Math.floor(flRewardRate * 0.01 * lnPrice / 10) * 10);
+            if(emonyShopList.contains(intShopCode)) {
+                //    blEmoneyRewardShop = true;
+                intEmoneyReward = (int)(Math.floor(flRewardRate * 0.01 * lnPrice / 10) * 10);
+            }else{
+                //    blEmoneyRewardShop = false;
+                intEmoneyReward =  0;
+            }
+            
             //배송 뱃지
 
              if(strShopType.equals("4")){
@@ -759,7 +777,9 @@
                     strBadgeName = "quick";
                  }else if(intShopCode==6641 && (strGoodsName.indexOf("당일발송") > -1 || strGoodsName.indexOf("당일배송") > -1 ) ){
                     strBadgeName = "quick";
-                 }
+                 }else if(intShopCode == 55 && strGoodsName.indexOf("[오늘출발]") > -1 ) {
+                    strBadgeName = "quick";
+                }
             }
             //해외 배송
             if(!strGoodsCompareTier.equals("tariffTier") && strAirconfeeType.trim().equals("6") && strGoodsName.indexOf("[해외쇼핑]")<0){
@@ -790,7 +810,11 @@
             }
             //상품 최저가 계산 (카드할인가 최저가 까지 )
             if(strSort.equals("price")){
-                if(strDelivery.equals("Y")){
+                if(strDelivery.equals("Y") && strCard.equals("Y")){
+                     if(lnGoodsMinPrice > lnMixPrice2){
+                        lnGoodsMinPrice = lnMixPrice2;
+                    }
+                }else if(strDelivery.equals("Y")){
                     if(lnGoodsMinPrice > lnPrice2){
                         lnGoodsMinPrice = lnPrice2;
                     }
@@ -812,6 +836,7 @@
             pObject.put("delivery_price", intDeliveryInfo2);
             pObject.put("cardevnt_text", strCardEventText);
             pObject.put("cardprice", lnCardPrice);
+            pObject.put("cardprice2", lnCardPrice2);
             pObject.put("cardname", strCardName);
             pObject.put("freeinterest", strFreeInterest);
             pObject.put("instanceprice", lnInstancePrice);

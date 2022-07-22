@@ -9,7 +9,6 @@
 <%@ include file="/include/Base_Inc_2010.jsp"%>
 <%@ include file="/login/Inc_AutoLoginSet_2010.jsp" %>
 <% 
-
 //도메인 치환
 RedirectRool rl = new RedirectRool();
 Boolean blRedirect = rl.blRedirectDomain(request, response);
@@ -24,6 +23,7 @@ String pageGap = ConfigManager.RequestStr(request, "pageGap", "30"); // 페이�
 /* 1 : 인기순 , 2 : 최저가순 , 3 : 최고가순 , 4 : 신제품순 , 5 : 판매량순 , 6 : 상품평 많은 순 , 7 : 출시예정 */
 String sort = ConfigManager.RequestStr(request, "sort", "1"); // 정렬기준
 String factory = ConfigManager.RequestStr(request, "factory", ""); // 제조사
+String factorycode = ConfigManager.RequestStr(request, "f", ""); // 제조사코드
 String brand = ConfigManager.RequestStr(request, "brand", ""); // 브랜드
 String shopcode = ConfigManager.RequestStr(request, "shopcode", ""); // 쇼핑몰코드
 String keyword = ConfigManager.RequestStr(request, "keyword", ""); // 검색어
@@ -36,6 +36,9 @@ String specname = ConfigManager.RequestStr(request, "specname", ""); // 스펙�
 String tabType = ConfigManager.RequestStr(request, "tabType", "0");
 // 1. 심플리스트 뷰 , 2. 갤러리 뷰  
 String listGridType = ConfigManager.RequestStr(request, "listGridType", "1");
+
+String strIsRental = ConfigManager.RequestStr(request, "rental", "N");
+String strIsDelivery = ConfigManager.RequestStr(request, "delivery", "N");
 
 // 개편전버전 임시
 String strKeyword = keyword;
@@ -62,10 +65,9 @@ if(ssListgridtype != null && !ssListgridtype.equals("")){
 
 String strFrom = ChkNull.chkStr(request.getParameter("from"),""); //분류검색어에서 넘어온
 String strDevice = "PC";
-// /search/ajax/mpKeywordSearch_web.jsp  개편 예정
 if(!strFrom.equals("list")) {
 %>
-<%@ include file="/wide/include/IncSearchGoListPages.jsp"%>
+<%@ include file="/search/ajax/mpKeywordSearch_web.jsp"%>
 <%
 	}
 %>
@@ -161,6 +163,22 @@ if(strLinkageWords2!=null && strLinkageWords2.length>0) {
 	}
 }
 strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
+
+String mini_USER_ID= cb.GetCookie("MEM_INFO","USER_ID");
+String mini_TMPUSER_ID= cb.GetCookie("MEM_INFO","TMP_ID");
+String mini_USER_NICK= cb.GetCookie("MEM_INFO","USER_NICK");
+String mini_SNSTYPE = cb.GetCookie("MEM_INFO","SNSTYPE");
+ //VIEW ID 
+String strViewID = "";
+if(mini_SNSTYPE.equals("K") || mini_SNSTYPE.equals("N")){
+	strViewID = mini_USER_NICK;
+}else {
+	if(!USER_NICK.equals("")){
+		strViewID = mini_USER_NICK;
+	}else{
+		strViewID = mini_USER_ID;
+	}
+}
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -179,7 +197,7 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 	<link rel="dns-prefetch" href="//img.enuri.com" />
 	<link rel="dns-prefetch" href="//photo3.enuri.info" />
 	<link rel="dns-prefetch" href="//ad-api.enuri.info" />
-	<link rel="dns-prefetch" href="//storage.enuri.gscdn.com" />
+	<link rel="dns-prefetch" href="//ad-cdn.enuri.info" />
 	<link rel="dns-prefetch" href="//image.enuri.info" />
 	<link rel="dns-prefetch" href="//img.enuri.info" />
 	<link rel="dns-prefetch" href="//contentsad-dp.enuri.com" />
@@ -195,26 +213,18 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 	<meta property="og:description" content="<%=keyword%> 가격비교 사이트. 인기 상품을 최저가로 만나보세요.">
 	<meta property="og:image" content="<%=ConfigManager.IMG_ENURI_COM%>/images/sns_basic_last2.png">
 	
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self' *.enuri.info *.enuri.com *.doubleclick.net; 
-	img-src * data:; 
-	style-src 'self' 'unsafe-inline'; 
-	script-src 'self' *.enuri.info *.enuri.com *.doubleclick.net *.googlesyndication.com *.googletagmanager.com *.google-analytics.com *.googleadservices.com *.google.co.kr *.google.com *.youtube.com 'unsafe-inline' 'unsafe-eval';
-	connect-src 'self' *.enuri.info *.enuri.com *.doubleclick.net http://ats.gmarket.co.kr http://ats.auction.co.kr https://analytics.adoffice.11st.co.kr https://pagead2.googlesyndication.com;
-	frame-src 'self' *.enuri.info *.enuri.com *.doubleclick.net *.google.com *.googlesyndication.com *.youtube.com;">
-	
 	<!-- Stylesheet -->
 	<link rel="stylesheet" type="text/css" href="/css/swiper.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/rev/common.css?v=20210929"/>
 	<!-- reset -->
-	<link rel="stylesheet" type="text/css" href="/css/rev/template.css?v=20210929"/>
+	<link rel="stylesheet" type="text/css" href="/css/rev/template.css?v=20220718"/>
 	<!-- template -->
-	<link rel="stylesheet" type="text/css" href="/css/rev/lp.css?v=20220307"/>
+	<link rel="stylesheet" type="text/css" href="/css/rev/lp.css?v=20220615"/>
 	<!-- LP/SRP only -->
 	<!-- Lib/Plugin -->
 	<script type="text/javascript" src="/wide/util/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="/js/swiper.min.js"></script>
 	<!-- Top Script -->
-	<script type="text/javascript" src="/lsv2016/js/lib/jquery.lazyload.min.js"></script>
 	<script type="text/javascript" src="/wide/script_min/common/util.min.js?v=20210909"></script>
 	<!-- // Top Script -->
 	
@@ -232,7 +242,7 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 	var param_pageGap = "<%=pageGap%>";
 	var param_sort = "<%=sort%>";
 	var param_factory = "<%=factory%>";
-	var param_factorycode = "";
+	var param_factorycode = "<%=factorycode%>";
 	var param_brand = "<%=brand%>";
 	var param_brandcode = "";
 	var param_shopcode = "<%=shopcode%>";
@@ -245,8 +255,8 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 	var param_prtmodelno = "";
 	var param_prtSrcKey = "";
 	var param_tabType = "<%=tabType%>";
-	var param_isDelivery = "N";
-	var param_isRental = "N";
+	var param_isDelivery = "<%=strIsDelivery%>";
+	var param_isRental = "<%=strIsRental%>";
 	var param_isResearch = "Y";
 	var param_color = "";
 	var param_discount = "";
@@ -258,7 +268,7 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 	var Synonym_From_Keyword = "";
 	
 	// 스펙, 제조사, 브랜드, 결과내검색어 딥링크 처리
-	if(param_spec.length>0 || param_factory.length>0 || param_brand.length>0 || param_inKeyword.length>0) {
+	if(param_spec.length>0 || param_factory.length>0 || param_factorycode.length>0 || param_brand.length>0 || param_inKeyword.length>0) {
 		blDeepLink = true;
 	}
 	
@@ -358,6 +368,10 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 	// spec 의 그룹단위 선택여부 인자
 	var specGroupSet = new Set();
 	
+	//미니vip ID
+	var mini_sUserId = "<%=strViewID%>";
+	var mini_SNSTYPE = "<%=mini_SNSTYPE%>";
+	
 	function fn_layer_position() {}
 	function insertLog() {}
 //	function _EXEN() {}
@@ -365,13 +379,13 @@ strMetaKeyword += ", 인기상품, 가격비교, 상품추천, 최저가";
 //	function _trk_code_base() {}
 	</script>
 	
-	<script type="text/javascript" src="/wide/script_min/list/list_func.min.js?v=20220307"></script>
- 	<script type="text/javascript" src="/wide/script_min/list/list_event.min.js?v=20220314" defer="defer"></script>
-	<script type="text/javascript" src="/common/js/common_top_2022.js" defer="defer"></script>
+	<script type="text/javascript" src="/wide/script_min/list/list_func.min.js?v=20220719"></script>
+ 	<script type="text/javascript" src="/wide/script_min/list/list_event.min.js?v=20220712" defer="defer"></script>
+	<script type="text/javascript" src="/common/js/common_top_2022.js?v=20220712" defer="defer"></script>
 	<script type="text/javascript" src="/common/js/getTopBanner_2021.js" defer="defer"></script>
 	<script type="text/javascript" src="/common/js/eb/gnbTopRightBanner_2021.js" defer="defer"></script>
 	<script type="text/javascript" src="/common/js/function.js"></script>
-	<script type="text/javascript" src="/wide/script_min/common/common_layer.min.js" defer="defer"></script>
+	<script type="text/javascript" src="/wide/script_min/common/common_layer.min.js?v=20220421" defer="defer"></script>
 	 
 	 
 	<!-- Global site tag (gtag.js) - Google Ads: 966646648 -->

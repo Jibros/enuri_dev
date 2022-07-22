@@ -233,7 +233,7 @@ function drawPrice(dataObj) {
 					html_price[hIdx_price++] = "					<span class=\"tag--ad comm__sprite\">AD</span>";
 				}
 				//													<!-- 이벤트 아이콘 관리자 > CM직접 입력 -->
-				if (item.promotion_cpnMiniVipIconViewText.length > 0) {
+				if (item.promotion_cpnMiniVipIconViewText.length > 0 && param.card === 'N') {
 					html_price[hIdx_price++] = "					<span class=\"price-tb__tx-sub\">" + item.promotion_cpnMiniVipIconViewText + "</span>";
 				}
 				html_price[hIdx_price++] = "					</div>";
@@ -993,7 +993,7 @@ function openMiniVip() {
 				bodyH,
 				winH = $(window).height(), // 스크린 Y 크기
 				distT = 70; // 상단과 FIXED 될 거리
-
+			$minVip.css('max-height', winH - distT - 50);
 			if ($minVip.is(":visible")) {
 				var boxH = $minVip.outerHeight();
 				var headH = $minVipHead.outerHeight();
@@ -1002,14 +1002,14 @@ function openMiniVip() {
 				if ($body.length) {
 					bodyT = $body.offset().top; // 컨테이너 Position Top
 					bodyH = $body.outerHeight(); // 컨테이너 높이
-					if (scroll > bodyT - distT) {
-						if (scroll > bodyT + bodyH - boxH - distT) {
-							$minVip.css("right", "-100%");
-						} else {
-							$minVip.removeAttr("style").addClass("is--fixTop").height(winH - distT - 50);
+					if ( scroll > bodyT - distT ){
+						if ( scroll > bodyT + bodyH - boxH - distT){
+							$minVip.addClass("is--fixStop").removeClass("is--fixTop").css('top', bodyH - boxH);
+						}else{
+							$minVip.addClass("is--fixTop").removeClass("is--fixStop").css('top', '70px');
 						}
-					} else {
-						$minVip.removeClass("is--fixTop");
+					}else{
+						$minVip.removeClass("is--fixTop is--fixStop").css('top', '0');
 					}
 				}
 			}
@@ -1060,12 +1060,14 @@ function miniVipEvent() {
             if($(this).is(':checked') === true) val = 'Y';
 
             if($id === 'cardsaleInc'){
+				insertLogLSV(26907);
                 param.card = val;
 
 				(val === 'Y')
 				? vPriceTabType = 'card'
 				: vPriceTabType = '';
             }else if($id === 'deliveryInc'){
+				insertLogLSV(26906);
 				param.delivery = val;
 				
 				(val === 'Y')
@@ -1216,14 +1218,14 @@ function miniVipResize() {
 			if ($body.length) {
 				bodyT = $body.offset().top; // 컨테이너 Position Top
 				bodyH = $body.outerHeight(); // 컨테이너 높이
-				if (scroll > bodyT - distT) {
-					if (scroll > bodyT + bodyH - boxH - distT) {
-						$minVip.css("right", "-100%");
-					} else {
-						$minVip.removeAttr("style").addClass("is--fixTop").height(winH - distT - 50);
+				if ( scroll > bodyT - distT ){
+					if ( scroll > bodyT + bodyH - boxH - distT){
+						$minVip.addClass("is--fixStop").removeClass("is--fixTop").css('top', bodyH - boxH);
+					}else{
+						$minVip.addClass("is--fixTop").removeClass("is--fixStop").css('top', '70px');
 					}
-				} else {
-					$minVip.removeClass("is--fixTop");
+				}else{
+					$minVip.removeClass("is--fixTop is--fixStop").css('top', '0');
 				}
 			}
 		}

@@ -1,0 +1,72 @@
+@charset "utf-8";
+@import url("/css/webfont.css");
+/* @import url("/css/webfont-local.css");  */
+/************************************************************************
+ * 파일명 : bot_recomlist.css
+ * 설명 : [M] 마이e클럽 renewal _ 추천상품 CSS
+ * 작성자  : 박현원
+ * 작성일 : 2022.07.04
+************************************************************************/
+:root {
+    --comm-sprite : url('//img.enuri.info/images/mobile_v2/myeclub/re/mye_re_sprite.png');
+}
+body {background-color: #fff;}
+body,input,textarea,select,table,button{font-size:13px; font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Apple SD 산돌고딕 Neo','Microsoft NeoGothic','Helvetica','AppleGothic','Droid sans','Sans-serif','Dotum','Verdana','Helvetica',sans-serif}
+/* grid _col */
+.col_wrap {display:flex; flex-wrap:wrap;}
+.col_wrap > .col {flex: 0 0 auto;}
+.col_half {width:50%;}
+.col_4 {width:33.333333%;}
+.col_20 {width:20%;}
+.col_gap_8 {margin:0 -4px;}
+.col_gap_8 > * {padding:0 4px;}
+
+/* icon */
+.comm_sprite {background-image : var(--comm-sprite); background-size: var(--size-myre-sprite);}
+.icon_re_error {background-image : var(--comm-sprite); background-size: var(--size-myre-sprite); background-position: 0 -250px;}
+.icon_re_refresh {background-image : var(--comm-sprite); background-size: var(--size-myre-sprite); background-position: -190px -150px;}
+/*---------------------------------------------------------
+                    봇_상품추천
+---------------------------------------------------------*/
+.bot_recom_wrap {}
+
+/*---------------------------------------------------------
+                    봇_상품추천_메뉴
+---------------------------------------------------------*/
+.bot_recom_menu_list {padding:16px;}
+.bot_recom_menu_list ul {font-size: 0;}
+.bot_recom_menu_list ul li {display: inline-block; margin-right:4px; text-align: center; border:1px solid #eee; line-height: 32px; border-radius: 18px; font-size: 13px; color:#222; padding:0 12px; margin-bottom:8px; letter-spacing: -.5px;}
+.bot_recom_menu_list ul li.active {color:#3588f3; border-color: #3588f3;}
+
+.bot_recom_menu_list ul li:before {content:"#"; display: inline;}
+/*---------------------------------------------------------
+                    봇_상품추천_리스트조건 텍스트
+---------------------------------------------------------*/
+.bot_recom_goods_txt {padding:0 16px; font-size: 18px; font-weight: 500; letter-spacing: -1px;}
+
+/*---------------------------------------------------------
+                    봇_상품추천_리스트
+---------------------------------------------------------*/
+/* 호출_성공  */
+.bot_recom_goods_list{padding:16px;}
+.bot_recom_goods_list ul li {margin-bottom:16px;}
+.bot_recom_goods_list a {display: block;}
+.bot_recom_goods_list a .thumb {width:100%;}
+.bot_recom_goods_list a .thumbnail_img {position:relative; padding-top:100%; background-color: rgba(0, 0, 0, 0.02);}
+.bot_recom_goods_list a .thumbnail_img img {position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;}
+.bot_recom_goods_list a .info {margin-top: 8px;}
+.bot_recom_goods_list a .info .goods_name {display:block; display:-webkit-box; text-overflow:ellipsis; word-wrap:break-word; -webkit-box-orient:vertical; font-size: 12px; color:#222222; height:32px; line-height: 16px; overflow: hidden; -webkit-line-clamp:2;}
+.bot_recom_goods_list a .info .goods_price {font-size: 13px; color:#212428; margin-top:2px;}
+.bot_recom_goods_list a .info .goods_price em {font-size: 15px; font-weight: bold;  font-family: 'Roboto'; margin-right: 2px;}
+.bot_recom_goods_list a.btn_more {display: block; width:175px; line-height: 38px; border:1px solid #eee; color:#333; font-size: 14px; border-radius: 20px; margin:24px auto 0; text-align: center; letter-spacing: -1px;}
+.bot_recom_goods_list a.btn_more em {color:#3588f3;}
+
+
+
+/* 호출_실패 : error_recom_goods_list  or  nolist */
+.error_recom_goods_list {padding-top:24px; text-align: center;}
+.error_recom_goods_list .icon_re_error {display: block; width: 72px; height: 72px; margin:0 auto; text-align: center;}
+.error_recom_goods_list .error_txt {font-size: 13px; color:#222; letter-spacing: -.5px; margin-top: 10px; line-height: 1.46;}
+.error_recom_goods_list .error_txt em {color:#3588f3;}
+.error_recom_goods_list button {display: block; width:120px; height:40px; text-align: center; border:1px solid #eee; margin:22px auto 24px; border-radius: 20px; }
+.error_recom_goods_list button i {display:inline-block; width:20px; height:20px; vertical-align: -5px;}

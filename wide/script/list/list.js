@@ -14,6 +14,10 @@ if (listType == "list") {
 		loadFromSearch();
 		insertSearchKeywordLog(Synonym_Keyword); // 로그
 	}
+	
+	if (param_cate.length == 4 || param_cate.length == 6) {
+		loadbrandStore(param_cate);
+	}
 } else if (listType == "search") {
 	// 연관검색어
 	loadLinkageKeyword();
@@ -290,6 +294,7 @@ function drawList(dataObj) {
 		var optionViewType = item.optionViewType; // 옵션유형 ( model : 그룹모델 , shop : 쇼핑몰정보 , 없음 : 비노출 )
 		var strOpenExpectFlag = item.strOpenExpectYN; // 출시예정 유무
 		var strDiscountRate = item.strDiscountRate; // 할인율
+		var strMakeshopID = item.strMakeshopID;
 
 		if (optionViewType == "" || optionViewType === undefined) {
 			optionViewType = "shop";
@@ -349,6 +354,9 @@ function drawList(dataObj) {
 				}
 			}
 			modelNoGroupMap.set(strModelNo, groupModel);
+		} else if (item.prodType == "M") {
+			dataType = "makeshop";
+			dataId = "makeshop_" + strMakeshopID;
 		}
 		
 		if (item.prodType == "G" && strModelNoRep !== undefined && strModelNoRep.length > 0) {
@@ -412,7 +420,7 @@ function drawList(dataObj) {
 				}
 				//							<!-- // -->
 				html[hIdx++] = "			<a href=\"/detail.jsp?modelno=" + strModelNo + "\" target=\"_blank\">";
-				html[hIdx++] = "				<img class=\"lazy\" data-original=\"" + strImageUrl + "\" onerror=\"this.src='" + noImageStr + "'\" alt=\"" + strModelName + "\">";
+				html[hIdx++] = "				<img src=\"" + strImageUrl + "\" onerror=\"this.src='" + noImageStr + "'\" alt=\"" + strModelName + "\">";
 				// 								<!-- 태그 / 기존 마크업 유지 -->
 				html[hIdx++] = "				<div class=\"img_tag_v2\">";
 				// 									<!-- 타입 A : 기존 태그 -->
@@ -452,10 +460,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "			<div class=\"item__info\">";
 				//								<!-- 모델명 -->
 				html[hIdx++] = "				<div class=\"item__model\">";
-
-				if (item.strAdProdFlagYN == "Y") {
-					html[hIdx++] = "				<span class=\"tag--ad\">AD</span>";
-				}
+				
 				// 순위 ( 1페이지, 인기순 일때만 ) rank
 				if (param_pageNum == 1 && param_sort == "1" && item.strAdProdFlagYN == "N") {
 					html[hIdx++] = "				<span class=\"tag--rank\">" + (rank++) + "</span>";
@@ -474,6 +479,9 @@ function drawList(dataObj) {
 				//	case 2. <!-- 쇼핑몰 추가할인 -->
 				if (strPromotionUrl != undefined && strPromotionShopName != undefined && strPromotionUrl != "" && strPromotionShopName != "") {
 					html[hIdx++] = "				<a href=\"" + strPromotionUrl + "\" target=\"_blank\" class=\"tag--discount\"><i class=\"ico-tag-enuri lp__sprite\"></i>" + strPromotionShopName + " 추가할인</a>";
+				}
+				if (item.strAdProdFlagYN == "Y") {
+					html[hIdx++] = "				<span class=\"tag--ad\">AD</span>";
 				}
 				html[hIdx++] = "				</div>";
 				// 								<!-- 카피문구 -->
@@ -667,7 +675,7 @@ function drawList(dataObj) {
 				//						<!-- 썸네일 -->
 				html[hIdx++] = "		<div class=\"item__thumb\">";
 				html[hIdx++] = "			<a href=\"" + plMoveLinkUrl + "\" target=\"_blank\">";
-				html[hIdx++] = "				<img class=\"lazy\" data-original=\"" + strImageUrl + "\" src=\"" + noImageStr + "\" alt=\"" + strModelName + "\">";
+				html[hIdx++] = "				<img src=\"" + strImageUrl + "\" alt=\"" + strModelName + "\">";
 				// 								<!-- 태그 / 기존 마크업 유지 -->
 				html[hIdx++] = "				<div class=\"img_tag_v2\">";
 				// 									<!-- 타입 A : 기존 태그 -->
@@ -750,7 +758,7 @@ function drawList(dataObj) {
 					html[hIdx++] = "					<span class=\"tx--mall-npay\">" + strShopName + "</span>";
 					//										<!-- 로고형 -->
 				} else if (strShopCode != "0" && strShopName != "") {
-					html[hIdx++] = "					<img class=\"lazy\" data-original=\"//storage.enuri.info/logo/logo20/logo_20_" + strShopCode + ".png\" src=\"//storage.enuri.info/logo/logo20/logo_20_" + strShopCode + ".png\" alt=\"" + strShopName + "\" onerror=\"javascript:logoImgNotFound(this);\">";
+					html[hIdx++] = "					<img src=\"//storage.enuri.info/logo/logo20/logo_20_" + strShopCode + ".png\" alt=\"" + strShopName + "\" onerror=\"javascript:logoImgNotFound(this);\">";
 				}
 				html[hIdx++] = "					</div>";
 				//									<!-- 가격 -->
@@ -790,17 +798,19 @@ function drawList(dataObj) {
 					html[hIdx++] = "					</div>";
 				}
 				html[hIdx++] = "						<a href=\"" + plMoveLinkUrl + "\" target=\"_blank\"><em>" + strMinPrice + "</em>원</a>";
+				//										<!-- 배송료 --> "배송비" 문구가 있으면 tx--delivery--paid 클래스, 없으면 tx--delivery 클래스
+				if (strDeliveryInfo !== undefined) {
+					html[hIdx++] = "					<div class=\"tx--delivery-label\">";
+					if (strDeliveryInfo.indexOf("배송비") > -1) {
+						html[hIdx++] = "					<div class=\"tx--delivery--paid\">" + strDeliveryInfo + "</div>";
+					} else if (strDeliveryInfo != "0") {
+						html[hIdx++] = "					<div class=\"tx--delivery\">" + strDeliveryInfo + "</div>";
+					}
+					html[hIdx++] = "					</div>";
+				}
+				//										<!-- // -->
 				html[hIdx++] = "					</div>";
 				html[hIdx++] = "				</div>";
-				//								<!-- // -->
-				//								<!-- 배송료 --> "배송비" 문구가 있으면 tx--delivery--paid 클래스, 없으면 tx--delivery 클래스
-				if (strDeliveryInfo !== undefined) {
-					if (strDeliveryInfo.indexOf("배송비") > -1) {
-						html[hIdx++] = "		<div class=\"tx--delivery--paid\">" + strDeliveryInfo + "</div>";
-					} else if (strDeliveryInfo != "0") {
-						html[hIdx++] = "		<div class=\"tx--delivery\">" + strDeliveryInfo + "</div>";
-					}
-				}
 				//								<!-- // -->
 				html[hIdx++] = "			</div>";
 				html[hIdx++] = "		</div>";
@@ -811,13 +821,13 @@ function drawList(dataObj) {
 				html[hIdx++] = "	<div class=\"goods-item\">";
 				html[hIdx++] = "		<!-- 썸네일 -->";
 				html[hIdx++] = "		<div class=\"item__thumb\">  ";
-				html[hIdx++] = "			<a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\"><img class=\"lazy\" data-original=\"" + strImageUrl + "\" src=\"" + noImageStr + "\" alt=\"" + strModelName + "\"></a>";
+				html[hIdx++] = "			<a href=\"" + strLandUrl + "\" target=\"_blank\"><img src=\"" + strImageUrl + "\" alt=\"" + strModelName + "\"></a>";
 				html[hIdx++] = "			<!-- 동영상/찜/비교/크게보기 -->";
 				html[hIdx++] = "			<div class=\"item__menu\">";
 				html[hIdx++] = "				<div class=\"item__menu__inner\">";
 				html[hIdx++] = "					<!-- 버튼 : 찜하기 -->";
 				html[hIdx++] = "					<!-- 찜된 상품 .is--on -->";
-				html[hIdx++] = "					<button class=\"item__btn--zzim\" title=\"찜\" onclick=\"showLayZzim(this);return false;\"><i class=\"ico-item--zzim lp__sprite\">찜</i></button>";
+				html[hIdx++] = "					<button class=\"item__btn--zzim "+(strZzimYN == "Y" ? "is--on" : "")+"\" data-zzimno=\"" + strMakeshopID + "\" title=\"찜\" onclick=\"showLayZzim_list(this);return false;\"><i class=\"ico-item--zzim lp__sprite\">찜</i></button>";
 				html[hIdx++] = "				</div>";
 				html[hIdx++] = "			</div>";
 				html[hIdx++] = "			<!-- // -->";
@@ -832,7 +842,7 @@ function drawList(dataObj) {
 				if (param_pageNum == 1 && param_sort == "1") {
 					html[hIdx++] = "				<span class=\"tag--rank\">" + (rank++) + "</span>";
 				}
-				html[hIdx++] = "					<a href=\"" + strLandUrl + "\" target=\"_blank\" data-type=\"modelname\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\">" + strModelName + "</a>";
+				html[hIdx++] = "					<a href=\"" + strLandUrl + "\" target=\"_blank\" data-type=\"modelname\">" + strModelName + "</a>";
 				html[hIdx++] = "				</div>";
 				html[hIdx++] = "				<!-- 속성/용어사전 -->";
 				html[hIdx++] = "				<!-- '/'' 구분자는 li태그에 자동으로 붙습니다 -->";
@@ -848,7 +858,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "					<ul>";
 				html[hIdx++] = "						<!-- 상품평/평점 -->";
 				if(strBbsNum!="0") {
-					html[hIdx++] = "					<li class=\"item__etc--score\"><a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\"><strong>상품평</strong> (" + strBbsNum.format() + ")</a></li>";
+					html[hIdx++] = "					<li class=\"item__etc--score\"><a href=\"" + strLandUrl + "\" target=\"_blank\"><strong>상품평</strong> (" + strBbsNum.format() + ")</a></li>";
 				}
 				html[hIdx++] = "						<!-- 등록일 -->";
 				if (strCdate.length > 0 && strCdate.length == 8) {
@@ -876,7 +886,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "					</div>";
 				html[hIdx++] = "					<!-- 가격 -->";
 				html[hIdx++] = "					<div class=\"col--price\">";
-				html[hIdx++] = "						<a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\"><em>" + strMinPrice + "</em>원</a>";
+				html[hIdx++] = "						<a href=\"" + strLandUrl + "\" target=\"_blank\"><em>" + strMinPrice + "</em>원</a>";
 				html[hIdx++] = "					</div>";
 				html[hIdx++] = "				</div>";
 				html[hIdx++] = "				<!-- // -->";
@@ -928,7 +938,7 @@ function drawList(dataObj) {
 				}
 				//							<!-- // -->
 				html[hIdx++] = "			<a href=\"/detail.jsp?modelno=" + strModelNo + "\" target=\"_blank\">";
-				html[hIdx++] = "				<img class=\"lazy\" data-original=\"" + strImageUrl + "\" src=\"" + noImageStr + "\" alt=\"" + strModelName + "\">";
+				html[hIdx++] = "				<img src=\"" + strImageUrl + "\" alt=\"" + strModelName + "\">";
 				// 								<!-- 태그 / 기존 마크업 유지 -->
 				html[hIdx++] = "				<div class=\"img_tag_v2\">";
 				// 									<!-- 타입 A : 기존 태그 -->
@@ -1033,14 +1043,13 @@ function drawList(dataObj) {
 				//								<!-- 모델명 -->
 				html[hIdx++] = "				<div class=\"item__model\">";
 				html[hIdx++] = "					<a href=\"/detail.jsp?modelno=" + strModelNo + "\" target=\"_blank\" data-type=\"modelname\">";
-				if (item.strAdProdFlagYN == "Y") {
-					html[hIdx++] = "					<span class=\"tag--ad\">AD</span>";
-				}
 				// 순위 ( 1페이지, 인기순 일때만 ) rank
 				if (param_pageNum == 1 && param_sort == "1" && item.strAdProdFlagYN == "N") {
 					html[hIdx++] = "					<span class=\"tag--rank\">" + (rank++) + "</span>";
 				}
-
+				if (item.strAdProdFlagYN == "Y") {
+					html[hIdx++] = "					<span class=\"tag--ad\">AD</span>";
+				}
 				html[hIdx++] = strModelName;
 				html[hIdx++] = "					</a>";
 				html[hIdx++] = "				</div>";
@@ -1107,7 +1116,7 @@ function drawList(dataObj) {
 				//						<!-- 썸네일 -->
 				html[hIdx++] = "		<div class=\"item__thumb\">";
 				html[hIdx++] = "			<a href=\"" + plMoveLinkUrl + "\" target=\"_blank\">";
-				html[hIdx++] = "				<img class=\"lazy\" data-original=\"" + strImageUrl + "\" src=\"" + noImageStr + "\" alt=\"" + strModelName + "\">";
+				html[hIdx++] = "				<img src=\"" + strImageUrl + "\" alt=\"" + strModelName + "\">";
 				html[hIdx++] = "			</a>";
 				//							<!-- 동영상/찜/비교/크게보기 -->
 				html[hIdx++] = "			<div class=\"item__menu\">";
@@ -1225,7 +1234,7 @@ function drawList(dataObj) {
 					//								<!-- 로고형 -->
 				} else if (strShopCode != "0" && strShopName != "") {
 					html[hIdx++] = "			<a href=\"" + plMoveLinkUrl + "\" class=\"mall--logo\" target=\"_blank\">";
-					html[hIdx++] = "				<img class=\"lazy\" data-original=\"//storage.enuri.info/logo/logo20/logo_20_" + strShopCode + ".png\" src=\"//storage.enuri.info/logo/logo20/logo_20_" + strShopCode + ".png\" alt=\"" + strShopName + "\" onerror=\"javascript:logoImgNotFound(this);\">";
+					html[hIdx++] = "				<img src=\"//storage.enuri.info/logo/logo20/logo_20_" + strShopCode + ".png\" alt=\"" + strShopName + "\" onerror=\"javascript:logoImgNotFound(this);\">";
 					html[hIdx++] = "			</a>";
 				}
 				html[hIdx++] = "			</div>";
@@ -1239,7 +1248,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "<div class=\"goods-item\">";
 				html[hIdx++] = "	<!-- 썸네일 -->";
 				html[hIdx++] = "	<div class=\"item__thumb\">";
-				html[hIdx++] = "		<a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\"><img class=\"lazy\" data-original=\"" + strImageUrl + "\" src=\"" + noImageStr + "\" alt=\"" + strModelName + "\"></a>";
+				html[hIdx++] = "		<a href=\"" + strLandUrl + "\" target=\"_blank\"><img src=\"" + strImageUrl + "\" alt=\"" + strModelName + "\"></a>";
 				html[hIdx++] = "	</div>";
 				html[hIdx++] = "	<!-- // -->";
 				html[hIdx++] = "	<div class=\"item__box\">";
@@ -1248,7 +1257,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "			<!-- 출시가 (모델상품 전용)-->";
 			//	html[hIdx++] = "			<div class=\"tx--release-price\"><span class=\"tx_price\">" + strMinPrice + "원</span></div>";
 				html[hIdx++] = "			<!-- 가격 -->";
-				html[hIdx++] = "			<a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\" class=\"tx--price\">";
+				html[hIdx++] = "			<a href=\"" + strLandUrl + "\" target=\"_blank\" class=\"tx--price\">";
 			//	html[hIdx++] = "				<span class=\"tx--percent\">0%</span>";
 				html[hIdx++] = "				<!-- 가격 -->";
 				html[hIdx++] = "				<em>" + strMinPrice + "</em>원";
@@ -1268,7 +1277,7 @@ function drawList(dataObj) {
 				if (param_pageNum == 1 && param_sort == "1") {
 					html[hIdx++] = "			<span class=\"tag--rank\">" + (rank++) + "</span>";
 				}
-				html[hIdx++] = "				<a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\">" + strModelName + "</a>";
+				html[hIdx++] = "				<a href=\"" + strLandUrl + "\" target=\"_blank\">" + strModelName + "</a>";
 				html[hIdx++] = "			</div>";
 				html[hIdx++] = "			<!-- // -->";
 				html[hIdx++] = "			<!-- 상품 요약 -->";
@@ -1286,7 +1295,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "				<ul>";
 				html[hIdx++] = "					<!-- 상품평/평점 -->";
 				if(strBbsNum!="0") {
-					html[hIdx++] = "				<li class=\"item__etc--score\"><a href=\"" + strLandUrl + "\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\"><strong>상품평</strong> (" + strBbsNum.format() + ")</a></li>";
+					html[hIdx++] = "				<li class=\"item__etc--score\"><a href=\"" + strLandUrl + "\" target=\"_blank\"><strong>상품평</strong> (" + strBbsNum.format() + ")</a></li>";
 				}
 				html[hIdx++] = "				</ul>";
 				html[hIdx++] = "			</div>";
@@ -1296,7 +1305,7 @@ function drawList(dataObj) {
 				html[hIdx++] = "	<!-- 옵션, 쇼핑몰 더보기 / 쇼핑몰 바로가기 -->";
 				html[hIdx++] = "	<div class=\"item__foot\">";
 				html[hIdx++] = "		<!-- 버튼 : 옵션 펼치기 -->";
-				html[hIdx++] = "		<a href=\"" + strLandUrl + "\" class=\"btn--opt-soho\" target=\"_blank\" onclick=\"makeshopClick('"+item.strMakeshopID+"','"+strShopCode+"','"+strCaCode+"');\">"+strShopName+"</a>";
+				html[hIdx++] = "		<a href=\"" + strLandUrl + "\" class=\"btn--opt-soho\" target=\"_blank\">"+strShopName+"</a>";
 				html[hIdx++] = "		<!-- // -->";
 				html[hIdx++] = "	</div>";
 				html[hIdx++] = "</div>";
@@ -1310,9 +1319,6 @@ function drawList(dataObj) {
 
 	//검색어 하일라이트
 	chgHighlighttxt();
-
-	//트렌드를 한 번에
-	getRightWingKnowList2(dataObj.data.strCaCode);
 
 	// 오픈쇼핑, 슈퍼탑라이트 미 삽입 예외 처리 ( 상품이 7개가 되지 않는 경우 )
 	if (viewType == 1 && $(".goods-bundle").find("li[data-type=adline]").length == 0 && $("li.prodItem").length > 0 && dataObj.data.list.length < 7 && param_sort == 1) {
@@ -1328,11 +1334,6 @@ function drawList(dataObj) {
 
 	loading("hide");
 
-	// 이미지 보여주기
-	$("img.lazy").lazyload({
-		placeholder: noImageStr
-	});
-
 	paging(dataObj.total); // 페이징
 
 	// 모델 이미지 위 태그 색상 노출
@@ -1347,6 +1348,15 @@ function drawList(dataObj) {
 		if (dataObj.data.searchedKeywordAry && dataObj.data.searchedKeywordAry.length > 0) {
 			// 키워드 , 선택 배열, 전체 배열
 			drawPartialSearch(dataObj.data.searchedKeyword, dataObj.data.searchedKeywordAry, dataObj.data.searchedKeywordOrgAry);
+		}
+		
+		//트렌드를 한 번에 ( 구매가이드, 리뷰, 뉴스 )
+		getRightWingKnowboxContent(dataObj.data.strCaCode);
+	
+		// srp HOT키워드
+		if(listType=="search") {
+			setSearchIngiKeywrd(1);
+			setSearchIngiKeywrd(2);
 		}
 	}
 
@@ -1398,7 +1408,7 @@ function drawList(dataObj) {
 			}
 		}
 
-		// 추가된 돔에 대하여 순위제거 및 lazyload 적용
+		// 추가된 돔에 대하여 순위제거
 		var addIndexCount = $("li.prodItem.highrank").length - useCount;
 		$("li.prodItem.highrank").each(function(index, item) {
 			if (index >= addIndexCount) {
@@ -1408,11 +1418,6 @@ function drawList(dataObj) {
 			}
 		});
 		$("li.prodItem.highrank").removeClass("highrank");
-
-		// 이미지 보여주기
-		$("li.fill img.lazy").lazyload({
-			placeholder: noImageStr
-		});
 
 		// 갤러리뷰 파워클릭 삽입 ( 슈퍼탑 없는 ver )
 		if (param_pageNum == 1 && attrSelCnt == 0 && param_sort == 1) {
@@ -1744,8 +1749,11 @@ function drawAttr(dataObj) {
 							addClass += " has-child";
 						}
 						cateListHtml[cateListIdx++] = "<li class=\"category-lp__item " + addClass + "\">";
-						cateListHtml[cateListIdx++] = "	<a href=\"/list.jsp?cate=" + data_key + "\">" + data_name + "</a>";
-
+						if(data_key !== undefined && data_key.length>0) {
+							cateListHtml[cateListIdx++] = "	<a href=\"/list.jsp?cate=" + data_key + "\">" + data_name + "</a>";
+						} else if(dataObj.data.category.depth_3[i].data.linkUrl !== undefined && dataObj.data.category.depth_3[i].data.linkUrl.length>0){
+							cateListHtml[cateListIdx++] = "	<a href=\"" + dataObj.data.category.depth_3[i].data.linkUrl + "\">" + data_name + "</a>";
+						}
 						// child 미카테 노출
 						var child_cate = "";
 						var child_name = "";
@@ -1756,7 +1764,11 @@ function drawAttr(dataObj) {
 							$.each(dataObj.data.category.depth_3[i].child, function(child_key, child_data) {
 								child_cate = child_data.code;
 								child_name = child_data.name;
-								cateListHtml[cateListIdx++] = "	<li><a href=\"/list.jsp?cate=" + child_cate + "\" title=\"" + child_name + "\">" + child_name + "</a></li>";
+								if(child_cate !== undefined && child_cate.length>0) {
+									cateListHtml[cateListIdx++] = "	<li><a href=\"/list.jsp?cate=" + child_cate + "\" title=\"" + child_name + "\">" + child_name + "</a></li>";
+								} else if(child_data.linkUrl !== undefined && child_data.linkUrl.length>0) {
+									cateListHtml[cateListIdx++] = "	<li><a href=\"" + child_data.linkUrl + "\" title=\"" + child_name + "\">" + child_name + "</a></li>";
+								}
 							});
 
 							cateListHtml[cateListIdx++] = "	</ul>";
@@ -1822,13 +1834,19 @@ function drawAttr(dataObj) {
 				for (var i = 0; i < dataObj.data.category.depth_4.length; i++) {
 					var sub_key = dataObj.data.category.depth_4[i].code;
 					var sub_name = dataObj.data.category.depth_4[i].name;
-					dCateHtml[dCateIdx++] = "		<li data-cate=\"" + sub_key + "\">";
-					if (param_cate == sub_key) {
-						dCateHtml[dCateIdx++] = "		<input type=\"radio\" id=\"radioLPCATE_" + sub_key + "\" name=\"radioLPCATE\" class=\"input--radio-item\" checked=\"checked\"><label for=\"radioLPCATE_" + sub_key + "\">" + sub_name + "</label>";
-					} else {
-						dCateHtml[dCateIdx++] = "		<input type=\"radio\" id=\"radioLPCATE_" + sub_key + "\" name=\"radioLPCATE\" class=\"input--radio-item\"><label for=\"radioLPCATE_" + sub_key + "\">" + sub_name + "</label>";
+					if(sub_key !== undefined && sub_key.length>0) {
+						dCateHtml[dCateIdx++] = "		<li data-cate=\"" + sub_key + "\">";
+						if (param_cate == sub_key) {
+							dCateHtml[dCateIdx++] = "		<input type=\"radio\" id=\"radioLPCATE_" + sub_key + "\" name=\"radioLPCATE\" class=\"input--radio-item\" checked=\"checked\"><label for=\"radioLPCATE_" + sub_key + "\">" + sub_name + "</label>";
+						} else {
+							dCateHtml[dCateIdx++] = "		<input type=\"radio\" id=\"radioLPCATE_" + sub_key + "\" name=\"radioLPCATE\" class=\"input--radio-item\"><label for=\"radioLPCATE_" + sub_key + "\">" + sub_name + "</label>";
+						}
+						dCateHtml[dCateIdx++] = "		</li>";
+					} else if(dataObj.data.category.depth_4[i].linkUrl !== undefined && dataObj.data.category.depth_4[i].linkUrl.length > 0) {
+						dCateHtml[dCateIdx++] = "		<li data-url=\"" + dataObj.data.category.depth_4[i].linkUrl + "\">";
+						dCateHtml[dCateIdx++] = "			<input type=\"radio\" id=\"radioLPCATE_LINK_" + i + "\" name=\"radioLPCATE_LINK\" class=\"input--radio-item\"><label for=\"radioLPCATE_LINK_" + i + "\">" + sub_name + "</label>";
+						dCateHtml[dCateIdx++] = "		</li>";
 					}
-					dCateHtml[dCateIdx++] = "		</li>";
 				}
 
 				dCateHtml[dCateIdx++] = "			</ul>";
@@ -1854,7 +1872,7 @@ function drawAttr(dataObj) {
 
 			reqCateListHtml[reqCateListIdx++] = "	<div class=\"category-srp__head\">";
 			reqCateListHtml[reqCateListIdx++] = "		<ul class=\"category-srp__location\">";
-			reqCateListHtml[reqCateListIdx++] = "			<li data-type=\"all\"><a href=\"/search.jsp?keyword=" + param_keyword + "&from=list\">전체</a></li>";
+			reqCateListHtml[reqCateListIdx++] = "			<li data-type=\"all\"><a href=\"javascript:void(0);\" data-type=\"all\">전체</a></li>";
 			if (dataObj.data.reqCateSelList.cateCode1 !== undefined && dataObj.data.reqCateSelList.cateCode1.length > 0 && dataObj.data.reqCateSelList.cateName1 !== undefined && dataObj.data.reqCateSelList.cateName1.length > 0) {
 				if (dataObj.data.reqCateSelList.cateCode2 === undefined || dataObj.data.reqCateSelList.cateName2 === undefined) {
 					reqCateListHtml[reqCateListIdx++] = "		<li data-type=\"depth1\"><span class=\"tx--cate\">" + dataObj.data.reqCateSelList.cateName1 + "</span> <span class=\"tx--count\">(상품수 : <em>" + dataObj.total.format() + "</em>)</span></li>";
@@ -1880,7 +1898,7 @@ function drawAttr(dataObj) {
 				reqCateListHtml[reqCateListIdx++] = "	<ul class=\"category-srp__list\">";
 				$(dataObj.data.reqCateSelList.sCateList).each(function(index, item) {
 					reqCateListHtml[reqCateListIdx++] = "	<li>";
-					reqCateListHtml[reqCateListIdx++] = "		<a href=\"/search.jsp?keyword=" + param_keyword + "&cate=" + item.cateCode + "&from=list\">";
+					reqCateListHtml[reqCateListIdx++] = "		<a href=\"javascript:void(0);\" data-cate=\""+item.cateCode+"\">";
 					if (item.cateCode == param_cate) {
 						reqCateListHtml[reqCateListIdx++] = "		<span class=\"tx--cate is--on\">" + item.cateName + "</span>";
 					} else {
@@ -1925,7 +1943,15 @@ function drawAttr(dataObj) {
 			reqCateHtml[reqCateIdx++] = "			<div class=\"search-box__inner\">";
 			reqCateHtml[reqCateIdx++] = "				<ul class=\"search-box__list\">";
 			$(dataObj.data.reqCateBest).each(function(index, item) {
-				reqCateHtml[reqCateIdx++] = "				<li><a href=\"/search.jsp?keyword=" + param_keyword + "&cate=" + item.cate + "&from=list\" class=\"category-srp__item\"><span class=\"tx--name\">" + item.name + "</span><span class=\"tx--count\">" + item.cnt.format() + "</span></a></li>";
+				
+				// 메이크샵 브랜드스토어 호출
+				if(index==0) { loadbrandStore(item.cate); }
+				
+				reqCateHtml[reqCateIdx++] = "				<li>";
+				reqCateHtml[reqCateIdx++] = "					<a href=\"javascript:void(0);\" class=\"category-srp__item\" data-cate=\""+item.cate+"\">";
+				reqCateHtml[reqCateIdx++] = "						<span class=\"tx--name\">" + item.name + "</span><span class=\"tx--count\">" + item.cnt.format() + "</span>";
+				reqCateHtml[reqCateIdx++] = "					</a>";
+				reqCateHtml[reqCateIdx++] = "				</li>";
 			});
 			reqCateHtml[reqCateIdx++] = "				</ul>";
 			reqCateHtml[reqCateIdx++] = "			</div>";
@@ -2240,215 +2266,15 @@ function drawAttr(dataObj) {
 						parseMsg = (split_s / 10000) + "~" + (split_e / 10000) + "만원";
 					}
 					if (parseMsg.length > 0) {
-						html[hIdx++] = "		<li class=\"attrs\" data-attr=\"price_" + split_s + "_" + split_e + "\" data-range=\"" + ("range_" + rangeCnt) + "\" data-start=\"" + split_s + "\" data-end=\"" + split_e + "\">";
-						html[hIdx++] = "			<button class=\"btn--range-price\">" + parseMsg + "</button>";
-						if (!hitFlag && dataObj.data.model_avg_price_model !== undefined && split_e >= dataObj.data.model_avg_price_model) {
-							//						<!-- 아이콘 : HIT -->
-							html[hIdx++] = "		<i class=\"ico-range-hit lp__sprite\">HIT</i>";
-							//						<!-- // -->
+						html[hIdx++] = "	<li class=\"attrs\" data-attr=\"price_" + split_s + "_" + split_e + "\" data-range=\"" + ("range_" + rangeCnt) + "\" data-start=\"" + split_s + "\" data-end=\"" + split_e + "\">";
+						html[hIdx++] = "		<button class=\"btn--range-price\">" + parseMsg + "</button>";
+						if (!hitFlag && dataObj.data.model_avg_price_all !== undefined && split_e >= dataObj.data.model_avg_price_all) {
+							//					<!-- 아이콘 : HIT -->
+							html[hIdx++] = "	<i class=\"ico-range-hit lp__sprite\">HIT</i>";
+							//					<!-- // -->
 							hitFlag = true;
 						}
-						html[hIdx++] = "		</li>";
-						rangeCnt++;
-					}
-				}
-			});
-
-			html[hIdx++] = "			</ul>";
-			//							<!-- 가격대 검색 -->
-			html[hIdx++] = "			<div class=\"search-box__range--search\">";
-			html[hIdx++] = "				<input type=\"text\" class=\"input--text-item start_price\" placeholder=\"0\" onkeyup=\"inputNumberFormat(this)\"> ~ <input type=\"text\" class=\"input--text-item end_price\" placeholder=\"999,999,999\" onkeyup=\"inputNumberFormat(this)\">";
-			//								<!-- 버튼 : 가격대 검색 -->
-			html[hIdx++] = "				<button class=\"btn--range-search attrs\">가격검색</button>";
-			html[hIdx++] = "			</div>";
-			//							<!-- // -->
-			html[hIdx++] = "		</div>";
-			html[hIdx++] = "	</dd>";
-			html[hIdx++] = "</dl>";
-		}
-	}
-
-	// 가격대 - 모델상품 기준
-	var priceRangeSet_model = new Set();
-	if (dataObj.data.price_model !== undefined && dataObj.data.price_model.length > 0 && dataObj.total >= 50) {
-		var startPrice_10 = 0;
-		var endPrice_10 = 0;
-
-		$.each(dataObj.data.price_model, function(index, item) {
-			if (index == 2) { // 하위 10%
-				startPrice_10 = item;
-			} else if (index == 18) { // 상위 10% 
-				endPrice_10 = item;
-			}
-		});
-
-		if (startPrice_10 > 0 && endPrice_10 > 0) {
-
-			var diffPrice = endPrice_10 - startPrice_10;
-			var diffRange = diffPrice / 5;
-
-			// 가격대 영역 5개
-			for (var j = 0; j < 5; j++) {
-				if (j == 0) {
-					if ((Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000) > 0) {
-						priceRangeSet_all.add("0_" + (Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000));
-					}
-				} else if (j == 4) {
-					priceRangeSet_model.add((Math.round(parseInt(startPrice_10) / 10000) * 10000) + "_999999999");
-				} else {
-					if (Math.round(parseInt(startPrice_10) / 10000) * 10000 != Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000) {
-						priceRangeSet_model.add((Math.round(parseInt(startPrice_10) / 10000) * 10000) + "_" + (Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000));
-					}
-				}
-				startPrice_10 += diffRange;
-			}
-		}
-
-		if (priceRangeSet_model.size > 2) {
-			if (param_tabType == "1") {
-				html[hIdx++] = "<dl class=\"search-box-row row-price-range\" data-attr-type=\"price\" data-price-option=\"model\">";
-			} else {
-				html[hIdx++] = "<dl class=\"search-box-row row-price-range\" data-attr-type=\"price\" data-price-option=\"model\" style=\"display:none;\">";
-			}
-			html[hIdx++] = "	<dt class=\"search-box__head\">";
-			html[hIdx++] = "		<div class=\"search-box__head--title\">";
-			html[hIdx++] = "			<div class=\"search-box__head--inner\">";
-			//								<!-- 속성명 / 카운트 -->
-			html[hIdx++] = "				<p class=\"search-box__head--name\">가격대</p>";
-			html[hIdx++] = "			</div>";
-			html[hIdx++] = "		</div>";
-			html[hIdx++] = "	</dt>";
-			html[hIdx++] = "	<dd class=\"search-box__body\">";
-			html[hIdx++] = "		<div class=\"search-box__inner\">";
-			html[hIdx++] = "			<ul class=\"search-box__range--price range-class--0" + priceRangeSet_model.size + "\">";
-			var rangeCnt = 1;
-			var hitFlag = false;
-
-			priceRangeSet_model.forEach(function(item, item_value) {
-
-				var splitPrice = item.split("_");
-				var split_s = splitPrice[0];
-				var split_e = splitPrice[1];
-				var parseMsg = "";
-
-				if (split_e > 0) {
-					if (split_s == 0) {
-						parseMsg = (split_e / 10000) + "만원 이하";
-					} else if (split_e == 999999999) {
-						parseMsg = (split_s / 10000) + "만원 이상";
-					} else {
-						parseMsg = (split_s / 10000) + "~" + (split_e / 10000) + "만원";
-					}
-					if (parseMsg.length > 0) {
-						html[hIdx++] = "		<li class=\"attrs\" data-attr=\"price_" + split_s + "_" + split_e + "\" data-range=\"" + ("range_" + rangeCnt) + "\"  data-start=\"" + split_s + "\" data-end=\"" + split_e + "\">";
-						html[hIdx++] = "			<button class=\"btn--range-price\">" + parseMsg + "</button>";
-						if (!hitFlag && dataObj.data.model_avg_price_model !== undefined && split_e >= dataObj.data.model_avg_price_model) {
-							//						<!-- 아이콘 : HIT -->
-							html[hIdx++] = "		<i class=\"ico-range-hit lp__sprite\">HIT</i>";
-							//						<!-- // -->
-							hitFlag = true;
-						}
-						html[hIdx++] = "		</li>";
-						rangeCnt++;
-					}
-				}
-			});
-
-			html[hIdx++] = "			</ul>";
-			//							<!-- 가격대 검색 -->
-			html[hIdx++] = "			<div class=\"search-box__range--search\">";
-			html[hIdx++] = "				<input type=\"text\" class=\"input--text-item start_price\" placeholder=\"0\" onkeyup=\"inputNumberFormat(this)\"> ~ <input type=\"text\" class=\"input--text-item end_price\" placeholder=\"999,999,999\" onkeyup=\"inputNumberFormat(this)\">";
-			//								<!-- 버튼 : 가격대 검색 -->
-			html[hIdx++] = "				<button class=\"btn--range-search attrs\">가격검색</button>";
-			html[hIdx++] = "			</div>";
-			//							<!-- // -->
-			html[hIdx++] = "		</div>";
-			html[hIdx++] = "	</dd>";
-			html[hIdx++] = "</dl>";
-		}
-	}
-
-	// 가격대 - 일반상품 기준
-	var priceRangeSet_pl = new Set();
-	if (dataObj.data.price_pl !== undefined && dataObj.data.price_pl.length > 0 && dataObj.total >= 50) {
-		var startPrice_10 = 0;
-		var endPrice_10 = 0;
-
-		$.each(dataObj.data.price_pl, function(index, item) {
-			if (index == 2) { // 하위 10%
-				startPrice_10 = item;
-			} else if (index == 18) { // 상위 10% 
-				endPrice_10 = item;
-			}
-		});
-
-		if (startPrice_10 > 0 && endPrice_10 > 0) {
-
-			var diffPrice = endPrice_10 - startPrice_10;
-			var diffRange = diffPrice / 5;
-
-			// 가격대 영역 5개
-			for (var j = 0; j < 5; j++) {
-				if (j == 0) {
-					if ((Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000) > 0) {
-						priceRangeSet_all.add("0_" + (Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000));
-					}
-				} else if (j == 4) {
-					priceRangeSet_pl.add((Math.round(parseInt(startPrice_10) / 10000) * 10000) + "_999999999");
-				} else {
-					if (Math.round(parseInt(startPrice_10) / 10000) * 10000 != Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000) {
-						priceRangeSet_pl.add((Math.round(parseInt(startPrice_10) / 10000) * 10000) + "_" + (Math.round(parseInt(startPrice_10 + diffRange) / 10000) * 10000));
-					}
-				}
-				startPrice_10 += diffRange;
-			}
-		}
-
-		if (priceRangeSet_pl.size > 2) {
-			if (param_tabType == "2") {
-				html[hIdx++] = "<dl class=\"search-box-row row-price-range\" data-attr-type=\"price\" data-price-option=\"pl\">";
-			} else {
-				html[hIdx++] = "<dl class=\"search-box-row row-price-range\" data-attr-type=\"price\" data-price-option=\"pl\" style=\"display:none;\">";
-			}
-			html[hIdx++] = "	<dt class=\"search-box__head\">";
-			html[hIdx++] = "		<div class=\"search-box__head--title\">";
-			html[hIdx++] = "			<div class=\"search-box__head--inner\">";
-			//								<!-- 속성명 / 카운트 -->
-			html[hIdx++] = "				<p class=\"search-box__head--name\">가격대</p>";
-			html[hIdx++] = "			</div>";
-			html[hIdx++] = "		</div>";
-			html[hIdx++] = "	</dt>";
-			html[hIdx++] = "	<dd class=\"search-box__body\">";
-			html[hIdx++] = "		<div class=\"search-box__inner\">";
-			html[hIdx++] = "			<ul class=\"search-box__range--price range-class--0" + priceRangeSet_pl.size + "\">";
-			var rangeCnt = 1;
-			var hitFlag = false;
-
-			priceRangeSet_pl.forEach(function(item, item_value) {
-
-				var splitPrice = item.split("_");
-				var split_s = splitPrice[0];
-				var split_e = splitPrice[1];
-				var parseMsg = "";
-
-				if (split_e > 0) {
-					if (split_s == 0) {
-						parseMsg = (split_e / 10000) + "만원 이하";
-					} else if (split_e == 999999999) {
-						parseMsg = (split_s / 10000) + "만원 이상";
-					} else {
-						parseMsg = (split_s / 10000) + "~" + (split_e / 10000) + "만원";
-					}
-					if (parseMsg.length > 0) {
-						html[hIdx++] = "		<li class=\"attrs\" data-attr=\"price_" + split_s + "_" + split_e + "\" data-range=\"" + ("range_" + rangeCnt) + "\"  data-start=\"" + split_s + "\" data-end=\"" + split_e + "\">";
-						html[hIdx++] = "			<button class=\"btn--range-price\">" + parseMsg + "</button>";
-						if (!hitFlag && dataObj.data.model_avg_price_pl !== undefined && split_e >= dataObj.data.model_avg_price_pl) {
-							//						<!-- 아이콘 : HIT -->
-							html[hIdx++] = "		<i class=\"ico-range-hit lp__sprite\">HIT</i>";
-							//						<!-- // -->
-							hitFlag = true;
-						}
-						html[hIdx++] = "		</li>";
+						html[hIdx++] = "	</li>";
 						rangeCnt++;
 					}
 				}
@@ -2574,10 +2400,20 @@ function drawAttr(dataObj) {
 			var tmp_param_spec = param_spec;
 			var splitSpec = tmp_param_spec.split(",");
 			for (var i = 0; i < splitSpec.length; i++) {
-				$("li.attrs[data-spec=" + splitSpec[i] + "] label").trigger("click");
+				// 스마트파인더일 경우
+				if (listType == "list" && dataObj.data.order !== undefined && dataObj.data.order.length > 0) {
+					// 용어사전 있을 경우 label 클릭
+					if($("li.attrs[data-spec=" + splitSpec[i] + "]").hasClass("has-dic")) {
+						$("li.attrs[data-spec=" + splitSpec[i] + "] label").trigger("click");
+					} else {
+						$("li.attrs[data-spec=" + splitSpec[i] + "] button").trigger("click");
+					}
+				} else {
+					$("li.attrs[data-spec=" + splitSpec[i] + "] label").trigger("click");
+				}
 			}
 		}
-		// 제조사
+		// 제조사명
 		if(param_factory.length>0) {
 			// 제조사 속성 ( factory ) 직링크 진입 시
 			var tmp_param_factory = param_factory;
@@ -2585,8 +2421,16 @@ function drawAttr(dataObj) {
 			for (var i = 0; i < splitFactory.length; i++) {
 				$("dl[data-attr-type=factory] li.attrs[data-text="+regSpecExp(splitFactory[i])+"] label").trigger("click");
 			}
+		// 제조사코드
+		} else if(param_factorycode.length>0) {
+			// 제조사 속성 ( factory ) 직링크 진입 시
+			var tmp_param_factorycode = param_factorycode;
+			var splitFactoryCode = tmp_param_factorycode.split(",");
+			for (var i = 0; i < splitFactoryCode.length; i++) {
+				$("dl[data-attr-type=factory] li.attrs[data-attr=factory_"+splitFactoryCode[i]+"] label").trigger("click");
+			}
 		}
-		// 브랜드
+		// 브랜드명
 		if(param_brand.length>0) {
 			// 브랜드 속성 ( brand ) 직링크 진입 시
 			var tmp_param_brand = param_brand;
@@ -3161,15 +3005,6 @@ function drawFactory(dataObj) {
 	var factoryViewItem = 6;
 	//var vMinusCnt = 6;
 	
-	// 선택된 정보가 있으면 sel 클래스를 붙여준다.
-	var selFactorySet = new Set();
-	if(param_factorycode.length>0){
-		var factorySplit = param_factorycode.split(",");
-		for(var i=0; i<factorySplit.length; i++) {
-			selFactorySet.add(factorySplit[i]);
-		}
-	}
-	
 	var unfoldAttrArr = [];
 	var vUnfoldFlag = false;
 	var sub_ls_step  = 0; // 펼침 수
@@ -3228,11 +3063,7 @@ function drawFactory(dataObj) {
 		if (factoryDrawCnt == 0) {
 			factoryHtml += "		<ul class=\"search-box__list\">";
 		}
-		if(selFactorySet.has(item.code)) {
-			factoryHtml += "				<li class=\"attrs sel\" data-attr=\"factory_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\"><input type=\"checkbox\" id=\"chFactory_" + index + "\" class=\"input--checkbox-item\"><label for=\"chFactory_" + index + "\" title=\"" + item.name + "\">" + item.name + "</label></li>";
-		} else {
-			factoryHtml += "				<li class=\"attrs\" data-attr=\"factory_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\"><input type=\"checkbox\" id=\"chFactory_" + index + "\" class=\"input--checkbox-item\"><label for=\"chFactory_" + index + "\" title=\"" + item.name + "\">" + item.name + "</label></li>";
-		}
+		factoryHtml += "				<li class=\"attrs\" data-attr=\"factory_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\"><input type=\"checkbox\" id=\"chFactory_" + index + "\" class=\"input--checkbox-item\"><label for=\"chFactory_" + index + "\" title=\"" + item.name + "\">" + item.name + "</label></li>";
 		factoryNameToCodeMap.put(item.name, item.code);
 		factoryDrawCnt++;
 	});
@@ -3251,16 +3082,6 @@ function drawBrand(dataObj, orderMap) {
 	var brandViewItem = 6;
 	var brandAddClass = "";
 	var vMinusCnt = 6;
-	
-	// 선택된 정보가 있으면 sel 클래스를 붙여준다.
-	// 코드로 체크하는 게 맞지만, 현재 코드화 가 안되어있기때문에 이름으로 한다.
-	var selBrandSet = new Set();
-	if(param_brand.length>0){
-		var brandSplit = param_brand.split(",");
-		for(var i=0; i<brandSplit.length; i++) {
-			selBrandSet.add(brandSplit[i]);
-		}
-	}
 	
 	var unfoldAttrArr = [];
 	var vUnfoldFlag = false;
@@ -3337,11 +3158,7 @@ function drawBrand(dataObj, orderMap) {
 		brandHtml += "			<ul class=\"list__luxury\">";
 
 		$.each(dataObj.data.reqBrandLP, function(index, item) {
-			if(selBrandSet.has(item.name)) {
-				brandHtml += "		<li class=\"attrs is--on\" data-attr=\"brand_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\">";
-			} else {
-				brandHtml += "		<li class=\"attrs\" data-attr=\"brand_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\">";
-			}
+			brandHtml += "		<li class=\"attrs\" data-attr=\"brand_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\">";
 			brandHtml += "				<a href=\"javascript:void(0);\" class=\"luxury\">";
 			brandHtml += "					<img src=\"" + item.image_url + "\" alt=\"" + item.name + "\" height=\"20\" onerror=\"this.src='//img.enuri.info/images/finder/icon/img_noicon2.png'\">";
 			brandHtml += "					<span class=\"tx_brand\">" + item.name + "</span>";
@@ -3359,11 +3176,7 @@ function drawBrand(dataObj, orderMap) {
 		brandHtml += "		<div class=\"search-box__r-brand\">";
 		brandHtml += "			<ul class=\"search-box__list\">";
 		$.each(dataObj.data.reqBrandList, function(index, item) {
-			if(selBrandSet.has(item.name)) {
-				brandHtml += "		<li class=\"attrs is--on\" data-attr=\"brand_" + item.brand_id + "\" data-text=\"" + regSpecExp(item.brand_nm) + "\"><a href=\"javascript:void(0);\" class=\"r-brand\"><img src=\"//storage.enuri.gscdn.com/pic_upload/keyword/" + item.brand_img + "\" alt=\"" + item.brand_nm + "\"></a></li>";
-			} else {
-				brandHtml += "		<li class=\"attrs\" data-attr=\"brand_" + item.brand_id + "\" data-text=\"" + regSpecExp(item.brand_nm) + "\"><a href=\"javascript:void(0);\" class=\"r-brand\"><img src=\"//storage.enuri.gscdn.com/pic_upload/keyword/" + item.brand_img + "\" alt=\"" + item.brand_nm + "\"></a></li>";
-			}
+			brandHtml += "		<li class=\"attrs\" data-attr=\"brand_" + item.brand_id + "\" data-text=\"" + regSpecExp(item.brand_nm) + "\"><a href=\"javascript:void(0);\" class=\"r-brand\"><img src=\"//storage.enuri.info/pic_upload/keyword/" + item.brand_img + "\" alt=\"" + item.brand_nm + "\"></a></li>";
 			srpReqSet.add(item.brand_nm);
 		});
 		brandHtml += "			</ul>";
@@ -3389,13 +3202,7 @@ function drawBrand(dataObj, orderMap) {
 			if (brandDrawCnt == 0) {
 				brandHtml += "	<ul class=\"search-box__list\">";
 			}
-			
-			if(selBrandSet.has(item.name)) {
-				brandHtml += "		<li class=\"attrs is--on\" data-attr=\"brand_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\"><input type=\"checkbox\" id=\"chBrand_" + item.code + "\" class=\"input--checkbox-item\"><label for=\"chBrand_" + item.code + "\" title=\"" + item.name + "\">" + item.name + "</label></li>";
-			} else {
-				brandHtml += "		<li class=\"attrs\" data-attr=\"brand_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\"><input type=\"checkbox\" id=\"chBrand_" + item.code + "\" class=\"input--checkbox-item\"><label for=\"chBrand_" + item.code + "\" title=\"" + item.name + "\">" + item.name + "</label></li>";
-			}
-			
+			brandHtml += "		<li class=\"attrs\" data-attr=\"brand_" + item.code + "\" data-text=\"" + regSpecExp(item.name) + "\"><input type=\"checkbox\" id=\"chBrand_" + item.code + "\" class=\"input--checkbox-item\"><label for=\"chBrand_" + item.code + "\" title=\"" + item.name + "\">" + item.name + "</label></li>";
 			if (dataObj.data.reqBrandLP === undefined || !brandReqMap.has(item.name)) {
 				brandDrawCnt++;
 			}
@@ -3687,4 +3494,68 @@ function drawBbsScore(dataObj) {
 	bbsHtml += "</dl>";
 	
 	return bbsHtml;
+}
+
+//브랜드스토어
+function loadbrandStore(cate) {
+	var brandStorePromise = $.ajax({
+		type: "get",
+		url: "/brandstore/api/brandList.jsp",
+		dataType: "json",
+		data: {
+			"cate": cate,
+			"device": "pc",
+		}
+	});
+
+	brandStorePromise.then(drawbrandStore, failbrandStore);
+}
+
+function drawbrandStore(obj) {
+	var brandStoreHtml = "";
+	
+	if (typeof obj != "undefined" ) {
+		if (obj.success) {
+			if(typeof obj.data != "undefined") {
+				var data = obj.data;
+				var rankUrl = "";
+				if (typeof data.rankUrl != "undefined" && data.rankUrl.length > 0) {
+					rankUrl = data.rankUrl;
+				}
+    			brandStoreHtml +=  "	<h3 class=\"bs_title\"><em>브랜드</em>스토어<a href=\""+rankUrl+"\" class=\"btn_allview\" target=\"_blank\" onclick=\"insertLog(27428);\">더보기</a></h3>";
+				var brandStoreList;
+				if (typeof data.list != "undefined" && data.list.length > 2) {
+					brandStoreList = data.list; 
+					brandStoreHtml += "<div class=\"bs_list\">";                              
+                    brandStoreHtml += "		<ul>";
+					
+					var brandStoreListLen = brandStoreList.length > 6 ? 6 : brandStoreList.length;
+					for (var i =0; i < brandStoreListLen; i ++) {
+						brandStoreHtml += "		<li>";
+                        brandStoreHtml += "			<a href=\""+brandStoreList[i].url+"\" target=\"_blank\" onclick=\"insertLog(27427);\">";
+                        brandStoreHtml += "				<div class=\"bs_logo_wrap\">";
+						brandStoreHtml += "				<div class=\"bs_logo\">";
+						brandStoreHtml += "					<img src=\""+brandStoreList[i].shop_logo+"\" onerror=\"this.src='https://img.enuri.info/images/rev/brandstore/shoplogo_noimg.png'\"/>";
+						brandStoreHtml += "				</div>";
+                        brandStoreHtml += "				</div>";
+                        brandStoreHtml += "				<div class=\"bs_name\">"+brandStoreList[i].shop_nm+"</div>";                        
+                        brandStoreHtml += "			</a>";	                        
+                        brandStoreHtml += "		</li>";	      
+					}
+					
+					brandStoreHtml += "		</ul>";
+			        brandStoreHtml += "</div>";  
+					$("#div_lp_brand_store").html(brandStoreHtml);                          
+				} 
+			} else {
+				$("#div_lp_brand_store").remove();
+			}
+		} else {
+			$("#div_lp_brand_store").remove();
+		}
+	}
+}
+
+function failbrandStore(errorObj) {
+	console.log("LP brandStore API Call Fail : " + errorObj.statusText);
 }

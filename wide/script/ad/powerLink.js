@@ -62,7 +62,7 @@ function drawPowerLink(obj) {
 			//	<!-- 이미지가 없을때는 ad_thumb을 제거 -->
 			if(item.imageExtension) {
 				adHtml += "		<span class=\"ad_thumb\">";
-				adHtml += "			<img class=\"lazy\" data-src=\""+item.imageExtension.imageUrl+"\" data-original=\""+item.imageExtension.imageUrl+"\" onerror=\"this.src='"+noImageStr+"'\" alt=\"파워링크 광고상품\">";
+				adHtml += "			<img src=\""+item.imageExtension.imageUrl+"\" onerror=\"this.src='"+noImageStr+"'\" alt=\"파워링크 광고상품\">";
 				adHtml += "		</span>";
 			}
 			adHtml += "			<span class=\"ad_info\">";
@@ -87,8 +87,6 @@ function drawPowerLink(obj) {
 	});
 	targetUl.append(adHtml);
 
-	$("li[data-type=powerlink] img.lazy").lazyload();
-	
 	// 개별로그
 	var objType = obj.type; // LP,SRP,VIP
 	var objCate = obj.cate; // LP 카테고리

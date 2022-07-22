@@ -48,6 +48,9 @@ body{background-color:#fff!important}
 .login_inp_row:focus-within::after{opacity:0!important}
 .login_inp_row.row_id.error:after{content:"아이디를 입력해 주세요"}
 .login_inp_row.row_pw.error:after{content:"비밀번호를 입력해 주세요"}
+.login_inp_row.row_pw .pass_box {position:relative;} 
+.login_inp_row.row_pw .pass_box .ico_eye {display:block;position:absolute;top:12px;right:12px;z-index:10;width:24px;height:24px;background:url("//img.enuri.info/images/member/member_sprite.png") -48px 0;background-size:320px;}
+.login_inp_row.row_pw .pass_box.is-on .ico_eye {background-position:-48px -24px;}
 /* 자동로그인 */
 .chk_auto_login{height:24px;line-height:24px;margin-top:12px;position: relative;}
 .chk_auto_login input[type="checkbox"]{width:1px;height:1px;visibility:hidden;position: absolute;top:-1px;left:-1px}
@@ -154,3 +157,30 @@ body{background-color:#fff!important}
 .btn_group.three_btn > div.last {margin-right:0;}
 .btn_group.three_btn > div.joinus .btn {font-weight:bold; color:#0073be;}
 .btn_group .btn.btn_sm.inline-close {width:137px; height:38px; margin:0 auto; border-color:#1689d3; font-weight:bold; color:#fff; background-color:#1689d3;}
+
+/*---------------------------------------------------------
+                    바텀시트_ 공통
+---------------------------------------------------------*/
+.bottomsheet_wrap {overflow:hidden;position:fixed;top:0;bottom:0;left:0;right:0;opacity:0;-webkit-transition:opacity .3s ease-in;-o-transition:opacity .3s ease-in;transition:opacity .3s ease-in}
+.bottomsheet_wrap .dimmed {display:block;position:fixed;top:0;bottom:0;left:0;right:0;background-color:rgba(0,0,0,.5);}
+.bottomsheet_wrap.is-shown {display:block;z-index:10000 !important;opacity:1;}
+.bottomsheet_wrap.is-shown .dimmed {display:block}
+.bottomsheet_wrap.is-shown .bottomsheet {-webkit-transform:translate(0, 0);-ms-transform:translate(0, 0);transform:translate(0, 0);z-index:1;}
+
+.bottomsheet {position:absolute;bottom:0;left:0;right:0;height:calc(100vh - 50vh);border-radius:16px 16px 0 0;-webkit-box-shadow:0 0 2rem 0 rgba(41,48,66,.1);box-shadow:0 0 2rem 0 rgba(41,48,66,.1);-webkit-transition:all .3s ease-in;-o-transition:all .3s ease-in;transition:all .3s ease-in;background-color:#fff;-webkit-transform:translate(0, 100%);-ms-transform:translate(0, 100%);transform:translate(0, 100%); overflow: hidden;}
+.bottomsheet .bs_inner {position:relative;top:0;bottom:0;height:100%;padding:0;}
+.bottomsheet .bs_head {display:block;position:sticky;height:52px;padding:0 20px;border-bottom:1px solid #ddd}
+.bottomsheet .bs_head:after {content:"";display:table;clear:both;}
+.bottomsheet .bs_head_tit {display:block;padding:12px 0 10px;font-size:16px;color:#000;letter-spacing:-.6px;line-height:30px;}
+.bottomsheet .bs_head_close {position:absolute;top:16px;right:16px;width:20px;height:20px;font-size:0;text-indent:-9999px;background:url("//img.enuri.info/images/mobile_v2/common_sprite.png") -120px -235px no-repeat;background-size:360px;}
+
+/*---------------------------------------------------------
+                    바텀시트_ 쇼핑몰 연결
+---------------------------------------------------------*/
+.bottomsheet .bs_head_close {z-index: 10;}
+.connect_shop_guide {padding:32px 0;}
+.connect_shop_guide img {width: 100%;}
+.connect_shop_guide .swiper-pagination {margin-top:15px; text-align: center; font-size: 0;}
+.connect_shop_guide .swiper-pagination .swiper-pagination-bullet {margin:0 4px;}
+.connect_shop_guide .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {background-color: #3588f3;}
+

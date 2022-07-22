@@ -122,7 +122,10 @@
     String strViewID = "";
     //할인율
     float flEsPriceDcRt = 0.0f;
+    int intPriceDcRt = 0;
+    //출시가
     int intEsOpnPrc = 0;
+    long lnOpnPrc = 0;
 
     //meta 키워드
     String strKeyword2 = "";
@@ -138,6 +141,7 @@
     JSONArray arrayCertiList = new JSONArray();
     JSONArray  arrayaAllergyList  = new JSONArray();
     JSONObject esVipObject = new JSONObject();
+    JSONObject goodsOpcInfoObject = new JSONObject();
 
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
     SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy.MM");
@@ -359,7 +363,7 @@
         }
 		//출시가
         //출시가 or 출고가 or 할인율
-        try {
+        /*try {
             esVipObject = wide_prod_proc.getEsVipModelData(request,intModelnoGroup);
             if(intModelno != intModelnoGroup){
                 JSONArray esOptionArray = wide_prod_proc.getEsValue(esVipObject,"sub_models", new JSONArray());
@@ -402,6 +406,52 @@
             strReleaseTextView = strReleaseTextView + ": "+ FmtStr.moneyFormat(String.valueOf(intEsOpnPrc)) + "원";
             if(flEsPriceDcRt > 1){
                 strReleaseTextView = strReleaseTextView + "("+ (int)flEsPriceDcRt +"%↓)";
+            }
+        }
+        */
+        //출시가 db로 변경
+        goodsOpcInfoObject = wide_prod_proc.getOpnPriceInfo( (intModelnoGroup > 0 ? intModelnoGroup : intModelno) );
+        if(goodsOpcInfoObject.length() > 0){
+            long tmpOpcModelAvgPrice = goodsOpcInfoObject.getLong("avgprice");
+            long tmpOpcModelMaxPrice = goodsOpcInfoObject.getLong("maxprice");
+            long tmpOpcModelMinPrice = goodsOpcInfoObject.getLong("minprice");
+            long tmpOpcModelOpnPrice = goodsOpcInfoObject.getLong("opn_prc");
+            if(strCate2.equals("14") || strCate2.equals("25")){
+                /*
+                추출된 modelno의 avgprice의 100원 단위 절삭 처리 
+                (maxprice – minprice가 100미만일 경우.. 10원 단위 절삭 처리)
+                */
+                lnOpnPrc = (tmpOpcModelMaxPrice - tmpOpcModelAvgPrice < 100) ? (long)(Math.floor(tmpOpcModelAvgPrice/10) * 10) : (long)(Math.floor(tmpOpcModelAvgPrice/100) * 100);
+            }else{
+                lnOpnPrc = tmpOpcModelOpnPrice;
+            }
+        }
+         //출시가 존재
+        if(lnOpnPrc > 0){
+            
+            //출시가 or 출고가 분류로 판단
+            int intExtraWordType = 0;
+            switch(strCate2) {
+                case "02" : intExtraWordType = 2; break;
+                case "03" : intExtraWordType = 2; break;
+                case "04" : intExtraWordType = 2; break;
+                case "05" : intExtraWordType = 2; break;
+                case "06" : intExtraWordType = 2; break;
+                case "21" : intExtraWordType = 2; break;
+                case "22" : intExtraWordType = 2; break;
+                case "24" : intExtraWordType = 2; break;
+                default : intExtraWordType = 1; break;
+            }
+            if(intExtraWordType == 1){
+                strReleaseTextView = "출시가";
+            }else{
+                strReleaseTextView = "출고가";
+            }
+            //할인율 계산
+            intPriceDcRt = (int)(100-((lngMinPrice / (double)lnOpnPrc)*100));
+            strReleaseTextView = strReleaseTextView + ": "+ FmtStr.moneyFormat(String.valueOf(lnOpnPrc)) + "원";
+            if(intPriceDcRt > 1){
+                strReleaseTextView = strReleaseTextView + "("+intPriceDcRt +"%↓)";
             }
         }
 
@@ -521,8 +571,8 @@
         gObject.put("gSpecList",specJson);
         gObject.put("gHitBrandCheck",blHitBrandCheck);
         //gObject.put("gReleasePrice",strRelease_price);
-        gObject.put("gPriceDcRt",(int)flEsPriceDcRt);
-        gObject.put("gReleasePrice",intEsOpnPrc);
+        gObject.put("gPriceDcRt",intPriceDcRt);
+        gObject.put("gReleasePrice",lnOpnPrc);
         gObject.put("gReleaseText",strReleaseTextView);
 
         rtnJSONObject.put("gModelData",gObject);

@@ -1,0 +1,262 @@
+@charset "utf-8";
+
+@import url("/css/webfont.css");
+
+:root {
+    --vip-bg-color: #f4f6f8;
+    --vip-color-blue: #3588f3;
+    --vip-color-sky: #4ab6ff;
+    --vip-color-lgray: #f7fafd;
+    --vip-color-red: #fe5c08;
+    --vip-color-orange: #ffa112;
+    
+    --vip-sprite: url(//img.enuri.info/images/mobile_v2/vip_sprite.png);
+    --vip-sprite-size: 320px;
+
+    --font-notosans:"Noto Sans KR", 'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Apple SD 산돌고딕 Neo','Microsoft NeoGothic','Helvetica','AppleGothic','Droid sans','Sans-serif','Dotum','Verdana','Helvetica',sans-serif;
+    --font-roboto:"Roboto", Roboto, var(--font-notosans);
+}
+body {
+    font-family:var(--font-notosans);
+    background-color:var(--vip-bg-color);
+}
+
+body,
+body *,
+body *:before,
+body *:After {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+
+.clearfix:after {content:"";clear:both;display:table;}
+
+
+
+
+
+
+/***********************************
+ * 공통 
+************************************/
+#wrap {min-width:320px;width:100%;min-height:100%;}
+
+.box {background-color:#fff;}
+.box + .box {margin-top:10px;}
+.box__inner {padding:0 16px;}
+
+
+.tooltip {display:block;position:absolute;top:-20px;left:50%;width:124px;height:30px;margin-left:-62px;border-radius:4px;background-color:var(--vip-color-red)}
+.tooltip:after {content:"";position:absolute;bottom:-2px;left:28px;width:4px;height:4px;transform:rotate(45deg);background-color:var(--vip-color-red);}
+.tooltip .tx_sale {width:100%;height:100%;font-size:11px;color:#fff;letter-spacing:-0.2px;text-align:center;line-height:30px;vertical-align:middle;}
+
+.eff_bounce {animation: bounce ease-in-out 2s infinite alternate;}
+@-webkit-keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translateY(0);transform: translateY(0);}
+	50%,70% {-webkit-transform: translateY(-4px);transform: translateY(-4px);}
+}
+@keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translateY(0);transform: translateY(0);}
+	50%,70% {-webkit-transform: translateY(-4px);transform: translateY(-4px);}
+}
+
+/* 가격 */
+.tx_price {font-size:18px;line-height:28px;}
+.tx_price > span {display:inline-block;margin-right:4px;font-size:13px;color:#000;}
+.tx_price > em {display:inline-block;margin-right:2px;font-family:var(--font-roboto);font-weight:600;font-size:22px;letter-spacing:-1.1px;}
+
+/* 라디오 */
+.input--radio{position:absolute;width:1px;height:1px;visibility:hidden;}
+.input--radio + label{position:relative;display:block;height:20px;line-height:20px;font-size:12px;padding-left:21px;}
+.input--radio + label:before{content:"";position:absolute;width:20px;height:20px;left:0;top:0;background:var(--vip-sprite) 0 -80px no-repeat;background-size:var(--vip-sprite-size)}
+.input--radio:hover + label:before{background-position: 0 -320px}
+.input--radio:checked + label:before{background-position:0 -300px}
+
+/* 체크박스 */
+.input--checkbox{position:absolute;width:1px;height:1px;visibility:hidden;}
+.input--checkbox + label{position:relative;display:block;height:20px;padding-left:28px;line-height:20px;font-size:13px;color:#666;}
+.input--checkbox + label:before{content:"";position:absolute;width:20px;height:20px;left:0;top:0;background:var(--vip-sprite) 0 -80px no-repeat;background-size:var(--vip-sprite-size)}
+.input--checkbox:checked + label:before{background-position:-20px -80px}
+
+
+/***********************************
+ * VIP 상단
+************************************/
+/* 상단 카테고리 현위치 */
+.breadcrumb {position:relative;z-index:8;height:45px;border-bottom:1px solid #ddd;background:#fff}
+.breadcrumb .breadcrumb__list {padding:0 16px;height:44px;}
+.breadcrumb .breadcrumb__list .breadcrumb__item {display:inline-block;position:relative;height:44px;line-height:44px;font-size:14px;padding:0 20px 0 0;color:#555}
+.breadcrumb .breadcrumb__list .breadcrumb__item:before {content:"";position:absolute;top:50%;right:0;width:16px;height:16px;margin-top:-8px;background-image:url(//img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-340px 0;}
+.breadcrumb .breadcrumb__list .breadcrumb__item > button {position:relative;display:block;height:44px;}
+.breadcrumb .breadcrumb__list .breadcrumb__item:last-child:before {display:none;}
+.breadcrumb .breadcrumb__list .breadcrumb__item > button.tx_cate {padding-right:16px}
+.breadcrumb .breadcrumb__list .breadcrumb__item > button.tx_cate:after {content:"";position:absolute;right:0;top:17px;width:12px;height:12px;background-image:url(//img.enuri.info/images/mobile_v2/common_sprite.png);background-size:360px;background-position:-266px -30px}
+
+/* 상단 요약 */
+.summary {}
+.summary__top {padding:16px 0;}
+.summary__tit {display:block;position:relative;margin-bottom:8px;}
+.summary__tit .nm_prdc {display:block;width:100%;padding-right:88px;font-weight:700;font-size:18px;line-height:26px;color:#222;word-break:keep-all}
+.summary__tit .ico_group {position:absolute;top:8px;right:0;font-size:0;}
+.summary__tit .ico_group > button {display:inline-block;width:36px;height:36px;margin-left:8px;}
+.summary__tit .ico_group > button.ico_like {background:var(--vip-sprite) -72px -44px no-repeat;background-size:var(--vip-sprite-size);}
+.summary__tit .ico_group > button.ico_share {background:var(--vip-sprite) 0 -44px no-repeat;background-size:var(--vip-sprite-size);}
+.summary__sub {display:block;margin-bottom:10px;font-size:0;}
+.summary__sub > div {display:inline-block;margin-right:6px;margin-bottom:6px;line-height:18px;vertical-align:top;}
+.summary__sub .scope .tx_point {position:relative;padding-left:18px;font-weight:700;font-size:14px;color:#222;}
+.summary__sub .scope .tx_point:before {content:'';display:inline-block;position:absolute;top:50%;left:0;width:16px;height:16px;margin-top:-8px;background:var(--vip-sprite) -48px 0;background-size:var(--vip-sprite-size);}
+.summary__sub .scope .tx_point.is-zero:before {background-position:-32px 0}
+.summary__sub .review {margin-right:12px;}
+.summary__sub .review .tx_cnt {font-size:12px;color:#666;text-decoration:underline;}
+.summary__sub .release .tx_price .tx_per {margin-left:4px;}
+.summary__sub .release .tx_price,
+.summary__sub .release .tx_price > span,
+.summary__sub .release .tx_price > em {font-family:var(--font-notosans);font-weight:400;font-size:12px;color:#888;line-height:18px;letter-spacing:0;}
+
+
+.summary__img {position:relative;margin:0 16.6666667% 36px;}
+.summary__img .prdc_img {display:block;overflow:hidden;position:relative;width:100%;height:0;padding-top:100%;}
+.summary__img .prdc_img > img {position:absolute;top:0;left:0;width:100%;height:100%;}
+.summary__img .btn_zoom {position:absolute;bottom:8px;right:8px;width:36px;height:36px;font-size:0;text-indent:-9999px;background:var(--vip-sprite) -36px -44px no-repeat;background-size:var(--vip-sprite-size)}
+
+.summary__price {display:flex;justify-content:space-between;position:relative;margin-bottom:24px;}
+.summary__price .price {flex:0 1 55%;}
+.summary__price .price__info {margin-bottom:2px;font-size:0;}
+.summary__price .price__info li {display:inline-block;position:relative;font-size:13px;line-height:18px;color:#888;}
+.summary__price .price__info li+li {margin-left:4px;padding-left:5px;}
+.summary__price .price__info li+li:before {content:"";position:absolute;top:3px;left:0;width:1px;height:12px;background-color:#ddd;}
+
+.summary__price .minbuy {position:relative;flex:0 1 45%}
+.summary__price .minbuy .btn_buy {width:100%;height:48px;padding:0 24px;border-radius:2px;font-weight:500;font-size:16px;color:#fff;letter-spacing:-0.3px;text-align:center;vertical-align:middle;background-color:var(--vip-color-blue);}
+@media (max-width:420px){
+    .summary__price .minbuy .btn_buy {padding:0 12px;font-size:13px;}
+}
+@media (max-width:360px){
+    .summary__price .price__line .tx_price > em {font-size:20px;}
+}
+
+.savepromotion {margin-bottom:10px;}
+.savepromotion__list {}
+.savepromotion__list > li {display:block;position:relative;height:49px;padding:10px 0 10px 36px;border-top:1px solid #eee;font-size:0;}
+.savepromotion__list > li:before {content:"";position:absolute;top:10px;left:0;width:28px;height:28px;}
+.savepromotion__list > li .tx_msg {display:inline-block;font-weight:500;font-size:14px;color:#222;line-height:28px;}
+.savepromotion__list > li .tx_msg .ico-e {display:inline-block;width:16px;height:16px;margin-right:2px;margin-left:6px;background:var(--vip-sprite) -64px 0;background-size:var(--vip-sprite-size);vertical-align:-3px;}
+.savepromotion__list > li .tx_msg > strong {font-weight:400;font-size:14px;letter-spacing:-.15px;color:var(--vip-color-blue)}
+.savepromotion__list > li.save__item:before {background:var(--vip-sprite) 0 -16px no-repeat;background-size:var(--vip-sprite-size)}
+.savepromotion__list > li.save__item .save_info {display:inline-block;position:relative;margin-left:8px;vertical-align:-3px;}
+.savepromotion__list > li.save__item .save_info > .ico {display:inline-block;width:16px;height:16px;background:var(--vip-sprite) -16px 0;background-size:var(--vip-sprite-size)}
+.savepromotion__list > li.promotion__item:before {background:var(--vip-sprite) -28px -16px no-repeat;background-size:var(--vip-sprite-size)}
+.savepromotion__list > li.promotion__item > a {display:block;position:relative;}
+.savepromotion__list > li.promotion__item > a:after {content:"";position:absolute;top:50%;right:0;width:16px;height:16px;margin-top:-8px;background:var(--vip-sprite) 0 0 no-repeat;background-size:var(--vip-sprite-size)}
+.savepromotion__list > li.promotion__item .tx_msg .tx_date {font-weight:400;font-size:14px;font-family:var(--font-roboto);letter-spacing:-0.15px;color:#aaa;}
+
+.prdcspec {padding-bottom:24px;}
+.prdcspec__box {position:relative;padding:24px 20px;border-radius:8px;border:1px solid #eee;}
+.prdcspec__box .tx_tit {margin-bottom:16px;text-align:center;}
+.prdcspec__box .tx_tit > em {position:relative;font-weight:500;font-size:16px;}
+.prdcspec__box .tx_tit > em:after {content:"";position:absolute;bottom:1px;left:-4px;right:-4px;height:8px;background-color:var(--vip-color-blue);opacity:0.25;}
+.prdcspec__box .specswipe .specswipe__item > li {position:relative;height:20px;margin:0 0 6px;}
+.prdcspec__box .specswipe .specswipe__item > li:before {content:"";position:absolute;top:10px;left:0;right:0;height:1px;background:url(//img.enuri.info/images/mobile_v2/spec_dashed.png) repeat-x;background-size:15px;z-index:-1}
+.prdcspec__box .specswipe .specswipe__item > li .tx_spec {overflow:hidden;float:left;position:relative;max-width:120px;height:20px;padding-right:8px;font-size:14px;color:#666;line-height:20px;letter-spacing:-.4px;background-color:#fff;text-overflow:ellipsis;white-space:nowrap;}
+.prdcspec__box .specswipe .specswipe__item > li .tx_detail {overflow:hidden;float:right;max-width:150px;height:20px;padding-left:8px;font-size:14px;color:#222;line-height:20px;background-color:#fff;text-overflow:ellipsis;white-space:nowrap;}
+.prdcspec__box .specswipe .specswipe__item > li .tx_detail > a {text-decoration:underline;text-underline-position:under;cursor:help}
+.prdcspec__box .specswipe .swiper-pagination {position:relative;bottom:auto;height:8px;margin-top:18px;text-align:center}
+.prdcspec__box .specswipe .swiper-pagination .swiper-pagination-bullet {width:8px;height:8px;margin:0 3px;border:none;background-color:#ccc;opacity:1;vertical-align:top;}
+.prdcspec__box .specswipe .swiper-pagination .swiper-pagination-bullet-active {background-color:#333}
+.prdcspec__box .btn_more {position:absolute;bottom:18px;right:20px;z-index:10;font-size:12px;color:#888;text-decoration:underline}
+
+.midbanner {}
+.midbanner > a {display:block;width:100%;}
+.midbanner > a > img {width:100%;height:auto;vertical-align:top;}
+
+
+
+
+.box__head {width:100%;padding:0 16px;border-bottom:1px solid #eee;}
+.box__head .head__tit {float:left;font-weight:600;font-size:16px;color:#222;line-height:51px;}
+.box__head .head__tit .tx_cnt {font-weight:600;font-size:14px;color:var(--vip-color-blue)}
+.box__head .buyoption__check {float:right;padding:16px 0;}
+
+.box__cont {width:100%;}
+
+.buyoption {}
+.buyoption__list {width:100%;padding:20px 0 26px;}
+.buyoption__list > ul {padding:0 16px;}
+.buyoption__list > ul li {position:relative;width:124px;height:88px;margin-left:8px;background-color:var(--vip-color-lgray);border-radius:2px;border:1px solid #ddd;-webkit-transition:.3s all ease;transition:.3s all ease;}
+.buyoption__list > ul li:first-child {margin-left:0;}
+.buyoption__list > ul li:after{content:"";position:absolute;left:50%;bottom:0;margin:0 0 -7px -7px;opacity:0;width:14px;height:14px;border-radius:2px;background-color:#fff;
+    -webkit-transform:rotate(45deg) translateY(-10px);
+    transform:rotate(45deg) translateY(-10px);
+    -webkit-transition:.3s all ease;
+    transition:.3s all ease;
+    -webkit-transform-origin:center center;
+    -ms-transform-origin:center center;
+    transform-origin:center center
+}
+.buyoption__list > ul li .buyoption__item {width:100%;padding:12px;line-height:20px;font-size:14px;color:#222;text-align:left;-webkit-transition:.3s all ease;-o-transition:.3s all ease;transition:.3s all ease}
+.buyoption__list > ul li .buyoption__item [class^=tx_] {display:block;}
+.buyoption__list > ul li .buyoption__item .tx_rank {position:absolute;top:-8px;left:12px;width:32px;height:16px;line-height:16px;border-radius:8px;font-size:10px;text-align:center;color:#fff;background:var(--vip-color-sky);}
+.buyoption__list > ul li .buyoption__item .tx_name {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%;font-size:14px;line-height:18px;color:#222;}
+.buyoption__list > ul li .buyoption__item .tx_unit {margin-bottom:4px;font-size:12px;line-height:18px;color:#888;opacity:0.75;}
+.buyoption__list > ul li .buyoption__item .tx_price {font-weight:200;font-size:14px;line-height:22px;color:#222;}
+.buyoption__list > ul li .buyoption__item .tx_price > em {font-weight:400;font-size:16px;letter-spacing:0;}
+/* active */
+.buyoption__list > ul li.is-on {background-color:var(--vip-color-blue);border:1px solid rgba(0,0,0,0.1);-webkit-box-shadow:2px 2px 6px rgba(0,0,0,0.1);box-shadow:2px 2px 6px rgba(0,0,0,0.1)}
+.buyoption__list > ul li.is-on:after {background-color:var(--vip-color-blue);opacity:1;-webkit-transform:rotate(45deg) translateY(0);transform:rotate(45deg) translateY(0);border:1px solid var(--vip-color-blue);}
+.buyoption__list > ul li.is-on .buyoption__item {color:#fff}
+.buyoption__list > ul li.is-on .buyoption__item .tx_name,
+.buyoption__list > ul li.is-on .buyoption__item .tx_unit,
+.buyoption__list > ul li.is-on .buyoption__item .tx_price {color:#fff;}
+/* 단위당 환산가 없을 때 */ 
+.buyoption__list--opt > ul li .buyoption__item .tx_name {display:-webkit-box;white-space:normal;word-wrap:break-word;-webkit-box-orient:vertical;-webkit-line-clamp:2;height:36px;margin-bottom:4px;}
+
+
+
+
+/***********************************
+ * VIP 탭 컨테이너
+************************************/
+.tab_container {margin-top:10px;}
+
+.tabs {border-bottom:1px solid #ddd;background-color:#fff;}
+.tabs .tabs__list {display:flex;overflow:hidden;overflow-x:auto;padding:0 16px;font-size:0;}
+.tabs .tabs__list > li {display:inline-block;position:relative;flex:1 0 auto;}
+.tabs .tabs__list > li+li {margin-left:20px;}
+.tabs .tabs__list > li .tab {width:100%;height:100%;font-weight:500;font-size:15px;color:#666;line-height:52px;vertical-align:middle;text-align:center;}
+.tabs .tabs__list > li.is-on .tab {font-weight:700;color:var(--vip-color-blue)}
+
+.tab_content {}
+.tab_content .tab_pane {display:none;}
+.tab_content .tab_pane.is-on {display:block;}
+
+.pricecomp {}
+.pricecomp__alert {height:52px;padding:10px 16px;background-color:var(--vip-color-lgray)}
+.pricecomp__alert .tx_msg {position:relative;padding-left:20px;font-size:13px;line-height:28px;color:#999;vertical-align:middle;}
+.pricecomp__alert .tx_msg:before {content:"";position:absolute;top:7px;left:0;width:16px;height:16px;background:var(--vip-sprite) -16px 0 no-repeat;background-size:var(--vip-sprite-size)}
+.pricecomp__alert .tx_msg > em {color:#222;}
+
+.pricecomp__check {float:right;padding:16px 0;}
+.pricecomp__check .check__item {display:inline-block;}
+.pricecomp__check .check__item+.check__item {margin-left:16px;}
+
+.pricecomp__list {padding:0 16px;}
+.pricecomp__item {border-bottom:1px solid #eee;}
+.pricecomp__item > a {display:flex;flex-wrap:normal;align-items:center;justify-content:space-between;min-height:60px;padding:10px 0;}
+.pricecomp__item > a [class^=td] {flex:1 0 auto;}
+.pricecomp__item > a .td_brand {width:38%;text-align:left;}
+.pricecomp__item > a .td_brand > img {display:inline-block;width:auto;height:20px;}
+.pricecomp__item > a .td_brand > .tx_nm {display:inline-block;font-size:14px;line-height:20px;color:#222;vertical-align:middle;}
+.pricecomp__item > a .td_brand > .tx_msg {display:block;margin-top:2px;font-size:12px;line-height:18px;color:#888;line-height:18px;}
+.pricecomp__item > a .td_brand > .ico--npay {display:inline-block;width:32px;height:14px;font-size:0;text-indent:-9999px;line-height:20px;vertical-align:middle;background:var(--vip-sprite) 0 -110px no-repeat;background-size:var(--vip-sprite-size);}
+.pricecomp__item > a .td_delivery {width:20%;text-align:center;}
+.pricecomp__item > a .td_price {width:42%;text-align:right;}
+.pricecomp__item > a .td_price .tx_price {display:block;font-size:14px;line-height:22px;color:#222;}
+.pricecomp__item > a .td_price .tx_price > span {font-size:14px;}
+.pricecomp__item > a .td_price .tx_price > em {font-weight:500;font-size:16px;}
+.pricecomp__item > a .td_price .tx_card {display:block;font-size:12px;line-height:18px;color:#888;}
+/* 최저가 */
+.pricecomp__item--min > a .td_price .tx_price,
+.pricecomp__item--min > a .td_price .tx_price > em,
+.pricecomp__item--min > a .td_price .tx_price > span {color:var(--vip-color-blue)}
+
+.pricecomp__more {display:block;padding:20px 0;}
+.pricecomp__more .btn_more {display:block;width:180px;height:40px;margin:0 auto;border:1px solid #ddd;border-radius:20px;text-align:center;line-height:38px;background-color:#fff;}
+.pricecomp__more .btn_more > span {display:inline-block;position:relative;padding-right:28px;font-size:14px;color:#222;}
+.pricecomp__more .btn_more > span:after {content:"";position:absolute;top:50%;right:0;transform:translateY(-50%);width:20px;height:20px;background:var(--vip-sprite) -80px -80px no-repeat;background-size:var(--vip-sprite-size)}

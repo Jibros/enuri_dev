@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+@import url("/css/webfont.css");
+
+:root {
+    --vip-bg-color: #f4f6f8;
+    --vip-color-blue: #3588f3;
+    --vip-color-sky: #4ab6ff;
+    --vip-color-lgray: #f7fafd;
+    --vip-color-red: #fe5c08;
+    --vip-color-orange: #ffa112;
+    
+    --vip-sprite: url(//img.enuri.info/images/mobile_v2/vip_sprite.png);
+    --vip-sprite-size: 320px;
+
+    --font-notosans:"Noto Sans KR", 'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Apple SD 산돌고딕 Neo','Microsoft NeoGothic','Helvetica','AppleGothic','Droid sans','Sans-serif','Dotum','Verdana','Helvetica',sans-serif;
+    --font-roboto:"Roboto", Roboto, var(--font-notosans);
+}
+body {
+    font-family:var(--font-notosans);
+    background-color:var(--vip-bg-color);
+}
+
+
+
+
+
+
+/***********************************
+ * 공통 
+************************************/
+.box {background-color:#fff;}
+.box + .box {margin-top:10px;}
+.box__inner {padding:0 16px;}
+
+
+.tooltip {display:block;position:absolute;top:-20px;left:50%;width:124px;height:30px;margin-left:-62px;border-radius:4px;background-color:var(--vip-color-red)}
+.tooltip:after {content:"";position:absolute;bottom:-2px;left:28px;width:4px;height:4px;transform:rotate(45deg);background-color:var(--vip-color-red);}
+.tooltip .tx_sale {width:100%;height:100%;font-size:11px;color:#fff;letter-spacing:-0.2px;text-align:center;line-height:30px;vertical-align:middle;}
+
+.eff_bounce {animation: bounce ease-in-out 2s infinite alternate;}
+@-webkit-keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translateY(0);transform: translateY(0);}
+	50%,70% {-webkit-transform: translateY(-4px);transform: translateY(-4px);}
+}
+@keyframes bounce {
+	0%, 20%, 40%, 60%, 80%, 100% {-webkit-transform: translateY(0);transform: translateY(0);}
+	50%,70% {-webkit-transform: translateY(-4px);transform: translateY(-4px);}
+}
+
+.tx_price {font-size:18px;line-height:28px;}
+.tx_price > span {display:inline-block;font-size:13px;color:#000;}
+.tx_price > em {display:inline-block;font-family:var(--font-roboto);font-weight:600;font-size:22px;letter-spacing:-1.1px;}
+
+
+
+
+#wrap {min-width:320px;width:100%;min-height:100%;}
+
+/* 상단 카테고리 현위치 */
+.breadcrumb {position:relative;z-index:8;height:44px;border-bottom:1px solid #ddd;background:#fff}
+.breadcrumb .breadcrumb__list {padding:0 16px;height:44px;}
+.breadcrumb .breadcrumb__list .breadcrumb__item {display:inline-block;position:relative;height:44px;line-height:44px;font-size:14px;padding:0 20px 0 0;color:#555}
+.breadcrumb .breadcrumb__list .breadcrumb__item:before {content:"";position:absolute;top:50%;right:0;width:16px;height:16px;margin-top:-8px;background-image:url(//img.enuri.info/images/mobile_v2/common_sprite.png);background-repeat:no-repeat;background-size:360px;background-position:-340px 0;}
+.breadcrumb .breadcrumb__list .breadcrumb__item:last-child:before {display:none;}
+.breadcrumb .breadcrumb__list .breadcrumb__item > .tx_cate {position:relative;display:block;height:44px;padding-right:16px}
+.breadcrumb .breadcrumb__list .breadcrumb__item > .tx_cate:after {content:"";position:absolute;right:0;top:15px;width:12px;height:12px;background-image:url(//img.enuri.info/images/mobile_v2/common_sprite.png);background-size:360px;background-position:-266px -30px}

@@ -1,3 +1,4 @@
+<%@page import="java.util.stream.Stream"%>
 <%@ page contentType="text/html; charset=utf-8" trimDirectiveWhitespaces="true" %>
 <%@ include file="/lsv2016/include/IncAjaxHeader.jsp"%>
 <%@ include file="/wide/include/IncSearch.jsp"%>
@@ -65,7 +66,12 @@
 	// 탭(리스트유형) ( 0:전체 / 1:모델리스트 / 2:일반상품리스트 / 3:해외직구)
 	int intTab = ChkNull.chkInt(request.getParameter("tab"), 0);
 	// 모바일 전문몰 일반상품 탭 고정
-	if(!strDevice.equals("pc") && strFrom.equals("list") && (strCate4.equals("1487") || strCate4.equals("1488"))) {
+	/*
+		1259 오늘의집
+		1487 오케이몰
+		1488 무신사스토어
+	*/
+	if(!strDevice.equals("pc") && strFrom.equals("list") && (strCate4.equals("1487") || strCate4.equals("1488") || strCate4.equals("1259"))) {
 		intTab = 2;
 	}
 
@@ -90,11 +96,6 @@
 	9. 인기순(상품평점수추가) // npopular DESC
 	*/
 	int intSort = ChkNull.chkInt(request.getParameter("sort"), 1);
-	
-	// 인기도 정렬 변경
-	if(intSort==1) {
-	//	intSort = 9;
-	}
 	
 	String strSort = "";
 	switch(intSort) {
@@ -296,34 +297,10 @@
 		
 		if((strFrom.equals("list") && offSpecDataMap.containsKey("price") && offSpecDataMap.get("price")) || strFrom.equals("search")) {
 			
-			List<Long> attrPriceList1 = new ArrayList<Long>(); // 가격비교
-			List<Long> attrPriceList2 = new ArrayList<Long>(); // 일반상품
 			List<Long> attrPriceList3 = new ArrayList<Long>(); // 전체상품
 			
-			// priceSet. - 가격비교
-			if(spec_price_data1!=null) {
-				for(int i=0;i<spec_price_data1.length;i++) {
-					attrPriceList1.add(spec_price_data1[i]);
-				}
-				//Collections.sort(attrPriceList1);
-				retMap.put("price_model", attrPriceList1);
-				// 가격 평균가 ( hit 표기위함 ) - 가격비교
-				if(spec_model_avg_price1!=null) {
-					retMap.put("model_avg_price_model", "\""+spec_model_avg_price1+"\"");
-				}
-			}
-			// priceSet. - 일반상품
-			if(spec_price_data2!=null) {
-				for(int i=0;i<spec_price_data2.length;i++) {
-					attrPriceList2.add(spec_price_data2[i]);
-				}
-				//Collections.sort(attrPriceList2);
-				retMap.put("price_pl", attrPriceList2);
-				// 가격 평균가 ( hit 표기위함 ) - 일반상품
-				if(spec_model_avg_price2!=null) {
-					retMap.put("model_avg_price_pl", "\""+spec_model_avg_price2+"\"");
-				}
-			}
+			// spec_price_data1 - 가격비교 / spec_price_data2 - 일반상품 ( 미사용 )
+			
 			// priceSet. - 전체상품
 			if(spec_price_data3!=null) {
 				for(int i=0;i<spec_price_data3.length;i++) {
@@ -574,37 +551,39 @@
 		}
 		
 		// 카테고리 소카, 미카 리스트
-		
-			
 		Map<String, Object> categoryDataMap = new JsonMap<String, Object>();
 		String strCateNm = new String();
 		List<JSONObject> categoryDataDepth3 = new ArrayList<JSONObject>();
 		List<JSONObject> categoryDataDepth4 = new ArrayList<JSONObject>();
 		// categoryDataDepth4Map < 소카테고리번호, 미카테고리데이터 리스트 >
 		JsonMap<String,ArrayList<JSONObject>> categoryDataDepth4Map = new JsonMap<String,ArrayList<JSONObject>>();
-		if(strCate.length() >= 4){ 
-			strCateNm = lp_header_proc.getCategoryList_AttributeDepth2(strCate);
-			categoryDataDepth3 = lp_header_proc.getCategoryList_AttributeDepth3(strCate);
-			categoryDataDepth4Map = lp_header_proc.getCategoryList_AttributeDepth4(strCate.substring(0, 4));
-		}
 		List<JsonMap<String, Object>> categoryDataDepth3Union = new ArrayList<JsonMap<String, Object>>();
-		// 미카테 child 정보를 매핑
-		for(int i=0; i<categoryDataDepth3.size(); i++) {
-			JSONObject tmpCateObject = (JSONObject) categoryDataDepth3.get(i);
-			String tmpCateCode = (String) tmpCateObject.get("code");;
-			JsonMap<String, Object> tmpUnionMap = new JsonMap<String, Object>();
-			tmpUnionMap.put("data", tmpCateObject);
-			if(tmpCateCode.length()>0 && categoryDataDepth4Map.containsKey(tmpCateCode)) {
-				tmpUnionMap.put("child", (ArrayList) categoryDataDepth4Map.get(tmpCateCode) );
-				if(strCate.length()>=6 && tmpCateCode.equals(strCate.substring(0, 6))) {
-					categoryDataDepth4 = (ArrayList) categoryDataDepth4Map.get(tmpCateCode);
-				}
-			}
-			categoryDataDepth3Union.add(tmpUnionMap);
-		}
 		
-		// 앱에서 활성화된 카테고리 이름 추가
-		if(strDevice.equals("aos") || strDevice.equals("ios")) {
+		// 앱 4.1.0 하위 버전
+		if((strDevice.equals("aos") || strDevice.equals("ios")) && intAppVersion <= 410) {
+			if(strCate.length() >= 4){ 
+				strCateNm = lp_header_proc.getCategoryList_AttributeDepth2(strCate);
+				categoryDataDepth3 = lp_header_proc.getCategoryList_AttributeDepth3(strCate);
+				categoryDataDepth4Map = lp_header_proc.getCategoryList_AttributeDepth4(strCate.substring(0, 4));
+			}
+			// 미카테 child 정보를 매핑
+			for(int i=0; i<categoryDataDepth3.size(); i++) {
+				JSONObject tmpCateObject = (JSONObject) categoryDataDepth3.get(i);
+				String tmpCateCode = (String) tmpCateObject.get("code");;
+				JsonMap<String, Object> tmpUnionMap = new JsonMap<String, Object>();
+				tmpUnionMap.put("data", tmpCateObject);
+				if(tmpCateCode.length()>0 && categoryDataDepth4Map.containsKey(tmpCateCode)) {
+					tmpUnionMap.put("child", (ArrayList) categoryDataDepth4Map.get(tmpCateCode) );
+					if(strCate.length()>=6 && tmpCateCode.equals(strCate.substring(0, 6))) {
+						categoryDataDepth4 = (ArrayList) categoryDataDepth4Map.get(tmpCateCode);
+					}
+				}
+				categoryDataDepth3Union.add(tmpUnionMap);
+				
+				
+			}
+			
+			// 앱에서 활성화된 카테고리 이름 추가
 			String strAppCateName = "";
 			try {
 				strAppCateName = lp_header_proc.activeAppCateName(strCate);
@@ -612,15 +591,137 @@
 			} catch(Exception e) {
 				categoryDataMap.put("appCateName", "\""+strAppCateName+"\"");
 			}
+			categoryDataMap.put("depth_3", categoryDataDepth3Union);
+			categoryDataMap.put("depth_4", categoryDataDepth4);
+		
+		// 통합카테고리
+		} else {
+			
+			if(strCate.length() >= 4){ 
+				
+				// 카테고리 정보
+				JSONObject cateInfoObj = lp_header_proc.getUnionCate_info(strCate, strDevice, devFlag);
+				String strAppCateName = cateInfoObj.containsKey("cate_nm") ? (String) cateInfoObj.get("cate_nm") : "";
+				// 현재 카테고리 GNB 번호
+				String strCurGnbNo = cateInfoObj.containsKey("gnb_no") ? (String) cateInfoObj.get("gnb_no") : "";
+				String strCurHgGnbNo = cateInfoObj.containsKey("hg_gnb_no") ? (String) cateInfoObj.get("hg_gnb_no") : "";
+				categoryDataMap.put("appCateName", "\""+strAppCateName+"\"");
+				
+				// 중카테 정보
+				JSONObject cate4InfoObj = lp_header_proc.getUnionCate_info(strCate.substring(0, 4), strDevice, devFlag);
+				if(!cate4InfoObj.isEmpty()) {
+					strCateNm = cate4InfoObj.containsKey("cate_nm") ? (String) cate4InfoObj.get("cate_nm") : "";
+					String strCateGnbNo = cate4InfoObj.containsKey("gnb_no") ? (String) cate4InfoObj.get("gnb_no") : "";
+					if(strCateGnbNo.length()>0) {
+						List<JSONObject> gnbCateData = lp_header_proc.getUnionCate_gnbData(strCateGnbNo, strDevice, devFlag);
+						String strPrepareLevel = ""; // 카테고리 레벨 비교 연산자
+						ArrayList<JSONObject> depth4List = new ArrayList<JSONObject>();
+						String tmpHgGnbNo = ""; // depth4 Map에 Key로 사용
+						
+						for(JSONObject gnbCateDataObj : gnbCateData) {
+							
+							// 첫번재 카테고리 레벨 정보들은 categoryDataDepth3에 세팅하고 두번째 카테고리 레벨 정보들은 categoryDataDepth4Map 에 세팅 한다.
+							String strGnbCateLevel = gnbCateDataObj.containsKey("cate_level") ? (String) gnbCateDataObj.get("cate_level") : "";
+							String strGnbCateCode = gnbCateDataObj.containsKey("cate_cd") ? (String) gnbCateDataObj.get("cate_cd") : "";
+							if(strGnbCateCode.equals("empty")) {
+								strGnbCateCode = "";
+							}
+							String strGnbCateNm = gnbCateDataObj.containsKey("cate_nm") ? (String) gnbCateDataObj.get("cate_nm") : "";
+							if(strGnbCateNm.equals("empty")) {
+								strGnbCateNm = "";
+							}
+							String strGnbNo = gnbCateDataObj.containsKey("gnb_no") ? (String) gnbCateDataObj.get("gnb_no") : "";
+							String strHgGnbNo = gnbCateDataObj.containsKey("hg_gnb_no") ? (String) gnbCateDataObj.get("hg_gnb_no") : "";
+							String strGnbLink = gnbCateDataObj.containsKey("lnk") ? (String) gnbCateDataObj.get("lnk") : "";
+							if(strGnbLink.equals("empty")) {
+								strGnbLink = "";
+							}
+							if(strGnbLink.length()>0 && (strDevice.equals("mw") || strDevice.equals("aos") || strDevice.equals("ios")) && strGnbLink.indexOf("list.jsp")>-1 && strGnbLink.indexOf("enuri.com")==-1) {
+								strGnbLink = "/m" + strGnbLink;
+							}
+							
+							if(strPrepareLevel.equals("") && strGnbCateLevel.length()>0) { // 초기값 세팅
+								strPrepareLevel = strGnbCateLevel;
+							}
+							
+							// 필수조건들이 만족하는 경우에만 데이터 등록
+							if(strGnbCateNm.length()>0 && (strGnbCateCode.length()>0 || strGnbLink.length()>0)) {
+								
+								// 3Depth
+								JsonMap<String, Object> depth3Map = new JsonMap<String, Object>();
+								if(strPrepareLevel.length()>0 && strPrepareLevel.equals(strGnbCateLevel)) {
+									
+									JSONObject depth3Obj = new JSONObject();
+									depth3Obj.put("code", strGnbCateCode);
+									depth3Obj.put("name", strGnbCateNm);
+									depth3Obj.put("linkUrl", strGnbLink);
+									depth3Obj.put("gnbNo", strGnbNo); // child 매핑용 
+									categoryDataDepth3.add(depth3Obj);
+									
+									
+								// 4Depth
+								} else {
+									
+									if(!tmpHgGnbNo.equals(strHgGnbNo)) {
+										if(depth4List.size()>0) {
+											categoryDataDepth4Map.put(tmpHgGnbNo, depth4List);
+											depth4List = new ArrayList<JSONObject>();
+										}
+										tmpHgGnbNo = strHgGnbNo;
+									}
+									
+									JSONObject depth4Obj = new JSONObject();
+									depth4Obj.put("code", strGnbCateCode);
+									depth4Obj.put("name", strGnbCateNm);
+									depth4Obj.put("linkUrl", strGnbLink);
+									depth4Obj.put("gnbNo", strGnbNo);
+									depth4List.add(depth4Obj);
+									
+								}
+								
+							}
+						}
+						
+						if(depth4List.size()>0) {
+							categoryDataDepth4Map.put(tmpHgGnbNo, depth4List);
+						}
+						
+						// categoryDataDepth3 를 순회하여 하위정보들을 categoryDataDepth4Map 에서 찾아서 child 로 매핑시킨다.
+						for(JSONObject depth3Obj : categoryDataDepth3) {
+							JsonMap<String, Object> tmpUnionMap = new JsonMap<String, Object>();
+							String parseGNBNo = depth3Obj.containsKey("gnbNo") ? (String) depth3Obj.get("gnbNo") : "";
+							if(categoryDataDepth4Map.containsKey(parseGNBNo)) {
+								tmpUnionMap.put("child", (ArrayList) categoryDataDepth4Map.get(parseGNBNo));
+							}
+							tmpUnionMap.put("data", depth3Obj);
+							categoryDataDepth3Union.add(tmpUnionMap);
+							
+						}
+						
+						retMap.put("cur_gnb",  "\""+strCurGnbNo+"\"");
+						retMap.put("cur_gnb_hg",  "\""+strCurHgGnbNo+"\"");
+						retMap.put("categoryDataDepth4Map", categoryDataDepth4Map);
+						
+						if(strCate.length() >= 6 && (categoryDataDepth4Map.containsKey(strCurGnbNo) || categoryDataDepth4Map.containsKey(strCurHgGnbNo))) {
+							if(categoryDataDepth4Map.containsKey(strCurGnbNo)) {
+								categoryDataDepth4 = (ArrayList) categoryDataDepth4Map.get(strCurGnbNo);
+							} else if(categoryDataDepth4Map.containsKey(strCurHgGnbNo)) {
+								categoryDataDepth4 = (ArrayList) categoryDataDepth4Map.get(strCurHgGnbNo);
+							}
+						}
+						
+						categoryDataMap.put("depth_3", categoryDataDepth3Union);
+						categoryDataMap.put("depth_4", categoryDataDepth4);
+					}
+				}
+			}
 		}
 		
 		categoryDataMap.put("mCateName", "\""+strCateNm+"\"");
-		categoryDataMap.put("depth_3", categoryDataDepth3Union);
-		categoryDataMap.put("depth_4", categoryDataDepth4);
 		retMap.put("category", categoryDataMap);
 		
-		// 미분류 레이어
-		if(!strDevice.equals("pc") && ( strCate4.equals("0425") || strCate6.equals("163630") || strCate6.equals("040207") )) {
+		// 미분류 레이어 앱 410 버전 전까지만 사용
+		if((strDevice.equals("aos") || strDevice.equals("ios")) && intAppVersion <= 410 && (strCate6.equals("163630") || strCate6.equals("040207"))) {
 			JSONArray cateLayerArray = new JSONArray();
 			try {
 				if(strCate6.length()>0) {
@@ -985,11 +1086,7 @@
 	if(strFrom.equals("list") && strDevice.equals("pc")) {
 		JSONArray jarrUnfoldAttr = new JSONArray();
 		String strServerNm = request.getServerName();
-		boolean blDevFlag = false;
-		if (strServerNm.indexOf("dev.enuri.com") > -1) {
-			blDevFlag = true;
-		}
-		jarrUnfoldAttr = lp_header_proc.getUnfoldAttrData(strCate, blDevFlag);
+		jarrUnfoldAttr = lp_header_proc.getUnfoldAttrData(strCate, devFlag);
 		retMap.put("unfoldAttr", jarrUnfoldAttr);
 	}
 	// 중고/렌탈 속성 노출 여부
@@ -997,7 +1094,19 @@
 	
 	// 배송비포함 속성 노출 여부
 	retMap.put("strDeliveryDisplayYN", "\"Y\"");
-
+	
+	// [LP] 최저가 매칭 상품 수
+	/*
+	if(strFrom.equals("list")) {
+		JSONObject lpMinPriceToastObj = wide_list_proc.getLPMinpriceToast(strCate);
+		if(lpMinPriceToastObj.isEmpty()) {
+			retMap.put("minprice_toast", new JSONObject());
+		} else {
+			retMap.put("minprice_toast", lpMinPriceToastObj);
+		}
+	}
+	*/
+	
 	ret = new JsonResponse(true).setData(retMap).setTotal(intTotRsCnt);
 	out.print ( ret );
 	

@@ -132,7 +132,7 @@ if(!CvtStr.isNumeric(request.getParameter("modelno"))){
 		}catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException : " +e.getMessage());
 		}catch (IOException e) {
-			System.out.println("IOException  : " + e.getMessage() + " || remoteIP : "+ ip);
+			System.out.println("IOException  : " + e.getMessage() + " || remoteIP : "+ ip + " || connection URL : "+strUrl);
 		}catch (Exception  e) {
 			System.out.println("Exception   : " );
 		}

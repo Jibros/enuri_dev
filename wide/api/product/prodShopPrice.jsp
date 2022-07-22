@@ -168,7 +168,7 @@
             intCoupon = arrayTmpPricelist[i].getCoupon();
 
             lnCardPrice = Long.valueOf(arrayTmpPricelist[i].getPrice_card());
-            strCardName = getCardName(cardNameHash,intShopCode,strGoodsName,lnPrice,lnCardPrice,newCardShopList);
+            strCardName = getCardName(cardNameHash,intShopCode,strGoodsName,lnPrice,lnCardPrice,newCardShopList,strShopType);
             strFreeInterest = getForceFreeInterest3(intShopCode,strCategory,arrayTmpPricelist[i].getFreeinterest(),lnPrice,cardFreeAry);
 
             blCashPriceCheck = arrayTmpPricelist[i].getSrvflag().equals("C");
@@ -254,7 +254,9 @@
                     strBadgeName = "quick";
                  }else if(intShopCode==6641 && (strGoodsName.indexOf("당일발송") > -1 || strGoodsName.indexOf("당일배송") > -1 ) ){
                     strBadgeName = "quick";
-                 }
+                 }else if(intShopCode == 55 && strGoodsName.indexOf("[오늘출발]") > -1 ) {
+                    strBadgeName = "quick";
+                }
             }
 
             pObject = new JSONObject();
@@ -315,7 +317,7 @@
 
 
                 lnCardPrice = Long.valueOf(comparePriceData.getPrice_card());
-                strCardName = getCardName(cardNameHash,intShopCode,strGoodsName,lnPrice,lnCardPrice,newCardShopList);
+                strCardName = getCardName(cardNameHash,intShopCode,strGoodsName,lnPrice,lnCardPrice,newCardShopList,strShopType);
                 if(aryShopLogoImgList.contains(intShopCode)){
                     blShopLogoImageCheck = true;
                 }
@@ -437,17 +439,20 @@
             }
         }
         //직방가
-        
-        //visitJSONObject = wideProdProc.getVisitPriceInfo(lnMinPlno);
+
+        visitJSONObject = wideProdProc.getVisitPriceInfo(lnMinPlno);
         if(visitJSONObject.length() > 0){
             int intDiffPrice = 0;
-            int intDcRt = 0;
+        	//int intDcRt = 0;
+            double dlDcRt = 0;
             long lnVisitPrice = visitJSONObject.getLong("visitPrice");
             intDiffPrice =(int)(lnMinPrice - lnVisitPrice)*(-1);
-            intDcRt = (intDiffPrice * 100 / (int)lnVisitPrice);
+            //intDcRt = (intDiffPrice * 100 / (int)lnVisitPrice);
+            dlDcRt = Math.floor((double)intDiffPrice * 100 / (double)lnVisitPrice * 10) / 10.0;
+
             visitJSONObject.put("diffPrice",intDiffPrice);
             visitJSONObject.put("goodsMinPrice",lnMinPrice);
-            visitJSONObject.put("dc_ratio",intDcRt);
+            visitJSONObject.put("dc_ratio",dlDcRt);
         }
     }
 

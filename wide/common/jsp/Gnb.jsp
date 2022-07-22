@@ -58,7 +58,7 @@
                 <ul class="header-top__tab">
                 	<li class="is--new"><a href="https://www.enuri.com/my/eclub.jsp" target="_blank">e클럽혜택</a></li>
                     <li><a href="/knowcom/index.jsp" onclick="insertLog(24209);" target="_blank">쇼핑지식</a></li>
-                    <li><a href="/event2020/pick.jsp" onclick="insertLog(24211);" >PICK</a></li>
+                    <li><a href="/pick/pick_index.jsp" onclick="insertLog(26874);" target="_blank">기획전</a></li>
                     <li class="is--new"><a href="http://auto.enuri.com/" onclick="insertLog(24212);" target="_blank">자동차</a></li>
                     <li><a href="/enuripc/" target="_blank">조립PC</a></li>
                 </ul>
@@ -223,7 +223,7 @@
                                             <li><a href="/knowcom/eventzone.jsp" onclick="insertLog(24238);">이벤트존</a></li>
                                             <li><a href="/knowcom/nurigo.jsp" onclick="insertLog(24239);">누리GO</a></li>
                                             <li><a href="/knowcom/qna.jsp" onclick="insertLog(24240);">쇼핑Q&amp;A</a></li>
-                                            <li><a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=pick" onclick="insertLog(24241);">PICK</a></li>
+                                            <li><a href="/pick/pick_index.jsp" onclick="insertLog(24241);">PICK</a></li>
                                         </ul>
                                     </dd>
                                 </dl>

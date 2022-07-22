@@ -122,25 +122,40 @@ tr.expand td .search_option_list_color {height:auto!important;}
 
 .btn_selected_option_reset {width: 92px; height: 24px; background-position: 0 -40px; text-indent: -9999em; position: relative; background-image: url('//img.enuri.info/images/rev/lp_sprite.png'); background-repeat: no-repeat;} 
 
+/* 더보기 작동 */
+form[name=form_search_goods].fold tr:not(tr:first-child, tr:last-child) {display: none;}
+
+/* 더보기 버튼 */
+.search_option_all_view {width:100%; line-height: 35px; border:1px solid #ddd; background-color: #fcfcfc; font-size: 12px; color:#666; margin-top:-1px;} 
+.search_option_all_view {font-weight: bold;} 
+.search_option_all_view i {width: 16px; height: 16px; text-indent: -9999em; position: relative; background-image: url('//img.enuri.info/images/rev/lp_sprite.png'); background-repeat: no-repeat; display: inline-block; vertical-align: -4px;} 
+.search_option_all_view i.down {background-position: -140px -20px;} 
+.search_option_all_view i.up {background-position: -140px 0;} 
+
 /* --------------------------------------------------------------------
                     상품리스트 - 상단 정렬,검색
 -------------------------------------------------------------------- */
 .area_goods_list {margin-top:40px;}
 .area_goods_list .list_controller {position:relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding:13px 0 15px; border-top:1px solid #ddd; z-index: 12;}
 .area_goods_list .list_controller > div {flex : 0 0 auto;}
+/* 왼쪽영역_총개수 */
+.area_goods_list .section_left .total_cnt {font-size: 16px; color:#222; letter-spacing: -.5px;}
 
-.area_goods_list .section_left .sort_option {display: flex; flex-wrap: wrap;}
-.area_goods_list .section_left .sort_option li {flex : 0 0 auto; position:relative; font-size: 12px; color:#666; cursor: pointer; padding-left:14px; margin-right:16px;}
-.area_goods_list .section_left .sort_option li:last-child {margin-right:0;}
-
-.area_goods_list .section_left .sort_option li:before {content:""; display: block; border:2px solid #ccc; border-radius: 50%; position:absolute; top:50%; left:4px; margin-top: -2px;}
-
-/* active */
-.area_goods_list .section_left .sort_option li.active {color:#1a70dd; }
-.area_goods_list .section_left .sort_option li.active:before {width: 11px; height: 6px; border-width: 0 0 2px 2px; border-color: #1a70dd; border-top-color: rgba(255,255,255,0); border-right-color: rgba(255,255,255,0); transform: rotate(-45deg); border-radius: 1px 0; left: 1px; margin-top: -4px;}
-
+/* 오른쪽영역 */
 .area_goods_list .section_right {font-size: 0; text-align: right;}
-.area_goods_list .section_right form {position:relative; display: inline-block; vertical-align: middle; width: 181px; padding-right:28px; background-color: #fff; border:1px solid #ccc;}
+/* 오른쪽영역_sort */
+.area_goods_list .section_right .sort_option_wrap {display: inline-block; vertical-align: middle;}
+.area_goods_list .section_right .sort_option {display: flex; flex-wrap: wrap;}
+.area_goods_list .section_right .sort_option li {flex : 0 0 auto; position:relative; font-size: 12px; color:#666; cursor: pointer; padding-left:14px; margin-right:16px;}
+.area_goods_list .section_right .sort_option li:last-child {margin-right:0;}
+.area_goods_list .section_right .sort_option li:before {content:""; display: block; border:2px solid #ccc; border-radius: 50%; position:absolute; top:50%; left:4px; margin-top: -2px;}
+
+/* 오른쪽영역_sort_active */
+.area_goods_list .section_right .sort_option li.active {color:#1a70dd; }
+.area_goods_list .section_right .sort_option li.active:before {width: 11px; height: 6px; border-width: 0 0 2px 2px; border-color: #1a70dd; border-top-color: rgba(255,255,255,0); border-right-color: rgba(255,255,255,0); transform: rotate(-45deg); border-radius: 1px 0; left: 1px; margin-top: -4px;}
+
+/* 오른쪽영역_search */
+.area_goods_list .section_right form {position:relative; display: inline-block; vertical-align: middle; width: 181px; padding-right:28px; background-color: #fff; border:1px solid #ccc; margin-left: 40px;}
 .area_goods_list .section_right form input {width:154px; height:26px; font-size: 12px; color:#333; border:none; padding-left:10px}
 .area_goods_list .section_right form input::placeholder {color:#aaa;}
 .area_goods_list .section_right form button {position:absolute; top:-1px; right:-1px; background-color: #f4f4f4; border:1px solid #ccc; padding: 5px;}
@@ -159,6 +174,7 @@ tr.expand td .search_option_list_color {height:auto!important;}
 -------------------------------------------------------------------- */
 .area_goods_list .list_goods .col_one_fifth {margin-bottom:20px;}
 .area_goods_list .list_goods .goods {}
+.area_goods_list .flag_rank {position: absolute; top:0; left:0; width:32px; height: 38px; background: url('//img.enuri.info/images/rev/brandstore/flag_bg.png') no-repeat 0 0; font-size: 18px; font-weight: bold; color:#fff; padding-top:4px; text-align: center; z-index: 3;}
 .area_goods_list .goods_thumbs {position: relative; border:1px solid #eee;}
 .area_goods_list .goods_thumbs a {display: block; position:relative; padding-top:100%;}
 .area_goods_list .goods_thumbs a img {position:absolute; top:0; left:0; width:100%; height:100%; object-fit: cover;}

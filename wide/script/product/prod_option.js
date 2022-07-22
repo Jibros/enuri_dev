@@ -291,7 +291,7 @@ export const prodOptionView = (json) => {
             $("#prod_option").addClass("inc-unitprice");
         }
         if(optionViewType =="1"){
-            html +=`<p class="toggle__chk ${param.delivery != "" ? `is-on` :`is-off` } ">
+            html +=`<p class="toggle__chk ${param.delivery === "Y" ? `is-on` :`is-off` } ">
                         <span class="switch"><span class="btn"><em>on/off</em></span><strong>배송비 포함 최저가</strong></span>
                     </p>
                     <div class="lay-tooltip">
@@ -392,16 +392,25 @@ export const prodOptionView = (json) => {
                 ` : ``}`;
         }else{
             html += `<div class="pricecomp__head">
-                        <ul class="pricecomp__sort">
-                            <li data-sort="price" ${param.unit == "" ? `class= is-on` :`` }><button type="button" class="btn">최저가순</button></li>
-                            ${optionUnitType ? `<li data-sort="unit" ${param.unit != "" ? `class= is-on` :`` }><button type="button" class="btn">단위당 환산가순</button></li>` : ``}
-                        </ul>
-                        <p class="toggle__chk ${param.delivery != "" ? `is-on` :`is-off` }">
-                            <span class="switch">
-                                <span class="btn"><em>on/off</em></span>
-                                <strong>배송비 포함</strong>
-                            </span>
-                        </p>
+                        <div class="sort_block">
+                            <div class="sort_first">
+                                <label class="tx_tit">
+                                    <input type="radio" name="pricecomp_sort_list_type1" data-sort="price" ${param.unit !== "Y" ? "checked" : ""}>
+                                    <span class="sort_name">최저가순</span>
+                                </label>
+                                ${optionUnitType ?
+                                `<label class="tx_tit">
+                                    <input type="radio" name="pricecomp_sort_list_type1" data-sort="unit" ${param.unit === "Y" ? "checked" : ""}>
+                                    <span class="sort_name">단위당 환산가순</span>
+                                </label>` : ``}
+                            </div>
+                            <div class="sort_chk">
+                                <div>
+                                    <input type="checkbox" id="deliveryInc" class="input--checkbox-item" data-sort="delivery" ${param.delivery === "Y" ? "checked" : ""}>
+                                    <label for="deliveryInc">배송비 포함</label>
+                                </div>
+                            </div>                                           
+                        </div>
                     </div>`
             html += `<ul class="compare_price__list border-box">`
             $.each(optionList, (index,listData) => {
@@ -578,39 +587,33 @@ export const prodOptionView = (json) => {
         $(".pricecomp .adv-search__btn--close").on("click", function(){
             $(this).closest(".pricecomp").removeClass("is-unfold");            
         });
-        $("#prod_option").find(".toggle__chk").on("click",function(){
-            insertLog(14492);
+        $("#prod_option").find("input").on("click",function(){
+            let chkDelivery = "";
+            let chkUnit = "";
             paramHandler.set("callcnt",1);
-            if($(this).hasClass("is-off")){
-                $(this).removeClass("is-off").addClass("is-on");
-             
-                paramHandler.set("delivery","Y");
-                prodPriceComp.paramHandler.set("sort", "delivery");
-                prodShopPrice.paramHandler.set("delivery", "Y");
-            }else if($(this).hasClass("is-disabled")){
-                return false;
+            if($(this).data("sort")==="delivery"){
+                //1단토글insertLog(14492);
+                insertLogLSV(26899,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+
+                if($(this).prop("checked")){
+                    chkDelivery = "Y";
+                }else{
+                    chkDelivery = "N";
+                }
+
+                paramHandler.set("delivery",chkDelivery);
+                prodPriceComp.paramHandler.set("delivery", chkDelivery);
+                prodShopPrice.paramHandler.set("delivery", chkDelivery);
             }else{
-                $(this).removeClass("is-on").addClass("is-off");
-                paramHandler.set("delivery","");
-                prodPriceComp.paramHandler.set("sort", "price");
-                prodShopPrice.paramHandler.set("delivery", "");
-            }
-        });
-    
-        $("#prod_option").find(".pricecomp__head .pricecomp__sort li").off().on("click",function(){
-            
-            if($(this).hasClass("is-on")){
-                return false;
-            }else {
-                if($(this).data("sort")=="unit"){
+                if($(this).data("sort")==="unit"){
                     insertLogLSV(26278,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-                    paramHandler.set("unit","Y");
+                    chkUnit = "Y";
                 }else{
                     insertLogLSV(26277,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
-                    paramHandler.set("unit","");
+                    chkUnit = "N";
                 }
-                $(this).siblings().removeClass("is-on");
-                $(this).addClass("is-on");
+
+                paramHandler.set("unit",chkUnit);
             }
         });
         $("#prod_option").find(".pricecomp__list li, .compare_price__list li").unbind().click(function(e){

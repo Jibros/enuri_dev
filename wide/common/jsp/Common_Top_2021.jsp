@@ -45,10 +45,11 @@
     
   	//성인인증 정보를 쿠키에서 가져온다.
     String isAdult = ChkNull.chkStr(cb.GetCookie("MEM_INFO", "ADULT"), "");
+    String nowtime = new SimpleDateFormat("yyyyMMdd").format(new Date());
 
 %> 
 <script language=javascript src="/common/js/Log_Header.js?v=20210826"></script>
-<script type="text/javascript" src="/common/js/common_top_2022.js?v=20220224"></script>
+<script type="text/javascript" src="/common/js/common_top_2022.js?v=20220712"></script>
 <!-- <link rel="stylesheet" type="text/css" href="/css/rev/header.css?v=20210930"/> -->
 <style>
 .header-cate__item > a .ico-cate--aircontrol {background-position:-60px 0 !important}
@@ -68,7 +69,7 @@
                 <ul class="header-top__tab">
                 	<li class="is--new"><a href="https://www.enuri.com/my/eclub.jsp" onclick="insertLog(25698);" target="_blank">e클럽혜택</a></li>
                     <li><a href="/knowcom/index.jsp" onclick="insertLog(24209);" target="_blank">쇼핑지식</a></li>
-                    <li><a href="/event2020/pick.jsp" onclick="insertLog(24211);" >PICK</a></li>
+                    <li><a href="/pick/pick_index.jsp" onclick="insertLog(26874);" target="_blank">기획전</a></li>
                     <li class="is--new"><a href="http://auto.enuri.com/" onclick="insertLog(24212);" target="_blank">자동차</a></li>
                     <li><a href="/enuripc/" target="_blank">조립PC</a></li>
                 </ul>
@@ -216,6 +217,7 @@
                                             <li><a href="/view/shopBest.jsp" target="_blank" onclick="insertLog(24229);">쇼핑BEST</a></li>
                                             <li><a href="/view/move_mall.jsp" onclick="insertLog(24230);">이사견적</a></li>
                                             <li><a href="/view/Flower365.jsp" onclick="insertLog(24231);">꽃배달</a></li>
+                                            <li><a href="/brandstore/recommand.jsp" onclick="insertLog(27675);">브랜드스토어</a></li>
                                         </ul>
                                     </dd>
                                 </dl>
@@ -234,7 +236,7 @@
                                             <li><a href="/knowcom/eventzone.jsp" onclick="insertLog(24238 );">이벤트존</a></li>
                                             <li><a href="/knowcom/nurigo.jsp" onclick="insertLog(24239);">누리GO</a></li>
                                             <li><a href="/knowcom/qna.jsp" onclick="insertLog(24240);">쇼핑Q&amp;A</a></li>
-                                            <li><a href="/eventPlanZone/jsp/shoppingBenefit.jsp?tab_ty=pick" onclick="insertLog(24241);">PICK</a></li>
+                                            <li><a href="/pick/pick_index.jsp" onclick="insertLog(24241);">PICK</a></li>
                                         </ul>
                                     </dd>
                                 </dl>
@@ -357,7 +359,7 @@
     if ((strGkind.equals("11") || strGkind.equals("5") || strGkind.equals("1") || strGkind.equals("37")) && !strViewEvent.equals("Y")){
         if(request.getServletPath().trim().indexOf("eventMassMaketingMain.jsp") < 0 && request.getServletPath().trim().indexOf("Index.jsp") < 0){
             sessionViewEvent.setAttribute("VIEW_EVENT","Y");
-%>\
+%>
 <%@ include file="/include/Inc_GateEvent.jsp"%>
 <%
         }
@@ -406,6 +408,9 @@
    	})();
 
     jQuery(document).ready(function(){
+         if(location.pathname.split("/")[1] == "" || location.pathname.split("/")[1] == "Index.jsp"){
+            enuriOneIdChk();
+        }
     	if ('<%= strID%>' == 'yongcom') {
     		alert('사용 중인 기기에서 이벤트 \n부정참여가 발견되었습니다. \n법적 손해배상청구를 진행예정이오니 \n신속히 고객센터로 연락주십시오.\n\n [고객센터 02-6354-3601]');
     		setInterval(function(){ alert('사용 중인 기기에서 이벤트 \n 부정참여가 발견되었습니다. \n 법적 손해배상청구를 진행예정이오니 \n 신속히 고객센터로 \n 연락주십시오.\n\n [고객센터 02-6354-3601]');}, 20000);
@@ -501,6 +506,56 @@
             "scroll" : stickyHeader
         })
     })
-    
+    function enuriOneIdChk(){
+        var returnFlag = false;
+        var confirmFlag = false;
+        if(islogin()){
+            var today = <%=nowtime%>;
+            //var yesterDay = new Date(new Date().setDate(today.getDate()-1));
+            var blEnuriOneIdConfirm = false;
+            if(location.pathname.split("/")[1] == "" || location.pathname.split("/")[1] == "Index.jsp"){
+                if( localStorage.getItem("enuri_one_chk") !== null){
+                    var obj = JSON.parse(localStorage.getItem("enuri_one_chk"));
+                    var tmpObj = obj["<%=cb.GetCookie("MEM_INFO","USER_ID")%>"];
+                    if(tmpObj == null){
+                        blEnuriOneIdConfirm = true;
+                    }else{
+                        if(tmpObj < today) blEnuriOneIdConfirm = true;
+                    }
+                }else{
+                    blEnuriOneIdConfirm = true;
+                }
+            }else{
+                blEnuriOneIdConfirm = true;
+            }
+            if(blEnuriOneIdConfirm) {
+                $.ajax({
+                    type : "POST",
+                    url : "/my/api/enuriOneIDCheck.jsp",
+                    async : false,
+                    dataType : "JSON",
+                    success : function(json){
+                        if(json.result.userid != "" && !json.result.checked){
+                            if(confirm("여러 개의 계정을 하나의 에누리 계정으로 통합하여 편리하게 서비스를 이용해보세요.")){
+                                location.href = "<%=strMyInfoUrl%>/my/enuriOneID.jsp";
+                            }
+                        }else{
+                            returnFlag = true;
+                        }
+                    },complete : function(json){
+                         if( localStorage.getItem("enuri_one_chk") !== null){
+                            var obj = JSON.parse(localStorage.getItem("enuri_one_chk"));
+                            obj[json.responseJSON.result.userid] = today;
+                         }else{
+                             var obj = new Object();
+                             obj[json.responseJSON.result.userid] = today;
+                         }
+                        localStorage.setItem("enuri_one_chk",JSON.stringify(obj))
+                    }        
+                });
+            }
+        }
+        return returnFlag;
+    }
 </script>
 <jsp:include page="/join/join2009/IncJoin2015_rev.jsp" flush="true"/>

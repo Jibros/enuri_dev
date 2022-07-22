@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css" />
+    <link rel="stylesheet" type="text/css" href="/css/mobile_v2/member_modify.css" />
+    <script type="text/javascript" src="/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <!-- PC일경우 디바이스별 분기 할 때, "is-hidden" 클래스 추가 -->
+        <header id="header" class="header_top ">
+            <div class="wrap">
+                <button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+                <div class="header_top_page_name">마이페이지</div>
+            </div>
+        </header>
+        <!-- Mobile일경우 디바이스별 분기 할 때, "is-hidden" 클래스 추가 -->
+        <div class="pc_header is-hidden">
+            <div class="inner">
+                <h1 class="logo"><a href="http://enuri.com/"><img src="//img.enuri.info/images/member/enuri_logo@144x47.gif" alt="ENURI" /></a></h1>
+            </div>
+        </div>
+
+        <section id="container" class="modify_mypage">
+            <div class="response_inner">
+                <div class="cont_div">
+                    <div class="my_profile_info">
+                        <div class="profile_img_warp">
+                            <div class="profile_img">
+                                <!-- 기본이미지 경로 -->
+                                <!-- <img src="//img.enuri.info/images/mobile_v2/myeclub/re/profile_default_img.png" />  -->
+                                <img src="//img.enuri.info/images/sample/myeclub_re/user_img@64x64.png" alt="" />
+                            </div>
+                            
+                            <a href="#" class="btn_link"><i class="icon_re_setting"></i></a>
+                        </div>
+                        <!-- 닉넴 최대 15글자 띄어쓰기없음 두줄처리까지 처리, 말줄임처리x-->
+                        <div class="nickname"><em>병진이형은나가있어</em>님</div>
+                        <button type="button" class="btn_modify">수정</button>
+                    </div>
+                </div>
+
+                <div class="cont_div">
+                    <h3>기본정보</h3>
+                    <ul class="my_default_info">
+                        <li class="realname">
+                            <span class="info_name">이름</span>
+                            <span class="info_value">오태식</span>
+                        </li>
+                        <li class="id">
+                            <span class="info_name">아이디</span>
+                            <span class="info_value">byungjinout</span>
+                        </li>
+                        <li class="phon">
+                            <span class="info_name">휴대폰</span>
+                            <span class="info_value">010-9099-3288<span class="certification_complete">(본인인증완료)</span></span>
+                            <button type="button" class="btn_modify">수정</button>
+                        </li>
+                        <li class="email">
+                            <span class="info_name">이메일</span>
+                            <span class="info_value">byungjinout@gmail.com</span>
+                            <button type="button" class="btn_modify">수정</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 소셜로그인유저인경우 해당영역 날려주세요 -->
+                <div class="cont_div mt30">
+                    <h3>비밀번호 변경
+                        <div class="area_tooltip">
+							<button type="button"><i class="icon_re_noti"></i></button>
+                            <!-- ★ 툴팁 클릭시 출력후 3초후 제거 -->
+							<div class="tooltip_content tp_modi_password">
+                                <ul class="list_hyphen">
+                                    <li>영문 대문자, 영C문 소문자, 숫자, 특수문자 중 3가지를 조합하여 8~15자로 입력해주세요.</li>
+                                    <li>사용 가능한 특수문자 : ! ,@ , # , $ , %, ,^ , & , * , ( , )</li>
+                                    <li>아이디를 포함한 비밀번호는 사용 불가합니다.</li>
+                                </ul>
+							</div>
+						</div>
+                    </h3>
+                    <form name="form_modify_my_password">
+                        <div class="form_inner">
+                            <input type="text" class="input_text" placeholder="현재 비밀번호를 입력해주세요" required />
+                            <!-- ★ 새로운비번에서 정상적으로 입력시 class="on" 추가 -->
+                            <input type="password" class="input_password lock on mt12" placeholder="새로운 비밀번호를 입력해주세요" required />
+                            <input type="password" class="input_password lock mt12" placeholder="새로운 비밀번호를 다시 한번 입력해주세요" required />
+                        </div>
+                        <!-- 에러메세지 출력내용 -->
+                        <div class="area_msg">
+                            <p class="input_error_msg">잘못된 비밀번호 입니다.</p>
+                            <p class="input_error_msg">비밀번호 생성 규칙을 확인해주세요.</p>
+                            <p class="input_error_msg">새로 입력한 비밀번호와 동일하게 입력해주세요.</p>
+                        </div>
+                        <!-- ★ 비번변경가능조건일경우 class="on" 추가 -->
+                        <button type="button" class="btn_default btn_confirm_password mt20 on">확인</button>
+                    </form>
+                </div>
+
+                <div class="cont_div mt30">
+                    <h3>개인정보 수집 및 이용안내<em>(선택)</em></h3>
+                    <form name="form_modify_agree">
+                        <div class="input_checkbox_wrap ml2">
+                            <input type="checkbox" id="allCheck" class="input_checkbox">
+                            <label for="allCheck">전체동의</label>
+                        </div>
+                        <div class="inner_box mt10">
+                            <div class="input_checkbox_wrap">
+                                <input type="checkbox" id="agree1" class="input_checkbox">
+                                <label for="agree1">이메일 수신 동의</label>
+                            </div>
+                            <div class="input_checkbox_wrap">
+                                <input type="checkbox" id="agree2" class="input_checkbox">
+                                <label for="agree2">휴대폰 문자 수신 동의</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="cont_div mt32">
+                    <div class="member_out">
+                        회원탈퇴
+                        <button type="button" class="btn_link_out">탈퇴</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- web + mobile 공통 -->
+    <!--
+        딤클릭시, 클로즈버튼, 취소, 확인클릭시 닫기
+    -->
+    <div class="dimm_overlay"></div>
+    <div class="com__layer_type2 change_email">
+        <button type="button" class="btn_layer_close2"><i class="icon_re_close"></i></button>
+        <div class="lay_inner">
+            <div class="lay_head">이메일 변경</div>
+            <div class="lay_body">
+                <div class="layer_inner_text">
+                    에누리 주요 공지사항 및 소식지가 발송됩니다. 다른 ID에 등록된 메일은 등록이 불가능합니다.
+                </div>
+                <input type="text" class="input_text" placeholder="변경할 메일을 입력해주세요" />
+                <p class="input_error_msg">이미 등록된 이메일 주소입니다.</p>
+                <div class="btn_area btn_half">
+                    <button type="button" class="btn_layer_cancel">취소</button>
+                    <button type="button" class="btn_layer_confirm">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

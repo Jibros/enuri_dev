@@ -521,20 +521,20 @@ var config = {
 /*********************************
  * 생성된 레이아웃에 ID별로 attach합니다.
 *********************************/
-export var specAdminContent = new dhx.Layout("specAdminLayout", config);
+export var contentLayout = new dhx.Layout("contents", config);
 
     // 페이지 유틸 
-    specAdminContent.getCell("specUtil").attach(specUtil);
+    contentLayout.getCell("specUtil").attach(specUtil);
 
     // GRID 세팅
-    specAdminContent.getCell("specGroup").attach(specGroup); // 스펙그룹 GRID
-    specAdminContent.getCell("specGroupDetail").attach(specGroupDetail); // 스펙그룹상세 GRID
-    specAdminContent.getCell("specDetailInfo").attach(specDetailInfo); // 스펙상세정보 GRID
+    contentLayout.getCell("specGroup").attach(specGroup); // 스펙그룹 GRID
+    contentLayout.getCell("specGroupDetail").attach(specGroupDetail); // 스펙그룹상세 GRID
+    contentLayout.getCell("specDetailInfo").attach(specDetailInfo); // 스펙상세정보 GRID
     
 
-    specAdminContent.getCell("specGroupHeader").attach(specGroupHeader); // 스펙그룹 GRID
-    specAdminContent.getCell("specGroupDetailHeader").attach(specGroupDetailHeader); // 스펙그룹상세 GRID
-    specAdminContent.getCell("specDetailInfoHeader").attach(specDetailInfoHeader); // 스펙상세정보 GRID
+    contentLayout.getCell("specGroupHeader").attach(specGroupHeader); // 스펙그룹 GRID
+    contentLayout.getCell("specGroupDetailHeader").attach(specGroupDetailHeader); // 스펙그룹상세 GRID
+    contentLayout.getCell("specDetailInfoHeader").attach(specDetailInfoHeader); // 스펙상세정보 GRID
 
 
 /*********************************
@@ -698,13 +698,13 @@ var groupConfig = {
         },
     ]
 };
-var contentLayout = new dhx.Layout("contents", groupConfig);
+var groupCondLayout = new dhx.Layout("groupCondLayout", groupConfig);
 
-    contentLayout.getCell("groupKeyword").attach(groupKeyword); // 검색 attach
-    contentLayout.getCell("groupConditionGrid").attach(groupConditionGrid); // 그룹조건 그리드 attach
+    groupCondLayout.getCell("groupKeyword").attach(groupKeyword); // 검색 attach
+    groupCondLayout.getCell("groupConditionGrid").attach(groupConditionGrid); // 그룹조건 그리드 attach
 
-    contentLayout.getCell("groupResistDel").attach(groupResistDel); // 등록삭제 attach
-    contentLayout.getCell("groupConditionDetailGrid").attach(groupConditionDetailGrid); // 그룹조건상세 그리드 attach
+    groupCondLayout.getCell("groupResistDel").attach(groupResistDel); // 등록삭제 attach
+    groupCondLayout.getCell("groupConditionDetailGrid").attach(groupConditionDetailGrid); // 그룹조건상세 그리드 attach
 
 /*********************************
  * LP이미지 노출텍스트 레이어 

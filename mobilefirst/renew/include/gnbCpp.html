@@ -1,0 +1,111 @@
+<div class="cate_type" style="display:none"></div>
+
+<header class="sub">
+	<div class="mainTop lp">
+	<a href="javascript:///" class="btn_side"><span class="cate_m ico_m" onclick="ga_log_gnb(1);">주요 서비스 메뉴 펼치기</span></a>
+	<h1 class="logo ico_m" onclick="goHome()">에누리 가격비교</h1>
+	<!-- 중카테고리 -->
+	<div class="cate_layer" id="gCateNM">컴퓨터/노트북</div>
+	<!--// 중카테고리 -->
+	<button class="srp"><span class="ico_m" onclick="ga_log_gnb(3);">검색</span></button>
+	<button class="mybtn"><span class="ico_m" onclick="ga_log_gnb(4);">마이메뉴</span></button>
+	</div>
+
+</header>
+
+<!-- 검색 searchBar  -->
+<div id="searchWrap" class="sch_box_area" style="display:none;position:absolute;top:0;z-index:9999;width:100%;height: 800px">
+	<div class="mainTop lp">
+		<a href="javascript:///" class="btn_back" onclick="javascript:search_close();ga('send', 'event', 'mf_search', 'search', 'search_이전으로');"><span class="cate_m ico_m">이전</span></a>
+		<form id="search" name="searchForm" action="/mobilefirst/search.jsp" method="post" onsubmit="return false;" accept-charset="utf-8">
+			<div class="searchbox">
+				<p class="search_in"><input type="text" id="search_keyword" name="searchtxt" placeholder="검색어를 입력해주세요" autocomplete="off" /></p>
+				<button type="button" class="del ico_m"  id='search_text_del'>검색어 삭제</button>
+				<button class="srp"><span class="ico_m btn-search">검색</span></button>
+			</div>
+		</form>
+	</div>
+ 	<section class="sch_area">
+       <div class="searchCont latest" id="searchCont">
+		   <div class="recent_sch">
+		       	<ul class="sch_tab">
+					<li class="on" onclick="CmdSchTab(1);"><a href="javascript:///">최근 검색어</a></li>
+					<li onclick="CmdSchTab(2);"><a href="javascript:///">인기 검색어</a></li>
+				</ul>
+				<div class="sch_con" id="sch02" style="display:none;">
+					<ul class="hit_sch">
+					</ul>
+				</div>
+			</div>
+           <div class="searchList" id="searchList"></div>
+           <!-- <div id="latestProd"></div>-->
+       </div>
+       <!-- <div class="searchFoot">
+           <button id="all_delete" type="button" onclick="javascript:all_delete_rec()">전체삭제</button>
+           <span id="bar" class="bar">|</span>
+           <button id="delect_rec" type="button" onclick="javascript:iosDelete_rec()">검색어저장 끄기</button>
+           <button type="button" class="close" onclick="javascript:search_close()">닫기</button>
+       </div> -->
+       <div class="sch_history">
+       		<span id="all_delete" onclick="javascript:all_delete_rec()">전체삭제</span><em  id="bar">|</em><span id="delect_rec" onclick="javascript:iosDelete_rec()">검색어저장 끄기</span><span class="close" onclick="javascript:search_close()">닫기</span>
+       	</div>
+   </section>
+      <!-- <form id="search" name="searchForm" action="/mobilefirst/search2.jsp" method="post" onsubmit="return false;" accept-charset="utf-8">
+       <p class="search">
+           <input id="search_keyword22" type="text" title="상품검색어 입력" placeholder="검색어를 입력하세요." autocorrect="off" autocomplete="off" autocapitalize="off">
+           <button class="btn-search">검색하기</button>
+           <button type="button" class="del" id='search_text_del' >검색어 삭제</button>
+       </p>
+       </form> -->
+</div>
+<div class="my_back" style="display:none"></div>
+<div class="mymenu" style="display:none">
+            <h1>
+            <span class="login"><a href="javascript:goLogin();ga('send', 'event', 'mf_gnb', 'my', 'my_로그인');">로그인</a></span>
+            </h1>
+            <h2><a href="javascript:goResent()">최근 본 상품</a></h2>
+            <div class="scrollbox_area" style="overflow-x: auto;">
+                <div class="innder_scroll">
+                    <ul class="swiper-wrapper" id="recentMenu"></ul>
+                </div>
+            </div>
+            <!-- div class="recent_txt">최근 본 상품이 없습니다.</div-->
+            <h2><a href="javascript:goZzim();ga('send', 'event', 'mf_gnb', 'my', 'my_찜상품');">찜 상품 </a></h2>
+            <ul class="zzim" style="height:230px">
+                <!--<li class="zzim_txt">찜 상품이 없습니다.<br /><img src="http://imgenuri.enuri.gscdn.com/images/mobilefirst/ico_zzim.png" alt="찜" />을 선택하여 담아보세요.</li>-->
+            </ul>
+       		<div class="agree_group">
+				<a href="/mobilefirst/login/policy.jsp?param=1" target="_blank" class="agreebtn">이용약관</a>
+				<a href="/mobilefirst/login/policy.jsp?param=2" target="_blank" class="agreebtn privacy">개인정보처리방침</a>
+			</div>
+</div>
+<!--최근검색어 템플릿-->
+<script id="history_template" type="x-tmpl-mustache">
+    <ul class="sch_input">
+        {{#history}}
+        <li><em class="del ico_m" onclick="javascript:deleteRec_one('{{{history_keyword}}}');">삭제</em><a href="javascript:///">{{{keyword}}}</a><span class="date">{{{date}}}</span><em onclick="javascript:inSearchGo('{{{keyword}}}');" class="in_go ico_m">검색어 입력</em></li>
+		{{/history}}
+		{{#auto}}<li><a href="javascript:///">{{{keyword}}}</a><em onclick="javascript:inSearchGo('{{{keyword}}}');" class="in_go ico_m">검색어 입력</em></li>{{/auto}}
+    </ul>
+</script>
+<!--최근검색어 템플릿-->
+<script id="history_empty_template" type="x-tmpl-mustache">
+    <p class="noneTxt">&nbsp;</p>
+</script>
+<!--최근 본 상품 템플릿-->
+<script id="history_goods_template" type="x-tmpl-mustache">
+    <ul class="latestProd">
+        {{#goodsList}}
+        <li>
+            <a onclick="search_resent_go({{{modelno}}},{{{p_pl_no}}})"><img src="{{{smallImageUrl}}}" alt="" /></a>
+            <button type="button" class="del" onclick="resentXLint({{{modelno}}},{{{p_pl_no}}})">상품 삭제</button>
+        </li>
+        {{/goodsList}}
+    </ul>
+</script>
+<script id="homeBanner" type="text/x-jquery-tmpl">
+<div class="topbnr" id="topBanner" style="background:\${BGCOLOR}">
+    <a href="javascript:///" class="close" onclick="gnbEvtTopOnOff()">닫기</a>
+    <a href="javascript:///" onclick="javascript:goToBanner('\${JURL1}','\${TXT1}')"><img src="\${IMG1}" alt="\${ALT}"></a>
+</div>
+</script>

@@ -38,7 +38,7 @@
     <!-- 하단 여백 삭제 "nomar" 클래스 추가 -->
     <header id="header" class="nomar">
         <div class="enuribi">
-            <h1><a href="javascript:///">간편 견적 신청</a></h1>
+            <h1><a href="javascript:///">상담 신청 접수</a></h1>
             <button type="button" class="close" onclick="window.history.back();">닫기</button>
         </div>
     </header>
@@ -50,50 +50,89 @@
         <section class="section">     
             <!-- 견적추가정보확인 -->
             <div class="model_esti_info">
-                <div class="item_head head_info">
-                    <h3 class="tx_tit">기아 더 뉴레이 2022년형 가솔린 1.0 프리스티지2줄대응시 2줄노출까지만 해주세요</h3>
+                <div class="item_head">
+                    <h3 class="tx_tit">상담 추가 정보 확인</h3>
                 </div>
                 <div class="item_body">
                     <!-- 즉시출고 > 상담신청접수일 때 노출 -->
+                    <div class="seloption">
+                        <ul class="tb_list list_seloption">
+                            <li class="tb_list_item item_selopt selected">                       
+                                <div class="row--tb-item">
+                                    <span class="tx_col col--model"><span class="tx_model">지역정보 확인</span></span>
+                                    <span class="tx_col col--choose">경기도 안산시</span>
+                                </div>
+                                <!-- // -->
+
+                                <div class="tb_sub_list list_map">
+                                    <div class="group_select">
+                                        <div class="lm_detail">
+                                            <select class="map_select">
+                                                <option value="">지역선택</option>
+                                                <option value="">value1</option>
+                                                <option value="">value2</option>
+                                                <option value="">value3</option>
+                                                <option value="">value4</option>
+                                                <option value="">value5</option>
+                                                <option value="">value6</option>
+                                            </select>
+                                        </div>                                            
+                                        <div class="lm_detail">
+                                            <select class="map_select">
+                                                <option value="">시군구 선택</option>
+                                                <option value="">value1</option>
+                                                <option value="">value2</option>
+                                                <option value="">value3</option>
+                                                <option value="">value4</option>
+                                                <option value="">value5</option>
+                                                <option value="">value6</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <script>
+                            $(function(){ // 퍼블테스트
+                                var $lineup = $(".item_selopt .row--tb-item");
+                                $lineup.click(function(){
+                                    var $parent = $(this).parent();
+
+                                    $parent.toggleClass("selected");
+                                });
+                            })
+                        </script>
+                    </div>
                     <!-- // -->
                     <!-- 신청자 정보 -->
                     <div class="user_info">
-                        <div class="row__user_info">
-                            <label for="userInfoI  d" class="ui_divide">구분</label>
-                            <div class="ui_detail divide_detail">
-                                <div class="divide_individual">
-                                <input type="radio" class="ipt-divide" id="divide_01" name="divide_radio" value="individual" checked>
-                                <label for="divide_01">개인</label>
-                                </div>
-                                <div class="divide_business">
-                                <input type="radio" class="ipt-divide" id="divide_02" name="divide_radio" value="business">
-                                <label for="divide_02">사업자</label>
-                                </div>
-                            </div>
-                            <label for="userInfoI  n" class="ui_name immediate_name">이름</label>
+                        <div class="row__user_cont">
+                            <label for="userInfoI  n" class="ui_tit">신청자 정보</label>
                             <div class="ui_detail">
-                                <input type="text" id="userInfoIn" class="ipt ui_name" value="" placeholder="이름을 입력해 주세요." />
+                                <input type="text" id="userInfoIn" class="ipt-text ui_name" value="" placeholder="이름을 입력해주세요." />
+
+                                <div class="ui_phone">
+                                    <div class="ui_detail">
+                                        <select class="ui_select">
+                                            <option value="">010</option>
+                                            <option value="">value1</option>
+                                            <option value="">value2</option>
+                                            <option value="">value3</option>
+                                            <option value="">value4</option>
+                                        </select>
+                                    </div>
+                                    <input type="tel" class="ipt-text ui_pnum" value="" />
+                                </div>
                             </div>
-                            <label for="userInfoI p" class="ui_phone immediate_phone">전화번호</label>
-                            <div class="ui_detail phone_detail">
-                                <select class="slt ui_phone_front">
-                                    <option value="">010</option>
-                                    <option value="">value1</option>
-                                    <option value="">value2</option>
-                                    <option value="">value3</option>
-                                    <option value="">value4</option>
-                                </select>
-                            <input type="tel" class="ipt ui_phone_back" value="" />
-                            </div>
-                            <label for="userInfoI  m" class="ui_map">지역</label>
-                            <div class="model_search_item is-horizontal map-nonclick">
-                                <button type="button" class="btn btn__sel map-select" data-obj="price">선택하세요</button><!-- 가격 오픈 클래스 : js-openPrice -->
-                            </div>
+                            <span class="ui_noti">즉시출고 상담신청은 자동차 판매 제휴점에 즉시 신청자 정보가 전송됩니다.</span>
                         </div>
-                    <!-- // -->
+                        <div class="row__user_cont">
+                            <label for="" class="ui_tit wide">추가 상담 코멘트 (옵션)</label>
+                            <textarea cols="" rows="6" class="ui_txtarea" placeholder="원하시는 내용을 상세히 적어주시면 더 정확한 상담을 받으실 수 있습니다"></textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
             </section>
         <!-- // -->
     <script>
@@ -102,8 +141,8 @@
         <section class="section">     
             <!-- 개인정보 수집동의확인 -->
             <div class="model_esti_info">
-                <div class="item_head all_agree">
-                    <button type="button" class="btn__privacy_all" data-sorttype="all"><em>전체동의</em></button>
+                <div class="item_head">
+                    <h3 class="tx_tit">개인정보 수집 동의 확인</h3>
                 </div>
                 <div class="item_body">
                     <div class="privecy_agree">
@@ -117,7 +156,7 @@
                                             <input type="checkbox" class="ipt-chkbox" id="chkOptChk1_01" name="chkOptChk1"  />
                                         </span>
                                         <span class="tx_model">
-                                            <label for="chkOptChk1_01">개인정보 수집 이용 동의 <em>(필수)</em></label>
+                                            <label for="chkOptChk1_01">개인정보 수집 이용 동의</label>
                                         </span>
                                     </span>
                                 </div>
@@ -125,18 +164,10 @@
 
                                 <button class="btn__ext_sub">확장버튼</button>
                                 <div class="tb_sub_ext">
-                                    에누리닷컴이 아래와 같이 본인의 개인 정보를 수집 및 
-                                    이용하는데 동의합니다.
+                                    개인정보 보호법 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리지침을 수립 공개합니다.
                                     <br />
                                     <br />
-                                    1.수집 항목
-                                    <span class="indentation">- 이름, 휴대폰번호, 지역</span>
-                                    2.수집 및 이용 목적
-                                    <span class="indentation">- 렌터카 장기 대여 견적 신청, 견적 회신 및 상담, 계약의 체결∙이행∙관리, 신청서비스 제공, 본인여부 확인, 분쟁 및 민원 처리, 금융 상담을 위한 서비스 제공</span>
-                                    3.개인 정보의 보유, 이용기간
-                                    <span class="indentation">- 동의일로부터 1년</span>
-                                    <br />
-                                    귀하는 동의를 거부할 권리가 있으나, 위 사항에 동의하지 않으실 경우  견적신청, 견적회신 또는 상담 등이 불가능 할 수 있음을 알려드립니다.
+                                    제1조(개인정보의 처리목적)
                                 </div>
                             </li>
                             <!-- // 반복 : 개인정보 내용 -->
@@ -148,7 +179,7 @@
                                             <input type="checkbox" class="ipt-chkbox" id="chkOptChk1_02" name="chkOptChk1"  />
                                         </span>
                                         <span class="tx_model">
-                                            <label for="chkOptChk1_02">개인정보 제3자 제공 동의 <em>(필수)</em></label>
+                                            <label for="chkOptChk1_02">개인정보 제3자 제공 동의</label>
                                         </span>
                                     </span>
                                 </div>
@@ -157,26 +188,25 @@
                                 <button class="btn__ext_sub">확장버튼</button>
 
                                 <div class="tb_sub_ext">
-                                    에누리닷컴이 제휴사 렌트/리스 차량 견적 및 상담을 위하여 아래의 내용과 같이 본인의 개인정보를 제공하는데 동의합니다.
+                                    개인정보 보호법 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리지침을 수립 공개합니다.
                                     <br />
                                     <br />
-                                    1.개인정보를 제공받는 자
-                                    <span class="indentation">- ㈜차란차</span>
-                                    <span class="indentation">- NH캐피탈</span>
-                                    2.개인정보를 제공받는 자의 개인정보 이용 목적
-                                    <span class="indentation">- 렌터카 상품 소개·중개·알선, 견적신청·회신·상담, 계약체결·이행·관리, 신청 서비스 제공, 본인여부 확인, 분쟁 및 민원처리 등</span>
-                                    3.제공하는 개인정보의 항목
-                                    <span class="indentation">- 이름, 연락처(휴대전화), 지역</span>
-                                    4.개인정보를 제공받는 자의 보유 및 이용 기간
-                                    <span class="indentation">- 동의일로부터 1년</span>
-                                    <br />
-                                    <br />
-                                    귀하는 동의를 거부할 권리가 있으나, 위 사항에 동의하지 않으실 경우 제휴사를 통한 타사 렌터카 상품 소개 등에 관한 서비스 이용이 불가능함을 알려드립니다.
+                                    제1조(개인정보의 처리목적)
                                 </div>
                             </li>
                         </ul>
-                        <div class="request_box rqs_box">
-                            <a href="#" class="btn__request btn_request"><em>신청하기</em></a>
+                        <button type="button" class="btn__privacy_all" ><em>개인정보 수집 및 제3자 제공 모두 동의</em></button>
+                        <script>                            
+                            $(function(){ // 퍼블테스트
+                                var $btnExtend = $(".item_privacy");
+                                $btnExtend.click(function(){
+                                    var $parent = $(this).closest('.item_privacy');
+                                    $parent.toggleClass("extended");
+                                });
+                            })                        
+                        </script>
+                        <div class="request_box">
+                            <a href="#" class="btn__request"><em>상담 신청 접수하기</em></a>
                         </div>
                     </div>
                 </div>
@@ -273,103 +303,51 @@
             };
             $(window).load(stickyGnb).scroll(stickyGnb);
         })
+        // 간편 견적 신청 동의 동의
+        $('.ipt-chkbox').on('click', function(){
+            var target = $('.btn__privacy_all');
+            if($('.ipt-chkbox').length === $('.ipt-chkbox:checked').length) {
+                target.addClass("on");
+            } else {
+                target.removeClass("on");
+            }
+        });  
+    
+        $('.btn__privacy_all').on('click', function(){
+            $(this).toggleClass('on');
+            checkAll($(this), ".ipt-chkbox");
+        });
+    
+        // 전체동의 
+        function checkAll(idx, target) {
+            var chk = idx.hasClass("on");
+            if(chk) {
+                $(target).prop('checked', true);
+            } else {
+                $(target).prop('checked', false);
+            }
+        }        
+        // 하단 TOGGLE
+        var $menuToggle = $(".btn__menu_toggle"),   // toggle 버튼
+            menuToggleSt = false;                   // toggle 상태
+            $menuToggle.on("click",function(){
+        var _this = this,
+            menu = $(_this).parents(".menu_gnb"),
+            opt_box = $(_this).siblings(".option_group"), // option_group
+            menu_height = $(opt_box).outerHeight(); // option_group height
+            
+            if(!menuToggleSt){
+            $(menu).addClass("is-shown").css({"top": "calc(100% - " + menu_height + "px)"});
+            menuToggleSt = true;
+        }else{
+            $(menu).removeClass("is-shown").css({"top": "100%"});
+            menuToggleSt = false;
+        }
+        })
     });
-
     function goFooterTop(){
         $(window).scrollTop(0);
     }
-$(function(){
-    
-    // 모션 및 플로우 참고용
-    var searchCarFunc = {
-        el : {
-            msItem : $(".model_search_item", this.wrapper), // 상위 아이템
-            
-        },
-        init: function(){                            
-            _self = this;
-            this.selectOption(); // 옵션 선택
-        },
-        selectOption: function(){
-            _self = this;
-        }
-    }
-
-    // 지역 선택
-    var  mapSelect
-    var priceFunction = function(){
-        var map
-        var indexOf = function(arr, id) {
-            for (var i in arr) {
-                if (String(arr[i].id) == String(id)) return Number(i);
-            }
-        };
-
-        map = [{id:0, value:'서울'},
-            {id:100, value:'수도권'}, 
-            {id:200, value:'충북'}, 
-            {id:300, value:'충남'}, 
-            {id:400, value:'경북'}, 
-            {id:500, value:'경남'}, 
-            {id:600, value:'전북'},
-            {id:700, value:'전남'},
-            {id:800, value:'강원'},
-            {id:900, value:'제주'}];
-        
-        mapSelect = new MobileSelect({
-            trigger: ".map-select",
-            title: "지역선택",
-            wheels: [{ data: map }],
-            position: [0, 0],
-            callback: function(idx, val){
-                console.log(idx, val[0].value)
-            }
-        });
-    }
-    // INIT
-    searchCarFunc.init();
-    priceFunction();
-})
-
-    var $btnExtend = $(".btn__ext_sub");
-    $btnExtend.click(function(){
-        var $parent = $(this).closest('.item_privacy');
-        $parent.toggleClass("extended");
-    }); 
-    
-    // 간편 견적 신청 동의 동의
-    $('.ipt-chkbox').on('click', function(){
-        var target = $('.btn__privacy_all');
-        if($('.ipt-chkbox').length === $('.ipt-chkbox:checked').length) {
-            target.addClass("on");
-        } else {
-            target.removeClass("on");
-        }
-    });  
-    
-    $('.btn__privacy_all').on('click', function(){
-        $(this).toggleClass('on');
-        checkAll($(this), ".ipt-chkbox");
-    });
-    
-    // 전체동의 
-    function checkAll(idx, target) {
-        var chk = idx.hasClass("on");
-        if(chk) {
-            $(target).prop('checked', true);
-        } else {
-            $(target).prop('checked', false);
-        }
-    }                
-    // 신청하기 버튼 클릭
-    $(".btn_request").on("click", function(){
-        alert("정보를 모두 입력해 주세요.");
-        alert("접수가 완료되었습니다.");
-        window.history.back();
-    })  
-    
-    $(".newquick").css("bottom", "70px")
-    $("footer").css("padding-bottom", "66px")
 </script>
 </body>
 </html>

@@ -18,7 +18,7 @@
 				</div>
 
 				<!-- 닫기 -->
-				<button type="button" class="btn_close" onclick="$(this).closest('#bigVod').removeClass('fadein'); bigPlayer.stopVideo(); bigState = false;">
+				<button type="button" class="btn_close" onclick="jQuery(this).closest('#bigVod').removeClass('fadein'); bigPlayer.stopVideo(); bigState = false;">
 					<span class="tx_info">광고 그만 보기</span>
 				</button>
 			</div>
@@ -61,7 +61,7 @@
 
 //<!-- 둥둥이배너 관련 스크립트 -->
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
 	// 동영상광고 둥둥이배너 호출
 	fn_doong_bnr_check();
 });
@@ -75,25 +75,23 @@ var doong_bnr_url;
 var advod_bnr_url;
 var doong_bnr_click_url;
 var pathname = location.pathname;
-var iid ;
+var advod_iid ;
 
 function fn_doong_bnr_check(){
 	//console.log("IncrightWing_2021.js fn_doong_bnr_check start");
-	let name ;
-	let cate = strCate_banner.substring(0,4);
+	var name ;
+	var cate = strCate_banner.substring(0,4);
 	
 	if(pathname == "/" || pathname == "/Index.jsp"){
 		name = "doong_bnr_home";
-		$("#div_advod").addClass('is--home')
+		jQuery("#div_advod").addClass('is--home')
 	}else if(pathname == "/list.jsp"){
 		name = "doong_bnr_lp";
-		$("#div_advod").addClass('is--lp')
+		jQuery("#div_advod").addClass('is--lp')
 	}else if(pathname == "/detail.jsp"){
 		name = "doong_bnr_vip";
-		$("#div_advod").addClass('is--vip')
+		jQuery("#div_advod").addClass('is--vip')
 	}
-
-
 
 	if(getCookie(name) !="Y"){
 		fn_doong_bnr_info(cate);
@@ -115,7 +113,7 @@ function fn_doong_bnr_info(cate) {
 	}
 	
 	if(doong_bnr_url){
-		$.ajax({
+		jQuery.ajax({
 			type:"get",
 			url: doong_bnr_url,
 			data:"",
@@ -123,30 +121,30 @@ function fn_doong_bnr_info(cate) {
 			success:function(result) {
 				//console.log("fn_doong_bnr_info 1 result : "+JSON.stringify(result));
 				if(result.IMG1){
-					let title = result.TITLE;
-					let text = result.TEXT;
-					let jurl1 = result.JURL1;
-					let img1 = result.IMG1;
-					let target = result.TARGET;
-					let alt = result.ALT;
-					iid = result.IID;
-					let width = result.WIDTH;
-					let height = result.HEIGHT;
+					var title = result.TITLE;
+					var text = result.TEXT;
+					var jurl1 = result.JURL1;
+					var img1 = result.IMG1;
+					var target = result.TARGET;
+					var alt = result.ALT;
+					advod_iid = result.IID;
+					var width = result.WIDTH;
+					var height = result.HEIGHT;
 
 					doong_bnr_click_url = jurl1;
 					
-					$("#img_doong_bnr").attr("src", img1);
-					$("#img_doong_bnr").attr("alt", alt);
+					jQuery("#img_doong_bnr").attr("src", img1);
+					jQuery("#img_doong_bnr").attr("alt", alt);
 
-					$(".advod__bnr").on("click", function(){
+					jQuery(".advod__bnr").on("click", function(){
 						fn_advod_bnr_click();
 					})
 
 					if(img1){
 						//console.log("fn_doong_bnr_info 2");
 						
-						$("#smallVod").show();
-						$("#div_advod").show();
+						jQuery("#smallVod").show();
+						jQuery("#div_advod").show();
 					}
 				}
 				
@@ -161,7 +159,7 @@ function fn_doong_bnr_info(cate) {
 
 
 function fn_advod_bnr_click(){
-	$.ajax({
+	jQuery.ajax({
 		type:"get",
 		url: doong_bnr_click_url,
 		data:"",
@@ -178,33 +176,34 @@ function fn_advod_bnr_click(){
 
 
 function fn_advod_bnr_info() {
+	
 	//console.log("fn_advod_bnr_info start");
-	$.ajax({
+	jQuery.ajax({
 		type:"get",
 		url: advod_bnr_url,
 		data:"",
 		dataType: "JSON",
 		success:function(result) {
 			//console.log("fn_advod_bnr_info 1 result : "+JSON.stringify(result));
-
+			
 			result.forEach(function(data, idx){
 				//console.log(idx+":"+data);
 				//console.log("fn_advod_bnr_info 1 title : "+data.TITLE);
 				//console.log("fn_advod_bnr_info 1 title : "+data.IID);
 
-				if(data.IID == iid){
+				if(data.IID == advod_iid){
 					//console.log("fn_advod_bnr_info 2 iid : "+iid);
 					//console.log("fn_advod_bnr_info 2 data.iid : "+data.IID);
 
-					let title = data.TITLE;
-					let text = data.TEXT;
-					let jurl1 = data.JURL1;
-					let img1 = data.IMG1;
-					let target = data.TARGET;
-					let alt = data.ALT;
-					let youtube = data.YOUTUBE;
-					let width = data.WIDTH;
-					let height = data.HEIGHT;
+					var title = data.TITLE;
+					var text = data.TEXT;
+					var jurl1 = data.JURL1;
+					var img1 = data.IMG1;
+					var target = data.TARGET;
+					var alt = data.ALT;
+					var youtube = data.YOUTUBE;
+					var width = data.WIDTH;
+					var height = data.HEIGHT;
 
 					vodId = youtube.replace('https://www.youtube.com/embed/', '');
 
@@ -213,13 +212,13 @@ function fn_advod_bnr_info() {
 					var firstScriptTag = document.getElementsByTagName('script')[0];
 						firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-					$("#img_advod_bnr").attr("src", img1);
-					$("#img_advod_bnr").attr("alt", alt);
-					$("#a_advod_bnr").attr("href", jurl1)
-					$('#a_advod_bnr').attr('target', '_blank');
-				
+					jQuery("#img_advod_bnr").attr("src", img1);
+					jQuery("#img_advod_bnr").attr("alt", alt);
+					jQuery("#a_advod_bnr").attr("href", jurl1)
+					jQuery('#a_advod_bnr').attr('target', '_blank');
+					
 					if(vodId){
-						$("#bigVod").show();
+						jQuery("#bigVod").show();
 					}
 				}
 
@@ -229,7 +228,7 @@ function fn_advod_bnr_info() {
 			
 		},
 		error: function(request,status,error){
-			//console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			// console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
       	}
 	});
 }
@@ -260,7 +259,7 @@ function stopVideo() {
 function setTimerFunc(){ 
 	timerVod = setTimeout(function(){
 		try {
-			$("#bigVod").addClass('fadein'); 
+			jQuery("#bigVod").addClass('fadein'); 
 			bigPlayer.playVideo();
 
 			bigState = true;
@@ -301,7 +300,7 @@ function getCookie(cookieName){
 //닫기 버튼 클릭시
 function closeWin()
 {
-	let name ;
+	var name ;
 	if(pathname == "/" || pathname == "/Index.jsp"){
 		name = "doong_bnr_home";
 	}else if(pathname == "/list.jsp"){
@@ -311,31 +310,31 @@ function closeWin()
 	}
 
 	setCookie(name, 'Y' , 1 );
-	$("#div_advod").hide();
+	jQuery("#div_advod").hide();
 }
 
-$(".advod__bnr .bnr__btn").on("mouseenter", function(){
+jQuery(".advod__bnr .bnr__btn").on("mouseenter", function(){
 	if(!bigState){  
-		$(this).closest(".advod__bnr").removeClass("fadeout").addClass("fadein")
+		jQuery(this).closest(".advod__bnr").removeClass("fadeout").addClass("fadein")
 
 		fn_advod_bnr_click();
 
 		setTimerFunc();
 	}
 }).on("mouseleave", function(){
-	$(this).closest(".advod__bnr").removeClass("fadein").addClass("fadeout")
+	jQuery(this).closest(".advod__bnr").removeClass("fadein").addClass("fadeout")
 	clearTimerFunc();
 })   
 
 // 클릭 : SHOW/PLAY
-$(".bnr__dimmed").on("click", function(){
+jQuery(".bnr__dimmed").on("click", function(){
 	clearTimerFunc();
-	$("#bigVod").addClass('fadein'); 
+	jQuery("#bigVod").addClass('fadein'); 
 	bigPlayer.playVideo();
 })
 
-$(".bnr__source .btn__cls").on("click", function(){
-	$(this).closest(".advod__bnr").hide();
+jQuery(".bnr__source .btn__cls").on("click", function(){
+	jQuery(this).closest(".advod__bnr").hide();
 })
 
 //<!-- // 둥둥이배너 관련 스크립트 -->

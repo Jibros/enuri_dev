@@ -424,7 +424,7 @@ function getGoods_explain(proctype){
 									term_html += "&nbsp;<img align='absmiddle' src='http://img.enuri.info/images/view/blue/btn_picture_0813.gif' onclick='showTermDicKb("+kbno+", this);' style='cursor:pointer;'>";
 								}else if(func_option=="2"){
 									//지식통 링크(더보기)
-									//term_html += "&nbsp;<img align='right' src='http://img.enuri.info/images/detail/more_btn.gif' onclick='CmdGotoBeginnerDic("+kbno+");' style='cursor:pointer;'>";
+									//term_html += "&nbsp;<img align='right' src='http://imgenuri.enuri.gscdn.com/images/detail/more_btn.gif' onclick='CmdGotoBeginnerDic("+kbno+");' style='cursor:pointer;'>";
 								}
 								term_html += "</td></tr></tbody></table>";
 								term_html += "<pre style='margin:0 0 0 0;padding:0 0 0 0;font-size:8pt;color:#000000;line-height:16px;word-break:break-all;' width=268 align=left>";
@@ -1324,7 +1324,7 @@ function getGoods_explainEnuri(json){
 					term_html += "&nbsp;<img align='absmiddle' src='http://img.enuri.info/images/view/blue/btn_picture_0813.gif' onclick='showTermDicKb("+kbno+", this);' style='cursor:pointer;'>";
 				}else if(func_option=="2"){
 					//지식통 링크(더보기)
-					//term_html += "&nbsp;<img align='right' src='http://img.enuri.info/images/detail/more_btn.gif' onclick='CmdGotoBeginnerDic("+kbno+");' style='cursor:pointer;'>";
+					//term_html += "&nbsp;<img align='right' src='http://imgenuri.enuri.gscdn.com/images/detail/more_btn.gif' onclick='CmdGotoBeginnerDic("+kbno+");' style='cursor:pointer;'>";
 				}
 				term_html += "</td></tr></tbody></table>";
 				term_html += "<pre style='margin:0 0 0 0;padding:0 0 0 0;font-size:8pt;color:#000000;line-height:16px;word-break:break-all;' width=268 align=left>";

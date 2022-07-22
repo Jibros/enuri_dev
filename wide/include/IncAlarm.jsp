@@ -53,4 +53,4 @@
         </div>
     </div>
 </div>
-<script defer type="text/javascript" src="/wide/include/js/IncAlarm.js?v=20211007"></script>
+<script defer type="text/javascript" src="/wide/include/js/IncAlarm.js?v=20220509"></script>

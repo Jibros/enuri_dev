@@ -12,10 +12,20 @@
                 <div class="makeuppc__container">
                     <!-- TABS -->
                     <ul class="tabs tabs--radius" id="enuripcTab">
+                    	<!-- 
                         <li class="tab-item is-on"><button type="button">홈&오피스용</button></li>
                         <li class="tab-item"><button type="button">멀티미디어용</button></li>
                         <li class="tab-item"><button type="button">게이밍용</button></li>
                         <li class="tab-item"><button type="button">인기상품</button></li>
+                        표준PC / 게이밍용 / 풀옵션 게이밍용 / 홈&오피스용 / 방송용 / 편집용 / 브랜드존 (카테고리별 상품 최저가순 10개 노출)
+                         -->
+                        <li class="tab-item is-on"><button type="button">표준PC</button></li>
+                        <li class="tab-item"><button type="button">게이밍용</button></li>
+                        <li class="tab-item"><button type="button">풀옵션 게이밍용</button></li>
+                        <li class="tab-item"><button type="button">홈&오피스용</button></li>
+                        <li class="tab-item"><button type="button">방송용</button></li>
+                        <li class="tab-item"><button type="button">편집용</button></li>
+                        <li class="tab-item"><button type="button">브랜드존</button></li>
                     </ul>
                     <!-- // -->
 

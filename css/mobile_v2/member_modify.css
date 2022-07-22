@@ -1,0 +1,217 @@
+@charset "utf-8";
+@import url("/css/webfont.css");
+/* @import url("/css/webfont-local.css");  */
+/************************************************************************
+ * 파일명 : my_favorite_folder.css
+ * 설명 : [M] 마이e클럽 _ 찜폴더관리 CSS
+ * 작성자  : 박현원
+ * 작성일 : 2022.07.05
+************************************************************************/
+* { box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box;}
+body,input,textarea,select,table,button{font-size:13px; font-family:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic','맑은 고딕','AppleSDGothicNeo-Medium','Apple SD 산돌고딕 Neo','Microsoft NeoGothic','Helvetica','AppleGothic','Droid sans','Sans-serif','Dotum','Verdana','Helvetica',sans-serif}
+
+body {background-color: #fff;}
+h3 {font-weight: 500; font-size: 18px; color:#222;}
+h4 {font-weight: 500; font-size: 14px; color:#222; line-height: 20px; margin-bottom:2px;}
+h3 em,
+h4 em {font-weight: 400;}
+.normal {font-weight: normal;}
+.txt {font-size: 13px; color:#666; line-height: 1.46;}
+.color-blue {color:#3588f3;}
+.is-hidden {display: none;}
+/*---------------------------------------------------------
+                    아이콘경로_ (마이이클럽과 같이사용)
+---------------------------------------------------------*/
+.icon_re_setting {background-image : var(--url-myre-sprite); background-size: var(--size-myre-sprite); background-position: -100px 0;}
+.icon_re_noti {background-image : var(--url-myre-sprite); background-size: var(--size-myre-sprite); background-position: -150px -20px;}
+.icon_re_lock {background-image : var(--url-myre-sprite); background-size: var(--size-myre-sprite); background-position: -190px -40px;}
+.icon_re_lock.on {background-image : var(--url-myre-sprite); background-size: var(--size-myre-sprite); background-position: -190px -60px;}
+.icon_re_camera {background-image : var(--url-myre-sprite); background-size: var(--size-myre-sprite); background-position: -124px 0px;}
+
+/*---------------------------------------------------------
+                    반응형_껍데기
+---------------------------------------------------------*/
+.response_inner {margin:0 auto; padding:16px; transition:all .3s ease-in;}
+@media (min-width:768px){.response_inner {width:400px;}}
+@media (min-width:1024px){.response_inner {width:540px;}}
+
+/*---------------------------------------------------------
+                    로우
+---------------------------------------------------------*/
+.cont_div {position:relative;}
+.cont_div + .cont_div {margin-top:22px;}
+
+/*---------------------------------------------------------
+                    마진패딩
+---------------------------------------------------------*/
+.mt5 {margin-top:5px!important;}
+.mt10 {margin-top:10px!important;}
+.mt11 {margin-top:11px!important;}
+.mt12 {margin-top:12px!important;}
+.mt13 {margin-top:13px!important;}
+.mt14 {margin-top:14px!important;}
+.mt15 {margin-top:15px!important;}
+.mt20 {margin-top:20px!important;}
+.mt24 {margin-top:24px!important;}
+.mt30 {margin-top:30px!important;}
+.mt32 {margin-top:32px!important;}
+
+.ml2{margin-left:2px!important;}
+/*---------------------------------------------------------
+                    폼
+---------------------------------------------------------*/
+.form_row {margin-top:5px;}
+.input_text::placeholder,
+.input_password::placeholder,
+textarea::placeholder {color:#ccc;}
+textarea {width: 100%; min-height: 108px; padding:14px 16px; bordeR:1px solid #ddd; border-radius: 8px; margin-top:4px;}
+
+.input_wrap {display: relative;}
+.input_text,
+.input_password {display: block; width: 100%; height: 48px; padding: 0 16px; border-radius: 2px; border: 1px solid #ddd; -webkit-box-sizing: border-box; box-sizing: border-box; font-size: 13px; color: #222; letter-spacing: -.56px; line-height: 46px; background-color: #fff; border-radius: 8px!important;}
+.input_password.lock {background-image : url('//img.enuri.info/images/mobile_v2/myeclub/re/icon_lock.png'); background-size: 20px; background-position: 96% center; background-repeat: no-repeat;}
+.input_password.lock.on {background-image : url('//img.enuri.info/images/mobile_v2/myeclub/re/icon_lock_on.png');}
+
+.input_text::-ms-clear,
+.input_password::-ms-clear {display: none;width: 0;height: 0;}
+.input_text::-ms-reveal,
+.input_password::-ms-reveal {display: none;width: 0;height: 0;}
+
+.input_ok_msg {display: block; margin-top: 8px; font-size: 13px; font-weight: 400; color: #3588f3; letter-spacing: -.3px; line-height: 1;}
+.input_error_msg {display: block; margin-top: 8px; font-size: 13px; font-weight: 400; color: #F56152; letter-spacing: -.3px; line-height: 1;}
+
+.input_checkbox_wrap {position:relative; padding-left:26px; cursor: pointer;}
+.input_checkbox {position: absolute; width: 1px; height: 1px; visibility: hidden;}
+.input_checkbox + label {font-size: 16px; color: #555; height: auto; letter-spacing: -.5px;}
+.input_checkbox + label:before {content: ""; position: absolute; width: 20px; height: 20px; left: 0; top: 2px; background: var(--url-myre-sprite) -150px -60px no-repeat; background-size: var(--size-myre-sprite);}
+.input_checkbox:checked + label:before {background: var(--url-myre-sprite) -150px -80px no-repeat; background-size: var(--size-myre-sprite);}
+
+.input_radio_wrap {position:relative; padding-left:26px; cursor: pointer;}
+.input_radio {position: absolute; width: 1px; height: 1px; visibility: hidden;}
+.input_radio + label {font-size: 16px; color: #555; height: auto; letter-spacing: -.5px;}
+.input_radio + label:before {content: ""; position: absolute; width: 20px; height: 20px; left: 0; top: 2px; background: var(--url-myre-sprite) -150px -100px no-repeat; background-size: var(--size-myre-sprite);}
+.input_radio:checked + label:before {background: var(--url-myre-sprite) -150px -120px no-repeat; background-size: var(--size-myre-sprite);}
+/*---------------------------------------------------------
+                    버튼
+---------------------------------------------------------*/
+.btn_area {margin-top:16px;}
+.btn_default {display: block; width: 100%; font-size: 16px; font-weight: 500; color:#fff; text-align: center; line-height: 46px; border-radius: 8px; border: solid 1px rgba(0, 0, 0, 0.05); background-color: #ddd; transition:all .4s;}
+.btn_default.on {background-color: #3588f3;}
+
+.btn_area.btn_half {font-size: 0;}
+.btn_area.btn_half .btn_default {display: inline-block; vertical-align: middle; width:calc(50% - 4px);}
+.btn_area.btn_half .btn_default:first-child {margin-right:8px;}
+
+.btn_cancel {background-color: #fff; color:#222; border-color: #ddd;}
+.btn_confirm {background-color: #3588f3;}
+/*---------------------------------------------------------
+                    페이지_패스워드확인
+---------------------------------------------------------*/
+.memberId {font-size: 16px; color:#3588f3;}
+
+/*---------------------------------------------------------
+                    페이지_탈퇴
+---------------------------------------------------------*/
+.expiry_emoney {color:#3588f3; text-decoration: underline;}
+.checkbox_outAgree {margin-top:10px;}
+.checkbox_outAgree label {font-size: 16px; color:#555; height: auto;}
+.checkbox_outAgree label em {font-size: 16px; font-weight: 500; color:#222;}
+
+/*---------------------------------------------------------
+                    툴팁 공통
+---------------------------------------------------------*/
+.area_tooltip {position:relative; display: inline-block; vertical-align: -4px;}
+.area_tooltip button { display: block; width:20px; height:20px;}
+.area_tooltip button i { display: block; width:20px; height:20px;}
+.area_tooltip .tooltip_content {display: none; font-size: 12px; font-weight: normal; color:#666; position: absolute; top: 100%; left: 50%; z-index: 10; line-height: 1.6; letter-spacing: -.5px; background: #fff; padding: 10px; box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.1); border: solid 1px #bdc6d2; border-radius: 4px; }
+.area_tooltip:hover .tooltip_content {display: block;}
+
+/*---------------------------------------------------------
+                    툴팁 - 사이즈 위치 직접 컨트롤
+---------------------------------------------------------*/
+/* 패스워드변경 */
+.area_tooltip .tooltip_content.tp_modi_password {width: 328px; transform: translateX(-117px);}
+
+/*---------------------------------------------------------
+                    리스트 타입 하이픈
+---------------------------------------------------------*/
+.list_hyphen li {position:relative; padding-left:8px;}
+.list_hyphen li:before {content:"-"; display: block; position:absolute; top:0; left:0;}
+
+/*---------------------------------------------------------
+                    마이페이지 수정 _ 상단 프로필
+---------------------------------------------------------*/
+.modify_mypage .my_profile_info {position:relative; display: flex; flex-wrap:wrap; align-items: center; height:64px; padding-left:76px; padding-right:40px;}
+.modify_mypage .profile_img_warp {position:absolute; top:0; left:0; width:64px; height:64px; }
+.modify_mypage .profile_img_warp .profile_img {position:relative; padding-top:100%; border-radius: 50%; overflow: hidden; background-color: #e0dfdf;}
+.modify_mypage .profile_img_warp .profile_img img {position:absolute; top:0; left:0; width: 100%; height:100%; object-fit: cover;}
+
+.modify_mypage .profile_img_warp .btn_link {position: absolute; bottom: 0; right: 0; display: block; width: 24px; height: 24px; z-index: 1;}
+.modify_mypage .profile_img_warp .btn_link i {display: block; width: 100%; height: 100%;}
+
+.modify_mypage .my_profile_info .nickname {font-size: 18px; font-weight: 400; color:#222; padding-right:5px;}
+.modify_mypage .my_profile_info .nickname em {font-weight: 500; color:#000;}
+.modify_mypage .my_profile_info .btn_modify {width:40px; height:28px; border:1px solid #eee; border-radius: 4px; font-size: 12px; color:#333; position:absolute; top:50%; right:0; margin-top:-14px; line-height: 1;}
+
+/*---------------------------------------------------------
+                    마이페이지 수정 _ 기본정보
+---------------------------------------------------------*/
+.my_default_info {margin-top:7px; font-size: 14px;}
+.my_default_info li {position:relative; border-bottom:1px solid #eee; padding-left:84px; padding-right:40px;}
+.my_default_info li .info_name {position:absolute; top:0; left:0; display: block; line-height: 63px;}
+.my_default_info li .info_value {display: block; padding: 22px 0 21px;}
+.my_default_info li .certification_complete {font-size: 12px; color:#999;}
+.my_default_info li .btn_modify {width:40px; height:28px; border:1px solid #eee; border-radius: 4px; font-size: 12px; color:#333; position:absolute; top:50%; right:0; margin-top:-14px; line-height: 1;}
+
+/*---------------------------------------------------------
+                    마이페이지 수정 _ 비밀번호 변경
+---------------------------------------------------------*/
+form[name=form_modify_my_password] {margin-top:7px;}
+
+/*---------------------------------------------------------
+                    마이페이지 수정 _ 개인정보 수집 및 이용안내
+---------------------------------------------------------*/
+form[name=form_modify_agree] {margin-top:21px;}
+form[name=form_modify_agree] .inner_box {display: flex; flex-wrap: wrap; align-items: center; padding:20px 16px; border-radius: 8px; background-color: #F8F8F8;}
+form[name=form_modify_agree] .inner_box > div {flex:0 0 auto; width:50%; padding-left:24px;}
+form[name=form_modify_agree] .inner_box > div label {font-size: 14px;}
+form[name=form_modify_agree] .inner_box > div label:before {top:1px;}
+
+/*---------------------------------------------------------
+                    마이페이지 수정 _ 탈퇴
+---------------------------------------------------------*/
+.modify_mypage {}
+.modify_mypage .member_out {border-top:1px solid #eee; line-height: 63px;}
+.modify_mypage .member_out .btn_link_out {width:40px; height:28px; border:1px solid #eee; border-radius: 4px; font-size: 12px; color:#333; position:absolute; top:50%; right:0; margin-top:-14px; line-height: 1;}
+
+
+/*---------------------------------------------------------
+                    프로필수정 수정 _ 프로필
+---------------------------------------------------------*/
+.modify_profile .my_profile_info {position:relative; }
+.modify_profile .profile_img_warp {position: relative; width:64px; height:64px; margin:0 auto;}
+.modify_profile .profile_img_warp .profile_img {position:relative; padding-top:100%; border-radius: 50%; overflow: hidden; background-color: #e0dfdf;}
+.modify_profile .profile_img_warp .profile_img img {position:absolute; top:0; left:0; width: 100%; height:100%; object-fit: cover;}
+
+.modify_profile .profile_img_warp .btn_use_camera {position: absolute; bottom: 0; right: 0; display: block; width: 24px; height: 24px; z-index: 1;}
+.modify_profile .profile_img_warp .btn_use_camera i {display: block; width: 100%; height: 100%;}
+
+.modify_profile .my_profile_info .nickname { font-size: 18px; font-weight: 400; color:#222; text-align: center; margin-top:6px;}
+.modify_profile .my_profile_info .nickname em {font-weight: 500; color:#000;}
+.modify_profile .my_profile_info .btn_modify {width:40px; height:28px; border:1px solid #eee; border-radius: 4px; font-size: 12px; color:#333; position:absolute; top:50%; right:0; margin-top:-14px; line-height: 1;}
+
+/*---------------------------------------------------------
+                    팝업레이어_프로필이미지
+---------------------------------------------------------*/
+.com__layer_type2 .input_radio_wrap + .input_radio_wrap {margin-top:10px;}
+.com__layer_type2 .img_upload {display: none; font-size: 0; margin-top:5px;}
+.com__layer_type2 .img_upload .upload_name {display: inline-block; vertical-align: middle; height: 28px; padding: 0 10px;  border: 1px solid #eee; border-radius: 4px; color: #333; width: calc(72% - 8px);}
+.com__layer_type2 .img_upload .upload_name::placeholder {color: #999;}
+.com__layer_type2 .img_upload label {display: inline-block; vertical-align: middle; padding: 0 10px; line-height: 26px; font-size: 12px; background-color: #fff; border:1px solid #eee; border-radius: 4px; margin-left: 8px; cursor: pointer; width: 28%;}
+.com__layer_type2 .img_upload label:hover {background-color: #3588F3; border-color: #3588F3; color:#fff;}
+.com__layer_type2 .img_upload input[type="file"] {position: absolute; width: 0; height: 0; padding: 0; overflow: hidden; border: 0;}
+
+/*---------------------------------------------------------
+                    팝업레이어_이메일변경
+---------------------------------------------------------*/
+.change_email .input_text {margin-top:12px;}

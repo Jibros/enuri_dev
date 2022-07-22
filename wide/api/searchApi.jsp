@@ -336,6 +336,7 @@ public static String strReplaceKeyword(String strKeyword){
 	// 찜목록 - PriceList
 	Set<Long> zzimPLSet = new HashSet<Long>();
 
+	/* 줌 찜 미사용
 	if(cb.GetCookie("MEM_INFO","USER_ID")!=null) {
 		String strUserId = cb.GetCookie("MEM_INFO", "USER_ID");
 		Goods_Data[] goods_save_data = Goods_Search_Lsv_Proc.getSaveGoodList(strUserId);
@@ -354,6 +355,7 @@ public static String strReplaceKeyword(String strKeyword){
 			}
 		}
 	}
+	*/
 	
 	if(pageNum==1 && (intTab==0 || intTab==1) && intSort==1 && strIsDelivery.equals("N") && strIsRental.equals("N") && strParamFactory.length()==0 && strParamBrand.length()==0 && lngSPrice==0 && lngEPrice==0 && strInKeyword.length()==0) {
 		if(strFrom.equals("list")) { // LP
@@ -787,7 +789,7 @@ public static String strReplaceKeyword(String strKeyword){
 						if(intShopCode==6641 && strUrl.indexOf("<<<mourl>>>")>-1) strUrl = strUrl.substring(0, strUrl.indexOf("<<<mourl>>>"));
 						strGoodsName = getRemoveCardSale(cardNameHash, strGoodsName, intShopCode, lngPrice, strPCa_Code, strFreeinterest, cardFreeAry);
 
-						if(strGoodsfactory.trim().length()>0 && strGoodsfactory.trim().indexOf("기타")<0 && strGoodsfactory.trim().indexOf("없음")<0 && strGoodsfactory.indexOf("상품")<0 && strGoodsfactory.trim().indexOf("상세")<0) {
+						if(strGoodsfactory.trim().length()>0 && strGoodsfactory.trim().indexOf("기타")<0 && strGoodsfactory.trim().indexOf("없음")<0 && strGoodsfactory.indexOf("상품")<0 && strGoodsfactory.trim().indexOf("상세")<0 && strGoodsfactory.trim().indexOf("UnKnown")<0) {
 							strGoodsName = "["+strGoodsfactory.trim()+"]"+strGoodsName;
 						}
 						

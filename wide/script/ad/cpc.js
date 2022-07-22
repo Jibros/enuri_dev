@@ -192,7 +192,7 @@ function drawEbayCenterAD(object) {
 			cHtml += "					<div class=\"goods-item\">";
 			//								<!-- 썸네일 -->
 			cHtml += "						<div class=\"item__thumb\">";
-			cHtml += "							<img class=\"lazy\" data-src=\""+varImgS+"\" data-original=\""+ varImgS+"\" onerror=\"this.src='"+noImageStr+"'\" />";
+			cHtml += "							<img src=\""+varImgS+"\" onerror=\"this.src='"+noImageStr+"'\" alt=\"파워클릭 광고상품\" />";
 			cHtml += "						</div>";
 			cHtml += "						<div class=\"item__box\">";
 			//									<!-- 상품정보 -->
@@ -206,7 +206,7 @@ function drawEbayCenterAD(object) {
 			//										<!-- 일반상품 / 가격 -->
 			cHtml += "								<div class=\"price__mall\">";
 			cHtml += "									<div class=\"col--mall\">";
-			cHtml += "										<img class=\"lazy\" data-src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" data-original=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\""+varShopNm+"\" width=\"76\" height=\"20\" onerror=\"javascript:logoImgNotFound(this);\">";
+			cHtml += "										<img src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\""+varShopNm+"\" width=\"76\" height=\"20\" onerror=\"javascript:logoImgNotFound(this);\">";
 			cHtml += "									</div>";
 			cHtml += "									<div class=\"col--price\">";
 			cHtml += "										<em>" + varImpPrice + "</em>원";
@@ -346,7 +346,7 @@ function drawEbayCenterAD_GalleryView(object) {
 			cHtml += "					<li data-type=\"powerclick\" ad-type=\"ebay\">";
 			cHtml += "						<a href=\"" + varRanUrl + "\" target=\"_blank;\" " + varOnClickT + " class=\"ad-openad__link\"  rel=\"noopener noreferrer\">";
 			cHtml += "							<span class=\"openad_thumb\">";
-			cHtml += "								<img class=\"lazy\" data-src=\""+varimgL+"\" data-original=\""+ varimgL+"\" onerror=\"this.src='"+noImageStr+"'\" />";
+			cHtml += "								<img src=\""+varimgL+"\" onerror=\"this.src='"+noImageStr+"'\" />";
 			cHtml += "							</span>";
 			cHtml += "							<span class=\"openad_info\">";
 			cHtml += "								<span class=\"tx_price\">최저가 <em>"+varImpPrice+"</em>원";
@@ -362,7 +362,7 @@ function drawEbayCenterAD_GalleryView(object) {
 			//											<!-- // -->
 			cHtml += "								</span>";
 			cHtml += "								<span class=\"tx_name\">"+varTitle+"</span>";
-			cHtml += "								<span class=\"tx_mall\"><img class=\"lazy\" data-src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" data-original=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\""+varShopNm+"\" onerror=\"javascript:logoImgNotFound(this);\"></span>";
+			cHtml += "								<span class=\"tx_mall\"><img src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\""+varShopNm+"\" onerror=\"javascript:logoImgNotFound(this);\"></span>";
 			cHtml += "							</span>";
 			cHtml += "						</a>";
 			//								<!-- // -->
@@ -424,10 +424,6 @@ function eventListener_powerClick() {
 		}
 	}
 	
-	$("li[data-type=powerclick] img.lazy").lazyload({
-		placeholder : noImageStr
-	});
-	
 	logPowerClick(); // 개별로그
 }
 
@@ -488,6 +484,9 @@ function loadADShopping(blADOffice) {
 		adShoppingObj.then(drawADShopping_Gallery);
 	}
 	
+	// 하단 광고
+	adShoppingObj.then(drawADBottom);
+	
 	// 이벤트리스너
 	adShoppingObj.then(eventListener_ADshopping);
 
@@ -527,7 +526,7 @@ function drawADShopping_List(dataObj) {
 			adHtml += "		<div class=\"goods-item\">";
 			// 					<!-- 썸네일 -->
 			adHtml += "			<div class=\"item__thumb\">";
-			adHtml += "				<img class=\"lazy\" data-src=\""+v.productImage+"\" data-original=\""+v.productImage+"\" alt=\""+v.productName+"\" width=\"146\" height=\"146\">";
+			adHtml += "				<img src=\""+v.productImage+"\" alt=\""+v.productName+"\" width=\"146\" height=\"146\">";
 			adHtml += "			</div>";
 			//					<!-- // -->
 			adHtml += "			<div class=\"item__box\">";
@@ -543,7 +542,7 @@ function drawADShopping_List(dataObj) {
 			adHtml += "					<div class=\"price__mall\">";
 			adHtml += "						<div class=\"col--mall\">";
 			//									<!-- 로고형 -->
-			adHtml += "							<img class=\"lazy\" data-src=\"http://storage.enuri.info/logo/logo20/logo_20_7861.png\" data-original=\"http://storage.enuri.info/logo/logo20/logo_20_7861.png\" alt=\""+v.productName+"\" width=\"76\" height=\"20\" onerror=\"javascript:logoImgNotFound(this);\">";
+			adHtml += "							<img src=\"http://storage.enuri.info/logo/logo20/logo_20_7861.png\" alt=\""+v.productName+"\" width=\"76\" height=\"20\" onerror=\"javascript:logoImgNotFound(this);\">";
 			adHtml += "						</div>";
 			adHtml += "						<div class=\"col--price\">";
 			adHtml += "							<em>"+v.productPrice.format()+"</em>원";
@@ -609,7 +608,7 @@ function drawADShopping_Gallery(dataObj) {
 			adHtml += "<li data-type=\"adshopping\">";
 			adHtml += "	<a href=\""+v.landingUrl+"\" class=\"ad-openad__link\" target=\"_blank\" rel=\"noopener noreferrer\">";
 			adHtml += "		<span class=\"openad_thumb\">";
-			adHtml += "			<img class=\"lazy\" data-src=\""+v.productImage+"\" data-original=\""+v.productImage+"\" alt=\""+v.productName+"\" width=\"216\" height=\"216\">";
+			adHtml += "			<img src=\""+v.productImage+"\" alt=\""+v.productName+"\" width=\"216\" height=\"216\">";
 			adHtml += "		</span>";
 			adHtml += "		<span class=\"openad_info\">";
 			adHtml += "			<span class=\"tx_price\">최저가 <em>"+v.productPrice.format()+"</em>원";
@@ -619,7 +618,7 @@ function drawADShopping_Gallery(dataObj) {
 			adHtml += "			</span>";
 			adHtml += "			<span class=\"tx_name\">"+v.productName+"</span>";
 			adHtml += "			<span class=\"tx_mall\">";
-			adHtml += "				<img class=\"lazy\" data-src=\"http://storage.enuri.info/logo/logo20/logo_20_7861.png\" data-original=\"http://storage.enuri.info/logo/logo20/logo_20_7861.png\" alt=\""+v.productName+"\" width=\"76\" height=\"20\" onerror=\"javascript:logoImgNotFound(this);\">";
+			adHtml += "				<img src=\"http://storage.enuri.info/logo/logo20/logo_20_7861.png\" alt=\""+v.productName+"\" width=\"76\" height=\"20\" onerror=\"javascript:logoImgNotFound(this);\">";
 			adHtml += "			</span>";
 			adHtml += "		</span>";
 			adHtml += "	</a>";
@@ -650,12 +649,51 @@ function drawADShopping_Gallery(dataObj) {
 	}
 }
 
+// 하단 광고
+function drawADBottom(dataObj) {
+	// 초기화
+	if($(".ad__coupang_lp_bottom").length > 0) {
+		$(".ad__coupang_lp_bottom").remove();
+	}
+	
+	if(dataObj && dataObj.success && dataObj.data.length>4) {
+		
+		var adHtml = "";
+		
+		// 5,6번째 컨텐츠 사용
+		for(var i=4;i<6;i++) {
+			
+			var item = dataObj.data[i];
+			var vIsRocket = typeof item.isRocket == "undefined" ? false : item.isRocket;
+			
+			adHtml += "<li data-type=adBottom>";
+			adHtml += "	<a href=\""+item.landingUrl+"\" target=\"_blank\" rel=\"noopener noreferrer\">";
+			adHtml += "		<div class=\"ad_goods_thumbnail\"><img src=\""+item.productImage+"\" alt=\""+item.productName+"\" width=\"70\" height=\"70\"></div>";
+			adHtml += "		<div class=\"ad_goods_name\">"+item.productName+"</div>";
+			adHtml += "		<div class=\"ad_goods_price\"><em>"+item.productPrice.format()+"</em>원</div>";
+			adHtml += "		<div class=\"ad_goods_logo\">";
+			adHtml += "			<img src=\"//img.enuri.info/images/sample/sample_logo_coupang@h32.png\" width=\"56\" height=\"16\">";
+			if(vIsRocket) {
+				adHtml += "		<img src=\"//img.enuri.info/images/sample/sample_logo_coupang_rocket@h32.png\" width=\"64\" height=\"16\">";
+			}
+			adHtml += "		</div>";
+			adHtml += "	</a>";
+			adHtml += "</li>";
+		}
+		
+		if(adHtml != "") {
+			var preHtml = "<div class=\"ad__coupang_lp_bottom border-box\"><ul>";
+			var tailHtml = "</ul><div class=\"ad__label\"><img src=\"//img.enuri.info/images/rev/label_ad@32x22.png\" width=\"16\" height=\"11\"></div></div>";
+			
+			adHtml = preHtml + adHtml + tailHtml;
+			
+			$(".list-body-cont").append(adHtml);
+		}
+	}
+}
+
 // 애드쇼핑 이벤트리스너
 function eventListener_ADshopping() {
-	$("li[data-type=adshopping] img.lazy").lazyload({
-		placeholder : noImageStr
-	});
-	
 	log_ADshopping();
 }
 
@@ -664,6 +702,9 @@ function log_ADshopping() {
 	if(!logInit_adShopping) {
 		$(document).on("click", "li[data-type=adShopping]", function() {
 			insertLogLSV(24845);
+		});
+		$(document).on("click", "li[data-type=adBottom]", function() {
+			insertLogLSV(27131);
 		});
 		
 		logInit_adShopping = true;
@@ -750,7 +791,7 @@ function drawADOffice_List(dataObj) {
 			adHtml += "					<div class=\"goods-item\">";
 			//								<!-- 썸네일 -->
 			adHtml += "						<div class=\"item__thumb\">";
-			adHtml += "							<img class=\"lazy\" data-src=\""+varImg+"\" data-original=\""+ varImg+"\" onerror=\"this.src='"+noImageStr+"'\"  alt=\"" + varImgAlt + "\" />";
+			adHtml += "							<img src=\""+varImg+"\" onerror=\"this.src='"+noImageStr+"'\"  alt=\"" + varImgAlt + "\" />";
 			adHtml += "						</div>";
 			adHtml += "						<div class=\"item__box\">";
 			//									<!-- 상품정보 -->
@@ -764,7 +805,7 @@ function drawADOffice_List(dataObj) {
 			//										<!-- 일반상품 / 가격 -->
 			adHtml += "								<div class=\"price__mall\">";
 			adHtml += "									<div class=\"col--mall\">";
-			adHtml += "										<img class=\"lazy\" data-src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" data-original=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\"11번가\" onerror=\"javascript:logoImgNotFound(this);\">";
+			adHtml += "										<img src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" width=\"50\" height=\"20\" alt=\"11번가\" onerror=\"javascript:logoImgNotFound(this);\">";
 			adHtml += "									</div>";
 			adHtml += "									<div class=\"col--price\">";
 			adHtml += "										<em>"+varImpPrice.format()+"</em>원";
@@ -847,7 +888,7 @@ function drawADOffice_Gallery(dataObj) {
 			adHtml += "					<li data-type=\"adoffice\">";
 			adHtml += "						<a href=\"" + varLanding + "\" target=\"_blank;\" rel=\"noopener noreferrer\">";
 			adHtml += "							<span class=\"openad_thumb\">";
-			adHtml += "								<img class=\"lazy\" data-src=\""+varImg+"\" data-original=\""+ varImg+"\" onerror=\"this.src='"+noImageStr+"'\"  alt=\"" + varImgAlt + "\" />";
+			adHtml += "								<img src=\""+varImg+"\" onerror=\"this.src='"+noImageStr+"'\"  alt=\"" + varImgAlt + "\" />";
 			adHtml += "							</span>";
 			adHtml += "							<span class=\"openad_info\">";
 			adHtml += "								<span class=\"tx_price\">최저가 <em>"+varImpPrice.format()+"</em>원";
@@ -863,7 +904,7 @@ function drawADOffice_Gallery(dataObj) {
 			//											<!-- // -->
 			adHtml += "								</span>";
 			adHtml += "								<span class=\"tx_name\">"+varTitle+"</span>";
-			adHtml += "								<span class=\"tx_mall\"><img class=\"lazy\" data-src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" data-original=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\"11번가\" onerror=\"javascript:logoImgNotFound(this);\"></span>";
+			adHtml += "								<span class=\"tx_mall\"><img src=\"http://storage.enuri.info/logo/logo20/logo_20_" + varShopcode + ".png\" alt=\"11번가\" onerror=\"javascript:logoImgNotFound(this);\"></span>";
 			adHtml += "							</span>";
 			adHtml += "						</a>";
 			//								<!-- // -->
@@ -897,10 +938,6 @@ function drawADOffice_Gallery(dataObj) {
 
 // 애드오피스 이벤트리스너
 function eventListener_ADoffice() {
-	$("li[data-type=adoffice] img.lazy").lazyload({
-		placeholder : noImageStr
-	});
-	
 	// 갤러리뷰 4개 안될 경우 미노출
 	if(viewType==2) { 
 		if($("li[data-type=adoffice]").length==4) {

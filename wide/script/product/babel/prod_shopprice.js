@@ -96,9 +96,9 @@
             var shopSpecialList = shopPriceJson.specialPrice;
             var priceTop = shopPriceJson.priceTop;
             exports.cardshop_check = cardshop_check = shopPriceJson.cardshop_check;
-
             //순서있음
             var html = "";
+            var visitViewFlag = prodVisitPriceView(json);
             if (paramHandler.get("callcnt") == 0) {
                 //첫번째 쇼핑몰 정보로 ....상단,topfix 배송비..최저가 구매하기 링크
                 var firstShopObj = shopPriceList[0];
@@ -113,11 +113,21 @@
                     $("#prod_topfix").find(".prodtabinfo__rt .tx_delivery").html(delivery_text);
                     $("#prod_topfix").find(".prodtabinfo__rt .btn__purchase").attr("href", bridgeUrl);
                     $("#prod_topfix").find(".prodtabinfo__rt .btn__purchase").data("shopcode", firstShopObj.shopcode);
+                    $("#prod_topfix").find(".prodtabinfo__rt .btn__purchase").data("shoptype", firstShopObj.shoptype);
                     $("#prod_summary_top").find(".prodminprice .tx_delivery").html(delivery_text);
+
                     $("#prod_summary_top").find(".prodminprice .btn__purchase").attr("href", bridgeUrl);
                     $("#prod_summary_top").find(".prodminprice .btn__purchase").data("shopcode", firstShopObj.shopcode);
+                    $("#prod_summary_top").find(".prodminprice .btn__purchase").data("shoptype", firstShopObj.shoptype);
                     $("#prod_topfix").find(".prodtabinfo__rt .btn__purchase").unbind().click(function (e) {
+
                         var vNowtime = new Date().format("yyyyMMddhhmm") * 1;
+                        if (serviceNShopChkAlert) {
+                            if ($(this).data("shoptype") == "4") {
+                                alert("해당 쇼핑몰은 현재 서비스 점검 중입니다.");
+                                return false;
+                            }
+                        }
                         if (serviceChkAlert[$(this).data("shopcode")] !== undefined) {
                             e.preventDefault();
                             alert(serviceChkAlert[$(this).data("shopcode")].contents);
@@ -129,6 +139,12 @@
                     });
                     $("#prod_summary_top").find(".prodminprice .btn__purchase").unbind().click(function (e) {
                         var vNowtime = new Date().format("yyyyMMddhhmm") * 1;
+                        if (serviceNShopChkAlert) {
+                            if ($(this).data("shoptype") == "4") {
+                                alert("해당 쇼핑몰은 현재 서비스 점검 중입니다.");
+                                return false;
+                            }
+                        }
                         if (serviceChkAlert[$(this).data("shopcode")] !== undefined) {
                             e.preventDefault();
                             alert(serviceChkAlert[$(this).data("shopcode")].contents);
@@ -137,22 +153,24 @@
                         insertLogLSV(18623, "" + gModelData.gCategory, "" + gModelData.gModelno);
                         insertLogLSV(14515, "" + gModelData.gCategory, "" + gModelData.gModelno);
                         ga('send', 'event', 'vip', 'summary_clickout', 'lowestprice');
+                        if (visitViewFlag) {
+                            insertLogLSV(26296, "" + gModelData.gCategory, "" + gModelData.gModelno);
+                        } //직방가 클릭뷰
                     });
                 }
                 //초기화
-                $("#prod_shopprice").find(".m_price__toggle li").each(function () {
-                    $(this).find("p").removeClass("is-on");
-                });
+                $("#prod_shopprice").find(".m_price__sort input").prop('checked', false);
                 if (cardshop_check) {
-                    $("#prod_shopprice").find(".toggle__chk.card").parent().show();
+                    $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").parent().show();
                 } else {
-                    $("#prod_shopprice").find(".toggle__chk.card").parent().hide();
+                    $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").parent().hide();
                 }
                 if (Object.keys(shopSpecialList).length > 0 || Object.keys(priceTop).length > 0 && priceTop.ad_type === "B") {
                     if (typeof shopSpecialList.cardSpecialPrice !== "undefined") {
                         var specialObj = shopSpecialList.cardSpecialPrice;
 
                         var shopcode = specialObj.shopcode;
+                        var shoptype = specialObj.shoptype;
                         var shopname = specialObj.shopname;
                         var cardname = specialObj.cardname;
                         var cardprice = specialObj.cardprice;
@@ -167,9 +185,9 @@
                             _delivery_text = _delivery_text;
                         }
 
-                        html += "<li data-type=\"card\" data-shopcode=\"" + shopcode + "\">\n                                <span class=\"col col-1\">\n                                    <a href=\"" + _bridgeUrl + "\" target=\"_blank\" class=\"logo\" onerror=\"$(this).replaceWith('" + shopname + "')\" >\n                                    " + (shoplogo_check ? "<img src=\"" + storageUrl + "/logo/logo16/logo_16_" + shopcode + ".png\" alt=\"" + shopname + "\" onerror=\"$(this).replaceWith('" + shopname + "')\">" : "" + shopname) + "\n                                    </a>\n                                </span>\n                                <span class=\"col col-2\">\n                                    <a href=\"" + _bridgeUrl + "\" target=\"_blank\" class=\"price\" >\n                                        <span class=\"tx_msg\"><i class=\"ico ico--card\"></i>" + cardname + " \uD560\uC778\uAC00</span>\n                                        <span class=\"tx_price\"><em>" + cardprice.format() + "</em>\uC6D0</span>\n                                    </a>\n                                </span>\n                                <span class=\"col col-3\">\n                                    <span class=\"delivery\">" + _delivery_text + "</span>\n                                </span>\n                            </li>";
+                        html += "<li data-type=\"card\" data-shopcode=\"" + shopcode + "\" data-shoptype=\"" + shoptype + "\">\n                                <span class=\"col col-1\">\n                                    <a href=\"" + _bridgeUrl + "\" target=\"_blank\" class=\"logo\" onerror=\"$(this).replaceWith('" + shopname + "')\" >\n                                    " + (shoplogo_check ? "<img src=\"" + storageUrl + "/logo/logo16/logo_16_" + shopcode + ".png\" alt=\"" + shopname + "\" onerror=\"$(this).replaceWith('" + shopname + "')\">" : "" + shopname) + "\n                                    </a>\n                                    " + (shoptype == "4" ? "<a href=\"" + _bridgeUrl + "\" target=\"_blank\" class=\"badge badge--npay\">\uB124\uC774\uBC84\uD398\uC774</a>" : "") + "\n                                </span>\n                                <span class=\"col col-2\">\n                                    <a href=\"" + _bridgeUrl + "\" target=\"_blank\" class=\"price\" >\n                                        <span class=\"tx_msg\"><i class=\"ico ico--card\"></i>" + cardname + " \uD560\uC778\uAC00</span>\n                                        <span class=\"tx_price\"><em>" + cardprice.format() + "</em>\uC6D0</span>\n                                    </a>\n                                </span>\n                                <span class=\"col col-3\">\n                                    <span class=\"delivery\">" + _delivery_text + "</span>\n                                </span>\n                            </li>";
                     } else {
-                        $("#prod_shopprice").find(".m_price__toggle > .toggle__chk.card").addClass("is-off");
+                        $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").prop('checked', false);
                     }
 
                     if (typeof shopSpecialList.cashSpecialPrice !== "undefined") {
@@ -229,10 +247,10 @@
                     $("#special_price").hide();
                 }
             }
-            $("#prod_shopprice").find(".toggle__chk").removeClass("is-on");
-            if (paramHandler.get("delivery") == "Y") $("#prod_shopprice").find(".toggle__chk.delivery").removeClass("is-off").addClass("is-on");else $("#prod_shopprice").find(".toggle__chk.delivery").removeClass("is-on").addClass("is-off");
+            $("#prod_shopprice").find(".m_price__sort input").prop('checked', false);
+            paramHandler.get("delivery") == "Y" ? $("#prod_shopprice").find(".m_price__sort input[data-sort='delivery']").prop('checked', true) : $("#prod_shopprice").find(".m_price__sort input[data-sort='delivery']").prop('checked', false);
 
-            if (paramHandler.get("card") == "Y") $("#prod_shopprice").find(".toggle__chk.card").removeClass("is-off").addClass("is-on");else $("#prod_shopprice").find(".toggle__chk.card").removeClass("is-on").addClass("is-off");
+            paramHandler.get("card") == "Y" ? $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").prop('checked', true) : $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").prop('checked', false);
             html = "";
             var firstFreeInterestCnt = 0;
             $.each(shopPriceList, function (index, listData) {
@@ -255,6 +273,7 @@
                 var bagdename = listData.badgename;
                 var cardbadge = listData.cardbadge;
                 var coupon = listData.coupon;
+                var deliveryCod_check = listData.deliveryCod_check;
                 var priceView = price;
                 var bridgeUrl = prodCommon.bridgeUrl('move_link', "" + shopcode, "" + gModelData.gModelno, "" + gModelData.gFactory, "" + plno, "" + coupon, "" + price, 1);
                 //할부
@@ -288,7 +307,7 @@
                     delivery_text = delivery_text;
                 }
 
-                html += "<li class=\"" + (index == 0 ? "is-minline" : "") + "\" data-shopcode=\"" + shopcode + "\">\n                        <span class=\"col col-1\">\n                            <a href=\"" + bridgeUrl + "\" target=\"_blank\" class=\"logo\">\n                                " + (shoplogo_check ? "<img src=\"" + storageUrl + "/logo/logo16/logo_16_" + shopcode + ".png\" alt=\"" + shopname + "\" onerror=\"$(this).replaceWith('" + shopname + "')\">" : "<span>" + shopname + "</span>") + "\n                            </a>\n                            " + (bagdename != "" ? "<a href=\"" + bridgeUrl + "\" target=\"_blank\" class=\"badge badge--" + bagdename + "\"></a>" : "") + "\n                            " + (bagdename == "quick" ? "<div class=\"lay-tooltip lay-comm lay-comm--sm\" onmouseleave=\"$(this).fadeOut(300);\" style=\"display: none;\">\n                                    <div class=\"lay-comm--head\">\n                                        <strong class=\"lay-comm__tit\">\uBE60\uB978\uBC30\uC1A1</strong>\n                                    </div>\n                                    <div class=\"lay-comm--body\">\n                                        <div class=\"lay-comm__inner\">\n                                            <ul class=\"ins-list\">\n                                                <li>\uC77C\uC815 \uC2DC\uAC04 \uC548\uC5D0 \uC8FC\uBB38\uD55C \uAC74\uC5D0 \uD55C\uD558\uC5EC \uB2F9\uC77C \uBC1C\uC1A1\uD558\uB294 \uBE60\uB978\uBC30\uC1A1 \uC0C1\uD488\uC785\uB2C8\uB2E4.</li>\n                                                <li>\uC8FC\uBB38 \uC2DC\uAC04\uC5D0 \uB530\uB978 \uC815\uD655\uD55C \uBC1C\uC1A1\uC77C\uC740 \uD574\uB2F9 \uC1FC\uD551\uBAB0 \uC0C1\uD488 \uC0C1\uC138\uD398\uC774\uC9C0\uC5D0\uC11C \uAF2D \uD655\uC778\uD574\uC8FC\uC138\uC694!</li>\n                                            </ul>\n                                        </div>\n                                    </div>\n                                </div>" : "") + "\n                        </span>\n                        <span class=\"col col-2\">\n                            <a href=\"" + bridgeUrl + "\" target=\"_blank\" class=\"price\">\n                            <span class=\"tx_msg\">\n                                " + (index == 0 ? "\uCD5C\uC800\uAC00" : "") + "\n                                " + (oversea_check ? "<i class=\"ico ico--direct\"></i>" : "") + "\n                                " + (cardbadge ? "<i class=\"ico ico--card\"></i>" : "") + "\n                                " + (cashmall_check ? "<i class=\"ico ico--cash\"></i>" : "") + "\n                            </span>\n\n                                 <span class=\"tx_price\"><em>" + numComma(priceView) + "</em>\uC6D0</span>\n                            </a>\n                        </span>\n                        <span class=\"col col-3\">\n                            <span class=\"delivery\">" + delivery_text + "</span>\n                        </span>\n                        " + (firstFreeInterest > 0 ? "<span class=\"col col-4\">\n                                <span class=\"discount_period\">\uCD5C\uB300 " + firstFreeInterest + "\uAC1C\uC6D4</span>\n                                <div class=\"lay-tooltip lay-comm lay-comm--sm\" onmouseleave=\"$(this).fadeOut(300);\" style=\"display: none;\">\n                                    <div class=\"lay-comm--head\">\n                                        <strong class=\"lay-comm__tit\">\uBB34\uC774\uC790\uD560\uBD80</strong>\n                                    </div>\n                                    <div class=\"lay-comm--body\">\n                                        <div class=\"lay-comm__inner\">\n                                            <p class=\"tx_tit tx_tit--stress\">\uACB0\uC81C \uAE08\uC561 \uBC0F \uCE74\uB4DC\uC0AC\uC5D0 \uB530\uB77C \uBB34\uC774\uC790 \uD61C\uD0DD\uC774 \uB2E4\uB97C \uC218 \uC788\uC73C\uB2C8, \uAD6C\uB9E4 \uC804 \uBC18\uB4DC\uC2DC \uD655\uC778\uD558\uC138\uC694!</p>\n                                            <ul class=\"ins-list\">\n                                            " + freeinterestView + "\n                                            </ul>\n                                        </div>\n                                    </div>\n                                </div>\n                            </span>" : "") + "\n                    </li>";
+                html += "<li class=\"" + (index == 0 ? "is-minline" : "") + "\" data-shopcode=\"" + shopcode + "\" data-shoptype=\"" + shoptype + "\">\n                        <span class=\"col col-1\">\n                            <a href=\"" + bridgeUrl + "\" target=\"_blank\" class=\"logo\">\n                                " + (shoplogo_check ? "<img src=\"" + storageUrl + "/logo/logo16/logo_16_" + shopcode + ".png\" alt=\"" + shopname + "\" onerror=\"$(this).replaceWith('" + shopname + "')\">" : "<span>" + shopname + "</span>") + "\n                            </a>\n                            " + (bagdename != "" ? "<a href=\"" + bridgeUrl + "\" target=\"_blank\" class=\"badge badge--" + bagdename + "\"></a>" : "") + "\n                            " + (bagdename == "quick" ? "<div class=\"lay-tooltip lay-comm lay-comm--sm\" onmouseleave=\"$(this).fadeOut(300);\" style=\"display: none;\">\n                                    <div class=\"lay-comm--head\">\n                                        <strong class=\"lay-comm__tit\">\uBE60\uB978\uBC30\uC1A1</strong>\n                                    </div>\n                                    <div class=\"lay-comm--body\">\n                                        <div class=\"lay-comm__inner\">\n                                            <ul class=\"ins-list\">\n                                                <li>\uC77C\uC815 \uC2DC\uAC04 \uC548\uC5D0 \uC8FC\uBB38\uD55C \uAC74\uC5D0 \uD55C\uD558\uC5EC \uB2F9\uC77C \uBC1C\uC1A1\uD558\uB294 \uBE60\uB978\uBC30\uC1A1 \uC0C1\uD488\uC785\uB2C8\uB2E4.</li>\n                                                <li>\uC8FC\uBB38 \uC2DC\uAC04\uC5D0 \uB530\uB978 \uC815\uD655\uD55C \uBC1C\uC1A1\uC77C\uC740 \uD574\uB2F9 \uC1FC\uD551\uBAB0 \uC0C1\uD488 \uC0C1\uC138\uD398\uC774\uC9C0\uC5D0\uC11C \uAF2D \uD655\uC778\uD574\uC8FC\uC138\uC694!</li>\n                                            </ul>\n                                        </div>\n                                    </div>\n                                </div>" : "") + "\n                        </span>\n                        <span class=\"col col-2\">\n                            <a href=\"" + bridgeUrl + "\" target=\"_blank\" class=\"price\">\n                            <span class=\"tx_msg\">\n                                " + (index == 0 ? "\uCD5C\uC800\uAC00" : "") + "\n                                " + (oversea_check ? "<i class=\"ico ico--direct\"></i>" : "") + "\n                                " + (cardbadge ? "<i class=\"ico ico--card\"></i>" : "") + "\n                                " + (cashmall_check ? "<i class=\"ico ico--cash\"></i>" : "") + "\n                            </span>\n\n                                 <span class=\"tx_price\"><em>" + numComma(priceView) + "</em>\uC6D0</span>\n                            </a>\n                        </span>\n                        <span class=\"col col-3\">\n                            " + (deliveryCod_check === true ? "<span class=\"delivery--cash\">\uCC29\uBD88</span>\n                                                            <div class=\"lay-tooltip lay-comm lay-comm--sm\" onmouseleave=\"$(this).fadeOut(300);\" style=\"display: none;\">\n                                                                <div class=\"lay-comm--head\">\n                                                                    <strong class=\"lay-comm__tit\">\uCC29\uBD88/\uC720\uBB34\uB8CC</strong>\n                                                                </div>\n                                                                <div class=\"lay-comm--body\">\n                                                                    <div class=\"lay-comm__inner\">\n                                                                        <p class=\"tx_tit tx_stress\">\uCD1D \uC0C1\uD488\uAE08\uC561\uC5D0 \uBC30\uC1A1\uBE44\uAC00 \uD3EC\uD568\uB418\uC5B4 \uC788\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</p>\n                                                                        <p class=\"tx_sub\">\uC1FC\uD551\uBAB0 \uC774\uB3D9 \uD6C4 \uBC18\uB4DC\uC2DC \uC0C1\uD488\uC815\uBCF4 \uBC0F \uAC00\uACA9\uC744 \uB2E4\uC2DC \uD55C\uBC88 \uD655\uC778\uD558\uC138\uC694.</p>\n                                                                    </div>\n                                                                </div>\n                                                            </div>" : "<span class=\"delivery\">" + delivery_text + "</span>") + "\n                        </span>\n                        " + (firstFreeInterest > 0 ? "<span class=\"col col-4\">\n                                <span class=\"discount_period\">\uCD5C\uB300 " + firstFreeInterest + "\uAC1C\uC6D4</span>\n                                <div class=\"lay-tooltip lay-comm lay-comm--sm\" onmouseleave=\"$(this).fadeOut(300);\" style=\"display: none;\">\n                                    <div class=\"lay-comm--head\">\n                                        <strong class=\"lay-comm__tit\">\uBB34\uC774\uC790\uD560\uBD80</strong>\n                                    </div>\n                                    <div class=\"lay-comm--body\">\n                                        <div class=\"lay-comm__inner\">\n                                            <p class=\"tx_tit tx_tit--stress\">\uACB0\uC81C \uAE08\uC561 \uBC0F \uCE74\uB4DC\uC0AC\uC5D0 \uB530\uB77C \uBB34\uC774\uC790 \uD61C\uD0DD\uC774 \uB2E4\uB97C \uC218 \uC788\uC73C\uB2C8, \uAD6C\uB9E4 \uC804 \uBC18\uB4DC\uC2DC \uD655\uC778\uD558\uC138\uC694!</p>\n                                            <ul class=\"ins-list\">\n                                            " + freeinterestView + "\n                                            </ul>\n                                        </div>\n                                    </div>\n                                </div>\n                            </span>" : "") + "\n                    </li>";
             });
             if (Object.keys(priceTop).length > 0 && priceTop.ad_type === "A") {
                 var phtml = "";
@@ -327,6 +346,12 @@
 
             $("#prod_shopprice").find(".m_price__list li a").unbind().click(function (e) {
                 var vNowtime = new Date().format("yyyyMMddhhmm") * 1;
+                if (serviceNShopChkAlert) {
+                    if ($(this).parents("li").data("shoptype") == "4") {
+                        alert("해당 쇼핑몰은 현재 서비스 점검 중입니다.");
+                        return false;
+                    }
+                }
                 if (serviceChkAlert[$(this).parents("li").data("shopcode")] !== undefined) {
                     e.preventDefault();
                     alert(serviceChkAlert[$(this).parents("li").data("shopcode")].contents);
@@ -348,6 +373,12 @@
             $("#special_price").find(".s_price__list li").unbind().click(function (e) {
                 var specialType = $(this).data("type");
                 var vNowtime = new Date().format("yyyyMMddhhmm") * 1;
+                if (serviceNShopChkAlert) {
+                    if ($(this).parents("li").data("shoptype") == "4") {
+                        alert("해당 쇼핑몰은 현재 서비스 점검 중입니다.");
+                        return false;
+                    }
+                }
                 if (serviceChkAlert[$(this).data("shopcode")] !== undefined) {
                     e.preventDefault();
                     alert(serviceChkAlert[$(this).data("shopcode")].contents);
@@ -367,6 +398,59 @@
             });
             $("#prod_shopprice").show();
         }
+    };
+    var prodVisitPriceView = function prodVisitPriceView(json) {
+        var visitViewFlag = false;
+        if (json.success && json.total > 0) {
+            var visitPriceJson = json.data.visitPrice;
+            if (typeof visitPriceJson !== "undefined" && Object.keys(visitPriceJson).length > 0) {
+
+                var collectDate = visitPriceJson["collectDate"];
+                var dc_ratio = visitPriceJson["dc_ratio"];
+                var diffPrice = visitPriceJson["diffPrice"];
+                var visitPrice = visitPriceJson["visitPrice"];
+                var shopMinPrice = visitPriceJson["goodsMinPrice"];
+
+                if (dc_ratio < 5 && diffPrice < 1000) {
+                    //미노출타입
+                    $("#summary_visitprice").hide();
+                } else {
+                    //직방가 노출뷰
+                    insertLogLSV(26295, "" + gModelData.gCategory, "" + gModelData.gModelno);
+                    //할인율 노출 타입
+                    if (dc_ratio > 5) {
+                        $("#summary_visitprice").find(".direct_summ .tx_price").html("<em>" + dc_ratio + "%</em> (<em>" + numComma(diffPrice) + "</em>원)");
+                    } else if (diffPrice >= 1000) {
+                        //차액 노출타입
+                        $("#summary_visitprice").find(".direct_summ .tx_price").html("<em>" + numComma(diffPrice) + "</em>원");
+                    }
+                    $("#summary_visitprice").find(".btn_tip .tx_date").html(collectDate);
+                    $("#summary_visitprice").find(".row--min .tx_price em").html(numComma(visitPrice));
+                    $("#summary_visitprice").find(".row--sale .tx_price em").html("-" + numComma(diffPrice));
+                    $("#summary_visitprice").find(".row--total .tx_price em").html(numComma(shopMinPrice));
+                    $("#summary_visitprice").show();
+                    // 툴팁 노출
+                    $("#summary_visitprice").find(".btn_tip").on("click", function () {
+                        var _this = $(this);
+
+                        _this.addClass("is-on");
+
+                        setTimeout(function () {
+                            _this.removeClass("is-on");
+                        }, 2300);
+                    });
+                    // 직방가 확장 토글
+                    $("#summary_visitprice").find(".btn_tab").off().on("click", function () {
+                        $("#summary_visitprice").toggleClass("is-expand");
+                    });
+                    visitViewFlag = true;
+                }
+            } else {
+                $("#summary_visitprice").removeClass("is-expand");
+                $("#summary_visitprice").hide();
+            }
+        }
+        return visitViewFlag;
     };
     var numComma = function numComma(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@page import="javax.servlet.http.Cookie"%>
 <%@ include file="/lsv2016/include/IncAjaxHeader.jsp"%>
 <%@ include file="/wide/include/IncSearch.jsp"%>
 <%@ include file="/include/IncGroupTool_2010.jsp"%>
@@ -19,6 +20,7 @@ String relModelNm = ChkNull.chkStr(request.getParameter("relmodelnm"), "") ;
 int paramModelNo = ChkNull.chkInt(request.getParameter("modelno"), 0); //해당 상품
 String strRelText = ChkNull.chkStr(request.getParameter("reltext"), ""); 
 String strAppYN = ChkNull.chkStr(request.getParameter("appYN"), "N");
+String strADYN = ChkNull.chkStr(request.getParameter("adProdYN"), "N");
 
 try{
 	DecimalFormat formatter = new DecimalFormat("###,###");
@@ -147,6 +149,7 @@ try{
 		resultObj.put("success", false);
 		resultObj.put("returnMsg", "Invalid Parameter");
 	}
+	resultObj.put("adYN", strADYN);
 	out.println(resultObj.toString());
 }catch(Exception e){}
 %>

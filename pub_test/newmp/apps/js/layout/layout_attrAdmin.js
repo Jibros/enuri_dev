@@ -87,6 +87,5 @@ var layout = new dhx.Layout("layout", config);
     layout.getCell("sidebar").attach(sidebar)
     layout.getCell("contents").attach(contentLayout)
 
-// 페이지 명 => 카테고리 분기 
-var pageName = 'attrAdmin';
-export { layout, pageName } // 사이드바 콜랩스를 위한 layout 내보내기
+
+export { layout } // 사이드바 콜랩스를 위한 layout 내보내기

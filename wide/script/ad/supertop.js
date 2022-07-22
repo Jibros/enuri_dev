@@ -193,7 +193,6 @@ function drawAd(listType, adData, dstParam, highRankData) {
 			}
 			
 			if(adHtml.length>0 || adLightHtml.length>0) {
-				$("li.ad img.lazy").lazyload();
 				$(".prodItem.ad").show();
 				
 				// 리스트뷰 슈퍼탑,상품리스트 중복 이슈 
@@ -256,7 +255,7 @@ function drawAd(listType, adData, dstParam, highRankData) {
 					}
 				}
 				
-				// 추가된 돔에 대하여 순위제거 및 lazyload 적용
+				// 추가된 돔에 대하여 순위제거
 				var addIndexCount = $("li.prodItem.highrank").length - useCount;
 				$("li.prodItem.highrank").each(function(index,item) {
 					if(index>=addIndexCount) {
@@ -266,10 +265,6 @@ function drawAd(listType, adData, dstParam, highRankData) {
 				});
 				$("li.prodItem.highrank").removeClass("highrank");
 				
-				// 이미지 보여주기
-				$("li.fill img.lazy").lazyload({
-					placeholder : noImageStr
-				});
 			}
 			
 			// LP 중단 배너 ( T5 )
@@ -432,7 +427,7 @@ function drawSuperTopB(listObj) {
 	
 	if (model_name != "" && price != "" && ad_pc_url != "" && imgurl != "") {		// 해당 data가 없을 경우는 html 노출 하지 않는다. 
 	
-		adHtml +="<li class=\"prodItem ad\" data-type=\"supertop-b\" data-id=\"spon_b_"+adid+"\">";
+		adHtml +="<li class=\"prodItem ad supertop--btype\" data-type=\"supertop-b\" data-id=\"spon_b_"+adid+"\">";
 		adHtml +="	<div class=\"goods-item\">";
 		//				<!-- 썸네일 -->
 		adHtml +="		<div class=\"item__thumb\">";
@@ -448,8 +443,8 @@ function drawSuperTopB(listObj) {
 			
 			//					<!-- 모델명 -->
 			adHtml +="			<div class=\"item__model\">";
-			adHtml +="				<span class=\"tag--ad\">AD</span>";
 			adHtml +="				<a href=\""+ad_pc_url+"\" target=\"_blank\">"+model_name+"</a>";
+			adHtml +="				<span class=\"tag--ad\">AD</span>";
 			adHtml +="			</div>";
 			//					<!-- 카피문구 -->
 			if(copytext.trim().length>0) {
@@ -472,10 +467,15 @@ function drawSuperTopB(listObj) {
 		
 			//				<!-- 상품가격 -->
 			adHtml +="		<div class=\"item__price\">";
-			adHtml +="			<div class=\"tx--confirm\"><i class=\"ico-info lp__sprite\"></i> 쇼핑몰에서 가격을 확인하세요</div>";
 			adHtml +="			<div class=\"price__mall\">";
 			//						<!-- 가격 -->
 			adHtml +="				<div class=\"col--price\">";
+			adHtml +="					<button type=\"button\" class=\"btn_tip\">";
+			adHtml +="						<i class=\"icon_noti lp__sprite\"></i>";
+			adHtml +="						<div class=\"layer_noti\">";
+			adHtml +="							<div class=\"txt3\">쇼핑몰에서 가격을 확인하세요</div>";
+			adHtml +="						</div>";
+			adHtml +="					</button>";
 			adHtml +="					<a href=\""+ad_pc_url+"\" target=\"_blank\"><em>"+price+"</em>원</a>";
 			adHtml +="				</div>";
 			adHtml +="			</div>";

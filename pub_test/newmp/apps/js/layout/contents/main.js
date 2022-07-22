@@ -1422,6 +1422,12 @@ var wrapSrchControll = new dhx.Form(null, {
             type: "button",
             text:"검색",
             css: "control-comm btn-srch"
+        },
+        {
+            id: "allKeywordSubmit2",
+            type: "button",
+            text:"검색",
+            css: "control-comm btn-srch"
         }
     ]
 })

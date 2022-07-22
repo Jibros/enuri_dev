@@ -167,21 +167,20 @@
         }, 1000);
 
         $(window).on("scroll", stickyProdTab);
-        $("#prod_shopprice").find(".m_price__toggle .toggle__chk").unbind("click");
-        $("#prod_shopprice").find(".m_price__toggle .toggle__chk").click(function () {
-
+        $("#prod_shopprice").find(".m_price__toggle .toggle__chk").on("click", function () {
             if ($(this).hasClass("is-off")) {
                 $(this).removeClass("is-off");
                 $(this).addClass("is-on");
                 if ($(this).hasClass("card")) {
                     prodShopPrice.paramHandler.set("card", "Y");
+                    prodPriceComp.paramHandler.set("card", "Y");
                     insertLogLSV(18626, "" + gModelData.gCategory, "" + gModelData.gModelno);
                     ga('send', 'event', 'vip', 'summary_sort', 'creditpromotion');
                 }
                 if ($(this).hasClass("delivery")) {
                     prodShopPrice.paramHandler.set("delivery", "Y");
                     prodOption.paramHandler.set("delivery", "Y");
-                    prodPriceComp.paramHandler.set("sort", "delivery");
+                    prodPriceComp.paramHandler.set("delivery", "Y");
                     insertLogLSV(18625, "" + gModelData.gCategory, "" + gModelData.gModelno);
                     ga('send', 'event', 'vip', 'summary_sort', 'shipping');
                 }
@@ -190,14 +189,65 @@
                 $(this).removeClass("is-on");
                 if ($(this).hasClass("card")) {
                     prodShopPrice.paramHandler.set("card", "");
+                    prodPriceComp.paramHandler.set("card", "N");
                 }
                 if ($(this).hasClass("delivery")) {
                     prodShopPrice.paramHandler.set("delivery", "");
                     prodOption.paramHandler.set("delivery", "");
-                    prodPriceComp.paramHandler.set("sort", "price");
+                    prodPriceComp.paramHandler.set("delivery", "N");
                 }
             }
             prodShopPrice.paramHandler.set("callcnt", 1);
+        });
+        $("#prod_shopprice").find(".m_price__sort input").on("click", function () {
+            if ($(this).is(":checked")) {
+                if ($(this).data("sort") === 'card') {
+                    prodShopPrice.paramHandler.set("card", "Y");
+                    prodPriceComp.paramHandler.set("card", "Y");
+                    insertLogLSV(18626, "" + gModelData.gCategory, "" + gModelData.gModelno);
+                    ga('send', 'event', 'vip', 'summary_sort', 'creditpromotion');
+                }
+                if ($(this).data("sort") === 'delivery') {
+                    prodShopPrice.paramHandler.set("delivery", "Y");
+                    prodOption.paramHandler.set("delivery", "Y");
+                    prodPriceComp.paramHandler.set("delivery", "Y");
+                    insertLogLSV(18625, "" + gModelData.gCategory, "" + gModelData.gModelno);
+                    ga('send', 'event', 'vip', 'summary_sort', 'shipping');
+                }
+            } else {
+                if ($(this).data("sort") === 'card') {
+                    prodShopPrice.paramHandler.set("card", "");
+                    prodPriceComp.paramHandler.set("card", "N");
+                }
+                if ($(this).data("sort") === 'delivery') {
+                    prodShopPrice.paramHandler.set("delivery", "");
+                    prodOption.paramHandler.set("delivery", "");
+                    prodPriceComp.paramHandler.set("delivery", "N");
+                }
+            }
+            prodShopPrice.paramHandler.set("callcnt", 1);
+        });
+
+        $("#prod_pricecomp .sort_block .sort_chk input").off().on("click", function () {
+            if ($(this).is(':checked') === true) {
+                prodPriceComp.paramHandler.set("" + $(this).data('sort'), 'Y');
+                prodShopPrice.paramHandler.set("" + $(this).data('sort'), 'Y');
+                prodOption.paramHandler.set("" + $(this).data('sort'), 'Y');
+            } else {
+                prodPriceComp.paramHandler.set("" + $(this).data('sort'), 'N');
+                prodShopPrice.paramHandler.set("" + $(this).data('sort'), 'N');
+                prodOption.paramHandler.set("" + $(this).data('sort'), 'N');
+            }
+            /* ($(this).is(':checked') === true)
+            ? prodPriceComp.paramHandler.set(`${$(this).data('sort')}`, 'Y')
+            : prodPriceComp.paramHandler.set(`${$(this).data('sort')}`, 'N'); */
+
+            /*로그 정리되면 수정*/
+            if ($(this).data('sort') === "delivery") {
+                insertLogLSV(14502, "" + gModelData.gCategory, "" + gModelData.gModelno);
+            } else if ($(this).data('sort') == "card") {
+                insertLogLSV(14504, "" + gModelData.gCategory, "" + gModelData.gModelno);
+            }
         });
     });
     // 상단요약 좌측 > 썸네일 목록 스와이퍼 생성
@@ -369,7 +419,7 @@
 
                         case 20:
                             if ((gModelData.gCate4 == "1459" || gModelData.gCate4 == "1203" || gModelData.gCate4 == "1205" || gModelData.gCate4 == "1219" || gModelData.gCate4 == "1242" || gModelData.gCate4 == "1254") && prodShopPrice.cardshop_check) {
-                                prodPriceComp.paramHandler.set("sort", "card");
+                                prodPriceComp.paramHandler.set("card", "Y");
                             } else {
                                 prodPriceComp.paramHandler.set("sort", "price");
                             }

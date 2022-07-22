@@ -54,6 +54,7 @@ csearch.setStrUserIp(getUserAddr(request)); //사용자 주소
 csearch.setStrUserAgent(getUserAgent(request)); // 사용자 Agent
 csearch.addParameter("strUserId", getUserID(request)); // 사용자 ID
 csearch.addParameter("strUserDevice", strDevice); // 사용자 디바이스종류
+csearch.addParameter("esProfileName", strProfileName); // 검색 프로파일
 
 csearch.setRequestUrl(ChkNull.chkStr(request.getRequestURI()));
 csearch.setUriQuerystring(ChkNull.chkStr(getQueryString(request)));

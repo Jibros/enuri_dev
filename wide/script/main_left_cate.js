@@ -36,11 +36,10 @@ $(function(){ // 메인 > 카테고리 퍼블 테스트용
                     if($.trim($("#first_depth" + inx).html()) == ""){
                     	var getUrl = "";
                     	
-                    	if(isDev)	getUrl = "/wide/main/ajax/Ajax_Gnb_Src_202202_main.jsp?g_seq="+(inx+1);
-                    	else if(isDev2) 		getUrl = "/wide/main/ajax/Ajax_Gnb_Src_2021_main_nw_dev2.jsp?g_seq="+(inx+1);
-                    	//else if(isDev)	getUrl = "/wide/main/ajax/Ajax_Gnb_Src_2021_main_nw.jsp?g_seq="+(inx+1);
-                    	                    	
-                    	else   			getUrl = "/wide/main/ajax/main_CateList_2022_"+inx+".html";
+						if (isDev) getUrl = "/wide/main/ajax/Ajax_Itg_Gnb_Src_2022_main.jsp?g_seq=" + (inx + 1); 
+						//else if(isDev2) 		getUrl = "/wide/main/ajax/Ajax_Gnb_Src_2021_main_nw_dev2.jsp?g_seq="+(inx+1);
+						//else if(isDev)	getUrl = "/wide/main/ajax/Ajax_Gnb_Src_2021_main_nw.jsp?g_seq="+(inx+1);
+						else getUrl = "/wide/main/ajax/main_Itg_CateList_2022_" + inx + ".html"; 
                     	
                     	$.ajax({
                     	    url: getUrl,
@@ -53,7 +52,6 @@ $(function(){ // 메인 > 카테고리 퍼블 테스트용
                     	    	if(!ison){
                     	    		$("#first_depth"+inx).find("li.cate-item.cate-item--depth3").eq(0).addClass("is--on");
                     	    	}
-                    	    	
                     	    	
                     	    }
                     	});
@@ -81,7 +79,6 @@ $(function(){ // 메인 > 카테고리 퍼블 테스트용
             	$t.parent().parent().parent().find("li.cate-item--depth3").removeClass("is--on");
                 $t.addClass("is--on");
             },delayTime);
-        
     });
      $("body").on('mouseleave', '.cate-main .cate-item--depth3' , function(e) {
     	 clearTimeout(delayTimer);
@@ -109,21 +106,29 @@ $(function(){ // 메인 > 카테고리 퍼블 테스트용
 				case 11: insertLog(24310);break;
 			}
 			*/
-            
     });
      $("body").on('mouseleave', '.cate-main .cate-item--depth4' , function(e) {
     	 clearTimeout(delayTimer);
     });
+
+	$("body").on('mouseenter', '.cate-main .cate-item--depth5', function(e) { 
+		$(this).addClass("is--on").siblings().removeClass("is--on");
+			
+			$(".cate-main .cate-item--depth5").each(function(index, item) {
+				if ($(item).hasClass('is--on')) {
+					$(item).find('.cate--tree').stop().slideDown();
+				} else {
+					$(item).find('.cate--tree').stop().slideUp();
+				}
+			})
+	});
 });
-
-
 $1DepthList = $("#main_left_cate > li");
 
 //Banner Json 파일명 (/jca/main/json/ 파일명.json) 현재사용 안함
 //var adServerLinkList = ["B21","B22","B23","B24","B25","B26","B27","B28"];
 
-
-var adServerLinkList = ["B21","B22","B23","B24","B25","B26","B27","B28",   "B29", "B210" , "B2110" ];
+var adServerLinkList = ["B21","B22","B23","B24","B25","B26","B27","B28", "B29", "B210" , "B2110" ];
 
 function fnSetGnbBanner(){
 	var url = isDev > 0 ? "/wide/main/ajax/Ajax_Gnb_Src_2021_main_nw.jsp?stype=banner" : "/wide/main/ajax/mainCateBanner_data_2021.json";
@@ -292,54 +297,139 @@ function fnSetBannerIconOver(){
 	    e.returnValue = false;
     });
 }
-function fnBannerRoller(inx){
-	
-	$1DepthList.each(function(i,v){
-	
-		if($(this).is(".cate-item--depth1.is--empty")) return false;
+function fnBannerRoller(){
+	//console.log("fnBannerRoller");
+	try{
+		var timer = new Array();
 		
-			var $BannerArea = $("#cateBanner"+i+"> li");
-			var $BannerBtn  = $("#cateBannerBot"+i);
+		$1DepthList.each(function(i,v){
+		
+			if($(this).is(".cate-item--depth1.is--empty")) return false;
 			
-			var bannerCnt = $BannerArea.length;
-			
-			var rollerStarter = function(){
+				var $BannerArea1 = $("#cateBanner"+i+"> li");
+				var $BannerBtn1  = $("#cateBannerBot"+i);
+
+				var bannerCnt = $BannerArea1.length;
 				
-				var bannerPage = 0;
+				rollerStarter = function(num){
+					
+					var bannerPage = 0;
+					var inx = 0;
+					
+					if(num == "" ){
+						
+						timer[i] = setInterval(function(){
+							
+							if(bannerCnt == bannerPage)  bannerPage = 0;
+							
+							$BannerArea1.eq(bannerPage).addClass("is--on").siblings().removeClass('is--on');
+							$BannerBtn1.find("button").eq(bannerPage).addClass("is--active").siblings().removeClass('is--active');
+							
+							bannerPage++;
+							
+						},3000);
+						
+					}else{
+						//inx = num;
+						$("#cateBanner"+num+"> li").each(function(i,v){				
+							if($(this).hasClass("is--on")){
+								bannerPage = i;
+							}
+						});
+						
+						timer[num] = setInterval(function(){
+							
+							bannerCnt = $("#cateBanner"+num+"> li").length;			
+							
+							if(bannerCnt == bannerPage)  bannerPage = 0;
+							
+							$("#cateBanner"+num+"> li").eq(bannerPage).addClass("is--on").siblings().removeClass('is--on');
+							$("#cateBannerBot"+num).find("button").eq(bannerPage).addClass("is--active").siblings().removeClass('is--active');
+							
+							bannerPage++;
+							
+						},3000);
+
+					}				
+				}
+				rollerStopper = function(num){
+					//console.log("rollerStopper");
+					clearInterval(timer[num]); 
+				}
+				$BannerArea1.mouseenter(function(){
+				//$("body").on('mouseenter', '.cate-main-bnr__list > li' , function(e) {
+					var id = $(this).parent().attr("id");	
+					var num = id.replace("cateBanner","");
+					
+					rollerStopper(num);
+					
+				});
+				$BannerArea1.mouseleave(function(){
+				//$("body").on('mouseleave', '.cate-main-bnr__list > li' , function(e) {
+					
+					var id = $(this).parent().attr("id");
+					
+					var id = $(this).parent().attr("id");
+					var num = id.replace("cateBanner","");
+					
+					rollerStarter(num);
+					
+				});
+				$BannerBtn1.mouseenter(function(e){
+				//$("body").on('mouseenter', '.cate-main-bnr__paging' , function(e) {
+					if(e.target.tagName.toLowerCase() != "button"){
+						rollerStopper();
+					}
+			
+				}).mouseleave(function(){
+					rollerStarter();
+				});
+				rollerStarter(0);		
+		});
 				
-				timer = setInterval(function(){
-					
-					if(bannerCnt == bannerPage)  bannerPage = 0;
-					
-					$BannerArea.eq(bannerPage).addClass("is--on").siblings().removeClass('is--on');
-					$BannerBtn.find("button").eq(bannerPage).addClass("is--active").siblings().removeClass('is--active');
-					
-					bannerPage++;
-					
-			},3000)};
-		
-			var rollerStopper = function(){ clearInterval(timer); }
-		
-			$BannerArea.mouseenter(function(){
-			//$("body").on('mouseenter', '.cate-main-bnr__list > li' , function(e) {
-				rollerStopper();
-			});
+	}catch(e){
+		console.log(e);
+	}
+	/*
+	var timer = new Array();
+	var $BannerArea1 = $("#cateBanner0 > li");
+	var $BannerBtn1  = $("#cateBannerBot0");
+	
+	var bannerCnt = $BannerArea1.length;
+	
+	rollerStarter1 = function(){
+		var bannerPage = 0;
+		timer[0] = setInterval(function(){
 			
-			$BannerArea.mouseleave(function(){
-			//$("body").on('mouseleave', '.cate-main-bnr__list > li' , function(e) {
-				rollerStarter();
-			});
+			if(bannerCnt == bannerPage)  bannerPage = 0;
 			
-			$BannerBtn.mouseenter(function(e){
-			//$("body").on('mouseenter', '.cate-main-bnr__paging' , function(e) {
-				if(e.target.tagName.toLowerCase() != "button")
-					rollerStopper();
-		
-			}).mouseleave(function(){
-				rollerStarter();
-			});
-			rollerStarter();
+			$BannerArea1.eq(bannerPage).addClass("is--on").siblings().removeClass('is--on');
+			$BannerBtn1.find("button").eq(bannerPage).addClass("is--active").siblings().removeClass('is--active');
+			
+			bannerPage++;
+			//console.log("rollerStarter"+rollerStarter);
+			
+	},3000)};
+
+	rollerStopper1 = function(){
+		console.log("rollerStopper");
+		clearInterval(timer[0]); 
+	}
+	$BannerArea1.mouseenter(function(){
+		console.log($(this).parent().attr("id"));
+		rollerStopper1();
 	});
+	$BannerArea1.mouseleave(function(){
+		console.log("www");
+		rollerStarter1();
+		
+	});
+	$BannerBtn1.mouseenter(function(e){
+		if(e.target.tagName.toLowerCase() != "button"){
+			rollerStopper1();
+		}
+	});
+	*/
 }
 function allCate(){
 	$('.cate-all').show();
@@ -347,7 +437,7 @@ function allCate(){
 			
 	if($.trim(jQuery("#all_cate").html())==""){
 		jQuery.ajax({
-			url : isDev ? "/wide/main/ajax/Ajax_Gnb_Src_202202_main.jsp?stype=allCate" : "/wide/main/ajax/AllCateList_2022.html",
+			url: isDev ? "/wide/main/ajax/Ajax_Itg_Gnb_Src_2022_main.jsp?stype=allCate" : "/wide/main/ajax/ItgCateList_2022.html", 
 			data : "html",
 			success:function(data){
 				

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>마이e클럽</title>
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/common.css" />
+	<link rel="stylesheet" type="text/css" href="/css/mobile_v2/bot_recomlist.css" />
+	<script type="text/javascript" src="http://m.enuri.com/mobilefirst/js/lib/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+	<!-- 로딩 -->
+	<div id="loadingDiv" class="comm__loader">
+		<div class="loader_inner">로딩중</div>
+	</div>
+	<script>
+		$(function () {
+			setTimeout(function () {
+				$(".comm__loader").fadeOut(100);
+			}, 1500);
+		})
+	</script>
+	<!-- // -->
+
+	<div id="wrap">
+		<header id="header" class="page_header nomargin">
+			<div class="header_top">
+				<div class="wrap">
+					<button href="#" class="btn__sr_back comm__sprite2"><i class="icon_arrow_back comm__sprite2">뒤로</i></button>
+					<div class="header_top_page_name">추천상품</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- 컨테이너 : 마이e클럽 컨텐츠 "m_mye_cont"  -->
+		<section id="container" class="border-box">
+			<div class="bot_recom_wrap">
+				<div class="bot_recom_menu_list">
+					<ul>
+						<li class="">구매할때</li>
+						<li class="active">저렴한생필품</li>
+						<li class="">자주구매했어요</li>
+						<li class="">이런상품어때요</li>
+						<li class="">꼭필요한생필품</li>
+						<li class="">30대남성</li>
+						<li class="">관심집중</li>
+						<li class="">인기몰최저가</li>
+					</ul>
+				</div>
+				<div class="bot_recom_goods_txt">
+					최근 본 상품 정보와 인기 상품 정보로 추천해요
+				</div>
+				<div class="bot_recom_goods_list">
+					<ul class="col_wrap col_gap_8">
+						<!-- 스크립트로 삽입 -->
+					</ul>
+					<!-- 클릭시 리스트 30개까지 노출 -->
+					<a href="" class="btn_more"><em>다른 추천 상품</em> 더보기</a>
+				</div>
+			</div>
+			<!-- 로딩실패시 -->
+			<div class="error_recom_goods_list" >
+				<i class="icon_re_error"></i>
+				<div class="error_txt">
+					네트워크 일시 장애로<br>
+					데이터 호출에 실패했습니다.<br>
+					<em>잠시 후 다시 접속해 주세요.</em>
+				</div>
+				<button type="button"><i class="icon_re_refresh"></i>새로고침</button>
+			</div>
+		</section>
+	</div>
+	<script>
+		/* 임시상품 리스트 */
+		for(var i=0; i<9; i++) {
+			var listHtml = '';
+			listHtml += '<li class="col col_4">';
+			listHtml += '	<a href="" class="goods_link">';
+			listHtml += '		<div class="thumb">';
+			listHtml += '			<div class="thumbnail_img"><img src="//img.enuri.info/images/sample/myeclub_re/sample_goods_img' +(i%2 == 0?'2':'1')+ '.jpg">';
+			listHtml += '			</div>';
+			listHtml += '		</div>';
+			listHtml += '		<div class="info">';
+			listHtml += '			<div class="goods_name">' + (i%2 == 0?'젠리 천연가죽 털안감 어그부츠':'젠리 천연가죽 털안감 어그부츠 젠리 천연가죽 털안감 어그부츠 젠리') +'</div>';
+			listHtml += '			<div class="goods_price"><em>12,400</em>원</div>';
+			listHtml += '		</div>';
+			listHtml += '	</a>';
+			listHtml += '</li>';
+			$('.bot_recom_goods_list ul').append(listHtml);
+		}
+	</script>
+</body>
+</html>

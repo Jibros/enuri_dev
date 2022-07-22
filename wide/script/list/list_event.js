@@ -1039,13 +1039,6 @@ $(document).on("click", "ul.list-filter__tab li", function() {
 	
 	loadGoods();
 	
-	// 가격대 노출 변경
-	$(".search-box-row.row-price-range").hide();
-	$(".search-box__range--price .attrs").removeClass("sel");
-	$(".search-box__range--price .attrs .btn--range-price").removeClass("is--active");
-	$(".search-box__range--price .attrs[data-start="+param_sPrice+"][data-end="+param_ePrice+"]").addClass("sel");
-	$(".search-box__range--price .attrs[data-start="+param_sPrice+"][data-end="+param_ePrice+"]").find("button").addClass("is--active");
-	
 	if(param_tabType==0) {
 		if(listType=="list") {
 			insertLogLSV(24137, param_cate); // LP>전체상품 탭 클릭수
@@ -1849,7 +1842,7 @@ $(document).on("click", ".option__row .opt--condition, .option__row .opt--price 
 	
 	if(!blLoadMiniVip) {
 		var miniVipScript = document.createElement("script");
-		miniVipScript.setAttribute("src", "/wide/script_min/miniVip.min.js");
+		miniVipScript.setAttribute("src", "/wide/script_min/miniVip.min.js?v=20220504");
 		miniVipScript.setAttribute("type", "text/javascript");
 		miniVipScript.onload = function() {
 			initMiniVip(modelno, category); // 미니 vip 호출
@@ -1868,6 +1861,13 @@ $(document).on("change", "input[name=radioLPCATE]", function() {
 	location.href="/list.jsp?cate="+cate;
 });
 
+// LP 미카테고리 링크 이동 클릭
+$(document).on("change", "input[name=radioLPCATE_LINK]", function() {
+	var url = $(this).closest("li").attr("data-url");
+	insertLogLSV(24159, param_cate); // LP>카테고리>미분류
+	location.href=url;
+});
+
 // SRP 추천 카테고리 확장
 $(document).on("click", "ul.search-box__list--recomcate li span.ico-expend-arr", function() {
 	var cate = $(this).attr("data-cate");
@@ -1884,9 +1884,7 @@ $(document).on("click", "ul.search-box__list--recomcate li span.ico-expend-arr",
 
 // 찜 목록열기
 $(document).on("click", "button.lay-zzim__btn", function() {
-	var openUrl = "/view/resentzzim/resentzzimList.jsp?listType=2";
-	var resentZzimWin = window.open(openUrl,"resentZzimWin","width=804,height="+window.screen.height+",left=0,top=0,toolbar=no,directories=no,status=no,scrollbars=yes,resizable=yes,menubar=no");
-	resentZzimWin.focus();
+	window.open("https://"+location.host+"/my/my_enuri.jsp?name=zzim");    
 });
 
 // 부분검색어 재검색
@@ -2164,19 +2162,26 @@ $(document).on("click", "a.btn_relate_item", function(){
 	var vModelNo = $(this).data("modelno");
 	var vRelBtnText = $(this).data("relbtntext");
 	var vOriginModelNo = $(this).data("orgmodelno");
-	loadRelatedProd(vModelNo, vRelProdModelNo, vOriginModelNo, vRelProdModelNm, vRelBtnText);
+	var supertopProdYN = false;
+	if($(this).closest(".prodItem").hasClass("ad")) {
+		supertopProdYN = true;
+	};
+	
+	loadRelatedProd(vModelNo, vRelProdModelNo, vOriginModelNo, vRelProdModelNm, vRelBtnText, supertopProdYN);
  	if(listType=="list") {
 		insertLogLSV(26001, param_cate); // LP > 리스트뷰 > 관련잉크토너
 	} else if(listType=="search") {
 		insertLogLSV(26263); // SRP > 리스트뷰 > 관련잉크토너
 	}
 });
-/*---------------------------------- 개별로그 ------------------------------------------------------*/
 $(document).on("click", "#listBodyDiv .category-lp__name", function() {
 	insertLogLSV(24124, param_cate); // LP>카테고리>중분류
 });
-$(document).on("click", ".category-lp .category-lp__item a", function() {
+$(document).on("click", ".category-lp .category-lp__item > a", function() {
 	insertLogLSV(14211, param_cate); // LP>카테고리>소분류
+});
+$(document).on("click", ".category-lp .category-lp__item .category-lp__down a", function() {
+	insertLogLSV(27052, param_cate); // LP>카테고리>미분류
 });
 $(document).on("click", ".search-box-row[data-attr-type=factory] dt button.search-box__btn--unfold", function() {
 	if(listType=="list") {
@@ -2673,4 +2678,82 @@ $(document).on("click", "button[data-type=smartfinder_texthighlight]", function(
 		insertLogLSV(26329, param_cate); // LP > 상세검색 > 텍스트강조형 (미카테고리 속성화 포함)
 	}
 });
-/*---------------------------------- // 개별로그 ------------------------------------------------------*/
+$(document).on("click", ".knowcom-box--group[knowbox-type=1] .knowcom-group--body a", function() {
+	if(listType=="list") {
+		insertLogLSV(26918, param_cate); // LP 쇼핑지식 컨텐츠박스 - 기획전 컨텐츠
+	} else if(listType=="search") {
+		insertLogLSV(26920); // SRP 쇼핑지식 컨텐츠박스 - 기획전 컨텐츠
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=1] .knowcom-group--head button", function() {
+	if(listType=="list") {
+		insertLogLSV(26917, param_cate); // LP 쇼핑지식 컨텐츠박스 - 기획전 좌우버튼
+	} else if(listType=="search") {
+		insertLogLSV(26919); // SRP 쇼핑지식 컨텐츠박스 - 기획전 좌우버튼
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=2] .knowcom-group--body a", function() {
+	if(listType=="list") {
+		insertLogLSV(15806, param_cate); // LP 쇼핑지식 컨텐츠박스 - 구매가이드 컨텐츠
+	} else if(listType=="search") {
+		insertLogLSV(16741); // SRP 쇼핑지식 컨텐츠박스 - 구매가이드 컨텐츠
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=2] .knowcom-group--head button", function() {
+	if(listType=="list") {
+		insertLogLSV(15787, param_cate); // LP 쇼핑지식 컨텐츠박스 - 구매가이드 좌우버튼
+	} else if(listType=="search") {
+		insertLogLSV(15713); // SRP 쇼핑지식 컨텐츠박스 - 구매가이드 좌우버튼
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=3] .knowcom-group--body a", function() {
+	if(listType=="list") {
+		insertLogLSV(15805, param_cate); // LP 쇼핑지식 컨텐츠박스 - 리뷰 컨텐츠
+	} else if(listType=="search") {
+		insertLogLSV(16742); // SRP 쇼핑지식 컨텐츠박스 - 리뷰 컨텐츠
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=3] .knowcom-group--head button", function() {
+	if(listType=="list") {
+		insertLogLSV(15788, param_cate); // LP 쇼핑지식 컨텐츠박스 - 리뷰 좌우버튼
+	} else if(listType=="search") {
+		insertLogLSV(15714); // SRP 쇼핑지식 컨텐츠박스 - 리뷰 좌우버튼
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=4] .knowcom-group--body a", function() {
+	if(listType=="list") {
+		insertLogLSV(15807, param_cate); // LP 쇼핑지식 컨텐츠박스 - 뉴스 컨텐츠
+	} else if(listType=="search") {
+		insertLogLSV(16740); // SRP 쇼핑지식 컨텐츠박스 - 뉴스 컨텐츠
+	}
+});
+$(document).on("click", ".knowcom-box--group[knowbox-type=4] .knowcom-group--head button", function() {
+	if(listType=="list") {
+		insertLogLSV(15786, param_cate); // LP 쇼핑지식 컨텐츠박스 - 뉴스 좌우버튼
+	} else if(listType=="search") {
+		insertLogLSV(15712); // SRP 쇼핑지식 컨텐츠박스 - 뉴스 좌우버튼
+	}
+});
+// SRP 추천 카테고리 이동
+$(document).on("click", "a.category-srp__item, .category-srp__list > li > a, .category-srp__location > li[data-type=all] > a", function() {
+	var landingCate = $(this).attr("data-cate");
+	var landingUrl = "/search.jsp?keyword="+param_keyword+"&from=list";
+	
+	if( $(this).attr("data-type")===undefined || $(this).attr("data-type")!=="all" ) {
+		landingUrl += "&cate="+landingCate;
+	}
+	// 탭 
+	landingUrl += "&tabType="+param_tabType;
+	// 정렬 
+	landingUrl += "&sort="+param_sort;
+	// 중고/렌탈 제외 
+	landingUrl += "&rental="+param_isRental;
+	// 배송비 포함 
+	landingUrl += "&delivery="+param_isDelivery;
+	// 리스트 갯수 
+	landingUrl += "&pageGap="+param_pageGap;
+	// 뷰타입 
+	landingUrl += "&listGridType="+viewType;
+	
+	location.href=landingUrl;
+});

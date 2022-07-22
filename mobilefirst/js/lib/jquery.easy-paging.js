@@ -32,6 +32,7 @@
         var masks = {};
 
         $li.each(function(i) {
+
             if (0 === i) {
                 masks.prev = this.innerHTML;
                 opts.format += "<";
@@ -57,24 +58,28 @@
                         return '<li id="page_'+value+'">' + value + '</li>';
                     if (this["page"] !== this["value"])
                         return '<li id="page_'+value+'"><a href="#' + this["value"] + '">' + value + '</a></li>';
-                    return '<li id="page_'+value+'"><a href="#"  class="selected">' + value + '</a></li>';
+                    return '<li class="selected" id="page_'+value+'"><a>' + value + '</a></li>';
 				
 				case 'next': 
 					if (!this['active'])
-                        if( location.href.indexOf("/mobilefirst/list.jsp") > -1 || location.href.indexOf("/mobilefirst/search.jsp") > -1 ){
-                        	return '<li><a class="btn next none"' + masks[type] + '</a></li>';
+                        if( location.href.indexOf("/m/list.jsp") > -1 || location.href.indexOf("/m/search.jsp") > -1 ){
+                        	return '<a class="prod__page_btn btn__next disabled">' + masks[type] + '</a>';
+                        	//return '<li><a class="btn next none"' + masks[type] + '</a></li>';
                         }else{
                         	return '<li>' + masks[type] + '</li>';
                         }
-					return '<li><a href="#' + this["value"] + '"  class="btn next">' + masks[type] + '</a></li>';
+					return '<a href="#' + this["value"] + '" class="prod__page_btn btn__next">' + masks[type] + '</a>';
+					//return '<li><a href="#' + this["value"] + '"  class="btn next">' + masks[type] + '</a></li>';
                 case 'prev':
                     if (!this['active'])
-                        if( location.href.indexOf("/mobilefirst/list.jsp") > -1 || location.href.indexOf("/mobilefirst/search.jsp") > -1 ){
-                        	return '<li><a class="btn prev none"' + masks[type] + '</a></li>';
+                        if( location.href.indexOf("/m/list.jsp") > -1 || location.href.indexOf("/m/search.jsp") > -1 ){
+                        	return '<a class="prod__page_btn btn__prev disabled">' + masks[type] + '</a>';
+                        	//return '<li><a class="btn prev none"' + masks[type] + '</a></li>';
                         }else{
                         	return '<li>' + masks[type] + '</li>';
                         }
-                    return '<li><a href="#' + this["value"] + '"  class="btn prev">' + masks[type] + '</a></li>';
+                    return '<a href="#' + this["value"] + '" class="prod__page_btn btn__prev">' + masks[type] + '</a>';
+                    //return '<li><a href="#' + this["value"] + '"  class="btn prev">' + masks[type] + '</a></li>';
             }
         };
         $(this)["paging"](num, opts);

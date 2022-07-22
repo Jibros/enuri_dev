@@ -59,9 +59,9 @@ export const prodShopPriceView = (json) => {
         let shopSpecialList = shopPriceJson.specialPrice;
         let priceTop = shopPriceJson.priceTop;
         cardshop_check = shopPriceJson.cardshop_check;
-
         //순서있음
         let html = ``;
+        let visitViewFlag = prodVisitPriceView(json);
         if (paramHandler.get("callcnt") == 0) {
             //첫번째 쇼핑몰 정보로 ....상단,topfix 배송비..최저가 구매하기 링크
             let firstShopObj = shopPriceList[0];
@@ -116,18 +116,17 @@ export const prodShopPriceView = (json) => {
                     insertLogLSV(18623,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
                     insertLogLSV(14515,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
                     ga('send','event','vip','summary_clickout','lowestprice');
-
-
-                })
+                    if(visitViewFlag){
+                        insertLogLSV(26296,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+                    }//직방가 클릭뷰
+                });
             }
             //초기화
-            $("#prod_shopprice").find(".m_price__toggle li").each(function () {
-                $(this).find("p").removeClass("is-on");
-            });
+            $("#prod_shopprice").find(".m_price__sort input").prop('checked',false);
             if (cardshop_check) {
-                $("#prod_shopprice").find(".toggle__chk.card").parent().show();
+                $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").parent().show();
             } else {
-                $("#prod_shopprice").find(".toggle__chk.card").parent().hide();
+                $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").parent().hide();
             }
             if (Object.keys(shopSpecialList).length > 0 || (Object.keys(priceTop).length > 0 && priceTop.ad_type === "B")) {
                 if (typeof shopSpecialList.cardSpecialPrice !== "undefined") {
@@ -154,6 +153,7 @@ export const prodShopPriceView = (json) => {
                                     <a href="${bridgeUrl}" target="_blank" class="logo" onerror="$(this).replaceWith('${shopname}')" >
                                     ${shoplogo_check ? `<img src="${storageUrl}/logo/logo16/logo_16_${shopcode}.png" alt="${shopname}" onerror="$(this).replaceWith('${shopname}')">` : `${shopname}`}
                                     </a>
+                                    ${shoptype=="4" ? `<a href="${bridgeUrl}" target="_blank" class="badge badge--npay">네이버페이</a>` : ``}
                                 </span>
                                 <span class="col col-2">
                                     <a href="${bridgeUrl}" target="_blank" class="price" >
@@ -166,7 +166,7 @@ export const prodShopPriceView = (json) => {
                                 </span>
                             </li>`
                 } else {
-                    $("#prod_shopprice").find(".m_price__toggle > .toggle__chk.card").addClass("is-off");
+                    $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").prop('checked',false);
                 }
 
                 if (typeof shopSpecialList.cashSpecialPrice !== "undefined") {
@@ -275,12 +275,14 @@ export const prodShopPriceView = (json) => {
                 $("#special_price").hide();
             }
         }
-        $("#prod_shopprice").find(".toggle__chk").removeClass("is-on");
-        if (paramHandler.get("delivery") =="Y") $("#prod_shopprice").find(".toggle__chk.delivery").removeClass("is-off").addClass("is-on");
-        else $("#prod_shopprice").find(".toggle__chk.delivery").removeClass("is-on").addClass("is-off");
+        $("#prod_shopprice").find(".m_price__sort input").prop('checked',false);
+        (paramHandler.get("delivery") =="Y")
+        ? $("#prod_shopprice").find(".m_price__sort input[data-sort='delivery']").prop('checked',true)
+        : $("#prod_shopprice").find(".m_price__sort input[data-sort='delivery']").prop('checked',false);
 
-        if(paramHandler.get("card") =="Y") $("#prod_shopprice").find(".toggle__chk.card").removeClass("is-off").addClass("is-on");
-        else $("#prod_shopprice").find(".toggle__chk.card").removeClass("is-on").addClass("is-off");
+        (paramHandler.get("card") =="Y")
+        ? $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").prop('checked',true)
+        : $("#prod_shopprice").find(".m_price__sort input[data-sort='card']").prop('checked',false);
         html = ``;
         let firstFreeInterestCnt = 0;
         $.each(shopPriceList, (index, listData) => {
@@ -303,6 +305,7 @@ export const prodShopPriceView = (json) => {
             let bagdename = listData.badgename;
             let cardbadge = listData.cardbadge;
             let coupon = listData.coupon;
+            let deliveryCod_check = listData.deliveryCod_check;
             let priceView = price;
             let bridgeUrl = prodCommon.bridgeUrl('move_link', `${shopcode}`, `${gModelData.gModelno}`, `${gModelData.gFactory}`, `${plno}`, `${coupon}`, `${price}`, 1);
             //할부
@@ -370,7 +373,18 @@ export const prodShopPriceView = (json) => {
                             </a>
                         </span>
                         <span class="col col-3">
-                            <span class="delivery">${delivery_text}</span>
+                            ${deliveryCod_check === true ? `<span class="delivery--cash">착불</span>
+                                                            <div class="lay-tooltip lay-comm lay-comm--sm" onmouseleave="$(this).fadeOut(300);" style="display: none;">
+                                                                <div class="lay-comm--head">
+                                                                    <strong class="lay-comm__tit">착불/유무료</strong>
+                                                                </div>
+                                                                <div class="lay-comm--body">
+                                                                    <div class="lay-comm__inner">
+                                                                        <p class="tx_tit tx_stress">총 상품금액에 배송비가 포함되어 있지 않습니다.</p>
+                                                                        <p class="tx_sub">쇼핑몰 이동 후 반드시 상품정보 및 가격을 다시 한번 확인하세요.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>` : `<span class="delivery">${delivery_text}</span>`}
                         </span>
                         ${firstFreeInterest > 0 ?
                             `<span class="col col-4">
@@ -518,7 +532,7 @@ export const prodShopPriceView = (json) => {
                 insertLogLSV(14515,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
                 ga('send','event','vip','summary_clickout','promotion');
             }
-            
+
         });
         $("#prod_shopprice").find(".m_price__list li .btn_add_apply" ).hover(
             function(){
@@ -530,6 +544,56 @@ export const prodShopPriceView = (json) => {
         $("#prod_shopprice").show();
     }
 }
+const prodVisitPriceView = (json) => {
+    let visitViewFlag = false;
+    if (json.success && json.total > 0) {
+        let visitPriceJson = json.data.visitPrice;
+        if (typeof visitPriceJson !== "undefined" && Object.keys(visitPriceJson).length > 0) {
+            let collectDate = visitPriceJson["collectDate"];
+            let dc_ratio = visitPriceJson["dc_ratio"];
+            let diffPrice = visitPriceJson["diffPrice"];
+            let visitPrice = visitPriceJson["visitPrice"];
+            let shopMinPrice = visitPriceJson["goodsMinPrice"];
+
+			if(dc_ratio >= 1){
+				$("#discountInfo").html("에누리 쿠폰 <strong>"+parseInt(dc_ratio)+"%할인</strong> 적용중");
+				$("#discountInfo").show();
+			}else if(dc_ratio > 0){
+				$("#discountInfo").html("에누리 쿠폰 할인 적용중");
+				$("#discountInfo").show();
+			}else{
+				$("#discountInfo").hide();
+			}
+
+            if(dc_ratio < 5 && diffPrice < 1000){
+                //미노출타입
+                $("#summary_visitprice").hide();
+            }else{
+                //직방가 노출뷰
+                insertLogLSV(26295,`${gModelData.gCategory}`,`${gModelData.gModelno}`);
+
+                $("#summary_visitprice").find(".ins-list li").eq(0).html(collectDate+" 기준 할인 정보입니다.");
+                $("#summary_visitprice").find(".d_currentMallPrice em").html(numComma(visitPrice));
+                $("#summary_visitprice").find(".d_discountPrice em").html(numComma(diffPrice));
+                $("#summary_visitprice").find(".d_enuriMinPrice em").html(numComma(shopMinPrice));
+                $("#summary_visitprice").show();
+
+                // 툴팁 노출
+                $("#summary_visitprice").find(".btn_open_question").on("click", function(){
+					$("#summary_visitprice .lay-tooltip").toggle();
+                });
+                visitViewFlag =  true;
+            }
+        }else{
+            $("#summary_visitprice").hide();
+            $("#discountInfo").hide();
+        }
+    }else{
+	    $("#summary_visitprice").hide();
+	    $("#discountInfo").hide();
+	}
+    return visitViewFlag;
+};
 const numComma = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

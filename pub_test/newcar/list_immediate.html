@@ -4,17 +4,14 @@
 	<meta charset="utf-8"/>
 	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>	
+    <meta name="format-detection" content="telephone=no"/>
     <title>에누리 신차견적</title>
     <link rel="shortcut icon" href="http://img.enuri.info/2014/layout/favicon_enuri.ico">
-	<meta name="format-detection" content="telephone=no"/>
-    <link rel="stylesheet" type="text/css" href="/css/swiper.css"/>    
-    <!-- Common -->
+	
     <link rel="stylesheet" type="text/css" href="/css/newcar/common.css"/>
     <link rel="stylesheet" type="text/css" href="/css/newcar/template.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/newcar/list_immediate.css"/>
 	<script type="text/javascript" src="/common/js/lib/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/js/swiper.min.js"></script>
-    <!-- 완료후제거 -->
-    <link rel="stylesheet" href="/css/default.css?v=1" type="text/css">
     <script>
         // 공통 헤더푸터 include : 경로확인
         $(document).ready(function(){
@@ -25,61 +22,16 @@
     </script>
 </head>
 <body>
-
     <div id="wrap">
-        <!-- 공통 : 헤더 : include 경로확인  -->
+        <!-- include : header.html  -->
         <div id="header" class="header"></div>
         <div id="container" class="container">
-            <!--
-                상단 배너 
-                관리자에서 등록하는건지?? 형태 변경되었습니다.
-                경로, 컬러 인라인으로 삽입
-            -->
             <div class="section bnr__lg bnr_top_immediate" style="background-image:url(//img.enuri.info/images/sample/sample_banner@1230x320.jpg); background-color: #fbeee8;">
                 <h2 class="blind">계약 즉시 출고 가능한 차량</h2>
             </div>
-
-            <div class="section box_inner sr_immediate border-box">
-                <div class="sort_option">
-                    <!-- 두줄고려안함.. -->
-                    <ul>
-                        <li data-sorttype="all" class="active">전체</li>
-                        <li data-sorttype="suv">SUV</li>
-                        <li data-sorttype="elec">전기차</li>
-                        <li data-sorttype="nh_finance">NH캐피탈</li>
-                        <li data-sorttype="hyundai">현대</li>
-                    </ul>
-                </div>
-                <script>
-                    var sortOption =  $('.sort_option ul li')
-                    var sortOptionCnt = sortOption.length;
-                    var sortOptionAllBtn = $('[data-sorttype=all]'); // 전체버튼
-
-                    function sortCheck(target) {
-                        var sorttype = target.data('sorttype');
-                        if(!target.hasClass('active')) {
-                            if(sorttype === 'all') {
-                                target.addClass('active').siblings().removeClass('active');
-                            } else {
-                                if(sortOptionAllBtn.hasClass('active')) sortOptionAllBtn.removeClass('active');
-                                target.addClass('active');
-                            }
-                        } else {
-                            target.removeClass('active');
-                        }
-                    };
-
-                     // 옵션리스트가 1개(전체)이상일때 실행
-                    if(sortOptionCnt > 1) {
-                        sortOption.on('click', function(){
-                            sortCheck($(this));
-                        });
-                    }
-                </script>
+            <div class="section box_inner sr_immediate">
                 <div class="list_body">
-                    <ul class="list_immediate">
-                    <!-- 상품 리스트 스크립트로 삽입 -->
-                    </ul>
+                    <ul class="list_immediate"></ul>
                     <!-- 페이지 버튼-->
                     <div class="list_paging">
                         <div class="paging_wrap">
@@ -98,16 +50,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="list_caution">
-                    에누리 즉시 출고 차량은 제휴사가 실제 보유한 차량으로 실제 계약 및 출고가 가능합니다.<br>
-                    제휴사의 계약 및 재고 관리에 따라 일부 계약 완료된 차량이 표시될 수 있으니 상세한 사항은 필히 상담 신청을 통해 확인 부탁 드립니다.
-                </div>
             </div>
         </div>
-        <!-- 공통 : 푸터 : include 경로확인  -->
+        <!-- include : footer.html -->
         <div class="footer footer--com wide"> </div>
     </div>
-
     <script>
         // 공통 : 업/다운 스크롤체크
         $(function(){
@@ -132,46 +79,29 @@
             };
 			$(window).load(stickyGnb).scroll(stickyGnb);
         })
-
-
         function addGoodsList(target) {
 			var listHtml = '';
 			for(var i=0; i<24; i++) {
                 if(i%2 === 0) {
                     listHtml += '<li class="item_immediate">';
-                    listHtml += '   <a href="view_immediate.html">';
-                    listHtml += '       <div class="md_thumb">';
-                    listHtml += '          <div class="md_logo"><img src="//img.enuri.info/images/newcar/1001.png" alt=""></div>';
-                    listHtml += '          <div class="md_thumb_img"><img src="//img.enuri.info/images/newcar/1600.png" alt=""></div>';
-                    listHtml += '       </div>';
-                    listHtml += '       <div class="md_info">';
-                    listHtml += '           <div class="md_name"><span class="tx_name">현대 더 뉴 그랜저 현대 더 뉴 그랜저 현대 더 뉴 그랜저 현대 더 뉴 그랜저 </span></div>';
-                    listHtml += '           <div class="md_subinfo">';
-                    listHtml += '               <div class="capital_logo"><img src="//img.enuri.info/images/sample/sample_capital_logo@77x24.png" alt=""></div>';
-                    listHtml += '               <div class="price_per_month">월 <em>143</em>만원</div> ';
-                    listHtml += '           </div>';
-                    listHtml += '       </div>';
-                    listHtml += '    </a>';
-                    listHtml += '</li>';
-                } else {
-                    listHtml += '<li class="item_immediate">';
-                    listHtml += '   <a href="view_immediate.html">';
-                    listHtml += '       <div class="md_thumb">';
-                    listHtml += '          <div class="md_logo"><img src="//img.enuri.info/images/newcar/1001.png" alt=""></div>';
-                    listHtml += '          <div class="md_thumb_img"><img src="//img.enuri.info/images/newcar/1600.png" alt=""></div>';
-                    listHtml += '       </div>';
-                    listHtml += '       <div class="md_info">';
-                    listHtml += '           <div class="md_name"><span class="tx_name">현대 더 뉴 그랜저</span></div>';
-                    listHtml += '           <div class="md_subinfo">';
-                    listHtml += '               <div class="capital_logo"><img src="//img.enuri.info/images/sample/sample_capital_logo@77x24.png" alt=""></div>';
-                    listHtml += '               <div class="price_per_month">월 <em>43</em>만원</div> ';
-                    listHtml += '           </div>';
-                    listHtml += '       </div>';
-                    listHtml += '    </a>';
+                    listHtml += '    <div class="md_logo">';
+                    listHtml += '        <img src="http://img.enuri.info/images/newcar/1001.png" alt="">';
+                    listHtml += '    </div>';
+                    listHtml += '    <div class="md_thumb">';
+                    listHtml += '        <img src="http://img.enuri.info/images/newcar/1600.png" alt="">';
+                    listHtml += '    </div>';
+                    listHtml += '    <div class="md_info" onclick="window.location.href=\'view_immediate.html\'">';
+                    listHtml += '        <div class="md_name" >';
+                    listHtml += '            <span class="tx_name">현대 더 뉴 그랜저</span>                                    ';
+                    listHtml += '        </div>';
+                    listHtml += '        <div class="md_quantity">';
+                    listHtml += '            <span class="tx_quantity"><em>5</em>대</span>';
+                    listHtml += '            <i class="comm_sprite ico_rarr_bold_w"></i>';
+                    listHtml += '        </div>';
+                    listHtml += '    </div>';
                     listHtml += '</li>';
                 }
-                
-			}
+            }
             $(target).append(listHtml);
 		}
 		addGoodsList('.list_immediate');

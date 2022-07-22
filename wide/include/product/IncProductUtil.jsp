@@ -121,7 +121,8 @@
 	}
 
 	// 카드할인 이벤트중인 카드명 리턴
-	public String getCardName(HashMap<String,String> cardNameHash, int intShopCode, String strPlGoodsNmM, long mPrice,long lnCardPrice, List<Integer> aryNewCardShop){
+	//20220405 스마트스토어 추가(shop_type)
+	public String getCardName(HashMap<String,String> cardNameHash, int intShopCode, String strPlGoodsNmM, long mPrice,long lnCardPrice, List<Integer> aryNewCardShop,String strShopType){
 		String[] arrCard = null;
 		String rtnCard = "";
 		String tempCardName = "";
@@ -129,17 +130,15 @@
 		boolean isNoNeedCardName = false; //카드명이 상품명에 없어도 인정
 		boolean isShopCardNameCorrect = false;
 		String szVcode = String.valueOf(intShopCode);
-		
 		String nowDateTime = com.enuri.util.date.DateStr.nowStr("yyyy.MM.dd. HH:mm");
 		//일부 업체 제외하고 5만원 미만이면 카드특가 아님
-		if(!ControlUtil.compareValOR(new String[]{szVcode,"6641","47","55","374","806","5910","6165","6193","6665","6688","6780","4027"}) && mPrice<50000){
+		if(!(ControlUtil.compareValOR(new String[]{szVcode,"6641","47","55","374","806","5910","6165","6193","6665","6688","6780","4027"}) || strShopType.equals("4")) && mPrice<50000){
 			return rtnCard;
 		}
 		//
 		if(lnCardPrice == 0){
 			return rtnCard;
 		}
-	
 		strPlGoodsNmM = ReplaceStr.replace(strPlGoodsNmM, "롯데백화점", "");
 		strPlGoodsNmM = ReplaceStr.replace(strPlGoodsNmM, "현대백화점", "");
 	
@@ -183,7 +182,7 @@
 		strPlGoodsNmM = ReplaceStr.replace(strPlGoodsNmM, "외한카드", "외환카드");
 		strPlGoodsNmM = ReplaceStr.replace(strPlGoodsNmM, "카드카드", "카드");
 		//EP 2.0 규칙 적용
-		if(aryNewCardShop.contains(intShopCode)){
+		if(aryNewCardShop.contains(intShopCode) || strShopType.equals("4")){
 			String regExp = "\\[([가-힣a-zA-z]{2}카드)\\]";
 			java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regExp);
 			java.util.regex.Matcher matcher = pattern.matcher(strPlGoodsNmM);
@@ -279,54 +278,53 @@
 			}
 			//기간이 지난 등록건이 있으면 상품명 카드가 정보대로 
 			if(rtnCard.equals("") && cardNameHash.containsKey(szVcode+"N")) { 
-				int nowH = ChkNull.chkInt(nowDateTime.substring(12, 14));
+				
+				//int nowH = ChkNull.chkInt(nowDateTime.substring(12, 14));
 				//11시 기준 삭제  shwoo 2017-12-05
 				//if(nowH>=11 && nowH<24){ //11시 이후부터 상품명 정보대로
-		
-					if(strPlGoodsNmM.indexOf("[")>-1 && strPlGoodsNmM.indexOf("]")>-1 && strPlGoodsNmM.indexOf("[")<strPlGoodsNmM.indexOf("]") && strPlGoodsNmM.indexOf("카드")>0 && strPlGoodsNmM.indexOf("할인")>0) {
-						String tempCatchCardPlGoodsNm = strPlGoodsNmM;
-						String tempCatchCardNm = "";
+				if(strPlGoodsNmM.indexOf("[")>-1 && strPlGoodsNmM.indexOf("]")>-1 && strPlGoodsNmM.indexOf("[")<strPlGoodsNmM.indexOf("]") && strPlGoodsNmM.indexOf("카드")>0 && strPlGoodsNmM.indexOf("할인")>0) {
+					String tempCatchCardPlGoodsNm = strPlGoodsNmM;
+					String tempCatchCardNm = "";
+					
+					while(tempCatchCardPlGoodsNm.indexOf("[")>-1 && tempCatchCardPlGoodsNm.indexOf("]")>-1 && tempCatchCardPlGoodsNm.indexOf("[")<tempCatchCardPlGoodsNm.indexOf("]")){
+						tempCatchCardNm = tempCatchCardPlGoodsNm.substring(tempCatchCardPlGoodsNm.indexOf("[")+1, tempCatchCardPlGoodsNm.indexOf("]"));
 						
-						while(tempCatchCardPlGoodsNm.indexOf("[")>-1 && tempCatchCardPlGoodsNm.indexOf("]")>-1 && tempCatchCardPlGoodsNm.indexOf("[")<tempCatchCardPlGoodsNm.indexOf("]")){
-							tempCatchCardNm = tempCatchCardPlGoodsNm.substring(tempCatchCardPlGoodsNm.indexOf("[")+1, tempCatchCardPlGoodsNm.indexOf("]"));
-							
-							if(tempCatchCardNm.indexOf("%")>0 && tempCatchCardNm.indexOf("카드")>=2 && tempCatchCardNm.indexOf("할인")>0){
-								//상품명에 있는 카드명 추출
-		
-								tempCatchCardNm = tempCatchCardNm.substring(tempCatchCardNm.indexOf("카드")-2, tempCatchCardNm.indexOf("카드")+2);
-		
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "비씨카드", "BC카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "농협카드", "NH카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "NH농협카드", "NH카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "NHNH카드", "NH카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "국민카드", "KB카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "KB국민", "KB카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "KBKB카드", "KB카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "외한카드", "외환카드");
-								tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "카드카드", "카드");
-		
-								if(tempCatchCardNm.equals("BC카드")) rtnCard = "BC카드";
-								if(tempCatchCardNm.equals("KB카드")) rtnCard = "KB카드";
-								if(tempCatchCardNm.equals("롯데카드")) rtnCard = "롯데카드";
-								if(tempCatchCardNm.equals("삼성카드")) rtnCard = "삼성카드";
-								if(tempCatchCardNm.equals("신한카드")) rtnCard = "신한카드";
-								if(tempCatchCardNm.equals("씨티카드")) rtnCard = "씨티카드";
-								if(tempCatchCardNm.equals("우리카드")) rtnCard = "우리카드";
-								if(tempCatchCardNm.equals("외환카드")) rtnCard = "외환카드";
-								if(tempCatchCardNm.equals("하나카드")) rtnCard = "하나카드";
-								if(tempCatchCardNm.equals("현대카드")) rtnCard = "현대카드";
-								if(tempCatchCardNm.equals("CJ카드")) rtnCard = "CJ카드";
-								if(tempCatchCardNm.equals("NH카드")) rtnCard = "NH카드";
-								if(tempCatchCardNm.equals("SC은행카드")) rtnCard = "SC은행카드";
-		
-								if(!rtnCard.equals("")){
-									break;
-								}
+						if(tempCatchCardNm.indexOf("%")>0 && tempCatchCardNm.indexOf("카드")>=2 && tempCatchCardNm.indexOf("할인")>0){
+							//상품명에 있는 카드명 추출
+	
+							tempCatchCardNm = tempCatchCardNm.substring(tempCatchCardNm.indexOf("카드")-2, tempCatchCardNm.indexOf("카드")+2);
+	
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "비씨카드", "BC카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "농협카드", "NH카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "NH농협카드", "NH카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "NHNH카드", "NH카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "국민카드", "KB카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "KB국민", "KB카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "KBKB카드", "KB카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "외한카드", "외환카드");
+							tempCatchCardNm = ReplaceStr.replace(tempCatchCardNm, "카드카드", "카드");
+	
+							if(tempCatchCardNm.equals("BC카드")) rtnCard = "BC카드";
+							if(tempCatchCardNm.equals("KB카드")) rtnCard = "KB카드";
+							if(tempCatchCardNm.equals("롯데카드")) rtnCard = "롯데카드";
+							if(tempCatchCardNm.equals("삼성카드")) rtnCard = "삼성카드";
+							if(tempCatchCardNm.equals("신한카드")) rtnCard = "신한카드";
+							if(tempCatchCardNm.equals("씨티카드")) rtnCard = "씨티카드";
+							if(tempCatchCardNm.equals("우리카드")) rtnCard = "우리카드";
+							if(tempCatchCardNm.equals("외환카드")) rtnCard = "외환카드";
+							if(tempCatchCardNm.equals("하나카드")) rtnCard = "하나카드";
+							if(tempCatchCardNm.equals("현대카드")) rtnCard = "현대카드";
+							if(tempCatchCardNm.equals("CJ카드")) rtnCard = "CJ카드";
+							if(tempCatchCardNm.equals("NH카드")) rtnCard = "NH카드";
+							if(tempCatchCardNm.equals("SC은행카드")) rtnCard = "SC은행카드";
+							if(!rtnCard.equals("")){
+								break;
 							}
-							tempCatchCardPlGoodsNm = tempCatchCardPlGoodsNm.substring(tempCatchCardPlGoodsNm.indexOf("]")+1);
-							tempCatchCardNm = "";
 						}
+						tempCatchCardPlGoodsNm = tempCatchCardPlGoodsNm.substring(tempCatchCardPlGoodsNm.indexOf("]")+1);
+						tempCatchCardNm = "";
 					}
+				}
 				//}
 			}
 			if(!rtnCard.equals("") && rtnCard.indexOf(",")>0){
